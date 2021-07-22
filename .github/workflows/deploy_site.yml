@@ -1,0 +1,29 @@
+on:
+  push:
+    branches: master
+
+name: Render & Deploy Site
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@master
+
+      - uses: r-lib/actions/setup-pandoc@master
+
+      - name: Install dependencies
+        run: |
+          install.packages("rmarkdown")
+          install.packages("distill")
+        shell: Rscript {0}
+
+      - name: Render Site
+        run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
+      - name: Commit results
+        run: |
+          git add -A
+          git commit -m 'Rebuild site' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
