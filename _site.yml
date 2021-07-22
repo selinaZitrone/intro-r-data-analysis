@@ -1,0 +1,19 @@
+name: "intro-r-data-analysis"
+title: "Introduction to R for Data Analysis"
+theme: theme.css
+description: |
+  My Website
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Workshop Material"
+      menu:
+        - text: "Slides"
+        - text: "Tasks"
+        - text: "Solutions"
+    - text: "About"
+      href: about.html
+    - icon: fab fa-github
+output: distill::distill_article
