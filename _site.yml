@@ -16,4 +16,5 @@ navbar:
     - text: "About"
       href: about.html
     - icon: fab fa-github
+      href: https://github.com/selinaZitrone/intro-r-data-analysis
 output: distill::distill_article
