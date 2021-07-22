@@ -6,8 +6,6 @@ description: |
 output_dir: "docs"
 navbar:
   right:
-    - icon: fab fa-github
-      href: https://github.com/selinaZitrone/intro-r-data-analysis
     - text: "Home"
       href: index.html
     - text: "Workshop Material"
@@ -17,4 +15,6 @@ navbar:
         - text: "Solutions"
     - text: "About"
       href: about.html
+    - icon: fa fa-github
+      href: https://github.com/selinaZitrone/intro-r-data-analysis
 output: distill::distill_article
