@@ -1,7 +1,7 @@
 ---
 title: "Introduction to R for Data Analysis"
 description: |
-  Welcome to the workshop. I hope you enjoy it and I hope the Github action finally works!
+  Welcome to the workshop. You can find all material and information that you need to follow on this website.
 site: distill::distill_website
 ---
 
@@ -15,4 +15,28 @@ knitr::opts_chunk$set(echo = FALSE)
 # https://rstudio.github.io/distill/publish_website.html#github-pages
 
 ```
+
+# Workshop organization and schedule
+
+🕘 9 a.m. - 4 p.m. (🥪 ~ 12 a.m. - 1 p.m.)<br>
+📍 We will meet in [this webex meeting](www.webex.com)
+
+I set up a shared document where we can collect questions, additional resources, etc. that come up during the workshop.
+You can find the document [here](https://hackmd.io/@selinaZitrone/r12pL71C_/edit), please feel free to edit it as you like.
+
+
+# Workshop Material
+
+You can find all the material for the workshop on this website.
+On top, you can navigate to the presentation slides, the tasks for each day and the code for all examples from the presentations and the solutions for the tasks.
+
+The task solutions will be uploaded after the respective workshop day is finished. 
+
+If you want to download the slides in pdf format, you can do that [here](www.github.com).
+
+After the workshop, you can download a zipped version of the content from [here](download_material_blank.html)
+
+
+
+
 
