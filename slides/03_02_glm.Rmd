@@ -1,0 +1,354 @@
+---
+subtitle: "Introduction to R - Day "
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: "2021-06-15"
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["css/xaringan-themer.css", "css/progressbar.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: false
+      beforeInit: "macros.js"
+      slideNumberFormat:  |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+params:
+  title: "Generalized linear models with R"
+  day: "3"
+  bg_image: ""
+  bg_image_scale: "30%"
+  bg_position: "90% 90%"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+library(fontawesome)
+library(tidyverse)
+
+theme_set(theme_classic())
+```
+
+```{r child="title_slide.Rmd"}
+```
+---
+# GLMs background
+
+Assumptions of linear models:
+
+.pull-left[
+- Normal distribution of residuals
+  - errors and response not bounded
+
+![](img/day3/regression_assumption_placeholder.png)
+  
+]
+
+.pull-right[
+- Constant variance of residuals
+  - no relationship between mean and variance of y
+![](img/day3/lm_assumption_variance_placeholder.png)
+]
+
+---
+# GLMs background
+
+There are types of data that (generally) violate these assumptions.
+
+**Count data**
+
+- are bounded (cannot be < 0)
+- variance increases with the mean
+`r fa("arrow-right")` response described by a ***poisson distribution***
+
+**Proportion data**
+
+- percentages: bounded between 0 and 1
+- variance highest at p = 0.5, lower towards p = 0 and 1
+`r fa("arrow-right")` response described by a ***binomial distribution*** (# successees in N trials with probability p)
+
+
+**Binary data**
+
+- Only 0 and 1
+- variance highest at p = 0.5, lower towards p = 0 and 1
+`r fa("arrow-right")` response described by a ***bernoulli distribution*** (binomail distribution with N=1)
+
+---
+# GLMs background
+
+**Components of a GLM**
+
+- Error structure 
+  - non-normal distribution e.g. skewed, bounded, non-negative (e.g. Poisson distribution)
+  
+- Linear predictor $\eta_i = \beta_0 + \sum \beta_j * X_{i,j}$
+  - like a linear model: linear combination of the effects of the predictors $X_j$
+
+- Link function $g(\mu_i) = \eta_i$
+  - relates the expected response values ($\mu_i$) to the linear predictor
+  - predicted values: require inverse link function!
+  - A linear model is also a glm with a gaussian link function (identity `=`)
+
+---
+# Parameter estimation
+
+![](img/day3/glm_param_estimation_placeholder.png)
+
+---
+# Binomial glms
+
+![](img/day3/binomial_glm_placeholder.png)
+---
+# Binomial glms
+
+- link function: $logit(p_i) = ln(\frac{p_i}{1-p_i}) = \eta_i$
+- inverse link function: $p_i = \frac{e^{\eta_i}}{1+e^{\eta_i}}$
+- binomial error distribution
+---
+# Poisson glm for count data
+
+Count data often follow a poisson distribution
+
+![](img/day3/glm_poisson_placeholder.png)
+- log link function
+---
+# Example
+
+Data set:
+
+.pull-left[
+
+- Response variable:
+  - number of plant species
+- Predictor variables:
+  - Plot biomass
+  - soil pH
+
+```{r eval=FALSE}
+specdat
+```
+
+```{r echo=FALSE}
+specdat <- read_tsv(here::here("data/slides/03_species.txt"))
+print(specdat, n=4)
+```
+
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(specdat, aes(y=Species, x=Biomass, color = pH))+
+  geom_point()
+```
+
+]
+
+---
+# Example
+
+Fit the most complex model with interaction:
+
+```{r}
+mod1 <- glm(Species ~ Biomass + pH + Biomass:pH, data = specdat,
+            family = "poisson") #<<
+```
+
+Structure of a glm is the same as for lm but with a family argument that specifies the error distribution.
+
+---
+# Example
+
+```{r}
+summary(mod1)
+```
+
+- Coefficients are on scale of link function `r fa("arrow-right")` cannot be directly interpreted on the scale of the data
+- For glms: deviance as measure of goodness-of-fit (for lms it was sum of squared residuals)
+
+---
+# Hypothesis tests in GLMs
+
+- for linear models: F-tests
+  - $F = \frac{\frac{SSR}{df(mod1)}}{\frac{SSR}{df{mod2}}}$
+  - in R: `drop1(mod1, test = "F")`
+- for generalized linear models: likelihood-ratio (LR) test
+  - $LR = deviance(mod1) - deviance(mod2)$
+  - LR follows a $\chi^2$ distribution
+  - in R: `drop1(mod1, test = "Chisq")`
+  
+---
+# Example
+
+```{r}
+drop1(mod1, test = "Chisq")
+```
+
+- Significant interaction betwenn pH and Biomass
+
+---
+# Plot the results
+
+**Option 1: Use predict function**
+
+```{r}
+pred_dat <- expand_grid(
+  Biomass = seq(from = min(specdat$Biomass), to = max(specdat$Biomass), length.out = 200),
+  pH = unique(specdat$pH)
+)
+```
+
+```{r}
+# predict species with the new data
+pred_dat$Species <- predict(mod1, newdata = pred_dat, 
+                            type = "response") #<<
+
+```
+- `type = response` makes sure that the predictions are on the scale of the response variable and not on the scale of the link function
+
+
+---
+# Plot the results
+
+**Option 1: Use predict function**
+
+```{r}
+ggplot(specdat, aes(y=Species, x=Biomass, color = pH))+
+  geom_point()+
+  geom_line(data = pred_dat)
+```
+
+- Note: aesthetics x, y and color are inherited from the top-level `ggplot` call to `geom_point` and to `geom_line`
+  - Therefore `pred_dat` needs to have the same column names as specdat!
+  
+---
+# Plot the results
+
+**Option 2: Use `geom_smooth`**
+
+For glms, we can also use `geom_smooth` to add the model to the plot.
+But careful: it plots the most complex model with interaction (which is what we want to do in this example)
+
+```{r}
+ggplot(specdat, aes(y=Species, x=Biomass, color = pH))+
+  geom_point()+
+  geom_smooth(    
+    method = "glm", #<<
+    method.args = list(#<<
+      family = "poisson"#<<
+      ))
+
+```
+---
+class: inverse
+
+# GLM and proportion data
+---
+# Example
+
+Winter mortality of black-tailed prairie dogs
+
+.pull-left[
+
+Question: How do
+
+- successful mating
+- achievement of a certain minimum weight before winter
+- hibernation
+
+predict the ***probability of survival & death*** in winter?
+
+
+]
+.pull-right[
+![](img/day3/Kissing_Prairie_dog_edit_3.jpg)
+]
+.footnote-right[By I, <a rel="nofollow" class="external text" href="https://sites.google.com/site/thebrockeninglory/">Brocken Inaglory</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=2542206">Link</a>]
+
+---
+# Example: The data set
+
+```{r eval=FALSE}
+pdogs
+```
+
+```{r echo=FALSE}
+pdogs <- read_csv(here::here("data/slides/03_prairiedogs.csv"))
+print(pdogs, n= 5)
+```
+
+- 3 categorical predictors: mated, hibernation, min.weight
+- total no. of animals (n.tot)
+- number of dead animals (n.death)
+
+`r fa("arrow-right")` What is the response variable here?
+
+---
+# Example
+
+Response variable: **proportion** of surviving (or dead) animals
+
+`r fa("arrow-right")` Response has to be calculated first:
+
+```{r}
+pdogs <- pdogs %>%
+  mutate(
+    n.surv = n.tot - n.death,
+    p.surv = n.surv / n.tot,
+    p.dead = 1 - p.surv
+  )
+```
+
+---
+# Example
+
+Now we calculated the response variable that we can use in our model (`p.dead` or `p.surv` depending on the question).
+
+But what could be the problem with that?
+
+```{r echo=FALSE}
+print(pdogs, n = 5)
+```
+--
+`r fa("arrow-right")` loss of information in proportions!
+
+- 2 survivors / 4 total = 50% 
+- 100 survivors / 200 total = 50%
+**But** 100 out of 200: more information than 2 out of 4
+
+`r fa("arrow-right")` data points with higher total number need more weight in model fitting
+
+---
+# Model fitting
+
+**Option 1:** Give proportion of success as response AND total number as weights
+
+```{r eval=FALSE}
+mod1 <- glm(p.surv ~ ..., data = pdogs1,
+            family = "binomial", #<<
+            weights = n.tot)#<<
+```
+
+---
+# Model fitting
+
+**Option 2:** Give a table with two columns as response:
+- No of successes
+- No of failures
+
+```{r eval=FALSE}
+mod1 <- glm(cbind(n.surv, n.death)~ ..., #<<
+            data = pdogs,
+            family = "binomial") #<<
+```
+
+---
+# Now you
+

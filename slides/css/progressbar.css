@@ -1,0 +1,266 @@
+.col1 {
+  color: #F3BC50;
+}
+.col2{
+  color: #25C0C0;
+}
+.col3{
+  color:#FA53A0;
+}
+
+.textbox{
+  background: lightgray;
+  padding: 15px 20px 15px 20px;
+  border-radius 5px
+  position: relative;
+  white-space: pre-wrap;
+  display: inline;
+}
+
+
+.large { font-size: 130% }
+.small { font-size: 70% }
+.tiny{font-size: 40%}
+h1 .remark-inline-code{
+  color: #FFFFFF;
+}
+
+.inverse .remark-slide-number {
+  display: none;
+}
+
+.inverse .remark-inline-code {
+  color: #FFFFFF;
+}
+.inverse strong {
+  color: #FFFFFF;
+}
+
+/* title slide*/
+.title-slide .inverse {
+  padding: 64px 16px 16px 64px;
+}
+
+.title-slide h2{
+  font-size: 26pt;
+}
+
+.title-slide h3{
+  font-size: 16pt;
+}
+
+.title-slide h1{
+  font-size: 42pt;
+}
+
+h2{
+  color: #000;
+}
+
+.footnote-right {
+  position: absolute;
+  bottom: 20px;
+  right: 64px;
+  font-size: 0.9em;
+  padding-left: 4em;
+}
+
+.footnote-left {
+  position: absolute;
+  bottom: 20px;
+  font-size: 0.9em;
+  padding-right: 4em;
+}
+
+/* Two-column layout */
+
+.left-column {
+  width: 30%;
+  height: 92%;
+  float: left;
+}
+.left-column h2:last-of-type, .left-column h3:last-child {
+  color: #000;
+}
+.right-column {
+  width: 65%;
+  float: right;
+  padding-top: 1em;
+}
+.pull-left {
+  float: left;
+  width: 49%;
+}
+.pull-right {
+  float: right;
+  width: 49%;
+}
+/*
+.pull-right ~ * {
+  clear: both;
+}
+*/
+
+/*img, video, iframe {
+  max-width: 100%;
+}
+
+blockquote {
+  border-left: solid 5px lightgray;
+  padding-left: 1em;
+}
+table, th, td  {
+  text-align: left;
+  line-height: 1.8;
+  vertical-align: middle;
+  border-collapse: collapse;
+}
+
+
+pre {
+  font-size: 16px
+}
+.remark-slide table {
+  margin: auto;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+}*/
+
+.remark-slide-number {
+  position: inherit;
+}
+.remark-slide-number .progress-bar-container {
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  display: block;
+  left: 0;
+  right: 0;
+}
+.remark-slide-number .progress-bar {
+  height: 100%;
+  background-color: #284185;
+}
+
+.remark-slide table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+.remark-slide thead, .remark-slide tfoot, .remark-slide tr:nth-child(even) { background: #eee }
+.font-mono {
+  font-family: monospace;
+}
+
+@page { margin: 0; }
+@media print {
+  .remark-slide-scaler {
+    width: 100% !important;
+    height: 100% !important;
+    transform: scale(1) !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+}
+
+#content {
+    position: relative;
+}
+#content img {
+    position: absolute;
+    top: 75px;
+    right: 0px;
+}
+
+/******************
+ *
+ * Coloured content boxes
+ *
+ ****************/
+
+
+.content-box {
+    box-sizing: content-box;
+    	background-color: #e2e2e2;
+  /* Total width: 160px + (2 * 20px) + (2 * 8px) = 216px
+     Total height: 80px + (2 * 20px) + (2 * 8px) = 136px
+     Content box width: 160px
+     Content box height: 80px */
+}
+
+
+.content-box-blue,
+.content-box-gray,
+.content-box-grey,
+.content-box-neutral,
+.content-box-duke-green,
+.content-box-green,
+.content-box-purple,
+.content-box-red,
+.content-box-yellow {
+    border-radius: 15px;
+    margin: 0 0 25px;
+    overflow: hidden;
+    padding: 20px;
+    width: 100%;
+}
+
+.content-box-blue {
+    /* set opacity in last decimal value of rgba */
+    background-color: rgb(51,153,153);
+    background-color: rgba(51,153,153,.85);
+
+}
+
+.content-box-gray {
+    /* set opacity in last decimal value of rgba */
+    background-color: rgb(102, 102, 102);
+    background-color: rgba(102, 102, 102,.85);
+}
+
+.content-box-grey {
+  /* set opacity: uncomment rgba line */
+  /* alter opacity with last decimal value of rgba */
+	background-color: rgb(181, 181, 181);
+  /* background-color: rgba(181, 181, 181,.85); */
+}
+
+.content-box-neutral {
+  background-color: #988675;
+}
+
+
+.content-box-duke-green {
+  /* set opacity in last decimal value of rgba */
+	background-color: rgb(114, 131, 2);
+  background-color: rgba(114, 131, 2,.85);
+}
+
+.content-box-green {
+  /* set opacity in last decimal value of rgba */
+	background-color: rgb(161, 183, 13);
+  background-color: rgba(161, 183, 13,.85);
+}
+
+.content-box-purple {
+  /* set opacity in last decimal value of rgba */
+	background-color: rgb(153, 51, 153);
+  background-color: rgba(153, 51, 153, .85)
+}
+
+.content-box-red {
+  /* set opacity in last decimal value of rgba */
+	background-color: rgb(204, 51, 0);
+  background-color: rgba(204, 51, 0,.85)
+}
+
+.content-box-yellow {
+  /* set opacity in last decimal value of rgba */
+	background-color: rgb(255, 217, 96);
+  background-color: rgba(255, 217, 96, .85)
+}
+
+
+.full-width {
+    display: flex;
+    width: 100%;
+    flex: 1 1 auto;
+}
+

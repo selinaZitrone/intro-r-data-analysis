@@ -1,0 +1,539 @@
+---
+subtitle: "Introduction to R - Day "
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: "2021-06-15"
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["css/xaringan-themer.css", "css/progressbar.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: false
+      beforeInit: "macros.js"
+      slideNumberFormat:  |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+params:
+  title: "Data transormation with dplyr"
+  day: "2"
+  bg_image: "img/hex-stickers/dplyr.png"
+  bg_image_scale: "30%"
+  bg_position: "90% 90%"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+library(fontawesome)
+library(tidyverse)
+```
+
+```{r child="title_slide.Rmd"}
+
+```
+
+---
+# Data transformation
+
+Data transformation is an important step in understanding the data and preparing it for further analysis:
+
+.pull-left[
+We may want to:
+
+  - filter the data to analyse only a part of it
+  - reorder observations
+  - create new variables
+  - summarise the data
+  - rename variables
+  - reorder variables to make working with the data easier
+  
+We can do all of this with `dplyr`:
+
+```{r eval=FALSE}
+library(dplyr)
+# or
+library(tidyverse)
+```
+
+]
+.pull-right[
+
+  ![](img/day2/datascience_workflow.png)
+]
+
+---
+# Dplyr basic vocuabulary
+
+
+Dplyr provides some basic vocabulary for data manipulation:
+
+- `filter()` picks observations (rows) based on their values
+- `select()` picks variables (columns) based on their names
+- `arrange()` change order of observations (rows)
+- `mutate()` adds new variables based on existing ones
+- `summarise()` combines multiple values into a single summary value
+
+Perform any of these operations by group with `group_by()`
+--
+All of these functions work similarly: <br> 
+- first argument is the data (a tibble)
+- other arguments specify what to do exactly
+- return another tibble
+
+.footnote-right[from [dplyr package](https://dplyr.tidyverse.org/)]
+
+---
+
+# Example data
+
+Soybean production and use by year and country.
+
+```{r eval=FALSE}
+soybean_use <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-04-06/soybean_use.csv')
+soybean_use
+```
+
+```{r echo=FALSE}
+soybean_use <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-04-06/soybean_use.csv')
+print(soybean_use, n=5)
+```
+.footnote-right[Data from [Our World in Data](https://ourworldindata.org/forests-and-deforestation) provided by [tidytuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-04-06/readme.md)]
+---
+class: inverse
+
+# filter()
+## pick observations (rows) based on their value
+
+.center[![:scale 80%](img/AllisonHorst/dplyr_filter.jpg)]
+---
+# Useful filter helpers
+
+These functions and operators help you filter your observations:
+
+- relational operators: `<`, `>`, `==`, ...
+
+- logical operators: `&`, `|`, `!`
+
+- `is.na()`: filter missing values
+
+- `between()`: filter values that are between an upper and lower boundary
+
+- `near()`: compare floating points (use instead of `==` for doubles)
+
+
+---
+# filter()
+
+Filter only the rows that contain the values for Germany
+
+```{r eval=FALSE}
+filter(soybean_use, entity == "Germany")
+```
+
+```{r echo=FALSE}
+print(filter(soybean_use, entity == "Germany"), n=5)
+```
+---
+# filter()
+
+We can use the `%in%` operator to filter multiple coutries
+
+```{r eval=FALSE}
+countries_select <- c("Germany", "Austria", "Switzerland")
+filter(soybean_use, entity %in% countries_select)
+
+```
+
+```{r echo=FALSE}
+countries_select <- c("Germany", "Austria", "Switzerland")
+print(filter(soybean_use, entity %in% countries_select), n=5)
+```
+---
+# filter()
+
+Let's filter only rows that don't have a country code (i.e. the continents etc.)
+
+```{r eval=FALSE}
+filter(soybean_use, is.na(code))
+```
+
+```{r echo=FALSE}
+print(filter(soybean_use, is.na(code)), n=5)
+```
+
+Filter only the rows that have a country code with:
+
+```{r eval=FALSE}
+filter(soybean_use, !is.na(code))
+```
+---
+# filter()
+
+Combine different filters: Select rows where the value for years is between 1970 and 1980 for Germany:
+
+```{r eval=FALSE}
+filter(soybean_use, between(year, 1970, 1980) & entity == "Germany")
+```
+
+```{r echo=FALSE}
+print(filter(soybean_use, between(year, 1970, 1980) & entity == "Germany"), n=5)
+```
+---
+
+class:inverse
+
+# select()
+
+## picks variables (columns) based on their names
+---
+# Useful selection helpers
+
+- `starts_with()` and `ends_with()`: variable names that start/end with a string
+- `contains()`: variable names that contain a specific string
+- `matches()`: variable names match a regular expression
+
+---
+# select()
+
+Select the variables entity, year and human food:
+
+```{r eval=FALSE}
+select(soybean_use, entity, year, human_food)
+```
+
+```{r echo=FALSE}
+print(select(soybean_use, entity, year, human_food), n=3)
+```
+
+Remove variables using `-`
+
+```{r eval=FALSE}
+select(soybean_use, -entity, -year, -human_food)
+```
+
+
+```{r echo=FALSE}
+print(select(soybean_use, -entity, -year, -human_food),n=3)
+```
+
+---
+# select()
+
+Select all columns that end with "p"
+
+```{r eval=FALSE}
+select(soybean_use, ends_with("d"))
+```
+
+```{r echo=FALSE}
+print(select(soybean_use, ends_with("d")),n=3)
+```
+
+--
+You can use the same structure for `starts_with()` and `contains()`.
+
+--
+---
+# select() 
+
+Multiple consecutive columns can also be selected usint the structure `from:to` using either column id or variable name:
+
+```{r eval = FALSE}
+select(soybean_use, 1:3)
+select(soybean_use, code:animal_feed)
+```
+
+```{r echo=FALSE}
+print(select(soybean_use, code:animal_feed), n=3)
+```
+
+---
+class:inverse
+
+# arrange()
+## change order of observations (rows)
+
+---
+# arrange()
+
+Arrange the rows by ascending values of the processed variable:
+
+```{r eval=FALSE}
+arrange(soybean_use, processed)
+```
+
+```{r echo=FALSE}
+print(arrange(soybean_use, processed), n=3)
+```
+
+Arrange the rows by descending values of the processed variable:
+
+```{r eval=FALSE}
+arrange(soybean_use, desc(processed))
+```
+
+---
+class:inverse
+
+# mutate()
+## adds new variables
+
+![](img/AllisonHorst/dplyr_mutate.png)
+---
+# mutate()
+
+We can e.g. add a new variable using `ifelse`:
+
+```{r eval=FALSE}
+mutate(soybean_use, single_country = ifelse(is.na(code), FALSE, TRUE))
+```
+
+```{r echo=FALSE}
+print(mutate(soybean_use, single_country = ifelse(is.na(code), FALSE, TRUE)),n=3)
+```
+
+---
+# mutate() and case_when()
+
+
+![:scale 70%](img/AllisonHorst/dplyr_case_when.png)
+---
+# mutate() and case_when()
+
+With `case_when()` you can combine as many cases as you want. E.g.:
+
+```{r eval=FALSE}
+mutate(soybean_use, legislation = case_when(
+  year < 2000 & year >=1980 ~ "legislation_1",
+  year >= 2000 ~ "legislation_2",
+  TRUE ~ "no_legislation"
+))
+```
+
+```{r echo=FALSE}
+mutate(soybean_use, legislation = case_when(
+  year < 2000 & year >=1980 ~ "legislation_1",
+  year >= 2000 ~ "legislation_2",
+  TRUE ~ "no_legislation"
+)) %>% print(n=3)
+```
+
+---
+# transmute()
+
+`transmute()` is like `mutate()` but it does only keep the newly created columns:
+
+```{r eval=FALSE}
+transmute(soybean_use,
+          ratio_processed_animal = processed/animal_feed,
+          ratio_human_animal = human_food/animal_feed)
+
+```
+
+```{r echo=FALSE}
+transmute(soybean_use,
+          ratio_processed_animal = processed/animal_feed,
+          ratio_human_animal = human_food/animal_feed) %>% 
+  print(n=3)
+
+```
+
+---
+
+class:inverse
+
+# summarise + group_by()
+
+---
+# summarise()
+
+Summarise will collapse your data to a single row:
+
+```{r}
+summarise(soybean_use,
+          total_animal = sum(animal_feed, na.rm = TRUE),
+          total_human = sum(human_food, na.rm = TRUE))
+```
+
+---
+# summarise() and group_by()
+
+`summarise` is much more useful in combination with `group_by()`.
+If we group our data before summarising it, the summary will be calulated separately for each group:
+
+```{r eval=FALSE}
+# group the data by year
+soybean_use_group <- group_by(soybean_use, year)
+# summarised the grouped data
+summarise(soybean_use_group,
+          total_animal = sum(animal_feed, na.rm = TRUE),
+          total_human = sum(human_food, na.rm = TRUE))
+
+```
+
+```{r echo=FALSE}
+# group the data by year
+soybean_use_group <- group_by(soybean_use, year)
+
+summarise(soybean_use_group,
+          total_animal = sum(animal_feed, na.rm = TRUE),
+          total_human = sum(human_food, na.rm = TRUE)) %>% print(n=1)
+
+```
+
+To ungroup data that was grouped before, you can use `ungroup()`
+
+--- 
+
+# count()
+
+Counts observations by group
+
+```{r eval = FALSE}
+count(soybean_use, year)
+# or if the data is already grouped by year
+count(soybean_use_group)
+```
+```{r echo = FALSE}
+count(soybean_use_group) %>% print(n=4)
+```
+
+---
+class: inverse
+
+# The pipe %>% 
+---
+
+# The pipe %>% 
+
+When working with data frames, we often want to do multiple operations after each other.
+
+The pipe operator helps to keep these operations clear and readable.
+
+An example:
+
+```{r eval=FALSE}
+# filter rows that actually represent a country
+soybean_new <- filter(soybean_use, !is.na(code))
+
+# now group the data by year
+soybean_new <- group_by(soybean_new, year)
+
+# summarise mean values by year
+soybean_new <- summarise(soybean_new,
+    mean_processed = mean(processed, na.rm=TRUE),
+    sd_processed = sd(processed, na.rm = TRUE))
+
+# and now reorder the observation with newest first
+soybean_new <- arrange(soybean_new, desc(year))
+```
+
+---
+# The pipe %>% 
+
+If we want to do everything in one step without intermediate results, we could use a nested function:
+
+```{r eval=FALSE}
+arrange(
+  summarise(
+    group_by(
+      filter(soybean_use, !is.na(code)),
+      year),
+    mean_processed = mean(processed, na.rm=TRUE),
+    sd_processed = sd(processed, na.rm = TRUE)),
+  desc(year))
+```
+
+
+```{r echo=FALSE}
+arrange(
+  summarise(
+    group_by(
+      filter(soybean_use, !is.na(code)),
+      year),
+    mean_processed = mean(processed, na.rm=TRUE),
+    sd_processed = sd(processed, na.rm = TRUE)),
+  desc(year)) %>% print(n=4)
+```
+
+---
+# The pipe %>% 
+
+The pipe operator (included in the `tidyverse`) makes it easy to combine multiple operations:
+
+```{r}
+soybean_use %>% 
+  filter(!is.na(code)) %>% 
+  group_by(year) %>% 
+  summarise(
+    mean_processed = mean(processed, na.rm=TRUE),
+    sd_processed = sd(processed, na.rm = TRUE)) %>% 
+  arrange(desc(year))
+```
+
+You can read from top to bottom and interpret the `%>%` as an "and then do".
+
+---
+# The pipe %>% 
+
+But what is actually happening?
+
+The pipe is "pushing" the result of a line into the first argument of the next line.
+
+```{r eval=FALSE}
+soybean_use %>% 
+  count(year)
+
+# instead of 
+count(soybean_use, year)
+```
+
+Piping works perfectly with the `tidyverse` functions because they are designed to return a tibble and also take a tibble as first argument. <br>
+
+.content-box-grey[`r fa("lightbulb")` Use the keyboard shortcut Ctrl/Cmd + Shift + M to insert a ` %>% ` pipe]
+
+---
+# The pipe %>%
+
+Piping e.g. also works well together with ggplot
+
+.pull-left[
+
+```{r eval=FALSE}
+soybean_use %>%
+  filter(!is.na(code)) %>%
+  select(year, processed) %>%
+  group_by(year) %>%
+  summarise(
+    processed = sum(processed, na.rm = TRUE)
+  ) %>%
+  ggplot(aes(
+    x = year, 
+    y = processed)) +
+  geom_line()
+```
+]
+.pull-right[
+
+```{r echo=FALSE}
+soybean_use %>% 
+  filter(!is.na(code)) %>% 
+  select(year, processed) %>% 
+  group_by(year) %>% 
+  summarise(
+    processed = sum(processed, na.rm = TRUE)
+  ) %>% 
+  ggplot(aes(x=year, y=processed))+
+   geom_line()
+  
+```
+
+]
+
+---

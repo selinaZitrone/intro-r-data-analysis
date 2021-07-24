@@ -1,0 +1,155 @@
+---
+subtitle: "Introduction to R - Day "
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: "2021-06-15"
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["css/xaringan-themer.css", "css/progressbar.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: false
+      beforeInit: "macros.js"
+      slideNumberFormat:  |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+params:
+  title: "Data import with readr"
+  day: "2"
+  bg_image: "img/hex-stickers/readr.png"
+  bg_image_scale: "30%"
+  bg_position: "90% 90%"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+library(fontawesome)
+library(ggplot2)
+```
+
+```{r child="title_slide.Rmd"}
+
+```
+
+---
+# Readr
+
+`readr` is a tidyverse package so to use it you can do one of the following things:
+
+```{r eval=FALSE}
+library(readr)
+library(tidyverse)
+```
+
+--
+The most important functions are:
+
+- `read_csv` to read comma delimited files
+- `read_csv2` to read semicolon delimited files
+- `read_tsv` to read tab delimited files
+- `read_delim` to read files with any delimiter
+
+---
+# building a path to your data file
+
+The first argument of all these functions is the path to the file that you want to import.
+
+**Absolute vs. relative paths**
+
+- absolute path: `C:/Users/Selina/some_folder/another_folder/data/file_to_read.csv`
+- relative path: `./data/file_to_read.csv`
+  - this path is interpreted relative to your working directory (`./` is the working directory)
+  - check out where your working directory is with `getwd()`
+  - in RStudio projects, the working directory is always the project root
+
+The preferred way to use paths is to use RStudio projects in combination with relative paths.
+
+**Why?**
+
+- portable paths: will also work on other machines that copied the project
+- makes the code more readable
+
+---
+# Read files
+
+Import files with a `readr` function, depending on the delimiter of the file:
+
+```{r eval=FALSE}
+dat <- read_csv("./data/your_data.csv") # comma delimiter
+dat <- read_csv2("./data/your_data.csv") # semicolon delimiter
+dat <- read_tsv("./data/your_data.csv") # tab delimiter
+```
+
+You can use `read_delim` for a generic type of delimiter
+
+```{r eval=FALSE}
+dat <- read_delim("./data/your_data.csv", delim = "\t") # tab delimiter
+dat <- read_delim(here("/data/your_data.csv", delim = ",") # comma delimiter
+```
+
+For more options, have a look at `?read_delim`.
+
+The import functions return a `tibble`
+
+---
+# Read files
+
+Have a look at `?read_delim` for more options.
+
+You can e.g.
+
+- specify a number of lines to skip reading
+- specify whether the data has a header column or not
+- change the data types of columns while reading them
+- ...
+
+---
+# Write files
+
+We can also export data from R to disk using the base R function `write.table`:
+
+```{r eval=FALSE}
+write.table(dat, 
+            file = "./data/my_data_cleaned.csv", 
+            sep = ",", 
+            row.names = FALSE,
+            quote = FALSE
+            )
+```
+
+- e.g. if cleaning takes a long time, we only want to do it once and then work with the cleaned data
+- have a look at `?write.table` for all options
+
+---
+# Some rules for data sets
+
+These guidelines for data sets make it easier to import them in R:
+
+**Data format**
+
+- csv, txt instead of xlsx
+  - you can save an Excel spreadsheet as csv
+- No spaces in cells with strings
+  - use a character as seperator if necessary, e.g. `species_name` instead of `species name`
+- No special characters
+  - avoid characters such as ä, ö, ü, ß, é, ê, ...
+- No empty cells
+  - if you have missing values, put NA in the cell
+--
+  
+**Paths**
+
+- no spaces in paths, e.g. `data-raw/my_data.csv` instead of `data raw/my_data.csv`
+- no special characters in paths
+---
+
+# Resources
+
+https://github.com/jennybc/here_here
