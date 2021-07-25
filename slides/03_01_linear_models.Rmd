@@ -27,14 +27,21 @@ params:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,
-                      warning = FALSE,
-                      message = FALSE)
+knitr::opts_chunk$set(
+  echo = TRUE, 
+  warning = FALSE, 
+  message = FALSE, 
+  collapse = TRUE,
+  fig.height = 6.3,
+  fig.allign = 'center',
+  fig.retina = 3.5,
+  fig.showtext = TRUE
+)
 library(fontawesome)
 library(tidyverse)
 library(patchwork)
 
-theme_set(theme_classic())
+theme_set(theme_classic(base_size=16))
 ```
 
 ```{r child="title_slide.Rmd"}
@@ -42,48 +49,52 @@ theme_set(theme_classic())
 ```
 
 ---
+class: inverse, middle, center
+
+# A little bit of theoretical background
+
+---
 # Linear models background
 
-.pull-left[
-The data:
-  - random sample of n data points ( $Y_i, X_{i1}, X_{i2},..., X_{ip}$, $i = 1...n$) 
-    - $X_{i1}, X_{i2},..., X_{ip}$ are independent **predictor** variables
-    - $Y_i$ is the dependent observation and **response variable**
+#### The data:
 
-Aim:
+  - random sample of n data points ( $Y_i, X_{i1}, X_{i2},..., X_{ip}$, $i = 1...n$) 
+  
+    - $X_{i1}, X_{i2},..., X_{ip}$ are p **independent predictor** variables
+    
+    - $Y_i$ is the **dependent** observation and **response variable**
+
+--
+
+#### Aim of linear model:
+
   - (How) do the predictor variables impact the response variable?
+  
   - Can we better predict values for the response variable, if we account for the predictor variables?    
   
-]
 
-.pull-right[
-```{r echo=FALSE}
-prod <- readr::read_tsv(here::here("data/slides/03_productivity.txt"))
+---
+# Linear models background
 
-# make site a factor
-prod <- mutate(prod, across(site, as_factor))
+```{r echo=FALSE, fig.height=7.5}
+prod <- readr::read_tsv(here::here("data/slides/03_productivity.txt")) %>% 
+  mutate(across(site, as_factor))
 
 # Hypothesis 1: Productivity increases with species richness:
 regr <- ggplot(prod, aes(x=richness, y=productivity))+
   geom_point()+
   geom_smooth(method="lm", alpha = 0) +
-  labs(x="species richness")
+  labs(x="species richness", title = "Linear regression") 
 regr_m <- ggplot(prod, aes(color = site, x=richness, y=productivity))+
   geom_point()+
   geom_smooth(method="lm", alpha = 0) +
-  labs(x="species richness")
+  labs(x="species richness", title = "Analysis of covariance")
 
 box <- ggplot(prod, aes(x=site, y=productivity))+
-  geom_boxplot(aes(color = site))
+  geom_boxplot(aes(color = site))+
+  labs(title = "Analysis of variance")
 
-regs <- (regr  / box / regr_m)
-regs
 ```
-]
-
----
-
-# Linear models background
 
 .pull-left[
 <br>
@@ -99,6 +110,7 @@ regs
 - numerical response
 - categorical predictor(s)
 
+
 **Analysis of covariance**
 
 - numerical response
@@ -107,9 +119,10 @@ regs
 ]
 
 .pull-right[
-```{r echo=FALSE}
-regs
+```{r echo=FALSE, fig.height = 7.5}
+(regr  / box / regr_m)
 ```
+
 ]
 
 ---
@@ -117,14 +130,15 @@ regs
 
 Linear relation with two predictor variables $X_1$ and $X_2$ ( $i = 1...n$ ):
 
-**without interaction**
+**Without interaction**
 
 $Y_i = \beta_0 + \beta_1*X_{1,i} + \beta_2*X_{2,i} + \epsilon$
 
+--
 
-**with interaction**
+**With interaction**
 
-$Y_i = \beta_0 + \beta_1*X_{1,i} + \beta_2*X_{2,i} + \beta_3*X_{1,i}*X_{2,i} * \epsilon$
+$Y_i = \beta_0 + \beta_1*X_{1,i} + \beta_2*X_{2,i} + \beta_3*X_{1,i}*X_{2,i} + \epsilon$
 
 with
 
@@ -133,22 +147,22 @@ with
 - $X_{1,i}$ value of predictor $X_1$
 - $X_{2,i}$ value of predictor $X_2$
 - $\epsilon$ error term
+
 ---
 # Goodness of fit linear model
 
 .pull-left[
-**Model residuals**
+
+#### Model residuals
 
 $Y_i - \hat{Y}_i$
 
-**Residual sum of squares (RSS)**
+#### Residual sum of squares (RSS)
 
 $RSS = \sum_{i=1}^{n} Y_i - \hat{Y}_i$
 
-<br>
 
-Aim of the model fitting:
-<br><br>
+#### Aim of the model fitting:
 Find the parameters that lead to the lowest sum of squares.
 ]
 
@@ -159,26 +173,43 @@ Find the parameters that lead to the lowest sum of squares.
 ]
 
 ---
+# Significant effects
 
-![](img/day3/lm_residuals_placeholder.png)
+If we account for variable A: do the residuals become significantly smaller?
+
+.center[![:scale 70%](img/day3/lm_residuals_placeholder.png)]
+
 ---
 # Assumptions for linear models
 
+Finding the parameters that lead to the lowest residual sum of squares works only if:
+
 .pull-left[
 
-Finding the parameters that lead to the lowest RSS works only if:
-
 - residuals are normally distributed
+
 - residual variance is constand
+
 - no strong outliers
 
-This has to be checked for every model!
+
 ]
 
 .pull-right[
 
 ![](img/day3/regression_assumption_placeholder.png)
 ]
+
+--
+
+
+This has to be checked for every linear model!
+
+---
+class: inverse, middle, center
+
+# How to fit linear models in `r fa("r-project")`
+
 ---
 # The data
 
@@ -200,14 +231,15 @@ levels(prod$site) # get all levels of the factor
 ```
 
 ---
-# Linear regression
-
-Lets start with a Hypothesis:
+# Linear regression in R
 
 .pull-left[
- $H_0$: Productivity increases with species richness.
+
+#### Lets start with a Hypothesis $H_0$
+
+Productivity increases with species richness.
  
- Or in other words:<br>
+#### Or in other words
  
 Can we significantly increase the accuracy of productivity predictions by taking into account species richness?
 ]
@@ -215,58 +247,56 @@ Can we significantly increase the accuracy of productivity predictions by taking
 .pull-right[
 
 ```{r echo=FALSE}
-  ggplot(prod, aes(x=richness, y=productivity))+
+prod_scatter <- ggplot(prod, aes(x=richness, y=productivity))+
   geom_point()
+prod_scatter
 ```
 ]
 
 ---
 # Linear regression in R
 
-To fit a linear model in R, we can use the `lm` function.
+Use the `lm` function to fit a linear model in R.
 
-We can use the function `lm` to fit a linear model. The general structure of the function call is like this:
+The general structure of the function call is like this:
 
-.center[<b>lm ( formula = .col1[Y] ~ .col2[X], data = .col3[dat] )</b>]
+.center[<code><b>lm ( formula = .col1[Y] ~ .col2[X], data = .col3[dat] )</b></code>]
 
 with
 
-- .col1[Y] being the response variable
-- .col2[X] being the predictor(s)
-- .col3[dat] being the name of the data frame
+- <b>.col1[Y]</b> being the response variable
+- <b>.col2[X]</b> being the predictor(s)
+- <b>.col3[dat]</b> being the name of the data
+
+--
 
 Multiple predictors can be added with `+`, `:` or `*` depending on interaction:
 
-- <b>`Y ~ X1 + X2`</b>: test effect without interaction
-- <b>`Y ~ X1 + X2 + X1:X2`</b>: test single effects and interaction betwenn `X1` and `X2`
-- <b>`Y ~ X1*X2`</b>: short for testing all single effects and all interactions (here equivalent to line above)
+- <code><b>`Y ~ X1 + X2`</b></code> tests effects without interaction
+- <code><b>`Y ~ X1 + X2 + X1:X2`</b></code> tests single effects and interaction between `X1` and `X2`
+- <code><b>`Y ~ X1 * X2`</b></code> is short for testing all single effects and all interactions (here same as line above)
 
 ---
 # Linear regression in R
-
 
 .pull-left[
 
 Let's fit a linear model to test our hypothesis
 
-<b>lm ( formula = .col1[Y] ~ .col2[X], data = .col3[dat] )</b>
+<code><b>lm ( formula = .col1[Y] ~ .col2[X], data = .col3[dat] )</b></code>
 
-
-```{r }
+```{r}
 prod_lm <- lm(productivity ~ richness, 
               data = prod)
 ```
-
 ]
 
 .pull-right[
-
 ```{r echo=FALSE}
-  ggplot(prod, aes(x=richness, y=productivity))+
-  geom_point() +
+prod_scatter +
   theme(
-    axis.title.y = element_text(color = "#F3BC50", face = "bold"),
-    axis.title.x = element_text(color = "#25C0C0", face = "bold")
+    axis.title.y = element_text(color = "#4C7488", face = "bold"),
+    axis.title.x = element_text(color = "#D78974", face = "bold")
   )
 ```
 ]
@@ -274,27 +304,54 @@ prod_lm <- lm(productivity ~ richness,
 ---
 # Linear regression in R
 
-Is the effect significant?
+Is the effect of richness on productivity significant?
 
-Hypothesis testing using F-Tests:
+**Or in other words**
 
-`drop1` deletes single terms from the model and performs an F-test:
+Does the model with richness as predictor significantly reduce the residual sum of squares?
 
-<b>$H_0$:</b> The error variance in the simple model is not significantly higher than in the more complex model
+--
+
+#### Hypothesis testing using F-Tests
+
+Compare the complex model with a simple model that does not contain the predictor
+
+$H_0$: The error variance in the simple model is not significantly higher than in the more complex model
+
+--
 
 - $H_0$ accepted: simplification was justified `r fa("arrow-right")` use simple model without predictor
-- $H_0$ rejected: simplification reduced explanatory power `r fa("arrow-right")` use complex model with predictor
- 
 
-```{r}
-drop1(prod_lm, test = "F")
-```
+--
+
+- $H_0$ rejected: simplification reduced explanatory power `r fa("arrow-right")` use complex model with predictor
 
 ---
 # Linear regression in R
 
-![:scale 70%](img/day3/anova_explain_placeholder.png)
+#### Hypothesis testing using F-Tests in R
+
+
+$H_0$: The error variance in the simple model is not significantly higher than in the more complex model
+
+`drop1` deletes single terms from the model and performs an F-test: 
+
+```{r eval=FALSE}
+drop1(prod_lm, test = "F")
+```
+
+--
+
+```{r echo=FALSE}
+drop1(prod_lm, test = "F")
+```
+
+--
+
+Result: The error variance of the simple model (Null model) is significantly higher than of the model with richness. `r fa("arrow-right")` Richness increases productivity ($F_{1,399}$ = 761.71, p < 0.001)
+
 ---
+
 # Extracting the coefficients
 
 ```{r}
@@ -302,13 +359,32 @@ summary(prod_lm)
 ```
 
 ---
-# Summary
+# Summary table
 
-Placeholder see day 5 slide 31-32 and 50 for explanation
+.center[![:scale 80%](img/day3/summary_mod_resid.png)]
 
 ---
-# Test assumptions
+# Summary table
 
+.center[![:scale 80%](img/day3/summary_coeffs.png)]
+
+---
+# Summary table
+
+.center[![:scale 80%](img/day3/summary_t_stats.png)]
+
+---
+# Summary table
+
+.center[![:scale 80%](img/day3/summary_r2.png)]
+
+---
+# Summary table
+
+.center[![:scale 80%](img/day3/summary_F.png)]
+
+---
+# Test model assumptions
 
 .pull-left[
 
