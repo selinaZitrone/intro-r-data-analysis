@@ -67,7 +67,6 @@ h1, h2, h3 {
 }
 .remark-slide-content h4 {
   font-size: var(--header-h3-font-size);
-  margin-top: 0px;
   margin-bottom: 0px;
 }
 
