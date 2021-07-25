@@ -44,112 +44,216 @@ library(ggplot2)
 `readr` is a tidyverse package so to use it you can do one of the following things:
 
 ```{r eval=FALSE}
-library(readr)
-library(tidyverse)
+library(tidyverse) # or library(readr) 
 ```
 
 --
+
 The most important functions are:
 
-- `read_csv` to read comma delimited files
-- `read_csv2` to read semicolon delimited files
-- `read_tsv` to read tab delimited files
-- `read_delim` to read files with any delimiter
+- `read_csv`/`write_csv` to read/write **comma delimited** files
+
+- `read_csv2`/`write_csv2` to read/write **semicolon delimited** files
+
+- `read_tsv`/`write_tsv` to read/write **tab delimited** files
+
+- `read_delim`/`write_delim` to read/write files with **any delimiter**
 
 ---
-# building a path to your data file
+# Absolute vs. relative paths
 
-The first argument of all these functions is the path to the file that you want to import.
+#### Absolute paths
 
-**Absolute vs. relative paths**
+`C:/Users/Selina/some_folder/another_folder/data/file_to_read.csv`
 
-- absolute path: `C:/Users/Selina/some_folder/another_folder/data/file_to_read.csv`
-- relative path: `./data/file_to_read.csv`
-  - this path is interpreted relative to your working directory (`./` is the working directory)
+#### Relative paths
+
+`./data/file_to_read.csv`
+
+--
+
+  - relative paths are interpreted relative to the **working directory**
+    - the `./` in the path stands for the working directory
   - check out where your working directory is with `getwd()`
   - in RStudio projects, the working directory is always the project root
 
-The preferred way to use paths is to use RStudio projects in combination with relative paths.
+---
+# Absolute vs. relative paths
 
-**Why?**
+Working with R and RStudio, the best way is to:
+
+- **organize your work in an RStudio project**
+  - The project root is automatically the working directory
+  - all your files are in one place
+- **use paths relative to the project root**
+
+--
+
+#### Why?
+
+--
+
+- no need to change the working directory
+
+--
+
 
 - portable paths: will also work on other machines that copied the project
+
+--
+
 - makes the code more readable
 
----
-# Read files
+--
 
-Import files with a `readr` function, depending on the delimiter of the file:
+- less error prone
+
+---
+# Read files with `read_*()`
+
+All `read_*()` functions take a path to the data file as a first argument:
+
+.center[<code><b>read_*(path = .col2["path/to/your/file"], ...)</b></code>]
+
+--
+
+Import files with a `readr` function fitting the delimiter of your file:
 
 ```{r eval=FALSE}
 dat <- read_csv("./data/your_data.csv") # comma delimiter
-dat <- read_csv2("./data/your_data.csv") # semicolon delimiter
-dat <- read_tsv("./data/your_data.csv") # tab delimiter
+
+dat <- read_csv2("./data/your_data.txt") # semicolon delimiter
+
+dat <- read_tsv("./data/your_data.txt") # tab delimiter
 ```
 
-You can use `read_delim` for a generic type of delimiter
+--
+
+Use `read_delim` for a generic type of delimiter:
 
 ```{r eval=FALSE}
-dat <- read_delim("./data/your_data.csv", delim = "\t") # tab delimiter
-dat <- read_delim(here("/data/your_data.csv", delim = ",") # comma delimiter
+dat <- read_delim("./data/your_data.txt", delim = "\t") # tab delimiter
+
+dat <- read_delim(here("/data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
 ```
 
-For more options, have a look at `?read_delim`.
+--
 
-The import functions return a `tibble`
+All `read_*()` functions return a `tibble`
 
 ---
-# Read files
+# Read files with `read_*()`
 
 Have a look at `?read_delim` for more options.
 
 You can e.g.
 
-- specify a number of lines to skip reading
-- specify whether the data has a header column or not
-- change the data types of columns while reading them
+- specify number of lines to skip reading with `skip`
+
+--
+
+- specify whether the data has a header column or not with `col_names = TRUE/FALSE`
+
+--
+
+- change the data types of columns while reading them with `col_types`
+
 - ...
 
 ---
-# Write files
+# Write files with `write_*()`
 
-We can also export data from R to disk using the base R function `write.table`:
+Every `read_*()` function has a corresponding `write_*()` function with which you can export data from R.
+
+Write data from R e.g. if
+
+- tasks take a lot of time and you want to do them only once
+  - run the code, save the intermediate result, work with intermediate result
+
+- share transformed data
+
+- ...
+
+---
+# Write files with `write_*()`
+
+All `write_*()` functions take the data to write as the first and the path to write to as the second argument:
+
+.center[<code><b>write_*(x = .col1[dat], path = .col2["path/to/save/file"], ...)</b></code>]
+
+--
 
 ```{r eval=FALSE}
-write.table(dat, 
-            file = "./data/my_data_cleaned.csv", 
-            sep = ",", 
-            row.names = FALSE,
-            quote = FALSE
-            )
+write_csv(dat, file = "./data-clean/your_data.csv") # comma delimiter
+
+write_csv2(dat, file = "./data-clean/your_data.txt") # semicolon delimiter
+
+read_tsv(dat, "./data-clean/your_data.txt") # tab delimiter
 ```
 
-- e.g. if cleaning takes a long time, we only want to do it once and then work with the cleaned data
-- have a look at `?write.table` for all options
-
----
-# Some rules for data sets
-
-These guidelines for data sets make it easier to import them in R:
-
-**Data format**
-
-- csv, txt instead of xlsx
-  - you can save an Excel spreadsheet as csv
-- No spaces in cells with strings
-  - use a character as seperator if necessary, e.g. `species_name` instead of `species name`
-- No special characters
-  - avoid characters such as ä, ö, ü, ß, é, ê, ...
-- No empty cells
-  - if you have missing values, put NA in the cell
 --
-  
-**Paths**
 
-- no spaces in paths, e.g. `data-raw/my_data.csv` instead of `data raw/my_data.csv`
-- no special characters in paths
+Use `write_delim` for a generic type of delimiter:
+
+```{r eval=FALSE}
+write_delim(dat, file = "./data/your_data.txt", delim = "\t") # tab delimiter
+
+write_delim(dat, here("/data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
+```
+
 ---
+class: inverse, middle, center
 
-# Resources
+# Some guidelines for data sets outside `r fa("r-project")`
 
-https://github.com/jennybc/here_here
+---
+# Data format
+
+These guidelines for data sets make it much easier and less frustrating to import them in R:
+
+- readable file format: csv, txt & co instead of xlsx
+
+--
+
+Save an Excel spreadsheet as e.g. csv either by
+
+1. `File -> Save As` and select comma separated from the drop down menu
+2. `File -> Export`
+
+![:scale 50%](img/day2/excel_export.png)
+  
+  
+---
+# Data format
+
+These guidelines for data sets make it much easier and less frustrating to import them in R:
+
+- Readable file format: csv, txt & co instead of xlsx
+
+- No spaces in column headers
+  - use a character as separator if necessary, e.g. `species_name` instead of `species name`
+  - if this is impossible for you data, have a look at the function `janitor::clean_names` from the `janitor` package
+
+--
+
+- Try to avoid special characters
+  - avoid characters such as ä, ö, ü, ß, é, ê, ...
+
+--
+
+- Avoid empty cells
+  - if you have missing values, put NA in the cell
+
+---
+# Paths
+
+- Avoid spaces in paths
+  - `data-raw/my_data.csv` instead of `data raw/my_data.csv`
+
+--
+
+- Avoid special characters in paths
+  - avoid characters such as ä, ö, ü, ß, é, ê, ...
+
+---
+# Additional Resources
