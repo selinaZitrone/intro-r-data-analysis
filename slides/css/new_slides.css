@@ -65,21 +65,21 @@ h1, h2, h3 {
 .remark-slide-content h3 {
   font-size: var(--header-h3-font-size);
 }
+.remark-slide-content h4 {
+  font-size: var(--header-h3-font-size);
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
 .remark-code, .remark-inline-code {
   font-family: var(--code-font-family), Courier New, monospace;
   background: #F5F5F5; /* lighter */
-  border-radius: 3px;
-  padding: 4px;
 }
 
 .remark-slide-number {
   color: #284185;
   opacity: 1;
   font-size: 0.9rem;
-}
-strong {
-  font-weight: bold;
 }
 
 .inverse {
@@ -357,11 +357,17 @@ pre {
     width: 100%;
 }
 
+
 .content-box-blue {
     /* set opacity in last decimal value of rgba */
     background-color: #4C7488;
 
 }
+.content-box-blue .remark-inline-code {
+  background-color: #4C7488;
+}
+
+
 
 .content-box-gray {
     /* set opacity in last decimal value of rgba */
@@ -384,10 +390,19 @@ pre {
 	background-color: #D78974;
 }
 
+.content-box-red .remark-inline-code {
+  background-color: #D78974;
+}
+
 .content-box-yellow {
   /* set opacity in last decimal value of rgba */
   background-color: #D7BC74;
 }
+
+.content-box-yellow .remark-inline-code {
+  background-color: #D7BC74;
+}
+
 
 
 .full-width {
