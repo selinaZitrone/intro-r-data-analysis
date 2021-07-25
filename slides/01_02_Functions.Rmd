@@ -6,7 +6,7 @@ date: "2021-06-15"
 output:
   xaringan::moon_reader:
     seal: false
-    css: ["css/xaringan-themer.css", "css/progressbar.css"]
+    css: [default, css/new_slides.css]
     nature:
       highlightStyle: github
       highlightLines: true
@@ -41,26 +41,27 @@ library(fontawesome)
 
 # Functions
 
-- multiple operations available under one command 
+Functions make multiple operations available under one command.
+--
 
 .pull-left[
-Functions in R:
-- have a name
-- have (0, 1, or any number of) arguments as input
+#### Functions in R:
+- have a **name**
+- have (0, 1, or any number of) **arguments as input**
 - they calculate something using the arguments
-- usually they have a return value (the output)
-- can have side effects (like plotting)
+- usually they have a **return value** (the output)
+- can have **side effects** (like plotting)
 ]
 
 .pull-right[
 ![](img/day1/function_general.png)
 ]
 
+--
+
 General structure of a function call:
 
-<b>.col1[function_name] ( .col2[argument] = .col3[value] )</b>
-
-
+.strong[.col1[function_name] ( .col2[argument] = .col3[value] )]
 
 ---
 
@@ -69,7 +70,7 @@ General structure of a function call:
 .pull-left[
 
 <br>
-  <b>.col1[mean] ( .col2[x] = .col3[c(1,5,6)] )</b>
+ .strong[.col1[mean] ( .col2[x] = .col3[c(1,5,6)] )]
 
 ]
 
@@ -96,7 +97,7 @@ result
 
 ---
 
-# `?mean`
+# The mean function
 
 But what does the mean function do? What are the arguments that I can use?
 
@@ -115,18 +116,21 @@ But what does the mean function do? What are the arguments that I can use?
 ]
 
 ---
-.center[
+class: center, middle
+
 ![](img/day1/mean_help_blank.png)
-]
+
 ---
 
 # Function arguments
 
+- arguments are the **input** to a function
 - functions can provide default argument values for some arguments
 - default values for arguments are indicated in the function help
 
 <br>
-![:scale 60%](img/day1/mean_help_default_arguments.png)
+.center[
+![:scale 60%](img/day1/mean_help_default_arguments.png)]
 
 ---
 
@@ -134,7 +138,7 @@ But what does the mean function do? What are the arguments that I can use?
 
 ```{r}
 # NA is a missing value
-values <- c(1,5,6,NA)
+values <- c(1, 5, 6, NA)
 mean(x = values)
 ```
 
@@ -149,7 +153,7 @@ mean(x = values, na.rm = TRUE)
 ```
 --
 
-Arguments with default values are optional, arguments without default values are not!
+**Arguments with default values are optional, arguments without default values are not!**
 
 ```{r error=TRUE}
 mean()
@@ -168,6 +172,8 @@ values <- c(1, 5, 6, NA)
 
 --
 
+These calls to mean all are the same:
+
 ```{r, eval=FALSE}
 mean(values, , TRUE) # by position
 mean(x = values, na.rm = TRUE) # by name
@@ -175,11 +181,12 @@ mean(na.rm = TRUE, x = values) # this also works but is not really nice
 mean(values, na.rm = TRUE) # a mix of both
 ```
 --
-- named arguments are preferred (generally)
-  - better to remember
+- named arguments are (generally) preferred
+  - easier to remember
   - easier to read
   - some function can have a lot of arguments
 --
+
 - however, it is common to match the first argument of a function by position (especially when the first argument is some kind of data)
 
 ---
@@ -215,6 +222,7 @@ stringr::str_extract() # extract a part from a string
 
 .pull-left[
 - custom functions
+  - we can write functions ourselves and then use them in the code
 ]
 
 .pull-right[
@@ -230,3 +238,14 @@ my_function(5)
 ```
 
 ]
+---
+# Summary
+
+- Functions take **input** in the form of (named) arguments, calculate something and **return** a result
+--
+- Functions are called by their name, followed by parentheses: `functionName()`
+--
+- Functions from additional packages can be called like this: `packageName::functionName()`
+--
+- Call `?functionName` to open the help of a function
+---
