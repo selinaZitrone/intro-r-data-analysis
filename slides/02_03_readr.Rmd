@@ -232,6 +232,7 @@ These guidelines for data sets make it much easier and less frustrating to impor
 
 - No spaces in column headers
   - use a character as separator if necessary, e.g. `species_name` instead of `species name`
+
   - if this is impossible for you data, have a look at the function `janitor::clean_names` from the `janitor` package
 
 --
