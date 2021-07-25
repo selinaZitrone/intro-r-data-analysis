@@ -6,7 +6,7 @@ date: "2021-06-15"
 output:
   xaringan::moon_reader:
     seal: false
-    css: ["css/xaringan-themer.css", "css/progressbar.css"]
+    css: [default, css/new_slides.css]
     nature:
       highlightStyle: github
       highlightLines: true
@@ -41,13 +41,13 @@ library(fontawesome)
 
 # Data frames
 
-.pull-left[
+The built-in data structure for tables in R is a `data frame`.
 
-- most data is stored in tables
+.pull-left[
 
 - vectors in R can't represent a table with data that is connected
 
-> Data frames are one of the biggest and most important ideas in R, and one of the things that make R different from other programming languages.<br>(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble))
+> Data frames are one of the biggest and most important ideas in R, and one of the things that make R different from other programming languages.<br>..small[(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble))]
 
 ]
 
@@ -66,14 +66,13 @@ data.frame(cities = cities,
 ```
 
 ]
---
-
-- the built-in data structure for tables in R is `data frame`
 
 ---
 # Data frames
 
 A data frame is a **named list of vectors** of the same length.
+
+--
 
 .pull-left[
 
@@ -81,7 +80,8 @@ A data frame is a **named list of vectors** of the same length.
 
 - every .col1[column is a vector]
 - columns have a .col2[header]
-- within one column, all values are from the .col3[same data type]
+  - this is the name of the vector in the list
+- within one column, all values are of the .col3[same data type]
 - every column has the same length
 
 ]
@@ -94,7 +94,7 @@ A data frame is a **named list of vectors** of the same length.
 ---
 # Data frames
 
-We can create data frames by using the function `data.frame()`:
+Data frames are created with the function `data.frame()`:
 
 .pull-left[
 
@@ -103,11 +103,14 @@ cities <- c(
   "Istanbul", "Moscow", "London", 
   "Saint Petersburg", "Berlin","Madrid",
   "Kyiv", "Rome", "Bucharest","Paris")
+
 population <- c(
   15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6,
   3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)
+
 area_km2 <- c(2576, 2561, 1572, 1439, 
   891, 604, 839, 1285, 228, 105)
+
 ```
 ```{r eval=FALSE}
 data.frame( #<<
@@ -139,16 +142,16 @@ data.frame(
 
 Tibbles are 
 
->a modern reimagining of the data frame. Tibbles are designed to be (as much as possible) drop-in replacements for data frames. <br>(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble)) 
+>a modern reimagining of the data frame. Tibbles are designed to be (as much as possible) drop-in replacements for data frames. <br>.small[(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble)) ]
 
 --
 
-Have a look at [this book chapter](https://adv-r.hadley.nz/vectors-chap.html#tibble) for a full list of the differences.
+Have a look at [this book chapter](https://adv-r.hadley.nz/vectors-chap.html#tibble) for a full list of the differences between data frames and tibbles and the advantages of using tibbles.
 
 --
 
 .pull-left[
-- tibbles have the exact same basic properties as data frames (named list of vectors)
+- tibbles have the same basic properties as data frames (named list of vectors)
 
 - everything that you can do with data frames, you can do with tibbles
 
@@ -164,9 +167,11 @@ Have a look at [this book chapter](https://adv-r.hadley.nz/vectors-chap.html#tib
 
 Tibbles are a available from the `tibble` package.
 
+--
+
 .pull-left[
 
-Before we can get started with tibbles, we need to install the package once using `install.packages`:
+Before we use tibbles, we need to install the package once using the function `install.packages`:
 
 ```{r eval=FALSE}
 # This has do be once
@@ -225,23 +230,25 @@ cities_df <- data.frame(
   population = population,
   area_km2 = area_km2
 )
+
 cities_tbl <- as_tibble(cities_df) #<<
 ```
 
 ---
 # Exploring tibbles
 
-Look at the structure of your data using `str()`:
+Look at the structure of an object using `str()`:
 
 ```{r}
 str(cities_tbl)
 ```
+--
 - This function shows you:
   - data type of object (`tbl_df/tbl/data.frame`)
   - extent of the data (10 rows times 3 columns)
   - column names and data types
 
-- This function works for every R object and is often a life saver if your code does not work and you don't know why
+- This function works for every R object and is very useful if code doesn't work and you don't know why
 ---
 # Exploring tibbles
 
@@ -284,27 +291,26 @@ summary(cities_tbl)
 
 Indexing tibbles works similar to indexing vectors but with two dimensions instead of 1:<br>
 
-.center[ <b>tibble [ .col1[row_index], .col2[col_index or col_name] ]</b>]
+.strong[.center[ tibble [ .col1[row_index], .col2[col_index or col_name] ]]]
 
 Missing row_index or col_index means *all rows* or *all columns* respectively.
 
 --
+Indexing a tibble using `[]` always returns another tibble.
+
+---
+# Indexing tibbles
 
 ```{r}
 # First row and first column
 cities_tbl[1, 1]
 ```
-
 -- 
-
 This is the same as 
 
 ```{r eval=FALSE}
 cities_tbl[1, "cities"]
 ```
---
-
-Indexing a tibble using `[]` always returns another tibble.
 
 ---
 # Indexing tibbles: rows
@@ -319,13 +325,14 @@ cities_tbl[(nrow(cities_tbl) - 2):nrow(cities_tbl), ]
 This was the same as writing:
 
 ```{r eval=FALSE}
-cities_tbl[8:10, ]
+cities_tbl[8:10, ] # return rows 8 to 10, all columns
 ```
+
 
 ---
 # Indexing tibbles: columns
 
-.pull-left[
+
 
 ```{r eval=FALSE}
 # rows 1 & 5, first two columns:
@@ -334,17 +341,13 @@ cities_tbl[c(1, 5) ,1:2]
 cities_tbl[c(1, 5),
            c("cities", "population")]
 ```
-]
 
-.pull-right[
+--
 ```{r echo=FALSE}
 cities_tbl[c(1,5), 1:2]
 ```
-]
 
 --
-
-.pull-left[
 If you want to index only columns, you can use `[]` without comma:
 
 ```{r eval=FALSE}
@@ -354,13 +357,11 @@ cities_tbl[c("cities", "population")]
 cities_tbl[1:2, ]
 cities_tbl[c("cities", "population"), ]
 ```
-]
 
-.pull-right[
 ```{r echo=FALSE}
-cities_tbl[ ,c("cities", "population")]
+print(cities_tbl[ ,c("cities", "population")], n=3)
 ```
-]
+
 ---
 # Indexing tibbles: columns
 
@@ -377,31 +378,30 @@ cities_tbl[c("cities", "population")] # better
 
 - code is much easier to read
 --
+
 - makes code more robust against
   - changes in column order
---
   - mistakes in the code
+
   
 ```{r eval=FALSE}
 cities_tbl[c(1,3)] # 3 instead of 2 -> wrong but no error
 cities_tbl[c("cities", "popluation")] # typo -> wrong and error
 ```
-
---
 <br>
-.content-box-blue[`r fa("lightbulb")` General rule: Good code produces errors when something unintended or wrong happens]
+.content-box-yellow[`r fa("lightbulb")` General rule: Good code produces errors when something unintended or wrong happens]
 
 ---
-# Tibbles: Selecting columns with `$`
+# Tibbles: Select columns with `$`
 
-Select a column from a tibble using `$` (this returns a vector instead of a tibble):
+Select an entire column from a tibble using `$` (this returns a vector instead of a tibble):
 
 ```{r}
 cities_tbl$cities
 ```
 --
 
-After selecting a column as vector, you can work with the vector as you are used to:
+After selecting a column as vector, we can work with the vector as we are used to:
 
 ```{r}
 cities_tbl$cities[1:3] # first 3 cities
@@ -409,7 +409,7 @@ cities_tbl$cities[1:3] # first 3 cities
 --
 
 ```{r error=TRUE}
-cities_tbl$cities[1,1] # This is wrong now
+cities_tbl$cities[1,1] # This is wrong now because vector is 1-dimensional
 ```
 
 ---
@@ -418,9 +418,9 @@ cities_tbl$cities[1,1] # This is wrong now
 As with vectors, we can use us logical tests to select rows from a tibble. 
 The basic structure is:<br>
 
-.center[<b>tibble [ .col1[logical vector of length nrow(tibble)], .col2[cols to select] ]</b>]
+<b>.center[tibble [ .col1[logical vector of length nrow(tibble)], .col2[cols to select] ]]]</b>
 
-Only rows that match a `TRUE` in the indexing vector get selected.
+Only rows that match `TRUE` in the indexing vector get selected.
 
 ```{r}
 # select all rows for which the population exceeds 15 Mio
@@ -430,11 +430,13 @@ cities_tbl[ cities_tbl$population > 15e6, ]
 ---
 # Logical indexing
 
+**What is happening in detail?**
+
 ```{r eval=FALSE}
 cities_tbl[ cities_tbl$population > 15e6, ]
 ```
 
-**What is happening in detail?**
+--
 
 ```{r}
 cities_tbl$population # vector with population
@@ -496,15 +498,18 @@ cities_tbl[!(cities_tbl$cities %in% c("Istanbul", "Madrid", "Paris")) |
 ```
 
 ---
-# Changing values
+# Changing values in tibbles
 
 As with vectors, we can use indexing to change specific values in the tibble.
 
-**Idea:** First create a subset of only the numbers you want to change, then overwrite them using the assignment operator `<-`
+**Idea:**<br>
+1. Create a subset of only the numbers you want to change
+2. Overwrite them using the assignment operator `<-`
 
 --
 
-If for example, the population of Madrid changed and we don't know the new population, we can replace the population value from Madrid with NA.
+For example, the population of Madrid changed but we don't know the new population.
+We can replace the population value from Madrid with NA:
 
 ```{r eval = TRUE}
 cities_tbl[cities_tbl$cities == "Madrid", "population"] <- NA
