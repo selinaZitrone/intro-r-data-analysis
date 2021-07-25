@@ -27,9 +27,19 @@ params:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,
-                      warning = FALSE,
-                      message = FALSE)
+knitr::opts_chunk$set(
+  echo = TRUE, 
+  warning = FALSE, 
+  message = FALSE, 
+  collapse = TRUE,
+  fig.height = 6.3,
+  fig.allign = 'center',
+  fig.retina = 3.5,
+  fig.showtext = TRUE
+)
+
+theme_set(theme_grey(base_size = 16))
+
 library(fontawesome)
 library(tidyverse)
 ```
@@ -42,119 +52,154 @@ library(tidyverse)
 # Workflow data analysis
 
 .center[
-![:scale 120%](img/day2/datascience_workflow.png)]
+![:scale 100%](img/day2/datascience_workflow.png)]
 .footnote-right[Image from Wickham & Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)]
 
 ---
 # The tidyverse
 
-> The tidyverse is an opinonated **collection of R packages** designed for data science. All packages share an underlying design philosophy, grammar, and data structures.<br>
-([www.tidyverse.org](https://www.tidyverse.org/))                                                                                                                     
+> The tidyverse is an opinonated <b>collection of R packages</b> designed for data science. All packages share an underlying design philosophy, grammar, and data structures.<br>
+.small[([www.tidyverse.org](https://www.tidyverse.org/))]                                                                       
 
 These are the main packages from the tidyverse that we will use:<br><br>
 
 .center[![:scale 15%](img/hex-stickers/tibble.png)![:scale 15%](img/hex-stickers/readr.png)![:scale 15%](img/hex-stickers/tidyr.png)![:scale 15%](img/hex-stickers/ggplot2.png)![:scale 15%](img/hex-stickers/dplyr.png)]
 
-&nbsp; Data structure &nbsp; &nbsp;&nbsp; Import &nbsp;&nbsp;&nbsp; Tidy &nbsp;&nbsp;&nbsp;&nbsp; Visualise &nbsp; Transform
-
 ---
 # The tidyverse
 
-To install and use the tidyverse, you can just 
+Install the tidyverse once with:
 
 ```{r eval=FALSE}
 install.packages("tidyverse")
 ```
 
-And to load and attach the packages at the beginning of your script:
+Then load and attach the packages at the beginning of your script:
 
-```{r eval=FALSE}
+```{r}
 library(tidyverse)
 ```
-Of course it is also possible to install and load each of the tidyverse packages individually, but since we will use so many of the tidyverse packages together, we will just load and attach them together.
+
+--
+
+You can also install and load the tidyverse packages individually, but since we will use so many of them together, it's easier to load and attach them together.
 
 
 ---
-class: inverse
+class: inverse, center, middle
 
-# Plotting with ggplot2
+# Data visualization with ggplot2
+
+![](img/hex-stickers/ggplot2.png)
 
 ---
 # ggplot2
 
-
 - ggplot2 was developed by Hadley Wickham in 2005
+
 - most popular package for building graphics in R
+
 - one of the most downloaded packages from CRAN
 
-```{r}
+```{r echo=FALSE}
 # Print 10 most downloaded packages from the last month
 #cranlogs::cran_top_downloads("last-month",10)
 ```
 
 ---
 class: center, middle
+background-image: url("img/AllisonHorst/ggplot2_exploratory.png")
+background-size: contain
 
-![:scale 50%](img/AllisonHorst/ggplot2_exploratory.png)
-
----
-class: center, middle
-
-![:scale 80%](img/AllisonHorst/ggplot2_masterpiece.png)
-
----
-class: inverse
-
-# ggplot short showcase 
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
 
 ---
 class: center, middle
-![](https://raw.githubusercontent.com/jkaupp/tidytuesdays/master/2021/week27/tw27_plot.png)
+background-image: url("img/AllisonHorst/ggplot2_masterpiece.png")
+background-size: contain
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
+---
+class: inverse, center, middle
+
+# ggplot showcase 
+
+## Some examples of plots you can create with ggplot
+
+---
+class: center, middle
+background-image: url("https://raw.githubusercontent.com/jkaupp/tidytuesdays/master/2021/week27/tw27_plot.png")
+background-size: contain
+
 .footnote-right[Visualization by [Jake Kaupp](https://twitter.com/jakekaupp), code available on [Github](https://github.com/jkaupp/tidytuesdays/tree/master/2021/week27)]
+
 ---
 class: center, middle
-
-![](https://raw.githubusercontent.com/bbc/bbplot/master/chart_examples/bbplot_example_plots.png)
+background-image: url("https://raw.githubusercontent.com/bbc/bbplot/master/chart_examples/bbplot_example_plots.png")
+background-size: contain
 
 .footnote-right[Visualizations produced by the [BBC News data team](https://github.com/bbc/bbplot)]
+
 ---
 class: center, middle
-![:scale 50%](https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_05/2020_05_TreesSF.png)
+background-image: url("https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_05/2020_05_TreesSF.png")
+background-size: contain
 
 .footnote-right[Visualizations by [Cédric Scherer](https://twitter.com/CedScherer), code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_05_TreesSF.Rmd)]
 
 ---
 class: center, middle
-![](https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_31/2020_31_PalmerPenguins.png)
-.footnote-right[Visualizations by [Cédric Scherer](https://twitter.com/CedScherer), code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_31_PalmerPenguins.Rmd)]
+background-image: url("https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_31/2020_31_PalmerPenguins.png")
+background-size: contain
+
+.footnote-right[Visualization by [Cédric Scherer](https://twitter.com/CedScherer),<br> code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_31_PalmerPenguins.Rmd)]
 
 ---
 # Advantages of ggplot
 
 - consistent grammar/structure for producing plots
+
+--
+
 - flexible structure allows you to produce any type of plot
+
+--
+
 - highly customizable appearance (themes)
+
+--
+
 - many extension packages that provide 
 	• Additional plot types
 	• Additional themes
-	• Colour palettes
+	• Color palettes
 	• Animation
 	• Composition of multiple plots
-- Easy to get help an inspiration from active community
+	
+--
+
+- Active community that provides help and inspiration
 
 ---
 # Basic idea of ggplot
 
-> shorten the distance from mind to page
-(Hadley Wickham)
+> shorten the distance from mind to page<br>
+.small[(Hadley Wickham)]
+
+--
 
 `ggplot2` is an implementation of the grammar of graphics by Leland Wilkinson
 
+--
+
 - coherent system for describing and building graphs
-- basic idea: stack distinct layers of graphical elements to create a plot
+
+- basic idea: stack distinct **layers of graphical elements** to create a plot
 
 ---
 # Layers of a ggplot
+<br>
 <table>
   <tr>
     <th>Layer</th>
@@ -180,7 +225,7 @@ class: center, middle
 
 ---
 # Layers of a ggplot
-
+<br>
 <table>
   <tr>
     <th>Layer</th>
@@ -226,13 +271,9 @@ class: center, middle
 ---
 # The data
 
-The `ggplot` package has a built-in data set called `msleep` which I will use.
-
-The data set is about the sleep times of 83 different mammals. 
+The `ggplot` package has a built-in data set called `msleep` about the sleep times of 83 mammals. 
 The variables that are included in the data set (among others) are:
 
-- **name:** common name of mammal
-- **genus**
 - **vore:** carnivore, omnivore, herbivore?
 - **conservation:** conservation status of the animal
 - **sleep_total:** total amount of sleep [h]
@@ -246,15 +287,12 @@ library(ggplot2)
 str(msleep)
 ?msleep
 ```
----
-
-# The data
-
-Exploratory data analysis:<br>
-***Do mammals with a larger brain need more sleep?***
 
 ---
-# ggplot(data)
+# `ggplot(data)`
+
+The `ggplot()` function initializes a ggplot object. Every ggplot needs this function.
+
 
 .pull-left[
 
@@ -275,29 +313,21 @@ ggplot(data = msleep)
 ]
 
 ---
-# aes()
+# `aes(x, y)`
+
+The aesthetic mapping defines how variables are mapped to aesthetic properties of the plot.
 
 .pull-left[
 
 ```{r eval=FALSE}
 ggplot(data = msleep,
-       aes(x = brainwt, #<<
-           y = sleep_total)) #<<
+       mapping = aes( #<<
+         x = brainwt, #<<
+         y = sleep_total)) #<<
 ```
 
-- map the variable `brainwt` to the x-axis and `sleep_total` to the y-axis
-- default scales automatically adapted to range of data
-
-This is the same but a bit shorter:
-
-```{r eval=FALSE}
-ggplot(msleep, 
-       aes(brainwt, sleep_total))
-```
-
-Remember argument matching by position?
-
-
+- map variable `brainwt` to x-axis and `sleep_total` to y-axis
+- default scales are automatically adapted to range of data
 ]
 
 .pull-right[
@@ -308,13 +338,53 @@ ggplot(data = msleep,
 ]
 
 ---
-# geom_*()
+# `aes(x, y)`
 
-Here a screenshot from the ggplot cheatsheet
+The aesthetic mapping defines how variables are mapped to aesthetic properties of the plot.
 
-.footnote-right[from [ggplot cheatsheet]()]
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(data = msleep,
+       mapping = aes( 
+         x = brainwt, 
+         y = sleep_total)) 
+```
+
+- map variable `brainwt` to x-axis and `sleep_total` to y-axis
+- default scales are automatically adapted to range of data
+
+This is the same but shorter:
+
+```{r eval=FALSE}
+ggplot(msleep, aes(brainwt, sleep_total))#<<
+```
+
+Remember argument matching by position?
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(data = msleep,
+       aes(x = brainwt, y = sleep_total))
+```
+]
+
 ---
-# geom_point()
+# `geom_*()`
+
+`geoms` defines how to represent the data points. There are many different geoms to chose from
+
+
+---
+class: middle, center
+
+![:scale 80%](img/day2/geom_ggplot.png)
+
+.footnote-right[from [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf)]
+
+---
+# `geom_point()`
 
 .pull-left[
 
@@ -328,11 +398,36 @@ ggplot(data = msleep,
 - new plot layers are added with `+`
 - warning that 27 points can not be plotted due to missing values
 - `data` and `aes` defined in `ggplot` call are inherited to all plot layers
+]
+
+.pull-right[
+```{r echo=FALSE, warning=TRUE}
+ggplot(data = msleep,
+       aes(x = brainwt, y = sleep_total)) +
+  geom_point()
+```
+]
+
+---
+# `geom_point()`
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(data = msleep,
+       aes(x = brainwt, 
+           y = sleep_total)) +
+  geom_point()
+```
+
+- new plot layers are added with `+`
+- warning that 27 points can not be plotted due to missing values
+- `data` and `aes` defined in `ggplot` call are inherited to all plot layers
 - `data` and `aes` can be local to a layer:
 
 ```{r eval=FALSE}
 ggplot(msleep) +
-  geom_point(aes(brainwt, sleep_total))
+  geom_point(aes(brainwt, sleep_total))#<<
 ```
 
 Here, it does not make a difference.
@@ -347,9 +442,39 @@ ggplot(data = msleep,
 ```
 ]
 
----
-# scale_x_log10()
 
+---
+# `scale_x_log10()`
+
+The scales onto which the aesthetic elements are mapped can be changed.
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(data = msleep,
+       aes(x = brainwt, 
+           y = sleep_total)) +
+  geom_point() +
+  scale_x_log10() #<<
+```
+
+- scales can be changed for all elements of `aes`
+
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(data = msleep,
+       aes(x = brainwt, y = sleep_total)) +
+  geom_point()+
+  scale_x_log10()
+```
+]
+
+---
+# `scale_x_log10()`
+
+The scales onto which the aesthetic elements are mapped can be changed.
 
 .pull-left[
 
@@ -364,9 +489,9 @@ ggplot(data = msleep,
 - scales can be changed for all elements of `aes`
 - the general format of scale functions are:
 
-.center[scale_.col1[aes-name]_.col2[scale-type]]
+<b>scale\_.col1[aes-name]\_.col2[scale-type]</b>
 
-In this example we scale the .col1[x] aesthetic to .col2[log10].
+In this example we scale the <b>.col1[x]</b> aesthetic to <b>.col2[log10]</b>.
 
 ]
 
@@ -379,10 +504,11 @@ ggplot(data = msleep,
 ```
 ]
 
+
 ---
 # Change appearance of points
 
-The basic things we can change about points are their size, shape and color:
+The basic things we can change about points are their **size, shape and color**:
 
 .pull-left[
 
@@ -390,7 +516,7 @@ The basic things we can change about points are their size, shape and color:
 ggplot(data = msleep,
        aes(x = brainwt, 
            y = sleep_total)) +
-  geom_point(size = 2, #<<
+  geom_point(size = 4, #<<
              shape = 17, #<<
              color = "blue") + #<<
   scale_x_log10() 
@@ -403,15 +529,16 @@ ggplot(data = msleep,
 ```{r echo=FALSE}
 ggplot(data = msleep,
        aes(x = brainwt, y = sleep_total)) +
-  geom_point(size = 5, shape = 17, 
+  geom_point(size = 4, shape = 17, 
              color = "blue") +
   scale_x_log10()
 ```
 ]
----
-# Mapping color to a variable
 
-Instead of changing the color for all points, we can map the color to a variable by adding it to the aesthetics
+---
+# `aes(color)`: mapping color to a variable
+
+Instead of changing color of all points, **map the point color to a variable** by adding it to the aesthetics:
 
 .pull-left[
 
@@ -424,20 +551,20 @@ g <- ggplot(
     color = vore #<<
   )
 ) + 
-  geom_point(size = 5, shape = 17) +
+  geom_point(size = 4) +
   scale_x_log10()
 g
 ```
 
 - map the `vore` variable to the color aesthetic of the plot
-- plots can also be saved in variables
+- plots can be saved in variables
 ]
 
 .pull-right[
 ```{r echo=FALSE}
 g<- ggplot(data = msleep,
        aes(x = brainwt, y = sleep_total,color=vore)) +
-  geom_point(size = 4, shape = 17)+
+  geom_point(size = 4)+
   scale_x_log10()
 g
 ```
@@ -445,9 +572,9 @@ g
 
 
 ---
-# Mapping size and shape to a variable
+# `aes(size)`: mapping size to a variable
 
-We can do the same thing with shape and size as well:
+We can do the same thing with size:
 
 .pull-left[
 
@@ -484,7 +611,7 @@ ggplot(
 ]
 
 ---
-# Mapping size and shape to a variable
+# `aes(shape)`: mapping shape to a variable
 
 We can do the same thing with shape and size as well:
 
@@ -524,9 +651,9 @@ ggplot(
 
 ---
 
-# scale_color_viridis_*()
+# `scale_color_viridis_d()`
 
-Back to our plot `g` with only color as additional aesthetic. We can change the colors the values are scaled to:
+Back to our plot `g` with color as additional aesthetic. We can change the colors the values are scaled to:
 
 .pull-left[
 
@@ -548,9 +675,11 @@ g + scale_color_viridis_d(option = "inferno")
 ]
 
 ---
-# scale_color_viridis_*()
+# `scale_color_viridis_d()`
 
-The `scale_color_viridis_d()` function does not have a default color to map missing data points (`NA` values) to. We have to explicitly say which color `NA` should have:
+The `scale_color_viridis_d` function by default does not map color to missing data points (`NA` values). We have to explicitly state the color for `NA`:
+
+--
 
 .pull-left[
 
@@ -561,21 +690,21 @@ g +
     na.value = "grey") #<<
 ```
 
-- whether or not you have to do this, depends on the default of the color scale that you use
+- whether or not you have to do this, depends on the default of the `na.value` argument of the color scale that you use
 - you can also remove missing values from your data set before plotting (we will learn that later)
 
 ]
 
 .pull-right[
-```{r echo=FALSE}
+```{r echo=FALSE, fig.height = 6.1}
 g + scale_color_viridis_d(option = "inferno", na.value = "grey")
 ```
 ]
 
 ---
-# scale_color_manual()
+# `scale_color_manual()`
 
-We can manually specify colors:
+We can also manually specify colors:
 
 .pull-left[
 
@@ -593,7 +722,7 @@ g
 - length of color vector has to match number of levels in your aesthetic
 - specify colors 
   - via their name (see [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) for all color names)
-  - via their HEX value
+  - via their Hex color codes
 
 ]
 
@@ -609,7 +738,7 @@ g
 ]
 
 ---
-# other color scales
+# Other color scales
 
 There are several packages with preset color palettes:
 
@@ -622,6 +751,8 @@ ggsci::scale_color_npg() # nature publishing group
 ggsci::scale_color_rickandmorty()
 ```
 
+--
+
 **ggthemes:** software and publisher themed palettes:
 
 ```{r eval=FALSE}
@@ -631,13 +762,15 @@ ggthemes::scale_color_excel_new() # colors from new Excel version
 ggthemes::scale_color_economist() # color palette from Economist graphs
 ```
 
+--
+
 For a comprehensive list of color palettes available, check out [this repository](https://github.com/EmilHvitfeldt/r-color-palettes) by Emil Hvitfeldt.
 
 ---
 
-# Facets
+# `facet_wrap` and `facet_grid`
 
-Facets split your plot into small multiples along the values of a variable in your data set. We can e.g. split our plot along the conservation status of the animals:
+Facets split a plot into small multiples along values of a variable from the data. We can e.g. split our plot along the conservation status of the animals:
 
 .pull-left[
 ```{r eval=FALSE}
@@ -658,21 +791,19 @@ g +
   facet_wrap(~conservation)
 
 ```
-
 ]
 
 ---
-
-# Changing axis labels and legend names and adding a title
-
-We can change the labes of x- and y-axis and plot title as well as the title of the legend:
+# `labs`: change axis labels and add title
 
 .pull-left[
 ```{r eval=FALSE}
 g <- g +
   labs(x = "log brain weight [kg]",#<<
-       y="total sleep [h/day]", #<<
-       title = "Relationship between brain weigth and sleep time in mammals")#<<
+       y = "total sleep [h/day]", #<<
+       title = "Brain weigth and sleep time in mammals",#<<
+       subtitle = "Larger brains seem to sleep less",#<<
+       caption = "Data from the ggplot2 package")#<<
 g
 ```
 
@@ -684,30 +815,41 @@ g
 g <- g +
   labs(x = "log brain weight [kg]",
        y="total sleep [h/day]", 
-       title = "Relationship between brain weigth and sleep time in mammals")
+       title = "Brain weigth and sleep time in mammals",
+       subtitle = "Larger brains seem to sleep less",
+       caption = "Data from the `ggplot2` package")
 g
 ```
 
 ]
 
 ---
-# Changing the theme
+# `theme_*`: change appearance
 
-`ggplot2` offers several pre-defined themes that we can apply to change the appearance of our plot.
-Some examples are:
+`ggplot2` offers many pre-defined themes that we can apply to change the appearance of a plot.
 
 .pull-left[
-```{r}
+```{r eval=FALSE}
 g + 
   theme_classic()#<<
 ```
 
+```{r echo=FALSE, fig.height=5.3}
+g + 
+  theme_classic(base_size = 16)#<<
+```
+
 ]
 
 .pull-right[
-```{r}
+```{r eval=FALSE}
 g + 
   theme_linedraw()#<<
+```
+
+```{r echo=FALSE, fig.height=5.3}
+g + 
+  theme_linedraw(base_size = 16)#<<
 ```
 
 ]
@@ -719,23 +861,33 @@ g +
 Some examples are:
 
 .pull-left[
-```{r}
+```{r eval=FALSE}
 g + 
   theme_dark()#<<
+```
+
+```{r echo=FALSE, fig.height = 5.3}
+g + 
+  theme_dark(base_size = 16)
 ```
 
 ]
 
 .pull-right[
-```{r}
+```{r eval=FALSE}
 g + 
   theme_minimal()#<<
+```
+
+```{r echo=FALSE, fig.height = 5.3}
+g + 
+  theme_minimal(base_size = 16)
 ```
 
 ]
 
 ---
-# Customize a theme
+# `theme()`: customize theme
 
 You can manually change a theme or even create an entire theme yourself. 
 The elements you can control in the theme are:
@@ -754,7 +906,7 @@ If you want a full list of what you can customize, have a look at
 ```
 
 ---
-# Custom theme
+# `theme()`: customize theme
 
 To edit a theme, just add another `theme()` layer to your plot:
 
@@ -765,27 +917,29 @@ g +
   theme(#<<
     axis.text = element_text(face = "bold"),#<<
     legend.position = "bottom", #<<
-    plot.background = element_rect(fill = "yellow") #<<
-  )
+    plot.background = element_rect(#<<
+      fill = "lightblue") #<<
+  )#<<
 ```
+
 ]
 .pull-right[
 ```{r echo=FALSE}
 g + 
-  theme_minimal() +
+  theme_minimal(base_size=16) +
   theme(
     axis.text = element_text(face = "bold"),#<<
     legend.position = "bottom",
-    plot.background = element_rect(fill = "yellow")
+    plot.background = element_rect(
+      fill = "lightblue")
   )
 ```
 ]
 
 ---
-
 # Set a theme for all plots
 
-You can set a theme that will be applied to all ggplots in the current R session, by adding 
+You can set a theme that will be applied to all ggplots in the current R session, by adding e.g. 
 
 ```{r eval=FALSE}
 theme_set(theme_minimal())
@@ -793,50 +947,113 @@ theme_set(theme_minimal())
 
 to the beginning of your script.
 
----
-# geom_boxplot()
+You can also specify some defaults, e.g. the text size:
 
-Pay attention to fill vs. color aesthetic
+```{r}
+theme_set(theme_minimal(base_size = 16))
+```
+
+---
+# `geom_boxplot()`
+
+A boxplot can be created with `geom_boxplot`:
 
 .pull-left[
-```{r}
-ggplot(msleep, aes(x = vore, y = bodywt, fill = vore)) +
+```{r eval=FALSE}
+ggplot(msleep, aes(x = vore, y = bodywt)) +
   geom_boxplot() + #<<
-  scale_y_log10() +
-  scale_fill_brewer( #<<
-    palette = "Set1", #<<
-    guide = "none") #<<
-theme_classic()
+  scale_y_log10() 
 ```
   
 ]
 
 .pull-left[
-```{r }
-ggplot(msleep, aes(x = vore, y = bodywt, color = vore)) +
-  geom_boxplot() + #<<
-  scale_y_log10() +
-  scale_color_brewer( #<<
-    palette = "Set1",#<<
-    guide = "none"#<<
-  ) +#<<
-  theme_classic()
+```{r echo=FALSE}
+ggplot(msleep, aes(x = vore, y = bodywt)) +
+  geom_boxplot() +
+  scale_y_log10()
 ```
 ]
 
 ---
-# Example I
+# `geom_boxplot()`
+
+Pay attention to fill vs. color aesthetic
+
 .pull-left[
-**What are the layers of this plot?**
-
-- data
-- aesthetic mapping
-- geoms
-- theme
-
+```{r eval=FALSE}
+ggplot(msleep, aes(x = vore, y = bodywt)) +
+  geom_boxplot(
+    aes(fill = vore) #<<
+  ) + 
+  scale_y_log10() +
+  scale_fill_brewer( #<<
+    palette = "Set1", #<<
+    na.value = "gray", #<<
+    guide = "none") #<<
+```
+  
 ]
-.pull-right[
-![:scale ](img/figs-penguin/README-flipper-bill-1.png)]
+
+.pull-left[
+```{r echo=FALSE}
+ggplot(msleep, aes(x = vore, y = bodywt)) +
+  geom_boxplot(
+    aes(fill = vore) 
+  ) + 
+  scale_y_log10() +
+  scale_fill_brewer( 
+    palette = "Set1", 
+    na.value = "gray",
+    guide = "none")
+```
+]
+
+---
+# `geom_boxplot()`
+
+Pay attention to fill vs. color aesthetic
+
+.pull-left[
+```{r eval=FALSE}
+ggplot(msleep, aes(x = vore, y = bodywt)) +
+  geom_boxplot(
+    aes(color = vore) #<<
+  ) + 
+  scale_y_log10() +
+  scale_color_brewer( #<<
+    palette = "Set1", #<<
+    na.value = "gray", #<<
+    guide = "none")  #<<
+```
+  
+]
+
+.pull-left[
+```{r echo=FALSE}
+ggplot(msleep, aes(x = vore, y = bodywt)) +
+  geom_boxplot(
+    aes(color = vore)
+  ) + 
+  scale_y_log10() +
+  scale_color_brewer( 
+    palette = "Set1",
+    na.value = "gray",
+    guide = "none") 
+```
+]
+
+---
+class: inverse, center, middle
+
+# Let's look at some examples
+
+## What are the data, layers, mappings, geoms, themes, ...?
+
+---
+class: center, middle
+background-image: url("img/figs-penguin/README-flipper-bill-1.png")
+background-size: 70%
 
 ---
 
