@@ -14,6 +14,5 @@ render_slides <- function(slide = slides){
     here::here("slides",slide)
   )
 }
-
-
-render_slides(slide = slides[1])
+# Render all slides
+lapply(slides, function(x) {rmarkdown::render(here::here("slides",x))})
