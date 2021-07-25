@@ -80,7 +80,6 @@ h1, h2, h3 {
 }
 strong {
   font-weight: bold;
-  color: var(--text-bold-color);
 }
 
 .inverse {
@@ -204,13 +203,13 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
 /*my stuff*/
 
 .col1 {
-  color: #F3BC50;
+  color: #4C7488;
 }
 .col2{
-  color: #25C0C0;
+  color: #D78974;
 }
 .col3{
-  color:#FA53A0;
+  color:#D7BC74;
 }
 
 .large { font-size: 130% }
@@ -219,6 +218,7 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
 
 h1 .remark-inline-code{
   color: #FFFFFF;
+  background: var(--inverse-background-color);
 }
 
 .inverse .remark-slide-number {
@@ -227,6 +227,7 @@ h1 .remark-inline-code{
 
 .inverse .remark-inline-code {
   color: #FFFFFF;
+  background: var(--inverse-background-color);
 }
 .inverse strong {
   color: #FFFFFF;
@@ -337,11 +338,6 @@ pre {
 
 .content-box {
     box-sizing: content-box;
-    	background-color: #e2e2e2;
-  /* Total width: 160px + (2 * 20px) + (2 * 8px) = 216px
-     Total height: 80px + (2 * 20px) + (2 * 8px) = 136px
-     Content box width: 160px
-     Content box height: 80px */
 }
 
 
@@ -363,8 +359,7 @@ pre {
 
 .content-box-blue {
     /* set opacity in last decimal value of rgba */
-    background-color: rgb(51,153,153);
-    background-color: rgba(51,153,153,.85);
+    background-color: #4C7488;
 
 }
 
@@ -374,22 +369,8 @@ pre {
     background-color: rgba(102, 102, 102,.85);
 }
 
-.content-box-grey {
-  /* set opacity: uncomment rgba line */
-  /* alter opacity with last decimal value of rgba */
-	background-color: rgb(181, 181, 181);
-  /* background-color: rgba(181, 181, 181,.85); */
-}
-
 .content-box-neutral {
   background-color: #988675;
-}
-
-
-.content-box-duke-green {
-  /* set opacity in last decimal value of rgba */
-	background-color: rgb(114, 131, 2);
-  background-color: rgba(114, 131, 2,.85);
 }
 
 .content-box-green {
@@ -398,22 +379,14 @@ pre {
   background-color: rgba(161, 183, 13,.85);
 }
 
-.content-box-purple {
-  /* set opacity in last decimal value of rgba */
-	background-color: rgb(153, 51, 153);
-  background-color: rgba(153, 51, 153, .85)
-}
-
 .content-box-red {
   /* set opacity in last decimal value of rgba */
-	background-color: rgb(204, 51, 0);
-  background-color: rgba(204, 51, 0,.85)
+	background-color: #D78974;
 }
 
 .content-box-yellow {
   /* set opacity in last decimal value of rgba */
-	background-color: rgb(255, 217, 96);
-  background-color: rgba(255, 217, 96, .85)
+  background-color: #D7BC74;
 }
 
 
