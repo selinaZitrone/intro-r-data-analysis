@@ -810,6 +810,7 @@ is.logical("TRUE")
 is.character("TRUE")
 is.character(FALSE)
 ```
+
 ---
 # Explicit type conversion
 
@@ -822,8 +823,8 @@ as.double(FALSE)
 as.integer("hello")
 as.integer("2")
 ```
----
 
+---
 # Implicit type conversion
 
 Type conversion can happen implicitly
@@ -834,6 +835,7 @@ typeof(1L + TRUE) # logical -> integer (TRUE = 1, FALSE = 0)
 typeof(1.34 + FALSE) # logical -> double
 typeof("hello" + FALSE) # Error: no implicit conversion from string to other data types
 ```
+
 ---
 class: inverse, middle, center
 
@@ -940,6 +942,7 @@ length(cities)
 ```
 
 .footnote-right[Data from [Wikipedia](https://en.wikipedia.org/wiki/List_of_European_cities_by_population_within_city_limits)]
+
 ---
 
 # Working with vectors
@@ -987,13 +990,19 @@ population > mean_population | population > 3e6
 
 The `%in%` operator checks whether *multiple* elements occur in a vector.
 
-```{r}
-to_check <- c("Istanbul", "Stockholm", "Berlin", "Madrid", "Prague")
-to_check %in% cities
-```
-Now we know that Prague and Stockholm are currently not among the 10 largest European cities.
----
+So instead of writing this:
 
+```{r}
+cities == "Istanbul" | cities == "Berlin" | cities == "Madrid"
+```
+we can also write this: 
+
+```{r}
+to_check <- c("Istanbul", "Berlin", "Madrid")
+cities %in% to_check
+```
+
+---
 # Indexing vectors
 
 You can use square brackets `[]` to access specific elements from an object.
