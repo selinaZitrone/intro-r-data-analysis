@@ -3,7 +3,7 @@ title: "Introduction to R for Data Analysis"
 theme: theme.css
 description: |
   My Website
-output_dir: "."
+output_dir: "docs"
 navbar:
   right:
     - text: "Home"
