@@ -19,6 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          install.packages("renv")
           source("./R/install_dependencies.R")
         shell: Rscript {0}
 
