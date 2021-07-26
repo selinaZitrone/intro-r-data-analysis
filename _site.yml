@@ -11,7 +11,7 @@ navbar:
     - text: "Slides"
       menu:
         - text: "01 - Introduction R and RStudio"
-          href: slides/rendered_slides/01_01_Intro_RStudio_R.html
+          href: slides/01_01_Intro_RStudio_R.html
         - text: "01 - Functions"
           href: slides/01_02_Functions.html
         - text: "01 - Data & Tibbles"
