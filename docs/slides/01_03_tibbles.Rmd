@@ -19,7 +19,7 @@ output:
           </div>
         </div>
 params:
-  title: "Tibbles: Data tables in R"
+  title: "Tibbles: Data Tables in R"
   day: "1"
   bg_image: ""
   bg_image_scale: "50%"
@@ -518,7 +518,6 @@ cities_tbl[6, ] # row 6 is Madrid
 ```
 
 ---
-
 # Adding new columns
 
 New columns can be added as vectors using the `$` operator. The vectors need to have the same length as the tibble has rows.
