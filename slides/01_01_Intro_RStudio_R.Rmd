@@ -19,7 +19,7 @@ output:
           </div>
         </div>
 params:
-  title: "Introduction to data analysis with R"
+  title: "Introduction to Data Analysis with R"
   day: ""
   bg_image: "img/AllisonHorst/rainbowr.gif"
   bg_image_scale: "50%"
