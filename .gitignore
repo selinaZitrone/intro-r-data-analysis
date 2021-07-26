@@ -4,7 +4,4 @@
 .httr-oauth
 .DS_Store
 
-*.html
-docs/*
-slides/*_files/
-site_libs/
+
