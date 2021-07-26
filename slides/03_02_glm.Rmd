@@ -140,7 +140,7 @@ $Var(k) = N*p*(1-p)$
 with $k$ being the number of "successes"
 ]
 .pull-right[
-![](img/day03/binom_plot.png)
+![](img/day3/binom_plot.png)
 ]
 
 --
@@ -175,7 +175,7 @@ with $k$ being the number of occurrences
 ]
 
 .pull-right[
-![](img/day03/poiss_plot.png)
+![](img/day3/poiss_plot.png)
 ]
 
 ---
