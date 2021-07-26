@@ -38,10 +38,10 @@ knitr::opts_chunk$set(
   fig.showtext = TRUE
 )
 
-theme_set(theme_grey(base_size = 16))
 
 library(fontawesome)
 library(tidyverse)
+theme_set(theme_grey(base_size = 16))
 ```
 
 ```{r child="title_slide.Rmd"}
