@@ -37,6 +37,8 @@ jobs:
           git commit -m "Re-build gh-pages on master" || echo "Nothing to commit"
           echo "Commited files"
           # checkout gh-pages branch and delete old rendered files
+          git fetch
+          echo "Fetched"
           git branch -a
           echo "Print branches"
           git checkout gh-pages
