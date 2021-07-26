@@ -660,8 +660,6 @@ summary(prod_lm2a)
 ---
 # Test model assumptions
 
-# Test model assmptions
-
 .pull-left[
 
 Check the assumptions
@@ -793,8 +791,6 @@ pred_data <- tidyr::expand_grid(
 
 Use the `predict()` function.
 
---
-
 ```{r}
 # step 1: create some data to predict from
 pred_data <- tidyr::expand_grid(
@@ -816,8 +812,6 @@ predictions <- predict(prod_lm2a, newdata = pred_data)#<<
 **Option 2**
 
 Use the `predict()` function.
-
---
 
 ```{r}
 # step 1: create some data to predict from
@@ -850,17 +844,18 @@ Add a new `geom_*()` layer to the plot from the prediction data:
 
 ```{r eval=FALSE}
 # step 4: Add predictions with geom_line
-ggplot(prod, aes(x=richness, y=productivity, color= site))+
+ggplot(prod, aes(x = richness, 
+                 y = productivity, 
+                 color = site)) +
   geom_point() +
-  geom_line(data= pred_data)#<<
-
+  geom_line(data = pred_data) #<<
 ```
 
-- The aestethetic mapping is inherited from the top level `ggplot` call to the `geom_line`
+- The aesthetic mapping is inherited from the top level `ggplot` call to the `geom_line`
 
 ]
 .pull-right[
-```{r echo=FALSE, fig.height=6.1}
+```{r echo=FALSE, fig.height=5.7}
 # step 4: Add predictions with geom_line
 ggplot(prod, aes(x=richness, y=productivity, color= site))+
   geom_point() +
@@ -868,6 +863,7 @@ ggplot(prod, aes(x=richness, y=productivity, color= site))+
 
 ```
 ]
+
 ---
 class: inverse, middle, center
 
@@ -878,7 +874,7 @@ class: inverse, middle, center
 
 Only categorical predictors.
 
-**Example*:* built-in data set of R called `chickwts`.
+**Example**: built-in data set of R called `chickwts`.
 The data set is about the weight of chickens fed with different diets. 
 
 .pull-left[
@@ -893,52 +889,88 @@ print(tibble(chickwts),n=4)
 ]
 
 .pull-right[
-```{r}
+```{r echo = FALSE, fig.height = 5.7}
 ggplot(chickwts, aes(x=factor(feed), y= weight))+
   geom_boxplot()
 ```
 
 ]
+
 ---
 # Anova
 
-<b>$H_0$:</b> The diet has an effect on the mean weight of chicken.
+$H_0$: The diet has an effect on the mean weight of chicken.
+
+Fit a linear model with `lm` and test the significance of the predictor:
 
 ```{r}
 lm_chicken <- lm(weight ~ feed, data = chickwts)
 drop1(lm_chicken, test = "F")
 ```
 
+--
+
+Removing the predictor `feed` from the model significantly increases the RSS `r fa("arrow-right")` The model with `feed` explains the data better than the model without `feed`, so the effect of `feed` on the chicken weight is significant.
+
 ---
-# Anova
+# Extracting model coefficients
 
 ```{r}
 summary(lm_chicken)
 ```
 
 ---
-# Anova
+# Extracting model coefficients
 
+.center[![](img/day3/summary_anova_coefs.png)]
+
+---
+# Test model assumptions
+
+.pull-left[
+
+Check the assumptions
+
+- residuals are normally distributed ✔️
+- variance is constant (homogeneous) ✔️
+- there are no strong outliers or very influential observations ✔️ 
+]
+
+.pull-right[
 ```{r}
 performance::check_model(lm_chicken)
 ```
+]
 
 ---
-# Plot results in a boxplot
+# Plot results
 
-```{r}
+Plot anova results e.g. in a boxplot:
+
+.pull-left[
+```{r eval=FALSE}
+ggplot(chickwts, aes(feed, weight)) +
+  geom_boxplot() + #<<
+  labs(x = "Diet", y= "Weight [g]")
+```
+
+]
+.pull-right[
+
+```{r echo=FALSE, fig.height=5.6}
 ggplot(chickwts, aes(x=feed, y= weight)) +
   geom_boxplot() +
   labs(x = "Diet", y= "Weight [g]")
 ```
+]
 
 ---
 # Plot the results in a boxplot
 
 If you want a slightly nicer boxplot, you could do something like this:
+.pull-left[
 
-
-```{r eval=TRUE}
+```{r eval=FALSE}
 chickwts %>% 
   mutate(feed = as.factor(feed)) %>% 
   mutate(feed = fct_reorder(feed, -weight)) %>% 
@@ -951,46 +983,133 @@ chickwts %>%
     theme(legend.position = "none")
 
 ```
+]
+.pull-right[
+```{r echo=FALSE}
+chickwts %>% 
+  mutate(feed = as.factor(feed)) %>% 
+  mutate(feed = fct_reorder(feed, -weight)) %>% 
+  ggplot(aes(x=feed, y=weight, color = feed))+
+    geom_boxplot()+
+    geom_jitter(size = 3, alpha = 0.25, width = 0.2)+
+    coord_flip()+
+    ggsci::scale_color_uchicago()+
+    labs(y = "weight [g]", x = "Diet")+
+    theme_classic(base_size = 16)+
+    theme(legend.position = "none")
+    
+```
 
-.footnote-right[Design taken from Cédric Scherers ["Evolution of a ggplot"(https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/#sort)]]
+]
 
+.footnote-left[Design taken from Cédric Scherers <br>["Evolution of a ggplot"(https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/#sort)]]
 
 ---
-
-# Summary
+# Linear models step by step
 
 Follow the following steps to perform a linear model:
 
-1. Come up with a hypothesis that you would like to test 
+1. Come up with a **hypothesis** that you would like to test 
   - e.g. The diet has an effect on the weight of chicken with horsebean leading to the highest weights.
-2. Make plots of the data and explore them
-  - for regression chose a scatterplot
-  - for analysis of covariance chose a scatterplot with colors
-  - for analysis of variance chose boxplot (or similar)
-3. Fit model using `lm` function
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+  - for regression a scatterplot
+  - for analysis of covariance a scatterplot with colors
+  - for analysis of variance a boxplot (or similar)
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+3. **Fit model** using `lm` function
   - Add the interactions that you want to test according to your hypothesis
-4. Check model assumptions by looking at diagnostic plots e.g. from `performance::check_model`
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+3. **Fit model** using `lm` function
+4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
   - residuals normally distributed
   - constant variance
   - no strong outliers
-5. Check significant variables
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+3. **Fit model** using `lm` function
+4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
+5. **Check significant variables**
   - use `anova` (F-tests) to check whether your predictors significantly improve the models sum of squares
-6. Check the effect sizes e.g. in the `summary` table
-6. Add model results to plot (only plot regression lines if significant)
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+3. **Fit model** using `lm` function
+4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
+5. **Check significant variables**
+6. **Check the effect sizes** e.g. in the `summary` table
+  - extract coefficients of the model with `mod$coefficients`
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+3. **Fit model** using `lm` function
+4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
+5. **Check significant variables**
+6. **Check the effect sizes** e.g. in the `summary` table
+7. **Plot model results** (only plot regression lines if significant)
   - for regression: regression line with `geom_smooth`, `geom_abline` or `geom_line` and predicted values
   - for analysis of covariance: regression lines
   - for analysis of variance: boxplots or similar
-(7. Make predictions using the `predict` function)
 
 ---
-class: inverse
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+3. **Fit model** using `lm` function
+4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
+5. **Check significant variables**
+6. **Check the effect sizes** e.g. in the `summary` table
+7. **Plot model results** (only plot regression lines if significant)
+8. **Make predictions** using the `predict` function
+
+---
+class: inverse, center, middle
 
 # Transformations
----
+
 ---
 # When to transform?
 
-Transformation of the response variable Y can help with potential violations of the model assumptions:
+Transformation of the response variable Y can help with **potential violations of the model assumptions**:
 
 - residuals non-normally distributed
   - skewed distribution
@@ -999,38 +1118,41 @@ Transformation of the response variable Y can help with potential violations of 
 - non-constant variance
 
 --
+
 **Example**
 
 - Non-linear function $y = a * e^{b*x}$
 - Transformed to a linear model: $log(y) = log(a) + b * x$
 
 --
+
 - Common natural processes: exponential growth and decay
 
 ---
 # Example
 
-Dataset `decay` on the decay of soil organic matter over time.
+Data set `decay` on the decay of soil organic matter over time.
 
+.pull-left[
 Two variables:
-- `amount` of orgnic matter
+- `amount` of organic matter
 - `time`
+]
+.pull-right[
 
-```{r eval=FALSE}
-decay <- read_tsv("day03/data/Decay.txt")
-```
-
-
-```{r}
+```{r echo=FALSE}
 decay <- read_tsv(here::here("data/slides/03_Decay.txt"))
 ggplot(decay, aes(x=time, y= amount))+
   geom_point()
 ```
+]
 
 ---
 # Example
 
-First, let's try to fit a model to the untransformed data and look at the diagnostic plots:
+First, let's try to fit a linear model to the untransformed data and look at the diagnostic plots:
+
+--
 
 .pull-left[
 ```{r eval = FALSE}
@@ -1054,7 +1176,7 @@ performance::check_model(mod1)
 ---
 # Exercise
 
-Let's refit the model to transformed data:
+Let's refit the model to transformed data (log-transformed response variable):
 
 .pull-left[
 ```{r eval = FALSE}
@@ -1075,9 +1197,9 @@ performance::check_model(mod2)
 ]
 
 ---
-# Plot the results
+# Plot the model
 
-If we want to plot the results of the model on the transformed scale, we can just use `geom_smooth` in combination with `scale_y_log10`:
+To plot the results of the model **on the transformed scale**, we can just use `geom_smooth` in combination with `scale_y_log10`
 
 .pull-left[
 ```{r eval = FALSE}
@@ -1090,7 +1212,7 @@ ggplot(decay, aes(x = time, y = amount)) +
 ]
 
 .pull-right[
-```{r echo = FALSE}
+```{r echo = FALSE, fig.height=6.0}
 ggplot(decay, aes(x= time, y=amount))+
   geom_point()+
   scale_y_log10()+
@@ -1100,29 +1222,32 @@ ggplot(decay, aes(x= time, y=amount))+
 ]
 
 ---
-# Plot the results
+# Plot the model
 
-However, we mostly want to plot the model on the scale of the original data. For this, we need to use `predict`:
+However, we mostly want to plot the model **on the scale of the original data**. For this, we need to use `predict`
+
+--
 
 .pull-left[
 ```{r eval=FALSE}
-# on the original scale using predict
+# step 1: create some data to predict from
 pred_data <- tibble(time = 0:30)
+# step 2: make the prediction
 amount_pred <- predict(mod, newdata = pred_data)
-# backtransform to original scale
+# step 3: backtransform to original scale and add to prediction data
 pred_data$amount <- exp(amount_pred) #<<
-
+# step 4: add model to plot
 ggplot(decay, aes(x= time, y=amount))+
   geom_point()+
   geom_line(data = pred_data)
 ```
 
-- The trick here is that we have to backtransform our predictions using `exp` as the inverse function of `log`
+- The trick here is that we have to **backtransform** the predictions using `exp` as the inverse function of `log`
 
 ]
 
 .pull-right[
-```{r echo=FALSE}
+```{r echo=FALSE, fig.height=6.0}
 # on the original scale using predict
 pred_data <- tibble(time = 0:30)
 amount_pred <- predict(mod2, newdata = pred_data)
@@ -1135,24 +1260,40 @@ ggplot(decay, aes(x= time, y=amount))+
 ```
 
 ]
----
-# Summary
 
-**General Protocol**
+---
+# Transformations step by step
 
 1. Plot raw data
+
+--
+
 2. Fit a model to untransformed data
+
+--
+
 3. Check diagnostic plots
+
+--
+
 4. Apply a transformation
+
+--
+
 5. Re-fit model to transformed data
+
+--
+
 6. Check diagnostic plots again
+
+--
+
 7. Plot raw data and add model predictions *based on the transformed data*
   - Backtransform predictions appropriately:
     - $log(y) <=> exp(y)$
     - $sqrt(y) <=> y^2$
     
 ---
-
 # Resources
 
 https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Learning_Statistics_with_R_-_A_tutorial_for_Psychology_Students_and_other_Beginners_(Navarro)/16%3A_Factorial_ANOVA/16.06%3A_ANOVA_As_a_Linear_Model
