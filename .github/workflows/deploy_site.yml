@@ -10,18 +10,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: r-lib/actions/setup-r@master
+  #    - uses: r-lib/actions/setup-r@master
 
-      - uses: r-lib/actions/setup-pandoc@master
+  #    - uses: r-lib/actions/setup-pandoc@master
 
-      - name: Install dependencies
-        run: |
-          #install.packages("rmarkdown")
-          #install.packages("distill")
-        shell: Rscript {0}
+  #    - name: Install dependencies
+  #      run: |
+  #        #install.packages("rmarkdown")
+  #        #install.packages("distill")
+   #     shell: Rscript {0}
 
-      - name: Render Site
-        run: Rscript -e '#rmarkdown::render_site(encoding = "UTF-8")'
+  #    - name: Render Site
+   #     run: Rscript -e '#rmarkdown::render_site(encoding = "UTF-8")'
       - name: Add dummy files
         run: |
           mkdir docs
@@ -37,6 +37,8 @@ jobs:
           git commit -m "Re-build gh-pages on master" || echo "Nothing to commit"
           echo "Commited files"
           # checkout gh-pages branch and delete old rendered files
+          git branch -a
+          echo "Print branches"
           git checkout gh-pages
           echo "Checked out gh-pages"
           # Check if the directory is empty, if not delete everything
