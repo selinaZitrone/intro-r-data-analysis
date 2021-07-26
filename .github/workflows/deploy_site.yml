@@ -26,11 +26,15 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          echo "Did configuration"
           # commit rendered files to master
           git add . || echo "Nothing to add"
+          echo "added files"
           git commit -m "Re-build gh-pages on master" || echo "Nothing to commit"
+          echo "Commited files"
           # checkout gh-pages branch and delete old rendered files
           git checkout gh-pages
+          echo "Checked out gh-pages"
           # Check if the directory is empty, if not delete everything
           if [ -n "$(ls)"]; then
             echo "Empty directory, nothing to remove"
