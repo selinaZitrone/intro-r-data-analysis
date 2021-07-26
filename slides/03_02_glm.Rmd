@@ -27,13 +27,21 @@ params:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,
-                      warning = FALSE,
-                      message = FALSE)
+knitr::opts_chunk$set(
+  echo = TRUE, 
+  warning = FALSE, 
+  message = FALSE, 
+  collapse = TRUE,
+  fig.height = 6.3,
+  fig.allign = 'center',
+  fig.retina = 3.5,
+  fig.showtext = TRUE
+)
 library(fontawesome)
 library(tidyverse)
 
-theme_set(theme_classic())
+theme_set(theme_classic(base_size = 16))
+cols <- c( "#4C7488","#D78974", "#D7BC74")
 ```
 
 ```{r child="title_slide.Rmd"}
@@ -68,7 +76,7 @@ There are types of data that (generally) violate these assumptions.
 
 - percentages: bounded between 0 and 1
 - variance highest at p = 0.5, lower towards p = 0 and 1<br>
-`r fa("arrow-right")` response described by a ***binomial distribution*** (# successees in N trials with probability p)
+`r fa("arrow-right")` response described by a ***binomial distribution*** (# successes in N trials with probability p)
 
 --
 
@@ -76,7 +84,7 @@ There are types of data that (generally) violate these assumptions.
 
 - Only 0 and 1
 - variance highest at p = 0.5, lower towards p = 0 and 1<br>
-`r fa("arrow-right")` response described by a ***bernoulli distribution*** (binomail distribution with N=1)
+`r fa("arrow-right")` response described by a ***bernoulli distribution*** (binomial distribution with N=1)
 
 ---
 # GLMs background
@@ -116,11 +124,6 @@ There are types of data that (generally) violate these assumptions.
 - **Likelihood function:** How does the likelihood depend on the model parameters? `r fa("arrow-right")` Maximum: ML parameter estimates of the GLM
 
 ---
-class: inverse, middle, center
-
-# Binomial GLMs in `r fa("r-project")`
-
----
 # Binomial distribution
 
 - Frequency distribution of the number of successes of an event with success probability p and N trials.
@@ -134,7 +137,7 @@ $E(k) = N*p$
 
 $Var(k) = N*p*(1-p)$
 
-with $k$ being the number of "sucesses"
+with $k$ being the number of "successes"
 ]
 .pull-right[
 ![](img/day03/binom_plot.png)
@@ -148,29 +151,60 @@ with $k$ being the number of "sucesses"
 # Binomial and binary GLMs
 <br>
 
-- link function: $logit(p_i) = ln(\frac{p_i}{1-p_i}) = \eta_i$
+- logit link function: $logit(p_i) = ln(\frac{p_i}{1-p_i}) = \eta_i$
 
 - inverse link function: $p_i = \frac{e^{\eta_i}}{1+e^{\eta_i}}$
 
-- binomial error distribution
+- binomial error distribution: $\epsilon \sim B(p_i, N = n)$
 
 ---
-# Poisson glm for count data
+# Poisson distribution
 
-Count data often follow a poisson distribution
+- Frequency distribution of counts of rare events
+  - E.g. Bird count in forests
+  
+.pull-left[
 
-![](img/day3/glm_poisson_placeholder.png)
-- log link function
+$f(k) = \frac{e^{-\lambda}\lambda^k}{k!}$
+
+$E(k) = \lambda$
+
+$Var(k) = \lambda$
+
+with $k$ being the number of occurrences
+]
+
+.pull-right[
+![](img/day03/poiss_plot.png)
+]
+
 ---
-# Example
+# Poisson GLMs
+<br>
 
-Data set:
+- log link function: $ln(\lambda_i) = \eta_i$
+
+- inverse link function: $\lambda_i = e^{\eta_i}}$
+
+- poisson error distribution: $\epsilon \sim P(\lambda_i)$
+
+---
+class: inverse, middle, center
+
+# GLMs in `r fa("r-project")`
+
+## Let's look a poisson GLM as example
+
+---
+# The data
+
+Data set: Species diversity in plots with different soil pH
 
 .pull-left[
 
-- Response variable:
+- **Response variable:**
   - number of plant species
-- Predictor variables:
+- **Predictor variables:**
   - Plot biomass
   - soil pH
 
@@ -187,119 +221,195 @@ print(specdat, n=4)
 
 .pull-right[
 ```{r echo=FALSE}
-ggplot(specdat, aes(y=Species, x=Biomass, color = pH))+
-  geom_point()
+spec_plot <- ggplot(specdat, aes(y=Species, x=Biomass, color = pH))+
+  geom_point(size = 2)+
+  scale_color_manual(values = cols)
+spec_plot
 ```
-
 ]
 
 ---
-# Example
+# Fit the model
 
-Fit the most complex model with interaction:
+$H_0$: The number of species increases with plot biomass and pH. The effect of biomass on species number depends on pH of the soil.
+
+--
+
+Fit the most complex model with interaction to describe our hypothesis:
 
 ```{r}
-mod1 <- glm(Species ~ Biomass + pH + Biomass:pH, data = specdat,
+mod1 <- glm(Species ~ Biomass + pH + Biomass:pH, 
+            data = specdat,
             family = "poisson") #<<
 ```
 
-Structure of a glm is the same as for lm but with a family argument that specifies the error distribution.
+--
+
+- same structure as `lm`
+
+- add family argument to specify the error distribution
+  - by default, R will pick the corresponding link function for the error distribution.
+  
+  - you could also be explicit about link function with `family = poisson(link = "log")`
+  
+  - for more information have a look at `?family`
 
 ---
-# Example
+# Summary table
 
 ```{r}
 summary(mod1)
 ```
 
+---
+# Summary table
+
 - Coefficients are on scale of link function `r fa("arrow-right")` cannot be directly interpreted on the scale of the data
+
 - For glms: deviance as measure of goodness-of-fit (for lms it was sum of squared residuals)
 
 ---
 # Hypothesis tests in GLMs
 
 - for linear models: F-tests
+
   - $F = \frac{\frac{SSR}{df(mod1)}}{\frac{SSR}{df{mod2}}}$
+  
   - in R: `drop1(mod1, test = "F")`
+  
+--
+  
 - for generalized linear models: likelihood-ratio (LR) test
+
   - $LR = deviance(mod1) - deviance(mod2)$
+  
   - LR follows a $\chi^2$ distribution
+  
   - in R: `drop1(mod1, test = "Chisq")`
   
 ---
-# Example
+# Hypothesis tests in GLMs
+
+Test the significant of the predictors in our model with
 
 ```{r}
 drop1(mod1, test = "Chisq")
 ```
 
-- Significant interaction betwenn pH and Biomass
+--
+
+If we remove the interaction between biomass and pH from the model, the deviance increases significantly <br>
+`r fa("arrow-right")` There is a significant effect or biomass and pH on species richness.
 
 ---
-# Plot the results
+# Plot the model
 
 **Option 1: Use predict function**
 
 ```{r}
+# step 1: creat some data to predict from
 pred_dat <- expand_grid(
-  Biomass = seq(from = min(specdat$Biomass), to = max(specdat$Biomass), length.out = 200),
+  Biomass = seq(
+    from = min(specdat$Biomass), 
+    to = max(specdat$Biomass), 
+    length.out = 200),
   pH = unique(specdat$pH)
 )
 ```
 
+--
+
 ```{r}
-# predict species with the new data
+# step 2: predict species with the new data
+# careful: add type = response
 pred_dat$Species <- predict(mod1, newdata = pred_dat, 
                             type = "response") #<<
 
 ```
-- `type = response` makes sure that the predictions are on the scale of the response variable and not on the scale of the link function
 
+With `type = response` we predict **on the scale of the response variable** (i.e. the data) and not on the scale of the link function
 
 ---
-# Plot the results
+# Plot the model
 
 **Option 1: Use predict function**
 
-```{r}
-ggplot(specdat, aes(y=Species, x=Biomass, color = pH))+
-  geom_point()+
-  geom_line(data = pred_dat)
+.pull-left[
+```{r eval=FALSE}
+# define some colors
+cols <- c( "#4C7488","#D78974", "#D7BC74")
+
+# step 3: Add model predictions to the plot
+ggplot(specdat, aes(
+  y = Species,
+  x = Biomass,
+  color = pH
+)) +
+  geom_point() +
+  geom_line(data = pred_dat) + #<<
+  scale_color_manual(values = cols)
 ```
 
-- Note: aesthetics x, y and color are inherited from the top-level `ggplot` call to `geom_point` and to `geom_line`
-  - Therefore `pred_dat` needs to have the same column names as specdat!
-  
+]
+.pull-right[
+
+```{r echo=FALSE}
+spec_plot +
+  geom_line(data = pred_dat)+
+  scale_color_manual(values = cols)
+```
+
+]
+
 ---
 # Plot the results
 
 **Option 2: Use `geom_smooth`**
 
-For glms, we can also use `geom_smooth` to add the model to the plot.
-But careful: it plots the most complex model with interaction (which is what we want to do in this example)
-
-```{r}
-ggplot(specdat, aes(y=Species, x=Biomass, color = pH))+
-  geom_point()+
-  geom_smooth(    
+.pull-left[
+```{r eval=FALSE}
+ggplot(specdat, aes(y = Species, x = Biomass, color = pH)) +
+  geom_point() +
+  geom_smooth(
     method = "glm", #<<
-    method.args = list(#<<
-      family = "poisson"#<<
-      ))
-
+    method.args = list( #<<
+      family = "poisson" #<<
+    )
+  )
 ```
----
-class: inverse
 
-# GLM and proportion data
+- careful: `geom_smooth` always uses most complex model with all interactions
+  - in this case: we want exactly that
+
+]
+.pull-right[
+```{r echo=FALSE}
+spec_plot +
+  geom_smooth(
+    method = "glm", #<<
+    method.args = list( #<<
+      family = "poisson" #<<
+    )
+  )
+```
+]
+
 ---
-# Example
+class: inverse, middle, center
+
+# GLMs with proportion data
+## Let's look at an example
+
+---
+# The data
 
 Winter mortality of black-tailed prairie dogs
 
 .pull-left[
 
-Question: How do
+**Question**:
+
+How do
 
 - successful mating
 - achievement of a certain minimum weight before winter
@@ -310,12 +420,16 @@ predict the ***probability of survival & death*** in winter?
 
 ]
 .pull-right[
-![](img/day3/Kissing_Prairie_dog_edit_3.jpg)
+.center[![:scale 75%](img/day3/Kissing_Prairie_dog_edit_3.jpg)]
 ]
 .footnote-right[By I, <a rel="nofollow" class="external text" href="https://sites.google.com/site/thebrockeninglory/">Brocken Inaglory</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=2542206">Link</a>]
 
 ---
-# Example: The data set
+# The data
+
+Winter mortality of black-tailed prairie dogs
+
+.pull-left[
 
 ```{r eval=FALSE}
 pdogs
@@ -323,17 +437,31 @@ pdogs
 
 ```{r echo=FALSE}
 pdogs <- read_csv(here::here("data/slides/03_prairiedogs.csv"))
-print(pdogs, n= 5)
+print(pdogs, n = 3)
 ```
 
-- 3 categorical predictors: mated, hibernation, min.weight
-- total no. of animals (n.tot)
-- number of dead animals (n.death)
+- 3 categorical predictors: `mated`, `hibernation`, `min.weight`
+- total no. of animals (`n.tot`)
+- number of dead animals (`n.death`)
 
 `r fa("arrow-right")` What is the response variable here?
 
+]
+
+.pull-right[
+.center[![:scale 75%](img/day3/Kissing_Prairie_dog_edit_3.jpg)]
+]
+
+.footnote-right[By I, <a rel="nofollow" class="external text" href="https://sites.google.com/site/thebrockeninglory/">Brocken Inaglory</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=2542206">Link</a>]
+
+
+
 ---
-# Example
+# The response variable
+
+Winter mortality of black-tailed prairie dogs
+
+.pull-left[
 
 Response variable: **proportion** of surviving (or dead) animals
 
@@ -348,16 +476,27 @@ pdogs <- pdogs %>%
   )
 ```
 
+]
+
+.pull-right[
+.center[![:scale 75%](img/day3/Kissing_Prairie_dog_edit_3.jpg)]
+]
+
+.footnote-right[By I, <a rel="nofollow" class="external text" href="https://sites.google.com/site/thebrockeninglory/">Brocken Inaglory</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=2542206">Link</a>]
+
 ---
-# Example
+# The response variable
 
-Now we calculated the response variable that we can use in our model (`p.dead` or `p.surv` depending on the question).
-
-But what could be the problem with that?
+The response variables (`p.dead` or `p.surv` depending on the question) are now added to the data
 
 ```{r echo=FALSE}
 print(pdogs, n = 5)
 ```
+
+--
+
+But what could be the problem with that?
+
 --
 `r fa("arrow-right")` loss of information in proportions!
 
@@ -365,32 +504,43 @@ print(pdogs, n = 5)
 - 100 survivors / 200 total = 50%
 **But** 100 out of 200: more information than 2 out of 4
 
+--
+
 `r fa("arrow-right")` data points with higher total number need more weight in model fitting
 
 ---
-# Model fitting
+# Fit the model
 
-**Option 1:** Give proportion of success as response AND total number as weights
+**Option 1:** Give **proportion of success** as response AND **total number** as weights
 
 ```{r eval=FALSE}
-mod1 <- glm(p.surv ~ ..., data = pdogs1,
-            family = "binomial", #<<
-            weights = n.tot)#<<
+mod1 <- glm(
+  formula = p.surv ~ ..., # choose predictors according to your hypothesis
+  data = pdogs,
+  family = "binomial", #<<
+  weights = n.tot #<<
+)
 ```
 
----
-# Model fitting
+- `family = "binomial"` by default uses logit link function
 
-**Option 2:** Give a table with two columns as response:
+---
+# Fit the model
+
+**Option 2:** Give a **table with two columns** as response:
 - No of successes
 - No of failures
 
 ```{r eval=FALSE}
-mod1 <- glm(cbind(n.surv, n.death)~ ..., #<<
-            data = pdogs,
-            family = "binomial") #<<
+mod1 <- glm(
+  cbind(n.surv, n.death) ~ ..., #<<
+  data = pdogs,
+  family = "binomial" #<<
+)
 ```
 
 ---
 # Now you
 
+---
+# Additional Resources
