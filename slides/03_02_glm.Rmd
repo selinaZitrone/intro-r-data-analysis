@@ -43,42 +43,39 @@ theme_set(theme_classic())
 
 Assumptions of linear models:
 
-.pull-left[
 - Normal distribution of residuals
   - errors and response not bounded
 
-![](img/day3/regression_assumption_placeholder.png)
-  
-]
-
-.pull-right[
 - Constant variance of residuals
   - no relationship between mean and variance of y
-![](img/day3/lm_assumption_variance_placeholder.png)
-]
+  
+--
+
+There are types of data that (generally) violate these assumptions.
 
 ---
 # GLMs background
 
-There are types of data that (generally) violate these assumptions.
-
 **Count data**
 
 - are bounded (cannot be < 0)
-- variance increases with the mean
+- variance increases with the mean<br>
 `r fa("arrow-right")` response described by a ***poisson distribution***
+
+--
 
 **Proportion data**
 
 - percentages: bounded between 0 and 1
-- variance highest at p = 0.5, lower towards p = 0 and 1
+- variance highest at p = 0.5, lower towards p = 0 and 1<br>
 `r fa("arrow-right")` response described by a ***binomial distribution*** (# successees in N trials with probability p)
 
+--
 
 **Binary data**
 
 - Only 0 and 1
-- variance highest at p = 0.5, lower towards p = 0 and 1
+- variance highest at p = 0.5, lower towards p = 0 and 1<br>
 `r fa("arrow-right")` response described by a ***bernoulli distribution*** (binomail distribution with N=1)
 
 ---
@@ -86,32 +83,77 @@ There are types of data that (generally) violate these assumptions.
 
 **Components of a GLM**
 
-- Error structure 
-  - non-normal distribution e.g. skewed, bounded, non-negative (e.g. Poisson distribution)
-  
 - Linear predictor $\eta_i = \beta_0 + \sum \beta_j * X_{i,j}$
   - like a linear model: linear combination of the effects of the predictors $X_j$
 
+--
+
+- Error structure 
+  - non-normal distribution e.g. skewed, bounded, non-negative (e.g. Poisson distribution)
+  
+--
+
 - Link function $g(\mu_i) = \eta_i$
-  - relates the expected response values ($\mu_i$) to the linear predictor
-  - predicted values: require inverse link function!
+  - relates the expected response values $\mu_i$ to the linear predictor
   - A linear model is also a glm with a gaussian link function (identity `=`)
+  - predicted values: require inverse link function!
 
 ---
-# Parameter estimation
+# Parameter estimation in GLMS
 
-![](img/day3/glm_param_estimation_placeholder.png)
+#### Linear models
+
+- Ordinary Least Squares (OLS)
+- Minimizing the residual sum of squares to find parameters
+- This method only works if linera model assumptions are not violated
+
+--
+
+#### GLMs
+
+- Maximizing the likelihood (ML)
+- **Likelihood:** Probability of the data *given* the model
+- **Likelihood function:** How does the likelihood depend on the model parameters? `r fa("arrow-right")` Maximum: ML parameter estimates of the GLM
 
 ---
-# Binomial glms
+class: inverse, middle, center
 
-![](img/day3/binomial_glm_placeholder.png)
+# Binomial GLMs in `r fa("r-project")`
+
 ---
-# Binomial glms
+# Binomial distribution
+
+- Frequency distribution of the number of successes of an event with success probability p and N trials.
+  - E.g. No of "six" with 10 dice: $p = 0.5$, $N = 10$
+  
+.pull-left[
+
+$f(k) = \binom{N}{k} p^k * (1-p)^{N - k}$
+
+$E(k) = N*p$
+
+$Var(k) = N*p*(1-p)$
+
+with $k$ being the number of "sucesses"
+]
+.pull-right[
+![](img/day03/binom_plot.png)
+]
+
+--
+
+**Bernoulli** distribution as special case with N = 1 (e.g. coin flip).
+
+---
+# Binomial and binary GLMs
+<br>
 
 - link function: $logit(p_i) = ln(\frac{p_i}{1-p_i}) = \eta_i$
+
 - inverse link function: $p_i = \frac{e^{\eta_i}}{1+e^{\eta_i}}$
+
 - binomial error distribution
+
 ---
 # Poisson glm for count data
 
