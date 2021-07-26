@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>01_02_Functions.knit</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Selina Baldauf" />
+    <meta name="date" content="2021-06-15" />
+    <script src="01_02_Functions_files/header-attrs-2.9/header-attrs.js"></script>
+    <link href="01_02_Functions_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+class: inverse title-slide
+background-image: url()
+background-size: 50%
+background-position: 70% 70%
+
+# R Basics - Functions
+
+## Introduction to R - Day 1
+
+### Instructor: [Selina Baldauf](https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/botanik/ag_tietjen/People/wissenschaftliche_programmierer/baldauf/index.html) &lt;br&gt;
+
+### Freie Universität Berlin - Theoretical Ecology
+
+.footnote-left[
+  2021-06-15 (updated: 2021-07-26)
+]
+
+---
+
+# Functions
+
+Functions make multiple operations available under one command.
+--
+
+.pull-left[
+#### Functions in R:
+- have a **name**
+- have (0, 1, or any number of) **arguments as input**
+- they calculate something using the arguments
+- usually they have a **return value** (the output)
+- can have **side effects** (like plotting)
+]
+
+.pull-right[
+![](img/day1/function_general.png)
+]
+
+--
+
+General structure of a function call:
+
+.strong[.col1[function_name] ( .col2[argument] = .col3[value] )]
+
+---
+
+# The mean function
+
+.pull-left[
+
+&lt;br&gt;
+ .strong[.col1[mean] ( .col2[x] = .col3[c(1,5,6)] )]
+
+]
+
+.pull-right[
+![](img/day1/function_mean.png)
+]
+
+--
+
+
+```r
+mean(x = c(1,5,6)) # or short: mean(c(1,5,6))
+```
+
+```
+## [1] 4
+```
+
+--
+
+- arguments can also be variables
+- the output of a function can be stored in a variable
+
+
+```r
+values &lt;- c(1,5,6)
+result &lt;- mean(x = values)
+result
+```
+
+```
+## [1] 4
+```
+
+---
+
+# The mean function
+
+But what does the mean function do? What are the arguments that I can use?
+
+--
+
+.pull-left[
+
+<svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> &amp;nbsp; call the function help using `?`
+
+
+```r
+?mean
+```
+]
+.pull-right[
+![:scale 700%](img/day1/mean_help_blank.png)
+]
+
+---
+class: center, middle
+
+![](img/day1/mean_help_blank.png)
+
+---
+
+# Function arguments
+
+- arguments are the **input** to a function
+- functions can provide default argument values for some arguments
+- default values for arguments are indicated in the function help
+
+&lt;br&gt;
+.center[
+![:scale 60%](img/day1/mean_help_default_arguments.png)]
+
+---
+
+# Function arguments
+
+
+```r
+# NA is a missing value
+values &lt;- c(1, 5, 6, NA)
+mean(x = values)
+```
+
+```
+## [1] NA
+```
+
+What happened?&amp;nbsp;&amp;nbsp;
+--
+<svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg>&amp;nbsp;  `na.rm` argument is `FALSE` by default.&lt;br&gt;
+--
+Set it to true if you want to calculate the mean despite missing values:
+
+
+```r
+mean(x = values, na.rm = TRUE)
+```
+
+```
+## [1] 4
+```
+--
+
+**Arguments with default values are optional, arguments without default values are not!**
+
+
+```r
+mean()
+```
+
+```
+## Error in mean.default(): argument "x" is missing, with no default
+```
+
+---
+
+# Function arguments
+
+**Argument matching** can be achieved by **position** or by **name**
+
+
+```r
+mean(x, trim = 0, na.rm = FALSE, ...)
+values &lt;- c(1, 5, 6, NA)
+```
+
+--
+
+These calls to mean all are the same:
+
+
+```r
+mean(values, , TRUE) # by position
+mean(x = values, na.rm = TRUE) # by name
+mean(na.rm = TRUE, x = values) # this also works but is not really nice
+mean(values, na.rm = TRUE) # a mix of both
+```
+--
+- named arguments are (generally) preferred
+  - easier to remember
+  - easier to read
+  - some function can have a lot of arguments
+--
+
+- however, it is common to match the first argument of a function by position (especially when the first argument is some kind of data)
+
+---
+# Where do functions come from?
+
+.pull-left[
+- built into R (base R functions)
+]
+.pull-right[
+
+```r
+mean() # calculate mean
+seq()  # generate a sequence of values
+lm()   # fit a linear model
+```
+]
+
+--
+
+.pull-left[
+ - from additional packages
+  - packages must be installed first
+  - call a function from a package using `packageName::functionName()`
+]
+.pull-right[
+
+```r
+readr::read_csv() # read a csv file
+beepr::beep() # make a beep sound
+stringr::str_extract() # extract a part from a string
+```
+]
+
+--
+
+.pull-left[
+- custom functions
+  - we can write functions ourselves and then use them in the code
+]
+
+.pull-right[
+
+
+```r
+# custom function that prints input in a sentence
+my_function &lt;- function(x) {
+  print(paste(
+    "The variable value is", x
+  ))
+}
+my_function(5)
+```
+
+]
+---
+# Summary
+
+- Functions take **input** in the form of (named) arguments, calculate something and **return** a result
+--
+- Functions are called by their name, followed by parentheses: `functionName()`
+--
+- Functions from additional packages can be called like this: `packageName::functionName()`
+--
+- Call `?functionName` to open the help of a function
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false,
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
