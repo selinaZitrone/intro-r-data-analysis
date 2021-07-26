@@ -16,12 +16,16 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages("rmarkdown")
-          install.packages("distill")
+          #install.packages("rmarkdown")
+          #install.packages("distill")
         shell: Rscript {0}
 
       - name: Render Site
-        run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
+        run: Rscript -e '#rmarkdown::render_site(encoding = "UTF-8")'
+      - name: Add dummy files
+        run: |
+          mkdir docs
+          touch docs/dummy.txt
       - name: Commit results
         run: |
           git config --local user.email "action@github.com"
