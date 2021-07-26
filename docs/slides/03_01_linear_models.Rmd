@@ -19,7 +19,7 @@ output:
           </div>
         </div>
 params:
-  title: "Linear models"
+  title: "Linear Models"
   day: "3"
   bg_image: ""
   bg_image_scale: "30%"

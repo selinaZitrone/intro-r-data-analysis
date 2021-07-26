@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>03_01_linear_models.knit</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Selina Baldauf" />
+    <meta name="date" content="2021-06-15" />
+    <script src="03_01_linear_models_files/header-attrs-2.9/header-attrs.js"></script>
+    <link href="03_01_linear_models_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+class: inverse title-slide
+background-image: url()
+background-size: 30%
+background-position: 90% 90%
+
+# Linear Models
+
+## Introduction to R - Day 3
+
+### Instructor: [Selina Baldauf](https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/botanik/ag_tietjen/People/wissenschaftliche_programmierer/baldauf/index.html) &lt;br&gt;
+
+### Freie Universität Berlin - Theoretical Ecology
+
+.footnote-left[
+  2021-06-15 (updated: 2021-07-26)
+]
+
+---
+class: inverse, middle, center
+
+# A little bit of theoretical background
+
+---
+# Linear models background
+
+#### The data:
+
+  - random sample of n data points ( `\(Y_i, X_{i1}, X_{i2},..., X_{ip}\)`, `\(i = 1...n\)`) 
+  
+    - `\(X_{i1}, X_{i2},..., X_{ip}\)` are p **independent predictor** variables
+    
+    - `\(Y_i\)` is the **dependent** observation and **response variable**
+
+--
+
+#### Aim of linear model:
+
+  - (How) do the predictor variables impact the response variable?
+  
+  - Can we better predict values for the response variable, if we account for the predictor variables?    
+  
+
+---
+# Linear models background
+
+
+
+.pull-left[
+&lt;br&gt;
+
+**Linear regression**
+
+- numerical response
+- numerical predictor(s)
+
+
+**Analysis of variance**
+
+- numerical response
+- categorical predictor(s)
+
+
+**Analysis of covariance**
+
+- numerical response
+- numerical and categorical predictor(s)
+
+]
+
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-3-1.png" width="504" /&gt;
+
+]
+
+---
+# Linear models background
+
+Linear relation with two predictor variables `\(X_1\)` and `\(X_2\)` ( `\(i = 1...n\)` ):
+
+**Without interaction**
+
+`\(Y_i = \beta_0 + \beta_1*X_{1,i} + \beta_2*X_{2,i} + \epsilon\)`
+
+--
+
+**With interaction**
+
+`\(Y_i = \beta_0 + \beta_1*X_{1,i} + \beta_2*X_{2,i} + \beta_3*X_{1,i}*X_{2,i} + \epsilon\)`
+
+with
+
+- `\(Y_i\)` value of response variable
+- `\(\beta_0, \beta_1, \beta_2\)` model coefficients
+- `\(X_{1,i}\)` value of predictor `\(X_1\)`
+- `\(X_{2,i}\)` value of predictor `\(X_2\)`
+- `\(\epsilon\)` error term
+
+---
+# Goodness of fit linear model
+
+.pull-left[
+
+#### Model residuals
+
+`\(Y_i - \hat{Y}_i\)`
+
+#### Residual sum of squares (RSS)
+
+`\(RSS = \sum_{i=1}^{n} Y_i - \hat{Y}_i\)`
+
+
+#### Aim of the model fitting:
+Find the parameters that lead to the lowest sum of squares.
+]
+
+.pull-right[
+
+![:scale 80%](img/day3/residual.png)
+ 
+]
+
+---
+# Significant effects
+
+If we account for variable A: do the residuals become significantly smaller?
+
+.center[![:scale 70%](img/day3/lm_residuals_placeholder.png)]
+
+---
+# Assumptions for linear models
+
+Finding the parameters that lead to the lowest residual sum of squares works only if:
+
+.pull-left[
+
+- residuals are normally distributed
+
+- residual variance is constand
+
+- no strong outliers
+
+
+]
+
+.pull-right[
+
+![](img/day3/regression_assumption_placeholder.png)
+]
+
+--
+
+
+This has to be checked for every linear model!
+
+---
+class: inverse, middle, center
+
+# How to fit linear models in <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>
+
+---
+# The data
+
+We use productivity data from grassland sites. &lt;br&gt;
+The data set is called `prod` and has  3 variables: site, productivity and richness (species richness):
+
+
+```r
+prod
+```
+
+
+```
+## # A tibble: 400 x 3
+##   site  richness productivity
+##   &lt;fct&gt;    &lt;dbl&gt;        &lt;dbl&gt;
+## 1 site1       23         122.
+## 2 site1       26         158.
+## 3 site1       24         165 
+## 4 site1       25         165.
+## # ... with 396 more rows
+```
+
+The variable site is a factor with two levels: site1 and site2
+
+
+```r
+levels(prod$site) # get all levels of the factor
+## [1] "site1" "site2"
+```
+
+---
+class: inverse, middle, center
+
+# Linear regression in <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>
+
+---
+# Linear regression in R
+
+.pull-left[
+
+#### Lets start with a Hypothesis `\(H_0\)`
+
+Productivity increases with species richness.
+ 
+#### Or in other words
+ 
+Can we significantly increase the accuracy of productivity predictions by taking into account species richness?
+]
+
+.pull-right[
+
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-7-1.png" width="504" /&gt;
+]
+
+---
+# Linear regression in R
+
+Use the `lm` function to fit a linear model in R.
+
+The general structure of the function call is like this:
+
+.center[&lt;code&gt;&lt;b&gt;lm ( formula = .col1[Y] ~ .col2[X], data = .col3[dat] )&lt;/b&gt;&lt;/code&gt;]
+
+with
+
+- &lt;b&gt;.col1[Y]&lt;/b&gt; being the response variable
+- &lt;b&gt;.col2[X]&lt;/b&gt; being the predictor(s)
+- &lt;b&gt;.col3[dat]&lt;/b&gt; being the name of the data
+
+--
+
+Multiple predictors can be added with `+`, `:` or `*` depending on interaction:
+
+- &lt;code&gt;&lt;b&gt;`Y ~ X1 + X2`&lt;/b&gt;&lt;/code&gt; tests effects without interaction
+- &lt;code&gt;&lt;b&gt;`Y ~ X1 + X2 + X1:X2`&lt;/b&gt;&lt;/code&gt; tests single effects and interaction between `X1` and `X2`
+- &lt;code&gt;&lt;b&gt;`Y ~ X1 * X2`&lt;/b&gt;&lt;/code&gt; is short for testing all single effects and all interactions (here same as line above)
+
+---
+# Linear regression in R
+
+.pull-left[
+
+Let's fit a linear model to test our hypothesis
+
+&lt;code&gt;&lt;b&gt;lm ( formula = .col1[Y] ~ .col2[X], data = .col3[dat] )&lt;/b&gt;&lt;/code&gt;
+
+
+```r
+prod_lm &lt;- lm(productivity ~ richness, 
+              data = prod)
+```
+]
+
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-9-1.png" width="504" /&gt;
+]
+
+---
+# Linear regression in R
+
+Is the effect of richness on productivity significant?
+
+**Or in other words**
+
+Does the model with richness as predictor significantly reduce the residual sum of squares?
+
+--
+
+#### Hypothesis testing using F-Tests
+
+Compare the complex model with a simple model that does not contain the predictor
+
+`\(H_0\)`: The error variance in the simple model is not significantly higher than in the more complex model
+
+--
+
+- `\(H_0\)` accepted: simplification was justified <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> use simple model without predictor
+
+--
+
+- `\(H_0\)` rejected: simplification reduced explanatory power <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> use complex model with predictor
+
+---
+# Linear regression in R
+
+#### Hypothesis testing using F-Tests in R
+
+
+`\(H_0\)`: The error variance in the simple model is not significantly higher than in the more complex model
+
+`drop1` deletes single terms from the model and performs an F-test: 
+
+
+```r
+drop1(prod_lm, test = "F")
+```
+
+--
+
+
+```
+## Single term deletions
+## 
+## Model:
+## productivity ~ richness
+##          Df Sum of Sq    RSS    AIC F value    Pr(&gt;F)    
+## &lt;none&gt;                132779 2326.0                      
+## richness  1    254119 386899 2751.8  761.71 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+--
+
+Result: The error variance of the simple model (Null model) is significantly higher than of the model with richness. <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> Richness increases productivity ($F_{1,399}$ = 761.71, p &lt; 0.001)
+
+---
+
+# Extracting the coefficients
+
+
+```r
+summary(prod_lm)
+## 
+## Call:
+## lm(formula = productivity ~ richness, data = prod)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -47.593 -13.683   0.029  13.970  42.295 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  84.6982     3.3987   24.92   &lt;2e-16 ***
+## richness      2.9938     0.1085   27.60   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 18.27 on 398 degrees of freedom
+## Multiple R-squared:  0.6568,	Adjusted R-squared:  0.6559 
+## F-statistic: 761.7 on 1 and 398 DF,  p-value: &lt; 2.2e-16
+```
+
+---
+# Summary table
+
+.center[![:scale 80%](img/day3/summary_mod_resid.png)]
+
+---
+# Summary table
+
+.center[![:scale 80%](img/day3/summary_coeffs.png)]
+
+---
+# Summary table
+
+.center[![:scale 80%](img/day3/summary_t_stats.png)]
+
+---
+# Summary table
+
+.center[![:scale 80%](img/day3/summary_r2.png)]
+
+---
+# Summary table
+
+.center[![:scale 80%](img/day3/summary_F.png)]
+
+---
+# Test model assumptions
+
+Test model assumptions to make sure that:
+
+- residuals are normally distributed
+- variance is constant (homogeneous)
+- there are no strong outliers or very influential observations
+
+
+```r
+# install.packages("performance")
+performance::check_model(prod_lm)
+```
+
+Another option without an additional package using base R would be:
+
+
+```r
+par(mfrow = c(2,2)) # change graphics settings to fit 4 plots
+plot(prod_lm) # The actual diagnostic plots
+par(mfrow=c(1,1)) # change graphics settings back to default
+```
+
+---
+# Test model assmptions
+
+.pull-left[
+
+Check the assumptions
+
+- residuals are normally distributed ✔️
+- variance is constant (homogeneous) ✔️
+- there are no strong outliers or very influential observations ✔️ 
+
+Checking diagnostic plots needs some experience
+
+- real life data (almost) never perfectly fit the assumptions
+- linear models are to some extent robust against violations of the assumptions
+]
+
+.pull-right[
+
+```r
+performance::check_model(prod_lm)
+```
+
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-15-1.png" width="504" /&gt;
+]
+
+---
+# Plot the model
+
+--
+
+#### Option 1
+Extract coefficients of the model and add the regression line:
+
+--
+
+.pull-left[
+
+
+```r
+# These are the coefficients of the lm
+prod_lm$coefficients
+## (Intercept)    richness 
+##   84.698163    2.993774
+```
+
+
+```r
+intercept &lt;- prod_lm$coefficients[1]
+slope &lt;- prod_lm$coefficients[2]
+```
+
+]
+
+---
+# Plot the model
+
+#### Option 1
+Extract coefficients of the model and add the regression line
+
+.pull-left[
+
+
+```r
+# These are the coefficients of the lm
+prod_lm$coefficients
+## (Intercept)    richness 
+##   84.698163    2.993774
+```
+
+
+```r
+intercept &lt;- prod_lm$coefficients[1]
+slope &lt;- prod_lm$coefficients[2]
+```
+
+Add a line defined by slope and intercept using `geom_abline()`:
+
+
+```r
+ ggplot(prod, aes(x=richness, y=productivity))+
+  geom_point() +
+* geom_abline(slope = slope, intercept = intercept)
+```
+]
+
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-21-1.png" width="504" /&gt;
+]
+
+---
+# Plot the model
+
+#### Option 2
+Add the regression line directly as a ggplot layer
+
+--
+
+.pull-left[
+
+Use `geom_smooth()` to add the model directly:
+
+
+```r
+ ggplot(prod, aes(x=richness, y=productivity))+
+  geom_point() +
+* geom_smooth(method = "lm")
+```
+
+]
+
+.pull-right[
+
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-23-1.png" width="504" /&gt;
+
+]
+
+---
+# Plot the model
+
+#### Option 2
+
+Add the regression line directly as a ggplot layer
+
+.pull-left[
+
+Use `geom_smooth()` to add the model directly:
+
+
+```r
+ ggplot(prod, aes(x=richness, y=productivity))+
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+Or without the confidence interval:
+
+
+```r
+ ggplot(prod, aes(x=richness, y=productivity))+
+  geom_point() +
+* geom_smooth(method = "lm", alpha = 0)
+```
+
+But careful with `geom_smooth()`: Always plots the model with all interactions. Here it does not matter, but if you have multiple predictors, keep that in mind!
+]
+
+.pull-right[
+
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-26-1.png" width="504" /&gt;
+
+]
+
+---
+class: inverse, center, middle
+
+# Analysis of covariance
+
+---
+# Analysis of covariance
+
+One categorical and one numerical predictor variable
+
+--
+
+.pull-left[
+
+Two hypotheses possible:
+
+#### Without interaction
+
+`\(H_0\)`: The productivity increases with species richness and is higher at site 2.
+
+#### With interaction
+
+`\(H_0\)`: The productivity increases with species richness. The effect of richness on productivity differs between sites.
+
+]
+
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-27-1.png" width="504" /&gt;
+]
+
+---
+# Analysis of covariance
+
+Fit the model with `lm`
+
+--
+
+#### Without interaction
+
+`\(H_0\)`: The productivity increases with species richness and is higher at site 2.
+
+
+```r
+prod_lm2a &lt;- lm(productivity ~ richness + site, data = prod)
+```
+
+--
+
+#### With interaction
+
+`\(H_0\)`: The productivity increases with species richness. The effect of richness on productivity differs between sites.
+
+
+```r
+prod_lm2b &lt;- lm(productivity ~ richness + site + richness:site, data = prod)
+# or the same in short version:
+# prod_lm2b &lt;- lm(productivity ~ richness * site, data = prod)
+```
+
+---
+# Analysis of covariance
+
+Are the effects significant?
+
+#### Without interaction
+
+
+```r
+drop1(prod_lm2a, test = "F") # no interaction
+## Single term deletions
+## 
+## Model:
+## productivity ~ richness + site
+##          Df Sum of Sq    RSS    AIC F value    Pr(&gt;F)    
+## &lt;none&gt;                 40064 1848.7                      
+## richness  1     42908  82973 2137.9  425.18 &lt; 2.2e-16 ***
+## site      1     92715 132779 2326.0  918.72 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+--
+
+Both, the removal of site and richness significantly increase the model's RSS <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> both site and richness are significant predictors
+
+---
+# Analysis of covariance
+
+Are the effects significant?
+
+#### With interaction
+
+
+```r
+drop1(prod_lm2b, test = "F") # interaction
+## Single term deletions
+## 
+## Model:
+## productivity ~ richness + site + richness:site
+##               Df Sum of Sq   RSS    AIC F value Pr(&gt;F)
+## &lt;none&gt;                     39850 1848.6               
+## richness:site  1    214.53 40064 1848.7  2.1319 0.1451
+```
+
+The removal of the interaction does not significantly increase the model's RSS <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> the interaction is not significant and the simpler model without interaction is just as good in predicting productivity.
+
+---
+# Extracting model coefficients
+
+
+```r
+summary(prod_lm2a)
+## 
+## Call:
+## lm(formula = productivity ~ richness + site, data = prod)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -30.1743  -6.2895  -0.0352   5.6955  28.9276 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 108.36550    2.02582   53.49   &lt;2e-16 ***
+## richness      1.56699    0.07599   20.62   &lt;2e-16 ***
+## sitesite2    38.78575    1.27962   30.31   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 10.05 on 397 degrees of freedom
+## Multiple R-squared:  0.8964,	Adjusted R-squared:  0.8959 
+## F-statistic:  1718 on 2 and 397 DF,  p-value: &lt; 2.2e-16
+```
+
+---
+# Extracting model coefficients
+
+![](img/day3/summary_ancova_coef.png)
+
+---
+# Test model assumptions
+
+.pull-left[
+
+Check the assumptions
+
+- residuals are normally distributed ✔️
+- variance is constant (homogeneous) ✔️
+- there are no strong outliers or very influential observations ✔️ 
+]
+
+.pull-right[
+
+```r
+performance::check_model(prod_lm2a)
+```
+
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-33-1.png" width="504" /&gt;
+]
+
+---
+# Plot the model
+
+Here, we cannot use `geom_smooth()` because it would plot the full model with interaction between the predictors:
+
+.pull-left[
+
+
+```r
+ ggplot(prod, aes(x = richness, y = productivity, color = site)) +
+  geom_point() +
+* geom_smooth(method = "lm")
+```
+
+This plot is not appropriate if the model you present is without interaction
+]
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-35-1.png" width="504" /&gt;
+]
+
+---
+# Plot the model
+
+#### Option 1
+Extract coefficients of the model and add the regression line
+
+
+
+```r
+# these are the model coefficients
+prod_lm2a$coefficients
+## (Intercept)    richness   sitesite2 
+##  108.365497    1.566994   38.785753
+```
+
+
+
+```r
+slope &lt;- prod_lm2a$coefficients[2]
+intercept1 &lt;- prod_lm2a$coefficients[1]
+intercept2 &lt;- prod_lm2a$coefficients[1] + prod_lm2a$coefficients[3]
+```
+
+
+---
+# Plot the model
+
+#### Option 1
+Extract coefficients of the model and add the regression line
+
+.pull-left[
+
+Add a line defined by slope and intercept using `geom_abline()`:
+
+
+```r
+ggplot(prod, aes(x=richness, y=productivity, color= site))+
+  geom_point() +
+  scale_color_manual(values = c("#4C7488", "#D78974")) +
+  geom_abline(slope = slope, intercept = intercep1 , color = "#D78974")+
+  geom_abline(slope = slope, intercept = intercept2 , color = "#4C7488")
+```
+
+]
+
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-39-1.png" width="504" /&gt;
+]
+
+---
+# Plot the model 
+
+**Option 2**
+
+Use the `predict()` function.
+
+--
+
+The general workflow for this option is:
+
+- **Step 1:** use `expand_grid` to create a tibble with values for all predictor variables (the columns have to have the exact same name as the original data)
+- **Step 2:** use `predict` to predict response variable with the model using input predictor values from tibble in step 1
+- **Step 3:** add predictions as column to the tibble from step 1
+- **Step 4:** add predictions to the plot using a new `geom_*()` layer based on the tibble from step 3
+
+---
+# Plot the model
+
+**Option 2**
+
+Use the `predict()` function.
+
+--
+
+
+```r
+# step 1: create some data to predict from
+pred_data &lt;- tidyr::expand_grid(
+  richness = min(prod$richness):max(prod$richness), 
+  site = c("site1", "site2")
+)
+```
+
+- `tidyr::expand_grid` returns a tibble with all combinations of site and richness given as input
+  - the `tidyr` package is already loaded with the tidyverse
+
+---
+# Plot the model
+
+**Option 2**
+
+Use the `predict()` function.
+
+
+```r
+# step 1: create some data to predict from
+pred_data &lt;- tidyr::expand_grid(
+  richness = min(prod$richness):max(prod$richness), 
+  site = c("site1", "site2")
+)
+```
+
+
+```r
+# step2: predict productivity values from pred_data
+*predictions &lt;- predict(prod_lm2a, newdata = pred_data)
+```
+
+- `predict` uses the `prod_lm2a` model and the data produced with `expand_grid` to predict productivity values for each combination of site and richness.
+
+---
+# Plot the model
+
+**Option 2**
+
+Use the `predict()` function.
+
+
+```r
+# step 1: create some data to predict from
+pred_data &lt;- tidyr::expand_grid(
+  richness = min(prod$richness):max(prod$richness), 
+  site = c("site1", "site2")
+)
+```
+
+
+```r
+# step2: predict productivity values from pred_data
+predictions &lt;- predict(prod_lm2a, newdata = pred_data)
+```
+
+
+```r
+# step 3: add predictions to the tibble
+*pred_data$productivity &lt;- predictions
+```
+
+---
+# Plot the model 
+
+**Option 2**
+
+Use the `predict()` function.
+
+.pull-left[
+
+Add a new `geom_*()` layer to the plot from the prediction data:
+
+
+```r
+# step 4: Add predictions with geom_line
+ggplot(prod, aes(x = richness, 
+                 y = productivity, 
+                 color = site)) +
+  geom_point() +
+* geom_line(data = pred_data)
+```
+
+- The aesthetic mapping is inherited from the top level `ggplot` call to the `geom_line`
+
+]
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-47-1.png" width="504" /&gt;
+]
+
+---
+class: inverse, middle, center
+
+# Analysis of variance (Anova)
+
+---
+# Anova
+
+Only categorical predictors.
+
+**Example**: built-in data set of R called `chickwts`.
+The data set is about the weight of chickens fed with different diets. 
+
+.pull-left[
+
+
+```r
+chickwts
+```
+
+
+```
+## # A tibble: 71 x 2
+##   weight feed     
+##    &lt;dbl&gt; &lt;fct&gt;    
+## 1    179 horsebean
+## 2    160 horsebean
+## 3    136 horsebean
+## 4    227 horsebean
+## # ... with 67 more rows
+```
+]
+
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-50-1.png" width="504" /&gt;
+
+]
+
+---
+# Anova
+
+`\(H_0\)`: The diet has an effect on the mean weight of chicken.
+
+Fit a linear model with `lm` and test the significance of the predictor:
+
+
+```r
+lm_chicken &lt;- lm(weight ~ feed, data = chickwts)
+drop1(lm_chicken, test = "F")
+## Single term deletions
+## 
+## Model:
+## weight ~ feed
+##        Df Sum of Sq    RSS    AIC F value    Pr(&gt;F)    
+## &lt;none&gt;              195556 574.39                      
+## feed    5    231129 426685 619.78  15.365 5.936e-10 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+--
+
+Removing the predictor `feed` from the model significantly increases the RSS <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> The model with `feed` explains the data better than the model without `feed`, so the effect of `feed` on the chicken weight is significant.
+
+---
+# Extracting model coefficients
+
+
+```r
+summary(lm_chicken)
+## 
+## Call:
+## lm(formula = weight ~ feed, data = chickwts)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -123.909  -34.413    1.571   38.170  103.091 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    323.583     15.834  20.436  &lt; 2e-16 ***
+## feedhorsebean -163.383     23.485  -6.957 2.07e-09 ***
+## feedlinseed   -104.833     22.393  -4.682 1.49e-05 ***
+## feedmeatmeal   -46.674     22.896  -2.039 0.045567 *  
+## feedsoybean    -77.155     21.578  -3.576 0.000665 ***
+## feedsunflower    5.333     22.393   0.238 0.812495    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 54.85 on 65 degrees of freedom
+## Multiple R-squared:  0.5417,	Adjusted R-squared:  0.5064 
+## F-statistic: 15.36 on 5 and 65 DF,  p-value: 5.936e-10
+```
+
+---
+# Extracting model coefficients
+
+.center[![](img/day3/summary_anova_coefs.png)]
+
+---
+# Test model assumptions
+
+.pull-left[
+
+Check the assumptions
+
+- residuals are normally distributed ✔️
+- variance is constant (homogeneous) ✔️
+- there are no strong outliers or very influential observations ✔️ 
+]
+
+.pull-right[
+
+```r
+performance::check_model(lm_chicken)
+```
+
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-53-1.png" width="504" /&gt;
+]
+
+---
+# Plot results
+
+Plot anova results e.g. in a boxplot:
+
+.pull-left[
+
+```r
+ggplot(chickwts, aes(feed, weight)) +
+* geom_boxplot() +
+  labs(x = "Diet", y= "Weight [g]")
+```
+
+]
+.pull-right[
+
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-55-1.png" width="504" /&gt;
+]
+
+---
+# Plot the results in a boxplot
+
+If you want a slightly nicer boxplot, you could do something like this:
+.pull-left[
+
+
+```r
+chickwts %&gt;% 
+  mutate(feed = as.factor(feed)) %&gt;% 
+  mutate(feed = fct_reorder(feed, -weight)) %&gt;% 
+  ggplot(aes(x=feed, y=weight, color = feed))+
+    geom_boxplot()+
+    geom_jitter(size = 3, alpha = 0.25, width = 0.2)+
+    coord_flip()+
+    ggsci::scale_color_uchicago()+
+    labs(y = "weight [g]", x = "Diet")+
+    theme(legend.position = "none")
+
+```
+]
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-57-1.png" width="504" /&gt;
+
+]
+
+.footnote-left[Design taken from Cédric Scherers &lt;br&gt;["Evolution of a ggplot"(https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/#sort)]]
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+  - e.g. The diet has an effect on the weight of chicken with horsebean leading to the highest weights.
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+  - for regression a scatterplot
+  - for analysis of covariance a scatterplot with colors
+  - for analysis of variance a boxplot (or similar)
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+3. **Fit model** using `lm` function
+  - Add the interactions that you want to test according to your hypothesis
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+3. **Fit model** using `lm` function
+4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
+  - residuals normally distributed
+  - constant variance
+  - no strong outliers
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+3. **Fit model** using `lm` function
+4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
+5. **Check significant variables**
+  - use `anova` (F-tests) to check whether your predictors significantly improve the models sum of squares
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+3. **Fit model** using `lm` function
+4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
+5. **Check significant variables**
+6. **Check the effect sizes** e.g. in the `summary` table
+  - extract coefficients of the model with `mod$coefficients`
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+3. **Fit model** using `lm` function
+4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
+5. **Check significant variables**
+6. **Check the effect sizes** e.g. in the `summary` table
+7. **Plot model results** (only plot regression lines if significant)
+  - for regression: regression line with `geom_smooth`, `geom_abline` or `geom_line` and predicted values
+  - for analysis of covariance: regression lines
+  - for analysis of variance: boxplots or similar
+
+---
+# Linear models step by step
+
+Follow the following steps to perform a linear model:
+
+1. Come up with a **hypothesis** that you would like to test 
+2. **Make plots** of the data and explore them
+3. **Fit model** using `lm` function
+4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
+5. **Check significant variables**
+6. **Check the effect sizes** e.g. in the `summary` table
+7. **Plot model results** (only plot regression lines if significant)
+8. **Make predictions** using the `predict` function
+
+---
+class: inverse, center, middle
+
+# Transformations
+
+---
+# When to transform?
+
+Transformation of the response variable Y can help with **potential violations of the model assumptions**:
+
+- residuals non-normally distributed
+  - skewed distribution
+  - outliers
+- trends in the residuals
+- non-constant variance
+
+--
+
+**Example**
+
+- Non-linear function `\(y = a * e^{b*x}\)`
+- Transformed to a linear model: `\(log(y) = log(a) + b * x\)`
+
+--
+
+- Common natural processes: exponential growth and decay
+
+---
+# Example
+
+Data set `decay` on the decay of soil organic matter over time.
+
+.pull-left[
+Two variables:
+- `amount` of organic matter
+- `time`
+]
+.pull-right[
+
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-58-1.png" width="504" /&gt;
+]
+
+---
+# Example
+
+First, let's try to fit a linear model to the untransformed data and look at the diagnostic plots:
+
+--
+
+.pull-left[
+
+```r
+mod1 &lt;- lm(amount ~ time, data = decay)
+performance::check_model(mod1)
+```
+
+Diagnostic plots look bad:
+
+- pattern in the residuals
+- skewed distribution
+
+]
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-60-1.png" width="504" /&gt;
+]
+
+---
+# Exercise
+
+Let's refit the model to transformed data (log-transformed response variable):
+
+.pull-left[
+
+```r
+mod2 &lt;- lm(log(amount) ~ time, data = decay)
+performance::check_model(mod2)
+```
+
+Diagnostic plots look much better (though not perfect)
+
+- no patterns anymore
+
+]
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-62-1.png" width="504" /&gt;
+]
+
+---
+# Plot the model
+
+To plot the results of the model **on the transformed scale**, we can just use `geom_smooth` in combination with `scale_y_log10`
+
+.pull-left[
+
+```r
+ggplot(decay, aes(x = time, y = amount)) +
+  geom_point() +
+* scale_y_log10() +
+* geom_smooth(method = "lm")
+```
+
+]
+
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-64-1.png" width="504" /&gt;
+
+]
+
+---
+# Plot the model
+
+However, we mostly want to plot the model **on the scale of the original data**. For this, we need to use `predict`
+
+--
+
+.pull-left[
+
+```r
+# step 1: create some data to predict from
+pred_data &lt;- tibble(time = 0:30)
+# step 2: make the prediction
+amount_pred &lt;- predict(mod, newdata = pred_data)
+# step 3: backtransform to original scale and add to prediction data
+*pred_data$amount &lt;- exp(amount_pred)
+# step 4: add model to plot
+ggplot(decay, aes(x= time, y=amount))+
+  geom_point()+
+  geom_line(data = pred_data)
+```
+
+- The trick here is that we have to **backtransform** the predictions using `exp` as the inverse function of `log`
+
+]
+
+.pull-right[
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-66-1.png" width="504" /&gt;
+
+]
+
+---
+# Transformations step by step
+
+1. Plot raw data
+
+--
+
+2. Fit a model to untransformed data
+
+--
+
+3. Check diagnostic plots
+
+--
+
+4. Apply a transformation
+
+--
+
+5. Re-fit model to transformed data
+
+--
+
+6. Check diagnostic plots again
+
+--
+
+7. Plot raw data and add model predictions *based on the transformed data*
+  - Backtransform predictions appropriately:
+    - `\(log(y) &lt;=&gt; exp(y)\)`
+    - `\(sqrt(y) &lt;=&gt; y^2\)`
+    
+---
+# Resources
+
+https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Learning_Statistics_with_R_-_A_tutorial_for_Psychology_Students_and_other_Beginners_(Navarro)/16%3A_Factorial_ANOVA/16.06%3A_ANOVA_As_a_Linear_Model
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false,
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
