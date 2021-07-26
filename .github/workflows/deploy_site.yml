@@ -1,12 +1,15 @@
 on:
   push:
-    branches: master
+    branches:
+      - master
+    paths-ignore:
+      - 'slides/*'
 
 name: Render & Deploy Site
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
