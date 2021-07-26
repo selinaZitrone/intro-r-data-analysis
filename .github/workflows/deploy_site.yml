@@ -1,19 +1,12 @@
 on:
   push:
-    branches:
-      - master
-    paths-ignore:
-      - 'code/**'
-      - 'data/**'
-      - 'R/**'
-      - 'slides/**'
-      - 'tasks/**'
+    branches: master
 
 name: Render & Deploy Site
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v2
 
@@ -31,30 +24,6 @@ jobs:
         run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
       - name: Commit results
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          # commit rendered files to master
-          git add . || echo "Nothing to add"
-          echo "added files"
-          git commit -m "Re-build gh-pages on master" || echo "Nothing to commit"
-          # checkout gh-pages branch and delete old rendered files
-          git fetch
-          git checkout gh-pages
-          echo "Checked out gh-pages"
-          # Check if the directory is empty, if not delete everything
-          if [ -n "$(ls)"]; then
-            echo "Empty directory, nothing to remove"
-          else
-            echo "Delete old files"
-            rm -r *
-          fi
-          # get new rendered files from render_gh_pages
-          git checkout master docs/
-          # move everything from subdirectory to root dir
-          mv docs/* .
-          # remove the empty subdirectory
-          rm -r docs/
-          # commit and push the new rendered files to gh-pages
-          git add . || echo "Nothing to add"
-          git commit -m "Re-build gh-pages"|| "Nothing to commit"
-          git push origin gh-pages
+          git add -A
+          git commit -m 'Rebuild site' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
