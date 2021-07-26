@@ -1,6 +1,13 @@
 on:
   push:
-    branches: master
+    branches:
+      - master
+    paths-ignore:
+      - 'code/**'
+      - 'data/**'
+      - 'R/**'
+      - 'slides/**'
+      - 'tasks/**'
 
 name: Render & Deploy Site
 
