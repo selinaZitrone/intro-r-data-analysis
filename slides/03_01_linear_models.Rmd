@@ -231,6 +231,11 @@ levels(prod$site) # get all levels of the factor
 ```
 
 ---
+class: inverse, middle, center
+
+# Linear regression in `r fa("r-project")`
+
+---
 # Linear regression in R
 
 .pull-left[
@@ -386,35 +391,79 @@ summary(prod_lm)
 ---
 # Test model assumptions
 
-.pull-left[
+Test model assumptions to make sure that:
 
-Test model assumptions:
-
-- normality of residuals
-- homogeneity of variance
-- outliers
+- residuals are normally distributed
+- variance is constant (homogeneous)
+- there are no strong outliers or very influential observations
 
 ```{r eval=FALSE}
 # install.packages("performance")
 performance::check_model(prod_lm)
 ```
 
-This looks perfectly fine. We can use our linear model.
+Another option without an additional package using base R would be:
 
+```{r eval=FALSE}
+par(mfrow = c(2,2)) # change graphics settings to fit 4 plots
+plot(prod_lm) # The actual diagnostic plots
+par(mfrow=c(1,1)) # change graphics settings back to default
+```
+
+---
+# Test model assmptions
+
+.pull-left[
+
+Check the assumptions
+
+- residuals are normally distributed ✔️
+- variance is constant (homogeneous) ✔️
+- there are no strong outliers or very influential observations ✔️ 
+
+Checking diagnostic plots needs some experience
+
+- real life data (almost) never perfectly fit the assumptions
+- linear models are to some extent robust against violations of the assumptions
 ]
 
 .pull-right[
-```{r echo=FALSE}
+```{r}
 performance::check_model(prod_lm)
 ```
-
 ]
+
 ---
 # Plot the model
 
-**Option 1**
-<br>
+--
+
+#### Option 1
 Extract coefficients of the model and add the regression line:
+
+--
+
+.pull-left[
+
+```{r}
+# These are the coefficients of the lm
+prod_lm$coefficients
+```
+
+```{r}
+intercept <- prod_lm$coefficients[1]
+slope <- prod_lm$coefficients[2]
+```
+
+]
+
+---
+# Plot the model
+
+#### Option 1
+Extract coefficients of the model and add the regression line
+
+.pull-left[
 
 ```{r}
 # These are the coefficients of the lm
@@ -428,96 +477,238 @@ slope <- prod_lm$coefficients[2]
 
 Add a line defined by slope and intercept using `geom_abline()`:
 
-```{r}
+```{r eval=FALSE}
  ggplot(prod, aes(x=richness, y=productivity))+
   geom_point() +
   geom_abline(slope = slope, intercept = intercept) #<<
 ```
+]
+
+.pull-right[
+```{r echo=FALSE, fig.height=6.1}
+prod_scatter +
+  geom_abline(slope = slope, intercept = intercept)
+```
+]
 
 ---
 # Plot the model
 
-**Option 2**
+#### Option 2
+Add the regression line directly as a ggplot layer
+
+--
+
+.pull-left[
 
 Use `geom_smooth()` to add the model directly:
 
-```{r}
+```{r eval=FALSE}
  ggplot(prod, aes(x=richness, y=productivity))+
   geom_point() +
   geom_smooth(method = "lm") #<<
 ```
 
+]
+
+.pull-right[
+
+```{r echo=FALSE, fig.height=6.1}
+prod_scatter +
+  geom_smooth(method = "lm")
+```
+
+]
+
+---
+# Plot the model
+
+#### Option 2
+
+Add the regression line directly as a ggplot layer
+
+.pull-left[
+
+Use `geom_smooth()` to add the model directly:
+
+```{r eval=FALSE}
+ ggplot(prod, aes(x=richness, y=productivity))+
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
 Or without the confidence interval:
 
-```{r}
+```{r eval=FALSE}
  ggplot(prod, aes(x=richness, y=productivity))+
   geom_point() +
   geom_smooth(method = "lm", alpha = 0) #<<
 ```
 
 But careful with `geom_smooth()`: Always plots the model with all interactions. Here it does not matter, but if you have multiple predictors, keep that in mind!
+]
+
+.pull-right[
+
+```{r echo=FALSE, fig.height=6.1}
+prod_scatter +
+  geom_smooth(method = "lm", alpha = 0)
+```
+
+]
+
+---
+class: inverse, center, middle
+
+# Analysis of covariance
 
 ---
 # Analysis of covariance
 
+One categorical and one numerical predictor variable
 
-```{r}
+--
+
+.pull-left[
+
+Two hypotheses possible:
+
+#### Without interaction
+
+$H_0$: The productivity increases with species richness and is higher at site 2.
+
+#### With interaction
+
+$H_0$: The productivity increases with species richness. The effect of richness on productivity differs between sites.
+
+]
+
+.pull-right[
+```{r echo=FALSE}
  ggplot(prod, aes(x=richness, y=productivity, color = site))+
   geom_point()
 ```
+]
 
+---
+# Analysis of covariance
+
+Fit the model with `lm`
+
+--
+
+#### Without interaction
+
+$H_0$: The productivity increases with species richness and is higher at site 2.
 
 ```{r}
-prod_lm2a <- lm(productivity ~ richness + site, data = prod) #without interaction
-prod_lm2b <- lm(productivity ~ richness + site + richness:site, data = prod) #with interaction
+prod_lm2a <- lm(productivity ~ richness + site, data = prod)
+```
+
+--
+
+#### With interaction
+
+$H_0$: The productivity increases with species richness. The effect of richness on productivity differs between sites.
+
+```{r}
+prod_lm2b <- lm(productivity ~ richness + site + richness:site, data = prod)
+# or the same in short version:
+# prod_lm2b <- lm(productivity ~ richness * site, data = prod)
 ```
 
 ---
 # Analysis of covariance
 
-```{r}
-drop1(prod_lm2a, test = "F")
-```
+Are the effects significant?
+
+#### Without interaction
 
 ```{r}
-drop1(prod_lm2b, test = "F")
+drop1(prod_lm2a, test = "F") # no interaction
 ```
+
+--
+
+Both, the removal of site and richness significantly increase the model's RSS `r fa("arrow-right")` both site and richness are significant predictors
 
 ---
 # Analysis of covariance
+
+Are the effects significant?
+
+#### With interaction
+
+```{r}
+drop1(prod_lm2b, test = "F") # interaction
+```
+
+The removal of the interaction does not significantly increase the model's RSS `r fa("arrow-right")` the interaction is not significant and the simpler model without interaction is just as good in predicting productivity.
+
+---
+# Extracting model coefficients
 
 ```{r}
 summary(prod_lm2a)
 ```
 
 ---
+# Extracting model coefficients
+
+![](img/day3/summary_ancova_coef.png)
+
+---
 # Test model assumptions
 
+# Test model assmptions
+
+.pull-left[
+
+Check the assumptions
+
+- residuals are normally distributed ✔️
+- variance is constant (homogeneous) ✔️
+- there are no strong outliers or very influential observations ✔️ 
+]
+
+.pull-right[
 ```{r}
 performance::check_model(prod_lm2a)
 ```
+]
 
 ---
 # Plot the model
 
-To plot the additive model without interaction, we cannot use `geom_smooth()` because it plots a model with interaction between the predictors:
+Here, we cannot use `geom_smooth()` because it would plot the full model with interaction between the predictors:
 
-```{r}
- ggplot(prod, aes(x=richness, y=productivity, color = site))+
-  geom_point()+
+.pull-left[
+
+```{r eval=FALSE}
+ ggplot(prod, aes(x = richness, y = productivity, color = site)) +
+  geom_point() +
   geom_smooth(method = "lm") #<<
 ```
 
 This plot is not appropriate if the model you present is without interaction
+]
+.pull-right[
+```{r echo=FALSE, fig.height=6.1}
+ ggplot(prod, aes(x = richness, y = productivity, color = site)) +
+  geom_point() +
+  geom_smooth(method = "lm") #<<
+```
+]
 
 ---
 # Plot the model
 
-**Option 1**
-.pull-left[
-Extract coefficients
+#### Option 1
+Extract coefficients of the model and add the regression line
+
 
 ```{r}
+# these are the model coefficients
 prod_lm2a$coefficients
 ```
 
@@ -529,26 +720,36 @@ intercept2 <- prod_lm2a$coefficients[1] + prod_lm2a$coefficients[3]
 ```
 
 
-Add the lines using `geom_abline()`:
+---
+# Plot the model
+
+#### Option 1
+Extract coefficients of the model and add the regression line
+
+.pull-left[
+
+Add a line defined by slope and intercept using `geom_abline()`:
 
 ```{r eval=FALSE}
 ggplot(prod, aes(x=richness, y=productivity, color= site))+
   geom_point() +
-  geom_abline(slope = slope, intercept = intercep1 , color = "red")+
-  geom_abline(slope = slope, intercept = intercept2 , color = "blue")
+  scale_color_manual(values = c("#4C7488", "#D78974")) +
+  geom_abline(slope = slope, intercept = intercep1 , color = "#D78974")+
+  geom_abline(slope = slope, intercept = intercept2 , color = "#4C7488")
 ```
 
 ]
 
 .pull-right[
-```{r echo=FALSE}
-ggplot(prod, aes(x=richness, y=productivity, color= site))+
-  geom_point() +
-  geom_abline(slope = slope, intercept = intercept1 , color = "red")+
-  geom_abline(slope = slope, intercept = intercept2 , color = "blue")
+```{r echo=FALSE, fig.height=6.1}
+ ggplot(prod, aes(x=richness, y=productivity, color= site))+
+   geom_point() +
+   scale_color_manual(values = c("#4C7488", "#D78974")) +
+   geom_abline(slope = slope, intercept = intercept1 , color = "#D78974")+#<<
+   geom_abline(slope = slope, intercept = intercept2 , color = "#4C7488")#<<
 ```
-
 ]
+
 ---
 # Plot the model 
 
@@ -556,12 +757,14 @@ ggplot(prod, aes(x=richness, y=productivity, color= site))+
 
 Use the `predict()` function.
 
+--
+
 The general workflow for this option is:
 
-- **step 1:** use `expand_gride` to create a tibble with values for all predictor variables
-- **step 2:** use `predict` to predict response variable with the model using input predictor values from tibble in step 1
-- **step 3:** add predictions as column to the tibble from step 1
-- **step 4:** add predictions to the plot using a new `geom_*()` layer based on the tibble from step 3
+- **Step 1:** use `expand_grid` to create a tibble with values for all predictor variables (the columns have to have the exact same name as the original data)
+- **Step 2:** use `predict` to predict response variable with the model using input predictor values from tibble in step 1
+- **Step 3:** add predictions as column to the tibble from step 1
+- **Step 4:** add predictions to the plot using a new `geom_*()` layer based on the tibble from step 3
 
 ---
 # Plot the model
@@ -570,53 +773,113 @@ The general workflow for this option is:
 
 Use the `predict()` function.
 
-In practice this looks like this:
+--
 
-```{r eval=FALSE}
+```{r}
 # step 1: create some data to predict from
-pred_data <- expand_grid(
+pred_data <- tidyr::expand_grid(
   richness = min(prod$richness):max(prod$richness), 
   site = c("site1", "site2")
 )
-# step2: predict productivity values from pred_data
-predictions <- predict(lm4, newdata = pred_data)
-# step 3: add predictions to the tibble
-pred_data$productivity <- predictions
 ```
 
-Explanation:
-- `expand_grid` returns a tibble with all combinations of site and richness given as input
-- `predict` uses the `lm4` model and the data produced with `expand_grid` to predict productivity values for each combination of site and richness.
+- `tidyr::expand_grid` returns a tibble with all combinations of site and richness given as input
+  - the `tidyr` package is already loaded with the tidyverse
 
 ---
+# Plot the model
 
+**Option 2**
+
+Use the `predict()` function.
+
+--
+
+```{r}
+# step 1: create some data to predict from
+pred_data <- tidyr::expand_grid(
+  richness = min(prod$richness):max(prod$richness), 
+  site = c("site1", "site2")
+)
+```
+
+```{r}
+# step2: predict productivity values from pred_data
+predictions <- predict(prod_lm2a, newdata = pred_data)#<<
+```
+
+- `predict` uses the `prod_lm2a` model and the data produced with `expand_grid` to predict productivity values for each combination of site and richness.
+
+---
+# Plot the model
+
+**Option 2**
+
+Use the `predict()` function.
+
+--
+
+```{r}
+# step 1: create some data to predict from
+pred_data <- tidyr::expand_grid(
+  richness = min(prod$richness):max(prod$richness), 
+  site = c("site1", "site2")
+)
+```
+
+```{r}
+# step2: predict productivity values from pred_data
+predictions <- predict(prod_lm2a, newdata = pred_data)
+```
+
+```{r}
+# step 3: add predictions to the tibble
+pred_data$productivity <- predictions#<<
+```
+
+---
 # Plot the model 
 
 **Option 2**
 
 Use the `predict()` function.
 
+.pull-left[
+
 Add a new `geom_*()` layer to the plot from the prediction data:
 
 ```{r eval=FALSE}
-# or using the predict function
-pred_data <- expand_grid(
-  richness = min(prod$richness):max(prod$richness), 
-  site = c("site1", "site2")
-)
-predictions <- predict(lm4, newdata = pred_data)
-pred_data$productivity <- predictions
+# step 4: Add predictions with geom_line
+ggplot(prod, aes(x=richness, y=productivity, color= site))+
+  geom_point() +
+  geom_line(data= pred_data)#<<
 
+```
+
+- The aestethetic mapping is inherited from the top level `ggplot` call to the `geom_line`
+
+]
+.pull-right[
+```{r echo=FALSE, fig.height=6.1}
+# step 4: Add predictions with geom_line
 ggplot(prod, aes(x=richness, y=productivity, color= site))+
   geom_point() +
   geom_line(data= pred_data)
 
 ```
+]
+---
+class: inverse, middle, center
+
+# Analysis of variance (Anova)
+
 ---
 # Anova
 
-Let's quickly look at an example with only categorical variables using a built-in data set of R called `chickwts`.
-The dataset is about the weight of chickens fed with different diets. 
+Only categorical predictors.
+
+**Example*:* built-in data set of R called `chickwts`.
+The data set is about the weight of chickens fed with different diets. 
 
 .pull-left[
 
