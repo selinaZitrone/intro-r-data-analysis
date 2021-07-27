@@ -1,0 +1,16 @@
+---
+title: "Tasks for day 1"
+output: 
+  distill::distill_article:
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r create_rstudio_project, child="01_01_create_project.Rmd"}
+```

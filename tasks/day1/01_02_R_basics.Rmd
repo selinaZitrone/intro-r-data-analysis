@@ -1,0 +1,21 @@
+---
+title: "R Basics"
+subtitle: "Day 1 - Task 2"
+output:
+  html_document:
+  highlight: "haddock"
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+
+## Data types
+
+Get a bit familiar with the data types in R:
+
+- create 1 variables of each of the four main atomic data types (double, integer, character, Logical)
+- implicit type conversion: try how the data types work together. What happens if you add double and integer? What is the data type of the result? What about integer and logical? Double and locial? Integer and character? ... Try all combinations and observe the data type of the results.
+
+

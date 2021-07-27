@@ -1,0 +1,48 @@
+**Aim of the task:** Get familiar with RStudio and create a new RStudio project for the workshop.
+
+## Create an RStudio project
+
+- Create a project for this workshop at a directory of your choice
+- Use the `File` pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days
+  - e.g. create folders for each workshop day
+  - e.g. create folders for `data`, `scripts`, `documents`,...
+  - you can always change the structure of your project later, but for now, we want some basic folders that we can navigate
+- open the project in your computer's file explorer
+- close RStudio and reopen your newly created project
+
+Later, you can add files to your project either directly from RStudio, or in the file explorer of your operating system.
+
+## Add an RScript to the project
+
+- create a new R script, save it in your project and copy paste the code from below into your script
+  - don't worry if you don't understand the code yet, we will learn all this later
+- run the code in the script line by line. Try running your code using the `Run` button and the keyboard shortcut
+  - in each line observe what is happening to the other panes (console, environment, ...) in RStudio when you run a line of code -> Can you explain what is happening?
+
+```{r eval=FALSE}
+# Look at the first lines of the iris dataset
+head(iris)
+# What is the iris dataset -> Call the help
+?iris
+# How many rows and columns does the data set have?
+rownum <- nrow(iris)
+colnum <- ncol(iris)
+print(paste0("The iris dataset has ", rownum, " rows and ", colnum, " columns."))
+# Some summary statistics on the iris data set
+summary(iris)
+
+# create a plot
+plot(iris$Petal.Length, iris$Petal.Width, 
+     xlab = "Petal Length",
+     ylab = "Petal Width",
+     main = "Petal Width vs Petal Length",
+     pch = 20,
+     col=ifelse(iris$Species == "setosa","coral1", 
+                ifelse(iris$Species == "virginica","cyan4", 
+                       ifelse(iris$Species ==  "versicolor",
+                              "darkgoldenrod2", "grey"))))
+# add a legend
+legend("bottomright", c("setosa","virginica", "versicolor"),
+       col = c("coral1","cyan4", "darkgoldenrod2"), pch=20)
+
+```
