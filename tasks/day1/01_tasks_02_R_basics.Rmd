@@ -19,3 +19,19 @@ Get a bit familiar with the data types in R:
 - implicit type conversion: try how the data types work together. What happens if you add double and integer? What is the data type of the result? What about integer and logical? Double and locial? Integer and character? ... Try all combinations and observe the data type of the results.
 
 
+# Functions
+
+```{r eval=FALSE}
+as.character()
+typeof()
+is.character()
+c()
+:
+seq()
+rep()
+length()
+%in%
+```
+
+- type conversion
+- vectorized calculations: relational, ....
