@@ -1279,10 +1279,122 @@ cities[mega_city] # or short: cities[population > mean_population]
 ```
 
 ---
-# Summary
+# Indexing vectors
 
-.content-box-purple[asdfölaksdjföasldkfjasdfkdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd<br>
-dlsakfjasödlfkjasdf]
+We also use `%in%`for logical indexing.
+
+```{r}
+population[ cities %in% c("Berlin", "Paris", "Stockholm", "Madrid")]
+```
+
+--
+
+- returns only 3 values for population, because Stockholm is not a city in our vector
+  - no city in `cities` returns `TRUE` for the test against `"Stockholm"`
+
+
+---
+# Summary I
+
+- Variables have a name and a value and are created using the assignment operator `<-`, e.g.
+```{r eval=FALSE}
+radius <- 5
+```
+- Vectors are a collection of values of the same data type:
+  - character (`"hello"`)
+  - numeric: integer (`23L`) and double (`2.23`)
+  - logical (`TRUE` and `FALSE`)
+  
+- Be careful about implicit type conversion:
+  - numeric to character
+  - logical to character
+  - logical to numeric
+  
+---
+# Summary II
+
+#### Data types
+
+
+```{r eval=FALSE}
+# check the data type of a variable
+typeof("hello")
+
+# check if a variable is of a certain data type
+is.*()
+is.integer(1L)
+
+# convert a variable into a certain data type
+as.*()
+as.logical("hello")
+```
+
+---
+# Summary III
+
+#### Create vectors
+
+```{r eval=FALSE}
+# combine objects into vector
+c(1,2,3)
+
+# create a sequence of values
+seq(from = 3, to = 6, by = 0.5)
+seq(from = 3, to = 6, length.out = 10)
+2:10
+
+# repeat values from a vector
+rep(c(1,2), times = 2)
+rep(c("a", "b"), each = 2)
+```
+
+---
+# Summary IV
+
+#### Indexing and subsetting vectors
+
+```{r eval=FALSE}
+# By index
+v[3]
+v[1:4]
+v[c(1,5,7)]
+
+# Logical indexing with 1 vector
+v[v > 5]
+v[v != "bird" | v == "rabbit"]
+v[v %in% c(1,2,3)] # same as v[v == 1 | v == 2 | v == 3]
+
+# Logical indexing with two vectors of same length
+v[y == "bird"] # return the value in v for which index y == "bird"
+v[y == max(y)] # return the value in v for which y is the maximum of y
+```
+
+---
+# Summary V
+
+#### Working with vectors
+
+```{r eval=FALSE}
+# length
+length(v)
+# sum
+sum(v)
+# mean
+mean(v)
+# median
+median(v)
+# standard deviation
+sd(v)
+```
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 1-2: Data types and vectors
+
+#### Find the task description [here](www.github.com)
 
 ---
 # Resources
