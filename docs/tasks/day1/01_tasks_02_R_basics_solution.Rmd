@@ -1,0 +1,138 @@
+## Type conversion
+
+```{r}
+v1 <- c(1, "a", 2, 3)
+typeof(v1)
+v2 <- c(TRUE, TRUE, 1L, FALSE, 0L)
+typeof(v2)
+v3 <- c(0, "23", 5, 7)
+typeof(v3)
+v4 <- c(4L, 6L, 23.5345)
+typeof(v4)
+v5 <- c(TRUE, "a", FALSE, "FALSE")
+typeof(v5)
+```
+Implicit type conversion follows the following rules:
+
+- numeric (double & integer) `r fontawesome::fa("arrow-right")` character
+- logical `r fontawesome::fa("arrow-right")` numeric
+- logical `r fontawesome::fa("arrow-right")` character
+
+#### Explicit conversion to integer
+
+```{r warning=TRUE}
+as.integer(v1)
+as.integer(v2)
+as.integer(v3)
+as.integer(v4)
+as.integer(v5)
+```
+Values cannot be converted from type `character` to type `integer`. If you try to do this, you will get a warning that the conversion returned `NA`
+
+
+## Working with vectors
+
+```{r}
+species <- c(
+  "MountainBeaver", "Cow", "GreyWolf", "Goat",
+  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
+  "Horse", "PotarMonkey", "Cat", "Giraffe",
+  "Gorilla", "Human", "AfricanElephant", "Triceratops",
+  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
+  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
+  "Rat", "Brachiosaurus", "Mole", "Pig"
+)
+
+bodywt_kg <- c(
+  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
+  521, 10, 3.3, 529, 207, 62, 6654, 9400,
+  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
+  0.3, 87000, 0.1, 192
+)
+
+brainwt_g <- c(
+  8.1, 423, 119.5, 115, 5.5, 50, 4603, 419, 655, 115, 25.6,
+  680, 406, 1320, 5712, 70, 179, 56, 1, 0.4, 12.1, 175,
+  157, 440, 1.9, 154.5, 3, 180
+)
+```
+
+Convert the brain weight from g to kg:
+
+```{r}
+brainwt_kg <- brainwt_g / 1000
+```
+
+What is the mean brain weight
+
+```{r}
+mean(brainwt_kg)
+```
+
+Calculate the ratio brain weight / body weight and save it in a vector:
+
+```{r}
+brain_body_ratio <- brainwt_kg / bodywt_kg * 100
+```
+
+Round the vector to 2 decimal places:
+
+```{r}
+brain_body_ratio <- round(brain_body_ratio, digits = 4)
+```
+
+Brain body ratio of humans:
+
+```{r}
+brain_body_ratio[species == "Human"]
+```
+Which animals have a larger brain to body ratio than humans?
+
+```{r}
+bbr_human <- brain_body_ratio[species == "Human"]
+# Are there animals that have a larger brain to body ratio than humans?
+brain_body_ratio > bbr_human
+# Which are these animals
+species[brain_body_ratio > bbr_human]
+```
+Which animal has the smallest brain to body ratio?
+
+```{r}
+species[brain_body_ratio == min(brain_body_ratio)]
+```
+Check if animals are contained in the data set
+
+```{r}
+animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
+# Goes through every element in species and returns TRUE if it appears in animals_to_check
+species %in% animals_to_check
+# Goes through every element in animals_to_check and returns TRUE if it appears in species
+animals_to_check %in% species
+```
+Note: If you use `%in%` to check if elements are contained in a vector, the result vector is of the same length as the vector that is **before** the `%in%`
+
+
+## Adding elements to the vector
+
+```{r}
+species_new <- c("Eagle", "Snail", "Lion")
+brainwt_g_new <- c(40, NA, 500)
+bodywt_kg_new <- c(18, 0.01, 550)
+
+species <- c(species, species_new)
+brainwt_g <- c(brainwt_g, brainwt_g_new)
+bodywt_kg <- c(bodywt_kg, bodywt_kg_new)
+```
+
+What is the mean brain weight now?
+
+```{r}
+mean(brainwt_g)
+# na.rm = TRUE
+mean(brainwt_g, na.rm = TRUE)
+```
+
+
+# References
+
+Wolfram Research, "Sample Data: Animal Weights" from the Wolfram Data Repository (2016) https://doi.org/10.24097/wolfram.43616.data

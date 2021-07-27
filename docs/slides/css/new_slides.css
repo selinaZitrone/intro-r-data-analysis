@@ -101,13 +101,12 @@ h1, h2, h3 {
 }
 /* Two-column layout */
 .left-column {
+  color: black;
   width: 20%;
   height: 92%;
   float: left;
 }
-.left-column h2, .left-column h3 {
-  color: #777;
-}
+
 .left-column h2:last-of-type, .left-column h3:last-child {
   color: #000;
 }

@@ -1,0 +1,72 @@
+Create a new script for the code of this task.
+Use comments in your code to take notes.
+
+## Type conversion
+
+Look at the vectors below. What do you think will happen? 
+
+```{r}
+v1 <- c(1, "a", 2, 3)
+v2 <- c(TRUE, TRUE, 1, FALSE, 0)
+v3 <- c(0, "23", 5, 7)
+v4 <- c(4L, 6L, 23.5345)
+```
+
+Check out the data types of the vectors using `typeof`.
+
+Try to explicitly convert all 4 vectors to integer. What happens?
+
+## Working with vectors
+
+You have the following vectors:
+
+- `species`: name of species
+- `bodywt_kg`: body weight of the species in kg
+- `brainwt_g`: brain weight of the species in kg
+
+```{r}
+species <- c(
+  "MountainBeaver", "Cow", "GreyWolf", "Goat",
+  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
+  "Horse", "PotarMonkey", "Cat", "Giraffe",
+  "Gorilla", "Human", "AfricanElephant", "Triceratops",
+  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
+  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
+  "Rat", "Brachiosaurus", "Mole", "Pig"
+)
+
+bodywt_kg <- c(
+  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
+  521, 10, 3.3, 529, 207, 62, 6654, 9400,
+  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
+  0.3, 87000, 0.1, 192
+)
+
+brainwt_g <- c(
+  8.1, 423, 119.5, 115, 5.5, 50, 4603, 419, 655, 115, 25.6,
+  680, 406, 1320, 5712, 70, 179, 56, 1, 0.4, 12.1, 175,
+  157, 440, 1.9, 154.5, 3, 180
+)
+```
+
+
+
+
+```{r eval=FALSE}
+as.character()
+typeof()
+is.character()
+c()
+:
+seq()
+rep()
+length()
+%in%
+```
+
+- type conversion
+- vectorized calculations: relational, ....
+
+# References
+
+Wolfram Research, "Sample Data: Animal Weights" from the Wolfram Data Repository (2016) https://doi.org/10.24097/wolfram.43616.data

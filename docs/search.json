@@ -6,7 +6,7 @@
       "description": "Some additional details about the website",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-07-26T23:23:30+02:00"
+      "last_modified": "2021-07-27T23:20:06+02:00"
     },
     {
       "path": "download_material_blank.html",
@@ -14,7 +14,7 @@
       "description": "For now, please use the material avaialble from this website",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-07-26T23:23:30+02:00"
+      "last_modified": "2021-07-27T23:20:09+02:00"
     },
     {
       "path": "index.html",
@@ -22,7 +22,7 @@
       "description": "Welcome to the workshop. You can find all material and information that you need to follow on this website.\n",
       "author": [],
       "contents": "\r\nWorkshop organization and schedule\r\n🕘 9 a.m. - 4 p.m. (🥪 ~ 12 a.m. - 1 p.m.) 📍 We will meet in this webex meeting\r\nI set up a shared document where we can collect questions, additional resources, etc. that come up during the workshop. You can find the document here, please feel free to edit it as you like.\r\nWorkshop Material\r\nYou can find all the material for the workshop on this website. On top, you can navigate to the presentation slides, the tasks for each day and the code for all examples from the presentations and the solutions for the tasks.\r\nThe task solutions will be uploaded after the respective workshop day is finished.\r\nIf you want to download the slides in pdf format, you can do that here.\r\nAfter the workshop, you can download a zipped version of the content from here\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-07-26T23:23:31+02:00"
+      "last_modified": "2021-07-27T23:20:10+02:00"
     }
   ],
   "collections": []
