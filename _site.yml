@@ -33,6 +33,7 @@ navbar:
     - text: "Tasks"
       menu:
         - text: "Day 1: Intro to R"
+          href: tasks/day1/01_tasks_controller.html
         - text: "Day 2: Tidyverse"
         - text: "Day 3: LMs and GLMs"
     - text: "Code"
