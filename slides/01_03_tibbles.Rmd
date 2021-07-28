@@ -13,11 +13,6 @@ output:
       ratio: 16:9
       countIncrementalSlides: false
       beforeInit: "macros.js"
-      slideNumberFormat:  |
-        <div class="progress-bar-container">
-          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
-          </div>
-        </div>
 params:
   title: "Data frames and tibbles: tables in R"
   day: "1"
@@ -345,7 +340,7 @@ cities_tbl[8:10, ] # return rows 8 to 10, all columns
 
 ```{r eval=FALSE}
 # rows 1 & 5, first two columns:
-cities_tbl[c(1, 5) ,1:2]
+cities_tbl[c(1, 5), 1:2]
 ```
 
 This is the same as
@@ -376,9 +371,9 @@ print(cities_tbl[ ,c("cities", "population")], n=3)
 This is the same as
 
 ```{r eval=FALSE}
-cities_tbl[1:2, ]
+cities_tbl[ ,1:2]
 # or
-cities_tbl[c("cities", "population"), ]
+cities_tbl[ ,c("cities", "population")]
 ```
 
 ---
