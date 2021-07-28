@@ -29,6 +29,18 @@ as.integer(v5)
 ```
 Values cannot be converted from type `character` to type `integer`. If you try to do this, you will get a warning that the conversion returned `NA`
 
+#### Explicit conversion to character
+
+```{r}
+as.character(v1)
+as.character(v2)
+as.character(v3)
+as.character(v4)
+as.character(v5)
+```
+
+Everything can be converted to character. No `NA` values were introduced.
+
 
 ## Working with vectors
 
@@ -57,6 +69,17 @@ brainwt_g <- c(
 )
 ```
 
+Check if animals are contained in the data set
+
+```{r}
+animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
+# Goes through every element in species and returns TRUE if it appears in animals_to_check
+species %in% animals_to_check
+# Goes through every element in animals_to_check and returns TRUE if it appears in species
+animals_to_check %in% species
+```
+Note: If you use `%in%` to check if elements are contained in a vector, the result vector is of the same length as the vector that is **before** the `%in%`
+
 Convert the brain weight from g to kg:
 
 ```{r}
@@ -75,12 +98,6 @@ Calculate the ratio brain weight / body weight and save it in a vector:
 brain_body_ratio <- brainwt_kg / bodywt_kg * 100
 ```
 
-Round the vector to 2 decimal places:
-
-```{r}
-brain_body_ratio <- round(brain_body_ratio, digits = 4)
-```
-
 Brain body ratio of humans:
 
 ```{r}
@@ -95,22 +112,22 @@ brain_body_ratio > bbr_human
 # Which are these animals
 species[brain_body_ratio > bbr_human]
 ```
+
+
+### Extras
+
+Round the vector to 4 decimal places:
+
+```{r}
+brain_body_ratio <- round(brain_body_ratio, digits = 4)
+```
+
+
 Which animal has the smallest brain to body ratio?
 
 ```{r}
 species[brain_body_ratio == min(brain_body_ratio)]
 ```
-Check if animals are contained in the data set
-
-```{r}
-animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
-# Goes through every element in species and returns TRUE if it appears in animals_to_check
-species %in% animals_to_check
-# Goes through every element in animals_to_check and returns TRUE if it appears in species
-animals_to_check %in% species
-```
-Note: If you use `%in%` to check if elements are contained in a vector, the result vector is of the same length as the vector that is **before** the `%in%`
-
 
 ## Adding elements to the vector
 
