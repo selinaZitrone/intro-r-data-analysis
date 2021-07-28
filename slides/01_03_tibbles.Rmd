@@ -610,6 +610,15 @@ cities_tbl
 ```
 
 ---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 1-3: Working with tibbles
+
+#### Find the task description [here](www.github.com)
+
+---
 # Summary I
 
 #### data frames and tibbles
