@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# 1 Set up RStudio project
+## 1 Set up RStudio project
 
 **Aims:** 
 
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r create_rstudio_project, child="tasks/day1/01_tasks_01_create_project.Rmd"}
 ```
 
-# 2 Vectors in R
+## 2 Vectors in R
 
 **Aims:**
 
@@ -32,3 +32,20 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```{r vectors, child="tasks/day1/01_tasks_02_R_basics.Rmd"}
 ```
+
+## 3 Tibbles in R
+
+**Aims:**
+
+- Create and manipulate tibbles with base R:
+  - indexing
+  - adding columns
+  - changing values
+
+```{r tibbles, child="./tasks/day1/01_tasks_03_tibbles.Rmd"}
+```
+
+# Reference
+
+Wolfram Research, "Sample Data: Animal Weights" from the Wolfram Data Repository (2016) https://doi.org/10.24097/wolfram.43616.data
+

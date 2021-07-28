@@ -1,0 +1,45 @@
+---
+title: "Tasks for day 3"
+output: 
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## 1 Linear models
+
+**Aims:** 
+
+
+```{r create_rstudio_project, child="tasks/day3/03_tasks_01_lm.Rmd"}
+```
+
+## 2 Linear models transformation
+
+**Aims:**
+
+
+```{r vectors, child="tasks/day3/03_tasks_02_lm_trans.Rmd"}
+```
+
+## 3 Poisson and binary glm
+
+**Aims:**
+
+
+```{r tibbles, child="./tasks/day3/03_tasks_03_glm.Rmd"}
+```
+
+
+## 3 Proportion glm
+
+**Aims:**
+
+```{r tibbles, child="./tasks/day3/03_tasks_04_glm_prop.Rmd"}
+```
