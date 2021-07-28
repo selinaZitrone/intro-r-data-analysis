@@ -93,7 +93,6 @@ large_brain <- animals[animals$brainwt_category == "large", ]
 small_brain <- animals[animals$brainwt_category == "small", ]
 ```
 
-
 Calculate the means and standard deviation
 
 ```{r}
