@@ -49,7 +49,7 @@ Functions make multiple operations available under one command.
 - have a **name**
 - have (0, 1, or any number of) **arguments as input**
 - they calculate something using the arguments
-- usually they have a **return value** (the output)
+- they have a **return value** (the output)
 - can have **side effects** (like plotting)
 ]
 
@@ -61,28 +61,26 @@ Functions make multiple operations available under one command.
 
 General structure of a function call:
 
-.strong[.col1[function_name] ( .col2[argument] = .col3[value] )]
+<b>.col1[function_name] ( .col2[argument] = .col3[value] )</b>
 
 ---
 
 # The mean function
 
-.pull-left[
+<b>.col1[function_name] ( .col2[argument] = .col3[value] )</b>
 
-<br>
- .strong[.col1[mean] ( .col2[x] = .col3[c(1,5,6)] )]
+.pull-left[
+<b>.col1[mean] ( .col2[x] = .col3[c(1,5,6)] )</b>
+
+```{r}
+mean(x = c(1,5,6)) # or short: mean(c(1,5,6))
+```
 
 ]
 
 .pull-right[
 ![](img/day1/function_mean.png)
 ]
-
---
-
-```{r}
-mean(x = c(1,5,6)) # or short: mean(c(1,5,6))
-```
 
 --
 
@@ -121,19 +119,19 @@ class: center, middle
 ![](img/day1/mean_help_blank.png)
 
 ---
-
 # Function arguments
 
 - arguments are the **input** to a function
-- functions can provide default argument values for some arguments
+
+- functions can provide **default values** for some arguments
+
 - default values for arguments are indicated in the function help
 
-<br>
+
 .center[
 ![:scale 60%](img/day1/mean_help_default_arguments.png)]
 
 ---
-
 # Function arguments
 
 ```{r}
@@ -146,7 +144,7 @@ What happened?&nbsp;&nbsp;
 --
 `r fa("arrow-right")`&nbsp;  `na.rm` argument is `FALSE` by default.<br>
 --
-Set it to true if you want to calculate the mean despite missing values:
+Set it to `TRUE` if you want to calculate the mean despite missing values:
 
 ```{r}
 mean(x = values, na.rm = TRUE)
@@ -160,7 +158,6 @@ mean()
 ```
 
 ---
-
 # Function arguments
 
 **Argument matching** can be achieved by **position** or by **name**
@@ -176,24 +173,53 @@ These calls to mean all are the same:
 
 ```{r, eval=FALSE}
 mean(values, , TRUE) # by position
+```
+
+--
+
+```{r, eval=FALSE}
 mean(x = values, na.rm = TRUE) # by name
+```
+
+--
+
+```{r, eval=FALSE}
 mean(na.rm = TRUE, x = values) # this also works but is not really nice
+```
+
+--
+
+```{r, eval=FALSE}
 mean(values, na.rm = TRUE) # a mix of both
 ```
---
+
+---
+# Function arguments
+
+**Argument matching** can be achieved by **position** or by **name**
+
 - named arguments are (generally) preferred
   - easier to remember
   - easier to read
   - some function can have a lot of arguments
+  
+```{r, eval=FALSE}
+mean(x = values, na.rm = TRUE) # by name
+```
+
 --
 
 - however, it is common to match the first argument of a function by position (especially when the first argument is some kind of data)
+
+```{r, eval=FALSE}
+mean(values, na.rm = TRUE) # a mix of both
+```
 
 ---
 # Where do functions come from?
 
 .pull-left[
-- built into R (base R functions)
+- built into R (**base R** functions)
 ]
 .pull-right[
 ```{r eval=FALSE}
@@ -206,7 +232,8 @@ lm()   # fit a linear model
 --
 
 .pull-left[
- - from additional packages
+ - from **additional packages**
+ 
   - packages must be installed first
   - call a function from a package using `packageName::functionName()`
 ]
@@ -221,7 +248,8 @@ stringr::str_extract() # extract a part from a string
 --
 
 .pull-left[
-- custom functions
+- **custom** functions
+
   - we can write functions ourselves and then use them in the code
 ]
 
@@ -238,14 +266,15 @@ my_function(5)
 ```
 
 ]
+
 ---
 # Summary
 
 - Functions take **input** in the form of (named) arguments, calculate something and **return** a result
---
-- Functions are called by their name, followed by parentheses: `functionName()`
---
-- Functions from additional packages can be called like this: `packageName::functionName()`
---
+
+- Functions are called by their name, followed by parentheses:<br> `functionName(argument1 = value, argument2 = value, ...)`
+
+- Functions from additional packages can be called like this:<br> `packageName::functionName()`
+
 - Call `?functionName` to open the help of a function
 ---
