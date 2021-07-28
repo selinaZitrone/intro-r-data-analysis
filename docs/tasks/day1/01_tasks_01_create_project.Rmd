@@ -1,17 +1,17 @@
-## Change settings
+### 1.1 Change settings
 
 Before you get started, there is an important setting that you should change in RStudio.
 By default, RStudio will save an the workspace of your current session in an `.Rdata` file. This would allow you to start the next session exactly where you left by loading this `.Rdata` file.
 
 This is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.
 
-In RStudio Go to `Tools -> Global Options -> General` and set the following workspace options:
+In RStudio go to `Tools -> Global Options -> General` and set the following workspace options:
 
 ```{r}
 knitr::include_graphics(here::here("tasks/day1/img/setting_workspace.png"))
 ```
 
-## Create an RStudio project
+### 1.2 Create an RStudio project
 
 Create an RStudio project that you can use for all the scripts, notes, data, etc. from this workshop.
 
@@ -24,7 +24,7 @@ Create an RStudio project that you can use for all the scripts, notes, data, etc
 
 You can add files to your project either directly in RStudio, or in the file explorer of your operating system.
 
-## Add an R script to the project
+### 1.3 Add an R script to the project
 
 - create a new R script, save it in the appropriate folder of your project (e.g. `scripts` or `R`)
 - copy paste the code from below into your script
