@@ -2441,38 +2441,41 @@ Code
 <ul>
 <li><a href="#set-up-rstudio-project">1 Set up RStudio project</a>
 <ul>
-<li><a href="#change-settings">Change settings</a></li>
-<li><a href="#create-an-rstudio-project">Create an RStudio project</a></li>
-<li><a href="#add-an-r-script-to-the-project">Add an R script to the project</a></li>
+<li><a href="#change-settings">1.1 Change settings</a></li>
+<li><a href="#create-an-rstudio-project">1.2 Create an RStudio project</a></li>
+<li><a href="#add-an-r-script-to-the-project">1.3 Add an R script to the project</a></li>
 </ul></li>
 <li><a href="#vectors-in-r">2 Vectors in R</a>
 <ul>
-<li><a href="#type-conversion">Type conversion</a></li>
-<li><a href="#working-with-vectors">Working with vectors</a>
+<li><a href="#type-conversion">2.1 Type conversion</a></li>
+<li><a href="#working-with-vectors">2.2 Working with vectors</a></li>
+</ul></li>
+<li><a href="#tibbles-in-r">3 Tibbles in R</a>
 <ul>
-<li><a href="#tasks">Tasks</a></li>
+<li><a href="#getting-started-with-tibbles">3.1 Getting started with tibbles</a></li>
+<li><a href="#creating-a-tibble">3.2 Creating a tibble</a></li>
+<li><a href="#exploring-the-tibble">3.3 Exploring the tibble</a></li>
+<li><a href="#indexing">3.4 Indexing</a></li>
 </ul></li>
-</ul></li>
-<li><a href="#references">References</a></li>
-<li><a href="#tibbles-in-r">3 Tibbles in R</a></li>
+<li><a href="#reference">Reference</a></li>
 </ul>
 </nav>
 </div>
-<h1 id="set-up-rstudio-project">1 Set up RStudio project</h1>
+<h2 id="set-up-rstudio-project">1 Set up RStudio project</h2>
 <p><strong>Aims:</strong></p>
 <ul>
 <li>Get familiar with RStudio</li>
 <li>Create a new RStudio project for the workshop</li>
 <li>Change settings of RStudio</li>
 </ul>
-<h2 id="change-settings">Change settings</h2>
+<h3 id="change-settings">1.1 Change settings</h3>
 <p>Before you get started, there is an important setting that you should change in RStudio. By default, RStudio will save an the workspace of your current session in an <code>.Rdata</code> file. This would allow you to start the next session exactly where you left by loading this <code>.Rdata</code> file.</p>
 <p>This is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.</p>
-<p>In RStudio Go to <code>Tools -&gt; Global Options -&gt; General</code> and set the following workspace options:</p>
+<p>In RStudio go to <code>Tools -&gt; Global Options -&gt; General</code> and set the following workspace options:</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="tasks/day1/img/setting_workspace.png" width="329" /></p>
 </div>
-<h2 id="create-an-rstudio-project">Create an RStudio project</h2>
+<h3 id="create-an-rstudio-project">1.2 Create an RStudio project</h3>
 <p>Create an RStudio project that you can use for all the scripts, notes, data, etc. from this workshop.</p>
 <ul>
 <li>Create a project in a directory of your choice following the instructions from the slides</li>
@@ -2485,7 +2488,7 @@ Code
 <li>Find the project your computer’s file explorer and open it</li>
 </ul>
 <p>You can add files to your project either directly in RStudio, or in the file explorer of your operating system.</p>
-<h2 id="add-an-r-script-to-the-project">Add an R script to the project</h2>
+<h3 id="add-an-r-script-to-the-project">1.3 Add an R script to the project</h3>
 <ul>
 <li>create a new R script, save it in the appropriate folder of your project (e.g. <code>scripts</code> or <code>R</code>)</li>
 <li>copy paste the code from below into your script
@@ -2527,14 +2530,14 @@ Code
 </div>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h1 id="vectors-in-r">2 Vectors in R</h1>
+<h2 id="vectors-in-r">2 Vectors in R</h2>
 <p><strong>Aims:</strong></p>
 <ul>
 <li>Learn about type conversion</li>
 <li>Work with vectors</li>
 </ul>
 <p>Create a new script for the code of this task. Use comments in your code to take notes.</p>
-<h2 id="type-conversion">Type conversion</h2>
+<h3 id="type-conversion">2.1 Type conversion</h3>
 <p>Look at the vectors below. What do you think will happen?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2547,7 +2550,7 @@ Code
 </div>
 <p>Copy the vectors to your script and check out the data types of the vectors using <code>typeof</code>.</p>
 <p>Try to explicitly convert the vectors to integer and to character. What happens?</p>
-<h2 id="working-with-vectors">Working with vectors</h2>
+<h3 id="working-with-vectors">2.2 Working with vectors</h3>
 <p>You have the following vectors:</p>
 <ul>
 <li><code>species</code>: name of species</li>
@@ -2581,7 +2584,7 @@ Code
 </code></pre>
 </div>
 </div>
-<h3 id="tasks">Tasks</h3>
+<h4 id="tasks">Tasks</h4>
 <ul>
 <li>Check if the following animals are contained in the data set:</li>
 </ul>
@@ -2617,11 +2620,12 @@ Code
 </code></pre>
 </div>
 </div>
-<p>Now calculate the mean brain weight again. Can you explain what happens? Can you fix it? - hint: have a look at <code>?mean</code></p>
-<h1 id="references">References</h1>
-<p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
+<p>Now calculate the mean brain weight again. Can you explain what happens? Can you fix it?</p>
+<ul>
+<li>hint: have a look at <code>?mean</code></li>
+</ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h1 id="tibbles-in-r">3 Tibbles in R</h1>
+<h2 id="tibbles-in-r">3 Tibbles in R</h2>
 <p><strong>Aims:</strong></p>
 <ul>
 <li>Create and manipulate tibbles with base R:
@@ -2629,9 +2633,62 @@ Code
 <li>indexing</li>
 <li>adding columns</li>
 <li>changing values</li>
+</ul></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div></li>
+<h3 id="getting-started-with-tibbles">3.1 Getting started with tibbles</h3>
+<p>Before you start the task:</p>
+<ul>
+<li>Install the tibble package by calling <code>install.packages("tibble")</code> in the console.</li>
+<li>Open your script for the task and put <code>library(tibble)</code> on top</li>
+<li>Execute this line and the tibble package is loaded into your R session and ready to use</li>
 </ul>
+<h3 id="creating-a-tibble">3.2 Creating a tibble</h3>
+<p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from the last task and combine them in a tibble.</p>
+<p>Add the following 3 columns to this tibble:</p>
+<ul>
+<li>The ratio of brain weight to body weight</li>
+<li>A column that indicates whether an animal has a large or a small brain
+<ul>
+<li>Put the string <code>"large"</code> into this column if the brain-body weight ratio is higher than 1%</li>
+<li>Else put <code>"small"</code> into the column</li>
+</ul></li>
+<li>The order of the animals to the data:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>order</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  <span class='st'>"Rodentia"</span>, <span class='st'>"Artiodactyla"</span>, <span class='st'>"Carnivora"</span>, <span class='st'>"Artiodactyla"</span>, <span class='st'>"Rodentia"</span>, <span class='cn'>NA</span>,
+  <span class='st'>"Proboscidea"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"Perissodactyla"</span>, <span class='fl'>2</span><span class='op'>)</span>, <span class='cn'>NA</span>, <span class='st'>"Carnivora"</span>, <span class='st'>"Artiodactyla"</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"Primates"</span>, <span class='fl'>2</span><span class='op'>)</span>, <span class='st'>"Proboscidea"</span>, <span class='st'>"Ornithischia"</span>, <span class='st'>"Primates"</span>, <span class='st'>"Diprotodontia"</span>,
+  <span class='st'>"Rodentia"</span>, <span class='st'>"Rodentia"</span>, <span class='st'>"Lagomorpha"</span>, <span class='st'>"Artiodactyla"</span>, <span class='st'>"Carnivora"</span>, <span class='st'>"Primates"</span>,
+  <span class='st'>"Rodentia"</span>, <span class='cn'>NA</span>, <span class='st'>"Eulipotyphla"</span>, <span class='st'>"Artiodactyla"</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="exploring-the-tibble">3.3 Exploring the tibble</h3>
+<p>Explore the tibble you created with the different function that you learned in the presentation. You can for example try</p>
+<ul>
+<li><code>view()</code> and explore what you can do in the view window that opens: searching, filtering, sorting columns</li>
+<li><code>str()</code> to view the structure of the data</li>
+<li><code>summary()</code></li>
+<li>…</li>
+</ul>
+<h3 id="indexing">3.4 Indexing</h3>
+<p>Now let’s try some indexing on our data.</p>
+<p>Try the following selections</p>
+<ul>
+<li>rows 1, 5, and 7 and the columns <code>species</code> and <code>bodywt_kg</code></li>
+<li>select rows 1 to 10, all columns</li>
+<li>select the last column of the last row without using the row and column index (so don’t use any numbers in this command)</li>
+<li>select only rows that belong to the order of primates, rodentia and carnivora</li>
+</ul>
+<p>Now, create two subsets of the data: one for the small brained animals and one for the large brained animals. To create the subset, you can use the new column with the brain size category that you added before.</p>
+<p>Calculate the mean and the standard deviation (<code>sd()</code>) of the brain to body ratio for both subsets.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="reference">Reference</h1>
+<p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
