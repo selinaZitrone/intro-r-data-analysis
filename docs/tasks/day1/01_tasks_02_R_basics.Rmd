@@ -5,16 +5,16 @@ Use comments in your code to take notes.
 
 Look at the vectors below. What do you think will happen? 
 
-```{r}
+```{r echo=TRUE, eval=FALSE}
 v1 <- c(1, "a", 2, 3)
 v2 <- c(TRUE, TRUE, 1, FALSE, 0)
 v3 <- c(0, "23", 5, 7)
 v4 <- c(4L, 6L, 23.5345)
 ```
 
-Check out the data types of the vectors using `typeof`.
+Copy the vectors to your script and check out the data types of the vectors using `typeof`.
 
-Try to explicitly convert all 4 vectors to integer. What happens?
+Try to explicitly convert the vectors to integer and to character. What happens?
 
 ## Working with vectors
 
@@ -24,7 +24,7 @@ You have the following vectors:
 - `bodywt_kg`: body weight of the species in kg
 - `brainwt_g`: brain weight of the species in kg
 
-```{r}
+```{r echo=TRUE, eval=FALSE}
 species <- c(
   "MountainBeaver", "Cow", "GreyWolf", "Goat",
   "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
@@ -49,23 +49,40 @@ brainwt_g <- c(
 )
 ```
 
+### Tasks
 
+- Check if the following animals are contained in the data set:
 
-
-```{r eval=FALSE}
-as.character()
-typeof()
-is.character()
-c()
-:
-seq()
-rep()
-length()
-%in%
+```{r echo=TRUE, eval=FALSE}
+animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
 ```
 
-- type conversion
-- vectorized calculations: relational, ....
+- Convert brain weight from g to kg and save result it in a new vector `brainwt_kg`
+- Calculate the mean brain weight 
+- What is the ratio of brain weight to body weight in percent? Calculate it and save the result in a new vector
+- Are there any animals with a larger brain to body ratio than humans? If yes, which ones?
+  - Hint: extract human ratio and save it in a variable first
+
+
+#### Extras
+
+- Round the ratio values to 4 decimal places with the `round` function
+  - have a look at `?round` to check out how to use it
+- Which animal has the smallest brain to body ratio?
+- Add the following three animals to the data vectors
+
+```{r echo=TRUE, eval=FALSE}
+species_new <- c("Eagle", "Snail", "Lion")
+brainwt_g_new <- c(40, NA, 500)
+bodywt_kg_new <- c(18, 0.01, 550)
+```
+
+ Now calculate the mean brain weight again. Can you explain what happens? Can you fix it? 
+ - hint: have a look at `?mean`
+
+
+
+
 
 # References
 
