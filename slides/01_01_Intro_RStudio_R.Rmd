@@ -100,6 +100,8 @@ library(fontawesome)
 
 **Day 4: Bring your own data**
 
+.footnote-right[Image adapted from Wickham & Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)]
+
 ---
 # The Workshop: Schedule and Organization
 
