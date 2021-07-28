@@ -34,13 +34,6 @@ background-position: 90% 90%
 ]
 
 ---
-# Workflow data analysis
-
-.center[
-![:scale 100%](img/day2/datascience_workflow.png)]
-.footnote-right[Image from Wickham &amp; Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)]
-
----
 # The tidyverse
 
 &gt; The tidyverse is an opinonated &lt;b&gt;collection of R packages&lt;/b&gt; designed for data science. All packages share an underlying design philosophy, grammar, and data structures.&lt;br&gt;
@@ -49,6 +42,14 @@ background-position: 90% 90%
 These are the main packages from the tidyverse that we will use:&lt;br&gt;&lt;br&gt;
 
 .center[![:scale 15%](img/hex-stickers/tibble.png)![:scale 15%](img/hex-stickers/readr.png)![:scale 15%](img/hex-stickers/tidyr.png)![:scale 15%](img/hex-stickers/ggplot2.png)![:scale 15%](img/hex-stickers/dplyr.png)]
+
+---
+# Workflow data analysis
+
+.middle[
+![:scale 100%](img/day2/datascience_workflow_tidyverse.png)]
+
+.footnote-left[Image adapted from Wickham &amp; Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)]
 
 ---
 # The tidyverse
@@ -75,9 +76,9 @@ You can also install and load the tidyverse packages individually, but since we 
 ---
 class: inverse, center, middle
 
-# Data visualization with ggplot2
+# .large[Data visualization with ggplot2]
 
-![](img/hex-stickers/ggplot2.png)
+.center[![:scale 30%](img/hex-stickers/ggplot2.png)]
 
 ---
 # ggplot2
@@ -87,8 +88,6 @@ class: inverse, center, middle
 - most popular package for building graphics in R
 
 - one of the most downloaded packages from CRAN
-
-
 
 ---
 class: center, middle
@@ -107,28 +106,28 @@ background-size: contain
 ---
 class: inverse, center, middle
 
-# ggplot showcase 
+# .large[A ggplot showcase]
 
 ## Some examples of plots you can create with ggplot
 
 ---
 class: center, middle
 background-image: url("https://raw.githubusercontent.com/jkaupp/tidytuesdays/master/2021/week27/tw27_plot.png")
-background-size: contain
+background-size: 90%
 
 .footnote-right[Visualization by [Jake Kaupp](https://twitter.com/jakekaupp), code available on [Github](https://github.com/jkaupp/tidytuesdays/tree/master/2021/week27)]
 
 ---
 class: center, middle
 background-image: url("https://raw.githubusercontent.com/bbc/bbplot/master/chart_examples/bbplot_example_plots.png")
-background-size: contain
+background-size: 90%
 
 .footnote-right[Visualizations produced by the [BBC News data team](https://github.com/bbc/bbplot)]
 
 ---
 class: center, middle
 background-image: url("https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_05/2020_05_TreesSF.png")
-background-size: contain
+background-size: 50%
 
 .footnote-right[Visualizations by [Cédric Scherer](https://twitter.com/CedScherer), code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_05_TreesSF.Rmd)]
 
@@ -142,7 +141,7 @@ background-size: contain
 ---
 # Advantages of ggplot
 
-- consistent grammar/structure for producing plots
+- consistent grammar/structure
 
 --
 
@@ -155,11 +154,12 @@ background-size: contain
 --
 
 - many extension packages that provide 
-	• Additional plot types
-	• Additional themes
-	• Color palettes
-	• Animation
-	• Composition of multiple plots
+  - Additional plot types
+	- Additional themes
+	- Color palettes
+	- Animation
+	- Composition of multiple plots
+	- ...
 	
 --
 
@@ -168,7 +168,7 @@ background-size: contain
 ---
 # Basic idea of ggplot
 
-&gt; shorten the distance from mind to page&lt;br&gt;
+&gt; Shorten the distance from mind to page&lt;br&gt;
 .small[(Hadley Wickham)]
 
 --
@@ -256,12 +256,12 @@ background-size: contain
 # The data
 
 The `ggplot` package has a built-in data set called `msleep` about the sleep times of 83 mammals. 
-The variables that are included in the data set (among others) are:
+
+Data variables (among others):
 
 - **vore:** carnivore, omnivore, herbivore?
 - **conservation:** conservation status of the animal
 - **sleep_total:** total amount of sleep [h]
-- **sleep_rem:** rem sleep [h]
 - **brainwt:** brain weight [kg]
 - **bodywt:** body weight [kg]
 
@@ -293,13 +293,13 @@ library(ggplot) # or library(tidyverse)
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-7-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-6-1.png" width="504" /&gt;
 ]
 
 ---
 # `aes(x, y)`
 
-The aesthetic mapping defines how variables are mapped to aesthetic properties of the plot.
+The **aes**thetic mapping defines how variables are mapped to aesthetic properties of the plot.
 
 .pull-left[
 
@@ -316,7 +316,7 @@ ggplot(data = msleep,
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-9-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-8-1.png" width="504" /&gt;
 ]
 
 ---
@@ -348,7 +348,7 @@ Remember argument matching by position?
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-12-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
 ]
 
 ---
@@ -388,7 +388,7 @@ ggplot(data = msleep,
 ## Warning: Removed 27 rows containing missing values (geom_point).
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-14-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-13-1.png" width="504" /&gt;
 ]
 
 ---
@@ -425,7 +425,7 @@ Here, it does not make a difference.
 ## Warning: Removed 27 rows containing missing values (geom_point).
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-17-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-16-1.png" width="504" /&gt;
 ]
 
 
@@ -450,7 +450,7 @@ ggplot(data = msleep,
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-19-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-18-1.png" width="504" /&gt;
 ]
 
 ---
@@ -479,9 +479,35 @@ In this example we scale the &lt;b&gt;.col1[x]&lt;/b&gt; aesthetic to &lt;b&gt;.
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-21-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-20-1.png" width="504" /&gt;
 ]
 
+---
+# `geom_smooth()`
+
+We can add a smoothing line that helps us see patterns in the data
+
+--
+
+.pull-left[
+
+```r
+ggplot(data = msleep,
+       aes(x = brainwt, 
+           y = sleep_total)) +
+  geom_point() +
+* geom_smooth(method = "lm") +
+  scale_x_log10()
+```
+
+- with `method = lm`, a linear regression line is added
+- the ribbon represents confidence interval around the regression
+  - turn ribbon off with `se = FALSE` argument
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-22-1.png" width="504" /&gt;
+]
 
 ---
 # Change appearance of points
@@ -505,13 +531,15 @@ ggplot(data = msleep,
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-23-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-24-1.png" width="504" /&gt;
 ]
 
 ---
 # `aes(color)`: mapping color to a variable
 
-Instead of changing color of all points, **map the point color to a variable** by adding it to the aesthetics:
+Instead of changing color of all points, **map color to a variable** by adding it to aesthetics:
+
+--
 
 .pull-left[
 
@@ -535,14 +563,13 @@ g
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-25-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-26-1.png" width="504" /&gt;
 ]
-
 
 ---
 # `aes(size)`: mapping size to a variable
 
-We can do the same thing with size:
+We can do the same with size:
 
 .pull-left[
 
@@ -564,13 +591,13 @@ ggplot(
 
 ]
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-27-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-28-1.png" width="504" /&gt;
 ]
 
 ---
 # `aes(shape)`: mapping shape to a variable
 
-We can do the same thing with shape and size as well:
+We can do the same with shape:
 
 .pull-left[
 
@@ -592,14 +619,16 @@ ggplot(
 
 ]
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-29-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-30-1.png" width="504" /&gt;
 ]
 
 ---
 
 # `scale_color_viridis_d()`
 
-Back to our plot `g` with color as additional aesthetic. We can change the colors the values are scaled to:
+Back to our plot `g` with color as additional aesthetic. We can change the color scale:
+
+--
 
 .pull-left[
 
@@ -611,12 +640,12 @@ g +
 
 - the viridis color palette is designed for viewers with common forms of color blindness
 - different options of viridis color palettes are are:
-  - "magma", "inferno" "plasma", "viridis", "cividis"
+  - `"magma"`, `"inferno"`, `"plasma"`, `"viridis"`, `"cividis"`
 
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-31-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-32-1.png" width="504" /&gt;
 ]
 
 ---
@@ -642,7 +671,7 @@ g +
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-33-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-34-1.png" width="504" /&gt;
 ]
 
 ---
@@ -673,15 +702,15 @@ g
 
 .pull-right[
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-35-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-36-1.png" width="504" /&gt;
 ]
 
 ---
 # Other color scales
 
-There are several packages with preset color palettes:
+There are many packages with preset color palettes, e.g.:
 
-**ggsci:** scientific journal and sci-fi themed palettes:
+**ggsci:** scientific journal and sci-fi themed palettes
 
 
 ```r
@@ -708,10 +737,11 @@ ggthemes::scale_color_economist() # color palette from Economist graphs
 For a comprehensive list of color palettes available, check out [this repository](https://github.com/EmilHvitfeldt/r-color-palettes) by Emil Hvitfeldt.
 
 ---
+# `facet_wrap()` and `facet_grid()`
 
-# `facet_wrap` and `facet_grid`
+Facets split a plot into small multiples along values of a variable from the data.
 
-Facets split a plot into small multiples along values of a variable from the data. We can e.g. split our plot along the conservation status of the animals:
+--
 
 .pull-left[
 
@@ -728,21 +758,22 @@ g +
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-39-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-40-1.png" width="504" /&gt;
 ]
 
 ---
-# `labs`: change axis labels and add title
+# `labs()`: change axis labels and add title
 
 .pull-left[
 
 ```r
 g &lt;- g +
-* labs(x = "log brain weight [kg]",
-*      y = "total sleep [h/day]",
-*      title = "Brain weigth and sleep time in mammals",
-*      subtitle = "Larger brains seem to sleep less",
-*      caption = "Data from the ggplot2 package")
+  labs(
+*   x = "log brain weight [kg]",
+*   y = "total sleep [h/day]",
+*   title = "Brain weight and sleep time in mammals",
+*   subtitle = "Larger brains seem to sleep less",
+*   caption = "Data from the ggplot2 package")
 g
 ```
 
@@ -750,14 +781,16 @@ g
 
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-41-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-42-1.png" width="504" /&gt;
 
 ]
 
 ---
-# `theme_*`: change appearance
+# `theme_*()`: change appearance
 
 `ggplot2` offers many pre-defined themes that we can apply to change the appearance of a plot.
+
+--
 
 .pull-left[
 
@@ -766,7 +799,7 @@ g +
 * theme_classic()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-43-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-44-1.png" width="504" /&gt;
 
 ]
 
@@ -777,15 +810,14 @@ g +
 * theme_linedraw()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-45-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-46-1.png" width="504" /&gt;
 
 ]
 
 ---
-# Changing the theme
+# `theme_*()`: change appearance
 
 `ggplot2` offers several pre-defined themes that we can apply to change the appearance of our plot.
-Some examples are:
 
 .pull-left[
 
@@ -794,7 +826,7 @@ g +
 * theme_dark()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-47-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-48-1.png" width="504" /&gt;
 
 ]
 
@@ -805,7 +837,7 @@ g +
 * theme_minimal()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-49-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-50-1.png" width="504" /&gt;
 
 ]
 
@@ -832,7 +864,9 @@ If you want a full list of what you can customize, have a look at
 ---
 # `theme()`: customize theme
 
-To edit a theme, just add another `theme()` layer to your plot:
+To edit a theme, just add another `theme()` layer to your plot.
+
+--
 
 .pull-left[
 
@@ -841,28 +875,33 @@ g +
   theme_minimal() + 
 * theme(
 *   axis.text = element_text(face = "bold"),
+*   axis.title = element_text(face = "italic"),
 *   legend.position = "bottom",
 *   plot.background = element_rect(
-*     fill = "lightblue")
+*     fill = "lightblue",
+*     color = "yellow")
 * )
 ```
 
 ]
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-52-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-53-1.png" width="504" /&gt;
 ]
 
 ---
-# Set a theme for all plots
+# `theme_set()`: set global theme
 
-You can set a theme that will be applied to all ggplots in the current R session, by adding e.g. 
+You can set a global theme that will be applied to all ggplot objects in the current R session. 
 
 
 ```r
+# Globally set theme_minimal as the default theme
 theme_set(theme_minimal())
 ```
 
-to the beginning of your script.
+Add this to the beginning of your script.
+
+--
 
 You can also specify some defaults, e.g. the text size:
 
@@ -887,11 +926,11 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
 ]
 
 .pull-left[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-56-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-57-1.png" width="504" /&gt;
 ]
 
 ---
-# `geom_boxplot()`
+# `aes(fill)` and `scale_fill_brewer()`
 
 Pay attention to fill vs. color aesthetic
 
@@ -912,11 +951,11 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
 ]
 
 .pull-left[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-58-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-59-1.png" width="504" /&gt;
 ]
 
 ---
-# `geom_boxplot()`
+# `aes(color)`and `scale_color_brewer()`
 
 Pay attention to fill vs. color aesthetic
 
@@ -937,30 +976,64 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
 ]
 
 .pull-left[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-60-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-61-1.png" width="504" /&gt;
 ]
 
 ---
-class: inverse, center, middle
+# Let's look at an example
 
-# Let's look at some examples
+.left-column[
+What are the layers in this plot?
 
-## What are the data, layers, mappings, geoms, themes, ...?
+- data
+- aesthetic mapping
+- geoms
+- themes
+]
+.right-column[
+![:scale 90%](img/figs-penguin/README-flipper-bill-1.png)
+]
+
+.footnote-right[Visualization from the [palmerpenguins package](https://allisonhorst.github.io/palmerpenguins/)]
+---
+# `ggsave()`
+
+A ggplot object can be saved on disk in different formats.
+
+Without specifications:
+
+
+```r
+# save plot g in img as my_plot.pdf
+ggsave(filename = "./img/my_plot.pdf", plot = g)
+# save plot g in img as my_plot.png
+ggsave(filename = "./img/my_plot.png", plot = g)
+```
+
+--
+
+Or with specifications:
+
+
+```r
+# save a plot named g in the img directory under the name my_plot.png with width 16 cm and height 9 cm
+ggsave(filename = "./img/my_plot.png",
+       plot = g,
+       width = 16,
+       heigth = 9,
+       units = "cm")
+```
+
+Have a look at `?ggsave` to see all options.
 
 ---
-class: center, middle
-background-image: url("img/figs-penguin/README-flipper-bill-1.png")
-background-size: 70%
+class: inverse, middle, center
 
----
+# .large[Now you]
 
+## Task 2-1: Create your own penguin ggplots
 
-
----
-# Resources
-
-tidyverse.org
-
+#### Find the task description [here](www.github.com)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

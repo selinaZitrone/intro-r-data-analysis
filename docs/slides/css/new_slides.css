@@ -254,8 +254,8 @@ h2{
 
 .footnote-right {
   position: absolute;
-  bottom: 20px;
-  right: 64px;
+  bottom: 10px;
+  right: 80px;
   font-size: 0.9em;
   padding-left: 4em;
 }
