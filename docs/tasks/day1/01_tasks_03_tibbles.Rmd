@@ -28,6 +28,22 @@ order <- c(
 )
 ```
 
+## Exploring the tibble
+
+Have a look at the tibble you created with the different function that you saw in the presentation.
+You can for example try 
+
+- `view()` and explore what you can do in the view window that opens: searching, filtering, sorting columns
+- `str()` to view the structure of the data
+- `summary()`
+- ...
+
+## Indexing
+
+
+```{r}
+a
+```
 
 
 ## Functions
