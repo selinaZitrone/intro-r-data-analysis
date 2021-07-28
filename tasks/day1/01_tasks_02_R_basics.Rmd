@@ -1,7 +1,7 @@
 Create a new script for the code of this task.
 Use comments in your code to take notes.
 
-## Type conversion
+### 2.1 Type conversion
 
 Look at the vectors below. What do you think will happen? 
 
@@ -16,7 +16,7 @@ Copy the vectors to your script and check out the data types of the vectors usin
 
 Try to explicitly convert the vectors to integer and to character. What happens?
 
-## Working with vectors
+### 2.2 Working with vectors
 
 You have the following vectors:
 
@@ -49,7 +49,7 @@ brainwt_g <- c(
 )
 ```
 
-### Tasks
+#### Tasks
 
 - Check if the following animals are contained in the data set:
 
@@ -77,13 +77,6 @@ brainwt_g_new <- c(40, NA, 500)
 bodywt_kg_new <- c(18, 0.01, 550)
 ```
 
- Now calculate the mean brain weight again. Can you explain what happens? Can you fix it? 
+ Now calculate the mean brain weight again. Can you explain what happens? Can you fix it?
+ 
  - hint: have a look at `?mean`
-
-
-
-
-
-# References
-
-Wolfram Research, "Sample Data: Animal Weights" from the Wolfram Data Repository (2016) https://doi.org/10.24097/wolfram.43616.data
