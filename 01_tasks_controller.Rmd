@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Set up RStudio project
+# 1 Set up RStudio project
 
 **Aims:** 
 
@@ -20,5 +20,15 @@ knitr::opts_chunk$set(echo = FALSE)
 - Create a new RStudio project for the workshop
 - Change settings of RStudio
 
-```{r create_rstudio_project, child="01_tasks_01_create_project.Rmd"}
+```{r create_rstudio_project, child="tasks/day1/01_tasks_01_create_project.Rmd"}
+```
+
+# 2 Vectors in R
+
+**Aims:**
+
+- Learn about type conversion
+- Work with vectors
+
+```{r vectors, child="tasks/day1/01_tasks_02_R_basics.Rmd"}
 ```
