@@ -1377,6 +1377,8 @@ v[y == max(y)] # return the value in v for which y is the maximum of y
 ```{r eval=FALSE}
 # length
 length(v)
+# rounding numers
+round(v, digits = 2)
 # sum
 sum(v)
 # mean
