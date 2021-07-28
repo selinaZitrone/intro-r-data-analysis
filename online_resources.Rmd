@@ -1,0 +1,29 @@
+---
+title: "Additional online resources"
+description: |
+  Below you can find a collection of helpful links to further online resources regarding the workshop topics.
+output: 
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+## General
+
+- [cheatsheet collection](https://www.rstudio.com/resources/cheatsheets/) by RStudio, including cheat sheets for `ggplot2`, `dplyr`, `readr`,... 
+
+## Introduction to R
+
+## Tidyverse
+
+### ggplot
+
+- [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf) offers an overview of all possibilities of ggplot
+
+### dplyr
+
+
+
+
+
+
