@@ -13,11 +13,6 @@ output:
       ratio: 16:9
       countIncrementalSlides: false
       beforeInit: "macros.js"
-      slideNumberFormat:  |
-        <div class="progress-bar-container">
-          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
-          </div>
-        </div>
 params:
   title: "Common errors and how to fix them"
   day: "1"

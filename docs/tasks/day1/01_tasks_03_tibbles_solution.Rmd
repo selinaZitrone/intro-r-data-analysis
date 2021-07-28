@@ -1,0 +1,93 @@
+## Creating a tibble
+
+Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and put them in a tibble.
+
+```{r}
+# install.packages("tibble")
+library(tibble)
+
+species <- c(
+  "MountainBeaver", "Cow", "GreyWolf", "Goat",
+  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
+  "Horse", "PotarMonkey", "Cat", "Giraffe",
+  "Gorilla", "Human", "AfricanElephant", "Triceratops",
+  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
+  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
+  "Rat", "Brachiosaurus", "Mole", "Pig"
+)
+
+bodywt_kg <- c(
+  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
+  521, 10, 3.3, 529, 207, 62, 6654, 9400,
+  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
+  0.3, 87000, 0.1, 192
+)
+
+brainwt_g <- c(
+  8.1, 423, 119.5, 115, 5.5, 50, 4603, 419, 655, 115, 25.6,
+  680, 406, 1320, 5712, 70, 179, 56, 1, 0.4, 12.1, 175,
+  157, 440, 1.9, 154.5, 3, 180
+)
+# Creating the tibble 
+animals <- tibble(
+  species = species,
+  bodywt_kg = bodywt_kg,
+  brainwt_kg = brainwt_g / 1000
+)
+```
+
+
+Add several columns to this tibble:
+
+- The ratio of brain weight to body weight
+- A column that indicates whether an animal has a large or a small brain
+  - Put `"large"` into the column if the brain-body weight ratio is higher than 1%
+  - Else put `"small"` into the column
+- Add the order of the animals to the data
+
+```{r}
+animals$bbr <- animals$brainwt_kg / animals$bodywt_kg * 100
+animals$brainwt_category <- ifelse(
+  animals$bbr > 1,
+  "large",
+  "small"
+)
+
+order <- c(
+  "Rodentia", "Artiodactyla", "Carnivora", "Artiodactyla", "Rodentia", NA,
+  "Proboscidea", rep("Perissodactyla", 2), NA, "Carnivora", "Artiodactyla",
+  rep("Primates", 2), "Proboscidea", "Ornithischia", "Primates", "Diprotodontia",
+  "Rodentia", "Rodentia", "Lagomorpha", "Artiodactyla", "Carnivora", "Primates",
+  "Rodentia", NA, "Eulipotyphla", "Artiodactyla"
+)
+animals$order <- order
+```
+
+```{r}
+view(animals)
+summary(animals)
+str(animals)
+```
+
+What is the mean brain to body weight ratio of animals in the `large` brain weight category?
+
+
+```{r}
+mean(animals[animals$brainwt_category == "large", ]$bbr)
+```
+
+
+## Functions
+
+```{r}
+install.packages()
+library()
+tibble()
+as_tibble()
+str()
+nrow()
+ncol()
+names()
+tibble::view()
+summary()
+```

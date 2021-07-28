@@ -290,7 +290,7 @@ h2{
   float: right;
   width: 49%;
 }
-
+/*
 .remark-slide-number {
   position: inherit;
 }
@@ -306,7 +306,7 @@ h2{
   height: 100%;
   background-color: var(--progressbar-color);
 }
-
+*/
 .remark-slide table thead th { border-bottom: 1px solid #ddd; }
 th, td { padding: 5px; }
 .remark-slide thead, .remark-slide tfoot, .remark-slide tr:nth-child(even) { background: #eee }

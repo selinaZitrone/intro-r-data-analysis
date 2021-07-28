@@ -86,29 +86,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Introduction to R for Data Analysis: You can download the full material after the workshop is finished</title>
+  <title>Introduction to R for Data Analysis: Tasks for day 1</title>
 
-  <meta property="description" itemprop="description" content="For now, please use the material avaialble from this website"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Introduction to R for Data Analysis: You can download the full material after the workshop is finished"/>
+  <meta property="og:title" content="Introduction to R for Data Analysis: Tasks for day 1"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="For now, please use the material avaialble from this website"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Introduction to R for Data Analysis"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Introduction to R for Data Analysis: You can download the full material after the workshop is finished"/>
-  <meta property="twitter:description" content="For now, please use the material avaialble from this website"/>
+  <meta property="twitter:title" content="Introduction to R for Data Analysis: Tasks for day 1"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["You can download the full material after the workshop is finished"]},{"type":"character","attributes":{},"value":["For now, please use the material avaialble from this website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["Tasks for day 1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2363,7 +2360,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"You can download the full material after the workshop is finished","description":"For now, please use the material avaialble from this website","authors":[]}
+{"title":"Tasks for day 1","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2430,15 +2427,211 @@ Code
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>You can download the full material after the workshop is finished</h1>
+<h1>Tasks for day 1</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>For now, please use the material avaialble from this website</p></p>
+
 </div>
 
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#set-up-rstudio-project">1 Set up RStudio project</a>
+<ul>
+<li><a href="#change-settings">Change settings</a></li>
+<li><a href="#create-an-rstudio-project">Create an RStudio project</a></li>
+<li><a href="#add-an-r-script-to-the-project">Add an R script to the project</a></li>
+</ul></li>
+<li><a href="#vectors-in-r">2 Vectors in R</a>
+<ul>
+<li><a href="#type-conversion">Type conversion</a></li>
+<li><a href="#working-with-vectors">Working with vectors</a>
+<ul>
+<li><a href="#tasks">Tasks</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+<li><a href="#tibbles-in-r">3 Tibbles in R</a></li>
+</ul>
+</nav>
+</div>
+<h1 id="set-up-rstudio-project">1 Set up RStudio project</h1>
+<p><strong>Aims:</strong></p>
+<ul>
+<li>Get familiar with RStudio</li>
+<li>Create a new RStudio project for the workshop</li>
+<li>Change settings of RStudio</li>
+</ul>
+<h2 id="change-settings">Change settings</h2>
+<p>Before you get started, there is an important setting that you should change in RStudio. By default, RStudio will save an the workspace of your current session in an <code>.Rdata</code> file. This would allow you to start the next session exactly where you left by loading this <code>.Rdata</code> file.</p>
+<p>This is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.</p>
+<p>In RStudio Go to <code>Tools -&gt; Global Options -&gt; General</code> and set the following workspace options:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="tasks/day1/img/setting_workspace.png" width="329" /></p>
+</div>
+<h2 id="create-an-rstudio-project">Create an RStudio project</h2>
+<p>Create an RStudio project that you can use for all the scripts, notes, data, etc. from this workshop.</p>
+<ul>
+<li>Create a project in a directory of your choice following the instructions from the slides</li>
+<li>Use the <code>File</code> pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days
+<ul>
+<li>e.g. create folders for <code>data</code>, <code>scripts</code>, <code>documents</code>,…</li>
+<li>you can always change the structure of your project later, but for now, we want some basic folders that we can navigate</li>
+</ul></li>
+<li>Now close the project</li>
+<li>Find the project your computer’s file explorer and open it</li>
+</ul>
+<p>You can add files to your project either directly in RStudio, or in the file explorer of your operating system.</p>
+<h2 id="add-an-r-script-to-the-project">Add an R script to the project</h2>
+<ul>
+<li>create a new R script, save it in the appropriate folder of your project (e.g. <code>scripts</code> or <code>R</code>)</li>
+<li>copy paste the code from below into your script
+<ul>
+<li>don’t worry if you don’t understand the code yet, we will learn all this later</li>
+</ul></li>
+<li>run the code in the script line by line. Try both, running code using the <code>Run</code> button and the keyboard shortcut <code>Ctrl/Cmd + Enter/Return</code>
+<ul>
+<li>for each line that you run, observe what is happening to the other panes (console, environment, …) in RStudio. Can you explain what is happening?</li>
+</ul></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Look at the first lines of the iris dataset</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
+<span class='co'># What is the iris dataset -&gt; Call the help</span>
+<span class='op'>?</span><span class='va'>iris</span>
+<span class='co'># How many rows and columns does the data set have?</span>
+<span class='va'>rownum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
+<span class='va'>colnum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"The iris dataset has "</span>, <span class='va'>rownum</span>, <span class='st'>" rows and "</span>, <span class='va'>colnum</span>, <span class='st'>" columns."</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'># Some summary statistics on the iris data set</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
+
+<span class='co'># create a plot</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Petal.Length</span>, <span class='va'>iris</span><span class='op'>$</span><span class='va'>Petal.Width</span>, 
+     xlab <span class='op'>=</span> <span class='st'>"Petal Length"</span>,
+     ylab <span class='op'>=</span> <span class='st'>"Petal Width"</span>,
+     main <span class='op'>=</span> <span class='st'>"Petal Width vs Petal Length"</span>,
+     pch <span class='op'>=</span> <span class='fl'>20</span>,
+     col<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span> <span class='op'>==</span> <span class='st'>"setosa"</span>,<span class='st'>"coral1"</span>, 
+                <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span> <span class='op'>==</span> <span class='st'>"virginica"</span>,<span class='st'>"cyan4"</span>, 
+                       <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span> <span class='op'>==</span>  <span class='st'>"versicolor"</span>,
+                              <span class='st'>"darkgoldenrod2"</span>, <span class='st'>"grey"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'># add a legend</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/legend.html'>legend</a></span><span class='op'>(</span><span class='st'>"bottomright"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"setosa"</span>,<span class='st'>"virginica"</span>, <span class='st'>"versicolor"</span><span class='op'>)</span>,
+       col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"coral1"</span>,<span class='st'>"cyan4"</span>, <span class='st'>"darkgoldenrod2"</span><span class='op'>)</span>, pch<span class='op'>=</span><span class='fl'>20</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="vectors-in-r">2 Vectors in R</h1>
+<p><strong>Aims:</strong></p>
+<ul>
+<li>Learn about type conversion</li>
+<li>Work with vectors</li>
+</ul>
+<p>Create a new script for the code of this task. Use comments in your code to take notes.</p>
+<h2 id="type-conversion">Type conversion</h2>
+<p>Look at the vectors below. What do you think will happen?</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>v1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"a"</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>
+<span class='va'>v2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>TRUE</span>, <span class='fl'>1</span>, <span class='cn'>FALSE</span>, <span class='fl'>0</span><span class='op'>)</span>
+<span class='va'>v3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='st'>"23"</span>, <span class='fl'>5</span>, <span class='fl'>7</span><span class='op'>)</span>
+<span class='va'>v4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4L</span>, <span class='fl'>6L</span>, <span class='fl'>23.5345</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Copy the vectors to your script and check out the data types of the vectors using <code>typeof</code>.</p>
+<p>Try to explicitly convert the vectors to integer and to character. What happens?</p>
+<h2 id="working-with-vectors">Working with vectors</h2>
+<p>You have the following vectors:</p>
+<ul>
+<li><code>species</code>: name of species</li>
+<li><code>bodywt_kg</code>: body weight of the species in kg</li>
+<li><code>brainwt_g</code>: brain weight of the species in kg</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  <span class='st'>"MountainBeaver"</span>, <span class='st'>"Cow"</span>, <span class='st'>"GreyWolf"</span>, <span class='st'>"Goat"</span>,
+  <span class='st'>"GuineaPig"</span>, <span class='st'>"Diplodocus"</span>, <span class='st'>"AsianElephant"</span>, <span class='st'>"Donkey"</span>,
+  <span class='st'>"Horse"</span>, <span class='st'>"PotarMonkey"</span>, <span class='st'>"Cat"</span>, <span class='st'>"Giraffe"</span>,
+  <span class='st'>"Gorilla"</span>, <span class='st'>"Human"</span>, <span class='st'>"AfricanElephant"</span>, <span class='st'>"Triceratops"</span>,
+  <span class='st'>"RhesusMonkey"</span>, <span class='st'>"Kangaroo"</span>, <span class='st'>"GoldenHamster"</span>, <span class='st'>"Mouse"</span>,
+  <span class='st'>"Rabbit"</span>, <span class='st'>"Sheep"</span>, <span class='st'>"Jaguar"</span>, <span class='st'>"Chimpanzee"</span>,
+  <span class='st'>"Rat"</span>, <span class='st'>"Brachiosaurus"</span>, <span class='st'>"Mole"</span>, <span class='st'>"Pig"</span>
+<span class='op'>)</span>
+
+<span class='va'>bodywt_kg</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  <span class='fl'>1.4</span>, <span class='fl'>465</span>, <span class='fl'>36.3</span>, <span class='fl'>27.7</span>, <span class='fl'>1.</span>, <span class='fl'>11700</span>, <span class='fl'>2547</span>, <span class='fl'>187.1</span>,
+  <span class='fl'>521</span>, <span class='fl'>10</span>, <span class='fl'>3.3</span>, <span class='fl'>529</span>, <span class='fl'>207</span>, <span class='fl'>62</span>, <span class='fl'>6654</span>, <span class='fl'>9400</span>,
+  <span class='fl'>6.8</span>, <span class='fl'>35</span>, <span class='fl'>0.1</span>, <span class='fl'>0.02</span>, <span class='fl'>2.5</span>, <span class='fl'>55.5</span>, <span class='fl'>100</span>, <span class='fl'>52.2</span>,
+  <span class='fl'>0.3</span>, <span class='fl'>87000</span>, <span class='fl'>0.1</span>, <span class='fl'>192</span>
+<span class='op'>)</span>
+
+<span class='va'>brainwt_g</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  <span class='fl'>8.1</span>, <span class='fl'>423</span>, <span class='fl'>119.5</span>, <span class='fl'>115</span>, <span class='fl'>5.5</span>, <span class='fl'>50</span>, <span class='fl'>4603</span>, <span class='fl'>419</span>, <span class='fl'>655</span>, <span class='fl'>115</span>, <span class='fl'>25.6</span>,
+  <span class='fl'>680</span>, <span class='fl'>406</span>, <span class='fl'>1320</span>, <span class='fl'>5712</span>, <span class='fl'>70</span>, <span class='fl'>179</span>, <span class='fl'>56</span>, <span class='fl'>1</span>, <span class='fl'>0.4</span>, <span class='fl'>12.1</span>, <span class='fl'>175</span>,
+  <span class='fl'>157</span>, <span class='fl'>440</span>, <span class='fl'>1.9</span>, <span class='fl'>154.5</span>, <span class='fl'>3</span>, <span class='fl'>180</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="tasks">Tasks</h3>
+<ul>
+<li>Check if the following animals are contained in the data set:</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals_to_check</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Snail"</span>, <span class='st'>"Goat"</span>, <span class='st'>"Chimpanzee"</span>, <span class='st'>"Rat"</span>, <span class='st'>"Dragon"</span>, <span class='st'>"Eagle"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<ul>
+<li>Convert brain weight from g to kg and save result it in a new vector <code>brainwt_kg</code></li>
+<li>Calculate the mean brain weight</li>
+<li>What is the ratio of brain weight to body weight in percent? Calculate it and save the result in a new vector</li>
+<li>Are there any animals with a larger brain to body ratio than humans? If yes, which ones?
+<ul>
+<li>Hint: extract human ratio and save it in a variable first</li>
+</ul></li>
+</ul>
+<h4 id="extras">Extras</h4>
+<ul>
+<li>Round the ratio values to 4 decimal places with the <code>round</code> function
+<ul>
+<li>have a look at <code>?round</code> to check out how to use it</li>
+</ul></li>
+<li>Which animal has the smallest brain to body ratio?</li>
+<li>Add the following three animals to the data vectors</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>species_new</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Eagle"</span>, <span class='st'>"Snail"</span>, <span class='st'>"Lion"</span><span class='op'>)</span>
+<span class='va'>brainwt_g_new</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>, <span class='cn'>NA</span>, <span class='fl'>500</span><span class='op'>)</span>
+<span class='va'>bodywt_kg_new</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>18</span>, <span class='fl'>0.01</span>, <span class='fl'>550</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Now calculate the mean brain weight again. Can you explain what happens? Can you fix it? - hint: have a look at <code>?mean</code></p>
+<h1 id="references">References</h1>
+<p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="tibbles-in-r">3 Tibbles in R</h1>
+<p><strong>Aims:</strong></p>
+<ul>
+<li>Create and manipulate tibbles with base R:
+<ul>
+<li>indexing</li>
+<li>adding columns</li>
+<li>changing values</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div></li>
+</ul>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

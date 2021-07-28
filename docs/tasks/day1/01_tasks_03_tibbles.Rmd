@@ -1,0 +1,70 @@
+## Getting started with tibbles
+
+Before you start the task:
+
+- Install the tibble package by calling `install.packages("tibble")` in the console.
+- Open your script for the task and put `library(tibble)` on the top
+- Execute this line and the tibble package is loaded into your R session and ready to use
+
+## Creating a tibble
+
+Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and put them in a tibble.
+
+Add several columns to this tibble:
+
+- The ratio of brain weight to body weight
+- A column that indicates whether an animal has a large or a small brain
+  - Put `"large"` into the column if the brain-body weight ratio is higher than 1%
+  - Else put `"small"` into the column
+- Add the order of the animals to the data:
+
+```{r eval=FALSE}
+order <- c(
+  "Rodentia", "Artiodactyla", "Carnivora", "Artiodactyla", "Rodentia", NA,
+  "Proboscidea", rep("Perissodactyla", 2), NA, "Carnivora", "Artiodactyla",
+  rep("Primates", 2), "Proboscidea", "Ornithischia", "Primates", "Diprotodontia",
+  "Rodentia", "Rodentia", "Lagomorpha", "Artiodactyla", "Carnivora", "Primates",
+  "Rodentia", NA, "Eulipotyphla", "Artiodactyla"
+)
+```
+
+
+
+## Functions
+
+```{r}
+install.packages()
+library()
+tibble()
+as_tibble()
+str()
+nrow()
+ncol()
+names()
+tibble::view()
+summary()
+```
+
+
+## Indexing
+
+```{r}
+tibble[row, column]
+tibble[columns]
+# by column name or column position
+$
+# logical indexing with logical, relational operators, %in%
+```
+
+## Wroking with tibbles
+
+- replace values
+Adding new columns:
+- ifelse
+- columns based on other columns
+
+# summary
+
+- data frames and tibbles are named lists of vectors of the same length
+- basic props: name (header), same data type, same length
+- tibbles are better than df but you can do same wiht them
