@@ -37,7 +37,7 @@ class: center, middle
 
 When learning a programming language, you have to be prepared to spend a lot of 
 your time with fixing bugs in the code. So don't worry: It's not you, it's just how programming works!
-![](img/AllisonHorst/debugging.jpg)
+![:scale 85%](img/AllisonHorst/debugging.jpg)
 .footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
 
 ---
@@ -62,10 +62,9 @@ Debugging can be annoying and we can't avoid it, but ...
 ---
 class: inverse, center, middle
 
-# Most common `r fa("r-project")`  errors or problems for beginners and how to deal with them
+# .large[Most common `r fa("r-project")`  errors and problems for beginners and how to deal with them]
 
 ---
-
 # Syntax errors
 
 #### Example
@@ -88,7 +87,7 @@ mean(c(1,2,3)na.rm=TRUE)
 #### Examples
 
 ```{r, echo=FALSE, error=TRUE}
-mutate(data, a=1:10)
+mutate(data.frame(b=1:10), a=1:10)
 ```
 ```{r, echo=FALSE, error=TRUE}
 lenght(1:10)
@@ -99,6 +98,7 @@ lenght(1:10)
 `Could not find function` errors have two main reasons:
 
 1. You forgot to load the package that the function belongs to
+
   - load the package using `library()` or call the function with `packageName::functionName()`
 
 --
@@ -111,15 +111,22 @@ lenght(1:10)
 #### Example
 
 ```{r echo=FALSE,error=TRUE}
-j
+hello
+variable_A
 ```
+
+--
 
 #### How to fix
 
 - you are trying to access an object that does not exist
+
 - Mostly because:
+
   - typos in variable name (variable name is `variableA` but you try to access `variable_A`)
-  - forgot to put quotes around string: `print(hello)` -> looks for the variable hello but instead you wanted to print the string `print("hello")`
+  
+  - forgot to put quotes around string: `print(hello)`
+  `r fa("arrow-right")` looks for a variable named hello but instead you wanted to print the string `print("hello")`
 
 ---
 # Wrong data format
@@ -127,6 +134,7 @@ j
 #### Example
 
 - does not necessarily trigger an error message
+
 - if there is an error message, it can also appear later in your code
 
 --
@@ -134,7 +142,10 @@ j
 #### How to fix it
 
 - Look at `str()` of your data and check whether all columns are there and in correct format
+  - e.g. is a column of type `character` but should be of type `integer`?
+  
 - Do that at multiple locations in your script to find the line where the error actually happens
+  - everytime you change something in your data, check its structure
 
 ---
 # R crashes
@@ -147,20 +158,21 @@ Sometimes R crashes completely and you see this:
 #### How to fix it
 
 - There is no fix but to start a new session
-- make sure to save your scripts regularly!
+
+- Make sure to save your scripts regularly!
 
 ---
 # Console prints `+`
 
-R is not running your code anymore and the console only prints `+`. This means R still expects input.
+R is not running code anymore and the console only prints `+` if you try to execute a command.
 
 ![](img/day1/Console_plus.png)
 --
 
 #### How to fix it
 
-- First, go to the console and hit `Escape`
-- Likely this happened because you forgot to close a bracket somewhere. Go to your script and check for where this happened
+- First, go to the console and hit `Escape`. Then you should see the `>` sign instead of `+` again.
+- Likely you forgot to close a bracket somewhere. Go to your script and check where this happened
   - look for &nbsp;![](img/day1/red_x.png)&nbsp; next to line numers
 
 ---
@@ -169,42 +181,55 @@ R is not running your code anymore and the console only prints `+`. This means R
 R can give you warnings for many reasons, e.g.
 
 - you have `NA` values in your data and try to plot them
+
+- implicit type conversion returned `NA`
+
 - the function you are using is deprecated
+
 - the package you are using was built for another version of R
-- ...
 
 --
 
 Warnings are no errors and can sometimes be ignored but:
 
 - make sure to read and understand warnings
+
 - only ignore them if you know that that's okay, otherwise fix the underlying issue
 
 ---
 class: inverse, middle, center
 
-# How to troubleshoot R code
+# .large[How to troubleshoot R code]
 ## A step by step guide
 
 ---
 # Troubleshoot R: Step by step
 
-Often, you don't need to do all the steps but a systemmatic approach to errors is helpful.
+Often, you don't need to do all the steps but a systemmatic approach to bug fixing is very helpful.
+
+--
 
 **Step 1:** Carefully read the error message and try to fix it <br>
+
 --
+
 **Step 2:** Is it any of the errors you learned about just now? <br>
+
 --
-**Step 3:** If the error is about data: Did you look at the structure using
-`str()`?<br>
+
+**Step 3:** If the error is about data or other variables: look at the structure using
+`str()`
+
 --
-**Step 4:** If the error is about a function: Read the documenation of that function using `?functionName`. 
+
+**Step 4:** If the error is about a function: Read the documentation using `?functionName`. 
   - Did you use the function correctly?
   - Did you forget an argument?<br>
 
 --
 
 **Step 5:** Look for answers online
+  - often you can also jump directly to this step
 
 --
 
@@ -229,7 +254,8 @@ Often, you don't need to do all the steps but a systemmatic approach to errors i
 
 - Always search in English to get more results<br>
 
-<br>
+--
+
 .content-box-yellow[`r fa("lightbulb")` Change language of R messages to English with `Sys.setenv(LANGUAGE='en')`]
 
 ---
@@ -239,23 +265,25 @@ There are plenty of places where you can ask for help online.
 Some common and good options are:
 
 - Ask a question on [Stack Overflow](https://stackoverflow.com/)
+
 - Ask in the [R Discord server](https://discord.gg/88uG5UVyE2)
   - usually fast answers
   - but: you need a Discord account
-- Ask on Twitter using the #rstats hashtag
+  
+- Ask on Twitter using the #rstats hashtag (maybe a bit less common)
 
 --
 
-But: You have to make sure that before, you tried all the other 5 steps.
+**But**: You have to make sure that before, you tried all the other 5 steps.
 
 --
 
-Also, to ask others for help, you have to ask a good question first. 
-A good question in R includes:
+To ask questions online, you have to learn **how to ask a good R question.**
+This includes:
+
 - clear question
 - reproducible example
-Look [here](https://github.com/selinaZitrone/R_AskQuestions) for more info on how to ask a good question about R
 
----
+Look [here](https://github.com/selinaZitrone/R_AskQuestions) for more info on how to ask a good question about R
 
 
