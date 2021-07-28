@@ -46,7 +46,7 @@ library(fontawesome)
   - Topic: Modelling the impact of biological soil crusts on dryland hydrology
 
 --
-  
+
 #### Teaching `r fa("r-project")`
 
 - Statistics with R for Biology Master students
@@ -87,52 +87,18 @@ library(fontawesome)
 
 ---
 # The Workshop: Topics
-<br>
-<table style='width:100%;font-size:16pt'>
-  <tr>
-    <th><b>Day&nbsp&nbsp&nbsp&nbsp&nbsp</b></th>
-    <th><b>Main topic</b></th>
-    <th><b>Details</b></th>
-  </tr>
-  <tr>
-    <td><b>1</b></td>
-    <td><b>Introduction to and programming with R</></td>
-    <td>
-      <ul>
-       <li> R Basics
-       <li> Functions
-       <li> Data frames
-       <li>Get help
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td><b>2</b></td>
-    <td><b>Data analysis with the tidyverse</b></td>
-    <td>
-      <ul>
-      <li> Data visualization with ggplot
-      <li> Data transformation
-      <li> Data import and tidy data
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td><b>3</b></td>
-    <td><b>Statistical models</b></td>
-    <td>
-      <ul>
-        <li> Linear models
-        <li> Generalized linear models: poisson and binary/binomial data
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td><b>4</b></td>
-    <td><b>Bring your own data</b></td>
-    <td>Analyse your own research data in groups</td>
-  </tr>
-</table>
+
+.center[![](img/day1/workshop_topics.png)]
+
+--
+
+<b>.col2[Day 1: Introduction to R and RStudio]</b>
+
+<b>.col1[Day 2: Data analysis with the tidyverse]</b>
+
+<b>.col3[Day 3: Statistical models with R]</b>
+
+**Day 4: Bring your own data**
 
 ---
 # The Workshop: Schedule and Organization
