@@ -1,0 +1,111 @@
+## Creating a tibble
+
+Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and put them in a tibble.
+
+```{r}
+# install.packages("tibble")
+library(tibble)
+
+species <- c(
+  "MountainBeaver", "Cow", "GreyWolf", "Goat",
+  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
+  "Horse", "PotarMonkey", "Cat", "Giraffe",
+  "Gorilla", "Human", "AfricanElephant", "Triceratops",
+  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
+  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
+  "Rat", "Brachiosaurus", "Mole", "Pig"
+)
+
+bodywt_kg <- c(
+  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
+  521, 10, 3.3, 529, 207, 62, 6654, 9400,
+  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
+  0.3, 87000, 0.1, 192
+)
+
+brainwt_g <- c(
+  8.1, 423, 119.5, 115, 5.5, 50, 4603, 419, 655, 115, 25.6,
+  680, 406, 1320, 5712, 70, 179, 56, 1, 0.4, 12.1, 175,
+  157, 440, 1.9, 154.5, 3, 180
+)
+# Creating the tibble 
+animals <- tibble(
+  species = species,
+  bodywt_kg = bodywt_kg,
+  brainwt_kg = brainwt_g / 1000
+)
+```
+
+
+Adding several columns to this tibble:
+
+
+```{r}
+# Add brain to body ratio (%)
+animals$bbr <- animals$brainwt_kg / animals$bodywt_kg * 100
+# Add the brain size category
+animals$brainwt_category <- ifelse(
+  animals$bbr > 1,
+  "large",
+  "small"
+)
+# Add the order of the species
+order <- c(
+  "Rodentia", "Artiodactyla", "Carnivora", "Artiodactyla", "Rodentia", NA,
+  "Proboscidea", rep("Perissodactyla", 2), NA, "Carnivora", "Artiodactyla",
+  rep("Primates", 2), "Proboscidea", "Ornithischia", "Primates", "Diprotodontia",
+  "Rodentia", "Rodentia", "Lagomorpha", "Artiodactyla", "Carnivora", "Primates",
+  "Rodentia", NA, "Eulipotyphla", "Artiodactyla"
+)
+animals$order <- order
+```
+
+## Exploring the tibble
+
+```{r}
+view(animals)
+summary(animals)
+str(animals)
+nrow(animals)
+ncol(animals)
+names(animals)
+```
+
+## Indexing
+
+Warm up
+
+```{r}
+animals[c(1,5,7), c("species", "bodywt_kg")]
+animals[1:10, ]
+# last row last column without using the index
+animals[nrow(animals), ncol(animals)]
+# select specific orders
+orders_select <- c("Primates", "Rodentia", "Carnivora")
+animals[animals$order %in% orders_select,]
+```
+Create two subsets for large and small brained animals and calculate the mean and standard deviation of the brain to body ratio in these subsets.
+
+Create subsets
+
+```{r}
+large_brain <- animals[animals$brainwt_category == "large", ]
+small_brain <- animals[animals$brainwt_category == "small", ]
+```
+
+Calculate the means and standard deviation
+
+```{r}
+# Large brains
+mean(animals[animals$brainwt_category == "large", ]$bbr) # or
+
+mean(large_brain$bbr)
+sd(large_brain$bbr)
+
+# small brain
+mean(animals[animals$brainwt_category == "small", ]$bbr) # or
+
+mean(small_brain$bbr)
+sd(small_brain$bbr)
+```
+
