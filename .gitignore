@@ -4,4 +4,6 @@
 .httr-oauth
 .DS_Store
 
-
+slides/img/
+slides/*.html
+slides/*_files/
