@@ -1,4 +1,4 @@
-## Creating a tibble
+### 3.2 Creating a tibble
 
 Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and put them in a tibble.
 
@@ -60,10 +60,13 @@ order <- c(
 animals$order <- order
 ```
 
-## Exploring the tibble
+### 3.3 Exploring the tibble
+
+```{r eval=FALSE}
+view(animals)
+```
 
 ```{r}
-view(animals)
 summary(animals)
 str(animals)
 nrow(animals)
@@ -71,7 +74,7 @@ ncol(animals)
 names(animals)
 ```
 
-## Indexing
+### 3.4 Indexing
 
 Warm up
 

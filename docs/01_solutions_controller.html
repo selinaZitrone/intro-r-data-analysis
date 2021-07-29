@@ -2458,20 +2458,17 @@ Code
 <li><a href="#extras">Extras</a></li>
 <li><a href="#references">References</a></li>
 </ul></li>
-<li><a href="#tibbles-in-r">3 Tibbles in R</a></li>
-<li><a href="#creating-a-tibble">Creating a tibble</a></li>
-<li><a href="#exploring-the-tibble">Exploring the tibble</a></li>
-<li><a href="#indexing">Indexing</a></li>
+<li><a href="#tibbles-in-r">3 Tibbles in R</a>
+<ul>
+<li><a href="#creating-a-tibble">3.2 Creating a tibble</a></li>
+<li><a href="#exploring-the-tibble">3.3 Exploring the tibble</a></li>
+<li><a href="#indexing">3.4 Indexing</a></li>
+</ul></li>
 <li><a href="#reference">Reference</a></li>
 </ul>
 </nav>
 </div>
 <h2 id="vectors-in-r">2 Vectors in R</h2>
-<p><strong>Aims:</strong></p>
-<ul>
-<li>Learn about type conversion</li>
-<li>Work with vectors</li>
-</ul>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
@@ -2731,16 +2728,7 @@ Code
 <p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="tibbles-in-r">3 Tibbles in R</h2>
-<p><strong>Aims:</strong></p>
-<ul>
-<li>Create and manipulate tibbles with base R:
-<ul>
-<li>indexing</li>
-<li>adding columns</li>
-<li>changing values</li>
-</ul></li>
-</ul>
-<h2 id="creating-a-tibble">Creating a tibble</h2>
+<h3 id="creating-a-tibble">3.2 Creating a tibble</h3>
 <p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from the last task and put them in a tibble.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2801,11 +2789,16 @@ Code
 </code></pre>
 </div>
 </div>
-<h2 id="exploring-the-tibble">Exploring the tibble</h2>
+<h3 id="exploring-the-tibble">3.3 Exploring the tibble</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://tibble.tidyverse.org/reference/view.html'>view</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>   species            bodywt_kg          brainwt_kg     
@@ -2850,7 +2843,7 @@ Code
 <pre><code>[1] &quot;species&quot;          &quot;bodywt_kg&quot;        &quot;brainwt_kg&quot;      
 [4] &quot;bbr&quot;              &quot;brainwt_category&quot; &quot;order&quot;           </code></pre>
 </div>
-<h2 id="indexing">Indexing</h2>
+<h3 id="indexing">3.4 Indexing</h3>
 <p>Warm up</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">

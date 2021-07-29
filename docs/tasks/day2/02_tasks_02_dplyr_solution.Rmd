@@ -2,6 +2,9 @@
 library(tidyverse)
 library(palmerpenguins)
 ```
+```{r echo=FALSE}
+theme_set(theme_grey())
+```
 
 ### 2.2 Data transformation with dplyr
 

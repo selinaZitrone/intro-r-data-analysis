@@ -2459,17 +2459,13 @@ Code
 <li><a href="#save-one-of-the-plots-on-your-machine">1.5 Save one of the plots on your machine</a></li>
 <li><a href="#references">References</a></li>
 </ul></li>
-<li><a href="#dplyr">2 dplyr</a></li>
-<li><a href="#select-1">select</a></li>
-<li><a href="#arrange-1">arrange</a></li>
-<li><a href="#mutate">mutate</a></li>
-<li><a href="#transmute">transmute</a></li>
-<li><a href="#summarize">summarize</a></li>
-<li><a href="#pipe">pipe</a>
+<li><a href="#dplyr">2 dplyr</a>
 <ul>
+<li><a href="#data-transformation-with-dplyr">2.2 Data transformation with dplyr</a></li>
+<li><a href="#extras">Extras</a></li>
+</ul></li>
 <li><a href="#readr">3 readr</a></li>
 <li><a href="#tidyr">3 tidyr</a></li>
-</ul></li>
 </ul>
 </nav>
 </div>
@@ -2774,35 +2770,14 @@ Code
 </code></pre>
 </div>
 </div>
-<h4 id="filter">Filter</h4>
-<p>Find all penguins that</p>
-<ul>
-<li>live on the island Dream in the year 2007</li>
-</ul>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>island</span> <span class='op'>==</span> <span class='st'>"Dream"</span> <span class='op'>&amp;</span> <span class='va'>year</span> <span class='op'>==</span> <span class='fl'>2007</span><span class='op'>)</span>
-</code></pre>
+
 </div>
-<pre><code># A tibble: 46 x 8
-   species island bill_length_mm bill_depth_mm flipper_length_mm
-   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
- 1 Adelie  Dream            39.5          16.7               178
- 2 Adelie  Dream            37.2          18.1               178
- 3 Adelie  Dream            39.5          17.8               188
- 4 Adelie  Dream            40.9          18.9               184
- 5 Adelie  Dream            36.4          17                 195
- 6 Adelie  Dream            39.2          21.1               196
- 7 Adelie  Dream            38.8          20                 190
- 8 Adelie  Dream            42.2          18.5               180
- 9 Adelie  Dream            37.6          19.3               181
-10 Adelie  Dream            39.8          19.1               184
-# ... with 36 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
-#   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-</div>
-<ul>
-<li>have a bill length between 40 and 45 mm</li>
-</ul>
+<h3 id="data-transformation-with-dplyr">2.2 Data transformation with dplyr</h3>
+<p><strong>Find all penguins that …</strong></p>
+<ol type="1">
+<li>… have a bill length between 40 and 45 mm.</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='fu'>between</span><span class='op'>(</span><span class='va'>bill_length_mm</span>, <span class='fl'>40</span>, <span class='fl'>45</span><span class='op'>)</span><span class='op'>)</span>
@@ -2825,28 +2800,13 @@ Code
 #   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># same as </span>
-<span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>bill_length_mm</span> <span class='op'>&lt;</span> <span class='fl'>45</span> <span class='op'>&amp;</span> <span class='va'>bill_length_mm</span> <span class='op'>&gt;</span> <span class='fl'>40</span><span class='op'>)</span>
+<span class='co'># filter(penguins, bill_length_mm &lt; 45 &amp; bill_length_mm &gt; 40)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 76 x 8
-   species island    bill_length_mm bill_depth_mm flipper_length_mm
-   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
- 1 Adelie  Torgersen           40.3          18                 195
- 2 Adelie  Torgersen           42            20.2               190
- 3 Adelie  Torgersen           41.1          17.6               182
- 4 Adelie  Torgersen           42.5          20.7               197
- 5 Adelie  Biscoe              40.6          18.6               183
- 6 Adelie  Biscoe              40.5          17.9               187
- 7 Adelie  Biscoe              40.5          18.9               180
- 8 Adelie  Dream               40.9          18.9               184
- 9 Adelie  Dream               42.2          18.5               180
-10 Adelie  Dream               40.8          18.4               195
-# ... with 66 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
-#   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
-<ul>
-<li>for which we know the sex</li>
-</ul>
+<ol start="2" type="1">
+<li>… for which we know the sex.</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span>
@@ -2868,15 +2828,16 @@ Code
 # ... with 323 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
 #   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
-<ul>
-<li>of the species Adelie or Gentoo</li>
-</ul>
+<ol start="3" type="1">
+<li>… which are of the species Adelie or Gentoo and live either on Dream or on Torgersen</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span>, <span class='st'>"Gentoo"</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span>, <span class='st'>"Gentoo"</span><span class='op'>)</span> <span class='op'>&amp;</span>
+  <span class='va'>island</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Dream"</span>, <span class='st'>"Torgersen"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 276 x 8
+<pre><code># A tibble: 108 x 8
    species island    bill_length_mm bill_depth_mm flipper_length_mm
    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
  1 Adelie  Torgersen           39.1          18.7               181
@@ -2889,33 +2850,34 @@ Code
  8 Adelie  Torgersen           39.2          19.6               195
  9 Adelie  Torgersen           34.1          18.1               193
 10 Adelie  Torgersen           42            20.2               190
-# ... with 266 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
+# ... with 98 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
 #   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># or</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Adelie"</span> <span class='op'>|</span> <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Gentoo"</span><span class='op'>)</span>
+<span class='co'># filter(penguins, (species == "Adelie" | species == "Gentoo") &amp;</span>
+<span class='co'>#   (island == "Dream" | island == "Torgersen"))</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 276 x 8
-   species island    bill_length_mm bill_depth_mm flipper_length_mm
-   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
- 1 Adelie  Torgersen           39.1          18.7               181
- 2 Adelie  Torgersen           39.5          17.4               186
- 3 Adelie  Torgersen           40.3          18                 195
- 4 Adelie  Torgersen           NA            NA                  NA
- 5 Adelie  Torgersen           36.7          19.3               193
- 6 Adelie  Torgersen           39.3          20.6               190
- 7 Adelie  Torgersen           38.9          17.8               181
- 8 Adelie  Torgersen           39.2          19.6               195
- 9 Adelie  Torgersen           34.1          18.1               193
-10 Adelie  Torgersen           42            20.2               190
-# ... with 266 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
-#   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
-<h4 id="count">count</h4>
-<ul>
-<li>count the penguins on each island</li>
-</ul>
+<ol start="4" type="1">
+<li>… lived on the island Dream in the year 2007. How many of them were from each of the 3 species?</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>island</span> <span class='op'>==</span> <span class='st'>"Dream"</span> <span class='op'>&amp;</span> <span class='va'>year</span> <span class='op'>==</span> <span class='fl'>2007</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>species</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 2 x 2
+  species       n
+  &lt;fct&gt;     &lt;int&gt;
+1 Adelie       20
+2 Chinstrap    26</code></pre>
+</div>
+<p><strong>Count …</strong></p>
+<ol type="1">
+<li>… the number of penguins on each island.</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>count</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>island</span><span class='op'>)</span>
@@ -2928,9 +2890,9 @@ Code
 2 Dream       124
 3 Torgersen    52</code></pre>
 </div>
-<ul>
-<li>count the penguins on each island and of each species</li>
-</ul>
+<ol start="2" type="1">
+<li>… the number of penguins of each species on each island.</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>count</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>island</span>, <span class='va'>species</span><span class='op'>)</span>
@@ -2945,10 +2907,34 @@ Code
 4 Dream     Chinstrap    68
 5 Torgersen Adelie       52</code></pre>
 </div>
-<h4 id="arrange">Arrange</h4>
-<ul>
-<li>sort <code>penguins</code> to find penguins with the highest body mass</li>
-</ul>
+<p><strong>Sort …</strong></p>
+<ol type="1">
+<li>… <code>penguins</code> to find penguins with lowest body mass</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>arrange</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>body_mass_g</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 8
+   species   island    bill_length_mm bill_depth_mm flipper_length_mm
+   &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1 Chinstrap Dream               46.9          16.6               192
+ 2 Adelie    Biscoe              36.5          16.6               181
+ 3 Adelie    Biscoe              36.4          17.1               184
+ 4 Adelie    Biscoe              34.5          18.1               187
+ 5 Adelie    Dream               33.1          16.1               178
+ 6 Adelie    Torgersen           38.6          17                 188
+ 7 Chinstrap Dream               43.2          16.6               187
+ 8 Adelie    Biscoe              37.9          18.6               193
+ 9 Adelie    Dream               37.5          18.9               179
+10 Adelie    Dream               37            16.9               185
+# ... with 334 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+<ol start="2" type="1">
+<li>… <code>penguins</code> to find penguins with highest body mass</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>arrange</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='fu'>desc</span><span class='op'>(</span><span class='va'>body_mass_g</span><span class='op'>)</span><span class='op'>)</span>
@@ -2970,58 +2956,34 @@ Code
 # ... with 334 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
 #   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
-<ul>
-<li>sort <code>penguins</code> to find penguins with the lowest body mass
+<ol start="3" type="1">
+<li>… <code>penguins</code> by species and sex, with longest flippers first</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>arrange</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>body_mass_g</span><span class='op'>)</span>
-</code></pre>
-</div></li>
-</ul>
-<pre><code># A tibble: 344 x 8
-   species   island    bill_length_mm bill_depth_mm flipper_length_mm
-   &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
- 1 Chinstrap Dream               46.9          16.6               192
- 2 Adelie    Biscoe              36.5          16.6               181
- 3 Adelie    Biscoe              36.4          17.1               184
- 4 Adelie    Biscoe              34.5          18.1               187
- 5 Adelie    Dream               33.1          16.1               178
- 6 Adelie    Torgersen           38.6          17                 188
- 7 Chinstrap Dream               43.2          16.6               187
- 8 Adelie    Biscoe              37.9          18.6               193
- 9 Adelie    Dream               37.5          18.9               179
-10 Adelie    Dream               37            16.9               185
-# ... with 334 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
-#   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-</div>
-<ul>
-<li>sort <code>penguins</code> by species and sex</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>arrange</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span>, <span class='va'>sex</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>arrange</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span>, <span class='va'>sex</span>, <span class='fu'>desc</span><span class='op'>(</span><span class='va'>flipper_length_mm</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 344 x 8
    species island    bill_length_mm bill_depth_mm flipper_length_mm
    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
- 1 Adelie  Torgersen           39.5          17.4               186
- 2 Adelie  Torgersen           40.3          18                 195
- 3 Adelie  Torgersen           36.7          19.3               193
- 4 Adelie  Torgersen           38.9          17.8               181
- 5 Adelie  Torgersen           41.1          17.6               182
- 6 Adelie  Torgersen           36.6          17.8               185
- 7 Adelie  Torgersen           38.7          19                 195
- 8 Adelie  Torgersen           34.4          18.4               184
- 9 Adelie  Biscoe              37.8          18.3               174
-10 Adelie  Biscoe              35.9          19.2               189
+ 1 Adelie  Dream               35.7          18                 202
+ 2 Adelie  Biscoe              38.6          17.2               199
+ 3 Adelie  Biscoe              38.1          16.5               198
+ 4 Adelie  Torgersen           39.6          17.2               196
+ 5 Adelie  Torgersen           40.3          18                 195
+ 6 Adelie  Torgersen           38.7          19                 195
+ 7 Adelie  Dream               36.4          17                 195
+ 8 Adelie  Biscoe              35.5          16.2               195
+ 9 Adelie  Dream               36            17.8               195
+10 Adelie  Torgersen           36.7          19.3               193
 # ... with 334 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
 #   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
-<h4 id="select">Select</h4>
-<ul>
-<li>select only the columns species, sex and year</li>
-</ul>
+<p><strong>Select …</strong></p>
+<ol type="1">
+<li>… only the variables species, sex and year</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>select</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span>, <span class='va'>sex</span>, <span class='va'>year</span><span class='op'>)</span>
@@ -3042,12 +3004,12 @@ Code
 10 Adelie  &lt;NA&gt;    2007
 # ... with 334 more rows</code></pre>
 </div>
-<ul>
-<li>select the variables based on the following vector</li>
-</ul>
+<ol start="2" type="1">
+<li>… variables based on the following vector</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>cols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"species"</span>, <span class='st'>"bill_length_mm"</span>, <span class='st'>"flipper_length_mm"</span>, <span class='st'>"i_dont_exits"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>cols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"species"</span>, <span class='st'>"bill_length_mm"</span>, <span class='st'>"flipper_length_mm"</span>, <span class='st'>"body_mass_kg"</span><span class='op'>)</span>
 <span class='fu'>select</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='fu'>any_of</span><span class='op'>(</span><span class='va'>cols</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -3071,30 +3033,186 @@ Code
 </code></pre>
 </div>
 <pre><code>Error: Can&#39;t subset columns that don&#39;t exist.
-x Column `i_dont_exits` doesn&#39;t exist.</code></pre>
+x Column `body_mass_kg` doesn&#39;t exist.</code></pre>
 </div>
-<ul>
-<li>select only columns that contain measurements in mm</li>
-</ul>
-<h1 id="select-1">select</h1>
-<p>pick columns based on their name</p>
-<p>helpers starts_with() ends_with() contains() matches() from:to</p>
-<h1 id="arrange-1">arrange</h1>
-<p>desc()</p>
-<h1 id="mutate">mutate</h1>
-<p>multiple columns ifelse case_when</p>
-<h1 id="transmute">transmute</h1>
-<h1 id="summarize">summarize</h1>
-<p>group_by ungroup</p>
-<h1 id="pipe">pipe</h1>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<ol start="3" type="1">
+<li>… only columns that contain measurements in mm</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>select</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='fu'>ends_with</span><span class='op'>(</span><span class='st'>"mm"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 3
+   bill_length_mm bill_depth_mm flipper_length_mm
+            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1           39.1          18.7               181
+ 2           39.5          17.4               186
+ 3           40.3          18                 195
+ 4           NA            NA                  NA
+ 5           36.7          19.3               193
+ 6           39.3          20.6               190
+ 7           38.9          17.8               181
+ 8           39.2          19.6               195
+ 9           34.1          18.1               193
+10           42            20.2               190
+# ... with 334 more rows</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># or</span>
+<span class='co'>#select(penguins, contains("_mm"))</span>
+</code></pre>
+</div>
+</div>
+<p><strong>Add a column …</strong></p>
+<ol type="1">
+<li>… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>mutate</span><span class='op'>(</span><span class='va'>penguins</span>,
+       species_short <span class='op'>=</span> <span class='fu'>case_when</span><span class='op'>(</span>
+         <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Adelie"</span> <span class='op'>~</span> <span class='st'>"A"</span>,
+         <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Gentoo"</span> <span class='op'>~</span> <span class='st'>"G"</span>,
+         <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Chinstrap"</span> <span class='op'>~</span> <span class='st'>"C"</span>
+       <span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 9
+   species island    bill_length_mm bill_depth_mm flipper_length_mm
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181
+ 2 Adelie  Torgersen           39.5          17.4               186
+ 3 Adelie  Torgersen           40.3          18                 195
+ 4 Adelie  Torgersen           NA            NA                  NA
+ 5 Adelie  Torgersen           36.7          19.3               193
+ 6 Adelie  Torgersen           39.3          20.6               190
+ 7 Adelie  Torgersen           38.9          17.8               181
+ 8 Adelie  Torgersen           39.2          19.6               195
+ 9 Adelie  Torgersen           34.1          18.1               193
+10 Adelie  Torgersen           42            20.2               190
+# ... with 334 more rows, and 4 more variables: body_mass_g &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;, species_short &lt;chr&gt;</code></pre>
+</div>
+<ol start="2" type="1">
+<li>… with the ratio of bill length to bill depth</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>mutate</span><span class='op'>(</span><span class='va'>penguins</span>,
+       ratio <span class='op'>=</span> <span class='va'>bill_length_mm</span> <span class='op'>/</span> <span class='va'>bill_depth_mm</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 9
+   species island    bill_length_mm bill_depth_mm flipper_length_mm
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181
+ 2 Adelie  Torgersen           39.5          17.4               186
+ 3 Adelie  Torgersen           40.3          18                 195
+ 4 Adelie  Torgersen           NA            NA                  NA
+ 5 Adelie  Torgersen           36.7          19.3               193
+ 6 Adelie  Torgersen           39.3          20.6               190
+ 7 Adelie  Torgersen           38.9          17.8               181
+ 8 Adelie  Torgersen           39.2          19.6               195
+ 9 Adelie  Torgersen           34.1          18.1               193
+10 Adelie  Torgersen           42            20.2               190
+# ... with 334 more rows, and 4 more variables: body_mass_g &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;, ratio &lt;dbl&gt;</code></pre>
+</div>
+<p><strong>Calculate …</strong></p>
+<ol type="1">
+<li>… mean flipper length and body mass for the 3 species and male and female penguins separately</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>species</span>, <span class='va'>sex</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarize</span><span class='op'>(</span>
+    mean_flipper <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>flipper_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+    mean_body <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>body_mass_g</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  <span class='op'>)</span>  
+</code></pre>
+</div>
+<pre><code># A tibble: 8 x 4
+# Groups:   species [3]
+  species   sex    mean_flipper mean_body
+  &lt;fct&gt;     &lt;fct&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+1 Adelie    female         188.     3369.
+2 Adelie    male           192.     4043.
+3 Adelie    &lt;NA&gt;           186.     3540 
+4 Chinstrap female         192.     3527.
+5 Chinstrap male           200.     3939.
+6 Gentoo    female         213.     4680.
+7 Gentoo    male           222.     5485.
+8 Gentoo    &lt;NA&gt;           216.     4588.</code></pre>
+</div>
+<ol start="2" type="1">
+<li>Can you do the same but remove the penguins for which we don’t know the sex first?</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>species</span>, <span class='va'>sex</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>summarize</span><span class='op'>(</span>
+    mean_flipper <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>flipper_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+    mean_body <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>body_mass_g</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 6 x 4
+# Groups:   species [3]
+  species   sex    mean_flipper mean_body
+  &lt;fct&gt;     &lt;fct&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+1 Adelie    female         188.     3369.
+2 Adelie    male           192.     4043.
+3 Chinstrap female         192.     3527.
+4 Chinstrap male           200.     3939.
+5 Gentoo    female         213.     4680.
+6 Gentoo    male           222.     5485.</code></pre>
+</div>
+<h3 id="extras">Extras</h3>
+<ol type="1">
+<li>Make a boxplot of penguin body mass with sex on the y-axis and facets for the different species. Can you remove the penguins with missing values for sex first?</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>sex</span>, y <span class='op'>=</span> <span class='va'>body_mass_g</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_boxplot</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>species</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02_solutions_controller_files/figure-html5/unnamed-chunk-37-1.png" width="624" /></p>
+</div>
+<ol start="2" type="1">
+<li>Make a scatterplot with the ratio of bill length to bill depth on the y axis and flipper length on the x axis? Can you distinguish the point between male and female penguins and remove penguins with unknown sex before making the plot?</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>ratio <span class='op'>=</span> <span class='va'>bill_length_mm</span> <span class='op'>/</span> <span class='va'>bill_depth_mm</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>flipper_length_mm</span>, y <span class='op'>=</span> <span class='va'>ratio</span>, color <span class='op'>=</span> <span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_color_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"cyan4"</span>, <span class='st'>"darkorange"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>
+    x <span class='op'>=</span> <span class='st'>"Flipper lenght (mm)"</span>,
+    y <span class='op'>=</span> <span class='st'>"Ratio bill length / bill depth (-)"</span>
+  <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02_solutions_controller_files/figure-html5/unnamed-chunk-38-1.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="readr">3 readr</h2>
 <p>No tasks yet</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="tidyr">3 tidyr</h2>
 <p>No tasks yet</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -802,7 +802,7 @@ The pipe operator (included in the `tidyverse`) makes it very easy to combine mu
 
 
 ```r
-soybean_use %&gt;%
+soybean_new &lt;- soybean_use %&gt;%
   filter(!is.na(code)) %&gt;%
   group_by(year) %&gt;%
   summarize(
@@ -810,20 +810,6 @@ soybean_use %&gt;%
     sd_processed = sd(processed, na.rm = TRUE)
   ) %&gt;%
   arrange(desc(year))
-## # A tibble: 53 x 3
-##     year mean_processed sd_processed
-##    &lt;dbl&gt;          &lt;dbl&gt;        &lt;dbl&gt;
-##  1  2013       4836436.    24926799.
-##  2  2012       4773053.    24580711.
-##  3  2011       4783755.    24618132.
-##  4  2010       4622766.    23727678.
-##  5  2009       4139702.    21272957.
-##  6  2008       4112574.    21095314.
-##  7  2007       4269840.    21899518.
-##  8  2006       3998500     20555935.
-##  9  2005       3870394.    19855328.
-## 10  2004       3594223.    18456417.
-## # ... with 43 more rows
 ```
 
 --

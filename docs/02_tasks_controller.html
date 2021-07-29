@@ -2463,6 +2463,8 @@ Code
 <li><a href="#dplyr">2 dplyr</a>
 <ul>
 <li><a href="#getting-started-with-dplyr">2.1 Getting started with dplyr</a></li>
+<li><a href="#data-transformation-with-dplyr">2.2 Data transformation with dplyr</a></li>
+<li><a href="#extras">Extras</a></li>
 </ul></li>
 <li><a href="#readr">3 readr</a></li>
 <li><a href="#tidyr">3 tidyr</a></li>
@@ -2470,7 +2472,6 @@ Code
 </nav>
 </div>
 <h2 id="ggplot2">1 ggplot2</h2>
-<p><strong>Aims:</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
@@ -2569,9 +2570,12 @@ Figure 2: Visualization from the <a href="https://allisonhorst.github.io/palmerp
 </div>
 </div>
 <p>Can you reproduce this plot? It is similar to the one from Task 1.3.1.</p>
-The colors that are used are:
+<p>The colors that are used are:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguin_cols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"darkorange"</span>, <span class='st'>"purple"</span>, <span class='st'>"cyan4"</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <h3 id="save-one-of-the-plots-on-your-machine">1.5 Save one of the plots on your machine</h3>
 <p>Save one of the plots you produced in a variable and then use <code>ggsave</code> to save the plot on your machine. Save the plot in a dedicated plot directory in your RStudio project.</p>
@@ -2579,7 +2583,6 @@ The colors that are used are:
 <p>Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. <a href="https://allisonhorst.github.io/palmerpenguins/" class="uri">https://allisonhorst.github.io/palmerpenguins/</a>. doi: 10.5281/zenodo.3960218.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="dplyr">2 dplyr</h2>
-<p><strong>Aims:</strong></p>
 <h3 id="getting-started-with-dplyr">2.1 Getting started with dplyr</h3>
 <p>A helpful resource for to consult for this task can be the <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">data wrangling cheatsheet</a>.</p>
 <p>Before you start, make sure to load the <code>tidyverse</code> package and the <code>palmerpenguins</code> package.</p>
@@ -2590,13 +2593,57 @@ The colors that are used are:
 </code></pre>
 </div>
 </div>
+<h3 id="data-transformation-with-dplyr">2.2 Data transformation with dplyr</h3>
+<p>In the following, you find a lot of different data transformation tasks. First, do 2 from each category before you do the remaining ones. You don’t have to finish all the tasks but make sure you covered each category.</p>
+<p><strong>Find all penguins that …</strong></p>
+<ol type="1">
+<li><p>… have a bill length between 40 and 45 mm.</p></li>
+<li><p>… for which we know the sex.</p></li>
+<li><p>… which are of the species Adelie or Gentoo and live either on Dream or on Torgersen</p></li>
+<li><p>… lived on the island Dream in the year 2007. How many of them were from each of the 3 species?</p></li>
+</ol>
+<p><strong>Count …</strong></p>
+<ol type="1">
+<li><p>… the number of penguins on each island.</p></li>
+<li><p>… the number of penguins of each species on each island.</p></li>
+</ol>
+<p><strong>Sort …</strong></p>
+<ol type="1">
+<li><p>… <code>penguins</code> to find penguins with lowest body mass</p></li>
+<li><p>… <code>penguins</code> to find penguins with highest body mass</p></li>
+<li><p>… <code>penguins</code> by species and sex, with longest flippers first</p></li>
+</ol>
+<p><strong>Select …</strong></p>
+<ol type="1">
+<li><p>… only the variables species, sex and year</p></li>
+<li><p>… variables based on the following vector</p></li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<ol start="3" type="1">
+<li>… only columns that contain measurements in mm</li>
+</ol>
+<p><strong>Add a column …</strong></p>
+<ol type="1">
+<li><p>… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).</p></li>
+<li><p>… with the ratio of bill length to bill depth</p></li>
+</ol>
+<p><strong>Calculate …</strong></p>
+<ol type="1">
+<li><p>… mean flipper length and body mass for the 3 species and male and female penguins separately</p></li>
+<li><p>Can you do the same but remove the penguins for which we don’t know the sex first?</p></li>
+</ol>
+<h3 id="extras">Extras</h3>
+<ol type="1">
+<li><p>Make a boxplot of penguin body mass with sex on the y-axis and facets for the different species. Can you remove the penguins with missing values for sex first?</p></li>
+<li><p>Make a scatterplot with the ratio of bill length to bill depth on the y axis and flipper length on the x axis? Can you distinguish the point between male and female penguins and remove penguins with unknown sex before making the plot?</p></li>
+</ol>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="readr">3 readr</h2>
-<p><strong>Aims:</strong></p>
 <p>No tasks yet</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="tidyr">3 tidyr</h2>
-<p><strong>Aims:</strong></p>
 <p>No tasks yet</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
