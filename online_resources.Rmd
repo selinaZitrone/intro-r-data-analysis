@@ -16,13 +16,15 @@ output:
 
 ## Tidyverse
 
+- The [R for Data Science book](https://r4ds.had.co.nz/index.html) by Hadley Wickham is a very good book to start with.
+
 ### ggplot
 
 - [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf) offers an overview of all possibilities of ggplot
 
 ### dplyr
 
-
+- 
 
 
 
