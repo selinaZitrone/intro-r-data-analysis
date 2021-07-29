@@ -1,6 +1,5 @@
 ```{r echo=FALSE}
 library(tidyverse)
-theme_set(theme_classic())
 ```
 
 
