@@ -103,7 +103,8 @@ knitr::include_graphics(here::here("slides/img/figs-penguin/README-flipper-bill-
 Can you reproduce this plot? It is similar to the one from Task 1.3.1.
 
 The colors that are used are:
-```{r}
+
+```{r echo=TRUE, eval=FALSE}
 penguin_cols <- c("darkorange", "purple", "cyan4")
 ```
 
