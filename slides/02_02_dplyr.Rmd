@@ -651,8 +651,8 @@ soybean_new <- arrange(
 
 The pipe operator (included in the `tidyverse`) makes it very easy to combine multiple operations:
 
-```{r}
-soybean_use %>%
+```{r eval=FALSE}
+soybean_new <- soybean_use %>%
   filter(!is.na(code)) %>%
   group_by(year) %>%
   summarize(
