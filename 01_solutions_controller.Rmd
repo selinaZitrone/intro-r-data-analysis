@@ -1,0 +1,40 @@
+---
+title: "Solutions for day 1"
+output: 
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 2 Vectors in R
+
+**Aims:**
+
+- Learn about type conversion
+- Work with vectors
+
+```{r vectors, child="tasks/day1/01_tasks_02_R_basics_solution.Rmd"}
+```
+
+## 3 Tibbles in R
+
+**Aims:**
+
+- Create and manipulate tibbles with base R:
+  - indexing
+  - adding columns
+  - changing values
+
+```{r tibbles, child="./tasks/day1/01_tasks_03_tibbles_solution.Rmd"}
+```
+
+# Reference
+
+Wolfram Research, "Sample Data: Animal Weights" from the Wolfram Data Repository (2016) https://doi.org/10.24097/wolfram.43616.data
+
