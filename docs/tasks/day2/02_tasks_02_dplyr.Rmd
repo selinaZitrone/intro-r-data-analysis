@@ -1,1 +1,10 @@
-No tasks yet
+### 2.1 Getting started with dplyr
+
+A helpful resource for to consult for this task can be the [data wrangling cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+
+Before you start, make sure to load the `tidyverse` package and the `palmerpenguins` package.
+
+```{r eval=FALSE, echo=TRUE}
+library(tidyverse)
+library(palmerpenguins)
+```

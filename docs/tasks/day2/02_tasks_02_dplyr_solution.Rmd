@@ -1,0 +1,113 @@
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+#### Filter
+
+Find all penguins that 
+
+- live on the island Dream in the year 2007
+
+```{r}
+filter(penguins, island == "Dream" & year == 2007)
+```
+- have a bill length between 40 and 45 mm
+
+```{r}
+filter(penguins, between(bill_length_mm, 40, 45))
+# same as 
+filter(penguins, bill_length_mm < 45 & bill_length_mm > 40)
+```
+- for which we know the sex
+
+```{r}
+filter(penguins, !is.na(sex))
+```
+- of the species Adelie or Gentoo
+
+```{r}
+filter(penguins, species %in% c("Adelie", "Gentoo"))
+# or
+filter(penguins, species == "Adelie" | species == "Gentoo")
+```
+
+#### count
+
+- count the penguins on each island
+
+```{r}
+count(penguins, island)
+```
+- count the penguins on each island and of each species
+
+```{r}
+count(penguins, island, species)
+```
+
+#### Arrange
+
+- sort `penguins` to find penguins with the highest body mass
+
+```{r}
+arrange(penguins, desc(body_mass_g))
+```
+
+- sort `penguins` to find penguins with the lowest body mass
+```{r}
+arrange(penguins, body_mass_g)
+```
+
+- sort `penguins` by species and sex
+
+```{r}
+arrange(penguins, species, sex)
+```
+
+#### Select
+
+- select only the columns species, sex and year
+
+```{r}
+select(penguins, species, sex, year)
+```
+
+- select the variables based on the following vector
+
+```{r error=TRUE}
+cols <- c("species", "bill_length_mm", "flipper_length_mm", "i_dont_exits")
+select(penguins, any_of(cols))
+# this would return  an error
+select(penguins, all_of(cols))
+```
+
+
+
+
+# select
+pick columns based on their name
+
+helpers
+starts_with()
+ends_with()
+contains()
+matches()
+from:to
+
+# arrange
+
+desc()
+
+# mutate
+multiple columns
+ifelse
+case_when
+
+# transmute
+
+# summarize
+
+group_by
+ungroup
+
+# pipe

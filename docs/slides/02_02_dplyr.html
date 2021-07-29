@@ -30,32 +30,37 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-06-15 (updated: 2021-07-28)
+  2021-06-15 (updated: 2021-07-29)
 ]
 
 ---
 # Data transformation
 
-Data transformation is an important step in understanding the data and preparing it for further analysis.
+Data transformation is an important step in **understanding** the data and **preparing** it for further analysis.
 
- .center[![](img/day2/datascience_workflow.png)]
+ .center[![](img/day2/datascience_workflow_tidyverse.png)]
+&lt;br&gt;
+
+We can use the tidyverse package `dplyr` for this.
 
 ---
 # Data transformation
 
-Data transformation is an important step in understanding the data and preparing it for further analysis.
+With `dplyr` we can (among other things)
 
-We may want to:
-
-  - **filter** the data to analyse only a part of it
+  - **filter** data to analyse only a part of it
+  
   - **reorder** observations or variables 
+  
   - **create** new variables
-  - **summarize** the data
+  
+  - **summarize** data
+  
   - **rename** variables
   
 --
   
-We can do all of this with `dplyr`:
+To get started load the package `dplyr`:
 
 
 ```r
@@ -78,7 +83,7 @@ library(tidyverse)
 
 --
 
-- `arrange()` change order of observations (rows)
+- `arrange()` changes order of observations (rows)
 
 --
 
@@ -86,7 +91,7 @@ library(tidyverse)
 
 --
 
-- `summarise()` combines multiple values into a single summary value
+- `summarize()` combines multiple values into a single summary value
 
 Perform any of these operations by group with `group_by()`
 
@@ -101,16 +106,15 @@ All of the `dplyr` functions work similarly: &lt;br&gt;
 
 - **other arguments** specify what to do exactly
 
-- **returns** a tibble
+- **return** a tibble
 
 ---
 # Example data
 
-Soybean production and use by year and country.
+Soybean production for different use by year and country.
 
 
 ```r
-soybean_use &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-04-06/soybean_use.csv')
 soybean_use
 ```
 
@@ -131,12 +135,12 @@ soybean_use
 ---
 class: inverse, center, middle
 
-# `filter()`
+# .large[`filter()`]
 ## picks observations (rows) based on their value
 
-.center[![:scale 77%](img/AllisonHorst/dplyr_filter.jpg)]
+.center[![:scale 70%](img/AllisonHorst/dplyr_filter.jpg)]
 
-.footnote-right[Artwork by &lt;br&gt; [Allison Horst](https://twitter.com/allison_horst)]
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
 
 ---
 # Useful `filter()` helpers
@@ -145,23 +149,27 @@ These functions and operators help you filter your observations:
 
 --
 
-- relational operators: `&lt;`, `&gt;`, `==`, ...
+- relational operators `&lt;`, `&gt;`, `==`, ...
 
 --
 
-- logical operators: `&amp;`, `|`, `!`
+- logical operators `&amp;`, `|`, `!`
 
 --
 
-- `is.na()`: filter missing values
+- `%in%` to filter multiple values
 
 --
 
-- `between()`: filter values that are between an upper and lower boundary
+- `is.na()` to filter missing values
 
 --
 
-- `near()`: compare floating points (use instead of `==` for doubles)
+- `between()` to filter values that are between an upper and lower boundary
+
+--
+
+- `near()` to compare floating points (use instead of `==` for doubles)
 
 
 ---
@@ -189,12 +197,12 @@ filter(soybean_use, entity == "Germany")
 
 --
 
-`filter()` will go through each row of the data and return only those rows for which the value for `entity` is `"Germany"` 
+`filter()` goes through each row of the data and return only those rows where the value for `entity` is `"Germany"` 
 
 ---
-# `filter()`
+# `filter()` + `%in%`
 
-We can use the `%in%` operator to filter multiple countries
+Use the `%in%` operator to filter multiple countries
 
 
 ```r
@@ -216,9 +224,9 @@ filter(soybean_use, entity %in% countries_select)
 ```
 
 ---
-# `filter()`
+# `filter()` + `is.na()`
 
-Let's filter only rows that don't have a country code (i.e. the continents etc.)
+Filter only rows that don't have a country code (i.e. the continents etc.)
 
 
 ```r
@@ -240,7 +248,7 @@ filter(soybean_use, is.na(code))
 
 --
 
-Or the opposite: filter only the rows that have a country code with:
+Or the opposite: filter only the rows that have a country code with
 
 
 ```r
@@ -248,7 +256,7 @@ filter(soybean_use, !is.na(code))
 ```
 
 ---
-# `filter()`
+# `filter()` + `between()`
 
 #### Combine different filters:
 
@@ -278,14 +286,14 @@ filter(soybean_use, between(year, 1970, 1980) &amp; entity == "Germany")
 ---
 class:inverse, center, middle
 
-# `select()`
+# .large[`select()`]
 
 ## picks variables (columns) based on their names
 ---
 # Useful `select()` helpers
 &lt;br&gt;
 
-- `starts_with()` and `ends_with()`: variable names that start/end with a string
+- `starts_with()` and `ends_with()`: variable names that start/end with a specific string
 
 --
 
@@ -293,7 +301,11 @@ class:inverse, center, middle
 
 --
 
-- `matches()`: variable names match a regular expression
+- `matches()`: variable names that  match a regular expression
+
+--
+
+- `any_of()` and `all_of()`: variables that are contained in a character vector
 
 ---
 # `select()`
@@ -336,7 +348,7 @@ select(soybean_use, -entity, -year, -human_food)
 ```
 
 ---
-# `select()`
+# `select()` + `ends_with()`
 
 Select all columns that end with `"d"`
 
@@ -360,19 +372,60 @@ select(soybean_use, ends_with("d"))
 
 You can use the same structure for `starts_with()` and `contains()`.
 
-E.g.
-
 
 ```r
 # this does not match any rows in the soy bean data set
 # but combinations like this are helpful for research data
-select(soy_bean_use, starts_with("sample_"))
+select(soybean_use, starts_with("sample_"))
 
-select(soy_bean_use, contains("_id_"))
+select(soybean_use, contains("_id_"))
 ```
 
 ---
-# `select()`
+# `select()` + `any_of()`/`all_of()`
+
+Use a character vector in conjunction with column selection
+
+
+```r
+cols &lt;- c("sample_", "year", "processed", "entity")
+```
+
+--
+
+`any_of()` returns any columns that match an element in `cols`
+
+
+```r
+select(soybean_use, any_of(cols))
+```
+
+
+```
+## # A tibble: 9,897 x 3
+##    year processed entity
+##   &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt; 
+## 1  1961     14000 Africa
+## # ... with 9,896 more rows
+```
+
+--
+
+`all_of()` tries to match all elements in `cols` and returns an error if an element does not exist
+
+
+```r
+select(soybean_use, all_of(cols))
+```
+
+
+```
+## Error: Can't subset columns that don't exist.
+## x Column `sample_` doesn't exist.
+```
+
+---
+# `select()` + `from:to`
 
 Multiple consecutive columns can be selected using the `from:to` structure with either column id or variable name:
 
@@ -395,14 +448,12 @@ select(soybean_use, code:animal_feed)
 
 --
 
-Be a bit careful with these commands: &lt;br&gt;
-
-Make sure you really select the columns you want even if e.g. the order of the columns might change
+Be a bit careful with these commands: They are not robust if you e.g. change the order of your columns at some point. &lt;br&gt;
 
 ---
 class:inverse, center, middle
 
-# `arrange()`
+# .large[`arrange()`]
 ## change order of observations (rows)
 
 ---
@@ -440,16 +491,72 @@ arrange(soybean_use, desc(processed))
 Arranging also works for character columns. They will be sorted **alphabetically**.
 
 ---
+# `arrange()`
+
+We can also sort rows by multiple variables
+
+
+```r
+# sort first by year, then by entity
+arrange(soybean_use, year, entity)
+```
+
+
+```
+## # A tibble: 9,897 x 6
+##   entity   code   year human_food animal_feed processed
+##   &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Africa   &lt;NA&gt;   1961      33000        6000     14000
+## 2 Albania  ALB    1961          0          NA         0
+## 3 Algeria  DZA    1961          0           0        NA
+## 4 Americas &lt;NA&gt;   1961       7000       96000  11656000
+## # ... with 9,893 more rows
+```
+
+---
 class: inverse, center, middle
 
-# `mutate()`
+# .large[`mutate()`]
 ## adds new variables
 
-![:scale 50%](img/AllisonHorst/dplyr_mutate.png)
+![:scale 45%](img/AllisonHorst/dplyr_mutate.png)
 .footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
 
 ---
 # `mutate()`
+
+New columns can be added based on values from other columns
+
+
+```r
+mutate(soybean_use, sum_human_animal = human_food + animal_feed)
+```
+
+
+```
+## # A tibble: 9,897 x 7
+##   entity code   year human_food animal_feed processed sum_human_animal
+##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt;
+## 1 Africa &lt;NA&gt;   1961      33000        6000     14000            39000
+## 2 Africa &lt;NA&gt;   1962      43000        7000     17000            50000
+## 3 Africa &lt;NA&gt;   1963      31000        7000      5000            38000
+## # ... with 9,894 more rows
+```
+
+--
+
+Add multiple new columns at once:
+
+
+```r
+mutate(soybean_use,
+  sum_human_animal = human_food + animal_feed
+  total = human_food + animal_feed + processed
+)
+```
+
+---
+# `mutate()` + `ifelse()`
 
 We can add a new variable using `ifelse`:
 
@@ -476,7 +583,7 @@ mutate(soybean_use,
 ```
 
 ---
-# `mutate()` and `case_when()`
+# `mutate()` + `case_when()`
 
 Instead of `ifelse`, we can also use `case_when`
 
@@ -485,9 +592,9 @@ Instead of `ifelse`, we can also use `case_when`
 .footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
 
 ---
-# `mutate()` and `case_when()`
+# `mutate()` + `case_when()`
 
-`case_when()` can combine many cases into one. E.g.:
+`case_when()` can combine many cases into one.
 
 
 ```r
@@ -514,7 +621,7 @@ mutate(soybean_use,
 ---
 # `transmute()`
 
-`transmute()` is like `mutate()` but only keeps the newly created columns:
+`transmute()` is like `mutate()` but only keeps the new columns
 
 
 ```r
@@ -538,8 +645,8 @@ transmute(soybean_use,
 ---
 class: inverse, center, middle
 
-# `summarize()` + `group_by()`
-## summarizes the data by group
+# .large[`summarize()` + `group_by()`]
+## summarizes data by group
 
 ---
 # `summarize()`
@@ -558,16 +665,25 @@ summarize(soybean_use,
 ```
 
 ---
-# `summarise()` and `group_by()`
+# `summarize()` and `group_by()`
 
-`summarise` is much more useful in combination with `group_by()`.
+`summarize` is much more useful in combination with `group_by()`.
 
 If you group the data before summarizing it, the **summary** will be calculated **separately for each group**
+
+--
+
 
 
 ```r
 # group the data by year
 soybean_use_group &lt;- group_by(soybean_use, year)
+```
+
+--
+
+
+```r
 # summarize the grouped data
 summarize(soybean_use_group,
           total_animal = sum(animal_feed, na.rm = TRUE),
@@ -618,7 +734,9 @@ count(soybean_use_group)
 ---
 class: inverse, middle, center
 
-# The pipe `%&gt;%`
+# .large[The pipe `%&gt;%`]
+
+## Combine multiple data operations into one command
 
 ---
 # The pipe `%&gt;%`
@@ -656,31 +774,21 @@ soybean_new &lt;- arrange(soybean_new, desc(year))
 ---
 # The pipe `%&gt;%` 
 
-We could do everything in one step without intermediate results by using use one **nested function**:
+We could do everything in one step without intermediate results by using use one **nested function**
 
 
 ```r
-arrange(
-  summarise(
+soybean_new &lt;- arrange(
+  summarize(
     group_by(
       filter(soybean_use, !is.na(code)),
-      year),
-    mean_processed = mean(processed, na.rm=TRUE),
-    sd_processed = sd(processed, na.rm = TRUE)),
-  desc(year))
-```
-
-
-
-```
-## # A tibble: 53 x 3
-##    year mean_processed sd_processed
-##   &lt;dbl&gt;          &lt;dbl&gt;        &lt;dbl&gt;
-## 1  2013       4836436.    24926799.
-## 2  2012       4773053.    24580711.
-## 3  2011       4783755.    24618132.
-## 4  2010       4622766.    23727678.
-## # ... with 49 more rows
+      year
+    ),
+    mean_processed = mean(processed, na.rm = TRUE),
+    sd_processed = sd(processed, na.rm = TRUE)
+  ),
+  desc(year)
+)
 ```
 
 --
@@ -697,7 +805,7 @@ The pipe operator (included in the `tidyverse`) makes it very easy to combine mu
 soybean_use %&gt;%
   filter(!is.na(code)) %&gt;%
   group_by(year) %&gt;%
-  summarise(
+  summarize(
     mean_processed = mean(processed, na.rm = TRUE),
     sd_processed = sd(processed, na.rm = TRUE)
   ) %&gt;%
@@ -744,7 +852,7 @@ Piping works perfectly with the `tidyverse` functions because they are designed 
 
 --
 
-.content-box-yellow[<svg aria-hidden="true" role="img" viewBox="0 0 352 512" style="height:1em;width:0.69em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg> Use the keyboard shortcut `Ctrl/Cmd + Shift + M` to insert a ` %&gt;% ` pipe]
+.content-box-yellow[<svg aria-hidden="true" role="img" viewBox="0 0 352 512" style="height:1em;width:0.69em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg> Use the keyboard shortcut ` Ctrl/Cmd + Shift + M ` to insert ` %&gt;% `]
 
 ---
 # The pipe `%&gt;%`
@@ -759,7 +867,7 @@ soybean_use %&gt;%
   filter(!is.na(code)) %&gt;%
   select(year, processed) %&gt;%
   group_by(year) %&gt;%
-  summarise(
+  summarize(
     processed = sum(processed, na.rm = TRUE)
   ) %&gt;%
   ggplot(aes(
@@ -771,9 +879,60 @@ soybean_use %&gt;%
 ]
 .pull-right[
 
-&lt;img src="02_02_dplyr_files/figure-html/unnamed-chunk-43-1.png" width="453.6" /&gt;
+&lt;img src="02_02_dplyr_files/figure-html/unnamed-chunk-53-1.png" width="453.6" /&gt;
 ]
 ---
+# Summary I
+
+All `dplyr` functions take a tibble as first argument and return a tibble.
+
+#### `filter()`
+
+- **pick rows** with helpers
+  - relational and logical operators
+  - `%in%`
+  - `is.na()`
+  - `between()`
+  - `near()`
+  
+#### `select()`
+
+- **pick columns** with helpers
+  - `starts_with()`, `ends_with()`
+  - `contains()`
+  - `matches()`
+  - `any_of()`, `all_of()`
+  
+---
+# Summary II
+
+#### `arrange()`
+
+- **change order** of rows (adscending)
+  - or descending with `desc()`
+
+#### `mutate()`
+
+- **add columns** but keep all columns
+  - `case_when()` for conditional values
+
+#### `transmute()`
+
+- **add columns** and drop old columns
+
+---
+# Summary III
+
+#### `summarize()` + `group_by()`
+
+- **collapse rows** into one row by some summary
+  - combine with `group_by()` to summarize by group
+  - use `ungroup()` to ungroup grouped tibble
+
+#### `count`
+
+- **count rows** based on a group
+  - can be used in combination with `group_by()`
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

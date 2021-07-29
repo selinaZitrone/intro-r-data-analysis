@@ -821,7 +821,7 @@ g +
 ]
 
 ---
-# `labs()`: change axis labels and add title
+# `labs()`: change axis and legend titles and add plot title
 
 .pull-left[
 ```{r eval=FALSE}
@@ -829,6 +829,7 @@ g <- g +
   labs(
     x = "log brain weight [kg]",#<<
     y = "total sleep [h/day]", #<<
+    color = "Diet", #<<
     title = "Brain weight and sleep time in mammals",#<<
     subtitle = "Larger brains seem to sleep less",#<<
     caption = "Data from the ggplot2 package")#<<
@@ -843,6 +844,7 @@ g
 g <- g +
   labs(x = "log brain weight [kg]",
        y="total sleep [h/day]", 
+       color = "Diet", #<<
        title = "Brain weight and sleep time in mammals",
        subtitle = "Larger brains seem to sleep less",
        caption = "Data from the `ggplot2` package")
@@ -1125,6 +1127,17 @@ ggsave(filename = "./img/my_plot.png",
 ```
 
 Have a look at `?ggsave` to see all options.
+
+---
+# Summary I
+
+#### Tidyverse and ggplot
+
+- The tidyverse is a collections of R packages for data analysis, including `ggplot2`,`readr`, `tidyr`, `dplyr`, `tibble`
+- All tidyverse packages are designed to work together seamlessly
+- basic idea of `ggplot` is to stack distinct layers of graphical elements to create a plot 
+
+- Check out the [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf) for an overview of how to create a ggplot
 
 ---
 class: inverse, middle, center
