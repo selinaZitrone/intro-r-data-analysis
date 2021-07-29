@@ -821,7 +821,7 @@ g +
 ]
 
 ---
-# `labs()`: change axis labels and add title
+# `labs()`: change axis and legend titles and add plot title
 
 .pull-left[
 ```{r eval=FALSE}
@@ -829,6 +829,7 @@ g <- g +
   labs(
     x = "log brain weight [kg]",#<<
     y = "total sleep [h/day]", #<<
+    color = "Diet", #<<
     title = "Brain weight and sleep time in mammals",#<<
     subtitle = "Larger brains seem to sleep less",#<<
     caption = "Data from the ggplot2 package")#<<
@@ -843,6 +844,7 @@ g
 g <- g +
   labs(x = "log brain weight [kg]",
        y="total sleep [h/day]", 
+       color = "Diet", #<<
        title = "Brain weight and sleep time in mammals",
        subtitle = "Larger brains seem to sleep less",
        caption = "Data from the `ggplot2` package")
