@@ -62,8 +62,11 @@ animals$order <- order
 
 ## Exploring the tibble
 
-```{r}
+```{r eval=FALSE}
 view(animals)
+```
+
+```{r}
 summary(animals)
 str(animals)
 nrow(animals)
