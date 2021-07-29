@@ -260,6 +260,10 @@ class:inverse, center, middle
 
 - `matches()`: variable names that  match a regular expression
 
+--
+
+- `any_of()` and `all_of()`: variables that are contained in a character vector
+
 ---
 # `select()`
 
@@ -306,9 +310,42 @@ You can use the same structure for `starts_with()` and `contains()`.
 ```{r eval=FALSE}
 # this does not match any rows in the soy bean data set
 # but combinations like this are helpful for research data
-select(soy_bean_use, starts_with("sample_"))
+select(soybean_use, starts_with("sample_"))
 
-select(soy_bean_use, contains("_id_"))
+select(soybean_use, contains("_id_"))
+```
+
+---
+# `select()` + `any_of()`/`all_of()`
+
+Use a character vector in conjunction with column selection
+
+```{r}
+cols <- c("sample_", "year", "processed", "entity")
+```
+
+--
+
+`any_of()` returns any columns that match an element in `cols`
+
+```{r eval=FALSE}
+select(soybean_use, any_of(cols))
+```
+
+```{r echo=FALSE}
+print(select(soybean_use, any_of(cols)),n=1)
+```
+
+--
+
+`all_of()` tries to match all elements in `cols` and returns an error if an element does not exist
+
+```{r eval=FALSE}
+select(soybean_use, all_of(cols))
+```
+
+```{r echo=FALSE,error=TRUE}
+select(soybean_use, all_of(cols))
 ```
 
 ---
@@ -710,6 +747,7 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
   - `starts_with()`, `ends_with()`
   - `contains()`
   - `matches()`
+  - `any_of()`, `all_of()`
   
 ---
 # Summary II
