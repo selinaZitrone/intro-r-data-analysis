@@ -1,6 +1,17 @@
-## Type conversion
+```{r echo=FALSE}
+options(scipen = 999)
+```
 
-```{r}
+
+### 2.1 Type conversion
+
+Implicit type conversion follows the following rules:
+
+- numeric (double & integer) `r fontawesome::fa("arrow-right")` character
+- logical `r fontawesome::fa("arrow-right")` numeric
+- logical `r fontawesome::fa("arrow-right")` character
+
+```{r echo}
 v1 <- c(1, "a", 2, 3)
 typeof(v1)
 v2 <- c(TRUE, TRUE, 1L, FALSE, 0L)
@@ -12,13 +23,10 @@ typeof(v4)
 v5 <- c(TRUE, "a", FALSE, "FALSE")
 typeof(v5)
 ```
-Implicit type conversion follows the following rules:
-
-- numeric (double & integer) `r fontawesome::fa("arrow-right")` character
-- logical `r fontawesome::fa("arrow-right")` numeric
-- logical `r fontawesome::fa("arrow-right")` character
 
 #### Explicit conversion to integer
+
+Values cannot be converted from type `character` to type `integer`. If you try to do this, you will get a warning that the conversion returned `NA`
 
 ```{r warning=TRUE}
 as.integer(v1)
@@ -27,11 +35,13 @@ as.integer(v3)
 as.integer(v4)
 as.integer(v5)
 ```
-Values cannot be converted from type `character` to type `integer`. If you try to do this, you will get a warning that the conversion returned `NA`
+
 
 #### Explicit conversion to character
 
-```{r}
+Vectors of all data types can be converted to character. No `NA` values are introduced.
+
+```{r eho=TRUE}
 as.character(v1)
 as.character(v2)
 as.character(v3)
@@ -39,10 +49,7 @@ as.character(v4)
 as.character(v5)
 ```
 
-Everything can be converted to character. No `NA` values were introduced.
-
-
-## Working with vectors
+### 2.2 Working with vectors
 
 ```{r}
 species <- c(
@@ -69,15 +76,20 @@ brainwt_g <- c(
 )
 ```
 
-Check if animals are contained in the data set
+Check if the following animals are contained in the data set
 
 ```{r}
 animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
 # Goes through every element in species and returns TRUE if it appears in animals_to_check
+```
+
+```{r}
 species %in% animals_to_check
 # Goes through every element in animals_to_check and returns TRUE if it appears in species
 animals_to_check %in% species
 ```
+
+
 Note: If you use `%in%` to check if elements are contained in a vector, the result vector is of the same length as the vector that is **before** the `%in%`
 
 Convert the brain weight from g to kg:
@@ -98,12 +110,15 @@ Calculate the ratio brain weight / body weight and save it in a vector:
 brain_body_ratio <- brainwt_kg / bodywt_kg * 100
 ```
 
-Brain body ratio of humans:
+##### Which animals have a larger brain to body ratio than humans?
+
+Step 1: Look at the brain to body ratio of humans
 
 ```{r}
 brain_body_ratio[species == "Human"]
 ```
-Which animals have a larger brain to body ratio than humans?
+
+Step 2: Commpare it with the other animals
 
 ```{r}
 bbr_human <- brain_body_ratio[species == "Human"]
@@ -116,20 +131,22 @@ species[brain_body_ratio > bbr_human]
 
 ### Extras
 
-Round the vector to 4 decimal places:
+- Round the vector to 4 decimal places:
 
 ```{r}
 brain_body_ratio <- round(brain_body_ratio, digits = 4)
 ```
 
 
-Which animal has the smallest brain to body ratio?
+- Which animal has the smallest brain to body ratio?
 
 ```{r}
 species[brain_body_ratio == min(brain_body_ratio)]
 ```
 
-## Adding elements to the vector
+The `r species[brain_body_ratio == min(brain_body_ratio)]` has a really small brain with a weight of just `r brainwt_g[species == species[brain_body_ratio == min(brain_body_ratio)]]` g at a body weight of `r bodywt_kg[species == species[brain_body_ratio == min(brain_body_ratio)]]` kg!
+
+- Add elements to the vector
 
 ```{r}
 species_new <- c("Eagle", "Snail", "Lion")
@@ -141,7 +158,7 @@ brainwt_g <- c(brainwt_g, brainwt_g_new)
 bodywt_kg <- c(bodywt_kg, bodywt_kg_new)
 ```
 
-What is the mean brain weight now?
+- What is the mean brain weight now?
 
 ```{r}
 mean(brainwt_g)
@@ -150,6 +167,6 @@ mean(brainwt_g, na.rm = TRUE)
 ```
 
 
-# References
+### References
 
 Wolfram Research, "Sample Data: Animal Weights" from the Wolfram Data Repository (2016) https://doi.org/10.24097/wolfram.43616.data
