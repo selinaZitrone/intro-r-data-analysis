@@ -361,6 +361,21 @@ arrange(soybean_use, desc(processed))
 Arranging also works for character columns. They will be sorted **alphabetically**.
 
 ---
+# `arrange()`
+
+We can also sort rows by multiple variables
+
+```{r eval=FALSE}
+# sort first by year, then by entity
+arrange(soybean_use, year, entity)
+```
+
+```{r echo=FALSE}
+# sort first by year, then by entity
+print(arrange(soybean_use, year, entity),n=4)
+```
+
+---
 class: inverse, center, middle
 
 # .large[`mutate()`]
