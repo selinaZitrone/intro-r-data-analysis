@@ -59,7 +59,7 @@ The most important functions are:
 
 All `read_*()` functions take a path to the data file as a first argument:
 
-.center[<code><b>read_*(path = .col2["path/to/your/file"], ...)</b></code>]
+.center[<code><b>read_*(file = .col2["path/to/your/file"], ...)</b></code>]
 
 --
 
@@ -80,7 +80,7 @@ Use `read_delim` for a generic type of delimiter:
 ```{r eval=FALSE}
 dat <- read_delim("./data/your_data.txt", delim = "\t") # tab delimiter
 
-dat <- read_delim(here("/data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
+dat <- read_delim("./data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
 ```
 
 --
@@ -125,9 +125,9 @@ Write data from R e.g.
 ---
 # Write files with `write_*()`
 
-All `write_*()` functions take the data to write as the first and the path to write to as the second argument:
+All `write_*()` functions take the data to write as the first and the file to write to as the second argument:
 
-.center[<code><b>write_*(x = .col1[dat], path = .col2["path/to/save/file"], ...)</b></code>]
+.center[<code><b>write_*(x = .col1[dat], file = .col2["path/to/save/file"], ...)</b></code>]
 
 --
 
@@ -136,7 +136,7 @@ write_csv(dat, file = "./data-clean/your_data.csv") # comma delimiter
 
 write_csv2(dat, file = "./data-clean/your_data.txt") # semicolon delimiter
 
-read_tsv(dat, "./data-clean/your_data.txt") # tab delimiter
+write_tsv(dat, file = "./data-clean/your_data.txt") # tab delimiter
 ```
 
 --
@@ -146,7 +146,7 @@ Use `write_delim` for a generic type of delimiter:
 ```{r eval=FALSE}
 write_delim(dat, file = "./data/your_data.txt", delim = "\t") # tab delimiter
 
-write_delim(dat, here("/data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
+write_delim(dat, file = "./data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
 ```
 
 ---
