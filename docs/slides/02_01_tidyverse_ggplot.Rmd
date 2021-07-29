@@ -989,7 +989,7 @@ Add this to the beginning of your script.
 
 You can also specify some defaults, e.g. the text size:
 
-```{r}
+```{r eval=FALSE}
 theme_set(theme_minimal(base_size = 16))
 ```
 
@@ -1011,7 +1011,8 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
 ```{r echo=FALSE}
 ggplot(msleep, aes(x = vore, y = bodywt)) +
   geom_boxplot() +
-  scale_y_log10()
+  scale_y_log10() +
+  theme_minimal(base_size = 16)
 ```
 ]
 
@@ -1045,7 +1046,8 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
   scale_fill_brewer( 
     palette = "Set1", 
     na.value = "gray",
-    guide = "none")
+    guide = "none") +
+  theme_minimal(base_size = 16)
 ```
 ]
 
@@ -1079,7 +1081,8 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
   scale_color_brewer( 
     palette = "Set1",
     na.value = "gray",
-    guide = "none") 
+    guide = "none") +
+  theme_minimal(base_size = 16)
 ```
 ]
 

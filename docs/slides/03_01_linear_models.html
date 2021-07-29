@@ -321,9 +321,9 @@ drop1(prod_lm, test = "F")
 ## 
 ## Model:
 ## productivity ~ richness
-##          Df Sum of Sq    RSS    AIC F value    Pr(&gt;F)    
-## &lt;none&gt;                132779 2326.0                      
-## richness  1    254119 386899 2751.8  761.71 &lt; 2.2e-16 ***
+##          Df Sum of Sq    RSS    AIC F value                Pr(&gt;F)    
+## &lt;none&gt;                132779 2326.0                                  
+## richness  1    254119 386899 2751.8  761.71 &lt; 0.00000000000000022 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -348,15 +348,15 @@ summary(prod_lm)
 ## -47.593 -13.683   0.029  13.970  42.295 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  84.6982     3.3987   24.92   &lt;2e-16 ***
-## richness      2.9938     0.1085   27.60   &lt;2e-16 ***
+##             Estimate Std. Error t value            Pr(&gt;|t|)    
+## (Intercept)  84.6982     3.3987   24.92 &lt;0.0000000000000002 ***
+## richness      2.9938     0.1085   27.60 &lt;0.0000000000000002 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 18.27 on 398 degrees of freedom
 ## Multiple R-squared:  0.6568,	Adjusted R-squared:  0.6559 
-## F-statistic: 761.7 on 1 and 398 DF,  p-value: &lt; 2.2e-16
+## F-statistic: 761.7 on 1 and 398 DF,  p-value: &lt; 0.00000000000000022
 ```
 
 ---
@@ -634,10 +634,10 @@ drop1(prod_lm2a, test = "F") # no interaction
 ## 
 ## Model:
 ## productivity ~ richness + site
-##          Df Sum of Sq    RSS    AIC F value    Pr(&gt;F)    
-## &lt;none&gt;                 40064 1848.7                      
-## richness  1     42908  82973 2137.9  425.18 &lt; 2.2e-16 ***
-## site      1     92715 132779 2326.0  918.72 &lt; 2.2e-16 ***
+##          Df Sum of Sq    RSS    AIC F value                Pr(&gt;F)    
+## &lt;none&gt;                 40064 1848.7                                  
+## richness  1     42908  82973 2137.9  425.18 &lt; 0.00000000000000022 ***
+## site      1     92715 132779 2326.0  918.72 &lt; 0.00000000000000022 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -682,16 +682,16 @@ summary(prod_lm2a)
 ## -30.1743  -6.2895  -0.0352   5.6955  28.9276 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 108.36550    2.02582   53.49   &lt;2e-16 ***
-## richness      1.56699    0.07599   20.62   &lt;2e-16 ***
-## sitesite2    38.78575    1.27962   30.31   &lt;2e-16 ***
+##              Estimate Std. Error t value            Pr(&gt;|t|)    
+## (Intercept) 108.36550    2.02582   53.49 &lt;0.0000000000000002 ***
+## richness      1.56699    0.07599   20.62 &lt;0.0000000000000002 ***
+## sitesite2    38.78575    1.27962   30.31 &lt;0.0000000000000002 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 10.05 on 397 degrees of freedom
 ## Multiple R-squared:  0.8964,	Adjusted R-squared:  0.8959 
-## F-statistic:  1718 on 2 and 397 DF,  p-value: &lt; 2.2e-16
+## F-statistic:  1718 on 2 and 397 DF,  p-value: &lt; 0.00000000000000022
 ```
 
 ---
@@ -959,9 +959,9 @@ drop1(lm_chicken, test = "F")
 ## 
 ## Model:
 ## weight ~ feed
-##        Df Sum of Sq    RSS    AIC F value    Pr(&gt;F)    
-## &lt;none&gt;              195556 574.39                      
-## feed    5    231129 426685 619.78  15.365 5.936e-10 ***
+##        Df Sum of Sq    RSS    AIC F value          Pr(&gt;F)    
+## &lt;none&gt;              195556 574.39                            
+## feed    5    231129 426685 619.78  15.365 0.0000000005936 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -985,19 +985,19 @@ summary(lm_chicken)
 ## -123.909  -34.413    1.571   38.170  103.091 
 ## 
 ## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)    323.583     15.834  20.436  &lt; 2e-16 ***
-## feedhorsebean -163.383     23.485  -6.957 2.07e-09 ***
-## feedlinseed   -104.833     22.393  -4.682 1.49e-05 ***
-## feedmeatmeal   -46.674     22.896  -2.039 0.045567 *  
-## feedsoybean    -77.155     21.578  -3.576 0.000665 ***
-## feedsunflower    5.333     22.393   0.238 0.812495    
+##               Estimate Std. Error t value             Pr(&gt;|t|)    
+## (Intercept)    323.583     15.834  20.436 &lt; 0.0000000000000002 ***
+## feedhorsebean -163.383     23.485  -6.957        0.00000000207 ***
+## feedlinseed   -104.833     22.393  -4.682        0.00001493344 ***
+## feedmeatmeal   -46.674     22.896  -2.039             0.045567 *  
+## feedsoybean    -77.155     21.578  -3.576             0.000665 ***
+## feedsunflower    5.333     22.393   0.238             0.812495    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 54.85 on 65 degrees of freedom
 ## Multiple R-squared:  0.5417,	Adjusted R-squared:  0.5064 
-## F-statistic: 15.36 on 5 and 65 DF,  p-value: 5.936e-10
+## F-statistic: 15.36 on 5 and 65 DF,  p-value: 0.0000000005936
 ```
 
 ---

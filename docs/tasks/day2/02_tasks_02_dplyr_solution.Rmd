@@ -80,9 +80,7 @@ select(penguins, any_of(cols))
 # this would return  an error
 select(penguins, all_of(cols))
 ```
-
-
-
+- select only columns that contain measurements in mm
 
 # select
 pick columns based on their name
