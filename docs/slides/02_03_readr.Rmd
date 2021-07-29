@@ -46,69 +46,20 @@ library(tidyverse) # or library(readr)
 
 The most important functions are:
 
-- `read_csv`/`write_csv` to read/write **comma delimited** files
+- `read_csv()`/`write_csv()` to read/write **comma delimited** files
 
-- `read_csv2`/`write_csv2` to read/write **semicolon delimited** files
+- `read_csv2()`/`write_csv2()` to read/write **semicolon delimited** files
 
-- `read_tsv`/`write_tsv` to read/write **tab delimited** files
+- `read_tsv()`/`write_tsv()` to read/write **tab delimited** files
 
-- `read_delim`/`write_delim` to read/write files with **any delimiter**
-
----
-# Absolute vs. relative paths
-
-#### Absolute paths
-
-`C:/Users/Selina/some_folder/another_folder/data/file_to_read.csv`
-
-#### Relative paths
-
-`./data/file_to_read.csv`
-
---
-
-  - relative paths are interpreted relative to the **working directory**
-    - the `./` in the path stands for the working directory
-  - check out where your working directory is with `getwd()`
-  - in RStudio projects, the working directory is always the project root
-
----
-# Absolute vs. relative paths
-
-Working with R and RStudio, the best way is to:
-
-- **organize your work in an RStudio project**
-  - The project root is automatically the working directory
-  - all your files are in one place
-- **use paths relative to the project root**
-
---
-
-#### Why?
-
---
-
-- no need to change the working directory
-
---
-
-
-- portable paths: will also work on other machines that copied the project
-
---
-
-- makes the code more readable
-
---
-
-- less error prone
+- `read_delim()`/`write_delim()` to read/write files with **any delimiter**
 
 ---
 # Read files with `read_*()`
 
 All `read_*()` functions take a path to the data file as a first argument:
 
-.center[<code><b>read_*(path = .col2["path/to/your/file"], ...)</b></code>]
+.center[<code><b>read_*(file = .col2["path/to/your/file"], ...)</b></code>]
 
 --
 
@@ -129,7 +80,7 @@ Use `read_delim` for a generic type of delimiter:
 ```{r eval=FALSE}
 dat <- read_delim("./data/your_data.txt", delim = "\t") # tab delimiter
 
-dat <- read_delim(here("/data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
+dat <- read_delim("./data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
 ```
 
 --
@@ -158,23 +109,25 @@ You can e.g.
 ---
 # Write files with `write_*()`
 
-Every `read_*()` function has a corresponding `write_*()` function with which you can export data from R.
+Every `read_*()` function has a corresponding `write_*()` function to export data from R.
 
-Write data from R e.g. if
+--
 
-- tasks take a lot of time and you want to do them only once
-  - run the code, save the intermediate result, work with intermediate result
+Write data from R e.g.
 
-- share transformed data
+- If tasks take a lot of time and you want to do them only once
+  - Run the code, save the intermediate result, work with intermediate result
+
+- To share transformed data
 
 - ...
 
 ---
 # Write files with `write_*()`
 
-All `write_*()` functions take the data to write as the first and the path to write to as the second argument:
+All `write_*()` functions take the data to write as the first and the file to write to as the second argument:
 
-.center[<code><b>write_*(x = .col1[dat], path = .col2["path/to/save/file"], ...)</b></code>]
+.center[<code><b>write_*(x = .col1[dat], file = .col2["path/to/save/file"], ...)</b></code>]
 
 --
 
@@ -183,7 +136,7 @@ write_csv(dat, file = "./data-clean/your_data.csv") # comma delimiter
 
 write_csv2(dat, file = "./data-clean/your_data.txt") # semicolon delimiter
 
-read_tsv(dat, "./data-clean/your_data.txt") # tab delimiter
+write_tsv(dat, file = "./data-clean/your_data.txt") # tab delimiter
 ```
 
 --
@@ -193,24 +146,77 @@ Use `write_delim` for a generic type of delimiter:
 ```{r eval=FALSE}
 write_delim(dat, file = "./data/your_data.txt", delim = "\t") # tab delimiter
 
-write_delim(dat, here("/data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
+write_delim(dat, file = "./data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
 ```
+
+---
+# Absolute vs. relative paths
+
+#### Absolute paths
+
+`C:/Users/Selina/some_folder/another_folder/data/file_to_read.csv`
+
+#### Relative paths
+
+`./data/file_to_read.csv`
+
+--
+
+- relative paths are interpreted relative to the **working directory**
+  - the `./` in the path stands for the working directory
+
+- check out where your working directory is with `getwd()`
+
+- in RStudio projects, the working directory is always the project root
+
+---
+# Absolute vs. relative paths
+
+Working with R and RStudio, the best way is to:
+
+- **Organize your work in an RStudio project**
+  - The project root is automatically the working directory
+  - All your files are in one place
+
+- **Use paths relative to the project root**
+
+--
+
+#### Why?
+
+--
+
+- no need to change the working directory
+
+--
+
+
+- portable paths: will also work on other machines that copied the project
+
+--
+
+- makes the code more readable
+
+--
+
+- less error prone
+
 
 ---
 class: inverse, middle, center
 
-# Some guidelines for data sets outside `r fa("r-project")`
+# .large[Some guidelines for data sets for `r fa("r-project")`]
 
 ---
 # Data format
 
-These guidelines for data sets make it much easier and less frustrating to import them in R:
+Follow these guidelines to make data import to R easier and less frustrating
 
-- readable file format: csv, txt & co instead of xlsx
+- Readable file format: `.csv`, `.txt` & Co instead of `.xlsx`
 
 --
 
-Save an Excel spreadsheet as e.g. csv either by
+Save an Excel spreadsheet as csv or txt either by
 
 1. `File -> Save As` and select comma separated from the drop down menu
 2. `File -> Export`
@@ -221,35 +227,34 @@ Save an Excel spreadsheet as e.g. csv either by
 ---
 # Data format
 
-These guidelines for data sets make it much easier and less frustrating to import them in R:
+Follow these guidelines to make data import to R easier and less frustrating
 
-- Readable file format: csv, txt & co instead of xlsx
+- Readable file format: `.csv`, `.txt` & Co instead of `.xlsx`
 
-- No spaces in column headers
-  - use a character as separator if necessary, e.g. `species_name` instead of `species name`
+- No white space in column headers
+  - use a character as separator, e.g. `species_name` instead of `species name`
 
-  - if this is impossible for you data, have a look at the function `janitor::clean_names` from the `janitor` package
+  - if this is unpractical, have a look at the function `janitor::clean_names()` from the `janitor` package
 
 --
 
-- Try to avoid special characters
-  - avoid characters such as ä, ö, ü, ß, é, ê, ...
+- Avoid special characters
+  - no ä, ö, ü, ß, é, ê, ...
 
 --
 
 - Avoid empty cells
-  - if you have missing values, put NA in the cell
+  - if you have missing values, put `NA` in the cell
 
 ---
 # Paths
 
-- Avoid spaces in paths
+- Avoid white space in paths
+
   - `data-raw/my_data.csv` instead of `data raw/my_data.csv`
 
 --
 
 - Avoid special characters in paths
-  - avoid characters such as ä, ö, ü, ß, é, ê, ...
 
----
-# Additional Resources
+  - no ä, ö, ü, ß, é, ê, ...

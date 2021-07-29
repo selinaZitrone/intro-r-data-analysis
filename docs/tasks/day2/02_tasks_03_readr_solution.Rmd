@@ -1,1 +1,70 @@
-No tasks yet
+### 3.1 Create a tibble and write it
+
+Load the package and creat the tibble:
+
+```{r eval=FALSE}
+library(tidyverse)
+
+species <- c(
+  "MountainBeaver", "Cow", "GreyWolf", "Goat",
+  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
+  "Horse", "PotarMonkey", "Cat", "Giraffe",
+  "Gorilla", "Human", "AfricanElephant", "Triceratops",
+  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
+  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
+  "Rat", "Brachiosaurus", "Mole", "Pig"
+)
+
+bodywt_kg <- c(
+  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
+  521, 10, 3.3, 529, 207, 62, 6654, 9400,
+  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
+  0.3, 87000, 0.1, 192
+)
+
+brainwt_g <- c(
+  8.1, 423, 119.5, 115, 5.5, 50, 4603, 419, 655, 115, 25.6,
+  680, 406, 1320, 5712, 70, 179, 56, 1, 0.4, 12.1, 175,
+  157, 440, 1.9, 154.5, 3, 180
+)
+# Creating the tibble 
+animals <- tibble(
+  species = species,
+  bodywt_kg = bodywt_kg,
+  brainwt_kg = brainwt_g / 1000
+)
+
+```
+
+Writing the data to disk:
+
+```{r eval=FALSE}
+write_csv(x = animals, file = "./data/animals.csv") # write as csv
+write_tsv(x = animals, file = "./data/animals.txt") # write as txt
+```
+
+### 3.2 Read data into R
+
+Read the same data back into R:
+
+```{r eval=FALSE}
+animals_csv <- read_csv("./data/animals.csv") # read the csv
+animals_tsv <- read_tsv("./data/animals.txt") # read the txt
+```
+
+If you use the `Files` pane to open data files, you can view them in R Studio. For csv files, you have the additional option to click on an `Import Dataset` button.
+
+```{r}
+knitr::include_graphics(here::here("tasks/day2/img/readr_import_button.png"))
+```
+
+If you click on this button, have the possibility to import the data set via a graphical user interface. 
+
+```{r}
+knitr::include_graphics(here::here("tasks/day2/img/readr_import_options.png"))
+```
+
+This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct `read_*()` function arguments. 
+
+Just play with these different options of reading data into R and find one that fits you best.
+

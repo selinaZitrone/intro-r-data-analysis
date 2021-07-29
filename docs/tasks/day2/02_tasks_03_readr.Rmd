@@ -1,1 +1,56 @@
-No tasks yet
+### 3.1 Create a tibble and write it
+
+Before we try the `read_*` functions, we will create a tibble in R and save it to disk.
+
+Let's use the tibble with animal brain and body weights.
+In case you don't have it ready anymore, here is the code to create it:
+
+```{r eval=FALSE}
+library(tidyverse)
+
+species <- c(
+  "MountainBeaver", "Cow", "GreyWolf", "Goat",
+  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
+  "Horse", "PotarMonkey", "Cat", "Giraffe",
+  "Gorilla", "Human", "AfricanElephant", "Triceratops",
+  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
+  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
+  "Rat", "Brachiosaurus", "Mole", "Pig"
+)
+
+bodywt_kg <- c(
+  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
+  521, 10, 3.3, 529, 207, 62, 6654, 9400,
+  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
+  0.3, 87000, 0.1, 192
+)
+
+brainwt_g <- c(
+  8.1, 423, 119.5, 115, 5.5, 50, 4603, 419, 655, 115, 25.6,
+  680, 406, 1320, 5712, 70, 179, 56, 1, 0.4, 12.1, 175,
+  157, 440, 1.9, 154.5, 3, 180
+)
+# Creating the tibble 
+animals <- tibble(
+  species = species,
+  bodywt_kg = bodywt_kg,
+  brainwt_kg = brainwt_g / 1000
+)
+
+```
+
+Before writing the data to your R project, make sure that you created a dedicated `data` directory in it.
+
+Now write `animals` to that directory. Try writing
+
+- with comma separator as csv
+- with tab separator as txt
+
+Check if the files were written into the correct folder.
+
+### 3.2 Read data into R
+
+Now, try to read the two data sets back into R using the appropriate `read_*()` functions for the separators.
+
+If this was successful, navigate to your `data` directory using the `Files` pane of RStudio.
+Try clicking on both the `.txt` and the `.csv` file that you just saved there. What is different? Try the `Import Dataset` button for the `.csv` file.
