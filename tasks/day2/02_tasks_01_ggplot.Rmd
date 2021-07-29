@@ -1,3 +1,8 @@
+```{r echo=FALSE}
+library(tidyverse)
+```
+
+
 ### 1.1 Getting started with ggplot and the tidyverse
 
 A helpful resource for to consult for this task can be the [ggplot2 cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf).
@@ -94,7 +99,9 @@ Take a look at the plot, we discussed during the presentation:
 knitr::include_graphics(here::here("slides/img/figs-penguin/README-flipper-bill-1.png"))
 ```
 
+
 Can you reproduce this plot? It is similar to the one from Task 1.3.1.
+
 The colors that are used are:
 ```{r}
 penguin_cols <- c("darkorange", "purple", "cyan4")
