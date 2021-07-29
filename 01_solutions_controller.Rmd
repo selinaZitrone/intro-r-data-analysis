@@ -14,22 +14,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 2 Vectors in R
 
-**Aims:**
-
-- Learn about type conversion
-- Work with vectors
-
 ```{r vectors, child="tasks/day1/01_tasks_02_R_basics_solution.Rmd"}
 ```
 
 ## 3 Tibbles in R
-
-**Aims:**
-
-- Create and manipulate tibbles with base R:
-  - indexing
-  - adding columns
-  - changing values
 
 ```{r tibbles, child="./tasks/day1/01_tasks_03_tibbles_solution.Rmd"}
 ```

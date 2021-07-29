@@ -14,32 +14,21 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 1 Linear models
 
-**Aims:** 
-
-
 ```{r create_rstudio_project, child="tasks/day3/03_tasks_01_lm_solution.Rmd"}
 ```
 
 ## 2 Linear models transformation
-
-**Aims:**
-
 
 ```{r vectors, child="tasks/day3/03_tasks_02_lm_trans_solution.Rmd"}
 ```
 
 ## 3 Poisson and binary glm
 
-**Aims:**
-
-
 ```{r tibbles, child="./tasks/day3/03_tasks_03_glm_solution.Rmd"}
 ```
 
 
 ## 3 Proportion glm
-
-**Aims:**
 
 ```{r tibbles, child="./tasks/day3/03_tasks_04_glm_prop_solution.Rmd"}
 ```
