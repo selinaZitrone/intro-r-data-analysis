@@ -181,12 +181,32 @@ print(cities_untidy, width = 90)
 
 ```{r}
 step1 <- pivot_longer(
-    cities_untidy,                  # the tibble
-    Turkey_Istanbul:France_Paris,   # the columns to pivot from:to
-    names_to = "location")          # name of the new column
+    cities_untidy,                         # the tibble
+    cols = Turkey_Istanbul:France_Paris,   # the columns to pivot from:to
+    names_to = "location",                 # name of the new column
+    values_to = "value")                   # name of the value column
 ```
 
 --
+
+```{r echo=FALSE}
+print(step1, n=4)
+```
+
+---
+# `pivot_longer()`
+
+**One variable split into multiple column**s can be solved with `pivot_longer`
+
+Another way to select the columns to pivot:
+
+```{r}
+step1 <- pivot_longer(
+    cities_untidy,           # the tibble
+    cols = !type,            # All columns except type#<<        
+    names_to = "location",   # name of the new column
+    values_to = "value")     # name of the value column
+```
 
 ```{r echo=FALSE}
 print(step1, n=4)
