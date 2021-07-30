@@ -38,15 +38,14 @@ library(tidyr)
 ---
 class: inverse, center, middle
 
-# What is tidy data?
+# .large[What is tidy data?]
 
 ---
-class: center, top
-background-image: url("img/AllisonHorst/tidydata_1.jpg")
-background-size: 80%
+# What is tidy data?
 
+.center[![:scale 80%](img/AllisonHorst/tidydata_1.jpg)]
 
-.footnote-right[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst]
+.footnote-right[Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst]
 
 ---
 # What is tidy data?
@@ -68,7 +67,7 @@ data.frame(id = 1:6,
 --
 
 .pull-right[
-.center[**Untidy**
+.center[**Non-tidy**
 ```{r echo=FALSE}
 data.frame(floof = "gray",
            max = "black",
@@ -91,7 +90,7 @@ data.frame(gray = c("floof", "donut"),
 ]
 --
 <br><br>
-Sometimes ***raw data*** is "untidy" because its structure is optimized for data entry or viewing rather than analysis.
+Sometimes ***raw data*** is non-tidy because its structure is optimized for data entry or viewing rather than analysis.
 
 ---
 # Why tidy data?
@@ -103,12 +102,12 @@ The main advantages of **tidy** data is that the `tidyverse` packages are built 
 
 
 
-.footnote-right[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst]
+.footnote-right[Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst]
 
 ---
 # Example
 
-Let's go back to the city data set from yesterday:
+Let's go back to the city data set from earlier:
 
 
 ```{r echo=FALSE}
@@ -145,15 +144,24 @@ cities_untidy
 cities_untidy <- unite(cities_tbl, col = "location", c("country", "city")) %>%
   pivot_longer(c("population", "area_km2"), names_to = "type") %>%
   pivot_wider(names_from = "location", values_from = "value")
-print(cities_untidy, width = 80)
+print(cities_untidy, width = 90)
 ```
 
-**What's untidy here?**
+**What's not tidy here?**
 --
 <br>
 - each row has multiple observation
+
+--
+
 - at the same time, each observation is split across multiple rows
+
+--
+
 - country and city variable are split into multiple columns
+
+--
+
 - country and city variable values are united to one value
 
 --
@@ -161,30 +169,51 @@ print(cities_untidy, width = 80)
 Let's tidy this data using functions from the `tidyr` package!
 
 ---
-# Step 1: `pivot_longer()`
+# `pivot_longer()`
 
 **One variable split into multiple column**s can be solved with `pivot_longer`
 
 ```{r echo=FALSE}
-cities_untidy
+print(cities_untidy, width = 90)
 ```
 
+--
 
 ```{r}
 step1 <- pivot_longer(
-    cities_untidy,                  # the tibble
-    Turkey_Istanbul:France_Paris,   # the columns to pivot from:to
-    names_to = "location")          # name of the new column
+    cities_untidy,                         # the tibble
+    cols = Turkey_Istanbul:France_Paris,   # the columns to pivot from:to
+    names_to = "location",                 # name of the new column
+    values_to = "value")                   # name of the value column
 ```
 
 --
 
 ```{r echo=FALSE}
-print(step1, n=5)
+print(step1, n=4)
 ```
 
 ---
-# Step 2: `separate()`
+# `pivot_longer()`
+
+**One variable split into multiple column**s can be solved with `pivot_longer`
+
+Another way to select the columns to pivot:
+
+```{r}
+step1 <- pivot_longer(
+    cities_untidy,           # the tibble
+    cols = !type,            # All columns except type#<<        
+    names_to = "location",   # name of the new column
+    values_to = "value")     # name of the value column
+```
+
+```{r echo=FALSE}
+print(step1, n=4)
+```
+
+---
+# `separate()`
 
 **Multiple variable values that are united into one** can be separated using `separate`
 
@@ -192,6 +221,7 @@ print(step1, n=5)
 print(step1,n=2)
 ```
 
+--
 
 ```{r}
 step2 <- separate(
@@ -212,13 +242,15 @@ print(step2, n=2)
 The opposite function exists as well and is called `unite`. Check out `?unite` for details.
 
 ---
-# Step 3: `pivot_wider()`
+# `pivot_wider()`
 
 **One observation split into multiple rows** can solved with `pivot_wider`
 
 ```{r echo=FALSE}
 print(step2,n=2)
 ```
+
+--
 
 ```{r}
 step3 <- pivot_wider(
@@ -244,9 +276,11 @@ cities_tidy <- cities_untidy %>%
   separate(location, sep = "_", into = c("country", "city")) %>%
   pivot_wider(names_from = type, values_from = value)
 ```
-
 ---
-# Additional Resources
+class: inverse, middle, center
 
-https://r4ds.had.co.nz/tidy-data.html
+# .large[Now you]
 
+## Task 2-4: Tidying data
+
+#### Find the task description [here](www.github.com)

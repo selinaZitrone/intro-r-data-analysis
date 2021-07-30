@@ -30,21 +30,20 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-06-15 (updated: 2021-07-29)
+  2021-06-15 (updated: 2021-07-30)
 ]
 
 ---
 class: inverse, center, middle
 
-# What is tidy data?
+# .large[What is tidy data?]
 
 ---
-class: center, top
-background-image: url("img/AllisonHorst/tidydata_1.jpg")
-background-size: 80%
+# What is tidy data?
 
+.center[![:scale 80%](img/AllisonHorst/tidydata_1.jpg)]
 
-.footnote-right[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst]
+.footnote-right[Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst]
 
 ---
 # What is tidy data?
@@ -69,7 +68,7 @@ Let's look at some examples
 --
 
 .pull-right[
-.center[**Untidy**
+.center[**Non-tidy**
 
 |floof |max   |cat    |donut |merlin |panda  |
 |:-----|:-----|:------|:-----|:------|:------|
@@ -85,7 +84,7 @@ Let's look at some examples
 ]
 --
 &lt;br&gt;&lt;br&gt;
-Sometimes ***raw data*** is "untidy" because its structure is optimized for data entry or viewing rather than analysis.
+Sometimes ***raw data*** is non-tidy because its structure is optimized for data entry or viewing rather than analysis.
 
 ---
 # Why tidy data?
@@ -97,12 +96,12 @@ The main advantages of **tidy** data is that the `tidyverse` packages are built 
 
 
 
-.footnote-right[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst]
+.footnote-right[Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst]
 
 ---
 # Example
 
-Let's go back to the city data set from yesterday:
+Let's go back to the city data set from earlier:
 
 
 
@@ -144,20 +143,29 @@ cities_untidy
 
 ```
 ## # A tibble: 2 x 11
-##   type   Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint P~ Germany_Berlin
-##   &lt;chr&gt;            &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt;          &lt;dbl&gt;
-## 1 popul~        15100000      12500000   9000000          5400000        3800000
-## 2 area_~            2576          2561      1572             1439            891
-## # ... with 5 more variables: Spain_Madrid &lt;dbl&gt;, Ukraine_Kyiv &lt;dbl&gt;,
-## #   Italy_Rome &lt;dbl&gt;, Romania_Bucharest &lt;dbl&gt;, France_Paris &lt;dbl&gt;
+##   type      Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Petersbu~ Germany_Berlin
+##   &lt;chr&gt;               &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                   &lt;dbl&gt;          &lt;dbl&gt;
+## 1 populati~        15100000      12500000   9000000                 5400000        3800000
+## 2 area_km2             2576          2561      1572                    1439            891
+## # ... with 5 more variables: Spain_Madrid &lt;dbl&gt;, Ukraine_Kyiv &lt;dbl&gt;, Italy_Rome &lt;dbl&gt;,
+## #   Romania_Bucharest &lt;dbl&gt;, France_Paris &lt;dbl&gt;
 ```
 
-**What's untidy here?**
+**What's not tidy here?**
 --
 &lt;br&gt;
 - each row has multiple observation
+
+--
+
 - at the same time, each observation is split across multiple rows
+
+--
+
 - country and city variable are split into multiple columns
+
+--
+
 - country and city variable values are united to one value
 
 --
@@ -165,28 +173,30 @@ cities_untidy
 Let's tidy this data using functions from the `tidyr` package!
 
 ---
-# Step 1: `pivot_longer()`
+# `pivot_longer()`
 
 **One variable split into multiple column**s can be solved with `pivot_longer`
 
 
 ```
 ## # A tibble: 2 x 11
-##   type     Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Peters~ Germany_Berlin Spain_Madrid
-##   &lt;chr&gt;              &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                 &lt;dbl&gt;          &lt;dbl&gt;        &lt;dbl&gt;
-## 1 populat~        15100000      12500000   9000000               5400000        3800000      3200000
-## 2 area_km2            2576          2561      1572                  1439            891          604
-## # ... with 4 more variables: Ukraine_Kyiv &lt;dbl&gt;, Italy_Rome &lt;dbl&gt;, Romania_Bucharest &lt;dbl&gt;,
-## #   France_Paris &lt;dbl&gt;
+##   type      Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Petersbu~ Germany_Berlin
+##   &lt;chr&gt;               &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                   &lt;dbl&gt;          &lt;dbl&gt;
+## 1 populati~        15100000      12500000   9000000                 5400000        3800000
+## 2 area_km2             2576          2561      1572                    1439            891
+## # ... with 5 more variables: Spain_Madrid &lt;dbl&gt;, Ukraine_Kyiv &lt;dbl&gt;, Italy_Rome &lt;dbl&gt;,
+## #   Romania_Bucharest &lt;dbl&gt;, France_Paris &lt;dbl&gt;
 ```
 
+--
 
 
 ```r
 step1 &lt;- pivot_longer(
-    cities_untidy,                  # the tibble
-    Turkey_Istanbul:France_Paris,   # the columns to pivot from:to
-    names_to = "location")          # name of the new column
+    cities_untidy,                         # the tibble
+    cols = Turkey_Istanbul:France_Paris,   # the columns to pivot from:to
+    names_to = "location",                 # name of the new column
+    values_to = "value")                   # name of the value column
 ```
 
 --
@@ -200,12 +210,39 @@ step1 &lt;- pivot_longer(
 ## 2 population Russia_Moscow           12500000
 ## 3 population UK_London                9000000
 ## 4 population Russia_Saint Petersburg  5400000
-## 5 population Germany_Berlin           3800000
-## # ... with 15 more rows
+## # ... with 16 more rows
 ```
 
 ---
-# Step 2: `separate()`
+# `pivot_longer()`
+
+**One variable split into multiple column**s can be solved with `pivot_longer`
+
+Another way to select the columns to pivot:
+
+
+```r
+step1 &lt;- pivot_longer(
+    cities_untidy,           # the tibble
+*   cols = !type,            # All columns except type
+    names_to = "location",   # name of the new column
+    values_to = "value")     # name of the value column
+```
+
+
+```
+## # A tibble: 20 x 3
+##   type       location                   value
+##   &lt;chr&gt;      &lt;chr&gt;                      &lt;dbl&gt;
+## 1 population Turkey_Istanbul         15100000
+## 2 population Russia_Moscow           12500000
+## 3 population UK_London                9000000
+## 4 population Russia_Saint Petersburg  5400000
+## # ... with 16 more rows
+```
+
+---
+# `separate()`
 
 **Multiple variable values that are united into one** can be separated using `separate`
 
@@ -219,6 +256,7 @@ step1 &lt;- pivot_longer(
 ## # ... with 18 more rows
 ```
 
+--
 
 
 ```r
@@ -246,7 +284,7 @@ step2 &lt;- separate(
 The opposite function exists as well and is called `unite`. Check out `?unite` for details.
 
 ---
-# Step 3: `pivot_wider()`
+# `pivot_wider()`
 
 **One observation split into multiple rows** can solved with `pivot_wider`
 
@@ -259,6 +297,8 @@ The opposite function exists as well and is called `unite`. Check out `?unite` f
 ## 2 population Russia  Moscow   12500000
 ## # ... with 18 more rows
 ```
+
+--
 
 
 ```r
@@ -295,12 +335,14 @@ cities_tidy &lt;- cities_untidy %&gt;%
   separate(location, sep = "_", into = c("country", "city")) %&gt;%
   pivot_wider(names_from = type, values_from = value)
 ```
-
 ---
-# Additional Resources
+class: inverse, middle, center
 
-https://r4ds.had.co.nz/tidy-data.html
+# .large[Now you]
 
+## Task 2-4: Tidying data
+
+#### Find the task description [here](www.github.com)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

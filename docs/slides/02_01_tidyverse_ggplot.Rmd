@@ -1109,7 +1109,7 @@ A ggplot object can be saved on disk in different formats.
 
 Without specifications:
 
-```{r}
+```{r eval=FALSE}
 # save plot g in img as my_plot.pdf
 ggsave(filename = "./img/my_plot.pdf", plot = g)
 # save plot g in img as my_plot.png

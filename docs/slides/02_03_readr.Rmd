@@ -258,3 +258,13 @@ Follow these guidelines to make data import to R easier and less frustrating
 - Avoid special characters in paths
 
   - no ä, ö, ü, ß, é, ê, ...
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 2-3: Read and write data files
+
+#### Find the task description [here](www.github.com)
+
