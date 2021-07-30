@@ -8,17 +8,25 @@ output:
     toc_float: true
     number_sections: true
 ---
+
 ## General
 
-- [List of RStudio cheatsheets](https://www.rstudio.com/resources/cheatsheets/): You can find a list of all the cheatsheets that RStudio provides there. Below, I listed the individual cheatsheets that are interesting for our course.
+- [List of RStudio cheatsheets](https://www.rstudio.com/resources/cheatsheets/): You can find a list of all the cheat sheets that RStudio provides there. Below, I listed the individual cheat sheets that are interesting for our course.
 
 - [RStudio cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rstudio-ide.pdf): Explains the most important buttons, options, keyboard shortcuts, etc that you have in RStudio.
 
-## Introduction to R
+- [The modern dive book](https://moderndive.com/1-getting-started.html#code) explains how to get started with R and data analysis with the tidyverse.
+
+- The [R for Data Science book](https://r4ds.had.co.nz/index.html) by Hadley Wickham is a very good book to start with.
+
+- The [Big book of R](https://www.bigbookofr.com/) is a book that list all books about R that are freely available only. The book is sorted by topics and can be used to find resources to learn a specific topic.
+
+- A [curated collection of R resources](https://github.com/iamericfletcher/awesome-r-learning-resources). Not just books but also websites, tutorials, help channels, ...
+
 
 ## Tidyverse
 
-- The [R for Data Science book](https://r4ds.had.co.nz/index.html) by Hadley Wickham is a very good book to start with.
+- The [tidyverse website](https://tidyverse.org/) has links to all tidyverse packages which all have very good examples and use cases. These websites are an excelent point to get started with a package.
 
 ### readr
 
@@ -28,22 +36,36 @@ output:
 
 - [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf) offers an overview of all possibilities of ggplot
 
+- [error bars with ggplot](https://www.datanovia.com/en/lessons/ggplot-error-bars/) A good summary of how to plot different types of means and errorbars (barplots, mean and errorbar, ...).
+
+- In the [R graph gallery](https://www.r-graph-gallery.com/) you can browse through hundreds of different types of plots and find code to reproduce them.
+
+- A great [presentation by Cédric Scherer](https://github.com/z3tt/OutlierConf2021) with examples of how to beautify your ggplots.
+
 ### dplyr
 
 - [dplyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf)
 
 ### tidyr
 
-- https://r4ds.had.co.nz/tidy-data.html
 - [data import cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf)
 
 ## Linear models
 
-- ---
-# Resources
-
 - [anova with R](https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Learning_Statistics_with_R_-_A_tutorial_for_Psychology_Students_and_other_Beginners_(Navarro)/16%3A_Factorial_ANOVA/16.06%3A_ANOVA_As_a_Linear_Model): explanation why an anova is also a linear model
 
+## Twitter accounts to follow
+
+I personally learn a lot of tricks and find a lot of inspiration and resources by following some R people and accounts on twitter. Often people post helpful tutorials or blogpost that you would not find otherwise. If you are a twitter user, you can try that as well.
+Some suggestions are:
+
+- [Cédric Scherer](https://twitter.com/CedScherer) mainly data visualization and ggplot content
+- [Allison Horst](https://twitter.com/allison_horst)
+- [RStudio](https://twitter.com/rstudio) official RStudio account
+- [Hadley Wickham](https://twitter.com/hadleywickham) data visualisation, tidyverse
+- [Jenny Bryan](https://twitter.com/JennyBryan)
+- [rOpenSci](https://twitter.com/rOpenSci) develop R tools for open science
+- [One R Tip a Day](https://twitter.com/RLangTip) one helpful R tip every day
 
 
 
