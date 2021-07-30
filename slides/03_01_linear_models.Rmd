@@ -1004,13 +1004,16 @@ If you want a slightly nicer box plot, you could do something like this:
 chickwts %>%
   mutate(feed = as.factor(feed)) %>%
   mutate(feed = fct_reorder(feed, -weight)) %>%
-  ggplot(aes(x = feed, 
-             y = weight,
-             color = feed)) +
+  ggplot(aes(
+    x = feed,
+    y = weight,
+    color = feed
+  )) +
   geom_boxplot() +
-  geom_jitter(size = 3, 
-              alpha = 0.25, 
-              width = 0.2) +
+  geom_point(
+    size = 3, alpha = 0.25,
+    position = position_jitter(width = 0.2, seed = 0)
+  ) +
   coord_flip() +
   ggsci::scale_color_uchicago() +
   labs(y = "weight [g]", x = "Diet") +
@@ -1019,18 +1022,19 @@ chickwts %>%
 ]
 .pull-right[
 ```{r echo=FALSE, fig.height=6.1}
-chickwts %>% 
-  mutate(feed = as.factor(feed)) %>% 
-  mutate(feed = fct_reorder(feed, -weight)) %>% 
-  ggplot(aes(x=feed, y=weight, color = feed))+
-    geom_boxplot()+
-    geom_jitter(size = 3, alpha = 0.25, width = 0.2)+
-    coord_flip()+
-    ggsci::scale_color_uchicago()+
-    labs(y = "weight [g]", x = "Diet")+
-    theme_classic(base_size = 16)+
-    theme(legend.position = "none")
-    
+chickwts %>%
+  mutate(feed = as.factor(feed)) %>%
+  mutate(feed = fct_reorder(feed, -weight)) %>%
+  ggplot(aes(x = feed, 
+             y = weight,
+             color = feed)) +
+  geom_boxplot() +
+  geom_point(size = 3, alpha = 0.25,
+    position = position_jitter(width = 0.2, seed = 0)) +
+  coord_flip() +
+  ggsci::scale_color_uchicago() +
+  labs(y = "weight [g]", x = "Diet") +
+  theme(legend.position = "none")
 ```
 
 ]

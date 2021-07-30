@@ -51,7 +51,7 @@ Is there a difference in flipper length between the species?
 
 - Create a boxplot of the flipper length (y-axis) for the different species (x-axis)
 - Try adding notches to the boxplots by setting `notch = TRUE` in the boxplot layer
-- **Extra:** Add a layer with `geom_jitter()`. What does it do?
+- **Extra:** Add a layer with `geom_point()`. Try setting `position = position_jitter()` as argument in the point layer. What does it do?
 
 #### 1.3.3 Differences between bodymass of male and female penguins (boxplot)
 
