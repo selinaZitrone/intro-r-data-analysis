@@ -10,7 +10,9 @@ output:
 ---
 ## General
 
-- [cheatsheet collection](https://www.rstudio.com/resources/cheatsheets/) by RStudio, including cheat sheets for `ggplot2`, `dplyr`, `readr`,... 
+- [List of RStudio cheatsheets](https://www.rstudio.com/resources/cheatsheets/): You can find a list of all the cheatsheets that RStudio provides there. Below, I listed the individual cheatsheets that are interesting for our course.
+
+- [RStudio cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rstudio-ide.pdf): Explains the most important buttons, options, keyboard shortcuts, etc that you have in RStudio.
 
 ## Introduction to R
 
@@ -18,13 +20,30 @@ output:
 
 - The [R for Data Science book](https://r4ds.had.co.nz/index.html) by Hadley Wickham is a very good book to start with.
 
+### readr
+
+- [data import cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf)
+
 ### ggplot
 
 - [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf) offers an overview of all possibilities of ggplot
 
 ### dplyr
 
-- 
+- [dplyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf)
+
+### tidyr
+
+- https://r4ds.had.co.nz/tidy-data.html
+- [data import cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf)
+
+## Linear models
+
+- ---
+# Resources
+
+- [anova with R](https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Learning_Statistics_with_R_-_A_tutorial_for_Psychology_Students_and_other_Beginners_(Navarro)/16%3A_Factorial_ANOVA/16.06%3A_ANOVA_As_a_Linear_Model): explanation why an anova is also a linear model
+
 
 
 
