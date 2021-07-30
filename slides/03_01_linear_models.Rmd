@@ -37,6 +37,7 @@ library(tidyverse)
 library(patchwork)
 
 theme_set(theme_classic(base_size=16))
+options(scipen = 0)
 ```
 
 ```{r child="title_slide.Rmd"}
@@ -46,7 +47,7 @@ theme_set(theme_classic(base_size=16))
 ---
 class: inverse, middle, center
 
-# A little bit of theoretical background
+# .large[A little bit of theoretical background]
 
 ---
 # Linear models background
@@ -123,13 +124,13 @@ box <- ggplot(prod, aes(x=site, y=productivity))+
 ---
 # Linear models background
 
-Linear relation with two predictor variables $X_1$ and $X_2$ ( $i = 1...n$ ):
+.left-column-large[
+Linear relation with two predictors $X_1$ and $X_2$ ( $i = 1...n$ )
 
 **Without interaction**
 
 $Y_i = \beta_0 + \beta_1*X_{1,i} + \beta_2*X_{2,i} + \epsilon$
 
---
 
 **With interaction**
 
@@ -142,7 +143,12 @@ with
 - $X_{1,i}$ value of predictor $X_1$
 - $X_{2,i}$ value of predictor $X_2$
 - $\epsilon$ error term
+]
 
+.right-column-small[
+![](img/day3/lm_interaction.png)
+
+]
 ---
 # Goodness of fit linear model
 
@@ -183,7 +189,7 @@ Finding the parameters that lead to the lowest residual sum of squares works onl
 
 - residuals are normally distributed
 
-- residual variance is constand
+- residual variance is constant
 
 - no strong outliers
 
@@ -203,7 +209,7 @@ This has to be checked for every linear model!
 ---
 class: inverse, middle, center
 
-# How to fit linear models in `r fa("r-project")`
+# .large[How to fit linear models in `r fa("r-project")`]
 
 ---
 # The data
@@ -228,7 +234,7 @@ levels(prod$site) # get all levels of the factor
 ---
 class: inverse, middle, center
 
-# Linear regression in `r fa("r-project")`
+# .large[Linear regression in `r fa("r-project")`]
 
 ---
 # Linear regression in R
@@ -273,7 +279,13 @@ with
 Multiple predictors can be added with `+`, `:` or `*` depending on interaction:
 
 - <code><b>`Y ~ X1 + X2`</b></code> tests effects without interaction
+
+--
+
 - <code><b>`Y ~ X1 + X2 + X1:X2`</b></code> tests single effects and interaction between `X1` and `X2`
+
+--
+
 - <code><b>`Y ~ X1 * X2`</b></code> is short for testing all single effects and all interactions (here same as line above)
 
 ---
@@ -336,23 +348,16 @@ $H_0$: The error variance in the simple model is not significantly higher than i
 
 `drop1` deletes single terms from the model and performs an F-test: 
 
-```{r eval=FALSE}
+```{r eval}
 drop1(prod_lm, test = "F")
 ```
 
---
-
-```{r echo=FALSE}
-drop1(prod_lm, test = "F")
-```
-
---
-
-Result: The error variance of the simple model (Null model) is significantly higher than of the model with richness. `r fa("arrow-right")` Richness increases productivity ($F_{1,399}$ = 761.71, p < 0.001)
+Result: Reject $H_0$ `r fa("arrow-right")` Richness increases productivity $(F_{1,398} = 761.71, p < 0.001)$
 
 ---
-
 # Extracting the coefficients
+
+Look at model coefficients using the model `summary`
 
 ```{r}
 summary(prod_lm)
@@ -392,10 +397,16 @@ Test model assumptions to make sure that:
 - variance is constant (homogeneous)
 - there are no strong outliers or very influential observations
 
+--
+
+We can check that by looking at diagnostic plots
+
 ```{r eval=FALSE}
 # install.packages("performance")
 performance::check_model(prod_lm)
 ```
+
+--
 
 Another option without an additional package using base R would be:
 
@@ -405,6 +416,18 @@ plot(prod_lm) # The actual diagnostic plots
 par(mfrow=c(1,1)) # change graphics settings back to default
 ```
 
+---
+# Test model assumptions
+
+```{r eval = FALSE}
+performance::check_model(prod_lm)
+```
+.center[
+```{r echo=FALSE}
+prod_lm_perf <- performance::check_model(prod_lm)
+prod_lm_perf
+```
+]
 ---
 # Test model assmptions
 
@@ -423,8 +446,8 @@ Checking diagnostic plots needs some experience
 ]
 
 .pull-right[
-```{r}
-performance::check_model(prod_lm)
+```{r echo=FALSE}
+prod_lm_perf
 ```
 ]
 
@@ -434,7 +457,7 @@ performance::check_model(prod_lm)
 --
 
 #### Option 1
-Extract coefficients of the model and add the regression line:
+Extract coefficients (slope + intercept) of the model and add the regression line
 
 --
 
@@ -475,14 +498,16 @@ Add a line defined by slope and intercept using `geom_abline()`:
 ```{r eval=FALSE}
  ggplot(prod, aes(x=richness, y=productivity))+
   geom_point() +
-  geom_abline(slope = slope, intercept = intercept) #<<
+  geom_abline(slope = slope, #<<
+              intercept = intercept) #<<
 ```
 ]
 
 .pull-right[
-```{r echo=FALSE, fig.height=6.1}
+```{r echo=FALSE, fig.height=5.6}
 prod_scatter +
-  geom_abline(slope = slope, intercept = intercept)
+  geom_abline(slope = slope, 
+              intercept = intercept)
 ```
 ]
 
@@ -499,16 +524,16 @@ Add the regression line directly as a ggplot layer
 Use `geom_smooth()` to add the model directly:
 
 ```{r eval=FALSE}
- ggplot(prod, aes(x=richness, y=productivity))+
-  geom_point() +
-  geom_smooth(method = "lm") #<<
+ggplot(prod, aes(x = richness, y = productivity)) +
+ geom_point() +
+ geom_smooth(method = "lm") #<<
 ```
 
 ]
 
 .pull-right[
 
-```{r echo=FALSE, fig.height=6.1}
+```{r echo=FALSE, fig.height=5.6}
 prod_scatter +
   geom_smooth(method = "lm")
 ```
@@ -524,38 +549,29 @@ Add the regression line directly as a ggplot layer
 
 .pull-left[
 
-Use `geom_smooth()` to add the model directly:
-
-```{r eval=FALSE}
- ggplot(prod, aes(x=richness, y=productivity))+
-  geom_point() +
-  geom_smooth(method = "lm")
-```
-
 Or without the confidence interval:
 
 ```{r eval=FALSE}
- ggplot(prod, aes(x=richness, y=productivity))+
+ggplot(prod, aes(x = richness, y = productivity)) +
   geom_point() +
-  geom_smooth(method = "lm", alpha = 0) #<<
+  geom_smooth(method = "lm", se = FALSE) #<<
 ```
 
-But careful with `geom_smooth()`: Always plots the model with all interactions. Here it does not matter, but if you have multiple predictors, keep that in mind!
+Careful with `geom_smooth()`: Always plots model with all interactions. Here it's  okay, but if you have multiple predictors, keep that in mind!
 ]
 
 .pull-right[
 
-```{r echo=FALSE, fig.height=6.1}
+```{r echo=FALSE, fig.height=5.6}
 prod_scatter +
-  geom_smooth(method = "lm", alpha = 0)
+  geom_smooth(method = "lm", se = FALSE)
 ```
-
 ]
 
 ---
 class: inverse, center, middle
 
-# Analysis of covariance
+# .large[Analysis of covariance]
 
 ---
 # Analysis of covariance
@@ -638,6 +654,8 @@ Are the effects significant?
 drop1(prod_lm2b, test = "F") # interaction
 ```
 
+--
+
 The removal of the interaction does not significantly increase the model's RSS `r fa("arrow-right")` the interaction is not significant and the simpler model without interaction is just as good in predicting productivity.
 
 ---
@@ -650,7 +668,7 @@ summary(prod_lm2a)
 ---
 # Extracting model coefficients
 
-![](img/day3/summary_ancova_coef.png)
+![:scale 70%](img/day3/summary_ancova_coef.png)
 
 ---
 # Test model assumptions
@@ -673,12 +691,16 @@ performance::check_model(prod_lm2a)
 ---
 # Plot the model
 
-Here, we cannot use `geom_smooth()` because it would plot the full model with interaction between the predictors:
+Here, we cannot use `geom_smooth()` because it would plot the full model with interaction between the predictors
+
+--
 
 .pull-left[
 
 ```{r eval=FALSE}
- ggplot(prod, aes(x = richness, y = productivity, color = site)) +
+ggplot(prod, aes(x = richness, 
+                 y = productivity, 
+                 color = site)) +
   geom_point() +
   geom_smooth(method = "lm") #<<
 ```
@@ -696,8 +718,7 @@ This plot is not appropriate if the model you present is without interaction
 ---
 # Plot the model
 
-#### Option 1
-Extract coefficients of the model and add the regression line
+#### Option 1: Extract coefficients and add regression line
 
 
 ```{r}
@@ -716,55 +737,45 @@ intercept2 <- prod_lm2a$coefficients[1] + prod_lm2a$coefficients[3]
 ---
 # Plot the model
 
-#### Option 1
-Extract coefficients of the model and add the regression line
+#### Option 1: Extract coefficients and add regression line
 
 .pull-left[
 
-Add a line defined by slope and intercept using `geom_abline()`:
-
 ```{r eval=FALSE}
-ggplot(prod, aes(x=richness, y=productivity, color= site))+
+ggplot(prod, aes(x = richness, 
+                 y = productivity, 
+                 color = site)) +
   geom_point() +
-  scale_color_manual(values = c("#4C7488", "#D78974")) +
-  geom_abline(slope = slope, intercept = intercep1 , color = "#D78974")+
-  geom_abline(slope = slope, intercept = intercept2 , color = "#4C7488")
+  scale_color_manual(
+    values = c("#4C7488", "#D78974")) +
+  geom_abline(#<<
+    slope = slope, #<<
+    intercept = intercep1, #<<
+    color = "#4C7488"#<<
+  ) + #<<
+  geom_abline(#<<
+    slope = slope, #<<
+    intercept = intercept2, #<< 
+    color = "#D78974"#<<
+  ) #<<
 ```
 
 ]
 
 .pull-right[
-```{r echo=FALSE, fig.height=6.1}
+```{r echo=FALSE, fig.height=5.6}
  ggplot(prod, aes(x=richness, y=productivity, color= site))+
    geom_point() +
    scale_color_manual(values = c("#4C7488", "#D78974")) +
-   geom_abline(slope = slope, intercept = intercept1 , color = "#D78974")+#<<
-   geom_abline(slope = slope, intercept = intercept2 , color = "#4C7488")#<<
+   geom_abline(slope = slope, intercept = intercept1 , color = "#4C7488")+
+   geom_abline(slope = slope, intercept = intercept2 , color = "#D78974")
 ```
 ]
 
 ---
-# Plot the model 
-
-**Option 2**
-
-Use the `predict()` function.
-
---
-
-The general workflow for this option is:
-
-- **Step 1:** use `expand_grid` to create a tibble with values for all predictor variables (the columns have to have the exact same name as the original data)
-- **Step 2:** use `predict` to predict response variable with the model using input predictor values from tibble in step 1
-- **Step 3:** add predictions as column to the tibble from step 1
-- **Step 4:** add predictions to the plot using a new `geom_*()` layer based on the tibble from step 3
-
----
 # Plot the model
 
-**Option 2**
-
-Use the `predict()` function.
+#### Option 2: Use the `predict()` function
 
 --
 
@@ -776,15 +787,20 @@ pred_data <- tidyr::expand_grid(
 )
 ```
 
+```{r echo=FALSE}
+print(pred_data, n = 3)
+```
+
+--
+
 - `tidyr::expand_grid` returns a tibble with all combinations of site and richness given as input
-  - the `tidyr` package is already loaded with the tidyverse
+  - the `tidyr` package is part of the tidyverse
+- The column names of the tibble that you create in this step have to correspond to the predictor names in the linear model
 
 ---
 # Plot the model
 
-**Option 2**
-
-Use the `predict()` function.
+#### Option 2: Use the `predict()` function
 
 ```{r}
 # step 1: create some data to predict from
@@ -804,9 +820,7 @@ predictions <- predict(prod_lm2a, newdata = pred_data)#<<
 ---
 # Plot the model
 
-**Option 2**
-
-Use the `predict()` function.
+#### Option 2: Use the `predict()` function
 
 ```{r}
 # step 1: create some data to predict from
@@ -829,9 +843,7 @@ pred_data$productivity <- predictions#<<
 ---
 # Plot the model 
 
-**Option 2**
-
-Use the `predict()` function.
+#### Option 2: Use the `predict()` function
 
 .pull-left[
 
@@ -860,17 +872,33 @@ ggplot(prod, aes(x=richness, y=productivity, color= site))+
 ]
 
 ---
+# Plot the model 
+
+#### Option 2: Use the `predict()` function
+
+** Summary of general workflow**
+
+- **Step 1:** Use `expand_grid` to create a tibble with values for all predictor variables (the columns have to have the exact same name as the original data)
+
+- **Step 2:** Use `predict` to predict response variable with the model using input predictor values from tibble in step 1
+
+- **Step 3:** Add predictions as column to the tibble from step 1
+
+- **Step 4:** Add predictions to the plot using a new `geom_line()` layer based on the tibble from step 3
+
+---
 class: inverse, middle, center
 
-# Analysis of variance (Anova)
+# .large[Analysis of variance (Anova)]
 
 ---
 # Anova
 
 Only categorical predictors.
 
-**Example**: built-in data set of R called `chickwts`.
-The data set is about the weight of chickens fed with different diets. 
+--
+
+**Example**: Data set `chickwts` about the weight of chickens fed with different diets. 
 
 .pull-left[
 
@@ -894,7 +922,9 @@ ggplot(chickwts, aes(x=factor(feed), y= weight))+
 ---
 # Anova
 
-$H_0$: The diet has an effect on the mean weight of chicken.
+$H_0$: The diet has an effect on the weight of chicken.
+
+--
 
 Fit a linear model with `lm` and test the significance of the predictor:
 
@@ -917,7 +947,12 @@ summary(lm_chicken)
 ---
 # Extracting model coefficients
 
-.center[![](img/day3/summary_anova_coefs.png)]
+.center[![:scale 95%](img/day3/summary_anova_coefs_blank.png)]
+
+---
+# Extracting model coefficients
+
+.center[![:scale 95%](img/day3/summary_anova_coefs.png)]
 
 ---
 # Test model assumptions
@@ -960,27 +995,30 @@ ggplot(chickwts, aes(x=feed, y= weight)) +
 ]
 
 ---
-# Plot the results in a boxplot
+# Plot the results
 
 If you want a slightly nicer boxplot, you could do something like this:
 .pull-left[
 
 ```{r eval=FALSE}
-chickwts %>% 
-  mutate(feed = as.factor(feed)) %>% 
-  mutate(feed = fct_reorder(feed, -weight)) %>% 
-  ggplot(aes(x=feed, y=weight, color = feed))+
-    geom_boxplot()+
-    geom_jitter(size = 3, alpha = 0.25, width = 0.2)+
-    coord_flip()+
-    ggsci::scale_color_uchicago()+
-    labs(y = "weight [g]", x = "Diet")+
-    theme(legend.position = "none")
-
+chickwts %>%
+  mutate(feed = as.factor(feed)) %>%
+  mutate(feed = fct_reorder(feed, -weight)) %>%
+  ggplot(aes(x = feed, 
+             y = weight,
+             color = feed)) +
+  geom_boxplot() +
+  geom_jitter(size = 3, 
+              alpha = 0.25, 
+              width = 0.2) +
+  coord_flip() +
+  ggsci::scale_color_uchicago() +
+  labs(y = "weight [g]", x = "Diet") +
+  theme(legend.position = "none")
 ```
 ]
 .pull-right[
-```{r echo=FALSE}
+```{r echo=FALSE, fig.height=6.1}
 chickwts %>% 
   mutate(feed = as.factor(feed)) %>% 
   mutate(feed = fct_reorder(feed, -weight)) %>% 
@@ -997,109 +1035,118 @@ chickwts %>%
 
 ]
 
-.footnote-left[Design taken from Cédric Scherers <br>["Evolution of a ggplot"(https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/#sort)]]
+.footnote-right[Design adapted from [Cédric Scherer]((https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/#sort)]]
 
 ---
 # Linear models step by step
 
-Follow the following steps to perform a linear model:
+**Step 1: Explore** the data with plots
 
-1. Come up with a **hypothesis** that you would like to test 
-  - e.g. The diet has an effect on the weight of chicken with horsebean leading to the highest weights.
+--
 
----
-# Linear models step by step
+Step 2: Write down a **question/hypothesis** and think of the **model** to test it
 
-Follow the following steps to perform a linear model:
+--
 
-1. Come up with a **hypothesis** that you would like to test 
-2. **Make plots** of the data and explore them
-  - for regression a scatterplot
-  - for analysis of covariance a scatterplot with colors
-  - for analysis of variance a boxplot (or similar)
+**Step 3: Fit the linear model** using the `lm` function:
 
----
-# Linear models step by step
+```{r eval=FALSE}
+lm(formula = Y ~ X1 + X2 + X1:X2, data = dat)
+```
 
-Follow the following steps to perform a linear model:
+- use `+` for additive effects and `:` for interactions between predictors
+  
+--
 
-1. Come up with a **hypothesis** that you would like to test 
-2. **Make plots** of the data and explore them
-3. **Fit model** using `lm` function
-  - Add the interactions that you want to test according to your hypothesis
+**Step 4: Check model assumptions** by looking at the diagnostic plots
 
----
-# Linear models step by step
+```{r eval=FALSE}
+performance::check_model(mod)
+```
 
-Follow the following steps to perform a linear model:
-
-1. Come up with a **hypothesis** that you would like to test 
-2. **Make plots** of the data and explore them
-3. **Fit model** using `lm` function
-4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
-  - residuals normally distributed
-  - constant variance
-  - no strong outliers
+- normally distributed residuals
+- constant variance
+- no strong outliers / influential data points
 
 ---
 # Linear models step by step
 
-Follow the following steps to perform a linear model:
+**Step 5: Check significant variables** by conducting F-tests with `drop1`
 
-1. Come up with a **hypothesis** that you would like to test 
-2. **Make plots** of the data and explore them
-3. **Fit model** using `lm` function
-4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
-5. **Check significant variables**
-  - use `anova` (F-tests) to check whether your predictors significantly improve the models sum of squares
+```{r eval=FALSE}
+drop1(mod, test = "F")
+```
 
----
-# Linear models step by step
+- If the removal of a variable significantly increases the RSS of the model, the predictor is significant
 
-Follow the following steps to perform a linear model:
+--
 
-1. Come up with a **hypothesis** that you would like to test 
-2. **Make plots** of the data and explore them
-3. **Fit model** using `lm` function
-4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
-5. **Check significant variables**
-6. **Check the effect sizes** e.g. in the `summary` table
-  - extract coefficients of the model with `mod$coefficients`
+**Step 6: Check effect size** e.g. in the `summary` table
 
----
-# Linear models step by step
+```{r eval=FALSE}
+summary(mod)
+```
 
-Follow the following steps to perform a linear model:
+- extract coefficients from the model with `mod$coefficients`
 
-1. Come up with a **hypothesis** that you would like to test 
-2. **Make plots** of the data and explore them
-3. **Fit model** using `lm` function
-4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
-5. **Check significant variables**
-6. **Check the effect sizes** e.g. in the `summary` table
-7. **Plot model results** (only plot regression lines if significant)
-  - for regression: regression line with `geom_smooth`, `geom_abline` or `geom_line` and predicted values
-  - for analysis of covariance: regression lines
-  - for analysis of variance: boxplots or similar
+--
+
+**Step 7: Plot model**
+  - regression: regression line and scatterplot
+  - analysis of covariance: regression lines and scatter plot
+  - analysis of variance: boxplots, barplot, mean + sem or similar
 
 ---
-# Linear models step by step
+# Options for model plotting
 
-Follow the following steps to perform a linear model:
+#### Option 1: `geom_smooth(method = "lm")`
 
-1. Come up with a **hypothesis** that you would like to test 
-2. **Make plots** of the data and explore them
-3. **Fit model** using `lm` function
-4. **Check model assumptions** by looking at diagnostic plots e.g. with `performance::check_model`
-5. **Check significant variables**
-6. **Check the effect sizes** e.g. in the `summary` table
-7. **Plot model results** (only plot regression lines if significant)
-8. **Make predictions** using the `predict` function
+- Plots a regression line with all interactions between variables
+  - only use it if this is what you want to plot
+  
+--
+
+#### Option 2: extract coefficients and use `geom_abline()`
+
+- Extract slopes and intercepts from the model
+  - `mod$coefficients`
+- Add a `geom_abline` layer to your plot
+  - `geom_abline(slope = your_slope, intercept = your_intercept)`
+
+---
+# Options for model plotting
+
+#### Option 3: Use `predict` function
+
+- This is the most flexible plotting option
+- Step 1: Create a new tibble with data to predict from
+  - Column names have to be same as predictors of linear model
+  - Use e.g. `tidyr::expand_grid()` to create variable combinations
+- Step 2: Predict the response for all value combinations from step 1
+```{r eval=FALSE}
+predict(mod, newdata = pred_data)
+```
+- Step 3: Add predicted response to tibble from step 1
+- Step 4: Add a `geom_line` layer with the new data to your plot
+```{r, eval=FALSE}
+ggplot(orig_dat, aes(x = some_x, y = some_y, color = some_col)) +
+  geom_point() +
+  geom_line(data = pred_data) #<<
+```
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 3-1: Linear models with the penugin data set
+
+#### Find the task description [here](www.github.com)
 
 ---
 class: inverse, center, middle
 
-# Transformations
+# .large[Linear models with transformed response variable]
 
 ---
 # When to transform?
@@ -1117,6 +1164,7 @@ Transformation of the response variable Y can help with **potential violations o
 **Example**
 
 - Non-linear function $y = a * e^{b*x}$
+
 - Transformed to a linear model: $log(y) = log(a) + b * x$
 
 --
@@ -1145,7 +1193,7 @@ ggplot(decay, aes(x=time, y= amount))+
 ---
 # Example
 
-First, let's try to fit a linear model to the untransformed data and look at the diagnostic plots:
+First, let's fit a linear model to the untransformed data and look at the diagnostic plots:
 
 --
 
@@ -1158,6 +1206,7 @@ performance::check_model(mod1)
 Diagnostic plots look bad:
 
 - pattern in the residuals
+
 - skewed distribution
 
 ]
@@ -1175,7 +1224,7 @@ Let's refit the model to transformed data (log-transformed response variable):
 
 .pull-left[
 ```{r eval = FALSE}
-mod2 <- lm(log(amount) ~ time, data = decay)
+mod2 <- lm(log(amount) ~ time, data = decay) #<<
 performance::check_model(mod2)
 ```
 
@@ -1190,6 +1239,16 @@ mod2 <- lm(log(amount) ~ time, data = decay)
 performance::check_model(mod2)
 ```
 ]
+
+---
+# Test for significant effects
+
+Is the effect of time on the amount of organic matter significant?
+
+```{r}
+drop1(mod2, test = "F")
+```
+
 
 ---
 # Plot the model
@@ -1237,7 +1296,7 @@ ggplot(decay, aes(x= time, y=amount))+
   geom_line(data = pred_data)
 ```
 
-- The trick here is that we have to **backtransform** the predictions using `exp` as the inverse function of `log`
+- The trick here is to **backtransform** the predictions using `exp` as the inverse function of `log`
 
 ]
 
@@ -1283,12 +1342,7 @@ ggplot(decay, aes(x= time, y=amount))+
 
 --
 
-7. Plot raw data and add model predictions *based on the transformed data*
+7. Plot raw data and add model predictions **based on the transformed data**
   - Backtransform predictions appropriately:
     - $log(y) <=> exp(y)$
     - $sqrt(y) <=> y^2$
-    
----
-# Resources
-
-https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Learning_Statistics_with_R_-_A_tutorial_for_Psychology_Students_and_other_Beginners_(Navarro)/16%3A_Factorial_ANOVA/16.06%3A_ANOVA_As_a_Linear_Model
