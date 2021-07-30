@@ -779,3 +779,13 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
 
 - **count rows** based on a group
   - can be used in combination with `group_by()`
+  
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 2-2: Transforming the penguin data set
+
+#### Find the task description [here](www.github.com)
+
