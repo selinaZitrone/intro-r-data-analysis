@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r create_rstudio_project, child="tasks/day3/03_tasks_01_lm.Rmd"}
 ```
 
-## 2 Linear models transformation
+## 2 Linear models with transformation
 
 ```{r vectors, child="tasks/day3/03_tasks_02_lm_trans.Rmd"}
 ```

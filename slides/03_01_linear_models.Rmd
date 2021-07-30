@@ -995,9 +995,9 @@ ggplot(chickwts, aes(x=feed, y= weight)) +
 ]
 
 ---
-# Plot the results
+# Plot results
 
-If you want a slightly nicer boxplot, you could do something like this:
+If you want a slightly nicer box plot, you could do something like this:
 .pull-left[
 
 ```{r eval=FALSE}
