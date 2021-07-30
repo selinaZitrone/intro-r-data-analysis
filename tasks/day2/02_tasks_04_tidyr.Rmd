@@ -37,12 +37,6 @@ Check out `summary(fish_encounters)` - the column `seen` only contains values of
 
 What is not tidy about this data set? Can you fix it?
 
-```{r}
-pivot_wider(fish_encounters, 
-            names_from = station,
-            values_from = seen)
-```
-
 #### Extra
 
 - Have a look at the `values_fill` argument of `pivot_wider`. How could you use it in this case to replace the missing values that are created?
