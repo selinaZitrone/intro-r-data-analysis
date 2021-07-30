@@ -1,24 +1,14 @@
 ### 1.1 Getting started
 
-Before you get started with the exercise, make sure that you load the `palmerpenguin` package and the `tidyverse` or `ggplot2`
 
-```{r eval=FALSE}
+```{r eval=TRUE, message=FALSE}
+#install.packages("performance")
 library(palmerpenguins)
 library(tidyverse)
-```
-
-To check the assumptions of linear models, we will use `performance` package. Make sure you install it once and then load it:
-
-```{r eval=FALSE}
-install.packages("performance")
 library(performance)
 ```
 
-The `performance` package depends on other packages as well. It might be that you encounter an error when trying to load or use it. Just read the error message and install the missing packages with `install.packages()` (likely this will be the case for the `qqplotr` package).
-
 ### 1.2 Linear regression
-
-Make a scatter plot with bill length on the x and bill depth on the y axis.
 
 It looks like the bill depth increases with increasing bill length. 
 
@@ -28,8 +18,10 @@ g <- ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
 g
 ```
 
-- Fit a linear model to test this hypothesis
+- Fit a linear model to test this relationship
 - Check for significant effects
+
+The result of `drop1` shows that if we remove the bill length from the model, we significantly increase the RSS. The model with bill length is the better model and we can assume a significant relationship between bill lenght and bill depth.
 
 ```{r}
 lm1 <- lm(bill_depth_mm ~ bill_length_mm, data = penguins)
@@ -38,24 +30,22 @@ drop1(lm1, test = "F")
 
 - Check the model assumptions using diagnostic plots
 
-What do you think? Are the assumptions violated or do the plots look okay?
-
 ```{r}
 performance::check_model(lm1)
 ```
 
-Although, the diagnostic plots do not look perfect, I would say they look good enough. However, in our case, we have measured additional variables that might help improve the model.
+The diagnostic plots do not look perfect. The reason for this is probably that we did not consider all variable that we should have in the model. Maybe by adding the species as a predictor, we can improve the diagnostic plots?
 
-- How can you add the model result to the scatter plot?
+- Can you add the model result to the scatter plot?
 
 ```{r}
-# option 1: geom_smooth
+# Option 1: geom_smooth
 g +
   geom_smooth(se = FALSE)
 ```
 
 ```{r}
-# option 2: extract coefficients
+# Option 2: extract coefficients
 intercept <- lm1$coefficients[1]
 slope <- lm1$coefficients[2]
 g +
@@ -63,23 +53,25 @@ g +
 ```
 
 ```{r}
-# option 3: using predict (this is a bit overkill for this simple example)
+# Option 3: using predict (this is a bit overkill for this simple example)
+# Create data to predict from
 pred_dat <- tibble(
-  bill_length_mm = seq(from = min(penguins$bill_length_mm, na.rm = TRUE),
-                       to = max(penguins$bill_length_mm, na.rm = TRUE))
+  bill_length_mm = seq(
+    from = min(penguins$bill_length_mm, na.rm = TRUE),
+    to = max(penguins$bill_length_mm, na.rm = TRUE)
+  )
 )
-
+# Predict the response and add it to pred_data
 pred_dat$bill_depth_mm <- predict(lm1, newdata = pred_dat)
-
+# Add a line with the new predicted data
 g +
   geom_line(data = pred_dat, color = "cyan4")
 
 ```
+
 ### 1.3 Analysis of covariance
 
 Does the relationship between bill length and bill depth differ between penguin species?
-
-Add the species variable to the scatter plot from 3.1
 
 ```{r}
 g2 <- ggplot(penguins, aes(x = bill_length_mm, 
@@ -89,29 +81,25 @@ g2 <- ggplot(penguins, aes(x = bill_length_mm,
 g2
 ```
 
-
 Now fit the linear model again, this time including species as explanatory variable.
 
-Fit two different models:
-
-- 1. Effect of bill length and species on bill depth *with* interaction
-- 2. Effect of bill length and species on bill depth *without* interaction
-
 ```{r}
+# Without interaction
 lm2a <- lm(bill_depth_mm ~ bill_length_mm + species, data = penguins)
+# Without interaction
 lm2b <- lm(bill_depth_mm ~ bill_length_mm * species, data = penguins)
 ```
 
-Test model assumptions for both models.
+- Test model assumptions for both models.
+
+Both models don't violate the assumptions for linear models and the diagnostic plots look much better than the one for the model without species.
+
+Note that the diagnostic plots show a high collinearity between explanatory variables. This makes sense because of course the interaction between species and bill length is highly correlated with both species and bill length. However, in the case of this interaction it is not a problem, so we can ignore this.
 
 ```{r}
 check_model(lm2a)
 check_model(lm2b)
 ```
-
-Both models don't violate the assumptions for linear models and the diagnostic plots look much better than the one for the model without species.
-
-Note that the diagnostic plots show a high collinearity between explanatory variables. This makes sense because of course the interaction between species and bill length is highly correlated with both species and bill length. However, in the case of this interaction it is not a problem, so we can ignore this.
 
 - Check for significant effects in both models
 
@@ -120,9 +108,7 @@ drop1(lm2a)
 drop1(lm2b)
 ```
 
-Chose the better model and plot it in the scatter plot from before.
-
-I will choose to plot the simpler model without the interaction because the interaction between species and bill length is not significant.
+I will choose to plot the simpler model without the interaction because the interaction between species and bill length is not significant. Generally, a model should be as simple as possible (of course without loosing explanatory power).
 
 To plot the model with interaction I could conveniently use `geom_smooth`
 
@@ -131,28 +117,27 @@ g2 +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-If I want to plot a model without interaction, I can either extract the model coefficients or use the predict function.
+To plot th model without interaction, you can either extract the model coefficients or use the predict function.
 
 Extracting the model coefficients starts to become complicated, as we have 3 intercepts and 1 slope to extract:
 
 ```{r}
-# option 1: extract model coefficients
+# Option 1: extract model coefficients
 intercept_adelie <- lm2a$coefficients[1]
 slope <- lm2a$coefficients[2]
 intercept_chinstrap <- intercept_adelie + lm2a$coefficients[3]
 intercept_gentoo <- intercept_adelie + lm2a$coefficients[4]
 
-# lets give some custom colors
+# lets add some custom colors
 cols <- c("darkorange", "cyan4", "purple")
 
 g2 +
   geom_abline(slope = slope, intercept = intercept_adelie, color = cols[1]) +
   geom_abline(slope = slope, intercept = intercept_chinstrap, color = cols[2]) +
-  geom_abline(slope = slope, intercept = intercept_gentoo, color = cols[3])+
+  geom_abline(slope = slope, intercept = intercept_gentoo, color = cols[3]) +
   scale_color_manual(values = cols)
-
 ```
-It is easier to use the `predict` function in this case
+It is easier to use the `predict` function in this case:
 
 ```{r}
 pred_dat <- expand_grid(
@@ -170,14 +155,13 @@ g2 +
 
 Do male and female penguins differ in weight and does this depend on the species?
 
-- Remove penguins with missing `sex` variable before you start exploring this question
+First, we create a subset without penguins for which the sex is unknown
 
 ```{r}
 penguins_sex <- filter(penguins, !is.na(sex))
 ```
 
-
-- Think of a plot that can represent this question
+The question can be represented for example with a boxplot
 
 ```{r}
 ggplot(penguins_sex, aes(x = species, y = body_mass_g, fill = sex)) +
@@ -187,58 +171,80 @@ ggplot(penguins_sex, aes(x = species, y = body_mass_g, fill = sex)) +
 - Fit a linear model that represents this question
 
 ```{r}
+# Without interaction
 lm3a <- lm(body_mass_g ~ sex + species, data = penguins_sex)
+# Without interaction
 lm3b <- lm(body_mass_g ~ sex + species + sex:species, data = penguins_sex)
 ```
 
 - Test for significant predictors
 
+Both the single effect and the interaction is significant.
+
 ```{r}
 drop1(lm3a, test = "F")
 drop1(lm3b, test = "F")
 ```
-- Test model assumptions
+Both look fine. Model can be used.
 
 ```{r}
 check_model(lm3a)
 check_model(lm3b)
 ```
 
-Both look fine. Model can be used.
-
 #### Extra
 
-Improve the looks of the Anova result plot. You can e.g. take inspiration from the box plot in the presentation.
-
-Have a look at `position_dodge`
-
+Some other plots with which we can represent the results of the Anova.
 
 ```{r}
 penguins_sex %>%
-  ggplot(aes(x = species, 
-             y = body_mass_g,
-             color = sex)) +
+  ggplot(aes(
+    x = species,
+    y = body_mass_g,
+    color = sex
+  )) +
   geom_boxplot() +
-  geom_jitter(size = 3, 
-              alpha = 0.25, 
-              width = 0.2) +
+  geom_point(
+    size = 2, alpha = 0.5,
+    position = position_jitterdodge(
+      seed = 123
+    )
+  ) +
   coord_flip() +
-  ggsci::scale_color_uchicago() +
+  ggsci::scale_color_d3() +
   labs(y = "Body mass [g]", x = "Species") +
-  theme(legend.position = "none")
-
-```
-```{r}
-penguins_sex %>%
-  ggplot(aes(x = species, y = body_mass_g, color = sex)) +
-  geom_jitter(size = 3, alpha = 0.25, width = 0.2) +
-  ggsci::scale_color_uchicago() +
-  labs(y = "Body mass [g]", x = "Species") +
-  theme(legend.position = "none") +
-  stat_summary(fun = mean, geom = "point", size = 5)
+  theme_bw() +
+  theme(legend.position = c(0.85, 0.15))
 ```
 
 ```{r}
-# barplot with errorbars
+summary <- penguins_sex %>%
+  group_by(species, sex) %>%
+  summarize(
+    sd = sd(body_mass_g),
+    mean = mean(body_mass_g)
+  )
+
+ggplot(summary, aes(x = species, y = mean, color = sex)) +
+  geom_point(position = position_dodge(0.4)) +
+  geom_errorbar(
+    aes(ymin = mean - sd, ymax = mean + sd),
+    position = position_dodge(0.4),
+    width = 0.2
+  ) +
+  scale_color_manual(values = c("#00AFBB", "#E7B800")) +
+  labs(y = "Body mass [g]")
+
 ```
 
+```{r}
+ggplot(summary, aes(x = species, y = mean, fill = sex)) +
+  geom_col(position = position_dodge(0.8)) +
+  geom_errorbar(
+    aes(ymin = mean - sd, ymax = mean + sd),
+    position = position_dodge(0.8),
+    width = 0.2
+  ) +
+  scale_fill_manual(values = c("#00AFBB", "#E7B800")) +
+  labs(y = "Body mass [g]")
+```
