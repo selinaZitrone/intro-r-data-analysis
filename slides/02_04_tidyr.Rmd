@@ -67,7 +67,7 @@ data.frame(id = 1:6,
 --
 
 .pull-right[
-.center[**Untidy**
+.center[**Non-tidy**
 ```{r echo=FALSE}
 data.frame(floof = "gray",
            max = "black",
@@ -90,7 +90,7 @@ data.frame(gray = c("floof", "donut"),
 ]
 --
 <br><br>
-Sometimes ***raw data*** is "untidy" because its structure is optimized for data entry or viewing rather than analysis.
+Sometimes ***raw data*** is non-tidy because its structure is optimized for data entry or viewing rather than analysis.
 
 ---
 # Why tidy data?
@@ -147,7 +147,7 @@ cities_untidy <- unite(cities_tbl, col = "location", c("country", "city")) %>%
 print(cities_untidy, width = 90)
 ```
 
-**What's untidy here?**
+**What's not tidy here?**
 --
 <br>
 - each row has multiple observation
