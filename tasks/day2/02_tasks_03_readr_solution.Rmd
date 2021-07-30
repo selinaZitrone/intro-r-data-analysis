@@ -54,13 +54,13 @@ animals_tsv <- read_tsv("./data/animals.txt") # read the txt
 
 If you use the `Files` pane to open data files, you can view them in R Studio. For csv files, you have the additional option to click on an `Import Dataset` button.
 
-```{r}
+```{r echo=FALSE}
 knitr::include_graphics(here::here("tasks/day2/img/readr_import_button.png"))
 ```
 
 If you click on this button, have the possibility to import the data set via a graphical user interface. 
 
-```{r}
+```{r echo=FALSE}
 knitr::include_graphics(here::here("tasks/day2/img/readr_import_options.png"))
 ```
 
