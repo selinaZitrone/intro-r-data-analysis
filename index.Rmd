@@ -27,11 +27,11 @@ You can find the document [here](https://hackmd.io/@selinaZitrone/r12pL71C_/edit
 
 # Workshop Material
 
-You can find all the material for the workshop on this website.
+You can find all the workshop material on this website.
 On top, you can navigate to the presentation slides and the tasks for each day.
 At the end of the workshop day, I will also upload the solutions for each task.
 
-If you want to download the slides in pdf Format:
+If you want to download presentation slides in pdf format, you can do that with the following links:
 
 - <a href="./slides/01_01_Intro_RStudio_R.pdf" download> 01 - Introduction R and RStudio</a>
 - <a href="./slides/01_02_Functions.pdf" download>01 - Functions</a>
