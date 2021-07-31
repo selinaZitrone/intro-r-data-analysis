@@ -104,6 +104,13 @@ What is the mean brain weight
 mean(brainwt_kg)
 ```
 
+Which species have brain weight that is larger than the mean brain weight?
+
+```{r}
+species[brainwt_kg > mean(brainwt_kg)]
+```
+
+
 Calculate the ratio brain weight / body weight and save it in a vector:
 
 ```{r}
@@ -118,14 +125,18 @@ Step 1: Look at the brain to body ratio of humans
 brain_body_ratio[species == "Human"]
 ```
 
-Step 2: Commpare it with the other animals
+Step 2: Compare it with the other animals
 
 ```{r}
+# New variable for human brain to body ratio
 bbr_human <- brain_body_ratio[species == "Human"]
 # Are there animals that have a larger brain to body ratio than humans?
 brain_body_ratio > bbr_human
 # Which are these animals
 species[brain_body_ratio > bbr_human]
+
+# or short
+species[brain_body_ratio > brain_body_ratio[species == "Human"]]
 ```
 
 

@@ -12,7 +12,7 @@ v3 <- c(0, "23", 5, 7)
 v4 <- c(4L, 6L, 23.5345)
 ```
 
-Copy the vectors to your script and check out the data types of the vectors using `typeof`.
+Copy the vectors to your script and check their data types using `typeof`.
 
 Try to explicitly convert the vectors to integer and to character. What happens?
 
@@ -22,7 +22,7 @@ You have the following vectors:
 
 - `species`: name of species
 - `bodywt_kg`: body weight of the species in kg
-- `brainwt_g`: brain weight of the species in kg
+- `brainwt_g`: brain weight of the species in g
 
 ```{r echo=TRUE, eval=FALSE}
 species <- c(
@@ -51,24 +51,26 @@ brainwt_g <- c(
 
 #### Tasks
 
-- Check if the following animals are contained in the data set:
+- Check if the following animals are contained in the `species` vector:
 
 ```{r echo=TRUE, eval=FALSE}
 animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
 ```
 
 - Convert brain weight from g to kg and save result it in a new vector `brainwt_kg`
-- Calculate the mean brain weight 
-- What is the ratio of brain weight to body weight in percent? Calculate it and save the result in a new vector
+- Calculate mean and standard deviation of the brain weight
+- Which species have brain weight that is larger than the mean brain weight?
+- What is the ratio of brain weight to body weight in percent? Calculate it and save the result in a new variable
 - Are there any animals with a larger brain to body ratio than humans? If yes, which ones?
-  - Hint: extract human ratio and save it in a variable first
+  - Hint: find the ratio for humans and save it in a variable first
 
 
 #### Extras
 
-- Round the ratio values to 4 decimal places with the `round` function
+- Round the ratio vector to 4 decimal places with the `round` function
   - have a look at `?round` to check out how to use it
 - Which animal has the smallest brain to body ratio?
+  - Hint: have a look at the `min` function
 - Add the following three animals to the data vectors
 
 ```{r echo=TRUE, eval=FALSE}
