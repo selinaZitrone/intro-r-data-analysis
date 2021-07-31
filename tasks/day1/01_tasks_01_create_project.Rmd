@@ -7,7 +7,7 @@ This is not a good default. We always want to start R from a clean slate to ensu
 
 In RStudio go to `Tools -> Global Options -> General` and set the following workspace options:
 
-```{r}
+```{r fig.height=20}
 knitr::include_graphics(here::here("tasks/day1/img/setting_workspace.png"))
 ```
 
