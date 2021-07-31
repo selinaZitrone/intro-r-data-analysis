@@ -8,11 +8,11 @@ Before you start the task:
 
 ### 3.2 Creating a tibble
 
-Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and combine them in a tibble.
+Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from before and combine them in a tibble.
 
 ### 3.3 Exploring the tibble
 
-Explore the tibble you created with the different function that you learned in the presentation.
+Explore the tibble you created with the different functions that you learned in the presentation.
 You can for example try 
 
 - `view()` and explore what you can do in the view window that opens: searching, filtering, sorting columns
