@@ -23,12 +23,6 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r vectors, child="tasks/day2/02_tasks_02_dplyr.Rmd"}
 ```
 
-## 3 readr
-
-```{r tibbles, child="./tasks/day2/02_tasks_03_readr.Rmd"}
-```
-
-
 ## 3 tidyr
 
 ```{r tibbles, child="./tasks/day2/02_tasks_04_tidyr.Rmd"}

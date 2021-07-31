@@ -12,14 +12,19 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 2 Vectors in R
+## 2 Data types and vectors
 
 ```{r vectors, child="tasks/day1/01_tasks_02_R_basics_solution.Rmd"}
 ```
 
-## 3 Tibbles in R
+## 3 Tibbles
 
-```{r tibbles, child="./tasks/day1/01_tasks_03_tibbles_solution.Rmd"}
+```{r tibbles, child="./tasks/day1/01_tasks_03_tibbles_short_solution.Rmd"}
+```
+
+## 4 Reading and writing tibbles
+
+```{r tibbles, child="./tasks/day1/01_tasks_04_readr_solution.Rmd"}
 ```
 
 # Reference
