@@ -90,7 +90,7 @@ library(fontawesome)
 
 --
 
-<b>.col2[Day 1: Introduction to R and RStudio]</b>
+<b>.col2[Day 1: Introduction to R and RStudio and data import]</b>
 
 <b>.col1[Day 2: Data analysis with the tidyverse]</b>
 
