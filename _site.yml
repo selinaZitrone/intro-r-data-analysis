@@ -4,6 +4,7 @@ theme: theme.css
 description: |
   My Website
 output_dir: "docs"
+exclude: ["R/", "data/"]
 navbar:
   right:
     - text: "Home"
@@ -46,10 +47,6 @@ navbar:
           href: 02_solutions_controller.html
         - text: "Day 3: LMs and GLMs"
           href: 03_solutions_controller.html
-    - text: "Code"
-      menu:
-        - text: "Slides"
-        - text: "Tasks"
     - text: "Resources"
       href: online_resources.html
     - icon: fa fa-github
