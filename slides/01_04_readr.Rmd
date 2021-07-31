@@ -54,7 +54,7 @@ These are the main packages from the tidyverse that we will use:<br><br>
 # Workflow data analysis
 
 .middle[
-![:scale 100%](img/day2/datascience_workflow_tidyverse.png)]
+![:scale 100%](img/day1/datascience_workflow_tidyverse.png)]
 
 .footnote-left[Image adapted from Wickham & Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)]
 
@@ -272,7 +272,7 @@ Save an Excel spreadsheet as csv or txt either by
 1. `File -> Save As` and select comma separated from the drop down menu
 2. `File -> Export`
 
-![:scale 50%](img/day2/excel_export.png)
+![:scale 50%](img/day1/excel_export.png)
   
   
 ---
