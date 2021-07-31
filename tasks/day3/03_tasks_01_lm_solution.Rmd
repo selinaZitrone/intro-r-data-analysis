@@ -30,7 +30,7 @@ drop1(lm1, test = "F")
 
 - Check the model assumptions using diagnostic plots
 
-```{r}
+```{r, fig.height=7}
 performance::check_model(lm1)
 ```
 
@@ -41,7 +41,7 @@ The diagnostic plots do not look perfect. The reason for this is probably that w
 ```{r}
 # Option 1: geom_smooth
 g +
-  geom_smooth(se = FALSE)
+  geom_smooth(method = "lm", se = FALSE)
 ```
 
 ```{r}
@@ -96,7 +96,7 @@ Both models don't violate the assumptions for linear models and the diagnostic p
 
 Note that the diagnostic plots show a high collinearity between explanatory variables. This makes sense because of course the interaction between species and bill length is highly correlated with both species and bill length. However, in the case of this interaction it is not a problem, so we can ignore this.
 
-```{r}
+```{r, fig.height=7}
 check_model(lm2a)
 check_model(lm2b)
 ```
@@ -187,7 +187,7 @@ drop1(lm3b, test = "F")
 ```
 Both look fine. Model can be used.
 
-```{r}
+```{r, fig.height=7}
 check_model(lm3a)
 check_model(lm3b)
 ```
