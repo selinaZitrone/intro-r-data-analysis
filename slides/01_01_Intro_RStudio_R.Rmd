@@ -45,8 +45,6 @@ library(fontawesome)
 - PhD student at Freie Universität Berlin 
   - Topic: Modelling the impact of biological soil crusts on dryland hydrology
 
---
-
 #### Teaching `r fa("r-project")`
 
 - Statistics with R for Biology Master students
@@ -499,9 +497,9 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 1-1: Set up your own RStudio project for this workshop
+## Task 1: Set up your own RStudio project for this workshop
 
-#### Find the task description [here](www.github.com)
+#### Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/01_tasks_controller.html)
 
 ---
 class: inverse, center, middle
@@ -590,59 +588,6 @@ class: inverse, center, middle
     </td>
   </tr>
     <tr>
-    <td></td>
-    <td></td>
-    </td>
-  </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    </td>
-  </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    </td>
-  </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    </td>
-  </tr>
-</table>
-
-]
-
-.right-column[
-
-```{r relational operators, eval=TRUE}
-2 == 2
-2 == 4
-2 != 2
-2 != 4
-```
-
-]
-
----
-# R as a calculator
-
-## Relational operators
-
-.left-column[
-<br>
-  <table style='width:100%;font-size:16pt'>
-  <tr>
-    <td><b>Equal to</b></td>
-    <td><code>==</code></td>
-    </td>
-  </tr>
-    <tr>
-    <td><b>Not equal to</b></td>
-    <td><code>!=</code></td>
-    </td>
-  </tr>
-    <tr>
     <td><b>Less than</b></td>
     <td><code><</code></td>
     </td>
@@ -667,11 +612,12 @@ class: inverse, center, middle
 ]
 
 .right-column[
-```{r relational operators 2, eval=TRUE}
-2 < 4
-2 > 4
-2 <= 2
-33 >= 32
+
+```{r relational operators, eval=TRUE}
+2 == 2
+2 != 2
+33 <= 32
+20 < 20
 ```
 
 ]
@@ -780,6 +726,20 @@ class: inverse, center, middle
 ---
 # Comments in R
 
+```{r, eval=FALSE}
+
+# Reading and cleaning the data -----------------
+
+data <- read_csv("data/my-data.csv")
+# clean all column headers 
+# (found on https://stackoverflow.com/questions/68177507/)
+data <- janitor::clean_names(data)
+
+# Analysis --------------------------------------
+```
+
+--
+
 - notes that make code more readable or add information
 
 --
@@ -797,20 +757,6 @@ class: inverse, center, middle
   - Include links, names of authors, ...
   - Mark different sections of your code (`r fa("lightbulb")` try `Ctrl/Cmd + Shift + R`)
   
---
-
-```{r, eval=FALSE}
-
-# Reading and cleaning the data -----------------
-
-data <- read_csv("data/my-data.csv")
-# clean all column headers 
-# (found on https://stackoverflow.com/questions/68177507/)
-data <- janitor::clean_names(data)
-
-# Analysis --------------------------------------
-```
-
 ---
 class: inverse, middle, center
 
@@ -903,9 +849,7 @@ There are 6 so-called atomic data types in R. The 4 most important are:
 ```{r}
 var <- 123L
 typeof(var)
-is.integer(var)
 is.double(var)
-is.numeric(var)
 is.integer(123)
 ```
 
@@ -929,7 +873,7 @@ is.character(var3)
 ---
 # Explicit type conversion
 
-You can convert a value from one data type to the other using `as*()`
+You can convert a value from one data type to the other using `as.*()`
 
 ```{r}
 as.character(1L)
@@ -940,8 +884,8 @@ as.character(1L)
 `TRUE` is converted to 1 and `FALSE` is converted to 0:
 
 ```{r}
-as.integer(TRUE)
-as.double(FALSE)
+as.numeric(TRUE)
+as.numeric(FALSE)
 ```
 
 ---
@@ -1253,7 +1197,7 @@ population[ cities %in% c("Berlin", "Paris", "Stockholm", "Madrid")]
 --
 
 - returns only 3 values for population, because Stockholm is not a city in our vector
-  - no city in `cities` returns `TRUE` for the test against `"Stockholm"`
+  - no city in `cities` returns `TRUE` for the comparison with `"Stockholm"`
 
 
 ---
@@ -1340,7 +1284,7 @@ v[y == max(y)] # return the value in v for which y is the maximum of y
 ```{r eval=FALSE}
 # length
 length(v)
-# rounding numers
+# rounding numbers
 round(v, digits = 2)
 # sum
 sum(v)
@@ -1350,6 +1294,9 @@ mean(v)
 median(v)
 # standard deviation
 sd(v)
+# find the min value
+min(v)
+# find the max value
 ```
 
 ---
@@ -1357,15 +1304,6 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 1-2: Data types and vectors
+## Task 2: Data types and vectors
 
 #### Find the task description [here](www.github.com)
-
----
-# Resources
-
-- [Getting started with R and RStudio](https://moderndive.com/1-getting-started.html#r-rstudio)
-- [More about RStudio projects](https://rstats.wtf/project-oriented-workflow.html#work-in-a-project)
-
-
-
