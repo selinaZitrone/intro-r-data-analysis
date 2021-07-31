@@ -38,9 +38,11 @@ library(tibble)
 
 The built-in data structure for tables in R is a `data frame`.
 
+--
+
 .pull-left[
 
-- vectors in R can't represent a table with data that is connected
+- vectors in R can't represent a table with data that is connected via rows
 
 > Data frames are one of the **biggest and most important ideas** in R, and one of the things that make R different from other programming languages.<br>.small[(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble))]
 
@@ -220,21 +222,6 @@ cities_tbl
 .small[Note: If you want to use a function from a package you can attach it using `library(package)` or you can use `package::function` to tell R where a function is from (e.g. `tibble::tibble()`). I will sometimes do this to clearly distinguish between base R and package functions.]
 
 ---
-# Tibbles
-
-Convert a data frame to a tibble using `as_tibble()`:
-
-```{r eval=FALSE}
-cities_df <- data.frame(
-  cities = cities,
-  population = population,
-  area_km2 = area_km2
-)
-
-cities_tbl <- as_tibble(cities_df) #<<
-```
-
----
 # Exploring tibbles
 
 Look at the structure of an object using `str()`:
@@ -321,59 +308,23 @@ cities_tbl[1, "cities"]
 ---
 # Indexing tibbles: rows
 
-What happens here?
-
-```{r}
-cities_tbl[(nrow(cities_tbl) - 2):nrow(cities_tbl), ]
-```
-
---
-This was the same as writing:
-
 ```{r eval=FALSE}
-cities_tbl[8:10, ] # return rows 8 to 10, all columns
-```
-
-
----
-# Indexing tibbles: columns
-
-```{r eval=FALSE}
-# rows 1 & 5, first two columns:
-cities_tbl[c(1, 5), 1:2]
-```
-
-This is the same as
-
-```{r eval=FALSE}
-# same as 
-cities_tbl[c(1, 5),
-           c("cities", "population")]
+# rows 1 & 5, all columns:
+cities_tbl[c(1, 5), ]
 ```
 
 ---
 # Indexing tibbles: columns 
 
-To index only columns (all rows), you can use `[]` without comma:
-
 ```{r eval=FALSE}
-cities_tbl[1:2]
-# or
-cities_tbl[c("cities", "population")]
+# All rows, first 2 columns
+cities_tbl[ ,1:2]
+# same as
+cities_tbl[ ,c("cities", "population")]
 ```
 
 ```{r echo=FALSE}
 print(cities_tbl[ ,c("cities", "population")], n=3)
-```
-
---
-
-This is the same as
-
-```{r eval=FALSE}
-cities_tbl[ ,1:2]
-# or
-cities_tbl[ ,c("cities", "population")]
 ```
 
 ---
@@ -382,8 +333,8 @@ cities_tbl[ ,c("cities", "population")]
 Indexing columns by name is usually preferred to indexing by position
 
 ```{r eval=FALSE}
-cities_tbl[1:2] # okay
-cities_tbl[c("cities", "population")] # better
+cities_tbl[ ,1:2] # okay
+cities_tbl[ ,c("cities", "population")] # better
 ```
 
 #### Why?
@@ -401,8 +352,8 @@ cities_tbl[c("cities", "population")] # better
 --
   
 ```{r eval=FALSE}
-cities_tbl[c(1,3)] # 3 instead of 2 -> wrong but no error
-cities_tbl[c("cities", "popluation")] # typo -> wrong and error
+cities_tbl[ ,c(1,3)] # 3 instead of 2 -> wrong but no error
+cities_tbl[ ,c("cities", "popluation")] # typo -> wrong and error
 ```
 
 --
@@ -417,18 +368,53 @@ Select an entire column from a tibble using `$` (this returns a vector instead o
 ```{r}
 cities_tbl$cities
 ```
---
 
-After selecting a column as vector, we can work with the vector as we are used to:
+
+---
+# Adding new columns
+
+New columns can be added as vectors using the `$` operator. The vectors need to have the same length as the tibble has rows.
+
+--
 
 ```{r}
-cities_tbl$cities[1:3] # first 3 cities
+# add a country column
+cities_tbl$country <- c(
+  "Turkey", "Russia", "UK", "Russia", "Germany", "Spain",
+  "Ukraine", "Italy", "Romania", "France"
+)
 ```
---
+```{r echo=FALSE}
+cities_tbl
+```
 
-```{r error=TRUE}
-cities_tbl$cities[1,1] # This is wrong now because vector is 1-dimensional
+---
+# Adding new columns
+
+Adding a new column **based on other columns**:
+
+```{r}
+cities_tbl$density <- cities_tbl$population / cities_tbl$area_km2
 ```
+
+```{r echo=FALSE}
+cities_tbl
+```
+
+---
+# Adding new columns
+
+Adding new columns **based on a condition**:
+
+```{r}
+cities_tbl$category <- ifelse(cities_tbl$population > 5e6, # test
+                              "very large", # yes
+                              "large") # no
+```
+```{r echo=FALSE}
+cities_tbl
+```
+
 
 ---
 # Logical indexing
@@ -502,24 +488,6 @@ cities_tbl[cities_tbl$cities %in% c("Istanbul", "Madrid", "Paris"), ]
 ```
 
 ---
-# Logical indexing
-
-Some more examples:
-
-```{r eval=FALSE}
-cities_tbl[cities_tbl$cities != "Istanbul" & cities_tbl$area_km2 > 1000, ]
-cities_tbl[cities_tbl$cities %in% c("Istanbul", "Madrid", "Paris"), ]
-cities_tbl[!(cities_tbl$cities %in% c("Istanbul", "Madrid", "Paris")) | #<<
-             cities_tbl$area_km2 >= 2000, ] #<<
-```
-
-
-```{r echo=FALSE}
-cities_tbl[!(cities_tbl$cities %in% c("Istanbul", "Madrid", "Paris")) | 
-             cities_tbl$area_km2 >= 2000, ]
-```
-
----
 # Changing values in tibbles
 
 As with vectors, we can use indexing to change specific values in the tibble.
@@ -549,67 +517,11 @@ cities_tbl[6, ] # row 6 is Madrid
 ```
 
 ---
-# Adding new columns
-
-New columns can be added as vectors using the `$` operator. The vectors need to have the same length as the tibble has rows.
-
---
-
-```{r}
-# add a country column
-cities_tbl$country <- c(
-  "Turkey", "Russia", "UK", "Russia", "Germany", "Spain",
-  "Ukraine", "Italy", "Romania", "France"
-)
-```
-```{r echo=FALSE}
-cities_tbl
-```
-
----
-# Adding new columns
-
-Adding a new column **based on other columns**:
-
-```{r}
-cities_tbl$density <- cities_tbl$population / cities_tbl$area_km2
-```
-
-```{r echo=FALSE}
-cities_tbl
-```
-
----
-# Adding new columns
-
-Adding new columns **based on a condition**:
-
-```{r}
-cities_tbl$category <- ifelse(cities_tbl$population > 5e6,
-                              "very large",
-                              "large")
-```
-```{r echo=FALSE}
-cities_tbl
-```
-
----
-# Deleting a column
-
-Columns can be deleted, by assigning `NULL`:
-
-```{r}
-# delete the new category column
-cities_tbl$category <- NULL
-cities_tbl
-```
-
----
 class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 1-3: Working with tibbles
+## Task 3: Tibbles
 
 #### Find the task description [here](www.github.com)
 
@@ -733,8 +645,3 @@ tbl$new_col <- c(1, 2, 3)
 tbl$new_col <- tbl$colA / tbl$colB # new column based on other columns
 tbl$new_col <- NULL # remove new_col
 ```
-
----
-# Resources
-
-- [Differences between tibbles and data frames](https://adv-r.hadley.nz/vectors-chap.html#tibble)

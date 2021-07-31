@@ -30,7 +30,7 @@ background-position: 70% 70%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-06-15 (updated: 2021-07-30)
+  2021-06-15 (updated: 2021-07-31)
 ]
 
 ---
@@ -228,7 +228,7 @@ mean(values, na.rm = TRUE) # a mix of both
 - named arguments are (generally) preferred
   - easier to remember
   - easier to read
-  - some function can have a lot of arguments
+  - some functions have a lot of arguments
   
 
 ```r
@@ -256,6 +256,7 @@ mean(values, na.rm = TRUE) # a mix of both
 mean() # calculate mean
 seq()  # generate a sequence of values
 lm()   # fit a linear model
+[]     # This is also a function (but a special one)
 ```
 ]
 
@@ -272,7 +273,7 @@ lm()   # fit a linear model
 ```r
 readr::read_csv() # read a csv file
 beepr::beep() # make a beep sound
-stringr::str_extract() # extract a part from a string
+stringr::str_extract() # extract part of a string
 ```
 ]
 
@@ -309,7 +310,6 @@ my_function(5)
 - Functions from additional packages can be called like this:&lt;br&gt; `packageName::functionName()`
 
 - Call `?functionName` to open the help of a function
----
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

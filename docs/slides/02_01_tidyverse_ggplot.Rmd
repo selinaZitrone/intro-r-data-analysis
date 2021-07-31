@@ -14,9 +14,9 @@ output:
       countIncrementalSlides: false
       beforeInit: "macros.js"
 params:
-  title: "Data analysis with the tidyverse"
+  title: "Data visualization with ggplot2"
   day: "2"
-  bg_image: "img/hex-stickers/tidyverse.png"
+  bg_image: "img/hex-stickers/ggplot2.png"
   bg_image_scale: "30%"
   bg_position: "90% 90%"
 ---
@@ -42,51 +42,6 @@ theme_set(theme_grey(base_size = 16))
 ```{r child="title_slide.Rmd"}
 
 ```
-
----
-# The tidyverse
-
-> The tidyverse is an opinonated <b>collection of R packages</b> designed for data science. All packages share an underlying design philosophy, grammar, and data structures.<br>
-.small[([www.tidyverse.org](https://www.tidyverse.org/))]                                                                       
-
-These are the main packages from the tidyverse that we will use:<br><br>
-
-.center[![:scale 15%](img/hex-stickers/tibble.png)![:scale 15%](img/hex-stickers/readr.png)![:scale 15%](img/hex-stickers/tidyr.png)![:scale 15%](img/hex-stickers/ggplot2.png)![:scale 15%](img/hex-stickers/dplyr.png)]
-
----
-# Workflow data analysis
-
-.middle[
-![:scale 100%](img/day2/datascience_workflow_tidyverse.png)]
-
-.footnote-left[Image adapted from Wickham & Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)]
-
----
-# The tidyverse
-
-Install the tidyverse once with:
-
-```{r eval=FALSE}
-install.packages("tidyverse")
-```
-
-Then load and attach the packages at the beginning of your script:
-
-```{r}
-library(tidyverse)
-```
-
---
-
-You can also install and load the tidyverse packages individually, but since we will use so many of them together, it's easier to load and attach them together.
-
-
----
-class: inverse, center, middle
-
-# .large[Data visualization with ggplot2]
-
-.center[![:scale 30%](img/hex-stickers/ggplot2.png)]
 
 ---
 # ggplot2

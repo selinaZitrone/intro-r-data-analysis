@@ -45,7 +45,7 @@ library(tidyverse)
 
 Data transformation is an important step in **understanding** the data and **preparing** it for further analysis.
 
- .center[![](img/day2/datascience_workflow_tidyverse.png)]
+ .center[![](img/day1/datascience_workflow_tidyverse.png)]
 <br>
 
 We can use the tidyverse package `dplyr` for this.

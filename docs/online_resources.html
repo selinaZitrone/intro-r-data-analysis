@@ -2384,12 +2384,12 @@ Slides
 <div class="nav-dropdown-content">
 <a href="slides/01_01_Intro_RStudio_R.html">01 - Introduction R and RStudio</a>
 <a href="slides/01_02_Functions.html">01 - Functions</a>
-<a href="slides/01_03_tibbles.html">01 - Data &amp; Tibbles</a>
-<a href="slides/01_04_common_errors.html">01 - Common errors</a>
-<a href="slides/02_01_tidyverse_ggplot.html">02 - Tidyverse and ggplot2</a>
+<a href="slides/01_03_tibbles_short.">01 - Data &amp; Tibbles</a>
+<a href="slides/01_04_readr.html">01 - Tidyverse and Readr</a>
+<a href="slides/01_05_common_errors.html">01 - Common errors</a>
+<a href="slides/02_01_tidyverse_ggplot.html">02 - Ggplot2</a>
 <a href="slides/02_02_dplyr.html">02 - Dplyr</a>
-<a href="slides/02_03_readr.html">02 - Readr</a>
-<a href="slides/02_04_tidyr.html">02 - Tidyr</a>
+<a href="slides/02_03_tidyr.html">02 - Tidyr</a>
 <a href="slides/03_01_linear_models.html">03 - Linear models</a>
 <a href="slides/03_02_glm.html">03 - Generalized linear models</a>
 </div>
@@ -2418,18 +2418,7 @@ Solutions
 <a href="03_solutions_controller.html">Day 3: LMs and GLMs</a>
 </div>
 </div>
-<div class="nav-dropdown">
-<button class="nav-dropbtn">
-Code
- 
-<span class="down-arrow">&#x25BE;</span>
-</button>
-<div class="nav-dropdown-content">
-<span class="nav-dropdown-header">Slides</span>
-<span class="nav-dropdown-header">Tasks</span>
-</div>
-</div>
-<a href="online_resources.html">Online Resources</a>
+<a href="online_resources.html">Resources</a>
 <a href="https://github.com/selinaZitrone/intro-r-data-analysis">
 <i class="fa fa-github" aria-hidden="true"></i>
 </a>
@@ -2455,7 +2444,6 @@ Code
 <h3>Contents</h3>
 <ul>
 <li><a href="#general">General</a></li>
-<li><a href="#introduction-to-r">Introduction to R</a></li>
 <li><a href="#tidyverse">Tidyverse</a>
 <ul>
 <li><a href="#readr">readr</a></li>
@@ -2464,19 +2452,22 @@ Code
 <li><a href="#tidyr">tidyr</a></li>
 </ul></li>
 <li><a href="#linear-models">Linear models</a></li>
-<li><a href="#resources">Resources</a></li>
+<li><a href="#twitter-accounts-to-follow">Twitter accounts to follow</a></li>
 </ul>
 </nav>
 </div>
 <h2 id="general">General</h2>
 <ul>
-<li><p><a href="https://www.rstudio.com/resources/cheatsheets/">List of RStudio cheatsheets</a>: You can find a list of all the cheatsheets that RStudio provides there. Below, I listed the individual cheatsheets that are interesting for our course.</p></li>
+<li><p><a href="https://www.rstudio.com/resources/cheatsheets/">List of RStudio cheatsheets</a>: You can find a list of all the cheat sheets that RStudio provides there. Below, I listed the individual cheat sheets that are interesting for our course.</p></li>
 <li><p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rstudio-ide.pdf">RStudio cheatsheet</a>: Explains the most important buttons, options, keyboard shortcuts, etc that you have in RStudio.</p></li>
+<li><p><a href="https://moderndive.com/1-getting-started.html#code">The modern dive book</a> explains how to get started with R and data analysis with the tidyverse.</p></li>
+<li><p>The <a href="https://r4ds.had.co.nz/index.html">R for Data Science book</a> by Hadley Wickham is a very good book to start with.</p></li>
+<li><p>The <a href="https://www.bigbookofr.com/">Big book of R</a> is a book that list all books about R that are freely available only. The book is sorted by topics and can be used to find resources to learn a specific topic.</p></li>
+<li><p>A <a href="https://github.com/iamericfletcher/awesome-r-learning-resources">curated collection of R resources</a>. Not just books but also websites, tutorials, help channels, …</p></li>
 </ul>
-<h2 id="introduction-to-r">Introduction to R</h2>
 <h2 id="tidyverse">Tidyverse</h2>
 <ul>
-<li>The <a href="https://r4ds.had.co.nz/index.html">R for Data Science book</a> by Hadley Wickham is a very good book to start with.</li>
+<li>The <a href="https://tidyverse.org/">tidyverse website</a> has links to all tidyverse packages which all have very good examples and use cases. These websites are an excelent point to get started with a package.</li>
 </ul>
 <h3 id="readr">readr</h3>
 <ul>
@@ -2484,7 +2475,10 @@ Code
 </ul>
 <h3 id="ggplot">ggplot</h3>
 <ul>
-<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf">ggplot cheatsheet</a> offers an overview of all possibilities of ggplot</li>
+<li><p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf">ggplot cheatsheet</a> offers an overview of all possibilities of ggplot</p></li>
+<li><p><a href="https://www.datanovia.com/en/lessons/ggplot-error-bars/">error bars with ggplot</a> A good summary of how to plot different types of means and errorbars (barplots, mean and errorbar, …).</p></li>
+<li><p>In the <a href="https://www.r-graph-gallery.com/">R graph gallery</a> you can browse through hundreds of different types of plots and find code to reproduce them.</p></li>
+<li><p>A great <a href="https://github.com/z3tt/OutlierConf2021">presentation by Cédric Scherer</a> with examples of how to beautify your ggplots.</p></li>
 </ul>
 <h3 id="dplyr">dplyr</h3>
 <ul>
@@ -2492,14 +2486,22 @@ Code
 </ul>
 <h3 id="tidyr">tidyr</h3>
 <ul>
-<li><a href="https://r4ds.had.co.nz/tidy-data.html" class="uri">https://r4ds.had.co.nz/tidy-data.html</a></li>
 <li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf">data import cheatsheet</a></li>
 </ul>
 <h2 id="linear-models">Linear models</h2>
-<hr />
-<h1 id="resources">Resources</h1>
 <ul>
 <li><a href="https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Learning_Statistics_with_R_-_A_tutorial_for_Psychology_Students_and_other_Beginners_(Navarro)/16%3A_Factorial_ANOVA/16.06%3A_ANOVA_As_a_Linear_Model">anova with R</a>: explanation why an anova is also a linear model</li>
+</ul>
+<h2 id="twitter-accounts-to-follow">Twitter accounts to follow</h2>
+<p>I personally learn a lot of tricks and find a lot of inspiration and resources by following some R people and accounts on twitter. Often people post helpful tutorials or blogpost that you would not find otherwise. If you are a twitter user, you can try that as well. Some suggestions are:</p>
+<ul>
+<li><a href="https://twitter.com/CedScherer">Cédric Scherer</a> mainly data visualization and ggplot content</li>
+<li><a href="https://twitter.com/allison_horst">Allison Horst</a></li>
+<li><a href="https://twitter.com/rstudio">RStudio</a> official RStudio account</li>
+<li><a href="https://twitter.com/hadleywickham">Hadley Wickham</a> data visualisation, tidyverse</li>
+<li><a href="https://twitter.com/JennyBryan">Jenny Bryan</a></li>
+<li><a href="https://twitter.com/rOpenSci">rOpenSci</a> develop R tools for open science</li>
+<li><a href="https://twitter.com/RLangTip">One R Tip a Day</a> one helpful R tip every day</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>01_03_tibbles_short.knit</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Selina Baldauf" />
+    <meta name="date" content="2021-06-15" />
+    <script src="01_03_tibbles_short_files/header-attrs-2.9/header-attrs.js"></script>
+    <link href="01_03_tibbles_short_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+class: inverse title-slide
+background-image: url()
+background-size: 50%
+background-position: 70% 70%
+
+# Data frames and tibbles: tables in R
+
+## Introduction to R - Day 1
+
+### Instructor: [Selina Baldauf](https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/botanik/ag_tietjen/People/wissenschaftliche_programmierer/baldauf/index.html) &lt;br&gt;
+
+### Freie Universität Berlin - Theoretical Ecology
+
+.footnote-left[
+  2021-06-15 (updated: 2021-07-31)
+]
+
+---
+# Data frames
+
+The built-in data structure for tables in R is a `data frame`.
+
+--
+
+.pull-left[
+
+- vectors in R can't represent a table with data that is connected via rows
+
+&gt; Data frames are one of the **biggest and most important ideas** in R, and one of the things that make R different from other programming languages.&lt;br&gt;.small[(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble))]
+
+]
+
+.pull-right[
+
+
+|cities           | population| area_km2|
+|:----------------|----------:|--------:|
+|Istanbul         |   15100000|     2576|
+|Moscow           |   12500000|     2561|
+|London           |    9000000|     1572|
+|Saint Petersburg |    5400000|     1439|
+|Berlin           |    3800000|      891|
+|Madrid           |    3200000|      604|
+|Kyiv             |    3000000|      839|
+|Rome             |    2800000|     1285|
+|Bucharest        |    2200000|      228|
+|Paris            |    2100000|      105|
+
+]
+
+---
+# Data frames
+
+A data frame is a **named list of vectors** of the same length.
+
+--
+
+.pull-left[
+
+#### Basic properties of a data frame
+
+- every &lt;b&gt;.col1[column is a vector]&lt;/b&gt;
+- columns have a &lt;b&gt;.col2[header]&lt;/b&gt;
+  - this is the &lt;b&gt;.col2[name]&lt;/b&gt; of the vector in the list
+- within one column, all values are of the &lt;b&gt;.col3[same data type]&lt;/b&gt;
+- every column has the same length
+
+]
+.pull-right[
+.center[
+
+![:scale 70%](img/day1/data_frame_specs_all.png) ]
+]
+
+---
+# Data frames
+
+Data frames are created with the function `data.frame()`:
+
+.pull-left[
+
+
+```r
+cities &lt;- c(
+  "Istanbul", "Moscow", "London", 
+  "Saint Petersburg", "Berlin","Madrid",
+  "Kyiv", "Rome", "Bucharest","Paris")
+
+population &lt;- c(
+  15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6,
+  3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)
+
+area_km2 &lt;- c(2576, 2561, 1572, 1439, 
+  891, 604, 839, 1285, 228, 105)
+```
+
+```r
+*data.frame(
+* cities = cities,
+* population = population,
+* area_km2 = area_km2
+* )
+```
+]
+
+--
+
+.pull-right[
+
+```
+##              cities population area_km2
+## 1          Istanbul   15100000     2576
+## 2            Moscow   12500000     2561
+## 3            London    9000000     1572
+## 4  Saint Petersburg    5400000     1439
+## 5            Berlin    3800000      891
+## 6            Madrid    3200000      604
+## 7              Kyiv    3000000      839
+## 8              Rome    2800000     1285
+## 9         Bucharest    2200000      228
+## 10            Paris    2100000      105
+```
+
+]
+
+---
+# Tibbles
+
+Tibbles are 
+
+&gt;a **modern reimagining of the data frame**. Tibbles are designed to be (as much as possible) **drop-in replacements** for data frames. &lt;br&gt;.small[(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble)) ]
+
+--
+
+Have a look at [this book chapter](https://adv-r.hadley.nz/vectors-chap.html#tibble) for a full list of the differences between data frames and tibbles and the advantages of using tibbles.
+
+--
+
+.pull-left[
+- tibbles have the same basic properties as data frames (named list of vectors)
+
+- everything that you can do with data frames, you can do with tibbles
+
+]
+
+.pull-right[
+.center[
+![](img/day1/data_frame_tibble.png)]
+]
+
+---
+# Tibbles
+
+Tibbles are a available from the `tibble` package.
+
+--
+
+.pull-left[
+
+Before we use tibbles, we need to install the package once using the function `install.packages`:
+
+
+```r
+# This has do be once
+install.packages("tibble")
+```
+
+Then, we need to load and attach the package to our current R session using `library`:
+
+
+```r
+# This has to be done every time R restarts
+# Put it at the beginning of a script
+library(tibble)
+```
+]
+
+.pull-right[.center[![:scale 50%](img/hex-stickers/tibble.png)]]
+
+---
+# Tibbles
+
+Create a tibble using the `tibble()` function:
+
+--
+
+.pull-left[
+
+```r
+*library(tibble)
+
+*tibble(
+  cities = cities,
+  population = population,
+  area_km2 = area_km2
+*) 
+```
+]
+.pull-right[
+
+```
+## # A tibble: 10 x 3
+##    cities           population area_km2
+##    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;
+##  1 Istanbul           15100000     2576
+##  2 Moscow             12500000     2561
+##  3 London              9000000     1572
+##  4 Saint Petersburg    5400000     1439
+##  5 Berlin              3800000      891
+##  6 Madrid              3200000      604
+##  7 Kyiv                3000000      839
+##  8 Rome                2800000     1285
+##  9 Bucharest           2200000      228
+## 10 Paris               2100000      105
+```
+]
+
+--
+
+.small[Note: If you want to use a function from a package you can attach it using `library(package)` or you can use `package::function` to tell R where a function is from (e.g. `tibble::tibble()`). I will sometimes do this to clearly distinguish between base R and package functions.]
+
+---
+# Exploring tibbles
+
+Look at the structure of an object using `str()`:
+
+
+```r
+str(cities_tbl)
+```
+
+```
+## tibble [10 x 3] (S3: tbl_df/tbl/data.frame)
+##  $ cities    : chr [1:10] "Istanbul" "Moscow" "London" "Saint Petersburg" ...
+##  $ population: num [1:10] 15100000 12500000 9000000 5400000 3800000 3200000 3000000 2800000 2200000 2100000
+##  $ area_km2  : num [1:10] 2576 2561 1572 1439 891 ...
+```
+--
+- This function shows you:
+  - data type of object (`tbl_df/tbl/data.frame`)
+  - extent of the data (10 rows times 3 columns)
+  - column names and data types
+
+- This function works for every R object and is very useful if code doesn't work and you don't know why
+---
+# Exploring tibbles
+
+How many rows?
+
+
+```r
+nrow(cities_tbl)
+```
+
+```
+## [1] 10
+```
+--
+How many columns?
+
+
+```r
+ncol(cities_tbl)
+```
+
+```
+## [1] 3
+```
+--
+What are the column headers?
+
+
+```r
+names(cities_tbl)
+```
+
+```
+## [1] "cities"     "population" "area_km2"
+```
+
+---
+# Exploring tibbles
+
+Look at the entire table in a separate window with `view()`:
+
+
+```r
+tibble::view(cities_tbl)
+```
+
+--
+
+Get a quick summary of all columns:
+
+
+```r
+summary(cities_tbl)
+```
+
+```
+##     cities            population          area_km2     
+##  Length:10          Min.   : 2100000   Min.   : 105.0  
+##  Class :character   1st Qu.: 2850000   1st Qu.: 662.8  
+##  Mode  :character   Median : 3500000   Median :1088.0  
+##                     Mean   : 5910000   Mean   :1210.0  
+##                     3rd Qu.: 8100000   3rd Qu.:1538.8  
+##                     Max.   :15100000   Max.   :2576.0
+```
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 3: Tibbles
+
+#### Find the task description [here](www.github.com)
+
+---
+# Summary I
+
+#### data frames and tibbles
+
+- can be used to represent tables in R
+- are pretty similar, however tibbles are slightly conventient and modern
+- are **named lists of vectors of the same length**
+  - every column is a vector
+  - columns have a header which is the name of the vector in the list
+  - within one column, values are of same data type
+  - every column has the same length
+  
+#### tibbles
+
+- to use tibbles, install the package once with `install.packages("tibble")`
+- put `library(tibble)` at the beginning of your script to load package
+
+---
+# Summary II
+
+#### Creating tibbles and data frames
+
+
+```r
+# data frame
+data.frame(
+  a = 1:3,
+  b = c("a", "b", "c"),
+  c = c(TRUE, FALSE, FALSE) 
+)
+# tibble
+tibble(
+  a = 1:3,
+  b = c("a", "b", "c"),
+  c = c(TRUE, FALSE, FALSE) 
+)
+# convert data frame to tibble
+as_tibble(df)
+```
+
+---
+# Summary III
+
+#### Looking at tibble structure
+
+
+```r
+# structure of tibble and data types of columns
+str(tbl)
+# number of rows
+nrow(tbl)
+# number of columns
+ncol(tbl)
+# column headers
+names(tbl)
+# look at the data in a new window
+tibble::view(tbl)
+# summary of values from each column
+summary(tbl)
+```
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

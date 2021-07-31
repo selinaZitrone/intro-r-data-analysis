@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-06-15 (updated: 2021-07-30)
+  2021-06-15 (updated: 2021-07-31)
 ]
 
 ---
@@ -154,21 +154,11 @@ If we account for variable A: do the residuals become significantly smaller?
 
 Finding the parameters that lead to the lowest residual sum of squares works only if:
 
-.pull-left[
-
 - residuals are normally distributed
 
 - residual variance is constant
 
 - no strong outliers
-
-
-]
-
-.pull-right[
-
-![](img/day3/regression_assumption_placeholder.png)
-]
 
 --
 
@@ -550,6 +540,15 @@ Add the regression line directly as a ggplot layer
 
 .pull-left[
 
+Use `geom_smooth()` to add the model directly:
+
+
+```r
+ggplot(prod, aes(x = richness, y = productivity)) +
+ geom_point() +
+ geom_smooth(method = "lm")
+```
+
 Or without the confidence interval:
 
 
@@ -559,12 +558,11 @@ ggplot(prod, aes(x = richness, y = productivity)) +
 * geom_smooth(method = "lm", se = FALSE)
 ```
 
-Careful with `geom_smooth()`: Always plots model with all interactions. Here it's  okay, but if you have multiple predictors, keep that in mind!
 ]
 
 .pull-right[
 
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-25-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-26-1.png" width="504" /&gt;
 ]
 
 ---
@@ -581,20 +579,20 @@ One categorical and one numerical predictor variable
 
 .pull-left[
 
-Two hypotheses possible:
+Two possible models:
 
 #### Without interaction
 
-`\(H_0\)`: The productivity increases with species richness and is higher at site 2.
+Species richness has an effect on productivity and there is a difference between sites.
 
 #### With interaction
 
-`\(H_0\)`: The productivity increases with species richness. The effect of richness on productivity differs between sites.
+Species richness has an effect on productivity and the effect differs between sites.
 
 ]
 
 .pull-right[
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-26-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-27-1.png" width="504" /&gt;
 ]
 
 ---
@@ -606,7 +604,7 @@ Fit the model with `lm`
 
 #### Without interaction
 
-`\(H_0\)`: The productivity increases with species richness and is higher at site 2.
+Species richness has an effect on productivity and there is a difference between sites.
 
 
 ```r
@@ -617,7 +615,7 @@ prod_lm2a &lt;- lm(productivity ~ richness + site, data = prod)
 
 #### With interaction
 
-`\(H_0\)`: The productivity increases with species richness. The effect of richness on productivity differs between sites.
+Species richness has an effect on productivity and the effect differs between sites.
 
 
 ```r
@@ -725,7 +723,7 @@ Check the assumptions
 performance::check_model(prod_lm2a)
 ```
 
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-32-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-33-1.png" width="504" /&gt;
 ]
 
 ---
@@ -749,7 +747,7 @@ ggplot(prod, aes(x = richness,
 This plot is not appropriate if the model you present is without interaction
 ]
 .pull-right[
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-34-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-35-1.png" width="504" /&gt;
 ]
 
 ---
@@ -805,7 +803,7 @@ ggplot(prod, aes(x = richness,
 ]
 
 .pull-right[
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-38-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-39-1.png" width="504" /&gt;
 ]
 
 ---
@@ -912,7 +910,7 @@ ggplot(prod, aes(x = richness,
 
 ]
 .pull-right[
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-47-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-48-1.png" width="504" /&gt;
 ]
 
 ---
@@ -965,7 +963,7 @@ chickwts
 ]
 
 .pull-right[
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-50-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-51-1.png" width="504" /&gt;
 
 ]
 
@@ -1055,7 +1053,7 @@ Check the assumptions
 performance::check_model(lm_chicken)
 ```
 
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-53-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-54-1.png" width="504" /&gt;
 ]
 
 ---
@@ -1074,7 +1072,7 @@ ggplot(chickwts, aes(feed, weight)) +
 ]
 .pull-right[
 
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-55-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-56-1.png" width="504" /&gt;
 ]
 
 ---
@@ -1105,7 +1103,7 @@ chickwts %&gt;%
 ```
 ]
 .pull-right[
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-57-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-58-1.png" width="504" /&gt;
 
 ]
 
@@ -1263,7 +1261,7 @@ Two variables:
 ]
 .pull-right[
 
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-64-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-65-1.png" width="504" /&gt;
 ]
 
 ---
@@ -1288,7 +1286,7 @@ Diagnostic plots look bad:
 
 ]
 .pull-right[
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-66-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-67-1.png" width="504" /&gt;
 ]
 
 ---
@@ -1309,7 +1307,7 @@ Diagnostic plots look much better (though not perfect)
 
 ]
 .pull-right[
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-68-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-69-1.png" width="504" /&gt;
 ]
 
 ---
@@ -1349,7 +1347,7 @@ ggplot(decay, aes(x = time, y = amount)) +
 ]
 
 .pull-right[
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-71-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-72-1.png" width="504" /&gt;
 
 ]
 
@@ -1380,7 +1378,7 @@ ggplot(decay, aes(x= time, y=amount))+
 ]
 
 .pull-right[
-&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-73-1.png" width="504" /&gt;
+&lt;img src="03_01_linear_models_files/figure-html/unnamed-chunk-74-1.png" width="504" /&gt;
 
 ]
 

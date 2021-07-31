@@ -196,7 +196,7 @@ mean(values, na.rm = TRUE) # a mix of both
 - named arguments are (generally) preferred
   - easier to remember
   - easier to read
-  - some function can have a lot of arguments
+  - some functions have a lot of arguments
   
 ```{r, eval=FALSE}
 mean(x = values, na.rm = TRUE) # by name
@@ -221,6 +221,7 @@ mean(values, na.rm = TRUE) # a mix of both
 mean() # calculate mean
 seq()  # generate a sequence of values
 lm()   # fit a linear model
+[]     # This is also a function (but a special one)
 ```
 ]
 
@@ -236,7 +237,7 @@ lm()   # fit a linear model
 ```{r eval=FALSE}
 readr::read_csv() # read a csv file
 beepr::beep() # make a beep sound
-stringr::str_extract() # extract a part from a string
+stringr::str_extract() # extract part of a string
 ```
 ]
 
@@ -272,4 +273,3 @@ my_function(5)
 - Functions from additional packages can be called like this:<br> `packageName::functionName()`
 
 - Call `?functionName` to open the help of a function
----

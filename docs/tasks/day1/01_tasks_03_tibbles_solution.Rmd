@@ -76,20 +76,36 @@ names(animals)
 
 ### 3.4 Indexing
 
-Warm up
+
+- rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
 
 ```{r}
 animals[c(1,5,7), c("species", "bodywt_kg")]
+```
+
+- select rows 1 to 10, all columns
+
+```{r}
 animals[1:10, ]
-# last row last column without using the index
+```
+
+- select the last column of the last row without using the row and column index (so don't use any numbers in this command)
+
+```{r}
 animals[nrow(animals), ncol(animals)]
-# select specific orders
+```
+
+- select only rows that belong to the order of primates, rodentia and carnivora (hint: `%in%`)
+
+```{r}
 orders_select <- c("Primates", "Rodentia", "Carnivora")
 animals[animals$order %in% orders_select,]
 ```
-Create two subsets for large and small brained animals and calculate the mean and standard deviation of the brain to body ratio in these subsets.
 
-Create subsets
+
+#### Extra
+
+Create two subsets of the data for large and small brained animals and calculate the mean and standard deviation of the brain to body ratio in these subsets.
 
 ```{r}
 large_brain <- animals[animals$brainwt_category == "large", ]

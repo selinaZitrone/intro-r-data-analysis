@@ -1,4 +1,0 @@
-Artwork by @allison_horst
-except for:
-Tidy data series:
-Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst

@@ -185,21 +185,11 @@ If we account for variable A: do the residuals become significantly smaller?
 
 Finding the parameters that lead to the lowest residual sum of squares works only if:
 
-.pull-left[
-
 - residuals are normally distributed
 
 - residual variance is constant
 
 - no strong outliers
-
-
-]
-
-.pull-right[
-
-![](img/day3/regression_assumption_placeholder.png)
-]
 
 --
 
@@ -306,6 +296,7 @@ prod_lm <- lm(productivity ~ richness,
 .pull-right[
 ```{r echo=FALSE}
 prod_scatter +
+  geom_smooth(method = "lm", se = FALSE) +
   theme(
     axis.title.y = element_text(color = "#4C7488", face = "bold"),
     axis.title.x = element_text(color = "#D78974", face = "bold")
@@ -549,6 +540,14 @@ Add the regression line directly as a ggplot layer
 
 .pull-left[
 
+Use `geom_smooth()` to add the model directly:
+
+```{r eval=FALSE}
+ggplot(prod, aes(x = richness, y = productivity)) +
+ geom_point() +
+ geom_smooth(method = "lm")
+```
+
 Or without the confidence interval:
 
 ```{r eval=FALSE}
@@ -557,7 +556,6 @@ ggplot(prod, aes(x = richness, y = productivity)) +
   geom_smooth(method = "lm", se = FALSE) #<<
 ```
 
-Careful with `geom_smooth()`: Always plots model with all interactions. Here it's  okay, but if you have multiple predictors, keep that in mind!
 ]
 
 .pull-right[
@@ -582,15 +580,15 @@ One categorical and one numerical predictor variable
 
 .pull-left[
 
-Two hypotheses possible:
+Two possible models:
 
 #### Without interaction
 
-$H_0$: The productivity increases with species richness and is higher at site 2.
+Species richness has an effect on productivity and there is a difference between sites.
 
 #### With interaction
 
-$H_0$: The productivity increases with species richness. The effect of richness on productivity differs between sites.
+Species richness has an effect on productivity and the effect differs between sites.
 
 ]
 
@@ -610,7 +608,7 @@ Fit the model with `lm`
 
 #### Without interaction
 
-$H_0$: The productivity increases with species richness and is higher at site 2.
+Species richness has an effect on productivity and there is a difference between sites.
 
 ```{r}
 prod_lm2a <- lm(productivity ~ richness + site, data = prod)
@@ -620,7 +618,7 @@ prod_lm2a <- lm(productivity ~ richness + site, data = prod)
 
 #### With interaction
 
-$H_0$: The productivity increases with species richness. The effect of richness on productivity differs between sites.
+Species richness has an effect on productivity and the effect differs between sites.
 
 ```{r}
 prod_lm2b <- lm(productivity ~ richness + site + richness:site, data = prod)

@@ -1,0 +1,21 @@
+### 3.1 Getting started with tibbles
+
+Before you start the task:
+
+- Install the tibble package by calling `install.packages("tibble")` in the console.
+- Open your script for the task and put `library(tibble)` on top
+- Execute this line and the tibble package is loaded into your R session and ready to use
+
+### 3.2 Creating a tibble
+
+Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and combine them in a tibble.
+
+### 3.3 Exploring the tibble
+
+Explore the tibble you created with the different function that you learned in the presentation.
+You can for example try 
+
+- `view()` and explore what you can do in the view window that opens: searching, filtering, sorting columns
+- `str()` to view the structure of the data
+- `summary()`
+- ...
