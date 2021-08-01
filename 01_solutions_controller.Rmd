@@ -5,6 +5,10 @@ output:
     toc: true
     toc_float: true
     number_sections: true
+params:
+  includeSolution2: FALSE
+  includeSolution3: FALSE
+  includeSolution4: FALSE
 ---
 
 
@@ -14,17 +18,27 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 2 Data types and vectors
 
-```{r vectors, child="tasks/day1/01_tasks_02_R_basics_solution.Rmd"}
+```{r vectors, child=if (params$includeSolution2) "tasks/day1/01_tasks_02_R_basics_solution.Rmd"}
+```
+
+
+```{r vectors_empty, include=FALSE, child=if (!params$includeSolution2) "tasks/day1/01_tasks_02_R_basics_solution_empty.Rmd"}
 ```
 
 ## 3 Tibbles
 
-```{r tibbles, child="./tasks/day1/01_tasks_03_tibbles_short_solution.Rmd"}
+```{r tibbles, child=if (params$includeSolution3) "./tasks/day1/01_tasks_03_tibbles_short_solution.Rmd"}
+```
+
+```{r tibbles_empty, child=if (!params$includeSolution3) "./tasks/day1/01_tasks_03_tibbles_short_solution_empty.Rmd"}
 ```
 
 ## 4 Reading and writing tibbles
 
-```{r tibbles, child="./tasks/day1/01_tasks_04_readr_solution.Rmd"}
+```{r readr, child=if (params$includeSolution4) "./tasks/day1/01_tasks_04_readr_solution.Rmd"}
+```
+
+```{r readr_empty, child=if (!params$includeSolution4) "./tasks/day1/01_tasks_04_readr_solution_empty.Rmd"}
 ```
 
 # Reference

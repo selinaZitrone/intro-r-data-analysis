@@ -5,6 +5,11 @@ output:
     toc: true
     toc_float: true
     number_sections: true
+params:
+  includeSolution1: FALSE
+  includeSolution2: FALSE
+  includeSolution3: FALSE
+  includeSolution4: FALSE
 ---
 
 
@@ -14,21 +19,32 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 1 Linear models
 
-```{r create_rstudio_project, child="tasks/day3/03_tasks_01_lm_solution.Rmd"}
+```{r lm, child= if (params$includeSolution1) "tasks/day3/03_tasks_01_lm_solution.Rmd"}
+```
+
+```{r lm_empty, child= if (!params$includeSolution1) "tasks/day3/03_tasks_01_lm_solution_empty.Rmd"}
 ```
 
 ## 2 Linear models transformation
 
-```{r vectors, child="tasks/day3/03_tasks_02_lm_trans_solution.Rmd"}
+```{r lm_trans, child=if (params$includeSolution2) "tasks/day3/03_tasks_02_lm_trans_solution.Rmd"}
+```
+
+```{r lm_trans_empty, child=if (!params$includeSolution2) "tasks/day3/03_tasks_02_lm_trans_solution_empty.Rmd"}
 ```
 
 ## 3 Poisson and binary glm
 
-```{r tibbles, child="./tasks/day3/03_tasks_03_glm_solution.Rmd"}
+```{r glm, child=if (params$includeSolution3) "./tasks/day3/03_tasks_03_glm_solution.Rmd"}
 ```
 
+```{r glm_empty, child=if (!params$includeSolution3) "./tasks/day3/03_tasks_03_glm_solution_empty.Rmd"}
+```
 
-## 3 Proportion glm
+## 4 Proportion glm
 
-```{r tibbles, child="./tasks/day3/03_tasks_04_glm_prop_solution.Rmd"}
+```{r glm_prop, child=if (params$includeSolution4) "./tasks/day3/03_tasks_04_glm_prop_solution.Rmd"}
+```
+
+```{r glm_prop_empty, child=if (!params$includeSolution4) "./tasks/day3/03_tasks_04_glm_prop_solution_empty.Rmd"}
 ```
