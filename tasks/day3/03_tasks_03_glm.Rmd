@@ -12,8 +12,8 @@ The variables in this data set are:
 
 You can get the data with:
 
-```{r}
-rabbit <- read_csv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/rabbit.csv")
+```{r eval=FALSE}
+rabbit <- readr::read_csv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/rabbit.csv")
 ```
 
 **Tasks**
@@ -45,8 +45,8 @@ The variables in the data set are:
 
 You can get the data with:
 
-```{r}
-bird <- read_tsv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/bird.csv")
+```{r eval=FALSE}
+bird <- readr::read_tsv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/bird.csv")
 ```
 
 - Plot the data

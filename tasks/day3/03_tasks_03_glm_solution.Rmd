@@ -1,3 +1,8 @@
+```{r echo=TRUE, eval=TRUE, message=FALSE}
+library(tidyverse)
+```
+
+
 ### 1.1 Poisson glm
 
 The data set `rabbit` contains data on a highly threatened rabbit species.
@@ -12,8 +17,8 @@ The variables in this data set are:
 
 You can get the data with:
 
-```{r}
-rabbit <- read_csv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/rabbit.csv")
+```{r read_rabbits}
+rabbit <- readr::read_csv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/rabbit.csv")
 ```
 **Tasks**
 
