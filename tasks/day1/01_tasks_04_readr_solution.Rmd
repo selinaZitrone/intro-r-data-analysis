@@ -1,6 +1,6 @@
 ### 3.1 Create a tibble and write it
 
-Load the package and creat the tibble:
+Load the package and create the tibble:
 
 ```{r eval=FALSE}
 library(tidyverse)
