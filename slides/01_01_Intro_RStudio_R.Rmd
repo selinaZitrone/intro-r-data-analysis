@@ -177,7 +177,7 @@ library(fontawesome)
 ---
 # Bring your own data - preparation
 
-If you want to propose a group project using your data set:
+If you want to **propose a group project** using your data set:
 
 - Add a description of the project idea to the joint [joint document](https://hackmd.io/@selinaZitrone/r12pL71C_/edit)
 - Prepare your data set to work seamlessly with R
@@ -186,13 +186,13 @@ If you want to propose a group project using your data set:
 
 --
 
-If you want to work alone on your data set
+If you want to **work alone** on your data set
 
 - Add your name and the methods that you would like to use to the [joint document](https://hackmd.io/@selinaZitrone/r12pL71C_/edit)
 
 --
 
-If you want to joint a group project
+If you want to **join a group** project
 
 - go through the proposals and add your name next to it
 
