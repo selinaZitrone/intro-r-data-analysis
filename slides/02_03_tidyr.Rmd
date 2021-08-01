@@ -276,6 +276,7 @@ cities_tidy <- cities_untidy %>%
   separate(location, sep = "_", into = c("country", "city")) %>%
   pivot_wider(names_from = type, values_from = value)
 ```
+
 ---
 class: inverse, middle, center
 
@@ -283,4 +284,4 @@ class: inverse, middle, center
 
 ## Task 2-4: Tidying data
 
-#### Find the task description [here](www.github.com)
+#### Find the task description href="../02_tasks_controller.html#tidyr">here</a>

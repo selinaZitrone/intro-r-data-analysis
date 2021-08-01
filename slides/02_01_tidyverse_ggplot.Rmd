@@ -1106,4 +1106,4 @@ class: inverse, middle, center
 
 ## Task 1: Create your own penguin ggplots
 
-#### Find the task description [here](www.github.com)
+#### Find the task description href="../02_tasks_controller.html#ggplot2">here</a>

@@ -41,6 +41,7 @@ cols <- c( "#4C7488","#D78974", "#D7BC74")
 
 ```{r child="title_slide.Rmd"}
 ```
+
 ---
 # GLMs background
 
@@ -440,9 +441,9 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 1: Poisson and binary glms with R
+## Task 3: Poisson and binary glms with R
 
-#### Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/01_tasks_controller.html)
+#### Find the task description href="../03_tasks_controller.html#poisson-and-binary-glm">here</a>
 
 ---
 class: inverse, middle, center
@@ -592,3 +593,6 @@ mod1 <- glm(
 ---
 # Now you
 
+## Task 4: Binomial glms with proportion data
+
+#### Find the task description href="../03_tasks_controller.html#proportion-glm">here</a>
