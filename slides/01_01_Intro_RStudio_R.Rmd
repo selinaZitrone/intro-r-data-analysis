@@ -171,24 +171,30 @@ library(fontawesome)
 - during the group work
 
   - if there is time after the tasks: talk about your data, research questions and methods <br>
+  
   `r fa("arrow-right")` you might already find common interests and questions
   
 ---
 # Bring your own data - preparation
 
-If you want to bring your own data set on the last day:
+If you want to propose a group project using your data set:
 
-- send it to me via email with a short description
-  - I will check if the data is suitable
-  - I will let you know what you have to do to prepare the data set to make it easier to work with
-
-- Tomorrow we will learn about good practices for data preparation
+- Add a description of the project idea to the joint [joint document](https://hackmd.io/@selinaZitrone/r12pL71C_/edit)
+- Prepare your data set to work seamlessly with R
+  - We will learn about that today
+- Send the data set to me beforehand then I can make sure that it's easy to get started with
 
 --
 
-- Add your data set to our [joint document](https://hackmd.io/@selinaZitrone/r12pL71C_/edit)
+If you want to work alone on your data set
 
-- Others can go through the list and add their names to the data set they are interested in working on
+- Add your name and the methods that you would like to use to the [joint document](https://hackmd.io/@selinaZitrone/r12pL71C_/edit)
+
+--
+
+If you want to joint a group project
+
+- go through the proposals and add your name next to it
 
 ---
 # Before we get started I
@@ -204,8 +210,7 @@ I am curious to know
 - which tasks were too easy/too difficult or just right
 - ...
 
-If you have any feedback or suggestions please let me know.
-You can also add them to the feedback section of our [joint document]([joint document](https://hackmd.io/@selinaZitrone/r12pL71C_/edit) whenever something comes to your mind 
+Add any feedback to the feedback section of our [joint document]([joint document](https://hackmd.io/@selinaZitrone/r12pL71C_/edit) whenever something comes to your mind.
 
 ---
 # Before we get started II
