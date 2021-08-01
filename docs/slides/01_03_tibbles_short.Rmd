@@ -281,7 +281,7 @@ class: inverse, middle, center
 
 ## Task 3: Tibbles
 
-#### Find the task description [here](www.github.com)
+#### Find the task description href="../01_tasks_controller.html#tibbles">here</a>
 
 ---
 # Summary I

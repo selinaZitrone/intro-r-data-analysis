@@ -499,7 +499,7 @@ class: inverse, middle, center
 
 ## Task 1: Set up your own RStudio project for this workshop
 
-#### Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/01_tasks_controller.html)
+#### Find the task description <a href="../01_tasks_controller.html#set-up-an-rstudio-project">here</a>
 
 ---
 class: inverse, center, middle
@@ -1306,4 +1306,4 @@ class: inverse, middle, center
 
 ## Task 2: Data types and vectors
 
-#### Find the task description [here](www.github.com)
+#### Find the task description <a href="../01_tasks_controller.html#data-types-and-vectors">here</a>

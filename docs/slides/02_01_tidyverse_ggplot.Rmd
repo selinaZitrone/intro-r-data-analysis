@@ -222,11 +222,11 @@ The `ggplot` package has a built-in data set called `msleep` about the sleep tim
 
 Data variables (among others):
 
-- **vore:** carnivore, omnivore, herbivore?
-- **conservation:** conservation status of the animal
-- **sleep_total:** total amount of sleep [h]
-- **brainwt:** brain weight [kg]
-- **bodywt:** body weight [kg]
+- `vore: carnivore, omnivore, herbivore?
+- `conservation: conservation status of the animal
+- `sleep_total: total amount of sleep [h]
+- `brainwt: brain weight [kg]
+- `bodywt: body weight [kg]
 
 If you want to know more about the data set:
 ```{r eval=FALSE}
@@ -263,6 +263,8 @@ ggplot(data = msleep)
 # `aes(x, y)`
 
 The **aes**thetic mapping defines how variables are mapped to aesthetic properties of the plot.
+
+--
 
 .pull-left[
 
@@ -320,7 +322,7 @@ ggplot(data = msleep,
 ---
 # `geom_*()`
 
-`geoms` defines how to represent the data points. There are many different geoms to chose from
+`geoms` define how data points are represented. There are many different geoms to chose from
 
 
 ---
@@ -436,7 +438,7 @@ ggplot(data = msleep,
 - scales can be changed for all elements of `aes`
 - the general format of scale functions are:
 
-<b>scale\_.col1[aes-name]\_.col2[scale-type]</b>
+.center[<b>scale\_.col1[aes-name]\_.col2[scale-type]</b>]
 
 In this example we scale the <b>.col1[x]</b> aesthetic to <b>.col2[log10]</b>.
 
@@ -454,7 +456,7 @@ ggplot(data = msleep,
 ---
 # `geom_smooth()`
 
-We can add a smoothing line that helps us see patterns in the data
+Add a smoothing line that helps see patterns in the data
 
 --
 
@@ -1102,6 +1104,6 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 2-1: Create your own penguin ggplots
+## Task 1: Create your own penguin ggplots
 
-#### Find the task description [here](www.github.com)
+#### Find the task description href="../02_tasks_controller.html#ggplot2">here</a>

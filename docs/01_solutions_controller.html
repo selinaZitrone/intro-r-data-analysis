@@ -105,7 +105,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["Solutions for day 1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Solutions for day 1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["includeSolution2","includeSolution3","includeSolution4"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2440,455 +2440,46 @@ Solutions
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#data-types-and-vectors">2 Data types and vectors</a>
-<ul>
-<li><a href="#type-conversion">2.1 Type conversion</a></li>
-<li><a href="#working-with-vectors">2.2 Working with vectors</a></li>
-<li><a href="#extras">Extras</a></li>
-<li><a href="#references">References</a></li>
-</ul></li>
-<li><a href="#tibbles">3 Tibbles</a>
-<ul>
-<li><a href="#creating-a-tibble">3.2 Creating a tibble</a></li>
-<li><a href="#exploring-the-tibble">3.3 Exploring the tibble</a></li>
-</ul></li>
-<li><a href="#reading-and-writing-tibbles">4 Reading and writing tibbles</a>
-<ul>
-<li><a href="#create-a-tibble-and-write-it">3.1 Create a tibble and write it</a></li>
-<li><a href="#read-data-into-r">3.2 Read data into R</a></li>
-</ul></li>
+<li><a href="#data-types-and-vectors">2 Data types and vectors</a></li>
+<li><a href="#tibbles">3 Tibbles</a></li>
+<li><a href="#reading-and-writing-tibbles">4 Reading and writing tibbles</a></li>
 <li><a href="#reference">Reference</a></li>
 </ul>
 </nav>
 </div>
 <h2 id="data-types-and-vectors">2 Data types and vectors</h2>
 <div class="layout-chunk" data-layout="l-body">
-
-</div>
-<h3 id="type-conversion">2.1 Type conversion</h3>
-<p>Implicit type conversion follows the following rules:</p>
-<ul>
-<li>numeric (double &amp; integer) <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> character</li>
-<li>logical <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> numeric</li>
-<li>logical <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> character</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>v1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"a"</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>v1</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='cn'>FALSE</span>
 </code></pre>
 </div>
-<pre><code>[1] &quot;character&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>v2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>TRUE</span>, <span class='fl'>1L</span>, <span class='cn'>FALSE</span>, <span class='fl'>0L</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>v2</span><span class='op'>)</span>
-</code></pre>
+<pre><code>[1] FALSE</code></pre>
 </div>
-<pre><code>[1] &quot;integer&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>v3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='st'>"23"</span>, <span class='fl'>5</span>, <span class='fl'>7</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>v3</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;character&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>v4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4L</span>, <span class='fl'>6L</span>, <span class='fl'>23.5345</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>v4</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;double&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>v5</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='st'>"a"</span>, <span class='cn'>FALSE</span>, <span class='st'>"FALSE"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>v5</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;character&quot;</code></pre>
-</div>
-<h4 id="explicit-conversion-to-integer">Explicit conversion to integer</h4>
-<p>Values cannot be converted from type <code>character</code> to type <code>integer</code>. If you try to do this, you will get a warning that the conversion returned <code>NA</code></p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v1</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>Warning: NAs introduced by coercion</code></pre>
-<pre><code>[1]  1 NA  2  3</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v2</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] 1 1 1 0 0</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v3</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1]  0 23  5  7</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v4</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1]  4  6 23</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v5</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>Warning: NAs introduced by coercion</code></pre>
-<pre><code>[1] NA NA NA NA</code></pre>
-</div>
-<h4 id="explicit-conversion-to-character">Explicit conversion to character</h4>
-<p>Vectors of all data types can be converted to character. No <code>NA</code> values are introduced.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>v1</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;1&quot; &quot;a&quot; &quot;2&quot; &quot;3&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>v2</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>v3</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;0&quot;  &quot;23&quot; &quot;5&quot;  &quot;7&quot; </code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>v4</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;4&quot;       &quot;6&quot;       &quot;23.5345&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>v5</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;TRUE&quot;  &quot;a&quot;     &quot;FALSE&quot; &quot;FALSE&quot;</code></pre>
-</div>
-<h3 id="working-with-vectors">2.2 Working with vectors</h3>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='st'>"MountainBeaver"</span>, <span class='st'>"Cow"</span>, <span class='st'>"GreyWolf"</span>, <span class='st'>"Goat"</span>,
-  <span class='st'>"GuineaPig"</span>, <span class='st'>"Diplodocus"</span>, <span class='st'>"AsianElephant"</span>, <span class='st'>"Donkey"</span>,
-  <span class='st'>"Horse"</span>, <span class='st'>"PotarMonkey"</span>, <span class='st'>"Cat"</span>, <span class='st'>"Giraffe"</span>,
-  <span class='st'>"Gorilla"</span>, <span class='st'>"Human"</span>, <span class='st'>"AfricanElephant"</span>, <span class='st'>"Triceratops"</span>,
-  <span class='st'>"RhesusMonkey"</span>, <span class='st'>"Kangaroo"</span>, <span class='st'>"GoldenHamster"</span>, <span class='st'>"Mouse"</span>,
-  <span class='st'>"Rabbit"</span>, <span class='st'>"Sheep"</span>, <span class='st'>"Jaguar"</span>, <span class='st'>"Chimpanzee"</span>,
-  <span class='st'>"Rat"</span>, <span class='st'>"Brachiosaurus"</span>, <span class='st'>"Mole"</span>, <span class='st'>"Pig"</span>
-<span class='op'>)</span>
-
-<span class='va'>bodywt_kg</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='fl'>1.4</span>, <span class='fl'>465</span>, <span class='fl'>36.3</span>, <span class='fl'>27.7</span>, <span class='fl'>1.</span>, <span class='fl'>11700</span>, <span class='fl'>2547</span>, <span class='fl'>187.1</span>,
-  <span class='fl'>521</span>, <span class='fl'>10</span>, <span class='fl'>3.3</span>, <span class='fl'>529</span>, <span class='fl'>207</span>, <span class='fl'>62</span>, <span class='fl'>6654</span>, <span class='fl'>9400</span>,
-  <span class='fl'>6.8</span>, <span class='fl'>35</span>, <span class='fl'>0.1</span>, <span class='fl'>0.02</span>, <span class='fl'>2.5</span>, <span class='fl'>55.5</span>, <span class='fl'>100</span>, <span class='fl'>52.2</span>,
-  <span class='fl'>0.3</span>, <span class='fl'>87000</span>, <span class='fl'>0.1</span>, <span class='fl'>192</span>
-<span class='op'>)</span>
-
-<span class='va'>brainwt_g</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='fl'>8.1</span>, <span class='fl'>423</span>, <span class='fl'>119.5</span>, <span class='fl'>115</span>, <span class='fl'>5.5</span>, <span class='fl'>50</span>, <span class='fl'>4603</span>, <span class='fl'>419</span>, <span class='fl'>655</span>, <span class='fl'>115</span>, <span class='fl'>25.6</span>,
-  <span class='fl'>680</span>, <span class='fl'>406</span>, <span class='fl'>1320</span>, <span class='fl'>5712</span>, <span class='fl'>70</span>, <span class='fl'>179</span>, <span class='fl'>56</span>, <span class='fl'>1</span>, <span class='fl'>0.4</span>, <span class='fl'>12.1</span>, <span class='fl'>175</span>,
-  <span class='fl'>157</span>, <span class='fl'>440</span>, <span class='fl'>1.9</span>, <span class='fl'>154.5</span>, <span class='fl'>3</span>, <span class='fl'>180</span>
-<span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p>Check if the following animals are contained in the data set</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals_to_check</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Snail"</span>, <span class='st'>"Goat"</span>, <span class='st'>"Chimpanzee"</span>, <span class='st'>"Rat"</span>, <span class='st'>"Dragon"</span>, <span class='st'>"Eagle"</span><span class='op'>)</span>
-<span class='co'># Goes through every element in species and returns TRUE if it appears in animals_to_check</span>
-</code></pre>
-</div>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>species</span> <span class='op'>%in%</span> <span class='va'>animals_to_check</span>
-</code></pre>
-</div>
-<pre><code> [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[23] FALSE  TRUE  TRUE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Goes through every element in animals_to_check and returns TRUE if it appears in species</span>
-<span class='va'>animals_to_check</span> <span class='op'>%in%</span> <span class='va'>species</span>
-</code></pre>
-</div>
-<pre><code>[1] FALSE  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
-</div>
-<p>Note: If you use <code>%in%</code> to check if elements are contained in a vector, the result vector is of the same length as the vector that is <strong>before</strong> the <code>%in%</code></p>
-<p>Convert the brain weight from g to kg:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>brainwt_kg</span> <span class='op'>&lt;-</span> <span class='va'>brainwt_g</span> <span class='op'>/</span> <span class='fl'>1000</span>
-</code></pre>
-</div>
-</div>
-<p>What is the mean brain weight</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>brainwt_kg</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] 0.5745214</code></pre>
-</div>
-<p>Which species have brain weight that is larger than the mean brain weight?</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>species</span><span class='op'>[</span><span class='va'>brainwt_kg</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>brainwt_kg</span><span class='op'>)</span><span class='op'>]</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;AsianElephant&quot;   &quot;Horse&quot;           &quot;Giraffe&quot;        
-[4] &quot;Human&quot;           &quot;AfricanElephant&quot;</code></pre>
-</div>
-<p>Calculate the ratio brain weight / body weight and save it in a vector:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>brain_body_ratio</span> <span class='op'>&lt;-</span> <span class='va'>brainwt_kg</span> <span class='op'>/</span> <span class='va'>bodywt_kg</span> <span class='op'>*</span> <span class='fl'>100</span>
-</code></pre>
-</div>
-</div>
-<h5 id="which-animals-have-a-larger-brain-to-body-ratio-than-humans">Which animals have a larger brain to body ratio than humans?</h5>
-<p>Step 1: Look at the brain to body ratio of humans</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>brain_body_ratio</span><span class='op'>[</span><span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Human"</span><span class='op'>]</span>
-</code></pre>
-</div>
-<pre><code>[1] 2.129032</code></pre>
-</div>
-<p>Step 2: Compare it with the other animals</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># New variable for human brain to body ratio</span>
-<span class='va'>bbr_human</span> <span class='op'>&lt;-</span> <span class='va'>brain_body_ratio</span><span class='op'>[</span><span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Human"</span><span class='op'>]</span>
-<span class='co'># Are there animals that have a larger brain to body ratio than humans?</span>
-<span class='va'>brain_body_ratio</span> <span class='op'>&gt;</span> <span class='va'>bbr_human</span>
-</code></pre>
-</div>
-<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[12] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-[23] FALSE FALSE FALSE FALSE  TRUE FALSE</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Which are these animals</span>
-<span class='va'>species</span><span class='op'>[</span><span class='va'>brain_body_ratio</span> <span class='op'>&gt;</span> <span class='va'>bbr_human</span><span class='op'>]</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;RhesusMonkey&quot; &quot;Mole&quot;        </code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># or short</span>
-<span class='va'>species</span><span class='op'>[</span><span class='va'>brain_body_ratio</span> <span class='op'>&gt;</span> <span class='va'>brain_body_ratio</span><span class='op'>[</span><span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Human"</span><span class='op'>]</span><span class='op'>]</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;RhesusMonkey&quot; &quot;Mole&quot;        </code></pre>
-</div>
-<h3 id="extras">Extras</h3>
-<ul>
-<li>Round the vector to 4 decimal places:</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>brain_body_ratio</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>brain_body_ratio</span>, digits <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<ul>
-<li>Which animal has the smallest brain to body ratio?</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>species</span><span class='op'>[</span><span class='va'>brain_body_ratio</span> <span class='op'>==</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>brain_body_ratio</span><span class='op'>)</span><span class='op'>]</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;Brachiosaurus&quot;</code></pre>
-</div>
-<p>The Brachiosaurus has a really small brain with a weight of just 154.5 g at a body weight of 87000 kg!</p>
-<ul>
-<li>Add elements to the vector</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>species_new</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Eagle"</span>, <span class='st'>"Snail"</span>, <span class='st'>"Lion"</span><span class='op'>)</span>
-<span class='va'>brainwt_g_new</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>, <span class='cn'>NA</span>, <span class='fl'>500</span><span class='op'>)</span>
-<span class='va'>bodywt_kg_new</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>18</span>, <span class='fl'>0.01</span>, <span class='fl'>550</span><span class='op'>)</span>
-
-<span class='va'>species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>species</span>, <span class='va'>species_new</span><span class='op'>)</span>
-<span class='va'>brainwt_g</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>brainwt_g</span>, <span class='va'>brainwt_g_new</span><span class='op'>)</span>
-<span class='va'>bodywt_kg</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>bodywt_kg</span>, <span class='va'>bodywt_kg_new</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<ul>
-<li>What is the mean brain weight now?</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>brainwt_g</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] NA</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># na.rm = TRUE</span>
-<span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>brainwt_g</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] 554.22</code></pre>
-</div>
-<h3 id="references">References</h3>
-<p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Solution will be uploaded later</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="tibbles">3 Tibbles</h2>
-<h3 id="creating-a-tibble">3.2 Creating a tibble</h3>
-<p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from the last task and put them in a tibble.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># install.packages("tibble")</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tibble.tidyverse.org/'>tibble</a></span><span class='op'>)</span>
-
-<span class='va'>species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='st'>"MountainBeaver"</span>, <span class='st'>"Cow"</span>, <span class='st'>"GreyWolf"</span>, <span class='st'>"Goat"</span>,
-  <span class='st'>"GuineaPig"</span>, <span class='st'>"Diplodocus"</span>, <span class='st'>"AsianElephant"</span>, <span class='st'>"Donkey"</span>,
-  <span class='st'>"Horse"</span>, <span class='st'>"PotarMonkey"</span>, <span class='st'>"Cat"</span>, <span class='st'>"Giraffe"</span>,
-  <span class='st'>"Gorilla"</span>, <span class='st'>"Human"</span>, <span class='st'>"AfricanElephant"</span>, <span class='st'>"Triceratops"</span>,
-  <span class='st'>"RhesusMonkey"</span>, <span class='st'>"Kangaroo"</span>, <span class='st'>"GoldenHamster"</span>, <span class='st'>"Mouse"</span>,
-  <span class='st'>"Rabbit"</span>, <span class='st'>"Sheep"</span>, <span class='st'>"Jaguar"</span>, <span class='st'>"Chimpanzee"</span>,
-  <span class='st'>"Rat"</span>, <span class='st'>"Brachiosaurus"</span>, <span class='st'>"Mole"</span>, <span class='st'>"Pig"</span>
-<span class='op'>)</span>
-
-<span class='va'>bodywt_kg</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='fl'>1.4</span>, <span class='fl'>465</span>, <span class='fl'>36.3</span>, <span class='fl'>27.7</span>, <span class='fl'>1.</span>, <span class='fl'>11700</span>, <span class='fl'>2547</span>, <span class='fl'>187.1</span>,
-  <span class='fl'>521</span>, <span class='fl'>10</span>, <span class='fl'>3.3</span>, <span class='fl'>529</span>, <span class='fl'>207</span>, <span class='fl'>62</span>, <span class='fl'>6654</span>, <span class='fl'>9400</span>,
-  <span class='fl'>6.8</span>, <span class='fl'>35</span>, <span class='fl'>0.1</span>, <span class='fl'>0.02</span>, <span class='fl'>2.5</span>, <span class='fl'>55.5</span>, <span class='fl'>100</span>, <span class='fl'>52.2</span>,
-  <span class='fl'>0.3</span>, <span class='fl'>87000</span>, <span class='fl'>0.1</span>, <span class='fl'>192</span>
-<span class='op'>)</span>
-
-<span class='va'>brainwt_g</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='fl'>8.1</span>, <span class='fl'>423</span>, <span class='fl'>119.5</span>, <span class='fl'>115</span>, <span class='fl'>5.5</span>, <span class='fl'>50</span>, <span class='fl'>4603</span>, <span class='fl'>419</span>, <span class='fl'>655</span>, <span class='fl'>115</span>, <span class='fl'>25.6</span>,
-  <span class='fl'>680</span>, <span class='fl'>406</span>, <span class='fl'>1320</span>, <span class='fl'>5712</span>, <span class='fl'>70</span>, <span class='fl'>179</span>, <span class='fl'>56</span>, <span class='fl'>1</span>, <span class='fl'>0.4</span>, <span class='fl'>12.1</span>, <span class='fl'>175</span>,
-  <span class='fl'>157</span>, <span class='fl'>440</span>, <span class='fl'>1.9</span>, <span class='fl'>154.5</span>, <span class='fl'>3</span>, <span class='fl'>180</span>
-<span class='op'>)</span>
-<span class='co'># Creating the tibble </span>
-<span class='va'>animals</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-  species <span class='op'>=</span> <span class='va'>species</span>,
-  bodywt_kg <span class='op'>=</span> <span class='va'>bodywt_kg</span>,
-  brainwt_kg <span class='op'>=</span> <span class='va'>brainwt_g</span> <span class='op'>/</span> <span class='fl'>1000</span>
-<span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='cn'>FALSE</span>
 </code></pre>
 </div>
+<pre><code>[1] FALSE</code></pre>
 </div>
-<h3 id="exploring-the-tibble">3.3 Exploring the tibble</h3>
-<p>In the view window that opens, you have some options to filter the data and sort rows.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://tibble.tidyverse.org/reference/view.html'>view</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>   species            bodywt_kg          brainwt_kg     
- Length:28          Min.   :    0.02   Min.   :0.00040  
- Class :character   1st Qu.:    3.10   1st Qu.:0.02223  
- Mode  :character   Median :   53.85   Median :0.13700  
-                    Mean   : 4278.44   Mean   :0.57452  
-                    3rd Qu.:  479.00   3rd Qu.:0.42000  
-                    Max.   :87000.00   Max.   :5.71200  </code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>tibble [28 x 3] (S3: tbl_df/tbl/data.frame)
- $ species   : chr [1:28] &quot;MountainBeaver&quot; &quot;Cow&quot; &quot;GreyWolf&quot; &quot;Goat&quot; ...
- $ bodywt_kg : num [1:28] 1.4 465 36.3 27.7 1 ...
- $ brainwt_kg: num [1:28] 0.0081 0.423 0.1195 0.115 0.0055 ...</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] 28</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] 3</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;species&quot;    &quot;bodywt_kg&quot;  &quot;brainwt_kg&quot;</code></pre>
-</div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Solution will be uploaded later</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="reading-and-writing-tibbles">4 Reading and writing tibbles</h2>
-<h3 id="create-a-tibble-and-write-it">3.1 Create a tibble and write it</h3>
-<p>Load the package and creat the tibble:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
-
-<span class='va'>species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='st'>"MountainBeaver"</span>, <span class='st'>"Cow"</span>, <span class='st'>"GreyWolf"</span>, <span class='st'>"Goat"</span>,
-  <span class='st'>"GuineaPig"</span>, <span class='st'>"Diplodocus"</span>, <span class='st'>"AsianElephant"</span>, <span class='st'>"Donkey"</span>,
-  <span class='st'>"Horse"</span>, <span class='st'>"PotarMonkey"</span>, <span class='st'>"Cat"</span>, <span class='st'>"Giraffe"</span>,
-  <span class='st'>"Gorilla"</span>, <span class='st'>"Human"</span>, <span class='st'>"AfricanElephant"</span>, <span class='st'>"Triceratops"</span>,
-  <span class='st'>"RhesusMonkey"</span>, <span class='st'>"Kangaroo"</span>, <span class='st'>"GoldenHamster"</span>, <span class='st'>"Mouse"</span>,
-  <span class='st'>"Rabbit"</span>, <span class='st'>"Sheep"</span>, <span class='st'>"Jaguar"</span>, <span class='st'>"Chimpanzee"</span>,
-  <span class='st'>"Rat"</span>, <span class='st'>"Brachiosaurus"</span>, <span class='st'>"Mole"</span>, <span class='st'>"Pig"</span>
-<span class='op'>)</span>
-
-<span class='va'>bodywt_kg</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='fl'>1.4</span>, <span class='fl'>465</span>, <span class='fl'>36.3</span>, <span class='fl'>27.7</span>, <span class='fl'>1.</span>, <span class='fl'>11700</span>, <span class='fl'>2547</span>, <span class='fl'>187.1</span>,
-  <span class='fl'>521</span>, <span class='fl'>10</span>, <span class='fl'>3.3</span>, <span class='fl'>529</span>, <span class='fl'>207</span>, <span class='fl'>62</span>, <span class='fl'>6654</span>, <span class='fl'>9400</span>,
-  <span class='fl'>6.8</span>, <span class='fl'>35</span>, <span class='fl'>0.1</span>, <span class='fl'>0.02</span>, <span class='fl'>2.5</span>, <span class='fl'>55.5</span>, <span class='fl'>100</span>, <span class='fl'>52.2</span>,
-  <span class='fl'>0.3</span>, <span class='fl'>87000</span>, <span class='fl'>0.1</span>, <span class='fl'>192</span>
-<span class='op'>)</span>
-
-<span class='va'>brainwt_g</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='fl'>8.1</span>, <span class='fl'>423</span>, <span class='fl'>119.5</span>, <span class='fl'>115</span>, <span class='fl'>5.5</span>, <span class='fl'>50</span>, <span class='fl'>4603</span>, <span class='fl'>419</span>, <span class='fl'>655</span>, <span class='fl'>115</span>, <span class='fl'>25.6</span>,
-  <span class='fl'>680</span>, <span class='fl'>406</span>, <span class='fl'>1320</span>, <span class='fl'>5712</span>, <span class='fl'>70</span>, <span class='fl'>179</span>, <span class='fl'>56</span>, <span class='fl'>1</span>, <span class='fl'>0.4</span>, <span class='fl'>12.1</span>, <span class='fl'>175</span>,
-  <span class='fl'>157</span>, <span class='fl'>440</span>, <span class='fl'>1.9</span>, <span class='fl'>154.5</span>, <span class='fl'>3</span>, <span class='fl'>180</span>
-<span class='op'>)</span>
-<span class='co'># Creating the tibble </span>
-<span class='va'>animals</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-  species <span class='op'>=</span> <span class='va'>species</span>,
-  bodywt_kg <span class='op'>=</span> <span class='va'>bodywt_kg</span>,
-  brainwt_kg <span class='op'>=</span> <span class='va'>brainwt_g</span> <span class='op'>/</span> <span class='fl'>1000</span>
-<span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='cn'>FALSE</span>
 </code></pre>
 </div>
+<pre><code>[1] FALSE</code></pre>
 </div>
-<p>Writing the data to disk:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>write_csv</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>animals</span>, file <span class='op'>=</span> <span class='st'>"./data/animals.csv"</span><span class='op'>)</span> <span class='co'># write as csv</span>
-<span class='fu'>write_tsv</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>animals</span>, file <span class='op'>=</span> <span class='st'>"./data/animals.txt"</span><span class='op'>)</span> <span class='co'># write as txt</span>
-</code></pre>
-</div>
-</div>
-<h3 id="read-data-into-r">3.2 Read data into R</h3>
-<p>Read the same data back into R:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals_csv</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"./data/animals.csv"</span><span class='op'>)</span> <span class='co'># read the csv</span>
-<span class='va'>animals_tsv</span> <span class='op'>&lt;-</span> <span class='fu'>read_tsv</span><span class='op'>(</span><span class='st'>"./data/animals.txt"</span><span class='op'>)</span> <span class='co'># read the txt</span>
-</code></pre>
-</div>
-</div>
-<p>If you use the <code>Files</code> pane to open data files, you can view them in R Studio. For csv files, you have the additional option to click on an <code>Import Dataset</code> button.</p>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="tasks/day2/img/readr_import_button.png" width="344" /></p>
-</div>
-<p>If you click on this button, have the possibility to import the data set via a graphical user interface.</p>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="tasks/day2/img/readr_import_options.png" width="729" /></p>
-</div>
-<p>This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct <code>read_*()</code> function arguments.</p>
-<p>Just play with these different options of reading data into R and find one that fits you best.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Solution will be uploaded later</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h1 id="reference">Reference</h1>
 <p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

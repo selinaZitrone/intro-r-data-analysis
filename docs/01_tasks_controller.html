@@ -2459,8 +2459,9 @@ Solutions
 </ul></li>
 <li><a href="#reading-and-writing-tibbles">4 Reading and writing tibbles</a>
 <ul>
-<li><a href="#create-a-tibble-and-write-it">3.1 Create a tibble and write it</a></li>
-<li><a href="#read-data-into-r">3.2 Read data into R</a></li>
+<li><a href="#getting-started-with-readr-and-the-tidyverse">3.1 Getting started with readr and the tidyverse</a></li>
+<li><a href="#create-a-tibble-and-write-it">3.2 Create a tibble and write it</a></li>
+<li><a href="#read-data-into-r">3.3 Read data into R</a></li>
 </ul></li>
 <li><a href="#reference">Reference</a></li>
 </ul>
@@ -2468,33 +2469,37 @@ Solutions
 </div>
 <h2 id="set-up-an-rstudio-project">1 Set up an RStudio project</h2>
 <h3 id="change-settings">1.1 Change settings</h3>
-<p>Before you get started, there is an important setting that you should change in RStudio. By default, RStudio will save an the workspace of your current session in an <code>.Rdata</code> file. This would allow you to start the next session exactly where you left by loading this <code>.Rdata</code> file.</p>
+<p>Before you get started, there is an important setting that you should change in RStudio. By default, RStudio will save the workspace of your current session in an <code>.Rdata</code> file. This would allow you to start the next session exactly where you left it by loading the <code>.Rdata</code> file.</p>
 <p>This is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.</p>
-<p>In RStudio go to <code>Tools -&gt; Global Options -&gt; General</code> and set the following workspace options:</p>
+<p>In RStudio go to <code>Tools -&gt; Global Options -&gt; General</code> and</p>
+<ul>
+<li>remove the check mark for “Restore <code>.RData</code> into workspace at setup”</li>
+<li><strong>Never</strong> save workspace to <code>.RData</code> on exit</li>
+</ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="tasks/day1/img/setting_workspace.png" width="329" /></p>
 </div>
 <h3 id="create-an-rstudio-project">1.2 Create an RStudio project</h3>
-<p>Create an RStudio project that you can use for all the scripts, notes, data, etc. from this workshop.</p>
+<p>Create an RStudio project for all the scripts, notes, data, etc. from this workshop.</p>
 <ul>
 <li>Create a project in a directory of your choice following the instructions from the slides</li>
 <li>Use the <code>File</code> pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days
 <ul>
-<li>e.g. create folders for <code>data</code>, <code>scripts</code>, <code>documents</code>,…</li>
+<li>e.g. create the folders <code>data</code>, <code>R</code>, <code>documents</code>,…</li>
 <li>you can always change the structure of your project later, but for now, we want some basic folders that we can navigate</li>
 </ul></li>
-<li>Now close the project</li>
-<li>Find the project your computer’s file explorer and open it</li>
+<li>Now close RStudio</li>
+<li>Find the project in your computer’s file explorer and open it</li>
 </ul>
 <p>You can add files to your project either directly in RStudio, or in the file explorer of your operating system.</p>
 <h3 id="add-an-r-script-to-the-project">1.3 Add an R script to the project</h3>
 <ul>
-<li>create a new R script, save it in the appropriate folder of your project (e.g. <code>scripts</code> or <code>R</code>)</li>
-<li>copy paste the code from below into your script
+<li>create a new R script and save it in the appropriate folder of your project (e.g. <code>scripts</code> or <code>R</code>)</li>
+<li>copy and paste the code from below into your script
 <ul>
 <li>don’t worry if you don’t understand the code yet, we will learn all this later</li>
 </ul></li>
-<li>run the code in the script line by line. Try both, running code using the <code>Run</code> button and the keyboard shortcut <code>Ctrl/Cmd + Enter/Return</code>
+<li>run the code in the script line by line. Try both, running code using the <code>Run</code> button (in the top right corner of your script pane) and the keyboard shortcut <code>Ctrl/Cmd + Enter/Return</code>
 <ul>
 <li>for each line that you run, observe what is happening to the other panes (console, environment, …) in RStudio. Can you explain what is happening?</li>
 </ul></li>
@@ -2530,9 +2535,9 @@ Solutions
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="data-types-and-vectors">2 Data types and vectors</h2>
-<p>Create a new script for the code of this task. Use comments in your code to take notes.</p>
+<p>Create a new script for this task. Use comments in your code to take notes.</p>
 <h3 id="type-conversion">2.1 Type conversion</h3>
-<p>Look at the vectors below. What do you think will happen?</p>
+<p>Look at the vectors below. What do you think will happen? Which data type do they have?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>v1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"a"</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>
@@ -2547,7 +2552,7 @@ Solutions
 <h3 id="working-with-vectors">2.2 Working with vectors</h3>
 <p>You have the following vectors:</p>
 <ul>
-<li><code>species</code>: name of species</li>
+<li><code>species</code>: name of the species</li>
 <li><code>bodywt_kg</code>: body weight of the species in kg</li>
 <li><code>brainwt_g</code>: brain weight of the species in g</li>
 </ul>
@@ -2589,10 +2594,10 @@ Solutions
 </div>
 </div>
 <ul>
-<li>Convert brain weight from g to kg and save result it in a new vector <code>brainwt_kg</code></li>
+<li>Convert brain weight from g to kg and save the result in a new vector <code>brainwt_kg</code></li>
 <li>Calculate mean and standard deviation of the brain weight</li>
-<li>Which species have brain weight that is larger than the mean brain weight?</li>
-<li>What is the ratio of brain weight to body weight in percent? Calculate it and save the result in a new variable</li>
+<li>Which species have a brain weight larger than the mean brain weight?</li>
+<li>Calculate the ratio of brain weight to body weight in percent and save the result in a new variable</li>
 <li>Are there any animals with a larger brain to body ratio than humans? If yes, which ones?
 <ul>
 <li>Hint: find the ratio for humans and save it in a variable first</li>
@@ -2602,7 +2607,7 @@ Solutions
 <ul>
 <li>Round the ratio vector to 4 decimal places with the <code>round</code> function
 <ul>
-<li>have a look at <code>?round</code> to check out how to use it</li>
+<li>type <code>?round</code> into the console to open the help of the <code>round</code> function</li>
 </ul></li>
 <li>Which animal has the smallest brain to body ratio?
 <ul>
@@ -2632,9 +2637,9 @@ Solutions
 <li>Execute this line and the tibble package is loaded into your R session and ready to use</li>
 </ul>
 <h3 id="creating-a-tibble">3.2 Creating a tibble</h3>
-<p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from the last task and combine them in a tibble.</p>
+<p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from before and combine them in a tibble.</p>
 <h3 id="exploring-the-tibble">3.3 Exploring the tibble</h3>
-<p>Explore the tibble you created with the different function that you learned in the presentation. You can for example try</p>
+<p>Explore the tibble you created with the different functions that you learned in the presentation. You can for example try</p>
 <ul>
 <li><code>view()</code> and explore what you can do in the view window that opens: searching, filtering, sorting columns</li>
 <li><code>str()</code> to view the structure of the data</li>
@@ -2643,20 +2648,30 @@ Solutions
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="reading-and-writing-tibbles">4 Reading and writing tibbles</h2>
-<h3 id="create-a-tibble-and-write-it">3.1 Create a tibble and write it</h3>
-<p>Before we try the <code>read_*</code> functions, we will create a tibble in R and save it to disk.</p>
-<p>Let’s use the tibble with animal brain and body weights. In case you don’t have it ready anymore, here is the code to create it:</p>
+<h3 id="getting-started-with-readr-and-the-tidyverse">3.1 Getting started with readr and the tidyverse</h3>
+<p>Before you start, make sure to install the <code>tidyverse</code> packages by calling</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"tidyverse"</span><span class='op'>)</span>
+</code></pre>
 </div>
-<p>Before writing the data to your R project, make sure that you created a dedicated <code>data</code> directory in it.</p>
-<p>Now write <code>animals</code> to that directory. Try writing</p>
+</div>
+<p>This will install readr along with other tidyverse packages.</p>
+<p>Remember to put <code>library(tidyverse)</code> (or <code>library(readr)</code>) on top of your script to access the readr functions.</p>
+<h3 id="create-a-tibble-and-write-it">3.2 Create a tibble and write it</h3>
+<p>Before we try the <code>read_*</code> functions, we will create a tibble in R and save it to disk.</p>
+<p>Let’s use the tibble with animal brain and body weights from the last task and write it to our project directory.</p>
+<p>Before writing the data</p>
 <ul>
-<li>with comma separator as csv</li>
-<li>with tab separator as txt</li>
+<li>create a dedicated <code>data</code> sub-directory in your project (if you don’t have one yet)</li>
+</ul>
+<p>Now write the <code>animals</code> tibble to that sub-directory. Try writing a file with</p>
+<ul>
+<li>comma separator as csv</li>
+<li>tab separator as txt</li>
 </ul>
 <p>Check if the files were written into the correct folder.</p>
-<h3 id="read-data-into-r">3.2 Read data into R</h3>
+<h3 id="read-data-into-r">3.3 Read data into R</h3>
 <p>Now, try to read the two data sets back into R using the appropriate <code>read_*()</code> functions for the separators.</p>
 <p>If this was successful, navigate to your <code>data</code> directory using the <code>Files</code> pane of RStudio. Try clicking on both the <code>.txt</code> and the <code>.csv</code> file that you just saved there. What is different? Try the <code>Import Dataset</code> button for the <code>.csv</code> file.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>

@@ -30,8 +30,9 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-06-15 (updated: 2021-07-31)
+  2021-06-15 (updated: 2021-08-01)
 ]
+
 ---
 # GLMs background
 
@@ -170,7 +171,7 @@ with `\(k\)` being the number of occurrences
 
 - log link function: `\(ln(\lambda_i) = \eta_i\)`
 
-- inverse link function: `\(\lambda_i = e^{\eta_i}}\)`
+- inverse link function: `\(\lambda_i = e^{\eta_i}\)`
 
 - poisson error distribution: `\(\epsilon \sim P(\lambda_i)\)`
 
@@ -220,7 +221,7 @@ specdat
 ---
 # Fit the model
 
-`\(H_0\)`: The number of species increases with plot biomass and pH. The effect of biomass on species number depends on pH of the soil.
+**Question:** How do biomass and soil pH influence species richness?
 
 --
 
@@ -416,7 +417,51 @@ ggplot(specdat, aes(y = Species, x = Biomass, color = pH)) +
 ---
 class: inverse, middle, center
 
-# GLMs with proportion data
+# .large[GLM with binary data]
+
+---
+# Example
+
+Odonates in water filled bromeliads in Costa Rica.
+
+.pull-left[
+
+Variables:
+
+- `site`: location
+- `logmaxvolume`: bromeliad size
+- `Odonatepresence`: Odonates present (1) or not (0)
+
+Question: How does bromeliad size influence the presence of Odonates?
+
+
+```r
+mod &lt;- glm(Odonatepresence ~ logmaxvolume + site, data = bromeliad, family = "binomial")
+```
+
+
+]
+
+.pull-right[
+
+&lt;img src="03_02_glm_files/figure-html/unnamed-chunk-15-1.png" width="504" /&gt;
+]
+
+.footnote-right[Petermann et al., *Ecology* (2015)]
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 3: Poisson and binary glms with R
+
+#### Find the task description href="../03_tasks_controller.html#poisson-and-binary-glm"&gt;here&lt;/a&gt;
+
+---
+class: inverse, middle, center
+
+# .large[GLMs with proportion data]
 ## Let's look at an example
 
 ---
@@ -580,8 +625,9 @@ mod1 &lt;- glm(
 ---
 # Now you
 
----
-# Additional Resources
+## Task 4: Binomial glms with proportion data
+
+#### Find the task description href="../03_tasks_controller.html#proportion-glm"&gt;here&lt;/a&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

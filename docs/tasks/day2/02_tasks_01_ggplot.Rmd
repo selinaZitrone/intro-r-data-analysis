@@ -1,14 +1,6 @@
-### 1.1 Getting started with ggplot and the tidyverse
+### 1.1 Getting started
 
 A helpful resource for to consult for this task can be the [ggplot2 cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf).
-
-Before you start, make sure to install the `tidyverse` packages by calling
-
-```{r eval=FALSE, echo=TRUE}
-install.packages("tidyverse")
-```
-
-This will install ggplot2 along with other tidyverse packages.
 
 Remember to put `library(tidyverse)` (or `library(ggplot2)`) on top of your script to access the ggplot functions.
 

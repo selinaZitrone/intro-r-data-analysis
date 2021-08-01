@@ -2448,7 +2448,11 @@ Solutions
 <li><a href="#anova">1.4 Anova</a></li>
 </ul></li>
 <li><a href="#linear-models-with-transformation">2 Linear models with transformation</a></li>
-<li><a href="#poisson-and-binary-glm">3 Poisson and binary glm</a></li>
+<li><a href="#poisson-and-binary-glm">3 Poisson and binary glm</a>
+<ul>
+<li><a href="#poisson-glm">1.1 Poisson glm</a></li>
+<li><a href="#binary-glm">1.2 Binary glm</a></li>
+</ul></li>
 <li><a href="#proportion-glm">3 Proportion glm</a></li>
 </ul>
 </nav>
@@ -2517,7 +2521,55 @@ Solutions
 <p>No tasks yet</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="poisson-and-binary-glm">3 Poisson and binary glm</h2>
-<p>No tasks yet</p>
+<h3 id="poisson-glm">1.1 Poisson glm</h3>
+<p>The data set <code>rabbit</code> contains data on a highly threatened rabbit species.</p>
+<p>The variables in this data set are:</p>
+<ul>
+<li><code>sights</code>: integer variable of camera trap sightings</li>
+<li><code>distance</code>: distance to river (m)</li>
+<li><code>degredation</code>: level of degradation (low, medium, very high)</li>
+</ul>
+<p><strong>Question:</strong> How does the degradation level of the site and the distance to the river influence the sightings of rabbits?</p>
+<p>You can get the data with:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p><strong>Tasks</strong></p>
+<ul>
+<li><p>Plot the data</p></li>
+<li><p>Fit a poisson glm (with or without interaction)</p></li>
+<li><p>Test the significant of the explanatory variables</p></li>
+<li><p>Add the model to the plot</p></li>
+</ul>
+<h4 id="extra-1">Extra</h4>
+<ul>
+<li>Make the plot look nicer</li>
+<li>Add the model using a different option</li>
+</ul>
+<h3 id="binary-glm">1.2 Binary glm</h3>
+<p>The data set is about the occurrence of woodpeckers at forest sites depending on the amount of deadwood and the dominant tree species.</p>
+<p>The variables in the data set are:</p>
+<ul>
+<li><code>bird_pres</code>: binary response variable (presence/absence of the bird at the site)</li>
+<li><code>species</code>: dominant tree species at the site</li>
+<li><code>deadwood</code>: amount of deadwood at the site</li>
+</ul>
+<p><strong>Question:</strong> How does the the amount of deadwood and the dominant tree species influence the probability of woodpecker presence?</p>
+<p>You can get the data with:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<ul>
+<li><p>Plot the data</p></li>
+<li><p>Fit a binary glm (<code>family = "binomial"</code>)</p></li>
+<li><p>Test the significance of the predictors</p></li>
+<li><p>Plot the data and add model predictions</p></li>
+</ul>
+<h4 id="extra-2">Extra</h4>
+<ul>
+<li>Make the plot look nicer</li>
+<li>Add the model using a different option</li>
+</ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="proportion-glm">3 Proportion glm</h2>
 <p>No tasks yet</p>

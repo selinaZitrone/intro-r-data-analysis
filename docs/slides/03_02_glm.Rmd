@@ -41,6 +41,7 @@ cols <- c( "#4C7488","#D78974", "#D7BC74")
 
 ```{r child="title_slide.Rmd"}
 ```
+
 ---
 # GLMs background
 
@@ -179,7 +180,7 @@ with $k$ being the number of occurrences
 
 - log link function: $ln(\lambda_i) = \eta_i$
 
-- inverse link function: $\lambda_i = e^{\eta_i}}$
+- inverse link function: $\lambda_i = e^{\eta_i}$
 
 - poisson error distribution: $\epsilon \sim P(\lambda_i)$
 
@@ -226,7 +227,7 @@ spec_plot
 ---
 # Fit the model
 
-$H_0$: The number of species increases with plot biomass and pH. The effect of biomass on species number depends on pH of the soil.
+**Question:** How do biomass and soil pH influence species richness?
 
 --
 
@@ -392,7 +393,62 @@ spec_plot +
 ---
 class: inverse, middle, center
 
-# GLMs with proportion data
+# .large[GLM with binary data]
+
+---
+# Example
+
+Odonates in water filled bromeliads in Costa Rica.
+
+.pull-left[
+
+Variables:
+
+- `site`: location
+- `logmaxvolume`: bromeliad size
+- `Odonatepresence`: Odonates present (1) or not (0)
+
+Question: How does bromeliad size influence the presence of Odonates?
+
+```{r eval=FALSE}
+mod <- glm(Odonatepresence ~ logmaxvolume + site, data = bromeliad, family = "binomial")
+```
+
+
+]
+
+.pull-right[
+
+```{r echo=FALSE, fig.height=6.1}
+bromeliads <- read_csv(here::here("data/slides/bromeliads.txt"))
+bromeliads %>% 
+  filter(site != "Picinguaba") %>% 
+ggplot(aes(x=logmaxvolume, y = Odonatepresence, color = site))+
+  geom_smooth(method = "glm",se=FALSE,
+              method.args = list(
+                family = "binomial"
+              ))+
+  geom_point(size = 3, alpha = 0.2)+
+  ggsci::scale_color_uchicago()+
+  theme(legend.position = c(0.15, 0.85))
+```
+]
+
+.footnote-right[Petermann et al., *Ecology* (2015)]
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 3: Poisson and binary glms with R
+
+#### Find the task description href="../03_tasks_controller.html#poisson-and-binary-glm">here</a>
+
+---
+class: inverse, middle, center
+
+# .large[GLMs with proportion data]
 ## Let's look at an example
 
 ---
@@ -537,5 +593,6 @@ mod1 <- glm(
 ---
 # Now you
 
----
-# Additional Resources
+## Task 4: Binomial glms with proportion data
+
+#### Find the task description href="../03_tasks_controller.html#proportion-glm">here</a>

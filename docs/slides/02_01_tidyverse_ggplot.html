@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-06-15 (updated: 2021-07-31)
+  2021-06-15 (updated: 2021-08-01)
 ]
 
 ---
@@ -212,11 +212,11 @@ The `ggplot` package has a built-in data set called `msleep` about the sleep tim
 
 Data variables (among others):
 
-- **vore:** carnivore, omnivore, herbivore?
-- **conservation:** conservation status of the animal
-- **sleep_total:** total amount of sleep [h]
-- **brainwt:** brain weight [kg]
-- **bodywt:** body weight [kg]
+- `vore: carnivore, omnivore, herbivore?
+- `conservation: conservation status of the animal
+- `sleep_total: total amount of sleep [h]
+- `brainwt: brain weight [kg]
+- `bodywt: body weight [kg]
 
 If you want to know more about the data set:
 
@@ -253,6 +253,8 @@ library(ggplot) # or library(tidyverse)
 # `aes(x, y)`
 
 The **aes**thetic mapping defines how variables are mapped to aesthetic properties of the plot.
+
+--
 
 .pull-left[
 
@@ -307,7 +309,7 @@ Remember argument matching by position?
 ---
 # `geom_*()`
 
-`geoms` defines how to represent the data points. There are many different geoms to chose from
+`geoms` define how data points are represented. There are many different geoms to chose from
 
 
 ---
@@ -425,7 +427,7 @@ ggplot(data = msleep,
 - scales can be changed for all elements of `aes`
 - the general format of scale functions are:
 
-&lt;b&gt;scale\_.col1[aes-name]\_.col2[scale-type]&lt;/b&gt;
+.center[&lt;b&gt;scale\_.col1[aes-name]\_.col2[scale-type]&lt;/b&gt;]
 
 In this example we scale the &lt;b&gt;.col1[x]&lt;/b&gt; aesthetic to &lt;b&gt;.col2[log10]&lt;/b&gt;.
 
@@ -438,7 +440,7 @@ In this example we scale the &lt;b&gt;.col1[x]&lt;/b&gt; aesthetic to &lt;b&gt;.
 ---
 # `geom_smooth()`
 
-We can add a smoothing line that helps us see patterns in the data
+Add a smoothing line that helps see patterns in the data
 
 --
 
@@ -996,9 +998,9 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 2-1: Create your own penguin ggplots
+## Task 1: Create your own penguin ggplots
 
-#### Find the task description [here](www.github.com)
+#### Find the task description href="../02_tasks_controller.html#ggplot2"&gt;here&lt;/a&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
