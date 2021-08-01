@@ -176,8 +176,3 @@ mean(brainwt_g)
 # na.rm = TRUE
 mean(brainwt_g, na.rm = TRUE)
 ```
-
-
-### References
-
-Wolfram Research, "Sample Data: Animal Weights" from the Wolfram Data Repository (2016) https://doi.org/10.24097/wolfram.43616.data
