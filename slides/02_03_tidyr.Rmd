@@ -282,6 +282,6 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 2-4: Tidying data
+## Task 3: Tidying data
 
 #### Find the task description <a href="../02_tasks_controller.html#tidyr">here</a>

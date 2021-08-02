@@ -315,7 +315,7 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 2-3: Read and write data files
+## Task 4: Read and write data files
 
 #### Find the task description <a href="../01_tasks_controller.html#reading-and-writing-tibbles">here</a>
 
