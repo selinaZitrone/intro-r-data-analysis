@@ -16,7 +16,7 @@ navbar:
         - text: "01 - Functions"
           href: slides/01_02_Functions.html
         - text: "01 - Data & Tibbles"
-          href: slides/01_03_tibbles_short.
+          href: slides/01_03_tibbles_short.html
         - text: "01 - Tidyverse and Readr"
           href: slides/01_04_readr.html
         - text: "01 - Common errors"
