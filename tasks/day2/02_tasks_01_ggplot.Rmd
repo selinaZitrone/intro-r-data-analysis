@@ -18,12 +18,13 @@ The data is available from the [palmerpenguins package](https://allisonhorst.git
 - Load the package at the beginning of your script with `library(palmerpenguins)`
 
 After you have done that, take a moment to get familiar with the data set and its variables. The data set is called `penguins`:
+
 - The data set is available after you loaded the package
-- Just type `penguins` in the console and you should see the `penguin` tibble
+- Just type `penguins` in the console and you should see the `penguins` tibble
 
 ### 1.3 Exploratory plotting
 
-Explore the data set and it's variables with ggplot. Below, you find some ideas and tasks for plots. I suggest you start with one of them. If you have your own ideas for interesting plots with the penguin data set, feel free to do them instead of continuing with the tasks. 
+Explore the data set and it's variables with ggplot. Below, you find some ideas and tasks for plots. I suggest you start with one of them and if you want you can continue. But if you have your own ideas for interesting plots with the penguin data set, feel free to do them instead of continuing with the tasks. 
 
 In the exploratory section, don't care too much about the beauty of your plots and just use the default theme and colors. This is about exploring the data and testing different visualization options in ggplot. 
 
@@ -35,7 +36,7 @@ What is the relationship between bill length and bill depth?
 - Can you add a regression line?
 - Add species as color aesthetic. Does your interpretation of the data change?
   - What is the difference between adding color as a global aesthetic or as a local aesthetic of the point layer?
-- Add species as shape aesthetic as well to distinguish the species
+- Add species as shape aesthetic to distinguish the species
     
 #### 1.3.2 Difference in flipper length between species (boxplot)
 
@@ -45,7 +46,7 @@ Is there a difference in flipper length between the species?
 - Try adding notches to the boxplots by setting `notch = TRUE` in the boxplot layer
 - **Extra:** Add a layer with `geom_point()`. Try setting `position = position_jitter()` as argument in the point layer. What does it do?
 
-#### 1.3.3 Differences between bodymass of male and female penguins (boxplot)
+#### 1.3.3 Differences between body mass of male and female penguins (boxplot)
 
 Are male penguins heavier than female penguins? And is this different between the 3 species?
 
@@ -58,11 +59,11 @@ Are male penguins heavier than female penguins? And is this different between th
 
 ### 1.4 Beautify the plots
 
-Also here: Chose the task that you like more.
+Also here: Chose the tasks that you like most.
 
 #### 1.4.1 Beautify the plots from 1.3
 
-Take the plot from before that you liked the most and try to make it look nice.
+Take the plot from before that you liked the most and try to make them look nicer.
 
 Here's a list of ideas:
 
