@@ -6,6 +6,7 @@ output:
     toc_float: true
     number_sections: true
 params:
+  showDownload: FALSE
   includeSolution1: FALSE
   includeSolution2: FALSE
   includeSolution3: FALSE
@@ -15,6 +16,10 @@ params:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r download_script, echo=FALSE, child= if(params$showDownload) "tasks/day3/03_tasks_download.Rmd"}
+
 ```
 
 ## 1 Linear models

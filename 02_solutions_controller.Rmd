@@ -6,6 +6,7 @@ output:
     toc_float: true
     number_sections: true
 params:
+  showDownload: FALSE
   includeSolution1: FALSE
   includeSolution2: FALSE
   includeSolution3: FALSE
@@ -16,8 +17,11 @@ params:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 1 ggplot2
+```{r download_script, echo=FALSE, child= if(params$showDownload) "tasks/day2/02_tasks_download.Rmd"}
 
+```
+
+## 1 ggplot2
 
 ```{r ggplot, child= if (params$includeSolution1) "tasks/day2/02_tasks_01_ggplot_solution.Rmd"}
 ```
