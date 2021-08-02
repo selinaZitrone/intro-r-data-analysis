@@ -11,7 +11,7 @@ library(palmerpenguins)
 
 ### 2.2 Data transformation with dplyr
 
-In the following, you find a lot of different data transformation tasks. First, do 2 from each category before you do the remaining ones. You don't have to finish all the tasks but make sure you covered each category.
+In the following, you find a lot of different data transformation tasks. First, do 2 from each category before you do the remaining ones. You don't have to finish all the tasks but make sure you covered each category. Generally, the first tasks from a category are easier than the last tasks of a category.
 
 **Find all penguins that ...**
 
@@ -43,7 +43,7 @@ In the following, you find a lot of different data transformation tasks. First, 
 
 2. ... variables based on the following vector
 
-```{r eval=FALSE}
+```{r echo=TRUE, eval=FALSE}
 cols <- c("species", "bill_length_mm", "flipper_length_mm", "body_mass_kg")
 ```
 
@@ -51,9 +51,10 @@ cols <- c("species", "bill_length_mm", "flipper_length_mm", "body_mass_kg")
 
 **Add a column ...**
 
-1. ... with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).
+1. ... with the ratio of bill length to bill depth
 
-2. ... with the ratio of bill length to bill depth
+2. ... with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).
+
 
 **Calculate ...**
 
