@@ -1143,7 +1143,7 @@ class: inverse, middle, center
 
 ## Task 3-1: Linear models with the penugin data set
 
-#### Find the task description href="../01_tasks_controller.html#linear-models">here</a>
+#### Find the task description <a href="../01_tasks_controller.html#linear-models">here</a>
 
 ---
 class: inverse, center, middle
@@ -1356,4 +1356,4 @@ class: inverse, middle, center
 
 ## Task 3-1: Linear models with transformations
 
-#### Find the task description href="../01_tasks_controller.html#linear-models-with-transformation">here</a>
+#### Find the task description <a href="../01_tasks_controller.html#linear-models-with-transformation">here</a>

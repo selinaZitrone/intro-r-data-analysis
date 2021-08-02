@@ -52,6 +52,7 @@ as.integer(v2)
 as.integer(v3)
 as.integer(v4)
 as.integer(v5)
+
 # explicit conversion to string
 as.character(v1)
 as.character(v2)
@@ -60,7 +61,7 @@ as.character(v4)
 as.character(v5)
 
 
-# Working with vectors ----------------------------------------------------
+# 2.2 Working with vectors ----------------------------------------------------
 
 species <- c(
   "MountainBeaver", "Cow", "GreyWolf", "Goat",
@@ -88,6 +89,7 @@ brainwt_g <- c(
 # Goes through every element in species and returns TRUE if it appears in animals_to_check
 animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
 species %in% animals_to_check
+species[species %in% animals_to_check]
 
 # Goes through every element in animals_to_check and returns TRUE if it appears in species
 animals_to_check %in% species
@@ -95,18 +97,18 @@ animals_to_check %in% species
 #Convert brain weight from g to kg
 brainwt_kg <- brainwt_g / 1000
 
-mean(brainwt_kg)
+# Calculate some descriptive statistics
+mean(brainwt_kg) # mean
+sd(brainwt_kg) # standard deviation
+median(brainwt_kg) # median
 
 # species with brain weight larger than mean
 species[brainwt_kg > mean(brainwt_kg)]
 
-# ratio brain / body weight
+# ratio brain / body weight (%)
 brain_body_ratio <- brainwt_kg / bodywt_kg * 100
 
-
-#Animals with larger brain to body ratio than humans
-brain_body_ratio[species == "Human"]
-
+# Animals with larger brain to body ratio than humans
 # New variable for human brain to body ratio
 bbr_human <- brain_body_ratio[species == "Human"]
 # Are there animals that have a larger brain to body ratio than humans?
@@ -182,6 +184,9 @@ ncol(animals)
 names(animals)
 
 # 4. Readr ----------------------------------------------------------------
+
+#library(tidyverse)
+library(readr)
 
 # write
 write_csv(x = animals, file = "./data/animals.csv") # write as csv

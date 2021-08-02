@@ -2591,17 +2591,15 @@ Solutions
 </code></pre>
 </div>
 </div>
-<p>Check if the following animals are contained in the data set</p>
+<ul>
+<li>Check if the following animals are contained in the <code>species</code> vector:</li>
+</ul>
+<p>Note: If you use <code>%in%</code> to check if elements are contained in a vector, the result vector is of the same length as the vector that is <strong>before</strong> the <code>%in%</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals_to_check</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Snail"</span>, <span class='st'>"Goat"</span>, <span class='st'>"Chimpanzee"</span>, <span class='st'>"Rat"</span>, <span class='st'>"Dragon"</span>, <span class='st'>"Eagle"</span><span class='op'>)</span>
 <span class='co'># Goes through every element in species and returns TRUE if it appears in animals_to_check</span>
-</code></pre>
-</div>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>species</span> <span class='op'>%in%</span> <span class='va'>animals_to_check</span>
+<span class='va'>species</span> <span class='op'>%in%</span> <span class='va'>animals_to_check</span>
 </code></pre>
 </div>
 <pre><code> [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -2614,23 +2612,34 @@ Solutions
 </div>
 <pre><code>[1] FALSE  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
 </div>
-<p>Note: If you use <code>%in%</code> to check if elements are contained in a vector, the result vector is of the same length as the vector that is <strong>before</strong> the <code>%in%</code></p>
-<p>Convert the brain weight from g to kg:</p>
+<ul>
+<li>Convert brain weight from g to kg:</li>
+</ul>
+<p>Note: dividing a vector of length n by a vector of lenght 1 (i.e. a single number), the result is a vector of lenght n again.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>brainwt_kg</span> <span class='op'>&lt;-</span> <span class='va'>brainwt_g</span> <span class='op'>/</span> <span class='fl'>1000</span>
 </code></pre>
 </div>
 </div>
-<p>What is the mean brain weight</p>
+<ul>
+<li>Calculate mean and standard deviation of brain weight:</li>
+</ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>brainwt_kg</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] 0.5745214</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>brainwt_kg</span><span class='op'>)</span>
+</code></pre>
 </div>
-<p>Which species have brain weight that is larger than the mean brain weight?</p>
+<pre><code>[1] 1.334929</code></pre>
+</div>
+<ul>
+<li>Which species have brain weight larger than the mean brain weight?</li>
+</ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>species</span><span class='op'>[</span><span class='va'>brainwt_kg</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>brainwt_kg</span><span class='op'>)</span><span class='op'>]</span>
@@ -2639,7 +2648,9 @@ Solutions
 <pre><code>[1] &quot;AsianElephant&quot;   &quot;Horse&quot;           &quot;Giraffe&quot;        
 [4] &quot;Human&quot;           &quot;AfricanElephant&quot;</code></pre>
 </div>
-<p>Calculate the ratio brain weight / body weight and save it in a vector:</p>
+<ul>
+<li>Calculate the ratio brain weight / body weight and save it in a vector:</li>
+</ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>brain_body_ratio</span> <span class='op'>&lt;-</span> <span class='va'>brainwt_kg</span> <span class='op'>/</span> <span class='va'>bodywt_kg</span> <span class='op'>*</span> <span class='fl'>100</span>
@@ -2726,13 +2737,13 @@ Solutions
 </div>
 <pre><code>[1] NA</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># na.rm = TRUE</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># na.rm = TRUE removes missing values before calculating the mean</span>
 <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>brainwt_g</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] 554.22</code></pre>
 </div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="tibbles">3 Tibbles</h2>
 <h3 id="creating-a-tibble">3.2 Creating a tibble</h3>
 <p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from the last task and put them in a tibble.</p>
@@ -2816,7 +2827,7 @@ Solutions
 </div>
 <pre><code>[1] &quot;species&quot;    &quot;bodywt_kg&quot;  &quot;brainwt_kg&quot;</code></pre>
 </div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='cn'>FALSE</span>
@@ -2889,7 +2900,7 @@ Solutions
 </div>
 <p>This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct <code>read_*()</code> function arguments.</p>
 <p>Just play with these different options of reading data into R and find one that fits you best.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='cn'>FALSE</span>
@@ -2899,7 +2910,7 @@ Solutions
 </div>
 <h1 id="reference">Reference</h1>
 <p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -10,6 +10,7 @@ v1 <- c(1, "a", 2, 3)
 v2 <- c(TRUE, TRUE, 1, FALSE, 0)
 v3 <- c(0, "23", 5, 7)
 v4 <- c(4L, 6L, 23.5345)
+v5 <- c(TRUE, "a", FALSE, "FALSE")
 ```
 
 Copy the vectors to your script and check their data types using `typeof`.

@@ -76,42 +76,41 @@ brainwt_g <- c(
 )
 ```
 
-Check if the following animals are contained in the data set
+- Check if the following animals are contained in the `species` vector:
+
+Note: If you use `%in%` to check if elements are contained in a vector, the result vector is of the same length as the vector that is **before** the `%in%`
 
 ```{r}
 animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
 # Goes through every element in species and returns TRUE if it appears in animals_to_check
-```
-
-```{r}
 species %in% animals_to_check
 # Goes through every element in animals_to_check and returns TRUE if it appears in species
 animals_to_check %in% species
 ```
 
 
-Note: If you use `%in%` to check if elements are contained in a vector, the result vector is of the same length as the vector that is **before** the `%in%`
+- Convert brain weight from g to kg:
 
-Convert the brain weight from g to kg:
+Note: dividing a vector of length n by a vector of lenght 1 (i.e. a single number), the result is a vector of lenght n again.
 
 ```{r}
 brainwt_kg <- brainwt_g / 1000
 ```
 
-What is the mean brain weight
+- Calculate mean and standard deviation of brain weight:
 
 ```{r}
 mean(brainwt_kg)
+sd(brainwt_kg)
 ```
 
-Which species have brain weight that is larger than the mean brain weight?
+- Which species have brain weight larger than the mean brain weight?
 
 ```{r}
 species[brainwt_kg > mean(brainwt_kg)]
 ```
 
-
-Calculate the ratio brain weight / body weight and save it in a vector:
+- Calculate the ratio brain weight / body weight and save it in a vector:
 
 ```{r}
 brain_body_ratio <- brainwt_kg / bodywt_kg * 100
@@ -173,6 +172,6 @@ bodywt_kg <- c(bodywt_kg, bodywt_kg_new)
 
 ```{r}
 mean(brainwt_g)
-# na.rm = TRUE
+# na.rm = TRUE removes missing values before calculating the mean
 mean(brainwt_g, na.rm = TRUE)
 ```

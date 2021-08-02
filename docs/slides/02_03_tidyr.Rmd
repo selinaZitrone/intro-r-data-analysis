@@ -284,4 +284,4 @@ class: inverse, middle, center
 
 ## Task 2-4: Tidying data
 
-#### Find the task description href="../02_tasks_controller.html#tidyr">here</a>
+#### Find the task description <a href="../02_tasks_controller.html#tidyr">here</a>
