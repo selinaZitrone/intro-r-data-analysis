@@ -11,7 +11,7 @@ Implicit type conversion follows the following rules:
 - logical `r fontawesome::fa("arrow-right")` numeric
 - logical `r fontawesome::fa("arrow-right")` character
 
-```{r echo}
+```{r echo = TRUE, collapse=TRUE}
 v1 <- c(1, "a", 2, 3)
 typeof(v1)
 v2 <- c(TRUE, TRUE, 1L, FALSE, 0L)
@@ -28,7 +28,7 @@ typeof(v5)
 
 Values cannot be converted from type `character` to type `integer`. If you try to do this, you will get a warning that the conversion returned `NA`
 
-```{r warning=TRUE}
+```{r echo=TRUE, warning=TRUE}
 as.integer(v1)
 as.integer(v2)
 as.integer(v3)
@@ -41,7 +41,7 @@ as.integer(v5)
 
 Vectors of all data types can be converted to character. No `NA` values are introduced.
 
-```{r eho=TRUE}
+```{r echo=TRUE}
 as.character(v1)
 as.character(v2)
 as.character(v3)
@@ -51,7 +51,7 @@ as.character(v5)
 
 ### 2.2 Working with vectors
 
-```{r}
+```{r echo=TRUE}
 species <- c(
   "MountainBeaver", "Cow", "GreyWolf", "Goat",
   "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
@@ -76,44 +76,43 @@ brainwt_g <- c(
 )
 ```
 
-Check if the following animals are contained in the data set
+- Check if the following animals are contained in the `species` vector:
 
-```{r}
+Note: If you use `%in%` to check if elements are contained in a vector, the result vector is of the same length as the vector that is **before** the `%in%`
+
+```{r echo=TRUE}
 animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
 # Goes through every element in species and returns TRUE if it appears in animals_to_check
-```
-
-```{r}
 species %in% animals_to_check
 # Goes through every element in animals_to_check and returns TRUE if it appears in species
 animals_to_check %in% species
 ```
 
 
-Note: If you use `%in%` to check if elements are contained in a vector, the result vector is of the same length as the vector that is **before** the `%in%`
+- Convert brain weight from g to kg:
 
-Convert the brain weight from g to kg:
+Note: dividing a vector of length n by a vector of lenght 1 (i.e. a single number), the result is a vector of lenght n again.
 
-```{r}
+```{r echo=TRUE}
 brainwt_kg <- brainwt_g / 1000
 ```
 
-What is the mean brain weight
+- Calculate mean and standard deviation of brain weight:
 
-```{r}
+```{r echo=TRUE}
 mean(brainwt_kg)
+sd(brainwt_kg)
 ```
 
-Which species have brain weight that is larger than the mean brain weight?
+- Which species have brain weight larger than the mean brain weight?
 
-```{r}
+```{r echo=TRUE}
 species[brainwt_kg > mean(brainwt_kg)]
 ```
 
+- Calculate the ratio brain weight / body weight and save it in a vector:
 
-Calculate the ratio brain weight / body weight and save it in a vector:
-
-```{r}
+```{r echo=TRUE}
 brain_body_ratio <- brainwt_kg / bodywt_kg * 100
 ```
 
@@ -121,13 +120,13 @@ brain_body_ratio <- brainwt_kg / bodywt_kg * 100
 
 Step 1: Look at the brain to body ratio of humans
 
-```{r}
+```{r echo=TRUE}
 brain_body_ratio[species == "Human"]
 ```
 
 Step 2: Compare it with the other animals
 
-```{r}
+```{r echo=TRUE}
 # New variable for human brain to body ratio
 bbr_human <- brain_body_ratio[species == "Human"]
 # Are there animals that have a larger brain to body ratio than humans?
@@ -144,14 +143,14 @@ species[brain_body_ratio > brain_body_ratio[species == "Human"]]
 
 - Round the vector to 4 decimal places:
 
-```{r}
+```{r echo=TRUE}
 brain_body_ratio <- round(brain_body_ratio, digits = 4)
 ```
 
 
 - Which animal has the smallest brain to body ratio?
 
-```{r}
+```{r echo=TRUE}
 species[brain_body_ratio == min(brain_body_ratio)]
 ```
 
@@ -159,7 +158,7 @@ The `r species[brain_body_ratio == min(brain_body_ratio)]` has a really small br
 
 - Add elements to the vector
 
-```{r}
+```{r echo=TRUE}
 species_new <- c("Eagle", "Snail", "Lion")
 brainwt_g_new <- c(40, NA, 500)
 bodywt_kg_new <- c(18, 0.01, 550)
@@ -171,8 +170,8 @@ bodywt_kg <- c(bodywt_kg, bodywt_kg_new)
 
 - What is the mean brain weight now?
 
-```{r}
+```{r echo=TRUE}
 mean(brainwt_g)
-# na.rm = TRUE
+# na.rm = TRUE removes missing values before calculating the mean
 mean(brainwt_g, na.rm = TRUE)
 ```

@@ -2,7 +2,7 @@
 
 Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and put them in a tibble.
 
-```{r}
+```{r echo=TRUE}
 # install.packages("tibble")
 library(tibble)
 
@@ -41,11 +41,11 @@ animals <- tibble(
 
 In the view window that opens, you have some options to filter the data and sort rows.
 
-```{r eval=FALSE}
+```{r echo=TRUE, eval=FALSE}
 view(animals)
 ```
 
-```{r}
+```{r echo=TRUE}
 summary(animals)
 str(animals)
 nrow(animals)
