@@ -38,11 +38,10 @@ If you want to download presentation slides in pdf format, you can do that with 
 - <a href="./slides/01_03_tibbles_short.pdf" download>01 - Data & Tibbles</a>
 - <a href="./slides/01_04_readr.pdf" download>01 - Tidyverse and Readr</a>
 - <a href="./slides/01_05_common_errors.pdf" download>01 - Common errors</a>
-- 02 - Ggplot2
-- 02 - Dplyr
-- 02 - Tidyr
+- <a href="./slides/02_01_tidyverse_ggplot.pdf" download>02 - Ggplot2</a>
+- <a href="./slides/02_02_dplyr.pdf" download>02 - Dplyr</a>
+- <a href="./slides/02_03_tidyr.pdf" download>02 - Tidyr</a>
 - 03 - Linear models
 - 03 - Generalized linear models
-
 
 After the workshop is finished, you can download a zipped version of the entire content from [here](download_material_blank.html).
