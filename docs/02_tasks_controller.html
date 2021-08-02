@@ -2482,9 +2482,13 @@ Figure 1: Artwork by <a href="https://twitter.com/allison_horst">Allison Horst</
 <li>Install the package with <code>install.packages("palmerpenguins")</code></li>
 <li>Load the package at the beginning of your script with <code>library(palmerpenguins)</code></li>
 </ul>
-<p>After you have done that, take a moment to get familiar with the data set and its variables. The data set is called <code>penguins</code>: - The data set is available after you loaded the package - Just type <code>penguins</code> in the console and you should see the <code>penguin</code> tibble</p>
+<p>After you have done that, take a moment to get familiar with the data set and its variables. The data set is called <code>penguins</code>:</p>
+<ul>
+<li>The data set is available after you loaded the package</li>
+<li>Just type <code>penguins</code> in the console and you should see the <code>penguins</code> tibble</li>
+</ul>
 <h3 id="exploratory-plotting">1.3 Exploratory plotting</h3>
-<p>Explore the data set and it’s variables with ggplot. Below, you find some ideas and tasks for plots. I suggest you start with one of them. If you have your own ideas for interesting plots with the penguin data set, feel free to do them instead of continuing with the tasks.</p>
+<p>Explore the data set and it’s variables with ggplot. Below, you find some ideas and tasks for plots. I suggest you start with one of them and if you want you can continue. But if you have your own ideas for interesting plots with the penguin data set, feel free to do them instead of continuing with the tasks.</p>
 <p>In the exploratory section, don’t care too much about the beauty of your plots and just use the default theme and colors. This is about exploring the data and testing different visualization options in ggplot.</p>
 <h4 id="relationship-between-bill-length-and-bill-depth-scatterplot">1.3.1 Relationship between bill length and bill depth (scatterplot)</h4>
 <p>What is the relationship between bill length and bill depth?</p>
@@ -2495,7 +2499,7 @@ Figure 1: Artwork by <a href="https://twitter.com/allison_horst">Allison Horst</
 <ul>
 <li>What is the difference between adding color as a global aesthetic or as a local aesthetic of the point layer?</li>
 </ul></li>
-<li>Add species as shape aesthetic as well to distinguish the species</li>
+<li>Add species as shape aesthetic to distinguish the species</li>
 </ul>
 <h4 id="difference-in-flipper-length-between-species-boxplot">1.3.2 Difference in flipper length between species (boxplot)</h4>
 <p>Is there a difference in flipper length between the species?</p>
@@ -2504,7 +2508,7 @@ Figure 1: Artwork by <a href="https://twitter.com/allison_horst">Allison Horst</
 <li>Try adding notches to the boxplots by setting <code>notch = TRUE</code> in the boxplot layer</li>
 <li><strong>Extra:</strong> Add a layer with <code>geom_point()</code>. Try setting <code>position = position_jitter()</code> as argument in the point layer. What does it do?</li>
 </ul>
-<h4 id="differences-between-bodymass-of-male-and-female-penguins-boxplot">1.3.3 Differences between bodymass of male and female penguins (boxplot)</h4>
+<h4 id="differences-between-body-mass-of-male-and-female-penguins-boxplot">1.3.3 Differences between body mass of male and female penguins (boxplot)</h4>
 <p>Are male penguins heavier than female penguins? And is this different between the 3 species?</p>
 <ul>
 <li>Create a boxplot with body mass on the y axis and sex on the x axis</li>
@@ -2517,9 +2521,9 @@ Figure 1: Artwork by <a href="https://twitter.com/allison_horst">Allison Horst</
 <li><strong>Extra:</strong> What happens if you use <code>geom_violin</code> instead of <code>geom_boxplot</code>? Can you combine both geoms in one plot?</li>
 </ul>
 <h3 id="beautify-the-plots">1.4 Beautify the plots</h3>
-<p>Also here: Chose the task that you like more.</p>
+<p>Also here: Chose the tasks that you like most.</p>
 <h4 id="beautify-the-plots-from-1.3">1.4.1 Beautify the plots from 1.3</h4>
-<p>Take the plot from before that you liked the most and try to make it look nice.</p>
+<p>Take the plot from before that you liked the most and try to make them look nicer.</p>
 <p>Here’s a list of ideas:</p>
 <ul>
 <li>Add a theme layer</li>
@@ -2575,7 +2579,7 @@ Figure 2: Visualization from the <a href="https://allisonhorst.github.io/palmerp
 </div>
 </div>
 <h3 id="data-transformation-with-dplyr">2.2 Data transformation with dplyr</h3>
-<p>In the following, you find a lot of different data transformation tasks. First, do 2 from each category before you do the remaining ones. You don’t have to finish all the tasks but make sure you covered each category.</p>
+<p>In the following, you find a lot of different data transformation tasks. First, do 2 from each category before you do the remaining ones. You don’t have to finish all the tasks but make sure you covered each category. Generally, the first tasks from a category are easier than the last tasks of a category.</p>
 <p><strong>Find all penguins that …</strong></p>
 <ol type="1">
 <li><p>… have a bill length between 40 and 45 mm.</p></li>
@@ -2600,15 +2604,18 @@ Figure 2: Visualization from the <a href="https://allisonhorst.github.io/palmerp
 <li><p>… variables based on the following vector</p></li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>cols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"species"</span>, <span class='st'>"bill_length_mm"</span>, <span class='st'>"flipper_length_mm"</span>, <span class='st'>"body_mass_kg"</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <ol start="3" type="1">
 <li>… only columns that contain measurements in mm</li>
 </ol>
 <p><strong>Add a column …</strong></p>
 <ol type="1">
-<li><p>… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).</p></li>
 <li><p>… with the ratio of bill length to bill depth</p></li>
+<li><p>… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).</p></li>
 </ol>
 <p><strong>Calculate …</strong></p>
 <ol type="1">
@@ -2628,6 +2635,7 @@ Figure 2: Visualization from the <a href="https://allisonhorst.github.io/palmerp
 
 </div>
 <h3 id="lets-tidy-some-data-sets">4.2 Let’s tidy some data sets</h3>
+<p>First, complete all the tasks before you move to the <strong>extras</strong>.</p>
 <p><strong>1. <code>relig_incom</code></strong></p>
 <p>Have a look at the <code>relig_income</code> data set that is included in tidyverse package. The data set contains the results of a survey asking people about their religion and income category.</p>
 <p>What is not tidy about this data set? Can you fix it?</p>
