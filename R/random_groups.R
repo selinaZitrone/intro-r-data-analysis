@@ -2,7 +2,6 @@ names <- c(
   "Baile", "Lena",
   "Tingting", "Subhakankha",
   "Violaine", "Marta",
-  "Dunja", "Aya",
   "Christin", "Franziska",
   "Charlotte", "Yomna",
   "Franz", "Melanie ",
