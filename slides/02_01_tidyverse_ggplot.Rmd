@@ -222,11 +222,11 @@ The `ggplot` package has a built-in data set called `msleep` about the sleep tim
 
 Data variables (among others):
 
-- `vore: carnivore, omnivore, herbivore?
-- `conservation: conservation status of the animal
-- `sleep_total: total amount of sleep [h]
-- `brainwt: brain weight [kg]
-- `bodywt: body weight [kg]
+- `vore`: carnivore, omnivore, herbivore?
+- `conservation`: conservation status of the animal
+- `sleep_total`: total amount of sleep [h]
+- `brainwt`: brain weight [kg]
+- `bodywt`: body weight [kg]
 
 If you want to know more about the data set:
 ```{r eval=FALSE}
@@ -438,7 +438,7 @@ ggplot(data = msleep,
 - scales can be changed for all elements of `aes`
 - the general format of scale functions are:
 
-.center[<b>scale\_.col1[aes-name]\_.col2[scale-type]</b>]
+<b>scale\_.col1[aes-name]\_.col2[scale-type]</b>
 
 In this example we scale the <b>.col1[x]</b> aesthetic to <b>.col2[log10]</b>.
 
@@ -1044,6 +1044,31 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
 ]
 
 ---
+# `geom_histogram()`
+
+Basic histogram of total sleep time:
+
+.pull-left[
+```{r eval=FALSE}
+ggplot(msleep, aes(x=sleep_total)) +
+  geom_histogram() + #<<
+  labs(x = "Total sleep time [h]", 
+       y = "Frequency")
+```
+  
+]
+
+.pull-left[
+```{r echo=FALSE}
+ggplot(msleep, aes(x=sleep_total)) +
+  geom_histogram() + #<<
+  labs(x = "Total sleep time [h]", 
+       y = "Frequency") +
+  theme_minimal(base_size = 16)
+```
+]
+
+---
 # Let's look at an example
 
 .left-column[
@@ -1059,6 +1084,7 @@ What are the layers in this plot?
 ]
 
 .footnote-right[Visualization from the [palmerpenguins package](https://allisonhorst.github.io/palmerpenguins/)]
+
 ---
 # `ggsave()`
 
