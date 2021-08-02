@@ -595,4 +595,4 @@ mod1 <- glm(
 
 ## Task 4: Binomial glms with proportion data
 
-#### Find the task description href="../03_tasks_controller.html#proportion-glm">here</a>
+#### Find the task description <a href="../03_tasks_controller.html#proportion-glm">here</a>
