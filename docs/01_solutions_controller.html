@@ -105,7 +105,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Solutions for day 1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["includeSolution2","includeSolution3","includeSolution4"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Solutions for day 1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["showDownload","includeSolution2","includeSolution3","includeSolution4"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2460,6 +2460,8 @@ Solutions
 </ul>
 </nav>
 </div>
+<p>Download an R script with the solutions from day 1 from <a href="./R/Tasks/Day1.R" download>here</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="data-types-and-vectors">2 Data types and vectors</h2>
 <div class="layout-chunk" data-layout="l-body">
 
@@ -2743,7 +2745,10 @@ Solutions
 </div>
 <pre><code>[1] 554.22</code></pre>
 </div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] FALSE</code></pre>
+</div>
 <h2 id="tibbles">3 Tibbles</h2>
 <h3 id="creating-a-tibble">3.2 Creating a tibble</h3>
 <p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from the last task and put them in a tibble.</p>
@@ -2827,12 +2832,8 @@ Solutions
 </div>
 <pre><code>[1] &quot;species&quot;    &quot;bodywt_kg&quot;  &quot;brainwt_kg&quot;</code></pre>
 </div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='cn'>FALSE</span>
-</code></pre>
-</div>
 <pre><code>[1] FALSE</code></pre>
 </div>
 <h2 id="reading-and-writing-tibbles">4 Reading and writing tibbles</h2>
@@ -2874,6 +2875,7 @@ Solutions
 </div>
 </div>
 <p>Writing the data to disk:</p>
+<p>Note: In order for this command to work, the <code>/data</code> directory must already be present in your working directory.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>write_csv</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>animals</span>, file <span class='op'>=</span> <span class='st'>"./data/animals.csv"</span><span class='op'>)</span> <span class='co'># write as csv</span>
@@ -2900,17 +2902,13 @@ Solutions
 </div>
 <p>This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct <code>read_*()</code> function arguments.</p>
 <p>Just play with these different options of reading data into R and find one that fits you best.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='cn'>FALSE</span>
-</code></pre>
-</div>
 <pre><code>[1] FALSE</code></pre>
 </div>
 <h1 id="reference">Reference</h1>
 <p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

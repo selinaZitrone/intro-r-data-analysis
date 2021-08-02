@@ -2,7 +2,7 @@
 
 Load the package and create the tibble:
 
-```{r eval=FALSE}
+```{r  echo=TRUE, eval=FALSE}
 library(tidyverse)
 
 species <- c(
@@ -38,7 +38,9 @@ animals <- tibble(
 
 Writing the data to disk:
 
-```{r eval=FALSE}
+Note: In order for this command to work, the `/data` directory must already be present in your working directory.
+
+```{r echo=TRUE, eval=FALSE}
 write_csv(x = animals, file = "./data/animals.csv") # write as csv
 write_tsv(x = animals, file = "./data/animals.txt") # write as txt
 ```
@@ -47,7 +49,7 @@ write_tsv(x = animals, file = "./data/animals.txt") # write as txt
 
 Read the same data back into R:
 
-```{r eval=FALSE}
+```{r echo=TRUE, eval=FALSE}
 animals_csv <- read_csv("./data/animals.csv") # read the csv
 animals_tsv <- read_tsv("./data/animals.txt") # read the txt
 ```
@@ -67,4 +69,3 @@ knitr::include_graphics(here::here("tasks/day2/img/readr_import_options.png"))
 This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct `read_*()` function arguments. 
 
 Just play with these different options of reading data into R and find one that fits you best.
-
