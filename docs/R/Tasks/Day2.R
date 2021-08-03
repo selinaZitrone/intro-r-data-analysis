@@ -175,7 +175,6 @@ plotly::ggplotly(heatmap)
 # Filter tasks -------------------------------------------------------------------
 
 # bill length between 40 and 45 mm.
-
 filter(penguins, between(bill_length_mm, 40, 45))
 # same as
 filter(penguins, bill_length_mm < 45 & bill_length_mm > 40)
@@ -187,6 +186,7 @@ filter(penguins, !is.na(sex))
 # which are of the species Adelie or Gentoo and live either on Dream or Torgersen
 filter(penguins, species %in% c("Adelie", "Gentoo") &
   island %in% c("Dream", "Torgersen"))
+
 filter(penguins, (species == "Adelie" | species == "Gentoo") &
   (island == "Dream" | island == "Torgersen"))
 
@@ -220,6 +220,10 @@ arrange(penguins, desc(body_mass_g))
 
 arrange(penguins, species, sex, desc(flipper_length_mm))
 
+penguins %>%
+  group_by(species, sex) %>%
+  arrange(desc(flipper_length_mm))
+
 # Select tasks --------------------------------------------------------------
 
 # only the variables species, sex and year
@@ -235,7 +239,7 @@ select(penguins, all_of(cols))
 # only columns that contain measurements in mm
 select(penguins, ends_with("mm"))
 # or
-# select(penguins, contains("_mm"))
+select(penguins, contains("_mm"))
 
 # Mutate tasks ------------------------------------------------------------
 
@@ -252,14 +256,6 @@ mutate(penguins,
     species == "Chinstrap" ~ "C"
   )
 )
-
-# Adding a new column from another tibble:
-another_tibble <- tibble(
-  some_var = rnorm(n = nrow(penguins), mean = 4, sd = 3)
-)
-
-mutate(penguins,
-       col_from_other_tibble = another_tibble$some_var)
 
 # Summary tasks -----------------------------------------------------------
 
@@ -311,6 +307,15 @@ penguins %>%
     y = "Ratio bill length / bill depth (-)"
   ) +
   theme_minimal()
+
+
+# Adding a new column from another tibble:
+another_tibble <- tibble(
+  some_var = rnorm(n = nrow(penguins), mean = 4, sd = 3)
+)
+
+mutate(penguins,
+       col_from_other_tibble = another_tibble$some_var)
 
 
 # 3. Tidyr ----------------------------------------------------------------

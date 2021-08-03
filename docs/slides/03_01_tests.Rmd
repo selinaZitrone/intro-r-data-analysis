@@ -48,6 +48,10 @@ options(scipen = 0)
 library(tibble)
 ```
 
+---
+# Typical approach in statistics
+
+.center[![](img/day3/statistics_approach.png)]
 
 ---
 # Overview of tests
@@ -55,6 +59,11 @@ library(tibble)
 .center[![](img/day3/tests_overview.png)]
 
 Note: Levene-test not necessary if you are interested in equal means but not equal variances!
+
+---
+class: inverse, center, middle
+
+# .large[Tests for normal distribution]
 
 ---
 # Test for normal distribution
@@ -91,13 +100,13 @@ First, generate some normally distributed numbers (you would use real data inste
 
 ```{r}
 mydata <- tibble(
-  some_var = rnorm(n=200, mean = 50, sd = 5)
+  some_var = rnorm(n = 200, mean = 50, sd = 5)
 )
 ```
 
 --
 
-To perform a KS-Test, use the `ks.test` function
+Use the `ks.test` function
 
 ```{r eval=FALSE}
 ks.test(mydata$some_var, "pnorm", mean = mean(mydata$some_var), sd = sd(mydata$some_var))
@@ -106,6 +115,88 @@ ks.test(mydata$some_var, "pnorm", mean = mean(mydata$some_var), sd = sd(mydata$s
 ---
 # Short deviation: The `$` operator
 
+With the `$` operator, you can select columns from a data frame / tibble.
 
+The `$` operator will return the column as a **vector**
+
+```{r}
+mydata$some_var
+```
+
+In comparison to `dplyr::select()` which will return the colum as a **tibble**
+
+```{r}
+select(mydata, some_var)
+```
+
+---
+# Kolmogorov-Smirnov-Test
+
+Use the `ks.test` function
+
+```{r}
+ks.test(mydata$some_var, "pnorm", mean = mean(mydata$some_var), sd = sd(mydata$some_var))
+```
+
+
+The data does not deviate significantly from a normal distribution (KS-Test, D = ..., p > 0.05)
+
+---
+# Shapiro-Wilk-Test
+
+Use the `shapiro.test` function:
+
+```{r}
+shapiro.test(mydata$some_var)
+```
+
+The data does not deviate significantly from a normal distribution (Shapiro-Wilk-Test, W = ..., p > 0.05)
+
+---
+# Visual test with QQ-Plot
+
+Points should match the straight line. Small deviations are okay.
+
+```{r}
+qqnorm(mydata$some_var)
+qqline(mydata$some_var)
+```
+
+---
+class: inverse, center, middle
+
+# .large[Tests for equal variance]
+
+---
+# Test for equal variance
+
+- First step: test form normal distribution
+
+If yes: **F-Test**
+
+- calculates ratio of variances (if equal, ratio = 1)
+- p: How likely is ratio if variances were equal?
+- only for normal distribution
+
+If no: **Levene test**
+
+- compare difference between data sets with difference within data sets
+- works with all distributions
+
+---
+# F-Test
+
+Use the function `var.test`
+
+```{r}
+var.test(groupA, groupB)
+```
+
+Result: The variance of groups A and B do not differ significantly (F-Test, $F_{df,df}$ = ... , p > 0.05)
+
+---
+# Levene-Test
+
+Use function `leveneTest` from `car` package
 
 

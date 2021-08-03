@@ -105,7 +105,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Solutions for day 2"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["showDownload","includeSolution1","includeSolution2","includeSolution3"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Solutions for day 2"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["showDownload","includeSolution1","includeSolution2","includeSolution3"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2458,14 +2458,21 @@ Solutions
 <li><a href="#the-plotly-package">The <code>plotly</code> package</a></li>
 <li><a href="#references">References</a></li>
 </ul></li>
-<li><a href="#dplyr">2 dplyr</a></li>
-<li><a href="#tidyr">3 tidyr</a></li>
+<li><a href="#dplyr">2 dplyr</a>
+<ul>
+<li><a href="#data-transformation-with-dplyr">2.2 Data transformation with dplyr</a></li>
+<li><a href="#extras">Extras</a></li>
+</ul></li>
+<li><a href="#tidyr">3 tidyr</a>
+<ul>
+<li><a href="#getting-started-with-tidyr">4.1 Getting started with tidyr</a></li>
+<li><a href="#lets-tidy-some-data-sets">4.2 Let’s tidy some data sets</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
+<p>Download an R script with the solutions from day 1 from <a href="./R/Tasks/Day2.R" download>here</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="ggplot2">1 ggplot2</h2>
 <h3 id="and-1.2-getting-started-with-ggplot-and-palmerpenguins">1.1 and 1.2 Getting started with ggplot and palmerpenguins</h3>
 <div class="layout-chunk" data-layout="l-body">
@@ -2740,14 +2747,10 @@ Solutions
   <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Species"</span>, y <span class='op'>=</span> <span class='st'>"Flipper length (mm)"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
-
-<span class='co'># save as png in /img directory of the project</span>
-<span class='fu'>ggsave</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='st'>"./img/flipper_box.png"</span>, <span class='va'>flipper_box</span><span class='op'>)</span>
-<span class='co'># save as pdf in /img directory of the project</span>
-<span class='fu'>ggsave</span><span class='op'>(</span>filename <span class='op'>=</span> <span class='st'>"./img/flipper_box.pdf"</span>, <span class='va'>flipper_box</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
+<p><code>{echo= TRUE, eval=FALSE} # save as png in /img directory of the project ggsave(filename = "./img/flipper_box.png", flipper_box) # save as pdf in /img directory of the project ggsave(filename = "./img/flipper_box.pdf", flipper_box)</code></p>
 <h3 id="some-more-examples">Some more examples</h3>
 <p><strong>Histogram</strong></p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2796,29 +2799,661 @@ Solutions
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>plotly</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/plotly/reference/ggplotly.html'>ggplotly</a></span><span class='op'>(</span><span class='va'>flipper_box</span><span class='op'>)</span>
 </code></pre>
 </div>
-<div id="htmlwidget-3af60d6b236e207404b7" style="width:624px;height:384px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3af60d6b236e207404b7">{"x":{"data":[{"x":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"y":[181,186,195,null,193,190,181,195,193,190,186,180,182,191,198,185,195,197,184,194,174,180,189,185,180,187,183,187,172,180,178,178,188,184,195,196,190,180,181,184,182,195,186,196,185,190,182,179,190,191,186,188,190,200,187,191,186,193,181,194,185,195,185,192,184,192,195,188,190,198,190,190,196,197,190,195,191,184,187,195,189,196,187,193,191,194,190,189,189,190,202,205,185,186,187,208,190,196,178,192,192,203,183,190,193,184,199,190,181,197,198,191,193,197,191,196,188,199,189,189,187,198,176,202,186,199,191,195,191,210,190,197,193,199,187,190,191,200,185,193,193,187,188,190,192,185,190,184,195,193,187,201],"hoverinfo":"y","type":"box","fillcolor":"rgba(255,255,255,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(128,0,0,1)","width":1.88976377952756},"name":"Adelie","legendgroup":"Adelie","showlegend":true,"xaxis":"x","yaxis":"y","frame":null},{"x":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"y":[192,196,193,188,197,198,178,197,195,198,193,194,185,201,190,201,197,181,190,195,181,191,187,193,195,197,200,200,191,205,187,201,187,203,195,199,195,210,192,205,210,187,196,196,196,201,190,212,187,198,199,201,193,203,187,197,191,203,202,194,206,189,195,207,202,193,210,198],"hoverinfo":"y","type":"box","fillcolor":"rgba(255,255,255,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(118,118,118,1)","width":1.88976377952756},"name":"Chinstrap","legendgroup":"Chinstrap","showlegend":true,"xaxis":"x","yaxis":"y","frame":null},{"x":[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],"y":[211,230,210,218,215,210,211,219,209,215,214,216,214,213,210,217,210,221,209,222,218,215,213,215,215,215,216,215,210,220,222,209,207,230,220,220,213,219,208,208,208,225,210,216,222,217,210,225,213,215,210,220,210,225,217,220,208,220,208,224,208,221,214,231,219,230,214,229,220,223,216,221,221,217,216,230,209,220,215,223,212,221,212,224,212,228,218,218,212,230,218,228,212,224,214,226,216,222,203,225,219,228,215,228,216,215,210,219,208,209,216,229,213,230,217,230,217,222,214,null,215,222,212,213],"hoverinfo":"y","type":"box","fillcolor":"rgba(255,255,255,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(255,163,25,1)","width":1.88976377952756},"name":"Gentoo","legendgroup":"Gentoo","showlegend":true,"xaxis":"x","yaxis":"y","frame":null},{"x":[0.915031008049846,1.11532205417752,0.96359076872468,1.15320696160197,1.17618691371754,0.818222599755973,1.0112421952188,1.15696761775762,1.02057400578633,0.982645894121379,1.18273333813995,0.981333662476391,1.07102825418115,1.02905336078256,0.841169873066246,1.15992998816073,0.898435093741864,0.816823813412338,0.931168287713081,1.18180145965889,1.1558157264255,1.07712136246264,1.05620272550732,1.19770791064948,1.06228231964633,1.08341218726709,1.01762640988454,1.03765680817887,0.915663894917816,0.85884545892477,1.18520969301462,1.16091961804777,1.07628211136907,1.11818696707487,0.80984547380358,0.991118388436735,1.10338381500915,0.886563174333423,0.927272403053939,0.892650314141065,0.857120008952916,0.965818534325808,0.965489730518311,0.947538180369884,0.860977899096906,0.855522425379604,0.893213639780879,0.986384980101138,0.906389056146145,1.14313108613715,0.818332466669381,0.97688002968207,1.11956993825734,0.848759703990072,1.02437919350341,0.882612555846572,0.851012660097331,1.10132314572111,1.15801814366132,0.949785110354423,1.06604607785121,0.837936264369637,0.953587855119258,0.909753457829356,1.12585601555184,0.97940653655678,1.12402574121952,1.12495580380782,1.11773692844436,0.975932675041258,1.1017900634557,1.05168845262378,1.08407296054065,0.800249909330159,0.990126629639417,0.888047554064542,0.951926615089178,1.0451084013097,0.940719163697213,0.844454169739038,0.897447789087892,1.06722223497927,0.967058711871505,1.11527833361179,0.841145857702941,0.973957096599042,1.19398279199377,1.15722044575959,1.15458762431517,0.870021060109138,0.852278276626021,1.06124077001587,0.93740658890456,1.06270325118676,0.928149296995252,0.87507644770667,1.11291772052646,0.837437994685024,0.986711616627872,1.00460218396038,1.0399955837056,0.933129416126758,0.995445213466883,1.18178953099996,0.99316095886752,1.15614008884877,1.16577527476475,1.04349399292842,0.964275910612196,0.858837876375765,1.17411992130801,0.92049155998975,0.824288228619844,1.17909077601507,1.08823850937188,0.856917718239129,1.01971386242658,1.18163649542257,1.03419334124774,0.961804112698883,1.0591573917307,0.927928246837109,0.923088004346937,0.887907052505761,0.947795546334237,1.19368768138811,0.861680920328945,0.836417599953711,0.856762763112783,1.07600284060463,1.04770259335637,1.15655764685944,1.06919963704422,1.09483109517023,1.00845429031178,1.06393537987024,1.12872218405828,1.11451262068003,1.19192876694724,0.975772614497691,0.924680880829692,0.963789981044829,0.804186844732612,0.873539809603244,1.1370917275548,0.892464712820947,0.895639982260764,0.830676466133445,0.898289471212774,1.09285408221185,1.13898126604035,0.999010906834155],"y":[180.989129411243,185.89617183879,195.38668014463,null,192.783395872265,190.098638037033,180.709232157655,195.373975595459,193.012057446316,189.730456263386,186.097521836124,180.388763332181,182.13501721397,190.935132717527,197.858675994538,185.268204255961,194.715053634904,196.754252757505,184.317390946113,193.846495643444,173.890640434809,180.227157182992,188.754702943936,184.614212649502,179.92528629303,186.986534135416,182.937475960143,186.874247041345,172.293186651729,179.964086440764,178.027011898905,178.371074665524,188.219673233666,183.767101078853,194.847029466182,196.377073960192,190.067920074798,180.208658900298,180.898167515546,184.215355128981,182.030141746439,195.331196359731,185.748237153515,195.825774733908,184.675969930552,189.768389663287,182.381679197028,178.837041740306,190.180786421522,191.228550267406,185.684334196895,187.791675703228,189.816435897909,199.680846795253,186.694331073016,191.392989244685,186.388843437843,192.709653977118,181.324247665331,194.061041470058,184.916359087266,194.959841987304,185.16520152092,191.666002196632,183.871450064145,192.144630040973,194.853559398465,188.265254878439,189.772137666121,197.998359148949,189.820839738101,189.753618654981,196.360497011244,196.857380430214,189.982765107043,194.62239405755,191.03796757441,184.115392176434,187.077010835707,194.857549900562,189.312891449966,196.101005557925,186.842323932238,192.910563731007,190.72838007398,194.290041518025,190.362480971031,189.050915746763,188.863637930714,190.39729377497,201.787855740637,205.090137572214,184.686542823538,185.989626055956,186.679556658678,207.728932610154,189.826394296624,196.06709786877,178.185366127081,191.732416728884,192.293174210563,203.166859309748,183.208319628984,189.717667286843,192.886445570737,184.13866598513,199.019058081321,189.879841434211,180.79242456127,196.646553437039,197.789295793697,191.312062330544,193.249461932853,197.198013057746,190.723929380625,195.699793670885,188.379780646786,198.94890399687,188.971213301457,188.732238464989,187.06794924587,197.816622415558,175.784077536315,202.152966265194,185.826281919703,199.248318452947,190.675133285671,195.257624056935,190.941942624561,210.204709807783,190.129908405244,196.955621917546,193.101716947556,198.600372279249,186.773794811219,190.163897796534,190.772133190557,200.251146977022,184.846211099438,193.150194148533,193.346144863218,186.692623731866,187.702164550312,190.142579085939,191.94315887671,185.267520782351,190.377150453441,183.656391182169,194.967828154564,193.161268094741,186.66955213435,201.394355212897],"text":["species: Adelie<br />flipper_length_mm: 181<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm:  NA<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 181<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 180<br />species: Adelie","species: Adelie<br />flipper_length_mm: 182<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 198<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 197<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 194<br />species: Adelie","species: Adelie<br />flipper_length_mm: 174<br />species: Adelie","species: Adelie<br />flipper_length_mm: 180<br />species: Adelie","species: Adelie<br />flipper_length_mm: 189<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 180<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 183<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 172<br />species: Adelie","species: Adelie<br />flipper_length_mm: 180<br />species: Adelie","species: Adelie<br />flipper_length_mm: 178<br />species: Adelie","species: Adelie<br />flipper_length_mm: 178<br />species: Adelie","species: Adelie<br />flipper_length_mm: 188<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 196<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 180<br />species: Adelie","species: Adelie<br />flipper_length_mm: 181<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 182<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 196<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 182<br />species: Adelie","species: Adelie<br />flipper_length_mm: 179<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 188<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 200<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 181<br />species: Adelie","species: Adelie<br />flipper_length_mm: 194<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 192<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 192<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 188<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 198<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 196<br />species: Adelie","species: Adelie<br />flipper_length_mm: 197<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 189<br />species: Adelie","species: Adelie<br />flipper_length_mm: 196<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 194<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 189<br />species: Adelie","species: Adelie<br />flipper_length_mm: 189<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 202<br />species: Adelie","species: Adelie<br />flipper_length_mm: 205<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 208<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 196<br />species: Adelie","species: Adelie<br />flipper_length_mm: 178<br />species: Adelie","species: Adelie<br />flipper_length_mm: 192<br />species: Adelie","species: Adelie<br />flipper_length_mm: 192<br />species: Adelie","species: Adelie<br />flipper_length_mm: 203<br />species: Adelie","species: Adelie<br />flipper_length_mm: 183<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 199<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 181<br />species: Adelie","species: Adelie<br />flipper_length_mm: 197<br />species: Adelie","species: Adelie<br />flipper_length_mm: 198<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 197<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 196<br />species: Adelie","species: Adelie<br />flipper_length_mm: 188<br />species: Adelie","species: Adelie<br />flipper_length_mm: 199<br />species: Adelie","species: Adelie<br />flipper_length_mm: 189<br />species: Adelie","species: Adelie<br />flipper_length_mm: 189<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 198<br />species: Adelie","species: Adelie<br />flipper_length_mm: 176<br />species: Adelie","species: Adelie<br />flipper_length_mm: 202<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 199<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 210<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 197<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 199<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 200<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 188<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 192<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 201<br />species: Adelie"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(128,0,0,1)","opacity":0.5,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(128,0,0,1)"}},"hoveron":"points","name":"Adelie","legendgroup":"Adelie","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.18875025426969,1.98658895073459,1.82975380532444,2.0595272497274,2.10343726780266,1.85484243240207,1.9586338378489,1.88999413168058,1.82318342421204,1.95835707532242,1.8259713199921,1.89035457316786,1.82185164364055,2.06811281582341,1.91909671304747,1.84028863292187,1.82876163888723,2.1521762275137,2.10169896082953,2.12664235504344,2.19285614946857,1.84143985798582,1.83961673174053,2.11953264446929,2.1138301066123,1.80377196203917,2.11162635311484,2.09175626076758,2.05205274112523,1.99236433198676,1.86265474054962,1.80328620793298,1.98098335769027,1.99691733149812,1.95583484461531,1.98586637675762,2.08531160028651,1.82212077053264,1.94191323900595,2.12112490916625,2.13428353480995,1.89509976198897,1.9415944410488,2.1427541680634,2.14150534952059,1.91835818216205,1.85881932983175,2.08159682452679,1.84152267528698,1.81349110919982,2.19976181117818,1.81394992163405,1.93535651350394,2.16602550465614,2.04689410785213,1.91451413948089,2.09511896120384,2.13362172367051,1.92570831216872,1.99702661912888,2.0789495064877,2.05658494159579,2.05756916599348,2.19114136192948,1.96589413378388,1.84776191199198,2.01041186405346,1.89002934033051],"y":[192.322720707767,196.292400651239,193.220326073095,187.901453133486,196.633686438948,197.891528865322,177.819001015835,197.280373984575,194.889921369962,197.843582232483,193.207308271527,194.275867699459,184.966337248869,201.183705331571,189.683262908831,200.77598654218,197.363160998188,181.201630032994,190.255164306611,194.934221681394,181.075070794485,191.239058846235,187.310726920329,192.908153274655,194.672257667407,197.100594909675,200.196508973837,199.668302765861,190.840414088964,205.091649725847,187.202345646359,201.333645706438,186.980600404553,203.053695572913,195.189296276867,199.28595793955,195.327317203581,209.645105780289,192.002326643281,204.880435818434,210.276444898359,187.245148131065,195.69386498183,196.170149243996,195.788215086423,200.659965400957,190.348516917787,211.72573426012,187.117645880021,197.738814196922,198.616059207357,201.017051077075,192.669022314623,202.826401876844,186.93634792082,197.069822499342,191.24535554368,202.761596167088,201.967539737374,193.958514491096,206.186998206563,189.171803848445,195.264977583103,207.309252896719,202.362115659192,193.040493377484,210.017868612893,197.73655860424],"text":["species: Chinstrap<br />flipper_length_mm: 192<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 196<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 193<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 188<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 197<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 198<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 178<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 197<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 195<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 198<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 193<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 194<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 185<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 201<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 190<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 201<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 197<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 181<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 190<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 195<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 181<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 191<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 187<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 193<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 195<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 197<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 200<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 200<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 191<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 205<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 187<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 201<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 187<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 203<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 195<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 199<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 195<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 210<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 192<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 205<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 210<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 187<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 196<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 196<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 196<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 201<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 190<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 212<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 187<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 198<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 199<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 201<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 193<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 203<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 187<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 197<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 191<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 203<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 202<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 194<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 206<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 189<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 195<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 207<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 202<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 193<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 210<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 198<br />species: Chinstrap"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(118,118,118,1)","opacity":0.5,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(118,118,118,1)"}},"hoveron":"points","name":"Chinstrap","legendgroup":"Chinstrap","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.95516361193731,2.89857959765941,2.84443858452141,2.95599777409807,3.02877412559465,2.88675710512325,2.97790720080957,2.88719626748934,3.0009198253043,2.94156182873994,3.05999406352639,2.94988558264449,2.94217815231532,3.01347517818213,3.09613374415785,2.88844117512926,2.96509844744578,2.90627467473969,3.05198922138661,2.8735313963145,3.14545764457434,3.09862720165402,3.06731385989115,3.04720714930445,2.94889522409067,3.01193427434191,3.14987293714657,3.03270003991202,3.13590710591525,2.92497926596552,3.08331612888724,2.90600712243468,3.03773727761582,2.99251592019573,2.90601309258491,3.02583617391065,3.16527528921142,3.16074975579977,2.90966664860025,2.92859310256317,3.19425635375082,3.04799732407555,3.17492563566193,2.98661308092996,2.96273303730413,3.06369212968275,2.86093864673749,3.02914682328701,2.89549041073769,3.18494357457384,3.04054629039019,3.00601189089939,2.96102933688089,3.152098616492,2.94563674591482,2.91529571227729,2.86825809404254,2.86886869855225,2.99281704220921,2.90118597140536,2.88650191584602,3.06975055523217,2.81906545097008,3.08034123498946,2.94075545538217,2.96357759917155,3.1283805295825,3.1675429392606,2.91301133204252,3.18444191748276,3.09135777130723,3.07455003280193,2.82113757710904,2.95808805385605,2.99113815193996,3.0241013054736,3.07930463794619,3.16627341536805,3.04734049094841,2.97136860350147,3.01683214688674,2.82339139543474,2.90434274282306,2.95886078132316,2.8790978946723,3.13277102513239,2.8611548891291,3.12136741681024,3.0187304626219,3.0649270568043,2.86867939755321,3.05322214392945,2.92474789870903,3.08982173856348,2.95957592986524,3.18774256445467,3.18695934824646,3.09068101560697,2.90288669858128,2.88871517386287,3.03721826067194,2.9070085728541,3.01242815954611,3.11411666851491,2.8672243242152,2.96175967240706,2.98863051105291,3.14724272275344,3.17028318233788,3.15279102372006,3.06967473700643,3.18006679173559,3.00657795770094,3.03060760851949,2.93453248236328,2.93892985256389,2.80800972022116,3.00112521825358,3.14841736545786,2.80252031357959,2.82882284959778,2.86568448999897,3.10813362970948,3.09407372232527],"y":[210.802479195222,229.639630748518,210.149059957452,218.229541882128,214.882884860784,209.893153155968,210.829680104554,218.66397832986,208.892363415658,214.742411051691,214.028842976503,216.003158969618,214.356028082781,212.873057027161,209.971771019325,216.666024945304,210.288085476868,220.916528511979,209.188719480298,221.737394724786,217.963809305057,215.216163807549,212.650119998679,215.252065196075,214.84091401957,214.891736822389,215.849690233544,214.629895971902,210.015043938719,220.143210732564,222.322586848214,208.620421358757,207.39126261659,229.842310099676,220.351310720481,220.150086065382,212.957629595883,219.253182511032,207.631599358283,208.191225348413,207.878975594975,225.263400658779,210.028433113359,215.819636290893,222.240758569539,216.673315755837,210.265686219372,224.821484057978,213.202488079667,215.371322056092,209.665173248015,220.283491797186,210.241790573671,224.908138883673,216.862077919208,219.763950962387,208.055506130122,220.310444152355,208.023771273159,224.069566925429,208.132588114031,221.023913966864,214.007874319516,230.612928384729,218.63816798795,230.343480546027,214.21542843096,228.760864492878,220.120209200308,223.123013345897,215.916203009151,221.249843862839,221.037618734129,217.308106121235,216.04265119005,230.324838489294,209.069969093613,219.938770920783,215.359668258391,223.167230322771,211.930644326471,220.614691266976,212.053387266211,223.992050762475,212.302939216979,228.250282150321,218.283279982023,217.894316758215,212.299159930274,229.721070537157,217.825449335761,228.133364126273,212.381906861439,224.066191789322,214.021272063628,225.648625779897,216.375231090933,221.696189702861,202.670690640807,225.304611291923,219.006696503796,227.869995997846,215.315467700362,227.625577302463,215.789783757925,215.149192280881,209.780654738657,218.854795670509,207.739187053405,209.241143666953,215.717025646381,229.258173913322,212.864798262902,229.899335510284,217.103796339035,229.677306994423,216.617594972253,222.394435824268,214.067151076533,null,215.313516898081,222.203892362863,212.383362984098,212.635317654349],"text":["species: Gentoo<br />flipper_length_mm: 211<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 218<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 211<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 219<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 209<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 214<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 214<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 213<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 217<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 221<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 209<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 222<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 218<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 213<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 222<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 209<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 207<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 213<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 219<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 225<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 222<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 217<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 225<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 213<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 225<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 217<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 224<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 221<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 214<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 231<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 219<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 214<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 229<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 223<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 221<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 221<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 217<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 209<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 223<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 212<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 221<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 212<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 224<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 212<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 228<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 218<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 218<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 212<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 218<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 228<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 212<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 224<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 214<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 226<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 222<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 203<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 225<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 219<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 228<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 228<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 219<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 209<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 229<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 213<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 217<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 217<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 222<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 214<br />species: Gentoo","species: Gentoo<br />flipper_length_mm:  NA<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 222<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 212<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 213<br />species: Gentoo"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,163,25,1)","opacity":0.5,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(255,163,25,1)"}},"hoveron":"points","name":"Gentoo","legendgroup":"Gentoo","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":27.8721461187215,"r":7.30593607305936,"b":41.8264840182648,"l":43.1050228310502},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,3.6],"tickmode":"array","ticktext":["Adelie","Chinstrap","Gentoo"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["Adelie","Chinstrap","Gentoo"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Species","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[169.05,233.95],"tickmode":"array","ticktext":["170","180","190","200","210","220","230"],"tickvals":[170,180,190,200,210,220,230],"categoryorder":"array","categoryarray":["170","180","190","200","210","220","230"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Flipper length (mm)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"275c59522b36":{"x":{},"y":{},"colour":{},"type":"box"},"275c296b4764":{"x":{},"y":{},"colour":{}}},"cur_data":"275c59522b36","visdat":{"275c59522b36":["function (y) ","x"],"275c296b4764":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-90d342fa47208311daa2" style="width:624px;height:384px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-90d342fa47208311daa2">{"x":{"data":[{"x":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"y":[181,186,195,null,193,190,181,195,193,190,186,180,182,191,198,185,195,197,184,194,174,180,189,185,180,187,183,187,172,180,178,178,188,184,195,196,190,180,181,184,182,195,186,196,185,190,182,179,190,191,186,188,190,200,187,191,186,193,181,194,185,195,185,192,184,192,195,188,190,198,190,190,196,197,190,195,191,184,187,195,189,196,187,193,191,194,190,189,189,190,202,205,185,186,187,208,190,196,178,192,192,203,183,190,193,184,199,190,181,197,198,191,193,197,191,196,188,199,189,189,187,198,176,202,186,199,191,195,191,210,190,197,193,199,187,190,191,200,185,193,193,187,188,190,192,185,190,184,195,193,187,201],"hoverinfo":"y","type":"box","fillcolor":"rgba(255,255,255,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(128,0,0,1)","width":1.88976377952756},"name":"Adelie","legendgroup":"Adelie","showlegend":true,"xaxis":"x","yaxis":"y","frame":null},{"x":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"y":[192,196,193,188,197,198,178,197,195,198,193,194,185,201,190,201,197,181,190,195,181,191,187,193,195,197,200,200,191,205,187,201,187,203,195,199,195,210,192,205,210,187,196,196,196,201,190,212,187,198,199,201,193,203,187,197,191,203,202,194,206,189,195,207,202,193,210,198],"hoverinfo":"y","type":"box","fillcolor":"rgba(255,255,255,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(118,118,118,1)","width":1.88976377952756},"name":"Chinstrap","legendgroup":"Chinstrap","showlegend":true,"xaxis":"x","yaxis":"y","frame":null},{"x":[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],"y":[211,230,210,218,215,210,211,219,209,215,214,216,214,213,210,217,210,221,209,222,218,215,213,215,215,215,216,215,210,220,222,209,207,230,220,220,213,219,208,208,208,225,210,216,222,217,210,225,213,215,210,220,210,225,217,220,208,220,208,224,208,221,214,231,219,230,214,229,220,223,216,221,221,217,216,230,209,220,215,223,212,221,212,224,212,228,218,218,212,230,218,228,212,224,214,226,216,222,203,225,219,228,215,228,216,215,210,219,208,209,216,229,213,230,217,230,217,222,214,null,215,222,212,213],"hoverinfo":"y","type":"box","fillcolor":"rgba(255,255,255,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(255,163,25,1)","width":1.88976377952756},"name":"Gentoo","legendgroup":"Gentoo","showlegend":true,"xaxis":"x","yaxis":"y","frame":null},{"x":[0.915031008049846,1.11532205417752,0.96359076872468,1.15320696160197,1.17618691371754,0.818222599755973,1.0112421952188,1.15696761775762,1.02057400578633,0.982645894121379,1.18273333813995,0.981333662476391,1.07102825418115,1.02905336078256,0.841169873066246,1.15992998816073,0.898435093741864,0.816823813412338,0.931168287713081,1.18180145965889,1.1558157264255,1.07712136246264,1.05620272550732,1.19770791064948,1.06228231964633,1.08341218726709,1.01762640988454,1.03765680817887,0.915663894917816,0.85884545892477,1.18520969301462,1.16091961804777,1.07628211136907,1.11818696707487,0.80984547380358,0.991118388436735,1.10338381500915,0.886563174333423,0.927272403053939,0.892650314141065,0.857120008952916,0.965818534325808,0.965489730518311,0.947538180369884,0.860977899096906,0.855522425379604,0.893213639780879,0.986384980101138,0.906389056146145,1.14313108613715,0.818332466669381,0.97688002968207,1.11956993825734,0.848759703990072,1.02437919350341,0.882612555846572,0.851012660097331,1.10132314572111,1.15801814366132,0.949785110354423,1.06604607785121,0.837936264369637,0.953587855119258,0.909753457829356,1.12585601555184,0.97940653655678,1.12402574121952,1.12495580380782,1.11773692844436,0.975932675041258,1.1017900634557,1.05168845262378,1.08407296054065,0.800249909330159,0.990126629639417,0.888047554064542,0.951926615089178,1.0451084013097,0.940719163697213,0.844454169739038,0.897447789087892,1.06722223497927,0.967058711871505,1.11527833361179,0.841145857702941,0.973957096599042,1.19398279199377,1.15722044575959,1.15458762431517,0.870021060109138,0.852278276626021,1.06124077001587,0.93740658890456,1.06270325118676,0.928149296995252,0.87507644770667,1.11291772052646,0.837437994685024,0.986711616627872,1.00460218396038,1.0399955837056,0.933129416126758,0.995445213466883,1.18178953099996,0.99316095886752,1.15614008884877,1.16577527476475,1.04349399292842,0.964275910612196,0.858837876375765,1.17411992130801,0.92049155998975,0.824288228619844,1.17909077601507,1.08823850937188,0.856917718239129,1.01971386242658,1.18163649542257,1.03419334124774,0.961804112698883,1.0591573917307,0.927928246837109,0.923088004346937,0.887907052505761,0.947795546334237,1.19368768138811,0.861680920328945,0.836417599953711,0.856762763112783,1.07600284060463,1.04770259335637,1.15655764685944,1.06919963704422,1.09483109517023,1.00845429031178,1.06393537987024,1.12872218405828,1.11451262068003,1.19192876694724,0.975772614497691,0.924680880829692,0.963789981044829,0.804186844732612,0.873539809603244,1.1370917275548,0.892464712820947,0.895639982260764,0.830676466133445,0.898289471212774,1.09285408221185,1.13898126604035,0.999010906834155],"y":[180.989129411243,185.89617183879,195.38668014463,null,192.783395872265,190.098638037033,180.709232157655,195.373975595459,193.012057446316,189.730456263386,186.097521836124,180.388763332181,182.13501721397,190.935132717527,197.858675994538,185.268204255961,194.715053634904,196.754252757505,184.317390946113,193.846495643444,173.890640434809,180.227157182992,188.754702943936,184.614212649502,179.92528629303,186.986534135416,182.937475960143,186.874247041345,172.293186651729,179.964086440764,178.027011898905,178.371074665524,188.219673233666,183.767101078853,194.847029466182,196.377073960192,190.067920074798,180.208658900298,180.898167515546,184.215355128981,182.030141746439,195.331196359731,185.748237153515,195.825774733908,184.675969930552,189.768389663287,182.381679197028,178.837041740306,190.180786421522,191.228550267406,185.684334196895,187.791675703228,189.816435897909,199.680846795253,186.694331073016,191.392989244685,186.388843437843,192.709653977118,181.324247665331,194.061041470058,184.916359087266,194.959841987304,185.16520152092,191.666002196632,183.871450064145,192.144630040973,194.853559398465,188.265254878439,189.772137666121,197.998359148949,189.820839738101,189.753618654981,196.360497011244,196.857380430214,189.982765107043,194.62239405755,191.03796757441,184.115392176434,187.077010835707,194.857549900562,189.312891449966,196.101005557925,186.842323932238,192.910563731007,190.72838007398,194.290041518025,190.362480971031,189.050915746763,188.863637930714,190.39729377497,201.787855740637,205.090137572214,184.686542823538,185.989626055956,186.679556658678,207.728932610154,189.826394296624,196.06709786877,178.185366127081,191.732416728884,192.293174210563,203.166859309748,183.208319628984,189.717667286843,192.886445570737,184.13866598513,199.019058081321,189.879841434211,180.79242456127,196.646553437039,197.789295793697,191.312062330544,193.249461932853,197.198013057746,190.723929380625,195.699793670885,188.379780646786,198.94890399687,188.971213301457,188.732238464989,187.06794924587,197.816622415558,175.784077536315,202.152966265194,185.826281919703,199.248318452947,190.675133285671,195.257624056935,190.941942624561,210.204709807783,190.129908405244,196.955621917546,193.101716947556,198.600372279249,186.773794811219,190.163897796534,190.772133190557,200.251146977022,184.846211099438,193.150194148533,193.346144863218,186.692623731866,187.702164550312,190.142579085939,191.94315887671,185.267520782351,190.377150453441,183.656391182169,194.967828154564,193.161268094741,186.66955213435,201.394355212897],"text":["species: Adelie<br />flipper_length_mm: 181<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm:  NA<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 181<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 180<br />species: Adelie","species: Adelie<br />flipper_length_mm: 182<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 198<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 197<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 194<br />species: Adelie","species: Adelie<br />flipper_length_mm: 174<br />species: Adelie","species: Adelie<br />flipper_length_mm: 180<br />species: Adelie","species: Adelie<br />flipper_length_mm: 189<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 180<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 183<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 172<br />species: Adelie","species: Adelie<br />flipper_length_mm: 180<br />species: Adelie","species: Adelie<br />flipper_length_mm: 178<br />species: Adelie","species: Adelie<br />flipper_length_mm: 178<br />species: Adelie","species: Adelie<br />flipper_length_mm: 188<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 196<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 180<br />species: Adelie","species: Adelie<br />flipper_length_mm: 181<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 182<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 196<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 182<br />species: Adelie","species: Adelie<br />flipper_length_mm: 179<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 188<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 200<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 181<br />species: Adelie","species: Adelie<br />flipper_length_mm: 194<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 192<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 192<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 188<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 198<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 196<br />species: Adelie","species: Adelie<br />flipper_length_mm: 197<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 189<br />species: Adelie","species: Adelie<br />flipper_length_mm: 196<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 194<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 189<br />species: Adelie","species: Adelie<br />flipper_length_mm: 189<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 202<br />species: Adelie","species: Adelie<br />flipper_length_mm: 205<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 208<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 196<br />species: Adelie","species: Adelie<br />flipper_length_mm: 178<br />species: Adelie","species: Adelie<br />flipper_length_mm: 192<br />species: Adelie","species: Adelie<br />flipper_length_mm: 192<br />species: Adelie","species: Adelie<br />flipper_length_mm: 203<br />species: Adelie","species: Adelie<br />flipper_length_mm: 183<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 199<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 181<br />species: Adelie","species: Adelie<br />flipper_length_mm: 197<br />species: Adelie","species: Adelie<br />flipper_length_mm: 198<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 197<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 196<br />species: Adelie","species: Adelie<br />flipper_length_mm: 188<br />species: Adelie","species: Adelie<br />flipper_length_mm: 199<br />species: Adelie","species: Adelie<br />flipper_length_mm: 189<br />species: Adelie","species: Adelie<br />flipper_length_mm: 189<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 198<br />species: Adelie","species: Adelie<br />flipper_length_mm: 176<br />species: Adelie","species: Adelie<br />flipper_length_mm: 202<br />species: Adelie","species: Adelie<br />flipper_length_mm: 186<br />species: Adelie","species: Adelie<br />flipper_length_mm: 199<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 210<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 197<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 199<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 191<br />species: Adelie","species: Adelie<br />flipper_length_mm: 200<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 188<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 192<br />species: Adelie","species: Adelie<br />flipper_length_mm: 185<br />species: Adelie","species: Adelie<br />flipper_length_mm: 190<br />species: Adelie","species: Adelie<br />flipper_length_mm: 184<br />species: Adelie","species: Adelie<br />flipper_length_mm: 195<br />species: Adelie","species: Adelie<br />flipper_length_mm: 193<br />species: Adelie","species: Adelie<br />flipper_length_mm: 187<br />species: Adelie","species: Adelie<br />flipper_length_mm: 201<br />species: Adelie"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(128,0,0,1)","opacity":0.5,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(128,0,0,1)"}},"hoveron":"points","name":"Adelie","legendgroup":"Adelie","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.18875025426969,1.98658895073459,1.82975380532444,2.0595272497274,2.10343726780266,1.85484243240207,1.9586338378489,1.88999413168058,1.82318342421204,1.95835707532242,1.8259713199921,1.89035457316786,1.82185164364055,2.06811281582341,1.91909671304747,1.84028863292187,1.82876163888723,2.1521762275137,2.10169896082953,2.12664235504344,2.19285614946857,1.84143985798582,1.83961673174053,2.11953264446929,2.1138301066123,1.80377196203917,2.11162635311484,2.09175626076758,2.05205274112523,1.99236433198676,1.86265474054962,1.80328620793298,1.98098335769027,1.99691733149812,1.95583484461531,1.98586637675762,2.08531160028651,1.82212077053264,1.94191323900595,2.12112490916625,2.13428353480995,1.89509976198897,1.9415944410488,2.1427541680634,2.14150534952059,1.91835818216205,1.85881932983175,2.08159682452679,1.84152267528698,1.81349110919982,2.19976181117818,1.81394992163405,1.93535651350394,2.16602550465614,2.04689410785213,1.91451413948089,2.09511896120384,2.13362172367051,1.92570831216872,1.99702661912888,2.0789495064877,2.05658494159579,2.05756916599348,2.19114136192948,1.96589413378388,1.84776191199198,2.01041186405346,1.89002934033051],"y":[192.322720707767,196.292400651239,193.220326073095,187.901453133486,196.633686438948,197.891528865322,177.819001015835,197.280373984575,194.889921369962,197.843582232483,193.207308271527,194.275867699459,184.966337248869,201.183705331571,189.683262908831,200.77598654218,197.363160998188,181.201630032994,190.255164306611,194.934221681394,181.075070794485,191.239058846235,187.310726920329,192.908153274655,194.672257667407,197.100594909675,200.196508973837,199.668302765861,190.840414088964,205.091649725847,187.202345646359,201.333645706438,186.980600404553,203.053695572913,195.189296276867,199.28595793955,195.327317203581,209.645105780289,192.002326643281,204.880435818434,210.276444898359,187.245148131065,195.69386498183,196.170149243996,195.788215086423,200.659965400957,190.348516917787,211.72573426012,187.117645880021,197.738814196922,198.616059207357,201.017051077075,192.669022314623,202.826401876844,186.93634792082,197.069822499342,191.24535554368,202.761596167088,201.967539737374,193.958514491096,206.186998206563,189.171803848445,195.264977583103,207.309252896719,202.362115659192,193.040493377484,210.017868612893,197.73655860424],"text":["species: Chinstrap<br />flipper_length_mm: 192<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 196<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 193<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 188<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 197<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 198<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 178<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 197<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 195<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 198<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 193<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 194<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 185<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 201<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 190<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 201<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 197<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 181<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 190<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 195<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 181<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 191<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 187<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 193<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 195<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 197<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 200<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 200<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 191<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 205<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 187<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 201<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 187<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 203<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 195<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 199<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 195<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 210<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 192<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 205<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 210<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 187<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 196<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 196<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 196<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 201<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 190<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 212<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 187<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 198<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 199<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 201<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 193<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 203<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 187<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 197<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 191<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 203<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 202<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 194<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 206<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 189<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 195<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 207<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 202<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 193<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 210<br />species: Chinstrap","species: Chinstrap<br />flipper_length_mm: 198<br />species: Chinstrap"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(118,118,118,1)","opacity":0.5,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(118,118,118,1)"}},"hoveron":"points","name":"Chinstrap","legendgroup":"Chinstrap","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.95516361193731,2.89857959765941,2.84443858452141,2.95599777409807,3.02877412559465,2.88675710512325,2.97790720080957,2.88719626748934,3.0009198253043,2.94156182873994,3.05999406352639,2.94988558264449,2.94217815231532,3.01347517818213,3.09613374415785,2.88844117512926,2.96509844744578,2.90627467473969,3.05198922138661,2.8735313963145,3.14545764457434,3.09862720165402,3.06731385989115,3.04720714930445,2.94889522409067,3.01193427434191,3.14987293714657,3.03270003991202,3.13590710591525,2.92497926596552,3.08331612888724,2.90600712243468,3.03773727761582,2.99251592019573,2.90601309258491,3.02583617391065,3.16527528921142,3.16074975579977,2.90966664860025,2.92859310256317,3.19425635375082,3.04799732407555,3.17492563566193,2.98661308092996,2.96273303730413,3.06369212968275,2.86093864673749,3.02914682328701,2.89549041073769,3.18494357457384,3.04054629039019,3.00601189089939,2.96102933688089,3.152098616492,2.94563674591482,2.91529571227729,2.86825809404254,2.86886869855225,2.99281704220921,2.90118597140536,2.88650191584602,3.06975055523217,2.81906545097008,3.08034123498946,2.94075545538217,2.96357759917155,3.1283805295825,3.1675429392606,2.91301133204252,3.18444191748276,3.09135777130723,3.07455003280193,2.82113757710904,2.95808805385605,2.99113815193996,3.0241013054736,3.07930463794619,3.16627341536805,3.04734049094841,2.97136860350147,3.01683214688674,2.82339139543474,2.90434274282306,2.95886078132316,2.8790978946723,3.13277102513239,2.8611548891291,3.12136741681024,3.0187304626219,3.0649270568043,2.86867939755321,3.05322214392945,2.92474789870903,3.08982173856348,2.95957592986524,3.18774256445467,3.18695934824646,3.09068101560697,2.90288669858128,2.88871517386287,3.03721826067194,2.9070085728541,3.01242815954611,3.11411666851491,2.8672243242152,2.96175967240706,2.98863051105291,3.14724272275344,3.17028318233788,3.15279102372006,3.06967473700643,3.18006679173559,3.00657795770094,3.03060760851949,2.93453248236328,2.93892985256389,2.80800972022116,3.00112521825358,3.14841736545786,2.80252031357959,2.82882284959778,2.86568448999897,3.10813362970948,3.09407372232527],"y":[210.802479195222,229.639630748518,210.149059957452,218.229541882128,214.882884860784,209.893153155968,210.829680104554,218.66397832986,208.892363415658,214.742411051691,214.028842976503,216.003158969618,214.356028082781,212.873057027161,209.971771019325,216.666024945304,210.288085476868,220.916528511979,209.188719480298,221.737394724786,217.963809305057,215.216163807549,212.650119998679,215.252065196075,214.84091401957,214.891736822389,215.849690233544,214.629895971902,210.015043938719,220.143210732564,222.322586848214,208.620421358757,207.39126261659,229.842310099676,220.351310720481,220.150086065382,212.957629595883,219.253182511032,207.631599358283,208.191225348413,207.878975594975,225.263400658779,210.028433113359,215.819636290893,222.240758569539,216.673315755837,210.265686219372,224.821484057978,213.202488079667,215.371322056092,209.665173248015,220.283491797186,210.241790573671,224.908138883673,216.862077919208,219.763950962387,208.055506130122,220.310444152355,208.023771273159,224.069566925429,208.132588114031,221.023913966864,214.007874319516,230.612928384729,218.63816798795,230.343480546027,214.21542843096,228.760864492878,220.120209200308,223.123013345897,215.916203009151,221.249843862839,221.037618734129,217.308106121235,216.04265119005,230.324838489294,209.069969093613,219.938770920783,215.359668258391,223.167230322771,211.930644326471,220.614691266976,212.053387266211,223.992050762475,212.302939216979,228.250282150321,218.283279982023,217.894316758215,212.299159930274,229.721070537157,217.825449335761,228.133364126273,212.381906861439,224.066191789322,214.021272063628,225.648625779897,216.375231090933,221.696189702861,202.670690640807,225.304611291923,219.006696503796,227.869995997846,215.315467700362,227.625577302463,215.789783757925,215.149192280881,209.780654738657,218.854795670509,207.739187053405,209.241143666953,215.717025646381,229.258173913322,212.864798262902,229.899335510284,217.103796339035,229.677306994423,216.617594972253,222.394435824268,214.067151076533,null,215.313516898081,222.203892362863,212.383362984098,212.635317654349],"text":["species: Gentoo<br />flipper_length_mm: 211<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 218<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 211<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 219<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 209<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 214<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 214<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 213<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 217<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 221<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 209<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 222<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 218<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 213<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 222<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 209<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 207<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 213<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 219<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 225<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 222<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 217<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 225<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 213<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 225<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 217<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 224<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 221<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 214<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 231<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 219<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 214<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 229<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 223<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 221<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 221<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 217<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 209<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 220<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 223<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 212<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 221<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 212<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 224<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 212<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 228<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 218<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 218<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 212<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 218<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 228<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 212<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 224<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 214<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 226<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 222<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 203<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 225<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 219<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 228<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 228<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 210<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 219<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 208<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 209<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 216<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 229<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 213<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 217<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 230<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 217<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 222<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 214<br />species: Gentoo","species: Gentoo<br />flipper_length_mm:  NA<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 215<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 222<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 212<br />species: Gentoo","species: Gentoo<br />flipper_length_mm: 213<br />species: Gentoo"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,163,25,1)","opacity":0.5,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(255,163,25,1)"}},"hoveron":"points","name":"Gentoo","legendgroup":"Gentoo","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":27.8721461187215,"r":7.30593607305936,"b":41.8264840182648,"l":43.1050228310502},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,3.6],"tickmode":"array","ticktext":["Adelie","Chinstrap","Gentoo"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["Adelie","Chinstrap","Gentoo"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Species","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[169.05,233.95],"tickmode":"array","ticktext":["170","180","190","200","210","220","230"],"tickvals":[170,180,190,200,210,220,230],"categoryorder":"array","categoryarray":["170","180","190","200","210","220","230"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Flipper length (mm)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"2f4426885b06":{"x":{},"y":{},"colour":{},"type":"box"},"2f44135359e5":{"x":{},"y":{},"colour":{}}},"cur_data":"2f4426885b06","visdat":{"2f4426885b06":["function (y) ","x"],"2f44135359e5":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <h3 id="references">References</h3>
 <p>Check out the <a href="https://allisonhorst.github.io/palmerpenguins/articles/examples.html">package website</a> of the <code>palmerpenguin</code> package. They have more nice examples of data visualizations that you can do with ggplot.</p>
 <p>Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. <a href="https://allisonhorst.github.io/palmerpenguins/" class="uri">https://allisonhorst.github.io/palmerpenguins/</a>. doi: 10.5281/zenodo.3960218.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
 <h2 id="dplyr">2 dplyr</h2>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span>
+</code></pre>
 </div>
-<p>Solution will be uploaded later</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h2 id="tidyr">3 tidyr</h2>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h3 id="data-transformation-with-dplyr">2.2 Data transformation with dplyr</h3>
+<p><strong>Find all penguins that …</strong></p>
+<ol type="1">
+<li>… have a bill length between 40 and 45 mm.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='fu'>between</span><span class='op'>(</span><span class='va'>bill_length_mm</span>, <span class='fl'>40</span>, <span class='fl'>45</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 77 x 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1 Adelie  Torgersen           40.3          18                 195
+ 2 Adelie  Torgersen           42            20.2               190
+ 3 Adelie  Torgersen           41.1          17.6               182
+ 4 Adelie  Torgersen           42.5          20.7               197
+ 5 Adelie  Biscoe              40.6          18.6               183
+ 6 Adelie  Biscoe              40.5          17.9               187
+ 7 Adelie  Biscoe              40.5          18.9               180
+ 8 Adelie  Dream               40.9          18.9               184
+ 9 Adelie  Dream               42.2          18.5               180
+10 Adelie  Dream               40.8          18.4               195
+# ... with 67 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># same as </span>
+<span class='co'># filter(penguins, bill_length_mm &lt; 45 &amp; bill_length_mm &gt; 40)</span>
+</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>… for which we know the sex.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 333 x 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181
+ 2 Adelie  Torgersen           39.5          17.4               186
+ 3 Adelie  Torgersen           40.3          18                 195
+ 4 Adelie  Torgersen           36.7          19.3               193
+ 5 Adelie  Torgersen           39.3          20.6               190
+ 6 Adelie  Torgersen           38.9          17.8               181
+ 7 Adelie  Torgersen           39.2          19.6               195
+ 8 Adelie  Torgersen           41.1          17.6               182
+ 9 Adelie  Torgersen           38.6          21.2               191
+10 Adelie  Torgersen           34.6          21.1               198
+# ... with 323 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+<ol start="3" type="1">
+<li>… which are of the species Adelie or Gentoo and live either on Dream or on Torgersen</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span>, <span class='st'>"Gentoo"</span><span class='op'>)</span> <span class='op'>&amp;</span>
+  <span class='va'>island</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Dream"</span>, <span class='st'>"Torgersen"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 108 x 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181
+ 2 Adelie  Torgersen           39.5          17.4               186
+ 3 Adelie  Torgersen           40.3          18                 195
+ 4 Adelie  Torgersen           NA            NA                  NA
+ 5 Adelie  Torgersen           36.7          19.3               193
+ 6 Adelie  Torgersen           39.3          20.6               190
+ 7 Adelie  Torgersen           38.9          17.8               181
+ 8 Adelie  Torgersen           39.2          19.6               195
+ 9 Adelie  Torgersen           34.1          18.1               193
+10 Adelie  Torgersen           42            20.2               190
+# ... with 98 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># or</span>
+<span class='co'># filter(penguins, (species == "Adelie" | species == "Gentoo") &amp;</span>
+<span class='co'>#   (island == "Dream" | island == "Torgersen"))</span>
+</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>… lived on the island Dream in the year 2007. How many of them were from each of the 3 species?</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>island</span> <span class='op'>==</span> <span class='st'>"Dream"</span> <span class='op'>&amp;</span> <span class='va'>year</span> <span class='op'>==</span> <span class='fl'>2007</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>species</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 2 x 2
+  species       n
+  &lt;fct&gt;     &lt;int&gt;
+1 Adelie       20
+2 Chinstrap    26</code></pre>
+</div>
+<p><strong>Count …</strong></p>
+<ol type="1">
+<li>… the number of penguins on each island.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>count</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>island</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 3 x 2
+  island        n
+  &lt;fct&gt;     &lt;int&gt;
+1 Biscoe      168
+2 Dream       124
+3 Torgersen    52</code></pre>
+</div>
+<ol start="2" type="1">
+<li>… the number of penguins of each species on each island.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>count</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>island</span>, <span class='va'>species</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 5 x 3
+  island    species       n
+  &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;
+1 Biscoe    Adelie       44
+2 Biscoe    Gentoo      124
+3 Dream     Adelie       56
+4 Dream     Chinstrap    68
+5 Torgersen Adelie       52</code></pre>
+</div>
+<p><strong>Sort …</strong></p>
+<ol type="1">
+<li>… <code>penguins</code> to find penguins with lowest body mass</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>arrange</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>body_mass_g</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 8
+   species   island    bill_length_mm bill_depth_mm flipper_length_mm
+   &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1 Chinstrap Dream               46.9          16.6               192
+ 2 Adelie    Biscoe              36.5          16.6               181
+ 3 Adelie    Biscoe              36.4          17.1               184
+ 4 Adelie    Biscoe              34.5          18.1               187
+ 5 Adelie    Dream               33.1          16.1               178
+ 6 Adelie    Torgersen           38.6          17                 188
+ 7 Chinstrap Dream               43.2          16.6               187
+ 8 Adelie    Biscoe              37.9          18.6               193
+ 9 Adelie    Dream               37.5          18.9               179
+10 Adelie    Dream               37            16.9               185
+# ... with 334 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+<ol start="2" type="1">
+<li>… <code>penguins</code> to find penguins with highest body mass</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>arrange</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='fu'>desc</span><span class='op'>(</span><span class='va'>body_mass_g</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 8
+   species island bill_length_mm bill_depth_mm flipper_length_mm
+   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1 Gentoo  Biscoe           49.2          15.2               221
+ 2 Gentoo  Biscoe           59.6          17                 230
+ 3 Gentoo  Biscoe           51.1          16.3               220
+ 4 Gentoo  Biscoe           48.8          16.2               222
+ 5 Gentoo  Biscoe           45.2          16.4               223
+ 6 Gentoo  Biscoe           49.8          15.9               229
+ 7 Gentoo  Biscoe           48.4          14.6               213
+ 8 Gentoo  Biscoe           49.3          15.7               217
+ 9 Gentoo  Biscoe           55.1          16                 230
+10 Gentoo  Biscoe           49.5          16.2               229
+# ... with 334 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+<ol start="3" type="1">
+<li>… <code>penguins</code> by species and sex, with longest flippers first</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>arrange</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span>, <span class='va'>sex</span>, <span class='fu'>desc</span><span class='op'>(</span><span class='va'>flipper_length_mm</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1 Adelie  Dream               35.7          18                 202
+ 2 Adelie  Biscoe              38.6          17.2               199
+ 3 Adelie  Biscoe              38.1          16.5               198
+ 4 Adelie  Torgersen           39.6          17.2               196
+ 5 Adelie  Torgersen           40.3          18                 195
+ 6 Adelie  Torgersen           38.7          19                 195
+ 7 Adelie  Dream               36.4          17                 195
+ 8 Adelie  Biscoe              35.5          16.2               195
+ 9 Adelie  Dream               36            17.8               195
+10 Adelie  Torgersen           36.7          19.3               193
+# ... with 334 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+<p><strong>Select …</strong></p>
+<ol type="1">
+<li>… only the variables species, sex and year</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>select</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span>, <span class='va'>sex</span>, <span class='va'>year</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 3
+   species sex     year
+   &lt;fct&gt;   &lt;fct&gt;  &lt;int&gt;
+ 1 Adelie  male    2007
+ 2 Adelie  female  2007
+ 3 Adelie  female  2007
+ 4 Adelie  &lt;NA&gt;    2007
+ 5 Adelie  female  2007
+ 6 Adelie  male    2007
+ 7 Adelie  female  2007
+ 8 Adelie  male    2007
+ 9 Adelie  &lt;NA&gt;    2007
+10 Adelie  &lt;NA&gt;    2007
+# ... with 334 more rows</code></pre>
+</div>
+<ol start="2" type="1">
+<li>… variables based on the following vector</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 344 x 3
+   species bill_length_mm flipper_length_mm
+   &lt;fct&gt;            &lt;dbl&gt;             &lt;int&gt;
+ 1 Adelie            39.1               181
+ 2 Adelie            39.5               186
+ 3 Adelie            40.3               195
+ 4 Adelie            NA                  NA
+ 5 Adelie            36.7               193
+ 6 Adelie            39.3               190
+ 7 Adelie            38.9               181
+ 8 Adelie            39.2               195
+ 9 Adelie            34.1               193
+10 Adelie            42                 190
+# ... with 334 more rows</code></pre>
+<pre><code>Error: Can&#39;t subset columns that don&#39;t exist.
+x Column `body_mass_kg` doesn&#39;t exist.</code></pre>
+</div>
+<ol start="3" type="1">
+<li>… only columns that contain measurements in mm</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>select</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='fu'>ends_with</span><span class='op'>(</span><span class='st'>"mm"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 3
+   bill_length_mm bill_depth_mm flipper_length_mm
+            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1           39.1          18.7               181
+ 2           39.5          17.4               186
+ 3           40.3          18                 195
+ 4           NA            NA                  NA
+ 5           36.7          19.3               193
+ 6           39.3          20.6               190
+ 7           38.9          17.8               181
+ 8           39.2          19.6               195
+ 9           34.1          18.1               193
+10           42            20.2               190
+# ... with 334 more rows</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># or</span>
+<span class='co'>#select(penguins, contains("_mm"))</span>
+</code></pre>
+</div>
+</div>
+<p><strong>Add a column …</strong></p>
+<ol type="1">
+<li>… with the ratio of bill length to bill depth</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>mutate</span><span class='op'>(</span><span class='va'>penguins</span>,
+       ratio <span class='op'>=</span> <span class='va'>bill_length_mm</span> <span class='op'>/</span> <span class='va'>bill_depth_mm</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 9
+   species island    bill_length_mm bill_depth_mm flipper_length_mm
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181
+ 2 Adelie  Torgersen           39.5          17.4               186
+ 3 Adelie  Torgersen           40.3          18                 195
+ 4 Adelie  Torgersen           NA            NA                  NA
+ 5 Adelie  Torgersen           36.7          19.3               193
+ 6 Adelie  Torgersen           39.3          20.6               190
+ 7 Adelie  Torgersen           38.9          17.8               181
+ 8 Adelie  Torgersen           39.2          19.6               195
+ 9 Adelie  Torgersen           34.1          18.1               193
+10 Adelie  Torgersen           42            20.2               190
+# ... with 334 more rows, and 4 more variables: body_mass_g &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;, ratio &lt;dbl&gt;</code></pre>
+</div>
+<ol start="2" type="1">
+<li>… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>mutate</span><span class='op'>(</span><span class='va'>penguins</span>,
+       species_short <span class='op'>=</span> <span class='fu'>case_when</span><span class='op'>(</span>
+         <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Adelie"</span> <span class='op'>~</span> <span class='st'>"A"</span>,
+         <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Gentoo"</span> <span class='op'>~</span> <span class='st'>"G"</span>,
+         <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Chinstrap"</span> <span class='op'>~</span> <span class='st'>"C"</span>
+       <span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 344 x 9
+   species island    bill_length_mm bill_depth_mm flipper_length_mm
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181
+ 2 Adelie  Torgersen           39.5          17.4               186
+ 3 Adelie  Torgersen           40.3          18                 195
+ 4 Adelie  Torgersen           NA            NA                  NA
+ 5 Adelie  Torgersen           36.7          19.3               193
+ 6 Adelie  Torgersen           39.3          20.6               190
+ 7 Adelie  Torgersen           38.9          17.8               181
+ 8 Adelie  Torgersen           39.2          19.6               195
+ 9 Adelie  Torgersen           34.1          18.1               193
+10 Adelie  Torgersen           42            20.2               190
+# ... with 334 more rows, and 4 more variables: body_mass_g &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;, species_short &lt;chr&gt;</code></pre>
+</div>
+<p><strong>Calculate …</strong></p>
+<ol type="1">
+<li>… mean flipper length and body mass for the 3 species and male and female penguins separately</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>species</span>, <span class='va'>sex</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarize</span><span class='op'>(</span>
+    mean_flipper <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>flipper_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+    mean_body <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>body_mass_g</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  <span class='op'>)</span>  
+</code></pre>
+</div>
+<pre><code># A tibble: 8 x 4
+# Groups:   species [3]
+  species   sex    mean_flipper mean_body
+  &lt;fct&gt;     &lt;fct&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+1 Adelie    female         188.     3369.
+2 Adelie    male           192.     4043.
+3 Adelie    &lt;NA&gt;           186.     3540 
+4 Chinstrap female         192.     3527.
+5 Chinstrap male           200.     3939.
+6 Gentoo    female         213.     4680.
+7 Gentoo    male           222.     5485.
+8 Gentoo    &lt;NA&gt;           216.     4588.</code></pre>
+</div>
+<ol start="2" type="1">
+<li>Can you do the same but remove the penguins for which we don’t know the sex first?</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>species</span>, <span class='va'>sex</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>summarize</span><span class='op'>(</span>
+    mean_flipper <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>flipper_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+    mean_body <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>body_mass_g</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 6 x 4
+# Groups:   species [3]
+  species   sex    mean_flipper mean_body
+  &lt;fct&gt;     &lt;fct&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+1 Adelie    female         188.     3369.
+2 Adelie    male           192.     4043.
+3 Chinstrap female         192.     3527.
+4 Chinstrap male           200.     3939.
+5 Gentoo    female         213.     4680.
+6 Gentoo    male           222.     5485.</code></pre>
+</div>
+<h3 id="extras">Extras</h3>
+<ol type="1">
+<li>Make a boxplot of penguin body mass with sex on the y-axis and facets for the different species. Can you remove the penguins with missing values for sex first?</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>sex</span>, y <span class='op'>=</span> <span class='va'>body_mass_g</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_boxplot</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>species</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02_solutions_controller_files/figure-html5/unnamed-chunk-41-1.png" width="624" /></p>
+</div>
+<ol start="2" type="1">
+<li>Make a scatterplot with the ratio of bill length to bill depth on the y axis and flipper length on the x axis? Can you distinguish the point between male and female penguins and remove penguins with unknown sex before making the plot?</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>ratio <span class='op'>=</span> <span class='va'>bill_length_mm</span> <span class='op'>/</span> <span class='va'>bill_depth_mm</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>flipper_length_mm</span>, y <span class='op'>=</span> <span class='va'>ratio</span>, color <span class='op'>=</span> <span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_color_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"cyan4"</span>, <span class='st'>"darkorange"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>
+    x <span class='op'>=</span> <span class='st'>"Flipper lenght (mm)"</span>,
+    y <span class='op'>=</span> <span class='st'>"Ratio bill length / bill depth (-)"</span>
+  <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="02_solutions_controller_files/figure-html5/unnamed-chunk-42-1.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<p>Solution will be uploaded later</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="tidyr">3 tidyr</h2>
+<h3 id="getting-started-with-tidyr">4.1 Getting started with tidyr</h3>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h3 id="lets-tidy-some-data-sets">4.2 Let’s tidy some data sets</h3>
+<p><strong>1. <code>relig_income</code></strong></p>
+<p>Have a look at the <code>relig_income</code> data set that is included in tidyverse package. The data set contains the results of a survey asking people about their religion and income category.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 18 x 11
+   religion  `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k`
+   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Agnostic       27        34        60        81        76       137
+ 2 Atheist        12        27        37        52        35        70
+ 3 Buddhist       27        21        30        34        33        58
+ 4 Catholic      418       617       732       670       638      1116
+ 5 Don’t kn~      15        14        15        11        10        35
+ 6 Evangeli~     575       869      1064       982       881      1486
+ 7 Hindu           1         9         7         9        11        34
+ 8 Historic~     228       244       236       238       197       223
+ 9 Jehovah&#39;~      20        27        24        24        21        30
+10 Jewish         19        19        25        25        30        95
+11 Mainline~     289       495       619       655       651      1107
+12 Mormon         29        40        48        51        56       112
+13 Muslim          6         7         9        10         9        23
+14 Orthodox       13        17        23        32        32        47
+15 Other Ch~       9         7        11        13        13        14
+16 Other Fa~      20        33        40        46        49        63
+17 Other Wo~       5         2         3         4         2         7
+18 Unaffili~     217       299       374       365       341       528
+# ... with 4 more variables: $75-100k &lt;dbl&gt;, $100-150k &lt;dbl&gt;,
+#   &gt;150k &lt;dbl&gt;, Don&#39;t know/refused &lt;dbl&gt;</code></pre>
+</div>
+<p>What is not tidy about this data set? Can you fix it?</p>
+<p><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> The variable income is spread across multiple columns, so we have to use <code>pivot_longer</code> to pivot the columns containing the income information:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 180 x 3
+   religion income             count
+   &lt;chr&gt;    &lt;chr&gt;              &lt;dbl&gt;
+ 1 Agnostic &lt;$10k                 27
+ 2 Agnostic $10-20k               34
+ 3 Agnostic $20-30k               60
+ 4 Agnostic $30-40k               81
+ 5 Agnostic $40-50k               76
+ 6 Agnostic $50-75k              137
+ 7 Agnostic $75-100k             122
+ 8 Agnostic $100-150k            109
+ 9 Agnostic &gt;150k                 84
+10 Agnostic Don&#39;t know/refused    96
+# ... with 170 more rows</code></pre>
+</div>
+<p><strong>2. <code>billboard</code></strong></p>
+<p>Have a look at the <code>billboard</code> data set that is included in the tidyverse package. The data set contains information about the chart rank of songs in the year 2000.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 317 x 79
+   artist track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7
+   &lt;chr&gt;  &lt;chr&gt; &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 2 Pac  Baby~ 2000-02-26      87    82    72    77    87    94    99
+ 2 2Ge+h~ The ~ 2000-09-02      91    87    92    NA    NA    NA    NA
+ 3 3 Doo~ Kryp~ 2000-04-08      81    70    68    67    66    57    54
+ 4 3 Doo~ Loser 2000-10-21      76    76    72    69    67    65    55
+ 5 504 B~ Wobb~ 2000-04-15      57    34    25    17    17    31    36
+ 6 98^0   Give~ 2000-08-19      51    39    34    26    26    19     2
+ 7 A*Tee~ Danc~ 2000-07-08      97    97    96    95   100    NA    NA
+ 8 Aaliy~ I Do~ 2000-01-29      84    62    51    41    38    35    35
+ 9 Aaliy~ Try ~ 2000-03-18      59    53    38    28    21    18    16
+10 Adams~ Open~ 2000-08-26      76    76    74    69    68    67    61
+# ... with 307 more rows, and 69 more variables: wk8 &lt;dbl&gt;,
+#   wk9 &lt;dbl&gt;, wk10 &lt;dbl&gt;, wk11 &lt;dbl&gt;, wk12 &lt;dbl&gt;, wk13 &lt;dbl&gt;,
+#   wk14 &lt;dbl&gt;, wk15 &lt;dbl&gt;, wk16 &lt;dbl&gt;, wk17 &lt;dbl&gt;, wk18 &lt;dbl&gt;,
+#   wk19 &lt;dbl&gt;, wk20 &lt;dbl&gt;, wk21 &lt;dbl&gt;, wk22 &lt;dbl&gt;, wk23 &lt;dbl&gt;,
+#   wk24 &lt;dbl&gt;, wk25 &lt;dbl&gt;, wk26 &lt;dbl&gt;, wk27 &lt;dbl&gt;, wk28 &lt;dbl&gt;,
+#   wk29 &lt;dbl&gt;, wk30 &lt;dbl&gt;, wk31 &lt;dbl&gt;, wk32 &lt;dbl&gt;, wk33 &lt;dbl&gt;,
+#   wk34 &lt;dbl&gt;, wk35 &lt;dbl&gt;, wk36 &lt;dbl&gt;, wk37 &lt;dbl&gt;, wk38 &lt;dbl&gt;,
+#   wk39 &lt;dbl&gt;, wk40 &lt;dbl&gt;, wk41 &lt;dbl&gt;, wk42 &lt;dbl&gt;, wk43 &lt;dbl&gt;,
+#   wk44 &lt;dbl&gt;, wk45 &lt;dbl&gt;, wk46 &lt;dbl&gt;, wk47 &lt;dbl&gt;, wk48 &lt;dbl&gt;,
+#   wk49 &lt;dbl&gt;, wk50 &lt;dbl&gt;, wk51 &lt;dbl&gt;, wk52 &lt;dbl&gt;, wk53 &lt;dbl&gt;,
+#   wk54 &lt;dbl&gt;, wk55 &lt;dbl&gt;, wk56 &lt;dbl&gt;, wk57 &lt;dbl&gt;, wk58 &lt;dbl&gt;,
+#   wk59 &lt;dbl&gt;, wk60 &lt;dbl&gt;, wk61 &lt;dbl&gt;, wk62 &lt;dbl&gt;, wk63 &lt;dbl&gt;,
+#   wk64 &lt;dbl&gt;, wk65 &lt;dbl&gt;, wk66 &lt;lgl&gt;, wk67 &lt;lgl&gt;, wk68 &lt;lgl&gt;,
+#   wk69 &lt;lgl&gt;, wk70 &lt;lgl&gt;, wk71 &lt;lgl&gt;, wk72 &lt;lgl&gt;, wk73 &lt;lgl&gt;,
+#   wk74 &lt;lgl&gt;, wk75 &lt;lgl&gt;, wk76 &lt;lgl&gt;</code></pre>
+</div>
+<p>What is not tidy about this data set? Can you fix it?</p>
+<p><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> The variable week is spread across multiple columns. We have to use pivot longer to pivot the week columns:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 24,092 x 5
+   artist track                   date.entered week   rank
+   &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;
+ 1 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk1      87
+ 2 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk2      82
+ 3 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk3      72
+ 4 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk4      77
+ 5 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk5      87
+ 6 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk6      94
+ 7 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk7      99
+ 8 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk8      NA
+ 9 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk9      NA
+10 2 Pac  Baby Don&#39;t Cry (Keep... 2000-02-26   wk10     NA
+# ... with 24,082 more rows</code></pre>
+</div>
+<h4 id="extras-1">Extras</h4>
+<p>The argument <code>values_drop_na</code> drops rows with missing values in the rank column. Here it makes sense because not every song is in the charts for all 76 weeks.</p>
+<p>With the <code>names_prefix</code> argument we can remove the <code>wk</code> before the values of the week variable. This makes it easier to work with later.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 5,307 x 5
+   artist  track                   date.entered week   rank
+   &lt;chr&gt;   &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;
+ 1 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26   1        87
+ 2 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26   2        82
+ 3 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26   3        72
+ 4 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26   4        77
+ 5 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26   5        87
+ 6 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26   6        94
+ 7 2 Pac   Baby Don&#39;t Cry (Keep... 2000-02-26   7        99
+ 8 2Ge+her The Hardest Part Of ... 2000-09-02   1        91
+ 9 2Ge+her The Hardest Part Of ... 2000-09-02   2        87
+10 2Ge+her The Hardest Part Of ... 2000-09-02   3        92
+# ... with 5,297 more rows</code></pre>
+</div>
+<p><strong>3. <code>fish_encounters</code></strong></p>
+<p>Have a look at the <code>fish_encounters</code> data set that is included in the tidyverse package. The data set contains records of fish detected by different automatic monitoring stations.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 114 x 3
+   fish  station  seen
+   &lt;fct&gt; &lt;fct&gt;   &lt;int&gt;
+ 1 4842  Release     1
+ 2 4842  I80_1       1
+ 3 4842  Lisbon      1
+ 4 4842  Rstr        1
+ 5 4842  Base_TD     1
+ 6 4842  BCE         1
+ 7 4842  BCW         1
+ 8 4842  BCE2        1
+ 9 4842  BCW2        1
+10 4842  MAE         1
+# ... with 104 more rows</code></pre>
+</div>
+<p>The column <code>seen</code> only contains values of 1 to indicate that the fish was seen at the respective station.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>      fish       station        seen  
+ 4842   :11   Release:19   Min.   :1  
+ 4843   :11   I80_1  :19   1st Qu.:1  
+ 4844   :11   Lisbon :13   Median :1  
+ 4858   :11   Rstr   :12   Mean   :1  
+ 4861   :11   Base_TD:11   3rd Qu.:1  
+ 4857   : 9   BCE    : 8   Max.   :1  
+ (Other):50   (Other):32              </code></pre>
+</div>
+<p>What is not tidy about this data set? Can you fix it?</p>
+<p><svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> An observation (i.e. one fish) is spread across multiple rows and we have to use <code>pivot_wider</code> to give each fish just one row.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 19 x 12
+   fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2
+   &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1 4842        1     1      1     1       1     1     1     1     1
+ 2 4843        1     1      1     1       1     1     1     1     1
+ 3 4844        1     1      1     1       1     1     1     1     1
+ 4 4845        1     1      1     1       1    NA    NA    NA    NA
+ 5 4847        1     1      1    NA      NA    NA    NA    NA    NA
+ 6 4848        1     1      1     1      NA    NA    NA    NA    NA
+ 7 4849        1     1     NA    NA      NA    NA    NA    NA    NA
+ 8 4850        1     1     NA     1       1     1     1    NA    NA
+ 9 4851        1     1     NA    NA      NA    NA    NA    NA    NA
+10 4854        1     1     NA    NA      NA    NA    NA    NA    NA
+11 4855        1     1      1     1       1    NA    NA    NA    NA
+12 4857        1     1      1     1       1     1     1     1     1
+13 4858        1     1      1     1       1     1     1     1     1
+14 4859        1     1      1     1       1    NA    NA    NA    NA
+15 4861        1     1      1     1       1     1     1     1     1
+16 4862        1     1      1     1       1     1     1     1     1
+17 4863        1     1     NA    NA      NA    NA    NA    NA    NA
+18 4864        1     1     NA    NA      NA    NA    NA    NA    NA
+19 4865        1     1      1    NA      NA    NA    NA    NA    NA
+# ... with 2 more variables: MAE &lt;int&gt;, MAW &lt;int&gt;</code></pre>
+</div>
+<h4 id="extra">Extra</h4>
+<p>The <code>values_fill</code> argument can be used to enter values in cells where values are missing. In our case this makes sense because cells with missing values are not really missing information but we know that for this station the fish was not recorded. So we can add a 0 instead of NA.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 19 x 12
+   fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2
+   &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1 4842        1     1      1     1       1     1     1     1     1
+ 2 4843        1     1      1     1       1     1     1     1     1
+ 3 4844        1     1      1     1       1     1     1     1     1
+ 4 4845        1     1      1     1       1     0     0     0     0
+ 5 4847        1     1      1     0       0     0     0     0     0
+ 6 4848        1     1      1     1       0     0     0     0     0
+ 7 4849        1     1      0     0       0     0     0     0     0
+ 8 4850        1     1      0     1       1     1     1     0     0
+ 9 4851        1     1      0     0       0     0     0     0     0
+10 4854        1     1      0     0       0     0     0     0     0
+11 4855        1     1      1     1       1     0     0     0     0
+12 4857        1     1      1     1       1     1     1     1     1
+13 4858        1     1      1     1       1     1     1     1     1
+14 4859        1     1      1     1       1     0     0     0     0
+15 4861        1     1      1     1       1     1     1     1     1
+16 4862        1     1      1     1       1     1     1     1     1
+17 4863        1     1      0     0       0     0     0     0     0
+18 4864        1     1      0     0       0     0     0     0     0
+19 4865        1     1      1     0       0     0     0     0     0
+# ... with 2 more variables: MAE &lt;int&gt;, MAW &lt;int&gt;</code></pre>
+</div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

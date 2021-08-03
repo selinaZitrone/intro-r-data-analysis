@@ -231,7 +231,7 @@ What was changed compared to the basic plot?
 
 Example with one of the plots from above:
 
-```{r echo = TRUE, eval=FALSE}
+```{r echo = TRUE}
 flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
   geom_boxplot(width = 0.3) +
   geom_jitter(alpha = 0.5, position = position_jitter(width = 0.2, seed = 123)) +
@@ -239,7 +239,8 @@ flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)
   labs(x = "Species", y = "Flipper length (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
-
+```
+```{echo= TRUE, eval=FALSE}
 # save as png in /img directory of the project
 ggsave(filename = "./img/flipper_box.png", flipper_box)
 # save as pdf in /img directory of the project
