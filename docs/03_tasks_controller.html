@@ -2387,6 +2387,7 @@ Slides
 <a href="slides/02_01_tidyverse_ggplot.html">02 - Ggplot2</a>
 <a href="slides/02_02_dplyr.html">02 - Dplyr</a>
 <a href="slides/02_03_tidyr.html">02 - Tidyr</a>
+<a href="slides/03_01_tests.html">03 - Statistical tests</a>
 <a href="slides/03_01_linear_models.html">03 - Linear models</a>
 <a href="slides/03_02_glm.html">03 - Generalized linear models</a>
 </div>
@@ -2440,6 +2441,11 @@ Solutions
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
+<li><a href="#statistical-tests">0 Statistical tests</a>
+<ul>
+<li><a href="#getting-the-data">1.1 Getting the data</a></li>
+<li><a href="#comparing-the-regions-using-statistical-tests">1.2 Comparing the regions using statistical tests</a></li>
+</ul></li>
 <li><a href="#linear-models">1 Linear models</a>
 <ul>
 <li><a href="#getting-started">1.1 Getting started</a></li>
@@ -2457,6 +2463,45 @@ Solutions
 </ul>
 </nav>
 </div>
+<h2 id="statistical-tests">0 Statistical tests</h2>
+<h3 id="getting-the-data">1.1 Getting the data</h3>
+<p>You can read the data set directly from Github using:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>treeheights</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/treeheight.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>The data contains tree heights for different forest regions. Check out which regions are included in the data set by calling</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>treeheights</span><span class='op'>$</span><span class='va'>region</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="comparing-the-regions-using-statistical-tests">1.2 Comparing the regions using statistical tests</h3>
+<p>Compare the means of the forests separately</p>
+<ul>
+<li>A-B</li>
+<li>A-C</li>
+<li>B-C</li>
+</ul>
+<p>Before you start, create a subset of each forest site as a vector.</p>
+<p>Follow the decision tree for statistical tests:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="slides/img/day3/tests_overview.png" width="739" /></p>
+</div>
+<p>Use the Shapiro-Wilk test to test for normality</p>
+<h4 id="extra">Extra</h4>
+<ul>
+<li>Create a boxplot with notches to visually compare differences between forests</li>
+</ul>
+<p>Can you see how the different methods might lead to different results?</p>
+<ul>
+<li>Try to create a QQ-Plot for the data. Here you can’t use the subsetted vectors as data, as ggplot expects a tibble or data frame as first argument. Can you create the QQ-Plots from the <code>treeheights</code> tibble?</li>
+<li>Try to use the KS-Test to test for normality</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="linear-models">1 Linear models</h2>
 <h3 id="getting-started">1.1 Getting started</h3>
 <p>Before you get started with the exercise, make sure that you load the <code>palmerpenguins</code> package and the <code>tidyverse</code></p>
@@ -2508,7 +2553,7 @@ Solutions
 <li><p>Test for significant predictors</p></li>
 <li><p>Test model assumptions</p></li>
 </ul>
-<h4 id="extra">Extra</h4>
+<h4 id="extra-1">Extra</h4>
 <p>Improve the looks of the Anova result plot. You can be as creative as you want, e.g. take inspiration from plots you saw in the presentation.</p>
 <p>Some ideas:</p>
 <ul>
@@ -2516,10 +2561,10 @@ Solutions
 <li><p>A bit tricky: Summarize the data (calculate mean and standard deviation) grouped by species and sex. The plot points + errorbars for mean + sd. Have a look <a href="https://www.datanovia.com/en/lessons/ggplot-error-bars/">here</a> to see how you can do this.</p></li>
 <li><p>Same as above but with bars instead of points to represent means</p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="linear-models-with-transformation">2 Linear models with transformation</h2>
 <p>No tasks yet</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="poisson-and-binary-glm">3 Poisson and binary glm</h2>
 <h3 id="poisson-glm">1.1 Poisson glm</h3>
 <p>The data set <code>rabbit</code> contains data on a highly threatened rabbit species.</p>
@@ -2541,7 +2586,7 @@ Solutions
 <li><p>Test the significant of the explanatory variables</p></li>
 <li><p>Add the model to the plot</p></li>
 </ul>
-<h4 id="extra-1">Extra</h4>
+<h4 id="extra-2">Extra</h4>
 <ul>
 <li>Make the plot look nicer</li>
 <li>Add the model using a different option</li>
@@ -2565,16 +2610,16 @@ Solutions
 <li><p>Test the significance of the predictors</p></li>
 <li><p>Plot the data and add model predictions</p></li>
 </ul>
-<h4 id="extra-2">Extra</h4>
+<h4 id="extra-3">Extra</h4>
 <ul>
 <li>Make the plot look nicer</li>
 <li>Add the model using a different option</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="proportion-glm">3 Proportion glm</h2>
 <p>No tasks yet</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

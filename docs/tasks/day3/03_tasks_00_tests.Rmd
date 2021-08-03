@@ -1,0 +1,42 @@
+### 1.1 Getting the data
+
+You can read the data set directly from Github using:
+
+```{r, eval=FALSE, echo=TRUE}
+treeheights <- readr::read_csv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/treeheight.csv")
+```
+
+The data contains tree heights for different forest regions. Check out which regions are included in the data set by calling
+
+```{r, eval=FALSE, echo=TRUE}
+unique(treeheights$region)
+```
+
+### 1.2 Comparing the regions using statistical tests
+
+Compare the means of the forests separately
+
+- A-B
+- A-C
+- B-C
+
+Before you start, create a subset of each forest site as a vector.
+
+Follow the decision tree for statistical tests:
+
+```{r echo = FALSE}
+knitr::include_graphics(here::here("slides/img/day3/tests_overview.png"))
+```
+
+Use the Shapiro-Wilk test to test for normality
+
+#### Extra
+
+- Create a boxplot with notches to visually compare differences between forests
+
+Can you see how the different methods might lead to different results?
+
+- Try to create a QQ-Plot for the data. Here you can't use the subsetted vectors as data, as ggplot expects a tibble or data frame as first argument. Can you create the QQ-Plots from the `treeheights` tibble? 
+- Try to use the KS-Test to test for normality
+
+

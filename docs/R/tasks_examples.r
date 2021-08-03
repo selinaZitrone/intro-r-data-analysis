@@ -610,6 +610,85 @@ ggplot(specdat, aes(y=Species, x=Biomass, color = pH))+
   geom_smooth(method = "glm", method.args = list(family = "poisson"))
 
 
-# proportion ------------------------------------------------------------------
 
+# Tests -------------------------------------------------------------------
+library(tidyverse)
+set.seed(123)
+
+mydata <- tibble(
+  normal = rnorm(n = 400, mean = 50, sd = 5),
+  non_normal = runif(n = 400, min = 45, max = 55)
+)
+
+mydata %>%
+  pivot_longer(cols = 1:2, names_to = "type", values_to = "value") %>%
+  ggplot()+
+  geom_histogram(alpha = 0.5, aes( x = value, fill = type,y = ..density..)) + # plot probability instead of count on y axis
+  stat_function(fun = dnorm,
+                args = list(mean = 50,
+                            sd = 5),
+                color = "darkorange", size = 1)+
+  stat_function(fun = dnorm,
+                args = list(mean = mean(mydata$non_normal),
+                            sd = sd(mydata$non_normal)),
+                color = "cyan4", size = 1)+
+    scale_fill_manual(values = c("cyan4", "darkorange"))+
+  theme(legend.position = c(0.85,0.85))
+
+
+
+# ks.test -----------------------------------------------------------------
+
+ks.test(mydata$normal, "pnorm", mean = mean(mydata$normal),
+        sd = sd(mydata$normal))
+
+
+ks.test(mydata$non_normal, "pnorm", mean = mean(mydata$non_normal),
+        sd = sd(mydata$non_normal))
+
+
+# Shapiro wilk ------------------------------------------------------------
+
+shapiro.test(mydata$normal)
+shapiro.test(mydata$non_normal)
+
+
+# QQ ----------------------------------------------------------------------
+
+ggplot(mydata, aes(sample = normal)) + stat_qq() + stat_qq_line()
+
+ggplot(mydata, aes(sample = non_normal)) + stat_qq() + stat_qq_line()
+
+
+# Ftest -------------------------------------------------------------------
+
+InsectSprays
+
+TreatA <- InsectSprays[InsectSprays$spray == "A",]$count
+TreatB <- InsectSprays[InsectSprays$spray == "B",]$count
+TreatE <- InsectSprays[InsectSprays$spray == "E",]$count
+
+TreatA <- filter(InsectSprays, spray == "A")$count
+TreatB <- filter(InsectSprays, spray == "B")$count
+TreatE <- filter(InsectSprays, spray == "E")$count
+
+shapiro.test(TreatA) #normal
+shapiro.test(TreatB) # normal
+shapiro.test(TreatE) # normal
+
+var.test(TreatA, TreatB) # equal
+var.test(TreatA, TreatE) # not equal
+
+
+#---
+# A,B,E: Normal distr.
+# AB equal var
+
+t.test(TreatA, TreatB, var.equal = TRUE)
+t.test(TreatA, TreatE, var.equal = FALSE)
+wilcox.test(TreatA, TreatB)
+
+# paired data points
+# before and after
+#
 
