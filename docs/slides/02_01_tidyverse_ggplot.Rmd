@@ -244,7 +244,7 @@ The `ggplot()` function initializes a ggplot object. Every ggplot needs this fun
 .pull-left[
 
 ```{r eval=FALSE}
-library(ggplot) # or library(tidyverse)
+library(ggplot2) # or library(tidyverse)
 
 ggplot(data = msleep) #<<
 ```
