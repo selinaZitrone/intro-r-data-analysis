@@ -440,7 +440,7 @@ Add multiple new columns at once:
 
 ```{r eval=FALSE}
 mutate(soybean_use,
-  sum_human_animal = human_food + animal_feed
+  sum_human_animal = human_food + animal_feed,
   total = human_food + animal_feed + processed
 )
 ```
