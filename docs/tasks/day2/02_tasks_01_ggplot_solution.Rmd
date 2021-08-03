@@ -247,6 +247,53 @@ ggsave(filename = "./img/flipper_box.pdf", flipper_box)
 ```
 
 
+### Some more examples
+
+**Histogram**
+
+```{r echo = TRUE}
+ggplot(penguins, aes(x = flipper_length_mm, fill = species)) +
+  geom_histogram(alpha = 0.6) +
+  ggsci::scale_fill_d3() +
+  labs(
+    y = "Frequency",
+    x = "Flipper length [mm]",
+    fill = "Penguin species"
+  ) +
+  theme_minimal()
+```
+
+**Heat map**
+
+For the penguin data set a heat map does not make that much sense. But an example would be:
+
+```{r echo=TRUE}
+ggplot(penguins, aes(
+  x = species,
+  y = sex,
+  fill = flipper_length_mm
+)) +
+  geom_tile() +
+  scale_fill_viridis_c() +
+  theme_classic()
+```
+
+### The `plotly` package
+
+You can use the `plotly package` to create interactive plots where you can e.g. hover over an area of your plot with the mouse and the respective values will be displayed.
+
+To get started, you have to install the plotly package
+
+```{r echo=TRUE, eval=FALSE}
+install.packages("plotly")
+```
+
+You can use any ggplot and wrap it in the `ggplotly` function from the `plotly` package to make it interactive, e.g.
+
+```{r echo=TRUE}
+plotly::ggplotly(flipper_box)
+```
+
 ### References
 
 Check out the [package website](https://allisonhorst.github.io/palmerpenguins/articles/examples.html) of the `palmerpenguin` package. They have more nice examples of data visualizations that you can do with ggplot.
