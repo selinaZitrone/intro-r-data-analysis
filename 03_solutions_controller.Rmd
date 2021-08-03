@@ -7,6 +7,7 @@ output:
     number_sections: true
 params:
   showDownload: FALSE
+  includeSolution0: FALSE
   includeSolution1: FALSE
   includeSolution2: FALSE
   includeSolution3: FALSE
@@ -21,6 +22,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r download_script, echo=FALSE, child= if(params$showDownload) "tasks/day3/03_tasks_download.Rmd"}
 
 ```
+
+## 0 Statistical tests
+
+```{r test, child= if (params$includeSolution0) "tasks/day3/03_tasks_00_tests_solution.Rmd"}
+```
+
+```{r test_empty, child= if (!params$includeSolution0) "tasks/day3/03_tasks_00_tests_solution_empty.Rmd"}
+```
+
 
 ## 1 Linear models
 

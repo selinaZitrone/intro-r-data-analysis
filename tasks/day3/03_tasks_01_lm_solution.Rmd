@@ -104,8 +104,8 @@ check_model(lm2b)
 - Check for significant effects in both models
 
 ```{r}
-drop1(lm2a)
-drop1(lm2b)
+drop1(lm2a, test = "F")
+drop1(lm2b, test = "F")
 ```
 
 I will choose to plot the simpler model without the interaction because the interaction between species and bill length is not significant. Generally, a model should be as simple as possible (of course without loosing explanatory power).
