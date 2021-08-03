@@ -145,6 +145,23 @@ ggsave(filename = "./img/flipper_box.png", flipper_box)
 # save as pdf in /img directory of the project
 ggsave(filename = "./img/flipper_box.pdf", flipper_box)
 
+# heatmap example
+
+heatmap <- ggplot(penguins, aes(x = species, y = sex, fill = flipper_length_mm)) +
+  geom_tile() +
+  scale_fill_viridis_c()
+
+# or with another color scale
+
+heatmap <- ggplot(penguins, aes(x = species, y = sex, fill = flipper_length_mm)) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = "steelblue")
+
+# If you want to have an interactive plot
+#install.packages("plotly")
+plotly::ggplotly(heatmap)
+
+
 # 2 dplyr -------------------------------------------------------------------
 
 # library(tidyverse)
