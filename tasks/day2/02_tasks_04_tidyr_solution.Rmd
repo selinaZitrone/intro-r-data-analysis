@@ -1,6 +1,6 @@
 ### 4.1 Getting started with tidyr
 
-```{r eval=TRUE}
+```{r echo=TRUE, eval=TRUE}
 library(tidyverse)
 ```
 
@@ -11,7 +11,7 @@ library(tidyverse)
 Have a look at the `relig_income` data set that is included in tidyverse package.
 The data set contains the results of a survey asking people about their religion and income category.
 
-```{r}
+```{r, echo=TRUE}
 relig_income
 ```
 
@@ -19,7 +19,7 @@ What is not tidy about this data set? Can you fix it?
 
 `r fontawesome::fa("arrow-right")` The variable income is spread across multiple columns, so we have to use `pivot_longer` to pivot the columns containing the income information:
 
-```{r}
+```{r, echo=TRUE}
 pivot_longer(relig_income,
              cols = !religion,
              names_to = "income",
@@ -33,7 +33,7 @@ pivot_longer(relig_income,
 Have a look at the `billboard` data set that is included in the tidyverse package.
 The data set contains information about the chart rank of songs in the year 2000.
 
-```{r}
+```{r, echo=TRUE}
 billboard
 ```
 
@@ -41,7 +41,7 @@ What is not tidy about this data set? Can you fix it?
 
 `r fontawesome::fa("arrow-right")` The variable week is spread across multiple columns. We have to use pivot longer to pivot the week columns:
 
-```{r}
+```{r, echo=TRUE}
 pivot_longer(billboard,
              cols = wk1:wk76,
              names_to = "week",
@@ -54,7 +54,7 @@ The argument `values_drop_na` drops rows with missing values in the rank column.
 
 With the `names_prefix` argument we can remove the `wk` before the values of the week variable. This makes it easier to work with later.
 
-```{r}
+```{r, echo=TRUE}
 pivot_longer(billboard,
              cols = wk1:wk76,
              names_to = "week",
@@ -68,13 +68,13 @@ pivot_longer(billboard,
 Have a look at the `fish_encounters` data set that is included in the tidyverse package.
 The data set contains records of fish detected by different automatic monitoring stations.
 
-```{r}
+```{r, echo=TRUE}
 fish_encounters
 ```
 
 The column `seen` only contains values of 1 to indicate that the fish was seen at the respective station.
 
-```{r}
+```{r, echo=TRUE}
 summary(fish_encounters)
 ```
 
@@ -82,7 +82,7 @@ What is not tidy about this data set? Can you fix it?
 
 `r fontawesome::fa("arrow-right")` An observation (i.e. one fish) is spread across multiple rows and we have to use `pivot_wider` to give each fish just one row.
 
-```{r}
+```{r, echo=TRUE}
 pivot_wider(fish_encounters, 
             names_from = station,
             values_from = seen)
@@ -93,7 +93,7 @@ pivot_wider(fish_encounters,
 The `values_fill` argument can be used to enter values in cells where values are missing.
 In our case this makes sense because cells with missing values are not really missing information but we know that for this station the fish was not recorded. So we can add a 0 instead of NA. 
 
-```{r}
+```{r, echo=TRUE}
 pivot_wider(fish_encounters, 
             names_from = station,
             values_from = seen,
