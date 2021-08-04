@@ -15,6 +15,24 @@ forest1 <- filter(treeheights, region == "forest1")$height
 forest2 <- filter(treeheights, region == "forest2")$height
 forest3 <- filter(treeheights, region == "forest3")$height
 
+# other option using pivot_wider
+# But pivot wider has a problem with duplicate rows
+# so this does not work well
+treeheights %>%
+  pivot_wider(
+    names_from = region,
+    values_from = height
+  )
+
+# This works: Add a row number to uniquely identify each row
+# Then pivot_wider and then remove the row number column
+treeheights %>%
+  group_by(region) %>%
+  mutate(row = row_number()) %>%
+  pivot_wider(names_from = region,
+              values_from = height) %>%
+  select(-row)
+
 #### Step 1: Test all groups for normality
 
 # **With KS-Test**
@@ -27,7 +45,7 @@ ks.test(forest3, "pnorm", mean = mean(forest3), sd = sd(forest3)) # normal
 
 shapiro.test(forest1) # normal
 shapiro.test(forest2) # not normal
-shapiro.test(forest3) # not normal
+shapiro.test(forest3) # normal
 
 # **With QQ-plots**
 
@@ -52,6 +70,9 @@ ggplot(treeheights, aes(x = region, y = height)) +
 
 
 # Linear models -----------------------------------------------------------
+library(tidyverse)
+library(palmerpenguins)
+library(performance)
 
 ### 1.2 Linear regression: bill depth depends on bill length --------------
 # make a plot
@@ -91,6 +112,8 @@ pred_dat$bill_depth_mm <- predict(lm1, newdata = pred_dat)
 g +
   geom_line(data = pred_dat, color = "cyan4")
 
+# predict a single value
+predict(lm1, newdata = tibble(bill_length_mm = 200))
 
 ### 1.3 Analysis of covariance: bill depth depends on bill length and species --------------------------
 
@@ -106,6 +129,9 @@ g2
 lm2a <- lm(bill_depth_mm ~ bill_length_mm + species, data = penguins)
 # Without interaction
 lm2b <- lm(bill_depth_mm ~ bill_length_mm * species, data = penguins)
+lm2b <- lm(bill_depth_mm ~ bill_length_mm +
+             species + bill_length_mm:species, data = penguins)
+
 
 # test assumptions
 check_model(lm2a) # looks good, better than without species
