@@ -2506,11 +2506,19 @@ Solutions
 <h3 id="getting-started">1.1 Getting started</h3>
 <p>Before you get started with the exercise, make sure that you load the <code>palmerpenguins</code> package and the <code>tidyverse</code></p>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>To test the assumptions of linear models, we will use the <code>performance</code> package. Make sure you install it once and then load it:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"performance"</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://easystats.github.io/performance/'>performance</a></span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>The <code>performance</code> package depends on other packages. It might happen that you encounter an error when trying to load or use the package for the first time. Just read the error message and install the missing packages with <code>install.packages()</code> (likely this will be the case for the <code>qqplotr</code> package).</p>
 <h3 id="linear-regression">1.2 Linear regression</h3>
@@ -2579,7 +2587,10 @@ Solutions
 <p><strong>Question:</strong> How does the degradation level of the site and the distance to the river influence the sightings of rabbits?</p>
 <p>You can get the data with:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>rabbit</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/rabbit.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p><strong>Tasks</strong></p>
 <ul>
@@ -2604,7 +2615,10 @@ Solutions
 <p><strong>Question:</strong> How does the the amount of deadwood and the dominant tree species influence the probability of woodpecker presence?</p>
 <p>You can get the data with:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>bird</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_tsv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/bird.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <ul>
 <li><p>Plot the data</p></li>

@@ -12,7 +12,7 @@ The variables in this data set are:
 
 You can get the data with:
 
-```{r eval=FALSE}
+```{r echo=TRUE, eval=FALSE}
 rabbit <- readr::read_csv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/rabbit.csv")
 ```
 
@@ -45,7 +45,7 @@ The variables in the data set are:
 
 You can get the data with:
 
-```{r eval=FALSE}
+```{r echo=TRUE, eval=FALSE}
 bird <- readr::read_tsv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/bird.csv")
 ```
 

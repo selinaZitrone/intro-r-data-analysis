@@ -2,14 +2,14 @@
 
 Before you get started with the exercise, make sure that you load the `palmerpenguins` package and the `tidyverse`
 
-```{r eval=FALSE}
+```{r echo=TRUE, eval=FALSE}
 library(palmerpenguins)
 library(tidyverse)
 ```
 
 To test the assumptions of linear models, we will use the `performance` package. Make sure you install it once and then load it:
 
-```{r eval=FALSE}
+```{r echo=TRUE, eval=FALSE}
 install.packages("performance")
 library(performance)
 ```
