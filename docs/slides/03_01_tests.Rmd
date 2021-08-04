@@ -379,27 +379,6 @@ var.test(TreatA, TreatE)
 Result: The variances of sprays A and E differ significantly (F-Test, $F_{11,11}$ = 7.42, p < 0.05)
 
 ---
-# Paired values
-
-Are there pairs of data points?
-
-**Example: ** samples of invertebrates across various rivers before and after sewage plants.
-
-- for each plant, there is a pair of data points (before and after the plant)
-- Question: Is the change (before-after) significant
-
-Use `paired = TRUE` in the test.
-
-```{r eval=FALSE}
-t.test(treatA, treatB, var.equal = TRUE, paired = TRUE)
-t.test(treatA, treatB, var.equal = FALSE, paired = TRUE)
-wilcoxon.test(treatA, treatB, paired = TRUE)
-
-```
-
-Careful: your treatment vector both have to have the same order
-
----
 class: inverse, center, middle
 
 # .large[Test for equal means]
@@ -490,6 +469,27 @@ wilcox.test(TreatA, TreatB)
 --
 
 **Result:** The means of spray A and E do not differ significantly (W = 62, p > 0.05)
+
+---
+# Paired values
+
+Are there pairs of data points?
+
+**Example: ** samples of invertebrates across various rivers before and after sewage plants.
+
+- for each plant, there is a pair of data points (before and after the plant)
+- Question: Is the change (before-after) significant
+
+Use `paired = TRUE` in the test.
+
+```{r eval=FALSE}
+t.test(treatA, treatB, var.equal = TRUE, paired = TRUE)
+t.test(treatA, treatB, var.equal = FALSE, paired = TRUE)
+wilcoxon.test(treatA, treatB, paired = TRUE)
+
+```
+
+Careful: your treatment vector both have to have the same order
 
 ---
 class: inverse, middle, center

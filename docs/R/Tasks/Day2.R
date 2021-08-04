@@ -326,7 +326,7 @@ mutate(penguins,
 relig_income
 
 pivot_longer(relig_income,
-             cols = !religion,
+             cols = !religion, #2:11, `<$10k`:`>150k`
              names_to = "income",
              values_to = "count")
 

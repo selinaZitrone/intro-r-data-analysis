@@ -167,6 +167,7 @@ olympics %>%
 # Other idea:
 # more penguinplots
 # Cédrics nice plot -> try to reproduce
+athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-03/athletes.csv')
 
 
 
@@ -175,5 +176,44 @@ olympics %>%
 #https://theoreticalecology.github.io/ecodata/
 
 EcoData::birdabundance
+EcoData::pol
+#The idea is pollinators interact with plants when their traits fit (e.g. the tongue of a bee needs to match the shape of a flower). "
+?EcoData::plantPollinator_df
+?EcoData::plantPollinators
 ?EcoData::melanoma
+# Überlebt dr. eher?
+# https://rpubs.com/shivam2503/predictsurvival
 str(EcoData::titanic) # Could be used to explore GLMS with material from slides
+
+data = EcoData::titanic
+
+## step 1: data exploration and cleaning----
+str(data)
+summary(data)
+head(data)
+# let's explore the names of the passengers. they contain more info: titles.
+# so we extract that info from the name and use it as its own variable
+# first split after the comma, then after the dot
+first_split = sapply(data$name, function(x) stringr::str_split(x, pattern = ",")[[1]][2])
+titles = sapply(first_split, function(x) strsplit(x, ".",fixed = TRUE)[[1]][1])
+table(titles)
+titles = stringr::str_trim((titles)) # this step is important. it gets rid of the spaces
+titles %>%
+  fct_count()
+# now there'S 18 titles. some of them appear only a few times. we can group them!
+titles2 =
+  forcats::fct_collapse(titles,
+                        officer = c("Capt", "Col", "Major", "Dr", "Rev"),
+                        royal = c("Jonkheer", "Don", "Sir", "the Countess", "Dona", "Lady"),
+                        miss = c("Miss", "Mlle"),
+                        mrs = c("Mrs", "Mme", "Ms")
+  )
+# and add them to our dataset
+data =
+  data %>%
+  mutate(title = titles2)
+summary(data)
+
+EcoData::wine # what does it need to make a good wine? https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009
+# https://pierremary.com/datascience/r/2018/05/15/data-analysis-wine-datasets-with-r.html
+# https://github.com/sagarnildass/Red-Wine-Data-Analysis-by-R/blob/master/redWineAnalysis.md

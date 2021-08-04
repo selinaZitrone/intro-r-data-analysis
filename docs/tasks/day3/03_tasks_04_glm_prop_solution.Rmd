@@ -1,16 +1,16 @@
 ### 2.1 Get the data
 
-```{r}
+```{r, echo=TRUE}
 prairie <- read.csv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/slides/03_prairiedogs.csv")
 ```
 
-```{r}
+```{r, echo=TRUE}
 # Calculate the number of proportion of survivors
 prairie$n.surv <- prairie$n.tot - prairie$n.death
 prairie$p.surv <- prairie$n.surv / prairie$n.tot
 ```
 
-```{r}
+```{r, echo=TRUE}
 # Main effects
 ggplot(prairie, aes(x = mated, y = p.surv)) + 
   geom_boxplot() +
@@ -20,7 +20,7 @@ ggplot(prairie, aes(x = hibernation, y = p.surv)) +
   geom_boxplot() +
   xlab("Hibernation") +
   ylab("Proportion survivors")
-ggsave("prairiedog1.png", width = 6.5, height = 6.5, units = "cm")
+#ggsave("prairiedog1.png", width = 6.5, height = 6.5, units = "cm")
 
 ggplot(prairie, aes(x = min.weight, y = p.surv)) + 
   geom_boxplot() +
@@ -39,7 +39,7 @@ ggplot(prairie, aes(x = hibernation, y = p.surv, fill = min.weight)) +
   geom_boxplot() +
   xlab("Hibernation") +
   ylab("Proportion survivors") +
-ggsave("prairiedog2.png", width = 9, height = 6.5, units = "cm")
+#ggsave("prairiedog2.png", width = 9, height = 6.5, units = "cm")
 
 # Three way interaction
 ggplot(prairie, aes(x = hibernation, y = p.surv,
@@ -47,7 +47,8 @@ ggplot(prairie, aes(x = hibernation, y = p.surv,
   geom_point(size = 4) +
   facet_wrap(~mated, labeller = label_both) +
   xlab("Hibernation") + ylab("Proportion survivors") 
-ggsave("prairiedog3.png", width = 10, height = 6.5, units = "cm")
+
+#ggsave("prairiedog3.png", width = 10, height = 6.5, units = "cm")
 
 # Fit and analyze models
 

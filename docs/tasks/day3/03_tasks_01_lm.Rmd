@@ -1,6 +1,8 @@
 ### 1.1 Getting started
 
-Before you get started with the exercise, make sure that you load the `palmerpenguins` package and the `tidyverse`
+We will again use the `penguins` tibble from the `palmerpenguins` package for this task.
+
+So before you get started with the exercise, make sure that you load the `palmerpenguins` package and the `tidyverse`
 
 ```{r echo=TRUE, eval=FALSE}
 library(palmerpenguins)
