@@ -33,6 +33,8 @@ navbar:
           href: slides/03_01_linear_models.html
         - text: "03 - Generalized linear models"
           href: slides/03_02_glm.html
+        - text: "04 - Last presentation"
+          href: slides/00_00_bring_your_own_data.html
     - text: "Tasks"
       menu:
         - text: "Day 1: Intro to R"
