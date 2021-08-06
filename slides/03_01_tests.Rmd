@@ -483,9 +483,9 @@ Are there pairs of data points?
 Use `paired = TRUE` in the test.
 
 ```{r eval=FALSE}
-t.test(treatA, treatB, var.equal = TRUE, paired = TRUE)
-t.test(treatA, treatB, var.equal = FALSE, paired = TRUE)
-wilcoxon.test(treatA, treatB, paired = TRUE)
+t.test(TreatA, TreatB, var.equal = TRUE, paired = TRUE)
+t.test(TreatA, TreatB, var.equal = FALSE, paired = TRUE)
+wilcox.test(TreatA, TreatB, paired = TRUE)
 
 ```
 

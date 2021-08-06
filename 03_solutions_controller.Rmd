@@ -25,41 +25,41 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 0 Statistical tests
 
-```{r test, child= if (params$includeSolution0) "tasks/day3/03_tasks_00_tests_solution.Rmd"}
+```{r test, echo=FALSE,child= if (params$includeSolution0) "tasks/day3/03_tasks_00_tests_solution.Rmd"}
 ```
 
-```{r test_empty, child= if (!params$includeSolution0) "tasks/day3/03_tasks_00_tests_solution_empty.Rmd"}
+```{r test_empty,echo=FALSE, child= if (!params$includeSolution0) "tasks/day3/03_tasks_00_tests_solution_empty.Rmd"}
 ```
 
 
 ## 1 Linear models
 
-```{r lm, child= if (params$includeSolution1) "tasks/day3/03_tasks_01_lm_solution.Rmd"}
+```{r lm,echo=FALSE, child= if (params$includeSolution1) "tasks/day3/03_tasks_01_lm_solution.Rmd"}
 ```
 
-```{r lm_empty, child= if (!params$includeSolution1) "tasks/day3/03_tasks_01_lm_solution_empty.Rmd"}
+```{r lm_empty, echo=FALSE,child= if (!params$includeSolution1) "tasks/day3/03_tasks_01_lm_solution_empty.Rmd"}
 ```
 
 ## 2 Linear models transformation
 
-```{r lm_trans, child=if (params$includeSolution2) "tasks/day3/03_tasks_02_lm_trans_solution.Rmd"}
+```{r lm_trans, echo=FALSE,child=if (params$includeSolution2) "tasks/day3/03_tasks_02_lm_trans_solution.Rmd"}
 ```
 
-```{r lm_trans_empty, child=if (!params$includeSolution2) "tasks/day3/03_tasks_02_lm_trans_solution_empty.Rmd"}
+```{r lm_trans_empty,echo=FALSE, child=if (!params$includeSolution2) "tasks/day3/03_tasks_02_lm_trans_solution_empty.Rmd"}
 ```
 
 ## 3 Poisson and binary glm
 
-```{r glm, child=if (params$includeSolution3) "./tasks/day3/03_tasks_03_glm_solution.Rmd"}
+```{r glm,echo=FALSE, child=if (params$includeSolution3) "./tasks/day3/03_tasks_03_glm_solution.Rmd"}
 ```
 
-```{r glm_empty, child=if (!params$includeSolution3) "./tasks/day3/03_tasks_03_glm_solution_empty.Rmd"}
+```{r glm_empty,echo=FALSE, child=if (!params$includeSolution3) "./tasks/day3/03_tasks_03_glm_solution_empty.Rmd"}
 ```
 
 ## 4 Proportion glm
 
-```{r glm_prop, child=if (params$includeSolution4) "./tasks/day3/03_tasks_04_glm_prop_solution.Rmd"}
+```{r glm_prop,echo=FALSE, child=if (params$includeSolution4) "./tasks/day3/03_tasks_04_glm_prop_solution.Rmd"}
 ```
 
-```{r glm_prop_empty, child=if (!params$includeSolution4) "./tasks/day3/03_tasks_04_glm_prop_solution_empty.Rmd"}
+```{r glm_prop_empty,echo=FALSE, child=if (!params$includeSolution4) "./tasks/day3/03_tasks_04_glm_prop_solution_empty.Rmd"}
 ```
