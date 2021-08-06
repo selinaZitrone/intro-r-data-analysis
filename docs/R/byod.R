@@ -217,3 +217,61 @@ summary(data)
 EcoData::wine # what does it need to make a good wine? https://www.kaggle.com/uciml/red-wine-quality-cortez-et-al-2009
 # https://pierremary.com/datascience/r/2018/05/15/data-analysis-wine-datasets-with-r.html
 # https://github.com/sagarnildass/Red-Wine-Data-Analysis-by-R/blob/master/redWineAnalysis.md
+
+write_csv(birds, file = "./data/birdabundance.csv")
+write_csv(wine, file = "./data/wine.csv")
+
+
+
+# arranging plots ---------------------------------------------------------
+library(cowplot)
+library(grid)
+library(gridExtra)
+library(tidyverse)
+# dummy data
+tbl <- tibble(a = 1:10, b = 1:10)
+# dummy plot
+aplot <- ggplot(tbl, aes(a, b)) +
+  geom_point() +
+  theme(
+    plot.background = element_rect(fill = "lightblue"),
+    plot.margin = margin(0, 0, 0, 0, "cm"),
+    legend.title = element_blank(),
+    axis.title = element_blank()
+  ) +
+  labs(title = "This is some plot title")
+
+# common axis labels as textGrob
+y.grob <- textGrob("Common Y",
+  gp = gpar(fontface = "bold", col = "blue", fontsize = 15), rot = 90
+)
+
+x.grob <- textGrob("Common X",
+  gp = gpar(fontface = "bold", col = "blue", fontsize = 15)
+)
+
+# Creating a 2x2 grid with 4 times the aplot
+dplot <- plot_grid(plotlist = list(aplot, aplot, aplot, aplot), nrow = 2)
+
+# Arranging the dplot with the two test grobs
+eplot <- grid.arrange(arrangeGrob(dplot, left = y.grob, bottom = x.grob))
+
+# save the plot as png
+ ggsave(filename = "./img/cowplot_grob2.png", eplot)
+
+
+
+# Franz --------------------------------------------------------------------
+ tbl <- tibble(value = rep(c(1,NA), each = 5), id = rep(c("4", "12"), each = 5))
+
+ tbl[tbl$id == "12", ]$value <- unique(tbl[tbl$id == "4",]$value)
+
+ # oder dplyr mäßig
+ height_4 <- unique(tbl[tbl$id == "4",]$value)
+ mutate(tbl, HEIGHT = ifelse(id == "4", height_4, ))
+
+ # oder anders
+
+ height_4 <- unique(tbl[tbl$id == "4",]$value)
+
+

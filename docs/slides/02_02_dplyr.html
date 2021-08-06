@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-06-15 (updated: 2021-08-04)
+  2021-06-15 (updated: 2021-08-06)
 ]
 
 ---
@@ -556,33 +556,6 @@ mutate(soybean_use,
 ```
 
 ---
-# `mutate()` + `ifelse()`
-
-We can add a new variable using `ifelse`:
-
-
-```r
-mutate(soybean_use,
-  single_country = ifelse(
-    is.na(code),
-    FALSE,
-    TRUE
-  )
-)
-```
-
-
-```
-## # A tibble: 9,897 x 7
-##   entity code   year human_food animal_feed processed single_country
-##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;lgl&gt;         
-## 1 Africa &lt;NA&gt;   1961      33000        6000     14000 FALSE         
-## 2 Africa &lt;NA&gt;   1962      43000        7000     17000 FALSE         
-## 3 Africa &lt;NA&gt;   1963      31000        7000      5000 FALSE         
-## # ... with 9,894 more rows
-```
-
----
 # `mutate()` + `case_when()`
 
 Instead of `ifelse`, we can also use `case_when`
@@ -865,7 +838,7 @@ soybean_use %&gt;%
 ]
 .pull-right[
 
-&lt;img src="02_02_dplyr_files/figure-html/unnamed-chunk-53-1.png" width="453.6" /&gt;
+&lt;img src="02_02_dplyr_files/figure-html/unnamed-chunk-51-1.png" width="453.6" /&gt;
 ]
 ---
 # Summary I

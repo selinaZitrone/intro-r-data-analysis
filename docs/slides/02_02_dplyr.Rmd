@@ -446,25 +446,6 @@ mutate(soybean_use,
 ```
 
 ---
-# `mutate()` + `ifelse()`
-
-We can add a new variable using `ifelse`:
-
-```{r eval=FALSE}
-mutate(soybean_use,
-  single_country = ifelse(
-    is.na(code),
-    FALSE,
-    TRUE
-  )
-)
-```
-
-```{r echo=FALSE}
-print(mutate(soybean_use, single_country = ifelse(is.na(code), FALSE, TRUE)),n=3)
-```
-
----
 # `mutate()` + `case_when()`
 
 Instead of `ifelse`, we can also use `case_when`
