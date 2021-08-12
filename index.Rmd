@@ -1,7 +1,5 @@
 ---
 title: "Introduction to R for Data Analysis"
-description: |
-  Welcome to the workshop. You can find all material and further information this website.
 site: distill::distill_website
 ---
 
@@ -21,9 +19,6 @@ knitr::opts_chunk$set(echo = FALSE)
 🕘 9 a.m. - 4 p.m. (🥪 ~ 12 a.m. - 1 p.m.)<br>
 📍 We will meet every morning in the `General` meeting room of our Webex team.
 
-I set up a shared document to collect additional resources, feedback, etc.
-You can find the document [here](https://hackmd.io/@selinaZitrone/r12pL71C_/edit), please feel free to edit it as you like.
-
 
 # Workshop Material
 
@@ -31,7 +26,7 @@ You can find all the workshop material on this website.
 On top, you can navigate to the presentation slides and the tasks for each day.
 At the end of each workshop day, I will upload the solutions for the tasks.
 
-If you want to download presentation slides in pdf format, you can do that with the following links:
+To download presentation slides in pdf format, you can use the following links:
 
 - <a href="./slides/01_01_Intro_RStudio_R.pdf" download> 01 - Introduction R and RStudio</a>
 - <a href="./slides/01_02_Functions.pdf" download>01 - Functions</a>
@@ -42,7 +37,7 @@ If you want to download presentation slides in pdf format, you can do that with 
 - <a href="./slides/02_02_dplyr.pdf" download>02 - Dplyr</a>
 - <a href="./slides/02_03_tidyr.pdf" download>02 - Tidyr</a>
 - <a href="./slides/03_01_tests.pdf" download>03 - Statistical tests</a>
-- <a href="./slides/03_01_linear_models.pdf" download>03 - Linear models</a>
+- <a href="./slides/03_02_linear_models.pdf" download>03 - Linear models</a>
 - 03 - Generalized linear models
 
 After the workshop is finished, you can download a zipped version of the content (slides in pdf, data and R scripts) <a href="intro-r-data-analysis-project.zip" download>here</a>
