@@ -275,6 +275,147 @@ summary(cities_tbl)
 ```
 
 ---
+# Indexing tibbles
+
+Indexing tibbles works similar to indexing vectors but with two dimensions instead of 1:<br>
+
+<b>.center[ tibble [ .col1[row_index], .col2[col_index or col_name] ]]</b>
+
+--
+
+- Missing row_index or col_index means *all rows* or *all columns* respectively.
+
+--
+
+- Indexing a tibble using `[]` always returns another tibble.
+
+---
+# Indexing tibbles
+
+```{r}
+# First row and first column
+cities_tbl[1, 1]
+```
+
+--
+
+This is the same as 
+
+```{r eval=FALSE}
+cities_tbl[1, "cities"]
+```
+
+---
+# Indexing tibbles: rows
+
+```{r eval=FALSE}
+# rows 1 & 5, all columns:
+cities_tbl[c(1, 5), ]
+```
+
+---
+# Indexing tibbles: columns 
+
+```{r eval=FALSE}
+# All rows, first 2 columns
+cities_tbl[ ,1:2]
+# same as
+cities_tbl[ ,c("cities", "population")]
+```
+
+```{r echo=FALSE}
+print(cities_tbl[ ,c("cities", "population")], n=3)
+```
+
+---
+# Indexing tibbles: columns
+
+Indexing columns by name is usually preferred to indexing by position
+
+```{r eval=FALSE}
+cities_tbl[ ,1:2] # okay
+cities_tbl[ ,c("cities", "population")] # better
+```
+
+#### Why?
+
+--
+
+- code is much easier to read
+
+--
+
+- code is more robust against
+  - changes in column order
+  - mistakes in the code (e.g. typos)
+
+--
+  
+```{r eval=FALSE}
+cities_tbl[ ,c(1,3)] # 3 instead of 2 -> wrong but no error
+cities_tbl[ ,c("cities", "popluation")] # typo -> wrong and error
+```
+
+--
+
+.content-box-yellow[`r fa("lightbulb")` General rule: Good code produces errors when something unintended or wrong happens]
+
+---
+# Tibbles: Select columns with `$`
+
+Select an entire column from a tibble using `$` (this returns a vector instead of a tibble):
+
+```{r}
+cities_tbl$cities
+```
+
+
+---
+# Adding new columns
+
+New columns can be added as vectors using the `$` operator. The vectors need to have the same length as the tibble has rows.
+
+--
+
+```{r}
+# add a country column
+cities_tbl$country <- c(
+  "Turkey", "Russia", "UK", "Russia", "Germany", "Spain",
+  "Ukraine", "Italy", "Romania", "France"
+)
+```
+```{r echo=FALSE}
+cities_tbl
+```
+
+---
+# Adding new columns
+
+Adding a new column **based on other columns**:
+
+```{r}
+cities_tbl$density <- cities_tbl$population / cities_tbl$area_km2
+```
+
+```{r echo=FALSE}
+cities_tbl
+```
+
+---
+# Adding new columns
+
+Adding new columns **based on a condition**:
+
+```{r}
+cities_tbl$category <- ifelse(cities_tbl$population > 5e6, # test
+                              "very large", # yes
+                              "large") # no
+```
+```{r echo=FALSE}
+cities_tbl
+```
+
+---
 class: inverse, middle, center
 
 # .large[Now you]

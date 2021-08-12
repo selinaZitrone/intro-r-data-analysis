@@ -52,3 +52,48 @@ nrow(animals)
 ncol(animals)
 names(animals)
 ```
+
+### 3.4 Indexing and selecting
+
+- rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
+
+```{r, echo=TRUE}
+animals[c(1,5,7), c("species", "bodywt_kg")]
+```
+
+- select rows 1 to 10, all columns
+
+```{r, echo=TRUE}
+animals[1:10, ]
+```
+
+- select the column `bodywt_kg` as a vector using `$`
+
+```{r, echo=TRUE}
+animals$bodywt_kg
+```
+
+#### Extra
+
+- select the last column of the last row without using the row and column index (so don't use any numbers in this command)
+
+```{r, echo=TRUE}
+animals[nrow(animals), ncol(animals)]
+```
+
+- Calculate the mean of the `bodywt_kg` column and save it in a variable
+
+```{r, echo=TRUE}
+mean_wt <- mean(animals$bodywt_kg)
+mean_wt
+```
+
+- Add a new column to the data called `bodywt_cat` with a category for the body weight. If the body weight is larger than the mean body weight put `heavy` in the column, else put `light` in there.
+
+```{r, echo=TRUE}
+animals$bodywt_cat <- ifelse(animals$bodywt_kg > mean_wt,
+                             "heavy", 
+                             "light")
+animals
+```
+
