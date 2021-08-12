@@ -1,0 +1,89 @@
+### 1.1 Getting the data
+
+You can read the data set directly from Github using:
+
+```{r, echo=TRUE}
+library(tidyverse)
+treeheights <- readr::read_csv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/treeheight.csv")
+```
+
+The data contains tree heights for different forest regions (forest1, forest2, forest3). Check out which regions are included in the data set by calling
+
+```{r, echo=TRUE}
+unique(treeheights$region)
+```
+
+### 1.2 Comparing the regions using statistical tests
+
+Creating subsets of the forest sites as vectors:
+
+```{r, echo=TRUE}
+forest1 <- filter(treeheights, region == "forest1")$height
+forest2 <- filter(treeheights, region == "forest2")$height
+forest3 <- filter(treeheights, region == "forest3")$height
+```
+
+#### Step 1: Test all groups for normality
+
+
+**With KS-Test**
+
+The KS-Test indicates that all data sets are normally distributed.
+
+```{r, echo=TRUE}
+ks.test(forest1, "pnorm", mean = mean(forest1), sd = sd(forest1))
+ks.test(forest2, "pnorm", mean = mean(forest2), sd = sd(forest2))
+ks.test(forest3, "pnorm", mean = mean(forest3), sd = sd(forest3))
+```
+
+**With Shapiro-Wilk**
+
+The Shapiro-Wilk test suggests that forest 2 is not normally distributed
+
+```{r, echo=TRUE}
+shapiro.test(forest1)
+shapiro.test(forest2)
+shapiro.test(forest3)
+```
+**With QQ-plots**
+
+```{r, echo=TRUE}
+ggplot(treeheights, aes(sample = height))+
+  stat_qq()+
+  stat_qq_line()+
+  facet_wrap(~region)
+```
+We can compare variances for forest 1 and forest 3:
+
+```{r, echo=TRUE}
+var.test(forest1, forest3)
+```
+
+This indicates that the variances differ between forest 1 and forest 3.
+
+To compare the means we need to:
+
+The Wilcoxon tests suggests that the heights differ significantly between forest 1 and forest 3.
+
+```{r, echo=TRUE}
+# forest 2 is not normally distributed -> go directly to Wilcoxon
+wilcox.test(forest1, forest2)
+```
+The Wilcoxon tests suggests that the heights does not differ significantly between forest 1 and forest 3.
+
+```{r, echo=TRUE}
+wilcox.test(forest2, forest3)
+```
+Welch test 
+
+Significant difference
+
+```{r, echo=TRUE}
+t.test(forest1, forest3, var.equal = FALSE)
+```
+
+```{r, echo=TRUE}
+ggplot(treeheights,aes(x=region, y=height))+
+  geom_boxplot(notch=TRUE)
+```
+

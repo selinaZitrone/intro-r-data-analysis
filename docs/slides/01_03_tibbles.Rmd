@@ -517,15 +517,6 @@ cities_tbl[6, ] # row 6 is Madrid
 ```
 
 ---
-class: inverse, middle, center
-
-# .large[Now you]
-
-## Task 3: Tibbles
-
-#### Find the task description [here](www.github.com)
-
----
 # Summary I
 
 #### data frames and tibbles
@@ -645,3 +636,12 @@ tbl$new_col <- c(1, 2, 3)
 tbl$new_col <- tbl$colA / tbl$colB # new column based on other columns
 tbl$new_col <- NULL # remove new_col
 ```
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 3: Tibbles
+
+#### Find the task description [here](www.github.com)

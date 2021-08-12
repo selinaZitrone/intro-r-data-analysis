@@ -1,0 +1,63 @@
+### 1.1 Poisson glm
+
+The data set `rabbit` contains data on a highly threatened rabbit species.
+
+The variables in this data set are:
+
+- `sights`: integer variable of camera trap sightings
+- `distance`: distance to river (m)
+- `degredation`: level of degradation (low, medium, very high)
+
+**Question:** How does the degradation level of the site and the distance to the river influence the sightings of rabbits?
+
+You can get the data with:
+
+```{r echo=TRUE, eval=FALSE}
+rabbit <- readr::read_csv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/rabbit.csv")
+```
+
+**Tasks**
+
+- Plot the data
+
+- Fit a poisson glm (with or without interaction)
+
+- Test the significant of the explanatory variables
+
+- Add the model to the plot
+
+#### Extra
+
+- Make the plot look nicer
+- Add the model using a different option
+
+### 1.2 Binary glm
+
+The data set is about the occurrence of woodpeckers at forest sites depending on the amount of deadwood and the dominant tree species.
+
+The variables in the data set are:
+
+- `bird_pres`: binary response variable (presence/absence of the bird at the site)
+- `species`: dominant tree species at the site
+- `deadwood`: amount of deadwood at the site
+
+**Question:** How does the the amount of deadwood and the dominant tree species influence the probability of woodpecker presence?
+
+You can get the data with:
+
+```{r echo=TRUE, eval=FALSE}
+bird <- readr::read_tsv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/bird.csv")
+```
+
+- Plot the data
+
+- Fit a binary glm (`family = "binomial"`)
+
+- Test the significance of the predictors
+
+- Plot the data and add model predictions
+
+#### Extra
+
+- Make the plot look nicer
+- Add the model using a different option
