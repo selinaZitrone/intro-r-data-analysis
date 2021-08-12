@@ -2,7 +2,7 @@
 subtitle: "Introduction to R - Day "
 author: "Selina Baldauf"
 institute: "Freie Universität Berlin - Theoretical Ecology"
-date: "2021-06-15"
+date: "2021-08-01"
 output:
   xaringan::moon_reader:
     css: [default, css/new_slides.css]
