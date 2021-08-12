@@ -2388,9 +2388,9 @@ Slides
 <a href="slides/02_02_dplyr.html">02 - Dplyr</a>
 <a href="slides/02_03_tidyr.html">02 - Tidyr</a>
 <a href="slides/03_01_tests.html">03 - Statistical tests</a>
-<a href="slides/03_01_linear_models.html">03 - Linear models</a>
-<a href="slides/03_02_glm.html">03 - Generalized linear models</a>
-<a href="slides/00_00_bring_your_own_data.html">04 - Last presentation</a>
+<a href="slides/03_02_linear_models.html">03 - Linear models</a>
+<a href="slides/03_03_glm.html">03 - Generalized linear models</a>
+<a href="slides/04_01_bring_your_own_data.html">04 - Bring your own data</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2402,7 +2402,7 @@ Tasks
 <div class="nav-dropdown-content">
 <a href="01_tasks_controller.html">Day 1: Intro to R</a>
 <a href="02_tasks_controller.html">Day 2: Tidyverse</a>
-<a href="03_tasks_controller.html">Day 3: LMs and GLMs</a>
+<a href="03_tasks_controller.html">Day 3: Statistics</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2414,10 +2414,11 @@ Solutions
 <div class="nav-dropdown-content">
 <a href="01_solutions_controller.html">Day 1: Intro to R</a>
 <a href="02_solutions_controller.html">Day 2: Tidyverse</a>
-<a href="03_solutions_controller.html">Day 3: LMs and GLMs</a>
+<a href="03_solutions_controller.html">Day 3: Statistics</a>
 </div>
 </div>
 <a href="online_resources.html">Resources</a>
+<a href="packages.html">Packages</a>
 <a href="https://github.com/selinaZitrone/intro-r-data-analysis">
 <i class="fa fa-github" aria-hidden="true"></i>
 </a>
@@ -2452,6 +2453,7 @@ Solutions
 <ul>
 <li><a href="#creating-a-tibble">3.2 Creating a tibble</a></li>
 <li><a href="#exploring-the-tibble">3.3 Exploring the tibble</a></li>
+<li><a href="#indexing-and-selecting">3.4 Indexing and selecting</a></li>
 </ul></li>
 <li><a href="#reading-and-writing-tibbles">4 Reading and writing tibbles</a>
 <ul>
@@ -2834,7 +2836,109 @@ Solutions
 </div>
 <pre><code>[1] &quot;species&quot;    &quot;bodywt_kg&quot;  &quot;brainwt_kg&quot;</code></pre>
 </div>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h3 id="indexing-and-selecting">3.4 Indexing and selecting</h3>
+<ul>
+<li>rows 1, 5, and 7 and the columns <code>species</code> and <code>bodywt_kg</code></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>5</span>,<span class='fl'>7</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"species"</span>, <span class='st'>"bodywt_kg"</span><span class='op'>)</span><span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 3 x 2
+  species        bodywt_kg
+  &lt;chr&gt;              &lt;dbl&gt;
+1 MountainBeaver       1.4
+2 GuineaPig            1  
+3 AsianElephant     2547  </code></pre>
+</div>
+<ul>
+<li>select rows 1 to 10, all columns</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 10 x 3
+   species        bodywt_kg brainwt_kg
+   &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;
+ 1 MountainBeaver       1.4     0.0081
+ 2 Cow                465       0.423 
+ 3 GreyWolf            36.3     0.120 
+ 4 Goat                27.7     0.115 
+ 5 GuineaPig            1       0.0055
+ 6 Diplodocus       11700       0.05  
+ 7 AsianElephant     2547       4.60  
+ 8 Donkey             187.      0.419 
+ 9 Horse              521       0.655 
+10 PotarMonkey         10       0.115 </code></pre>
+</div>
+<ul>
+<li>select the column <code>bodywt_kg</code> as a vector using <code>$</code></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals</span><span class='op'>$</span><span class='va'>bodywt_kg</span>
+</code></pre>
+</div>
+<pre><code> [1]     1.40   465.00    36.30    27.70     1.00 11700.00  2547.00
+ [8]   187.10   521.00    10.00     3.30   529.00   207.00    62.00
+[15]  6654.00  9400.00     6.80    35.00     0.10     0.02     2.50
+[22]    55.50   100.00    52.20     0.30 87000.00     0.10   192.00</code></pre>
+</div>
+<h4 id="extra">Extra</h4>
+<ul>
+<li>select the last column of the last row without using the row and column index (so don’t use any numbers in this command)</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span><span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 1 x 1
+  brainwt_kg
+       &lt;dbl&gt;
+1       0.18</code></pre>
+</div>
+<ul>
+<li>Calculate the mean of the <code>bodywt_kg</code> column and save it in a variable</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mean_wt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>$</span><span class='va'>bodywt_kg</span><span class='op'>)</span>
+<span class='va'>mean_wt</span>
+</code></pre>
+</div>
+<pre><code>[1] 4278.44</code></pre>
+</div>
+<ul>
+<li>Add a new column to the data called <code>bodywt_cat</code> with a category for the body weight. If the body weight is larger than the mean body weight put <code>heavy</code> in the column, else put <code>light</code> in there.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals</span><span class='op'>$</span><span class='va'>bodywt_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>$</span><span class='va'>bodywt_kg</span> <span class='op'>&gt;</span> <span class='va'>mean_wt</span>,
+                             <span class='st'>"heavy"</span>, 
+                             <span class='st'>"light"</span><span class='op'>)</span>
+<span class='va'>animals</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 28 x 4
+   species        bodywt_kg brainwt_kg bodywt_cat
+   &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;     
+ 1 MountainBeaver       1.4     0.0081 light     
+ 2 Cow                465       0.423  light     
+ 3 GreyWolf            36.3     0.120  light     
+ 4 Goat                27.7     0.115  light     
+ 5 GuineaPig            1       0.0055 light     
+ 6 Diplodocus       11700       0.05   heavy     
+ 7 AsianElephant     2547       4.60   light     
+ 8 Donkey             187.      0.419  light     
+ 9 Horse              521       0.655  light     
+10 PotarMonkey         10       0.115  light     
+# ... with 18 more rows</code></pre>
+</div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -2904,13 +3008,13 @@ Solutions
 </div>
 <p>This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct <code>read_*()</code> function arguments.</p>
 <p>Just play with these different options of reading data into R and find one that fits you best.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
 <h1 id="reference">Reference</h1>
 <p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>04_01_bring_your_own_data.knit</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Selina Baldauf" />
+    <meta name="date" content="2021-08-01" />
+    <script src="04_01_bring_your_own_data_files/header-attrs-2.9/header-attrs.js"></script>
+    <link href="04_01_bring_your_own_data_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+# Organization: Schedule
+
+**Schedule of today**
+
+- **9-13** (or 14 if you are enthusiastic still): Work on the data set
+  - take break(s) as best fits your needs and your group
+  
+- **13 (14)-15**: Short presentation/feedback round
+
+  - What did you find out about your data set? Plots, summaries, ...
+  - Which methods did you use?
+  - Did you learn something new?
+  - Was there something you struggled with?
+  - ...
+  
+- **15-16**: Feedback, conclusion
+
+---
+# Organization: Groups
+
+- Group 1 (own data): 
+- other groups depending on data set preferences (~ 4 people by group)
+
+--
+
+#### In the groups
+
+- have a look at the data set first
+
+- discuss potential questions, methods, ...
+
+- decide how you want to work together
+  - divide tasks
+  - all do same task
+  - everybody on their own but available for questions
+
+- If you can, answer questions from the other group members
+
+- You can also work on multiple data sets if wish
+
+---
+# Organization: Groups
+
+
+What I basically want to say: Just have fun with the data, try new things and organize yourselves!
+
+---
+# Data set suggestions
+
+The [`EcoData` R package](https://github.com/TheoreticalEcology/ecodata) includes many different data sets.
+
+Get the package:
+
+
+```r
+#install.packages("devtools") # run this only if you don't have devtools installed
+devtools::install_github(repo = "florianhartig/EcoData", subdir = "EcoData", 
+dependencies = T, build_vignettes = T)
+```
+
+---
+# Data set 1: What makes a good wine?
+
+**Physicochemical properties of wine and quality judgements by "experts"**
+
+
+```
+## 'data.frame':	1599 obs. of  12 variables:
+##  $ fixed.acidity       : num  12.7 9.8 6.5 8.6 7.5 7.6 10.1 6.4 6.1 6.7 ...
+##  $ volatile.acidity    : num  0.6 0.66 0.88 0.52 0.58 0.5 0.935 0.4 0.58 0.46 ...
+##  $ citric.acid         : num  0.49 0.39 0.03 0.38 0.14 0.29 0.22 NA 0.23 0.24 ...
+##  $ residual.sugar      : num  2.8 3.2 NA 1.5 2.2 2.3 3.4 1.6 2.5 1.7 ...
+##  $ chlorides           : num  0.075 0.083 0.079 0.096 0.077 NA 0.105 0.066 0.044 0.077 ...
+##  $ free.sulfur.dioxide : num  5 21 23 5 27 5 11 5 16 18 ...
+##  $ total.sulfur.dioxide: num  NA 59 47 18 60 NA 86 12 70 34 ...
+##  $ density             : num  0.999 0.999 0.996 NA 0.996 ...
+##  $ pH                  : num  3.14 3.37 NA 3.2 3.28 3.32 3.43 3.34 3.46 3.39 ...
+##  $ sulphates           : num  0.57 0.71 0.5 0.52 0.59 NA 0.64 NA NA 0.6 ...
+##  $ alcohol             : num  11.4 11.5 11.2 9.4 9.8 11.5 11.3 9.2 12.5 10.6 ...
+##  $ quality             : int  5 7 4 5 5 6 4 5 6 6 ...
+```
+
+Reference: P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
+Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
+
+---
+# Data set 1: What makes a good wine?
+
+.pull-left[
+
+Get the data:
+
+
+```r
+library(tidyverse)
+wine &lt;- as_tibble(EcoData::wine)
+```
+
+**Ideas:**
+
+- plotting chemical properties against each other
+- plotting quality judgement depending on different properties
+- linear models for the relationship between properties
+- summary tables of the data]
+
+.pull-right[
+![](img/wine.jpg)
+.footnote-right[.small[By Frederik Vandaele - originally posted to Flickr as Château Pétrus, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=5145286]]]
+
+---
+# Data set 2: Birds in Australia
+
+.pull-left[
+
+**Effect of forest fragmentation on bird abundance**
+
+- bird abundance in the fragment
+- area (size of the fragment)
+- distance to the next forest fragment
+- distance to the next large forest fragment
+- years since site was isolated
+- grazing intensity of the surrounding
+- altitude
+
+]
+.pull-right[
+![](img/fragment_forest.jpg)
+.footnote-right[.small[Image by [Marcel Holyoak](https://www.flickr.com/photos/maholyoak/5875094312/)]]
+]
+
+
+```
+## # A tibble: 56 x 8
+##    Site ABUND  AREA  DIST LDIST YR.ISOL GRAZE   ALT
+##   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1     1   5.3   0.1    39    39    1968     2   160
+## 2     2   2     0.5   234   234    1920     5    60
+## 3     3   1.5   0.5   104   311    1900     5   140
+## # ... with 53 more rows
+```
+
+---
+# Data set 2:  Birds in Australia
+
+.pull-left[
+Get the data
+
+
+```r
+library(tidyverse)
+birds &lt;- as_tibble(EcoData::birdabundance)
+```
+
+**Ideas**
+
+- good for plotting
+- rather clear and small data set
+- explore the effects of environment on bird abundance (try models)
+]
+
+.pull-right[
+
+![](img/fragment_forest.jpg)
+.footnote-right[.small[Image by [Marcel Holyoak](https://www.flickr.com/photos/maholyoak/5875094312/)]]
+
+]
+---
+# Data set 3: Paralympic games from 1980-2016
+
+|variable |class     |description |
+|:--------|:---------|:-----------|
+|gender   |character | Binary gender |
+|event    |character | Event name |
+|medal    |character | Medal type |
+|athlete  |character | Athlete name (LAST NAME first name|
+|abb      |character | Country abbreviation |
+|country  |character | Country name |
+|grp_id   |integer   | Group ID as a count within team sports |
+|type     |character | Type of sport |
+|year     |double    | year of games |
+|guide    |character | Guide (for vision impaired athletes) |
+|pilot    |character | Pilot (for vision impaired athletes) |
+
+Source: [International Paralympic Committee](https://db.ipc-services.org/sdms/hira/web/index) (provided by [tidytuesday](https://github.com/rfordatascience/tidytuesday/edit/master/data/2021/2021-08-03/readme.md))
+
+
+---
+# Data set 3: Paralympic games from 1980-2016
+
+Get the data:
+
+
+```r
+athletes &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-03/athletes.csv')
+```
+
+**Ideas**
+
+- probably dplyr heavy task
+- create summaries of medal counts for different groups
+- explores questions such as:
+  - Did men or women win more medals overall? Did the ratio of men/women winning medals change over time?
+  - Which countries were the most successful ones? Does this differ between sports type?
+  - Which types of sports accumulated the most medals?
+- plots: e.g. heat map showing the number of medals by medal type and sport/country/gender...
+
+---
+# Some general tips
+
+#### For everyone
+
+- google
+- Have a look at the cheat sheets [(list of all cheat sheets)](https://www.rstudio.com/resources/cheatsheets/)
+  - [ggplot2](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf)
+  - [dplyr](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf)
+  - [lubridate](https://raw.githubusercontent.com/rstudio/cheatsheets/master/lubridate.pdf): working with dates and times (convert character columns to date time, calculate differences in time, ...)
+  - [stringr](https://raw.githubusercontent.com/rstudio/cheatsheets/master/strings.pdf): working with strings (e.g. creating substrings, extracting parts from strings, ...)
+  
+---
+# Some general tips
+  
+#### For those working with their own data
+
+- [data import cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf): readr and tidyr cheat sheet
+- [janitor package](https://garthtarr.github.io/meatR/janitor.html#excel_numeric_to_date()): some simple functions for examining and cleaning dirty data
+  - `clean_names()`: clean your column names with one function (e.g. in case you have white space)
+  - `excel_numeric_to_date()`: convert strange excel serial numbers to actual dates
+- [readxl package](https://www.rdocumentation.org/packages/readxl/versions/1.3.1): read directly from Excel files instead of using `readr` with csv files
+  - check out `?read_xlsx` to see how to read different sheets
+  
+  
+---
+class: inverse, middle, center
+
+# .large[Now You]
+
+#### - Think about the data set you would like to work on 
+#### - Build groups using the chat
+#### - Meet in your group
+#### - Start working on a data set
+#### - Take breaks as you need and be back at 13:30
+
+---
+# Presentation/Feedback round
+
+- What did you find out about your data set? Plots, summaries, ...
+
+- Which methods did you use?
+
+- Did you learn something new?
+
+- Was there something you struggled with?
+
+---
+# Feedback
+
+Please take 5 mins to complete the feedback survey for the Graduate center (don't use Internet Explorer)
+
+.center[https://votingo.cedis.fu-berlin.de/PCNLP3]
+
+--
+
+Please take another 5 mins to complete my more specific survey to further improve the course
+
+
+.center[https://forms.gle/xfwKLDDomwoY44i66]
+
+---
+# Feedback
+
+
+- Any other feedback or comments from your side?
+
+---
+# Conclusion
+
+![](img/day1/datascience_workflow_tidyverse.png)
+
+We learned a lot of stuff!
+
+---
+# Conclusion
+
+.pull-left[
+
+#### How to continue from here?
+
+- Learning by doing!
+- Have a look at some [online ressoures](https://selinazitrone.github.io/intro-r-data-analysis/online_resources.html), I recommend the R for Data Science book by Hadley Wickham
+- If you use Twitter: Follow some people that post R content regarding your interest
+]
+
+.pull-right[
+
+![](img/AllisonHorst/r_rollercoaster.png)
+]
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
+---
+class: inverse, middle, center
+
+# .large[The End]
+## Thanks a lot for participating!
+
+![](img/AllisonHorst/heartyr.gif)
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

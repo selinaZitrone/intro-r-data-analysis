@@ -88,27 +88,24 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
   <title>Introduction to R for Data Analysis</title>
 
-  <meta property="description" itemprop="description" content="Welcome to the workshop. You can find all material and further information this website."/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="Introduction to R for Data Analysis"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Welcome to the workshop. You can find all material and further information this website."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Introduction to R for Data Analysis"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="Introduction to R for Data Analysis"/>
-  <meta property="twitter:description" content="Welcome to the workshop. You can find all material and further information this website."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["Introduction to R for Data Analysis"]},{"type":"character","attributes":{},"value":["Welcome to the workshop. You can find all material and further information this website.\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site"]}},"value":[{"type":"character","attributes":{},"value":["Introduction to R for Data Analysis"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2363,7 +2360,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Introduction to R for Data Analysis","description":"Welcome to the workshop. You can find all material and further information this website.","authors":[]}
+{"title":"Introduction to R for Data Analysis","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2391,9 +2388,9 @@ Slides
 <a href="slides/02_02_dplyr.html">02 - Dplyr</a>
 <a href="slides/02_03_tidyr.html">02 - Tidyr</a>
 <a href="slides/03_01_tests.html">03 - Statistical tests</a>
-<a href="slides/03_01_linear_models.html">03 - Linear models</a>
-<a href="slides/03_02_glm.html">03 - Generalized linear models</a>
-<a href="slides/00_00_bring_your_own_data.html">04 - Last presentation</a>
+<a href="slides/03_02_linear_models.html">03 - Linear models</a>
+<a href="slides/03_03_glm.html">03 - Generalized linear models</a>
+<a href="slides/04_01_bring_your_own_data.html">04 - Bring your own data</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2405,7 +2402,7 @@ Tasks
 <div class="nav-dropdown-content">
 <a href="01_tasks_controller.html">Day 1: Intro to R</a>
 <a href="02_tasks_controller.html">Day 2: Tidyverse</a>
-<a href="03_tasks_controller.html">Day 3: LMs and GLMs</a>
+<a href="03_tasks_controller.html">Day 3: Statistics</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2417,10 +2414,11 @@ Solutions
 <div class="nav-dropdown-content">
 <a href="01_solutions_controller.html">Day 1: Intro to R</a>
 <a href="02_solutions_controller.html">Day 2: Tidyverse</a>
-<a href="03_solutions_controller.html">Day 3: LMs and GLMs</a>
+<a href="03_solutions_controller.html">Day 3: Statistics</a>
 </div>
 </div>
 <a href="online_resources.html">Resources</a>
+<a href="packages.html">Packages</a>
 <a href="https://github.com/selinaZitrone/intro-r-data-analysis">
 <i class="fa fa-github" aria-hidden="true"></i>
 </a>
@@ -2436,17 +2434,16 @@ Solutions
 <h1>Introduction to R for Data Analysis</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Welcome to the workshop. You can find all material and further information this website.</p></p>
+
 </div>
 
 
 <div class="d-article">
 <h1 id="workshop-organization-and-schedule">Workshop organization and schedule</h1>
 <p>🕘 9 a.m. - 4 p.m. (🥪 ~ 12 a.m. - 1 p.m.)<br> 📍 We will meet every morning in the <code>General</code> meeting room of our Webex team.</p>
-<p>I set up a shared document to collect additional resources, feedback, etc. You can find the document <a href="https://hackmd.io/@selinaZitrone/r12pL71C_/edit">here</a>, please feel free to edit it as you like.</p>
 <h1 id="workshop-material">Workshop Material</h1>
 <p>You can find all the workshop material on this website. On top, you can navigate to the presentation slides and the tasks for each day. At the end of each workshop day, I will upload the solutions for the tasks.</p>
-<p>If you want to download presentation slides in pdf format, you can do that with the following links:</p>
+<p>To download presentation slides in pdf format, you can use the following links:</p>
 <ul>
 <li><a href="./slides/01_01_Intro_RStudio_R.pdf" download> 01 - Introduction R and RStudio</a></li>
 <li><a href="./slides/01_02_Functions.pdf" download>01 - Functions</a></li>
@@ -2457,7 +2454,7 @@ Solutions
 <li><a href="./slides/02_02_dplyr.pdf" download>02 - Dplyr</a></li>
 <li><a href="./slides/02_03_tidyr.pdf" download>02 - Tidyr</a></li>
 <li><a href="./slides/03_01_tests.pdf" download>03 - Statistical tests</a></li>
-<li><a href="./slides/03_01_linear_models.pdf" download>03 - Linear models</a></li>
+<li><a href="./slides/03_02_linear_models.pdf" download>03 - Linear models</a></li>
 <li>03 - Generalized linear models</li>
 </ul>
 <p>After the workshop is finished, you can download a zipped version of the content (slides in pdf, data and R scripts) <a href="intro-r-data-analysis-project.zip" download>here</a></p>

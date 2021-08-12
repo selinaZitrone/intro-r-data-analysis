@@ -2388,9 +2388,9 @@ Slides
 <a href="slides/02_02_dplyr.html">02 - Dplyr</a>
 <a href="slides/02_03_tidyr.html">02 - Tidyr</a>
 <a href="slides/03_01_tests.html">03 - Statistical tests</a>
-<a href="slides/03_01_linear_models.html">03 - Linear models</a>
-<a href="slides/03_02_glm.html">03 - Generalized linear models</a>
-<a href="slides/00_00_bring_your_own_data.html">04 - Last presentation</a>
+<a href="slides/03_02_linear_models.html">03 - Linear models</a>
+<a href="slides/03_03_glm.html">03 - Generalized linear models</a>
+<a href="slides/04_01_bring_your_own_data.html">04 - Bring your own data</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2402,7 +2402,7 @@ Tasks
 <div class="nav-dropdown-content">
 <a href="01_tasks_controller.html">Day 1: Intro to R</a>
 <a href="02_tasks_controller.html">Day 2: Tidyverse</a>
-<a href="03_tasks_controller.html">Day 3: LMs and GLMs</a>
+<a href="03_tasks_controller.html">Day 3: Statistics</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2414,10 +2414,11 @@ Solutions
 <div class="nav-dropdown-content">
 <a href="01_solutions_controller.html">Day 1: Intro to R</a>
 <a href="02_solutions_controller.html">Day 2: Tidyverse</a>
-<a href="03_solutions_controller.html">Day 3: LMs and GLMs</a>
+<a href="03_solutions_controller.html">Day 3: Statistics</a>
 </div>
 </div>
 <a href="online_resources.html">Resources</a>
+<a href="packages.html">Packages</a>
 <a href="https://github.com/selinaZitrone/intro-r-data-analysis">
 <i class="fa fa-github" aria-hidden="true"></i>
 </a>
@@ -2458,6 +2459,7 @@ Solutions
 <li><a href="#getting-started-with-tibbles">3.1 Getting started with tibbles</a></li>
 <li><a href="#creating-a-tibble">3.2 Creating a tibble</a></li>
 <li><a href="#exploring-the-tibble">3.3 Exploring the tibble</a></li>
+<li><a href="#indexing-and-selecting">3.4 Indexing and selecting</a></li>
 </ul></li>
 <li><a href="#reading-and-writing-tibbles">4 Reading and writing tibbles</a>
 <ul>
@@ -2653,6 +2655,20 @@ Solutions
 <li><code>str()</code> to view the structure of the data</li>
 <li><code>summary()</code></li>
 <li>…</li>
+</ul>
+<h3 id="indexing-and-selecting">3.4 Indexing and selecting</h3>
+<p>Now let’s try some indexing on the data.</p>
+<p>Try the following selections</p>
+<ul>
+<li>rows 1, 5, and 7 and the columns <code>species</code> and <code>bodywt_kg</code></li>
+<li>select rows 1 to 10, all columns</li>
+<li>select the column <code>bodywt_kg</code> as a vector using <code>$</code></li>
+</ul>
+<h4 id="extra">Extra</h4>
+<ul>
+<li>select the last column of the last row without using the row and column index (so don’t use any numbers in this command)</li>
+<li>Calculate the mean of the <code>bodywt_kg</code> column and save it in a variable</li>
+<li>Add a new column to the data called <code>bodywt_cat</code> with a category for the body weight. If the body weight is larger than the mean body weight put <code>heavy</code> in the column, else put <code>light</code> in there.</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="reading-and-writing-tibbles">4 Reading and writing tibbles</h2>

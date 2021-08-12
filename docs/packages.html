@@ -2418,6 +2418,7 @@ Solutions
 </div>
 </div>
 <a href="online_resources.html">Resources</a>
+<a href="packages.html">Packages</a>
 <a href="https://github.com/selinaZitrone/intro-r-data-analysis">
 <i class="fa fa-github" aria-hidden="true"></i>
 </a>
@@ -2440,14 +2441,9 @@ Solutions
 <div class="d-article">
 <p>In the table below, you can find a list of R packages with a short description and some links for further reading. The package selection is based on my personal experience and packages that I regularly use and like. The list is in no way complete. If you know a useful package that I missed, let me know and I can add it to the list.</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>pkg</span> <span class='op'>&lt;-</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_xlsx</a></span><span class='op'>(</span><span class='st'>"./data/packages.xlsx"</span><span class='op'>)</span>
-<span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>pkg</span><span class='op'>)</span>
-</code></pre>
-</div>
 <table>
 <colgroup>
-<col style="width: 1%" />
+<col style="width: 2%" />
 <col style="width: 6%" />
 <col style="width: 47%" />
 <col style="width: 44%" />
@@ -2462,97 +2458,97 @@ Solutions
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">tidyverse</td>
+<td style="text-align: left;"><code>tidyverse</code></td>
 <td style="text-align: left;">tidyverse, data analysis</td>
 <td style="text-align: left;">Collection of packages designed for data analysis. The packages are designed to work smoothly together</td>
 <td style="text-align: left;"><a href="https://www.tidyverse.org/">website</a>, <a href="https://www.tidyverse.org/learn/">learning resources</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">dplyr</td>
+<td style="text-align: left;"><code>dplyr</code></td>
 <td style="text-align: left;">tidyverse, data manipulation</td>
 <td style="text-align: left;">Part of the tidyverse. Package for data manipulation: filtering, selecting and arranging data, summarizing data (e.g. calculating summaries by group), …</td>
 <td style="text-align: left;"><a href="https://dplyr.tidyverse.org/">website</a>, <a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf">cheatsheet</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">readr</td>
+<td style="text-align: left;"><code>readr</code></td>
 <td style="text-align: left;">tidyverse, data import and export</td>
 <td style="text-align: left;">Part of the tidyverse. Package for data import and export (csv, txt, other delimited files)</td>
 <td style="text-align: left;"><a href="http://readr.tidyverse.org/">website</a>, <a href="https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf">cheatsheet</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ggplot2</td>
+<td style="text-align: left;"><code>ggplot2</code></td>
 <td style="text-align: left;">tidyverse, data visualization</td>
 <td style="text-align: left;">Part of the tidyverse. Data visualization</td>
 <td style="text-align: left;"><a href="https://ggplot2.tidyverse.org/">website</a>, <a href="https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf">cheatsheet</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">tidyr</td>
+<td style="text-align: left;"><code>tidyr</code></td>
 <td style="text-align: left;">tidyverse, data cleaning</td>
 <td style="text-align: left;">Part of the tidyverse. Transforming tables to bring them in a tidy format for further analysis</td>
 <td style="text-align: left;"><a href="http://tidyr.tidyverse.org/">website</a>, <a href="https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf">cheatsheet</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">stringr</td>
+<td style="text-align: left;"><code>stringr</code></td>
 <td style="text-align: left;">tidyverse, string manipulation</td>
 <td style="text-align: left;">Part of the tidyverse. Toolkit for working with strings. String manipulation: extracting strings, substrings, find patterns in strings, replace patterns in strings, …</td>
 <td style="text-align: left;"><a href="http://stringr.tidyverse.org/">website</a>, <a href="https://github.com/rstudio/cheatsheets/raw/master/strings.pdf">cheatsheet</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">lubridate</td>
+<td style="text-align: left;"><code>lubridate</code></td>
 <td style="text-align: left;">dates and times</td>
 <td style="text-align: left;">Makes it easy to work with dates and times: convert strings to date time objects, calculate with times (intervals, periods, …) and plot time series</td>
 <td style="text-align: left;"><a href="https://github.com/rstudio/cheatsheets/raw/master/lubridate.pdf">cheatsheet</a>, <a href="http://lubridate.tidyverse.org/">website</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">forcats</td>
+<td style="text-align: left;"><code>forcats</code></td>
 <td style="text-align: left;">factors, categorical variables</td>
 <td style="text-align: left;">Part of the tidyverse. Working with factors (categorical data types). Renaming, reordering, summarizing categories, …</td>
 <td style="text-align: left;"><a href="https://forcats.tidyverse.org/">website</a>, <a href="https://github.com/rstudio/cheatsheets/raw/master/factors.pdf">cheatsheet</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">data.table</td>
+<td style="text-align: left;"><code>data.table</code></td>
 <td style="text-align: left;">fast data analysis, big data</td>
 <td style="text-align: left;">Extremely fast and memory efficient data transofmrations in R. The package uses a different syntax from base R and the tidyverse. However, data.tables are also data frames so you can use them either with data.table syntax or with base R/tidyverse syntax</td>
 <td style="text-align: left;"><a href="https://github.com/Rdatatable/data.table/wiki/Getting-started">website</a>, <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/datatable.pdf">cheatsheet</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">collapse</td>
+<td style="text-align: left;"><code>collapse</code></td>
 <td style="text-align: left;">fast data analysis, big data</td>
 <td style="text-align: left;">Packag for fast data manipulation. Well integrated with dplyr and data.table. Provides fast functions for data transformation, aggregation, linear models, statistical functions, grouping, … Have a look at it if you have large data sets and your data operations take a long time</td>
 <td style="text-align: left;"><a href="https://sebkrantz.github.io/collapse/">package on github</a>, <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/collapse.pdf">cheatsheet</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">rmarkdown</td>
+<td style="text-align: left;"><code>rmarkdown</code></td>
 <td style="text-align: left;">reports, markdown, documents</td>
 <td style="text-align: left;">Interactive and reproducible documents with R (pdf, word, html output).</td>
 <td style="text-align: left;"><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown - The definitive guide (book)</a>, <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">reference guide</a>, <a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf">cheatsheet</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ggsci</td>
+<td style="text-align: left;"><code>ggsci</code></td>
 <td style="text-align: left;">colors, data visualization</td>
 <td style="text-align: left;">Provides additional color scales to ggplot</td>
 <td style="text-align: left;"><a href="https://nanx.me/ggsci/">website</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">ggthemes</td>
+<td style="text-align: left;"><code>ggthemes</code></td>
 <td style="text-align: left;">colors, themes, data visualizations</td>
 <td style="text-align: left;">Provides additional color scales and themes to ggplot</td>
 <td style="text-align: left;"><a href="https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/">theme gallery</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">usethis</td>
+<td style="text-align: left;"><code>usethis</code></td>
 <td style="text-align: left;">utility, workflow</td>
 <td style="text-align: left;">Provides useful utility functions around R and Rstudio workflows: project setup, git, github, licenses, package development, …</td>
 <td style="text-align: left;"><a href="https://usethis.r-lib.org/">website</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">styler</td>
+<td style="text-align: left;"><code>styler</code></td>
 <td style="text-align: left;">utility</td>
 <td style="text-align: left;">Automatically format your code according to the tidyverse style guide. This ensures that your coding style follows good practice</td>
 <td style="text-align: left;"><a href="https://styler.r-lib.org/">website</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">here</td>
+<td style="text-align: left;"><code>here</code></td>
 <td style="text-align: left;">utility</td>
 <td style="text-align: left;">Makes file referencing and relative paths easy</td>
 <td style="text-align: left;"><a href="https://here.r-lib.org/">website</a></td>
