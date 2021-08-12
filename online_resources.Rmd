@@ -23,6 +23,8 @@ output:
 
 - A [curated collection of R resources](https://github.com/iamericfletcher/awesome-r-learning-resources). Not just books but also websites, tutorials, help channels, ...
 
+- The [Tidyverse style guide](https://style.tidyverse.org/) provides information on how to style your code according to good practice.
+
 
 ## Tidyverse
 
@@ -41,6 +43,8 @@ output:
 - In the [R graph gallery](https://www.r-graph-gallery.com/) you can browse through hundreds of different types of plots and find code to reproduce them.
 
 - A great [presentation by Cédric Scherer](https://github.com/z3tt/OutlierConf2021) with examples of how to beautify your ggplots.
+
+- List of [ggplot extensions](https://exts.ggplot2.tidyverse.org/ggthemes.html), e.g. for themes, interactive graphs, text labels,... 
 
 ### dplyr
 
