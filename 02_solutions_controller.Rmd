@@ -14,34 +14,34 @@ params:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r download_script, echo=FALSE, child= if(params$showDownload) "tasks/day2/02_tasks_download.Rmd"}
+```{r download_script,child= if(params$showDownload) "tasks/day2/02_tasks_download.Rmd"}
 
 ```
 
 ## 1 ggplot2
 
-```{r ggplot, echo=FALSE, child= if (params$includeSolution1) "tasks/day2/02_tasks_01_ggplot_solution.Rmd"}
+```{r ggplot, child= if (params$includeSolution1) "tasks/day2/02_tasks_01_ggplot_solution.Rmd"}
 ```
 
-```{r ggplot_empty,echo=FALSE, child= if (!params$includeSolution1) "tasks/day2/02_tasks_01_ggplot_solution_empty.Rmd"}
+```{r ggplot_empty, child= if (!params$includeSolution1) "tasks/day2/02_tasks_01_ggplot_solution_empty.Rmd"}
 ```
 
 ## 2 dplyr
 
 
-```{r dplyr, echo=FALSE, child= if (params$includeSolution2) "tasks/day2/02_tasks_02_dplyr_solution.Rmd"}
+```{r dplyr,child= if (params$includeSolution2) "tasks/day2/02_tasks_02_dplyr_solution.Rmd"}
 ```
 
-```{r dplyr_empty, echo=FALSE, child= if (!params$includeSolution2) "tasks/day2/02_tasks_02_dplyr_solution_empty.Rmd"}
+```{r dplyr_empty, child= if (!params$includeSolution2) "tasks/day2/02_tasks_02_dplyr_solution_empty.Rmd"}
 ```
 
 ## 3 tidyr
 
-```{r tidyr, echo=FALSE, child= if (params$includeSolution3) "./tasks/day2/02_tasks_04_tidyr_solution.Rmd"}
+```{r tidyr,child= if (params$includeSolution3) "./tasks/day2/02_tasks_04_tidyr_solution.Rmd"}
 ```
 
-```{r tidyr_empty, echo=FALSE, child= if (!params$includeSolution3) "./tasks/day2/02_tasks_04_tidyr_solution_empty.Rmd"}
+```{r tidyr_empty,child= if (!params$includeSolution3) "./tasks/day2/02_tasks_04_tidyr_solution_empty.Rmd"}
 ```

@@ -483,3 +483,28 @@ tibble::view(tbl)
 # summary of values from each column
 summary(tbl)
 ```
+
+---
+# Summary IV
+
+#### Indexing tibbles and selecting columns
+
+Return result as tibble:
+
+```{r eval=FALSE}
+# rows and columns by position
+tbl[1:3, c(1, 3)]
+tbl[1:3, ] # all columns
+tbl[, 3] # column 3, all rows
+tbl[3] # same as above
+
+# columns by name
+tbl[, c("colA", "colB")]
+tbl[c("colA", "colB")]
+```
+
+Return result as vector:
+
+```{r eval=FALSE}
+tbl$colA # select colA  
+```

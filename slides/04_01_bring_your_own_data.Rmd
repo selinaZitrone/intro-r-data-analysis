@@ -34,7 +34,7 @@ output:
 ---
 # Organization: Groups
 
-- Group 1 (own data): Franz, Nilofer, Franziska, Charlotte
+- Group 1 (own data): 
 - other groups depending on data set preferences (~ 4 people by group)
 
 --
@@ -252,7 +252,7 @@ Please take 5 mins to complete the feedback survey for the Graduate center (don'
 
 --
 
-Please take another 5-10 mins to complete my more specific survey to further improve the course
+Please take another 5 mins to complete my more specific survey to further improve the course
 
 
 .center[https://forms.gle/xfwKLDDomwoY44i66]

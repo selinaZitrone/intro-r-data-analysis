@@ -12,29 +12,29 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## 0 Statistical tests
+## 1 Statistical tests
 
 ```{r tests, child="tasks/day3/03_tasks_00_tests.Rmd"}
 ```
 
 
-## 1 Linear models
+## 2 Linear models
 
 ```{r create_rstudio_project, child="tasks/day3/03_tasks_01_lm.Rmd"}
 ```
 
-## 2 Linear models with transformation
+## 3 Linear models with transformation
 
 ```{r vectors, child="tasks/day3/03_tasks_02_lm_trans.Rmd"}
 ```
 
-## 3 Poisson and binary glm
+## 4 Poisson and binary glm
 
 ```{r tibbles, child="./tasks/day3/03_tasks_03_glm.Rmd"}
 ```
 
 
-## 3 Proportion glm
+## 5 Proportion glm
 
 ```{r tibbles, child="./tasks/day3/03_tasks_04_glm_prop.Rmd"}
 ```

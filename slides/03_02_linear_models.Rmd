@@ -160,7 +160,7 @@ $Y_i - \hat{Y}_i$
 
 #### Residual sum of squares (RSS)
 
-$RSS = \sum_{i=1}^{n} Y_i - \hat{Y}_i$
+$RSS = \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2$
 
 
 #### Aim of the model fitting:
@@ -748,7 +748,7 @@ ggplot(prod, aes(x = richness,
     values = c("#4C7488", "#D78974")) +
   geom_abline(#<<
     slope = slope, #<<
-    intercept = intercep1, #<<
+    intercept = intercept1, #<<
     color = "#4C7488"#<<
   ) + #<<
   geom_abline(#<<
@@ -1037,7 +1037,7 @@ chickwts %>%
 
 ]
 
-.footnote-right[Design adapted from [Cédric Scherer]((https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/#sort)]]
+.footnote-right[.small[Design adapted from [Cédric Scherer]((https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/#sort)]]]
 
 ---
 # Linear models step by step
@@ -1141,7 +1141,7 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 3-1: Linear models with the penugin data set
+## Task 2: Linear models with the penugin data set
 
 #### Find the task description <a href="../01_tasks_controller.html#linear-models">here</a>
 
@@ -1354,6 +1354,6 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 3-1: Linear models with transformations
+## Task 3: Linear models with transformations
 
 #### Find the task description <a href="../01_tasks_controller.html#linear-models-with-transformation">here</a>

@@ -33,7 +33,7 @@ navbar:
           href: slides/03_02_linear_models.html
         - text: "03 - Generalized linear models"
           href: slides/03_03_glm.html
-        - text: "04 - Last presentation"
+        - text: "04 - Bring your own data"
           href: slides/04_01_bring_your_own_data.html
     - text: "Tasks"
       menu:
@@ -41,7 +41,7 @@ navbar:
           href: 01_tasks_controller.html
         - text: "Day 2: Tidyverse"
           href: 02_tasks_controller.html
-        - text: "Day 3: LMs and GLMs"
+        - text: "Day 3: Statistics"
           href: 03_tasks_controller.html
     - text: "Solutions"
       menu:
@@ -49,7 +49,7 @@ navbar:
           href: 01_solutions_controller.html
         - text: "Day 2: Tidyverse"
           href: 02_solutions_controller.html
-        - text: "Day 3: LMs and GLMs"
+        - text: "Day 3: Statistics"
           href: 03_solutions_controller.html
     - text: "Resources"
       href: online_resources.html

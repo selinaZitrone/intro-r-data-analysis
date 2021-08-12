@@ -1,4 +1,4 @@
-```{r echo=FALSE}
+```{r}
 options(scipen = 999)
 ```
 
