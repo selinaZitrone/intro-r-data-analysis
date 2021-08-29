@@ -153,37 +153,6 @@ mydata %>%
 ]
 
 ---
-# Short deviation: The `$` operator
-
-With the `$` operator, you can select columns from a data frame / tibble.
-
-The `$` operator will return the column as a **vector**
-
-```{r eval=FALSE}
-mydata$normal
-```
-
-```{r echo=FALSE}
-head(mydata$normal, n=8)
-```
-
---
-
-In comparison to `dplyr::select()` which will return the colum as a **tibble**
-
-```{r eval=FALSE}
-select(mydata, normal)
-```
-
-```{r echo=FALSE}
-print(select(mydata, normal),n=3)
-```
-
---
-
-This is important because most tests work with vectors as input.
-
----
 # Kolmogorov-Smirnov-Test
 
 $H_0$: Data does not differ from a normal distribution
@@ -191,6 +160,7 @@ $H_0$: Data does not differ from a normal distribution
 --
 
 ```{r}
+# Tests need the data as a vector input
 ks.test(mydata$normal,
   "pnorm",
   mean = mean(mydata$normal),

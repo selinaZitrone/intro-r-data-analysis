@@ -10,7 +10,6 @@ editor_options:
 ```{r packages}
 library(tidyverse)
 library(EcoData)
-
 ```
 
 ```{r get_data}
@@ -33,18 +32,222 @@ str(birds)
 summary(birds)
 ```
 
-# Rename columns and add new col
+# Step 0: organize data
 
-I don't like the column names, I want to rename some of them.
+First, I want to rename some of the columns to make the data set easier to work with:
 
-- add column for number of years since it was isolated
+- Change all column headers to lower case
+- rename column `yr.isol` to `isol_since`
+- add a new column with years since isolation
+- change `graze` variable to a factor
 
 ```{r}
 birds <- birds %>% 
   rename_with(tolower, everything()) %>% 
   rename(isol_since = yr.isol) %>% 
-  mutate(isol_years = 2021 - isol_since)
+  mutate(isol_years = 2021 - isol_since) %>% 
+  mutate(graze = factor(graze))
 ```
+
+# Step 1: Exploratory plotting
+
+I will start with some exploratory data analysis using `ggplot2`.
+
+#### Question: Which factors influence bird abundance most?
+
+#### Isolation time and grazing
+
+Looks like:
+-  the longer a site is isolated the higher the grazing intensity is
+-  the longer a site is isolated the lower the abundance
+-  grazing intensity does not affect abundance but years of isolation do
+
+
+```{r}
+ggplot(birds, aes(x = isol_years, y = abund, color = graze)) +
+  geom_point()
+```
+
+I there an interaction between grazing intensity and time since isolation?
+
+Does not look like it. But the sites with a very high grazing intensity seem to be isolated since a very long time.
+
+```{r}
+ggplot(birds, aes(x = graze, y = isol_years)) +
+  geom_boxplot() +
+  geom_point(position = position_jitter(seed = 123, width = 0.2), alpha = 0.4, color = "cyan4")
+```
+
+
+#### Distance to forest
+
+Does the bird abundance depend on the distance to the nearest forest patch?
+
+Does not seem like it. There is no clear pattern in showing that the distance to the nearest forest 
+affects bird abundance. However, the distances are all quite small considering the radius of bird movements
+
+```{r}
+ggplot(birds, aes(x = dist, y = abund)) +
+  geom_point()+
+  geom_smooth(method="lm")
+```
+
+How about the distance to the nearest large forest patch?
+
+Also here, there does not seem to be a clear pattern
+
+```{r}
+ggplot(birds, aes(x=ldist, y=abund))+
+  geom_point()+
+  geom_smooth(method = "lm")
+```
+
+#### Altitude
+
+Is there an effect of altitude?
+
+It seems like the higher the altitude, the higher the bird abundance.
+
+```{r}
+ggplot(birds, aes(x = alt, y = abund)) +
+  geom_point(aes(color = graze)) +
+  geom_smooth(method = "lm")
+```
+
+#### Area
+
+Is there an effect of the area of the nearest fragment?
+
+```{r}
+ggplot(birds, aes(x=area, y = abund))+
+  geom_point()
+```
+
+Looks like a log transformation of area could help
+
+```{r}
+ggplot(birds, aes(x = area, y = abund, color = graze)) +
+  geom_point() +
+  scale_x_log10() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+Looks like there is a clear relationship here.
+
+# Step 2: Some statistical tests and models
+
+First test a model with interaction between grazing intensity and area of the forest fragement.
+
+```{r}
+lm1 <- lm(abund ~ graze * area, data = birds)
+drop1(lm1, test = "F")
+```
+
+There is a significant interaction between the grazing intensity and the area of the remaining forest fragment.
+
+But are the assumptions of a linear model fulfilled?
+
+```{r}
+performance::check_model(lm1)
+```
+
+It looks like the normality of residuals is not fulfilled. 
+Looking back at the plot from before, it might make sense to test a model with log-transformed area and a sqrt transfomed abundance.
+
+(Sometimes the square root transformation can help with count data).
+
+```{r}
+lm1b <- lm(abund~graze*log(area), data = birds)
+drop1(lm1b, test = "F")
+# update model without interaction
+lm1c <- lm(sqrt(abund)~graze + log(area), data = birds)
+drop1(lm1c, test = "F")
+```
+
+```{r}
+performance::check_model(lm1c)
+```
+
+This looks much better. However, it might also be a good idea to use a poisson glm in this case
+
+```{r}
+glm1 <- glm(abund ~ graze + log(area), data  =birds, family = "poisson")
+drop1(glm1, test = "Chisq")
+```
+
+```{r}
+ggplot(birds, aes(x = area, y = abund, color = graze)) +
+  geom_point() +
+  scale_x_log10() +
+  geom_smooth(method = "glm", se = FALSE, method.args = list(family = "poisson"))
+```
+
+Or using the predict function:
+
+```{r}
+pred_dat <- expand_grid(
+  graze = factor(1:5),
+  area = min(birds$area):max(birds$area)
+)
+pred_dat$abund <- predict(glm1, newdata = pred_dat, type = "response")
+
+ggplot(birds, aes(x = area, y = abund, color = graze)) +
+  geom_point() +
+  scale_x_log10() +
+  geom_line(data = pred_dat)
+```
+
+
+
+
+
+
+
+
+
+
+#### Correlation between variables
+
+Are there correlated variables?
+
+```{r}
+birds %>% 
+  select(area, dist, ldist, isol_years, alt) %>% 
+  cor()
+```
+
+Use the `ggpairs` function from the `GGally` package to plot a matrix plot of all 
+variables from the data and look at possible correlations.
+
+```{r}
+GGally::ggpairs(birds)
+```
+
+To get a better overview, I now select some independent variables that I am interested in:
+
+```{r}
+birds %>% 
+  select(-isol_since, -site) %>% 
+  GGally::ggpairs()
+```
+
+
+
+
+
+
+```{r}
+ggplot(data = birds,
+mapping = aes(
+x = DIST,
+y = YR.ISOL,
+size = ABUND,
+color = ABUND)) +
+geom_point() +
+scale_color_gradient(low="blue",high="red")+
+scale_x_log10()
+```
+
 
 Including some categorical variables for exploratory plotting
 
@@ -71,28 +274,4 @@ looks like
 -  the longer a site is isolated the higher the grazing intensity is
 -  the longer a site is isolated the lower the abundance
 - grazing intensity does not seem to affect the birds but years of isolation do
-
-```{r}
-ggplot(birds, aes(x = isol_years, y = abund, color = factor(graze)))+
-  geom_point()
-```
-
-
-
-```{r}
-ggplot(birds, aes(x = dist, y = abund)) +
-  geom_point()
-```
-
-```{r}
-ggplot(data = birds,
-mapping = aes(
-x = DIST,
-y = YR.ISOL,
-size = ABUND,
-color = ABUND)) +
-geom_point() +
-scale_color_gradient(low="blue",high="red")+
-scale_x_log10()
-```
 
