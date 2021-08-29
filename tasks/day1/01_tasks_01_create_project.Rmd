@@ -7,7 +7,7 @@ This is not a good default. We always want to start R from a clean slate to ensu
 
 In RStudio go to `Tools -> Global Options -> General` and 
 
-- remove the check mark for "Restore `.RData` into workspace at setup"
+- remove the check mark for "Restore `.RData` into workspace at startup"
 - **Never** save workspace to `.RData` on exit
 
 ```{r fig.height=20}

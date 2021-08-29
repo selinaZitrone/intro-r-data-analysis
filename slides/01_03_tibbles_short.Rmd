@@ -308,7 +308,7 @@ cities_tbl[1, "cities"]
 ---
 # Indexing tibbles: rows
 
-```{r eval=FALSE}
+```{r}
 # rows 1 & 5, all columns:
 cities_tbl[c(1, 5), ]
 ```
@@ -416,15 +416,6 @@ cities_tbl
 ```
 
 ---
-class: inverse, middle, center
-
-# .large[Now you]
-
-## Task 3: Tibbles
-
-#### Find the task description <a href="../01_tasks_controller.html#tibbles">here</a>
-
----
 # Summary I
 
 #### data frames and tibbles
@@ -508,3 +499,12 @@ Return result as vector:
 ```{r eval=FALSE}
 tbl$colA # select colA  
 ```
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 3: Tibbles (25 min)
+
+#### Find the task description <a href="../01_tasks_controller.html#tibbles">here</a>

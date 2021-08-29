@@ -59,7 +59,7 @@ library(fontawesome)
 ]
 
 ---
-# For what do I use `r fa("r-project")`?
+# What do I use `r fa("r-project")` for?
 
 
 - Short answer: everything
@@ -94,7 +94,7 @@ library(fontawesome)
 
 <b>.col1[Day 2: Data analysis with the tidyverse]</b>
 
-<b>.col3[Day 3: Statistical models with R]</b>
+<b>.col3[Day 3: Statistical tests and models with R]</b>
 
 **Day 4: Bring your own data**
 
@@ -136,11 +136,15 @@ library(fontawesome)
 ---
 # Bring your own data
 
+--
+
 #### Learning by doing
 
 - work on your own research data in small groups (or alone if you prefer)
     - I will also provide some real life data sets from different topics
+    
 - use any of the methods from the course or try new things, ...
+
 - present and discuss your results at the end of the day
 
 ---
@@ -213,7 +217,26 @@ Add any feedback to the feedback section of the [joint document]([joint document
 
 ![:scale 10%](img/Rstudio_logo.png) Download and install RStudio from             [https://www.rstudio.com](https://www.rstudio.com/products/rstudio/download/#download  )
 
+---
+# Before we get started III
 
+**Get familiar with our Webex team for the group work** (5 mins):
+
+- Go to your group
+
+- Start a meeting in your group
+
+- Try out the chat
+
+- Make sure that it works for everyone in your group
+
+- Keep an eye on the general chat and come back to the General meeting when I send the message to come back
+
+--
+
+- If you want: Change the name of your Webex profile to a name you would like to be called
+  - Click on your name in the top left corner, go to `Edit Profile` and change your display name
+  
 ---
 class: inverse, middle, center
 
@@ -492,7 +515,7 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 1: Set up your own RStudio project for this workshop
+## Task 1: Set up your own RStudio project for this workshop (25 min)
 
 #### Find the task description <a href="../01_tasks_controller.html#set-up-an-rstudio-project">here</a>
 
@@ -972,7 +995,7 @@ c(int_var, lgl_var)
 ---
 # Creating vectors: `:` and `seq()`
 
-The `:` operator creates a sequence between to numbers with an increment of (-)1
+The `:` operator creates a sequence between two numbers with an increment of (-)1
 ```{r}
 1:10
 ```
@@ -1141,7 +1164,7 @@ Change the values of a vector at specified indexes using the assignment operator
 Imagine for example, that the population of 
 - Istanbul (index 1) increased to 20 Million
 - Rome (index 8) changed but is unknown
-- Paris (index 10) decreased by 200,000.
+- Paris (index 10) decreased by 200,000
 
 --
 
@@ -1299,6 +1322,6 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 2: Data types and vectors
+## Task 2: Data types and vectors (35 min)
 
 #### Find the task description <a href="../01_tasks_controller.html#data-types-and-vectors">here</a>

@@ -59,11 +59,11 @@ animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
 ```
 
 - Convert brain weight from g to kg and save the result in a new vector `brainwt_kg`
-- Calculate mean and standard deviation of the brain weight
+- Calculate mean and standard deviation of the brain weight (hint: have a look at the summary slides to find the functions)
 - Which species have a brain weight larger than the mean brain weight?
 - Calculate the ratio of brain weight to body weight in percent and save the result in a new variable
 - Are there any animals with a larger brain to body ratio than humans? If yes, which ones?
-  - Hint: find the ratio for humans and save it in a variable first
+  - Hint: find the ratio for humans and save it in a separate variable first
 
 
 #### Extras

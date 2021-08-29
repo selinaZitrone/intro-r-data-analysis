@@ -10,26 +10,24 @@ This will install readr along with other tidyverse packages.
 
 Remember to put `library(tidyverse)` (or `library(readr)`) on top of your script to access the readr functions.
 
-### 3.2 Create a tibble and write it
+### 3.2 Write a tibble to disk
 
-Before we try the `read_*` functions, we will create a tibble in R and save it to disk.
+Let's use the `animals` tibble with animal brain and body weights from the last task and write it into the data folder in our project.
 
-Let's use the tibble with animal brain and body weights from the last task and write it to our project directory.
-
-Before writing the data 
+Before writing the tibble
 
 - create a dedicated `data` sub-directory in your project (if you don't have one yet)
 
-Now write the `animals` tibble to that sub-directory. Try writing a file with
+Now write the `animals` tibble to that sub-directory with
 
-- comma separator as csv
-- tab separator as txt
+- comma separator as `animals.csv`
+- tab separator as `animals.txt`
 
 Check if the files were written into the correct folder.
 
 ### 3.3 Read data into R
 
-Now, try to read the two data sets back into R using the appropriate `read_*()` functions for the separators.
+Now, try to read the two data sets back into R using the appropriate `read_*` functions for the different separators.
 
 If this was successful, navigate to your `data` directory using the `Files` pane of RStudio.
 Try clicking on both the `.txt` and the `.csv` file that you just saved there. What is different? Try the `Import Dataset` button for the `.csv` file.
