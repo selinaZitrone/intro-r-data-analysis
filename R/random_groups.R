@@ -1,13 +1,11 @@
 names <- c(
-  "Baile", "Lena",
-  "Tingting", "Subhakankha",
-  "Violaine", "Marta",
-  "Christin", "Franziska",
-  "Charlotte", "Yomna",
-  "Franz", "Melanie ",
-  "Nilofer", "Esther",
-  "Dilem"
-)
+  "Francisco", "Tamasri",
+  "Deborah", "Patrizia",
+  "Dhanur", "Jeane", "Ginevra",
+  "Hongyu", "Nadja", "Suchetana",
+  "Fabian", "Ahmad Rashad",
+  "Safiya", "Julia", "Subhakankha",
+  "Aya", "Lili")
 ngroups <- 5
 groupsize <- 3
 
