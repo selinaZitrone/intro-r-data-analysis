@@ -2464,7 +2464,7 @@ Solutions
 <li><a href="#reading-and-writing-tibbles">4 Reading and writing tibbles</a>
 <ul>
 <li><a href="#getting-started-with-readr-and-the-tidyverse">3.1 Getting started with readr and the tidyverse</a></li>
-<li><a href="#create-a-tibble-and-write-it">3.2 Create a tibble and write it</a></li>
+<li><a href="#write-a-tibble-to-disk">3.2 Write a tibble to disk</a></li>
 <li><a href="#read-data-into-r">3.3 Read data into R</a></li>
 </ul></li>
 <li><a href="#reference">Reference</a></li>
@@ -2477,7 +2477,7 @@ Solutions
 <p>This is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.</p>
 <p>In RStudio go to <code>Tools -&gt; Global Options -&gt; General</code> and</p>
 <ul>
-<li>remove the check mark for “Restore <code>.RData</code> into workspace at setup”</li>
+<li>remove the check mark for “Restore <code>.RData</code> into workspace at startup”</li>
 <li><strong>Never</strong> save workspace to <code>.RData</code> on exit</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
@@ -2605,12 +2605,12 @@ Solutions
 </div>
 <ul>
 <li>Convert brain weight from g to kg and save the result in a new vector <code>brainwt_kg</code></li>
-<li>Calculate mean and standard deviation of the brain weight</li>
+<li>Calculate mean and standard deviation of the brain weight (hint: have a look at the summary slides to find the functions)</li>
 <li>Which species have a brain weight larger than the mean brain weight?</li>
 <li>Calculate the ratio of brain weight to body weight in percent and save the result in a new variable</li>
 <li>Are there any animals with a larger brain to body ratio than humans? If yes, which ones?
 <ul>
-<li>Hint: find the ratio for humans and save it in a variable first</li>
+<li>Hint: find the ratio for humans and save it in a separate variable first</li>
 </ul></li>
 </ul>
 <h4 id="extras">Extras</h4>
@@ -2682,21 +2682,20 @@ Solutions
 </div>
 <p>This will install readr along with other tidyverse packages.</p>
 <p>Remember to put <code>library(tidyverse)</code> (or <code>library(readr)</code>) on top of your script to access the readr functions.</p>
-<h3 id="create-a-tibble-and-write-it">3.2 Create a tibble and write it</h3>
-<p>Before we try the <code>read_*</code> functions, we will create a tibble in R and save it to disk.</p>
-<p>Let’s use the tibble with animal brain and body weights from the last task and write it to our project directory.</p>
-<p>Before writing the data</p>
+<h3 id="write-a-tibble-to-disk">3.2 Write a tibble to disk</h3>
+<p>Let’s use the <code>animals</code> tibble with animal brain and body weights from the last task and write it into the data folder in our project.</p>
+<p>Before writing the tibble</p>
 <ul>
 <li>create a dedicated <code>data</code> sub-directory in your project (if you don’t have one yet)</li>
 </ul>
-<p>Now write the <code>animals</code> tibble to that sub-directory. Try writing a file with</p>
+<p>Now write the <code>animals</code> tibble to that sub-directory with</p>
 <ul>
-<li>comma separator as csv</li>
-<li>tab separator as txt</li>
+<li>comma separator as <code>animals.csv</code></li>
+<li>tab separator as <code>animals.txt</code></li>
 </ul>
 <p>Check if the files were written into the correct folder.</p>
 <h3 id="read-data-into-r">3.3 Read data into R</h3>
-<p>Now, try to read the two data sets back into R using the appropriate <code>read_*()</code> functions for the separators.</p>
+<p>Now, try to read the two data sets back into R using the appropriate <code>read_*</code> functions for the different separators.</p>
 <p>If this was successful, navigate to your <code>data</code> directory using the <code>Files</code> pane of RStudio. Try clicking on both the <code>.txt</code> and the <code>.csv</code> file that you just saved there. What is different? Try the <code>Import Dataset</code> button for the <code>.csv</code> file.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h1 id="reference">Reference</h1>

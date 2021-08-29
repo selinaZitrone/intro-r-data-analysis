@@ -86,7 +86,7 @@ class: inverse, center, middle
 ---
 # Readr
 
-`readr` is a tidyverse package so to use it you can do one of the following things:
+`readr` is a tidyverse package. To use it, you can do one of the following things:
 
 ```{r eval=FALSE}
 library(tidyverse) # or library(readr) 
@@ -96,18 +96,18 @@ library(tidyverse) # or library(readr)
 
 The most important functions are:
 
-- `read_csv()`/`write_csv()` to read/write **comma delimited** files
+- `read_csv`/`write_csv` to read/write **comma delimited** files
 
-- `read_csv2()`/`write_csv2()` to read/write **semicolon delimited** files
+- `read_csv2`/`write_csv2` to read/write **semicolon delimited** files
 
-- `read_tsv()`/`write_tsv()` to read/write **tab delimited** files
+- `read_tsv`/`write_tsv` to read/write **tab delimited** files
 
-- `read_delim()`/`write_delim()` to read/write files with **any delimiter**
+- `read_delim`/`write_delim` to read/write files with **any delimiter**
 
 ---
 # Read files with `read_*()`
 
-All `read_*()` functions take a path to the data file as a first argument:
+All `read_*` functions take a path to the data file as a first argument:
 
 .center[<code><b>read_*(file = .col2["path/to/your/file"], ...)</b></code>]
 
@@ -135,7 +135,7 @@ dat <- read_delim("./data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
 
 --
 
-All `read_*()` functions return a `tibble`
+All `read_*` functions return a `tibble`
 
 ---
 # Read files with `read_*()`
@@ -159,7 +159,7 @@ You can e.g.
 ---
 # Write files with `write_*()`
 
-Every `read_*()` function has a corresponding `write_*()` function to export data from R.
+Every `read_*` function has a corresponding `write_*` function to export data from R.
 
 --
 
@@ -175,7 +175,7 @@ Write data from R e.g.
 ---
 # Write files with `write_*()`
 
-All `write_*()` functions take the data to write as the first and the file to write to as the second argument:
+All `write_*` functions take the data to write as the first and the file to write to as the second argument:
 
 .center[<code><b>write_*(x = .col1[dat], file = .col2["path/to/save/file"], ...)</b></code>]
 
@@ -214,8 +214,12 @@ write_delim(dat, file = "./data/your_data.txt", delim = "..xyz..") # ..xyz.. del
 
 - relative paths are interpreted relative to the **working directory**
   - the `./` in the path stands for the working directory
+  
+--
 
 - check out where your working directory is with `getwd()`
+
+--
 
 - in RStudio projects, the working directory is always the project root
 
@@ -314,7 +318,7 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 4: Read and write data files
+## Task 4: Read and write data files (25 min)
 
 #### Find the task description <a href="../01_tasks_controller.html#reading-and-writing-tibbles">here</a>
 
