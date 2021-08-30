@@ -183,6 +183,28 @@ nrow(animals)
 ncol(animals)
 names(animals)
 
+# rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
+animals[c(1,5,7), c("species", "bodywt_kg")]
+
+# select rows 1 to 10, all columns
+animals[1:10, ]
+
+# select the column `bodywt_kg` as a vector using `$`
+animals$bodywt_kg
+
+## Extras
+# last row and column
+animals[nrow(animals), ncol(animals)]
+
+# mean body weight
+mean_wt <- mean(animals$bodywt_kg)
+mean_wt
+
+# add category
+animals$bodywt_cat <- ifelse(animals$bodywt_kg > mean_wt,
+                             "heavy",
+                             "light")
+
 # 4. Readr ----------------------------------------------------------------
 
 #library(tidyverse)

@@ -6,10 +6,10 @@ output:
     toc_float: true
     number_sections: true
 params:
-  showDownload: TRUE
-  includeSolution1: TRUE
-  includeSolution2: TRUE
-  includeSolution3: TRUE
+  showDownload: FALSE
+  includeSolution1: FALSE
+  includeSolution2: FALSE
+  includeSolution3: FALSE
 ---
 
 
