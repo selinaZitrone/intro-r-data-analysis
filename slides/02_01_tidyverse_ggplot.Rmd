@@ -289,7 +289,7 @@ ggplot(data = msleep,
 ---
 # `aes(x, y)`
 
-The aesthetic mapping defines how variables are mapped to aesthetic properties of the plot.
+The **aes**thetic mapping defines how variables are mapped to aesthetic properties of the plot.
 
 .pull-left[
 
@@ -470,7 +470,7 @@ ggplot(data = msleep,
   scale_x_log10()
 ```
 
-- with `method = lm`, a linear regression line is added
+- with `method = "lm"`, a linear regression line is added
 - the ribbon represents confidence interval around the regression
   - turn ribbon off with `se = FALSE` argument
 ]
@@ -679,7 +679,7 @@ g +
 ]
 
 .pull-right[
-```{r echo=FALSE, fig.height = 6.1}
+```{r echo=FALSE, out.height = 430}
 g + scale_color_viridis_d(option = "inferno", na.value = "grey")
 ```
 ]
@@ -823,7 +823,7 @@ g +
   theme_classic()#<<
 ```
 
-```{r echo=FALSE, fig.height=5.3}
+```{r echo=FALSE, out.height=370}
 g + 
   theme_classic(base_size = 16)#<<
 ```
@@ -836,7 +836,7 @@ g +
   theme_linedraw()#<<
 ```
 
-```{r echo=FALSE, fig.height=5.3}
+```{r echo=FALSE, out.height=370}
 g + 
   theme_linedraw(base_size = 16)#<<
 ```
@@ -854,7 +854,7 @@ g +
   theme_dark()#<<
 ```
 
-```{r echo=FALSE, fig.height = 5.3}
+```{r echo=FALSE, out.height=370}
 g + 
   theme_dark(base_size = 16)
 ```
@@ -867,7 +867,7 @@ g +
   theme_minimal()#<<
 ```
 
-```{r echo=FALSE, fig.height = 5.3}
+```{r echo=FALSE, out.height=370}
 g + 
   theme_minimal(base_size = 16)
 ```
@@ -1069,6 +1069,108 @@ ggplot(msleep, aes(x=sleep_total)) +
 ]
 
 ---
+# Discrete vs. continous variables
+
+Let's add a sleep category to the data set depending on the hours of sleep an animal gets in total:
+
+```{r}
+msleep$category <- ifelse(
+  msleep$sleep_total < 5, 
+  1,
+  ifelse(msleep$sleep_total > 5 & msleep$sleep_total < 10,
+         2,
+         3)
+)
+str(msleep)
+```
+
+---
+# Discrete vs. continous variables
+
+What's happening here?
+
+.pull-left[
+```{r eval=FALSE}
+ggplot(msleep, 
+       aes(x = category, 
+           y = bodywt)) +
+  geom_boxplot() + 
+  scale_y_log10()
+```
+
+```{r echo=FALSE, out.height=320}
+ggplot(msleep, aes(x = category, y = bodywt)) +
+  geom_boxplot() + scale_y_log10()
+```
+
+]
+
+.pull-right[
+```{r eval=FALSE}
+ggplot(msleep,
+       aes(x = brainwt, 
+           y = sleep_total, 
+           color = category)) +
+  geom_point() +  scale_x_log10()
+```
+
+```{r echo=FALSE, out.height=320}
+ggplot(msleep,aes(x = brainwt, 
+           y = sleep_total, color = category)) +
+  geom_point() +
+  scale_x_log10()
+```
+
+]
+
+---
+# Discrete vs. continous variables
+
+.center[![:scale 60%](img/AllisonHorst/continuous_discrete.png)]
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
+
+---
+# Discrete vs. continous variables 
+
+Solution: Turn continuous variable into a factor before plotting
+
+.pull-left[
+```{r eval=FALSE}
+ggplot(msleep, 
+       aes(x = factor(category), #<<
+           y = bodywt)) +
+  geom_boxplot() + 
+  scale_y_log10()
+```
+
+```{r echo=FALSE, out.height=320}
+ggplot(msleep, aes(x = factor(category), y = bodywt)) +
+  geom_boxplot() + scale_y_log10()
+```
+
+]
+
+.pull-right[
+```{r eval=FALSE}
+ggplot(msleep,
+       aes(x = brainwt, 
+           y = sleep_total, 
+           color = factor(category))) +#<<
+  geom_point() + scale_x_log10()
+```
+
+```{r echo=FALSE, out.height=320}
+ggplot(msleep,aes(x = brainwt, 
+           y = sleep_total, color = factor(category))) +
+  geom_point() +
+  scale_x_log10()
+```
+
+]
+
+---
 # Let's look at an example
 
 .left-column[
@@ -1130,6 +1232,6 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 1: Create your own penguin ggplots
+## Task 1: Create your own penguin ggplots (90 min)
 
 #### Find the task description <a href="../02_tasks_controller.html#ggplot2">here</a>
