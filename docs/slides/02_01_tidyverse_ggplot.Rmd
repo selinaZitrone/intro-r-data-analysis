@@ -679,7 +679,7 @@ g +
 ]
 
 .pull-right[
-```{r echo=FALSE, fig.height = 6.1}
+```{r echo=FALSE, out.height = 430}
 g + scale_color_viridis_d(option = "inferno", na.value = "grey")
 ```
 ]
@@ -823,7 +823,7 @@ g +
   theme_classic()#<<
 ```
 
-```{r echo=FALSE, fig.height=5.3}
+```{r echo=FALSE, out.height=370}
 g + 
   theme_classic(base_size = 16)#<<
 ```
@@ -836,7 +836,7 @@ g +
   theme_linedraw()#<<
 ```
 
-```{r echo=FALSE, fig.height=5.3}
+```{r echo=FALSE, out.height=370}
 g + 
   theme_linedraw(base_size = 16)#<<
 ```
@@ -854,7 +854,7 @@ g +
   theme_dark()#<<
 ```
 
-```{r echo=FALSE, fig.height = 5.3}
+```{r echo=FALSE, out.height=370}
 g + 
   theme_dark(base_size = 16)
 ```
@@ -867,7 +867,7 @@ g +
   theme_minimal()#<<
 ```
 
-```{r echo=FALSE, fig.height = 5.3}
+```{r echo=FALSE, out.height=370}
 g + 
   theme_minimal(base_size = 16)
 ```
@@ -1098,7 +1098,7 @@ ggplot(msleep,
   scale_y_log10()
 ```
 
-```{r echo=FALSE, fig.height=4.5}
+```{r echo=FALSE, out.height=320}
 ggplot(msleep, aes(x = category, y = bodywt)) +
   geom_boxplot() + scale_y_log10()
 ```
@@ -1114,7 +1114,7 @@ ggplot(msleep,
   geom_point() +  scale_x_log10()
 ```
 
-```{r echo=FALSE, fig.height=4.5}
+```{r echo=FALSE, out.height=320}
 ggplot(msleep,aes(x = brainwt, 
            y = sleep_total, color = category)) +
   geom_point() +
@@ -1126,7 +1126,7 @@ ggplot(msleep,aes(x = brainwt,
 ---
 # Discrete vs. continous variables
 
-.center[![:scale 70%](img/AllisonHorst/continuous_discrete.png)]
+.center[![:scale 60%](img/AllisonHorst/continuous_discrete.png)]
 
 .footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
 
@@ -1134,7 +1134,7 @@ ggplot(msleep,aes(x = brainwt,
 ---
 # Discrete vs. continous variables 
 
-Solution: Turn continous variable into a factor before plotting
+Solution: Turn continuous variable into a factor before plotting
 
 .pull-left[
 ```{r eval=FALSE}
@@ -1145,7 +1145,7 @@ ggplot(msleep,
   scale_y_log10()
 ```
 
-```{r echo=FALSE, fig.height=4.5}
+```{r echo=FALSE, out.height=320}
 ggplot(msleep, aes(x = factor(category), y = bodywt)) +
   geom_boxplot() + scale_y_log10()
 ```
@@ -1161,7 +1161,7 @@ ggplot(msleep,
   geom_point() + scale_x_log10()
 ```
 
-```{r echo=FALSE, fig.height=4.5}
+```{r echo=FALSE, out.height=320}
 ggplot(msleep,aes(x = brainwt, 
            y = sleep_total, color = factor(category))) +
   geom_point() +
