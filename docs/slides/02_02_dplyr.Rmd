@@ -766,7 +766,7 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 2: Transforming the penguin data set
+## Task 2: Transforming the penguin data set (60 min)
 
 #### Find the task description <a href="../02_tasks_controller.html#dplyr">here</a>
 
