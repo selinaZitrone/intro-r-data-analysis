@@ -1,11 +1,11 @@
 names <- c(
-  "Francisco", "Tamasri",
-  "Deborah", "Patrizia",
+  "Francisco",
+  "Deborah",
   "Dhanur", "Jeane", "Ginevra",
   "Hongyu", "Nadja", "Suchetana",
   "Fabian", "Ahmad Rashad",
   "Safiya", "Julia", "Subhakankha",
-  "Aya", "Lili")
+  "Aya", "Lili", "Mueena")
 ngroups <- 5
 groupsize <- 3
 
