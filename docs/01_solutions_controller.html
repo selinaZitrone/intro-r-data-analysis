@@ -2516,8 +2516,8 @@ Solutions
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v1</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>Warning: NAs introduced by coercion
-[1]  1 NA  2  3</code></pre>
+<pre><code>Warning: NAs introduced by coercion</code></pre>
+<pre><code>[1]  1 NA  2  3</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v2</span><span class='op'>)</span>
 </code></pre>
@@ -2537,8 +2537,8 @@ Solutions
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v5</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>Warning: NAs introduced by coercion
-[1] NA NA NA NA</code></pre>
+<pre><code>Warning: NAs introduced by coercion</code></pre>
+<pre><code>[1] NA NA NA NA</code></pre>
 </div>
 <h4 id="explicit-conversion-to-character">Explicit conversion to character</h4>
 <p>Vectors of all data types can be converted to character. No <code>NA</code> values are introduced.</p>
@@ -2691,8 +2691,7 @@ Solutions
 </div>
 <pre><code>[1] &quot;RhesusMonkey&quot; &quot;Mole&quot;        </code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r">
-<span class='co'># or short</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># or short</span>
 <span class='va'>species</span><span class='op'>[</span><span class='va'>brain_body_ratio</span> <span class='op'>&gt;</span> <span class='va'>brain_body_ratio</span><span class='op'>[</span><span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Human"</span><span class='op'>]</span><span class='op'>]</span>
 </code></pre>
 </div>
@@ -2750,7 +2749,7 @@ Solutions
 </div>
 <pre><code>[1] 554.22</code></pre>
 </div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -2939,7 +2938,7 @@ Solutions
 10 PotarMonkey         10       0.115  light     
 # ... with 18 more rows</code></pre>
 </div>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -2978,7 +2977,6 @@ Solutions
   bodywt_kg <span class='op'>=</span> <span class='va'>bodywt_kg</span>,
   brainwt_kg <span class='op'>=</span> <span class='va'>brainwt_g</span> <span class='op'>/</span> <span class='fl'>1000</span>
 <span class='op'>)</span>
-
 </code></pre>
 </div>
 </div>
@@ -3010,13 +3008,13 @@ Solutions
 </div>
 <p>This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct <code>read_*()</code> function arguments.</p>
 <p>Just play with these different options of reading data into R and find one that fits you best.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
 <h1 id="reference">Reference</h1>
 <p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

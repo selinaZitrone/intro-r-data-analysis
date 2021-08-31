@@ -80,7 +80,7 @@ ggplot(penguins, aes(x = sex, y = body_mass_g)) +
 # With geom_violin
 ggplot(penguins, aes(x = sex, y = body_mass_g)) +
   geom_violin() +
-  geom_boxplot(width = .4) +
+  geom_boxplot(width = 0.4) +
   facet_wrap(~species)
 
 
@@ -131,6 +131,7 @@ ggplot(
     legend.position = c(0.85, 0.15),
     legend.background = element_rect(fill = "white", color = NA)
   )
+
 ### 1.5 Save one of the plots on your machine
 flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
   geom_boxplot(width = 0.3) +
