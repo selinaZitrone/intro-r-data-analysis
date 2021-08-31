@@ -2387,7 +2387,7 @@ Slides
 <a href="slides/02_01_tidyverse_ggplot.html">02 - Ggplot2</a>
 <a href="slides/02_02_dplyr.html">02 - Dplyr</a>
 <a href="slides/02_03_tidyr.html">02 - Tidyr</a>
-<a href="slides/03_01_tests.html">03 - Statistical tests</a>
+<a href="slides/03_01_tests_short.html">03 - Statistical tests</a>
 <a href="slides/03_02_linear_models.html">03 - Linear models</a>
 <a href="slides/03_03_glm.html">03 - Generalized linear models</a>
 <a href="slides/04_01_bring_your_own_data.html">04 - Bring your own data</a>
@@ -2484,9 +2484,9 @@ Solutions
 <h3 id="comparing-the-regions-using-statistical-tests">1.2 Comparing the regions using statistical tests</h3>
 <p>Compare the means of the forests separately</p>
 <ul>
-<li>A-B</li>
-<li>A-C</li>
-<li>B-C</li>
+<li>forest1 - forest2</li>
+<li>forest1 - forest3</li>
+<li>forest2 - forest3</li>
 </ul>
 <p>Before you start, create a subset of each forest site as a vector.</p>
 <p>Follow the decision tree for statistical tests:</p>
@@ -2500,8 +2500,8 @@ Solutions
 </ul>
 <p>Can you see how the different methods might lead to different results?</p>
 <ul>
-<li>Try to create a QQ-Plot for the data. Here you can’t use the subsetted vectors as data, as ggplot expects a tibble or data frame as first argument. Can you create the QQ-Plots from the <code>treeheights</code> tibble?</li>
-<li>Try to use the KS-Test to test for normality</li>
+<li>Create a QQ-Plot for the data. Here you can’t use the subsetted vectors as data, as ggplot expects a tibble or data frame as first argument. Can you create the QQ-Plots from the <code>treeheights</code> tibble?</li>
+<li>Use the KS-Test to test for normality</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="linear-models">2 Linear models</h2>
@@ -2524,6 +2524,7 @@ Solutions
 </div>
 </div>
 <p>The <code>performance</code> package depends on other packages. It might happen that you encounter an error when trying to load or use the package for the first time. Just read the error message and install the missing packages with <code>install.packages()</code> (likely this will be the case for the <code>qqplotr</code> package).</p>
+<p><strong>Note:</strong> Finish all the tasks (1.2-1.4) first before you start with the extras.</p>
 <h3 id="linear-regression">1.2 Linear regression</h3>
 <p>Let’s start with a simple linear regression.</p>
 <p>Does the bill depth depend on bill length?</p>

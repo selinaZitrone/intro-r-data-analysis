@@ -32,7 +32,7 @@ background-position: 100% 100%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2021-08-30)
+  2021-08-01 (updated: 2021-08-31)
 ]
 
 ---
@@ -638,12 +638,33 @@ class: inverse, center, middle
 
 ```r
 2 == 2
+```
+
+```
 ## [1] TRUE
+```
+
+```r
 2 != 2
+```
+
+```
 ## [1] FALSE
+```
+
+```r
 33 &lt;= 32
+```
+
+```
 ## [1] FALSE
+```
+
+```r
 20 &lt; 20
+```
+
+```
 ## [1] FALSE
 ```
 
@@ -679,8 +700,17 @@ class: inverse, center, middle
 
 ```r
 !TRUE
+```
+
+```
 ## [1] FALSE
+```
+
+```r
 !(3 &lt; 1)
+```
+
+```
 ## [1] TRUE
 ```
 ]
@@ -715,10 +745,25 @@ class: inverse, center, middle
 
 ```r
 (3 &lt; 1) &amp; (3 == 3) # FALSE &amp; TRUE = FALSE
+```
+
+```
 ## [1] FALSE
+```
+
+```r
 (1 &lt; 3) &amp; (3 == 3) # TRUE &amp; TRUE = TRUE
+```
+
+```
 ## [1] TRUE
+```
+
+```r
 (3 &lt; 1) &amp; (3 != 3) # FALSE &amp; FALSE = FALSE
+```
+
+```
 ## [1] FALSE
 ```
 ]
@@ -753,10 +798,25 @@ class: inverse, center, middle
 
 ```r
 (3 &lt; 1) | (3 == 3) # FALSE | TRUE = TRUE
+```
+
+```
 ## [1] TRUE
+```
+
+```r
 (1 &lt; 3) | (3 == 3) # TRUE | TRUE = TRUE
+```
+
+```
 ## [1] TRUE
+```
+
+```r
 (3 &lt; 1) | (3 != 3) # FALSE | FALSE = FALSE
+```
+
+```
 ## [1] FALSE
 ```
 ]
@@ -766,7 +826,6 @@ class: inverse, center, middle
 
 
 ```r
-
 # Reading and cleaning the data -----------------
 
 data &lt;- read_csv("data/my-data.csv")
@@ -892,10 +951,25 @@ There are 6 so-called atomic data types in R. The 4 most important are:
 ```r
 var &lt;- 123L
 typeof(var)
+```
+
+```
 ## [1] "integer"
+```
+
+```r
 is.double(var)
+```
+
+```
 ## [1] FALSE
+```
+
+```r
 is.integer(123)
+```
+
+```
 ## [1] FALSE
 ```
 
@@ -906,8 +980,17 @@ is.integer(123)
 ```r
 var2 &lt;- TRUE
 is.logical(var2)
+```
+
+```
 ## [1] TRUE
+```
+
+```r
 is.character(var2)
+```
+
+```
 ## [1] FALSE
 ```
 
@@ -917,8 +1000,17 @@ is.character(var2)
 ```r
 var3 &lt;- "TRUE"
 is.logical(var3)
+```
+
+```
 ## [1] FALSE
+```
+
+```r
 is.character(var3)
+```
+
+```
 ## [1] TRUE
 ```
 
@@ -930,6 +1022,9 @@ You can convert a value from one data type to the other using `as.*()`
 
 ```r
 as.character(1L)
+```
+
+```
 ## [1] "1"
 ```
 
@@ -940,8 +1035,17 @@ as.character(1L)
 
 ```r
 as.numeric(TRUE)
+```
+
+```
 ## [1] 1
+```
+
+```r
 as.numeric(FALSE)
+```
+
+```
 ## [1] 0
 ```
 
@@ -953,8 +1057,17 @@ Strings can be converted to numbers if possible
 
 ```r
 as.integer("hello")
+```
+
+```
 ## [1] NA
+```
+
+```r
 as.integer("2")
+```
+
+```
 ## [1] 2
 ```
 
@@ -966,6 +1079,9 @@ Type conversion can happen implicitly
 
 ```r
 typeof(1L + 2.5) # integer -&gt; double
+```
+
+```
 ## [1] "double"
 ```
 
@@ -974,6 +1090,9 @@ typeof(1L + 2.5) # integer -&gt; double
 
 ```r
 typeof(1L + TRUE) # logical -&gt; integer (TRUE = 1, FALSE = 0)
+```
+
+```
 ## [1] "integer"
 ```
 
@@ -982,6 +1101,9 @@ typeof(1L + TRUE) # logical -&gt; integer (TRUE = 1, FALSE = 0)
 
 ```r
 typeof(1.34 + FALSE) # logical -&gt; double
+```
+
+```
 ## [1] "double"
 ```
 
@@ -990,6 +1112,9 @@ typeof(1.34 + FALSE) # logical -&gt; double
 
 ```r
 typeof("hello" + FALSE) # Error: no implicit conversion from string to other data types
+```
+
+```
 ## Error in "hello" + FALSE: non-numeric argument to binary operator
 ```
 
@@ -1043,6 +1168,9 @@ Be aware of implicit type conversion when combining vectors of different types
 
 ```r
 c(int_var, lgl_var)
+```
+
+```
 ## [1]   1  45 234   1   1   0
 ```
 
@@ -1053,6 +1181,9 @@ The `:` operator creates a sequence between two numbers with an increment of (-)
 
 ```r
 1:10
+```
+
+```
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 --
@@ -1062,8 +1193,17 @@ The `seq()` function creates a sequence of values
 
 ```r
 seq(from = 1, to = 10, by = 1) # specify increment of sequence with by
+```
+
+```
 ##  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+```r
 seq(from = 1, to = 10, length.out = 10) # specify desired length with length.out
+```
+
+```
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
@@ -1076,6 +1216,9 @@ Repeat values multiple times with `rep()`
 
 ```r
 rep("hello", times = 5)
+```
+
+```
 ## [1] "hello" "hello" "hello" "hello" "hello"
 ```
 --
@@ -1085,12 +1228,18 @@ You can also repeat entire vectors
 
 ```r
 rep(c(TRUE, FALSE, TRUE), times = 2) # repeat the whole vector twice
+```
+
+```
 ## [1]  TRUE FALSE  TRUE  TRUE FALSE  TRUE
 ```
 
 
 ```r
 rep(c(1, 2 ,3), each = 2) # repeat each element of the vector twice
+```
+
+```
 ## [1] 1 1 2 2 3 3
 ```
 
@@ -1117,6 +1266,9 @@ We can check the length of a vector using the `length()` function:
 
 ```r
 length(cities)
+```
+
+```
 ## [1] 10
 ```
 
@@ -1131,6 +1283,9 @@ Divide the population and area vector to calculate the population density in eac
 
 ```r
 population / area_km2
+```
+
+```
 ##  [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685  2178.988  9649.123 20000.000
 ```
 
@@ -1147,6 +1302,9 @@ The result is always a vector.
 ```r
 mean_population &lt;- mean(population) # calculate the mean of vector population
 population / mean_population
+```
+
+```
 ##  [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142 0.4737733 0.3722504 0.3553299
 ```
 
@@ -1159,6 +1317,9 @@ We can also work with relational and logical operators
 
 ```r
 population &gt; mean_population
+```
+
+```
 ##  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
@@ -1174,6 +1335,9 @@ Logical and relational operators can be combined
 ```r
 # population larger than mean population OR population larger than 3 million
 population &gt; mean_population | population &gt; 3e6
+```
+
+```
 ##  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE
 ```
 
@@ -1188,6 +1352,9 @@ So instead of writing this:
 
 ```r
 cities == "Istanbul" | cities == "Berlin" | cities == "Madrid"
+```
+
+```
 ##  [1]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE
 ```
 
@@ -1199,6 +1366,9 @@ we can also write this:
 ```r
 to_check &lt;- c("Istanbul", "Berlin", "Madrid")
 cities %in% to_check
+```
+
+```
 ##  [1]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE
 ```
 
@@ -1220,6 +1390,9 @@ The basic structure is:
 
 ```r
 cities[5]
+```
+
+```
 ## [1] "Berlin"
 ```
 
@@ -1228,6 +1401,9 @@ cities[5]
 
 ```r
 cities[1:3] # the three most populated cities
+```
+
+```
 ## [1] "Istanbul" "Moscow"   "London"
 ```
 
@@ -1236,6 +1412,9 @@ cities[1:3] # the three most populated cities
 
 ```r
 cities[length(cities)] # the last entry of the cities vector
+```
+
+```
 ## [1] "Paris"
 ```
 
@@ -1267,6 +1446,9 @@ population_new[10] &lt;- population_new[10] - 200000
 
 ```r
 population_new
+```
+
+```
 ##  [1] 20000000 12500000  9000000  5400000  3800000  3200000  3000000       NA  2200000  1900000
 ```
 
@@ -1283,6 +1465,9 @@ You can also index a vector using logical tests. The basic structure is:
 ```r
 mega_city &lt;- population &gt; mean_population
 mega_city
+```
+
+```
 ##  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
@@ -1293,6 +1478,9 @@ Now extract only the cities that return `TRUE` for the comparison of their popul
 
 ```r
 cities[mega_city] # or short: cities[population &gt; mean_population]
+```
+
+```
 ## [1] "Istanbul" "Moscow"   "London"
 ```
 
@@ -1304,6 +1492,9 @@ We also use `%in%`for logical indexing.
 
 ```r
 population[ cities %in% c("Berlin", "Paris", "Stockholm", "Madrid")]
+```
+
+```
 ## [1] 3800000 3200000 2100000
 ```
 
