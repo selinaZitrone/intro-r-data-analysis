@@ -64,6 +64,6 @@ cols <- c("species", "bill_length_mm", "flipper_length_mm", "body_mass_kg")
 
 ### Extras
 
-1. Make a boxplot of penguin body mass with sex on the y-axis and facets for the different species. Can you remove the penguins with missing values for sex first?
+1. Make a boxplot of penguin body mass with sex on the x-axis and facets for the different species. Can you remove the penguins with missing values for sex first?
 
 2. Make a scatterplot with the ratio of bill length to bill depth on the y axis and flipper length on the x axis? Can you distinguish the point between male and female penguins and remove penguins with unknown sex before making the plot?
