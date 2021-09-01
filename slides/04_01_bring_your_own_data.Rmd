@@ -32,27 +32,6 @@ output:
 - **15-16**: Feedback, conclusion
 
 ---
-
-#### In the groups
-
-- have a look at the data set first
-
-- discuss potential questions, methods, ...
-
-- decide how you want to work together
-  - divide tasks
-  - all do same task
-  - everybody on their own but available for questions
-
-- If you can, answer questions from the other group members
-
-- You can also work on multiple data sets if wish
-
---
-
-What I basically want to say: Just have fun with the data, try new things and organize yourselves!
-
----
 # Data set 1: What makes a good wine?
 
 **Physicochemical properties of wine and quality judgements by "experts"**
