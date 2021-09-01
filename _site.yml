@@ -28,7 +28,7 @@ navbar:
         - text: "02 - Tidyr"
           href: slides/02_03_tidyr.html
         - text: "03 - Statistical tests"
-          href: slides/03_01_tests.html
+          href: slides/03_01_tests_short.html
         - text: "03 - Linear models"
           href: slides/03_02_linear_models.html
         - text: "03 - Generalized linear models"
