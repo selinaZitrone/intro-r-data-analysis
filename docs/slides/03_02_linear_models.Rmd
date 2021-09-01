@@ -575,7 +575,7 @@ One categorical and one numerical predictor variable
 
 Two possible models:
 
-![](img/day3/lm_interaction.png)
+![:scale 50%](img/day3/lm_interaction.png)
 
 ]
 

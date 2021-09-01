@@ -185,7 +185,8 @@ filter(penguins, bill_length_mm < 45 & bill_length_mm > 40)
 filter(penguins, !is.na(sex))
 
 # which are of the species Adelie or Gentoo and live either on Dream or Torgersen
-filter(penguins, species %in% c("Adelie", "Gentoo") &
+filter(penguins,
+       species %in% c("Adelie", "Gentoo") &
   island %in% c("Dream", "Torgersen"))
 
 filter(penguins, (species == "Adelie" | species == "Gentoo") &
@@ -233,6 +234,7 @@ select(penguins, species, sex, year)
 
 # variables based on the following vector
 cols <- c("species", "bill_length_mm", "flipper_length_mm", "body_mass_kg")
+
 select(penguins, any_of(cols))
 # this would return  an error
 select(penguins, all_of(cols))
@@ -282,7 +284,7 @@ penguins %>%
 
 ### Extras
 
-# boxplot of penguin body mass with sex on the y-axis
+# boxplot of penguin body mass with sex on the x-axis
 # facets for the different species.
 # remove the penguins with missing values for sex first
 
@@ -343,12 +345,19 @@ pivot_longer(billboard,
 
 #### Extras
 
-pivot_longer(billboard,
+charts <- pivot_longer(billboard,
              cols = wk1:wk76,
              names_to = "week",
              names_prefix = "wk",
              values_to = "rank",
              values_drop_na = TRUE)
+
+separate(
+  charts,
+  date.entered, # column to separate
+  sep = "-",
+  into = c("year","month", "day")
+)
 
 # 3. fish_encounters
 
@@ -365,3 +374,9 @@ pivot_wider(fish_encounters,
             names_from = station,
             values_from = seen,
             values_fill = 0)
+
+# Transpose a tibble with a combination of pivot_longer and pivot_wider
+
+relig_income %>%
+  pivot_longer(-religion) %>%
+  pivot_wider(names_from = religion, values_from = value)

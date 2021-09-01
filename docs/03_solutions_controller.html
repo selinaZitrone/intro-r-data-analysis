@@ -105,7 +105,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Tasks for day 3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["showDownload","includeSolution0","includeSolution1","includeSolution2","includeSolution3","includeSolution4"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Tasks for day 3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["showDownload","includeSolution0","includeSolution1","includeSolution2","includeSolution3","includeSolution4"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2443,7 +2443,11 @@ Solutions
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#statistical-tests">1 Statistical tests</a></li>
+<li><a href="#statistical-tests">1 Statistical tests</a>
+<ul>
+<li><a href="#getting-the-data">1.1 Getting the data</a></li>
+<li><a href="#comparing-the-regions-using-statistical-tests">1.2 Comparing the regions using statistical tests</a></li>
+</ul></li>
 <li><a href="#linear-models">2 Linear models</a></li>
 <li><a href="#linear-models-transformation">3 Linear models transformation</a></li>
 <li><a href="#poisson-and-binary-glm">4 Poisson and binary glm</a></li>
@@ -2455,36 +2459,214 @@ Solutions
 
 </div>
 <h2 id="statistical-tests">1 Statistical tests</h2>
+<h3 id="getting-the-data">1.1 Getting the data</h3>
+<p>You can read the data set directly from Github using:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='va'>treeheights</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/treeheight.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>The data contains tree heights for different forest regions (forest1, forest2, forest3). Check out which regions are included in the data set by calling</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>treeheights</span><span class='op'>$</span><span class='va'>region</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;forest1&quot; &quot;forest2&quot; &quot;forest3&quot;</code></pre>
+</div>
+<h3 id="comparing-the-regions-using-statistical-tests">1.2 Comparing the regions using statistical tests</h3>
+<p>Creating subsets of the forest sites as vectors:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>forest1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>treeheights</span>, <span class='va'>region</span> <span class='op'>==</span> <span class='st'>"forest1"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>height</span>
+<span class='va'>forest2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>treeheights</span>, <span class='va'>region</span> <span class='op'>==</span> <span class='st'>"forest2"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>height</span>
+<span class='va'>forest3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>treeheights</span>, <span class='va'>region</span> <span class='op'>==</span> <span class='st'>"forest3"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>height</span>
+</code></pre>
+</div>
+</div>
+<h4 id="step-1-test-all-groups-for-normality">Step 1: Test all groups for normality</h4>
+<p><strong>With KS-Test</strong></p>
+<p>The KS-Test indicates that all data sets are normally distributed.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/ks.test.html'>ks.test</a></span><span class='op'>(</span><span class='va'>forest1</span>, <span class='st'>"pnorm"</span>, mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>forest1</span><span class='op'>)</span>, sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>forest1</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    One-sample Kolmogorov-Smirnov test
+
+data:  forest1
+D = 0.06768, p-value = 0.7494
+alternative hypothesis: two-sided</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/ks.test.html'>ks.test</a></span><span class='op'>(</span><span class='va'>forest2</span>, <span class='st'>"pnorm"</span>, mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>forest2</span><span class='op'>)</span>, sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>forest2</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    One-sample Kolmogorov-Smirnov test
+
+data:  forest2
+D = 0.088987, p-value = 0.4069
+alternative hypothesis: two-sided</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/ks.test.html'>ks.test</a></span><span class='op'>(</span><span class='va'>forest3</span>, <span class='st'>"pnorm"</span>, mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>forest3</span><span class='op'>)</span>, sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>forest3</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    One-sample Kolmogorov-Smirnov test
+
+data:  forest3
+D = 0.066423, p-value = 0.7696
+alternative hypothesis: two-sided</code></pre>
+</div>
+<p><strong>With Shapiro-Wilk</strong></p>
+<p>The Shapiro-Wilk test suggests that forest 2 is not normally distributed</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>forest1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  forest1
+W = 0.98985, p-value = 0.6521</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>forest2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  forest2
+W = 0.96399, p-value = 0.007815</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>forest3</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  forest3
+W = 0.98519, p-value = 0.328</code></pre>
+</div>
+<p><strong>With QQ-plots</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>treeheights</span>, <span class='fu'>aes</span><span class='op'>(</span>sample <span class='op'>=</span> <span class='va'>height</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
+  <span class='fu'>stat_qq</span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
+  <span class='fu'>stat_qq_line</span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>region</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<p>We can compare variances for forest 1 and forest 3:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/var.test.html'>var.test</a></span><span class='op'>(</span><span class='va'>forest1</span>, <span class='va'>forest3</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    F test to compare two variances
+
+data:  forest1 and forest3
+F = 0.042772, num df = 99, denom df = 99, p-value &lt;
+0.00000000000000022
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.02877897 0.06356960
+sample estimates:
+ratio of variances 
+        0.04277228 </code></pre>
+</div>
+<p>This indicates that the variances differ between forest 1 and forest 3.</p>
+<p>To compare the means we need to:</p>
+<p>The Wilcoxon tests suggests that the heights differ significantly between forest 1 and forest 3.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># forest 2 is not normally distributed -&gt; go directly to Wilcoxon</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>forest1</span>, <span class='va'>forest2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  forest1 and forest2
+W = 0, p-value &lt; 0.00000000000000022
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<p>The Wilcoxon tests suggests that the heights does not differ significantly between forest 1 and forest 3.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>forest2</span>, <span class='va'>forest3</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  forest2 and forest3
+W = 5216, p-value = 0.5985
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<p>Welch test</p>
+<p>Significant difference</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span><span class='op'>(</span><span class='va'>forest1</span>, <span class='va'>forest3</span>, var.equal <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  forest1 and forest3
+t = -9.2013, df = 107.45, p-value = 0.000000000000003167
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -10.96117  -7.07543
+sample estimates:
+mean of x mean of y 
+  10.1120   19.1303 </code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>treeheights</span>,<span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>region</span>, y<span class='op'>=</span><span class='va'>height</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
+  <span class='fu'>geom_boxplot</span><span class='op'>(</span>notch<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<p>Solution will be uploaded later</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="linear-models">2 Linear models</h2>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
 <p>Solution will be uploaded later</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="linear-models-transformation">3 Linear models transformation</h2>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
 <p>Solution will be uploaded later</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="poisson-and-binary-glm">4 Poisson and binary glm</h2>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
 <p>Solution will be uploaded later</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="proportion-glm">5 Proportion glm</h2>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
 <p>Solution will be uploaded later</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

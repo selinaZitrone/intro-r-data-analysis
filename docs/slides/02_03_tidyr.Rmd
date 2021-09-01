@@ -270,7 +270,7 @@ We can also use a pipe to do all these steps in one:
 
 ```{r}
 cities_tidy <- cities_untidy %>%
-  pivot_longer(Turkey_Istanbul:France_Paris, names_to = "location") %>%
+  pivot_longer(Turkey_Istanbul:France_Paris, names_to = "location", values_to = "values") %>%
   separate(location, sep = "_", into = c("country", "city")) %>%
   pivot_wider(names_from = type, values_from = value)
 ```
