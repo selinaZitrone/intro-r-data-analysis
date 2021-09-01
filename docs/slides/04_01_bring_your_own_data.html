@@ -16,10 +16,10 @@
 
 **Schedule of today**
 
-- **9-13** (or 14 if you are enthusiastic still): Work on the data set
+- **now - 14** (or 14.30 if you are enthusiastic still): Work on the data set
   - take break(s) as best fits your needs and your group
   
-- **13 (14)-15**: Short presentation/feedback round
+- **14 (14.30) - 15**: Short presentation/feedback round
 
   - What did you find out about your data set? Plots, summaries, ...
   - Which methods did you use?
@@ -30,12 +30,6 @@
 - **15-16**: Feedback, conclusion
 
 ---
-# Organization: Groups
-
-- Group 1 (own data): 
-- other groups depending on data set preferences (~ 4 people by group)
-
---
 
 #### In the groups
 
@@ -52,25 +46,9 @@
 
 - You can also work on multiple data sets if wish
 
----
-# Organization: Groups
-
+--
 
 What I basically want to say: Just have fun with the data, try new things and organize yourselves!
-
----
-# Data set suggestions
-
-The [`EcoData` R package](https://github.com/TheoreticalEcology/ecodata) includes many different data sets.
-
-Get the package:
-
-
-```r
-#install.packages("devtools") # run this only if you don't have devtools installed
-devtools::install_github(repo = "florianhartig/EcoData", subdir = "EcoData", 
-dependencies = T, build_vignettes = T)
-```
 
 ---
 # Data set 1: What makes a good wine?
@@ -102,20 +80,17 @@ Modeling wine preferences by data mining from physicochemical properties. In Dec
 
 .pull-left[
 
-Get the data:
-
-
-```r
-library(tidyverse)
-wine &lt;- as_tibble(EcoData::wine)
-```
-
 **Ideas:**
 
+- Which chemical properties are associated with a good wine rating?
 - plotting chemical properties against each other
 - plotting quality judgement depending on different properties
 - linear models for the relationship between properties
-- summary tables of the data]
+- summary tables of the data using `dplyr`
+
+Hint: It might be a good idea to transform the quality column to a factor (use `dplyr::mutate` and `as.factor()` if you want to do this).
+
+]
 
 .pull-right[
 ![](img/wine.jpg)
@@ -157,17 +132,11 @@ wine &lt;- as_tibble(EcoData::wine)
 # Data set 2:  Birds in Australia
 
 .pull-left[
-Get the data
-
-
-```r
-library(tidyverse)
-birds &lt;- as_tibble(EcoData::birdabundance)
-```
 
 **Ideas**
 
-- good for plotting
+- Which factors influence bird abundance most?
+- good for plotting different variables
 - rather clear and small data set
 - explore the effects of environment on bird abundance (try models)
 ]
@@ -213,7 +182,7 @@ athletes &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascienc
 - probably dplyr heavy task
 - create summaries of medal counts for different groups
 - explores questions such as:
-  - Did men or women win more medals overall? Did the ratio of men/women winning medals change over time?
+  - Did the ratio of men/women winning medals change over time?
   - Which countries were the most successful ones? Does this differ between sports type?
   - Which types of sports accumulated the most medals?
 - plots: e.g. heat map showing the number of medals by medal type and sport/country/gender...
@@ -241,18 +210,34 @@ athletes &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascienc
   - `excel_numeric_to_date()`: convert strange excel serial numbers to actual dates
 - [readxl package](https://www.rdocumentation.org/packages/readxl/versions/1.3.1): read directly from Excel files instead of using `readr` with csv files
   - check out `?read_xlsx` to see how to read different sheets
+- for heatmaps with ggplot: check the ggplot2 solution on the website, find a tutorial [here](https://www.statology.org/heatmap-r-ggplot2/)
+- [joining multiple tables](https://dplyr.tidyverse.org/articles/two-table.html): `dplyr` offers function to join multiple tables based on a common column
+- `vegan`: R package for community ecology (e.g. diversity (Shannon, Simpson, species richness, ...)), [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/vegan.pdf), [tutorial](https://peat-clark.github.io/BIO381/veganTutorial.html)
   
-  
+
 ---
 class: inverse, middle, center
 
-# .large[Now You]
+# .large[Now You: Working on your own research data]
 
-#### - Think about the data set you would like to work on 
-#### - Build groups using the chat
+#### - Build groups
 #### - Meet in your group
 #### - Start working on a data set
-#### - Take breaks as you need and be back at 13:30
+#### - Take breaks as you need and be back at 14:00
+#### - Keep an eye on the chats
+
+ 
+---
+class: inverse, middle, center
+
+# .large[Now You: Working on a data set from me]
+
+#### - Think about the data set you would like to work on 
+#### - Build groups
+#### - Meet in your group
+#### - Start working on a data set
+#### - Take breaks as you need and be back at 14:00
+#### - Keep an eye on the chats
 
 ---
 # Presentation/Feedback round
@@ -264,6 +249,8 @@ class: inverse, middle, center
 - Did you learn something new?
 
 - Was there something you struggled with?
+
+- If you have a plot or a result to share, please post a screenshot in the chat or share your screen.
 
 ---
 # Feedback
@@ -295,13 +282,14 @@ We learned a lot of stuff!
 ---
 # Conclusion
 
-.pull-left[
-
 #### How to continue from here?
+
+.pull-left[
 
 - Learning by doing!
 - Have a look at some [online ressoures](https://selinazitrone.github.io/intro-r-data-analysis/online_resources.html), I recommend the R for Data Science book by Hadley Wickham
 - If you use Twitter: Follow some people that post R content regarding your interest
+- [FU statistical consulting](http://www.stat.fu-berlin.de/en/dienstleistungen/index.html) for questions regarding statistical methods
 ]
 
 .pull-right[
