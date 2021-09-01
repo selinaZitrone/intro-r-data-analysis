@@ -16,9 +16,9 @@ unique(treeheights$region)
 
 Compare the means of the forests separately
 
-- A-B
-- A-C
-- B-C
+- forest1 - forest2
+- forest1 - forest3
+- forest2 - forest3
 
 Before you start, create a subset of each forest site as a vector.
 
@@ -36,7 +36,7 @@ Use the Shapiro-Wilk test to test for normality
 
 Can you see how the different methods might lead to different results?
 
-- Try to create a QQ-Plot for the data. Here you can't use the subsetted vectors as data, as ggplot expects a tibble or data frame as first argument. Can you create the QQ-Plots from the `treeheights` tibble? 
-- Try to use the KS-Test to test for normality
+- Create a QQ-Plot for the data. Here you can't use the subsetted vectors as data, as ggplot expects a tibble or data frame as first argument. Can you create the QQ-Plots from the `treeheights` tibble? 
+- Use the KS-Test to test for normality
 
 

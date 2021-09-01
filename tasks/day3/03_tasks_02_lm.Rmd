@@ -18,6 +18,8 @@ library(performance)
 
 The `performance` package depends on other packages. It might happen that you encounter an error when trying to load or use the package for the first time. Just read the error message and install the missing packages with `install.packages()` (likely this will be the case for the `qqplotr` package).
 
+**Note:** Finish all the tasks (1.2-1.4) first before you start with the extras.
+
 ### 1.2 Linear regression
 
 Let's start with a simple linear regression.
