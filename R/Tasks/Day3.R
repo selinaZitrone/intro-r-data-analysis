@@ -66,7 +66,8 @@ wilcox.test(forest2, forest3) # means don't differ
 t.test(forest1, forest3, var.equal = FALSE) # means differ
 
 ggplot(treeheights, aes(x = region, y = height)) +
-  geom_boxplot(notch = TRUE)
+  geom_boxplot(notch = TRUE) +
+  geom_point(alpha = 0.5)
 
 
 # Linear models -----------------------------------------------------------
