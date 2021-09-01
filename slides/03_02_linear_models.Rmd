@@ -231,9 +231,7 @@ class: inverse, middle, center
 
 .pull-left[
 
-#### Lets start with a Hypothesis $H_0$
-
-Productivity increases with species richness.
+Is there an effect of richness on productivity?
  
 #### Or in other words
  
@@ -373,11 +371,6 @@ summary(prod_lm)
 # Summary table
 
 .center[![:scale 80%](img/day3/summary_r2.png)]
-
----
-# Summary table
-
-.center[![:scale 80%](img/day3/summary_F.png)]
 
 ---
 # Test model assumptions
@@ -582,13 +575,7 @@ One categorical and one numerical predictor variable
 
 Two possible models:
 
-#### Without interaction
-
-Species richness has an effect on productivity and there is a difference between sites.
-
-#### With interaction
-
-Species richness has an effect on productivity and the effect differs between sites.
+![:scale 50%](img/day3/lm_interaction.png)
 
 ]
 
@@ -1046,7 +1033,7 @@ chickwts %>%
 
 --
 
-Step 2: Write down a **question/hypothesis** and think of the **model** to test it
+**Step 2**: Write down a **question/hypothesis** and think of the **model** to test it
 
 --
 
@@ -1354,6 +1341,6 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 3: Linear models with transformations
+## Task 3: Linear models with transformations (75 min)
 
 #### Find the task description <a href="../01_tasks_controller.html#linear-models-with-transformation">here</a>

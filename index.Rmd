@@ -36,8 +36,8 @@ To download presentation slides in pdf format, you can use the following links:
 - <a href="./slides/02_01_tidyverse_ggplot.pdf" download>02 - Ggplot2</a>
 - <a href="./slides/02_02_dplyr.pdf" download>02 - Dplyr</a>
 - <a href="./slides/02_03_tidyr.pdf" download>02 - Tidyr</a>
-- <a href="./slides/03_01_tests.pdf" download>03 - Statistical tests</a>
+- <a href="./slides/03_01_tests_short.pdf" download>03 - Statistical tests</a>
 - <a href="./slides/03_02_linear_models.pdf" download>03 - Linear models</a>
 - 03 - Generalized linear models
 
-After the workshop is finished, you can download a zipped version of the content (slides in pdf, data and R scripts) <a href="intro-r-data-analysis-project.zip" download>here</a>
+After the workshop is finished, you can download a zipped version of the content (slides in pdf, data and R scripts) <a href="download_material_blank.html">here</a>
