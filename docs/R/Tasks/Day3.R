@@ -128,7 +128,7 @@ g2
 # fit model
 # Without interaction
 lm2a <- lm(bill_depth_mm ~ bill_length_mm + species, data = penguins)
-# Without interaction
+# With interaction
 lm2b <- lm(bill_depth_mm ~ bill_length_mm * species, data = penguins)
 lm2b <- lm(bill_depth_mm ~ bill_length_mm +
              species + bill_length_mm:species, data = penguins)
@@ -236,10 +236,10 @@ ggplot(summary, aes(x = species, y = mean, color = sex)) +
 
 
 ggplot(summary, aes(x = species, y = mean, fill = sex)) +
-  geom_col(position = position_dodge(0.8)) +
+  geom_col(position = position_dodge(1)) +
   geom_errorbar(
     aes(ymin = mean - sd, ymax = mean + sd),
-    position = position_dodge(0.8),
+    position = position_dodge(1),
     width = 0.2
   ) +
   scale_fill_manual(values = c("#00AFBB", "#E7B800")) +
