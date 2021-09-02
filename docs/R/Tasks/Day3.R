@@ -192,6 +192,10 @@ drop1(lm3, test = "F") # significant interaction
 # check assumptions
 check_model(lm3) # looks good
 
+# Post-hoc TukeyHSD
+TukeyHSD(aov(lm3))
+plot(TukeyHSD(aov(lm3)))
+
 #### Extra
 
 penguins_sex %>%
