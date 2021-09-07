@@ -1,0 +1,238 @@
+---
+subtitle: ""
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: "2021-08-01"
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: [default, css/new_slides.css]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: false
+      beforeInit: "macros.js"
+params:
+  title: "Introduction to Data Analysis with R"
+  day: ""
+  bg_image: "img/AllisonHorst/rainbowr.gif"
+  bg_image_scale: "50%"
+  bg_position: "100% 100%"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+library(fontawesome)
+```
+
+```{r child="title_slide_allison.Rmd"}
+
+```
+
+---
+
+# Who am I?
+
+.pull-left[
+
+- scientific modeller with ecology background
+
+- working in the [theoretical ecology group](https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/botanik/ag_tietjen/index.html) at Freie Universität
+
+- PhD student at Freie Universität Berlin 
+  - Topic: Modelling the impact of biological soil crusts on dryland hydrology
+
+#### Teaching `r fa("r-project")`
+
+- Statistics with R for Biology Master students
+- Workshops on R packages, R development, ...
+]
+
+.pull-right[
+.center[
+![:scale 50%](img/day1/crust.png)<br><br>
+![:scale 50%](img/day1/el_cautivo.jpg)
+]
+]
+
+---
+# What do I use `r fa("r-project")` for?
+
+
+- Short answer: everything
+
+--
+
+- Long answer:
+
+  - modelling biocrusts
+  - **cleaning data**
+  - **visualizing data**
+  - writing documents 
+  - presentations
+  - **performing statistical analyses**
+  - **wrangling data**
+  - workflow automation
+  - ...
+  
+---
+# Who are you?
+
+[Results of questionnaire](https://docs.google.com/forms/d/12t0jqM5-XjWKFLzbyoFUeGZsPNjokoygEiwo-iHlpEM/edit#responses)
+
+---
+# The Workshop: Topics
+
+.center[![](img/day1/workshop_topics.png)]
+
+--
+
+<b>.col2[Day 1: Introduction to R and RStudio and data import]</b>
+
+<b>.col1[Day 2: Data analysis with the tidyverse]</b>
+
+<b>.col3[Day 3: Statistical tests and models with R]</b>
+
+**Day 4: Bring your own data**
+
+.footnote-right[Image adapted from Wickham & Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)]
+
+---
+# The Workshop: Schedule and Organization
+
+🕘 9 a.m. - 4 p.m. (🥪 ~ 12 a.m. - 1 p.m.)<br>
+📍  We will meet in the `General` meeting on Webex
+
+--
+
+#### Organization
+
+- **input sessions**
+  - presentation and demonstration of a topic
+  - some examples
+  
+- **tasks** regarding this topic
+  - solve them in small groups
+  
+- **joint discussion** of tasks and additional questions
+
+---
+# The Workshop: Material
+
+- All material can be found on the [workshop's website](https://selinazitrone.github.io/intro-r-data-analysis/)
+
+  - presentations
+  - tasks
+  - solutions
+  - additional resources
+  
+--
+
+- The complete material can be downloaded from the website after the workshop
+
+---
+# Bring your own data
+
+--
+
+#### Learning by doing
+
+- work on your own research data in small groups (or alone if you prefer)
+    - I will also provide some real life data sets from different topics
+    
+- use any of the methods from the course or try new things, ...
+
+- present and discuss your results at the end of the day
+
+---
+# Bring your own data - preparation
+
+- keep the last workshop day in mind during the next days
+
+  - remember if you learn something that might be applicable to your data
+  
+  - think of questions that you would like to answer for your data set
+  
+--
+
+- during the group work
+
+  - if there is time after the tasks: talk about your data, research questions and methods <br>
+  
+  `r fa("arrow-right")` you might already find common interests and questions
+  
+---
+# Bring your own data - preparation
+
+If you want to **propose a group project** using your data set:
+
+- Add a description of the project idea to the [joint document](https://hackmd.io/@selinaZitrone/rJZe9qMgK/edit)
+- Prepare your data set to work seamlessly with R
+  - We will learn about that today
+- If you want: Send the data set to me beforehand then I can make sure that it's easy to get started with
+
+--
+
+If you want to **work alone** on your data set
+
+- Add your name and the methods that you would like to use to the [joint document](https://hackmd.io/@selinaZitrone/rJZe9qMgK/edit)
+
+--
+
+If you want to **join a group** project
+
+- go through the proposals and add your name next to it
+
+--
+
+If you want to work on a **data set provided by me**
+
+- add your name to the respective section
+
+---
+# Before we get started I
+
+Any feedback and questions are very welcome.
+
+I am curious to know
+
+- what you liked/disliked
+- which topics or methods you missed
+- which tasks were too easy/too difficult or just right
+- ...
+
+Add any feedback to the feedback section of the [joint document]([joint document](https://hackmd.io/@selinaZitrone/rJZe9qMgK/edit) whenever something comes to your mind.
+
+---
+# Before we get started II
+
+.large[Did anyone have problems installing R and RStudio?]
+
+<br>
+
+![:scale 10%](img/Rlogo.png) Download and install R from [https://cran.r-project.org](https://cran.r-project.org/)
+
+![:scale 10%](img/Rstudio_logo.png) Download and install RStudio from             [https://www.rstudio.com](https://www.rstudio.com/products/rstudio/download/#download  )
+
+---
+# Before we get started III
+
+**Get familiar with our Webex team for the group work** (5 mins):
+
+- Go to your group
+
+- Start a meeting in your group
+
+- Try out the chat
+
+- Make sure that it works for everyone in your group
+
+- Keep an eye on the general chat and come back to the General meeting when I send the message to come back
+
+--
+
+- If you want: Change the name of your Webex profile to a name you would like to be called
+  - Click on your name in the top left corner, go to `Edit Profile` and change your display name

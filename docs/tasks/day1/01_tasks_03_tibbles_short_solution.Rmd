@@ -88,12 +88,10 @@ mean_wt <- mean(animals$bodywt_kg)
 mean_wt
 ```
 
-- Add a new column to the data called `bodywt_cat` with a category for the body weight. If the body weight is larger than the mean body weight put `heavy` in the column, else put `light` in there.
+- Add a new column to the data called `ratio_body_brain` with the ratio of the columns `bodywt_kg` and `brainwt_kg`
 
 ```{r, echo=TRUE}
-animals$bodywt_cat <- ifelse(animals$bodywt_kg > mean_wt,
-                             "heavy", 
-                             "light")
+animals$ratio_body_brain <- animals$bodywt_kg / animals$brainwt_kg
 animals
 ```
 

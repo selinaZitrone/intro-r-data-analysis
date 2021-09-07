@@ -24,31 +24,6 @@ v5 <- c(TRUE, "a", FALSE, "FALSE")
 typeof(v5)
 ```
 
-#### Explicit conversion to integer
-
-Values cannot be converted from type `character` to type `integer`. If you try to do this, you will get a warning that the conversion returned `NA`
-
-```{r echo=TRUE, warning=TRUE}
-as.integer(v1)
-as.integer(v2)
-as.integer(v3)
-as.integer(v4)
-as.integer(v5)
-```
-
-
-#### Explicit conversion to character
-
-Vectors of all data types can be converted to character. No `NA` values are introduced.
-
-```{r echo=TRUE}
-as.character(v1)
-as.character(v2)
-as.character(v3)
-as.character(v4)
-as.character(v5)
-```
-
 ### 2.2 Working with vectors
 
 ```{r echo=TRUE}

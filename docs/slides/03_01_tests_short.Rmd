@@ -407,7 +407,7 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 1: Statistical tests (30 min)
+## Task 1: Statistical tests (45 min)
 
 #### Find the task description <a href="../03_tasks_controller.html#statistical-tests">here</a>
 

@@ -15,8 +15,6 @@ v5 <- c(TRUE, "a", FALSE, "FALSE")
 
 Copy the vectors to your script and check their data types using `typeof`.
 
-Try to explicitly convert the vectors to integer and to character. What happens?
-
 ### 2.2 Working with vectors
 
 You have the following vectors:

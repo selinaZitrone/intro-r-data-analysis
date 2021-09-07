@@ -2379,11 +2379,12 @@ Slides
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="slides/01_01_Intro_RStudio_R.html">01 - Introduction R and RStudio</a>
-<a href="slides/01_02_Functions.html">01 - Functions</a>
-<a href="slides/01_03_tibbles_short.html">01 - Data &amp; Tibbles</a>
-<a href="slides/01_04_readr.html">01 - Tidyverse and Readr</a>
-<a href="slides/01_05_common_errors.html">01 - Common errors</a>
+<a href="slides/01_01_RStudio.html">01 - Introduction RStudio</a>
+<a href="slides/01_02_Intro_R.html">01 - Introduction R</a>
+<a href="slides/01_03_Functions.html">01 - Functions</a>
+<a href="slides/01_04_tibbles_short.html">01 - Data &amp; Tibbles</a>
+<a href="slides/01_05_readr.html">01 - Tidyverse and Readr</a>
+<a href="slides/01_06_common_errors.html">01 - Common errors</a>
 <a href="slides/02_01_tidyverse_ggplot.html">02 - Ggplot2</a>
 <a href="slides/02_02_dplyr.html">02 - Dplyr</a>
 <a href="slides/02_03_tidyr.html">02 - Tidyr</a>
@@ -2508,66 +2509,6 @@ Solutions
 </code></pre>
 </div>
 <pre><code>[1] &quot;character&quot;</code></pre>
-</div>
-<h4 id="explicit-conversion-to-integer">Explicit conversion to integer</h4>
-<p>Values cannot be converted from type <code>character</code> to type <code>integer</code>. If you try to do this, you will get a warning that the conversion returned <code>NA</code></p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v1</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>Warning: NAs introduced by coercion</code></pre>
-<pre><code>[1]  1 NA  2  3</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v2</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] 1 1 1 0 0</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v3</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1]  0 23  5  7</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v4</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1]  4  6 23</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>v5</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>Warning: NAs introduced by coercion</code></pre>
-<pre><code>[1] NA NA NA NA</code></pre>
-</div>
-<h4 id="explicit-conversion-to-character">Explicit conversion to character</h4>
-<p>Vectors of all data types can be converted to character. No <code>NA</code> values are introduced.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>v1</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;1&quot; &quot;a&quot; &quot;2&quot; &quot;3&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>v2</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>v3</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;0&quot;  &quot;23&quot; &quot;5&quot;  &quot;7&quot; </code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>v4</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;4&quot;       &quot;6&quot;       &quot;23.5345&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>v5</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;TRUE&quot;  &quot;a&quot;     &quot;FALSE&quot; &quot;FALSE&quot;</code></pre>
 </div>
 <h3 id="working-with-vectors">2.2 Working with vectors</h3>
 <div class="layout-chunk" data-layout="l-body">
@@ -2749,7 +2690,7 @@ Solutions
 </div>
 <pre><code>[1] 554.22</code></pre>
 </div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -2913,32 +2854,30 @@ Solutions
 <pre><code>[1] 4278.44</code></pre>
 </div>
 <ul>
-<li>Add a new column to the data called <code>bodywt_cat</code> with a category for the body weight. If the body weight is larger than the mean body weight put <code>heavy</code> in the column, else put <code>light</code> in there.</li>
+<li>Add a new column to the data called <code>ratio_body_brain</code> with the ratio of the columns <code>bodywt_kg</code> and <code>brainwt_kg</code></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals</span><span class='op'>$</span><span class='va'>bodywt_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>$</span><span class='va'>bodywt_kg</span> <span class='op'>&gt;</span> <span class='va'>mean_wt</span>,
-                             <span class='st'>"heavy"</span>, 
-                             <span class='st'>"light"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals</span><span class='op'>$</span><span class='va'>ratio_body_brain</span> <span class='op'>&lt;-</span> <span class='va'>animals</span><span class='op'>$</span><span class='va'>bodywt_kg</span> <span class='op'>/</span> <span class='va'>animals</span><span class='op'>$</span><span class='va'>brainwt_kg</span>
 <span class='va'>animals</span>
 </code></pre>
 </div>
 <pre><code># A tibble: 28 x 4
-   species        bodywt_kg brainwt_kg bodywt_cat
-   &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;     
- 1 MountainBeaver       1.4     0.0081 light     
- 2 Cow                465       0.423  light     
- 3 GreyWolf            36.3     0.120  light     
- 4 Goat                27.7     0.115  light     
- 5 GuineaPig            1       0.0055 light     
- 6 Diplodocus       11700       0.05   heavy     
- 7 AsianElephant     2547       4.60   light     
- 8 Donkey             187.      0.419  light     
- 9 Horse              521       0.655  light     
-10 PotarMonkey         10       0.115  light     
+   species        bodywt_kg brainwt_kg ratio_body_brain
+   &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;
+ 1 MountainBeaver       1.4     0.0081            173. 
+ 2 Cow                465       0.423            1099. 
+ 3 GreyWolf            36.3     0.120             304. 
+ 4 Goat                27.7     0.115             241. 
+ 5 GuineaPig            1       0.0055            182. 
+ 6 Diplodocus       11700       0.05           234000  
+ 7 AsianElephant     2547       4.60              553. 
+ 8 Donkey             187.      0.419             447. 
+ 9 Horse              521       0.655             795. 
+10 PotarMonkey         10       0.115              87.0
 # ... with 18 more rows</code></pre>
 </div>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -3008,13 +2947,13 @@ Solutions
 </div>
 <p>This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct <code>read_*()</code> function arguments.</p>
 <p>Just play with these different options of reading data into R and find one that fits you best.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
 <h1 id="reference">Reference</h1>
 <p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

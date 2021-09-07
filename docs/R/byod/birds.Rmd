@@ -1,15 +1,16 @@
 ---
 editor_options:
   chunk_output_type: console
+output: pdf_document
 ---
 
-```{r setup}
-
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+library(EcoData)
 ```
 
 ```{r packages}
 library(tidyverse)
-library(EcoData)
 ```
 
 ```{r get_data}
@@ -197,15 +198,6 @@ ggplot(birds, aes(x = area, y = abund, color = graze)) +
   geom_line(data = pred_dat)
 ```
 
-
-
-
-
-
-
-
-
-
 #### Correlation between variables
 
 Are there correlated variables?
@@ -232,17 +224,13 @@ birds %>%
 ```
 
 
-
-
-
-
 ```{r}
 ggplot(data = birds,
 mapping = aes(
-x = DIST,
-y = YR.ISOL,
-size = ABUND,
-color = ABUND)) +
+x = dist,
+y = isol_years,
+size = abund,
+color = abund)) +
 geom_point() +
 scale_color_gradient(low="blue",high="red")+
 scale_x_log10()
@@ -268,10 +256,4 @@ birds %>%
 ```
 
 
-# Some plots for exploration
-
-looks like
--  the longer a site is isolated the higher the grazing intensity is
--  the longer a site is isolated the lower the abundance
-- grazing intensity does not seem to affect the birds but years of isolation do
 
