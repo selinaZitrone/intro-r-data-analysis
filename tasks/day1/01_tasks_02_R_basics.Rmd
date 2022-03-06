@@ -1,4 +1,8 @@
-Create a new script for this task.
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy(position = c("top","right"))
+```
+
+Create a new script in your RStudio project for this task.
 Use comments in your code to take notes.
 
 ### 2.1 Type conversion
@@ -8,18 +12,13 @@ Look at the vectors below. What do you think will happen? Which data type do the
 ```{r echo=TRUE, eval=FALSE}
 v1 <- c(1, "a", 2, 3)
 v2 <- c(TRUE, TRUE, 1, FALSE, 0)
-v3 <- c(0, "23", 5, 7)
-v4 <- c(4L, 6L, 23.5345)
-v5 <- c(TRUE, "a", FALSE, "FALSE")
+v3 <- c(4L, 6L, 23.5345)
+v4 <- c(TRUE, "a", FALSE, "FALSE")
 ```
-
-Copy the vectors to your script and check their data types using `typeof`.
-
-Try to explicitly convert the vectors to integer and to character. What happens?
 
 ### 2.2 Working with vectors
 
-You have the following vectors:
+You have the following three vectors:
 
 - `species`: name of the species
 - `bodywt_kg`: body weight of the species in kg
@@ -50,27 +49,30 @@ brainwt_g <- c(
 )
 ```
 
+Copy and paste the vectos into your R script and solve the following tasks.
+
 #### Tasks
 
-- Check if the following animals are contained in the `species` vector:
+- Check which of the following animals are contained in the `species` vector:
 
 ```{r echo=TRUE, eval=FALSE}
 animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
 ```
 
 - Convert brain weight from g to kg and save the result in a new vector `brainwt_kg`
-- Calculate mean and standard deviation of the brain weight (hint: have a look at the summary slides to find the functions)
-- Which species have a brain weight larger than the mean brain weight?
-- Calculate the ratio of brain weight to body weight in percent and save the result in a new variable
-- Are there any animals with a larger brain to body ratio than humans? If yes, which ones?
-  - Hint: find the ratio for humans and save it in a separate variable first
+- Calculate mean and standard deviation of the brain weight
+  - Hint: have a look at the summary slides to find the functions
+- Which species have a brain weight larger than the mean brain weight of all species?
+- Calculate the ratio of brain weight to body weight in percent for all animals and save the result in a new vector
+- Are there any animals with a larger brain to body weight ratio than humans? If yes, which ones?
+  - Hint: calculate the ratio for humans and save it in a separate variable first
 
 
 #### Extras
 
 - Round the ratio vector to 4 decimal places with the `round` function
-  - type `?round` into the console to open the help of the `round` function
-- Which animal has the smallest brain to body ratio?
+  - Type `?round` into the console to open the help of the `round` function
+- Which animal has the smallest brain to body weight ratio?
   - Hint: have a look at the `min` function
 - Add the following three animals to the data vectors
 
@@ -82,4 +84,4 @@ bodywt_kg_new <- c(18, 0.01, 550)
 
  Now calculate the mean brain weight again. Can you explain what happens? Can you fix it?
  
- - hint: have a look at `?mean`
+ - Hint: have a look at `?mean`

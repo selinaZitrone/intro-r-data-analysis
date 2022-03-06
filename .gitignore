@@ -6,4 +6,7 @@
 
 slides/img/
 slides/*.html
+slides/*.pdf
 slides/*_files/
+
+tasks/*/*.html

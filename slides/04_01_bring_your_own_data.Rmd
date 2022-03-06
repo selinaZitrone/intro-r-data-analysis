@@ -171,6 +171,7 @@ athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/t
 - [readxl package](https://www.rdocumentation.org/packages/readxl/versions/1.3.1): read directly from Excel files instead of using `readr` with csv files
   - check out `?read_xlsx` to see how to read different sheets
 - for heatmaps with ggplot: check the ggplot2 solution on the website, find a tutorial [here](https://www.statology.org/heatmap-r-ggplot2/)
+- for barplots and mean +- se: check the lm solution on the website
 - [joining multiple tables](https://dplyr.tidyverse.org/articles/two-table.html): `dplyr` offers function to join multiple tables based on a common column
 - `vegan`: R package for community ecology (e.g. diversity (Shannon, Simpson, species richness, ...)), [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/vegan.pdf), [tutorial](https://peat-clark.github.io/BIO381/veganTutorial.html)
   

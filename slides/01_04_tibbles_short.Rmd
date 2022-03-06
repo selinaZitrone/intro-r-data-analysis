@@ -389,33 +389,6 @@ cities_tbl
 ```
 
 ---
-# Adding new columns
-
-Adding a new column **based on other columns**:
-
-```{r}
-cities_tbl$density <- cities_tbl$population / cities_tbl$area_km2
-```
-
-```{r echo=FALSE}
-cities_tbl
-```
-
----
-# Adding new columns
-
-Adding new columns **based on a condition**:
-
-```{r}
-cities_tbl$category <- ifelse(cities_tbl$population > 5e6, # test
-                              "very large", # yes
-                              "large") # no
-```
-```{r echo=FALSE}
-cities_tbl
-```
-
----
 # Summary I
 
 #### data frames and tibbles

@@ -272,7 +272,7 @@ We can also use a pipe to do all these steps in one:
 cities_tidy <- cities_untidy %>%
   pivot_longer(Turkey_Istanbul:France_Paris, names_to = "location", values_to = "values") %>%
   separate(location, sep = "_", into = c("country", "city")) %>%
-  pivot_wider(names_from = type, values_from = value)
+  pivot_wider(names_from = type, values_from = values)
 ```
 
 ---
@@ -280,6 +280,6 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 3: Tidying data (30 min)
+## Task 3: Tidying data (45 min)
 
 #### Find the task description <a href="../02_tasks_controller.html#tidyr">here</a>

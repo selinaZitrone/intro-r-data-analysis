@@ -16,37 +16,10 @@ v1 <- c(1, "a", 2, 3)
 typeof(v1)
 v2 <- c(TRUE, TRUE, 1L, FALSE, 0L)
 typeof(v2)
-v3 <- c(0, "23", 5, 7)
+v3 <- c(4L, 6L, 23.5345)
 typeof(v3)
-v4 <- c(4L, 6L, 23.5345)
+v4 <- c(TRUE, "a", FALSE, "FALSE")
 typeof(v4)
-v5 <- c(TRUE, "a", FALSE, "FALSE")
-typeof(v5)
-```
-
-#### Explicit conversion to integer
-
-Values cannot be converted from type `character` to type `integer`. If you try to do this, you will get a warning that the conversion returned `NA`
-
-```{r echo=TRUE, warning=TRUE}
-as.integer(v1)
-as.integer(v2)
-as.integer(v3)
-as.integer(v4)
-as.integer(v5)
-```
-
-
-#### Explicit conversion to character
-
-Vectors of all data types can be converted to character. No `NA` values are introduced.
-
-```{r echo=TRUE}
-as.character(v1)
-as.character(v2)
-as.character(v3)
-as.character(v4)
-as.character(v5)
 ```
 
 ### 2.2 Working with vectors
@@ -76,7 +49,7 @@ brainwt_g <- c(
 )
 ```
 
-- Check if the following animals are contained in the `species` vector:
+- Check which of the following animals are contained in the `species` vector:
 
 Note: If you use `%in%` to check if elements are contained in a vector, the result vector is of the same length as the vector that is **before** the `%in%`
 
@@ -91,7 +64,7 @@ animals_to_check %in% species
 
 - Convert brain weight from g to kg:
 
-Note: dividing a vector of length n by a vector of lenght 1 (i.e. a single number), the result is a vector of lenght n again.
+Note: dividing a vector of length n by a vector of length 1 (i.e. a single number), the result is a vector of length n again.
 
 ```{r echo=TRUE}
 brainwt_kg <- brainwt_g / 1000
@@ -104,19 +77,19 @@ mean(brainwt_kg)
 sd(brainwt_kg)
 ```
 
-- Which species have brain weight larger than the mean brain weight?
+- Which species have brain weight larger than the mean brain weight of all species?
 
 ```{r echo=TRUE}
 species[brainwt_kg > mean(brainwt_kg)]
 ```
 
-- Calculate the ratio brain weight / body weight and save it in a vector:
+- Calculate the ratio brain weight / body weight in percent and save it in a vector:
 
 ```{r echo=TRUE}
 brain_body_ratio <- brainwt_kg / bodywt_kg * 100
 ```
 
-##### Which animals have a larger brain to body ratio than humans?
+##### Which animals have a larger brain to body weight ratio than humans?
 
 Step 1: Look at the brain to body ratio of humans
 

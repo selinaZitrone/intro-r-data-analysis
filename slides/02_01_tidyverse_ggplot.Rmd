@@ -44,15 +44,6 @@ theme_set(theme_grey(base_size = 16))
 ```
 
 ---
-# ggplot2
-
-- ggplot2 was developed by Hadley Wickham in 2005
-
-- most popular package for building graphics in R
-
-- one of the most downloaded packages from CRAN
-
----
 class: center, middle
 background-image: url("img/AllisonHorst/ggplot2_exploratory.png")
 background-size: contain
@@ -92,7 +83,7 @@ class: center, middle
 background-image: url("https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_05/2020_05_TreesSF.png")
 background-size: 50%
 
-.footnote-right[Visualizations by [Cédric Scherer](https://twitter.com/CedScherer), code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_05_TreesSF.Rmd)]
+.footnote-right[Visualization by [Cédric Scherer](https://twitter.com/CedScherer), code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_05_TreesSF.Rmd)]
 
 ---
 class: center, middle
@@ -104,19 +95,19 @@ background-size: contain
 ---
 # Advantages of ggplot
 
-- consistent grammar/structure
+- **Consistent** grammar/structure
 
 --
 
-- flexible structure allows you to produce any type of plot
+- **Flexible** structure allows you to produce any type of plots
 
 --
 
-- highly customizable appearance (themes)
+- Highly **customizable appearance** (themes)
 
 --
 
-- many extension packages that provide 
+- Many **extension packages** that provide 
   - Additional plot types
 	- Additional themes
 	- Color palettes
@@ -140,35 +131,9 @@ background-size: contain
 
 --
 
-- coherent system for describing and building graphs
+- Coherent system for describing and building graphs
 
-- basic idea: stack distinct **layers of graphical elements** to create a plot
-
----
-# Layers of a ggplot
-<br>
-<table>
-  <tr>
-    <th>Layer</th>
-    <th>Function</th>
-    <th>Details</th>
-  </tr>
-  <tr>
-    <td><b>Data</b></td>
-    <td><code>ggplot(data)</code></td>
-    <td>The data that you want to plot.</td>
-  </tr>
-  <tr>
-    <td><b>Mapping&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td>
-    <td><code>aes()</code></td>
-    <td>Aesthetic mappings of the geometric and statistical objects.</td>
-  <tr>
-    <td><b>Geometries</b></td>
-    <td><code>geom_*()</code></td>
-    <td>Graphical representation of aesthetics as point, line, polygon, ...</td>
-  </tr>
-</table>
-
+- Basic idea: stack distinct **layers of graphical elements** to create a plot
 
 ---
 # Layers of a ggplot
@@ -275,8 +240,8 @@ ggplot(data = msleep,
          y = sleep_total)) #<<
 ```
 
-- map variable `brainwt` to x-axis and `sleep_total` to y-axis
-- default scales are automatically adapted to range of data
+- Map variable `brainwt` to x-axis and `sleep_total` to y-axis
+- Default scales are automatically adapted to range of data
 ]
 
 .pull-right[
@@ -344,8 +309,8 @@ ggplot(data = msleep,
   geom_point() #<<
 ```
 
-- new plot layers are added with `+`
-- warning that 27 points can not be plotted due to missing values
+- New plot layers are added with `+`
+- Warning that 27 points can not be plotted due to missing values
 - `data` and `aes` defined in `ggplot` call are inherited to all plot layers
 ]
 
@@ -369,8 +334,8 @@ ggplot(data = msleep,
   geom_point()
 ```
 
-- new plot layers are added with `+`
-- warning that 27 points can not be plotted due to missing values
+- New plot layers are added with `+`
+- Warning that 27 points can not be plotted due to missing values
 - `data` and `aes` defined in `ggplot` call are inherited to all plot layers
 - `data` and `aes` can be local to a layer:
 
@@ -407,7 +372,7 @@ ggplot(data = msleep,
   scale_x_log10() #<<
 ```
 
-- scales can be changed for all elements of `aes`
+- Scales can be changed for all elements of `aes`
 
 ]
 
@@ -435,8 +400,8 @@ ggplot(data = msleep,
   scale_x_log10() #<<
 ```
 
-- scales can be changed for all elements of `aes`
-- the general format of scale functions are:
+- Scales can be changed for all elements of `aes`
+- The general format of scale functions are:
 
 <b>scale\_.col1[aes-name]\_.col2[scale-type]</b>
 
@@ -470,9 +435,9 @@ ggplot(data = msleep,
   scale_x_log10()
 ```
 
-- with `method = "lm"`, a linear regression line is added
-- the ribbon represents confidence interval around the regression
-  - turn ribbon off with `se = FALSE` argument
+- With `method = "lm"`, a linear regression line is added
+- The ribbon represents confidence interval around the regression
+  - Turn ribbon off with `se = FALSE` argument
 ]
 
 .pull-right[
@@ -501,7 +466,7 @@ ggplot(data = msleep,
              color = "blue") + #<<
   scale_x_log10() 
 ```
-- have a look [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) for the point shape codes
+- Have a look [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) for the point shape codes
 
 ]
 
@@ -538,8 +503,8 @@ g <- ggplot(
 g
 ```
 
-- map the `vore` variable to the color aesthetic of the plot
-- plots can be saved in variables
+- Map the `vore` variable to the color aesthetic of the plot
+- Plots can be saved in variables
 ]
 
 .pull-right[
@@ -645,8 +610,8 @@ g +
   scale_color_viridis_d(option = "inferno") #<<
 ```
 
-- the viridis color palette is designed for viewers with common forms of color blindness
-- different options of viridis color palettes are are:
+- The viridis color palette is designed for viewers with common forms of color blindness
+- Different options of viridis color palettes are are:
   - `"magma"`, `"inferno"`, `"plasma"`, `"viridis"`, `"cividis"`
 
 ]
@@ -673,8 +638,8 @@ g +
     na.value = "grey") #<<
 ```
 
-- whether or not you have to do this, depends on the default of the `na.value` argument of the color scale that you use
-- you can also remove missing values from your data set before plotting (we will learn that later)
+- Whether or not you have to do this, depends on the default of the `na.value` argument of the color scale that you use
+- You can also remove missing values from your data set before plotting (we will learn that later)
 
 ]
 
@@ -702,10 +667,10 @@ g <- g +
 g
 ```
 
-- length of color vector has to match number of levels in your aesthetic
-- specify colors 
-  - via their name (see [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) for all color names)
-  - via their Hex color codes
+- Length of color vector has to match number of levels in your aesthetic
+- Specify colors 
+  - Via their name (see [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) for all color names)
+  - Via their Hex color codes
 
 ]
 
@@ -762,7 +727,7 @@ g +
   facet_wrap(~conservation) #<<
 ```
 
-- you can even split plots along two variables using `facet_grid()` instead of `facet_wrap()`
+- You can even split plots along two variables using `facet_grid()` instead of `facet_wrap()`
 - The basic functioning is `facet_grid(yvar ~ xvar)` 
   - `yvar` will be displayed as columns
   - `xvar` will be displayed as rows
@@ -949,6 +914,8 @@ You can also specify some defaults, e.g. the text size:
 ```{r eval=FALSE}
 theme_set(theme_minimal(base_size = 16))
 ```
+
+This is very practical if you want to achieve a consistent look, e.g. for a scientific journal.
 
 ---
 # `geom_boxplot()`

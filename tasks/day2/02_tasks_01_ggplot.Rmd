@@ -1,6 +1,6 @@
 ### 1.1 Getting started
 
-A helpful resource for to consult for this task can be the [ggplot2 cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf).
+A helpful resource to consult for this task can be the [ggplot2 cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf).
 
 Remember to put `library(tidyverse)` (or `library(ggplot2)`) on top of your script to access the ggplot functions.
 
@@ -52,9 +52,9 @@ Are male penguins heavier than female penguins? And is this different between th
 
 - Create a boxplot with body mass on the y axis and sex on the x axis
 - Add the difference between penguin species to this plot. Try the different options ggplot offers
-  - species as color aesthetic
-  - species as fill aesthetic
-  - species as facet using `facet_wrap`
+  - Species as color aesthetic
+  - Species as fill aesthetic
+  - Species as facet using `facet_wrap`
 - **Extra:** What happens if you use `geom_violin` instead of `geom_boxplot`? Can you combine both geoms in one plot?
 
 ### 1.4 Beautify the plots

@@ -1,0 +1,824 @@
+---
+subtitle: ""
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: "2021-08-01"
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: [default, css/new_slides.css]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: false
+      beforeInit: "macros.js"
+params:
+  title: "Introduction to R"
+  day: ""
+  bg_image: "img/Rlogo.png"
+  bg_image_scale: "40%"
+  bg_position: "90% 90%"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+library(fontawesome)
+```
+
+```{r child="title_slide.Rmd"}
+
+```
+
+---
+# R as a calculator
+
+## Arithmetic operators
+
+.left-column[
+<br>
+  <table style='width:100%;font-size:16pt'>
+  <tr>
+    <td><b style='color:#67676;'>Addition</b></td>
+    <td>+</td>
+    </td>
+  </tr>
+    <tr>
+    <td><b style='color:#67676;'>Subtraction</b></td>
+    <td>-</td>
+    </td>
+  </tr>
+    <tr>
+    <td><b style='color:#67676;'>Multiplication</b></td>
+    <td>*</td>
+    </td>
+  </tr>
+    <tr>
+    <td><b style='color:#67676;'>Division</b></td>
+    <td>/</td>
+    </td>
+  </tr>
+    <tr>
+    <td><b style='color:#67676;'>Modulo</b></td>
+    <td>%%</td>
+    </td>
+  </tr>
+    <tr>
+    <td><b style='color:#67676;'>Power</b></td>
+    <td>^</td>
+    </td>
+  </tr>
+</table>
+
+]
+
+.right-column[
+
+```{r arithmetic operators, eval=FALSE}
+# Addition
+2 + 2
+# Subtraction
+5.432 - 34234
+# Multiplication
+33 * 42
+# Division
+3 / 42
+# Modulo (Remainder)
+2 %% 2
+# Power
+2^2
+# Combine operations
+((2 + 2) * 5)^(10 %% 10)
+```
+
+]
+
+---
+# R as a calculator
+
+## Relational operators
+
+.left-column[
+<br>
+  <table style='width:100%;font-size:16pt'>
+  <tr>
+    <td><b>Equal to</b></td>
+    <td><code>==</code></td>
+    </td>
+  </tr>
+    <tr>
+    <td><b>Not equal to</b></td>
+    <td><code>!=</code></td>
+    </td>
+  </tr>
+    <tr>
+    <td><b>Less than</b></td>
+    <td><code><</code></td>
+    </td>
+  </tr>
+    <tr>
+    <td><b>Greater than</b></td>
+    <td><code>></code></td>
+    </td>
+  </tr>
+    <tr>
+    <td><b>Less or equal than</b></td>
+    <td><code><=</code></td>
+    </td>
+  </tr>
+    <tr>
+    <td><b>Greater or equal than</b></td>
+    <td><code>>=</code></td>
+    </td>
+  </tr>
+</table>
+
+]
+
+.right-column[
+
+```{r relational operators, eval=TRUE}
+2 == 2
+2 != 2
+33 <= 32
+20 < 20
+```
+
+]
+
+---
+#  R as a calculator
+
+## Logical operators
+
+.left-column[
+<br>
+  <table style='width:100%;font-size:16pt'>
+  <tr>
+    <td><b style='color:#67676;'>Not</b></td>
+    <td><code>!</code></td>
+    </td>
+  </tr>
+    <tr>
+    <td><b style='color:#67676;'></b></td>
+    <td><code></code></td>
+    </td>
+  </tr>
+    <tr>
+    <td><b style='color:#67676;'></b></td>
+    <td><code></code></td>
+    </td>
+  </tr>
+</table>
+]
+.right-column[
+
+```{r logical operators, eval=TRUE}
+!TRUE
+!(3 < 1)
+```
+]
+
+---
+#  R as a calculator
+
+## Logical operators
+
+.left-column[
+<br>
+  <table style='width:100%;font-size:16pt'>
+  <tr>
+    <td><b style='color:#67676;'>Not</b></td>
+    <td><code>!</code></td>
+    </td>
+  </tr>
+    <tr>
+    <td><b style='color:#67676;'>And</b></td>
+    <td><code>&</code></td>
+    </td>
+  </tr>
+    <tr>
+    <td><b style='color:#67676;'></b></td>
+    <td><code></code></td>
+    </td>
+  </tr>
+</table>
+]
+.right-column[
+
+```{r logical operators 2, eval=TRUE}
+(3 < 1) & (3 == 3) # FALSE & TRUE = FALSE
+(1 < 3) & (3 == 3) # TRUE & TRUE = TRUE
+(3 < 1) & (3 != 3) # FALSE & FALSE = FALSE
+```
+]
+
+---
+#  R as a calculator
+
+## Logical operators
+
+.left-column[
+<br>
+  <table style='width:100%;font-size:16pt'>
+  <tr>
+    <td><b style='color:#67676;'>Not</b></td>
+    <td><code>!</code></td>
+    </td>
+  </tr>
+    <tr>
+    <td><b style='color:#67676;'>And</b></td>
+    <td><code>&</code></td>
+    </td>
+  </tr>
+    <tr>
+    <td><b style='color:#67676;'>Or</b></td>
+    <td><code>|</code></td>
+    </td>
+  </tr>
+</table>
+]
+.right-column[
+
+```{r logical operators 3, eval=TRUE}
+(3 < 1) | (3 == 3) # FALSE | TRUE = TRUE
+(1 < 3) | (3 == 3) # TRUE | TRUE = TRUE
+(3 < 1) | (3 != 3) # FALSE | FALSE = FALSE
+```
+]
+
+---
+# Comments in R
+
+```{r, eval=FALSE}
+
+# Reading and cleaning the data -----------------
+
+data <- read_csv("data/my-data.csv")
+# clean all column headers 
+# (found on https://stackoverflow.com/questions/68177507/)
+data <- janitor::clean_names(data)
+
+# Analysis --------------------------------------
+```
+
+--
+
+- Everything that follows a `#` is a comment
+
+--
+
+- Comments are not evaluated
+
+--
+
+- Notes that make code more readable or add information
+
+--
+
+- Comments can be used for
+  - Explanation of code (if necessary)
+  - Include links, names of authors, ...
+  - Mark different sections of your code (`r fa("lightbulb")` try `Ctrl/Cmd + Shift + R`)
+  
+---
+class: inverse, middle, center
+
+# .large[Objects and data types in `r fa("r-project")`]
+
+---
+# Variables
+
+- Store values under meaningful names **to reuse** them
+
+--
+
+- A variable has a .col1[<b>name</b>] and .col2[<b>value</b>] and is created using the .col3[<b>assignment operator</b>]
+
+.center[.large[.strong[.col1[radius] &nbsp; .col3[<-] &nbsp; .col2[5]]]]
+
+--
+
+- Variables are available in the global environment
+
+--
+
+- R is case sensitive: **r**adius != **R**adius
+
+--
+
+- Variables can hold any R objects, e.g.
+  - Simple numbers
+  - Lists
+  - Tables with data
+  - ...
+
+--
+
+- Choose meaningful variable names
+  - Make your code easier to read
+
+
+---
+
+# Variables
+
+
+```{r eval=FALSE}
+# create a variable
+radius <- 5
+# use it in a calculation and save the result
+# pi is a built-in variable that comes with R
+circumference <- 2 * pi * radius
+# change value of variable radius
+radius <- radius + 1
+```` 
+--
+```{r eval=FALSE}
+# just use the name to print the value to the console
+radius 
+```
+
+---
+# Atomic data types
+
+There are 6 so-called **atomic data types** in R. The 4 most important are:
+--
+<br><br>
+**Numeric**: There are two numeric data types: 
+
+- **Double:** can be specified in decimal (`1.243` or `-0.2134`), scientific notation (`2.32e4`) or hexadecimal (`0xd3f1`)
+
+- **Integer:** numbers that are not represented by fraction. Must be followed by an `L` (`1L`, `2038459L`, `-5L`)
+
+--
+
+**Logical:** only two possible values `TRUE` and `FALSE` (abbreviation: `T` or `F` - but better use non-abbreviated form)
+
+--
+
+**Character:** also called string. Sequence of characters surrounded by quotes (`"hello"` , `"sample_1"`)
+
+---
+# Check the type of a variable
+
+- Check the type of a variable with `typeof()`
+
+- Check if a variable is of a specific data type with `is.*()`
+
+```{r}
+var <- 123L
+typeof(var)
+is.double(var)
+```
+
+```{r}
+typeof(TRUE)
+typeof("TRUE")
+```
+
+---
+# Explicit type conversion
+
+You can convert a value from one data type to the other using `as.*()`
+
+```{r}
+as.character(1L)
+```
+
+--
+
+Strings can be converted to numbers if possible
+
+```{r}
+as.integer("hello")
+as.integer("2")
+```
+
+---
+# Implicit type conversion
+
+Type conversion can happen implicitly
+
+```{r}
+typeof(1L + 2.5) # integer -> double
+```
+
+--
+
+```{r}
+typeof(1L + TRUE) # logical -> integer (TRUE = 1, FALSE = 0)
+```
+
+--
+
+```{r}
+typeof(1.34 + FALSE) # logical -> double
+```
+
+--
+
+```{r error=TRUE}
+typeof("hello" + FALSE) # Error: no implicit conversion from string to other data types
+```
+
+---
+class: inverse, middle, center
+
+# .large[Vectors]
+
+---
+# Vectors
+
+Vectors are data structures that are built on top of atomic data types.<br>
+
+Imagine a vector as a **collection of values** that are all **of the same data type**.
+<br>
+<br>
+
+.center[
+
+![](img/day1/vector_data_type.png)
+]
+
+.footnote-right[Image from [Advanced R book](https://adv-r.hadley.nz/vectors-chap.html#atomic-vectors)]
+
+---
+# Creating vectors: `c()`
+
+Use the function `c()` to *combine* values into a vector
+
+```{r}
+lgl_var <- c(TRUE, TRUE, FALSE)
+dbl_var <- c(2.5, 3.4, 4.3)
+int_var <- c(1L, 45L, 234L)
+chr_var <- c("These are", "just", "some strings")
+```
+--
+You can also combine multiple vectors into one:
+
+```{r}
+# Combine multiple vectors
+v1 <- c(1,2,3)
+v2 <- c(800, 83, 37)
+v3 <- c(v1, v2)
+```
+
+--
+
+Be aware of implicit type conversion when combining vectors of different types
+
+```{r}
+c(int_var, lgl_var)
+```
+
+---
+# Creating vectors: `:` and `seq()`
+
+The `:` operator creates a sequence between two numbers with an increment of (-)1
+```{r}
+1:10
+```
+--
+<br>
+The `seq()` function creates a sequence of values
+
+```{r}
+seq(from = 1, to = 10, by = 1) # specify increment of sequence with by
+seq(from = 1, to = 10, length.out = 10) # specify desired length with length.out
+```
+
+---
+# Creating vectors: `rep()`
+
+Repeat values multiple times with `rep()`
+
+```{r}
+rep("hello", times = 5)
+```
+--
+
+You can also repeat entire vectors
+
+```{r}
+rep(c(TRUE, FALSE, TRUE), times = 2) # repeat the whole vector twice
+```
+
+```{r}
+rep(c(1, 2 ,3), each = 2) # repeat each element of the vector twice
+```
+
+---
+
+# Working with vectors
+
+Let's create some vectors to work with.
+
+```{r}
+# list of 10 biggest cities in Europe
+cities <- c("Istanbul", "Moscow", "London", "Saint Petersburg", "Berlin", "Madrid", "Kyiv", "Rome", "Bucharest", "Paris")
+
+population <- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)
+
+area_km2 <- c(2576, 2561, 1572, 1439,891,604, 839, 1285, 228, 105 )
+```
+
+
+.footnote-right[Data from [Wikipedia](https://en.wikipedia.org/wiki/List_of_European_cities_by_population_within_city_limits)]
+
+--
+
+We can check the length of a vector using the `length()` function:
+
+```{r}
+length(cities)
+```
+
+---
+
+# Working with vectors
+
+Divide the population and area vector to calculate the population density in each city:
+
+```{r}
+population / area_km2
+```
+
+--
+
+The operation is performed **separately for each element of the two vectors** and the result is a vector.<br>
+
+--
+
+The same happens, if a **vector is divided by vector of length 1** (i.e. a single number).
+The result is always a vector.
+
+```{r}
+mean_population <- mean(population) # calculate the mean of vector population
+population / mean_population
+```
+
+---
+
+# Working with vectors
+
+We can also work with relational and logical operators
+
+```{r}
+population > mean_population
+```
+
+--
+
+The result is a vector containing `TRUE` and `FALSE`, depending on whether the city's population is larger than the mean population or not.
+
+--
+
+Logical and relational operators can be combined
+
+```{r}
+# population larger than mean population OR population larger than 3 million
+population > mean_population | population > 3e6
+```
+
+---
+
+# Working with vectors
+
+Check whether elements occur in a vector:
+
+```{r}
+cities == "Istanbul" | cities == "Berlin" | cities == "Madrid"
+```
+
+--
+
+The `%in%` operator checks whether *multiple* elements occur in a vector.
+
+```{r}
+# for eachelement of cities, checks whether that element is contained in to_check 
+to_check <- c("Istanbul", "Berlin", "Madrid")
+cities %in% to_check
+```
+
+--
+
+```{r}
+# for each element of to_check, check whether that element is contained in cities 
+to_check %in% cities
+```
+
+--
+
+`%in%` always returns a vector of the same length as the vector on the left side
+
+---
+# Indexing vectors
+
+You can use square brackets `[]` to access specific elements from a vector.
+
+The basic structure is:
+
+.center[<b>.col1[vector] [ .col2[vector of indexes to select ]]</b>]
+
+--
+
+```{r}
+cities[5]
+```
+
+--
+
+```{r}
+# the three most populated cities
+cities[1:3] # same as cities[c(1,2,3)]
+```
+
+--
+
+```{r}
+# the last entry of the cities vector
+cities[length(cities)] # same as cities[10]
+```
+
+---
+
+# Indexing vectors
+
+Change the values of a vector at specified indexes using the assignment operator `<-`
+
+--
+
+Imagine for example, that the population of 
+- Istanbul (index 1) increased to 20 Million
+- Rome (index 8) changed but is unknown
+- Paris (index 10) decreased by 200,000
+
+--
+
+```{r}
+# first copy the original vector to leave it untouched
+population_new <- population
+# Update Istanbul (1) and Rome(8)
+population_new[c(1, 8)] <- c(20e6, NA) # NA means missing value
+# Update Paris (10)
+population_new[10] <- population_new[10] - 200000 
+```
+
+```{r}
+population_new
+```
+
+---
+# Indexing vectors
+
+You can also index a vector using logical tests. The basic structure is:
+
+.center[<b>.col1[vector] [ .col2[logical vector of same length] ]</b>]
+
+--
+
+```{r}
+mega_city <- population > mean_population
+mega_city
+```
+
+--
+
+Which are the mega cities?
+
+```{r}
+cities[mega_city] # or short: cities[population > mean_population]
+```
+
+Index only the cities that return `TRUE` for the comparison of their population against the mean population
+
+---
+# Indexing vectors
+
+We also use `%in%`for logical indexing.
+
+```{r}
+population[ cities %in% c("Berlin", "Paris", "Stockholm", "Madrid")]
+```
+
+--
+
+- Returns only 3 values for population, because Stockholm is not a city in our vector
+  - No city in `cities` returns `TRUE` for the comparison with `"Stockholm"`
+  
+```{r}
+cities %in% c("Berlin", "Paris", "Stockholm", "Madrid")
+```
+
+
+
+---
+# Summary I
+
+- Variables have a name and a value and are created using the assignment operator `<-`, e.g.
+```{r eval=FALSE}
+radius <- 5
+```
+- Vectors are a collection of values of the same data type:
+  - character (`"hello"`)
+  - numeric: integer (`23L`) and double (`2.23`)
+  - logical (`TRUE` and `FALSE`)
+  
+- Be careful about implicit type conversion:
+  - numeric to character
+  - logical to character
+  - logical to numeric
+  
+---
+# Summary II
+
+#### Data types
+
+
+```{r eval=FALSE}
+# check the data type of a variable
+typeof("hello")
+
+# check if a variable is of a certain data type
+is.*()
+is.integer(1L)
+
+# convert a variable into a certain data type
+as.*()
+as.logical("hello")
+```
+
+---
+# Summary III
+
+#### Create vectors
+
+```{r eval=FALSE}
+# combine objects into vector
+c(1,2,3)
+
+# create a sequence of values
+seq(from = 3, to = 6, by = 0.5)
+seq(from = 3, to = 6, length.out = 10)
+2:10
+
+# repeat values from a vector
+rep(c(1,2), times = 2)
+rep(c("a", "b"), each = 2)
+```
+
+---
+# Summary IV
+
+#### Indexing and subsetting vectors
+
+```{r eval=FALSE}
+# By index
+v[3]
+v[1:4]
+v[c(1,5,7)]
+
+# Logical indexing with 1 vector
+v[v > 5]
+v[v != "bird" | v == "rabbit"]
+v[v %in% c(1,2,3)] # same as v[v == 1 | v == 2 | v == 3]
+
+# Logical indexing with two vectors of same length
+v[y == "bird"] # return the value in v for which index y == "bird"
+v[y == max(y)] # return the value in v for which y is the maximum of y
+```
+
+---
+# Summary V
+
+#### Working with vectors
+
+```{r eval=FALSE}
+# length
+length(v)
+# rounding numbers
+round(v, digits = 2)
+# sum
+sum(v)
+# mean
+mean(v)
+# median
+median(v)
+# standard deviation
+sd(v)
+# find the min value
+min(v)
+# find the max value
+```
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 2: Data types and vectors (35 min)
+
+#### Find the task description <a href="../01_tasks_controller.html#data-types-and-vectors">here</a>
