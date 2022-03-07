@@ -1,4 +1,4 @@
-### 1.1 Getting started
+### 2.1 Getting started
 
 We will again use the `penguins` tibble from the `palmerpenguins` package for this task.
 
@@ -20,7 +20,7 @@ The `performance` package depends on other packages. It might happen that you en
 
 **Note:** Finish all the tasks (1.2-1.4) first before you start with the extras.
 
-### 1.2 Linear regression
+### 2.2 Linear regression
 
 Let's start with a simple linear regression.
 
@@ -38,7 +38,7 @@ What do you think? Are the assumptions violated or do the plots look okay?
 
 - Can you add the regression line to the scatter plot?
 
-### 1.3 Analysis of covariance
+### 2.3 Analysis of covariance
 
 Does the relationship between bill length and bill depth differ between penguin species?
 
@@ -59,7 +59,7 @@ Does the relationship between bill length and bill depth differ between penguin 
 
 Which model would you choose? It the model results in the scatter plot from before.
 
-### 1.4 Anova
+### 2.4 Anova
 
 Do the weight of penguins depend on sex and species?
 
