@@ -931,7 +931,7 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
   
 ]
 
-.pull-left[
+.pull-right[
 ```{r echo=FALSE}
 ggplot(msleep, aes(x = vore, y = bodywt)) +
   geom_boxplot() +
@@ -941,7 +941,7 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
 ]
 
 ---
-# `aes(fill)` and `scale_fill_brewer()`
+# `aes(fill)` and `scale_fill_*()`
 
 Pay attention to fill vs. color aesthetic
 
@@ -952,23 +952,21 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
     aes(fill = vore) #<<
   ) + 
   scale_y_log10() +
-  scale_fill_brewer( #<<
-    palette = "Set1", #<<
-    na.value = "gray", #<<
+ ggthemes::scale_fill_tableau(  #<<
+    na.value = "gray",#<<
     guide = "none") #<<
 ```
   
 ]
 
-.pull-left[
+.pull-right[
 ```{r echo=FALSE}
 ggplot(msleep, aes(x = vore, y = bodywt)) +
   geom_boxplot(
     aes(fill = vore) 
   ) + 
   scale_y_log10() +
-  scale_fill_brewer( 
-    palette = "Set1", 
+  ggthemes::scale_fill_tableau( 
     na.value = "gray",
     guide = "none") +
   theme_minimal(base_size = 16)
@@ -976,7 +974,7 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
 ]
 
 ---
-# `aes(color)`and `scale_color_brewer()`
+# `aes(color)`and `scale_color_*()`
 
 Pay attention to fill vs. color aesthetic
 
@@ -987,31 +985,38 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
     aes(color = vore) #<<
   ) + 
   scale_y_log10() +
-  scale_color_brewer( #<<
-    palette = "Set1", #<<
-    na.value = "gray", #<<
-    guide = "none")  #<<
+  ggthemes::scale_color_tableau(  #<<
+    na.value = "gray",#<<
+    guide = "none") #<<
 ```
   
+- `color` means the border color or the color of points and lines
+- `fill` means the fill color of boxes, bars, ...
 ]
 
-.pull-left[
+.pull-right[
 ```{r echo=FALSE}
 ggplot(msleep, aes(x = vore, y = bodywt)) +
   geom_boxplot(
     aes(color = vore)
   ) + 
   scale_y_log10() +
-  scale_color_brewer( 
-    palette = "Set1",
-    na.value = "gray",
-    guide = "none") +
+ ggthemes::scale_color_tableau(  #<<
+    na.value = "gray",#<<
+    guide = "none")+
   theme_minimal(base_size = 16)
 ```
 ]
 
+<!-- --- -->
+<!-- class: inverse, center, middle -->
+
+<!-- # .large[More geoms] -->
+
+<!-- ## Some more plot types you can create with ggplot for your reference -->
+
 ---
-# `geom_histogram()`
+# Histograms: `geom_histogram()`
 
 Basic histogram of total sleep time:
 
@@ -1025,7 +1030,7 @@ ggplot(msleep, aes(x=sleep_total)) +
   
 ]
 
-.pull-left[
+.pull-right[
 ```{r echo=FALSE}
 ggplot(msleep, aes(x=sleep_total)) +
   geom_histogram() + #<<
@@ -1065,7 +1070,7 @@ ggplot(msleep,
   scale_y_log10()
 ```
 
-```{r echo=FALSE, out.height=320}
+```{r echo=FALSE, out.width="65%", fig.align='center'}
 ggplot(msleep, aes(x = category, y = bodywt)) +
   geom_boxplot() + scale_y_log10()
 ```
@@ -1081,7 +1086,7 @@ ggplot(msleep,
   geom_point() +  scale_x_log10()
 ```
 
-```{r echo=FALSE, out.height=320}
+```{r echo=FALSE, out.width="65%", fig.align='center'}
 ggplot(msleep,aes(x = brainwt, 
            y = sleep_total, color = category)) +
   geom_point() +
@@ -1112,7 +1117,7 @@ ggplot(msleep,
   scale_y_log10()
 ```
 
-```{r echo=FALSE, out.height=320}
+```{r echo=FALSE, out.width="65%", fig.align='center'}
 ggplot(msleep, aes(x = factor(category), y = bodywt)) +
   geom_boxplot() + scale_y_log10()
 ```
@@ -1128,7 +1133,7 @@ ggplot(msleep,
   geom_point() + scale_x_log10()
 ```
 
-```{r echo=FALSE, out.height=320}
+```{r echo=FALSE, out.width="65%", fig.align='center'}
 ggplot(msleep,aes(x = brainwt, 
            y = sleep_total, color = factor(category))) +
   geom_point() +

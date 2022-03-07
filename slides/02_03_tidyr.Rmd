@@ -148,19 +148,19 @@ print(cities_untidy, width = 90)
 **What's not tidy here?**
 --
 <br>
-- each row has multiple observation
+- Each row has multiple observation
 
 --
 
-- at the same time, each observation is split across multiple rows
+- At the same time, each observation is split across multiple rows
 
 --
 
-- country and city variable are split into multiple columns
+- Country and city variable are split into multiple columns
 
 --
 
-- country and city variable values are united to one value
+- Country and city variable values are united to one value
 
 --
 
@@ -270,9 +270,14 @@ We can also use a pipe to do all these steps in one:
 
 ```{r}
 cities_tidy <- cities_untidy %>%
-  pivot_longer(Turkey_Istanbul:France_Paris, names_to = "location", values_to = "values") %>%
-  separate(location, sep = "_", into = c("country", "city")) %>%
-  pivot_wider(names_from = type, values_from = values)
+  pivot_longer(Turkey_Istanbul:France_Paris,
+               names_to = "location", 
+               values_to = "values") %>%
+  separate(location, 
+           sep = "_", 
+           into = c("country", "city")) %>%
+  pivot_wider(names_from = type, 
+              values_from = values)
 ```
 
 ---
