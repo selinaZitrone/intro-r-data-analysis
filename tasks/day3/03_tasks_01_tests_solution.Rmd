@@ -4,7 +4,8 @@ First, create subsets of the flipper length of all species as vectors:
 
 ```{r echo=TRUE}
 library(palmerpenguins)
-adelie <- filter(penguins, species == "Adelie")$flipper_length_m
+library(tidyverse)
+adelie <- filter(penguins, species == "Adelie")$flipper_length_mm
 gentoo <- filter(penguins, species == "Gentoo")$flipper_length_mm
 chinstrap <- filter(penguins, species == "Chinstrap")$flipper_length_mm
 ```
@@ -38,13 +39,13 @@ c + g + a
 Both are normally distributed, so we can compare variances for Chinstrap and Adelie penguins:
 
 ```{r, echo=TRUE}
-var.test(Chinstrap, Adelie)
+var.test(chinstrap, adelie)
 ```
 
 This indicates that the variances do not differ between Chinstrap and Adelie penguins.
 Therefore, we can use a t-test to compare mean flipper length:
 
-```{r}
+```{r echo=TRUE}
 t.test(chinstrap, adelie)
 ```
 

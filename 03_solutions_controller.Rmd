@@ -6,12 +6,9 @@ output:
     toc_float: true
     number_sections: true
 params:
-  showDownload: TRUE
-  includeSolution0: TRUE
-  includeSolution1: TRUE
-  includeSolution2: FALSE
-  includeSolution3: FALSE
-  includeSolution4: FALSE
+  showDownload: FALSE
+  includeSolution0: FALSE
+  includeSolution1: FALSE
 ---
 
 
@@ -38,28 +35,4 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r lm_empty, echo=FALSE,child= if (!params$includeSolution1) "tasks/day3/03_tasks_02_lm_solution_empty.Rmd"}
-```
-
-## 3 Linear models transformation
-
-```{r lm_trans, echo=FALSE,child=if (params$includeSolution2) "tasks/day3/03_tasks_03_lm_trans_solution.Rmd"}
-```
-
-```{r lm_trans_empty,child=if (!params$includeSolution2) "tasks/day3/03_tasks_03_lm_trans_solution_empty.Rmd"}
-```
-
-## 4 Poisson and binary glm
-
-```{r glm,child=if (params$includeSolution3) "./tasks/day3/03_tasks_04_glm_solution.Rmd"}
-```
-
-```{r glm_empty,child=if (!params$includeSolution3) "./tasks/day3/03_tasks_04_glm_solution_empty.Rmd"}
-```
-
-## 5 Proportion glm
-
-```{r glm_prop,child=if (params$includeSolution4) "./tasks/day3/03_tasks_05_glm_prop_solution.Rmd"}
-```
-
-```{r glm_prop_empty,child=if (!params$includeSolution4) "./tasks/day3/03_tasks_05_glm_prop_solution_empty.Rmd"}
 ```

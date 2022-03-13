@@ -3,72 +3,55 @@ library(palmerpenguins)
 library(performance)
 # Statistical tests -------------------------------------------------------
 
-### 1.1 Getting the data
+# subset for 3 species flipper length
 
-treeheights <- readr::read_csv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/treeheight.csv")
+adelie <- filter(penguins, species == "Adelie") %>% pull(flipper_length_mm)
+chinstrap <- filter(penguins, species == "Chinstrap") %>% pull(flipper_length_mm)
+gentoo <- filter(penguins, species == "Gentoo") %>% pull(flipper_length_mm)
 
-unique(treeheights$region)
+# Step 1: test for normality
 
-### 1.2 Comparing the regions using statistical tests
-# creating the subsets
-forest1 <- filter(treeheights, region == "forest1")$height
-forest2 <- filter(treeheights, region == "forest2")$height
-forest3 <- filter(treeheights, region == "forest3")$height
+# Visual test using QQ-Plots
 
-# other option using pivot_wider
-# But pivot wider has a problem with duplicate rows
-# so this does not work well
-treeheights %>%
-  pivot_wider(
-    names_from = region,
-    values_from = height
-  )
+# use patchwork package to combine the three plots into one
+library(patchwork)
+a <- ggpubr::ggqqplot(adelie) + labs(title = "adelie")
+c <- ggpubr::ggqqplot(chinstrap) + labs(title = "chinstrap")
+g <- ggpubr::ggqqplot(gentoo) + labs(title = "gentoo")
 
-# This works: Add a row number to uniquely identify each row
-# Then pivot_wider and then remove the row number column
-treeheights %>%
-  group_by(region) %>%
-  mutate(row = row_number()) %>%
-  pivot_wider(names_from = region,
-              values_from = height) %>%
-  select(-row)
+a + c + g
 
-#### Step 1: Test all groups for normality
+# Other option
+penguins %>%
+  ggplot(aes(sample = flipper_length_mm, color = species))+
+  stat_qq()+
+  stat_qq_line()
 
-# **With KS-Test**
+# Test normality with Shapiro-Wilk test
 
-ks.test(forest1, "pnorm", mean = mean(forest1), sd = sd(forest1)) # normal
-ks.test(forest2, "pnorm", mean = mean(forest2), sd = sd(forest2)) # normal
-ks.test(forest3, "pnorm", mean = mean(forest3), sd = sd(forest3)) # normal
+shapiro.test(adelie) # normal
+shapiro.test(chinstrap) # normal
+shapiro.test(gentoo) # not normal
 
-# **With Shapiro-Wilk**
+# Comparison Chinstrap vs. Adelie
+# both normal so test for equal variance
+var.test(chinstrap, adelie) # variances do not differ
+# t-test to test for equal means
+t.test(chinstrap, adelie) # means differ
 
-shapiro.test(forest1) # normal
-shapiro.test(forest2) # not normal
-shapiro.test(forest3) # normal
+# Comparison Chinstrap vs. Gentoo
+# Gentoo not normal: use Wilcoxon-rank-sum test to compare means
+wilcox.test(chinstrap, gentoo) # means differ
 
-# **With QQ-plots**
+# Comparison Gentoo- Adelie
+# Gentoo not normal: use Wilcoxon-rank-sum test to compare means
+wilcox.test(gentoo, adelie) # means differ
 
-ggplot(treeheights, aes(sample = height)) +
-  stat_qq() +
-  stat_qq_line() +
-  facet_wrap(~region)
 
-# compare variances for forest 1 and forest 3:
-
-var.test(forest1, forest3) # not equal
-
-# compare means
-
-# forest 2 is not normally distributed -> go directly to Wilcoxon
-wilcox.test(forest1, forest2) # means differ
-wilcox.test(forest2, forest3) # means don't differ
-t.test(forest1, forest3, var.equal = FALSE) # means differ
-
-ggplot(treeheights, aes(x = region, y = height)) +
-  geom_boxplot(notch = TRUE) +
-  geom_point(alpha = 0.5)
-
+# Compare flipper lengths of penguins visually using a boxplot
+penguins %>%
+  ggplot(aes(x = species, y = flipper_length_mm)) +
+  geom_boxplot(notch = TRUE)
 
 # Linear models -----------------------------------------------------------
 library(tidyverse)
@@ -128,7 +111,7 @@ g2
 # fit model
 # Without interaction
 lm2a <- lm(bill_depth_mm ~ bill_length_mm + species, data = penguins)
-# Without interaction
+# With interaction
 lm2b <- lm(bill_depth_mm ~ bill_length_mm * species, data = penguins)
 lm2b <- lm(bill_depth_mm ~ bill_length_mm +
              species + bill_length_mm:species, data = penguins)
@@ -192,6 +175,10 @@ drop1(lm3, test = "F") # significant interaction
 # check assumptions
 check_model(lm3) # looks good
 
+# Post-hoc TukeyHSD
+TukeyHSD(aov(lm3))
+plot(TukeyHSD(aov(lm3)))
+
 #### Extra
 
 penguins_sex %>%
@@ -232,10 +219,10 @@ ggplot(summary, aes(x = species, y = mean, color = sex)) +
 
 
 ggplot(summary, aes(x = species, y = mean, fill = sex)) +
-  geom_col(position = position_dodge(0.8)) +
+  geom_col(position = position_dodge(1)) +
   geom_errorbar(
     aes(ymin = mean - sd, ymax = mean + sd),
-    position = position_dodge(0.8),
+    position = position_dodge(1),
     width = 0.2
   ) +
   scale_fill_manual(values = c("#00AFBB", "#E7B800")) +

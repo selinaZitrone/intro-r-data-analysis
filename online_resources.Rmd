@@ -17,7 +17,7 @@ output:
 
 - [The modern dive book](https://moderndive.com/1-getting-started.html#code) explains how to get started with R and data analysis with the tidyverse.
 
-- The [R for Data Science book](https://r4ds.had.co.nz/index.html) by Hadley Wickham is a very good book to start with.
+- The [R for Data Science book](https://r4ds.had.co.nz/index.html) by Hadley Wickham is a very good book to start with. It is specifically about data analysis using the tidyverse packages.
 
 - The [Big book of R](https://www.bigbookofr.com/) is a book that list all books about R that are freely available only. The book is sorted by topics and can be used to find resources to learn a specific topic.
 
@@ -61,7 +61,7 @@ output:
 ## Twitter accounts to follow
 
 I personally learn a lot of tricks and find a lot of inspiration and resources by following some R people and accounts on twitter. Often people post helpful tutorials or blogpost that you would not find otherwise. If you are a twitter user, you can try that as well.
-Some suggestions are:
+Some suggestions that are in no way complete are:
 
 - [Cédric Scherer](https://twitter.com/CedScherer) mainly data visualization and ggplot content
 - [Allison Horst](https://twitter.com/allison_horst)
@@ -70,6 +70,7 @@ Some suggestions are:
 - [Jenny Bryan](https://twitter.com/JennyBryan)
 - [rOpenSci](https://twitter.com/rOpenSci) develop R tools for open science
 - [One R Tip a Day](https://twitter.com/RLangTip) one helpful R tip every day
+- [R posts you might have missed](https://twitter.com/icymi_r) repost R blog posts from different topics
 
 
 

@@ -38,7 +38,7 @@ library(fontawesome)
 
 .pull-left[
 
-- Ccientific modeller with ecology background
+- Scientific modeller with ecology background
 
 - Working in the [theoretical ecology group](https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/botanik/ag_tietjen/index.html) at Freie Universität
 

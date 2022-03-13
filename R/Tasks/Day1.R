@@ -200,10 +200,10 @@ animals[nrow(animals), ncol(animals)]
 mean_wt <- mean(animals$bodywt_kg)
 mean_wt
 
-# add category
-animals$bodywt_cat <- ifelse(animals$bodywt_kg > mean_wt,
-                             "heavy",
-                             "light")
+# add new column
+animals$ratio_body_brain <- animals$bodywt_kg / animals$brainwt_kg
+animals
+
 
 # 4. Readr ----------------------------------------------------------------
 

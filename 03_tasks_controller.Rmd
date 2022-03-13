@@ -22,19 +22,3 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```{r create_rstudio_project, child="tasks/day3/03_tasks_02_lm.Rmd"}
 ```
-
-## 3 Linear models with transformation
-
-```{r vectors, child="tasks/day3/03_tasks_03_lm_trans.Rmd"}
-```
-
-## 4 Poisson and binary glm
-
-```{r tibbles, child="./tasks/day3/03_tasks_04_glm.Rmd"}
-```
-
-
-## 5 Proportion glm
-
-```{r tibbles, child="./tasks/day3/03_tasks_05_glm_prop.Rmd"}
-```
