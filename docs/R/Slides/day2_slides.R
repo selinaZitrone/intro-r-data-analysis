@@ -150,8 +150,7 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
     aes(fill = vore)
   ) +
   scale_y_log10() +
-  scale_fill_brewer(
-    palette = "Set1",
+  ggthemes::scale_fill_tableau(
     na.value = "gray",
     guide = "none")
 
@@ -160,18 +159,18 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
     aes(color = vore)
   ) +
   scale_y_log10() +
-  scale_color_brewer(
-    palette = "Set1",
+  ggthemes::scale_color_tableau(
     na.value = "gray",
     guide = "none")
 
-
 # Histogram ---------------------------------------------------------------
 
-ggplot(msleep, aes(x=sleep_total)) +
+ggplot(msleep, aes(x = sleep_total)) +
   geom_histogram() + #<<
-  labs(x = "Total sleep time [h]",
-       y = "Frequency")
+  labs(
+    x = "Total sleep time [h]",
+    y = "Frequency"
+  )
 
 
 # saving plots ------------------------------------------------------------

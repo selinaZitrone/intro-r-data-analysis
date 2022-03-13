@@ -143,15 +143,12 @@ cities_untidy
 
 ```
 ## # A tibble: 2 x 11
-##   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Petersb~`
-##   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                   &lt;dbl&gt;
-## 1 population        15100000      12500000   9000000                 5400000
-## 2 area_km2              2576          2561      1572                    1439
-##   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest
-##            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;
-## 1        3800000      3200000      3000000    2800000           2200000
-## 2            891          604          839       1285               228
-## # ... with 1 more variable: France_Paris &lt;dbl&gt;
+##   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Peters~` Germany_Berlin
+##   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                  &lt;dbl&gt;          &lt;dbl&gt;
+## 1 population        15100000      12500000   9000000                5400000        3800000
+## 2 area_km2              2576          2561      1572                   1439            891
+## # ... with 5 more variables: Spain_Madrid &lt;dbl&gt;, Ukraine_Kyiv &lt;dbl&gt;, Italy_Rome &lt;dbl&gt;,
+## #   Romania_Bucharest &lt;dbl&gt;, France_Paris &lt;dbl&gt;
 ```
 
 **What's not tidy here?**
@@ -183,15 +180,12 @@ Let's tidy this data using functions from the `tidyr` package!
 
 ```
 ## # A tibble: 2 x 11
-##   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Petersb~`
-##   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                   &lt;dbl&gt;
-## 1 population        15100000      12500000   9000000                 5400000
-## 2 area_km2              2576          2561      1572                    1439
-##   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest
-##            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;
-## 1        3800000      3200000      3000000    2800000           2200000
-## 2            891          604          839       1285               228
-## # ... with 1 more variable: France_Paris &lt;dbl&gt;
+##   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Peters~` Germany_Berlin
+##   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                  &lt;dbl&gt;          &lt;dbl&gt;
+## 1 population        15100000      12500000   9000000                5400000        3800000
+## 2 area_km2              2576          2561      1572                   1439            891
+## # ... with 5 more variables: Spain_Madrid &lt;dbl&gt;, Ukraine_Kyiv &lt;dbl&gt;, Italy_Rome &lt;dbl&gt;,
+## #   Romania_Bucharest &lt;dbl&gt;, France_Paris &lt;dbl&gt;
 ```
 
 --
