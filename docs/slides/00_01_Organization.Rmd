@@ -38,9 +38,9 @@ library(fontawesome)
 
 .pull-left[
 
-- scientific modeller with ecology background
+- Ccientific modeller with ecology background
 
-- working in the [theoretical ecology group](https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/botanik/ag_tietjen/index.html) at Freie Universität
+- Working in the [theoretical ecology group](https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/botanik/ag_tietjen/index.html) at Freie Universität
 
 - PhD student at Freie Universität Berlin 
   - Topic: Modelling the impact of biological soil crusts on dryland hydrology
@@ -68,14 +68,14 @@ library(fontawesome)
 
 - Long answer:
 
-  - modelling biocrusts
-  - **cleaning data**
-  - **visualizing data**
-  - writing documents 
-  - presentations
-  - **performing statistical analyses**
-  - **wrangling data**
-  - workflow automation
+  - **Cleaning data**
+  - **Visualizing data**
+  - **Wrangling data**
+  - **Performing statistical analyses**
+  - Modelling biocrusts
+  - Writing documents 
+  - Presentations
+  - Workflow automation
   - ...
   
 ---
@@ -88,7 +88,6 @@ library(fontawesome)
 
 .center[![](img/day1/workshop_topics.png)]
 
---
 
 <b>.col2[Day 1: Introduction to R and RStudio and data import]</b>
 
@@ -110,24 +109,24 @@ library(fontawesome)
 
 #### Organization
 
-- **input sessions**
-  - presentation and demonstration of a topic
-  - some examples
+- **Input sessions**
+  - Presentation and demonstration of a topic
+  - Some examples
   
-- **tasks** regarding this topic
-  - solve them in small groups
+- **Tasks** regarding this topic
+  - Solve them in small groups
   
-- **joint discussion** of tasks and additional questions
+- **Joint discussion** of tasks and additional questions
 
 ---
 # The Workshop: Material
 
 - All material can be found on the [workshop's website](https://selinazitrone.github.io/intro-r-data-analysis/)
 
-  - presentations
-  - tasks
-  - solutions
-  - additional resources
+  - Presentations
+  - Tasks
+  - Solutions
+  - Additional resources
   
 --
 
@@ -136,61 +135,29 @@ library(fontawesome)
 ---
 # Bring your own data
 
+On the last workshop day, you can work with your own research data.
+I will also provide some real life data sets from different topics. 
+
 --
 
 #### Learning by doing
 
-- work on your own research data in small groups (or alone if you prefer)
-    - I will also provide some real life data sets from different topics
-    
-- use any of the methods from the course or try new things, ...
+- Get started on using R for your analyses
 
-- present and discuss your results at the end of the day
+- Use any of the methods from the course or try new things, ...
+
+- Present/discuss your results, questions and problems at the end of the day
 
 ---
 # Bring your own data - preparation
 
-- keep the last workshop day in mind during the next days
+- Keep the last workshop day in mind during the next days
 
-  - remember if you learn something that might be applicable to your data
+  - Remember if you learn something that might be applicable to your data
   
-  - think of questions that you would like to answer for your data set
+  - Think of questions that you would like to answer for your data set
   
---
-
-- during the group work
-
-  - if there is time after the tasks: talk about your data, research questions and methods <br>
-  
-  `r fa("arrow-right")` you might already find common interests and questions
-  
----
-# Bring your own data - preparation
-
-If you want to **propose a group project** using your data set:
-
-- Add a description of the project idea to the [joint document](https://hackmd.io/@selinaZitrone/rJZe9qMgK/edit)
-- Prepare your data set to work seamlessly with R
-  - We will learn about that today
-- If you want: Send the data set to me beforehand then I can make sure that it's easy to get started with
-
---
-
-If you want to **work alone** on your data set
-
 - Add your name and the methods that you would like to use to the [joint document](https://hackmd.io/@selinaZitrone/rJZe9qMgK/edit)
-
---
-
-If you want to **join a group** project
-
-- go through the proposals and add your name next to it
-
---
-
-If you want to work on a **data set provided by me**
-
-- add your name to the respective section
 
 ---
 # Before we get started I
@@ -199,12 +166,16 @@ Any feedback and questions are very welcome.
 
 I am curious to know
 
-- what you liked/disliked
-- which topics or methods you missed
-- which tasks were too easy/too difficult or just right
+- What you liked/disliked
+- Which topics or methods you missed
+- Which tasks were too easy/too difficult or just right
 - ...
 
-Add any feedback to the feedback section of the [joint document]([joint document](https://hackmd.io/@selinaZitrone/rJZe9qMgK/edit) whenever something comes to your mind.
+You can give feedback by
+
+- Telling me
+- Adding it to the feedback section of the [joint document]([joint document](https://hackmd.io/@selinaZitrone/rJZe9qMgK/edit)
+- Remember it until the end of the workshop and put in in the evaluation
 
 ---
 # Before we get started II
@@ -220,19 +191,13 @@ Add any feedback to the feedback section of the [joint document]([joint document
 ---
 # Before we get started III
 
-**Get familiar with our Webex team for the group work** (5 mins):
+**How to use Webex teams**
 
-- Go to your group
+- Different groups for the tasks later
 
-- Start a meeting in your group
+- Use the chat in the groups for questions 
 
-- Try out the chat
-
-- Make sure that it works for everyone in your group
-
-- Keep an eye on the general chat and come back to the General meeting when I send the message to come back
-
---
+- Meet in your groups and solve the tasks jointly (if you want)
 
 - If you want: Change the name of your Webex profile to a name you would like to be called
   - Click on your name in the top left corner, go to `Edit Profile` and change your display name

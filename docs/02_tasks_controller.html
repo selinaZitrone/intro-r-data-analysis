@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>Introduction to R for Data Analysis: Tasks for day 2</title>
@@ -452,7 +453,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </style>
 
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -1859,7 +1860,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -2340,7 +2344,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2384,14 +2388,13 @@ Slides
 <a href="slides/01_03_Functions.html">01 - Functions</a>
 <a href="slides/01_04_tibbles_short.html">01 - Data &amp; Tibbles</a>
 <a href="slides/01_05_readr.html">01 - Tidyverse and Readr</a>
-<a href="slides/01_06_common_errors.html">01 - Common errors</a>
 <a href="slides/02_01_tidyverse_ggplot.html">02 - Ggplot2</a>
 <a href="slides/02_02_dplyr.html">02 - Dplyr</a>
 <a href="slides/02_03_tidyr.html">02 - Tidyr</a>
 <a href="slides/03_01_tests_short.html">03 - Statistical tests</a>
 <a href="slides/03_02_linear_models.html">03 - Linear models</a>
-<a href="slides/03_03_glm.html">03 - Generalized linear models</a>
 <a href="slides/04_01_bring_your_own_data.html">04 - Bring your own data</a>
+<a href="slides/01_06_common_errors.html">Common R errors</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2469,12 +2472,12 @@ Solutions
 </div>
 <h2 id="ggplot2">1 ggplot2</h2>
 <h3 id="getting-started">1.1 Getting started</h3>
-<p>A helpful resource for to consult for this task can be the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf">ggplot2 cheatsheet</a>.</p>
+<p>A helpful resource to consult for this task can be the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf">ggplot2 cheatsheet</a>.</p>
 <p>Remember to put <code>library(tidyverse)</code> (or <code>library(ggplot2)</code>) on top of your script to access the ggplot functions.</p>
 <h3 id="getting-the-data">1.2 Getting the data</h3>
 <p>To practice plotting with the <code>ggplot2</code> package, we will use a data set on 3 species of penguins on islands in Antarctica.</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:unnamed-chunk-1"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
 <img src="tasks/day2/img/lter_penguins.png" alt="Artwork by [Allison Horst](https://twitter.com/allison_horst)" width="900" />
 <p class="caption">
 Figure 1: Artwork by <a href="https://twitter.com/allison_horst">Allison Horst</a>
@@ -2518,9 +2521,9 @@ Figure 1: Artwork by <a href="https://twitter.com/allison_horst">Allison Horst</
 <li>Create a boxplot with body mass on the y axis and sex on the x axis</li>
 <li>Add the difference between penguin species to this plot. Try the different options ggplot offers
 <ul>
-<li>species as color aesthetic</li>
-<li>species as fill aesthetic</li>
-<li>species as facet using <code>facet_wrap</code></li>
+<li>Species as color aesthetic</li>
+<li>Species as fill aesthetic</li>
+<li>Species as facet using <code>facet_wrap</code></li>
 </ul></li>
 <li><strong>Extra:</strong> What happens if you use <code>geom_violin</code> instead of <code>geom_boxplot</code>? Can you combine both geoms in one plot?</li>
 </ul>
@@ -2551,7 +2554,7 @@ Figure 1: Artwork by <a href="https://twitter.com/allison_horst">Allison Horst</
 <h4 id="can-you-reproduce-this-plot">1.4.2 Can you reproduce this plot?</h4>
 <p>Take a look at the plot, we discussed during the presentation:</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:unnamed-chunk-2"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
 <img src="slides/img/figs-penguin/README-flipper-bill-1.png" alt="Visualization from the [palmerpenguins package](https://allisonhorst.github.io/palmerpenguins/)" width="672" />
 <p class="caption">
 Figure 2: Visualization from the <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins package</a>

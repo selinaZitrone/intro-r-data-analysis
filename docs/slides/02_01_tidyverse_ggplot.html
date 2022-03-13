@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Selina Baldauf" />
     <meta name="date" content="2021-08-01" />
-    <script src="02_01_tidyverse_ggplot_files/header-attrs-2.9/header-attrs.js"></script>
+    <script src="02_01_tidyverse_ggplot_files/header-attrs-2.11/header-attrs.js"></script>
     <link href="02_01_tidyverse_ggplot_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
   </head>
@@ -30,17 +30,8 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2021-09-07)
+  2021-08-01 (updated: 2022-03-13)
 ]
-
----
-# ggplot2
-
-- ggplot2 was developed by Hadley Wickham in 2005
-
-- most popular package for building graphics in R
-
-- one of the most downloaded packages from CRAN
 
 ---
 class: center, middle
@@ -82,7 +73,7 @@ class: center, middle
 background-image: url("https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_05/2020_05_TreesSF.png")
 background-size: 50%
 
-.footnote-right[Visualizations by [Cédric Scherer](https://twitter.com/CedScherer), code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_05_TreesSF.Rmd)]
+.footnote-right[Visualization by [Cédric Scherer](https://twitter.com/CedScherer), code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_05_TreesSF.Rmd)]
 
 ---
 class: center, middle
@@ -94,19 +85,19 @@ background-size: contain
 ---
 # Advantages of ggplot
 
-- consistent grammar/structure
+- **Consistent** grammar/structure
 
 --
 
-- flexible structure allows you to produce any type of plot
+- **Flexible** structure allows you to produce any type of plots
 
 --
 
-- highly customizable appearance (themes)
+- Highly **customizable appearance** (themes)
 
 --
 
-- many extension packages that provide 
+- Many **extension packages** that provide 
   - Additional plot types
 	- Additional themes
 	- Color palettes
@@ -130,35 +121,9 @@ background-size: contain
 
 --
 
-- coherent system for describing and building graphs
+- Coherent system for describing and building graphs
 
-- basic idea: stack distinct **layers of graphical elements** to create a plot
-
----
-# Layers of a ggplot
-&lt;br&gt;
-&lt;table&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Layer&lt;/th&gt;
-    &lt;th&gt;Function&lt;/th&gt;
-    &lt;th&gt;Details&lt;/th&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;&lt;b&gt;Data&lt;/b&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;code&gt;ggplot(data)&lt;/code&gt;&lt;/td&gt;
-    &lt;td&gt;The data that you want to plot.&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;&lt;b&gt;Mapping&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;code&gt;aes()&lt;/code&gt;&lt;/td&gt;
-    &lt;td&gt;Aesthetic mappings of the geometric and statistical objects.&lt;/td&gt;
-  &lt;tr&gt;
-    &lt;td&gt;&lt;b&gt;Geometries&lt;/b&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;code&gt;geom_*()&lt;/code&gt;&lt;/td&gt;
-    &lt;td&gt;Graphical representation of aesthetics as point, line, polygon, ...&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;
-
+- Basic idea: stack distinct **layers of graphical elements** to create a plot
 
 ---
 # Layers of a ggplot
@@ -266,8 +231,8 @@ ggplot(data = msleep,
 *        y = sleep_total))
 ```
 
-- map variable `brainwt` to x-axis and `sleep_total` to y-axis
-- default scales are automatically adapted to range of data
+- Map variable `brainwt` to x-axis and `sleep_total` to y-axis
+- Default scales are automatically adapted to range of data
 ]
 
 .pull-right[
@@ -332,8 +297,8 @@ ggplot(data = msleep,
 * geom_point()
 ```
 
-- new plot layers are added with `+`
-- warning that 27 points can not be plotted due to missing values
+- New plot layers are added with `+`
+- Warning that 27 points can not be plotted due to missing values
 - `data` and `aes` defined in `ggplot` call are inherited to all plot layers
 ]
 
@@ -359,8 +324,8 @@ ggplot(data = msleep,
   geom_point()
 ```
 
-- new plot layers are added with `+`
-- warning that 27 points can not be plotted due to missing values
+- New plot layers are added with `+`
+- Warning that 27 points can not be plotted due to missing values
 - `data` and `aes` defined in `ggplot` call are inherited to all plot layers
 - `data` and `aes` can be local to a layer:
 
@@ -400,7 +365,7 @@ ggplot(data = msleep,
 * scale_x_log10()
 ```
 
-- scales can be changed for all elements of `aes`
+- Scales can be changed for all elements of `aes`
 
 ]
 
@@ -424,8 +389,8 @@ ggplot(data = msleep,
 * scale_x_log10()
 ```
 
-- scales can be changed for all elements of `aes`
-- the general format of scale functions are:
+- Scales can be changed for all elements of `aes`
+- The general format of scale functions are:
 
 &lt;b&gt;scale\_.col1[aes-name]\_.col2[scale-type]&lt;/b&gt;
 
@@ -455,9 +420,9 @@ ggplot(data = msleep,
   scale_x_log10()
 ```
 
-- with `method = "lm"`, a linear regression line is added
-- the ribbon represents confidence interval around the regression
-  - turn ribbon off with `se = FALSE` argument
+- With `method = "lm"`, a linear regression line is added
+- The ribbon represents confidence interval around the regression
+  - Turn ribbon off with `se = FALSE` argument
 ]
 
 .pull-right[
@@ -481,7 +446,7 @@ ggplot(data = msleep,
 *            color = "blue") +
   scale_x_log10() 
 ```
-- have a look [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) for the point shape codes
+- Have a look [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) for the point shape codes
 
 ]
 
@@ -513,8 +478,8 @@ g &lt;- ggplot(
 g
 ```
 
-- map the `vore` variable to the color aesthetic of the plot
-- plots can be saved in variables
+- Map the `vore` variable to the color aesthetic of the plot
+- Plots can be saved in variables
 ]
 
 .pull-right[
@@ -593,8 +558,8 @@ g +
 * scale_color_viridis_d(option = "inferno")
 ```
 
-- the viridis color palette is designed for viewers with common forms of color blindness
-- different options of viridis color palettes are are:
+- The viridis color palette is designed for viewers with common forms of color blindness
+- Different options of viridis color palettes are are:
   - `"magma"`, `"inferno"`, `"plasma"`, `"viridis"`, `"cividis"`
 
 ]
@@ -620,8 +585,8 @@ g +
 *   na.value = "grey")
 ```
 
-- whether or not you have to do this, depends on the default of the `na.value` argument of the color scale that you use
-- you can also remove missing values from your data set before plotting (we will learn that later)
+- Whether or not you have to do this, depends on the default of the `na.value` argument of the color scale that you use
+- You can also remove missing values from your data set before plotting (we will learn that later)
 
 ]
 
@@ -648,10 +613,10 @@ g &lt;- g +
 g
 ```
 
-- length of color vector has to match number of levels in your aesthetic
-- specify colors 
-  - via their name (see [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) for all color names)
-  - via their Hex color codes
+- Length of color vector has to match number of levels in your aesthetic
+- Specify colors 
+  - Via their name (see [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) for all color names)
+  - Via their Hex color codes
 
 ]
 
@@ -705,7 +670,7 @@ g +
 * facet_wrap(~conservation)
 ```
 
-- you can even split plots along two variables using `facet_grid()` instead of `facet_wrap()`
+- You can even split plots along two variables using `facet_grid()` instead of `facet_wrap()`
 - The basic functioning is `facet_grid(yvar ~ xvar)` 
   - `yvar` will be displayed as columns
   - `xvar` will be displayed as rows
@@ -866,6 +831,8 @@ You can also specify some defaults, e.g. the text size:
 theme_set(theme_minimal(base_size = 16))
 ```
 
+This is very practical if you want to achieve a consistent look, e.g. for a scientific journal.
+
 ---
 # `geom_boxplot()`
 
@@ -881,12 +848,12 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
   
 ]
 
-.pull-left[
+.pull-right[
 &lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-55-1.png" width="504" /&gt;
 ]
 
 ---
-# `aes(fill)` and `scale_fill_brewer()`
+# `aes(fill)` and `scale_fill_*()`
 
 Pay attention to fill vs. color aesthetic
 
@@ -898,20 +865,19 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
 *   aes(fill = vore)
   ) + 
   scale_y_log10() +
-* scale_fill_brewer(
-*   palette = "Set1",
+*ggthemes::scale_fill_tableau(
 *   na.value = "gray",
 *   guide = "none")
 ```
   
 ]
 
-.pull-left[
+.pull-right[
 &lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-57-1.png" width="504" /&gt;
 ]
 
 ---
-# `aes(color)`and `scale_color_brewer()`
+# `aes(color)`and `scale_color_*()`
 
 Pay attention to fill vs. color aesthetic
 
@@ -923,20 +889,28 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
 *   aes(color = vore)
   ) + 
   scale_y_log10() +
-* scale_color_brewer(
-*   palette = "Set1",
+* ggthemes::scale_color_tableau(
 *   na.value = "gray",
 *   guide = "none")
 ```
   
+- `color` means the border color or the color of points and lines
+- `fill` means the fill color of boxes, bars, ...
 ]
 
-.pull-left[
+.pull-right[
 &lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-59-1.png" width="504" /&gt;
 ]
 
+&lt;!-- --- --&gt;
+&lt;!-- class: inverse, center, middle --&gt;
+
+&lt;!-- # .large[More geoms] --&gt;
+
+&lt;!-- ## Some more plot types you can create with ggplot for your reference --&gt;
+
 ---
-# `geom_histogram()`
+# Histograms: `geom_histogram()`
 
 Basic histogram of total sleep time:
 
@@ -951,7 +925,7 @@ ggplot(msleep, aes(x=sleep_total)) +
   
 ]
 
-.pull-left[
+.pull-right[
 &lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-61-1.png" width="504" /&gt;
 ]
 
@@ -1000,7 +974,7 @@ ggplot(msleep,
   scale_y_log10()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-64-1.png" width="504" height="320" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-64-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1014,7 +988,7 @@ ggplot(msleep,
   geom_point() +  scale_x_log10()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-66-1.png" width="504" height="320" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-66-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1041,7 +1015,7 @@ ggplot(msleep,
   scale_y_log10()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-68-1.png" width="504" height="320" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-68-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1055,7 +1029,7 @@ ggplot(msleep,
   geom_point() + scale_x_log10()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-70-1.png" width="504" height="320" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-70-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ]
 

@@ -25,14 +25,14 @@ You can for example try
 
 Now let's try some indexing on the data.
 
-Try the following selections
+Select
 
-- rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
+- Rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
 - select rows 1 to 10, all columns
-- select the column `bodywt_kg` as a vector using `$`
+- select the column `bodywt_kg` as a vector
 
 #### Extra
 
-- select the last column of the last row without using the row and column index (so don't use any numbers in this command)
+- Select the last column of the last row without using the row and column index (so don't use any numbers in this command)
 - Calculate the mean of the `bodywt_kg` column and save it in a variable
 - Add a new column to the data called `ratio_body_brain` with the ratio of the columns `bodywt_kg` and `brainwt_kg`

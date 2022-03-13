@@ -55,15 +55,15 @@ We can use the tidyverse package `dplyr` for this.
 
 With `dplyr` we can (among other things)
 
-  - **filter** data to analyse only a part of it
+  - **Filter** data to analyse only a part of it
   
-  - **reorder** observations or variables 
+  - **Reorder** observations or variables 
   
-  - **create** new variables
+  - **Create** new variables
   
-  - **summarize** data
+  - **Summarize** data
   
-  - **rename** variables
+  - **Rename** variables
   
 --
   
@@ -108,11 +108,11 @@ Perform any of these operations by group with `group_by()`
 
 All of the `dplyr` functions work similarly: <br> 
 
-- **first argument** is the data (a tibble)
+- **First argument** is the data (a tibble)
 
-- **other arguments** specify what to do exactly
+- **Other arguments** specify what to do exactly
 
-- **return** a tibble
+- **Return** a tibble
 
 ---
 # Example data
@@ -448,23 +448,16 @@ mutate(soybean_use,
 ---
 # `mutate()` + `case_when()`
 
-Instead of `ifelse`, we can also use `case_when`
-
-.center[![:scale 70%](img/AllisonHorst/dplyr_case_when.png)]
-
-.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
-
----
-# `mutate()` + `case_when()`
+Use `case_when` to add column values conditional on other columns.
 
 `case_when()` can combine many cases into one.
 
 ```{r eval=FALSE}
 mutate(soybean_use,
   legislation = case_when(
-    year < 2000 & year >= 1980 ~ "legislation_1",
-    year >= 2000 ~ "legislation_2",
-    TRUE ~ "no_legislation"
+    year < 2000 & year >= 1980 ~ "legislation_1",    # case 1
+    year >= 2000 ~ "legislation_2",                  # case 2
+    TRUE ~ "no_legislation"                          # any other cases
   )
 )
 ```

@@ -41,11 +41,11 @@ Functions make multiple operations available under one command.
 
 .pull-left[
 #### Functions in R:
-- have a **name**
-- have (0, 1, or any number of) **arguments as input**
-- they calculate something using the arguments
-- they have a **return value** (the output)
-- can have **side effects** (like plotting)
+- Have a **name**
+- Have (0, 1, or any number of) **arguments as input**
+- They calculate something using the arguments
+- They have a **return value** (the output)
+- Can have **side effects** (like plotting)
 ]
 
 .pull-right[
@@ -79,8 +79,8 @@ mean(x = c(1,5,6)) # or short: mean(c(1,5,6))
 
 --
 
-- arguments can also be variables
-- the output of a function can be stored in a variable
+- Arguments can also be variables
+- The output of a function can be stored in a variable
 
 ```{r}
 values <- c(1,5,6)
@@ -98,7 +98,7 @@ But what does the mean function do? What are the arguments that I can use?
 
 .pull-left[
 
-`r fa("arrow-right")` &nbsp; call the function help using `?`
+`r fa("arrow-right")` &nbsp; Call the function help using `?`
 
 ```{r eval=FALSE}
 ?mean
@@ -109,18 +109,13 @@ But what does the mean function do? What are the arguments that I can use?
 ]
 
 ---
-class: center, middle
-
-![](img/day1/mean_help_blank.png)
-
----
 # Function arguments
 
-- arguments are the **input** to a function
+- Arguments are the **input** to a function
 
-- functions can provide **default values** for some arguments
+- Functions can provide **default values** for some arguments
 
-- default values for arguments are indicated in the function help
+- Default values for arguments are indicated in the function help
 
 
 .center[
@@ -193,10 +188,10 @@ mean(values, na.rm = TRUE) # a mix of both
 
 **Argument matching** can be achieved by **position** or by **name**
 
-- named arguments are (generally) preferred
-  - easier to remember
-  - easier to read
-  - some functions have a lot of arguments
+- Named arguments are (generally) preferred
+  - Easier to remember
+  - Easier to read
+  - Some functions have a lot of arguments
   
 ```{r, eval=FALSE}
 mean(x = values, na.rm = TRUE) # by name
@@ -204,7 +199,7 @@ mean(x = values, na.rm = TRUE) # by name
 
 --
 
-- however, it is common to match the first argument of a function by position (especially when the first argument is some kind of data)
+- However, it is common to match the first argument by position (especially when the first argument is the data)
 
 ```{r, eval=FALSE}
 mean(values, na.rm = TRUE) # a mix of both
@@ -214,24 +209,24 @@ mean(values, na.rm = TRUE) # a mix of both
 # Where do functions come from?
 
 .pull-left[
-- built into R (**base R** functions)
+- Built into R (**base R** functions)
 ]
 .pull-right[
 ```{r eval=FALSE}
 mean() # calculate mean
 seq()  # generate a sequence of values
 lm()   # fit a linear model
-[]     # This is also a function (but a special one)
+[]     # This is also a (special) function
 ```
 ]
 
 --
 
 .pull-left[
- - from **additional packages**
+ - From **additional packages**
  
-  - packages must be installed first
-  - call a function from a package using `packageName::functionName()`
+  - Packages must be installed first
+  - Call a function from a package using `packageName::functionName()`
 ]
 .pull-right[
 ```{r eval=FALSE}
@@ -244,9 +239,9 @@ stringr::str_extract() # extract part of a string
 --
 
 .pull-left[
-- **custom** functions
+- **Custom** functions
 
-  - we can write functions ourselves and then use them in the code
+  - Write your own functions and then use them in the code
 ]
 
 .pull-right[
@@ -254,9 +249,7 @@ stringr::str_extract() # extract part of a string
 ```{r eval = FALSE}
 # custom function that prints input in a sentence
 my_function <- function(x) {
-  print(paste(
-    "The variable value is", x
-  ))
+  return(x + 5)
 }
 my_function(5)
 ```

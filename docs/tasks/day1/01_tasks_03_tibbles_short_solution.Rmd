@@ -55,19 +55,19 @@ names(animals)
 
 ### 3.4 Indexing and selecting
 
-- rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
+- Rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
 
 ```{r, echo=TRUE}
 animals[c(1,5,7), c("species", "bodywt_kg")]
 ```
 
-- select rows 1 to 10, all columns
+- Select rows 1 to 10, all columns
 
 ```{r, echo=TRUE}
 animals[1:10, ]
 ```
 
-- select the column `bodywt_kg` as a vector using `$`
+- Select the column `bodywt_kg` as a vector using `$`
 
 ```{r, echo=TRUE}
 animals$bodywt_kg
@@ -75,7 +75,7 @@ animals$bodywt_kg
 
 #### Extra
 
-- select the last column of the last row without using the row and column index (so don't use any numbers in this command)
+- Select the last column of the last row without using the row and column index (so don't use any numbers in this command)
 
 ```{r, echo=TRUE}
 animals[nrow(animals), ncol(animals)]

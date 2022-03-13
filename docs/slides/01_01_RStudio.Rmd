@@ -44,7 +44,7 @@ library(fontawesome)
     
   R is the **programming language** and the **program** that does the actual work
     
-  - can be use with many different programming environments (But RStudio is the best for R)
+  - Can be use with many different programming environments (But RStudio is the best for R)
 ]
 
 --
@@ -54,18 +54,20 @@ library(fontawesome)
      ]
   
   RStudio is the **integrated development environment** (IDE)
-   - provides an interface to R
-   - specifically built around R code 
-   - execute code
-   - syntax highlighting
-   - file and project management
+   - Provides an interface to R
+   - Specifically built around R code 
+   - Execute code
+   - Syntax highlighting
+   - File and project management
    - ...
 ]
 
 --
 <br>
 
-.content-box-grey[`r fa("arrow-right")` You can use R without RStudio but RStudio without R would be of very little use]
+.content-box-gray[
+`r fa("arrow-right")` You can use R without RStudio but RStudio without R would be of little use
+]
 
 ---
 
@@ -89,6 +91,17 @@ library(fontawesome)
 [ModernDive Book](https://moderndive.com/1-getting-started.html#r-rstudio)]
 
 ---
+# Basic idea
+
+- Write precise instructions telling the computer what to do step by step
+  - For this you need to use the language R
+  
+- Tell R to execute these instructions
+  - R will return the result of your instructions (or an error message)
+
+- R code is basically just text that can be saved with file extension `.R`
+
+---
 # A quick tour around RStudio
 
 .center[![:scale 78%](img/day1/RStudio_all.png)]
@@ -97,11 +110,11 @@ library(fontawesome)
 # Console pane
 
 .pull-left[
-- execute R code
+- Execute R code
 
-- output from R code in scripts is printed there
+- Output from R code in scripts is printed there
 
-- type command into the console and execute with `Enter/Return`
+- Type a command into the console and execute with `Enter/Return`
 
 .content-box-yellow[`r fa("lightbulb")` Use arrow keys to bring back last commands
 ]]
@@ -115,11 +128,11 @@ library(fontawesome)
 
 .pull-left[
 
-- write scripts with R code
+- Write scripts with R code
 
-  - scripts are text files with R commands (file ending `.R`)
+  - Scripts are text files with R commands (file ending `.R`)
   
-  - use scripts to save commands for reuse
+  - Use scripts to save commands for reuse
 
 ]
 
@@ -132,10 +145,10 @@ library(fontawesome)
 
 .pull-left[
 
-- create a new R script: <br> `File -> New File -> R Script`
-- save an R script:<br> `File -> Save` (`Ctrl/Cmd + S`)
-- run code line by line with `Run` button (`Ctrl + Enter/Cmd + Return`)
-- you can open multiple scripts at the same time
+- Create a new R script: <br> `File -> New File -> R Script`
+- Save an R script:<br> `File -> Save` (`Ctrl/Cmd + S`)
+- Run code line by line with `Run` button (`Ctrl + Enter/Cmd + Return`)
+- You can open multiple scripts at the same time
 
 ]
 
@@ -154,9 +167,10 @@ library(fontawesome)
 # Environment pane
 
 .pull-left[
-- shows objects currently present in the R session
 
-- is empty if you start R
+- Shows objects currently present in the R session
+
+- Is empty if you start R
 ]
 
 .pull-right[
@@ -169,14 +183,16 @@ library(fontawesome)
 
 .pull-left[
 
-- similar to Explorer/Finder
+- Similar to Explorer/Finder
 
-- browse project structure and files
-  - find and open files
-  - create new folders
-  - delete files
-  - rename files 
+- Browse project structure and files
+  - Find and open files
+  - Create new folders
+  - Delete files
+  - Rename files 
   - ...
+  
+- Practical if you don't want to switch between File Explorer and RStudio all the time
 ]
 
 .pull-right[
@@ -191,7 +207,7 @@ library(fontawesome)
 - Plots that are created with R will be shown here
 
 - You can export plots by clicking on export button
-  - but better to do it by code 
+  - But better to do it by code 
 ]
 
 .pull-right[
@@ -202,15 +218,15 @@ library(fontawesome)
 # Project oriented workflow with RStudio
 
 .pull-left[
-- one directory with all files relevant for project
-  - scripts, data, plots, documents, ...
-- an RStudio project is just a normal directory with an `*.Rproj` file
+- One directory with all files relevant for project
+  - Scripts, data, plots, documents, ...
+- An RStudio project is just a normal directory with an `*.Rproj` file
 
-- advantages of using RStudio projects
-    - easy to navigate in R Studio (`File` pane)
-    - easy to find and access scripts in RStudio
-    - project root is working directory
-    - open multiple projects simultaneously in separate RStudio instances
+- Advantages of using RStudio projects
+    - Easy to navigate in R Studio (`File` pane)
+    - Easy to find and access scripts in RStudio
+    - Project root is working directory
+    - Open multiple projects simultaneously in separate RStudio instances
 ]    
 
 .pull-right[
@@ -224,6 +240,7 @@ Project
 |- documents
 |   |
 |   |- notes
+|   |
 |   |- reports
 |
 |- analysis
@@ -241,6 +258,7 @@ Project
 # Create an RStudio project
 
 .pull-left[
+
 Create a project from scratch:
   
 1. `File -> New Project -> New Directory -> New Project`
@@ -271,6 +289,14 @@ To open an RStudio project from your file explorer/finder, just double click on 
 .center[
 ![](img/day1/open_project.png)
 ]
+
+---
+# Open a project inside RStudio
+
+To open an RStudio project from RStudio, click on the project symbol on the top right of R Studio and select the project from the list.
+
+.center[
+![](img/day1/open_project_rstudio.png)]
 
 ---
 class: inverse, middle, center

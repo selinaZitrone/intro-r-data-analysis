@@ -1,26 +1,21 @@
-### 1.1 Getting the data
+### Compare the flipper length of penguins using statistical tests
 
-You can read the data set directly from Github using:
+Question: Does the mean flipper length differ between the 3 penguin species?
 
-```{r, eval=FALSE, echo=TRUE}
-treeheights <- readr::read_csv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/treeheight.csv")
+Do separate comparisons for
+
+- Gentoo vs. Adelie
+- Gentoo vs. Chinstrap
+- Adelie vs. Chinstrap
+
+Before you start, create a subset of each species as a vector.
+
+For this, you can use the `$` operator:
+
+```{r eval=FALSE}
+library(palmerpenguins)
+filter(penguins, species == "Adelie")$flipper_length_mm
 ```
-
-The data contains tree heights for different forest regions. Check out which regions are included in the data set by calling
-
-```{r, eval=FALSE, echo=TRUE}
-unique(treeheights$region)
-```
-
-### 1.2 Comparing the regions using statistical tests
-
-Compare the means of the forests separately
-
-- forest1 - forest2
-- forest1 - forest3
-- forest2 - forest3
-
-Before you start, create a subset of each forest site as a vector.
 
 Follow the decision tree for statistical tests:
 
@@ -28,15 +23,6 @@ Follow the decision tree for statistical tests:
 knitr::include_graphics(here::here("slides/img/day3/tests_overview.png"))
 ```
 
-Use the Shapiro-Wilk test to test for normality
-
 #### Extra
 
-- Create a boxplot with notches to visually compare differences between forests
-
-Can you see how the different methods might lead to different results?
-
-- Create a QQ-Plot for the data. Here you can't use the subsetted vectors as data, as ggplot expects a tibble or data frame as first argument. Can you create the QQ-Plots from the `treeheights` tibble? 
-- Use the KS-Test to test for normality
-
-
+- Create a boxplot with notches to visually compare differences in flipper length between species

@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>Introduction to R for Data Analysis: Tasks for day 3</title>
@@ -452,7 +453,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </style>
 
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -1859,7 +1860,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -2340,7 +2344,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2384,14 +2388,13 @@ Slides
 <a href="slides/01_03_Functions.html">01 - Functions</a>
 <a href="slides/01_04_tibbles_short.html">01 - Data &amp; Tibbles</a>
 <a href="slides/01_05_readr.html">01 - Tidyverse and Readr</a>
-<a href="slides/01_06_common_errors.html">01 - Common errors</a>
 <a href="slides/02_01_tidyverse_ggplot.html">02 - Ggplot2</a>
 <a href="slides/02_02_dplyr.html">02 - Dplyr</a>
 <a href="slides/02_03_tidyr.html">02 - Tidyr</a>
 <a href="slides/03_01_tests_short.html">03 - Statistical tests</a>
 <a href="slides/03_02_linear_models.html">03 - Linear models</a>
-<a href="slides/03_03_glm.html">03 - Generalized linear models</a>
 <a href="slides/04_01_bring_your_own_data.html">04 - Bring your own data</a>
+<a href="slides/01_06_common_errors.html">Common R errors</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2446,8 +2449,7 @@ Solutions
 <ul>
 <li><a href="#statistical-tests">1 Statistical tests</a>
 <ul>
-<li><a href="#getting-the-data">1.1 Getting the data</a></li>
-<li><a href="#comparing-the-regions-using-statistical-tests">1.2 Comparing the regions using statistical tests</a></li>
+<li><a href="#compare-the-flipper-length-of-penguins-using-statistical-tests">Compare the flipper length of penguins using statistical tests</a></li>
 </ul></li>
 <li><a href="#linear-models">2 Linear models</a>
 <ul>
@@ -2456,53 +2458,30 @@ Solutions
 <li><a href="#analysis-of-covariance">2.3 Analysis of covariance</a></li>
 <li><a href="#anova">2.4 Anova</a></li>
 </ul></li>
-<li><a href="#linear-models-with-transformation">3 Linear models with transformation</a></li>
-<li><a href="#poisson-and-binary-glm">4 Poisson and binary glm</a>
-<ul>
-<li><a href="#poisson-glm">1.1 Poisson glm</a></li>
-<li><a href="#binary-glm">1.2 Binary glm</a></li>
-</ul></li>
-<li><a href="#proportion-glm">5 Proportion glm</a></li>
 </ul>
 </nav>
 </div>
 <h2 id="statistical-tests">1 Statistical tests</h2>
-<h3 id="getting-the-data">1.1 Getting the data</h3>
-<p>You can read the data set directly from Github using:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>treeheights</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/treeheight.csv"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p>The data contains tree heights for different forest regions. Check out which regions are included in the data set by calling</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>treeheights</span><span class='op'>$</span><span class='va'>region</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="comparing-the-regions-using-statistical-tests">1.2 Comparing the regions using statistical tests</h3>
-<p>Compare the means of the forests separately</p>
+<h3 id="compare-the-flipper-length-of-penguins-using-statistical-tests">Compare the flipper length of penguins using statistical tests</h3>
+<p>Question: Does the mean flipper length differ between the 3 penguin species?</p>
+<p>Do separate comparisons for</p>
 <ul>
-<li>forest1 - forest2</li>
-<li>forest1 - forest3</li>
-<li>forest2 - forest3</li>
+<li>Gentoo vs. Adelie</li>
+<li>Gentoo vs. Chinstrap</li>
+<li>Adelie vs. Chinstrap</li>
 </ul>
-<p>Before you start, create a subset of each forest site as a vector.</p>
+<p>Before you start, create a subset of each species as a vector.</p>
+<p>For this, you can use the <code>$</code> operator:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
 <p>Follow the decision tree for statistical tests:</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="slides/img/day3/tests_overview.png" width="739" /></p>
+<p><img src="slides/img/day3/tests_overview.png" width="678" /></p>
 </div>
-<p>Use the Shapiro-Wilk test to test for normality</p>
 <h4 id="extra">Extra</h4>
 <ul>
-<li>Create a boxplot with notches to visually compare differences between forests</li>
-</ul>
-<p>Can you see how the different methods might lead to different results?</p>
-<ul>
-<li>Create a QQ-Plot for the data. Here you can’t use the subsetted vectors as data, as ggplot expects a tibble or data frame as first argument. Can you create the QQ-Plots from the <code>treeheights</code> tibble?</li>
-<li>Use the KS-Test to test for normality</li>
+<li>Create a boxplot with notches to visually compare differences in flipper length between species</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="linear-models">2 Linear models</h2>
@@ -2577,70 +2556,7 @@ Solutions
 <li><p>Same as above but with bars instead of points to represent means</p></li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h2 id="linear-models-with-transformation">3 Linear models with transformation</h2>
-<p>No tasks yet</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h2 id="poisson-and-binary-glm">4 Poisson and binary glm</h2>
-<h3 id="poisson-glm">1.1 Poisson glm</h3>
-<p>The data set <code>rabbit</code> contains data on a highly threatened rabbit species.</p>
-<p>The variables in this data set are:</p>
-<ul>
-<li><code>sights</code>: integer variable of camera trap sightings</li>
-<li><code>distance</code>: distance to river (m)</li>
-<li><code>degredation</code>: level of degradation (low, medium, very high)</li>
-</ul>
-<p><strong>Question:</strong> How does the degradation level of the site and the distance to the river influence the sightings of rabbits?</p>
-<p>You can get the data with:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>rabbit</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/rabbit.csv"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p><strong>Tasks</strong></p>
-<ul>
-<li><p>Plot the data</p></li>
-<li><p>Fit a poisson glm (with or without interaction)</p></li>
-<li><p>Test the significant of the explanatory variables</p></li>
-<li><p>Add the model to the plot</p></li>
-</ul>
-<h4 id="extra-3">Extra</h4>
-<ul>
-<li>Make the plot look nicer</li>
-<li>Add the model using a different option</li>
-</ul>
-<h3 id="binary-glm">1.2 Binary glm</h3>
-<p>The data set is about the occurrence of woodpeckers at forest sites depending on the amount of deadwood and the dominant tree species.</p>
-<p>The variables in the data set are:</p>
-<ul>
-<li><code>bird_pres</code>: binary response variable (presence/absence of the bird at the site)</li>
-<li><code>species</code>: dominant tree species at the site</li>
-<li><code>deadwood</code>: amount of deadwood at the site</li>
-</ul>
-<p><strong>Question:</strong> How does the the amount of deadwood and the dominant tree species influence the probability of woodpecker presence?</p>
-<p>You can get the data with:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>bird</span> <span class='op'>&lt;-</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_tsv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/bird.csv"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<ul>
-<li><p>Plot the data</p></li>
-<li><p>Fit a binary glm (<code>family = "binomial"</code>)</p></li>
-<li><p>Test the significance of the predictors</p></li>
-<li><p>Plot the data and add model predictions</p></li>
-</ul>
-<h4 id="extra-4">Extra</h4>
-<ul>
-<li>Make the plot look nicer</li>
-<li>Add the model using a different option</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h2 id="proportion-glm">5 Proportion glm</h2>
-<p>No tasks yet</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

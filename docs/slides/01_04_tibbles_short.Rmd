@@ -478,6 +478,6 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 3: Tibbles (25 min)
+## Task 3: Tibbles (20 min)
 
 #### Find the task description <a href="../01_tasks_controller.html#tibbles">here</a>

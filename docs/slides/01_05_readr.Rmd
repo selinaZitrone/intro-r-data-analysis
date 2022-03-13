@@ -86,7 +86,7 @@ class: inverse, center, middle
 ---
 # Readr
 
-`readr` is a tidyverse package. To use it, you can do one of the following things:
+`readr` is a tidyverse package. To use it, you can load the tidyverse:
 
 ```{r eval=FALSE}
 library(tidyverse) # or library(readr) 
@@ -97,8 +97,6 @@ library(tidyverse) # or library(readr)
 The most important functions are:
 
 - `read_csv`/`write_csv` to read/write **comma delimited** files
-
-- `read_csv2`/`write_csv2` to read/write **semicolon delimited** files
 
 - `read_tsv`/`write_tsv` to read/write **tab delimited** files
 
@@ -117,8 +115,6 @@ Import files with a `readr` function fitting the delimiter of your file:
 
 ```{r eval=FALSE}
 dat <- read_csv("./data/your_data.csv") # comma delimiter
-
-dat <- read_csv2("./data/your_data.txt") # semicolon delimiter
 
 dat <- read_tsv("./data/your_data.txt") # tab delimiter
 ```
@@ -144,15 +140,15 @@ Have a look at `?read_delim` for more options.
 
 You can e.g.
 
-- specify number of lines to skip reading with `skip`
+- Specify number of lines to skip reading with `skip`
 
 --
 
-- specify whether the data has a header column or not with `col_names = TRUE/FALSE`
+- Specify whether the data has a header column or not with `col_names = TRUE/FALSE`
 
 --
 
-- change the data types of columns while reading them with `col_types`
+- Change the data types of columns while reading them with `col_types`
 
 - ...
 
@@ -165,10 +161,9 @@ Every `read_*` function has a corresponding `write_*` function to export data fr
 
 Write data from R e.g.
 
-- If tasks take a lot of time and you want to do them only once
-  - Run the code, save the intermediate result, work with intermediate result
+- To share transformed or summarized data
 
-- To share transformed data
+- Summarize complex raw data and continue working with summarized data
 
 - ...
 
@@ -177,14 +172,14 @@ Write data from R e.g.
 
 All `write_*` functions take the data to write as the first and the file to write to as the second argument:
 
-.center[<code><b>write_*(x = .col1[dat], file = .col2["path/to/save/file"], ...)</b></code>]
+.center[
+  <code><b>write_\*(x = .col1[dat], file = .col2["path/to/save/file.\*"], ...)</b></code>
+]
 
 --
 
 ```{r eval=FALSE}
 write_csv(dat, file = "./data-clean/your_data.csv") # comma delimiter
-
-write_csv2(dat, file = "./data-clean/your_data.txt") # semicolon delimiter
 
 write_tsv(dat, file = "./data-clean/your_data.txt") # tab delimiter
 ```
@@ -212,16 +207,17 @@ write_delim(dat, file = "./data/your_data.txt", delim = "..xyz..") # ..xyz.. del
 
 --
 
-- relative paths are interpreted relative to the **working directory**
-  - the `./` in the path stands for the working directory
+- Relative paths are interpreted relative to the **working directory**
+
+  - The `./` in the path stands for the working directory
   
 --
 
-- check out where your working directory is with `getwd()`
+- Check out where your working directory is with `getwd()`
 
 --
 
-- in RStudio projects, the working directory is always the project root
+- In RStudio projects, the **working directory is always the project root**
 
 ---
 # Absolute vs. relative paths
@@ -229,8 +225,10 @@ write_delim(dat, file = "./data/your_data.txt", delim = "..xyz..") # ..xyz.. del
 Working with R and RStudio, the best way is to:
 
 - **Organize your work in an RStudio project**
+
   - The project root is automatically the working directory
-  - All your files are in one place
+  
+  - All your files (also your data) are in one place
 
 - **Use paths relative to the project root**
 
@@ -240,20 +238,20 @@ Working with R and RStudio, the best way is to:
 
 --
 
-- no need to change the working directory
+- No need to change the working directory
 
 --
 
 
-- portable paths: will also work on other machines that copied the project
+- Portable paths: will also work on other machines that copied the project
 
 --
 
-- makes the code more readable
+- Makes the code more readable
 
 --
 
-- less error prone
+- Less error prone
 
 
 ---
@@ -266,7 +264,7 @@ class: inverse, middle, center
 
 Follow these guidelines to make data import to R easier and less frustrating
 
-- Readable file format: `.csv`, `.txt` & Co instead of `.xlsx`
+- For `readr`: readable file format (`.csv`, `.txt` instead of `.xlsx`)
 
 --
 
@@ -283,22 +281,25 @@ Save an Excel spreadsheet as csv or txt either by
 
 Follow these guidelines to make data import to R easier and less frustrating
 
-- Readable file format: `.csv`, `.txt` & Co instead of `.xlsx`
+- For `readr`: readable file format (`.csv`, `.txt` instead of `.xlsx`)
+
+- If you need `.xlsx` format have a look at the [`readxl` package](https://readxl.tidyverse.org/)
+
+--
 
 - No white space in column headers
-  - use a character as separator, e.g. `species_name` instead of `species name`
-
-  - if this is unpractical, have a look at the function `janitor::clean_names()` from the `janitor` package
+  - Use a character as separator, e.g. `species_name` instead of `species name`
+  - If this is unpractical, have a look at the function `janitor::clean_names()` from the [`janitor` package](https://garthtarr.github.io/meatR/janitor.html)
 
 --
 
 - Avoid special characters
-  - no ä, ö, ü, ß, é, ê, ...
+  - No ä, ö, ü, ß, é, ê, ...
 
 --
 
 - Avoid empty cells
-  - if you have missing values, put `NA` in the cell
+  - If you have missing values, put `NA` in the cell
 
 ---
 # Paths
@@ -311,14 +312,14 @@ Follow these guidelines to make data import to R easier and less frustrating
 
 - Avoid special characters in paths
 
-  - no ä, ö, ü, ß, é, ê, ...
+  - No ä, ö, ü, ß, é, ê, ...
 
 ---
 class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 4: Read and write data files (25 min)
+## Task 4: Read and write data files (20 min)
 
 #### Find the task description <a href="../01_tasks_controller.html#reading-and-writing-tibbles">here</a>
 

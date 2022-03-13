@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Selina Baldauf" />
     <meta name="date" content="2021-08-01" />
-    <script src="01_02_Intro_R_files/header-attrs-2.9/header-attrs.js"></script>
+    <script src="01_02_Intro_R_files/header-attrs-2.11/header-attrs.js"></script>
     <link href="01_02_Intro_R_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
   </head>
@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2021-09-07)
+  2021-08-01 (updated: 2022-03-13)
 ]
 
 ---
@@ -344,15 +344,15 @@ data &lt;- janitor::clean_names(data)
 
 --
 
-- notes that make code more readable or add information
-
---
-
 - Everything that follows a `#` is a comment
 
 --
 
 - Comments are not evaluated
+
+--
+
+- Notes that make code more readable or add information
 
 --
 
@@ -369,17 +369,17 @@ class: inverse, middle, center
 ---
 # Variables
 
-- store values under meaningful names to reuse them
+- Store values under meaningful names **to reuse** them
 
 --
 
-- a variable has a .col1[&lt;b&gt;name&lt;/b&gt;] and .col2[&lt;b&gt;value&lt;/b&gt;] and is created using the .col3[&lt;b&gt;assignment operator&lt;/b&gt;]
+- A variable has a .col1[&lt;b&gt;name&lt;/b&gt;] and .col2[&lt;b&gt;value&lt;/b&gt;] and is created using the .col3[&lt;b&gt;assignment operator&lt;/b&gt;]
 
 .center[.large[.strong[.col1[radius] &amp;nbsp; .col3[&lt;-] &amp;nbsp; .col2[5]]]]
 
 --
 
-- variables are available in the global environment
+- Variables are available in the global environment
 
 --
 
@@ -387,9 +387,17 @@ class: inverse, middle, center
 
 --
 
-- choose meaningful variable names
-  - make your code easier to read
-  - variable names should start with a letter
+- Variables can hold any R objects, e.g.
+  - Simple numbers
+  - Lists
+  - Tables with data
+  - ...
+
+--
+
+- Choose meaningful variable names
+  - Make your code easier to read
+
 
 ---
 
@@ -401,6 +409,7 @@ class: inverse, middle, center
 # create a variable
 radius &lt;- 5
 # use it in a calculation and save the result
+# pi is a built-in variable that comes with R
 circumference &lt;- 2 * pi * radius
 # change value of variable radius
 radius &lt;- radius + 1
@@ -408,25 +417,14 @@ radius &lt;- radius + 1
 --
 
 ```r
-# print a variable's value -----------------------
-radius # just use the name to print the value
-# or print it in a sentence
-print(paste0("With a radius of ", radius, " the circumference is ",
-             circumference)) 
-# does this print the correct circumference for radius?
-```
---
-
-```r
-# Remove variables from global environment -------
-rm(radius) # remove variable radius
-rm(list = ls()) # remove all elements
+# just use the name to print the value to the console
+radius 
 ```
 
 ---
 # Atomic data types
 
-There are 6 so-called atomic data types in R. The 4 most important are:
+There are 6 so-called **atomic data types** in R. The 4 most important are:
 --
 &lt;br&gt;&lt;br&gt;
 **Numeric**: There are two numeric data types: 
@@ -446,12 +444,9 @@ There are 6 so-called atomic data types in R. The 4 most important are:
 ---
 # Check the type of a variable
 
-- check the type of a variable with `typeof()`
+- Check the type of a variable with `typeof()`
 
-- check if a variable is of a specific data type with `is.*()`
-
----
-# Check the type of a variable
+- Check if a variable is of a specific data type with `is.*()`
 
 
 ```r
@@ -471,51 +466,21 @@ is.double(var)
 ## [1] FALSE
 ```
 
-```r
-is.integer(123)
-```
-
-```
-## [1] FALSE
-```
-
----
-# Check the type of a variable
-
 
 ```r
-is.logical(TRUE)
+typeof(TRUE)
 ```
 
 ```
-## [1] TRUE
+## [1] "logical"
 ```
 
 ```r
-is.character(TRUE)
+typeof("TRUE")
 ```
 
 ```
-## [1] FALSE
-```
-
---
-
-
-```r
-is.logical("TRUE")
-```
-
-```
-## [1] FALSE
-```
-
-```r
-is.character("TRUE")
-```
-
-```
-## [1] TRUE
+## [1] "character"
 ```
 
 ---
@@ -533,28 +498,6 @@ as.character(1L)
 ```
 
 --
-
-`TRUE` is converted to 1 and `FALSE` is converted to 0:
-
-
-```r
-as.numeric(TRUE)
-```
-
-```
-## [1] 1
-```
-
-```r
-as.numeric(FALSE)
-```
-
-```
-## [1] 0
-```
-
----
-# Explicit type conversion
 
 Strings can be converted to numbers if possible
 
@@ -630,9 +573,10 @@ class: inverse, middle, center
 ---
 # Vectors
 
-Vectors are data structures that are built onto atomic data types.&lt;br&gt;
+Vectors are data structures that are built on top of atomic data types.&lt;br&gt;
 
 Imagine a vector as a **collection of values** that are all **of the same data type**.
+&lt;br&gt;
 &lt;br&gt;
 
 .center[
@@ -691,7 +635,7 @@ The `:` operator creates a sequence between two numbers with an increment of (-)
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 --
-
+&lt;br&gt;
 The `seq()` function creates a sequence of values
 
 
@@ -712,7 +656,6 @@ seq(from = 1, to = 10, length.out = 10) # specify desired length with length.out
 ```
 
 ---
-
 # Creating vectors: `rep()`
 
 Repeat values multiple times with `rep()`
@@ -763,6 +706,9 @@ population &lt;- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 
 area_km2 &lt;- c(2576, 2561, 1572, 1439,891,604, 839, 1285, 228, 105 )
 ```
 
+
+.footnote-right[Data from [Wikipedia](https://en.wikipedia.org/wiki/List_of_European_cities_by_population_within_city_limits)]
+
 --
 
 We can check the length of a vector using the `length()` function:
@@ -775,8 +721,6 @@ length(cities)
 ```
 ## [1] 10
 ```
-
-.footnote-right[Data from [Wikipedia](https://en.wikipedia.org/wiki/List_of_European_cities_by_population_within_city_limits)]
 
 ---
 
@@ -796,11 +740,11 @@ population / area_km2
 
 --
 
-The operation is performed separately for each element of the two vectors and the result is a vector.&lt;br&gt;
+The operation is performed **separately for each element of the two vectors** and the result is a vector.&lt;br&gt;
 
 --
 
-The same happens, if a vector is divided by vector of length 1 (i.e. a single number).
+The same happens, if a **vector is divided by vector of length 1** (i.e. a single number).
 The result is always a vector.
 
 
@@ -851,9 +795,7 @@ population &gt; mean_population | population &gt; 3e6
 
 # Working with vectors
 
-The `%in%` operator checks whether *multiple* elements occur in a vector.
-
-So instead of writing this:
+Check whether elements occur in a vector:
 
 
 ```r
@@ -866,10 +808,11 @@ cities == "Istanbul" | cities == "Berlin" | cities == "Madrid"
 
 --
 
-we can also write this: 
+The `%in%` operator checks whether *multiple* elements occur in a vector.
 
 
 ```r
+# for eachelement of cities, checks whether that element is contained in to_check 
 to_check &lt;- c("Istanbul", "Berlin", "Madrid")
 cities %in% to_check
 ```
@@ -880,12 +823,24 @@ cities %in% to_check
 
 --
 
-For each element of `cities`, `%in%` checks whether that element is contained in `to_check` 
+
+```r
+# for each element of to_check, check whether that element is contained in cities 
+to_check %in% cities
+```
+
+```
+## [1] TRUE TRUE TRUE
+```
+
+--
+
+`%in%` always returns a vector of the same length as the vector on the left side
 
 ---
 # Indexing vectors
 
-You can use square brackets `[]` to access specific elements from an object.
+You can use square brackets `[]` to access specific elements from a vector.
 
 The basic structure is:
 
@@ -906,7 +861,8 @@ cities[5]
 
 
 ```r
-cities[1:3] # the three most populated cities
+# the three most populated cities
+cities[1:3] # same as cities[c(1,2,3)]
 ```
 
 ```
@@ -917,7 +873,8 @@ cities[1:3] # the three most populated cities
 
 
 ```r
-cities[length(cities)] # the last entry of the cities vector
+# the last entry of the cities vector
+cities[length(cities)] # same as cities[10]
 ```
 
 ```
@@ -980,7 +937,7 @@ mega_city
 
 --
 
-Now extract only the cities that return `TRUE` for the comparison of their population against the mean population
+Which are the mega cities?
 
 
 ```r
@@ -990,6 +947,8 @@ cities[mega_city] # or short: cities[population &gt; mean_population]
 ```
 ## [1] "Istanbul" "Moscow"   "London"
 ```
+
+Index only the cities that return `TRUE` for the comparison of their population against the mean population
 
 ---
 # Indexing vectors
@@ -1007,8 +966,18 @@ population[ cities %in% c("Berlin", "Paris", "Stockholm", "Madrid")]
 
 --
 
-- returns only 3 values for population, because Stockholm is not a city in our vector
-  - no city in `cities` returns `TRUE` for the comparison with `"Stockholm"`
+- Returns only 3 values for population, because Stockholm is not a city in our vector
+  - No city in `cities` returns `TRUE` for the comparison with `"Stockholm"`
+  
+
+```r
+cities %in% c("Berlin", "Paris", "Stockholm", "Madrid")
+```
+
+```
+##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE
+```
+
 
 
 ---

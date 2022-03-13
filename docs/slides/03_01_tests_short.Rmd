@@ -43,9 +43,13 @@ options(scipen = 0)
 ```
 
 ---
-# Typical approach in statistics
+# Classical approach in statistics
 
-.center[![:scale 70%](img/day3/statistics_approach.png)]
+.center[![:scale 60%](img/day3/statistics_approach.png)]
+
+.footnote-left[Please note the discussion going on about p-values as a basis for binary decisions.
+  See e.g. [here](https://www.nature.com/articles/s41592-019-0470-3) or [here](https://www.nature.com/articles/d41586-019-00857-9) as a starting point
+]
 
 ---
 # Overview of tests
@@ -65,26 +69,18 @@ There are **various tests** and the outcome might differ!
 
 --
 
-**Kolmogorov-Smirnov-Test (KS-Test)**
-
-- how much does the cumulative probability of observed data differs from normal distribution
-- very general test (also works for other distributions)
-- low power: data not normally distributed but $H_0$ not rejected
-
---
-
 **Shapiro-Wilk-Test**
 
-- how much does variance of observed data differ from normal distribution
-- specific test only for normal distribution
-- high power, also for few data points
+- How much does variance of observed data differ from normal distribution
+- Specific test only for normal distribution
+- High power, also for few data points
 
 --
 
 **Visual tests: QQ-Plot**
 
-- quantiles of observed data plotted against quantiles of normal distribution
-- scientist has to decide if normal or not
+- Quantiles of observed data plotted against quantiles of normal distribution
+- Scientist has to decide if normal or not
 
 ---
 # The data
@@ -142,27 +138,29 @@ $H_0$: Data does not differ from a normal distribution
 
 --
 
+.pull-left[
+
 ```{r}
 shapiro.test(mydata$normal)
 ```
 
---
-
 - W: test statistic
 - p-value: probability to observe the data if $H_0$ was true
 
-The data does not deviate significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.991, p > 0.05)
+The data does not deviate significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.991, p = 0.23).
 
----
-# Shapiro-Wilk-Test
+]
 
-$H_0$: Data does not differ from a normal distribution
+--
 
+.pull-right[
 ```{r}
 shapiro.test(mydata$non_normal)
 ```
 
-The data deviates significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.95, p < 0.05)
+The data deviates significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.95, p < 0.001).
+
+]
 
 ---
 # Visual test with QQ-Plot
@@ -171,17 +169,17 @@ Points should match the straight line. Small deviations are okay.
 
 .pull-left[
 ```{r, fig.height=5.2}
-ggplot(mydata, aes(sample = normal)) +
-  stat_qq() +
-  stat_qq_line()
+# ggplot(mydata, aes(sample = normal)) +
+#   stat_qq() + stat_qq_line()
+ggpubr::ggqqplot(mydata$normal)
 ```
 
 ]
 .pull-right[
 ```{r, fig.height=5.2}
-ggplot(mydata, aes(sample = non_normal)) +
-  stat_qq() +
-  stat_qq_line()
+# ggplot(mydata, aes(sample = non_normal)) +
+#   stat_qq() + stat_qq_line()
+ggpubr::ggqqplot(mydata$non_normal)
 ```
 
 ]
@@ -215,8 +213,10 @@ TreatE <- filter(InsectSprays,
 ]
 .pull-right[
 ```{r echo=FALSE, fig.height = 6.0}
-ggplot(InsectSprays, aes(x=spray, y=count))+
-  geom_boxplot(notch=TRUE)
+ggplot(InsectSprays, aes(x=spray, y=count, fill = spray))+
+  geom_boxplot(notch=TRUE)+
+  scale_fill_manual(values = c("orange", "cyan4", "white", "white", "purple", "white"))+
+  theme(legend.position = "none")
 ```
 ]
 
@@ -227,16 +227,16 @@ First, test for normal distribution!
 
 **F-Test**
 
-- **normal distribution** of groups
-- calculates ratio of variances (if equal, ratio = 1)
+- **Normal distribution** of groups
+- Calculates ratio of variances (if equal, ratio = 1)
 - p: How likely is ratio if variances were equal?
-- only for normal distribution
+- Only for normal distribution
 
 **Levene test**
 
-- **non-normal distribution** of groups
-- compare difference between data sets with difference within data sets
-- works with all distributions
+- **Non-normal distribution** of groups
+- Compare difference between data sets with difference within data sets
+- Works with all distributions
 
 
 ---
@@ -269,7 +269,7 @@ var.test(TreatA, TreatB)
 - df: degrees of freedom of both groups
 - p-value: how likely is it to observe the data if $H_0$ was true?
 
-Result: The variances of sprays A and B do not differ significantly (F-Test, $F_{11,11}$ = 1.22, p > 0.05)
+Result: The variances of sprays A and B do not differ significantly (F-Test, $F_{11,11}$ = 1.22, p = 0.75)
 
 ---
 # F-Test
@@ -282,7 +282,7 @@ $H_0$: Variances do not differ between groups
 var.test(TreatA, TreatE)
 ```
 
-Result: The variances of sprays A and E differ significantly (F-Test, $F_{11,11}$ = 7.42, p < 0.05)
+Result: The variances of sprays A and E differ significantly (F-Test, $F_{11,11}$ = 7.42, p = 0.002)
 
 ---
 class: inverse, center, middle
@@ -296,16 +296,16 @@ First test for normality and equal variances in the groups!
 
 **t-test**
 
-- **normal distribution** AND **equal variance**
-- compares if mean values are within range or standard error of each other
+- **Normal distribution** AND **equal variance**
+- Compares if mean values are within range or standard error of each other
 - p: how likely is the difference if the means were equal
 
 --
 
 **Welch-Test**
 
-- **normal distribution** but **unequal variance**
-- corrected t-test
+- **Normal distribution** but **unequal variance**
+- Corrected t-test
 
 --
 
@@ -313,9 +313,9 @@ First test for normality and equal variances in the groups!
 
 **Wilcoxon rank sum test**
 
-- **non-normal distribution** and **unequal variance**
-- compares rank sums of the data
-- non-parametric
+- **Non-normal distribution** and **unequal variance**
+- Compares rank sums of the data
+- Non-parametric
 
 ]
 .pull-right[
@@ -341,7 +341,7 @@ t.test(TreatA, TreatB, var.equal = TRUE)
 
 --
 
-**Result:** The means of spray A and B do not differ significantly (t = -0.45, df = 22, p > 0.05)
+**Result:** The means of spray A and B do not differ significantly (t = -0.45, df = 22, p = 0.66)
 
 ---
 # Welch-Test
@@ -358,7 +358,7 @@ t.test(TreatA, TreatE, var.equal = FALSE)
 
 --
 
-**Result:** The means of spray A and E do differ significantly (t = 7.58, df = 13.9, p < 0.05)
+**Result:** The means of spray A and E do differ significantly (t = 7.58, df = 13.9, p < 0.001)
 
 ---
 # Wilcoxon-rank-sum Test
@@ -374,7 +374,7 @@ wilcox.test(TreatA, TreatB)
 ```
 --
 
-**Result:** The means of spray A and E do not differ significantly (W = 62, p > 0.05)
+**Result:** The means of spray A and E do not differ significantly (W = 62, p = 0.58)
 
 ---
 # Paired values
@@ -383,7 +383,7 @@ Are there pairs of data points?
 
 **Example: ** samples of invertebrates across various rivers before and after sewage plants.
 
-- for each plant, there is a pair of data points (before and after the plant)
+- For each plant, there is a pair of data points (before and after the plant)
 - Question: Is the change (before-after) significant
 
 Use `paired = TRUE` in the test.

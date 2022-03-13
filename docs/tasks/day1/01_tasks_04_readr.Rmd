@@ -12,22 +12,22 @@ Remember to put `library(tidyverse)` (or `library(readr)`) on top of your script
 
 ### 3.2 Write a tibble to disk
 
-Let's use the `animals` tibble with animal brain and body weights from the last task and write it into the data folder in our project.
+Let's use the `animals` tibble from the previous task and write it into the data folder in our project.
 
 Before writing the tibble
 
-- create a dedicated `data` sub-directory in your project (if you don't have one yet)
+- Create a `data` sub-directory in your RStudio project (if you don't have one yet)
+  - Hint: You can do that from within RStudio by using the `New Folder` button in the *Files pane* 
 
-Now write the `animals` tibble to that sub-directory with
+Now write the `animals` tibble to that `/data` sub-directory as `animals.csv` using a comma separator.
 
-- comma separator as `animals.csv`
-- tab separator as `animals.txt`
-
-Check if the files were written into the correct folder.
+Check if the file was written into the correct folder.
 
 ### 3.3 Read data into R
 
-Now, try to read the two data sets back into R using the appropriate `read_*` functions for the different separators.
+Now, try to read the data set back into R using the appropriate `read_*` function.
 
-If this was successful, navigate to your `data` directory using the `Files` pane of RStudio.
-Try clicking on both the `.txt` and the `.csv` file that you just saved there. What is different? Try the `Import Dataset` button for the `.csv` file.
+#### Extra
+
+Navigate to your `data` directory using the `Files` pane of RStudio.
+Click on both the `.csv` file that you just saved there. What can you do? Try the `Import Dataset` button and see what you can do there.

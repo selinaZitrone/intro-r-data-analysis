@@ -19,6 +19,7 @@
  <!--/radix_placeholder_import_source-->
 
 
+
   <!--radix_placeholder_meta_tags-->
   <title>Introduction to R for Data Analysis: Untitled</title>
 
@@ -386,7 +387,7 @@
 
   </style>
 
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -1793,7 +1794,10 @@
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -2274,7 +2278,7 @@
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -2310,14 +2314,13 @@ Slides
 <a href="slides/01_03_Functions.html">01 - Functions</a>
 <a href="slides/01_04_tibbles_short.html">01 - Data &amp; Tibbles</a>
 <a href="slides/01_05_readr.html">01 - Tidyverse and Readr</a>
-<a href="slides/01_06_common_errors.html">01 - Common errors</a>
 <a href="slides/02_01_tidyverse_ggplot.html">02 - Ggplot2</a>
 <a href="slides/02_02_dplyr.html">02 - Dplyr</a>
 <a href="slides/02_03_tidyr.html">02 - Tidyr</a>
 <a href="slides/03_01_tests_short.html">03 - Statistical tests</a>
 <a href="slides/03_02_linear_models.html">03 - Linear models</a>
-<a href="slides/03_03_glm.html">03 - Generalized linear models</a>
 <a href="slides/04_01_bring_your_own_data.html">04 - Bring your own data</a>
+<a href="slides/01_06_common_errors.html">Common R errors</a>
 </div>
 </div>
 <div class="nav-dropdown">

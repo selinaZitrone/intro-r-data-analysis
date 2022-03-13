@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Selina Baldauf" />
     <meta name="date" content="2021-08-01" />
-    <script src="03_02_linear_models_files/header-attrs-2.9/header-attrs.js"></script>
+    <script src="03_02_linear_models_files/header-attrs-2.11/header-attrs.js"></script>
     <link href="03_02_linear_models_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
   </head>
@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2021-09-07)
+  2021-08-01 (updated: 2022-03-13)
 ]
 
 ---
@@ -133,7 +133,7 @@ with
 
 
 #### Aim of the model fitting:
-Find the parameters that lead to the lowest sum of squares.
+Find the model coefficients that lead to the lowest sum of squares.
 ]
 
 .pull-right[
@@ -152,18 +152,20 @@ If we account for variable A: do the residuals become significantly smaller?
 ---
 # Assumptions for linear models
 
-Finding the parameters that lead to the lowest residual sum of squares works only if:
+Finding the model estimates that lead to the lowest residual sum of squares works only if:
 
-- residuals are normally distributed
+1) Residuals are normally distributed
 
-- residual variance is constant
+2) Residual variance is constant
 
-- no strong outliers
+3) No strong outliers
 
 --
 
 
 This has to be checked for every linear model!
+
+If assumptions are not fullfilled, a different model approach has to be chosen.
 
 ---
 class: inverse, middle, center
@@ -211,11 +213,8 @@ class: inverse, middle, center
 
 .pull-left[
 
-Is there an effect of richness on productivity?
+`\(H_1\)`: Species richness increases productivity
  
-#### Or in other words
- 
-Can we significantly increase the accuracy of productivity predictions by taking into account species richness?
 ]
 
 .pull-right[
@@ -376,9 +375,9 @@ summary(prod_lm)
 
 Test model assumptions to make sure that:
 
-- residuals are normally distributed
-- variance is constant (homogeneous)
-- there are no strong outliers or very influential observations
+1) Residuals are normally distributed
+2) Variance is constant (homogeneous)
+3) There are no strong outliers or very influential observations
 
 --
 
@@ -418,14 +417,14 @@ performance::check_model(prod_lm)
 
 Check the assumptions
 
-- residuals are normally distributed ✔️
-- variance is constant (homogeneous) ✔️
-- there are no strong outliers or very influential observations ✔️ 
+- Residuals are normally distributed ✔️
+- Variance is constant (homogeneous) ✔️
+- There are no strong outliers or very influential observations ✔️ 
 
 Checking diagnostic plots needs some experience
 
-- real life data (almost) never perfectly fit the assumptions
-- linear models are to some extent robust against violations of the assumptions
+- Real life data (almost) never perfectly fit the assumptions
+- Linear models are to some extent robust against violations of the assumptions
 ]
 
 .pull-right[
@@ -699,9 +698,9 @@ summary(prod_lm2a)
 
 Check the assumptions
 
-- residuals are normally distributed ✔️
-- variance is constant (homogeneous) ✔️
-- there are no strong outliers or very influential observations ✔️ 
+- Residuals are normally distributed ✔️
+- Variance is constant (homogeneous) ✔️
+- There are no strong outliers or very influential observations ✔️ 
 ]
 
 .pull-right[
@@ -716,7 +715,7 @@ performance::check_model(prod_lm2a)
 ---
 # Plot the model
 
-Here, we cannot use `geom_smooth()` because it would plot the full model with interaction between the predictors
+If we want to be precise, we could not use `geom_smooth()` for this model because it plots the full model with interaction between the predictors
 
 --
 
@@ -731,7 +730,7 @@ ggplot(prod, aes(x = richness,
 * geom_smooth(method = "lm")
 ```
 
-This plot is not appropriate if the model you present is without interaction
+This plot is not 100% appropriate if the model you present is without interaction
 ]
 .pull-right[
 &lt;img src="03_02_linear_models_files/figure-html/unnamed-chunk-35-1.png" width="504" /&gt;
@@ -823,7 +822,7 @@ pred_data &lt;- tidyr::expand_grid(
 --
 
 - `tidyr::expand_grid` returns a tibble with all combinations of site and richness given as input
-  - the `tidyr` package is part of the tidyverse
+  - The `tidyr` package is part of the tidyverse
 - The column names of the tibble that you create in this step have to correspond to the predictor names in the linear model
 
 ---
@@ -957,7 +956,7 @@ chickwts
 ---
 # Anova
 
-`\(H_0\)`: The diet has an effect on the weight of chicken.
+`\(H_1\)`: The diet has an effect on the weight of chicken.
 
 --
 
@@ -1029,9 +1028,9 @@ summary(lm_chicken)
 
 Check the assumptions
 
-- residuals are normally distributed ✔️
-- variance is constant (homogeneous) ✔️
-- there are no strong outliers or very influential observations ✔️ 
+- Residuals are normally distributed ✔️
+- Variance is constant (homogeneous) ✔️
+- There are no strong outliers or very influential observations ✔️ 
 ]
 
 .pull-right[
@@ -1114,7 +1113,7 @@ chickwts %&gt;%
 lm(formula = Y ~ X1 + X2 + X1:X2, data = dat)
 ```
 
-- use `+` for additive effects and `:` for interactions between predictors
+- Use `+` for additive effects and `:` for interactions between predictors
   
 --
 
@@ -1125,9 +1124,9 @@ lm(formula = Y ~ X1 + X2 + X1:X2, data = dat)
 performance::check_model(mod)
 ```
 
-- normally distributed residuals
-- constant variance
-- no strong outliers / influential data points
+- Normally distributed residuals
+- Constant variance
+- No strong outliers / influential data points
 
 ---
 # Linear models step by step
@@ -1150,14 +1149,15 @@ drop1(mod, test = "F")
 summary(mod)
 ```
 
-- extract coefficients from the model with `mod$coefficients`
+- Extract coefficients from the model with `mod$coefficients`
 
 --
 
 **Step 7: Plot model**
-  - regression: regression line and scatterplot
-  - analysis of covariance: regression lines and scatter plot
-  - analysis of variance: boxplots, barplot, mean + sem or similar
+  - Regression: regression line and scatterplot
+  - Analysis of covariance: regression lines and scatter plot
+  - A
+  nalysis of variance: boxplots, barplot, mean + sem or similar
 
 ---
 # Options for model plotting
