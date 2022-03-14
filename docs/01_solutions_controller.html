@@ -106,7 +106,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Solutions for day 1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["showDownload","includeSolution2","includeSolution3","includeSolution4"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Solutions for day 1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["showDownload","includeSolution2","includeSolution3","includeSolution4"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2453,8 +2453,17 @@ Solutions
 <li><a href="#working-with-vectors">2.2 Working with vectors</a></li>
 <li><a href="#extras">Extras</a></li>
 </ul></li>
-<li><a href="#tibbles">3 Tibbles</a></li>
-<li><a href="#reading-and-writing-tibbles">4 Reading and writing tibbles</a></li>
+<li><a href="#tibbles">3 Tibbles</a>
+<ul>
+<li><a href="#creating-a-tibble">3.2 Creating a tibble</a></li>
+<li><a href="#exploring-the-tibble">3.3 Exploring the tibble</a></li>
+<li><a href="#indexing-and-selecting">3.4 Indexing and selecting</a></li>
+</ul></li>
+<li><a href="#reading-and-writing-tibbles">4 Reading and writing tibbles</a>
+<ul>
+<li><a href="#create-a-tibble-and-write-it">3.1 Create a tibble and write it</a></li>
+<li><a href="#read-data-into-r">3.2 Read data into R</a></li>
+</ul></li>
 <li><a href="#reference">Reference</a></li>
 </ul>
 </nav>
@@ -2684,20 +2693,265 @@ Solutions
 <pre><code>[1] FALSE</code></pre>
 </div>
 <h2 id="tibbles">3 Tibbles</h2>
+<h3 id="creating-a-tibble">3.2 Creating a tibble</h3>
+<p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from the last task and put them in a tibble.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># install.packages("tibble")</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tibble.tidyverse.org/'>tibble</a></span><span class='op'>)</span>
+
+<span class='va'>species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  <span class='st'>"MountainBeaver"</span>, <span class='st'>"Cow"</span>, <span class='st'>"GreyWolf"</span>, <span class='st'>"Goat"</span>,
+  <span class='st'>"GuineaPig"</span>, <span class='st'>"Diplodocus"</span>, <span class='st'>"AsianElephant"</span>, <span class='st'>"Donkey"</span>,
+  <span class='st'>"Horse"</span>, <span class='st'>"PotarMonkey"</span>, <span class='st'>"Cat"</span>, <span class='st'>"Giraffe"</span>,
+  <span class='st'>"Gorilla"</span>, <span class='st'>"Human"</span>, <span class='st'>"AfricanElephant"</span>, <span class='st'>"Triceratops"</span>,
+  <span class='st'>"RhesusMonkey"</span>, <span class='st'>"Kangaroo"</span>, <span class='st'>"GoldenHamster"</span>, <span class='st'>"Mouse"</span>,
+  <span class='st'>"Rabbit"</span>, <span class='st'>"Sheep"</span>, <span class='st'>"Jaguar"</span>, <span class='st'>"Chimpanzee"</span>,
+  <span class='st'>"Rat"</span>, <span class='st'>"Brachiosaurus"</span>, <span class='st'>"Mole"</span>, <span class='st'>"Pig"</span>
+<span class='op'>)</span>
+
+<span class='va'>bodywt_kg</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  <span class='fl'>1.4</span>, <span class='fl'>465</span>, <span class='fl'>36.3</span>, <span class='fl'>27.7</span>, <span class='fl'>1.</span>, <span class='fl'>11700</span>, <span class='fl'>2547</span>, <span class='fl'>187.1</span>,
+  <span class='fl'>521</span>, <span class='fl'>10</span>, <span class='fl'>3.3</span>, <span class='fl'>529</span>, <span class='fl'>207</span>, <span class='fl'>62</span>, <span class='fl'>6654</span>, <span class='fl'>9400</span>,
+  <span class='fl'>6.8</span>, <span class='fl'>35</span>, <span class='fl'>0.1</span>, <span class='fl'>0.02</span>, <span class='fl'>2.5</span>, <span class='fl'>55.5</span>, <span class='fl'>100</span>, <span class='fl'>52.2</span>,
+  <span class='fl'>0.3</span>, <span class='fl'>87000</span>, <span class='fl'>0.1</span>, <span class='fl'>192</span>
+<span class='op'>)</span>
+
+<span class='va'>brainwt_g</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  <span class='fl'>8.1</span>, <span class='fl'>423</span>, <span class='fl'>119.5</span>, <span class='fl'>115</span>, <span class='fl'>5.5</span>, <span class='fl'>50</span>, <span class='fl'>4603</span>, <span class='fl'>419</span>, <span class='fl'>655</span>, <span class='fl'>115</span>, <span class='fl'>25.6</span>,
+  <span class='fl'>680</span>, <span class='fl'>406</span>, <span class='fl'>1320</span>, <span class='fl'>5712</span>, <span class='fl'>70</span>, <span class='fl'>179</span>, <span class='fl'>56</span>, <span class='fl'>1</span>, <span class='fl'>0.4</span>, <span class='fl'>12.1</span>, <span class='fl'>175</span>,
+  <span class='fl'>157</span>, <span class='fl'>440</span>, <span class='fl'>1.9</span>, <span class='fl'>154.5</span>, <span class='fl'>3</span>, <span class='fl'>180</span>
+<span class='op'>)</span>
+<span class='co'># Creating the tibble </span>
+<span class='va'>animals</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+  species <span class='op'>=</span> <span class='va'>species</span>,
+  bodywt_kg <span class='op'>=</span> <span class='va'>bodywt_kg</span>,
+  brainwt_kg <span class='op'>=</span> <span class='va'>brainwt_g</span> <span class='op'>/</span> <span class='fl'>1000</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="exploring-the-tibble">3.3 Exploring the tibble</h3>
+<p>In the view window that opens, you have some options to filter the data and sort rows.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://tibble.tidyverse.org/reference/view.html'>view</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>   species            bodywt_kg          brainwt_kg     
+ Length:28          Min.   :    0.02   Min.   :0.00040  
+ Class :character   1st Qu.:    3.10   1st Qu.:0.02223  
+ Mode  :character   Median :   53.85   Median :0.13700  
+                    Mean   : 4278.44   Mean   :0.57452  
+                    3rd Qu.:  479.00   3rd Qu.:0.42000  
+                    Max.   :87000.00   Max.   :5.71200  </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>tibble [28 x 3] (S3: tbl_df/tbl/data.frame)
+ $ species   : chr [1:28] &quot;MountainBeaver&quot; &quot;Cow&quot; &quot;GreyWolf&quot; &quot;Goat&quot; ...
+ $ bodywt_kg : num [1:28] 1.4 465 36.3 27.7 1 ...
+ $ brainwt_kg: num [1:28] 0.0081 0.423 0.1195 0.115 0.0055 ...</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 28</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 3</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;species&quot;    &quot;bodywt_kg&quot;  &quot;brainwt_kg&quot;</code></pre>
+</div>
+<h3 id="indexing-and-selecting">3.4 Indexing and selecting</h3>
+<ul>
+<li>Rows 1, 5, and 7 and the columns <code>species</code> and <code>bodywt_kg</code></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>5</span>,<span class='fl'>7</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"species"</span>, <span class='st'>"bodywt_kg"</span><span class='op'>)</span><span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 3 x 2
+  species        bodywt_kg
+  &lt;chr&gt;              &lt;dbl&gt;
+1 MountainBeaver       1.4
+2 GuineaPig            1  
+3 AsianElephant     2547  </code></pre>
+</div>
+<ul>
+<li>Select rows 1 to 10, all columns</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 10 x 3
+   species        bodywt_kg brainwt_kg
+   &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;
+ 1 MountainBeaver       1.4     0.0081
+ 2 Cow                465       0.423 
+ 3 GreyWolf            36.3     0.120 
+ 4 Goat                27.7     0.115 
+ 5 GuineaPig            1       0.0055
+ 6 Diplodocus       11700       0.05  
+ 7 AsianElephant     2547       4.60  
+ 8 Donkey             187.      0.419 
+ 9 Horse              521       0.655 
+10 PotarMonkey         10       0.115 </code></pre>
+</div>
+<ul>
+<li>Select the column <code>bodywt_kg</code> as a vector using <code>$</code></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals</span><span class='op'>$</span><span class='va'>bodywt_kg</span>
+</code></pre>
+</div>
+<pre><code> [1]     1.40   465.00    36.30    27.70     1.00 11700.00  2547.00
+ [8]   187.10   521.00    10.00     3.30   529.00   207.00    62.00
+[15]  6654.00  9400.00     6.80    35.00     0.10     0.02     2.50
+[22]    55.50   100.00    52.20     0.30 87000.00     0.10   192.00</code></pre>
+</div>
+<h4 id="extra">Extra</h4>
+<ul>
+<li>Select the last column of the last row without using the row and column index (so don’t use any numbers in this command)</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span><span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 1 x 1
+  brainwt_kg
+       &lt;dbl&gt;
+1       0.18</code></pre>
+</div>
+<ul>
+<li>Calculate the mean of the <code>bodywt_kg</code> column and save it in a variable</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mean_wt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>$</span><span class='va'>bodywt_kg</span><span class='op'>)</span>
+<span class='va'>mean_wt</span>
+</code></pre>
+</div>
+<pre><code>[1] 4278.44</code></pre>
+</div>
+<ul>
+<li>Add a new column to the data called <code>ratio_body_brain</code> with the ratio of the columns <code>bodywt_kg</code> and <code>brainwt_kg</code></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals</span><span class='op'>$</span><span class='va'>ratio_body_brain</span> <span class='op'>&lt;-</span> <span class='va'>animals</span><span class='op'>$</span><span class='va'>bodywt_kg</span> <span class='op'>/</span> <span class='va'>animals</span><span class='op'>$</span><span class='va'>brainwt_kg</span>
+<span class='va'>animals</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 28 x 4
+   species        bodywt_kg brainwt_kg ratio_body_brain
+   &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;
+ 1 MountainBeaver       1.4     0.0081            173. 
+ 2 Cow                465       0.423            1099. 
+ 3 GreyWolf            36.3     0.120             304. 
+ 4 Goat                27.7     0.115             241. 
+ 5 GuineaPig            1       0.0055            182. 
+ 6 Diplodocus       11700       0.05           234000  
+ 7 AsianElephant     2547       4.60              553. 
+ 8 Donkey             187.      0.419             447. 
+ 9 Horse              521       0.655             795. 
+10 PotarMonkey         10       0.115              87.0
+# ... with 18 more rows</code></pre>
+</div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<p>Solution will be uploaded later</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="reading-and-writing-tibbles">4 Reading and writing tibbles</h2>
+<h3 id="create-a-tibble-and-write-it">3.1 Create a tibble and write it</h3>
+<p>Load the package and create the tibble:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+
+<span class='va'>species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  <span class='st'>"MountainBeaver"</span>, <span class='st'>"Cow"</span>, <span class='st'>"GreyWolf"</span>, <span class='st'>"Goat"</span>,
+  <span class='st'>"GuineaPig"</span>, <span class='st'>"Diplodocus"</span>, <span class='st'>"AsianElephant"</span>, <span class='st'>"Donkey"</span>,
+  <span class='st'>"Horse"</span>, <span class='st'>"PotarMonkey"</span>, <span class='st'>"Cat"</span>, <span class='st'>"Giraffe"</span>,
+  <span class='st'>"Gorilla"</span>, <span class='st'>"Human"</span>, <span class='st'>"AfricanElephant"</span>, <span class='st'>"Triceratops"</span>,
+  <span class='st'>"RhesusMonkey"</span>, <span class='st'>"Kangaroo"</span>, <span class='st'>"GoldenHamster"</span>, <span class='st'>"Mouse"</span>,
+  <span class='st'>"Rabbit"</span>, <span class='st'>"Sheep"</span>, <span class='st'>"Jaguar"</span>, <span class='st'>"Chimpanzee"</span>,
+  <span class='st'>"Rat"</span>, <span class='st'>"Brachiosaurus"</span>, <span class='st'>"Mole"</span>, <span class='st'>"Pig"</span>
+<span class='op'>)</span>
+
+<span class='va'>bodywt_kg</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  <span class='fl'>1.4</span>, <span class='fl'>465</span>, <span class='fl'>36.3</span>, <span class='fl'>27.7</span>, <span class='fl'>1.</span>, <span class='fl'>11700</span>, <span class='fl'>2547</span>, <span class='fl'>187.1</span>,
+  <span class='fl'>521</span>, <span class='fl'>10</span>, <span class='fl'>3.3</span>, <span class='fl'>529</span>, <span class='fl'>207</span>, <span class='fl'>62</span>, <span class='fl'>6654</span>, <span class='fl'>9400</span>,
+  <span class='fl'>6.8</span>, <span class='fl'>35</span>, <span class='fl'>0.1</span>, <span class='fl'>0.02</span>, <span class='fl'>2.5</span>, <span class='fl'>55.5</span>, <span class='fl'>100</span>, <span class='fl'>52.2</span>,
+  <span class='fl'>0.3</span>, <span class='fl'>87000</span>, <span class='fl'>0.1</span>, <span class='fl'>192</span>
+<span class='op'>)</span>
+
+<span class='va'>brainwt_g</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  <span class='fl'>8.1</span>, <span class='fl'>423</span>, <span class='fl'>119.5</span>, <span class='fl'>115</span>, <span class='fl'>5.5</span>, <span class='fl'>50</span>, <span class='fl'>4603</span>, <span class='fl'>419</span>, <span class='fl'>655</span>, <span class='fl'>115</span>, <span class='fl'>25.6</span>,
+  <span class='fl'>680</span>, <span class='fl'>406</span>, <span class='fl'>1320</span>, <span class='fl'>5712</span>, <span class='fl'>70</span>, <span class='fl'>179</span>, <span class='fl'>56</span>, <span class='fl'>1</span>, <span class='fl'>0.4</span>, <span class='fl'>12.1</span>, <span class='fl'>175</span>,
+  <span class='fl'>157</span>, <span class='fl'>440</span>, <span class='fl'>1.9</span>, <span class='fl'>154.5</span>, <span class='fl'>3</span>, <span class='fl'>180</span>
+<span class='op'>)</span>
+<span class='co'># Creating the tibble </span>
+<span class='va'>animals</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+  species <span class='op'>=</span> <span class='va'>species</span>,
+  bodywt_kg <span class='op'>=</span> <span class='va'>bodywt_kg</span>,
+  brainwt_kg <span class='op'>=</span> <span class='va'>brainwt_g</span> <span class='op'>/</span> <span class='fl'>1000</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Writing the data to disk:</p>
+<p>Note: In order for this command to work, the <code>/data</code> directory must already be present in your working directory.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://readr.tidyverse.org/reference/write_delim.html'>write_csv</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>animals</span>, file <span class='op'>=</span> <span class='st'>"./data/animals.csv"</span><span class='op'>)</span> <span class='co'># write as csv</span>
+<span class='fu'><a href='https://readr.tidyverse.org/reference/write_delim.html'>write_tsv</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>animals</span>, file <span class='op'>=</span> <span class='st'>"./data/animals.txt"</span><span class='op'>)</span> <span class='co'># write as txt</span>
+</code></pre>
+</div>
+</div>
+<h3 id="read-data-into-r">3.2 Read data into R</h3>
+<p>Read the same data back into R:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals_csv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"./data/animals.csv"</span><span class='op'>)</span> <span class='co'># read the csv</span>
+<span class='va'>animals_tsv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_tsv</a></span><span class='op'>(</span><span class='st'>"./data/animals.txt"</span><span class='op'>)</span> <span class='co'># read the txt</span>
+</code></pre>
+</div>
+</div>
+<p>If you use the <code>Files</code> pane to open data files, you can view them in R Studio. For csv files, you have the additional option to click on an <code>Import Dataset</code> button.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="tasks/day2/img/readr_import_button.png" width="344" /></p>
+</div>
+<p>If you click on this button, have the possibility to import the data set via a graphical user interface.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="tasks/day2/img/readr_import_options.png" width="729" /></p>
+</div>
+<p>This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct <code>read_*()</code> function arguments.</p>
+<p>Just play with these different options of reading data into R and find one that fits you best.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<p>Solution will be uploaded later</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h1 id="reference">Reference</h1>
 <p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
