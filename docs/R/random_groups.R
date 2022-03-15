@@ -1,13 +1,13 @@
 names <- c(
  "Martina", "Biswajit", "Mana",
- "Xuemei", "Andreas", "Antreas",
- "Jheng-Liang", "Mariafrancesca",
- "Mustafa", "Jeffrey", "Francesca",
- "Ouda", "EunMi Juliana", "Shikha",
+ "Xuemei", "Andreas",
+ "Jheng-Liang",
+ "Mustafa",  "Francesca",
+ "Ouda",  "Shikha",
  "Amrei","Christiane"
   )
 ngroups <- 4
-groupsize <- 4
+groupsize <- 3
 
 assign_groups(ngroups = ngroups, groupsize = groupsize, names = names)
 

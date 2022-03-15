@@ -94,7 +94,7 @@ ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
   geom_boxplot(width = 0.3) +
   geom_point(
     alpha = 0.5,
-    position = position_jitter(width = 0.2, seed = 123)
+    position = position_jitter(width = 0.1, seed = 123)
   ) +
   ggsci::scale_color_uchicago() +
   labs(x = "Species", y = "Flipper length (mm)") +
@@ -135,7 +135,7 @@ ggplot(
 ### 1.5 Save one of the plots on your machine
 flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
   geom_boxplot(width = 0.3) +
-  geom_jitter(alpha = 0.5, position = position_jitter(width = 0.2, seed = 123)) +
+  geom_jitter(alpha = 0.5, position = position_jitter(width = 0.2, seed = 2)) +
   ggsci::scale_color_uchicago() +
   labs(x = "Species", y = "Flipper length (mm)") +
   theme_minimal() +
@@ -145,6 +145,20 @@ flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)
 ggsave(filename = "./img/flipper_box.png", flipper_box)
 # save as pdf in /img directory of the project
 ggsave(filename = "./img/flipper_box.pdf", flipper_box)
+
+ggplot(
+  data = penguins,
+  aes(
+    x = sex,
+    y = body_mass_g,
+    color = species
+  )
+) +
+  geom_boxplot() +
+  geom_point(
+    alpha = 0.5,
+    position = position_jitterdodge(jitter.width = 0.2)
+  )
 
 # heatmap example
 
@@ -380,3 +394,22 @@ pivot_wider(fish_encounters,
 relig_income %>%
   pivot_longer(-religion) %>%
   pivot_wider(names_from = religion, values_from = value)
+
+
+# Joining tibbles ---------------------------------------------------------
+
+# Join rows (tibbles of different length) and add a category
+
+tibbleA <- tibble(category = rep(c("a", "b", "c"), each = 2), values = rnorm(6))
+tibbleB <- tibble(category = c("a", "b", "c"), values = rnorm(3))
+
+bind_rows(A = tibbleA,
+          B = tibbleB,
+          .id = "class")
+
+# Join columns
+
+tibbleA <- tibble(category = rep(c("a", "b", "c"), each = 2), values = rnorm(6))
+tibbleB <- tibble(category = c("a", "b", "c"), price = rnorm(3))
+
+left_join(tibbleA, tibbleB, by = "category")

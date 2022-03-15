@@ -54,7 +54,7 @@ class: inverse, middle, center
 
 #### The data:
 
-  - random sample of n data points ( $Y_i, X_{i1}, X_{i2},..., X_{ip}$, $i = 1...n$) 
+  - Random sample of n data points ( $Y_i, X_{i1}, X_{i2},..., X_{ip}$, $i = 1...n$) 
   
     - $X_{i1}, X_{i2},..., X_{ip}$ are p **independent predictor** variables
     
@@ -62,13 +62,35 @@ class: inverse, middle, center
 
 --
 
-#### Aim of linear model:
+#### Example
 
-  - (How) do the predictor variables impact the response variable?
-  
-  - Can we better predict values for the response variable, if we account for the predictor variables?    
-  
+Data set of grassland productivity ( $Y_i$ ) depending on plant species richness ( $X_{i1}$ ) and the location/measurement site  ( $X_{i1}$ ).
 
+**Aim of linear model:**
+
+- Do the predictors (species richness, location) have a significant effect on the response (grassland productivity)?
+
+---
+# Linear models background
+
+#### The data:
+
+  - Random sample of n data points ( $Y_i, X_{i1}, X_{i2},..., X_{ip}$, $i = 1...n$) 
+  
+    - $X_{i1}, X_{i2},..., X_{ip}$ are p **independent predictor** variables
+    
+    - $Y_i$ is the **dependent** observation and **response variable**
+
+#### The model:
+
+$Y_i = \beta_0 + \beta_1*X_{1,i} + \beta_2*X_{2,i} + \epsilon$
+
+- $Y_i$ value of response variable
+- $\beta_0, \beta_1, \beta_2$ model coefficients
+- $X_{1,i}$ value of predictor $X_1$
+- $X_{2,i}$ value of predictor $X_2$
+- $\epsilon$ error term
+  
 ---
 # Linear models background
 
@@ -174,13 +196,6 @@ Find the model coefficients that lead to the lowest sum of squares.
 ]
 
 ---
-# Significant effects
-
-If we account for variable A: do the residuals become significantly smaller?
-
-.center[![:scale 70%](img/day3/lm_residuals_placeholder.png)]
-
----
 # Assumptions for linear models
 
 Finding the model estimates that lead to the lowest residual sum of squares works only if:
@@ -233,7 +248,7 @@ class: inverse, middle, center
 
 .pull-left[
 
-$H_1$: Species richness increases productivity
+$H_1$: Species richness has an effect on productivity
  
 ]
 
@@ -263,17 +278,13 @@ with
 
 --
 
-Multiple predictors can be added with `+`, `:` or `*` depending on interaction:
+Multiple predictors can be added with `+` and  `:` depending on interaction:
 
 - <code><b>`Y ~ X1 + X2`</b></code> tests effects without interaction
 
 --
 
 - <code><b>`Y ~ X1 + X2 + X1:X2`</b></code> tests single effects and interaction between `X1` and `X2`
-
---
-
-- <code><b>`Y ~ X1 * X2`</b></code> is short for testing all single effects and all interactions (here same as line above)
 
 ---
 # Linear regression in R
@@ -377,7 +388,9 @@ summary(prod_lm)
 Test model assumptions to make sure that:
 
 1) Residuals are normally distributed
+
 2) Variance is constant (homogeneous)
+
 3) There are no strong outliers or very influential observations
 
 --
@@ -387,16 +400,6 @@ We can check that by looking at diagnostic plots
 ```{r eval=FALSE}
 # install.packages("performance")
 performance::check_model(prod_lm)
-```
-
---
-
-Another option without an additional package using base R would be:
-
-```{r eval=FALSE}
-par(mfrow = c(2,2)) # change graphics settings to fit 4 plots
-plot(prod_lm) # The actual diagnostic plots
-par(mfrow=c(1,1)) # change graphics settings back to default
 ```
 
 ---
@@ -437,9 +440,38 @@ prod_lm_perf
 ---
 # Plot the model
 
+#### Option 1
+
+Add the regression line directly as a ggplot layer
+
 --
 
-#### Option 1
+.pull-left[
+
+Use `geom_smooth()` to add the model directly:
+
+```{r eval=FALSE}
+ggplot(prod, aes(x = richness, y = productivity)) +
+ geom_point() +
+ geom_smooth(method = "lm", se = FALSE) #<<
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE, fig.height=5.6}
+prod_scatter +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+]
+
+---
+# Plot the model
+
+#### Option 2
+
 Extract coefficients (slope + intercept) of the model and add the regression line
 
 --
@@ -461,15 +493,10 @@ slope <- prod_lm$coefficients[2]
 ---
 # Plot the model
 
-#### Option 1
-Extract coefficients of the model and add the regression line
+#### Option 2
+Extract coefficients (slope + intercept) of the model and add the regression line
 
 .pull-left[
-
-```{r}
-# These are the coefficients of the lm
-prod_lm$coefficients
-```
 
 ```{r}
 intercept <- prod_lm$coefficients[1]
@@ -494,69 +521,6 @@ prod_scatter +
 ```
 ]
 
----
-# Plot the model
-
-#### Option 2
-Add the regression line directly as a ggplot layer
-
---
-
-.pull-left[
-
-Use `geom_smooth()` to add the model directly:
-
-```{r eval=FALSE}
-ggplot(prod, aes(x = richness, y = productivity)) +
- geom_point() +
- geom_smooth(method = "lm") #<<
-```
-
-]
-
-.pull-right[
-
-```{r echo=FALSE, fig.height=5.6}
-prod_scatter +
-  geom_smooth(method = "lm")
-```
-
-]
-
----
-# Plot the model
-
-#### Option 2
-
-Add the regression line directly as a ggplot layer
-
-.pull-left[
-
-Use `geom_smooth()` to add the model directly:
-
-```{r eval=FALSE}
-ggplot(prod, aes(x = richness, y = productivity)) +
- geom_point() +
- geom_smooth(method = "lm")
-```
-
-Or without the confidence interval:
-
-```{r eval=FALSE}
-ggplot(prod, aes(x = richness, y = productivity)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) #<<
-```
-
-]
-
-.pull-right[
-
-```{r echo=FALSE, fig.height=5.6}
-prod_scatter +
-  geom_smooth(method = "lm", se = FALSE)
-```
-]
 
 ---
 class: inverse, center, middle
@@ -581,7 +545,8 @@ Two possible models:
 .pull-right[
 ```{r echo=FALSE}
  ggplot(prod, aes(x=richness, y=productivity, color = site))+
-  geom_point()
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)
 ```
 ]
 
@@ -608,8 +573,6 @@ Species richness has an effect on productivity and the effect differs between si
 
 ```{r}
 prod_lm2b <- lm(productivity ~ richness + site + richness:site, data = prod)
-# or the same in short version:
-# prod_lm2b <- lm(productivity ~ richness * site, data = prod)
 ```
 
 ---
@@ -702,7 +665,7 @@ This plot is not 100% appropriate if the model you present is without interactio
 ---
 # Plot the model
 
-#### Option 1: Extract coefficients and add regression line
+#### Extract coefficients and add regression line
 
 
 ```{r}
@@ -721,7 +684,7 @@ intercept2 <- prod_lm2a$coefficients[1] + prod_lm2a$coefficients[3]
 ---
 # Plot the model
 
-#### Option 1: Extract coefficients and add regression line
+#### Extract coefficients and add regression line
 
 .pull-left[
 
@@ -869,7 +832,6 @@ ggplot(prod, aes(x=richness, y=productivity, color= site))+
 - **Step 3:** Add predictions as column to the tibble from step 1
 
 - **Step 4:** Add predictions to the plot using a new `geom_line()` layer based on the tibble from step 3
-
 ---
 class: inverse, middle, center
 
@@ -1082,8 +1044,7 @@ summary(mod)
 **Step 7: Plot model**
   - Regression: regression line and scatterplot
   - Analysis of covariance: regression lines and scatter plot
-  - A
-  nalysis of variance: boxplots, barplot, mean + sem or similar
+  - Analysis of variance: boxplots, barplot, mean + sem or similar
 
 ---
 # Options for model plotting
@@ -1130,217 +1091,4 @@ class: inverse, middle, center
 
 ## Task 2: Linear models with the penugin data set
 
-#### Find the task description <a href="../01_tasks_controller.html#linear-models">here</a>
-
----
-class: inverse, center, middle
-
-# .large[Linear models with transformed response variable]
-
----
-# When to transform?
-
-Transformation of the response variable Y can help with **potential violations of the model assumptions**:
-
-- residuals non-normally distributed
-  - skewed distribution
-  - outliers
-- trends in the residuals
-- non-constant variance
-
---
-
-**Example**
-
-- Non-linear function $y = a * e^{b*x}$
-
-- Transformed to a linear model: $log(y) = log(a) + b * x$
-
---
-
-- Common natural processes: exponential growth and decay
-
----
-# Example
-
-Data set `decay` on the decay of soil organic matter over time.
-
-.pull-left[
-Two variables:
-- `amount` of organic matter
-- `time`
-]
-.pull-right[
-
-```{r echo=FALSE}
-decay <- read_tsv(here::here("data/slides/03_Decay.txt"))
-ggplot(decay, aes(x=time, y= amount))+
-  geom_point()
-```
-]
-
----
-# Example
-
-First, let's fit a linear model to the untransformed data and look at the diagnostic plots:
-
---
-
-.pull-left[
-```{r eval = FALSE}
-mod1 <- lm(amount ~ time, data = decay)
-performance::check_model(mod1)
-```
-
-Diagnostic plots look bad:
-
-- pattern in the residuals
-
-- skewed distribution
-
-]
-.pull-right[
-```{r echo=FALSE}
-mod1 <- lm(amount ~ time, data = decay)
-performance::check_model(mod1)
-```
-]
-
----
-# Exercise
-
-Let's refit the model to transformed data (log-transformed response variable):
-
-.pull-left[
-```{r eval = FALSE}
-mod2 <- lm(log(amount) ~ time, data = decay) #<<
-performance::check_model(mod2)
-```
-
-Diagnostic plots look much better (though not perfect)
-
-- no patterns anymore
-
-]
-.pull-right[
-```{r echo=FALSE}
-mod2 <- lm(log(amount) ~ time, data = decay)
-performance::check_model(mod2)
-```
-]
-
----
-# Test for significant effects
-
-Is the effect of time on the amount of organic matter significant?
-
-```{r}
-drop1(mod2, test = "F")
-```
-
-
----
-# Plot the model
-
-To plot the results of the model **on the transformed scale**, we can just use `geom_smooth` in combination with `scale_y_log10`
-
-.pull-left[
-```{r eval = FALSE}
-ggplot(decay, aes(x = time, y = amount)) +
-  geom_point() +
-  scale_y_log10() + #<<
-  geom_smooth(method = "lm") #<<
-```
-
-]
-
-.pull-right[
-```{r echo = FALSE, fig.height=6.0}
-ggplot(decay, aes(x= time, y=amount))+
-  geom_point()+
-  scale_y_log10()+
-  geom_smooth(method = "lm")
-```
-
-]
-
----
-# Plot the model
-
-However, we mostly want to plot the model **on the scale of the original data**. For this, we need to use `predict`
-
---
-
-.pull-left[
-```{r eval=FALSE}
-# step 1: create some data to predict from
-pred_data <- tibble(time = 0:30)
-# step 2: make the prediction
-amount_pred <- predict(mod, newdata = pred_data)
-# step 3: backtransform to original scale and add to prediction data
-pred_data$amount <- exp(amount_pred) #<<
-# step 4: add model to plot
-ggplot(decay, aes(x= time, y=amount))+
-  geom_point()+
-  geom_line(data = pred_data)
-```
-
-- The trick here is to **backtransform** the predictions using `exp` as the inverse function of `log`
-
-]
-
-.pull-right[
-```{r echo=FALSE, fig.height=6.0}
-# on the original scale using predict
-pred_data <- tibble(time = 0:30)
-amount_pred <- predict(mod2, newdata = pred_data)
-# backtransform to original scale
-pred_data$amount <- exp(amount_pred)
-
-ggplot(decay, aes(x= time, y=amount))+
-  geom_point()+
-  geom_line(data = pred_data)
-```
-
-]
-
----
-# Transformations step by step
-
-1. Plot raw data
-
---
-
-2. Fit a model to untransformed data
-
---
-
-3. Check diagnostic plots
-
---
-
-4. Apply a transformation
-
---
-
-5. Re-fit model to transformed data
-
---
-
-6. Check diagnostic plots again
-
---
-
-7. Plot raw data and add model predictions **based on the transformed data**
-  - Backtransform predictions appropriately:
-    - $log(y) <=> exp(y)$
-    - $sqrt(y) <=> y^2$
-    
----
-class: inverse, middle, center
-
-# .large[Now you]
-
-## Task 3: Linear models with transformations (75 min)
-
-#### Find the task description <a href="../01_tasks_controller.html#linear-models-with-transformation">here</a>
+#### Find the task description <a href="../03_tasks_controller.html#linear-models">here</a>

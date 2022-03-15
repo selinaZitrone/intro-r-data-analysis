@@ -30,8 +30,212 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2022-03-13)
+  2021-08-01 (updated: 2022-03-15)
 ]
+
+---
+---
+class: inverse, center, middle
+
+# .large[Linear models with transformed response variable]
+
+---
+# When to transform?
+
+Transformation of the response variable Y can help with **potential violations of the model assumptions**:
+
+- residuals non-normally distributed
+  - skewed distribution
+  - outliers
+- trends in the residuals
+- non-constant variance
+
+--
+
+**Example**
+
+- Non-linear function `\(y = a * e^{b*x}\)`
+
+- Transformed to a linear model: `\(log(y) = log(a) + b * x\)`
+
+--
+
+- Common natural processes: exponential growth and decay
+
+---
+# Example
+
+Data set `decay` on the decay of soil organic matter over time.
+
+.pull-left[
+Two variables:
+- `amount` of organic matter
+- `time`
+]
+.pull-right[
+
+&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-2-1.png" width="504" /&gt;
+]
+
+---
+# Example
+
+First, let's fit a linear model to the untransformed data and look at the diagnostic plots:
+
+--
+
+.pull-left[
+
+```r
+mod1 &lt;- lm(amount ~ time, data = decay)
+performance::check_model(mod1)
+```
+
+Diagnostic plots look bad:
+
+- pattern in the residuals
+
+- skewed distribution
+
+]
+.pull-right[
+&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-4-1.png" width="504" /&gt;
+]
+
+---
+# Exercise
+
+Let's refit the model to transformed data (log-transformed response variable):
+
+.pull-left[
+
+```r
+*mod2 &lt;- lm(log(amount) ~ time, data = decay)
+performance::check_model(mod2)
+```
+
+Diagnostic plots look much better (though not perfect)
+
+- no patterns anymore
+
+]
+.pull-right[
+&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-6-1.png" width="504" /&gt;
+]
+
+---
+# Test for significant effects
+
+Is the effect of time on the amount of organic matter significant?
+
+
+```r
+drop1(mod2, test = "F")
+## Single term deletions
+## 
+## Model:
+## log(amount) ~ time
+##        Df Sum of Sq    RSS     AIC F value    Pr(&gt;F)    
+## &lt;none&gt;               2.372 -75.678                      
+## time    1    11.646 14.018 -22.602  142.39 1.038e-12 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+
+---
+# Plot the model
+
+To plot the results of the model **on the transformed scale**, we can just use `geom_smooth` in combination with `scale_y_log10`
+
+.pull-left[
+
+```r
+ggplot(decay, aes(x = time, y = amount)) +
+  geom_point() +
+* scale_y_log10() +
+* geom_smooth(method = "lm")
+```
+
+]
+
+.pull-right[
+&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-9-1.png" width="504" /&gt;
+
+]
+
+---
+# Plot the model
+
+However, we mostly want to plot the model **on the scale of the original data**. For this, we need to use `predict`
+
+--
+
+.pull-left[
+
+```r
+# step 1: create some data to predict from
+pred_data &lt;- tibble(time = 0:30)
+# step 2: make the prediction
+amount_pred &lt;- predict(mod, newdata = pred_data)
+# step 3: backtransform to original scale and add to prediction data
+*pred_data$amount &lt;- exp(amount_pred)
+# step 4: add model to plot
+ggplot(decay, aes(x= time, y=amount))+
+  geom_point()+
+  geom_line(data = pred_data)
+```
+
+- The trick here is to **backtransform** the predictions using `exp` as the inverse function of `log`
+
+]
+
+.pull-right[
+&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
+
+]
+
+---
+# Transformations step by step
+
+1. Plot raw data
+
+--
+
+2. Fit a model to untransformed data
+
+--
+
+3. Check diagnostic plots
+
+--
+
+4. Apply a transformation
+
+--
+
+5. Re-fit model to transformed data
+
+--
+
+6. Check diagnostic plots again
+
+--
+
+7. Plot raw data and add model predictions **based on the transformed data**
+  - Backtransform predictions appropriately:
+    - `\(log(y) &lt;=&gt; exp(y)\)`
+    - `\(sqrt(y) &lt;=&gt; y^2\)`
+    
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 3: Linear models with transformations (75 min)
+
+#### Find the task description &lt;a href="../01_tasks_controller.html#linear-models-with-transformation"&gt;here&lt;/a&gt;
+
 
 ---
 # GLMs background
@@ -215,7 +419,7 @@ specdat
 ]
 
 .pull-right[
-&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-4-1.png" width="504" /&gt;
+&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-14-1.png" width="504" /&gt;
 ]
 
 ---
@@ -384,7 +588,7 @@ ggplot(specdat, aes(
 ]
 .pull-right[
 
-&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
+&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-21-1.png" width="504" /&gt;
 
 ]
 
@@ -411,7 +615,7 @@ ggplot(specdat, aes(y = Species, x = Biomass, color = pH)) +
 
 ]
 .pull-right[
-&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-13-1.png" width="504" /&gt;
+&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-23-1.png" width="504" /&gt;
 ]
 
 ---
@@ -444,7 +648,7 @@ mod &lt;- glm(Odonatepresence ~ logmaxvolume + site, data = bromeliad, family = 
 
 .pull-right[
 
-&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-15-1.png" width="504" /&gt;
+&lt;img src="03_03_glm_files/figure-html/unnamed-chunk-25-1.png" width="504" /&gt;
 ]
 
 .footnote-right[Petermann et al., *Ecology* (2015)]

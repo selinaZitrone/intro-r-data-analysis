@@ -386,15 +386,7 @@ You can convert a value from one data type to the other using `as.*()`
 
 ```{r}
 as.character(1L)
-```
-
---
-
-Strings can be converted to numbers if possible
-
-```{r}
-as.integer("hello")
-as.integer("2")
+as.integer(TRUE)
 ```
 
 ---

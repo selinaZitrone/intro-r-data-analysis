@@ -230,14 +230,11 @@ First, test for normal distribution!
 - **Normal distribution** of groups
 - Calculates ratio of variances (if equal, ratio = 1)
 - p: How likely is ratio if variances were equal?
-- Only for normal distribution
 
 **Levene test**
 
 - **Non-normal distribution** of groups
 - Compare difference between data sets with difference within data sets
-- Works with all distributions
-
 
 ---
 # Test for equal variances
@@ -292,12 +289,10 @@ class: inverse, center, middle
 ---
 # Test for equal means
 
-First test for normality and equal variances in the groups!
-
 **t-test**
 
 - **Normal distribution** AND **equal variance**
-- Compares if mean values are within range or standard error of each other
+- Compares if mean values are within range of standard error of each other
 - p: how likely is the difference if the means were equal
 
 --

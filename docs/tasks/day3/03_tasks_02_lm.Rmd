@@ -1,14 +1,5 @@
 ### 2.1 Getting started
 
-We will again use the `penguins` tibble from the `palmerpenguins` package for this task.
-
-So before you get started with the exercise, make sure that you load the `palmerpenguins` package and the `tidyverse`
-
-```{r echo=TRUE, eval=FALSE}
-library(palmerpenguins)
-library(tidyverse)
-```
-
 To test the assumptions of linear models, we will use the `performance` package. Make sure you install it once and then load it:
 
 ```{r echo=TRUE, eval=FALSE}
@@ -18,7 +9,7 @@ library(performance)
 
 The `performance` package depends on other packages. It might happen that you encounter an error when trying to load or use the package for the first time. Just read the error message and install the missing packages with `install.packages()` (likely this will be the case for the `qqplotr` package).
 
-**Note:** Finish all the tasks (1.2-1.4) first before you start with the extras.
+**Note:** Finish all the tasks (2.2-2.4) first before you start with the extras.
 
 ### 2.2 Linear regression
 
