@@ -2457,11 +2457,7 @@ Solutions
 <li><a href="#create-an-rstudio-project">1.2 Create an RStudio project</a></li>
 <li><a href="#add-an-r-script-to-the-project">1.3 Add an R script to the project</a></li>
 </ul></li>
-<li><a href="#data-types-and-vectors">2 Data types and vectors</a>
-<ul>
-<li><a href="#type-conversion">2.1 Type conversion</a></li>
-<li><a href="#working-with-vectors">2.2 Working with vectors</a></li>
-</ul></li>
+<li><a href="#working-with-vectors">2 Working with vectors</a></li>
 <li><a href="#tibbles">3 Tibbles</a>
 <ul>
 <li><a href="#getting-started-with-tibbles">3.1 Getting started with tibbles</a></li>
@@ -2549,26 +2545,13 @@ Solutions
 </div>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h2 id="data-types-and-vectors">2 Data types and vectors</h2>
+<h2 id="working-with-vectors">2 Working with vectors</h2>
 <div class="layout-chunk" data-layout="l-body">
 <script>
   addClassKlippyTo("pre.r, pre.markdown");
   addKlippy('right', 'top', 'auto', '1', 'Copy code', 'Copied!');
 </script>
 </div>
-<p>Create a new script in your RStudio project for this task. Use comments in your code to take notes.</p>
-<h3 id="type-conversion">2.1 Type conversion</h3>
-<p>Look at the vectors below. What do you think will happen? Which data type do they have?</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>v1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"a"</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>
-<span class='va'>v2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>TRUE</span>, <span class='fl'>1</span>, <span class='cn'>FALSE</span>, <span class='fl'>0</span><span class='op'>)</span>
-<span class='va'>v3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4L</span>, <span class='fl'>6L</span>, <span class='fl'>23.5345</span><span class='op'>)</span>
-<span class='va'>v4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='st'>"a"</span>, <span class='cn'>FALSE</span>, <span class='st'>"FALSE"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="working-with-vectors">2.2 Working with vectors</h3>
 <p>You have the following three vectors:</p>
 <ul>
 <li><code>species</code>: name of the species</li>

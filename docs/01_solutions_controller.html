@@ -106,7 +106,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Solutions for day 1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["showDownload","includeSolution2","includeSolution3","includeSolution4"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Solutions for day 1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["showDownload","includeSolution2","includeSolution3","includeSolution4"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2447,10 +2447,8 @@ Solutions
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#data-types-and-vectors">2 Data types and vectors</a>
+<li><a href="#working-with-vectors">2 Working with vectors</a>
 <ul>
-<li><a href="#type-conversion">2.1 Type conversion</a></li>
-<li><a href="#working-with-vectors">2.2 Working with vectors</a></li>
 <li><a href="#extras">Extras</a></li>
 </ul></li>
 <li><a href="#tibbles">3 Tibbles</a>
@@ -2468,47 +2466,13 @@ Solutions
 </ul>
 </nav>
 </div>
+<p>Download an R script with the solutions from day 1 from <a href="./R/Tasks/Day1.R" download>here</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="working-with-vectors">2 Working with vectors</h2>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<h2 id="data-types-and-vectors">2 Data types and vectors</h2>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<h3 id="type-conversion">2.1 Type conversion</h3>
-<p>Implicit type conversion follows the following rules:</p>
-<ul>
-<li>numeric (double &amp; integer) <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> character</li>
-<li>logical <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> numeric</li>
-<li>logical <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"/></svg> character</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>v1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"a"</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>v1</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;character&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>v2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>TRUE</span>, <span class='fl'>1L</span>, <span class='cn'>FALSE</span>, <span class='fl'>0L</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>v2</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;integer&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>v3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4L</span>, <span class='fl'>6L</span>, <span class='fl'>23.5345</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>v3</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;double&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>v4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='st'>"a"</span>, <span class='cn'>FALSE</span>, <span class='st'>"FALSE"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>v4</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;character&quot;</code></pre>
-</div>
-<h3 id="working-with-vectors">2.2 Working with vectors</h3>
+<p>You have the following three vectors:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
@@ -2688,7 +2652,7 @@ Solutions
 </div>
 <pre><code>[1] 554.22</code></pre>
 </div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -2875,7 +2839,7 @@ Solutions
 10 PotarMonkey         10       0.115              87.0
 # ... with 18 more rows</code></pre>
 </div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -2945,13 +2909,13 @@ Solutions
 </div>
 <p>This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct <code>read_*()</code> function arguments.</p>
 <p>Just play with these different options of reading data into R and find one that fits you best.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
 <h1 id="reference">Reference</h1>
 <p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

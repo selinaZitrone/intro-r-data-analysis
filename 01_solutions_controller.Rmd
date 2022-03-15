@@ -7,9 +7,9 @@ output:
     number_sections: true
 params:
   showDownload: FALSE
-  includeSolution2: FALSE
-  includeSolution3: FALSE
-  includeSolution4: FALSE
+  includeSolution2: TRUE
+  includeSolution3: TRUE
+  includeSolution4: TRUE
 ---
 
 ```{r setup, include=FALSE}
