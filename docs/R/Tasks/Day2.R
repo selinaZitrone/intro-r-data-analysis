@@ -336,24 +336,28 @@ mutate(penguins,
 
 
 # 3. Tidyr ----------------------------------------------------------------
-
+library(tidyverse)
 
 # 1. relig_income
 
 relig_income
 
-pivot_longer(relig_income,
-             cols = !religion, #2:11, `<$10k`:`>150k`
-             names_to = "income",
-             values_to = "count")
+relig_tidy <- pivot_longer(relig_income,
+  cols = !religion, # 2:11, `<$10k`:`Don't know/refused`
+  names_to = "income",
+  values_to = "count"
+)
 
+relig_tidy %>%
+  ggplot(aes(x = income, y = religion, fill = count)) +
+  geom_tile()
 
 # 2. billboard
 
 billboard
 
-pivot_longer(billboard,
-             cols = wk1:wk76,
+bill_tidy <- pivot_longer(billboard,
+             cols = wk1:wk76, # starts_with("wk")
              names_to = "week",
              values_to = "rank")
 
@@ -366,12 +370,20 @@ charts <- pivot_longer(billboard,
              values_to = "rank",
              values_drop_na = TRUE)
 
+charts %>%
+  filter(artist == "2 Pac") %>%
+  ggplot(aes(x = week, y = rank)) +
+  geom_point() +
+  geom_line(group = 1)
+
 separate(
   charts,
   date.entered, # column to separate
   sep = "-",
   into = c("year","month", "day")
-)
+) %>%
+  relocate(c(day,month), .before = year)
+
 
 # 3. fish_encounters
 

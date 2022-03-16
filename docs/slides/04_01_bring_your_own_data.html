@@ -82,13 +82,14 @@ Hint: It might be a good idea to transform the quality column to a factor (use `
 
 **Effect of forest fragmentation on bird abundance**
 
-- Bird abundance in the fragment
-- Area (size of the fragment)
-- Distance to the next forest fragment
-- Distance to the next large forest fragment
-- Years since site was isolated
-- Grazing intensity of the surrounding
-- Altitude
+- Site ID (`SITE`)
+- Bird abundance in the fragment (`ABUND`)
+- Area (size of the fragment) (`AREA`)
+- Distance to the next forest fragment (`DIST`)
+- Distance to the next large forest fragment (`LDIST`)
+- Years since site was isolated (`YR.ISOL`)
+- Grazing intensity of the surrounding (`GRAZE`)
+- Altitude (`ALT`)
 
 ]
 .pull-right[
@@ -117,7 +118,7 @@ Hint: It might be a good idea to transform the quality column to a factor (use `
 - Which factors influence bird abundance most?
 - Good for plotting different variables
 - Rather clear and small data set
-- Explore the effects of environment on bird abundance (try models)
+- Explore the effects of environment on bird abundance (try models or tests)
 ]
 
 .pull-right[
@@ -177,6 +178,8 @@ athletes &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascienc
   - [dplyr](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf)
   - [lubridate](https://raw.githubusercontent.com/rstudio/cheatsheets/master/lubridate.pdf): working with dates and times (convert character columns to date time, calculate differences in time, ...)
   - [stringr](https://raw.githubusercontent.com/rstudio/cheatsheets/master/strings.pdf): working with strings (e.g. creating substrings, extracting parts from strings, ...)
+- For barplots and mean +- se: check the lm solution on the website
+- For heatmaps with ggplot: check the ggplot2 solution on the website, find a tutorial [here](https://www.statology.org/heatmap-r-ggplot2/)
   
 ---
 # Some general tips
@@ -189,11 +192,7 @@ athletes &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascienc
   - `excel_numeric_to_date()`: convert strange excel serial numbers to actual dates
 - [readxl package](https://www.rdocumentation.org/packages/readxl/versions/1.3.1): read directly from Excel files instead of using `readr` with csv files
   - Check out `?read_xlsx` to see how to read different sheets
-- For heatmaps with ggplot: check the ggplot2 solution on the website, find a tutorial [here](https://www.statology.org/heatmap-r-ggplot2/)
-- For barplots and mean +- se: check the lm solution on the website
 - [Join multiple tables](https://dplyr.tidyverse.org/articles/two-table.html): `dplyr` offers function to join multiple tables based on a common column
-- `vegan`: R package for community ecology (e.g. diversity (Shannon, Simpson, species richness, ...)), [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/vegan.pdf), [tutorial](https://peat-clark.github.io/BIO381/veganTutorial.html)
-  
 
 ---
 class: inverse, middle, center
@@ -237,7 +236,7 @@ class: inverse, middle, center
 
 Please take 5 mins to complete the feedback survey for the Graduate center (don't use Internet Explorer)
 
-.center[https://votingo.cedis.fu-berlin.de/PCNLP3]
+.center[https://votingo.cedis.fu-berlin.de/survey/PCNLP3]
 
 --
 

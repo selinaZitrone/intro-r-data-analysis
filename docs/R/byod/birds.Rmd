@@ -69,7 +69,7 @@ ggplot(birds, aes(x = isol_years, y = abund, color = graze)) +
   geom_point()
 ```
 
-I there an interaction between grazing intensity and time since isolation?
+Is there an interaction between grazing intensity and time since isolation?
 
 Does not look like it. But the sites with a very high grazing intensity seem to be isolated since a very long time.
 
@@ -204,7 +204,7 @@ Are there correlated variables?
 
 ```{r}
 birds %>% 
-  select(area, dist, ldist, isol_years, alt) %>% 
+  dplyr::select(area, dist, ldist, isol_years, alt) %>% 
   cor()
 ```
 
@@ -219,7 +219,7 @@ To get a better overview, I now select some independent variables that I am inte
 
 ```{r}
 birds %>% 
-  select(-isol_since, -site) %>% 
+  dplyr::select(-isol_since, -site) %>% 
   GGally::ggpairs()
 ```
 
