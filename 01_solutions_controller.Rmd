@@ -6,7 +6,7 @@ output:
     toc_float: true
     number_sections: true
 params:
-  showDownload: FALSE
+  showDownload: TRUE
   includeSolution2: TRUE
   includeSolution3: TRUE
   includeSolution4: TRUE
@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-## 2 Data types and vectors
+## 2 Working with vectors
 
 ```{r vectors, child=if (params$includeSolution2) "tasks/day1/01_tasks_02_R_basics_solution.Rmd"}
 ```

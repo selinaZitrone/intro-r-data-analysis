@@ -80,13 +80,6 @@ background-size: 90%
 
 ---
 class: center, middle
-background-image: url("https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_05/2020_05_TreesSF.png")
-background-size: 50%
-
-.footnote-right[Visualization by [Cédric Scherer](https://twitter.com/CedScherer), code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_05_TreesSF.Rmd)]
-
----
-class: center, middle
 background-image: url("https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_31/2020_31_PalmerPenguins.png")
 background-size: contain
 
@@ -130,8 +123,6 @@ background-size: contain
 `ggplot2` is an implementation of the grammar of graphics by Leland Wilkinson
 
 --
-
-- Coherent system for describing and building graphs
 
 - Basic idea: stack distinct **layers of graphical elements** to create a plot
 

@@ -4,6 +4,9 @@ library(performance)
 # Statistical tests -------------------------------------------------------
 
 # subset for 3 species flipper length
+adelie <- filter(penguins, species == "Adelie")$flipper_length_mm
+chinstrap <- filter(penguins, species == "Chinstrap")$flipper_length_mm
+gentoo <- filter(penguins, species == "Gentoo")$flipper_length_mm
 
 adelie <- filter(penguins, species == "Adelie") %>% pull(flipper_length_mm)
 chinstrap <- filter(penguins, species == "Chinstrap") %>% pull(flipper_length_mm)
@@ -28,7 +31,6 @@ penguins %>%
   stat_qq_line()
 
 # Test normality with Shapiro-Wilk test
-
 shapiro.test(adelie) # normal
 shapiro.test(chinstrap) # normal
 shapiro.test(gentoo) # not normal
@@ -37,7 +39,7 @@ shapiro.test(gentoo) # not normal
 # both normal so test for equal variance
 var.test(chinstrap, adelie) # variances do not differ
 # t-test to test for equal means
-t.test(chinstrap, adelie) # means differ
+t.test(chinstrap, adelie, var.equal = TRUE) # means differ
 
 # Comparison Chinstrap vs. Gentoo
 # Gentoo not normal: use Wilcoxon-rank-sum test to compare means
@@ -113,6 +115,7 @@ g2
 lm2a <- lm(bill_depth_mm ~ bill_length_mm + species, data = penguins)
 # With interaction
 lm2b <- lm(bill_depth_mm ~ bill_length_mm * species, data = penguins)
+
 lm2b <- lm(bill_depth_mm ~ bill_length_mm +
              species + bill_length_mm:species, data = penguins)
 

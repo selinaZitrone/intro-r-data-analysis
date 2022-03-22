@@ -40,4 +40,4 @@ To download presentation slides in pdf format, you can use the following links:
 - <a href="./slides/03_02_linear_models.pdf" download>03 - Linear models</a>
 - <a href="./slides/01_06_common_errors.pdf" download>Common errors</a>
 
-After the workshop is finished, you can download a zipped version of the content (slides in pdf, data and R scripts) <>here</a>
+After the workshop is finished, you can download a zipped version of the content (slides in pdf, data and R scripts) <a href="intro-r-data-analysis-project.zip" download>here</a>

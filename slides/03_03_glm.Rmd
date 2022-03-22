@@ -43,6 +43,221 @@ cols <- c( "#4C7488","#D78974", "#D7BC74")
 ```
 
 ---
+---
+class: inverse, center, middle
+
+# .large[Linear models with transformed response variable]
+
+---
+# When to transform?
+
+Transformation of the response variable Y can help with **potential violations of the model assumptions**:
+
+- residuals non-normally distributed
+  - skewed distribution
+  - outliers
+- trends in the residuals
+- non-constant variance
+
+--
+
+**Example**
+
+- Non-linear function $y = a * e^{b*x}$
+
+- Transformed to a linear model: $log(y) = log(a) + b * x$
+
+--
+
+- Common natural processes: exponential growth and decay
+
+---
+# Example
+
+Data set `decay` on the decay of soil organic matter over time.
+
+.pull-left[
+Two variables:
+- `amount` of organic matter
+- `time`
+]
+.pull-right[
+
+```{r echo=FALSE}
+decay <- read_tsv(here::here("data/slides/03_Decay.txt"))
+ggplot(decay, aes(x=time, y= amount))+
+  geom_point()
+```
+]
+
+---
+# Example
+
+First, let's fit a linear model to the untransformed data and look at the diagnostic plots:
+
+--
+
+.pull-left[
+```{r eval = FALSE}
+mod1 <- lm(amount ~ time, data = decay)
+performance::check_model(mod1)
+```
+
+Diagnostic plots look bad:
+
+- pattern in the residuals
+
+- skewed distribution
+
+]
+.pull-right[
+```{r echo=FALSE}
+mod1 <- lm(amount ~ time, data = decay)
+performance::check_model(mod1)
+```
+]
+
+---
+# Exercise
+
+Let's refit the model to transformed data (log-transformed response variable):
+
+.pull-left[
+```{r eval = FALSE}
+mod2 <- lm(log(amount) ~ time, data = decay) #<<
+performance::check_model(mod2)
+```
+
+Diagnostic plots look much better (though not perfect)
+
+- no patterns anymore
+
+]
+.pull-right[
+```{r echo=FALSE}
+mod2 <- lm(log(amount) ~ time, data = decay)
+performance::check_model(mod2)
+```
+]
+
+---
+# Test for significant effects
+
+Is the effect of time on the amount of organic matter significant?
+
+```{r}
+drop1(mod2, test = "F")
+```
+
+
+---
+# Plot the model
+
+To plot the results of the model **on the transformed scale**, we can just use `geom_smooth` in combination with `scale_y_log10`
+
+.pull-left[
+```{r eval = FALSE}
+ggplot(decay, aes(x = time, y = amount)) +
+  geom_point() +
+  scale_y_log10() + #<<
+  geom_smooth(method = "lm") #<<
+```
+
+]
+
+.pull-right[
+```{r echo = FALSE, fig.height=6.0}
+ggplot(decay, aes(x= time, y=amount))+
+  geom_point()+
+  scale_y_log10()+
+  geom_smooth(method = "lm")
+```
+
+]
+
+---
+# Plot the model
+
+However, we mostly want to plot the model **on the scale of the original data**. For this, we need to use `predict`
+
+--
+
+.pull-left[
+```{r eval=FALSE}
+# step 1: create some data to predict from
+pred_data <- tibble(time = 0:30)
+# step 2: make the prediction
+amount_pred <- predict(mod, newdata = pred_data)
+# step 3: backtransform to original scale and add to prediction data
+pred_data$amount <- exp(amount_pred) #<<
+# step 4: add model to plot
+ggplot(decay, aes(x= time, y=amount))+
+  geom_point()+
+  geom_line(data = pred_data)
+```
+
+- The trick here is to **backtransform** the predictions using `exp` as the inverse function of `log`
+
+]
+
+.pull-right[
+```{r echo=FALSE, fig.height=6.0}
+# on the original scale using predict
+pred_data <- tibble(time = 0:30)
+amount_pred <- predict(mod2, newdata = pred_data)
+# backtransform to original scale
+pred_data$amount <- exp(amount_pred)
+
+ggplot(decay, aes(x= time, y=amount))+
+  geom_point()+
+  geom_line(data = pred_data)
+```
+
+]
+
+---
+# Transformations step by step
+
+1. Plot raw data
+
+--
+
+2. Fit a model to untransformed data
+
+--
+
+3. Check diagnostic plots
+
+--
+
+4. Apply a transformation
+
+--
+
+5. Re-fit model to transformed data
+
+--
+
+6. Check diagnostic plots again
+
+--
+
+7. Plot raw data and add model predictions **based on the transformed data**
+  - Backtransform predictions appropriately:
+    - $log(y) <=> exp(y)$
+    - $sqrt(y) <=> y^2$
+    
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 3: Linear models with transformations (75 min)
+
+#### Find the task description <a href="../01_tasks_controller.html#linear-models-with-transformation">here</a>
+
+
+---
 # GLMs background
 
 Assumptions of linear models:

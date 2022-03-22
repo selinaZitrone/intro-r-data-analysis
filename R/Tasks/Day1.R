@@ -31,37 +31,7 @@ legend("bottomright", c("setosa", "virginica", "versicolor"),
 )
 
 
-# 2. Data types and vectors -----------------------------------------------
-
-v1 <- c(1, "a", 2, 3)
-v2 <- c(TRUE, TRUE, 1L, FALSE, 0L)
-v3 <- c(0, "23", 5, 7)
-v4 <- c(4L, 6L, 23.5345)
-v5 <- c(TRUE, "a", FALSE, "FALSE")
-
-# Checking the data types of the vectors
-typeof(v1)
-typeof(v2)
-typeof(v3)
-typeof(v4)
-typeof(v5)
-
-# explicit conversion to int
-as.integer(v1)
-as.integer(v2)
-as.integer(v3)
-as.integer(v4)
-as.integer(v5)
-
-# explicit conversion to string
-as.character(v1)
-as.character(v2)
-as.character(v3)
-as.character(v4)
-as.character(v5)
-
-
-# 2.2 Working with vectors ----------------------------------------------------
+# 2. Working with Vectors -----------------------------------------------
 
 species <- c(
   "MountainBeaver", "Cow", "GreyWolf", "Goat",
@@ -217,4 +187,3 @@ write_tsv(x = animals, file = "./data/animals.txt") # write as txt
 #Read the same data back into R:
 animals_csv <- read_csv("./data/animals.csv") # read the csv
 animals_tsv <- read_tsv("./data/animals.txt") # read the txt
-

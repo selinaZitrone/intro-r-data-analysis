@@ -198,6 +198,3 @@ You can give feedback by
 - Use the chat in the groups for questions 
 
 - Meet in your groups and solve the tasks jointly (if you want)
-
-- If you want: Change the name of your Webex profile to a name you would like to be called
-  - Click on your name in the top left corner, go to `Edit Profile` and change your display name

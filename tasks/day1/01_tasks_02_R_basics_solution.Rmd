@@ -2,27 +2,7 @@
 options(scipen = 999)
 ```
 
-
-### 2.1 Type conversion
-
-Implicit type conversion follows the following rules:
-
-- numeric (double & integer) `r fontawesome::fa("arrow-right")` character
-- logical `r fontawesome::fa("arrow-right")` numeric
-- logical `r fontawesome::fa("arrow-right")` character
-
-```{r echo = TRUE, collapse=TRUE}
-v1 <- c(1, "a", 2, 3)
-typeof(v1)
-v2 <- c(TRUE, TRUE, 1L, FALSE, 0L)
-typeof(v2)
-v3 <- c(4L, 6L, 23.5345)
-typeof(v3)
-v4 <- c(TRUE, "a", FALSE, "FALSE")
-typeof(v4)
-```
-
-### 2.2 Working with vectors
+You have the following three vectors:
 
 ```{r echo=TRUE}
 species <- c(

@@ -2,22 +2,6 @@
 klippy::klippy(position = c("top","right"))
 ```
 
-Create a new script in your RStudio project for this task.
-Use comments in your code to take notes.
-
-### 2.1 Type conversion
-
-Look at the vectors below. What do you think will happen? Which data type do they have?
-
-```{r echo=TRUE, eval=FALSE}
-v1 <- c(1, "a", 2, 3)
-v2 <- c(TRUE, TRUE, 1, FALSE, 0)
-v3 <- c(4L, 6L, 23.5345)
-v4 <- c(TRUE, "a", FALSE, "FALSE")
-```
-
-### 2.2 Working with vectors
-
 You have the following three vectors:
 
 - `species`: name of the species
