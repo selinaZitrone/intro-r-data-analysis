@@ -87,20 +87,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Introduction to R for Data Analysis: Tasks for day 2</title>
+  <title>Reproducible documents with rmarkdown: Tasks for day 2</title>
 
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Introduction to R for Data Analysis: Tasks for day 2"/>
+  <meta property="og:title" content="Reproducible documents with rmarkdown: Tasks for day 2"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="Introduction to R for Data Analysis"/>
+  <meta property="og:site_name" content="Reproducible documents with rmarkdown"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Introduction to R for Data Analysis: Tasks for day 2"/>
+  <meta property="twitter:title" content="Reproducible documents with rmarkdown: Tasks for day 2"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
@@ -2345,6 +2345,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <link href="site_libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+  <script src="site_libs/panelset-0.2.6/panelset.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2372,7 +2374,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <header class="header header--fixed" role="banner">
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
-<a href="index.html" class="title">Introduction to R for Data Analysis</a>
+<a href="index.html" class="title">Reproducible documents with rmarkdown</a>
 </div>
 <div class="nav-right">
 <a href="index.html">Home</a>
@@ -2383,18 +2385,9 @@ Slides
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="slides/01_01_RStudio.html">01 - Introduction RStudio</a>
-<a href="slides/01_02_Intro_R.html">01 - Introduction R</a>
-<a href="slides/01_03_Functions.html">01 - Functions</a>
-<a href="slides/01_04_tibbles_short.html">01 - Data &amp; Tibbles</a>
-<a href="slides/01_05_readr.html">01 - Tidyverse and Readr</a>
-<a href="slides/02_01_tidyverse_ggplot.html">02 - Ggplot2</a>
-<a href="slides/02_02_dplyr.html">02 - Dplyr</a>
-<a href="slides/02_03_tidyr.html">02 - Tidyr</a>
-<a href="slides/03_01_tests_short.html">03 - Statistical tests</a>
-<a href="slides/03_02_linear_models.html">03 - Linear models</a>
-<a href="slides/04_01_bring_your_own_data.html">04 - Bring your own data</a>
-<a href="slides/01_06_common_errors.html">Common R errors</a>
+<a href="slides/3_Day1.html">Day 1 - R Markdown Introduction</a>
+<a href="slides/4_Day2.html">Day 2 - Citations, tables and more</a>
+<a href="slides/5_General_tips.html">General tips</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2404,9 +2397,8 @@ Tasks
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="01_tasks_controller.html">Day 1: Intro to R</a>
-<a href="02_tasks_controller.html">Day 2: Tidyverse</a>
-<a href="03_tasks_controller.html">Day 3: Statistics</a>
+<a href="01_tasks_controller.html">Day 1: Task</a>
+<a href="02_tasks_controller.html">Day 2: Task</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2416,14 +2408,12 @@ Solutions
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="01_solutions_controller.html">Day 1: Intro to R</a>
-<a href="02_solutions_controller.html">Day 2: Tidyverse</a>
-<a href="03_solutions_controller.html">Day 3: Statistics</a>
+<a href="01_solutions_controller.html">Day 1: Solution</a>
+<a href="02_solutions_controller.html">Day 2: Solution</a>
 </div>
 </div>
-<a href="online_resources.html">Resources</a>
-<a href="packages.html">Packages</a>
-<a href="https://github.com/selinaZitrone/intro-r-data-analysis">
+<a href="online_resources.html">Resources &amp; Packages</a>
+<a href="https://github.com/selinaZitrone/rmarkdown">
 <i class="fa fa-github" aria-hidden="true"></i>
 </a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2447,222 +2437,167 @@ Solutions
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#ggplot2">1 ggplot2</a>
+<li><a href="#add-citations">1 Add citations</a>
 <ul>
-<li><a href="#getting-started">1.1 Getting started</a></li>
-<li><a href="#getting-the-data">1.2 Getting the data</a></li>
-<li><a href="#exploratory-plotting">1.3 Exploratory plotting</a></li>
-<li><a href="#beautify-the-plots">1.4 Beautify the plots</a></li>
-<li><a href="#save-one-of-the-plots-on-your-machine">1.5 Save one of the plots on your machine</a></li>
-<li><a href="#references">References</a></li>
+<li><a href="#explore-the-visual-editor">1.1 Explore the visual editor</a></li>
+<li><a href="#add-citation">1.2. Add Citation</a></li>
 </ul></li>
-<li><a href="#dplyr">2 dplyr</a>
+<li><a href="#multiple-output-formats">2 Multiple output formats</a>
 <ul>
-<li><a href="#getting-started-with-dplyr">2.1 Getting started with dplyr</a></li>
-<li><a href="#data-transformation-with-dplyr">2.2 Data transformation with dplyr</a></li>
-<li><a href="#extras">Extras</a></li>
+<li><a href="#add-other-output-formats-to-your-document">2.1 Add other output formats to your document</a></li>
+<li><a href="#customize-your-favourite-output-format">2.2 Customize your favourite output format</a></li>
 </ul></li>
-<li><a href="#tidyr">3 tidyr</a>
-<ul>
-<li><a href="#getting-started-with-tidyr">4.1 Getting started with tidyr</a></li>
-<li><a href="#lets-tidy-some-data-sets">4.2 Let’s tidy some data sets</a></li>
-</ul></li>
+<li><a href="#make-nice-tables">3 Make nice tables</a></li>
 </ul>
 </nav>
 </div>
-<h2 id="ggplot2">1 ggplot2</h2>
-<h3 id="getting-started">1.1 Getting started</h3>
-<p>A helpful resource to consult for this task can be the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf">ggplot2 cheatsheet</a>.</p>
-<p>Remember to put <code>library(tidyverse)</code> (or <code>library(ggplot2)</code>) on top of your script to access the ggplot functions.</p>
-<h3 id="getting-the-data">1.2 Getting the data</h3>
-<p>To practice plotting with the <code>ggplot2</code> package, we will use a data set on 3 species of penguins on islands in Antarctica.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<img src="tasks/day2/img/lter_penguins.png" alt="Artwork by [Allison Horst](https://twitter.com/allison_horst)" width="900" />
-<p class="caption">
-Figure 1: Artwork by <a href="https://twitter.com/allison_horst">Allison Horst</a>
-</p>
-</div>
-</div>
-<p>The data is available from the <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins package</a>. To get it, you have to:</p>
+<h2 id="add-citations">1 Add citations</h2>
+<h3 id="explore-the-visual-editor">1.1 Explore the visual editor</h3>
+<p>Open your R Markdown document from the last task.</p>
+<p>Switch to the visual editor by clicking on the RStudio compass button on the top right of the document.</p>
+<p>First, scroll through your document and see how it looks different from the original document view.</p>
+<p>Take 5 minutes and explore the visual editor. If you want, you can try to e.g.,</p>
 <ul>
-<li>Install the package with <code>install.packages("palmerpenguins")</code></li>
-<li>Load the package at the beginning of your script with <code>library(palmerpenguins)</code></li>
-</ul>
-<p>After you have done that, take a moment to get familiar with the data set and its variables. The data set is called <code>penguins</code>:</p>
-<ul>
-<li>The data set is available after you loaded the package</li>
-<li>Just type <code>penguins</code> in the console and you should see the <code>penguins</code> tibble</li>
-</ul>
-<h3 id="exploratory-plotting">1.3 Exploratory plotting</h3>
-<p>Explore the data set and it’s variables with ggplot. Below, you find some ideas and tasks for plots. I suggest you start with one of them and if you want you can continue. But if you have your own ideas for interesting plots with the penguin data set, feel free to do them instead of continuing with the tasks.</p>
-<p>In the exploratory section, don’t care too much about the beauty of your plots and just use the default theme and colors. This is about exploring the data and testing different visualization options in ggplot.</p>
-<h4 id="relationship-between-bill-length-and-bill-depth-scatterplot">1.3.1 Relationship between bill length and bill depth (scatterplot)</h4>
-<p>What is the relationship between bill length and bill depth?</p>
-<ul>
-<li>Create a scatterplot with bill length on the x-axis and bill depth on the y-axis</li>
-<li>Can you add a regression line?</li>
-<li>Add species as color aesthetic. Does your interpretation of the data change?
-<ul>
-<li>What is the difference between adding color as a global aesthetic or as a local aesthetic of the point layer?</li>
-</ul></li>
-<li>Add species as shape aesthetic to distinguish the species</li>
-</ul>
-<h4 id="difference-in-flipper-length-between-species-boxplot">1.3.2 Difference in flipper length between species (boxplot)</h4>
-<p>Is there a difference in flipper length between the species?</p>
-<ul>
-<li>Create a boxplot of the flipper length (y-axis) for the different species (x-axis)</li>
-<li>Try adding notches to the boxplots by setting <code>notch = TRUE</code> in the boxplot layer</li>
-<li><strong>Extra:</strong> Add a layer with <code>geom_point()</code>. Try setting <code>position = position_jitter()</code> as argument in the point layer. What does it do?</li>
-</ul>
-<h4 id="differences-between-body-mass-of-male-and-female-penguins-boxplot">1.3.3 Differences between body mass of male and female penguins (boxplot)</h4>
-<p>Are male penguins heavier than female penguins? And is this different between the 3 species?</p>
-<ul>
-<li>Create a boxplot with body mass on the y axis and sex on the x axis</li>
-<li>Add the difference between penguin species to this plot. Try the different options ggplot offers
-<ul>
-<li>Species as color aesthetic</li>
-<li>Species as fill aesthetic</li>
-<li>Species as facet using <code>facet_wrap</code></li>
-</ul></li>
-<li><strong>Extra:</strong> What happens if you use <code>geom_violin</code> instead of <code>geom_boxplot</code>? Can you combine both geoms in one plot?</li>
-</ul>
-<h3 id="beautify-the-plots">1.4 Beautify the plots</h3>
-<p>Also here: Chose the tasks that you like most.</p>
-<h4 id="beautify-the-plots-from-1.3">1.4.1 Beautify the plots from 1.3</h4>
-<p>Take the plot from before that you liked the most and try to make them look nicer.</p>
-<p>Here’s a list of ideas:</p>
-<ul>
-<li>Add a theme layer</li>
-<li>Customize the theme, e.g.
-<ul>
-<li>Change the position of the legend</li>
-<li>Make the axis titles bold</li>
-</ul></li>
-<li>Change the color/fill scale of the plot
-<ul>
-<li>Use <code>scale_color_manual</code> or <code>scale_fill_manual</code></li>
-<li>Try <code>scale_color_viridis_d()</code> or <code>scale_fill_viridis_d()</code> with different options</li>
-<li>Try a color scale from an additional package, e.g. <code>ggsci::scale_color_uchicago()</code> or <code>ggsci::scale_fill_uchicago()</code>
-<ul>
-<li>First you have to install the <code>ggsci</code> package</li>
-</ul></li>
-</ul></li>
-<li>Change the labels of the x- and y-axis and add a title to the plot</li>
+<li>Insert a link (<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg> button)</li>
+<li>Turn some text bold,</li>
 <li>…</li>
 </ul>
-<h4 id="can-you-reproduce-this-plot">1.4.2 Can you reproduce this plot?</h4>
-<p>Take a look at the plot, we discussed during the presentation:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<img src="slides/img/figs-penguin/README-flipper-bill-1.png" alt="Visualization from the [palmerpenguins package](https://allisonhorst.github.io/palmerpenguins/)" width="672" />
-<p class="caption">
-Figure 2: Visualization from the <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins package</a>
-</p>
-</div>
-</div>
-<p>Can you reproduce this plot? It is similar to the one from Task 1.3.1.</p>
-<p>The colors that are used are:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguin_cols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"darkorange"</span>, <span class='st'>"purple"</span>, <span class='st'>"cyan4"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="save-one-of-the-plots-on-your-machine">1.5 Save one of the plots on your machine</h3>
-<p>Save one of the plots you produced in a variable and then use <code>ggsave</code> to save the plot on your machine. Save the plot in a dedicated plot directory in your RStudio project.</p>
-<h3 id="references">References</h3>
-<p>Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. <a href="https://allisonhorst.github.io/palmerpenguins/" class="uri">https://allisonhorst.github.io/palmerpenguins/</a>. doi: 10.5281/zenodo.3960218.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h2 id="dplyr">2 dplyr</h2>
-<h3 id="getting-started-with-dplyr">2.1 Getting started with dplyr</h3>
-<p>A helpful resource for to consult for this task can be the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf">dplyr cheatsheet</a>.</p>
-<p>Before you start, make sure to load the <code>tidyverse</code> package and the <code>palmerpenguins</code> package.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="data-transformation-with-dplyr">2.2 Data transformation with dplyr</h3>
-<p>In the following, you find a lot of different data transformation tasks. First, do 2 from each category before you do the remaining ones. You don’t have to finish all the tasks but make sure you covered each category. Generally, the first tasks from a category are easier than the last tasks of a category.</p>
-<p><strong>Find all penguins that …</strong></p>
-<ol type="1">
-<li><p>… have a bill length between 40 and 45 mm.</p></li>
-<li><p>… for which we know the sex.</p></li>
-<li><p>… which are of the species Adelie or Gentoo and live either on Dream or on Torgersen</p></li>
-<li><p>… lived on the island Dream in the year 2007. How many of them were from each of the 3 species?</p></li>
-</ol>
-<p><strong>Count …</strong></p>
-<ol type="1">
-<li><p>… the number of penguins on each island.</p></li>
-<li><p>… the number of penguins of each species on each island.</p></li>
-</ol>
-<p><strong>Sort …</strong></p>
-<ol type="1">
-<li><p>… <code>penguins</code> to find penguins with lowest body mass</p></li>
-<li><p>… <code>penguins</code> to find penguins with highest body mass</p></li>
-<li><p>… <code>penguins</code> by species and sex, with longest flippers first</p></li>
-</ol>
-<p><strong>Select …</strong></p>
-<ol type="1">
-<li><p>… only the variables species, sex and year</p></li>
-<li><p>… variables based on the following vector</p></li>
-</ol>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>cols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"species"</span>, <span class='st'>"bill_length_mm"</span>, <span class='st'>"flipper_length_mm"</span>, <span class='st'>"body_mass_kg"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<ol start="3" type="1">
-<li>… only columns that contain measurements in mm</li>
-</ol>
-<p><strong>Add a column …</strong></p>
-<ol type="1">
-<li><p>… with the ratio of bill length to bill depth</p></li>
-<li><p>… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).</p></li>
-</ol>
-<p><strong>Calculate …</strong></p>
-<ol type="1">
-<li><p>… mean flipper length and body mass for the 3 species and male and female penguins separately</p></li>
-<li><p>Can you do the same but remove the penguins for which we don’t know the sex first?</p></li>
-</ol>
-<h3 id="extras">Extras</h3>
-<ol type="1">
-<li><p>Make a boxplot of penguin body mass with sex on the x-axis and facets for the different species. Can you remove the penguins with missing values for sex first?</p></li>
-<li><p>Make a scatterplot with the ratio of bill length to bill depth on the y axis and flipper length on the x axis? Can you distinguish the point between male and female penguins and remove penguins with unknown sex before making the plot?</p></li>
-</ol>
+<p>After you inserted an element, switch back to the normal R Studio editor view (click on the compass button again) and see how your original document changed.</p>
+<h3 id="add-citation">1.2. Add Citation</h3>
+<h4 id="add-citation-of-gorman-et-al.-2014-via-visual-editor">Add citation of Gorman et al. (2014) via visual editor</h4>
+<p>First, cite the original paper that published and analysed the penguin data set. The paper is by Gorman et al. (2014).</p>
+<p>Switch to the visual editor and</p>
+<ul>
+<li>Select a location in the text to add the citation</li>
+<li>Click the insert citation button (<code>@</code> symbol) on top</li>
+<li>Select <code>From DOI</code> and search the DOI <code>10.1371/journal.pone.0090081</code>. This should list the Gorman paper.</li>
+</ul>
+<p>Before inserting the citation, have a look at the options that the <code>Insert Citation</code> window offers. On the bottom, There is a check box to chose between <em>in-text</em> (without brackets) or <em>normal</em> (in brackets) citation. You can leave the rest at the default settings.</p>
+<p>Now hit <code>Insert</code> and see what changed in the document:</p>
+<ul>
+<li><p>See how RStudio automatically created a <code>references.bib</code> file in your project (the same location where your <code>*.Rmd</code> file is located)</p></li>
+<li><p>Open <code>references.bib</code> in the editor to see how it looks like</p></li>
+<li><p>Look at the YAML header to find the reference file added there automatically</p></li>
+<li><p>Knit the document and check that the citation was added correctly in the text and that the reference is listed at the end of the document</p></li>
+</ul>
+<h4 id="add-citation-of-the-palmerpenguins-package">Add citation of the <code>palmerpenguins</code> package</h4>
+<p>Now use a different method to add a second citation of the <code>palmerpenguins</code> package.</p>
+<p>Open the <code>references.bib</code> file in RStudio (or any other text editor) and add the following BibTeX entry in a new line:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@Manual</span>{<span class="ot">horst2020</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span> = {palmerpenguins: Palmer Archipelago (Antarctica) penguin data},</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">author</span> = {Allison Marie Horst and Alison Presmanes Hill and Kristen B Gorman},</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">year</span> = {2020},</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">note</span> = {R package version 0.1.0},</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">doi</span> = {10.5281/zenodo.3960218},</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">url</span> = {https://allisonhorst.github.io/palmerpenguins/},</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<p>Save the file and close it.</p>
+<p>Now go to you R Markdown document, switch to the visual editor and select a location where you want to add the new citation.</p>
+<ul>
+<li>Start typing <code>@horst2020</code> in the text. You should see that RStudio starts suggesting references that match this name. From the list, select the citation of the palmerpenguins package.</li>
+</ul>
+<p>Knit the document.</p>
+<p>Were citation and reference added correctly to the text?</p>
+<h4 id="extras">Extras</h4>
+<p>Play with adding both <em>in-text</em> and <em>normal</em> citations. You can search citations via DOI or one of the other methods. If you have Zotero, you can also try to add a reference from there.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h2 id="tidyr">3 tidyr</h2>
-<h3 id="getting-started-with-tidyr">4.1 Getting started with tidyr</h3>
-<p>Before you start, make sure to load the <code>tidyverse</code> package.</p>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<h3 id="lets-tidy-some-data-sets">4.2 Let’s tidy some data sets</h3>
-<p>First, complete all the tasks before you move to the <strong>extras</strong>.</p>
-<p><strong>1. <code>relig_incom</code></strong></p>
-<p>Have a look at the <code>relig_income</code> data set that is included in tidyverse package. The data set contains the results of a survey asking people about their religion and income category.</p>
-<p>What is not tidy about this data set? Can you fix it?</p>
-<p><strong>2. <code>billboard</code></strong></p>
-<p>Have a look at the <code>billboard</code> data set that is included in the tidyverse package. The data set contains information about the chart rank of songs in the year 2000.</p>
-<p>What is not tidy about this data set? Can you fix it?</p>
-<h4 id="extras-1">Extras</h4>
+<h2 id="multiple-output-formats">2 Multiple output formats</h2>
+<h3 id="add-other-output-formats-to-your-document">2.1 Add other output formats to your document</h3>
+<p>Go to the YAML section of your R Markdown document and add a new <code>pdf_document</code> and <code>word_document</code> (or <code>odt_document</code> if you have Open Office instead of MS Word) into the list of outputs. For now, just specify, that these outputs should take the <code>default</code> values.</p>
+<p>Make sure that the indentation is correct.</p>
+<p>Know knit your document to these different formats (using the little arrow next to the <code>Knit</code> button) and see how the output looks like.</p>
+<h3 id="customize-your-favourite-output-format">2.2 Customize your favourite output format</h3>
+<p>Chose one of the output formats that you’d like to customize a bit more. Either chose the one you like best or the one your are most likely to use for your work. If you finish early, you can also try a second output format</p>
+<h4 id="pdf_document"><code>pdf_document</code></h4>
+<p>Add some YAML options to this output format e.g. to</p>
 <ul>
-<li>Check out the <code>values_drop_na</code> argument of <code>pivot_longer</code>. What does it do and how can you use it here?</li>
-<li>Check out the <code>names_prefix</code> argument of <code>pivot_longer</code>. What does it do and how can you use it here?</li>
+<li>Number the figures</li>
+<li>Add a table of contents</li>
+<li>Change code highlighting</li>
+<li>Give the URLs some color</li>
+<li>Change the font size</li>
+<li>…</li>
 </ul>
-<p><strong>3. <code>fish_encounters</code></strong></p>
-<p>Have a look at the <code>fish_encounters</code> data set that is included in the tidyverse package. The data set contains records of fish detected by different automatic monitoring stations. Check out <code>summary(fish_encounters)</code> - the column <code>seen</code> only contains values of 1 to indicate that the fish was seen at the respective station.</p>
-<p>What is not tidy about this data set? Can you fix it?</p>
-<h4 id="extra">Extra</h4>
+<p>See the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf">R Markdown cheat sheet</a> for YAML options that apply for this document type</p>
+<h4 id="word_documentodt_document"><code>word_document</code>/<code>odt_document</code></h4>
+<p>Add some YAML options to this output format to</p>
 <ul>
-<li>Have a look at the <code>values_fill</code> argument of <code>pivot_wider</code>. How could you use it in this case to replace the missing values that are created?</li>
+<li>Number the figures</li>
+<li>Add a table of contents</li>
+<li>Change code highlighting</li>
+<li>…</li>
 </ul>
+<p>See the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf">R Markdown cheat sheet</a> for YAML options that apply for this document type</p>
+<h4 id="html_document"><code>html_document</code></h4>
+<p>You can</p>
+<ul>
+<li>Insert a tabbed section</li>
+<li>Turn the plot into an interactive one</li>
+<li>Change some of the YAML options that you have not explored so far</li>
+</ul>
+<p>See the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf">R Markdown cheat sheet</a> for YAML options that apply for this document type</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="make-nice-tables">3 Make nice tables</h2>
+<p>Before you start the task, chose one of two packages to start with.</p>
+<ul>
+<li>If you want to put a focus on <code>word_document</code> output, I recommend to try the <code>flextable</code> package because it works better for word output</li>
+<li>If you want to put a focus on <code>pdf_document</code> or <code>html_document</code>, I highly recommend to use <code>knitr::kable</code> in combinations with <code>kableExtra</code> because it’s easy to use and very flexible.</li>
+</ul>
+<p>Now try to make the table that is already included in your document more beautiful.</p>
+<p>A tip to start is to first save the table in a new variable. Then you can pass this variable into the table functions:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins_sum</span> <span class='op'>&lt;-</span> <span class='va'>penguins</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>species</span>, <span class='va'>sex</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarize</span><span class='op'>(</span>
+    bill_length <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>bill_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+    bill_depth <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>bill_depth_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+    flipper_length <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>flipper_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+    body_mass <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>body_mass_g</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='va'>penguins_sum</span>
+</code></pre>
+</div>
+</div>
+<h4 id="option-1-kable-and-kableextra">Option 1 <code>kable</code> and <code>kableExtra</code></h4>
+<p>Don’t forget to load the packages <code>knitr</code> and <code>kableExtra</code> in the setup chunk.</p>
+<p>Start with the <code>kable</code> function. You can for example:</p>
+<ul>
+<li>Add a caption</li>
+<li>Restrict the number of digits printed</li>
+<li>Change the column headers</li>
+<li>Change the alignment of text in the cells</li>
+<li>Use <code>booktabs</code> option (only works in PDF output, is ignored for HTML output)</li>
+</ul>
+<p>Knit the document in your target output format and see how the table looks like.</p>
+<p>Now start adding some extra styling using the <code>kableExtra</code> package. For example, you can</p>
+<ul>
+<li>Apply some <code>kable_styling</code>, e.g
+<ul>
+<li>Font size</li>
+<li>Position of the table or full width table</li>
+<li>Specify <code>latex_options</code> and/or <code>bootstrap_options</code></li>
+</ul></li>
+<li>Change the table theme using one of the <code>kable_*</code> themes (only HTML)</li>
+</ul>
+<p>Have a look at C:/Users/Selina_User/Documents/R/R-4.1.0/library/kableExtra/help/kable_styling for more options.</p>
+<h4 id="option-2-flextable">Option 2 <code>flextable</code></h4>
+<p>Don’t forget to load the <code>flextable</code> package in the setup chunk.</p>
+<p>Start by setting the default flex table options in the setup chunk.</p>
+<ul>
+<li>Have a look at the example on the slide and check out <code>?flextable::set_flextable_defaults</code></li>
+</ul>
+<p>Now print the table in your document as a flextable by passing it into the <code>flextable()</code> function.</p>
+<p>Customize the look further, e.g. by</p>
+<ul>
+<li>Changing the header labels</li>
+<li>Adding a table caption</li>
+<li>Applying the formatting for the double columns</li>
+</ul>
+<p>If you still have time, move from Word to HTML or PDF output and try the other packages.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -1,0 +1,271 @@
+---
+subtitle: "Introduction to R - Day "
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: "2021-08-01"
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: [default, css/new_slides.css]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: false
+      beforeInit: "macros.js"
+---
+# Organization: Schedule
+
+**Schedule of today**
+
+- **now - 14** (or 14.30 if you are enthusiastic still): Work on the data set
+  - take break(s) as best fits your needs and your group
+  
+- **14 (14.30) - 15**: Short presentation/feedback round
+
+  - What did you find out about your data set? Plots, summaries, ...
+  - Which methods did you use?
+  - Did you learn something new?
+  - Was there something you struggled with?
+  - ...
+  
+- **15-16**: Feedback, conclusion
+
+---
+# Data set 1: What makes a good wine?
+
+**Physicochemical properties of wine and quality judgements by "experts"**
+
+```{r echo=FALSE}
+str(EcoData::wine)
+```
+
+Reference: P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
+Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
+
+---
+# Data set 1: What makes a good wine?
+
+.pull-left[
+
+**Ideas:**
+
+- Which chemical properties are associated with a good wine rating?
+- plotting chemical properties against each other
+- plotting quality judgement depending on different properties
+- linear models for the relationship between properties
+- summary tables of the data using `dplyr`
+
+Hint: It might be a good idea to transform the quality column to a factor (use `dplyr::mutate` and `as.factor()` if you want to do this).
+
+]
+
+.pull-right[
+![](img/wine.jpg)
+.footnote-right[.small[By Frederik Vandaele - originally posted to Flickr as Château Pétrus, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=5145286]]]
+
+---
+# Data set 2: Birds in Australia
+
+.pull-left[
+
+**Effect of forest fragmentation on bird abundance**
+
+- bird abundance in the fragment
+- area (size of the fragment)
+- distance to the next forest fragment
+- distance to the next large forest fragment
+- years since site was isolated
+- grazing intensity of the surrounding
+- altitude
+
+]
+.pull-right[
+![](img/fragment_forest.jpg)
+.footnote-right[.small[Image by [Marcel Holyoak](https://www.flickr.com/photos/maholyoak/5875094312/)]]
+]
+
+```{r echo=FALSE}
+print(tibble::as_tibble(EcoData::birdabundance),n=3)
+```
+
+---
+# Data set 2:  Birds in Australia
+
+.pull-left[
+
+**Ideas**
+
+- Which factors influence bird abundance most?
+- good for plotting different variables
+- rather clear and small data set
+- explore the effects of environment on bird abundance (try models)
+]
+
+.pull-right[
+
+![](img/fragment_forest.jpg)
+.footnote-right[.small[Image by [Marcel Holyoak](https://www.flickr.com/photos/maholyoak/5875094312/)]]
+
+]
+---
+# Data set 3: Paralympic games from 1980-2016
+
+|variable |class     |description |
+|:--------|:---------|:-----------|
+|gender   |character | Binary gender |
+|event    |character | Event name |
+|medal    |character | Medal type |
+|athlete  |character | Athlete name (LAST NAME first name|
+|abb      |character | Country abbreviation |
+|country  |character | Country name |
+|grp_id   |integer   | Group ID as a count within team sports |
+|type     |character | Type of sport |
+|year     |double    | year of games |
+|guide    |character | Guide (for vision impaired athletes) |
+|pilot    |character | Pilot (for vision impaired athletes) |
+
+Source: [International Paralympic Committee](https://db.ipc-services.org/sdms/hira/web/index) (provided by [tidytuesday](https://github.com/rfordatascience/tidytuesday/edit/master/data/2021/2021-08-03/readme.md))
+
+
+---
+# Data set 3: Paralympic games from 1980-2016
+
+Get the data:
+
+```{r eval=FALSE}
+athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-03/athletes.csv')
+```
+
+**Ideas**
+
+- probably dplyr heavy task
+- create summaries of medal counts for different groups
+- explores questions such as:
+  - Did the ratio of men/women winning medals change over time?
+  - Which countries were the most successful ones? Does this differ between sports type?
+  - Which types of sports accumulated the most medals?
+- plots: e.g. heat map showing the number of medals by medal type and sport/country/gender...
+
+---
+# Some general tips
+
+#### For everyone
+
+- google
+- Have a look at the cheat sheets [(list of all cheat sheets)](https://www.rstudio.com/resources/cheatsheets/)
+  - [ggplot2](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf)
+  - [dplyr](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf)
+  - [lubridate](https://raw.githubusercontent.com/rstudio/cheatsheets/master/lubridate.pdf): working with dates and times (convert character columns to date time, calculate differences in time, ...)
+  - [stringr](https://raw.githubusercontent.com/rstudio/cheatsheets/master/strings.pdf): working with strings (e.g. creating substrings, extracting parts from strings, ...)
+  
+---
+# Some general tips
+  
+#### For those working with their own data
+
+- [data import cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf): readr and tidyr cheat sheet
+- [janitor package](https://garthtarr.github.io/meatR/janitor.html#excel_numeric_to_date()): some simple functions for examining and cleaning dirty data
+  - `clean_names()`: clean your column names with one function (e.g. in case you have white space)
+  - `excel_numeric_to_date()`: convert strange excel serial numbers to actual dates
+- [readxl package](https://www.rdocumentation.org/packages/readxl/versions/1.3.1): read directly from Excel files instead of using `readr` with csv files
+  - check out `?read_xlsx` to see how to read different sheets
+- for heatmaps with ggplot: check the ggplot2 solution on the website, find a tutorial [here](https://www.statology.org/heatmap-r-ggplot2/)
+- for barplots and mean +- se: check the lm solution on the website
+- [joining multiple tables](https://dplyr.tidyverse.org/articles/two-table.html): `dplyr` offers function to join multiple tables based on a common column
+- `vegan`: R package for community ecology (e.g. diversity (Shannon, Simpson, species richness, ...)), [cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/vegan.pdf), [tutorial](https://peat-clark.github.io/BIO381/veganTutorial.html)
+  
+
+---
+class: inverse, middle, center
+
+# .large[Now You: Working on your own research data]
+
+#### - Build groups
+#### - Meet in your group
+#### - Start working on a data set
+#### - Take breaks as you need and be back at 14:00
+#### - Keep an eye on the chats
+
+ 
+---
+class: inverse, middle, center
+
+# .large[Now You: Working on a data set from me]
+
+#### - Think about the data set you would like to work on 
+#### - Build groups
+#### - Meet in your group
+#### - Start working on a data set
+#### - Take breaks as you need and be back at 14:00
+#### - Keep an eye on the chats
+
+---
+# Presentation/Feedback round
+
+- What did you find out about your data set? Plots, summaries, ...
+
+- Which methods did you use?
+
+- Did you learn something new?
+
+- Was there something you struggled with?
+
+- If you have a plot or a result to share, please post a screenshot in the chat or share your screen.
+
+---
+# Feedback
+
+Please take 5 mins to complete the feedback survey for the Graduate center (don't use Internet Explorer)
+
+.center[https://votingo.cedis.fu-berlin.de/PCNLP3]
+
+--
+
+Please take another 5 mins to complete my more specific survey to further improve the course
+
+
+.center[https://forms.gle/xfwKLDDomwoY44i66]
+
+---
+# Feedback
+
+
+- Any other feedback or comments from your side?
+
+---
+# Conclusion
+
+![](img/day1/datascience_workflow_tidyverse.png)
+
+We learned a lot of stuff!
+
+---
+# Conclusion
+
+#### How to continue from here?
+
+.pull-left[
+
+- Learning by doing!
+- Have a look at some [online ressoures](https://selinazitrone.github.io/intro-r-data-analysis/online_resources.html), I recommend the R for Data Science book by Hadley Wickham
+- If you use Twitter: Follow some people that post R content regarding your interest
+- [FU statistical consulting](http://www.stat.fu-berlin.de/en/dienstleistungen/index.html) for questions regarding statistical methods
+]
+
+.pull-right[
+
+![](img/AllisonHorst/r_rollercoaster.png)
+]
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
+---
+class: inverse, middle, center
+
+# .large[The End]
+## Thanks a lot for participating!
+
+![](img/AllisonHorst/heartyr.gif)
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]

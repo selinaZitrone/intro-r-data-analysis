@@ -87,20 +87,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Introduction to R for Data Analysis: Tasks for day 1</title>
+  <title>Reproducible documents with rmarkdown: Tasks for day 1</title>
 
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Introduction to R for Data Analysis: Tasks for day 1"/>
+  <meta property="og:title" content="Reproducible documents with rmarkdown: Tasks for day 1"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="Introduction to R for Data Analysis"/>
+  <meta property="og:site_name" content="Reproducible documents with rmarkdown"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Introduction to R for Data Analysis: Tasks for day 1"/>
+  <meta property="twitter:title" content="Reproducible documents with rmarkdown: Tasks for day 1"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
@@ -2345,10 +2345,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
-  <script src="site_libs/clipboard-1.7.1/clipboard.min.js"></script>
-  <link href="site_libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
-  <link href="site_libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
-  <script src="site_libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
+  <link href="site_libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+  <script src="site_libs/panelset-0.2.6/panelset.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2376,7 +2374,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <header class="header header--fixed" role="banner">
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
-<a href="index.html" class="title">Introduction to R for Data Analysis</a>
+<a href="index.html" class="title">Reproducible documents with rmarkdown</a>
 </div>
 <div class="nav-right">
 <a href="index.html">Home</a>
@@ -2387,18 +2385,9 @@ Slides
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="slides/01_01_RStudio.html">01 - Introduction RStudio</a>
-<a href="slides/01_02_Intro_R.html">01 - Introduction R</a>
-<a href="slides/01_03_Functions.html">01 - Functions</a>
-<a href="slides/01_04_tibbles_short.html">01 - Data &amp; Tibbles</a>
-<a href="slides/01_05_readr.html">01 - Tidyverse and Readr</a>
-<a href="slides/02_01_tidyverse_ggplot.html">02 - Ggplot2</a>
-<a href="slides/02_02_dplyr.html">02 - Dplyr</a>
-<a href="slides/02_03_tidyr.html">02 - Tidyr</a>
-<a href="slides/03_01_tests_short.html">03 - Statistical tests</a>
-<a href="slides/03_02_linear_models.html">03 - Linear models</a>
-<a href="slides/04_01_bring_your_own_data.html">04 - Bring your own data</a>
-<a href="slides/01_06_common_errors.html">Common R errors</a>
+<a href="slides/3_Day1.html">Day 1 - R Markdown Introduction</a>
+<a href="slides/4_Day2.html">Day 2 - Citations, tables and more</a>
+<a href="slides/5_General_tips.html">General tips</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2408,9 +2397,8 @@ Tasks
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="01_tasks_controller.html">Day 1: Intro to R</a>
-<a href="02_tasks_controller.html">Day 2: Tidyverse</a>
-<a href="03_tasks_controller.html">Day 3: Statistics</a>
+<a href="01_tasks_controller.html">Day 1: Task</a>
+<a href="02_tasks_controller.html">Day 2: Task</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2420,14 +2408,12 @@ Solutions
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<a href="01_solutions_controller.html">Day 1: Intro to R</a>
-<a href="02_solutions_controller.html">Day 2: Tidyverse</a>
-<a href="03_solutions_controller.html">Day 3: Statistics</a>
+<a href="01_solutions_controller.html">Day 1: Solution</a>
+<a href="02_solutions_controller.html">Day 2: Solution</a>
 </div>
 </div>
-<a href="online_resources.html">Resources</a>
-<a href="packages.html">Packages</a>
-<a href="https://github.com/selinaZitrone/intro-r-data-analysis">
+<a href="online_resources.html">Resources &amp; Packages</a>
+<a href="https://github.com/selinaZitrone/rmarkdown">
 <i class="fa fa-github" aria-hidden="true"></i>
 </a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2451,252 +2437,291 @@ Solutions
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#set-up-an-rstudio-project">1 Set up an RStudio project</a>
+<li><a href="#first-document-and-text">1 First document and text</a>
 <ul>
-<li><a href="#change-settings">1.1 Change settings</a></li>
-<li><a href="#create-an-rstudio-project">1.2 Create an RStudio project</a></li>
-<li><a href="#add-an-r-script-to-the-project">1.3 Add an R script to the project</a></li>
+<li><a href="#preparing-the-data">1.1 Preparing the data</a></li>
+<li><a href="#create-first-rmarkdown-document">1.2 Create first <code>rmarkdown</code> document</a></li>
+<li><a href="#add-some-text">1.2 Add some text</a></li>
 </ul></li>
-<li><a href="#working-with-vectors">2 Working with vectors</a></li>
-<li><a href="#tibbles">3 Tibbles</a>
+<li><a href="#add-r-code">2 Add R code</a>
 <ul>
-<li><a href="#getting-started-with-tibbles">3.1 Getting started with tibbles</a></li>
-<li><a href="#creating-a-tibble">3.2 Creating a tibble</a></li>
-<li><a href="#exploring-the-tibble">3.3 Exploring the tibble</a></li>
-<li><a href="#indexing-and-selecting">3.4 Indexing and selecting</a></li>
+<li><a href="#load-the-palmerpenguins-in-your-document">2.1 Load the <code>palmerpenguins</code> in your document</a></li>
+<li><a href="#add-r-code-chunks">2.2 Add R code chunks</a></li>
+<li><a href="#add-inline-code">2.3 Add inline code</a></li>
+<li><a href="#chunk-options">2.3 Chunk options</a></li>
 </ul></li>
-<li><a href="#reading-and-writing-tibbles">4 Reading and writing tibbles</a>
+<li><a href="#change-yaml-header">3 Change YAML header</a>
 <ul>
-<li><a href="#getting-started-with-readr-and-the-tidyverse">3.1 Getting started with readr and the tidyverse</a></li>
-<li><a href="#write-a-tibble-to-disk">3.2 Write a tibble to disk</a></li>
-<li><a href="#read-data-into-r">3.3 Read data into R</a></li>
+<li><a href="#add-metadata">3.1 Add Metadata</a></li>
+<li><a href="#document-options">3.2 Document options</a></li>
 </ul></li>
-<li><a href="#reference">Reference</a></li>
 </ul>
 </nav>
 </div>
-<h2 id="set-up-an-rstudio-project">1 Set up an RStudio project</h2>
-<h3 id="change-settings">1.1 Change settings</h3>
-<p>Before you get started, there is an important setting that you should change in RStudio. By default, RStudio will save the workspace of your current session in an <code>.Rdata</code> file. This would allow you to start the next session exactly where you left it by loading the <code>.Rdata</code> file.</p>
-<p>This is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.</p>
-<p>In RStudio go to <code>Tools -&gt; Global Options -&gt; General</code> and</p>
+<h2 id="first-document-and-text">1 First document and text</h2>
+<h3 id="preparing-the-data">1.1 Preparing the data</h3>
+<p>To practice, we will write a short paper about a data set on 3 different penguin species (<em>Chinstrap</em>, <em>Gentoo</em>, and <em>Adelie</em>) on islands in Antarctica. As we progress in the workshop, we will incorporate more options, functionality and formatting into the document.</p>
+<figure>
+<img src="https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/lter_penguins.png?raw=true" alt="Artwork by Allison Horst" /><figcaption aria-hidden="true">Artwork by <a href="https://twitter.com/allison_horst">Allison Horst</a></figcaption>
+</figure>
+<p>The data is available from the <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a> package. To get it, you have to open RStudio and:</p>
 <ul>
-<li>Remove the check mark for “Restore <code>.RData</code> into workspace at startup”</li>
-<li><strong>Never</strong> save workspace to <code>.RData</code> on exit</li>
+<li>Install the package with <code>install.packages("palmerpenguins")</code></li>
 </ul>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="tasks/day1/img/setting_workspace.png" width="320" /></p>
-</div>
-<h3 id="create-an-rstudio-project">1.2 Create an RStudio project</h3>
-<p>Create an RStudio project for all the scripts, notes, data, etc. from this workshop.</p>
+<p>Take a moment to get familiar with the data set and its variables:</p>
 <ul>
-<li>Create a project in a directory of your choice following the instructions from the slides</li>
-<li>Use the <code>File</code> pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days
+<li>Load the package into your R session with <code>library(palmerpenguins)</code> (just do this in the console)</li>
+<li>Type <code>penguins</code> in the console and you should see the penguins tibble</li>
+<li>It contains data on bill and flipper size, weight and sex of the 3 penguin species</li>
+</ul>
+<p>We will need the data later, so remember that you can access via the variable <code>penguins</code>.</p>
+<h3 id="create-first-rmarkdown-document">1.2 Create first <code>rmarkdown</code> document</h3>
+<p>For all tasks of today, you might find it helpful, to open the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf">R Markdown cheat sheet</a> for reference.</p>
+<p>Start by creating a new <code>.Rmd</code> file:</p>
 <ul>
-<li>E.g. create the folders <code>data</code>, <code>R</code>, <code>documents</code>,…</li>
-<li>You can always change the structure of your project later, but for now, we want some basic folders that we can navigate</li>
+<li>Go to <code>File</code> -&gt; <code>New File</code> -&gt; <code>R Markdown...</code> and</li>
+<li>Chose <code>HTML</code> as default output format from the <code>Document</code> section (This should be already selected as default)</li>
+<li>If you want, you can already enter a title and author</li>
+</ul>
+<p>Create and save the file in a convenient location on your machine.</p>
+<p>Before you start working with the document:</p>
+<ul>
+<li>Knit the document to see what happens
+<ul>
+<li>Try the Knit button on top of your document or the keyboard shortcut <code>Ctrl/Cmd + Shift + K</code></li>
+<li>Chose different output formats to knit to by clicking on the little black arrow next to the Knit button</li>
 </ul></li>
 </ul>
-<p>You can add files to your project either directly in RStudio, or in the file explorer of your operating system.</p>
-<h3 id="add-an-r-script-to-the-project">1.3 Add an R script to the project</h3>
+<h3 id="add-some-text">1.2 Add some text</h3>
+<p>Now start writing your very own paper about the 3 penguins.</p>
+<p>First, remove all template text from the document <strong>except</strong> the YAML header and the first code chunk (we will learn later what that does).</p>
+<p>Before you start writing, have a quick look at the <code>Example text</code> that I show below. It is the one we discussed together just now and includes many different markdown formatting elements and some text about the penguin data set.</p>
+<p>Now write a text yourself.</p>
+<p>You can either reproduce my text and use copy paste to type less, or you can write your own text about penguins (or anything else you want to write about).</p>
+<p>The important thing in this task is to include many different markdown formatting elements.</p>
+<p>You can find the links that I used in the text in the <code>Links</code> section or by right clicking on the text</p>
+<p>During the writing process, <strong>don’t forget to knit your document often</strong>. It’s easier to fix mistakes and error messages if you detect them early.</p>
+<div class="panelset">
+<section id="example-text" class="panel">
+<h1>Example text</h1>
+<h2 id="the-penguins-of-antarctica">The penguins of Antarctica</h2>
+<h4 id="selina-baldauf">Selina Baldauf</h4>
+<h4 id="section">25/03/2022</h4>
+<h3 id="introduction">Introduction</h3>
+<p>There are three main penguin species in Antarctica (<em>Chinstrap</em>, <em>Gentoo</em>, <em>Adelie</em>). You can see them in the following figure:</p>
+<figure>
+<img src="https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/lter_penguins.png?raw=true" alt="Artwork by Allison Horst" /><figcaption aria-hidden="true">Artwork by <a href="https://twitter.com/allison_horst">Allison Horst</a></figcaption>
+</figure>
+<p>In this paper we want to answer the following questions</p>
+<ol type="1">
+<li>How does bill depth depend on bill length?</li>
+<li>Which penguin species has the highest body mass?</li>
+</ol>
+<h3 id="methods">Methods</h3>
+<h4 id="the-data">The data</h4>
+<p>The data was collected on islands in Antarctica and published by Gorman et al. (2014). You can find the original paper with the title “Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus <em>Pygoscelis</em>)” in PLoS ONE<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>The data is published via the <code>palmerpenguins</code> R package which you can find <a href="https://allisonhorst.github.io/palmerpenguins/">on this website</a>.</p>
+<p><strong>The data contains (among others) the following measurements:</strong></p>
 <ul>
-<li>Create a new R script and save it in the appropriate folder of your project (e.g. <code>scripts</code> or <code>R</code>)</li>
-<li>Copy and paste the code from below into your script
+<li>bill length</li>
+<li>bill depth</li>
+<li>body mass</li>
+<li>sex
 <ul>
-<li>Don’t worry if you don’t understand the code yet, we will learn all this later</li>
-</ul></li>
-<li>Run the code in the script line by line. Try both, running code using the <code>Run</code> button (in the top right corner of your script pane) and the keyboard shortcut <code>Ctrl/Cmd + Enter/Return</code>
-<ul>
-<li>F or each line that you run, observe what is happening to the other panes (console, environment, …) in RStudio. Can you explain what is happening?</li>
+<li>male</li>
+<li>female</li>
 </ul></li>
 </ul>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Look at the first lines of the iris dataset</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
-<span class='co'># What is the iris dataset -&gt; Call the help</span>
-<span class='op'>?</span><span class='va'>iris</span>
-<span class='co'># How many rows and columns does the data set have?</span>
-<span class='va'>rownum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
-<span class='va'>colnum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"The iris dataset has "</span>, <span class='va'>rownum</span>, <span class='st'>" rows and "</span>, <span class='va'>colnum</span>, <span class='st'>" columns."</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'># Some summary statistics on the iris data set</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
-
-<span class='co'># create a plot</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Petal.Length</span>, <span class='va'>iris</span><span class='op'>$</span><span class='va'>Petal.Width</span>,
-  xlab <span class='op'>=</span> <span class='st'>"Petal Length"</span>,
-  ylab <span class='op'>=</span> <span class='st'>"Petal Width"</span>,
-  main <span class='op'>=</span> <span class='st'>"Petal Width vs Petal Length"</span>,
-  pch <span class='op'>=</span> <span class='fl'>20</span>,
-  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span> <span class='op'>==</span> <span class='st'>"setosa"</span>, <span class='st'>"coral1"</span>,
-    <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span> <span class='op'>==</span> <span class='st'>"virginica"</span>, <span class='st'>"cyan4"</span>,
-      <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span> <span class='op'>==</span> <span class='st'>"versicolor"</span>,
-        <span class='st'>"darkgoldenrod2"</span>, <span class='st'>"grey"</span>
-      <span class='op'>)</span>
-    <span class='op'>)</span>
-  <span class='op'>)</span>
-<span class='op'>)</span>
-<span class='co'># add a legend</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/legend.html'>legend</a></span><span class='op'>(</span><span class='st'>"bottomright"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"setosa"</span>, <span class='st'>"virginica"</span>, <span class='st'>"versicolor"</span><span class='op'>)</span>,
-  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"coral1"</span>, <span class='st'>"cyan4"</span>, <span class='st'>"darkgoldenrod2"</span><span class='op'>)</span>, pch <span class='op'>=</span> <span class='fl'>20</span>
-<span class='op'>)</span>
-</code></pre>
-</div>
+<h4 id="the-analysis">The analysis</h4>
+<p>We did some plots, calculated some summary statistics and a linear model of the form <span class="math inline">\(y = ax + b + \epsilon\)</span></p>
+<h3 id="results">Results</h3>
+<p>Will be added later</p>
+</section>
+<section id="links-used" class="panel">
+<h3>Links used</h3>
+<p>Here are the links that I used in the text for URL links and the figure. You can use them to reproduce my text. But feel also free to link other things if you want.</p>
+<ul>
+<li>Link to Allison Horst’s twitter: <a href="https://twitter.com/allison_horst" class="uri">https://twitter.com/allison_horst</a></li>
+<li>Link to the paper: <a href="https://doi.org/10.1371/journal.pone.0090081" class="uri">https://doi.org/10.1371/journal.pone.0090081</a></li>
+<li>Link to the palmerpenguins package: <a href="https://allisonhorst.github.io/palmerpenguins/" class="uri">https://allisonhorst.github.io/palmerpenguins/</a></li>
+<li>Link to the penguin image: <a href="https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/lter_penguins.png?raw=true" class="uri">https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/lter_penguins.png?raw=true</a></li>
+</ul>
+</section>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h2 id="working-with-vectors">2 Working with vectors</h2>
-<div class="layout-chunk" data-layout="l-body">
-<script>
-  addClassKlippyTo("pre.r, pre.markdown");
-  addKlippy('right', 'top', 'auto', '1', 'Copy code', 'Copied!');
-</script>
-</div>
-<p>You have the following three vectors:</p>
+<h2 id="add-r-code">2 Add R code</h2>
+<h3 id="load-the-palmerpenguins-in-your-document">2.1 Load the <code>palmerpenguins</code> in your document</h3>
+<p>We will now include some analysis of the <code>penguins</code> data in the document.</p>
+<p>As with “normal” R code, you need to load the <code>palmerpenguins</code> package in your document in the beginning.</p>
+<p>A convenient location to load packages is the <code>setup</code> code chunk.</p>
+<p>Just add <code>library(palmerpenguins)</code> as a line in this chunk.</p>
+<p>You can always come back to the setup chunk and add all the packages that you need in your analysis. Then you have all the <code>library()</code> calls in one place.</p>
+<h3 id="add-r-code-chunks">2.2 Add R code chunks</h3>
+<p>Now let’s add some R code that produces different types of output in the document.</p>
+<p>The different output types we will try using the penguin data set are:</p>
 <ul>
-<li><code>species</code>: name of the species</li>
-<li><code>bodywt_kg</code>: body weight of the species in kg</li>
-<li><code>brainwt_g</code>: brain weight of the species in g</li>
+<li>A figure</li>
+<li>A summary table</li>
 </ul>
+<p>For each output type, go through the following steps:</p>
+<ol type="1">
+<li><p>Select a location in your document, where the output should be (probably the result section).</p></li>
+<li><p>Insert a new code chunk at the location</p></li>
+</ol>
+<ul>
+<li>Use the RStudio interface <code>Code</code> -&gt; <code>Insert Chunk</code> or</li>
+<li>Use the keyboard shortcut <code>Ctrl/Cmd + Alt/Option + I</code></li>
+</ul>
+<ol start="3" type="1">
+<li><p>Write the code that produces the output (you can copy it from my examples below)</p></li>
+<li><p>Run the code inside the document</p></li>
+</ol>
+<ul>
+<li>Click on the little green arrow button next to the code chunk</li>
+<li>Careful: if you get an error message, make sure that you run all chunks that your code depends on before. E.g. you probably have to run the setup chunk to load all the packages first.</li>
+</ul>
+<ol start="5" type="1">
+<li>Knit the document and see how the output looks like</li>
+</ol>
+<p>Below, you find example code for a figure and a table. I suggest, you copy my code to your R chunk. If you still have time, you can change the code or write new code chunks yourself.</p>
+<p><strong>Don’t forget</strong></p>
+<ul>
+<li>Every time, you use a function from a new package, you have to load the package into the document environment. Just add another <code>library()</code> line to the setup chunk.</li>
+<li>Knit your document often to detect errors early on</li>
+</ul>
+<div class="panelset">
+<section id="figure" class="panel">
+<h3>Figure</h3>
+<p>I use <code>ggplot2</code> to produce the figures, so don’t forget to load the package in the setup chunk.</p>
+<p>Chose one of the two figure ideas from below:</p>
+<ol type="1">
+<li>Create a histogram of the body mass for the 3 penguin species</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='st'>"MountainBeaver"</span>, <span class='st'>"Cow"</span>, <span class='st'>"GreyWolf"</span>, <span class='st'>"Goat"</span>,
-  <span class='st'>"GuineaPig"</span>, <span class='st'>"Diplodocus"</span>, <span class='st'>"AsianElephant"</span>, <span class='st'>"Donkey"</span>,
-  <span class='st'>"Horse"</span>, <span class='st'>"PotarMonkey"</span>, <span class='st'>"Cat"</span>, <span class='st'>"Giraffe"</span>,
-  <span class='st'>"Gorilla"</span>, <span class='st'>"Human"</span>, <span class='st'>"AfricanElephant"</span>, <span class='st'>"Triceratops"</span>,
-  <span class='st'>"RhesusMonkey"</span>, <span class='st'>"Kangaroo"</span>, <span class='st'>"GoldenHamster"</span>, <span class='st'>"Mouse"</span>,
-  <span class='st'>"Rabbit"</span>, <span class='st'>"Sheep"</span>, <span class='st'>"Jaguar"</span>, <span class='st'>"Chimpanzee"</span>,
-  <span class='st'>"Rat"</span>, <span class='st'>"Brachiosaurus"</span>, <span class='st'>"Mole"</span>, <span class='st'>"Pig"</span>
-<span class='op'>)</span>
-
-<span class='va'>bodywt_kg</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='fl'>1.4</span>, <span class='fl'>465</span>, <span class='fl'>36.3</span>, <span class='fl'>27.7</span>, <span class='fl'>1.</span>, <span class='fl'>11700</span>, <span class='fl'>2547</span>, <span class='fl'>187.1</span>,
-  <span class='fl'>521</span>, <span class='fl'>10</span>, <span class='fl'>3.3</span>, <span class='fl'>529</span>, <span class='fl'>207</span>, <span class='fl'>62</span>, <span class='fl'>6654</span>, <span class='fl'>9400</span>,
-  <span class='fl'>6.8</span>, <span class='fl'>35</span>, <span class='fl'>0.1</span>, <span class='fl'>0.02</span>, <span class='fl'>2.5</span>, <span class='fl'>55.5</span>, <span class='fl'>100</span>, <span class='fl'>52.2</span>,
-  <span class='fl'>0.3</span>, <span class='fl'>87000</span>, <span class='fl'>0.1</span>, <span class='fl'>192</span>
-<span class='op'>)</span>
-
-<span class='va'>brainwt_g</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
-  <span class='fl'>8.1</span>, <span class='fl'>423</span>, <span class='fl'>119.5</span>, <span class='fl'>115</span>, <span class='fl'>5.5</span>, <span class='fl'>50</span>, <span class='fl'>4603</span>, <span class='fl'>419</span>, <span class='fl'>655</span>, <span class='fl'>115</span>, <span class='fl'>25.6</span>,
-  <span class='fl'>680</span>, <span class='fl'>406</span>, <span class='fl'>1320</span>, <span class='fl'>5712</span>, <span class='fl'>70</span>, <span class='fl'>179</span>, <span class='fl'>56</span>, <span class='fl'>1</span>, <span class='fl'>0.4</span>, <span class='fl'>12.1</span>, <span class='fl'>175</span>,
-  <span class='fl'>157</span>, <span class='fl'>440</span>, <span class='fl'>1.9</span>, <span class='fl'>154.5</span>, <span class='fl'>3</span>, <span class='fl'>180</span>
-<span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>penguins</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>body_mass_g</span>, fill <span class='op'>=</span> <span class='va'>species</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_histogram</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.6</span><span class='op'>)</span> <span class='op'>+</span>
+   <span class='fu'>scale_fill_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"darkorange"</span>, <span class='st'>"purple"</span>, <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>Copy and paste the vectos into your R script and solve the following tasks.</p>
-<h4 id="tasks">Tasks</h4>
-<ul>
-<li>Check which of the following animals are contained in the <code>species</code> vector:</li>
-</ul>
+<ol start="2" type="1">
+<li>Create a scatter plot of the relationship between bill length and bill depth</li>
+</ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>animals_to_check</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Snail"</span>, <span class='st'>"Goat"</span>, <span class='st'>"Chimpanzee"</span>, <span class='st'>"Rat"</span>, <span class='st'>"Dragon"</span>, <span class='st'>"Eagle"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>penguins</span>,
+  <span class='fu'>aes</span><span class='op'>(</span>
+    x <span class='op'>=</span> <span class='va'>bill_length_mm</span>,
+    y <span class='op'>=</span> <span class='va'>bill_depth_mm</span>,
+    color <span class='op'>=</span> <span class='va'>species</span>,
+    shape <span class='op'>=</span> <span class='va'>species</span>
+  <span class='op'>)</span>
+<span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>3</span>, alpha <span class='op'>=</span> <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_color_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"darkorange"</span>, <span class='st'>"purple"</span>, <span class='st'>"cyan4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<ul>
-<li>Convert brain weight from g to kg and save the result in a new vector <code>brainwt_kg</code></li>
-<li>Calculate mean and standard deviation of the brain weight
-<ul>
-<li>Hint: have a look at the summary slides to find the functions</li>
-</ul></li>
-<li>Which species have a brain weight larger than the mean brain weight of all species?</li>
-<li>Calculate the ratio of brain weight to body weight in percent for all animals and save the result in a new vector</li>
-<li>Are there any animals with a larger brain to body weight ratio than humans? If yes, which ones?
-<ul>
-<li>Hint: calculate the ratio for humans and save it in a separate variable first</li>
-</ul></li>
-</ul>
-<h4 id="extras">Extras</h4>
-<ul>
-<li>Round the ratio vector to 4 decimal places with the <code>round</code> function
-<ul>
-<li>Type <code>?round</code> into the console to open the help of the <code>round</code> function</li>
-</ul></li>
-<li>Which animal has the smallest brain to body weight ratio?
-<ul>
-<li>Hint: have a look at the <code>min</code> function</li>
-</ul></li>
-<li>Add the following three animals to the data vectors</li>
-</ul>
+</section>
+<section id="summary-table" class="panel">
+<h3>Summary table</h3>
+<p>I create a summary table of the mean variable values grouped by penguin species and sex.</p>
+<p>I use the <code>dplyr</code> package here, so don’t forget to load it in the setup chunk.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>species_new</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Eagle"</span>, <span class='st'>"Snail"</span>, <span class='st'>"Lion"</span><span class='op'>)</span>
-<span class='va'>brainwt_g_new</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>, <span class='cn'>NA</span>, <span class='fl'>500</span><span class='op'>)</span>
-<span class='va'>bodywt_kg_new</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>18</span>, <span class='fl'>0.01</span>, <span class='fl'>550</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>species</span>, <span class='va'>sex</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>summarize</span><span class='op'>(</span>
+    bill_length <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>bill_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+    bill_depth <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>bill_depth_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+    flipper_length <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>flipper_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+    body_mass <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>body_mass_g</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  <span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>Now calculate the mean brain weight again. Can you explain what happens? Can you fix it?</p>
+</section>
+</div>
+<h3 id="add-inline-code">2.3 Add inline code</h3>
+<p>Add some sentences to the document that use R code to report numbers.</p>
+<p>You can start with the example below. If you still have time in the end, you can add more sentences:</p>
 <ul>
-<li>Hint: have a look at <code>?mean</code></li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h2 id="tibbles">3 Tibbles</h2>
-<h3 id="getting-started-with-tibbles">3.1 Getting started with tibbles</h3>
-<p>Before you start the task:</p>
+<li>Report the mean body mass of all penguins, e.g. like this:
 <ul>
-<li>Install the tibble package by calling <code>install.packages("tibble")</code> in the console.</li>
-<li>Open your script for the task and put <code>library(tibble)</code> on top</li>
-<li>Execute this line and the tibble package is loaded into your R session and ready to use</li>
-</ul>
-<h3 id="creating-a-tibble">3.2 Creating a tibble</h3>
-<p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from before and combine them in a tibble.</p>
-<h3 id="exploring-the-tibble">3.3 Exploring the tibble</h3>
-<p>Explore the tibble you created with the different functions that you learned in the presentation. You can for example try</p>
-<ul>
-<li><code>view()</code> and explore what you can do in the view window that opens: searching, filtering, sorting columns</li>
-<li><code>str()</code> to view the structure of the data</li>
-<li><code>summary()</code></li>
-<li>…</li>
-</ul>
-<h3 id="indexing-and-selecting">3.4 Indexing and selecting</h3>
-<p>Now let’s try some indexing on the data.</p>
-<p>Select</p>
-<ul>
-<li>Rows 1, 5, and 7 and the columns <code>species</code> and <code>bodywt_kg</code></li>
-<li>select rows 1 to 10, all columns</li>
-<li>select the column <code>bodywt_kg</code> as a vector</li>
+<li>The mean body mass of all penguins is 4202 g.</li>
+</ul></li>
 </ul>
 <h4 id="extra">Extra</h4>
+<p>Only do this if you are alredy finished with the Chunk option task below.</p>
+<p>Can you report the number of penguins and their body mass separately for the three penguin species?</p>
+<p><em>Hint:</em> Calculate the mean weight of the penguin species in a separate code chunk and save them in 3 variables. Then you can use these variables in the inline code.</p>
+<h3 id="chunk-options">2.3 Chunk options</h3>
+<p>Now modify some of the code chunk behaviour using chunk options.</p>
+<p>Start with the chunk that produces the figure:</p>
 <ul>
-<li>Select the last column of the last row without using the row and column index (so don’t use any numbers in this command)</li>
-<li>Calculate the mean of the <code>bodywt_kg</code> column and save it in a variable</li>
-<li>Add a new column to the data called <code>ratio_body_brain</code> with the ratio of the columns <code>bodywt_kg</code> and <code>brainwt_kg</code></li>
+<li>Add a figure caption.</li>
+<li>If you want, change the figure size using either <code>fig.width</code> and <code>fig.height</code> or <code>out.width</code></li>
+<li>Align the figure where you like to have it</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h2 id="reading-and-writing-tibbles">4 Reading and writing tibbles</h2>
-<h3 id="getting-started-with-readr-and-the-tidyverse">3.1 Getting started with readr and the tidyverse</h3>
-<p>Before you start, make sure to install the <code>tidyverse</code> packages by calling</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"tidyverse"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p>This will install readr along with other tidyverse packages.</p>
-<p>Remember to put <code>library(tidyverse)</code> (or <code>library(readr)</code>) on top of your script to access the readr functions.</p>
-<h3 id="write-a-tibble-to-disk">3.2 Write a tibble to disk</h3>
-<p>Let’s use the <code>animals</code> tibble from the previous task and write it into the data folder in our project.</p>
-<p>Before writing the tibble</p>
+<p>Knit the document and look at the output.</p>
+<p>Now think of some global chunk options that might make sense for your document. Add these options to the <code>knitr</code> options in the setup chunk.</p>
+<p>You can for example think of things like:</p>
 <ul>
-<li>Create a <code>data</code> sub-directory in your RStudio project (if you don’t have one yet)
+<li>Should the R code be shown in the document?</li>
+<li>Should warnings and messages be printed into the document as well?</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h2 id="change-yaml-header">3 Change YAML header</h2>
+<p>We will now add some additional <code>YAML</code> metadata and document options to the document.</p>
+<p>In this task, you can test the options that you find most interesting. I will give you some suggestions to start with and if you still have time, you can explore other options as well.</p>
+<p>Also here, knit your document often, to see the difference that the options make to the document and make sure that there is no bug.</p>
+<h3 id="add-metadata">3.1 Add Metadata</h3>
 <ul>
-<li>Hint: You can do that from within RStudio by using the <code>New Folder</code> button in the <em>Files pane</em></li>
+<li>Add today’s date to the document</li>
+<li>Add a title and subtitle</li>
+</ul>
+<h3 id="document-options">3.2 Document options</h3>
+<p>Today, we only worked with <code>html_document</code> output. So add some options for this document type to the YAML header. Be careful to respect the rules of indentation.</p>
+<p>Options that might be interesting to try on your document:</p>
+<ul>
+<li>Add a table of contents. Explore the following options (start with those that seem most interesting to you):
+<ul>
+<li><code>toc_depth</code>: an integer</li>
+<li><code>toc</code>: <code>true</code> or <code>false</code></li>
+<li><code>number_sections</code>: <code>true</code> or <code>false</code></li>
+<li><code>toc_float</code>: <code>true</code> or <code>false</code> (HTML only option)</li>
+</ul></li>
+<li>Try different code highlighting themes using <code>highlight</code> option
+<ul>
+<li>Options are e.g. <code>"kate"</code>, <code>"espresso"</code> or <code>"zenburn"</code></li>
 </ul></li>
 </ul>
-<p>Now write the <code>animals</code> tibble to that <code>/data</code> sub-directory as <code>animals.csv</code> using a comma separator.</p>
-<p>Check if the file was written into the correct folder.</p>
-<h3 id="read-data-into-r">3.3 Read data into R</h3>
-<p>Now, try to read the data set back into R using the appropriate <code>read_*</code> function.</p>
 <h4 id="extra-1">Extra</h4>
-<p>Navigate to your <code>data</code> directory using the <code>Files</code> pane of RStudio. Click on both the <code>.csv</code> file that you just saved there. What can you do? Try the <code>Import Dataset</code> button and see what you can do there.</p>
+<ul>
+<li><code>df_print</code>: set it to <code>"kable"</code> and see how the style of the table that you printed looks like</li>
+<li>Try <code>code_folding: "hide"</code> (HTML only option) to hide code and make it available via a button</li>
+<li>Try a different theme, using the <code>theme</code> option (HTML only option)
+<ul>
+<li>Values you can try are <code>"flatly"</code>, <code>"journal"</code> or <code>"united"</code></li>
+<li><a href="https://www.datadreaming.org/post/r-markdown-theme-gallery/">Here</a> you can find a list of other themes to try</li>
+</ul></li>
+<li>Set the option <code>code_download</code> to <code>true</code>. See what you can do with the button on the top right of the document.</li>
+</ul>
+<p>Have a look at <code>?rmarkdown::html_document</code>. There you find a list of all the options you can set for an HTML document output. Try some that you find interesting.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h1 id="reference">Reference</h1>
-<p>Wolfram Research, “Sample Data: Animal Weights” from the Wolfram Data Repository (2016) <a href="https://doi.org/10.24097/wolfram.43616.data" class="uri">https://doi.org/10.24097/wolfram.43616.data</a></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>paper available <a href="https://doi.org/10.1371/journal.pone.0090081">here</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2704,6 +2729,15 @@ Solutions
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

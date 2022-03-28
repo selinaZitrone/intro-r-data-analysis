@@ -1,0 +1,57 @@
+---
+title: "The penguins of Antarctica"
+author: "Selina Baldauf"
+date: "25/3/2022"
+output: 
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+There are three main penguin species in Antarctica
+(*Chinstrap*, *Gentoo*, *Adelie*). You can see them in the following figure:
+
+![Artwork by [Allison Horst](https://twitter.com/allison_horst)](
+https://github.com/allisonhorst/palmerpenguins/blob/master/man/figures/lter_penguins.png?raw=true)
+
+In this paper we want to answer the following questions
+
+1. How bill depth depends on bill length?
+2. Which penguin species has the highest body mass?
+
+# Methods
+
+## The data
+
+The data was collected on islands in Antarctica and published by 
+Gorman et al. (2014). You can find the original paper with the title
+"Ecological sexual dimorphism and environmental variability within a 
+community of Antarctic penguins (genus *Pygoscelis*)" in 
+PLoS ONE^[paper available [here](https://doi.org/10.1371/journal.pone.0090081).]
+
+The data is published via the `palmerpenguins` R package which you
+can find [on this website](https://allisonhorst.github.io/palmerpenguins/).
+
+**The data contains (among others) the following measurements:**
+
+- bill length
+- bill depth
+- body mass
+- sex
+  - male
+  - female
+
+
+## The analysis
+
+We did some plots, calculated some summary statistics and a linear model of the 
+form $y = ax + b + \epsilon$
+
+
+# Results
+
+Will be added later

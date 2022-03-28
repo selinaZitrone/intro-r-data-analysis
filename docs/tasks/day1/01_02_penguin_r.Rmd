@@ -1,0 +1,157 @@
+```{r include=FALSE}
+library(palmerpenguins)
+library(ggplot2)
+library(dplyr)
+```
+
+### 2.1 Load the `palmerpenguins` in your document
+
+We will now include some analysis of the `penguins` data in the document.
+
+As with "normal" R code, you need to load the `palmerpenguins` package in your 
+document in the beginning.
+
+A convenient location to load packages is the `setup` code chunk.
+
+Just add `library(palmerpenguins)` as a line in this chunk.
+
+You can always come back to the setup chunk and add all the packages that you need in 
+your analysis. Then you have all the `library()` calls in one place.
+
+### 2.2 Add R code chunks
+
+Now let's add some R code that produces different types of output in the document.
+
+The different output types we will try using the penguin data set are:
+
+- A figure
+- A summary table
+
+For each output type, go through the following steps:
+
+1. Select a location in your document, where the output should be (probably the result section).
+
+2. Insert a new code chunk at the location
+  - Use the RStudio interface `Code` -> `Insert Chunk` or
+  - Use the keyboard shortcut `Ctrl/Cmd + Alt/Option + I`
+
+3. Write the code that produces the output (you can copy it from my examples below)
+
+4. Run the code inside the document 
+  - Click on the little green arrow button next to the code chunk
+  - Careful: if you get an error message, make sure that you run all chunks that your code depends on before. E.g. you probably have to run the setup chunk to load all the packages first.
+
+5. Knit the document and see how the output looks like
+
+Below, you find example code for a figure and a table. I suggest, 
+you copy my code to your R chunk. If you still have time, you can change the code 
+or write new code chunks yourself.
+
+**Don't forget**
+
+- Every time, you use a function from a new package, you have to load the package into
+the document environment. Just add another `library()` line to the setup chunk.
+- Knit your document often to detect errors early on
+
+::::: {.panelset}
+
+::: {.panel}
+
+### Figure
+
+I use `ggplot2` to produce the figures, so don't forget to load the package in the setup
+chunk.
+
+Chose one of the two figure ideas from below:
+
+1. Create a histogram of the body mass for the 3 penguin species
+
+```{r eval=FALSE, echo=TRUE}
+ggplot(penguins, aes(x = body_mass_g, fill = species)) +
+  geom_histogram(alpha = 0.6) +
+   scale_fill_manual(values = c("darkorange", "purple", "cyan4")) +
+  theme_minimal()
+```
+
+2. Create a scatter plot of the relationship between bill length and bill depth
+
+```{r eval=FALSE, echo=TRUE}
+ggplot(
+  data = penguins,
+  aes(
+    x = bill_length_mm,
+    y = bill_depth_mm,
+    color = species,
+    shape = species
+  )
+) +
+  geom_point(size = 3, alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_color_manual(values = c("darkorange", "purple", "cyan4")) +
+  theme_minimal()
+```
+
+:::
+
+::: {.panel}
+
+### Summary table
+
+I create a summary table of the mean variable values grouped
+by penguin species and sex. 
+
+I use the `dplyr` package here, so don't forget to load it in the setup chunk.
+
+```{r eval=FALSE, echo=TRUE}
+penguins %>% 
+  filter(!(is.na(sex))) %>% 
+  group_by(species, sex) %>% 
+  summarize(
+    bill_length = mean(bill_length_mm, na.rm = TRUE),
+    bill_depth = mean(bill_depth_mm, na.rm = TRUE),
+    flipper_length = mean(flipper_length_mm, na.rm = TRUE),
+    body_mass = mean(body_mass_g, na.rm = TRUE)
+  )
+```
+:::
+
+:::::
+
+### 2.3 Add inline code
+
+Add some sentences to the document that use R code to report numbers.
+
+You can start with the example below. If you still have time in the end, you can add more sentences:
+
+- Report the mean body mass of all penguins, e.g. like this:
+  - The mean body mass of all penguins is `r round(mean(penguins$body_mass_g, na.rm=TRUE), 0)` g.
+
+#### Extra
+
+Only do this if you are alredy finished with the Chunk option task below.
+
+Can you report the number of penguins and their body mass separately for the three 
+penguin species?
+
+*Hint:* Calculate the mean weight of the penguin species in a separate code chunk and 
+save them in 3 variables. Then you can use these variables in the inline code.
+
+### 2.3 Chunk options
+
+Now modify some of the code chunk behaviour using chunk options.
+
+Start with the chunk that produces the figure:
+
+- Add a figure caption.
+- If you want, change the figure size using either `fig.width` and `fig.height` or `out.width`
+- Align the figure where you like to have it
+
+Knit the document and look at the output.
+
+Now think of some global chunk options that might make sense for your document. 
+Add these options to the `knitr` options in the setup chunk.
+
+You can for example think of things like:
+
+- Should the R code be shown in the document?
+- Should warnings and messages be printed into the document as well?

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>5_General_tips.knit</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Selina Baldauf" />
+    <script src="5_General_tips_files/header-attrs-2.11/header-attrs.js"></script>
+    <link href="5_General_tips_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+class: inverse title-slide
+background-image: url(img/rmarkdown.png)
+background-size: 30%
+background-position: 90% 90%
+
+# Reproducible Documents with `{rmarkdown}`
+
+## Some general tips and good practice
+
+### Instructor: [Selina Baldauf](https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/botanik/ag_tietjen/People/wissenschaftliche_programmierer/baldauf/index.html) &lt;br&gt;
+
+### Freie Universität Berlin - Theoretical Ecology
+
+.footnote-left[
+  2022-22-03 (updated: 2022-03-28)
+]
+
+
+---
+
+# Tip 1: Keep your document clean
+  
+`.Rmd` documents can quickly become large and messy. To keep them clean, you can
+
+--
+  
+- Use headers to mark sections in your document
+- Navigate the file using the document outline
+
+![:scale 20%](img/day2/document_outline_circle.png)
+
+--
+  
+- Use names for your code chunks
+- Navigate code chunks with the code and document outline (bottom left of script)
+
+![:scale 20%](img/day2/chunk_outline.png)
+
+---
+  
+# Tip 2: Source large data preparation scripts
+  
+- Related to Tip 1
+
+- If it's not necessary for the document, do data preparation in a separate R Script
+
+- Place that R Script in the project where the `.Rmd` is located
+
+- Then source the script in a code chunk:
+
+--
+
+````md
+```{r prepare-data, warning=TRUE, message=TRUE}
+source("path/to/script.R")
+```
+````
+
+--
+
+- This runs all the R code in `script.R` and loads the results into the `.Rmd` document
+
+---
+
+# Tip 3: Split larger documents into multiple `.Rmd` files
+
+- Related to Tip 1
+
+- Write separate `.Rmd` files e.g. for Introduction, Methods and Results
+
+--
+
+- Have on main `.Rmd` file that
+  - Combines the sections into one
+  - Controls YAML options of the output
+  
+--
+
+- You can load an `.Rmd` file into another one using the `child` chunk option
+
+````md
+```{r load-child, child="path/to/child.Rmd"}
+```
+````
+
+---
+
+# Tip 3: Split larger documents into multiple `.Rmd` files
+
+
+.pull-left[
+
+- 3 separate files `Introduction.Rmd`, `Methods.Rmd`, `Results.Rmd`
+
+- The separate files control everything that happens on the lower levels of the documents, e.g.
+
+````md
+## First results
+
+```{r result-plot, fig.width=3}
+plot(1:10, 1:10)
+```
+````
+
+- `Main.Rmd` (see right) controls
+  - YAML options 
+  - Global setup options
+  - Includes the sections via the `child` option
+  
+
+]
+
+--
+
+.pull-right[
+
+````md
+---
+title: "My paper"
+author: "Selina Baldauf"
+output: 
+  pdf_document:
+    toc: true
+---
+
+```{r global-setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction
+
+```{r intro, child="Introduction.Rmd"}
+```
+
+# Methods
+
+```{r methods, child="Methods.Rmd"}
+```
+
+# Results
+
+```{r results, child="Results.Rmd"}
+```
+
+````
+
+]
+
+---
+
+# Tip 4: Read through some online resources
+
+- Read or scroll through some R Markdown books or tutorials to
+  
+  - See what is possible with R Markdown
+  - Find thing that are relevant for your own documents
+
+- I recommend to start with the two books:
+  - [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+  - [R Markdown - The Definitve Guide](https://bookdown.org/yihui/rmarkdown/)
+  
+- You can also find some &lt;a href="../online_resources.html"&gt;resources on the workshop website&lt;/a&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

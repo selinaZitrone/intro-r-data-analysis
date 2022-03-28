@@ -1,0 +1,67 @@
+Before you start the task, chose one of two packages to start with. 
+
+- If you want to put a focus on `word_document` output, I recommend to try the 
+`flextable` package because it works better for word output
+- If you want to put a focus on `pdf_document` or `html_document`, I highly recommend to
+use `knitr::kable` in combinations with `kableExtra` because it's easy to use and 
+very flexible.
+
+Now try to make the table that is already included in your document more beautiful.
+
+A tip to start is to first save the table in a new variable. Then you can pass this 
+variable into the table functions:
+
+```{r eval=FALSE, echo=TRUE}
+penguins_sum <- penguins %>%
+  filter(!(is.na(sex))) %>%
+  group_by(species, sex) %>%
+  summarize(
+    bill_length = mean(bill_length_mm, na.rm = TRUE),
+    bill_depth = mean(bill_depth_mm, na.rm = TRUE),
+    flipper_length = mean(flipper_length_mm, na.rm = TRUE),
+    body_mass = mean(body_mass_g, na.rm = TRUE)
+  )
+penguins_sum
+```
+
+#### Option 1 `kable` and `kableExtra`
+
+Don't forget to load the packages `knitr` and `kableExtra` in the setup chunk.
+
+Start with the `kable` function. You can for example:
+
+- Add a caption
+- Restrict the number of digits printed
+- Change the column headers
+- Change the alignment of text in the cells
+- Use `booktabs` option (only works in PDF output, is ignored for HTML output)
+
+Knit the document in your target output format and see how the table looks like.
+
+Now start adding some extra styling using the `kableExtra` package. For example, you can
+
+- Apply some `kable_styling`, e.g
+  - Font size
+  - Position of the table or full width table
+  - Specify `latex_options` and/or `bootstrap_options`
+- Change the table theme using one of the `kable_*` themes (only HTML)
+
+Have a look at `r ?kable_styling` for more options.
+
+#### Option 2 `flextable`
+
+Don't forget to load the `flextable` package in the setup chunk.
+
+Start by setting the default flex table options in the setup chunk.
+
+- Have a look at the example on the slide and check out `?flextable::set_flextable_defaults`
+
+Now print the table in your document as a flextable by passing it into the `flextable()` function.
+
+Customize the look further, e.g. by
+
+- Changing the header labels
+- Adding a table caption
+- Applying the formatting for the double columns
+
+If you still have time, move from Word to HTML or PDF output and try the other packages.
