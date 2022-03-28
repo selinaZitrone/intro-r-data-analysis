@@ -1,0 +1,38 @@
+### 3.1 Getting started with tibbles
+
+Before you start the task:
+
+- Install the tibble package by calling `install.packages("tibble")` in the console.
+- Open your script for the task and put `library(tibble)` on top
+- Execute this line and the tibble package is loaded into your R session and ready to use
+
+### 3.2 Creating a tibble
+
+Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from before and combine them in a tibble.
+
+### 3.3 Exploring the tibble
+
+Explore the tibble you created with the different functions that you learned in the presentation.
+You can for example try 
+
+- `view()` and explore what you can do in the view window that opens: searching, filtering, sorting columns
+- `str()` to view the structure of the data
+- `summary()`
+- ...
+
+
+### 3.4 Indexing and selecting
+
+Now let's try some indexing on the data.
+
+Select
+
+- Rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
+- select rows 1 to 10, all columns
+- select the column `bodywt_kg` as a vector
+
+#### Extra
+
+- Select the last column of the last row without using the row and column index (so don't use any numbers in this command)
+- Calculate the mean of the `bodywt_kg` column and save it in a variable
+- Add a new column to the data called `ratio_body_brain` with the ratio of the columns `bodywt_kg` and `brainwt_kg`

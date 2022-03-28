@@ -1,0 +1,308 @@
+---
+subtitle: ""
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: "2021-08-01"
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: [default, css/new_slides.css]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: false
+      beforeInit: "macros.js"
+params:
+  title: "Introduction to RStudio"
+  day: ""
+  bg_image: "img/Rstudio_logo.png"
+  bg_image_scale: "30%"
+  bg_position: "90% 90%"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+library(fontawesome)
+```
+
+```{r child="title_slide.Rmd"}
+
+```
+
+---
+# Difference between R and RStudio
+
+--
+
+.pull-left[
+.center[
+    <img src="img/Rlogo.png" style="width:20%"><br>
+    ]
+    
+  R is the **programming language** and the **program** that does the actual work
+    
+  - Can be use with many different programming environments (But RStudio is the best for R)
+]
+
+--
+.pull-right[
+.center[
+    <img src="img/Rstudio_logo.png" style="width:15%"><br>
+     ]
+  
+  RStudio is the **integrated development environment** (IDE)
+   - Provides an interface to R
+   - Specifically built around R code 
+   - Execute code
+   - Syntax highlighting
+   - File and project management
+   - ...
+]
+
+--
+<br>
+
+.content-box-gray[
+`r fa("arrow-right")` You can use R without RStudio but RStudio without R would be of little use
+]
+
+---
+
+# Difference between R and RStudio
+
+.pull-left[
+.center[
+    **R** is like the engine
+    ]
+  ]
+.pull-right[
+.center[
+  **RStudio** is more like the dashboard, etc.
+     ]
+     ]
+
+.center[![:scale 110%](img/day1/car_engine.png)]
+
+
+.footnote-right[analogy and image from 
+[ModernDive Book](https://moderndive.com/1-getting-started.html#r-rstudio)]
+
+---
+# Basic idea
+
+- Write precise instructions telling the computer what to do step by step
+  - For this you need to use the language R
+  
+- Tell R to execute these instructions
+  - R will return the result of your instructions (or an error message)
+
+- R code is basically just text that can be saved with file extension `.R`
+
+---
+# A quick tour around RStudio
+
+.center[![:scale 78%](img/day1/RStudio_all.png)]
+
+---
+# Console pane
+
+.pull-left[
+- Execute R code
+
+- Output from R code in scripts is printed there
+
+- Type a command into the console and execute with `Enter/Return`
+
+.content-box-yellow[`r fa("lightbulb")` Use arrow keys to bring back last commands
+]]
+
+.pull-right[
+  ![:scale 100%](img/day1/RStudio_console.png)
+]
+
+---
+# Script pane
+
+.pull-left[
+
+- Write scripts with R code
+
+  - Scripts are text files with R commands (file ending `.R`)
+  
+  - Use scripts to save commands for reuse
+
+]
+
+.pull-right[
+  ![:scale 100%](img/day1/RStudio_script.png)
+]
+
+---
+# Script pane
+
+.pull-left[
+
+- Create a new R script: <br> `File -> New File -> R Script`
+- Save an R script:<br> `File -> Save` (`Ctrl/Cmd + S`)
+- Run code line by line with `Run` button (`Ctrl + Enter/Cmd + Return`)
+- You can open multiple scripts at the same time
+
+]
+
+.pull-right[
+  ![:scale 100%](img/day1/RStudio_script.png)
+]
+
+--
+
+<br>
+.content-box-yellow[`r fa("lightbulb")` Use **scripts** for all your analysis and for commands that you want to save.]
+
+.content-box-yellow[`r fa("lightbulb")` Use **console** for temporary commands, e.g. to test something.]
+
+---
+# Environment pane
+
+.pull-left[
+
+- Shows objects currently present in the R session
+
+- Is empty if you start R
+]
+
+.pull-right[
+  ![:scale 100%](img/day1/RStudio_environment.png)
+]
+
+
+---
+# Files pane
+
+.pull-left[
+
+- Similar to Explorer/Finder
+
+- Browse project structure and files
+  - Find and open files
+  - Create new folders
+  - Delete files
+  - Rename files 
+  - ...
+  
+- Practical if you don't want to switch between File Explorer and RStudio all the time
+]
+
+.pull-right[
+.right[
+  ![:scale 100%](img/day1/RStudio_Files.png)]
+]
+
+---
+# Plot pane
+
+.pull-left[
+- Plots that are created with R will be shown here
+
+- You can export plots by clicking on export button
+  - But better to do it by code 
+]
+
+.pull-right[
+  ![:scale 100%](img/day1/RStudio_plot.png)
+]
+
+---
+# Project oriented workflow with RStudio
+
+.pull-left[
+- One directory with all files relevant for project
+  - Scripts, data, plots, documents, ...
+- An RStudio project is just a normal directory with an `*.Rproj` file
+
+- Advantages of using RStudio projects
+    - Easy to navigate in R Studio (`File` pane)
+    - Easy to find and access scripts in RStudio
+    - Project root is working directory
+    - Open multiple projects simultaneously in separate RStudio instances
+]    
+
+.pull-right[
+
+
+```{}
+Project
+|
+|- data
+|
+|- documents
+|   |
+|   |- notes
+|   |
+|   |- reports
+|
+|- analysis
+|   |
+|   |- clean_data.R 
+|   |
+|   |- statistics.R
+|
+|- *.RProj
+```
+.small[Example project structure]
+]
+
+---
+# Create an RStudio project
+
+.pull-left[
+
+Create a project from scratch:
+  
+1. `File -> New Project -> New Directory -> New Project`
+2. Enter a directory name (this will be the name of your project)
+3. Choose the Directory where the project should be initiated
+4. `Create Project`
+
+RStudio will now create and open the project for you. 
+]
+
+.pull-right[
+![](img/day1/RStudio_Files.png)
+.small[Example project structure in RStudio]
+]
+
+
+---
+# Navigate an RStudio project
+
+.center[
+![:scale 90%](img/day1/RStudio_Files_navig.png)
+]
+
+---
+# Open a project from outside RStudio
+
+To open an RStudio project from your file explorer/finder, just double click on the `*.Rproj` file
+.center[
+![](img/day1/open_project.png)
+]
+
+---
+# Open a project inside RStudio
+
+To open an RStudio project from RStudio, click on the project symbol on the top right of R Studio and select the project from the list.
+
+.center[
+![](img/day1/open_project_rstudio.png)]
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 1: Set up your own RStudio project for this workshop (25 min)
+
+#### Find the task description <a href="../01_tasks_controller.html#set-up-an-rstudio-project">here</a>

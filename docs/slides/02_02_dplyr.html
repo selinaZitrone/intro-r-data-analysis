@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>02_02_dplyr.knit</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Selina Baldauf" />
+    <meta name="date" content="2021-06-15" />
+    <script src="02_02_dplyr_files/header-attrs-2.11/header-attrs.js"></script>
+    <link href="02_02_dplyr_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+class: inverse title-slide
+background-image: url(img/hex-stickers/dplyr.png)
+background-size: 30%
+background-position: 90% 90%
+
+# Data transformation with dplyr
+
+## Introduction to R - Day 2
+
+### Instructor: [Selina Baldauf](https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/botanik/ag_tietjen/People/wissenschaftliche_programmierer/baldauf/index.html) &lt;br&gt;
+
+### Freie Universität Berlin - Theoretical Ecology
+
+.footnote-left[
+  2021-06-15 (updated: 2022-03-16)
+]
+
+---
+# Data transformation
+
+Data transformation is an important step in **understanding** the data and **preparing** it for further analysis.
+
+ .center[![](img/day1/datascience_workflow_tidyverse.png)]
+&lt;br&gt;
+
+We can use the tidyverse package `dplyr` for this.
+
+---
+# Data transformation
+
+With `dplyr` we can (among other things)
+
+  - **Filter** data to analyse only a part of it
+  
+  - **Reorder** observations or variables 
+  
+  - **Create** new variables
+  
+  - **Summarize** data
+  
+  - **Rename** variables
+  
+--
+  
+To get started load the package `dplyr`:
+
+
+```r
+library(dplyr)
+# or
+library(tidyverse)
+```
+
+---
+# Dplyr basic vocuabulary
+
+
+#### `dplyr` provides basic vocabulary for data manipulation:
+
+- `filter()` picks observations (rows) based on their values
+
+--
+
+- `select()` picks variables (columns) based on their names
+
+--
+
+- `arrange()` changes order of observations (rows)
+
+--
+
+- `mutate()` adds new variables based on existing ones
+
+--
+
+- `summarize()` combines multiple values into a single summary value
+
+Perform any of these operations by group with `group_by()`
+
+.footnote-right[from [dplyr package description](https://dplyr.tidyverse.org/)]
+
+---
+# Dplyr basic vocabulary
+
+All of the `dplyr` functions work similarly: &lt;br&gt; 
+
+- **First argument** is the data (a tibble)
+
+- **Other arguments** specify what to do exactly
+
+- **Return** a tibble
+
+---
+# Example data
+
+Soybean production for different use by year and country.
+
+
+```r
+soybean_use
+```
+
+
+```
+## # A tibble: 9,897 x 6
+##   entity code   year human_food animal_feed processed
+##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Africa &lt;NA&gt;   1961      33000        6000     14000
+## 2 Africa &lt;NA&gt;   1962      43000        7000     17000
+## 3 Africa &lt;NA&gt;   1963      31000        7000      5000
+## 4 Africa &lt;NA&gt;   1964      43000        6000     14000
+## 5 Africa &lt;NA&gt;   1965      34000        6000     12000
+## # ... with 9,892 more rows
+```
+.footnote-right[Data from [Our World in Data](https://ourworldindata.org/forests-and-deforestation) provided by [tidytuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-04-06/readme.md)]
+
+---
+class: inverse, center, middle
+
+# .large[`filter()`]
+## picks observations (rows) based on their value
+
+.center[![:scale 70%](img/AllisonHorst/dplyr_filter.jpg)]
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
+---
+# Useful `filter()` helpers
+
+These functions and operators help you filter your observations:
+
+--
+
+- relational operators `&lt;`, `&gt;`, `==`, ...
+
+--
+
+- logical operators `&amp;`, `|`, `!`
+
+--
+
+- `%in%` to filter multiple values
+
+--
+
+- `is.na()` to filter missing values
+
+--
+
+- `between()` to filter values that are between an upper and lower boundary
+
+--
+
+- `near()` to compare floating points (use instead of `==` for doubles)
+
+
+---
+# `filter()`
+
+Filter rows that contain the values for Germany
+
+
+```r
+filter(soybean_use, entity == "Germany")
+```
+
+
+```
+## # A tibble: 53 x 6
+##   entity  code   year human_food animal_feed processed
+##   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Germany DEU    1961          0        3000   1042000
+## 2 Germany DEU    1962          0        3000    935000
+## 3 Germany DEU    1963          0        3000   1092000
+## 4 Germany DEU    1964          0        3000   1096000
+## 5 Germany DEU    1965          0        3000   1435000
+## # ... with 48 more rows
+```
+
+--
+
+`filter()` goes through each row of the data and return only those rows where the value for `entity` is `"Germany"` 
+
+---
+# `filter()` + `%in%`
+
+Use the `%in%` operator to filter multiple countries
+
+
+```r
+countries_select &lt;- c("Germany", "Austria", "Switzerland")
+filter(soybean_use, entity %in% countries_select)
+```
+
+
+```
+## # A tibble: 159 x 6
+##   entity  code   year human_food animal_feed processed
+##   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Austria AUT    1961          0           0         0
+## 2 Austria AUT    1962          0           0         0
+## 3 Austria AUT    1963          0           0         0
+## 4 Austria AUT    1964          0           0         0
+## 5 Austria AUT    1965          0           0         0
+## # ... with 154 more rows
+```
+
+---
+# `filter()` + `is.na()`
+
+Filter only rows that don't have a country code (i.e. the continents etc.)
+
+
+```r
+filter(soybean_use, is.na(code))
+```
+
+
+```
+## # A tibble: 1,734 x 6
+##   entity code   year human_food animal_feed processed
+##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Africa &lt;NA&gt;   1961      33000        6000     14000
+## 2 Africa &lt;NA&gt;   1962      43000        7000     17000
+## 3 Africa &lt;NA&gt;   1963      31000        7000      5000
+## 4 Africa &lt;NA&gt;   1964      43000        6000     14000
+## 5 Africa &lt;NA&gt;   1965      34000        6000     12000
+## # ... with 1,729 more rows
+```
+
+--
+
+Or the opposite: filter only the rows that have a country code with
+
+
+```r
+filter(soybean_use, !is.na(code))
+```
+
+---
+# `filter()` + `between()`
+
+#### Combine different filters:
+
+Select rows where
+
+- the value for `years` is between 1970 and 1980
+- the value for `entity` is Germany
+
+
+```r
+filter(soybean_use, between(year, 1970, 1980) &amp; entity == "Germany")
+```
+
+
+```
+## # A tibble: 11 x 6
+##   entity  code   year human_food animal_feed processed
+##   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Germany DEU    1970          0        3000   2118000
+## 2 Germany DEU    1971          0        3000   2119000
+## 3 Germany DEU    1972          0        5000   2271000
+## 4 Germany DEU    1973          0        3000   2820000
+## 5 Germany DEU    1974          0        3000   3704000
+## # ... with 6 more rows
+```
+
+---
+class:inverse, center, middle
+
+# .large[`select()`]
+
+## picks variables (columns) based on their names
+---
+# Useful `select()` helpers
+&lt;br&gt;
+
+- `starts_with()` and `ends_with()`: variable names that start/end with a specific string
+
+--
+
+- `contains()`: variable names that contain a specific string
+
+--
+
+- `matches()`: variable names that  match a regular expression
+
+--
+
+- `any_of()` and `all_of()`: variables that are contained in a character vector
+
+---
+# `select()`
+
+Select the variables entity, year and human food
+
+
+```r
+select(soybean_use, entity, year, human_food)
+```
+
+
+```
+## # A tibble: 9,897 x 3
+##   entity  year human_food
+##   &lt;chr&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+## 1 Africa  1961      33000
+## 2 Africa  1962      43000
+## # ... with 9,895 more rows
+```
+
+--
+
+Remove variables using `-`
+
+
+```r
+select(soybean_use, -entity, -year, -human_food)
+```
+
+
+
+```
+## # A tibble: 9,897 x 3
+##   code  animal_feed processed
+##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 &lt;NA&gt;         6000     14000
+## 2 &lt;NA&gt;         7000     17000
+## # ... with 9,895 more rows
+```
+
+---
+# `select()` + `ends_with()`
+
+Select all columns that end with `"d"`
+
+
+```r
+select(soybean_use, ends_with("d"))
+```
+
+
+```
+## # A tibble: 9,897 x 3
+##   human_food animal_feed processed
+##        &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1      33000        6000     14000
+## 2      43000        7000     17000
+## 3      31000        7000      5000
+## # ... with 9,894 more rows
+```
+
+--
+
+You can use the same structure for `starts_with()` and `contains()`.
+
+
+```r
+# this does not match any rows in the soy bean data set
+# but combinations like this are helpful for research data
+select(soybean_use, starts_with("sample_"))
+
+select(soybean_use, contains("_id_"))
+```
+
+---
+# `select()` + `any_of()`/`all_of()`
+
+Use a character vector in conjunction with column selection
+
+
+```r
+cols &lt;- c("sample_", "year", "processed", "entity")
+```
+
+--
+
+`any_of()` returns any columns that match an element in `cols`
+
+
+```r
+select(soybean_use, any_of(cols))
+```
+
+
+```
+## # A tibble: 9,897 x 3
+##    year processed entity
+##   &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt; 
+## 1  1961     14000 Africa
+## # ... with 9,896 more rows
+```
+
+--
+
+`all_of()` tries to match all elements in `cols` and returns an error if an element does not exist
+
+
+```r
+select(soybean_use, all_of(cols))
+```
+
+
+```
+## Error: Can't subset columns that don't exist.
+## x Column `sample_` doesn't exist.
+```
+
+---
+# `select()` + `from:to`
+
+Multiple consecutive columns can be selected using the `from:to` structure with either column id or variable name:
+
+
+```r
+select(soybean_use, 1:3)
+select(soybean_use, code:animal_feed)
+```
+
+
+```
+## # A tibble: 9,897 x 4
+##   code   year human_food animal_feed
+##   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
+## 1 &lt;NA&gt;   1961      33000        6000
+## 2 &lt;NA&gt;   1962      43000        7000
+## 3 &lt;NA&gt;   1963      31000        7000
+## # ... with 9,894 more rows
+```
+
+--
+
+Be a bit careful with these commands: They are not robust if you e.g. change the order of your columns at some point. &lt;br&gt;
+
+---
+class:inverse, center, middle
+
+# .large[`arrange()`]
+## change order of observations (rows)
+
+---
+# `arrange()`
+
+Arrange the rows by **ascending** values of the processed variable:
+
+
+```r
+arrange(soybean_use, processed)
+```
+
+
+```
+## # A tibble: 9,897 x 6
+##   entity  code   year human_food animal_feed processed
+##   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Albania ALB    1961          0          NA         0
+## 2 Albania ALB    1962          0          NA         0
+## 3 Albania ALB    1963          0          NA         0
+## # ... with 9,894 more rows
+```
+
+--
+
+Arrange the rows by **descending** values of the processed variable:
+
+
+```r
+arrange(soybean_use, desc(processed))
+```
+
+--
+
+Arranging also works for character columns. They will be sorted **alphabetically**.
+
+---
+# `arrange()`
+
+We can also sort rows by multiple variables
+
+
+```r
+# sort first by year, then by entity
+arrange(soybean_use, year, entity)
+```
+
+
+```
+## # A tibble: 9,897 x 6
+##   entity   code   year human_food animal_feed processed
+##   &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Africa   &lt;NA&gt;   1961      33000        6000     14000
+## 2 Albania  ALB    1961          0          NA         0
+## 3 Algeria  DZA    1961          0           0        NA
+## 4 Americas &lt;NA&gt;   1961       7000       96000  11656000
+## # ... with 9,893 more rows
+```
+
+---
+class: inverse, center, middle
+
+# .large[`mutate()`]
+## adds new variables
+
+![:scale 45%](img/AllisonHorst/dplyr_mutate.png)
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
+---
+# `mutate()`
+
+New columns can be added based on values from other columns
+
+
+```r
+mutate(soybean_use, sum_human_animal = human_food + animal_feed)
+```
+
+
+```
+## # A tibble: 9,897 x 7
+##   entity code   year human_food animal_feed processed sum_human_animal
+##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt;
+## 1 Africa &lt;NA&gt;   1961      33000        6000     14000            39000
+## 2 Africa &lt;NA&gt;   1962      43000        7000     17000            50000
+## 3 Africa &lt;NA&gt;   1963      31000        7000      5000            38000
+## # ... with 9,894 more rows
+```
+
+--
+
+Add multiple new columns at once:
+
+
+```r
+mutate(soybean_use,
+  sum_human_animal = human_food + animal_feed,
+  total = human_food + animal_feed + processed
+)
+```
+
+---
+# `mutate()` + `case_when()`
+
+Use `case_when` to add column values conditional on other columns.
+
+`case_when()` can combine many cases into one.
+
+
+```r
+mutate(soybean_use,
+  legislation = case_when(
+    year &lt; 2000 &amp; year &gt;= 1980 ~ "legislation_1",    # case 1
+    year &gt;= 2000 ~ "legislation_2",                  # case 2
+    TRUE ~ "no_legislation"                          # any other cases
+  )
+)
+```
+
+
+```
+## # A tibble: 9,897 x 7
+##   entity code   year human_food animal_feed processed legislation   
+##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;         
+## 1 Africa &lt;NA&gt;   1961      33000        6000     14000 no_legislation
+## 2 Africa &lt;NA&gt;   1962      43000        7000     17000 no_legislation
+## 3 Africa &lt;NA&gt;   1963      31000        7000      5000 no_legislation
+## # ... with 9,894 more rows
+```
+
+---
+# `transmute()`
+
+`transmute()` is like `mutate()` but only keeps the new columns
+
+
+```r
+transmute(soybean_use,
+          ratio_processed_animal = processed/animal_feed,
+          ratio_human_animal = human_food/animal_feed)
+
+```
+
+
+```
+## # A tibble: 9,897 x 2
+##   ratio_processed_animal ratio_human_animal
+##                    &lt;dbl&gt;              &lt;dbl&gt;
+## 1                  2.33                5.5 
+## 2                  2.43                6.14
+## 3                  0.714               4.43
+## # ... with 9,894 more rows
+```
+
+---
+class: inverse, center, middle
+
+# .large[`summarize()` + `group_by()`]
+## summarizes data by group
+
+---
+# `summarize()`
+
+`summarize` will **collapse the data to a single row**
+
+
+```r
+summarize(soybean_use,
+          total_animal = sum(animal_feed, na.rm = TRUE),
+          total_human = sum(human_food, na.rm = TRUE))
+## # A tibble: 1 x 2
+##   total_animal total_human
+##          &lt;dbl&gt;       &lt;dbl&gt;
+## 1    942503000  1589729000
+```
+
+---
+# `summarize()` and `group_by()`
+
+`summarize` is much more useful in combination with `group_by()`.
+
+If you group the data before summarizing it, the **summary** will be calculated **separately for each group**
+
+--
+
+
+
+```r
+# group the data by year
+soybean_use_group &lt;- group_by(soybean_use, year)
+```
+
+--
+
+
+```r
+# summarize the grouped data
+summarize(soybean_use_group,
+          total_animal = sum(animal_feed, na.rm = TRUE),
+          total_human = sum(human_food, na.rm = TRUE))
+```
+
+
+```
+## # A tibble: 53 x 3
+##    year total_animal total_human
+##   &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+## 1  1961      1503000    16994000
+## 2  1962      1800000    17326000
+## # ... with 51 more rows
+```
+
+--
+
+To ungroup data that was grouped before, you can use `ungroup()`
+
+---
+# `count()`
+
+Counts observations by group
+
+
+```r
+# count rows grouped by year
+count(soybean_use, year)
+
+# or if the data is already grouped by year
+count(soybean_use_group)
+```
+
+
+```
+## # A tibble: 53 x 2
+## # Groups:   year [53]
+##    year     n
+##   &lt;dbl&gt; &lt;int&gt;
+## 1  1961   178
+## 2  1962   178
+## 3  1963   178
+## 4  1964   178
+## # ... with 49 more rows
+```
+
+---
+class: inverse, middle, center
+
+# .large[The pipe `%&gt;%`]
+
+## Combine multiple data operations into one command
+
+---
+# The pipe `%&gt;%`
+
+Data transformation often requires **multiple operations** in sequence.
+
+The pipe operator `%&gt;%` helps to keep these operations clear and readable.
+
+---
+# The pipe `%&gt;%`
+
+Let's look at an example without pipe:
+
+
+```r
+# 1: filter rows that actually represent a country
+soybean_new &lt;- filter(soybean_use, !is.na(code))
+
+# 2: group the data by year
+soybean_new &lt;- group_by(soybean_new, year)
+
+# 3: summarize mean values by year
+soybean_new &lt;- summarize(soybean_new,
+    mean_processed = mean(processed, na.rm=TRUE),
+    sd_processed = sd(processed, na.rm = TRUE))
+
+# 4: reorder the observation with newest first
+soybean_new &lt;- arrange(soybean_new, desc(year))
+```
+
+--
+
+**How could we make this more efficient?**
+
+---
+# The pipe `%&gt;%` 
+
+We could do everything in one step without intermediate results by using use one **nested function**
+
+
+```r
+soybean_new &lt;- arrange(
+  summarize(
+    group_by(
+      filter(soybean_use, !is.na(code)),
+      year
+    ),
+    mean_processed = mean(processed, na.rm = TRUE),
+    sd_processed = sd(processed, na.rm = TRUE)
+  ),
+  desc(year)
+)
+```
+
+--
+
+**But this gets complicated and error prone very quickly**
+
+---
+# The pipe `%&gt;%`
+
+The pipe operator (included in the `tidyverse`) makes it very easy to combine multiple operations:
+
+
+```r
+soybean_new &lt;- soybean_use %&gt;%
+  filter(!is.na(code)) %&gt;%
+  group_by(year) %&gt;%
+  summarize(
+    mean_processed = mean(processed, na.rm = TRUE),
+    sd_processed = sd(processed, na.rm = TRUE)
+  ) %&gt;%
+  arrange(desc(year))
+```
+
+--
+
+You can read from top to bottom and interpret the `%&gt;%` as an "and then do".
+
+---
+# The pipe `%&gt;%`
+
+But what is happening?
+
+The pipe is "pushing" the result of one line into the first argument of the function from the next line.
+
+
+```r
+soybean_use %&gt;% 
+  count(year)
+
+# instead of 
+count(soybean_use, year)
+```
+
+--
+
+Piping works perfectly with the `tidyverse` functions because they are designed to return a tibble **and** take a tibble as first argument. &lt;br&gt;
+
+--
+
+.content-box-yellow[<svg aria-hidden="true" role="img" viewBox="0 0 352 512" style="height:1em;width:0.69em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg> Use the keyboard shortcut ` Ctrl/Cmd + Shift + M ` to insert ` %&gt;% `]
+
+---
+# The pipe `%&gt;%`
+
+Piping also works well together with `ggplot`
+
+.pull-left[
+
+
+```r
+soybean_use %&gt;%
+  filter(!is.na(code)) %&gt;%
+  select(year, processed) %&gt;%
+  group_by(year) %&gt;%
+  summarize(
+    processed = sum(processed, na.rm = TRUE)
+  ) %&gt;%
+  ggplot(aes(
+    x = year,
+    y = processed
+  )) +
+    geom_line()
+```
+]
+.pull-right[
+
+&lt;img src="02_02_dplyr_files/figure-html/unnamed-chunk-51-1.png" width="453.6" /&gt;
+]
+---
+# Summary I
+
+All `dplyr` functions take a tibble as first argument and return a tibble.
+
+#### `filter()`
+
+- **pick rows** with helpers
+  - relational and logical operators
+  - `%in%`
+  - `is.na()`
+  - `between()`
+  - `near()`
+  
+#### `select()`
+
+- **pick columns** with helpers
+  - `starts_with()`, `ends_with()`
+  - `contains()`
+  - `matches()`
+  - `any_of()`, `all_of()`
+  
+---
+# Summary II
+
+#### `arrange()`
+
+- **change order** of rows (adscending)
+  - or descending with `desc()`
+
+#### `mutate()`
+
+- **add columns** but keep all columns
+  - `case_when()` for conditional values
+
+#### `transmute()`
+
+- **add columns** and drop old columns
+
+---
+# Summary III
+
+#### `summarize()` + `group_by()`
+
+- **collapse rows** into one row by some summary
+  - combine with `group_by()` to summarize by group
+  - use `ungroup()` to ungroup grouped tibble
+
+#### `count`
+
+- **count rows** based on a group
+  - can be used in combination with `group_by()`
+  
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 2: Transforming the penguin data set (60 min)
+
+#### Find the task description &lt;a href="../02_tasks_controller.html#dplyr"&gt;here&lt;/a&gt;
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

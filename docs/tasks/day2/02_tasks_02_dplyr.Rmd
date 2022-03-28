@@ -1,0 +1,69 @@
+### 2.1 Getting started with dplyr
+
+A helpful resource for to consult for this task can be the [dplyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf).
+
+Before you start, make sure to load the `tidyverse` package and the `palmerpenguins` package.
+
+```{r eval=FALSE, echo=TRUE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+### 2.2 Data transformation with dplyr
+
+In the following, you find a lot of different data transformation tasks. First, do 2 from each category before you do the remaining ones. You don't have to finish all the tasks but make sure you covered each category. Generally, the first tasks from a category are easier than the last tasks of a category.
+
+**Find all penguins that ...**
+
+1. ... have a bill length between 40 and 45 mm.
+
+2. ... for which we know the sex.
+
+3. ... which are of the species Adelie or Gentoo and live either on Dream or on Torgersen
+
+4. ... lived on the island Dream in the year 2007. How many of them were from each of the 3 species?
+
+**Count ...**
+
+1. ... the number of penguins on each island.
+
+2. ... the number of penguins of each species on each island.
+
+**Sort ...**
+
+1. ... `penguins` to find penguins with lowest body mass
+
+2. ... `penguins` to find penguins with highest body mass
+
+3. ... `penguins` by species and sex, with longest flippers first
+
+**Select ...**
+
+1. ... only the variables species, sex and year
+
+2. ... variables based on the following vector
+
+```{r echo=TRUE, eval=FALSE}
+cols <- c("species", "bill_length_mm", "flipper_length_mm", "body_mass_kg")
+```
+
+3. ... only columns that contain measurements in mm
+
+**Add a column ...**
+
+1. ... with the ratio of bill length to bill depth
+
+2. ... with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).
+
+
+**Calculate ...**
+
+1. ... mean flipper length and body mass for the 3 species and male and female penguins separately
+
+2. Can you do the same but remove the penguins for which we don't know the sex first?
+
+### Extras
+
+1. Make a boxplot of penguin body mass with sex on the x-axis and facets for the different species. Can you remove the penguins with missing values for sex first?
+
+2. Make a scatterplot with the ratio of bill length to bill depth on the y axis and flipper length on the x axis? Can you distinguish the point between male and female penguins and remove penguins with unknown sex before making the plot?

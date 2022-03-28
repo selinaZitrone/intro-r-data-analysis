@@ -1,0 +1,153 @@
+```{r echo=TRUE, eval=TRUE, message=FALSE}
+library(tidyverse)
+```
+
+
+### 1.1 Poisson glm
+
+The data set `rabbit` contains data on a highly threatened rabbit species.
+
+The variables in this data set are:
+
+- `sights`: integer variable of camera trap sightings
+- `distance`: distance to river (m)
+- `degredation`: level of degradation (low, medium, very high)
+
+**Question:** How does the degradation level of the site and the distance to the river influence the sightings of rabbits?
+
+You can get the data with:
+
+```{r read_rabbits}
+rabbit <- readr::read_csv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/rabbit.csv")
+```
+**Tasks**
+
+- Plot the data
+
+```{r}
+g <- ggplot(rabbit, aes(x=distance, y=sights, color = degradation))+
+  geom_point()
+```
+
+- Fit a poisson glm (with or without interaction)
+
+```{r}
+rabbit_glm <- glm(sights ~ distance + degradation, data = rabbit, family = "poisson")
+```
+
+- Test the significant of the explanatory variables
+
+```{r}
+drop1(rabbit_glm, test = "Chisq")
+```
+
+- Add the model to the plot
+
+```{r}
+pred_data <- expand_grid(
+  distance = min(rabbit$distance):max(rabbit$distance),
+  degradation = unique(rabbit$degradation)
+)
+
+pred_data$sights <- predict(rabbit_glm, newdata = pred_data, type = "response")
+
+g +
+  geom_line(data = pred_data)
+```
+```{r}
+g +
+  geom_smooth(
+    method = "glm",
+    method.args = list(
+      family = "poisson"
+    )
+  )
+```
+
+#### Extra
+
+- Make the plot look nice
+
+```{r}
+g +
+  geom_smooth(
+    se = FALSE,
+    method = "glm",
+    method.args = list(
+      family = "poisson"
+    )
+  ) +
+  ggsci::scale_color_uchicago() +
+  theme_minimal() +
+  labs(y = "# of rabbit sightings", x = "Distance from river [m]", color = "Degradation level") +
+  theme(legend.position = c(0.85, 0.85))
+```
+
+### 1.2 Binary glm
+
+The data set is about the occurrence of woodpeckers at forest sites depending on the amount of deadwood and the dominant tree species.
+
+The variables in the data set are:
+
+- `bird_pres`: binary response variable (presence/absence of the bird at the site)
+- `species`: dominant tree species at the site
+- `deadwood`: amount of deadwood at the site
+
+**Question:** How does the the amount of deadwood and the dominant tree species influence the probability of woodpecker presence?
+
+You can get the data with:
+
+```{r}
+bird <- read_tsv("https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/master/data/bird.csv")
+```
+
+- Plot the data
+
+```{r}
+g2 <-ggplot(bird, aes(x=deadwood, y= bird_pres, color =species))+
+  geom_point()
+```
+
+- Fit a binary glm (`family = "binomial"`)
+
+```{r}
+bird_glm <- glm(bird_pres ~ deadwood + species, data = bird, family = "binomial")
+```
+
+- Test the significance of the predictors
+
+```{r}
+drop1(bird_glm, test = "Chisq")
+```
+- Plot the data and add model predictions
+
+```{r}
+pred_data <- expand_grid(
+  deadwood = min(bird$deadwood):max(bird$deadwood),
+  species = unique(bird$species)
+)
+pred_data$bird_pres <- predict(bird_glm, newdata = pred_data, type = "response")
+
+ggplot(bird, aes(x=deadwood, y= bird_pres, color =species))+
+  geom_point(alpha=0.5, size = 3)+
+  geom_line(data = pred_data)+
+  theme_classic()+
+  scale_color_manual(values = c("cyan4", "darkorange", "purple")) +
+  labs(y="Probability of woodpecker presence [-]", x = "Deadwood [kg]") +
+  theme(
+    legend.text = element_text(face = "italic")
+  )
+
+```
+```{r}
+# or with geom smooth
+# careful: this is plotting the model with interaction
+g2 +
+  geom_smooth(method = "glm",se=FALSE,
+              method.args = list(
+                family = "binomial"
+              ))
+```
+
+
+

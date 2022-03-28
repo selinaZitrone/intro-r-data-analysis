@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>02_01_tidyverse_ggplot.knit</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Selina Baldauf" />
+    <meta name="date" content="2021-08-01" />
+    <script src="02_01_tidyverse_ggplot_files/header-attrs-2.11/header-attrs.js"></script>
+    <link href="02_01_tidyverse_ggplot_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+class: inverse title-slide
+background-image: url(img/hex-stickers/ggplot2.png)
+background-size: 30%
+background-position: 90% 90%
+
+# Data visualization with ggplot2
+
+## Introduction to R - Day 2
+
+### Instructor: [Selina Baldauf](https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/botanik/ag_tietjen/People/wissenschaftliche_programmierer/baldauf/index.html) &lt;br&gt;
+
+### Freie Universität Berlin - Theoretical Ecology
+
+.footnote-left[
+  2021-08-01 (updated: 2022-03-16)
+]
+
+---
+class: center, middle
+background-image: url("img/AllisonHorst/ggplot2_exploratory.png")
+background-size: contain
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
+---
+class: center, middle
+background-image: url("img/AllisonHorst/ggplot2_masterpiece.png")
+background-size: contain
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
+---
+class: inverse, center, middle
+
+# .large[A ggplot showcase]
+
+## Some examples of plots you can create with ggplot
+
+---
+class: center, middle
+background-image: url("https://raw.githubusercontent.com/jkaupp/tidytuesdays/master/2021/week27/tw27_plot.png")
+background-size: 90%
+
+.footnote-right[Visualization by [Jake Kaupp](https://twitter.com/jakekaupp), code available on [Github](https://github.com/jkaupp/tidytuesdays/tree/master/2021/week27)]
+
+---
+class: center, middle
+background-image: url("https://raw.githubusercontent.com/bbc/bbplot/master/chart_examples/bbplot_example_plots.png")
+background-size: 90%
+
+.footnote-right[Visualizations produced by the [BBC News data team](https://github.com/bbc/bbplot)]
+
+---
+class: center, middle
+background-image: url("https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_31/2020_31_PalmerPenguins.png")
+background-size: contain
+
+.footnote-right[Visualization by [Cédric Scherer](https://twitter.com/CedScherer),&lt;br&gt; code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_31_PalmerPenguins.Rmd)]
+
+---
+# Advantages of ggplot
+
+- **Consistent** grammar/structure
+
+--
+
+- **Flexible** structure allows you to produce any type of plots
+
+--
+
+- Highly **customizable appearance** (themes)
+
+--
+
+- Many **extension packages** that provide 
+  - Additional plot types
+	- Additional themes
+	- Color palettes
+	- Animation
+	- Composition of multiple plots
+	- ...
+	
+--
+
+- Active community that provides help and inspiration
+
+---
+# Basic idea of ggplot
+
+&gt; Shorten the distance from mind to page&lt;br&gt;
+.small[(Hadley Wickham)]
+
+--
+
+`ggplot2` is an implementation of the grammar of graphics by Leland Wilkinson
+
+--
+
+- Basic idea: stack distinct **layers of graphical elements** to create a plot
+
+---
+# Layers of a ggplot
+&lt;br&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Layer&lt;/th&gt;
+    &lt;th&gt;Function&lt;/th&gt;
+    &lt;th&gt;Details&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;b&gt;Data&lt;/b&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;code&gt;ggplot(data)&lt;/code&gt;&lt;/td&gt;
+    &lt;td&gt;The data that you want to plot.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;b&gt;Mapping&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;code&gt;aes()&lt;/code&gt;&lt;/td&gt;
+    &lt;td&gt;Aesthetic mappings of the geometric and statistical objects.&lt;/td&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;b&gt;Geometries&lt;/b&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;code&gt;geom_*()&lt;/code&gt;&lt;/td&gt;
+    &lt;td&gt;Graphical representation of aesthetics as point, line, polygon, ...&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;b&gt;Scales&lt;/b&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;code&gt;scale_*()&lt;/code&gt;&lt;/td&gt;
+    &lt;td&gt;Translate between variable values and properties (e.g. categories -&gt; colour)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;b&gt;Coordinates&lt;/b&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;code&gt;coord_*()&lt;/code&gt;&lt;/td&gt;
+    &lt;td&gt;Interprets and maps the position values of the data.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;b&gt;Facets&lt;/b&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;code&gt;facet_*()&lt;/code&gt;&lt;/td&gt;
+    &lt;td&gt;Split your plot into multiples.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;b&gt;Themes&lt;/b&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;code&gt;theme()&lt;/code&gt; and&amp;nbsp;&amp;nbsp;&lt;code&gt;theme_*()&lt;/code&gt;&lt;/td&gt;
+    &lt;td&gt;Visual look of the plot not related to the data.&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+---
+# The data
+
+The `ggplot` package has a built-in data set called `msleep` about the sleep times of 83 mammals. 
+
+Data variables (among others):
+
+- `vore`: carnivore, omnivore, herbivore?
+- `conservation`: conservation status of the animal
+- `sleep_total`: total amount of sleep [h]
+- `brainwt`: brain weight [kg]
+- `bodywt`: body weight [kg]
+
+If you want to know more about the data set:
+
+```r
+library(ggplot2)
+str(msleep)
+?msleep
+```
+
+---
+# `ggplot(data)`
+
+The `ggplot()` function initializes a ggplot object. Every ggplot needs this function.
+
+
+.pull-left[
+
+
+```r
+library(ggplot2) # or library(tidyverse)
+
+*ggplot(data = msleep)
+```
+
+- Empty plot because we did not specify the mapping of data variables
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-4-1.png" width="504" /&gt;
+]
+
+---
+# `aes(x, y)`
+
+The **aes**thetic mapping defines how variables are mapped to aesthetic properties of the plot.
+
+--
+
+.pull-left[
+
+
+```r
+ggplot(data = msleep,
+*      mapping = aes(
+*        x = brainwt,
+*        y = sleep_total))
+```
+
+- Map variable `brainwt` to x-axis and `sleep_total` to y-axis
+- Default scales are automatically adapted to range of data
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-6-1.png" width="504" /&gt;
+]
+
+---
+# `aes(x, y)`
+
+The **aes**thetic mapping defines how variables are mapped to aesthetic properties of the plot.
+
+.pull-left[
+
+
+```r
+ggplot(data = msleep,
+       mapping = aes( 
+         x = brainwt, 
+         y = sleep_total)) 
+```
+
+- map variable `brainwt` to x-axis and `sleep_total` to y-axis
+- default scales are automatically adapted to range of data
+
+This is the same but shorter:
+
+
+```r
+*ggplot(msleep, aes(brainwt, sleep_total))
+```
+
+Remember argument matching by position?
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-9-1.png" width="504" /&gt;
+]
+
+---
+# `geom_*()`
+
+`geoms` define how data points are represented. There are many different geoms to chose from
+
+
+---
+class: middle, center
+
+![:scale 80%](img/day2/geom_ggplot.png)
+
+.footnote-right[from [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf)]
+
+---
+# `geom_point()`
+
+.pull-left[
+
+
+```r
+ggplot(data = msleep,
+       aes(x = brainwt, 
+           y = sleep_total)) +
+* geom_point()
+```
+
+- New plot layers are added with `+`
+- Warning that 27 points can not be plotted due to missing values
+- `data` and `aes` defined in `ggplot` call are inherited to all plot layers
+]
+
+.pull-right[
+
+```
+## Warning: Removed 27 rows containing missing values (geom_point).
+```
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
+]
+
+---
+# `geom_point()`
+
+.pull-left[
+
+
+```r
+ggplot(data = msleep,
+       aes(x = brainwt, 
+           y = sleep_total)) +
+  geom_point()
+```
+
+- New plot layers are added with `+`
+- Warning that 27 points can not be plotted due to missing values
+- `data` and `aes` defined in `ggplot` call are inherited to all plot layers
+- `data` and `aes` can be local to a layer:
+
+
+```r
+ggplot(msleep) +
+* geom_point(aes(brainwt, sleep_total))
+```
+
+Here, it does not make a difference.
+
+]
+
+.pull-right[
+
+```
+## Warning: Removed 27 rows containing missing values (geom_point).
+```
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-14-1.png" width="504" /&gt;
+]
+
+
+---
+# `scale_x_log10()`
+
+The scales onto which the aesthetic elements are mapped can be changed.
+
+.pull-left[
+
+
+```r
+ggplot(data = msleep,
+       aes(x = brainwt, 
+           y = sleep_total)) +
+  geom_point() +
+* scale_x_log10()
+```
+
+- Scales can be changed for all elements of `aes`
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-16-1.png" width="504" /&gt;
+]
+
+---
+# `scale_x_log10()`
+
+The scales onto which the aesthetic elements are mapped can be changed.
+
+.pull-left[
+
+
+```r
+ggplot(data = msleep,
+       aes(x = brainwt, 
+           y = sleep_total)) +
+  geom_point() +
+* scale_x_log10()
+```
+
+- Scales can be changed for all elements of `aes`
+- The general format of scale functions are:
+
+&lt;b&gt;scale\_.col1[aes-name]\_.col2[scale-type]&lt;/b&gt;
+
+In this example we scale the &lt;b&gt;.col1[x]&lt;/b&gt; aesthetic to &lt;b&gt;.col2[log10]&lt;/b&gt;.
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-18-1.png" width="504" /&gt;
+]
+
+---
+# `geom_smooth()`
+
+Add a smoothing line that helps see patterns in the data
+
+--
+
+.pull-left[
+
+```r
+ggplot(data = msleep,
+       aes(x = brainwt, 
+           y = sleep_total)) +
+  geom_point() +
+* geom_smooth(method = "lm") +
+  scale_x_log10()
+```
+
+- With `method = "lm"`, a linear regression line is added
+- The ribbon represents confidence interval around the regression
+  - Turn ribbon off with `se = FALSE` argument
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-20-1.png" width="504" /&gt;
+]
+
+---
+# Change appearance of points
+
+The basic things we can change about points are their **size, shape and color**:
+
+.pull-left[
+
+
+```r
+ggplot(data = msleep,
+       aes(x = brainwt, 
+           y = sleep_total)) +
+* geom_point(size = 4,
+*            shape = 17,
+*            color = "blue") +
+  scale_x_log10() 
+```
+- Have a look [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) for the point shape codes
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-22-1.png" width="504" /&gt;
+]
+
+---
+# `aes(color)`: mapping color to a variable
+
+Instead of changing color of all points, **map color to a variable** by adding it to aesthetics:
+
+--
+
+.pull-left[
+
+
+```r
+g &lt;- ggplot(
+  data = msleep,
+  aes(
+    x = brainwt,
+    y = sleep_total,
+*   color = vore
+  )
+) + 
+  geom_point(size = 4) +
+  scale_x_log10()
+g
+```
+
+- Map the `vore` variable to the color aesthetic of the plot
+- Plots can be saved in variables
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-24-1.png" width="504" /&gt;
+]
+
+---
+# `aes(size)`: mapping size to a variable
+
+We can do the same with size:
+
+.pull-left[
+
+
+```r
+ggplot(
+  data = msleep,
+  aes(
+    x = brainwt,
+    y = sleep_total,
+    color = vore,
+*   size = bodywt
+  )
+) + 
+  geom_point() +
+  scale_x_log10()
+
+```
+
+]
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-26-1.png" width="504" /&gt;
+]
+
+---
+# `aes(shape)`: mapping shape to a variable
+
+We can do the same with shape:
+
+.pull-left[
+
+
+```r
+ggplot(
+  data = msleep,
+  aes(
+    x = brainwt,
+    y = sleep_total,
+    color = vore,
+*   shape = conservation
+  )
+) + 
+  geom_point() +
+  scale_x_log10()
+
+```
+
+]
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-28-1.png" width="504" /&gt;
+]
+
+---
+
+# `scale_color_viridis_d()`
+
+Back to our plot `g` with color as additional aesthetic. We can change the color scale:
+
+--
+
+.pull-left[
+
+
+```r
+g + 
+* scale_color_viridis_d(option = "inferno")
+```
+
+- The viridis color palette is designed for viewers with common forms of color blindness
+- Different options of viridis color palettes are are:
+  - `"magma"`, `"inferno"`, `"plasma"`, `"viridis"`, `"cividis"`
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-30-1.png" width="504" /&gt;
+]
+
+---
+# `scale_color_viridis_d()`
+
+The `scale_color_viridis_d` function by default does not map color to missing data points (`NA` values). We have to explicitly state the color for `NA`:
+
+--
+
+.pull-left[
+
+
+```r
+g + 
+  scale_color_viridis_d(
+    option = "inferno",
+*   na.value = "grey")
+```
+
+- Whether or not you have to do this, depends on the default of the `na.value` argument of the color scale that you use
+- You can also remove missing values from your data set before plotting (we will learn that later)
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-32-1.png" width="504" height="430" /&gt;
+]
+
+---
+# `scale_color_manual()`
+
+We can also manually specify colors:
+
+.pull-left[
+
+
+```r
+g &lt;- g + 
+* scale_color_manual(
+*   values = c("dodgerblue4",
+*              "darkolivegreen4",
+*              "darkorchid3",
+*              "orange",
+*              "grey"))
+g
+```
+
+- Length of color vector has to match number of levels in your aesthetic
+- Specify colors 
+  - Via their name (see [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) for all color names)
+  - Via their Hex color codes
+
+]
+
+.pull-right[
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-34-1.png" width="504" /&gt;
+]
+
+---
+# Other color scales
+
+There are many packages with preset color palettes, e.g.:
+
+**ggsci:** scientific journal and sci-fi themed palettes
+
+
+```r
+install.packages("ggsci")
+# Examples
+ggsci::scale_color_npg() # nature publishing group
+ggsci::scale_color_rickandmorty()
+```
+
+--
+
+**ggthemes:** software and publisher themed palettes:
+
+
+```r
+install.packages("ggthemes")
+#Examples
+ggthemes::scale_color_excel_new() # colors from new Excel version
+ggthemes::scale_color_economist() # color palette from Economist graphs
+```
+
+--
+
+For a comprehensive list of color palettes available, check out [this repository](https://github.com/EmilHvitfeldt/r-color-palettes) by Emil Hvitfeldt.
+
+---
+# `facet_wrap()` and `facet_grid()`
+
+Facets split a plot into small multiples along values of a variable from the data.
+
+--
+
+.pull-left[
+
+```r
+g +
+* facet_wrap(~conservation)
+```
+
+- You can even split plots along two variables using `facet_grid()` instead of `facet_wrap()`
+- The basic functioning is `facet_grid(yvar ~ xvar)` 
+  - `yvar` will be displayed as columns
+  - `xvar` will be displayed as rows
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-38-1.png" width="504" /&gt;
+]
+
+---
+# `labs()`: change axis and legend titles and add plot title
+
+.pull-left[
+
+```r
+g &lt;- g +
+  labs(
+*   x = "log brain weight [kg]",
+*   y = "total sleep [h/day]",
+*   color = "Diet",
+*   title = "Brain weight and sleep time in mammals",
+*   subtitle = "Larger brains seem to sleep less",
+*   caption = "Data from the ggplot2 package")
+g
+```
+
+]
+
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-40-1.png" width="504" /&gt;
+
+]
+
+---
+# `theme_*()`: change appearance
+
+`ggplot2` offers many pre-defined themes that we can apply to change the appearance of a plot.
+
+--
+
+.pull-left[
+
+```r
+g + 
+* theme_classic()
+```
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-42-1.png" width="504" height="370" /&gt;
+
+]
+
+.pull-right[
+
+```r
+g + 
+* theme_linedraw()
+```
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-44-1.png" width="504" height="370" /&gt;
+
+]
+
+---
+# `theme_*()`: change appearance
+
+`ggplot2` offers several pre-defined themes that we can apply to change the appearance of our plot.
+
+.pull-left[
+
+```r
+g + 
+* theme_dark()
+```
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-46-1.png" width="504" height="370" /&gt;
+
+]
+
+.pull-right[
+
+```r
+g + 
+* theme_minimal()
+```
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-48-1.png" width="504" height="370" /&gt;
+
+]
+
+---
+# `theme()`: customize theme
+
+You can manually change a theme or even create an entire theme yourself. 
+The elements you can control in the theme are:
+
+- titles (plot, axis, legend, ...)
+- labels
+- background
+- borders
+- grid lines
+- legends
+
+If you want a full list of what you can customize, have a look at 
+
+
+```r
+?theme
+```
+
+---
+# `theme()`: customize theme
+
+To edit a theme, just add another `theme()` layer to your plot.
+
+--
+
+.pull-left[
+
+```r
+g + 
+  theme_minimal() + 
+* theme(
+*   axis.text = element_text(face = "bold"),
+*   axis.title = element_text(face = "italic"),
+*   legend.position = "bottom",
+*   plot.background = element_rect(
+*     fill = "lightblue",
+*     color = "yellow")
+* )
+```
+
+]
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-51-1.png" width="504" /&gt;
+]
+
+---
+# `theme_set()`: set global theme
+
+You can set a global theme that will be applied to all ggplot objects in the current R session. 
+
+
+```r
+# Globally set theme_minimal as the default theme
+theme_set(theme_minimal())
+```
+
+Add this to the beginning of your script.
+
+--
+
+You can also specify some defaults, e.g. the text size:
+
+
+```r
+theme_set(theme_minimal(base_size = 16))
+```
+
+This is very practical if you want to achieve a consistent look, e.g. for a scientific journal.
+
+---
+# `geom_boxplot()`
+
+A boxplot can be created with `geom_boxplot`:
+
+.pull-left[
+
+```r
+ggplot(msleep, aes(x = vore, y = bodywt)) +
+* geom_boxplot() +
+  scale_y_log10() 
+```
+  
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-55-1.png" width="504" /&gt;
+]
+
+---
+# `aes(fill)` and `scale_fill_*()`
+
+Pay attention to fill vs. color aesthetic
+
+.pull-left[
+
+```r
+ggplot(msleep, aes(x = vore, y = bodywt)) +
+  geom_boxplot(
+*   aes(fill = vore)
+  ) + 
+  scale_y_log10() +
+*ggthemes::scale_fill_tableau(
+*   na.value = "gray",
+*   guide = "none")
+```
+  
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-57-1.png" width="504" /&gt;
+]
+
+---
+# `aes(color)`and `scale_color_*()`
+
+Pay attention to fill vs. color aesthetic
+
+.pull-left[
+
+```r
+ggplot(msleep, aes(x = vore, y = bodywt)) +
+  geom_boxplot(
+*   aes(color = vore)
+  ) + 
+  scale_y_log10() +
+* ggthemes::scale_color_tableau(
+*   na.value = "gray",
+*   guide = "none")
+```
+  
+- `color` means the border color or the color of points and lines
+- `fill` means the fill color of boxes, bars, ...
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-59-1.png" width="504" /&gt;
+]
+
+&lt;!-- --- --&gt;
+&lt;!-- class: inverse, center, middle --&gt;
+
+&lt;!-- # .large[More geoms] --&gt;
+
+&lt;!-- ## Some more plot types you can create with ggplot for your reference --&gt;
+
+---
+# Histograms: `geom_histogram()`
+
+Basic histogram of total sleep time:
+
+.pull-left[
+
+```r
+ggplot(msleep, aes(x=sleep_total)) +
+* geom_histogram() +
+  labs(x = "Total sleep time [h]", 
+       y = "Frequency")
+```
+  
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-61-1.png" width="504" /&gt;
+]
+
+---
+# Discrete vs. continous variables
+
+Let's add a sleep category to the data set depending on the hours of sleep an animal gets in total:
+
+
+```r
+msleep$category &lt;- ifelse(
+  msleep$sleep_total &lt; 5, 
+  1,
+  ifelse(msleep$sleep_total &gt; 5 &amp; msleep$sleep_total &lt; 10,
+         2,
+         3)
+)
+str(msleep)
+## tibble [83 x 12] (S3: tbl_df/tbl/data.frame)
+##  $ name        : chr [1:83] "Cheetah" "Owl monkey" "Mountain beaver" "Greater short-tailed shrew" ...
+##  $ genus       : chr [1:83] "Acinonyx" "Aotus" "Aplodontia" "Blarina" ...
+##  $ vore        : chr [1:83] "carni" "omni" "herbi" "omni" ...
+##  $ order       : chr [1:83] "Carnivora" "Primates" "Rodentia" "Soricomorpha" ...
+##  $ conservation: chr [1:83] "lc" NA "nt" "lc" ...
+##  $ sleep_total : num [1:83] 12.1 17 14.4 14.9 4 14.4 8.7 7 10.1 3 ...
+##  $ sleep_rem   : num [1:83] NA 1.8 2.4 2.3 0.7 2.2 1.4 NA 2.9 NA ...
+##  $ sleep_cycle : num [1:83] NA NA NA 0.133 0.667 ...
+##  $ awake       : num [1:83] 11.9 7 9.6 9.1 20 9.6 15.3 17 13.9 21 ...
+##  $ brainwt     : num [1:83] NA 0.0155 NA 0.00029 0.423 NA NA NA 0.07 0.0982 ...
+##  $ bodywt      : num [1:83] 50 0.48 1.35 0.019 600 ...
+##  $ category    : num [1:83] 3 3 3 3 1 3 2 2 3 1 ...
+```
+
+---
+# Discrete vs. continous variables
+
+What's happening here?
+
+.pull-left[
+
+```r
+ggplot(msleep, 
+       aes(x = category, 
+           y = bodywt)) +
+  geom_boxplot() + 
+  scale_y_log10()
+```
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-64-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+```r
+ggplot(msleep,
+       aes(x = brainwt, 
+           y = sleep_total, 
+           color = category)) +
+  geom_point() +  scale_x_log10()
+```
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-66-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# Discrete vs. continous variables
+
+.center[![:scale 60%](img/AllisonHorst/continuous_discrete.png)]
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
+
+---
+# Discrete vs. continous variables 
+
+Solution: Turn continuous variable into a factor before plotting
+
+.pull-left[
+
+```r
+ggplot(msleep, 
+*      aes(x = factor(category),
+           y = bodywt)) +
+  geom_boxplot() + 
+  scale_y_log10()
+```
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-68-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+```r
+ggplot(msleep,
+       aes(x = brainwt, 
+           y = sleep_total, 
+*          color = factor(category))) +
+  geom_point() + scale_x_log10()
+```
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-70-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# Let's look at an example
+
+.left-column[
+What are the layers in this plot?
+
+- data
+- aesthetic mapping
+- geoms
+- themes
+]
+.right-column[
+![:scale 90%](img/figs-penguin/README-flipper-bill-1.png)
+]
+
+.footnote-right[Visualization from the [palmerpenguins package](https://allisonhorst.github.io/palmerpenguins/)]
+
+---
+# `ggsave()`
+
+A ggplot object can be saved on disk in different formats.
+
+Without specifications:
+
+
+```r
+# save plot g in img as my_plot.pdf
+ggsave(filename = "./img/my_plot.pdf", plot = g)
+# save plot g in img as my_plot.png
+ggsave(filename = "./img/my_plot.png", plot = g)
+```
+
+--
+
+Or with specifications:
+
+
+```r
+# save a plot named g in the img directory under the name my_plot.png with width 16 cm and height 9 cm
+ggsave(filename = "./img/my_plot.png",
+       plot = g,
+       width = 16,
+       heigth = 9,
+       units = "cm")
+```
+
+Have a look at `?ggsave` to see all options.
+
+---
+# Summary I
+
+#### Tidyverse and ggplot
+
+- The tidyverse is a collections of R packages for data analysis, including `ggplot2`,`readr`, `tidyr`, `dplyr`, `tibble`
+- All tidyverse packages are designed to work together seamlessly
+- basic idea of `ggplot` is to stack distinct layers of graphical elements to create a plot 
+
+- Check out the [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf) for an overview of how to create a ggplot
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 1: Create your own penguin ggplots (90 min)
+
+#### Find the task description &lt;a href="../02_tasks_controller.html#ggplot2"&gt;here&lt;/a&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
