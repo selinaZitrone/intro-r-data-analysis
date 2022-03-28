@@ -94,7 +94,7 @@ ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
   geom_boxplot(width = 0.3) +
   geom_point(
     alpha = 0.5,
-    position = position_jitter(width = 0.1, seed = 123)
+    position = position_jitter(width = 0.2, seed = 123)
   ) +
   ggsci::scale_color_uchicago() +
   labs(x = "Species", y = "Flipper length (mm)") +
@@ -135,7 +135,7 @@ ggplot(
 ### 1.5 Save one of the plots on your machine
 flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
   geom_boxplot(width = 0.3) +
-  geom_jitter(alpha = 0.5, position = position_jitter(width = 0.2, seed = 2)) +
+  geom_jitter(alpha = 0.5, position = position_jitter(width = 0.2, seed = 123)) +
   ggsci::scale_color_uchicago() +
   labs(x = "Species", y = "Flipper length (mm)") +
   theme_minimal() +
@@ -145,20 +145,6 @@ flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)
 ggsave(filename = "./img/flipper_box.png", flipper_box)
 # save as pdf in /img directory of the project
 ggsave(filename = "./img/flipper_box.pdf", flipper_box)
-
-ggplot(
-  data = penguins,
-  aes(
-    x = sex,
-    y = body_mass_g,
-    color = species
-  )
-) +
-  geom_boxplot() +
-  geom_point(
-    alpha = 0.5,
-    position = position_jitterdodge(jitter.width = 0.2)
-  )
 
 # heatmap example
 
@@ -336,28 +322,24 @@ mutate(penguins,
 
 
 # 3. Tidyr ----------------------------------------------------------------
-library(tidyverse)
+
 
 # 1. relig_income
 
 relig_income
 
-relig_tidy <- pivot_longer(relig_income,
-  cols = !religion, # 2:11, `<$10k`:`Don't know/refused`
-  names_to = "income",
-  values_to = "count"
-)
+pivot_longer(relig_income,
+             cols = !religion, #2:11, `<$10k`:`>150k`
+             names_to = "income",
+             values_to = "count")
 
-relig_tidy %>%
-  ggplot(aes(x = income, y = religion, fill = count)) +
-  geom_tile()
 
 # 2. billboard
 
 billboard
 
-bill_tidy <- pivot_longer(billboard,
-             cols = wk1:wk76, # starts_with("wk")
+pivot_longer(billboard,
+             cols = wk1:wk76,
              names_to = "week",
              values_to = "rank")
 
@@ -370,20 +352,12 @@ charts <- pivot_longer(billboard,
              values_to = "rank",
              values_drop_na = TRUE)
 
-charts %>%
-  filter(artist == "2 Pac") %>%
-  ggplot(aes(x = week, y = rank)) +
-  geom_point() +
-  geom_line(group = 1)
-
 separate(
   charts,
   date.entered, # column to separate
   sep = "-",
   into = c("year","month", "day")
-) %>%
-  relocate(c(day,month), .before = year)
-
+)
 
 # 3. fish_encounters
 
@@ -406,22 +380,3 @@ pivot_wider(fish_encounters,
 relig_income %>%
   pivot_longer(-religion) %>%
   pivot_wider(names_from = religion, values_from = value)
-
-
-# Joining tibbles ---------------------------------------------------------
-
-# Join rows (tibbles of different length) and add a category
-
-tibbleA <- tibble(category = rep(c("a", "b", "c"), each = 2), values = rnorm(6))
-tibbleB <- tibble(category = c("a", "b", "c"), values = rnorm(3))
-
-bind_rows(A = tibbleA,
-          B = tibbleB,
-          .id = "class")
-
-# Join columns
-
-tibbleA <- tibble(category = rep(c("a", "b", "c"), each = 2), values = rnorm(6))
-tibbleB <- tibble(category = c("a", "b", "c"), price = rnorm(3))
-
-left_join(tibbleA, tibbleB, by = "category")

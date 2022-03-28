@@ -115,6 +115,7 @@ g2
 lm2a <- lm(bill_depth_mm ~ bill_length_mm + species, data = penguins)
 # With interaction
 lm2b <- lm(bill_depth_mm ~ bill_length_mm * species, data = penguins)
+
 lm2b <- lm(bill_depth_mm ~ bill_length_mm +
              species + bill_length_mm:species, data = penguins)
 
