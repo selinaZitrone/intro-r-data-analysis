@@ -140,15 +140,13 @@ cities_untidy
 
 ```
 ## # A tibble: 2 x 11
-##   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Petersburg`
-##   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                     &lt;dbl&gt;
-## 1 population        15100000      12500000   9000000                   5400000
-## 2 area_km2              2576          2561      1572                      1439
-##   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest France_Pa~1
-##            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt;
-## 1        3800000      3200000      3000000    2800000           2200000     2100000
-## 2            891          604          839       1285               228         105
-## # ... with abbreviated variable name 1: France_Paris
+##   type     Turke~1 Russi~2 UK_Lo~3 Russi~4 Germa~5 Spain~6 Ukrai~7 Italy~8 Roman~9 Franc~*
+##   &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 populat~  1.51e7  1.25e7 9000000 5400000 3800000 3200000 3000000 2800000 2200000 2100000
+## 2 area_km2  2.58e3  2.56e3    1572    1439     891     604     839    1285     228     105
+## # ... with abbreviated variable names 1: Turkey_Istanbul, 2: Russia_Moscow, 3: UK_London,
+## #   4: `Russia_Saint Petersburg`, 5: Germany_Berlin, 6: Spain_Madrid, 7: Ukraine_Kyiv,
+## #   8: Italy_Rome, 9: Romania_Bucharest, *: France_Paris
 ```
 
 **What's not tidy here?**
@@ -180,15 +178,13 @@ Let's tidy this data using functions from the `tidyr` package!
 
 ```
 ## # A tibble: 2 x 11
-##   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Petersburg`
-##   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                     &lt;dbl&gt;
-## 1 population        15100000      12500000   9000000                   5400000
-## 2 area_km2              2576          2561      1572                      1439
-##   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest France_Pa~1
-##            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt;
-## 1        3800000      3200000      3000000    2800000           2200000     2100000
-## 2            891          604          839       1285               228         105
-## # ... with abbreviated variable name 1: France_Paris
+##   type     Turke~1 Russi~2 UK_Lo~3 Russi~4 Germa~5 Spain~6 Ukrai~7 Italy~8 Roman~9 Franc~*
+##   &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 populat~  1.51e7  1.25e7 9000000 5400000 3800000 3200000 3000000 2800000 2200000 2100000
+## 2 area_km2  2.58e3  2.56e3    1572    1439     891     604     839    1285     228     105
+## # ... with abbreviated variable names 1: Turkey_Istanbul, 2: Russia_Moscow, 3: UK_London,
+## #   4: `Russia_Saint Petersburg`, 5: Germany_Berlin, 6: Spain_Madrid, 7: Ukraine_Kyiv,
+## #   8: Italy_Rome, 9: Romania_Bucharest, *: France_Paris
 ```
 
 --
@@ -351,7 +347,7 @@ class: inverse, middle, center
 
 ## Task 3: Tidying data (45 min)
 
-#### Find the task description &lt;a href="../02_tasks_controller.html#tidyr"&gt;here&lt;/a&gt;
+#### Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/02_tasks_controller.html#tidyr)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

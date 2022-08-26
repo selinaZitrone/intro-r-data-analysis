@@ -860,5 +860,5 @@ class: inverse, middle, center
 
 ## Task 2: Transforming the penguin data set (60 min)
 
-#### Find the task description <a href="../02_tasks_controller.html#dplyr">here</a>
+#### Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/02_tasks_controller.html#dplyr)
 

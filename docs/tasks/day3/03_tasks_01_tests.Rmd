@@ -1,4 +1,4 @@
-#### 1.1 Getting started
+### 1.1 Getting started
 
 We will again use the `penguins` tibble from the `palmerpenguins` package for this task.
 

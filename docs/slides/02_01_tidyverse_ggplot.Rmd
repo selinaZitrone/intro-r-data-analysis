@@ -1209,4 +1209,4 @@ class: inverse, middle, center
 
 ## Task 1: Create your own penguin ggplots (90 min)
 
-#### Find the task description <a href="../02_tasks_controller.html#ggplot2">here</a>
+#### Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/02_tasks_controller.html#ggplot2)

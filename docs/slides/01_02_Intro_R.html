@@ -437,13 +437,11 @@ c(int_var, lgl_var)
 
 # integer + character -&gt; character (same with double + character)
 c(int_var, chr_var)
-## [1] "1"            "45"           "234"          "These are"    "just"        
-## [6] "some strings"
+## [1] "1"            "45"           "234"          "These are"    "just"         "some strings"
 
 # logical + character -&gt; character
 c(lgl_var, chr_var)
-## [1] "TRUE"         "TRUE"         "FALSE"        "These are"    "just"        
-## [6] "some strings"
+## [1] "TRUE"         "TRUE"         "FALSE"        "These are"    "just"         "some strings"
 ```
 
 ---
@@ -464,9 +462,9 @@ The `seq()` function creates a sequence of values
 seq(from = 1, to = 10, by = 1) # specify increment of sequence with by
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 seq(from = 1, to = 10, length.out = 20) # specify desired length with length.out
-##  [1]  1.000000  1.473684  1.947368  2.421053  2.894737  3.368421  3.842105
-##  [8]  4.315789  4.789474  5.263158  5.736842  6.210526  6.684211  7.157895
-## [15]  7.631579  8.105263  8.578947  9.052632  9.526316 10.000000
+##  [1]  1.000000  1.473684  1.947368  2.421053  2.894737  3.368421  3.842105  4.315789  4.789474
+## [10]  5.263158  5.736842  6.210526  6.684211  7.157895  7.631579  8.105263  8.578947  9.052632
+## [19]  9.526316 10.000000
 ```
 
 ---
@@ -518,8 +516,8 @@ Divide the population and area vector to calculate the population density in eac
 
 ```r
 population / area_km2
-##  [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685
-##  [8]  2178.988  9649.123 20000.000
+##  [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685  2178.988  9649.123
+## [10] 20000.000
 ```
 
 --
@@ -536,8 +534,8 @@ mean_population &lt;- mean(population) # calculate the mean of population vector
 mean_population
 ## [1] 5910000
 population / mean_population # divide population vector by the mean
-##  [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142
-##  [8] 0.4737733 0.3722504 0.3553299
+##  [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142 0.4737733 0.3722504
+## [10] 0.3553299
 ```
 
 ---
@@ -667,8 +665,7 @@ population_new[10] &lt;- population_new[10] - 200000
 
 ```r
 population_new
-##  [1] 20000000 12500000  9000000  5400000  3800000  3200000  3000000       NA
-##  [9]  2200000  1900000
+##  [1] 20000000 12500000  9000000  5400000  3800000  3200000  3000000       NA  2200000  1900000
 ```
 
 ---
@@ -834,7 +831,7 @@ class: inverse, middle, center
 
 ## Task 2: Data types and vectors (35 min)
 
-#### Find the task description &lt;a href="../01_tasks_controller.html#working-with-vectors"&gt;here&lt;/a&gt;
+#### Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/01_tasks_controller.html#working-with-vectors)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
