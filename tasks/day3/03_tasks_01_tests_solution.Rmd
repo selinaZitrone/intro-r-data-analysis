@@ -27,11 +27,11 @@ shapiro.test(chinstrap)
 
 ```{r, echo=TRUE}
 library(patchwork) # using patchwork to combine multiple plots into one
-c <- ggpubr::ggqqplot(chinstrap) + labs(title = "chinstrap")
-a <- ggpubr::ggqqplot(adelie) + labs(title = "adelie")
-g <- ggpubr::ggqqplot(gentoo) + labs(title = "gentoo")
+ch <- ggpubr::ggqqplot(chinstrap) + labs(title = "chinstrap")
+ad <- ggpubr::ggqqplot(adelie) + labs(title = "adelie")
+ge <- ggpubr::ggqqplot(gentoo) + labs(title = "gentoo")
 
-c + g + a
+ch + ge + ad
 ```
 
 #### Compare Chinstrap vs. Adelie
@@ -53,7 +53,7 @@ The t-test suggests, that the mean flipper length differs between Chinstrap and 
 
 #### Compare Chinstrap vs. Gentoo
 
-Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare 
+Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare
 means:
 
 ```{r, echo=TRUE}
@@ -64,7 +64,7 @@ The Wilcoxon tests suggests that the flipper lengths differ between Chinstrap an
 
 #### Compare Adelie vs. Gentoo
 
-Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare 
+Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare
 means:
 
 

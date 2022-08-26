@@ -311,7 +311,6 @@ class: inverse, middle, center
 
 - Variables can hold any R objects, e.g.
   - Simple numbers
-  - Lists
   - Tables with data
   - ...
 
@@ -319,7 +318,6 @@ class: inverse, middle, center
 
 - Choose meaningful variable names
   - Make your code easier to read
-
 
 ---
 
@@ -334,7 +332,7 @@ radius <- 5
 circumference <- 2 * pi * radius
 # change value of variable radius
 radius <- radius + 1
-```` 
+```
 --
 ```{r eval=FALSE}
 # just use the name to print the value to the console
@@ -360,61 +358,6 @@ There are 6 so-called **atomic data types** in R. The 4 most important are:
 --
 
 **Character:** also called string. Sequence of characters surrounded by quotes (`"hello"` , `"sample_1"`)
-
----
-# Check the type of a variable
-
-- Check the type of a variable with `typeof()`
-
-- Check if a variable is of a specific data type with `is.*()`
-
-```{r}
-var <- 123L
-typeof(var)
-is.double(var)
-```
-
-```{r}
-typeof(TRUE)
-typeof("TRUE")
-```
-
----
-# Explicit type conversion
-
-You can convert a value from one data type to the other using `as.*()`
-
-```{r}
-as.character(1L)
-as.integer(TRUE)
-```
-
----
-# Implicit type conversion
-
-Type conversion can happen implicitly
-
-```{r}
-typeof(1L + 2.5) # integer -> double
-```
-
---
-
-```{r}
-typeof(1L + TRUE) # logical -> integer (TRUE = 1, FALSE = 0)
-```
-
---
-
-```{r}
-typeof(1.34 + FALSE) # logical -> double
-```
-
---
-
-```{r error=TRUE}
-typeof("hello" + FALSE) # Error: no implicit conversion from string to other data types
-```
 
 ---
 class: inverse, middle, center
@@ -458,12 +401,20 @@ v2 <- c(800, 83, 37)
 v3 <- c(v1, v2)
 ```
 
---
+---
+# Creating vectors: `c()`
 
-Be aware of implicit type conversion when combining vectors of different types
+Be aware of implicit **type conversion** when combining vectors of different types
 
 ```{r}
+# integer + logical -> integer (same with double + logical)
 c(int_var, lgl_var)
+
+# integer + character -> character (same with double + character)
+c(int_var, chr_var)
+
+# logical + character -> character
+c(lgl_var, chr_var)
 ```
 
 ---
@@ -471,7 +422,7 @@ c(int_var, lgl_var)
 
 The `:` operator creates a sequence between two numbers with an increment of (-)1
 ```{r}
-1:10
+1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 ```
 --
 <br>
@@ -479,7 +430,7 @@ The `seq()` function creates a sequence of values
 
 ```{r}
 seq(from = 1, to = 10, by = 1) # specify increment of sequence with by
-seq(from = 1, to = 10, length.out = 10) # specify desired length with length.out
+seq(from = 1, to = 10, length.out = 20) # specify desired length with length.out
 ```
 
 ---
@@ -489,17 +440,6 @@ Repeat values multiple times with `rep()`
 
 ```{r}
 rep("hello", times = 5)
-```
---
-
-You can also repeat entire vectors
-
-```{r}
-rep(c(TRUE, FALSE, TRUE), times = 2) # repeat the whole vector twice
-```
-
-```{r}
-rep(c(1, 2 ,3), each = 2) # repeat each element of the vector twice
 ```
 
 ---
@@ -544,12 +484,12 @@ The operation is performed **separately for each element of the two vectors** an
 
 --
 
-The same happens, if a **vector is divided by vector of length 1** (i.e. a single number).
-The result is always a vector.
+Same, if a **vector is divided by vector of length 1** (i.e. a single number). Result is always a vector.
 
 ```{r}
-mean_population <- mean(population) # calculate the mean of vector population
-population / mean_population
+mean_population <- mean(population) # calculate the mean of population vector
+mean_population
+population / mean_population # divide population vector by the mean
 ```
 
 ---
@@ -590,7 +530,7 @@ cities == "Istanbul" | cities == "Berlin" | cities == "Madrid"
 The `%in%` operator checks whether *multiple* elements occur in a vector.
 
 ```{r}
-# for eachelement of cities, checks whether that element is contained in to_check 
+# for each element of cities, checks whether that element is contained in to_check 
 to_check <- c("Istanbul", "Berlin", "Madrid")
 cities %in% to_check
 ```
@@ -813,4 +753,4 @@ class: inverse, middle, center
 
 ## Task 2: Data types and vectors (35 min)
 
-#### Find the task description <a href="../01_tasks_controller.html#data-types-and-vectors">here</a>
+#### Find the task description <a href="../01_tasks_controller.html#working-with-vectors">here</a>

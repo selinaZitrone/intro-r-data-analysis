@@ -31,8 +31,7 @@ You can add files to your project either directly in RStudio, or in the file exp
 - Copy and paste the code from below into your script
   - Don't worry if you don't understand the code yet, we will learn all this later
 - Run the code in the script line by line. Try both, running code using the `Run` button (in the top right corner of your script pane) and the keyboard shortcut `Ctrl/Cmd + Enter/Return`
-  - F
-  or each line that you run, observe what is happening to the other panes (console, environment, ...) in RStudio. Can you explain what is happening?
+  - For each line that you run, observe what is happening to the different panes (console, environment, ...) in RStudio. Can you explain what is happening?
 
 ```{r eval=FALSE, echo=TRUE}
 # Look at the first lines of the iris dataset

@@ -57,13 +57,15 @@ With `dplyr` we can (among other things)
 
   - **Filter** data to analyse only a part of it
   
-  - **Reorder** observations or variables 
-  
   - **Create** new variables
   
   - **Summarize** data
   
+  - **Combine** multiple tables
+  
   - **Rename** variables
+  
+  - **Reorder** observations or variables
   
 --
   
@@ -471,25 +473,6 @@ mutate(soybean_use, legislation = case_when(
 ```
 
 ---
-# `transmute()`
-
-`transmute()` is like `mutate()` but only keeps the new columns
-
-```{r eval=FALSE}
-transmute(soybean_use,
-          ratio_processed_animal = processed/animal_feed,
-          ratio_human_animal = human_food/animal_feed)
-
-```
-
-```{r echo=FALSE}
-transmute(soybean_use,
-          ratio_processed_animal = processed/animal_feed,
-          ratio_human_animal = human_food/animal_feed) %>% 
-  print(n=3)
-```
-
----
 class: inverse, center, middle
 
 # .large[`summarize()` + `group_by()`]
@@ -688,19 +671,135 @@ soybean_use %>%
 .pull-right[
 
 ```{r echo=FALSE, fig.width=6.3}
-soybean_use %>% 
-  filter(!is.na(code)) %>% 
-  select(year, processed) %>% 
-  group_by(year) %>% 
+soybean_use %>%
+  filter(!is.na(code)) %>%
+  select(year, processed) %>%
+  group_by(year) %>%
   summarize(
     processed = sum(processed, na.rm = TRUE)
-  ) %>% 
-  ggplot(aes(x=year, y=processed))+
-   geom_line()+
-  theme_gray(base_size=16)
+  ) %>%
+  ggplot(aes(x = year, y = processed)) +
+  geom_line() +
+  theme_gray(base_size = 16)
   
 ```
 ]
+
+---
+class: inverse, middle, center
+
+# .large[Combining mulitiple tables into one]
+
+---
+# Combine two tibbles by row `bind_rows`
+
+Situation: Two (or more) `tibbles` with the same variables (column names)
+
+```{r}
+tbl_a <- soybean_use[1:2, ] # first two rows
+tbl_b <- soybean_use[2:nrow(soybean_use), ] # the rest
+```
+
+```{r eval=FALSE}
+tbl_a
+```
+
+```{r echo=FALSE}
+print(tbl_a, n = 2)
+```
+
+```{r eval=FALSE}
+tbl_b
+```
+
+```{r echo=FALSE}
+print(tbl_b, n = 2)
+```
+
+
+---
+# Combine two tibbles by row `bind_rows`
+
+Bind the rows together with `bind_rows()`:
+
+```{r eval=FALSE}
+bind_rows(tbl_a, tbl_b)
+```
+
+```{r echo=FALSE}
+print(bind_rows(tbl_a, tbl_b), n = 2)
+```
+
+--
+
+You can also add an ID-column to indicate which line belonged to which table:
+
+```{r eval=FALSE}
+bind_rows(a = tbl_a, b = tbl_b, .id = "id")
+```
+
+```{r echo=FALSE}
+print(bind_rows(a = tbl_a, b = tbl_b, .id = "id"), n = 3)
+```
+
+--
+
+You can use `bind_rows()` to bind as many tables as you want:
+
+```{r eval=FALSE}
+bind_rows(a = tbl_a, b= tbl_b, c = tbl_c, ..., .id = "id")
+```
+
+---
+# Join tibbles with `left_join()`
+
+Situation: Two tables that share some but not all columns.
+
+```{r echo=FALSE}
+gdp <- select(soybean_use, entity,year) |> mutate(gdp = rnorm(1, mean = 5, sd = 0.5))
+```
+
+```{r eval = FALSE}
+soybean_use
+```
+
+```{r echo = FALSE}
+print(soybean_use, n=2)
+```
+
+```{r eval=FALSE}
+# table with the gdp of the country/continent for each year
+gdp
+```
+
+```{r echo = FALSE}
+print(gdp, n=2)
+```
+
+---
+# Join tibbles with `left_join()`
+
+Join the two tables by the two common columns `entity` and `year`
+
+```{r, eval=FALSE}
+left_join(soybean_use, gdp, by = c("entity", "year"))
+```
+
+
+```{r, echo=FALSE}
+print(left_join(soybean_use, gdp, by = c("entity", "year")), n = 3)
+```
+
+--
+
+`left_join()` means that the resulting tibble will contain all rows of `soybean_use`,
+but not necessarily all rows of `gdp`
+
+---
+# Different `*_join()` functions
+
+.center[![:scale 70%](img/day2/dplyr_join.png)]
+
 ---
 # Summary I
 

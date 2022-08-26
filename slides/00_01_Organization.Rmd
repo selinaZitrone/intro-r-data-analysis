@@ -174,7 +174,6 @@ I am curious to know
 You can give feedback by
 
 - Telling me
-- Adding it to the feedback section of the [joint document]([joint document](https://hackmd.io/@selinaZitrone/rJZe9qMgK/edit)
 - Remember it until the end of the workshop and put in in the evaluation
 
 ---
@@ -198,3 +197,5 @@ You can give feedback by
 - Use the chat in the groups for questions 
 
 - Meet in your groups and solve the tasks jointly (if you want)
+
+- Please always have a look at the general chat during the tasks
