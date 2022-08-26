@@ -1091,4 +1091,4 @@ class: inverse, middle, center
 
 ## Task 2: Linear models with the penugin data set
 
-#### Find the task description <a href="../03_tasks_controller.html#linear-models">here</a>
+#### Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/03_tasks_controller.html#linear-models)

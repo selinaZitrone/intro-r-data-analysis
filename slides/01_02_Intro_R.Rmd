@@ -753,4 +753,4 @@ class: inverse, middle, center
 
 ## Task 2: Data types and vectors (35 min)
 
-#### Find the task description <a href="../01_tasks_controller.html#working-with-vectors">here</a>
+#### Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/01_tasks_controller.html#working-with-vectors)
