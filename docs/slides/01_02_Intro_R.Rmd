@@ -311,7 +311,6 @@ class: inverse, middle, center
 
 - Variables can hold any R objects, e.g.
   - Simple numbers
-  - Lists
   - Tables with data
   - ...
 
@@ -319,7 +318,6 @@ class: inverse, middle, center
 
 - Choose meaningful variable names
   - Make your code easier to read
-
 
 ---
 
@@ -411,8 +409,10 @@ Be aware of implicit **type conversion** when combining vectors of different typ
 ```{r}
 # integer + logical -> integer (same with double + logical)
 c(int_var, lgl_var)
+
 # integer + character -> character (same with double + character)
 c(int_var, chr_var)
+
 # logical + character -> character
 c(lgl_var, chr_var)
 ```
@@ -484,8 +484,7 @@ The operation is performed **separately for each element of the two vectors** an
 
 --
 
-The same happens, if a **vector is divided by vector of length 1** (i.e. a single number).
-The result is always a vector.
+Same, if a **vector is divided by vector of length 1** (i.e. a single number). Result is always a vector.
 
 ```{r}
 mean_population <- mean(population) # calculate the mean of population vector
