@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Selina Baldauf" />
     <meta name="date" content="2021-08-01" />
-    <script src="01_02_Intro_R_files/header-attrs-2.11/header-attrs.js"></script>
+    <script src="01_02_Intro_R_files/header-attrs-2.16/header-attrs.js"></script>
     <link href="01_02_Intro_R_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
   </head>
@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2022-03-16)
+  2021-08-01 (updated: 2022-08-26)
 ]
 
 ---
@@ -144,33 +144,12 @@ background-position: 90% 90%
 
 ```r
 2 == 2
-```
-
-```
 ## [1] TRUE
-```
-
-```r
 2 != 2
-```
-
-```
 ## [1] FALSE
-```
-
-```r
 33 &lt;= 32
-```
-
-```
 ## [1] FALSE
-```
-
-```r
 20 &lt; 20
-```
-
-```
 ## [1] FALSE
 ```
 
@@ -206,17 +185,8 @@ background-position: 90% 90%
 
 ```r
 !TRUE
-```
-
-```
 ## [1] FALSE
-```
-
-```r
 !(3 &lt; 1)
-```
-
-```
 ## [1] TRUE
 ```
 ]
@@ -251,25 +221,10 @@ background-position: 90% 90%
 
 ```r
 (3 &lt; 1) &amp; (3 == 3) # FALSE &amp; TRUE = FALSE
-```
-
-```
 ## [1] FALSE
-```
-
-```r
 (1 &lt; 3) &amp; (3 == 3) # TRUE &amp; TRUE = TRUE
-```
-
-```
 ## [1] TRUE
-```
-
-```r
 (3 &lt; 1) &amp; (3 != 3) # FALSE &amp; FALSE = FALSE
-```
-
-```
 ## [1] FALSE
 ```
 ]
@@ -304,25 +259,10 @@ background-position: 90% 90%
 
 ```r
 (3 &lt; 1) | (3 == 3) # FALSE | TRUE = TRUE
-```
-
-```
 ## [1] TRUE
-```
-
-```r
 (1 &lt; 3) | (3 == 3) # TRUE | TRUE = TRUE
-```
-
-```
 ## [1] TRUE
-```
-
-```r
 (3 &lt; 1) | (3 != 3) # FALSE | FALSE = FALSE
-```
-
-```
 ## [1] FALSE
 ```
 ]
@@ -332,6 +272,7 @@ background-position: 90% 90%
 
 
 ```r
+
 # Reading and cleaning the data -----------------
 
 data &lt;- read_csv("data/my-data.csv")
@@ -359,7 +300,7 @@ data &lt;- janitor::clean_names(data)
 - Comments can be used for
   - Explanation of code (if necessary)
   - Include links, names of authors, ...
-  - Mark different sections of your code (<svg aria-hidden="true" role="img" viewBox="0 0 352 512" style="height:1em;width:0.69em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg> try `Ctrl/Cmd + Shift + R`)
+  - Mark different sections of your code (<svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M112.1 454.3c0 6.297 1.816 12.44 5.284 17.69l17.14 25.69c5.25 7.875 17.17 14.28 26.64 14.28h61.67c9.438 0 21.36-6.401 26.61-14.28l17.08-25.68c2.938-4.438 5.348-12.37 5.348-17.7L272 415.1h-160L112.1 454.3zM191.4 .0132C89.44 .3257 16 82.97 16 175.1c0 44.38 16.44 84.84 43.56 115.8c16.53 18.84 42.34 58.23 52.22 91.45c.0313 .25 .0938 .5166 .125 .7823h160.2c.0313-.2656 .0938-.5166 .125-.7823c9.875-33.22 35.69-72.61 52.22-91.45C351.6 260.8 368 220.4 368 175.1C368 78.61 288.9-.2837 191.4 .0132zM192 96.01c-44.13 0-80 35.89-80 79.1C112 184.8 104.8 192 96 192S80 184.8 80 176c0-61.76 50.25-111.1 112-111.1c8.844 0 16 7.159 16 16S200.8 96.01 192 96.01z"/></svg> try `Ctrl/Cmd + Shift + R`)
   
 ---
 class: inverse, middle, center
@@ -442,117 +383,6 @@ There are 6 so-called **atomic data types** in R. The 4 most important are:
 **Character:** also called string. Sequence of characters surrounded by quotes (`"hello"` , `"sample_1"`)
 
 ---
-# Check the type of a variable
-
-- Check the type of a variable with `typeof()`
-
-- Check if a variable is of a specific data type with `is.*()`
-
-
-```r
-var &lt;- 123L
-typeof(var)
-```
-
-```
-## [1] "integer"
-```
-
-```r
-is.double(var)
-```
-
-```
-## [1] FALSE
-```
-
-
-```r
-typeof(TRUE)
-```
-
-```
-## [1] "logical"
-```
-
-```r
-typeof("TRUE")
-```
-
-```
-## [1] "character"
-```
-
----
-# Explicit type conversion
-
-You can convert a value from one data type to the other using `as.*()`
-
-
-```r
-as.character(1L)
-```
-
-```
-## [1] "1"
-```
-
-```r
-as.integer(TRUE)
-```
-
-```
-## [1] 1
-```
-
----
-# Implicit type conversion
-
-Type conversion can happen implicitly
-
-
-```r
-typeof(1L + 2.5) # integer -&gt; double
-```
-
-```
-## [1] "double"
-```
-
---
-
-
-```r
-typeof(1L + TRUE) # logical -&gt; integer (TRUE = 1, FALSE = 0)
-```
-
-```
-## [1] "integer"
-```
-
---
-
-
-```r
-typeof(1.34 + FALSE) # logical -&gt; double
-```
-
-```
-## [1] "double"
-```
-
---
-
-
-```r
-typeof("hello" + FALSE) # Error: no implicit conversion from string to other data types
-```
-
-```
-## Error in "hello" + FALSE: non-numeric argument to binary operator
-```
-
----
 class: inverse, middle, center
 
 # .large[Vectors]
@@ -596,17 +426,22 @@ v2 &lt;- c(800, 83, 37)
 v3 &lt;- c(v1, v2)
 ```
 
---
+---
+# Creating vectors: `c()`
 
-Be aware of implicit type conversion when combining vectors of different types
+Be aware of implicit **type conversion** when combining vectors of different types
 
 
 ```r
+# integer + logical -&gt; integer (same with double + logical)
 c(int_var, lgl_var)
-```
-
-```
 ## [1]   1  45 234   1   1   0
+# integer + character -&gt; character (same with double + character)
+c(int_var, chr_var)
+## [1] "1"            "45"           "234"          "These are"    "just"         "some strings"
+# logical + character -&gt; character
+c(lgl_var, chr_var)
+## [1] "TRUE"         "TRUE"         "FALSE"        "These are"    "just"         "some strings"
 ```
 
 ---
@@ -615,10 +450,7 @@ c(int_var, lgl_var)
 The `:` operator creates a sequence between two numbers with an increment of (-)1
 
 ```r
-1:10
-```
-
-```
+1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 --
@@ -628,18 +460,10 @@ The `seq()` function creates a sequence of values
 
 ```r
 seq(from = 1, to = 10, by = 1) # specify increment of sequence with by
-```
-
-```
 ##  [1]  1  2  3  4  5  6  7  8  9 10
-```
-
-```r
-seq(from = 1, to = 10, length.out = 10) # specify desired length with length.out
-```
-
-```
-##  [1]  1  2  3  4  5  6  7  8  9 10
+seq(from = 1, to = 10, length.out = 20) # specify desired length with length.out
+##  [1]  1.000000  1.473684  1.947368  2.421053  2.894737  3.368421  3.842105  4.315789  4.789474  5.263158  5.736842  6.210526  6.684211
+## [14]  7.157895  7.631579  8.105263  8.578947  9.052632  9.526316 10.000000
 ```
 
 ---
@@ -650,31 +474,7 @@ Repeat values multiple times with `rep()`
 
 ```r
 rep("hello", times = 5)
-```
-
-```
 ## [1] "hello" "hello" "hello" "hello" "hello"
-```
---
-
-You can also repeat entire vectors
-
-
-```r
-rep(c(TRUE, FALSE, TRUE), times = 2) # repeat the whole vector twice
-```
-
-```
-## [1]  TRUE FALSE  TRUE  TRUE FALSE  TRUE
-```
-
-
-```r
-rep(c(1, 2 ,3), each = 2) # repeat each element of the vector twice
-```
-
-```
-## [1] 1 1 2 2 3 3
 ```
 
 ---
@@ -703,9 +503,6 @@ We can check the length of a vector using the `length()` function:
 
 ```r
 length(cities)
-```
-
-```
 ## [1] 10
 ```
 
@@ -718,9 +515,6 @@ Divide the population and area vector to calculate the population density in eac
 
 ```r
 population / area_km2
-```
-
-```
 ##  [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685  2178.988  9649.123 20000.000
 ```
 
@@ -735,11 +529,10 @@ The result is always a vector.
 
 
 ```r
-mean_population &lt;- mean(population) # calculate the mean of vector population
-population / mean_population
-```
-
-```
+mean_population &lt;- mean(population) # calculate the mean of population vector
+mean_population
+## [1] 5910000
+population / mean_population # divide population vector by the mean
 ##  [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142 0.4737733 0.3722504 0.3553299
 ```
 
@@ -752,9 +545,6 @@ We can also work with relational and logical operators
 
 ```r
 population &gt; mean_population
-```
-
-```
 ##  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
@@ -770,9 +560,6 @@ Logical and relational operators can be combined
 ```r
 # population larger than mean population OR population larger than 3 million
 population &gt; mean_population | population &gt; 3e6
-```
-
-```
 ##  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE
 ```
 
@@ -785,9 +572,6 @@ Check whether elements occur in a vector:
 
 ```r
 cities == "Istanbul" | cities == "Berlin" | cities == "Madrid"
-```
-
-```
 ##  [1]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE
 ```
 
@@ -797,12 +581,9 @@ The `%in%` operator checks whether *multiple* elements occur in a vector.
 
 
 ```r
-# for eachelement of cities, checks whether that element is contained in to_check 
+# for each element of cities, checks whether that element is contained in to_check 
 to_check &lt;- c("Istanbul", "Berlin", "Madrid")
 cities %in% to_check
-```
-
-```
 ##  [1]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE
 ```
 
@@ -812,9 +593,6 @@ cities %in% to_check
 ```r
 # for each element of to_check, check whether that element is contained in cities 
 to_check %in% cities
-```
-
-```
 ## [1] TRUE TRUE TRUE
 ```
 
@@ -836,9 +614,6 @@ The basic structure is:
 
 ```r
 cities[5]
-```
-
-```
 ## [1] "Berlin"
 ```
 
@@ -848,9 +623,6 @@ cities[5]
 ```r
 # the three most populated cities
 cities[1:3] # same as cities[c(1,2,3)]
-```
-
-```
 ## [1] "Istanbul" "Moscow"   "London"
 ```
 
@@ -860,9 +632,6 @@ cities[1:3] # same as cities[c(1,2,3)]
 ```r
 # the last entry of the cities vector
 cities[length(cities)] # same as cities[10]
-```
-
-```
 ## [1] "Paris"
 ```
 
@@ -894,9 +663,6 @@ population_new[10] &lt;- population_new[10] - 200000
 
 ```r
 population_new
-```
-
-```
 ##  [1] 20000000 12500000  9000000  5400000  3800000  3200000  3000000       NA  2200000  1900000
 ```
 
@@ -913,9 +679,6 @@ You can also index a vector using logical tests. The basic structure is:
 ```r
 mega_city &lt;- population &gt; mean_population
 mega_city
-```
-
-```
 ##  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
@@ -926,9 +689,6 @@ Which are the mega cities?
 
 ```r
 cities[mega_city] # or short: cities[population &gt; mean_population]
-```
-
-```
 ## [1] "Istanbul" "Moscow"   "London"
 ```
 
@@ -942,9 +702,6 @@ We also use `%in%`for logical indexing.
 
 ```r
 population[ cities %in% c("Berlin", "Paris", "Stockholm", "Madrid")]
-```
-
-```
 ## [1] 3800000 3200000 2100000
 ```
 
@@ -956,9 +713,6 @@ population[ cities %in% c("Berlin", "Paris", "Stockholm", "Madrid")]
 
 ```r
 cities %in% c("Berlin", "Paris", "Stockholm", "Madrid")
-```
-
-```
 ##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE
 ```
 
@@ -1075,7 +829,7 @@ class: inverse, middle, center
 
 ## Task 2: Data types and vectors (35 min)
 
-#### Find the task description &lt;a href="../01_tasks_controller.html#data-types-and-vectors"&gt;here&lt;/a&gt;
+#### Find the task description &lt;a href="../01_tasks_controller.html#working-with-vectors"&gt;here&lt;/a&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
@@ -1125,6 +879,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

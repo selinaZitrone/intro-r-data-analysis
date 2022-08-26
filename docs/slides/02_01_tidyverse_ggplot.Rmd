@@ -457,7 +457,9 @@ ggplot(data = msleep,
              color = "blue") + #<<
   scale_x_log10() 
 ```
-- Have a look [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) for the point shape codes
+- Have a look [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) for the point shape codes:
+
+.center[![:scale 40%](img/day2/shape_codes.png)]
 
 ]
 
@@ -661,7 +663,7 @@ g
 - Length of color vector has to match number of levels in your aesthetic
 - Specify colors 
   - Via their name (see [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) for all color names)
-  - Via their Hex color codes
+  - Via their Hex color codes (use websites to generate your own color palettes, e.g. [here](https://coolors.co/))
 
 ]
 
@@ -740,7 +742,7 @@ g +
 ```{r eval=FALSE}
 g <- g +
   labs(
-    x = "log brain weight [kg]",#<<
+    x = "brain weight [kg]",#<<
     y = "total sleep [h/day]", #<<
     color = "Diet", #<<
     title = "Brain weight and sleep time in mammals",#<<
@@ -755,7 +757,7 @@ g
 .pull-right[
 ```{r echo=FALSE}
 g <- g +
-  labs(x = "log brain weight [kg]",
+  labs(x = "brain weight [kg]",
        y="total sleep [h/day]", 
        color = "Diet", #<<
        title = "Brain weight and sleep time in mammals",
@@ -869,6 +871,16 @@ g +
       color = "yellow") #<<
   )#<<
 ```
+
+- The basic functioning is:
+
+```{r eval=FALSE}
+theme(
+  element_name = element_function()
+)
+```
+
+- Look [here](https://github.com/claragranell/ggplot2/blob/main/ggplot_theme_system_cheatsheet.pdf) for an overview of the elemtens that you can change and the corresponding functions
 
 ]
 .pull-right[

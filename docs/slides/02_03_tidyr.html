@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Selina Baldauf" />
     <meta name="date" content="2021-08-01" />
-    <script src="02_03_tidyr_files/header-attrs-2.11/header-attrs.js"></script>
+    <script src="02_03_tidyr_files/header-attrs-2.16/header-attrs.js"></script>
     <link href="02_03_tidyr_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
   </head>
@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2022-03-16)
+  2021-08-01 (updated: 2022-08-26)
 ]
 
 ---
@@ -109,9 +109,6 @@ Let's go back to the city data set from earlier:
 
 ```r
 cities_tbl
-```
-
-```
 ## # A tibble: 10 x 4
 ##    city             population area_km2 country
 ##    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  
@@ -143,12 +140,13 @@ cities_untidy
 
 ```
 ## # A tibble: 2 x 11
-##   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Peters~` Germany_Berlin
-##   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                  &lt;dbl&gt;          &lt;dbl&gt;
-## 1 population        15100000      12500000   9000000                5400000        3800000
-## 2 area_km2              2576          2561      1572                   1439            891
-## # ... with 5 more variables: Spain_Madrid &lt;dbl&gt;, Ukraine_Kyiv &lt;dbl&gt;, Italy_Rome &lt;dbl&gt;,
-## #   Romania_Bucharest &lt;dbl&gt;, France_Paris &lt;dbl&gt;
+##   type     Turke~1 Russi~2 UK_Lo~3 Russi~4 Germa~5 Spain~6 Ukrai~7 Italy~8 Roman~9 Franc~*
+##   &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 populat~  1.51e7  1.25e7 9000000 5400000 3800000 3200000 3000000 2800000 2200000 2100000
+## 2 area_km2  2.58e3  2.56e3    1572    1439     891     604     839    1285     228     105
+## # ... with abbreviated variable names 1: Turkey_Istanbul, 2: Russia_Moscow, 3: UK_London,
+## #   4: `Russia_Saint Petersburg`, 5: Germany_Berlin, 6: Spain_Madrid, 7: Ukraine_Kyiv,
+## #   8: Italy_Rome, 9: Romania_Bucharest, *: France_Paris
 ```
 
 **What's not tidy here?**
@@ -180,12 +178,13 @@ Let's tidy this data using functions from the `tidyr` package!
 
 ```
 ## # A tibble: 2 x 11
-##   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Peters~` Germany_Berlin
-##   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                  &lt;dbl&gt;          &lt;dbl&gt;
-## 1 population        15100000      12500000   9000000                5400000        3800000
-## 2 area_km2              2576          2561      1572                   1439            891
-## # ... with 5 more variables: Spain_Madrid &lt;dbl&gt;, Ukraine_Kyiv &lt;dbl&gt;, Italy_Rome &lt;dbl&gt;,
-## #   Romania_Bucharest &lt;dbl&gt;, France_Paris &lt;dbl&gt;
+##   type     Turke~1 Russi~2 UK_Lo~3 Russi~4 Germa~5 Spain~6 Ukrai~7 Italy~8 Roman~9 Franc~*
+##   &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 populat~  1.51e7  1.25e7 9000000 5400000 3800000 3200000 3000000 2800000 2200000 2100000
+## 2 area_km2  2.58e3  2.56e3    1572    1439     891     604     839    1285     228     105
+## # ... with abbreviated variable names 1: Turkey_Istanbul, 2: Russia_Moscow, 3: UK_London,
+## #   4: `Russia_Saint Petersburg`, 5: Germany_Berlin, 6: Spain_Madrid, 7: Ukraine_Kyiv,
+## #   8: Italy_Rome, 9: Romania_Bucharest, *: France_Paris
 ```
 
 --
@@ -398,6 +397,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

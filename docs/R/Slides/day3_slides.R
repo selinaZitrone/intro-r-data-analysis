@@ -105,6 +105,14 @@ var.test(TreatA, TreatE) # variances not equal
 t.test(TreatA, TreatB, var.equal = TRUE)
 t.test(TreatA, TreatE, var.equal = FALSE) # Welch test for unequal variances
 
+# Plot the results
+
+InsectSprays |>
+  filter(spray %in% c("A", "B", "E")) |>
+  ggplot(aes(x=spray, y=count))+
+  geom_boxplot()+
+  geom_point()
+
 
 # Wilcoxon test -----------------------------------------------------------
 
@@ -117,6 +125,24 @@ t.test(TreatA, TreatB, var.equal = TRUE, paired = TRUE)
 t.test(TreatA, TreatB, var.equal = FALSE, paired = TRUE)
 wilcox.test(TreatA, TreatB, paired = TRUE)
 
+
+
+# Plot the results --------------------------------------------------------
+
+# Plot the results --------------------------------------------------------
+
+ggplot(InsectSprays |> filter(spray %in% c("A","B", "E")), aes(x = spray, y = count)) +
+  geom_boxplot(notch = TRUE) +
+  ggsignif::geom_signif(
+    comparisons = list(
+      c("A", "B"),
+      c("A", "E"),
+      c("B", "E")
+    ),
+    test = "t.test",
+    map_signif_level = TRUE,
+    y_position = c(23,24,25)
+  )
 
 # 2. Linear models --------------------------------------------------------
 # patchwork package to combine plots

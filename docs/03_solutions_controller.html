@@ -50,16 +50,17 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #657422; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
+code span.cf { color: #00769e; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -73,9 +74,9 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
+code span.kw { color: #00769e; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
+code span.ot { color: #00769e; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
 code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
@@ -1027,10 +1028,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     margin-top: 1.5em;
   }
 
-  .figure img {
-    width: 100%;
-  }
-
   .figure .caption {
     color: rgba(0, 0, 0, 0.6);
     font-size: 12px;
@@ -1860,6 +1857,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
+        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
+          var fn = $(this).children()[0]
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
           return "<p>" + $('#ref-' + ref).html() + "</p>";
@@ -1874,6 +1877,31 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           placement: 'bottom-start'
         });
       });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
 
       // clear polling timer
       clearInterval(tid);
@@ -1973,6 +2001,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -1995,7 +2025,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
       });
     }
 
@@ -2344,7 +2374,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2447,42 +2477,54 @@ Solutions
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#statistical-tests">1 Statistical tests</a>
+<li><a href="#statistical-tests" id="toc-statistical-tests">1
+Statistical tests</a>
 <ul>
-<li><a href="#compare-the-flipper-length-of-penguins-using-statistical-tests">Compare the flipper length of penguins using statistical tests</a></li>
+<li><a
+href="#compare-the-flipper-length-of-penguins-using-statistical-tests"
+id="toc-compare-the-flipper-length-of-penguins-using-statistical-tests">Compare
+the flipper length of penguins using statistical tests</a></li>
 </ul></li>
-<li><a href="#linear-models">2 Linear models</a>
+<li><a href="#linear-models" id="toc-linear-models">2 Linear models</a>
 <ul>
-<li><a href="#getting-started">1.1 Getting started</a></li>
-<li><a href="#linear-regression">1.2 Linear regression</a></li>
-<li><a href="#analysis-of-covariance">1.3 Analysis of covariance</a></li>
-<li><a href="#anova">1.4 Anova</a></li>
+<li><a href="#getting-started" id="toc-getting-started">1.1 Getting
+started</a></li>
+<li><a href="#linear-regression" id="toc-linear-regression">1.2 Linear
+regression</a></li>
+<li><a href="#analysis-of-covariance"
+id="toc-analysis-of-covariance">1.3 Analysis of covariance</a></li>
+<li><a href="#anova" id="toc-anova">1.4 Anova</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
-<p>Download an R script with the solutions from day 1 from <a href="./R/Tasks/Day3.R" download>here</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Download an R script with the solutions from day 1 from
+<a href="./R/Tasks/Day3.R" download>here</a>.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="statistical-tests">1 Statistical tests</h2>
-<h3 id="compare-the-flipper-length-of-penguins-using-statistical-tests">Compare the flipper length of penguins using statistical tests</h3>
-<p>First, create subsets of the flipper length of all species as vectors:</p>
+<h3
+id="compare-the-flipper-length-of-penguins-using-statistical-tests">Compare
+the flipper length of penguins using statistical tests</h3>
+<p>First, create subsets of the flipper length of all species as
+vectors:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
-<span class='va'>adelie</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Adelie"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span>
-<span class='va'>gentoo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Gentoo"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span>
-<span class='va'>chinstrap</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Chinstrap"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='va'>adelie</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Adelie"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span></span>
+<span><span class='va'>gentoo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Gentoo"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span></span>
+<span><span class='va'>chinstrap</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Chinstrap"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span></span></code></pre>
 </div>
 </div>
-<h4 id="step-1-test-all-groups-for-normality">Step 1: Test all groups for normality</h4>
+<h4 id="step-1-test-all-groups-for-normality">Step 1: Test all groups
+for normality</h4>
 <p><strong>With Shapiro-Wilk</strong></p>
-<p>The Shapiro-Wilk test suggests that Adelie and Chinstrap are normally distributed, but Gentoo is not.</p>
+<p>The Shapiro-Wilk test suggests that Adelie and Chinstrap are normally
+distributed, but Gentoo is not.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>adelie</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>adelie</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>
     Shapiro-Wilk normality test
@@ -2490,8 +2532,7 @@ Solutions
 data:  adelie
 W = 0.99339, p-value = 0.72</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>gentoo</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>gentoo</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>
     Shapiro-Wilk normality test
@@ -2499,8 +2540,7 @@ W = 0.99339, p-value = 0.72</code></pre>
 data:  gentoo
 W = 0.96219, p-value = 0.00162</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>chinstrap</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>chinstrap</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>
     Shapiro-Wilk normality test
@@ -2511,22 +2551,21 @@ W = 0.98891, p-value = 0.8106</code></pre>
 <p><strong>With QQ-plots</strong></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://patchwork.data-imaginist.com'>patchwork</a></span><span class='op'>)</span> <span class='co'># using patchwork to combine multiple plots into one</span>
-<span class='va'>c</span> <span class='op'>&lt;-</span> <span class='fu'>ggpubr</span><span class='fu'>::</span><span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggqqplot.html'>ggqqplot</a></span><span class='op'>(</span><span class='va'>chinstrap</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"chinstrap"</span><span class='op'>)</span>
-<span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fu'>ggpubr</span><span class='fu'>::</span><span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggqqplot.html'>ggqqplot</a></span><span class='op'>(</span><span class='va'>adelie</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"adelie"</span><span class='op'>)</span>
-<span class='va'>g</span> <span class='op'>&lt;-</span> <span class='fu'>ggpubr</span><span class='fu'>::</span><span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggqqplot.html'>ggqqplot</a></span><span class='op'>(</span><span class='va'>gentoo</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"gentoo"</span><span class='op'>)</span>
-
-<span class='va'>c</span> <span class='op'>+</span> <span class='va'>g</span> <span class='op'>+</span> <span class='va'>a</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://patchwork.data-imaginist.com'>patchwork</a></span><span class='op'>)</span> <span class='co'># using patchwork to combine multiple plots into one</span></span>
+<span><span class='va'>ch</span> <span class='op'>&lt;-</span> <span class='fu'>ggpubr</span><span class='fu'>::</span><span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggqqplot.html'>ggqqplot</a></span><span class='op'>(</span><span class='va'>chinstrap</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"chinstrap"</span><span class='op'>)</span></span>
+<span><span class='va'>ad</span> <span class='op'>&lt;-</span> <span class='fu'>ggpubr</span><span class='fu'>::</span><span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggqqplot.html'>ggqqplot</a></span><span class='op'>(</span><span class='va'>adelie</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"adelie"</span><span class='op'>)</span></span>
+<span><span class='va'>ge</span> <span class='op'>&lt;-</span> <span class='fu'>ggpubr</span><span class='fu'>::</span><span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggqqplot.html'>ggqqplot</a></span><span class='op'>(</span><span class='va'>gentoo</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"gentoo"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>ch</span> <span class='op'>+</span> <span class='va'>ge</span> <span class='op'>+</span> <span class='va'>ad</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
 </div>
 <h4 id="compare-chinstrap-vs.-adelie">Compare Chinstrap vs. Adelie</h4>
-<p>Both are normally distributed, so we can compare variances for Chinstrap and Adelie penguins:</p>
+<p>Both are normally distributed, so we can compare variances for
+Chinstrap and Adelie penguins:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/var.test.html'>var.test</a></span><span class='op'>(</span><span class='va'>chinstrap</span>, <span class='va'>adelie</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/var.test.html'>var.test</a></span><span class='op'>(</span><span class='va'>chinstrap</span>, <span class='va'>adelie</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>
     F test to compare two variances
@@ -2540,11 +2579,12 @@ sample estimates:
 ratio of variances 
           1.189396 </code></pre>
 </div>
-<p>This indicates that the variances do not differ between Chinstrap and Adelie penguins. Therefore, we can use a t-test to compare mean flipper length:</p>
+<p>This indicates that the variances do not differ between Chinstrap and
+Adelie penguins. Therefore, we can use a t-test to compare mean flipper
+length:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span><span class='op'>(</span><span class='va'>chinstrap</span>, <span class='va'>adelie</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span><span class='op'>(</span><span class='va'>chinstrap</span>, <span class='va'>adelie</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>
     Welch Two Sample t-test
@@ -2558,13 +2598,14 @@ sample estimates:
 mean of x mean of y 
  195.8235  189.9536 </code></pre>
 </div>
-<p>The t-test suggests, that the mean flipper length differs between Chinstrap and Adelie penguins.</p>
+<p>The t-test suggests, that the mean flipper length differs between
+Chinstrap and Adelie penguins.</p>
 <h4 id="compare-chinstrap-vs.-gentoo">Compare Chinstrap vs. Gentoo</h4>
-<p>Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:</p>
+<p>Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum
+test to compare means:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>chinstrap</span>, <span class='va'>gentoo</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>chinstrap</span>, <span class='va'>gentoo</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>
     Wilcoxon rank sum test with continuity correction
@@ -2573,13 +2614,14 @@ data:  chinstrap and gentoo
 W = 92, p-value &lt; 0.00000000000000022
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
-<p>The Wilcoxon tests suggests that the flipper lengths differ between Chinstrap and Gentoo penguins.</p>
+<p>The Wilcoxon tests suggests that the flipper lengths differ between
+Chinstrap and Gentoo penguins.</p>
 <h4 id="compare-adelie-vs.-gentoo">Compare Adelie vs. Gentoo</h4>
-<p>Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:</p>
+<p>Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum
+test to compare means:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>adelie</span>, <span class='va'>gentoo</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>adelie</span>, <span class='va'>gentoo</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>
     Wilcoxon rank sum test with continuity correction
@@ -2588,19 +2630,21 @@ data:  adelie and gentoo
 W = 26, p-value &lt; 0.00000000000000022
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
-<p>The Wilcoxon tests suggests that the flipper lengths differ between Adelie and Gentoo penguins.</p>
+<p>The Wilcoxon tests suggests that the flipper lengths differ between
+Adelie and Gentoo penguins.</p>
 <h4 id="visual-comparison">Visual comparison</h4>
-<p>The boxplot supports the findings of the statistical tests. Notches do not overlap.</p>
+<p>The boxplot supports the findings of the statistical tests. Notches
+do not overlap.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>flipper_length_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span>notch <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>penguins</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>flipper_length_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span>notch <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -2608,21 +2652,20 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <h3 id="getting-started">1.1 Getting started</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#install.packages("performance")</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://easystats.github.io/performance/'>performance</a></span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>#install.packages("performance")</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://easystats.github.io/performance/'>performance</a></span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <h3 id="linear-regression">1.2 Linear regression</h3>
-<p>It looks like the bill depth increases with increasing bill length.</p>
+<p>It looks like the bill depth increases with increasing bill
+length.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bill_length_mm</span>, y <span class='op'>=</span> <span class='va'>bill_depth_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>g</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>g</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bill_length_mm</span>, y <span class='op'>=</span> <span class='va'>bill_depth_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span><span class='va'>g</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
 </div>
@@ -2630,12 +2673,14 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <li>Fit a linear model to test this relationship</li>
 <li>Check for significant effects</li>
 </ul>
-<p>The result of <code>drop1</code> shows that if we remove the bill length from the model, we significantly increase the RSS. The model with bill length is the better model and we can assume a significant relationship between bill lenght and bill depth.</p>
+<p>The result of <code>drop1</code> shows that if we remove the bill
+length from the model, we significantly increase the RSS. The model with
+bill length is the better model and we can assume a significant
+relationship between bill lenght and bill depth.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lm1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>bill_depth_mm</span> <span class='op'>~</span> <span class='va'>bill_length_mm</span>, data <span class='op'>=</span> <span class='va'>penguins</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/add1.html'>drop1</a></span><span class='op'>(</span><span class='va'>lm1</span>, test <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>lm1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>bill_depth_mm</span> <span class='op'>~</span> <span class='va'>bill_length_mm</span>, data <span class='op'>=</span> <span class='va'>penguins</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/stats/add1.html'>drop1</a></span><span class='op'>(</span><span class='va'>lm1</span>, test <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>Single term deletions
 
@@ -2652,91 +2697,94 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>performance</span><span class='fu'>::</span><span class='fu'><a href='https://easystats.github.io/performance/reference/check_model.html'>check_model</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>performance</span><span class='fu'>::</span><span class='fu'><a href='https://easystats.github.io/performance/reference/check_model.html'>check_model</a></span><span class='op'>(</span><span class='va'>lm1</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
 </div>
-<p>The diagnostic plots do not look perfect. The reason for this is probably that we did not consider all variable that we should have in the model. Maybe by adding the species as a predictor, we can improve the diagnostic plots?</p>
+<p>The diagnostic plots do not look perfect. The reason for this is
+probably that we did not consider all variable that we should have in
+the model. Maybe by adding the species as a predictor, we can improve
+the diagnostic plots?</p>
 <ul>
 <li>Can you add the model result to the scatter plot?</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Option 1: geom_smooth</span>
-<span class='va'>g</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Option 1: geom_smooth</span></span>
+<span><span class='va'>g</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Option 2: extract coefficients</span>
-<span class='va'>intercept</span> <span class='op'>&lt;-</span> <span class='va'>lm1</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>
-<span class='va'>slope</span> <span class='op'>&lt;-</span> <span class='va'>lm1</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span>
-<span class='va'>g</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_abline</a></span><span class='op'>(</span>slope <span class='op'>=</span> <span class='va'>slope</span>, intercept <span class='op'>=</span> <span class='va'>intercept</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Option 2: extract coefficients</span></span>
+<span><span class='va'>intercept</span> <span class='op'>&lt;-</span> <span class='va'>lm1</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span></span>
+<span><span class='va'>slope</span> <span class='op'>&lt;-</span> <span class='va'>lm1</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span></span>
+<span><span class='va'>g</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_abline</a></span><span class='op'>(</span>slope <span class='op'>=</span> <span class='va'>slope</span>, intercept <span class='op'>=</span> <span class='va'>intercept</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Option 3: using predict (this is a bit overkill for this simple example)</span>
-<span class='co'># Create data to predict from</span>
-<span class='va'>pred_dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-  bill_length_mm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span>
-    from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>$</span><span class='va'>bill_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
-    to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>$</span><span class='va'>bill_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-  <span class='op'>)</span>
-<span class='op'>)</span>
-<span class='co'># Predict the response and add it to pred_data</span>
-<span class='va'>pred_dat</span><span class='op'>$</span><span class='va'>bill_depth_mm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>lm1</span>, newdata <span class='op'>=</span> <span class='va'>pred_dat</span><span class='op'>)</span>
-<span class='co'># Add a line with the new predicted data</span>
-<span class='va'>g</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pred_dat</span>, color <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Option 3: using predict (this is a bit overkill for this simple example)</span></span>
+<span><span class='co'># Create data to predict from</span></span>
+<span><span class='va'>pred_dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span></span>
+<span>  bill_length_mm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span></span>
+<span>    from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>$</span><span class='va'>bill_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,</span>
+<span>    to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>$</span><span class='va'>bill_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span>  <span class='op'>)</span></span>
+<span><span class='op'>)</span></span>
+<span><span class='co'># Predict the response and add it to pred_data</span></span>
+<span><span class='va'>pred_dat</span><span class='op'>$</span><span class='va'>bill_depth_mm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>lm1</span>, newdata <span class='op'>=</span> <span class='va'>pred_dat</span><span class='op'>)</span></span>
+<span><span class='co'># Add a line with the new predicted data</span></span>
+<span><span class='va'>g</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pred_dat</span>, color <span class='op'>=</span> <span class='st'>"cyan4"</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
 </div>
 <h3 id="analysis-of-covariance">1.3 Analysis of covariance</h3>
-<p>Does the relationship between bill length and bill depth differ between penguin species?</p>
+<p>Does the relationship between bill length and bill depth differ
+between penguin species?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bill_length_mm</span>, 
-                     y <span class='op'>=</span> <span class='va'>bill_depth_mm</span>,
-                     color <span class='op'>=</span> <span class='va'>species</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>g2</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>g2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>bill_length_mm</span>, </span>
+<span>                     y <span class='op'>=</span> <span class='va'>bill_depth_mm</span>,</span>
+<span>                     color <span class='op'>=</span> <span class='va'>species</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span><span class='va'>g2</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
 </div>
-<p>Now fit the linear model again, this time including species as explanatory variable.</p>
+<p>Now fit the linear model again, this time including species as
+explanatory variable.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Without interaction</span>
-<span class='va'>lm2a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>bill_depth_mm</span> <span class='op'>~</span> <span class='va'>bill_length_mm</span> <span class='op'>+</span> <span class='va'>species</span>, data <span class='op'>=</span> <span class='va'>penguins</span><span class='op'>)</span>
-<span class='co'># Without interaction</span>
-<span class='va'>lm2b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>bill_depth_mm</span> <span class='op'>~</span> <span class='va'>bill_length_mm</span> <span class='op'>*</span> <span class='va'>species</span>, data <span class='op'>=</span> <span class='va'>penguins</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Without interaction</span></span>
+<span><span class='va'>lm2a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>bill_depth_mm</span> <span class='op'>~</span> <span class='va'>bill_length_mm</span> <span class='op'>+</span> <span class='va'>species</span>, data <span class='op'>=</span> <span class='va'>penguins</span><span class='op'>)</span></span>
+<span><span class='co'># Without interaction</span></span>
+<span><span class='va'>lm2b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>bill_depth_mm</span> <span class='op'>~</span> <span class='va'>bill_length_mm</span> <span class='op'>*</span> <span class='va'>species</span>, data <span class='op'>=</span> <span class='va'>penguins</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <ul>
 <li>Test model assumptions for both models.</li>
 </ul>
-<p>Both models don’t violate the assumptions for linear models and the diagnostic plots look much better than the one for the model without species.</p>
-<p>Note that the diagnostic plots show a high collinearity between explanatory variables. This makes sense because of course the interaction between species and bill length is highly correlated with both species and bill length. However, in the case of this interaction it is not a problem, so we can ignore this.</p>
+<p>Both models don’t violate the assumptions for linear models and the
+diagnostic plots look much better than the one for the model without
+species.</p>
+<p>Note that the diagnostic plots show a high collinearity between
+explanatory variables. This makes sense because of course the
+interaction between species and bill length is highly correlated with
+both species and bill length. However, in the case of this interaction
+it is not a problem, so we can ignore this.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://easystats.github.io/performance/reference/check_model.html'>check_model</a></span><span class='op'>(</span><span class='va'>lm2a</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://easystats.github.io/performance/reference/check_model.html'>check_model</a></span><span class='op'>(</span><span class='va'>lm2a</span><span class='op'>)</span></span></code></pre>
 </div>
 <img src="03_solutions_controller_files/figure-html5/unnamed-chunk-18-1.png" width="624" />
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://easystats.github.io/performance/reference/check_model.html'>check_model</a></span><span class='op'>(</span><span class='va'>lm2b</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://easystats.github.io/performance/reference/check_model.html'>check_model</a></span><span class='op'>(</span><span class='va'>lm2b</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-18-2.png" width="624" /></p>
 </div>
@@ -2745,8 +2793,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/add1.html'>drop1</a></span><span class='op'>(</span><span class='va'>lm2a</span>, test <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/add1.html'>drop1</a></span><span class='op'>(</span><span class='va'>lm2a</span>, test <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>Single term deletions
 
@@ -2763,8 +2810,7 @@ species        &lt; 0.00000000000000022 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/add1.html'>drop1</a></span><span class='op'>(</span><span class='va'>lm2b</span>, test <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/add1.html'>drop1</a></span><span class='op'>(</span><span class='va'>lm2b</span>, test <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>Single term deletions
 
@@ -2774,69 +2820,73 @@ bill_depth_mm ~ bill_length_mm * species
 &lt;none&gt;                              306.32 -25.676               
 bill_length_mm:species  2   0.87243 307.20 -28.704  0.4785 0.6202</code></pre>
 </div>
-<p>I will choose to plot the simpler model without the interaction because the interaction between species and bill length is not significant. Generally, a model should be as simple as possible (of course without loosing explanatory power).</p>
-<p>To plot the model with interaction I could conveniently use <code>geom_smooth</code></p>
+<p>I will choose to plot the simpler model without the interaction
+because the interaction between species and bill length is not
+significant. Generally, a model should be as simple as possible (of
+course without loosing explanatory power).</p>
+<p>To plot the model with interaction I could conveniently use
+<code>geom_smooth</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g2</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>g2</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-20-1.png" width="624" /></p>
 </div>
-<p>To plot th model without interaction, you can either extract the model coefficients or use the predict function.</p>
-<p>Extracting the model coefficients starts to become complicated, as we have 3 intercepts and 1 slope to extract:</p>
+<p>To plot th model without interaction, you can either extract the
+model coefficients or use the predict function.</p>
+<p>Extracting the model coefficients starts to become complicated, as we
+have 3 intercepts and 1 slope to extract:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Option 1: extract model coefficients</span>
-<span class='va'>intercept_adelie</span> <span class='op'>&lt;-</span> <span class='va'>lm2a</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>
-<span class='va'>slope</span> <span class='op'>&lt;-</span> <span class='va'>lm2a</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span>
-<span class='va'>intercept_chinstrap</span> <span class='op'>&lt;-</span> <span class='va'>intercept_adelie</span> <span class='op'>+</span> <span class='va'>lm2a</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span>
-<span class='va'>intercept_gentoo</span> <span class='op'>&lt;-</span> <span class='va'>intercept_adelie</span> <span class='op'>+</span> <span class='va'>lm2a</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>]</span>
-
-<span class='co'># lets add some custom colors</span>
-<span class='va'>cols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"darkorange"</span>, <span class='st'>"cyan4"</span>, <span class='st'>"purple"</span><span class='op'>)</span>
-
-<span class='va'>g2</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_abline</a></span><span class='op'>(</span>slope <span class='op'>=</span> <span class='va'>slope</span>, intercept <span class='op'>=</span> <span class='va'>intercept_adelie</span>, color <span class='op'>=</span> <span class='va'>cols</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_abline</a></span><span class='op'>(</span>slope <span class='op'>=</span> <span class='va'>slope</span>, intercept <span class='op'>=</span> <span class='va'>intercept_chinstrap</span>, color <span class='op'>=</span> <span class='va'>cols</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_abline</a></span><span class='op'>(</span>slope <span class='op'>=</span> <span class='va'>slope</span>, intercept <span class='op'>=</span> <span class='va'>intercept_gentoo</span>, color <span class='op'>=</span> <span class='va'>cols</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_color_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='va'>cols</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Option 1: extract model coefficients</span></span>
+<span><span class='va'>intercept_adelie</span> <span class='op'>&lt;-</span> <span class='va'>lm2a</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span></span>
+<span><span class='va'>slope</span> <span class='op'>&lt;-</span> <span class='va'>lm2a</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span></span>
+<span><span class='va'>intercept_chinstrap</span> <span class='op'>&lt;-</span> <span class='va'>intercept_adelie</span> <span class='op'>+</span> <span class='va'>lm2a</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span></span>
+<span><span class='va'>intercept_gentoo</span> <span class='op'>&lt;-</span> <span class='va'>intercept_adelie</span> <span class='op'>+</span> <span class='va'>lm2a</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>]</span></span>
+<span></span>
+<span><span class='co'># lets add some custom colors</span></span>
+<span><span class='va'>cols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"darkorange"</span>, <span class='st'>"cyan4"</span>, <span class='st'>"purple"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>g2</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_abline</a></span><span class='op'>(</span>slope <span class='op'>=</span> <span class='va'>slope</span>, intercept <span class='op'>=</span> <span class='va'>intercept_adelie</span>, color <span class='op'>=</span> <span class='va'>cols</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_abline</a></span><span class='op'>(</span>slope <span class='op'>=</span> <span class='va'>slope</span>, intercept <span class='op'>=</span> <span class='va'>intercept_chinstrap</span>, color <span class='op'>=</span> <span class='va'>cols</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_abline</a></span><span class='op'>(</span>slope <span class='op'>=</span> <span class='va'>slope</span>, intercept <span class='op'>=</span> <span class='va'>intercept_gentoo</span>, color <span class='op'>=</span> <span class='va'>cols</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_color_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='va'>cols</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-21-1.png" width="624" /></p>
 </div>
-<p>It is easier to use the <code>predict</code> function in this case:</p>
+<p>It is easier to use the <code>predict</code> function in this
+case:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>pred_dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/expand_grid.html'>expand_grid</a></span><span class='op'>(</span>
-  bill_length_mm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>$</span><span class='va'>bill_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>$</span><span class='va'>bill_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
-  species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span>, <span class='st'>"Chinstrap"</span>, <span class='st'>"Gentoo"</span><span class='op'>)</span>
-<span class='op'>)</span>
-<span class='va'>pred_dat</span><span class='op'>$</span><span class='va'>bill_depth_mm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>lm2a</span>, newdata <span class='op'>=</span> <span class='va'>pred_dat</span><span class='op'>)</span>
-
-<span class='va'>g2</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pred_dat</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>ggsci</span><span class='fu'>::</span><span class='fu'><a href='https://nanx.me/ggsci/reference/scale_futurama.html'>scale_color_futurama</a></span><span class='op'>(</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>pred_dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/expand_grid.html'>expand_grid</a></span><span class='op'>(</span></span>
+<span>  bill_length_mm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>$</span><span class='va'>bill_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>penguins</span><span class='op'>$</span><span class='va'>bill_length_mm</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,</span>
+<span>  species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Adelie"</span>, <span class='st'>"Chinstrap"</span>, <span class='st'>"Gentoo"</span><span class='op'>)</span></span>
+<span><span class='op'>)</span></span>
+<span><span class='va'>pred_dat</span><span class='op'>$</span><span class='va'>bill_depth_mm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>lm2a</span>, newdata <span class='op'>=</span> <span class='va'>pred_dat</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>g2</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pred_dat</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>ggsci</span><span class='fu'>::</span><span class='fu'><a href='https://nanx.me/ggsci/reference/scale_futurama.html'>scale_color_futurama</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-22-1.png" width="624" /></p>
 </div>
 <h3 id="anova">1.4 Anova</h3>
-<p>Do male and female penguins differ in weight and does this depend on the species?</p>
-<p>First, we create a subset without penguins for which the sex is unknown</p>
+<p>Do male and female penguins differ in weight and does this depend on
+the species?</p>
+<p>First, we create a subset without penguins for which the sex is
+unknown</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins_sex</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>penguins_sex</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <p>The question can be represented for example with a boxplot</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>penguins_sex</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>body_mass_g</span>, fill <span class='op'>=</span> <span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span>notch <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>penguins_sex</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>body_mass_g</span>, fill <span class='op'>=</span> <span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span>notch <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-24-1.png" width="624" /></p>
 </div>
@@ -2845,11 +2895,10 @@ bill_length_mm:species  2   0.87243 307.20 -28.704  0.4785 0.6202</code></pre>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Without interaction</span>
-<span class='va'>lm3a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>body_mass_g</span> <span class='op'>~</span> <span class='va'>sex</span> <span class='op'>+</span> <span class='va'>species</span>, data <span class='op'>=</span> <span class='va'>penguins_sex</span><span class='op'>)</span>
-<span class='co'># Without interaction</span>
-<span class='va'>lm3b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>body_mass_g</span> <span class='op'>~</span> <span class='va'>sex</span> <span class='op'>+</span> <span class='va'>species</span> <span class='op'>+</span> <span class='va'>sex</span><span class='op'>:</span><span class='va'>species</span>, data <span class='op'>=</span> <span class='va'>penguins_sex</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Without interaction</span></span>
+<span><span class='va'>lm3a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>body_mass_g</span> <span class='op'>~</span> <span class='va'>sex</span> <span class='op'>+</span> <span class='va'>species</span>, data <span class='op'>=</span> <span class='va'>penguins_sex</span><span class='op'>)</span></span>
+<span><span class='co'># Without interaction</span></span>
+<span><span class='va'>lm3b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>body_mass_g</span> <span class='op'>~</span> <span class='va'>sex</span> <span class='op'>+</span> <span class='va'>species</span> <span class='op'>+</span> <span class='va'>sex</span><span class='op'>:</span><span class='va'>species</span>, data <span class='op'>=</span> <span class='va'>penguins_sex</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <ul>
@@ -2858,8 +2907,7 @@ bill_length_mm:species  2   0.87243 307.20 -28.704  0.4785 0.6202</code></pre>
 <p>Both the single effect and the interaction is significant.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/add1.html'>drop1</a></span><span class='op'>(</span><span class='va'>lm3a</span>, test <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/add1.html'>drop1</a></span><span class='op'>(</span><span class='va'>lm3a</span>, test <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>Single term deletions
 
@@ -2876,8 +2924,7 @@ species ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/add1.html'>drop1</a></span><span class='op'>(</span><span class='va'>lm3b</span>, test <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/add1.html'>drop1</a></span><span class='op'>(</span><span class='va'>lm3b</span>, test <span class='op'>=</span> <span class='st'>"F"</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>Single term deletions
 
@@ -2894,73 +2941,73 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-27-1.png" width="624" /><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-27-2.png" width="624" /></p>
 </div>
 <h4 id="extra">Extra</h4>
-<p>Some other plots with which we can represent the results of the Anova.</p>
+<p>Some other plots with which we can represent the results of the
+Anova.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>penguins_sex</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>
-    x <span class='op'>=</span> <span class='va'>species</span>,
-    y <span class='op'>=</span> <span class='va'>body_mass_g</span>,
-    color <span class='op'>=</span> <span class='va'>sex</span>
-  <span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>
-    size <span class='op'>=</span> <span class='fl'>2</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span>,
-    position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_jitterdodge.html'>position_jitterdodge</a></span><span class='op'>(</span>
-      seed <span class='op'>=</span> <span class='fl'>123</span>
-    <span class='op'>)</span>
-  <span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>ggsci</span><span class='fu'>::</span><span class='fu'><a href='https://nanx.me/ggsci/reference/scale_d3.html'>scale_color_d3</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Body mass [g]"</span>, x <span class='op'>=</span> <span class='st'>"Species"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.85</span>, <span class='fl'>0.15</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>penguins_sex</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span></span>
+<span>    x <span class='op'>=</span> <span class='va'>species</span>,</span>
+<span>    y <span class='op'>=</span> <span class='va'>body_mass_g</span>,</span>
+<span>    color <span class='op'>=</span> <span class='va'>sex</span></span>
+<span>  <span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span></span>
+<span>    size <span class='op'>=</span> <span class='fl'>2</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span>,</span>
+<span>    position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_jitterdodge.html'>position_jitterdodge</a></span><span class='op'>(</span></span>
+<span>      seed <span class='op'>=</span> <span class='fl'>123</span></span>
+<span>    <span class='op'>)</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>ggsci</span><span class='fu'>::</span><span class='fu'><a href='https://nanx.me/ggsci/reference/scale_d3.html'>scale_color_d3</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Body mass [g]"</span>, x <span class='op'>=</span> <span class='st'>"Species"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.85</span>, <span class='fl'>0.15</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-28-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>summary</span> <span class='op'>&lt;-</span> <span class='va'>penguins_sex</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>species</span>, <span class='va'>sex</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>
-    sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>body_mass_g</span><span class='op'>)</span>,
-    mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>body_mass_g</span><span class='op'>)</span>
-  <span class='op'>)</span>
-
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>summary</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>mean</span>, color <span class='op'>=</span> <span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_dodge.html'>position_dodge</a></span><span class='op'>(</span><span class='fl'>0.4</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_linerange.html'>geom_errorbar</a></span><span class='op'>(</span>
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>mean</span> <span class='op'>-</span> <span class='va'>sd</span>, ymax <span class='op'>=</span> <span class='va'>mean</span> <span class='op'>+</span> <span class='va'>sd</span><span class='op'>)</span>,
-    position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_dodge.html'>position_dodge</a></span><span class='op'>(</span><span class='fl'>0.4</span><span class='op'>)</span>,
-    width <span class='op'>=</span> <span class='fl'>0.2</span>
-  <span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_color_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#00AFBB"</span>, <span class='st'>"#E7B800"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Body mass [g]"</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>summary</span> <span class='op'>&lt;-</span> <span class='va'>penguins_sex</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>species</span>, <span class='va'>sex</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span></span>
+<span>    sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>body_mass_g</span><span class='op'>)</span>,</span>
+<span>    mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>body_mass_g</span><span class='op'>)</span></span>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>summary</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>mean</span>, color <span class='op'>=</span> <span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_dodge.html'>position_dodge</a></span><span class='op'>(</span><span class='fl'>0.4</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_linerange.html'>geom_errorbar</a></span><span class='op'>(</span></span>
+<span>    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>mean</span> <span class='op'>-</span> <span class='va'>sd</span>, ymax <span class='op'>=</span> <span class='va'>mean</span> <span class='op'>+</span> <span class='va'>sd</span><span class='op'>)</span>,</span>
+<span>    position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_dodge.html'>position_dodge</a></span><span class='op'>(</span><span class='fl'>0.4</span><span class='op'>)</span>,</span>
+<span>    width <span class='op'>=</span> <span class='fl'>0.2</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_color_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#00AFBB"</span>, <span class='st'>"#E7B800"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Body mass [g]"</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-29-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>summary</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>mean</span>, fill <span class='op'>=</span> <span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_dodge.html'>position_dodge</a></span><span class='op'>(</span><span class='fl'>0.8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_linerange.html'>geom_errorbar</a></span><span class='op'>(</span>
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>mean</span> <span class='op'>-</span> <span class='va'>sd</span>, ymax <span class='op'>=</span> <span class='va'>mean</span> <span class='op'>+</span> <span class='va'>sd</span><span class='op'>)</span>,
-    position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_dodge.html'>position_dodge</a></span><span class='op'>(</span><span class='fl'>0.8</span><span class='op'>)</span>,
-    width <span class='op'>=</span> <span class='fl'>0.2</span>
-  <span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#00AFBB"</span>, <span class='st'>"#E7B800"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Body mass [g]"</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>summary</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>mean</span>, fill <span class='op'>=</span> <span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_dodge.html'>position_dodge</a></span><span class='op'>(</span><span class='fl'>0.8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_linerange.html'>geom_errorbar</a></span><span class='op'>(</span></span>
+<span>    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>mean</span> <span class='op'>-</span> <span class='va'>sd</span>, ymax <span class='op'>=</span> <span class='va'>mean</span> <span class='op'>+</span> <span class='va'>sd</span><span class='op'>)</span>,</span>
+<span>    position <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/position_dodge.html'>position_dodge</a></span><span class='op'>(</span><span class='fl'>0.8</span><span class='op'>)</span>,</span>
+<span>    width <span class='op'>=</span> <span class='fl'>0.2</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#00AFBB"</span>, <span class='st'>"#E7B800"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Body mass [g]"</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-30-1.png" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

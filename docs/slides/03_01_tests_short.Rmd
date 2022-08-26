@@ -168,7 +168,7 @@ The data deviates significantly from a normal distribution (Shapiro-Wilk-Test, W
 Points should match the straight line. Small deviations are okay.
 
 .pull-left[
-```{r, fig.height=5.2}
+```{r, fig.height=5.1}
 # ggplot(mydata, aes(sample = normal)) +
 #   stat_qq() + stat_qq_line()
 ggpubr::ggqqplot(mydata$normal)
@@ -176,7 +176,7 @@ ggpubr::ggqqplot(mydata$normal)
 
 ]
 .pull-right[
-```{r, fig.height=5.2}
+```{r, fig.height=5.1}
 # ggplot(mydata, aes(sample = non_normal)) +
 #   stat_qq() + stat_qq_line()
 ggpubr::ggqqplot(mydata$non_normal)

@@ -215,7 +215,6 @@ mean(values, na.rm = TRUE) # a mix of both
 ```{r eval=FALSE}
 mean() # calculate mean
 seq()  # generate a sequence of values
-lm()   # fit a linear model
 []     # This is also a (special) function
 ```
 ]
@@ -224,15 +223,18 @@ lm()   # fit a linear model
 
 .pull-left[
  - From **additional packages**
- 
   - Packages must be installed first
   - Call a function from a package using `packageName::functionName()`
+  - Load the package with `library(packageName)` and then use the function
 ]
 .pull-right[
 ```{r eval=FALSE}
-readr::read_csv() # read a csv file
-beepr::beep() # make a beep sound
-stringr::str_extract() # extract part of a string
+# use read_csv function from readr package
+readr::read_csv()
+
+# or use library()
+library(readr)
+read_csv()
 ```
 ]
 
@@ -240,7 +242,6 @@ stringr::str_extract() # extract part of a string
 
 .pull-left[
 - **Custom** functions
-
   - Write your own functions and then use them in the code
 ]
 
@@ -263,6 +264,10 @@ my_function(5)
 
 - Functions are called by their name, followed by parentheses:<br> `functionName(argument1 = value, argument2 = value, ...)`
 
-- Functions from additional packages can be called like this:<br> `packageName::functionName()`
+- Functions from additional packages can be called in two ways:
+
+  - `packageName::functionName()`
+  - first load the package with `library(packageName)` then call the function 
+  anywhere in the script with `functionName()`
 
 - Call `?functionName` to open the help of a function

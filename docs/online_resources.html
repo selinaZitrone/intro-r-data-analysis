@@ -50,16 +50,17 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #657422; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
+code span.cf { color: #00769e; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -73,9 +74,9 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
+code span.kw { color: #00769e; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
+code span.ot { color: #00769e; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
 code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
@@ -1030,10 +1031,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     margin-top: 1.5em;
   }
 
-  .figure img {
-    width: 100%;
-  }
-
   .figure .caption {
     color: rgba(0, 0, 0, 0.6);
     font-size: 12px;
@@ -1863,6 +1860,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
+        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
+          var fn = $(this).children()[0]
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
           return "<p>" + $('#ref-' + ref).html() + "</p>";
@@ -1877,6 +1880,31 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           placement: 'bottom-start'
         });
       });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
 
       // clear polling timer
       clearInterval(tid);
@@ -1976,6 +2004,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -1998,7 +2028,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
       });
     }
 
@@ -2347,7 +2377,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2441,7 +2471,8 @@ Solutions
 <h1>Additional online resources</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Below you can find a collection of helpful links to further online resources regarding the workshop topics.</p></p>
+<p><p>Below you can find a collection of helpful links to further online
+resources regarding the workshop topics.</p></p>
 </div>
 
 
@@ -2450,70 +2481,130 @@ Solutions
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#general">General</a></li>
-<li><a href="#tidyverse">Tidyverse</a>
+<li><a href="#general" id="toc-general">General</a></li>
+<li><a href="#tidyverse" id="toc-tidyverse">Tidyverse</a>
 <ul>
-<li><a href="#readr">readr</a></li>
-<li><a href="#ggplot">ggplot</a></li>
-<li><a href="#dplyr">dplyr</a></li>
-<li><a href="#tidyr">tidyr</a></li>
+<li><a href="#readr" id="toc-readr">readr</a></li>
+<li><a href="#ggplot" id="toc-ggplot">ggplot</a></li>
+<li><a href="#dplyr" id="toc-dplyr">dplyr</a></li>
+<li><a href="#tidyr" id="toc-tidyr">tidyr</a></li>
 </ul></li>
-<li><a href="#linear-models">Linear models</a></li>
-<li><a href="#twitter-accounts-to-follow">Twitter accounts to follow</a></li>
+<li><a href="#linear-models" id="toc-linear-models">Linear
+models</a></li>
+<li><a href="#twitter-accounts-to-follow"
+id="toc-twitter-accounts-to-follow">Twitter accounts to follow</a></li>
 </ul>
 </nav>
 </div>
 <h2 id="general">General</h2>
 <ul>
-<li><p><a href="https://www.rstudio.com/resources/cheatsheets/">List of RStudio cheatsheets</a>: You can find a list of all the cheat sheets that RStudio provides there. Below, I listed the individual cheat sheets that are interesting for our course.</p></li>
-<li><p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rstudio-ide.pdf">RStudio cheatsheet</a>: Explains the most important buttons, options, keyboard shortcuts, etc that you have in RStudio.</p></li>
-<li><p><a href="https://moderndive.com/1-getting-started.html#code">The modern dive book</a> explains how to get started with R and data analysis with the tidyverse.</p></li>
-<li><p>The <a href="https://r4ds.had.co.nz/index.html">R for Data Science book</a> by Hadley Wickham is a very good book to start with. It is specifically about data analysis using the tidyverse packages.</p></li>
-<li><p>The <a href="https://www.bigbookofr.com/">Big book of R</a> is a book that list all books about R that are freely available only. The book is sorted by topics and can be used to find resources to learn a specific topic.</p></li>
-<li><p>A <a href="https://github.com/iamericfletcher/awesome-r-learning-resources">curated collection of R resources</a>. Not just books but also websites, tutorials, help channels, …</p></li>
-<li><p>The <a href="https://style.tidyverse.org/">Tidyverse style guide</a> provides information on how to style your code according to good practice.</p></li>
+<li><p><a href="https://www.rstudio.com/resources/cheatsheets/">List of
+RStudio cheatsheets</a>: You can find a list of all the cheat sheets
+that RStudio provides there. Below, I listed the individual cheat sheets
+that are interesting for our course.</p></li>
+<li><p><a
+href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rstudio-ide.pdf">RStudio
+cheatsheet</a>: Explains the most important buttons, options, keyboard
+shortcuts, etc that you have in RStudio.</p></li>
+<li><p><a href="https://moderndive.com/1-getting-started.html#code">The
+modern dive book</a> explains how to get started with R and data
+analysis with the tidyverse.</p></li>
+<li><p>The <a href="https://r4ds.had.co.nz/index.html">R for Data
+Science book</a> by Hadley Wickham is a very good book to start with. It
+is specifically about data analysis using the tidyverse
+packages.</p></li>
+<li><p>The <a href="https://www.bigbookofr.com/">Big book of R</a> is a
+book that list all books about R that are freely available only. The
+book is sorted by topics and can be used to find resources to learn a
+specific topic.</p></li>
+<li><p>A <a
+href="https://github.com/iamericfletcher/awesome-r-learning-resources">curated
+collection of R resources</a>. Not just books but also websites,
+tutorials, help channels, …</p></li>
+<li><p>The <a href="https://style.tidyverse.org/">Tidyverse style
+guide</a> provides information on how to style your code according to
+good practice.</p></li>
 </ul>
 <h2 id="tidyverse">Tidyverse</h2>
 <ul>
-<li>The <a href="https://tidyverse.org/">tidyverse website</a> has links to all tidyverse packages which all have very good examples and use cases. These websites are an excelent point to get started with a package.</li>
+<li>The <a href="https://tidyverse.org/">tidyverse website</a> has links
+to all tidyverse packages which all have very good examples and use
+cases. These websites are an excelent point to get started with a
+package.</li>
 </ul>
 <h3 id="readr">readr</h3>
 <ul>
-<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf">data import cheatsheet</a></li>
+<li><a
+href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf">data
+import cheatsheet</a></li>
 </ul>
 <h3 id="ggplot">ggplot</h3>
 <ul>
-<li><p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf">ggplot cheatsheet</a> offers an overview of all possibilities of ggplot</p></li>
-<li><p><a href="https://www.datanovia.com/en/lessons/ggplot-error-bars/">error bars with ggplot</a> A good summary of how to plot different types of means and errorbars (barplots, mean and errorbars, …).</p></li>
-<li><p>In the <a href="https://www.r-graph-gallery.com/">R graph gallery</a> you can browse through hundreds of different types of plots and find code to reproduce them.</p></li>
-<li><p>A great <a href="https://github.com/z3tt/OutlierConf2021">presentation by Cédric Scherer</a> with examples of how to beautify your ggplots.</p></li>
-<li><p>List of <a href="https://exts.ggplot2.tidyverse.org/ggthemes.html">ggplot extensions</a>, e.g. for themes, interactive graphs, text labels,…</p></li>
+<li><p><a href="https://github.com/erikgahner/awesome-ggplot2">Curated
+list of ggplot resources</a>: Really great list with links to ggplot
+tutorials (sorted by topic and difficulty), books, additional packages
+to make your plots look nicer, …</p></li>
+<li><p><a
+href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf">ggplot
+cheatsheet</a> offers an overview of all possibilities of
+ggplot</p></li>
+<li><p><a
+href="https://www.datanovia.com/en/lessons/ggplot-error-bars/">error
+bars with ggplot</a> A good summary of how to plot different types of
+means and errorbars (barplots, mean and errorbars, …).</p></li>
+<li><p>In the <a href="https://www.r-graph-gallery.com/">R graph
+gallery</a> you can browse through hundreds of different types of plots
+and find code to reproduce them.</p></li>
+<li><p>A great <a
+href="https://github.com/z3tt/OutlierConf2021">presentation by Cédric
+Scherer</a> with examples of how to beautify your ggplots.</p></li>
+<li><p>List of <a
+href="https://exts.ggplot2.tidyverse.org/ggthemes.html">ggplot
+extensions</a>, e.g. for themes, interactive graphs, text
+labels,…</p></li>
 </ul>
 <h3 id="dplyr">dplyr</h3>
 <ul>
-<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf">dplyr cheatsheet</a></li>
+<li><a
+href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf">dplyr
+cheatsheet</a></li>
 </ul>
 <h3 id="tidyr">tidyr</h3>
 <ul>
-<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf">data import cheatsheet</a></li>
+<li><a
+href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf">data
+import cheatsheet</a></li>
 </ul>
 <h2 id="linear-models">Linear models</h2>
 <ul>
-<li><a href="https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Learning_Statistics_with_R_-_A_tutorial_for_Psychology_Students_and_other_Beginners_(Navarro)/16%3A_Factorial_ANOVA/16.06%3A_ANOVA_As_a_Linear_Model">anova with R</a>: explanation why an anova is also a linear model</li>
+<li><a
+href="https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Learning_Statistics_with_R_-_A_tutorial_for_Psychology_Students_and_other_Beginners_(Navarro)/16%3A_Factorial_ANOVA/16.06%3A_ANOVA_As_a_Linear_Model">anova
+with R</a>: explanation why an anova is also a linear model</li>
 </ul>
 <h2 id="twitter-accounts-to-follow">Twitter accounts to follow</h2>
-<p>I personally learn a lot of tricks and find a lot of inspiration and resources by following some R people and accounts on twitter. Often people post helpful tutorials or blogpost that you would not find otherwise. If you are a twitter user, you can try that as well. Some suggestions that are in no way complete are:</p>
+<p>I personally learn a lot of tricks and find a lot of inspiration and
+resources by following some R people and accounts on twitter. Often
+people post helpful tutorials or blogpost that you would not find
+otherwise. If you are a twitter user, you can try that as well. Some
+suggestions that are in no way complete are:</p>
 <ul>
-<li><a href="https://twitter.com/CedScherer">Cédric Scherer</a> mainly data visualization and ggplot content</li>
+<li><a href="https://twitter.com/CedScherer">Cédric Scherer</a> mainly
+data visualization and ggplot content</li>
 <li><a href="https://twitter.com/allison_horst">Allison Horst</a></li>
-<li><a href="https://twitter.com/rstudio">RStudio</a> official RStudio account</li>
-<li><a href="https://twitter.com/hadleywickham">Hadley Wickham</a> data visualisation, tidyverse</li>
+<li><a href="https://twitter.com/rstudio">RStudio</a> official RStudio
+account</li>
+<li><a href="https://twitter.com/hadleywickham">Hadley Wickham</a> data
+visualisation, tidyverse</li>
 <li><a href="https://twitter.com/JennyBryan">Jenny Bryan</a></li>
-<li><a href="https://twitter.com/rOpenSci">rOpenSci</a> develop R tools for open science</li>
-<li><a href="https://twitter.com/RLangTip">One R Tip a Day</a> one helpful R tip every day</li>
-<li><a href="https://twitter.com/icymi_r">R posts you might have missed</a> repost R blog posts from different topics</li>
+<li><a href="https://twitter.com/rOpenSci">rOpenSci</a> develop R tools
+for open science</li>
+<li><a href="https://twitter.com/RLangTip">One R Tip a Day</a> one
+helpful R tip every day</li>
+<li><a href="https://twitter.com/icymi_r">R posts you might have
+missed</a> repost R blog posts from different topics</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Selina Baldauf" />
     <meta name="date" content="2021-08-01" />
-    <script src="02_01_tidyverse_ggplot_files/header-attrs-2.11/header-attrs.js"></script>
+    <script src="02_01_tidyverse_ggplot_files/header-attrs-2.16/header-attrs.js"></script>
     <link href="02_01_tidyverse_ggplot_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
   </head>
@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2022-03-16)
+  2021-08-01 (updated: 2022-08-26)
 ]
 
 ---
@@ -437,7 +437,9 @@ ggplot(data = msleep,
 *            color = "blue") +
   scale_x_log10() 
 ```
-- Have a look [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) for the point shape codes
+- Have a look [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) for the point shape codes:
+
+.center[![:scale 40%](img/day2/shape_codes.png)]
 
 ]
 
@@ -607,7 +609,7 @@ g
 - Length of color vector has to match number of levels in your aesthetic
 - Specify colors 
   - Via their name (see [here](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) for all color names)
-  - Via their Hex color codes
+  - Via their Hex color codes (use websites to generate your own color palettes, e.g. [here](https://coolors.co/))
 
 ]
 
@@ -680,7 +682,7 @@ g +
 ```r
 g &lt;- g +
   labs(
-*   x = "log brain weight [kg]",
+*   x = "brain weight [kg]",
 *   y = "total sleep [h/day]",
 *   color = "Diet",
 *   title = "Brain weight and sleep time in mammals",
@@ -795,9 +797,20 @@ g +
 * )
 ```
 
+- The basic functioning is:
+
+
+```r
+theme(
+  element_name = element_function()
+)
+```
+
+- Look [here](https://github.com/claragranell/ggplot2/blob/main/ggplot_theme_system_cheatsheet.pdf) for an overview of the elemtens that you can change and the corresponding functions
+
 ]
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-51-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-52-1.png" width="504" /&gt;
 ]
 
 ---
@@ -840,7 +853,7 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-55-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-56-1.png" width="504" /&gt;
 ]
 
 ---
@@ -864,7 +877,7 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-57-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-58-1.png" width="504" /&gt;
 ]
 
 ---
@@ -890,7 +903,7 @@ ggplot(msleep, aes(x = vore, y = bodywt)) +
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-59-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-60-1.png" width="504" /&gt;
 ]
 
 &lt;!-- --- --&gt;
@@ -917,7 +930,7 @@ ggplot(msleep, aes(x=sleep_total)) +
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-61-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-62-1.png" width="504" /&gt;
 ]
 
 ---
@@ -965,7 +978,7 @@ ggplot(msleep,
   scale_y_log10()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-64-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-65-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -979,7 +992,7 @@ ggplot(msleep,
   geom_point() +  scale_x_log10()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-66-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-67-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1006,7 +1019,7 @@ ggplot(msleep,
   scale_y_log10()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-68-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-69-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1020,7 +1033,7 @@ ggplot(msleep,
   geom_point() + scale_x_log10()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-70-1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-71-1.png" width="65%" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1140,6 +1153,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
