@@ -30,7 +30,7 @@ background-position: 70% 70%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2022-08-26)
+  2021-08-01 (updated: 2022-08-28)
 ]
 
 ---
@@ -71,6 +71,9 @@ General structure of a function call:
 
 ```r
 mean(x = c(1,5,6)) # or short: mean(c(1,5,6))
+```
+
+```
 ## [1] 4
 ```
 
@@ -90,6 +93,9 @@ mean(x = c(1,5,6)) # or short: mean(c(1,5,6))
 values &lt;- c(1,5,6)
 result &lt;- mean(x = values)
 result
+```
+
+```
 ## [1] 4
 ```
 
@@ -135,6 +141,9 @@ But what does the mean function do? What are the arguments that I can use?
 # NA is a missing value
 values &lt;- c(1, 5, 6, NA)
 mean(x = values)
+```
+
+```
 ## [1] NA
 ```
 
@@ -147,6 +156,9 @@ Set it to `TRUE` if you want to calculate the mean despite missing values:
 
 ```r
 mean(x = values, na.rm = TRUE)
+```
+
+```
 ## [1] 4
 ```
 --
@@ -156,6 +168,9 @@ mean(x = values, na.rm = TRUE)
 
 ```r
 mean()
+```
+
+```
 ## Error in mean.default(): argument "x" is missing, with no default
 ```
 

@@ -30,7 +30,7 @@ background-position: 70% 70%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2022-08-26)
+  2021-08-01 (updated: 2022-08-28)
 ]
 
 ---
@@ -110,7 +110,6 @@ population &lt;- c(
 
 area_km2 &lt;- c(2576, 2561, 1572, 1439, 
   891, 604, 839, 1285, 228, 105)
-
 ```
 
 ```r
@@ -242,6 +241,9 @@ Look at the structure of an object using `str()`:
 
 ```r
 str(cities_tbl)
+```
+
+```
 ## tibble [10 x 3] (S3: tbl_df/tbl/data.frame)
 ##  $ cities    : chr [1:10] "Istanbul" "Moscow" "London" "Saint Petersburg" ...
 ##  $ population: num [1:10] 15100000 12500000 9000000 5400000 3800000 3200000 3000000 2800000 2200000 2100000
@@ -266,6 +268,9 @@ How many rows?
 
 ```r
 nrow(cities_tbl)
+```
+
+```
 ## [1] 10
 ```
 --
@@ -274,6 +279,9 @@ How many columns?
 
 ```r
 ncol(cities_tbl)
+```
+
+```
 ## [1] 3
 ```
 --
@@ -282,6 +290,9 @@ What are the column headers?
 
 ```r
 names(cities_tbl)
+```
+
+```
 ## [1] "cities"     "population" "area_km2"
 ```
 
@@ -309,6 +320,9 @@ Get a quick summary of all columns:
 
 ```r
 summary(cities_tbl)
+```
+
+```
 ##     cities            population          area_km2     
 ##  Length:10          Min.   : 2100000   Min.   : 105.0  
 ##  Class :character   1st Qu.: 2850000   1st Qu.: 662.8  
@@ -340,6 +354,9 @@ Indexing tibbles works similar to indexing vectors but with two dimensions inste
 ```r
 # First row and first column
 cities_tbl[1, 1]
+```
+
+```
 ## # A tibble: 1 x 1
 ##   cities  
 ##   &lt;chr&gt;   
@@ -362,6 +379,9 @@ cities_tbl[1, "cities"]
 ```r
 # rows 1 &amp; 5, all columns:
 cities_tbl[c(1, 5), ]
+```
+
+```
 ## # A tibble: 2 x 3
 ##   cities   population area_km2
 ##   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;
@@ -434,6 +454,9 @@ Select an entire column from a tibble using `$` (this returns a vector instead o
 
 ```r
 cities_tbl$cities
+```
+
+```
 ##  [1] "Istanbul"         "Moscow"           "London"           "Saint Petersburg" "Berlin"          
 ##  [6] "Madrid"           "Kyiv"             "Rome"             "Bucharest"        "Paris"
 ```
