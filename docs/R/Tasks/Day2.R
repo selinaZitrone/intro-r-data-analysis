@@ -53,7 +53,6 @@ ggplot(penguins, aes(species, flipper_length_mm)) +
   geom_boxplot() +
   geom_point(position = position_jitter(seed = 123))
 
-
 ## 1.3.3 Differences between body mass of male and female penguins (boxplot)
 
 # Basic boxplot of body mass for penguins of different sex
