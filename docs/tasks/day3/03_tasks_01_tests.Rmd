@@ -23,7 +23,7 @@ Before you start, create a subset of each species as a vector.
 
 For this, you can use the `$` operator:
 
-```{r eval=FALSE}
+```{r eval=FALSE, echo = TRUE}
 library(palmerpenguins)
 filter(penguins, species == "Adelie")$flipper_length_mm
 ```

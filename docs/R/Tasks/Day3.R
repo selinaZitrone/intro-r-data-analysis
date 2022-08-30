@@ -230,3 +230,8 @@ ggplot(summary, aes(x = species, y = mean, fill = sex)) +
   ) +
   scale_fill_manual(values = c("#00AFBB", "#E7B800")) +
   labs(y = "Body mass [g]")
+
+
+lm2a <- lm(bill_depth_mm ~ bill_length_mm + species, data = penguins)
+# With interaction
+lm2b <- lm(bill_depth_mm ~ bill_length_mm * species, data = penguins)

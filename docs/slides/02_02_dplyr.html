@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-06-15 (updated: 2022-08-28)
+  2021-06-15 (updated: 2022-08-29)
 ]
 
 ---
@@ -941,8 +941,8 @@ gdp
 ## # A tibble: 9,897 x 3
 ##   entity  year   gdp
 ##   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-## 1 Africa  1961  5.40
-## 2 Africa  1962  5.40
+## 1 Africa  1961  5.63
+## 2 Africa  1962  5.63
 ## # ... with 9,895 more rows
 ```
 
@@ -962,9 +962,9 @@ left_join(soybean_use, gdp, by = c("entity", "year"))
 ## # A tibble: 9,897 x 7
 ##   entity code   year human_food animal_feed processed   gdp
 ##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
-## 1 Africa &lt;NA&gt;   1961      33000        6000     14000  5.40
-## 2 Africa &lt;NA&gt;   1962      43000        7000     17000  5.40
-## 3 Africa &lt;NA&gt;   1963      31000        7000      5000  5.40
+## 1 Africa &lt;NA&gt;   1961      33000        6000     14000  5.63
+## 2 Africa &lt;NA&gt;   1962      43000        7000     17000  5.63
+## 3 Africa &lt;NA&gt;   1963      31000        7000      5000  5.63
 ## # ... with 9,894 more rows
 ```
 
@@ -1013,10 +1013,6 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
 - **add columns** but keep all columns
   - `case_when()` for conditional values
 
-#### `transmute()`
-
-- **add columns** and drop old columns
-
 ---
 # Summary III
 
@@ -1031,6 +1027,20 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
 - **count rows** based on a group
   - can be used in combination with `group_by()`
   
+---
+# Summary IV
+
+#### `bind_rows()`
+
+- **combine rows** of multiple tibbles into one
+  - the tibbles need to have the same columns
+  - add an id column with the argument `.id = "id"`
+  - function `bind_cols()` works similarly just for columns
+  
+#### `left_join()`
+
+- **combine tables** based on common columns
+
 ---
 class: inverse, middle, center
 
