@@ -48,7 +48,7 @@ Does the relationship between bill length and bill depth differ between penguin 
 
 - Now fit a model **with** interaction between species and bill length. Test assumptions and significant effects also for this model. Which model would you choose? The one with or without interaction?
 
-Which model would you choose? It the model results in the scatter plot from before.
+Which model would you choose? Add the model results in the scatter plot from before.
 
 ### 2.4 Anova
 
@@ -72,6 +72,6 @@ Some ideas:
 
 - Make a boxplot and try to add a combination of `geom_point()` and `position = position_jitterdodge()`
 
-- A bit tricky: Summarize the data (calculate mean and standard deviation) grouped by species and sex. The plot points + errorbars for mean + sd. Have a look [here](https://www.datanovia.com/en/lessons/ggplot-error-bars/) to see how you can do this. 
+- Make a pointrange plot instead of a boxplot. Here, you need to use the `position = position_dodge(width = 0.5)` argument inside the `stat_summary` function. Otherwise the points for male and female penguins are plotted on top of each other. You can adjust the number `width` for width as you need.
 
-- Same as above but with bars instead of points to represent means
+- Same as above but with bars and errorbars instead of pointrange. This is a bit tricky. Make sure to use `position = position_dodge(width = 0.5)` in the `stat_summary` of both the bars and the errorbars. 

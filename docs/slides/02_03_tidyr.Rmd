@@ -285,6 +285,6 @@ class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 3: Tidying data (45 min)
+## Task 3: Tidying data (30 min)
 
 #### Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/02_tasks_controller.html#tidyr)

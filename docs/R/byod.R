@@ -261,17 +261,6 @@ eplot <- grid.arrange(arrangeGrob(dplot, left = y.grob, bottom = x.grob))
 
 
 
-# Franz --------------------------------------------------------------------
- tbl <- tibble(value = rep(c(1,NA), each = 5), id = rep(c("4", "12"), each = 5))
-
- tbl[tbl$id == "12", ]$value <- unique(tbl[tbl$id == "4",]$value)
-
- # oder dplyr mäßig
- height_4 <- unique(tbl[tbl$id == "4",]$value)
- mutate(tbl, HEIGHT = ifelse(id == "4", height_4, ))
-
- # oder anders
-
- height_4 <- unique(tbl[tbl$id == "4",]$value)
+# Psycho data -------------------------------------------------------------
 
 

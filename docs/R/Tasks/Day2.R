@@ -267,8 +267,8 @@ mutate(penguins,
 penguins %>%
   group_by(species, sex) %>%
   summarize(
-    mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
-    mean_body = mean(body_mass_g, na.rm = TRUE)
+    mean_body = mean(body_mass_g, na.rm = TRUE),
+    mean_flipper = mean(flipper_length_mm, na.rm = TRUE)
   )
 
 # same but remove the penguins with unknown sex

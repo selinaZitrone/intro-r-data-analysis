@@ -2529,7 +2529,9 @@ species?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span></span>
-<span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Adelie"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span></span></code></pre>
+<span><span class='va'>adelie</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Adelie"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span></span>
+<span><span class='va'>chinstrap</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Chinstrap"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span></span>
+<span><span class='va'>gentoo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Gentoo"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span></span></code></pre>
 </div>
 </div>
 <p>Follow the decision tree for statistical tests:</p>
@@ -2537,10 +2539,16 @@ species?</p>
 <p><img src="slides/img/day3/tests_overview.png" width="678" /></p>
 </div>
 <h4 id="extra">Extra</h4>
+<p>Create a plot to show the results of your tests. Choose one of the
+following:</p>
 <ul>
 <li>Create a boxplot with notches to visually compare differences in
 flipper length between species</li>
+<li>Make a plot showing the mean and standard error of the mean as
+pointrange or point with errorbars</li>
 </ul>
+<p>Add a <code>geom_signif()</code> layer to the plot you just created
+to indicate your test results</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="linear-models">2 Linear models</h2>
@@ -2602,7 +2610,7 @@ and bill length. Test assumptions and significant effects also for this
 model. Which model would you choose? The one with or without
 interaction?</li>
 </ul>
-<p>Which model would you choose? It the model results in the scatter
+<p>Which model would you choose? Add the model results in the scatter
 plot from before.</p>
 <h3 id="anova">2.4 Anova</h3>
 <p>Do the weight of penguins depend on sex and species?</p>
@@ -2625,13 +2633,15 @@ presentation.</p>
 <li><p>Make a boxplot and try to add a combination of
 <code>geom_point()</code> and
 <code>position = position_jitterdodge()</code></p></li>
-<li><p>A bit tricky: Summarize the data (calculate mean and standard
-deviation) grouped by species and sex. The plot points + errorbars for
-mean + sd. Have a look <a
-href="https://www.datanovia.com/en/lessons/ggplot-error-bars/">here</a>
-to see how you can do this.</p></li>
-<li><p>Same as above but with bars instead of points to represent
-means</p></li>
+<li><p>Make a pointrange plot instead of a boxplot. Here, you need to
+use the <code>position = position_dodge(width = 0.5)</code> argument
+inside the <code>stat_summary</code> function. Otherwise the points for
+male and female penguins are plotted on top of each other. You can
+adjust the number <code>width</code> for width as you need.</p></li>
+<li><p>Same as above but with bars and errorbars instead of pointrange.
+This is a bit tricky. Make sure to use
+<code>position = position_dodge(width = 0.5)</code> in the
+<code>stat_summary</code> of both the bars and the errorbars.</p></li>
 </ul>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>

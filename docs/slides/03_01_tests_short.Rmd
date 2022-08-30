@@ -192,6 +192,12 @@ class: inverse, center, middle
 ---
 # The data
 
+```{r echo=FALSE}
+InsectSprays <- InsectSprays %>%
+  filter(spray %in% c("A", "B", "E")) %>%
+  mutate(spray = recode(spray, "E" = "C"))
+```
+
 Counts of insects in agricultural units treated with different insecticides.
 
 .pull-left[
@@ -205,8 +211,8 @@ TreatA <- filter(InsectSprays,
                  spray == "A")$count
 TreatB <- filter(InsectSprays,
                  spray == "B")$count
-TreatE <- filter(InsectSprays,
-                 spray == "E")$count
+TreatC <- filter(InsectSprays,
+                 spray == "C")$count
 ```
 
 
@@ -215,7 +221,6 @@ TreatE <- filter(InsectSprays,
 ```{r echo=FALSE, fig.height = 6.0}
 ggplot(InsectSprays, aes(x=spray, y=count, fill = spray))+
   geom_boxplot(notch=TRUE)+
-  scale_fill_manual(values = c("orange", "cyan4", "white", "white", "purple", "white"))+
   theme(legend.position = "none")
 ```
 ]
@@ -244,7 +249,7 @@ If we want to compare variances between treatments A, B and E, we first test for
 ```{r}
 shapiro.test(TreatA)
 shapiro.test(TreatB)
-shapiro.test(TreatE)
+shapiro.test(TreatC)
 ```
 
 Result: All 3 treatments are normally distributed.
@@ -276,7 +281,7 @@ $H_0$: Variances do not differ between groups
 --
 
 ```{r error=TRUE}
-var.test(TreatA, TreatE)
+var.test(TreatA, TreatC)
 ```
 
 Result: The variances of sprays A and E differ significantly (F-Test, $F_{11,11}$ = 7.42, p = 0.002)
@@ -348,7 +353,7 @@ $H_0$: The samples do not differ in their mean
 Treatment A and E: **normally distributed** and **non-equal variance**
 
 ```{r}
-t.test(TreatA, TreatE, var.equal = FALSE)
+t.test(TreatA, TreatC, var.equal = FALSE)
 ```
 
 --
@@ -393,9 +398,294 @@ wilcox.test(TreatA, TreatB, paired = TRUE)
 Careful: your treatment vector both have to have the same order
 
 ---
-# Overview of tests
+# Plot test results with `ggsignif`
 
-.center[![](img/day3/tests_overview.png)]
+The [`ggsignif`](https://const-ae.github.io/ggsignif/) package offers a `geom_signif()`
+layer that can be added to a ggplot to annotate significance levels
+
+```{r eval=FALSE}
+# install.packages("ggsignif")
+library(ggsignif)
+```
+
+---
+# Plot test results with `geom_signif()`
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(InsectSprays, 
+       aes(x = spray, y = count)) +
+  geom_boxplot(notch = TRUE) +
+  geom_signif( #<<
+    comparisons = list( #<<
+      c("A", "B"),#<<
+      c("B", "C"),#<<
+      c("A", "C")#<<
+    ),#<<
+    map_signif_level = TRUE,#<<
+    y_position = c(23,24,25)#<<
+  )
+```
+
+- By default, a Wilcoxon test is performed
+
+]
+
+.pull-right[
+
+```{r echo = FALSE}
+ggplot(InsectSprays, 
+       aes(x = spray, y = count)) +
+  geom_boxplot(notch = TRUE) +
+  ggsignif::geom_signif( #<<
+    comparisons = list( #<<
+      c("A", "B"),#<<
+      c("B", "C"),#<<
+      c("A", "C")#<<
+    ),#<<
+    map_signif_level = TRUE,#<<
+    y_position = c(23,24,25)#<<
+  ) #<<
+```
+
+]
+
+
+---
+# Plot test results with `geom_signif()`
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(InsectSprays, 
+       aes(x = spray, y = count)) +
+  geom_boxplot(notch = TRUE) +
+  geom_signif( 
+    comparisons = list( 
+      c("A", "B"),
+      c("B", "C"),
+      c("A", "C")
+    ),
+    test = "t.test",#<<
+    test.args = list( #<<
+      var.equal = TRUE#<<
+    ),#<<
+    map_signif_level = TRUE,
+    y_position = c(23,24,25)
+  )
+```
+
+- Specify a specific test with the `test` argument
+- Additional arguments can be passed as a list with the `test.args` argument
+- Look at `?geom_signif` for more options
+
+]
+
+.pull-right[
+
+```{r echo = FALSE}
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  geom_boxplot(notch = TRUE) +
+  ggsignif::geom_signif( #<<
+    comparisons = list( #<<
+      c("A", "B"),#<<
+      c("B", "C"),#<<
+      c("A", "C")#<<
+    ),#<<
+    test = "t.test",#<<
+    test.args = list(
+      var.equal = TRUE
+    ),
+    map_signif_level = TRUE,#<<
+    y_position = c(23,24,25)#<<
+  )
+```
+
+]
+
+
+---
+# Plot mean +- se using `stat_summary`
+
+Another way to plot the results is to plot mean and standard error of the mean:
+
+.pull-left[
+
+```{r eval = FALSE}
+ggplot(
+  InsectSprays,
+  aes(x = spray, y = count)
+) +
+  stat_summary() #<<
+```
+
+- By default `stat_summary` adds mean and standard error of the mean as pointrange
+
+]
+
+
+.pull-right[
+
+```{r echo = FALSE}
+ggplot(
+  InsectSprays,
+  aes(x = spray, y = count)
+) +
+  stat_summary()
+```
+
+]
+
+---
+# Plot mean +- se using `stat_summary`
+
+Another way to plot the results is to plot mean and standard error of the mean:
+
+.pull-left[
+
+```{r eval = FALSE}
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar"
+  ) +
+  stat_summary(
+    fun.y = mean,
+    geom = "point",
+    color = "#28a87d",
+    size = 4
+  )
+```
+
+- Inside `stat_summary`, you can define function used to calculate the summary
+  - `fun.data` for errorbars
+  - `fun.y` for point values (e.g. mean)
+- Define the geom that represents the summary
+
+]
+
+
+.pull-right[
+
+```{r echo = FALSE}
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar"
+  ) +
+  stat_summary(
+    fun.y = mean,
+    geom = "point",
+    color = "#28a87d",
+    size = 4
+  )
+```
+
+]
+
+---
+# Plot mean +- se using `stat_summary`
+
+Another way to plot the results is to plot mean and standard error of the mean:
+
+.pull-left[
+
+```{r eval = FALSE}
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.3
+  ) +
+  stat_summary(
+    fun.y = mean,
+    geom = "bar", #<<
+    size = 4
+  )
+```
+
+]
+
+
+.pull-right[
+
+```{r echo = FALSE}
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.3
+  ) +
+  stat_summary(
+    fun.y = mean,
+    geom = "bar", #<<
+    size = 4
+  )
+```
+
+]
+
+---
+# Plot mean +- se using `stat_summary`
+
+Just like before, you can also add a `geom_signif` to a barplot:
+
+.pull-left[
+
+```{r eval = FALSE}
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.3
+  ) +
+  stat_summary(
+    fun.y = mean,
+    geom = "bar"
+  )+
+  ggsignif::geom_signif(
+    comparisons = list(
+      c("A", "B"),
+      c("B", "C"),
+      c("A", "C")
+    ),
+    test = "t.test",
+    map_signif_level = TRUE,
+    y_position = c(17,18,19)
+  )
+```
+
+]
+
+
+.pull-right[
+
+```{r echo = FALSE}
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = .3
+  ) +
+  stat_summary(
+    fun.y = mean,
+    geom = "bar"
+  )+
+  ggsignif::geom_signif(
+    comparisons = list(
+      c("A", "B"),
+      c("B", "C"),
+      c("A", "C")
+    ),
+    test = "t.test",
+    map_signif_level = TRUE,
+    y_position = c(17,18,19)
+  )
+```
+
+]
+
 
 ---
 class: inverse, middle, center

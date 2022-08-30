@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2022-08-28)
+  2021-08-01 (updated: 2022-08-30)
 ]
 
 ---
@@ -186,6 +186,8 @@ class: inverse, center, middle
 ---
 # The data
 
+
+
 Counts of insects in agricultural units treated with different insecticides.
 
 .pull-left[
@@ -200,14 +202,14 @@ TreatA &lt;- filter(InsectSprays,
                  spray == "A")$count
 TreatB &lt;- filter(InsectSprays,
                  spray == "B")$count
-TreatE &lt;- filter(InsectSprays,
-                 spray == "E")$count
+TreatC &lt;- filter(InsectSprays,
+                 spray == "C")$count
 ```
 
 
 ]
 .pull-right[
-&lt;img src="03_01_tests_short_files/figure-html/unnamed-chunk-9-1.png" width="504" /&gt;
+&lt;img src="03_01_tests_short_files/figure-html/unnamed-chunk-10-1.png" width="504" /&gt;
 ]
 
 ---
@@ -245,11 +247,11 @@ shapiro.test(TreatB)
 ## 
 ## data:  TreatB
 ## W = 0.95031, p-value = 0.6415
-shapiro.test(TreatE)
+shapiro.test(TreatC)
 ## 
 ## 	Shapiro-Wilk normality test
 ## 
-## data:  TreatE
+## data:  TreatC
 ## W = 0.92128, p-value = 0.2967
 ```
 
@@ -295,11 +297,11 @@ Result: The variances of sprays A and B do not differ significantly (F-Test, `\(
 
 
 ```r
-var.test(TreatA, TreatE)
+var.test(TreatA, TreatC)
 ## 
 ## 	F test to compare two variances
 ## 
-## data:  TreatA and TreatE
+## data:  TreatA and TreatC
 ## F = 7.4242, num df = 11, denom df = 11, p-value = 0.002435
 ## alternative hypothesis: true ratio of variances is not equal to 1
 ## 95 percent confidence interval:
@@ -391,11 +393,11 @@ Treatment A and E: **normally distributed** and **non-equal variance**
 
 
 ```r
-t.test(TreatA, TreatE, var.equal = FALSE)
+t.test(TreatA, TreatC, var.equal = FALSE)
 ## 
 ## 	Welch Two Sample t-test
 ## 
-## data:  TreatA and TreatE
+## data:  TreatA and TreatC
 ## t = 7.5798, df = 13.91, p-value = 2.655e-06
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
@@ -455,9 +457,221 @@ wilcox.test(TreatA, TreatB, paired = TRUE)
 Careful: your treatment vector both have to have the same order
 
 ---
-# Overview of tests
+# Plot test results with `ggsignif`
 
-.center[![](img/day3/tests_overview.png)]
+The [`ggsignif`](https://const-ae.github.io/ggsignif/) package offers a `geom_signif()`
+layer that can be added to a ggplot to annotate significance levels
+
+
+```r
+# install.packages("ggsignif")
+library(ggsignif)
+```
+
+---
+# Plot test results with `geom_signif()`
+
+.pull-left[
+
+
+```r
+ggplot(InsectSprays, 
+       aes(x = spray, y = count)) +
+  geom_boxplot(notch = TRUE) +
+* geom_signif(
+*   comparisons = list(
+*     c("A", "B"),
+*     c("B", "C"),
+*     c("A", "C")
+*   ),
+*   map_signif_level = TRUE,
+*   y_position = c(23,24,25)
+  )
+```
+
+- By default, a Wilcoxon test is performed
+
+]
+
+.pull-right[
+
+&lt;img src="03_01_tests_short_files/figure-html/unnamed-chunk-20-1.png" width="504" /&gt;
+
+]
+
+
+---
+# Plot test results with `geom_signif()`
+
+.pull-left[
+
+
+```r
+ggplot(InsectSprays, 
+       aes(x = spray, y = count)) +
+  geom_boxplot(notch = TRUE) +
+  geom_signif( 
+    comparisons = list( 
+      c("A", "B"),
+      c("B", "C"),
+      c("A", "C")
+    ),
+*   test = "t.test",
+*   test.args = list(
+*     var.equal = TRUE
+*   ),
+    map_signif_level = TRUE,
+    y_position = c(23,24,25)
+  )
+```
+
+- Specify a specific test with the `test` argument
+- Additional arguments can be passed as a list with the `test.args` argument
+- Look at `?geom_signif` for more options
+
+]
+
+.pull-right[
+
+&lt;img src="03_01_tests_short_files/figure-html/unnamed-chunk-22-1.png" width="504" /&gt;
+
+]
+
+
+---
+# Plot mean +- se using `stat_summary`
+
+Another way to plot the results is to plot mean and standard error of the mean:
+
+.pull-left[
+
+
+```r
+ggplot(
+  InsectSprays,
+  aes(x = spray, y = count)
+) +
+* stat_summary()
+```
+
+- By default `stat_summary` adds mean and standard error of the mean as pointrange
+
+]
+
+
+.pull-right[
+
+&lt;img src="03_01_tests_short_files/figure-html/unnamed-chunk-24-1.png" width="504" /&gt;
+
+]
+
+---
+# Plot mean +- se using `stat_summary`
+
+Another way to plot the results is to plot mean and standard error of the mean:
+
+.pull-left[
+
+
+```r
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar"
+  ) +
+  stat_summary(
+    fun.y = mean,
+    geom = "point",
+    color = "#28a87d",
+    size = 4
+  )
+```
+
+- Inside `stat_summary`, you can define function used to calculate the summary
+  - `fun.data` for errorbars
+  - `fun.y` for point values (e.g. mean)
+- Define the geom that represents the summary
+
+]
+
+
+.pull-right[
+
+&lt;img src="03_01_tests_short_files/figure-html/unnamed-chunk-26-1.png" width="504" /&gt;
+
+]
+
+---
+# Plot mean +- se using `stat_summary`
+
+Another way to plot the results is to plot mean and standard error of the mean:
+
+.pull-left[
+
+
+```r
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.3
+  ) +
+  stat_summary(
+    fun.y = mean,
+*   geom = "bar",
+    size = 4
+  )
+```
+
+]
+
+
+.pull-right[
+
+&lt;img src="03_01_tests_short_files/figure-html/unnamed-chunk-28-1.png" width="504" /&gt;
+
+]
+
+---
+# Plot mean +- se using `stat_summary`
+
+Just like before, you can also add a `geom_signif` to a barplot:
+
+.pull-left[
+
+
+```r
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.3
+  ) +
+  stat_summary(
+    fun.y = mean,
+    geom = "bar"
+  )+
+  ggsignif::geom_signif(
+    comparisons = list(
+      c("A", "B"),
+      c("B", "C"),
+      c("A", "C")
+    ),
+    test = "t.test",
+    map_signif_level = TRUE,
+    y_position = c(17,18,19)
+  )
+```
+
+]
+
+
+.pull-right[
+
+&lt;img src="03_01_tests_short_files/figure-html/unnamed-chunk-30-1.png" width="504" /&gt;
+
+]
+
 
 ---
 class: inverse, middle, center
