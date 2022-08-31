@@ -35,6 +35,12 @@ shapiro.test(adelie) # normal
 shapiro.test(chinstrap) # normal
 shapiro.test(gentoo) # not normal
 
+# Test the same with the Kolmogorov Smirnov Test
+ks.test(adelie, "pnorm", mean = mean(adelie, na.rm = TRUE), sd = sd(adelie, na.rm = TRUE))
+ks.test(chinstrap, "pnorm", mean = mean(chinstrap, na.rm = TRUE), sd = sd(chinstrap, na.rm = TRUE))
+ks.test(gentoo, "pnorm", mean = mean(gentoo, na.rm = TRUE), sd = sd(gentoo, na.rm = TRUE))
+
+
 # Comparison Chinstrap vs. Adelie
 # both normal so test for equal variance
 var.test(chinstrap, adelie) # variances do not differ

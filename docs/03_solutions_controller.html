@@ -107,7 +107,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Tasks for day 3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["showDownload","includeSolution0","includeSolution1"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Tasks for day 3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["showDownload","includeSolution0","includeSolution1"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[false]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2478,7 +2478,13 @@ Solutions
 <h3>Contents</h3>
 <ul>
 <li><a href="#statistical-tests" id="toc-statistical-tests">1
-Statistical tests</a></li>
+Statistical tests</a>
+<ul>
+<li><a
+href="#compare-the-flipper-length-of-penguins-using-statistical-tests"
+id="toc-compare-the-flipper-length-of-penguins-using-statistical-tests">Compare
+the flipper length of penguins using statistical tests</a></li>
+</ul></li>
 <li><a href="#linear-models" id="toc-linear-models">2 Linear
 models</a></li>
 </ul>
@@ -2488,20 +2494,232 @@ models</a></li>
 
 </div>
 <h2 id="statistical-tests">1 Statistical tests</h2>
+<h3
+id="compare-the-flipper-length-of-penguins-using-statistical-tests">Compare
+the flipper length of penguins using statistical tests</h3>
+<p>First, create subsets of the flipper length of all species as
+vectors:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='va'>adelie</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Adelie"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span></span>
+<span><span class='va'>gentoo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Gentoo"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span></span>
+<span><span class='va'>chinstrap</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>penguins</span>, <span class='va'>species</span> <span class='op'>==</span> <span class='st'>"Chinstrap"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>flipper_length_mm</span></span></code></pre>
+</div>
+</div>
+<h4 id="step-1-test-all-groups-for-normality">Step 1: Test all groups
+for normality</h4>
+<p><strong>With Shapiro-Wilk</strong></p>
+<p>The Shapiro-Wilk test suggests that Adelie and Chinstrap are normally
+distributed, but Gentoo is not.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>adelie</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  adelie
+W = 0.99339, p-value = 0.72</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>gentoo</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  gentoo
+W = 0.96219, p-value = 0.00162</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>chinstrap</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  chinstrap
+W = 0.98891, p-value = 0.8106</code></pre>
+</div>
+<p><strong>With QQ-plots</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://patchwork.data-imaginist.com'>patchwork</a></span><span class='op'>)</span> <span class='co'># using patchwork to combine multiple plots into one</span></span>
+<span><span class='va'>ch</span> <span class='op'>&lt;-</span> <span class='fu'>ggpubr</span><span class='fu'>::</span><span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggqqplot.html'>ggqqplot</a></span><span class='op'>(</span><span class='va'>chinstrap</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"chinstrap"</span><span class='op'>)</span></span>
+<span><span class='va'>ad</span> <span class='op'>&lt;-</span> <span class='fu'>ggpubr</span><span class='fu'>::</span><span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggqqplot.html'>ggqqplot</a></span><span class='op'>(</span><span class='va'>adelie</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"adelie"</span><span class='op'>)</span></span>
+<span><span class='va'>ge</span> <span class='op'>&lt;-</span> <span class='fu'>ggpubr</span><span class='fu'>::</span><span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggqqplot.html'>ggqqplot</a></span><span class='op'>(</span><span class='va'>gentoo</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"gentoo"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>ch</span> <span class='op'>+</span> <span class='va'>ge</span> <span class='op'>+</span> <span class='va'>ad</span></span></code></pre>
+</div>
+<p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+</div>
+<h4 id="compare-chinstrap-vs.-adelie">Compare Chinstrap vs. Adelie</h4>
+<p>Both are normally distributed, so we can compare variances for
+Chinstrap and Adelie penguins:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/var.test.html'>var.test</a></span><span class='op'>(</span><span class='va'>chinstrap</span>, <span class='va'>adelie</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+    F test to compare two variances
+
+data:  chinstrap and adelie
+F = 1.1894, num df = 67, denom df = 150, p-value = 0.3854
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.8022092 1.8217141
+sample estimates:
+ratio of variances 
+          1.189396 </code></pre>
+</div>
+<p>This indicates that the variances do not differ between Chinstrap and
+Adelie penguins. Therefore, we can use a t-test to compare mean flipper
+length:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span><span class='op'>(</span><span class='va'>chinstrap</span>, <span class='va'>adelie</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  chinstrap and adelie
+t = 5.7804, df = 119.68, p-value = 0.00000006049
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 3.859244 7.880530
+sample estimates:
+mean of x mean of y 
+ 195.8235  189.9536 </code></pre>
+</div>
+<p>The t-test suggests, that the mean flipper length differs between
+Chinstrap and Adelie penguins.</p>
+<h4 id="compare-chinstrap-vs.-gentoo">Compare Chinstrap vs. Gentoo</h4>
+<p>Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum
+test to compare means:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>chinstrap</span>, <span class='va'>gentoo</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  chinstrap and gentoo
+W = 92, p-value &lt; 0.00000000000000022
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<p>The Wilcoxon tests suggests that the flipper lengths differ between
+Chinstrap and Gentoo penguins.</p>
+<h4 id="compare-adelie-vs.-gentoo">Compare Adelie vs. Gentoo</h4>
+<p>Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum
+test to compare means:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>adelie</span>, <span class='va'>gentoo</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  adelie and gentoo
+W = 26, p-value &lt; 0.00000000000000022
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<p>The Wilcoxon tests suggests that the flipper lengths differ between
+Adelie and Gentoo penguins.</p>
+<h4 id="visual-comparison">Visual comparison</h4>
+<p>The boxplot supports the findings of the statistical tests. Notches
+do not overlap.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>penguins</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>flipper_length_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span>notch <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<p>Similarly the standard errors of the means do not overlap between the
+species.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>penguins</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>flipper_length_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/stat_summary.html'>stat_summary</a></span><span class='op'>(</span><span class='op'>)</span> </span></code></pre>
+</div>
+<p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+</div>
+<p>To add the significance levels of the tests performed, I used the
+<code>geom_signif()</code> layer provided by the <code>ggsignif</code>
+package.</p>
+<p>Since I performed two different tests (t-test for the comparison of
+Chinstrap and Adelie penguins, Wilcoxon test for the other two
+comparisons), I added two different significance layers that distinguish
+the two tests.</p>
+<p>For the boxplot:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://const-ae.github.io/ggsignif/'>ggsignif</a></span><span class='op'>)</span></span>
+<span><span class='va'>penguins</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>flipper_length_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span>notch <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://const-ae.github.io/ggsignif/reference/stat_signif.html'>geom_signif</a></span><span class='op'>(</span></span>
+<span>    comparisons <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span>      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Chinstrap"</span>, <span class='st'>"Adelie"</span><span class='op'>)</span></span>
+<span>    <span class='op'>)</span>,</span>
+<span>    test <span class='op'>=</span> <span class='st'>"t.test"</span>,</span>
+<span>    test.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>var.equal <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,</span>
+<span>    map_signif_level <span class='op'>=</span> <span class='cn'>TRUE</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://const-ae.github.io/ggsignif/reference/stat_signif.html'>geom_signif</a></span><span class='op'>(</span></span>
+<span>    comparisons <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span>      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Chinstrap"</span>, <span class='st'>"Gentoo"</span><span class='op'>)</span>,</span>
+<span>      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Gentoo"</span>, <span class='st'>"Adelie"</span><span class='op'>)</span></span>
+<span>    <span class='op'>)</span>,</span>
+<span>    test <span class='op'>=</span> <span class='st'>"wilcox.test"</span>,</span>
+<span>    y_position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>235</span>, <span class='fl'>240</span><span class='op'>)</span>,</span>
+<span>    map_signif_level <span class='op'>=</span> <span class='cn'>TRUE</span></span>
+<span>  <span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<p>For a plot with mean and errorbar:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>penguins</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>species</span>, y <span class='op'>=</span> <span class='va'>flipper_length_mm</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/stat_summary.html'>stat_summary</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://const-ae.github.io/ggsignif/reference/stat_signif.html'>geom_signif</a></span><span class='op'>(</span></span>
+<span>    comparisons <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span>      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Chinstrap"</span>, <span class='st'>"Adelie"</span><span class='op'>)</span></span>
+<span>    <span class='op'>)</span>,</span>
+<span>    test <span class='op'>=</span> <span class='st'>"t.test"</span>,</span>
+<span>    test.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>var.equal <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,</span>
+<span>    map_signif_level <span class='op'>=</span> <span class='cn'>TRUE</span>,</span>
+<span>    y_position <span class='op'>=</span> <span class='fl'>200</span>,</span>
+<span>    tip_length <span class='op'>=</span> <span class='fl'>0.01</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://const-ae.github.io/ggsignif/reference/stat_signif.html'>geom_signif</a></span><span class='op'>(</span></span>
+<span>    comparisons <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span>      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Chinstrap"</span>, <span class='st'>"Gentoo"</span><span class='op'>)</span>,</span>
+<span>      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Gentoo"</span>, <span class='st'>"Adelie"</span><span class='op'>)</span></span>
+<span>    <span class='op'>)</span>,</span>
+<span>    test <span class='op'>=</span> <span class='st'>"wilcox.test"</span>,</span>
+<span>    y_position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>216</span>, <span class='fl'>218</span><span class='op'>)</span>,</span>
+<span>    map_signif_level <span class='op'>=</span> <span class='cn'>TRUE</span>,</span>
+<span>    tip_length <span class='op'>=</span> <span class='fl'>0.01</span></span>
+<span>  <span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="03_solutions_controller_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<p>Solution will be uploaded later</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="linear-models">2 Linear models</h2>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>[1] FALSE</code></pre>
 </div>
 <p>Solution will be uploaded later</p>
-<div class="sourceCode" id="cb4"><pre
+<div class="sourceCode" id="cb11"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb5"><pre
+<div class="sourceCode" id="cb12"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
