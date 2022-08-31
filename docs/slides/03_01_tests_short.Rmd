@@ -202,7 +202,7 @@ Counts of insects in agricultural units treated with different insecticides.
 
 .pull-left[
 
-Compare treatments A, B and E:
+Compare treatments A, B and C:
 
 - Create subsets before: count variable for each treatment as a vector
 
@@ -244,7 +244,7 @@ First, test for normal distribution!
 ---
 # Test for equal variances
 
-If we want to compare variances between treatments A, B and E, we first test for normal distribution
+If we want to compare variances between treatments A, B and C, we first test for normal distribution
 
 ```{r}
 shapiro.test(TreatA)
@@ -284,7 +284,7 @@ $H_0$: Variances do not differ between groups
 var.test(TreatA, TreatC)
 ```
 
-Result: The variances of sprays A and E differ significantly (F-Test, $F_{11,11}$ = 7.42, p = 0.002)
+Result: The variances of sprays A and C differ significantly (F-Test, $F_{11,11}$ = 7.42, p = 0.002)
 
 ---
 class: inverse, center, middle
@@ -350,7 +350,7 @@ $H_0$: The samples do not differ in their mean
 
 --
 
-Treatment A and E: **normally distributed** and **non-equal variance**
+Treatment A and C: **normally distributed** and **non-equal variance**
 
 ```{r}
 t.test(TreatA, TreatC, var.equal = FALSE)
@@ -358,7 +358,7 @@ t.test(TreatA, TreatC, var.equal = FALSE)
 
 --
 
-**Result:** The means of spray A and E do differ significantly (t = 7.58, df = 13.9, p < 0.001)
+**Result:** The means of spray A and C do differ significantly (t = 7.58, df = 13.9, p < 0.001)
 
 ---
 # Wilcoxon-rank-sum Test
@@ -374,7 +374,7 @@ wilcox.test(TreatA, TreatB)
 ```
 --
 
-**Result:** The means of spray A and E do not differ significantly (W = 62, p = 0.58)
+**Result:** The means of spray A and B do not differ significantly (W = 62, p = 0.58)
 
 ---
 # Paired values

@@ -332,7 +332,6 @@ pivot_longer(relig_income,
              names_to = "income",
              values_to = "count")
 
-
 # 2. billboard
 
 billboard
@@ -358,7 +357,7 @@ separate(
   into = c("year","month", "day")
 )
 
-# 3. fish_encounters
+# 3. fish_encounters (EXTRA)
 
 fish_encounters
 
