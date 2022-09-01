@@ -187,7 +187,7 @@ drop1(lm3b, test = "F")
 ```
 Both look fine. Model can be used.
 
-```{r, fig.height=7}
+```{r, fig.height=7, echo=TRUE}
 check_model(lm3a)
 check_model(lm3b)
 ```
