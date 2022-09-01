@@ -76,59 +76,7 @@ Hint: It might be a good idea to transform the quality column to a factor (use `
 .footnote-right[.small[By Frederik Vandaele - originally posted to Flickr as Château Pétrus, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=5145286]]]
 
 ---
-# Data set 2: Birds in Australia
-
-.pull-left[
-
-**Effect of forest fragmentation on bird abundance**
-
-- Site ID (`SITE`)
-- Bird abundance in the fragment (`ABUND`)
-- Area (size of the fragment) (`AREA`)
-- Distance to the next forest fragment (`DIST`)
-- Distance to the next large forest fragment (`LDIST`)
-- Years since site was isolated (`YR.ISOL`)
-- Grazing intensity of the surrounding (`GRAZE`)
-- Altitude (`ALT`)
-
-]
-.pull-right[
-![](img/fragment_forest.jpg)
-.footnote-right[.small[Image by [Marcel Holyoak](https://www.flickr.com/photos/maholyoak/5875094312/)]]
-]
-
-
-```
-## # A tibble: 56 x 8
-##    Site ABUND  AREA  DIST LDIST YR.ISOL GRAZE   ALT
-##   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-## 1     1   5.3   0.1    39    39    1968     2   160
-## 2     2   2     0.5   234   234    1920     5    60
-## 3     3   1.5   0.5   104   311    1900     5   140
-## # ... with 53 more rows
-```
-
----
-# Data set 2:  Birds in Australia
-
-.pull-left[
-
-**Ideas**
-
-- Which factors influence bird abundance most?
-- Good for plotting different variables
-- Rather clear and small data set
-- Explore the effects of environment on bird abundance (try models or tests)
-]
-
-.pull-right[
-
-![](img/fragment_forest.jpg)
-.footnote-right[.small[Image by [Marcel Holyoak](https://www.flickr.com/photos/maholyoak/5875094312/)]]
-
-]
----
-# Data set 3: Paralympic games from 1980-2016
+# Data set 2: Paralympic games from 1980-2016
 
 |variable |class     |description |
 |:--------|:---------|:-----------|
@@ -148,7 +96,7 @@ Source: [International Paralympic Committee](https://db.ipc-services.org/sdms/hi
 
 
 ---
-# Data set 3: Paralympic games from 1980-2016
+# Data set 2: Paralympic games from 1980-2016
 
 Get the data:
 
@@ -168,39 +116,261 @@ athletes &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascienc
 - Plots: e.g. heat map showing the number of medals by medal type and sport/country/gender...
 
 ---
+# Data set 3: Crab data set
+
+.pull-left[
+
+**Atlantic marsh fiddler crab (*Minuca pugnax*)**
+
+- Crab from Florida is expanding northward due to ocean warming
+- Data on 13 marshes across a range of latitude in the USA
+- Recording of the size of of the crab
+
+**Ideas for data**
+
+- Rather small and good to handle
+- Explore Bergmann's rule (organisms are large in higher latitudes)
+- Linear model to explore relationship between latitude and body size
+- Anova or tests to compare size between locations
+- Plot relationship between latitude and size 
+- ...
+
+]
+
+.pull-right[
+
+.center[![](img/day4/lter.jpg)]
+
+.small[Source: [Johnson, D. 2019.](https://doi.org/10.6073/pasta/4c27d2e778d3325d3830a5142e3839bb) Fiddler crab body size in salt marshes from Florida to Massachusetts, USA at PIE and VCR LTER and NOAA NERR sites during summer 2016. ver 1. Environmental Data Initiative.]
+
+]
+
+
+
+.footnote-right[.small[Image under CC BY-SA 4.0]]
+
+---
+# Data set 3: Crab data set
+
+
+```
+## # A tibble: 6 x 9
+##   date       latitude site   size air_temp air_temp_sd water_temp water_temp_sd name                        
+##   &lt;date&gt;        &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;                       
+## 1 2016-07-24       30 GTM    12.4     21.8        6.39       24.5          6.12 Guana Tolomoto Matanzas NERR
+## 2 2016-07-24       30 GTM    14.2     21.8        6.39       24.5          6.12 Guana Tolomoto Matanzas NERR
+## 3 2016-07-24       30 GTM    14.5     21.8        6.39       24.5          6.12 Guana Tolomoto Matanzas NERR
+## 4 2016-07-24       30 GTM    12.9     21.8        6.39       24.5          6.12 Guana Tolomoto Matanzas NERR
+## 5 2016-07-24       30 GTM    12.4     21.8        6.39       24.5          6.12 Guana Tolomoto Matanzas NERR
+## 6 2016-07-24       30 GTM    13.0     21.8        6.39       24.5          6.12 Guana Tolomoto Matanzas NERR
+```
+
+
+
+.small[Source: [Johnson, D. 2019.](https://doi.org/10.6073/pasta/4c27d2e778d3325d3830a5142e3839bb) Fiddler crab body size in salt marshes from Florida to Massachusetts, USA at PIE and VCR LTER and NOAA NERR sites during summer 2016. ver 1. Environmental Data Initiative.]
+
+
+.footnote-right[.small[Image by LTER under CC BY-SA 4.0]]
+
+---
+# Data set 4: Ice cover and temperature
+
+.pull-left[
+**Temperature and ice duration on lakes since 19th century**
+
+- 2 data sets that can be combined
+- measurements of
+  - ice start, end and duration on 2 lakes in Wisconsin
+  - daily air temperature since 1870
+]
+.pull-right[
+
+![](img/day4/ice.jpg)
+
+]
+
+.footnote-right[.small[Image by LTER under CC BY-SA 4.0]]
+
+.small[
+
+Source ice data: [Magnuson, J.J., S.R. Carpenter, and E.H. Stanley. 2021.](https://doi.org/10.6073/pasta/ab31f2489ee436beb73fc8f1d0213d97) North Temperate Lakes LTER: Ice Duration - Madison Lakes Area 1853 - current ver 35. Environmental Data Initiative. 
+
+Source temperature data: [Anderson, L. and D. Robertson. 2020.](https://doi.org/10.6073/pasta/e3ff85971d817e9898bb8a83fb4c3a8b) Madison Wisconsin Daily Meteorological Data 1869 - current ver 32. Environmental Data Initiative.
+]
+
+---
+# Data set 4: Ice cover and temperature
+
+.pull-left[
+**Ideas**
+
+- How did ice cover duration change over the years?
+  - Plotting of the time series
+  - Linear model to test effect
+- How did air temperature change over the years?
+  - Summarizing mean annual temperatur or mean temperature in winter
+  - Linear model to test the effect
+- Combine the two data sets together
+  - How do ice duration on the lakes correlate with temperure (e.g. with mean winter 
+  temperature)
+
+]
+.pull-right[
+
+![](img/day4/ice.jpg)]
+
+.footnote-right[.small[Image by LTER under CC BY-SA 4.0]]
+
+---
+# Data set 4: Ice cover and temperature
+
+Ice data:
+
+
+```
+## # A tibble: 6 x 5
+##   lakeid       ice_on     ice_off    ice_duration  year
+##   &lt;fct&gt;        &lt;date&gt;     &lt;date&gt;            &lt;dbl&gt; &lt;dbl&gt;
+## 1 Lake Mendota NA         1853-04-05           NA  1852
+## 2 Lake Mendota 1853-12-27 NA                   NA  1853
+## 3 Lake Mendota 1855-12-18 1856-04-14          118  1855
+## 4 Lake Mendota 1856-12-06 1857-05-06          151  1856
+## 5 Lake Mendota 1857-11-25 1858-03-26          121  1857
+## 6 Lake Mendota 1858-12-08 1859-03-14           96  1858
+```
+
+Temperature data:
+
+
+```
+## # A tibble: 6 x 3
+##   sampledate  year ave_air_temp_adjusted
+##   &lt;date&gt;     &lt;dbl&gt;                 &lt;dbl&gt;
+## 1 1870-06-05  1870                  20  
+## 2 1870-06-06  1870                  18.3
+## 3 1870-06-07  1870                  17.5
+## 4 1870-06-09  1870                  13.3
+## 5 1870-06-10  1870                  13.9
+## 6 1870-06-11  1870                  15
+```
+
+---
 # Some general tips
 
-#### For everyone
+- First make a plan:
+
+  - What do you want to achieve and what are the steps?
+  - Try to think in technical terms
+
+--
+
+- Start with something small, e.g. reading in the data and bringing it into the right format.
+
+--
 
 - Google
+
+--
+
+- If you get stuck, ask in the chat or stop by in General
+
+
 - Have a look at the cheat sheets [(list of all cheat sheets)](https://www.rstudio.com/resources/cheatsheets/)
   - [ggplot2](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf)
   - [dplyr](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf)
-  - [lubridate](https://raw.githubusercontent.com/rstudio/cheatsheets/master/lubridate.pdf): working with dates and times (convert character columns to date time, calculate differences in time, ...)
-  - [stringr](https://raw.githubusercontent.com/rstudio/cheatsheets/master/strings.pdf): working with strings (e.g. creating substrings, extracting parts from strings, ...)
-- For barplots and mean +- se: check the lm solution on the website
-- For heatmaps with ggplot: check the ggplot2 solution on the website, find a tutorial [here](https://www.statology.org/heatmap-r-ggplot2/)
-  
----
-# Some general tips
-  
-#### For those working with their own data
+  - [Data import cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf): readr and tidyr cheat sheet
 
-- [Data import cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf): readr and tidyr cheat sheet
-- [janitor package](https://garthtarr.github.io/meatR/janitor.html): some simple functions for examining and cleaning dirty data
-  - `clean_names()`: clean your column names with one function (e.g. in case you have white space)
-  - `excel_numeric_to_date()`: convert strange excel serial numbers to actual dates
-- [readxl package](https://www.rdocumentation.org/packages/readxl/versions/1.3.1): read directly from Excel files instead of using `readr` with csv files
-  - Check out `?read_xlsx` to see how to read different sheets
-- [Join multiple tables](https://dplyr.tidyverse.org/articles/two-table.html): `dplyr` offers function to join multiple tables based on a common column
+
+---
+# Read data from Excel (xlsx format)
+
+Use the `read_xlsx()` function from the `readxl` package.
+
+Read a single excel file:
+
+
+```r
+# install.packages("readxl")
+library(readxl)
+
+# by default: reads the first sheet
+my_data &lt;- read_xlsx(path = "data/my_datafile1.xlsx")
+
+# To read a specific sheet:
+# refer to the sheet by its name
+my_data &lt;- read_xlsx(path = "data/my_datafile1.xlsx", sheet = "sheet1")
+# or refer to it by its id
+my_data &lt;- read_xlsx(path = "data/my_datafile1.xlsx", sheet = 2)
+```
+
+--
+
+- `read_xlsx` has similar options as `read_csv`, e.g. to skip rows etc.
+- have a look at `?read_xlsx` to see all options
+
+---
+# Read data from Excel (xlsx format)
+
+If you data is **split into multiple excel sheets** (i.e. one excel file but multiple sheets) you can:
+
+- read in all the excel sheets at once into a list
+- use `bind_rows` to bind all the sheets together by row
+- This requires all sheets to have the same format and columns
+
+--
+
+
+```r
+# create a variable with the path to the file you want to read
+path_to_file &lt;- "data/my_datafile1.xlsx"
+
+# list all the sheets that exist in this file
+sheets &lt;- excel_sheets(path_to_file)
+
+# use lapply to read all sheets into a list using read_xlsx
+all_sheets &lt;- lapply(sheets, function(x) read_xlsx(path_to_file, sheet = x))
+
+# bind all rows from the list together
+my_data &lt;- do.call(bind_rows, all_sheets) # without id column
+my_data &lt;- do.call(bind_rows, list(all_sheets, .id = "sheet_id")) # with id column
+```
+
+---
+# Read data from Excel (xlsx format)
+
+If you data is **split into multiple excel files** (i.e. multiple excel files but one sheet per file) you can:
+
+
+- read in all the excel files at once into a list
+- use `bind_rows` to bind all the files together by row
+- This requires all files to have the same format and columns
+- My code requires the files to all be in the same folder
+
+--
+
+
+```r
+# List all xlsx files at a given location
+# this code will read in all xlsx files at the given location
+# if you don't want this, you have to adjust the `pattern`
+file_paths &lt;- list.files(path = "./data", pattern = ".xlsx", full.names = TRUE)
+# check if this actually list your desired files
+file_paths
+
+# use lapply to read all files into a list using read_xlsx
+all_files &lt;- lapply(file_paths, read_xlsx)
+
+# bind all rows from the list together
+my_data &lt;- do.call(bind_rows, all_files) # without id column
+my_data &lt;- do.call(bind_rows, list(all_files, .id = "file_id")) # with id column
+```
 
 ---
 class: inverse, middle, center
 
 # .large[Now You: Working on your own research data]
 
-#### - Build groups
-#### - Meet in your group
+#### - Meet in your group (if you want)
 #### - Start working on a data set
 #### - Take breaks as you need and be back at 14:00
 #### - Keep an eye on your group and the general chat
@@ -250,6 +420,18 @@ Please take another 5 mins to complete my more specific survey to further improv
 
 
 - Any other feedback or comments from your side?
+
+---
+# Workshop: Reproducible documents with Rmarkdown
+
+ 
+  .center[**Tuesday 13.09. - Wednesday 14.09. ( + Thursday 15.09. optional)** &lt;br&gt; **1 p.m. - 5 p.m.** &lt;br&gt;
+  Write an email to [me](mailto:selina.baldauf@fu-berlin.de) or to [Simone](graduate-center@bcp.fu-berlin.de) if you want to join]
+  
+  .center[![:scale 60%](img/day4/rmarkdown_wizards.png)]
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
 
 ---
 # Conclusion

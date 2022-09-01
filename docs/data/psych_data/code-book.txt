@@ -1,0 +1,159 @@
+
+1.0 TITLE: CODE BOOK TO ACCOMPANY FILES ahi-cesd.csv AND participant-info.csv
+
+1.1 The data to which this documentation applies relate to the study of web-based positive-psychology interventions described in [1]; the data themselves are described in [2]. 
+
+2.0 REFERENCES
+
+[1]	Woodworth, R. J., O'Brien-Malone, A., Diamond, M. R. and Schuez, B. (2017). Web-based positive psychology interventions: A reexamination of effectiveness. Journal of Clinical Psychology, 73(3), 218-232, DOI: https://doi.org/10.1002/jclp.22328
+[2]	Woodworth, R. J., O'Brien-Malone, A., Diamond, M. R. and Schuez, B. (2018). Data from, 'Web-based Positive Psychology Interventions: A Reexamination of Effectiveness'. Journal of Open Psychology Data, DOI: https://doi.org/10.5334/jopd.35
+[3]	Park, N., Park, M., & Peterson, C. (2010). When is the search for meaning related to life satisfaction? Applied Psychology: Health and Well-Being, 2(1): 1-13, DOI: https://doi.org/10.1111/j.1758-0854.2009.01024.x
+[4]	Radloff, L. S. (1977). The CES-D scale: A self-report depression scale for research in the general population. Applied Psychological Measurement, 1(3), 385-401, DOI: https://doi.org/10.1177/014662167700100306
+
+
+3.0 DATA DESCRIPTION
+
+3.1.1 Variable name	
+age
+
+3.1.2 File
+participant-info.csv
+
+3.1.3 Meaning
+Age of participant in years. The variable is integer-valued.
+
+3.2.1 Variable name	
+ahi01, ahi02, ... ahi24
+
+3.2.2 File
+ahi-cesd.csv
+
+3.2.3 Meaning
+Score, as recorded by the participant, for each indicated item of the Authentic Happiness Inventory (AHI) [ref.  3].  Each variable is integer-valued with allowed values {1, 2, 3, 4, 5}. 
+
+3.3.1 Variable name
+ahiTotal
+
+3.3.2 File
+ahi-cesd.csv
+
+3.3.3 Meaning
+Participant's total score, as calculated, on the Authentic Happiness Inventory (AHI) [ref. 3] on the relevant measurement occasion. Increasing scores are taken to indicate increasing happiness. The variable is integer-valued with allowable range, 24-120 inclusive. Calculated as:
+ahi01 + ahi02 + ... + ahi24
+
+3.4.1 Variable
+cesd01, cesd02, ... cesd20
+
+3.4.2 File 
+ahi-cesd.csv
+
+3.4.3 Meaning
+Score on the indicated item of the Center for Epidemiological Studies Depression (CES-D) scale [ref. 4]. The scores as recorded in the data file are as-recorded by the survey software and do not conform to the standard scoring for the scale. As recorded, the value range is 1-4; standard scoring is 0-3. Consequently, 1 (unity) must be subtracted from the recorded value for each item. In addition, the standard scoring requires that for the purposes of calculating the total CES-D score, items cesd04, cesd08, cesd12, and cesd16 must be reverse-scored. As Radloff notes in reference [4], "Four items were worded in the positive direction to break tendencies toward response set as well as to assess positive affect (or its absence)". For details of the correct conversion of item values and scoring, see the entry for variable cesdTotal below. 
+
+3.5.1 Variable
+cesdTotal
+
+3.5.2 File
+ahi-cesd.csv
+
+3.5.3 Meaning
+Participant's total score on the  Center for Epidemiological Studies Depression (CES-D) scale [ref. 4] on the relevant measurement occasion. Increasing scores are taken to be indicative of increasing depression. The variable is integer-valued with allowable range 0-60 inclusive.  Calculated as:
+cesdTotal =
+  (cesd01 - 1) + (cesd02 - 1) +
+  (cesd03 - 1) + (4 - cesd04) +
+  (cesd05 - 1) + (cesd06 - 1) + 
+  (cesd07 - 1) + (4 - cesd08) +
+  (cesd09 - 1) + (cesd10 - 1) +
+  (cesd11 - 1) + (4 - cesd12) +
+  (cesd13 - 1) + (cesd14 - 1) +
+  (cesd15 - 1) + (4 - cesd16) +
+  (cesd17 - 1) + (cesd18 - 1) +
+  (cesd19 - 1) + (cesd20 - 1).
+For an explanation of the formula used to calculate cesdTotal see the entry for the individual CES-D items above.
+
+3.6.1 Variable
+educ
+
+3.6.2 File
+participant-info.csv
+
+3.6.3 Meaning
+Education level as reported by participant in answer to the question, "What is the highest level of education you have completed?". The variable is integer valued with allowable values {1, 2, 3, 4, 5}.
+1 = Less than Year 12
+2 = Year 12
+3 = Vocational training
+4 = Bachelor's degree
+5 = Postgraduate degree
+
+Year 12 is the final year of secondary schooling in all states of Australia. Year 12 students are typically between 17 and 18 years of age. The minimum school-leaving age is not uniform across the Australian states and, in addition, it has changed over time. 
+
+"Vocational training" refers to undertaking an apprenticeship or undertaking training at a post-secondary college of technical and further education (commonly referred to as a TAFE). 
+
+3.7.1 Variable
+elapsed.days
+
+3.7.2 File
+ahi-cesd.csv
+
+3.7.3 Meaning
+Time since enrolment measured in fractional days. Calculated by subtracting the time and date of enrolment for the participant, as recorded by the study website, from the time and date of each later measurement, also recorded by the study website. Corrections have been made for daylight-saving changes at the place where the web-site was hosted. The variable is floating-point-valued with negative values not permitted. 
+
+3.8.1 Variable
+id
+
+3.8.2 File(s)
+ahi-cesd.csv
+participant-info.csv
+
+3.8.3 Meaning
+Participant ID (integer value), arbitrarily assigned. The variable allows demographic information to be linked with happiness and depression measurements as well as linking happiness and depression measurements made on different occasions.
+
+3.9.1 Variable
+income
+
+3.9.2 File
+participant-info.csv
+
+3.9.3 Meaning
+Participant's answer to the question, "How would you characterise your income?" The variable is integer-valued with allowable values {1, 2, 3}.
+1 = Below average
+2 = average
+3 = Above average
+
+3.10.1 Variable
+intervention
+
+3.10.2 File(s)
+ahi-cesd.csv
+participant-info.csv
+
+3.10.3 Meaning
+Intervention group to which the participant was randomly assigned. The variable is integer-valued with allowable values from 1-4 inclusive.
+1 = "Using Signature Strengths"
+2 = "Three Good Things"
+3 = "Gratitude Visit"
+4 = "Recording early memories" (used as the control condition)
+
+3.11.1 Variable
+sex
+
+3.11.2 File
+participant-info.csv
+
+3.11.3 Meaning
+Sex of participant. Integer-valued. 1=female, 2=male.
+
+3.12.1 Variable
+occasion
+
+3.12.2 File
+ahi-cesd.csv
+
+3.12.3 Meaning
+Measurement occasion. The variable is integer-valued with an allowable range of 0-5 inclusive. 
+0 = Pretest, i.e. , at enrolment
+1 = Posttest, i.e. , 7 days after pretest
+2 = 1-week follow-up, i.e. , 14 days after pretest (7 days after posttest).
+3 = 1-month follow-up, i.e. , 38 days after pretest (31 days after posttest)
+4 = 3-month follow-up, i.e. , 98 days after pretest (91 days after posttest)
+5 = 6-month follow-up, i.e. , 189 days after pretest (182 days after posttest).

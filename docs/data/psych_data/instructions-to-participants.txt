@@ -1,0 +1,179 @@
+# Text of emails sent to participants
+
+The text of each of the emails sent to participants is contained in this file. The first two emails (i.e.,initial instructions and a subsequent a-week reminder) varied according to the intervention group to which the participant was allocated. Subsequent emails (post-test, one-week follow-up, one-month follow-up, three-month follow-up and six-month follow-up) were the same irrespective of the intervention group.
+
+# Initial Instructions
+### Character Strengths group --- Initial Instructions
+#### UTas Happiness Study - Instructions
+
+Dear Participant,
+
+Thank you for participating in The Happiness Study at the University of Tasmania!
+
+As you know, the study involves undertaking a happiness exercise for one week. We would like you to participate in a specific exercise that involves using your strengths in new ways.
+
+The exercise involves identifying your top five character strengths. In order to identify your character strengths, we would like to ask you to fill in a questionnaire that has been developed by eminent scientists in the field. This questionnaire will accurately assess your top five character strengths and will take about 20-30 minutes to complete. Please click on the link below to access the questionnaire. If clicking the link does not work, please copy and paste it into your browser address bar.  
+[LINK TO VIA-SURVEY OF CHARACTER STRENGTHS]
+
+Once you have completed the questionnaire you will be informed of your top five character strengths. These will also be emailed to you. Please take some time to read the description of each of your strengths. Your exercise involves you choosing one of your top five character strengths and then using it in a new and different way for each day of the next week.
+
+At the end of week I will send you an email asking you to complete a follow-up questionnaire. If you complete all follow-up questionnaires, you will be entered in a lottery draw to win a prize. If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au. I am happy to discuss any aspect of the research with you.
+
+Kind regards
+
+### Three Good Things group --- Initial Instructions
+#### UTas Happiness Study - Instructions
+
+Dear Participant,
+
+Thank you for participating in The Happiness Study at the University of Tasmania!
+
+As you know, the study involves undertaking a happiness exercise for one week. We would like you to participate in a specific exercise that involves developing a greater awareness about things which you find positive in your own life. Each day for the next week please record three good things, plus a causal explanation as to why each of these things happened. It is not important how significant or insignificant you view each of these good things, but do try and always record three for each day.
+
+At the end of week I will send you an email asking you to complete a follow-up questionnaire. If you complete all follow-up questionnaires, you will be entered in a lottery draw to win a prize. If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au. I am happy to discuss any aspect of the research with you.
+
+Kind regards
+
+### Gratitude Visit group --- Initial Instructions
+#### UTas Happiness Study - Instructions
+
+Dear Participant,
+
+Thank you for participating in The Happiness Study at the University of Tasmania!
+
+As you know, the study involves undertaking a happiness exercise for one week. The specific exercise which you have been allocated for the week involves selecting one important person from your past who has made a major positive difference in your life and to whom you have never fully expressed your thanks. Please do not confound this selection with new-found romantic love, or with the possibility of a future gain. Take your time to write a letter to this person, about 1 page in length. Invite that person to your home, or travel to that person's home- it is important that you deliver the letter face to face. Do not tell the person the purpose of the visit in advance; a simple "I just want to see you" will suffice. When you are both comfortable deliver your letter and let the other person react unhurriedly. Reminisce together about the concrete events that make this person so important to you.
+
+At the end of week I will send you an email asking you to complete a follow-up questionnaire. If you complete all follow-up questionnaires, you will be entered in a lottery draw to win a prize. If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au. I am happy to discuss any aspect of the research with you.
+
+Kind regards
+
+### Early Memories group --- Initial Instructions
+#### UTas Happiness Study - Instructions
+
+Dear Participant,
+
+Thank you for participating in The Happiness Study at the University of Tasmania!
+
+As you know, the study involves undertaking a happiness exercise for one week. The specific exercise which you have been allocated involves writing about early memories every night for the next week. At the end of week I will send you an email asking you to complete a follow-up questionnaire. If you complete all follow-up questionnaires, you will be entered in a lottery draw to win a prize. If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au. I am happy to discuss any aspect of the research with you.
+
+Kind regards
+
+# Midweek reminders
+### Character Strengths group --- Instruction reminder
+#### UTas Happiness Study -- Midweek courtesy reminder
+
+Dear Participant,
+
+This is just a reminder email of the instructions for your happiness exercise this week. The specific exercise which you have been allocated for the week involves using your strengths in new ways. Following your completion of the character strengths questionnaire, you would have been informed of your top five character strengths, which were also emailed to you. Please take some time to read the description of each of your strengths. Your exercise involves choosing one of your top five character strengths and then using it in a new and different way for each day of the next week.
+
+At the end of week I will send you an email asking you to complete a follow-up questionnaire. If you complete all follow-up questionnaires, you will be entered in a lottery draw to win a prize. If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au. I am happy to discuss any aspect of the research with you.
+
+Kind regards
+
+### Three Good Things group --- Instruction reminder
+#### UTas Happiness Study -- Midweek courtesy reminder
+
+Dear Participant,
+
+This is just a reminder email of the instructions for your happiness exercise this week. The specific exercise which you have been allocated for the week involves developing a greater awareness about things which you find positive in your own life. Each day for the next week please record three good things, plus a causal explanation as to why each of these things happened. It is not important how significant or insignificant you view each of these good things, but do try and always record three for each day.
+
+At the end of week I will send you an email asking you to complete a follow-up questionnaire. If you complete all follow-up questionnaires, you will be entered in a lottery draw to win a prize. If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au. I am happy to discuss any aspect of the research with you.
+
+Kind regards
+
+### Gratitude Visit group --- Instruction reminder
+#### UTas Happiness Study -- Midweek courtesy reminder
+
+Dear Participant,
+
+This is just a reminder email of the instructions for your happiness exercise this week. The specific exercise which you have been allocated for the week involves selecting one important person from your past who has made a major positive difference in your life and to whom you have never fully expressed your thanks. Please do not confound this selection with new-found romantic love, or with the possibility of a future gain. Take your time to write a letter to this person, about 1 page in length. Invite that person to your home, or travel to that person's home- it is important that you deliver the letter face to face. Do not tell the person the purpose of the visit in advance; a simple "I just want to see you" will suffice. When you are both comfortable deliver your letter and let the other person react unhurriedly. Reminisce together about the concrete events that make this person so important to you.
+
+At the end of week I will send you an email asking you to complete a follow-up questionnaire. If you complete all follow-up questionnaires, you will be entered in a lottery draw to win a prize. If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au. I am happy to discuss any aspect of the research with you.
+
+Kind regards
+
+### Early Memories group --- Instruction reminder
+#### UTas Happiness Study -- Midweek courtesy reminder
+
+Dear Paricipant,
+
+This is just a reminder email of the instructions for your happiness exercise this week.  The specific exercise which you have been allocated involves writing about early memories every night for the next week. At the end of week I will send you an email asking you to complete a follow-up questionnaire. If you complete all follow-up questionnaires, you will be entered in a lottery draw to win a prize. If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au. I am happy to discuss any aspect of the research with you.
+
+Kind regards
+
+# Post-test follow-up
+### All intervention groups --- Post-test reminder
+#### UTas Happiness Study -- Post-test reminder
+
+Dear Participant,
+
+Thank you for your continued participation in The Happiness Study at the University of Tasmania. It is now one week since you started the happiness exercise and it is time to return to the website to complete the first follow-up questionnaires. It is important that you complete follow-up questionnaires so that we can monitor whether there has been any change in your responses since completing the initial exercise. This provides us with important information about the potential impact of the exercise. Remember that if you continue to complete follow-up questionnaires over the 6 months of the study, you will be entered in a lottery draw to win a prize.
+
+Please click on the following link to be redirected to the follow-up questionnaires. If clicking on the link does not work, please copy and paste it into your browser address bar.  
+[LINK TO POST-TEST MEASUREMENT PAGE]
+
+If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au.  I will be happy to discuss any aspect of the research with you.
+
+Kind regards
+
+# One-week follow-up
+### All intervention groups --- One-week follow-up instructions
+#### UTas Happiness Study - 1-week follow-up
+
+Dear Participant,
+
+Thank you for your continued participation in The Happiness Study at the University of Tasmania. It is now one week since you completed the happiness exercises and it is time to return to the website to complete one week follow-up questionnaires. It is important that you complete follow-up questionnaires so that we can monitor whether there has been any change in your responses since completing the initial exercise. This provides us with important information about the potential impact of the exercise. Remember that if you continue to complete follow-up questionnaires over the 6 months of the study, you will be entered in a lottery draw to win a prize.
+
+Please click on the following link to be redirected to the happiness study questionnaires. If clicking on the link does not work, please copy and paste it into your browser address bar.  
+[LINK TO ONE-WEEK FOLLOW-UP QUESTIONNAIRE]
+
+If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au. I am happy to discuss any aspect of the research with you.
+
+Kind regards
+
+# One-month follow-up reminder
+### All intervention groups --- One-month follow-up instructions
+#### UTas Happiness Study - 1-month follow-up
+
+Dear Participant,
+
+Thank you for your continued participation in The Happiness Study at the University of Tasmania. It is now one month since you started the happiness exercise and it is time to return to the website to complete one month follow-up questionnaires. It is important that you complete follow-up questionnaires so that we can monitor whether there has been any change in your responses since completing the initial exercise. This provides us with important information about the potential impact of the exercise. Remember that if you continue to complete follow-up questionnaires over the 6 months of the study, you will be entered in a lottery draw to win a prize.
+
+Please click on the following link to be redirected to the happiness study questionnaires. If clicking on the link does not work, please copy and paste it into your browser address bar.  
+[LINK TO ONE-MONTH FOLLOW-UP QUESTIONNAIRE]
+
+If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au. I am happy to discuss any aspect of the research with you.
+
+Kind regards
+
+# Three-month follow-up reminder
+### All intervention groups --- Three-month follow-up instructions
+#### UTas Happiness Study - 3-month follow-up
+
+Dear Participant,
+
+Thank you for your continued participation in The Happiness Study at the University of Tasmania. It is now three months since you started the happiness exercise and it is time to return to the website to complete three month follow-up questionnaires. It is important that you complete follow-up questionnaires so that we can monitor whether there has been any change in your responses since completing the initial exercise. This provides us with important information about the potential impact of the exercise. Remember that if you continue to complete follow-up questionnaires over the 6 months of the study, you will be entered in a lottery draw to win a prize.
+
+Please click on the following link to be redirected to the happiness study questionnaires. If clicking on the link does not work, please copy and paste it into your browser address bar.  
+[LINK TO THREE-MONTH FOLLOW-UP QUESTIONNAIRE]
+
+If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au. I am happy to discuss any aspect of the research with you.
+
+Kind regards
+
+
+# Six-month (final) follow-up reminder
+### All intervention groups --- Six-month follow-up instructions
+#### UTas Happiness Study - 6-month follow-up
+
+Dear Participant,
+
+Thank you for your continued participation in The Happiness Study at the University of Tasmania. It is now 6 months since you started the happiness exercise and it is time to return to the website to complete 6 month follow-up questionnaires. It is important that you complete follow-up questionnaires so that we can monitor whether there has been any change in your responses since completing the initial exercise. This provides us with important information about the potential impact of the exercise. Remember that if you continue to complete follow-up questionnaires over the 6 months of the study, you will be entered in a lottery draw to win a prize.
+
+Please click on the following link to be redirected to the happiness study questionnaires. If clicking on the link does not work, please copy and paste it into your browser address bar.  
+[LINK TO SIX-MONTH FOLLOW-UP QUESTIONNAIRE]
+
+If you would like to discuss any aspect of this study please feel free to contact me at Happiness.Study@utas.edu.au. I am happy to discuss any aspect of the research with you.
+
+Kind regards
+
