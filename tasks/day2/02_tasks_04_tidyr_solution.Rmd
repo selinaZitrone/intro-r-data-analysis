@@ -63,7 +63,7 @@ pivot_longer(billboard,
              values_drop_na = TRUE)
 ```
 
-**3. `fish_encounters`**
+**3. `fish_encounters` (EXTRA)**
 
 Have a look at the `fish_encounters` data set that is included in the tidyverse package.
 The data set contains records of fish detected by different automatic monitoring stations.
@@ -83,7 +83,7 @@ What is not tidy about this data set? Can you fix it?
 `r fontawesome::fa("arrow-right")` An observation (i.e. one fish) is spread across multiple rows and we have to use `pivot_wider` to give each fish just one row.
 
 ```{r, echo=TRUE}
-pivot_wider(fish_encounters, 
+pivot_wider(fish_encounters,
             names_from = station,
             values_from = seen)
 ```
@@ -91,10 +91,10 @@ pivot_wider(fish_encounters,
 #### Extra
 
 The `values_fill` argument can be used to enter values in cells where values are missing.
-In our case this makes sense because cells with missing values are not really missing information but we know that for this station the fish was not recorded. So we can add a 0 instead of NA. 
+In our case this makes sense because cells with missing values are not really missing information but we know that for this station the fish was not recorded. So we can add a 0 instead of NA.
 
 ```{r, echo=TRUE}
-pivot_wider(fish_encounters, 
+pivot_wider(fish_encounters,
             names_from = station,
             values_from = seen,
             values_fill = 0)

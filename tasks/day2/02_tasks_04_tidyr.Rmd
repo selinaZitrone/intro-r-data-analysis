@@ -30,14 +30,14 @@ What is not tidy about this data set? Can you fix it?
 - Check out the `values_drop_na` argument of `pivot_longer`. What does it do and how can you use it here?
 - Check out the `names_prefix` argument of `pivot_longer`. What does it do and how can you use it here?
 
-**3. `fish_encounters`**
+<!-- **3. `fish_encounters`** -->
 
-Have a look at the `fish_encounters` data set that is included in the tidyverse package.
-The data set contains records of fish detected by different automatic monitoring stations. 
-Check out `summary(fish_encounters)` - the column `seen` only contains values of 1 to indicate that the fish was seen at the respective station.
+<!-- Have a look at the `fish_encounters` data set that is included in the tidyverse package. -->
+<!-- The data set contains records of fish detected by different automatic monitoring stations.  -->
+<!-- Check out `summary(fish_encounters)` - the column `seen` only contains values of 1 to indicate that the fish was seen at the respective station. -->
 
-What is not tidy about this data set? Can you fix it?
+<!-- What is not tidy about this data set? Can you fix it? -->
 
-#### Extra
+<!-- #### Extra -->
 
-- Have a look at the `values_fill` argument of `pivot_wider`. How could you use it in this case to replace the missing values that are created?
+<!-- - Have a look at the `values_fill` argument of `pivot_wider`. How could you use it in this case to replace the missing values that are created? -->
