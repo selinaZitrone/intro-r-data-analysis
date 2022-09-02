@@ -1,6 +1,6 @@
 # Render slides -----------------------------------------------------------
 
-source("./R/render_slides.R")
+source("./R/Build_pipeline/render_slides.R")
 
 # Render site -------------------------------------------------------------
 
