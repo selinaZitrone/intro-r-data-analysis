@@ -36,18 +36,16 @@ output:
 
 ### ggplot
 
+- [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf) offers an overview of all possibilities of ggplot
+
 - [Curated list of ggplot resources](https://github.com/erikgahner/awesome-ggplot2):
 Really great list with links to ggplot tutorials (sorted by topic and difficulty), books, additional packages to make your plots look nicer, ...
 
-- [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf) offers an overview of all possibilities of ggplot
-
-- [error bars with ggplot](https://www.datanovia.com/en/lessons/ggplot-error-bars/) A good summary of how to plot different types of means and errorbars (barplots, mean and errorbars, ...).
-
 - In the [R graph gallery](https://www.r-graph-gallery.com/) you can browse through hundreds of different types of plots and find code to reproduce them.
 
-- A great [presentation by Cédric Scherer](https://github.com/z3tt/OutlierConf2021) with examples of how to beautify your ggplots.
+- A great [workshop on ggplot by Cédric Scherer](https://rstudio-conf-2022.github.io/ggplot2-graphic-design/) with everything from basics of ggplot, over using colors, graphic design and plot composition.
 
-- List of [ggplot extensions](https://exts.ggplot2.tidyverse.org/ggthemes.html), e.g. for themes, interactive graphs, text labels,... 
+ 
 
 ### dplyr
 
