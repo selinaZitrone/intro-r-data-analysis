@@ -85,3 +85,72 @@ penguins %>%
   geom_boxplot(notch = TRUE)
 ```
 
+Similarly the standard errors of the means do not overlap between the species.
+
+```{r echo = TRUE}
+penguins %>%
+  ggplot(aes(x = species, y = flipper_length_mm)) +
+  stat_summary() 
+```
+
+To add the significance levels of the tests performed, I used
+the `geom_signif()` layer provided by the `ggsignif` package.
+
+Since I performed two different tests (t-test for the comparison of Chinstrap and
+Adelie penguins, Wilcoxon test for the other two comparisons), I added two 
+different significance layers that distinguish the two tests.
+
+For the boxplot:
+
+```{r echo = TRUE}
+library(ggsignif)
+penguins %>%
+  ggplot(aes(x = species, y = flipper_length_mm)) +
+  geom_boxplot(notch = TRUE) +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Adelie")
+    ),
+    test = "t.test",
+    test.args = list(var.equal = TRUE),
+    map_signif_level = TRUE
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Gentoo"),
+      c("Gentoo", "Adelie")
+    ),
+    test = "wilcox.test",
+    y_position = c(235, 240),
+    map_signif_level = TRUE
+  )
+```
+
+For a plot with mean and errorbar:
+
+```{r echo =TRUE}
+penguins %>%
+  ggplot(aes(x = species, y = flipper_length_mm)) +
+  stat_summary() +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Adelie")
+    ),
+    test = "t.test",
+    test.args = list(var.equal = TRUE),
+    map_signif_level = TRUE,
+    y_position = 200,
+    tip_length = 0.01
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Gentoo"),
+      c("Gentoo", "Adelie")
+    ),
+    test = "wilcox.test",
+    y_position = c(216, 218),
+    map_signif_level = TRUE,
+    tip_length = 0.01
+  )
+```
+

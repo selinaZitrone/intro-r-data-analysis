@@ -35,6 +35,17 @@ shapiro.test(adelie) # normal
 shapiro.test(chinstrap) # normal
 shapiro.test(gentoo) # not normal
 
+# Test the same with the Kolmogorov Smirnov Test
+ks.test(adelie, "pnorm",
+  mean = mean(adelie, na.rm = TRUE), sd = sd(adelie, na.rm = TRUE)
+)
+ks.test(chinstrap, "pnorm",
+  mean = mean(chinstrap, na.rm = TRUE), sd = sd(chinstrap, na.rm = TRUE)
+)
+ks.test(gentoo, "pnorm",
+  mean = mean(gentoo, na.rm = TRUE), sd = sd(gentoo, na.rm = TRUE)
+)
+
 # Comparison Chinstrap vs. Adelie
 # both normal so test for equal variance
 var.test(chinstrap, adelie) # variances do not differ
@@ -51,9 +62,53 @@ wilcox.test(gentoo, adelie) # means differ
 
 
 # Compare flipper lengths of penguins visually using a boxplot
+# Add the p-values of the comparisons with the test into the plot
+library(ggsignif)
 penguins %>%
   ggplot(aes(x = species, y = flipper_length_mm)) +
-  geom_boxplot(notch = TRUE)
+  geom_boxplot(notch = TRUE) +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Adelie")
+    ),
+    test = "t.test",
+    test.args = list(var.equal = TRUE),
+    map_signif_level = TRUE
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Gentoo"),
+      c("Gentoo", "Adelie")
+    ),
+    test = "wilcox.test",
+    y_position = c(235,240),
+    map_signif_level = TRUE
+  )
+
+# Plot with mean and errorbars:
+penguins %>%
+  ggplot(aes(x = species, y = flipper_length_mm)) +
+  stat_summary() +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Adelie")
+    ),
+    test = "t.test",
+    test.args = list(var.equal = TRUE),
+    map_signif_level = TRUE,
+    y_position = 200,
+    tip_length = 0.01
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Gentoo"),
+      c("Gentoo", "Adelie")
+    ),
+    test = "wilcox.test",
+    y_position = c(216,217),
+    map_signif_level = TRUE,
+    tip_length = 0.01
+  )
 
 # Linear models -----------------------------------------------------------
 library(tidyverse)
@@ -203,30 +258,30 @@ penguins_sex %>%
   theme_bw() +
   theme(legend.position = c(0.85, 0.15))
 
-summary <- penguins_sex %>%
-  group_by(species, sex) %>%
-  summarize(
-    sd = sd(body_mass_g),
-    mean = mean(body_mass_g)
-  )
-
-ggplot(summary, aes(x = species, y = mean, color = sex)) +
-  geom_point(size = 3, position = position_dodge(0.4)) +
-  geom_errorbar(
-    aes(ymin = mean - sd, ymax = mean + sd),
-    position = position_dodge(0.4),
-    width = 0.2
+ggplot(penguins_sex, aes(x = species, y = body_mass_g, color = sex)) +
+  stat_summary(
+    position = position_dodge(width = 0.5)
   ) +
   scale_color_manual(values = c("#00AFBB", "#E7B800")) +
   labs(y = "Body mass [g]")
 
-
-ggplot(summary, aes(x = species, y = mean, fill = sex)) +
-  geom_col(position = position_dodge(1)) +
-  geom_errorbar(
-    aes(ymin = mean - sd, ymax = mean + sd),
-    position = position_dodge(1),
-    width = 0.2
+ggplot(penguins_sex, aes(x = species, y = body_mass_g, fill = sex)) +
+  stat_summary(
+    fun.y = mean,
+    geom = "bar",
+    width = 0.7,
+    position = position_dodge(width = 0.8)
+  ) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    position = position_dodge(width = 0.8),
+    width = 0.3
   ) +
   scale_fill_manual(values = c("#00AFBB", "#E7B800")) +
   labs(y = "Body mass [g]")
+
+
+lm2a <- lm(bill_depth_mm ~ bill_length_mm + species, data = penguins)
+# With interaction
+lm2b <- lm(bill_depth_mm ~ bill_length_mm * species, data = penguins)
