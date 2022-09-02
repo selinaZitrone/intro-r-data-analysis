@@ -4,7 +4,7 @@ theme: theme.css
 description: |
   My Website
 output_dir: "docs"
-exclude: ["R/", "data/"]
+exclude: ["R/", "data/", "additional_docs/"]
 navbar:
   right:
     - text: "Home"

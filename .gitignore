@@ -10,3 +10,5 @@ slides/*.pdf
 slides/*_files/
 
 tasks/*/*.html
+img/*
+additional_docs/*.pdf
