@@ -835,10 +835,6 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
 - **add columns** but keep all columns
   - `case_when()` for conditional values
 
-#### `transmute()`
-
-- **add columns** and drop old columns
-
 ---
 # Summary III
 
@@ -853,6 +849,20 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
 - **count rows** based on a group
   - can be used in combination with `group_by()`
   
+---
+# Summary IV
+
+#### `bind_rows()`
+
+- **combine rows** of multiple tibbles into one
+  - the tibbles need to have the same columns
+  - add an id column with the argument `.id = "id"`
+  - function `bind_cols()` works similarly just for columns
+  
+#### `left_join()`
+
+- **combine tables** based on common columns
+
 ---
 class: inverse, middle, center
 
