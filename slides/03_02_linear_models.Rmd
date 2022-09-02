@@ -59,27 +59,8 @@ class: inverse, middle, center
     - $X_{i1}, X_{i2},..., X_{ip}$ are p **independent predictor** variables
     
     - $Y_i$ is the **dependent** observation and **response variable**
-
---
-
-#### Example
-
-Data set of grassland productivity ( $Y_i$ ) depending on plant species richness ( $X_{i1}$ ) and the location/measurement site  ( $X_{i1}$ ).
-
-**Aim of linear model:**
-
-- Do the predictors (species richness, location) have a significant effect on the response (grassland productivity)?
-
----
-# Linear models background
-
-#### The data:
-
-  - Random sample of n data points ( $Y_i, X_{i1}, X_{i2},..., X_{ip}$, $i = 1...n$) 
-  
-    - $X_{i1}, X_{i2},..., X_{ip}$ are p **independent predictor** variables
     
-    - $Y_i$ is the **dependent** observation and **response variable**
+--
 
 #### The model:
 
@@ -115,13 +96,13 @@ box <- ggplot(prod, aes(x=site, y=productivity))+
 ```
 
 .pull-left[
-<br>
+
+$Y_i = \beta_0 + \beta_1*X_{1,i} + \beta_2*X_{2,i} + \epsilon$
 
 **Linear regression**
 
 - numerical response
 - numerical predictor(s)
-
 
 **Analysis of variance**
 
@@ -143,34 +124,6 @@ box <- ggplot(prod, aes(x=site, y=productivity))+
 
 ]
 
----
-# Linear models background
-
-.left-column-large[
-Linear relation with two predictors $X_1$ and $X_2$ ( $i = 1...n$ )
-
-**Without interaction**
-
-$Y_i = \beta_0 + \beta_1*X_{1,i} + \beta_2*X_{2,i} + \epsilon$
-
-
-**With interaction**
-
-$Y_i = \beta_0 + \beta_1*X_{1,i} + \beta_2*X_{2,i} + \beta_3*X_{1,i}*X_{2,i} + \epsilon$
-
-with
-
-- $Y_i$ value of response variable
-- $\beta_0, \beta_1, \beta_2$ model coefficients
-- $X_{1,i}$ value of predictor $X_1$
-- $X_{2,i}$ value of predictor $X_2$
-- $\epsilon$ error term
-]
-
-.right-column-small[
-![](img/day3/lm_interaction.png)
-
-]
 ---
 # Goodness of fit linear model
 
@@ -414,6 +367,7 @@ prod_lm_perf <- performance::check_model(prod_lm)
 prod_lm_perf
 ```
 ]
+
 ---
 # Test model assmptions
 
@@ -548,6 +502,35 @@ Two possible models:
   geom_point()+
   geom_smooth(method = "lm", se = FALSE)
 ```
+]
+
+---
+# Linear models background
+
+.left-column-large[
+Linear relation with two predictors $X_1$ and $X_2$ ( $i = 1...n$ )
+
+**Without interaction**
+
+$Y_i = \beta_0 + \beta_1*X_{1,i} + \beta_2*X_{2,i} + \epsilon$
+
+
+**With interaction**
+
+$Y_i = \beta_0 + \beta_1*X_{1,i} + \beta_2*X_{2,i} + \beta_3*X_{1,i}*X_{2,i} + \epsilon$
+
+with
+
+- $Y_i$ value of response variable
+- $\beta_0, \beta_1, \beta_2$ model coefficients
+- $X_{1,i}$ value of predictor $X_1$
+- $X_{2,i}$ value of predictor $X_2$
+- $\epsilon$ error term
+]
+
+.right-column-small[
+![](img/day3/lm_interaction.png)
+
 ]
 
 ---
