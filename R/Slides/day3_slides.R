@@ -81,34 +81,37 @@ ggplot(mydata, aes(sample = non_normal)) +
 
 
 # Variance tests ----------------------------------------------------------
+InsectSprays <- InsectSprays %>%
+  filter(spray %in% c("A", "B", "E")) %>%
+  mutate(spray = recode(spray, "E" = "C"))
 
 TreatA <- filter(InsectSprays,
                  spray == "A")$count
 TreatB <- filter(InsectSprays,
                  spray == "B")$count
-TreatE <- filter(InsectSprays,
-                 spray == "E")$count
+TreatC <- filter(InsectSprays,
+                 spray == "C")$count
 
 ggplot(InsectSprays, aes(x = spray, y = count)) +
   geom_boxplot(notch = TRUE)
 
 shapiro.test(TreatA) # normal
 shapiro.test(TreatB) # normal
-shapiro.test(TreatE) # normal
+shapiro.test(TreatC) # normal
 
 var.test(TreatA, TreatB) # variances equal
-var.test(TreatA, TreatE) # variances not equal
+var.test(TreatA, TreatC) # variances not equal
 
 
 # t-test ------------------------------------------------------------------
 
 t.test(TreatA, TreatB, var.equal = TRUE)
-t.test(TreatA, TreatE, var.equal = FALSE) # Welch test for unequal variances
+t.test(TreatA, TreatC, var.equal = FALSE) # Welch test for unequal variances
 
 # Plot the results
 
 InsectSprays |>
-  filter(spray %in% c("A", "B", "E")) |>
+  filter(spray %in% c("A", "B", "C")) |>
   ggplot(aes(x=spray, y=count))+
   geom_boxplot()+
   geom_point()
@@ -131,17 +134,57 @@ wilcox.test(TreatA, TreatB, paired = TRUE)
 
 # Plot the results --------------------------------------------------------
 
-ggplot(InsectSprays |> filter(spray %in% c("A","B", "E")), aes(x = spray, y = count)) +
+ggplot(InsectSprays, aes(x = spray, y = count)) +
   geom_boxplot(notch = TRUE) +
   ggsignif::geom_signif(
     comparisons = list(
       c("A", "B"),
-      c("A", "E"),
-      c("B", "E")
+      c("B", "C"),
+      c("A", "C")
     ),
     test = "t.test",
     map_signif_level = TRUE,
     y_position = c(23,24,25)
+  )
+
+# Plot a bar plot with errorbars
+
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  stat_summary()
+
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar"
+  ) +
+  stat_summary(
+    fun.y = mean,
+    geom = "point",
+    color = "#28a87d",
+    size = 4
+  )
+
+# Bar with errorbars
+ggplot(InsectSprays, aes(x = spray, y = count)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = .3
+  ) +
+  stat_summary(
+    fun.y = mean,
+    geom = "bar",
+    size = 4
+  )+
+  ggsignif::geom_signif(
+    comparisons = list(
+      c("A", "B"),
+      c("B", "C"),
+      c("A", "C")
+    ),
+    test = "t.test",
+    map_signif_level = TRUE,
+    y_position = c(17,18,19)
   )
 
 # 2. Linear models --------------------------------------------------------
