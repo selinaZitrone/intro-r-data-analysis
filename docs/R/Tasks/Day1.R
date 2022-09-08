@@ -187,4 +187,3 @@ write_tsv(x = animals, file = "./data/animals.txt") # write as txt
 #Read the same data back into R:
 animals_csv <- read_csv("./data/animals.csv") # read the csv
 animals_tsv <- read_tsv("./data/animals.txt") # read the txt
-

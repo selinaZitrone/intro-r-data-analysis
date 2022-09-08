@@ -285,18 +285,3 @@ ggplot(penguins_sex, aes(x = species, y = body_mass_g, fill = sex)) +
 lm2a <- lm(bill_depth_mm ~ bill_length_mm + species, data = penguins)
 # With interaction
 lm2b <- lm(bill_depth_mm ~ bill_length_mm * species, data = penguins)
-
-
-library(jtools)
-
-summ(lm2b, confint = TRUE)
-
-effect_plot(lm2b, pred = species)
-effect_plot(lm2b, pred = bill_length_mm)
-
-plot_summs(lm2a, lm2b)
-
-library(sjPlot)
-# plot the results from the summary table
-plot_model(lm2a)
-plot_model(lm2a, show.values = TRUE)

@@ -2750,7 +2750,7 @@ data and sort rows.</p>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code>tibble [28 x 3] (S3: tbl_df/tbl/data.frame)
+<pre><code>tibble [28 × 3] (S3: tbl_df/tbl/data.frame)
  $ species   : chr [1:28] &quot;MountainBeaver&quot; &quot;Cow&quot; &quot;GreyWolf&quot; &quot;Goat&quot; ...
  $ bodywt_kg : num [1:28] 1.4 465 36.3 27.7 1 ...
  $ brainwt_kg: num [1:28] 0.0081 0.423 0.1195 0.115 0.0055 ...</code></pre>
@@ -2776,7 +2776,7 @@ data and sort rows.</p>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>animals</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>5</span>,<span class='fl'>7</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"species"</span>, <span class='st'>"bodywt_kg"</span><span class='op'>)</span><span class='op'>]</span></span></code></pre>
 </div>
-<pre><code># A tibble: 3 x 2
+<pre><code># A tibble: 3 × 2
   species        bodywt_kg
   &lt;chr&gt;              &lt;dbl&gt;
 1 MountainBeaver       1.4
@@ -2790,7 +2790,7 @@ data and sort rows.</p>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>animals</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span></span></code></pre>
 </div>
-<pre><code># A tibble: 10 x 3
+<pre><code># A tibble: 10 × 3
    species        bodywt_kg brainwt_kg
    &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;
  1 MountainBeaver       1.4     0.0081
@@ -2826,7 +2826,7 @@ column index (so don’t use any numbers in this command)</li>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>animals</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>animals</span><span class='op'>)</span><span class='op'>]</span></span></code></pre>
 </div>
-<pre><code># A tibble: 1 x 1
+<pre><code># A tibble: 1 × 1
   brainwt_kg
        &lt;dbl&gt;
 1       0.18</code></pre>
@@ -2852,7 +2852,7 @@ with the ratio of the columns <code>bodywt_kg</code> and
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>animals</span><span class='op'>$</span><span class='va'>ratio_body_brain</span> <span class='op'>&lt;-</span> <span class='va'>animals</span><span class='op'>$</span><span class='va'>bodywt_kg</span> <span class='op'>/</span> <span class='va'>animals</span><span class='op'>$</span><span class='va'>brainwt_kg</span></span>
 <span><span class='va'>animals</span></span></code></pre>
 </div>
-<pre><code># A tibble: 28 x 4
+<pre><code># A tibble: 28 × 4
    species        bodywt_kg brainwt_kg ratio_body_brain
    &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;
  1 MountainBeaver       1.4     0.0081            173. 
@@ -2865,7 +2865,7 @@ with the ratio of the columns <code>bodywt_kg</code> and
  8 Donkey             187.      0.419             447. 
  9 Horse              521       0.655             795. 
 10 PotarMonkey         10       0.115              87.0
-# ... with 18 more rows</code></pre>
+# … with 18 more rows</code></pre>
 </div>
 <div class="sourceCode" id="cb27"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>

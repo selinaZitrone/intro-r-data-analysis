@@ -53,6 +53,7 @@ ggplot(penguins, aes(species, flipper_length_mm)) +
   geom_boxplot() +
   geom_point(position = position_jitter(seed = 123))
 
+
 ## 1.3.3 Differences between body mass of male and female penguins (boxplot)
 
 # Basic boxplot of body mass for penguins of different sex
@@ -267,8 +268,8 @@ mutate(penguins,
 penguins %>%
   group_by(species, sex) %>%
   summarize(
-    mean_body = mean(body_mass_g, na.rm = TRUE),
-    mean_flipper = mean(flipper_length_mm, na.rm = TRUE)
+    mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
+    mean_body = mean(body_mass_g, na.rm = TRUE)
   )
 
 # same but remove the penguins with unknown sex
@@ -332,6 +333,7 @@ pivot_longer(relig_income,
              names_to = "income",
              values_to = "count")
 
+
 # 2. billboard
 
 billboard
@@ -357,7 +359,7 @@ separate(
   into = c("year","month", "day")
 )
 
-# 3. fish_encounters (EXTRA)
+# 3. fish_encounters
 
 fish_encounters
 
