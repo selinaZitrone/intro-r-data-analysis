@@ -1,5 +1,5 @@
 ```{r klippy, echo=FALSE, include=TRUE}
-klippy::klippy(position = c("top","right"))
+klippy::klippy(position = c("top", "right"))
 ```
 
 You have the following three vectors:
@@ -26,14 +26,16 @@ bodywt_kg <- c(
   0.3, 87000, 0.1, 192
 )
 
-brainwt_g <- c(
-  8.1, 423, 119.5, 115, 5.5, 50, 4603, 419, 655, 115, 25.6,
-  680, 406, 1320, 5712, 70, 179, 56, 1, 0.4, 12.1, 175,
-  157, 440, 1.9, 154.5, 3, 180
+brainwt_kg <- c(
+  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, 
+  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, 
+  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
+  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,
+  0.0019, 0.1545, 0.003, 0.18
 )
 ```
 
-Copy and paste the vectos into your R script and solve the following tasks.
+Copy and paste the vectors into your R script and solve the following tasks.
 
 #### Tasks
 
@@ -43,7 +45,6 @@ Copy and paste the vectos into your R script and solve the following tasks.
 animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
 ```
 
-- Convert brain weight from g to kg and save the result in a new vector `brainwt_kg`
 - Calculate mean and standard deviation of the brain weight
   - Hint: have a look at the summary slides to find the functions
 - Which species have a brain weight larger than the mean brain weight of all species?
@@ -62,7 +63,7 @@ animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
 
 ```{r echo=TRUE, eval=FALSE}
 species_new <- c("Eagle", "Snail", "Lion")
-brainwt_g_new <- c(40, NA, 500)
+brainwt_kg_new <- c(0.0004, NA, 0.5)
 bodywt_kg_new <- c(18, 0.01, 550)
 ```
 
