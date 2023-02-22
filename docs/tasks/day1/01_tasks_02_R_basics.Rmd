@@ -33,7 +33,7 @@ brainwt_g <- c(
 )
 ```
 
-Copy and paste the vectos into your R script and solve the following tasks.
+Copy and paste the vectors into your R script and solve the following tasks.
 
 #### Tasks
 

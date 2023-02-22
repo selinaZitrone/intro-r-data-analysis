@@ -31,3 +31,5 @@ Now, try to read the data set back into R using the appropriate `read_*` functio
 
 Navigate to your `data` directory using the `Files` pane of RStudio.
 Click on both the `.csv` file that you just saved there. What can you do? Try the `Import Dataset` button and see what you can do there.
+
+- Try reading some `xlsx` or `csv` tables that you have on your machine into R
