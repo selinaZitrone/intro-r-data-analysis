@@ -23,16 +23,18 @@ navbar:
           href: slides/01_05_readr.html
         - text: "02 - Ggplot2"
           href: slides/02_01_tidyverse_ggplot.html
-        - text: "02 - Dplyr"
+        - text: "03 - Dplyr"
           href: slides/02_02_dplyr.html
-        - text: "02 - Tidyr"
+        - text: "03 - Tidyr"
           href: slides/02_03_tidyr.html
-        - text: "03 - Statistical tests"
-          href: slides/03_01_tests_short.html
-        - text: "03 - Linear models"
-          href: slides/03_02_linear_models.html
         - text: "04 - Bring your own data"
           href: slides/04_01_bring_your_own_data.html
+        - text: "---"
+        - text: "Extras"
+        - text: "Statistical tests"
+          href: slides/03_01_tests_short.html
+        - text: "Linear models"
+          href: slides/03_02_linear_models.html
         - text: "Common R errors"
           href: slides/01_06_common_errors.html
 
@@ -42,7 +44,9 @@ navbar:
           href: 01_tasks_controller.html
         - text: "Day 2: Tidyverse"
           href: 02_tasks_controller.html
-        - text: "Day 3: Statistics"
+        - text: "---"
+        - text: "Extras"
+        - text: "Statistics"
           href: 03_tasks_controller.html
     - text: "Solutions"
       menu:
@@ -50,7 +54,10 @@ navbar:
           href: 01_solutions_controller.html
         - text: "Day 2: Tidyverse"
           href: 02_solutions_controller.html
-        - text: "Day 3: Statistics"
+        - text: "---"
+        - text: "Extras"
+        - text: "Statistics"
+        - text: "Statistics"
           href: 03_solutions_controller.html
     - text: "Resources"
       href: online_resources.html
