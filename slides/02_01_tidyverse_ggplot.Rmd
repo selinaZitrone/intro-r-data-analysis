@@ -44,20 +44,6 @@ theme_set(theme_grey(base_size = 16))
 ```
 
 ---
-class: center, middle
-background-image: url("img/AllisonHorst/ggplot2_exploratory.png")
-background-size: contain
-
-.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
-
----
-class: center, middle
-background-image: url("img/AllisonHorst/ggplot2_masterpiece.png")
-background-size: contain
-
-.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
-
----
 class: inverse, center, middle
 
 # .large[A ggplot showcase]
@@ -112,84 +98,41 @@ background-size: contain
 
 - Active community that provides help and inspiration
 
----
-# Basic idea of ggplot
-
-> Shorten the distance from mind to page<br>
-.small[(Hadley Wickham)]
-
 --
 
-`ggplot2` is an implementation of the grammar of graphics by Leland Wilkinson
-
---
-
-- Basic idea: stack distinct **layers of graphical elements** to create a plot
-
----
-# Layers of a ggplot
-<br>
-<table>
-  <tr>
-    <th>Layer</th>
-    <th>Function</th>
-    <th>Details</th>
-  </tr>
-  <tr>
-    <td><b>Data</b></td>
-    <td><code>ggplot(data)</code></td>
-    <td>The data that you want to plot.</td>
-  </tr>
-  <tr>
-    <td><b>Mapping&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td>
-    <td><code>aes()</code></td>
-    <td>Aesthetic mappings of the geometric and statistical objects.</td>
-  <tr>
-    <td><b>Geometries</b></td>
-    <td><code>geom_*()</code></td>
-    <td>Graphical representation of aesthetics as point, line, polygon, ...</td>
-  </tr>
-  <tr>
-    <td><b>Scales</b></td>
-    <td><code>scale_*()</code></td>
-    <td>Translate between variable values and properties (e.g. categories -> colour)</td>
-  </tr>
-  <tr>
-    <td><b>Coordinates</b></td>
-    <td><code>coord_*()</code></td>
-    <td>Interprets and maps the position values of the data.</td>
-  </tr>
-  <tr>
-    <td><b>Facets</b></td>
-    <td><code>facet_*()</code></td>
-    <td>Split your plot into multiples.</td>
-  </tr>
-  <tr>
-    <td><b>Themes</b></td>
-    <td><code>theme()</code> and&nbsp;&nbsp;<code>theme_*()</code></td>
-    <td>Visual look of the plot not related to the data.</td>
-  </tr>
-</table>
+- Perfect package for **exploratory data analysis** and **beautiful plots**
 
 ---
 # The data
 
-The `ggplot` package has a built-in data set called `msleep` about the sleep times of 83 mammals. 
+The [`lterdatasampler` package](https://lter.github.io/lterdatasampler/) contains a
+data set called `and_vertebrates` about the length and weight of a fish and a salamander
+species in both clear cut and old growth coniferous forest sections. 
 
 Data variables (among others):
 
-- `vore`: carnivore, omnivore, herbivore?
-- `conservation`: conservation status of the animal
-- `sleep_total`: total amount of sleep [h]
-- `brainwt`: brain weight [kg]
-- `bodywt`: body weight [kg]
+- `year`: observation year
+- `section`: CC (clear cut forest) or OG (old growht forest)
+- `unittype`: channel unit classification (C = Cascade, P = Pool, ...)
+- `species`: Species measured
+- `length_1_mm`: body length [mm]
+- `weight_g`: body weight [g]
 
-If you want to know more about the data set:
-```{r eval=FALSE}
-library(ggplot2)
-str(msleep)
-?msleep
+```{r echo=FALSE}
+library(lterdatasampler)
+and_vertebrates <- and_vertebrates %>% 
+  select(year, section, unittype, species, length_1_mm, weight_g) %>% 
+  filter(species != "Cascade torrent salamander")
 ```
+
+---
+class: center, middle
+background-image: url("img/AllisonHorst/ggplot2_exploratory.png")
+background-size: contain
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
+
 
 ---
 # `ggplot(data)`
@@ -202,7 +145,7 @@ The `ggplot()` function initializes a ggplot object. Every ggplot needs this fun
 ```{r eval=FALSE}
 library(ggplot2) # or library(tidyverse)
 
-ggplot(data = msleep) #<<
+ggplot(data = and_vertebrates) #<<
 ```
 
 - Empty plot because we did not specify the mapping of data variables
@@ -211,7 +154,7 @@ ggplot(data = msleep) #<<
 
 .pull-right[
 ```{r echo=FALSE}
-ggplot(data = msleep)
+ggplot(data = and_vertebrates)
 ```
 ]
 
@@ -225,20 +168,20 @@ The **aes**thetic mapping defines how variables are mapped to aesthetic properti
 .pull-left[
 
 ```{r eval=FALSE}
-ggplot(data = msleep,
+ggplot(data = and_vertebrates,
        mapping = aes( #<<
-         x = brainwt, #<<
-         y = sleep_total)) #<<
+         x = length_1_mm, #<<
+         y = weight_g)) #<<
 ```
 
-- Map variable `brainwt` to x-axis and `sleep_total` to y-axis
+- Map variable `length_1_mm` to x-axis and `weight_g` to y-axis
 - Default scales are automatically adapted to range of data
 ]
 
 .pull-right[
 ```{r echo=FALSE}
-ggplot(data = msleep,
-       aes(x = brainwt, y = sleep_total))
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, y = weight_g))
 ```
 ]
 
@@ -250,19 +193,21 @@ The **aes**thetic mapping defines how variables are mapped to aesthetic properti
 .pull-left[
 
 ```{r eval=FALSE}
-ggplot(data = msleep,
+ggplot(data = and_vertebrates,
        mapping = aes( 
-         x = brainwt, 
-         y = sleep_total)) 
+         x = length_1_mm, 
+         y = weight_g)) 
 ```
 
-- map variable `brainwt` to x-axis and `sleep_total` to y-axis
-- default scales are automatically adapted to range of data
+- Map variable `length_1_mm` to x-axis and `weight_g` to y-axis
+- Default scales are automatically adapted to range of data
 
 This is the same but shorter:
 
 ```{r eval=FALSE}
-ggplot(msleep, aes(brainwt, sleep_total))#<<
+ggplot(and_vertebrates, #<<
+       aes(x = length_1_mm,#<<
+           y = weight_g))#<<
 ```
 
 Remember argument matching by position?
@@ -270,8 +215,8 @@ Remember argument matching by position?
 
 .pull-right[
 ```{r echo=FALSE}
-ggplot(data = msleep,
-       aes(x = brainwt, y = sleep_total))
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, y = weight_g))
 ```
 ]
 
@@ -291,25 +236,28 @@ class: middle, center
 ---
 # `geom_point()`
 
+--
+
 .pull-left[
 
 ```{r eval=FALSE}
-ggplot(data = msleep,
-       aes(x = brainwt, 
-           y = sleep_total)) +
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g)) +
   geom_point() #<<
 ```
 
-- New plot layers are added with `+`
-- Warning that 27 points can not be plotted due to missing values
+- New plot layers added with `+`
+- Warning that points could not be plotted due to missing values
 - `data` and `aes` defined in `ggplot` call are inherited to all plot layers
 ]
 
 .pull-right[
 ```{r echo=FALSE, warning=TRUE}
-ggplot(data = msleep,
-       aes(x = brainwt, y = sleep_total)) +
-  geom_point()
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g)) +
+  geom_point() 
 ```
 ]
 
@@ -319,20 +267,21 @@ ggplot(data = msleep,
 .pull-left[
 
 ```{r eval=FALSE}
-ggplot(data = msleep,
-       aes(x = brainwt, 
-           y = sleep_total)) +
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g)) +
   geom_point()
 ```
 
-- New plot layers are added with `+`
-- Warning that 27 points can not be plotted due to missing values
+- New plot layers added with `+`
+- Warning that points could not be plotted due to missing values
 - `data` and `aes` defined in `ggplot` call are inherited to all plot layers
 - `data` and `aes` can be local to a layer:
 
 ```{r eval=FALSE}
-ggplot(msleep) +
-  geom_point(aes(brainwt, sleep_total))#<<
+ggplot(data = and_vertebrates,) +
+  geom_point(aes(x = length_1_mm, #<<
+                 y = weight_g)) #<<
 ```
 
 Here, it does not make a difference.
@@ -341,38 +290,156 @@ Here, it does not make a difference.
 
 .pull-right[
 ```{r echo=FALSE, warning=TRUE}
-ggplot(data = msleep,
-       aes(x = brainwt, y = sleep_total)) +
+ggplot(data = and_vertebrates) +
+  geom_point(aes(x = length_1_mm, y = weight_g))
+```
+]
+
+---
+# `aes(color)`: mapping color to a variable
+
+Looks like there are two groups of data: **Map color of points to a variable** by adding it to aesthetics:
+
+--
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + #<<
+  geom_point()
+```
+
+- Map the `species` variable to the color aesthetic of the plot
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + #<<
   geom_point()
 ```
 ]
 
+---
+# `aes(size)`: mapping size to a variable
+
+We can do the same with size:
+
+--
+
+.pull-left[
+
+```{r eval = FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           size = species)) + #<<
+  geom_point()
+```
+
+]
+.pull-right[
+```{r echo=FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           size = species)) + #<<
+  geom_point()
+```
+]
 
 ---
-# `scale_x_log10()`
+# `aes(shape)`: mapping shape to a variable
+
+We can do the same with shape:
+
+--
+
+.pull-left[
+
+```{r eval = FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           shape = species)) + #<<
+  geom_point()
+```
+
+]
+.pull-right[
+```{r echo=FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           shape = species)) + #<<
+  geom_point()
+```
+]
+
+---
+# Combine color, size and shape
+
+We can also combine these aesthetics and map different variables
+
+.pull-left[
+
+```{r eval = FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = unittype, #<<
+           shape = species, #<<
+           size = year)) + #<<
+  geom_point()
+```
+
+- This is a bit too much for this plot, but sometimes can be useful
+
+]
+.pull-right[
+```{r echo=FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = unittype, #<<
+           shape = species, #<<
+           size = year)) + #<<
+  geom_point()
+```
+]
+
+---
+# Changing  the scales of the aesthetics
 
 The scales onto which the aesthetic elements are mapped can be changed.
 
 .pull-left[
 
 ```{r eval=FALSE}
-ggplot(data = msleep,
-       aes(x = brainwt, 
-           y = sleep_total)) +
-  geom_point() +
-  scale_x_log10() #<<
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point()
 ```
 
-- Scales can be changed for all elements of `aes`
+- Exponential relationship?
+- How does it look like on the log scale?
 
 ]
 
 .pull-right[
 ```{r echo=FALSE}
-ggplot(data = msleep,
-       aes(x = brainwt, y = sleep_total)) +
-  geom_point()+
-  scale_x_log10()
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point()
 ```
 ]
 
@@ -384,11 +451,13 @@ The scales onto which the aesthetic elements are mapped can be changed.
 .pull-left[
 
 ```{r eval=FALSE}
-ggplot(data = msleep,
-       aes(x = brainwt, 
-           y = sleep_total)) +
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
   geom_point() +
-  scale_x_log10() #<<
+  scale_x_log10() + #<<
+  scale_y_log10() #<<
 ```
 
 - Scales can be changed for all elements of `aes`
@@ -396,16 +465,19 @@ ggplot(data = msleep,
 
 <b>scale\_.col1[aes-name]\_.col2[scale-type]</b>
 
-In this example we scale the <b>.col1[x]</b> aesthetic to <b>.col2[log10]</b>.
+In this example we scale the <b>.col1[x]</b> and the  <b>.col1[y]</b>  aesthetic to <b>.col2[log10]</b>.
 
 ]
 
 .pull-right[
 ```{r echo=FALSE}
-ggplot(data = msleep,
-       aes(x = brainwt, y = sleep_total)) +
-  geom_point()+
-  scale_x_log10()
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point() +
+  scale_x_log10() + #<<
+  scale_y_log10() #<<
 ```
 ]
 
@@ -418,28 +490,341 @@ Add a smoothing line that helps see patterns in the data
 
 .pull-left[
 ```{r eval =FALSE}
-ggplot(data = msleep,
-       aes(x = brainwt, 
-           y = sleep_total)) +
-  geom_point() +
-  geom_smooth(method = "lm") + #<<
-  scale_x_log10()
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm") +#<<
+  scale_x_log10() + 
+  scale_y_log10()
 ```
 
 - With `method = "lm"`, a linear regression line is added
-- The ribbon represents confidence interval around the regression
-  - Turn ribbon off with `se = FALSE` argument
+- All geoms are done separately for the species
+  - Color is defined globally
+- alpha makes the points transparent (0-1 with 0 being invisible)
 ]
 
 .pull-right[
 ```{r echo=FALSE}
-ggplot(data = msleep,
-       aes(x = brainwt, y = sleep_total)) +
-  geom_point()+
-  geom_smooth(method = "lm") +
-  scale_x_log10()
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm") + #<<
+  scale_x_log10() + 
+  scale_y_log10()
 ```  
 ]
+
+---
+# `geom_boxplot`
+
+Compare groups using a boxplot
+
+--
+
+.pull-left[
+```{r eval =FALSE}
+ggplot(and_vertebrates, 
+       aes(x = species, 
+           y = length_1_mm)) +
+  geom_boxplot() #<<
+```
+
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(and_vertebrates, 
+       aes(x = species, 
+           y = length_1_mm)) +
+  geom_boxplot() #<<
+```  
+]
+
+---
+# `geom_boxplot`
+
+Compare groups using a boxplot
+
+.pull-left[
+```{r eval =FALSE}
+ggplot(and_vertebrates, 
+       aes(x = species, 
+           y = length_1_mm)) +
+  geom_boxplot(notch = TRUE) #<<
+```
+
+- If notches don't overlap, the medians of the groups are likely different
+
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(and_vertebrates, 
+       aes(x = species, 
+           y = length_1_mm)) +
+  geom_boxplot(notch = TRUE) #<<
+```  
+]
+
+---
+# `geom_boxplot`
+
+Map the `unittype` to the **color** aesthetic of the box
+
+--
+
+.pull-left[
+```{r eval =FALSE}
+ggplot(and_vertebrates, 
+       aes(x = species, 
+           y = length_1_mm,
+           color = unittype)) + #<<
+  geom_boxplot() 
+```
+
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(and_vertebrates, 
+       aes(x = species, 
+           y = length_1_mm,
+           color = unittype)) + #<<
+  geom_boxplot() 
+```  
+]
+
+---
+# `geom_boxplot`
+
+Map the `unittype` to the **fill** aesthetic of the box
+
+--
+
+.pull-left[
+```{r eval =FALSE}
+ggplot(and_vertebrates, 
+       aes(x = species, 
+           y = length_1_mm,
+           fill = unittype)) + #<<
+  geom_boxplot(notch = TRUE) 
+```
+
+
+
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(and_vertebrates, 
+       aes(x = species, 
+           y = length_1_mm,
+           fill = unittype)) + #<<
+  geom_boxplot(notch = TRUE) 
+```  
+]
+
+---
+# `geom_histogram`
+
+.pull-left[
+```{r eval =FALSE}
+ggplot(and_vertebrates, 
+       aes(x = length_1_mm, 
+           fill = section)) +
+  geom_histogram() #<<
+```
+
+- Careful: By default the histogram is stacked for the different groups!
+
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(and_vertebrates, 
+       aes(x = length_1_mm, 
+           fill = section)) +
+  geom_histogram() #<<
+```  
+]
+
+---
+# `geom_histogram`
+
+.pull-left[
+```{r eval =FALSE}
+ggplot(and_vertebrates, 
+       aes(x = length_1_mm, 
+           fill = section)) +
+  geom_histogram(
+    position = "identity", #<<
+    alpha = 0.5) #<<
+```
+
+- Change the position of the histogram to `"identity"`, if you
+don't want it stacked
+- `alpha` makes sure that you see overlapping areas
+
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(and_vertebrates, 
+       aes(x = length_1_mm, 
+           fill = section)) +
+  geom_histogram(
+    position = "identity", #<<
+    alpha = 0.5) #<<
+```  
+]
+
+---
+# `geom_tile`
+
+You can create a simple heatmap with `geom_tile`
+
+--
+
+.pull-left[
+```{r eval =FALSE}
+ggplot(and_vertebrates, 
+       aes(x = section,
+           y = species,
+           fill = weight_g)) +
+  geom_tile() #<<
+```
+
+- Here we would have to chose a different color scheme to see differences
+
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(and_vertebrates, 
+       aes(x = section,
+           y = species,
+           fill = weight_g)) +
+  geom_tile() #<<
+```  
+]
+
+---
+# Small multiples with `facet_wrap`
+
+Split your plots along one variable with `facet_wrap`
+
+--
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point() +
+  facet_wrap(~section) #<<
+```
+
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point() +
+  facet_wrap(~section)
+```
+]
+
+---
+# Small multiples with `facet_wrap`
+
+Split your plots along one variable with `facet_wrap`
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point() +
+  facet_wrap(~section, 
+             nrow = 2,#<<
+             scales = "free")#<<
+```
+
+- Specify number of rows and columns with `nrow`/`ncol`
+- Set separate scales for x and y with `scales`
+  - `"free"`: x and y axis are free
+  - `"free_y"`: only y-axis is free
+  - `"free_x"`: only x-axis is free
+
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point() +
+  facet_wrap(~section, 
+             scales = "free",#<<
+             nrow = 2) #<<
+```
+]
+
+---
+# Small multiples with `facet_grid`
+
+Split your plots along two variables with `facet_grid`
+
+--
+
+.pull-left[
+
+```{r eval=FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = unittype)) + 
+  geom_point() +
+  facet_grid(section ~ species) #<<
+```
+
+- `facet_grid(rows ~ columns)`
+
+]
+
+.pull-right[
+```{r echo=FALSE}
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = unittype)) + 
+  geom_point() +
+  facet_grid(section ~ species) #<<
+```
+]
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 1: Exploratory data analysis with the penguin data set (45 min)
+
+#### Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/02_tasks_controller.html#ggplot2)
+
 
 ---
 # Change appearance of points
@@ -473,120 +858,7 @@ ggplot(data = msleep,
 ```
 ]
 
----
-# `aes(color)`: mapping color to a variable
 
-Instead of changing color of all points, **map color to a variable** by adding it to aesthetics:
-
---
-
-.pull-left[
-
-```{r eval=FALSE}
-g <- ggplot(
-  data = msleep,
-  aes(
-    x = brainwt,
-    y = sleep_total,
-    color = vore #<<
-  )
-) + 
-  geom_point(size = 4) +
-  scale_x_log10()
-g
-```
-
-- Map the `vore` variable to the color aesthetic of the plot
-- Plots can be saved in variables
-]
-
-.pull-right[
-```{r echo=FALSE}
-g<- ggplot(data = msleep,
-       aes(x = brainwt, y = sleep_total,color=vore)) +
-  geom_point(size = 4)+
-  scale_x_log10()
-g
-```
-]
-
----
-# `aes(size)`: mapping size to a variable
-
-We can do the same with size:
-
-.pull-left[
-
-```{r eval = FALSE}
-ggplot(
-  data = msleep,
-  aes(
-    x = brainwt,
-    y = sleep_total,
-    color = vore,
-    size = bodywt #<<
-  )
-) + 
-  geom_point() +
-  scale_x_log10()
-
-```
-
-]
-.pull-right[
-```{r echo=FALSE}
-ggplot(
-  data = msleep,
-  aes(
-    x = brainwt,
-    y = sleep_total,
-    color = vore,
-    size = bodywt
-  )
-) + 
-  geom_point() +
-  scale_x_log10()
-```
-]
-
----
-# `aes(shape)`: mapping shape to a variable
-
-We can do the same with shape:
-
-.pull-left[
-
-```{r eval = FALSE}
-ggplot(
-  data = msleep,
-  aes(
-    x = brainwt,
-    y = sleep_total,
-    color = vore,
-    shape = conservation #<<
-  )
-) + 
-  geom_point() +
-  scale_x_log10()
-
-```
-
-]
-.pull-right[
-```{r echo=FALSE}
-ggplot(
-  data = msleep,
-  aes(
-    x = brainwt,
-    y = sleep_total,
-    color = vore,
-    shape = conservation
-  )
-) + 
-  geom_point() +
-  scale_x_log10()
-```
-]
 
 ---
 
@@ -599,8 +871,8 @@ Back to our plot `g` with color as additional aesthetic. We can change the color
 .pull-left[
 
 ```{r eval=FALSE}
-g + 
-  scale_color_viridis_d(option = "inferno") #<<
+# g + 
+#   scale_color_viridis_d(option = "inferno") #<<
 ```
 
 - The viridis color palette is designed for viewers with common forms of color blindness
@@ -611,7 +883,7 @@ g +
 
 .pull-right[
 ```{r echo=FALSE}
-g + scale_color_viridis_d(option = "inferno")
+# g + scale_color_viridis_d(option = "inferno")
 ```
 ]
 
@@ -625,10 +897,10 @@ The `scale_color_viridis_d` function by default does not map color to missing da
 .pull-left[
 
 ```{r eval=FALSE}
-g + 
-  scale_color_viridis_d(
-    option = "inferno",
-    na.value = "grey") #<<
+# g + 
+#   scale_color_viridis_d(
+#     option = "inferno",
+#     na.value = "grey") #<<
 ```
 
 - Whether or not you have to do this, depends on the default of the `na.value` argument of the color scale that you use
@@ -638,7 +910,7 @@ g +
 
 .pull-right[
 ```{r echo=FALSE, out.height = 430}
-g + scale_color_viridis_d(option = "inferno", na.value = "grey")
+# g + scale_color_viridis_d(option = "inferno", na.value = "grey")
 ```
 ]
 
@@ -650,14 +922,14 @@ We can also manually specify colors:
 .pull-left[
 
 ```{r eval=FALSE}
-g <- g + 
-  scale_color_manual( #<<
-    values = c("dodgerblue4", #<<
-               "darkolivegreen4", #<<
-               "darkorchid3", #<<
-               "orange", #<<
-               "grey")) #<<
-g
+# g <- g + 
+#   scale_color_manual( #<<
+#     values = c("dodgerblue4", #<<
+#                "darkolivegreen4", #<<
+#                "darkorchid3", #<<
+#                "orange", #<<
+#                "grey")) #<<
+# g
 ```
 
 - Length of color vector has to match number of levels in your aesthetic
@@ -670,11 +942,11 @@ g
 .pull-right[
 
 ```{r echo=FALSE}
-g <- g + scale_color_manual(values = c("dodgerblue4",
-                                   "darkolivegreen4",
-                                   "darkorchid3",
-                                   "orange", "grey"))
-g
+# g <- g + scale_color_manual(values = c("dodgerblue4",
+#                                    "darkolivegreen4",
+#                                    "darkorchid3",
+#                                    "orange", "grey"))
+# g
 ```
 ]
 
@@ -729,8 +1001,8 @@ g +
 
 .pull-right[
 ```{r, echo=FALSE}
-g +
-  facet_wrap(~conservation)
+# g +
+#   facet_wrap(~conservation)
 
 ```
 ]
@@ -756,14 +1028,14 @@ g
 
 .pull-right[
 ```{r echo=FALSE}
-g <- g +
-  labs(x = "brain weight [kg]",
-       y="total sleep [h/day]", 
-       color = "Diet", #<<
-       title = "Brain weight and sleep time in mammals",
-       subtitle = "Larger brains seem to sleep less",
-       caption = "Data from the `ggplot2` package")
-g
+# g <- g +
+#   labs(x = "brain weight [kg]",
+#        y="total sleep [h/day]", 
+#        color = "Diet", #<<
+#        title = "Brain weight and sleep time in mammals",
+#        subtitle = "Larger brains seem to sleep less",
+#        caption = "Data from the `ggplot2` package")
+# g
 ```
 
 ]
@@ -782,8 +1054,8 @@ g +
 ```
 
 ```{r echo=FALSE, out.height=370}
-g + 
-  theme_classic(base_size = 16)#<<
+# g + 
+#   theme_classic(base_size = 16)#<<
 ```
 
 ]
@@ -795,8 +1067,8 @@ g +
 ```
 
 ```{r echo=FALSE, out.height=370}
-g + 
-  theme_linedraw(base_size = 16)#<<
+# g + 
+#   theme_linedraw(base_size = 16)#<<
 ```
 
 ]
@@ -813,8 +1085,8 @@ g +
 ```
 
 ```{r echo=FALSE, out.height=370}
-g + 
-  theme_dark(base_size = 16)
+# g + 
+#   theme_dark(base_size = 16)
 ```
 
 ]
@@ -826,8 +1098,8 @@ g +
 ```
 
 ```{r echo=FALSE, out.height=370}
-g + 
-  theme_minimal(base_size = 16)
+# g + 
+#   theme_minimal(base_size = 16)
 ```
 
 ]
@@ -860,16 +1132,16 @@ To edit a theme, just add another `theme()` layer to your plot.
 
 .pull-left[
 ```{r eval=FALSE}
-g + 
-  theme_minimal() + 
-  theme(#<<
-    axis.text = element_text(face = "bold"),#<<
-    axis.title = element_text(face = "italic"),#<<
-    legend.position = "bottom", #<<
-    plot.background = element_rect(#<<
-      fill = "lightblue",#<<
-      color = "yellow") #<<
-  )#<<
+# g + 
+#   theme_minimal() + 
+#   theme(#<<
+#     axis.text = element_text(face = "bold"),#<<
+#     axis.title = element_text(face = "italic"),#<<
+#     legend.position = "bottom", #<<
+#     plot.background = element_rect(#<<
+#       fill = "lightblue",#<<
+#       color = "yellow") #<<
+#   )#<<
 ```
 
 - The basic functioning is:
@@ -885,16 +1157,16 @@ theme(
 ]
 .pull-right[
 ```{r echo=FALSE}
-g + 
-  theme_minimal(base_size=16) +
-  theme(
-    axis.text = element_text(face = "bold"),#<<
-    axis.title = element_text(face = "italic"),#<<
-    legend.position = "bottom",
-    plot.background = element_rect(
-      fill = "lightblue",
-      color = "yellow")
-  )
+# g + 
+#   theme_minimal(base_size=16) +
+#   theme(
+#     axis.text = element_text(face = "bold"),#<<
+#     axis.title = element_text(face = "italic"),#<<
+#     legend.position = "bottom",
+#     plot.background = element_rect(
+#       fill = "lightblue",
+#       color = "yellow")
+#   )
 ```
 ]
 

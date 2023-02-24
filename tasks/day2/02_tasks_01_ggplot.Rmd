@@ -17,16 +17,25 @@ The data is available from the [palmerpenguins package](https://allisonhorst.git
 - Install the package with `install.packages("palmerpenguins")`
 - Load the package at the beginning of your script with `library(palmerpenguins)`
 
-After you have done that, take a moment to get familiar with the data set and its variables. The data set is called `penguins`:
+The data set is called `penguins`:
 
 - The data set is available after you loaded the package
 - Just type `penguins` in the console and you should see the `penguins` tibble
+- Find a description of the variables in the help page `?penguins`
+
+Take a moment to get familiar with the data set and its variables.
 
 ### 1.3 Exploratory plotting
 
-Explore the data set and it's variables with ggplot. Below, you find some ideas and tasks for plots. I suggest you start with one of them and if you want you can continue. But if you have your own ideas for interesting plots with the penguin data set, feel free to do them instead of continuing with the tasks. 
+Explore the data set and it's variables with ggplot. 
+Below, you find some suggestions for plots. 
+You can start with the plot type your are most interested in and then continue from there.
+You don't have to finish all the plots
+If you have your own ideas for interesting plots with the penguin data set, 
+feel free to do them instead of the tasks. 
 
-In the exploratory section, don't care too much about the beauty of your plots and just use the default theme and colors. This is about exploring the data and testing different visualization options in ggplot. 
+In the exploratory section, don't worry about the beauty of your plots. 
+This task is about exploring the data and testing different visualization options in ggplot. 
 
 #### 1.3.1 Relationship between bill length and bill depth (scatterplot)
 
@@ -43,8 +52,9 @@ What is the relationship between bill length and bill depth?
 Is there a difference in flipper length between the species?
 
 - Create a boxplot of the flipper length (y-axis) for the different species (x-axis)
-- Try adding notches to the boxplots by setting `notch = TRUE` in the boxplot layer
-- **Extra:** Add a layer with `geom_point()`. Try setting `position = position_jitter()` as argument in the point layer. What does it do?
+- Try adding notches to the boxplots
+- **Extra:** Add a layer with `geom_point()`. 
+Try setting `position = position_jitter()` as argument in the point layer. What does it do?
 
 #### 1.3.3 Differences between body mass of male and female penguins (boxplot)
 
@@ -56,6 +66,21 @@ Are male penguins heavier than female penguins? And is this different between th
   - Species as fill aesthetic
   - Species as facet using `facet_wrap`
 - **Extra:** What happens if you use `geom_violin` instead of `geom_boxplot`? Can you combine both geoms in one plot?
+
+#### 1.3.4 Distribution of flipper length between species (histogram)
+
+Make a histogram of the the flipper length separated by species.
+
+Try different methods of separating the species (color or facet).
+
+Compare stacked and overlapping histograms.
+
+#### 1.3.5 Penguin flipper length by species and sex (heatmap)
+
+Create a heat map that shows:
+
+- The categories sex and species on x- and y-axis
+- The flipper length as color
 
 ### 1.4 Beautify the plots
 

@@ -83,6 +83,37 @@ ggplot(penguins, aes(x = sex, y = body_mass_g)) +
   geom_boxplot(width = 0.4) +
   facet_wrap(~species)
 
+## 1.3.4 Distribution of flipper length between species (histogram)
+
+# Overlapping
+ggplot(penguins, aes(
+  x = flipper_length_mm,
+  fill = species
+)) +
+  geom_histogram(alpha = 0.5, position = "identity")
+
+# Stacked
+ggplot(penguins, aes(
+  x = flipper_length_mm,
+  fill = species
+)) +
+  geom_histogram()
+
+ggplot(penguins, aes(
+  x = flipper_length_mm,
+  fill = species
+)) +
+  geom_histogram() +
+  facet_wrap(~species, scales = "free_x", ncol = 1)
+
+#### 1.3.5 Penguin flipper length by species and sex (heatmap)
+
+ggplot(penguins, aes(
+  x = species,
+  y = sex,
+  fill = flipper_length_mm
+)) +
+  geom_tile()
 
 # 1.4 Beautify the plots --------------------------------------------------
 
@@ -164,7 +195,7 @@ heatmap <- ggplot(penguins, aes(x = species, y = sex, fill = flipper_length_mm))
   scale_fill_gradient(low = "white", high = "steelblue")
 
 # If you want to have an interactive plot
-#install.packages("plotly")
+# install.packages("plotly")
 plotly::ggplotly(heatmap)
 
 # 2 dplyr -------------------------------------------------------------------
@@ -185,9 +216,11 @@ filter(penguins, bill_length_mm < 45 & bill_length_mm > 40)
 filter(penguins, !is.na(sex))
 
 # which are of the species Adelie or Gentoo and live either on Dream or Torgersen
-filter(penguins,
-       species %in% c("Adelie", "Gentoo") &
-  island %in% c("Dream", "Torgersen"))
+filter(
+  penguins,
+  species %in% c("Adelie", "Gentoo") &
+    island %in% c("Dream", "Torgersen")
+)
 
 filter(penguins, (species == "Adelie" | species == "Gentoo") &
   (island == "Dream" | island == "Torgersen"))
@@ -248,7 +281,7 @@ select(penguins, contains("_mm"))
 
 # with the ratio of bill length to bill depth
 mutate(penguins,
-       ratio = bill_length_mm / bill_depth_mm
+  ratio = bill_length_mm / bill_depth_mm
 )
 
 # abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C)
@@ -318,7 +351,8 @@ another_tibble <- tibble(
 )
 
 mutate(penguins,
-       col_from_other_tibble = another_tibble$some_var)
+  col_from_other_tibble = another_tibble$some_var
+)
 
 
 # 3. Tidyr ----------------------------------------------------------------
@@ -329,9 +363,10 @@ mutate(penguins,
 relig_income
 
 pivot_longer(relig_income,
-             cols = !religion, #2:11, `<$10k`:`>150k`
-             names_to = "income",
-             values_to = "count")
+  cols = !religion, # 2:11, `<$10k`:`>150k`
+  names_to = "income",
+  values_to = "count"
+)
 
 
 # 2. billboard
@@ -339,24 +374,26 @@ pivot_longer(relig_income,
 billboard
 
 pivot_longer(billboard,
-             cols = wk1:wk76,
-             names_to = "week",
-             values_to = "rank")
+  cols = wk1:wk76,
+  names_to = "week",
+  values_to = "rank"
+)
 
 #### Extras
 
 charts <- pivot_longer(billboard,
-             cols = wk1:wk76,
-             names_to = "week",
-             names_prefix = "wk",
-             values_to = "rank",
-             values_drop_na = TRUE)
+  cols = wk1:wk76,
+  names_to = "week",
+  names_prefix = "wk",
+  values_to = "rank",
+  values_drop_na = TRUE
+)
 
 separate(
   charts,
   date.entered, # column to separate
   sep = "-",
-  into = c("year","month", "day")
+  into = c("year", "month", "day")
 )
 
 # 3. fish_encounters
@@ -366,14 +403,16 @@ fish_encounters
 summary(fish_encounters)
 
 pivot_wider(fish_encounters,
-            names_from = station,
-            values_from = seen)
+  names_from = station,
+  values_from = seen
+)
 #### Extra
 
 pivot_wider(fish_encounters,
-            names_from = station,
-            values_from = seen,
-            values_fill = 0)
+  names_from = station,
+  values_from = seen,
+  values_fill = 0
+)
 
 # Transpose a tibble with a combination of pivot_longer and pivot_wider
 

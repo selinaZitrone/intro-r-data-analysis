@@ -4,31 +4,163 @@
 
 # Data visualization with ggplot2 -----------------------------------------
 library(ggplot2)
+library(lterdatasampler)
+
+# Remove one species with only few datapoints
+and_vertebrates <- and_vertebrates %>%
+  select(year, section, unittype, species, length_1_mm, weight_g) %>%
+  filter(species != "Cascade torrent salamander")
 
 # data
-str(msleep)
-?msleep
+str(and_vertebrates)
+?and_vertebrates
+
+
+# Exploratory -------------------------------------------------------------
+
+# Scatter plot ------------------------------------------------------------
 
 # basic scatter plot
-ggplot(data = msleep,
-       aes(x = brainwt,
-           y = sleep_total)) +
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm,
+           y = weight_g)) +
   geom_point()
 
-# add log 10 x-axis
-ggplot(data = msleep,
-       aes(x = brainwt,
-           y = sleep_total)) +
+# add color aesthetic
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm,
+           y = weight_g,
+           color = species)) +
+  geom_point()
+
+# add size aesthetic
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm,
+           y = weight_g,
+           size = species)) +
+  geom_point()
+
+# add shape aesthetic
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm,
+           y = weight_g,
+           shape = species)) +
+  geom_point()
+
+# combine color, size and shape aesthetic
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm,
+           y = weight_g,
+           color = unittype,
+           shape = species,
+           size = year)) +
+  geom_point()
+
+# add log 10 x- and y-axis
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm,
+           y = weight_g,
+           color = species)) +
   geom_point() +
-  scale_x_log10()
+  scale_x_log10() +
+  scale_y_log10()
 
 # add linear regression line
-ggplot(data = msleep,
-       aes(x = brainwt,
-           y = sleep_total)) +
-  geom_point() +
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm,
+           y = weight_g,
+           color = species)) +
+  geom_point(alpha = 0.3) +
   geom_smooth(method = "lm") +
-  scale_x_log10()
+  scale_x_log10() +
+  scale_y_log10()
+
+
+# Boxplot -----------------------------------------------------------------
+
+# basic boxplot
+ggplot(and_vertebrates,
+       aes(x = species,
+           y = length_1_mm)) +
+  geom_boxplot()
+
+# boxplot with notches
+ggplot(and_vertebrates,
+       aes(x = species,
+           y = length_1_mm)) +
+  geom_boxplot(notch = TRUE)
+
+# color aesthetic
+ggplot(and_vertebrates,
+       aes(x = species,
+           y = length_1_mm,
+           color = unittype)) +
+  geom_boxplot()
+
+# fill aesthetic
+ggplot(and_vertebrates,
+       aes(x = species,
+           y = length_1_mm,
+           fill = unittype)) +
+  geom_boxplot(notch = TRUE)
+
+
+# Histograms --------------------------------------------------------------
+
+# stacked
+ggplot(and_vertebrates,
+       aes(x = length_1_mm,
+           fill = section)) +
+  geom_histogram()
+
+# Overlapping
+ggplot(and_vertebrates,
+       aes(x = length_1_mm,
+           fill = section)) +
+  geom_histogram(
+    position = "identity",
+    alpha = 0.5)
+
+
+# Heat map ----------------------------------------------------------------
+ggplot(and_vertebrates,
+       aes(x = section,
+           y = species,
+           fill = weight_g)) +
+  geom_tile()
+
+
+# Small multiples ---------------------------------------------------------
+
+# facet wrap basic
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm,
+           y = weight_g,
+           color = species)) +
+  geom_point() +
+  facet_wrap(~section)
+
+# facet wrap with options
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm,
+           y = weight_g,
+           color = species)) +
+  geom_point() +
+  facet_wrap(~section,
+             nrow = 2,
+             scales = "free")
+
+# facet grid
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm,
+           y = weight_g,
+           color = unittype)) +
+  geom_point() +
+  facet_grid(section ~ species)
+
+
+# Data master piece -------------------------------------------------------
+
 
 # Change color, shape and size of ALL points
 ggplot(data = msleep,
