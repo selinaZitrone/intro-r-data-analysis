@@ -84,7 +84,10 @@ Create a heat map that shows:
 
 ### 1.4 Beautify the plots
 
-Also here: Chose the tasks that you like most.
+First, choose one of the tasks 1.4.1 or 1.4.2, then do 1.4.3.
+If you still have time, you can come back to the task you didn't do.
+
+But also here, if you have other ideas, feel free to deviate from the tasks.
 
 #### 1.4.1 Beautify the plots from 1.3
 
@@ -99,21 +102,21 @@ Here's a list of ideas:
 - Change the color/fill scale of the plot
   - Use `scale_color_manual` or `scale_fill_manual`
   - Try `scale_color_viridis_d()` or `scale_fill_viridis_d()` with different options
-  - Try a color scale from an additional package, e.g. `ggsci::scale_color_uchicago()` or  `ggsci::scale_fill_uchicago()`
-    - First you have to install the `ggsci` package 
+  - Try a color scale from the `paletteer` package
+    - First you have to install the package, then have a look at the [available palettes](https://r-charts.com/color-palettes)
 - Change the labels of the x- and y-axis and add a title to the plot
-- ...
+- Make the points transparent, give them a different shape, ...
 
 #### 1.4.2 Can you reproduce this plot?
 
-Take a look at the plot, we discussed during the presentation:
+Take a look at this plot:
 
 ```{r fig.cap="Visualization from the [palmerpenguins package](https://allisonhorst.github.io/palmerpenguins/)"}
 knitr::include_graphics(here::here("slides/img/figs-penguin/README-flipper-bill-1.png"))
 ```
 
-
-Can you reproduce this plot? It is similar to the one from Task 1.3.1.
+It is similar to the one from Task 1.3.1. but more beautiful.
+Can you reproduce this plot?
 
 The colors that are used are:
 
@@ -125,6 +128,10 @@ penguin_cols <- c("darkorange", "purple", "cyan4")
 
 Save one of the plots you produced in a variable and then use `ggsave` to save the plot on your machine.
 Save the plot in a dedicated plot directory in your RStudio project. 
+
+Note: Make sure the path where you save the image exists. If you e.g. want to save in
+`img/`, then you first have to create the `img` folder in your project directory.
+For this you can use the Files pane of RStudio.
 
 ### References
 

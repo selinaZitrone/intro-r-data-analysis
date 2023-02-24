@@ -161,156 +161,106 @@ ggplot(data = and_vertebrates,
 
 # Data master piece -------------------------------------------------------
 
-
 # Change color, shape and size of ALL points
-ggplot(data = msleep,
-       aes(x = brainwt,
-           y = sleep_total)) +
-  geom_point(size = 4,
-             shape = 17,
-             color = "blue") +
-  scale_x_log10()
+ggplot(and_vertebrates, aes(
+  x = length_1_mm,
+  y = weight_g
+)) +
+  geom_point(
+    size = 4, #<<
+    shape = 17, #<<
+    color = "blue", #<<
+    alpha = 0.5 #<<
+  )
 
 # map color as an aesthetic
-g <- ggplot(
-  data = msleep,
-  aes(
-    x = brainwt,
-    y = sleep_total,
-    color = vore
-  )
-) +
-  geom_point(size = 4) +
-  scale_x_log10()
-g
+g <- ggplot(and_vertebrates, aes(
+  x = length_1_mm,
+  y = weight_g,
+  color = species
+)) +
+  geom_point()
 
 # map size as an aesthetic
-ggplot(
-  data = msleep,
-  aes(
-    x = brainwt,
-    y = sleep_total,
-    color = vore,
-    size = bodywt
-  )
-) +
-  geom_point() +
-  scale_x_log10()
-
-# map shape as an aesthetic
-ggplot(
-  data = msleep,
-  aes(
-    x = brainwt,
-    y = sleep_total,
-    color = vore,
-    shape = conservation
-  )
-) +
-  geom_point() +
-  scale_x_log10()
-
-
-# Changing colors ---------------------------------------------------------
-
 g +
-  scale_color_viridis_d(option = "inferno", na.value = "grey")
+  scale_color_viridis_d()
+g +
+  scale_color_manual(values = c(
+    "darkolivegreen4",
+                     "darkorchid3"
+  ))
 
+library(paletteer)
 g <- g +
-  scale_color_manual(
-    values = c("dodgerblue4",
-               "darkolivegreen4",
-               "darkorchid3",
-               "orange",
-               "grey"))
+  scale_color_paletteer_d(
+    palette = "ggsci::default_uchicago"
+  )
 g
 
-g + ggsci::scale_color_npg()
-g + ggsci::scale_color_rickandmorty()
-g + ggthemes::scale_color_excel_new()
-g + ggthemes::scale_color_economist()
+# Fill versus color
+ggplot(
+  and_vertebrates,
+  aes(
+    x = section,
+    y = length_1_mm,
+    color = unittype )) +#<<
+  geom_boxplot() +
+  paletteer::scale_color_paletteer_d( #<<
+    palette = "ggsci::default_uchicago"
+  )
+
+ggplot(
+  and_vertebrates,
+  aes(
+    x = section,
+    y = length_1_mm,
+    fill = unittype )) + #<<
+  geom_boxplot() +
+  paletteer::scale_fill_paletteer_d( #<<
+    palette = "ggsci::default_uchicago"
+  )
 
 
-# facets ------------------------------------------------------------------
-
-g + facet_wrap(~conservation)
-
-
-# labs --------------------------------------------------------------------
-
+# Labels ------------------------------------------------------------------
 g <- g +
   labs(
-    x = "log brain weight [kg]",#<<
-    y = "total sleep [h/day]", #<<
-    color = "Diet", #<<
-    title = "Brain weight and sleep time in mammals",#<<
-    subtitle = "Larger brains seem to sleep less",#<<
-    caption = "Data from the ggplot2 package")#<<
+    x = "Length [mm]", #<<
+    y = "Weight [g]", #<<
+    color = "Species", #<<
+    title = "Length-Weight relationship", #<<
+    subtitle = "There seems to be an exponential relationship", #<<
+    caption = "Data from the `lterdatasampler` package") #<<
 g
 
 
-# themes ------------------------------------------------------------------
-
-g + theme_classic()
-g + theme_linedraw()
-g + theme_dark()
-g + theme_minimal()
-
+# Themes ------------------------------------------------------------------
+g +
+  theme_classic()
+g +
+  theme_bw()
+g +
+  theme_minimal()
 g +
   theme_minimal() +
   theme(
-    axis.text = element_text(face = "bold"),
-    axis.title = element_text(face = "italic"),
     legend.position = "bottom",
+    axis.text = element_text(face = "bold"),
     plot.background = element_rect(
-      fill = "lightblue",
-      color = "yellow")
+      fill = "lightgrey",
+      color = "darkgrey"
+    )
   )
 
 # set a global theme for all ggplots in the session
 theme_set(theme_minimal(base_size = 16))
 
-
-# boxplots ----------------------------------------------------------------
-
-ggplot(msleep, aes(x = vore, y = bodywt)) +
-  geom_boxplot() +
-  scale_y_log10()
-
-ggplot(msleep, aes(x = vore, y = bodywt)) +
-  geom_boxplot(
-    aes(fill = vore)
-  ) +
-  scale_y_log10() +
-  ggthemes::scale_fill_tableau(
-    na.value = "gray",
-    guide = "none")
-
-ggplot(msleep, aes(x = vore, y = bodywt)) +
-  geom_boxplot(
-    aes(color = vore)
-  ) +
-  scale_y_log10() +
-  ggthemes::scale_color_tableau(
-    na.value = "gray",
-    guide = "none")
-
-# Histogram ---------------------------------------------------------------
-
-ggplot(msleep, aes(x = sleep_total)) +
-  geom_histogram() + #<<
-  labs(
-    x = "Total sleep time [h]",
-    y = "Frequency"
-  )
-
-
+# Save plot ---------------------------------------------------------------
 # saving plots ------------------------------------------------------------
 # save plot g in img as my_plot.pdf
-#ggsave(filename = "./img/my_plot.pdf", plot = g)
+#ggsave(filename = "img/my_plot.pdf", plot = g)
 # save plot g in img as my_plot.png
-#ggsave(filename = "./img/my_plot.png", plot = g)
-# ggsave(filename = "./img/my_plot.png",
+#ggsave(filename = "img/my_plot.png", plot = g)
+# ggsave(filename = "img/my_plot.png",
 #        plot = g,
 #        width = 16,
 #        heigth = 9,

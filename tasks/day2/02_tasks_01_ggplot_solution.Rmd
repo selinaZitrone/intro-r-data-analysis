@@ -224,7 +224,7 @@ ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
   geom_boxplot(width = 0.3) +
   geom_point(
     alpha = 0.5,
-    position = position_jitter(width = 0.2, seed = 123)
+    position = position_jitter(width = 0.1, seed = 123)
   ) +
   ggsci::scale_color_uchicago() +
   labs(x = "Species", y = "Flipper length (mm)") +
