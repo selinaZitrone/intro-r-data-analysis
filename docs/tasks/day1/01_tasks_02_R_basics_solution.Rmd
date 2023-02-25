@@ -22,10 +22,12 @@ bodywt_kg <- c(
   0.3, 87000, 0.1, 192
 )
 
-brainwt_g <- c(
-  8.1, 423, 119.5, 115, 5.5, 50, 4603, 419, 655, 115, 25.6,
-  680, 406, 1320, 5712, 70, 179, 56, 1, 0.4, 12.1, 175,
-  157, 440, 1.9, 154.5, 3, 180
+brainwt_kg <- c(
+  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, 
+  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, 
+  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
+  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,
+  0.0019, 0.1545, 0.003, 0.18
 )
 ```
 
@@ -41,14 +43,6 @@ species %in% animals_to_check
 animals_to_check %in% species
 ```
 
-
-- Convert brain weight from g to kg:
-
-Note: dividing a vector of length n by a vector of length 1 (i.e. a single number), the result is a vector of length n again.
-
-```{r echo=TRUE}
-brainwt_kg <- brainwt_g / 1000
-```
 
 - Calculate mean and standard deviation of brain weight:
 
@@ -107,24 +101,24 @@ brain_body_ratio <- round(brain_body_ratio, digits = 4)
 species[brain_body_ratio == min(brain_body_ratio)]
 ```
 
-The `r species[brain_body_ratio == min(brain_body_ratio)]` has a really small brain with a weight of just `r brainwt_g[species == species[brain_body_ratio == min(brain_body_ratio)]]` g at a body weight of `r bodywt_kg[species == species[brain_body_ratio == min(brain_body_ratio)]]` kg!
+The `r species[brain_body_ratio == min(brain_body_ratio)]` has a really small brain with a weight of just `r brainwt_kg[species == species[brain_body_ratio == min(brain_body_ratio)]]` kg at a body weight of `r bodywt_kg[species == species[brain_body_ratio == min(brain_body_ratio)]]` kg!
 
 - Add elements to the vector
 
 ```{r echo=TRUE}
 species_new <- c("Eagle", "Snail", "Lion")
-brainwt_g_new <- c(40, NA, 500)
+brainwt_kg_new <- c(0.0004, NA, 0.5)
 bodywt_kg_new <- c(18, 0.01, 550)
 
 species <- c(species, species_new)
-brainwt_g <- c(brainwt_g, brainwt_g_new)
+brainwt_kg <- c(brainwt_kg, brainwt_kg_new)
 bodywt_kg <- c(bodywt_kg, bodywt_kg_new)
 ```
 
 - What is the mean brain weight now?
 
 ```{r echo=TRUE}
-mean(brainwt_g)
+mean(brainwt_kg)
 # na.rm = TRUE removes missing values before calculating the mean
-mean(brainwt_g, na.rm = TRUE)
+mean(brainwt_kg, na.rm = TRUE)
 ```

@@ -785,6 +785,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -1857,15 +1858,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
-          var fn = $(this).children()[0]
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
           $(this).html(fn.shadowRoot.querySelector("sup"))
           $(this).id = fn.id
           fn.remove()
         }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -2374,7 +2381,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2413,17 +2420,26 @@ Slides
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
+<span class="nav-dropdown-header">Day 1</span>
 <a href="slides/01_01_RStudio.html">01 - Introduction RStudio</a>
 <a href="slides/01_02_Intro_R.html">01 - Introduction R</a>
 <a href="slides/01_03_Functions.html">01 - Functions</a>
 <a href="slides/01_04_tibbles_short.html">01 - Data &amp; Tibbles</a>
-<a href="slides/01_05_readr.html">01 - Tidyverse and Readr</a>
-<a href="slides/02_01_tidyverse_ggplot.html">02 - Ggplot2</a>
-<a href="slides/02_02_dplyr.html">02 - Dplyr</a>
-<a href="slides/02_03_tidyr.html">02 - Tidyr</a>
+<a href="slides/01_05_readr.html">01 - Tidyverse and readr</a>
+<hr/>
+<span class="nav-dropdown-header">Day 2</span>
+<a href="slides/02_01_tidyverse_ggplot.html">02 - ggplot2</a>
+<a href="slides/02_02_dplyr.html">02 - dplyr</a>
+<hr/>
+<span class="nav-dropdown-header">Day 3</span>
+<a href="slides/02_03_tidyr.html">03 - tidyr</a>
 <a href="slides/03_01_tests_short.html">03 - Statistical tests</a>
-<a href="slides/03_02_linear_models.html">03 - Linear models</a>
+<hr/>
+<span class="nav-dropdown-header">Day 4</span>
 <a href="slides/04_01_bring_your_own_data.html">04 - Bring your own data</a>
+<hr/>
+<span class="nav-dropdown-header">Extras</span>
+<a href="slides/03_02_linear_models.html">Linear models</a>
 <a href="slides/01_06_common_errors.html">Common R errors</a>
 </div>
 </div>
@@ -2435,8 +2451,11 @@ Tasks
 </button>
 <div class="nav-dropdown-content">
 <a href="01_tasks_controller.html">Day 1: Intro to R</a>
-<a href="02_tasks_controller.html">Day 2: Tidyverse</a>
-<a href="03_tasks_controller.html">Day 3: Statistics</a>
+<a href="02_tasks_controller.html">Day 2: ggplot and dplyr</a>
+<a href="03_tasks_controller.html">Day 3: tidyr and tests</a>
+<hr/>
+<span class="nav-dropdown-header">Extras</span>
+<a href="04_tasks_controller.html">Linear models</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2447,8 +2466,11 @@ Solutions
 </button>
 <div class="nav-dropdown-content">
 <a href="01_solutions_controller.html">Day 1: Intro to R</a>
-<a href="02_solutions_controller.html">Day 2: Tidyverse</a>
-<a href="03_solutions_controller.html">Day 3: Statistics</a>
+<a href="02_solutions_controller.html">Day 2: ggplot and dplyr</a>
+<a href="03_solutions_controller.html">Day 3: tidyr and tests</a>
+<hr/>
+<span class="nav-dropdown-header">Extras</span>
+<a href="04_solutions_controller.html">Linear models</a>
 </div>
 </div>
 <a href="online_resources.html">Resources</a>
@@ -2479,139 +2501,104 @@ Solutions
 <ul>
 <li><a href="#ggplot2" id="toc-ggplot2">1 ggplot2</a>
 <ul>
-<li><a href="#getting-started" id="toc-getting-started">1.1 Getting
-started</a></li>
-<li><a href="#getting-the-data" id="toc-getting-the-data">1.2 Getting
-the data</a></li>
-<li><a href="#exploratory-plotting" id="toc-exploratory-plotting">1.3
-Exploratory plotting</a></li>
-<li><a href="#beautify-the-plots" id="toc-beautify-the-plots">1.4
-Beautify the plots</a></li>
-<li><a href="#save-one-of-the-plots-on-your-machine"
-id="toc-save-one-of-the-plots-on-your-machine">1.5 Save one of the plots
-on your machine</a></li>
+<li><a href="#getting-started" id="toc-getting-started">1.1 Getting started</a></li>
+<li><a href="#getting-the-data" id="toc-getting-the-data">1.2 Getting the data</a></li>
+<li><a href="#exploratory-plotting" id="toc-exploratory-plotting">1.3 Exploratory plotting</a></li>
+<li><a href="#beautify-the-plots" id="toc-beautify-the-plots">1.4 Beautify the plots</a></li>
+<li><a href="#save-one-of-the-plots-on-your-machine" id="toc-save-one-of-the-plots-on-your-machine">1.5 Save one of the plots on your machine</a></li>
 <li><a href="#references" id="toc-references">References</a></li>
 </ul></li>
 <li><a href="#dplyr" id="toc-dplyr">2 dplyr</a>
 <ul>
-<li><a href="#getting-started-with-dplyr"
-id="toc-getting-started-with-dplyr">2.1 Getting started with
-dplyr</a></li>
-<li><a href="#data-transformation-with-dplyr"
-id="toc-data-transformation-with-dplyr">2.2 Data transformation with
-dplyr</a></li>
+<li><a href="#getting-started-with-dplyr" id="toc-getting-started-with-dplyr">2.1 Getting started with dplyr</a></li>
+<li><a href="#data-transformation-with-dplyr" id="toc-data-transformation-with-dplyr">2.2 Data transformation with dplyr</a></li>
 <li><a href="#extras" id="toc-extras">Extras</a></li>
-</ul></li>
-<li><a href="#tidyr" id="toc-tidyr">3 tidyr</a>
-<ul>
-<li><a href="#getting-started-with-tidyr"
-id="toc-getting-started-with-tidyr">4.1 Getting started with
-tidyr</a></li>
-<li><a href="#lets-tidy-some-data-sets"
-id="toc-lets-tidy-some-data-sets">4.2 Let’s tidy some data sets</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
 <h2 id="ggplot2">1 ggplot2</h2>
 <h3 id="getting-started">1.1 Getting started</h3>
-<p>A helpful resource to consult for this task can be the <a
-href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf">ggplot2
-cheatsheet</a>.</p>
-<p>Remember to put <code>library(tidyverse)</code> (or
-<code>library(ggplot2)</code>) on top of your script to access the
-ggplot functions.</p>
+<p>A helpful resource to consult for this task can be the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf">ggplot2 cheatsheet</a>.</p>
+<p>Remember to put <code>library(tidyverse)</code> (or <code>library(ggplot2)</code>) on top of your script to access the ggplot functions.</p>
 <h3 id="getting-the-data">1.2 Getting the data</h3>
-<p>To practice plotting with the <code>ggplot2</code> package, we will
-use a data set on 3 species of penguins on islands in Antarctica.</p>
+<p>To practice plotting with the <code>ggplot2</code> package, we will use a data set on 3 species of penguins on islands in Antarctica.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
 <img src="tasks/day2/img/lter_penguins.png" alt="Artwork by [Allison Horst](https://twitter.com/allison_horst)" width="900" />
 <p class="caption">
-Figure 1: Artwork by <a
-href="https://twitter.com/allison_horst">Allison Horst</a>
+Figure 1: Artwork by <a href="https://twitter.com/allison_horst">Allison Horst</a>
 </p>
 </div>
 </div>
-<p>The data is available from the <a
-href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins
-package</a>. To get it, you have to:</p>
+<p>The data is available from the <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins package</a>. To get it, you have to:</p>
 <ul>
-<li>Install the package with
-<code>install.packages("palmerpenguins")</code></li>
-<li>Load the package at the beginning of your script with
-<code>library(palmerpenguins)</code></li>
+<li>Install the package with <code>install.packages("palmerpenguins")</code></li>
+<li>Load the package at the beginning of your script with <code>library(palmerpenguins)</code></li>
 </ul>
-<p>After you have done that, take a moment to get familiar with the data
-set and its variables. The data set is called <code>penguins</code>:</p>
+<p>The data set is called <code>penguins</code>:</p>
 <ul>
 <li>The data set is available after you loaded the package</li>
-<li>Just type <code>penguins</code> in the console and you should see
-the <code>penguins</code> tibble</li>
+<li>Just type <code>penguins</code> in the console and you should see the <code>penguins</code> tibble</li>
+<li>Find a description of the variables in the help page <code>?penguins</code></li>
 </ul>
+<p>Take a moment to get familiar with the data set and its variables.</p>
 <h3 id="exploratory-plotting">1.3 Exploratory plotting</h3>
-<p>Explore the data set and it’s variables with ggplot. Below, you find
-some ideas and tasks for plots. I suggest you start with one of them and
-if you want you can continue. But if you have your own ideas for
-interesting plots with the penguin data set, feel free to do them
-instead of continuing with the tasks.</p>
-<p>In the exploratory section, don’t care too much about the beauty of
-your plots and just use the default theme and colors. This is about
-exploring the data and testing different visualization options in
-ggplot.</p>
-<h4
-id="relationship-between-bill-length-and-bill-depth-scatterplot">1.3.1
-Relationship between bill length and bill depth (scatterplot)</h4>
+<p>Explore the data set and it’s variables with ggplot.
+Below, you find some suggestions for plots.
+You can start with the plot type your are most interested in and then continue from there.
+You don’t have to finish all the plots
+If you have your own ideas for interesting plots with the penguin data set,
+feel free to do them instead of the tasks.</p>
+<p>In the exploratory section, don’t worry about the beauty of your plots.
+This task is about exploring the data and testing different visualization options in ggplot.</p>
+<h4 id="relationship-between-bill-length-and-bill-depth-scatterplot">1.3.1 Relationship between bill length and bill depth (scatterplot)</h4>
 <p>What is the relationship between bill length and bill depth?</p>
 <ul>
-<li>Create a scatterplot with bill length on the x-axis and bill depth
-on the y-axis</li>
+<li>Create a scatterplot with bill length on the x-axis and bill depth on the y-axis</li>
 <li>Can you add a regression line?</li>
-<li>Add species as color aesthetic. Does your interpretation of the data
-change?
+<li>Add species as color aesthetic. Does your interpretation of the data change?
 <ul>
-<li>What is the difference between adding color as a global aesthetic or
-as a local aesthetic of the point layer?</li>
+<li>What is the difference between adding color as a global aesthetic or as a local aesthetic of the point layer?</li>
 </ul></li>
 <li>Add species as shape aesthetic to distinguish the species</li>
 </ul>
-<h4 id="difference-in-flipper-length-between-species-boxplot">1.3.2
-Difference in flipper length between species (boxplot)</h4>
+<h4 id="difference-in-flipper-length-between-species-boxplot">1.3.2 Difference in flipper length between species (boxplot)</h4>
 <p>Is there a difference in flipper length between the species?</p>
 <ul>
-<li>Create a boxplot of the flipper length (y-axis) for the different
-species (x-axis)</li>
-<li>Try adding notches to the boxplots by setting
-<code>notch = TRUE</code> in the boxplot layer</li>
+<li>Create a boxplot of the flipper length (y-axis) for the different species (x-axis)</li>
+<li>Try adding notches to the boxplots</li>
 <li><strong>Extra:</strong> Add a layer with <code>geom_point()</code>.
-Try setting <code>position = position_jitter()</code> as argument in the
-point layer. What does it do?</li>
+Try setting <code>position = position_jitter()</code> as argument in the point layer. What does it do?</li>
 </ul>
-<h4
-id="differences-between-body-mass-of-male-and-female-penguins-boxplot">1.3.3
-Differences between body mass of male and female penguins (boxplot)</h4>
-<p>Are male penguins heavier than female penguins? And is this different
-between the 3 species?</p>
+<h4 id="differences-between-body-mass-of-male-and-female-penguins-boxplot">1.3.3 Differences between body mass of male and female penguins (boxplot)</h4>
+<p>Are male penguins heavier than female penguins? And is this different between the 3 species?</p>
 <ul>
-<li>Create a boxplot with body mass on the y axis and sex on the x
-axis</li>
-<li>Add the difference between penguin species to this plot. Try the
-different options ggplot offers
+<li>Create a boxplot with body mass on the y axis and sex on the x axis</li>
+<li>Add the difference between penguin species to this plot. Try the different options ggplot offers
 <ul>
 <li>Species as color aesthetic</li>
 <li>Species as fill aesthetic</li>
 <li>Species as facet using <code>facet_wrap</code></li>
 </ul></li>
-<li><strong>Extra:</strong> What happens if you use
-<code>geom_violin</code> instead of <code>geom_boxplot</code>? Can you
-combine both geoms in one plot?</li>
+<li><strong>Extra:</strong> What happens if you use <code>geom_violin</code> instead of <code>geom_boxplot</code>? Can you combine both geoms in one plot?</li>
+</ul>
+<h4 id="distribution-of-flipper-length-between-species-histogram">1.3.4 Distribution of flipper length between species (histogram)</h4>
+<p>Make a histogram of the the flipper length separated by species.</p>
+<p>Try different methods of separating the species (color or facet).</p>
+<p>Compare stacked and overlapping histograms.</p>
+<h4 id="penguin-flipper-length-by-species-and-sex-heatmap">1.3.5 Penguin flipper length by species and sex (heatmap)</h4>
+<p>Create a heat map that shows:</p>
+<ul>
+<li>The categories sex and species on x- and y-axis</li>
+<li>The flipper length as color</li>
 </ul>
 <h3 id="beautify-the-plots">1.4 Beautify the plots</h3>
-<p>Also here: Chose the tasks that you like most.</p>
-<h4 id="beautify-the-plots-from-1.3">1.4.1 Beautify the plots from
-1.3</h4>
-<p>Take the plot from before that you liked the most and try to make
-them look nicer.</p>
+<p>First, choose one of the tasks 1.4.1 or 1.4.2, then do 1.4.3.
+If you still have time, you can come back to the task you didn’t do.</p>
+<p>But also here, if you have other ideas, feel free to deviate from the tasks.</p>
+<h4 id="beautify-the-plots-from-1.3">1.4.1 Beautify the plots from 1.3</h4>
+<p>Take the plot from before that you liked the most and try to make them look nicer.</p>
 <p>Here’s a list of ideas:</p>
 <ul>
 <li>Add a theme layer</li>
@@ -2622,83 +2609,62 @@ them look nicer.</p>
 </ul></li>
 <li>Change the color/fill scale of the plot
 <ul>
-<li>Use <code>scale_color_manual</code> or
-<code>scale_fill_manual</code></li>
-<li>Try <code>scale_color_viridis_d()</code> or
-<code>scale_fill_viridis_d()</code> with different options</li>
-<li>Try a color scale from an additional package,
-e.g. <code>ggsci::scale_color_uchicago()</code> or
-<code>ggsci::scale_fill_uchicago()</code>
+<li>Use <code>scale_color_manual</code> or <code>scale_fill_manual</code></li>
+<li>Try <code>scale_color_viridis_d()</code> or <code>scale_fill_viridis_d()</code> with different options</li>
+<li>Try a color scale from the <code>paletteer</code> package
 <ul>
-<li>First you have to install the <code>ggsci</code> package</li>
+<li>First you have to install the package, then have a look at the <a href="https://r-charts.com/color-palettes">available palettes</a></li>
 </ul></li>
 </ul></li>
-<li>Change the labels of the x- and y-axis and add a title to the
-plot</li>
-<li>…</li>
+<li>Change the labels of the x- and y-axis and add a title to the plot</li>
+<li>Make the points transparent, give them a different shape, …</li>
 </ul>
-<h4 id="can-you-reproduce-this-plot">1.4.2 Can you reproduce this
-plot?</h4>
-<p>Take a look at the plot, we discussed during the presentation:</p>
+<h4 id="can-you-reproduce-this-plot">1.4.2 Can you reproduce this plot?</h4>
+<p>Take a look at this plot:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
 <img src="slides/img/figs-penguin/README-flipper-bill-1.png" alt="Visualization from the [palmerpenguins package](https://allisonhorst.github.io/palmerpenguins/)" width="672" />
 <p class="caption">
-Figure 2: Visualization from the <a
-href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins
-package</a>
+Figure 2: Visualization from the <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins package</a>
 </p>
 </div>
 </div>
-<p>Can you reproduce this plot? It is similar to the one from Task
-1.3.1.</p>
+<p>It is similar to the one from Task 1.3.1. but more beautiful.
+Can you reproduce this plot?</p>
 <p>The colors that are used are:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>penguin_cols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"darkorange"</span>, <span class='st'>"purple"</span>, <span class='st'>"cyan4"</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
-<h3 id="save-one-of-the-plots-on-your-machine">1.5 Save one of the plots
-on your machine</h3>
-<p>Save one of the plots you produced in a variable and then use
-<code>ggsave</code> to save the plot on your machine. Save the plot in a
-dedicated plot directory in your RStudio project.</p>
+<h3 id="save-one-of-the-plots-on-your-machine">1.5 Save one of the plots on your machine</h3>
+<p>Save one of the plots you produced in a variable and then use <code>ggsave</code> to save the plot on your machine.
+Save the plot in a dedicated plot directory in your RStudio project.</p>
+<p>Note: Make sure the path where you save the image exists. If you e.g. want to save in
+<code>img/</code>, then you first have to create the <code>img</code> folder in your project directory.
+For this you can use the Files pane of RStudio.</p>
 <h3 id="references">References</h3>
-<p>Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer
-Archipelago (Antarctica) penguin data. R package version 0.1.0. <a
-href="https://allisonhorst.github.io/palmerpenguins/"
-class="uri">https://allisonhorst.github.io/palmerpenguins/</a>. doi:
-10.5281/zenodo.3960218.</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0.
+<a href="https://allisonhorst.github.io/palmerpenguins/" class="uri">https://allisonhorst.github.io/palmerpenguins/</a>. doi: 10.5281/zenodo.3960218.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h2 id="dplyr">2 dplyr</h2>
 <h3 id="getting-started-with-dplyr">2.1 Getting started with dplyr</h3>
-<p>A helpful resource for to consult for this task can be the <a
-href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf">dplyr
-cheatsheet</a>.</p>
-<p>Before you start, make sure to load the <code>tidyverse</code>
-package and the <code>palmerpenguins</code> package.</p>
+<p>A helpful resource for to consult for this task can be the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf">dplyr cheatsheet</a>.</p>
+<p>Before you start, make sure to load the <code>tidyverse</code> package and the <code>palmerpenguins</code> package.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://allisonhorst.github.io/palmerpenguins/'>palmerpenguins</a></span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
-<h3 id="data-transformation-with-dplyr">2.2 Data transformation with
-dplyr</h3>
-<p>In the following, you find a lot of different data transformation
-tasks. First, do 2 from each category before you do the remaining ones.
-You don’t have to finish all the tasks but make sure you covered each
-category. Generally, the first tasks from a category are easier than the
-last tasks of a category.</p>
+<h3 id="data-transformation-with-dplyr">2.2 Data transformation with dplyr</h3>
+<p>In the following, you find a lot of different data transformation tasks. First, do 2 from each category before you do the remaining ones. You don’t have to finish all the tasks but make sure you covered each category. Generally, the first tasks from a category are easier than the last tasks of a category.</p>
 <p><strong>Find all penguins that …</strong></p>
 <ol type="1">
 <li><p>… have a bill length between 40 and 45 mm.</p></li>
 <li><p>… for which we know the sex.</p></li>
-<li><p>… which are of the species Adelie or Gentoo and live either on
-Dream or on Torgersen</p></li>
-<li><p>… lived on the island Dream in the year 2007. How many of them
-were from each of the 3 species?</p></li>
+<li><p>… which are of the species Adelie or Gentoo and live either on Dream or on Torgersen</p></li>
+<li><p>… lived on the island Dream in the year 2007. How many of them were from each of the 3 species?</p></li>
 </ol>
 <p><strong>Count …</strong></p>
 <ol type="1">
@@ -2707,12 +2673,9 @@ were from each of the 3 species?</p></li>
 </ol>
 <p><strong>Sort …</strong></p>
 <ol type="1">
-<li><p>… <code>penguins</code> to find penguins with lowest body
-mass</p></li>
-<li><p>… <code>penguins</code> to find penguins with highest body
-mass</p></li>
-<li><p>… <code>penguins</code> by species and sex, with longest flippers
-first</p></li>
+<li><p>… <code>penguins</code> to find penguins with lowest body mass</p></li>
+<li><p>… <code>penguins</code> to find penguins with highest body mass</p></li>
+<li><p>… <code>penguins</code> by species and sex, with longest flippers first</p></li>
 </ol>
 <p><strong>Select …</strong></p>
 <ol type="1">
@@ -2730,68 +2693,20 @@ first</p></li>
 <p><strong>Add a column …</strong></p>
 <ol type="1">
 <li><p>… with the ratio of bill length to bill depth</p></li>
-<li><p>… with abbreviations for the species (Adelie = A, Gentoo = G,
-Chinstrap = C).</p></li>
+<li><p>… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).</p></li>
 </ol>
 <p><strong>Calculate …</strong></p>
 <ol type="1">
-<li><p>… mean flipper length and body mass for the 3 species and male
-and female penguins separately</p></li>
-<li><p>Can you do the same but remove the penguins for which we don’t
-know the sex first?</p></li>
+<li><p>… mean flipper length and body mass for the 3 species and male and female penguins separately</p></li>
+<li><p>Can you do the same but remove the penguins for which we don’t know the sex first?</p></li>
 </ol>
 <h3 id="extras">Extras</h3>
 <ol type="1">
-<li><p>Make a boxplot of penguin body mass with sex on the x-axis and
-facets for the different species. Can you remove the penguins with
-missing values for sex first?</p></li>
-<li><p>Make a scatterplot with the ratio of bill length to bill depth on
-the y axis and flipper length on the x axis? Can you distinguish the
-point between male and female penguins and remove penguins with unknown
-sex before making the plot?</p></li>
+<li><p>Make a boxplot of penguin body mass with sex on the x-axis and facets for the different species. Can you remove the penguins with missing values for sex first?</p></li>
+<li><p>Make a scatterplot with the ratio of bill length to bill depth on the y axis and flipper length on the x axis? Can you distinguish the point between male and female penguins and remove penguins with unknown sex before making the plot?</p></li>
 </ol>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h2 id="tidyr">3 tidyr</h2>
-<h3 id="getting-started-with-tidyr">4.1 Getting started with tidyr</h3>
-<p>Before you start, make sure to load the <code>tidyverse</code>
-package.</p>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<h3 id="lets-tidy-some-data-sets">4.2 Let’s tidy some data sets</h3>
-<p>First, complete all the tasks before you move to the
-<strong>extras</strong>.</p>
-<p><strong>1. <code>relig_incom</code></strong></p>
-<p>Have a look at the <code>relig_income</code> data set that is
-included in tidyverse package. The data set contains the results of a
-survey asking people about their religion and income category.</p>
-<p>What is not tidy about this data set? Can you fix it?</p>
-<p><strong>2. <code>billboard</code></strong></p>
-<p>Have a look at the <code>billboard</code> data set that is included
-in the tidyverse package. The data set contains information about the
-chart rank of songs in the year 2000.</p>
-<p>What is not tidy about this data set? Can you fix it?</p>
-<h4 id="extras-1">Extras</h4>
-<ul>
-<li>Check out the <code>values_drop_na</code> argument of
-<code>pivot_longer</code>. What does it do and how can you use it
-here?</li>
-<li>Check out the <code>names_prefix</code> argument of
-<code>pivot_longer</code>. What does it do and how can you use it
-here?</li>
-</ul>
-<!-- **3. `fish_encounters`** -->
-<!-- Have a look at the `fish_encounters` data set that is included in the tidyverse package. -->
-<!-- The data set contains records of fish detected by different automatic monitoring stations.  -->
-<!-- Check out `summary(fish_encounters)` - the column `seen` only contains values of 1 to indicate that the fish was seen at the respective station. -->
-<!-- What is not tidy about this data set? Can you fix it? -->
-<!-- #### Extra -->
-<!-- - Have a look at the `values_fill` argument of `pivot_wider`. How could you use it in this case to replace the missing values that are created? -->
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

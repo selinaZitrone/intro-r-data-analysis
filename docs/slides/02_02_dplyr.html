@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Selina Baldauf" />
     <meta name="date" content="2021-06-15" />
-    <script src="02_02_dplyr_files/header-attrs-2.16/header-attrs.js"></script>
+    <script src="02_02_dplyr_files/header-attrs-2.19/header-attrs.js"></script>
     <link href="02_02_dplyr_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
   </head>
@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-06-15 (updated: 2022-08-30)
+  2021-06-15 (updated: 2023-02-25)
 ]
 
 ---
@@ -122,7 +122,7 @@ soybean_use
 
 
 ```
-## # A tibble: 9,897 x 6
+## # A tibble: 9,897 × 6
 ##   entity code   year human_food animal_feed processed
 ##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 Africa &lt;NA&gt;   1961      33000        6000     14000
@@ -130,7 +130,7 @@ soybean_use
 ## 3 Africa &lt;NA&gt;   1963      31000        7000      5000
 ## 4 Africa &lt;NA&gt;   1964      43000        6000     14000
 ## 5 Africa &lt;NA&gt;   1965      34000        6000     12000
-## # ... with 9,892 more rows
+## # … with 9,892 more rows
 ```
 .footnote-right[Data from [Our World in Data](https://ourworldindata.org/forests-and-deforestation) provided by [tidytuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-04-06/readme.md)]
 
@@ -186,7 +186,7 @@ filter(soybean_use, entity == "Germany")
 
 
 ```
-## # A tibble: 53 x 6
+## # A tibble: 53 × 6
 ##   entity  code   year human_food animal_feed processed
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 Germany DEU    1961          0        3000   1042000
@@ -194,7 +194,7 @@ filter(soybean_use, entity == "Germany")
 ## 3 Germany DEU    1963          0        3000   1092000
 ## 4 Germany DEU    1964          0        3000   1096000
 ## 5 Germany DEU    1965          0        3000   1435000
-## # ... with 48 more rows
+## # … with 48 more rows
 ```
 
 --
@@ -214,7 +214,7 @@ filter(soybean_use, entity %in% countries_select)
 
 
 ```
-## # A tibble: 159 x 6
+## # A tibble: 159 × 6
 ##   entity  code   year human_food animal_feed processed
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 Austria AUT    1961          0           0         0
@@ -222,7 +222,7 @@ filter(soybean_use, entity %in% countries_select)
 ## 3 Austria AUT    1963          0           0         0
 ## 4 Austria AUT    1964          0           0         0
 ## 5 Austria AUT    1965          0           0         0
-## # ... with 154 more rows
+## # … with 154 more rows
 ```
 
 ---
@@ -237,7 +237,7 @@ filter(soybean_use, is.na(code))
 
 
 ```
-## # A tibble: 1,734 x 6
+## # A tibble: 1,734 × 6
 ##   entity code   year human_food animal_feed processed
 ##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 Africa &lt;NA&gt;   1961      33000        6000     14000
@@ -245,7 +245,7 @@ filter(soybean_use, is.na(code))
 ## 3 Africa &lt;NA&gt;   1963      31000        7000      5000
 ## 4 Africa &lt;NA&gt;   1964      43000        6000     14000
 ## 5 Africa &lt;NA&gt;   1965      34000        6000     12000
-## # ... with 1,729 more rows
+## # … with 1,729 more rows
 ```
 
 --
@@ -274,7 +274,7 @@ filter(soybean_use, between(year, 1970, 1980) &amp; entity == "Germany")
 
 
 ```
-## # A tibble: 11 x 6
+## # A tibble: 11 × 6
 ##   entity  code   year human_food animal_feed processed
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 Germany DEU    1970          0        3000   2118000
@@ -282,7 +282,7 @@ filter(soybean_use, between(year, 1970, 1980) &amp; entity == "Germany")
 ## 3 Germany DEU    1972          0        5000   2271000
 ## 4 Germany DEU    1973          0        3000   2820000
 ## 5 Germany DEU    1974          0        3000   3704000
-## # ... with 6 more rows
+## # … with 6 more rows
 ```
 
 ---
@@ -321,12 +321,12 @@ select(soybean_use, entity, year, human_food)
 
 
 ```
-## # A tibble: 9,897 x 3
+## # A tibble: 9,897 × 3
 ##   entity  year human_food
 ##   &lt;chr&gt;  &lt;dbl&gt;      &lt;dbl&gt;
 ## 1 Africa  1961      33000
 ## 2 Africa  1962      43000
-## # ... with 9,895 more rows
+## # … with 9,895 more rows
 ```
 
 --
@@ -341,12 +341,12 @@ select(soybean_use, -entity, -year, -human_food)
 
 
 ```
-## # A tibble: 9,897 x 3
+## # A tibble: 9,897 × 3
 ##   code  animal_feed processed
 ##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 &lt;NA&gt;         6000     14000
 ## 2 &lt;NA&gt;         7000     17000
-## # ... with 9,895 more rows
+## # … with 9,895 more rows
 ```
 
 ---
@@ -361,13 +361,13 @@ select(soybean_use, ends_with("d"))
 
 
 ```
-## # A tibble: 9,897 x 3
+## # A tibble: 9,897 × 3
 ##   human_food animal_feed processed
 ##        &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1      33000        6000     14000
 ## 2      43000        7000     17000
 ## 3      31000        7000      5000
-## # ... with 9,894 more rows
+## # … with 9,894 more rows
 ```
 
 --
@@ -404,11 +404,11 @@ select(soybean_use, any_of(cols))
 
 
 ```
-## # A tibble: 9,897 x 3
+## # A tibble: 9,897 × 3
 ##    year processed entity
 ##   &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt; 
 ## 1  1961     14000 Africa
-## # ... with 9,896 more rows
+## # … with 9,896 more rows
 ```
 
 --
@@ -423,8 +423,7 @@ select(soybean_use, all_of(cols))
 
 ```
 ## Error in `select()`:
-## ! Can't subset columns past the end.
-## x Column `sample_` doesn't exist.
+## ! Problem while evaluating `all_of(cols)`.
 ```
 
 ---
@@ -440,13 +439,13 @@ select(soybean_use, code:animal_feed)
 
 
 ```
-## # A tibble: 9,897 x 4
+## # A tibble: 9,897 × 4
 ##   code   year human_food animal_feed
 ##   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
 ## 1 &lt;NA&gt;   1961      33000        6000
 ## 2 &lt;NA&gt;   1962      43000        7000
 ## 3 &lt;NA&gt;   1963      31000        7000
-## # ... with 9,894 more rows
+## # … with 9,894 more rows
 ```
 
 --
@@ -471,13 +470,13 @@ arrange(soybean_use, processed)
 
 
 ```
-## # A tibble: 9,897 x 6
+## # A tibble: 9,897 × 6
 ##   entity  code   year human_food animal_feed processed
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 Albania ALB    1961          0          NA         0
 ## 2 Albania ALB    1962          0          NA         0
 ## 3 Albania ALB    1963          0          NA         0
-## # ... with 9,894 more rows
+## # … with 9,894 more rows
 ```
 
 --
@@ -506,14 +505,14 @@ arrange(soybean_use, year, entity)
 
 
 ```
-## # A tibble: 9,897 x 6
+## # A tibble: 9,897 × 6
 ##   entity   code   year human_food animal_feed processed
 ##   &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 Africa   &lt;NA&gt;   1961      33000        6000     14000
 ## 2 Albania  ALB    1961          0          NA         0
 ## 3 Algeria  DZA    1961          0           0        NA
 ## 4 Americas &lt;NA&gt;   1961       7000       96000  11656000
-## # ... with 9,893 more rows
+## # … with 9,893 more rows
 ```
 
 ---
@@ -537,13 +536,13 @@ mutate(soybean_use, sum_human_animal = human_food + animal_feed)
 
 
 ```
-## # A tibble: 9,897 x 7
+## # A tibble: 9,897 × 7
 ##   entity code   year human_food animal_feed processed sum_human_animal
 ##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt;
 ## 1 Africa &lt;NA&gt;   1961      33000        6000     14000            39000
 ## 2 Africa &lt;NA&gt;   1962      43000        7000     17000            50000
 ## 3 Africa &lt;NA&gt;   1963      31000        7000      5000            38000
-## # ... with 9,894 more rows
+## # … with 9,894 more rows
 ```
 
 --
@@ -578,13 +577,13 @@ mutate(soybean_use,
 
 
 ```
-## # A tibble: 9,897 x 7
+## # A tibble: 9,897 × 7
 ##   entity code   year human_food animal_feed processed legislation   
 ##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;         
 ## 1 Africa &lt;NA&gt;   1961      33000        6000     14000 no_legislation
 ## 2 Africa &lt;NA&gt;   1962      43000        7000     17000 no_legislation
 ## 3 Africa &lt;NA&gt;   1963      31000        7000      5000 no_legislation
-## # ... with 9,894 more rows
+## # … with 9,894 more rows
 ```
 
 ---
@@ -603,7 +602,7 @@ class: inverse, center, middle
 summarize(soybean_use,
           total_animal = sum(animal_feed, na.rm = TRUE),
           total_human = sum(human_food, na.rm = TRUE))
-## # A tibble: 1 x 2
+## # A tibble: 1 × 2
 ##   total_animal total_human
 ##          &lt;dbl&gt;       &lt;dbl&gt;
 ## 1    942503000  1589729000
@@ -637,12 +636,12 @@ summarize(soybean_use_group,
 
 
 ```
-## # A tibble: 53 x 3
+## # A tibble: 53 × 3
 ##    year total_animal total_human
 ##   &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
 ## 1  1961      1503000    16994000
 ## 2  1962      1800000    17326000
-## # ... with 51 more rows
+## # … with 51 more rows
 ```
 
 --
@@ -665,7 +664,7 @@ count(soybean_use_group)
 
 
 ```
-## # A tibble: 53 x 2
+## # A tibble: 53 × 2
 ## # Groups:   year [53]
 ##    year     n
 ##   &lt;dbl&gt; &lt;int&gt;
@@ -673,7 +672,7 @@ count(soybean_use_group)
 ## 2  1962   178
 ## 3  1963   178
 ## 4  1964   178
-## # ... with 49 more rows
+## # … with 49 more rows
 ```
 
 ---
@@ -783,7 +782,7 @@ Piping works perfectly with the `tidyverse` functions because they are designed 
 
 --
 
-.content-box-yellow[<svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M112.1 454.3c0 6.297 1.816 12.44 5.284 17.69l17.14 25.69c5.25 7.875 17.17 14.28 26.64 14.28h61.67c9.438 0 21.36-6.401 26.61-14.28l17.08-25.68c2.938-4.438 5.348-12.37 5.348-17.7L272 415.1h-160L112.1 454.3zM191.4 .0132C89.44 .3257 16 82.97 16 175.1c0 44.38 16.44 84.84 43.56 115.8c16.53 18.84 42.34 58.23 52.22 91.45c.0313 .25 .0938 .5166 .125 .7823h160.2c.0313-.2656 .0938-.5166 .125-.7823c9.875-33.22 35.69-72.61 52.22-91.45C351.6 260.8 368 220.4 368 175.1C368 78.61 288.9-.2837 191.4 .0132zM192 96.01c-44.13 0-80 35.89-80 79.1C112 184.8 104.8 192 96 192S80 184.8 80 176c0-61.76 50.25-111.1 112-111.1c8.844 0 16 7.159 16 16S200.8 96.01 192 96.01z"/></svg> Use the keyboard shortcut ` Ctrl/Cmd + Shift + M ` to insert ` %&gt;% `]
+.content-box-yellow[<svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M112.1 454.3c0 6.297 1.816 12.44 5.284 17.69l17.14 25.69c5.25 7.875 17.17 14.28 26.64 14.28h61.67c9.438 0 21.36-6.401 26.61-14.28l17.08-25.68c2.938-4.438 5.348-12.37 5.348-17.7L272 415.1h-160L112.1 454.3zM192 0C90.02 .3203 16 82.97 16 175.1c0 44.38 16.44 84.84 43.56 115.8c16.53 18.84 42.34 58.23 52.22 91.45c.0313 .25 .0938 .5166 .125 .7823h160.2c.0313-.2656 .0938-.5166 .125-.7823c9.875-33.22 35.69-72.61 52.22-91.45C351.6 260.8 368 220.4 368 175.1C368 78.8 289.2 .0039 192 0zM288.4 260.1c-15.66 17.85-35.04 46.3-49.05 75.89h-94.61c-14.01-29.59-33.39-58.04-49.04-75.88C75.24 236.8 64 206.1 64 175.1C64 113.3 112.1 48.25 191.1 48C262.6 48 320 105.4 320 175.1C320 206.1 308.8 236.8 288.4 260.1zM176 80C131.9 80 96 115.9 96 160c0 8.844 7.156 16 16 16S128 168.8 128 160c0-26.47 21.53-48 48-48c8.844 0 16-7.148 16-15.99S184.8 80 176 80z"/></svg> Use the keyboard shortcut ` Ctrl/Cmd + Shift + M ` to insert ` %&gt;% `]
 
 ---
 # The pipe `%&gt;%`
@@ -836,7 +835,7 @@ tbl_a
 
 
 ```
-## # A tibble: 2 x 6
+## # A tibble: 2 × 6
 ##   entity code   year human_food animal_feed processed
 ##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 Africa &lt;NA&gt;   1961      33000        6000     14000
@@ -850,12 +849,12 @@ tbl_b
 
 
 ```
-## # A tibble: 9,896 x 6
+## # A tibble: 9,896 × 6
 ##   entity code   year human_food animal_feed processed
 ##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 Africa &lt;NA&gt;   1962      43000        7000     17000
 ## 2 Africa &lt;NA&gt;   1963      31000        7000      5000
-## # ... with 9,894 more rows
+## # … with 9,894 more rows
 ```
 
 
@@ -871,12 +870,12 @@ bind_rows(tbl_a, tbl_b)
 
 
 ```
-## # A tibble: 9,898 x 6
+## # A tibble: 9,898 × 6
 ##   entity code   year human_food animal_feed processed
 ##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 Africa &lt;NA&gt;   1961      33000        6000     14000
 ## 2 Africa &lt;NA&gt;   1962      43000        7000     17000
-## # ... with 9,896 more rows
+## # … with 9,896 more rows
 ```
 
 --
@@ -890,13 +889,13 @@ bind_rows(a = tbl_a, b = tbl_b, .id = "id")
 
 
 ```
-## # A tibble: 9,898 x 7
+## # A tibble: 9,898 × 7
 ##   id    entity code   year human_food animal_feed processed
 ##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 a     Africa &lt;NA&gt;   1961      33000        6000     14000
 ## 2 a     Africa &lt;NA&gt;   1962      43000        7000     17000
 ## 3 b     Africa &lt;NA&gt;   1962      43000        7000     17000
-## # ... with 9,895 more rows
+## # … with 9,895 more rows
 ```
 
 --
@@ -922,12 +921,12 @@ soybean_use
 
 
 ```
-## # A tibble: 9,897 x 6
+## # A tibble: 9,897 × 6
 ##   entity code   year human_food animal_feed processed
 ##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
 ## 1 Africa &lt;NA&gt;   1961      33000        6000     14000
 ## 2 Africa &lt;NA&gt;   1962      43000        7000     17000
-## # ... with 9,895 more rows
+## # … with 9,895 more rows
 ```
 
 
@@ -938,12 +937,12 @@ gdp
 
 
 ```
-## # A tibble: 9,897 x 3
+## # A tibble: 9,897 × 3
 ##   entity  year   gdp
 ##   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-## 1 Africa  1961  5.70
-## 2 Africa  1962  5.70
-## # ... with 9,895 more rows
+## 1 Africa  1961  3.78
+## 2 Africa  1962  3.78
+## # … with 9,895 more rows
 ```
 
 ---
@@ -959,13 +958,13 @@ left_join(soybean_use, gdp, by = c("entity", "year"))
 
 
 ```
-## # A tibble: 9,897 x 7
+## # A tibble: 9,897 × 7
 ##   entity code   year human_food animal_feed processed   gdp
 ##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
-## 1 Africa &lt;NA&gt;   1961      33000        6000     14000  5.70
-## 2 Africa &lt;NA&gt;   1962      43000        7000     17000  5.70
-## 3 Africa &lt;NA&gt;   1963      31000        7000      5000  5.70
-## # ... with 9,894 more rows
+## 1 Africa &lt;NA&gt;   1961      33000        6000     14000  3.78
+## 2 Africa &lt;NA&gt;   1962      43000        7000     17000  3.78
+## 3 Africa &lt;NA&gt;   1963      31000        7000      5000  3.78
+## # … with 9,894 more rows
 ```
 
 --

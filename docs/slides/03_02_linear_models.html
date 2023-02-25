@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Selina Baldauf" />
     <meta name="date" content="2021-08-01" />
-    <script src="03_02_linear_models_files/header-attrs-2.16/header-attrs.js"></script>
+    <script src="03_02_linear_models_files/header-attrs-2.19/header-attrs.js"></script>
     <link href="03_02_linear_models_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
   </head>
@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2022-08-30)
+  2021-08-01 (updated: 2023-02-25)
 ]
 
 ---
@@ -153,14 +153,14 @@ prod
 
 
 ```
-## # A tibble: 400 x 3
+## # A tibble: 400 × 3
 ##   site  richness productivity
 ##   &lt;fct&gt;    &lt;dbl&gt;        &lt;dbl&gt;
 ## 1 site1       23         122.
 ## 2 site1       26         158.
 ## 3 site1       24         165 
 ## 4 site1       25         165.
-## # ... with 396 more rows
+## # … with 396 more rows
 ```
 
 The variable site is a factor with two levels: site1 and site2
@@ -254,11 +254,11 @@ Compare the complex model with a simple model that does not contain the predicto
 
 --
 
-- `\(H_0\)` accepted: simplification was justified <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z"/></svg> use simple model without predictor
+- `\(H_0\)` accepted: simplification was justified <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg> use simple model without predictor
 
 --
 
-- `\(H_0\)` rejected: simplification reduced explanatory power <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z"/></svg> use complex model with predictor
+- `\(H_0\)` rejected: simplification reduced explanatory power <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg> use complex model with predictor
 
 ---
 # Linear regression in R
@@ -284,7 +284,7 @@ drop1(prod_lm, test = "F")
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
-Result: Reject `\(H_0\)` <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z"/></svg> Richness increases productivity `\((F_{1,398} = 761.71, p &lt; 0.001)\)`
+Result: Reject `\(H_0\)` <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg> Richness increases productivity `\((F_{1,398} = 761.71, p &lt; 0.001)\)`
 
 ---
 # Extracting the coefficients
@@ -576,7 +576,7 @@ drop1(prod_lm2a, test = "F") # no interaction
 
 --
 
-Both, the removal of site and richness significantly increase the model's RSS <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z"/></svg> both site and richness are significant predictors
+Both, the removal of site and richness significantly increase the model's RSS <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg> both site and richness are significant predictors
 
 ---
 # Analysis of covariance
@@ -599,7 +599,7 @@ drop1(prod_lm2b, test = "F") # interaction
 
 --
 
-The removal of the interaction does not significantly increase the model's RSS <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z"/></svg> the interaction is not significant and the simpler model without interaction is just as good in predicting productivity.
+The removal of the interaction does not significantly increase the model's RSS <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg> the interaction is not significant and the simpler model without interaction is just as good in predicting productivity.
 
 ---
 # Extracting model coefficients
@@ -752,13 +752,13 @@ pred_data &lt;- tidyr::expand_grid(
 
 
 ```
-## # A tibble: 84 x 2
+## # A tibble: 84 × 2
 ##   richness site 
 ##      &lt;int&gt; &lt;chr&gt;
 ## 1       13 site1
 ## 2       13 site2
 ## 3       14 site1
-## # ... with 81 more rows
+## # … with 81 more rows
 ```
 
 --
@@ -878,14 +878,14 @@ chickwts
 
 
 ```
-## # A tibble: 71 x 2
+## # A tibble: 71 × 2
 ##   weight feed     
 ##    &lt;dbl&gt; &lt;fct&gt;    
 ## 1    179 horsebean
 ## 2    160 horsebean
 ## 3    136 horsebean
 ## 4    227 horsebean
-## # ... with 67 more rows
+## # … with 67 more rows
 ```
 ]
 
@@ -920,7 +920,7 @@ drop1(lm_chicken, test = "F")
 
 --
 
-Removing the predictor `feed` from the model significantly increases the RSS <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z"/></svg> The model with `feed` explains the data better than the model without `feed`, so the effect of `feed` on the chicken weight is significant.
+Removing the predictor `feed` from the model significantly increases the RSS <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg> The model with `feed` explains the data better than the model without `feed`, so the effect of `feed` on the chicken weight is significant.
 
 ---
 # Extracting model coefficients

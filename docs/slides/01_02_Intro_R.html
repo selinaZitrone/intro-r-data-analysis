@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Selina Baldauf" />
     <meta name="date" content="2021-08-01" />
-    <script src="01_02_Intro_R_files/header-attrs-2.16/header-attrs.js"></script>
+    <script src="01_02_Intro_R_files/header-attrs-2.19/header-attrs.js"></script>
     <link href="01_02_Intro_R_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
   </head>
@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2022-08-30)
+  2021-08-01 (updated: 2023-02-25)
 ]
 
 ---
@@ -359,7 +359,7 @@ data &lt;- janitor::clean_names(data)
 - Comments can be used for
   - Explanation of code (if necessary)
   - Include links, names of authors, ...
-  - Mark different sections of your code (<svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M112.1 454.3c0 6.297 1.816 12.44 5.284 17.69l17.14 25.69c5.25 7.875 17.17 14.28 26.64 14.28h61.67c9.438 0 21.36-6.401 26.61-14.28l17.08-25.68c2.938-4.438 5.348-12.37 5.348-17.7L272 415.1h-160L112.1 454.3zM191.4 .0132C89.44 .3257 16 82.97 16 175.1c0 44.38 16.44 84.84 43.56 115.8c16.53 18.84 42.34 58.23 52.22 91.45c.0313 .25 .0938 .5166 .125 .7823h160.2c.0313-.2656 .0938-.5166 .125-.7823c9.875-33.22 35.69-72.61 52.22-91.45C351.6 260.8 368 220.4 368 175.1C368 78.61 288.9-.2837 191.4 .0132zM192 96.01c-44.13 0-80 35.89-80 79.1C112 184.8 104.8 192 96 192S80 184.8 80 176c0-61.76 50.25-111.1 112-111.1c8.844 0 16 7.159 16 16S200.8 96.01 192 96.01z"/></svg> try `Ctrl/Cmd + Shift + R`)
+  - Mark different sections of your code (<svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M112.1 454.3c0 6.297 1.816 12.44 5.284 17.69l17.14 25.69c5.25 7.875 17.17 14.28 26.64 14.28h61.67c9.438 0 21.36-6.401 26.61-14.28l17.08-25.68c2.938-4.438 5.348-12.37 5.348-17.7L272 415.1h-160L112.1 454.3zM192 0C90.02 .3203 16 82.97 16 175.1c0 44.38 16.44 84.84 43.56 115.8c16.53 18.84 42.34 58.23 52.22 91.45c.0313 .25 .0938 .5166 .125 .7823h160.2c.0313-.2656 .0938-.5166 .125-.7823c9.875-33.22 35.69-72.61 52.22-91.45C351.6 260.8 368 220.4 368 175.1C368 78.8 289.2 .0039 192 0zM288.4 260.1c-15.66 17.85-35.04 46.3-49.05 75.89h-94.61c-14.01-29.59-33.39-58.04-49.04-75.88C75.24 236.8 64 206.1 64 175.1C64 113.3 112.1 48.25 191.1 48C262.6 48 320 105.4 320 175.1C320 206.1 308.8 236.8 288.4 260.1zM176 80C131.9 80 96 115.9 96 160c0 8.844 7.156 16 16 16S128 168.8 128 160c0-26.47 21.53-48 48-48c8.844 0 16-7.148 16-15.99S184.8 80 176 80z"/></svg> try `Ctrl/Cmd + Shift + R`)
   
 ---
 class: inverse, middle, center
@@ -472,6 +472,7 @@ dbl_var &lt;- c(2.5, 3.4, 4.3)
 int_var &lt;- c(1L, 45L, 234L)
 chr_var &lt;- c("These are", "just", "some strings")
 ```
+
 --
 You can also combine multiple vectors into one:
 
@@ -504,7 +505,8 @@ c(int_var, chr_var)
 ```
 
 ```
-## [1] "1"            "45"           "234"          "These are"    "just"         "some strings"
+## [1] "1"            "45"           "234"          "These are"    "just"        
+## [6] "some strings"
 ```
 
 ```r
@@ -513,7 +515,8 @@ c(lgl_var, chr_var)
 ```
 
 ```
-## [1] "TRUE"         "TRUE"         "FALSE"        "These are"    "just"         "some strings"
+## [1] "TRUE"         "TRUE"         "FALSE"        "These are"    "just"        
+## [6] "some strings"
 ```
 
 ---
@@ -546,8 +549,9 @@ seq(from = 1, to = 10, length.out = 20) # specify desired length with length.out
 ```
 
 ```
-##  [1]  1.000000  1.473684  1.947368  2.421053  2.894737  3.368421  3.842105  4.315789  4.789474  5.263158
-## [11]  5.736842  6.210526  6.684211  7.157895  7.631579  8.105263  8.578947  9.052632  9.526316 10.000000
+##  [1]  1.000000  1.473684  1.947368  2.421053  2.894737  3.368421  3.842105
+##  [8]  4.315789  4.789474  5.263158  5.736842  6.210526  6.684211  7.157895
+## [15]  7.631579  8.105263  8.578947  9.052632  9.526316 10.000000
 ```
 
 ---
@@ -608,7 +612,8 @@ population / area_km2
 ```
 
 ```
-##  [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685  2178.988  9649.123 20000.000
+##  [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685
+##  [8]  2178.988  9649.123 20000.000
 ```
 
 --
@@ -634,7 +639,8 @@ population / mean_population # divide population vector by the mean
 ```
 
 ```
-##  [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142 0.4737733 0.3722504 0.3553299
+##  [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142
+##  [8] 0.4737733 0.3722504 0.3553299
 ```
 
 ---
@@ -678,11 +684,11 @@ Check whether elements occur in a vector:
 
 
 ```r
-cities == "Istanbul" | cities == "Berlin" | cities == "Madrid"
+cities == "Istanbul"
 ```
 
 ```
-##  [1]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE
+##  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
 --
@@ -693,7 +699,7 @@ The `%in%` operator checks whether *multiple* elements occur in a vector.
 ```r
 # for each element of cities, checks whether that element is contained in to_check 
 to_check &lt;- c("Istanbul", "Berlin", "Madrid")
-cities %in% to_check
+cities %in% to_check # same as cities %in% c("Istanbul", "Berlin", "Madrid")
 ```
 
 ```
@@ -777,22 +783,24 @@ Imagine for example, that the population of
 
 
 ```r
-# first copy the original vector to leave it untouched
-population_new &lt;- population
 # Update Istanbul (1) and Rome(8)
-population_new[c(1, 8)] &lt;- c(20e6, NA) # NA means missing value
+population[c(1, 8)] &lt;- c(20e6, NA) # NA means missing value
 # Update Paris (10)
-population_new[10] &lt;- population_new[10] - 200000 
+population[10] &lt;- population[10] - 200000 
 ```
 
 
 ```r
-population_new
+population
 ```
 
 ```
-##  [1] 20000000 12500000  9000000  5400000  3800000  3200000  3000000       NA  2200000  1900000
+##  [1] 20000000 12500000  9000000  5400000  3800000  3200000  3000000       NA
+##  [9]  2200000  1900000
 ```
+
+
+
 
 ---
 # Indexing vectors

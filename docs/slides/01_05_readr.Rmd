@@ -79,7 +79,7 @@ You can also install and load the tidyverse packages individually, but since we 
 ---
 class: inverse, center, middle
 
-# .large[Import data with readr]
+# .large[Import and export data with readr]
 
 .center[![:scale 30%](img/hex-stickers/readr.png)]
 
@@ -114,9 +114,9 @@ All `read_*` functions take a path to the data file as a first argument:
 Import files with a `readr` function fitting the delimiter of your file:
 
 ```{r eval=FALSE}
-dat <- read_csv("./data/your_data.csv") # comma delimiter
+dat <- read_csv("data/your_data.csv") # comma delimiter
 
-dat <- read_tsv("./data/your_data.txt") # tab delimiter
+dat <- read_tsv("data/your_data.txt") # tab delimiter
 ```
 
 --
@@ -124,9 +124,9 @@ dat <- read_tsv("./data/your_data.txt") # tab delimiter
 Use `read_delim` for a generic type of delimiter:
 
 ```{r eval=FALSE}
-dat <- read_delim("./data/your_data.txt", delim = "\t") # tab delimiter
+dat <- read_delim("data/your_data.txt", delim = "\t") # tab delimiter
 
-dat <- read_delim("./data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
+dat <- read_delim("data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
 ```
 
 --
@@ -182,7 +182,7 @@ print(read_csv(file = "data/meta_data_top.csv"))
 ```{r eval=FALSE}
 # skip meta data lines
 read_csv(
-  file = "./data/meta_data_top.csv",
+  file = "data/meta_data_top.csv",
   skip = 4
 )
 ```
@@ -232,7 +232,7 @@ print(read_csv(file = "data/no_col_names.csv"))
 ```{r eval=FALSE}
 # Default column names are given
 read_csv(
-  file = "./data/no_col_names.csv",
+  file = "data/no_col_names.csv",
   col_names = FALSE
 )
 ```
@@ -263,7 +263,7 @@ Specify whether the data has a header column or not with `col_names`
 
 ```{r eval=FALSE}
 # First line is expected to be column names
-read_csv(file = "./data/no_col_names.csv")
+read_csv(file = "data/no_col_names.csv")
 ```
 
 
@@ -278,7 +278,7 @@ print(read_csv(file = "data/no_col_names.csv"))
 ```{r eval=FALSE}
 # Specify custom column names
 read_csv(
-  file = "./data/no_col_names.csv",
+  file = "data/no_col_names.csv",
   col_names = c("Temperature", "Rainfall")
 )
 ```
@@ -318,9 +318,9 @@ All `write_*` functions take the data to write as the first and the file to writ
 --
 
 ```{r eval=FALSE}
-write_csv(dat, file = "./data-clean/your_data.csv") # comma delimiter
+write_csv(dat, file = "data-clean/your_data.csv") # comma delimiter
 
-write_tsv(dat, file = "./data-clean/your_data.txt") # tab delimiter
+write_tsv(dat, file = "data-clean/your_data.txt") # tab delimiter
 ```
 
 --
@@ -328,13 +328,64 @@ write_tsv(dat, file = "./data-clean/your_data.txt") # tab delimiter
 Use `write_delim` for a generic type of delimiter:
 
 ```{r eval=FALSE}
-write_delim(dat, file = "./data/your_data.txt", delim = "\t") # tab delimiter
+write_delim(dat, file = "data-clean/your_data.txt", delim = "\t") # tab delimiter
 
-write_delim(dat, file = "./data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
+write_delim(dat, file = "data-clean/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
 ```
 
 ---
-# Absolute vs. relative paths
+class: inverse, center, middle
+
+# .large[Import excel files]
+
+.center[![:scale 30%](img/hex-stickers/readxl.png)]
+
+---
+# Readxl
+
+The `readxl` package is part of the tidyverse, but you need to load it explicity
+
+```{r}
+library(readxl)
+```
+
+--
+
+Use the `read_excel` function to read an excel file:
+
+```{r eval = FALSE}
+dat <- read_excel(path = "data/your_data.xlsx")
+```
+--
+
+By default, this reads the first sheet. You can read other sheets with
+
+```{r eval = FALSE}
+dat <- read_excel(path = "data/your_data.xlsx", sheet = "sheetName") # via sheet name
+dat <- read_excel(path = "data/your_data.xlsx", sheet = 2) # via sheet number
+```
+
+--
+
+- `read_excel` also has other functionality, like skipping rows etc.
+
+- Check out the [package documentation](https://readxl.tidyverse.org/index.html) for more functionality
+
+---
+# Readxl
+
+A little warning:
+
+- Reading from a csv file is more reliable
+
+- Be careful with complicated excel sheets with formulas etc.
+
+- Always double check the data that you imported, e.g. by using the `summary` function and checking 
+if the number of rows etc. is correct
+
+
+---
+# Absolute vs. relative paths in R
 
 #### Absolute paths
 
@@ -342,14 +393,12 @@ write_delim(dat, file = "./data/your_data.txt", delim = "..xyz..") # ..xyz.. del
 
 #### Relative paths
 
-`./data/file_to_read.csv`
+`data/file_to_read.csv`
 
 --
 
 - Relative paths are interpreted relative to the **working directory**
 
-  - The `./` in the path stands for the working directory
-  
 --
 
 - Check out where your working directory is with `getwd()`
@@ -403,11 +452,11 @@ class: inverse, middle, center
 
 Follow these guidelines to make data import to R easier and less frustrating
 
-- For `readr`: machine-readable file format (`.csv`, `.txt` instead of `.xlsx`)
+- In general: prefer machine-readable file formats (`.csv`, `.txt` instead of `.xlsx`)
 
 --
 
-Save an Excel spreadsheet as csv or txt either by
+Save an Excel spreadsheet as csv
 
 1. `File -> Save As` and select comma separated from the drop down menu
 2. `File -> Export`
@@ -420,11 +469,7 @@ Save an Excel spreadsheet as csv or txt either by
 
 Follow these guidelines to make data import to R easier and less frustrating
 
-- For `readr`: readable file format (`.csv`, `.txt` instead of `.xlsx`)
-
-- If you need `.xlsx` format have a look at the [`readxl` package](https://readxl.tidyverse.org/)
-
---
+- In general: prefer machine-readable file formats (`.csv`, `.txt` instead of `.xlsx`)
 
 - No white space in column headers
   - Use a character as separator, e.g. `species_name` instead of `species name`

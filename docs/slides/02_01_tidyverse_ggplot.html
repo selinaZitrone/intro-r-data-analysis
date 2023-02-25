@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Selina Baldauf" />
     <meta name="date" content="2021-08-01" />
-    <script src="02_01_tidyverse_ggplot_files/header-attrs-2.16/header-attrs.js"></script>
+    <script src="02_01_tidyverse_ggplot_files/header-attrs-2.19/header-attrs.js"></script>
     <link href="02_01_tidyverse_ggplot_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
   </head>
@@ -30,22 +30,8 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2022-08-30)
+  2021-08-01 (updated: 2023-02-25)
 ]
-
----
-class: center, middle
-background-image: url("img/AllisonHorst/ggplot2_exploratory.png")
-background-size: contain
-
-.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
-
----
-class: center, middle
-background-image: url("img/AllisonHorst/ggplot2_masterpiece.png")
-background-size: contain
-
-.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
 
 ---
 class: inverse, center, middle
@@ -102,85 +88,36 @@ background-size: contain
 
 - Active community that provides help and inspiration
 
----
-# Basic idea of ggplot
-
-&gt; Shorten the distance from mind to page&lt;br&gt;
-.small[(Hadley Wickham)]
-
 --
 
-`ggplot2` is an implementation of the grammar of graphics by Leland Wilkinson
-
---
-
-- Basic idea: stack distinct **layers of graphical elements** to create a plot
-
----
-# Layers of a ggplot
-&lt;br&gt;
-&lt;table&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Layer&lt;/th&gt;
-    &lt;th&gt;Function&lt;/th&gt;
-    &lt;th&gt;Details&lt;/th&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;&lt;b&gt;Data&lt;/b&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;code&gt;ggplot(data)&lt;/code&gt;&lt;/td&gt;
-    &lt;td&gt;The data that you want to plot.&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;&lt;b&gt;Mapping&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;code&gt;aes()&lt;/code&gt;&lt;/td&gt;
-    &lt;td&gt;Aesthetic mappings of the geometric and statistical objects.&lt;/td&gt;
-  &lt;tr&gt;
-    &lt;td&gt;&lt;b&gt;Geometries&lt;/b&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;code&gt;geom_*()&lt;/code&gt;&lt;/td&gt;
-    &lt;td&gt;Graphical representation of aesthetics as point, line, polygon, ...&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;&lt;b&gt;Scales&lt;/b&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;code&gt;scale_*()&lt;/code&gt;&lt;/td&gt;
-    &lt;td&gt;Translate between variable values and properties (e.g. categories -&gt; colour)&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;&lt;b&gt;Coordinates&lt;/b&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;code&gt;coord_*()&lt;/code&gt;&lt;/td&gt;
-    &lt;td&gt;Interprets and maps the position values of the data.&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;&lt;b&gt;Facets&lt;/b&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;code&gt;facet_*()&lt;/code&gt;&lt;/td&gt;
-    &lt;td&gt;Split your plot into multiples.&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;&lt;b&gt;Themes&lt;/b&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;code&gt;theme()&lt;/code&gt; and&amp;nbsp;&amp;nbsp;&lt;code&gt;theme_*()&lt;/code&gt;&lt;/td&gt;
-    &lt;td&gt;Visual look of the plot not related to the data.&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;
+- Perfect package for **exploratory data analysis** and **beautiful plots**
 
 ---
 # The data
 
-The `ggplot` package has a built-in data set called `msleep` about the sleep times of 83 mammals. 
+The [`lterdatasampler` package](https://lter.github.io/lterdatasampler/) contains a
+data set called `and_vertebrates` about the length and weight of a fish and a salamander
+species in both clear cut and old growth coniferous forest sections. 
 
 Data variables (among others):
 
-- `vore`: carnivore, omnivore, herbivore?
-- `conservation`: conservation status of the animal
-- `sleep_total`: total amount of sleep [h]
-- `brainwt`: brain weight [kg]
-- `bodywt`: body weight [kg]
+- `year`: observation year
+- `section`: CC (clear cut forest) or OG (old growht forest)
+- `unittype`: channel unit classification (C = Cascade, P = Pool, ...)
+- `species`: Species measured
+- `length_1_mm`: body length [mm]
+- `weight_g`: body weight [g]
 
-If you want to know more about the data set:
 
-```r
-library(ggplot2)
-str(msleep)
-?msleep
-```
+
+---
+class: center, middle
+background-image: url("img/AllisonHorst/ggplot2_exploratory.png")
+background-size: contain
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
+
 
 ---
 # `ggplot(data)`
@@ -194,7 +131,7 @@ The `ggplot()` function initializes a ggplot object. Every ggplot needs this fun
 ```r
 library(ggplot2) # or library(tidyverse)
 
-*ggplot(data = msleep)
+*ggplot(data = and_vertebrates)
 ```
 
 - Empty plot because we did not specify the mapping of data variables
@@ -216,13 +153,13 @@ The **aes**thetic mapping defines how variables are mapped to aesthetic properti
 
 
 ```r
-ggplot(data = msleep,
+ggplot(data = and_vertebrates,
 *      mapping = aes(
-*        x = brainwt,
-*        y = sleep_total))
+*        x = length_1_mm,
+*        y = weight_g))
 ```
 
-- Map variable `brainwt` to x-axis and `sleep_total` to y-axis
+- Map variable `length_1_mm` to x-axis and `weight_g` to y-axis
 - Default scales are automatically adapted to range of data
 ]
 
@@ -239,20 +176,22 @@ The **aes**thetic mapping defines how variables are mapped to aesthetic properti
 
 
 ```r
-ggplot(data = msleep,
+ggplot(data = and_vertebrates,
        mapping = aes( 
-         x = brainwt, 
-         y = sleep_total)) 
+         x = length_1_mm, 
+         y = weight_g)) 
 ```
 
-- map variable `brainwt` to x-axis and `sleep_total` to y-axis
-- default scales are automatically adapted to range of data
+- Map variable `length_1_mm` to x-axis and `weight_g` to y-axis
+- Default scales are automatically adapted to range of data
 
 This is the same but shorter:
 
 
 ```r
-*ggplot(msleep, aes(brainwt, sleep_total))
+*ggplot(and_vertebrates,
+*      aes(x = length_1_mm,
+*          y = weight_g))
 ```
 
 Remember argument matching by position?
@@ -278,25 +217,27 @@ class: middle, center
 ---
 # `geom_point()`
 
+--
+
 .pull-left[
 
 
 ```r
-ggplot(data = msleep,
-       aes(x = brainwt, 
-           y = sleep_total)) +
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g)) +
 * geom_point()
 ```
 
-- New plot layers are added with `+`
-- Warning that 27 points can not be plotted due to missing values
+- New plot layers added with `+`
+- Warning that points could not be plotted due to missing values
 - `data` and `aes` defined in `ggplot` call are inherited to all plot layers
 ]
 
 .pull-right[
 
 ```
-## Warning: Removed 27 rows containing missing values (geom_point).
+## Warning: Removed 13270 rows containing missing values (`geom_point()`).
 ```
 
 &lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
@@ -309,21 +250,22 @@ ggplot(data = msleep,
 
 
 ```r
-ggplot(data = msleep,
-       aes(x = brainwt, 
-           y = sleep_total)) +
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g)) +
   geom_point()
 ```
 
-- New plot layers are added with `+`
-- Warning that 27 points can not be plotted due to missing values
+- New plot layers added with `+`
+- Warning that points could not be plotted due to missing values
 - `data` and `aes` defined in `ggplot` call are inherited to all plot layers
 - `data` and `aes` can be local to a layer:
 
 
 ```r
-ggplot(msleep) +
-* geom_point(aes(brainwt, sleep_total))
+ggplot(data = and_vertebrates,) +
+* geom_point(aes(x = length_1_mm,
+*                y = weight_g))
 ```
 
 Here, it does not make a difference.
@@ -333,31 +275,31 @@ Here, it does not make a difference.
 .pull-right[
 
 ```
-## Warning: Removed 27 rows containing missing values (geom_point).
+## Warning: Removed 13270 rows containing missing values (`geom_point()`).
 ```
 
 &lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-14-1.png" width="504" /&gt;
 ]
 
-
 ---
-# `scale_x_log10()`
+# `aes(color)`: mapping color to a variable
 
-The scales onto which the aesthetic elements are mapped can be changed.
+Looks like there are two groups of data: **Map color of points to a variable** by adding it to aesthetics:
+
+--
 
 .pull-left[
 
 
 ```r
-ggplot(data = msleep,
-       aes(x = brainwt, 
-           y = sleep_total)) +
-  geom_point() +
-* scale_x_log10()
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+*          color = species)) +
+  geom_point()
 ```
 
-- Scales can be changed for all elements of `aes`
-
+- Map the `species` variable to the color aesthetic of the plot
 ]
 
 .pull-right[
@@ -365,6 +307,102 @@ ggplot(data = msleep,
 ]
 
 ---
+# `aes(size)`: mapping size to a variable
+
+We can do the same with size:
+
+--
+
+.pull-left[
+
+
+```r
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+*          size = species)) +
+  geom_point()
+```
+
+]
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-18-1.png" width="504" /&gt;
+]
+
+---
+# `aes(shape)`: mapping shape to a variable
+
+We can do the same with shape:
+
+--
+
+.pull-left[
+
+
+```r
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+*          shape = species)) +
+  geom_point()
+```
+
+]
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-20-1.png" width="504" /&gt;
+]
+
+---
+# Combine color, size and shape
+
+We can also combine these aesthetics and map different variables
+
+.pull-left[
+
+
+```r
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+*          color = unittype,
+*          shape = species,
+*          size = year)) +
+  geom_point()
+```
+
+- This is a bit too much for this plot, but sometimes can be useful
+
+]
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-22-1.png" width="504" /&gt;
+]
+
+---
+# Changing  the scales of the aesthetics
+
+The scales onto which the aesthetic elements are mapped can be changed.
+
+.pull-left[
+
+
+```r
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point()
+```
+
+- Exponential relationship?
+- How does it look like on the log scale?
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-24-1.png" width="504" /&gt;
+]
+
+---
 # `scale_x_log10()`
 
 The scales onto which the aesthetic elements are mapped can be changed.
@@ -373,11 +411,13 @@ The scales onto which the aesthetic elements are mapped can be changed.
 
 
 ```r
-ggplot(data = msleep,
-       aes(x = brainwt, 
-           y = sleep_total)) +
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
   geom_point() +
-* scale_x_log10()
+* scale_x_log10() +
+* scale_y_log10()
 ```
 
 - Scales can be changed for all elements of `aes`
@@ -385,12 +425,12 @@ ggplot(data = msleep,
 
 &lt;b&gt;scale\_.col1[aes-name]\_.col2[scale-type]&lt;/b&gt;
 
-In this example we scale the &lt;b&gt;.col1[x]&lt;/b&gt; aesthetic to &lt;b&gt;.col2[log10]&lt;/b&gt;.
+In this example we scale the &lt;b&gt;.col1[x]&lt;/b&gt; and the  &lt;b&gt;.col1[y]&lt;/b&gt;  aesthetic to &lt;b&gt;.col2[log10]&lt;/b&gt;.
 
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-18-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-26-1.png" width="504" /&gt;
 ]
 
 ---
@@ -403,157 +443,41 @@ Add a smoothing line that helps see patterns in the data
 .pull-left[
 
 ```r
-ggplot(data = msleep,
-       aes(x = brainwt, 
-           y = sleep_total)) +
-  geom_point() +
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point(alpha = 0.3) +
 * geom_smooth(method = "lm") +
-  scale_x_log10()
+  scale_x_log10() + 
+  scale_y_log10()
 ```
 
 - With `method = "lm"`, a linear regression line is added
-- The ribbon represents confidence interval around the regression
-  - Turn ribbon off with `se = FALSE` argument
+- All geoms are done separately for the species
+  - Color is defined globally
+- alpha makes the points transparent (0-1 with 0 being invisible)
 ]
 
-.pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-20-1.png" width="504" /&gt;
-]
-
----
-# Change appearance of points
-
-The basic things we can change about points are their **size, shape and color**:
-
-.pull-left[
-
-
-```r
-ggplot(data = msleep,
-       aes(x = brainwt, 
-           y = sleep_total)) +
-* geom_point(size = 4,
-*            shape = 17,
-*            color = "blue") +
-  scale_x_log10() 
-```
-- Have a look [here](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) for the point shape codes:
-
-.center[![:scale 40%](img/day2/shape_codes.png)]
-
-]
-
-.pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-22-1.png" width="504" /&gt;
-]
-
----
-# `aes(color)`: mapping color to a variable
-
-Instead of changing color of all points, **map color to a variable** by adding it to aesthetics:
-
---
-
-.pull-left[
-
-
-```r
-g &lt;- ggplot(
-  data = msleep,
-  aes(
-    x = brainwt,
-    y = sleep_total,
-*   color = vore
-  )
-) + 
-  geom_point(size = 4) +
-  scale_x_log10()
-g
-```
-
-- Map the `vore` variable to the color aesthetic of the plot
-- Plots can be saved in variables
-]
-
-.pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-24-1.png" width="504" /&gt;
-]
-
----
-# `aes(size)`: mapping size to a variable
-
-We can do the same with size:
-
-.pull-left[
-
-
-```r
-ggplot(
-  data = msleep,
-  aes(
-    x = brainwt,
-    y = sleep_total,
-    color = vore,
-*   size = bodywt
-  )
-) + 
-  geom_point() +
-  scale_x_log10()
-
-```
-
-]
-.pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-26-1.png" width="504" /&gt;
-]
-
----
-# `aes(shape)`: mapping shape to a variable
-
-We can do the same with shape:
-
-.pull-left[
-
-
-```r
-ggplot(
-  data = msleep,
-  aes(
-    x = brainwt,
-    y = sleep_total,
-    color = vore,
-*   shape = conservation
-  )
-) + 
-  geom_point() +
-  scale_x_log10()
-
-```
-
-]
 .pull-right[
 &lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-28-1.png" width="504" /&gt;
 ]
 
 ---
+# `geom_boxplot`
 
-# `scale_color_viridis_d()`
-
-Back to our plot `g` with color as additional aesthetic. We can change the color scale:
+Compare groups using a boxplot
 
 --
 
 .pull-left[
 
-
 ```r
-g + 
-* scale_color_viridis_d(option = "inferno")
+ggplot(and_vertebrates, 
+       aes(x = species, 
+           y = length_1_mm)) +
+* geom_boxplot()
 ```
-
-- The viridis color palette is designed for viewers with common forms of color blindness
-- Different options of viridis color palettes are are:
-  - `"magma"`, `"inferno"`, `"plasma"`, `"viridis"`, `"cividis"`
 
 ]
 
@@ -562,9 +486,148 @@ g +
 ]
 
 ---
-# `scale_color_viridis_d()`
+# `geom_boxplot`
 
-The `scale_color_viridis_d` function by default does not map color to missing data points (`NA` values). We have to explicitly state the color for `NA`:
+Compare groups using a boxplot
+
+.pull-left[
+
+```r
+ggplot(and_vertebrates, 
+       aes(x = species, 
+           y = length_1_mm)) +
+* geom_boxplot(notch = TRUE)
+```
+
+- If notches don't overlap, the medians of the groups are likely different
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-32-1.png" width="504" /&gt;
+]
+
+---
+# `geom_boxplot`
+
+Map the `unittype` to the **color** aesthetic of the box
+
+--
+
+.pull-left[
+
+```r
+ggplot(and_vertebrates, 
+       aes(x = species, 
+           y = length_1_mm,
+*          color = unittype)) +
+  geom_boxplot() 
+```
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-34-1.png" width="504" /&gt;
+]
+
+---
+# `geom_boxplot`
+
+Map the `unittype` to the **fill** aesthetic of the box
+
+--
+
+.pull-left[
+
+```r
+ggplot(and_vertebrates, 
+       aes(x = species, 
+           y = length_1_mm,
+*          fill = unittype)) +
+  geom_boxplot(notch = TRUE) 
+```
+
+
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-36-1.png" width="504" /&gt;
+]
+
+---
+# `geom_histogram`
+
+.pull-left[
+
+```r
+ggplot(and_vertebrates, 
+       aes(x = length_1_mm, 
+           fill = section)) +
+* geom_histogram()
+```
+
+- Careful: By default the histogram is stacked for the different groups!
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-38-1.png" width="504" /&gt;
+]
+
+---
+# `geom_histogram`
+
+.pull-left[
+
+```r
+ggplot(and_vertebrates, 
+       aes(x = length_1_mm, 
+           fill = section)) +
+  geom_histogram(
+*   position = "identity",
+*   alpha = 0.5)
+```
+
+- Change the position of the histogram to `"identity"`, if you
+don't want it stacked
+- `alpha` makes sure that you see overlapping areas
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-40-1.png" width="504" /&gt;
+]
+
+---
+# `geom_tile`
+
+You can create a simple heatmap with `geom_tile`
+
+--
+
+.pull-left[
+
+```r
+ggplot(and_vertebrates, 
+       aes(x = section,
+           y = species,
+           fill = weight_g)) +
+* geom_tile()
+```
+
+- Here we would have to chose a different color scheme to see differences
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-42-1.png" width="504" /&gt;
+]
+
+---
+# Small multiples with `facet_wrap`
+
+Split your plots along one variable with `facet_wrap`
 
 --
 
@@ -572,23 +635,175 @@ The `scale_color_viridis_d` function by default does not map color to missing da
 
 
 ```r
-g + 
-  scale_color_viridis_d(
-    option = "inferno",
-*   na.value = "grey")
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point() +
+* facet_wrap(~section)
 ```
-
-- Whether or not you have to do this, depends on the default of the `na.value` argument of the color scale that you use
-- You can also remove missing values from your data set before plotting (we will learn that later)
 
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-32-1.png" width="504" height="430" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-44-1.png" width="504" /&gt;
 ]
 
 ---
-# `scale_color_manual()`
+# Small multiples with `facet_wrap`
+
+Split your plots along one variable with `facet_wrap`
+
+.pull-left[
+
+
+```r
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = species)) + 
+  geom_point() +
+  facet_wrap(~section, 
+*            nrow = 2,
+*            scales = "free")
+```
+
+- Specify number of rows and columns with `nrow`/`ncol`
+- Set separate scales for x and y with `scales`
+  - `"free"`: x and y axis are free
+  - `"free_y"`: only y-axis is free
+  - `"free_x"`: only x-axis is free
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-46-1.png" width="504" /&gt;
+]
+
+---
+# Small multiples with `facet_grid`
+
+Split your plots along two variables with `facet_grid`
+
+--
+
+.pull-left[
+
+
+```r
+ggplot(data = and_vertebrates,
+       aes(x = length_1_mm, 
+           y = weight_g,
+           color = unittype)) + 
+  geom_point() +
+* facet_grid(section ~ species)
+```
+
+- `facet_grid(rows ~ columns)`
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-48-1.png" width="504" /&gt;
+]
+
+---
+class: inverse, middle, center
+
+# .large[Now you]
+
+## Task 1: Exploratory data analysis with the penguin data set (45 min)
+
+#### Find the task description (task 1.1-1.3) [here](https://selinazitrone.github.io/intro-r-data-analysis/02_tasks_controller.html#ggplot2)
+
+---
+class: center, middle
+background-image: url("img/AllisonHorst/ggplot2_masterpiece.png")
+background-size: contain
+
+.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+
+---
+# Change appearance of points
+
+.pull-left[
+
+
+```r
+ggplot(and_vertebrates, aes(
+  x = length_1_mm,
+  y = weight_g
+)) +
+  geom_point(
+*   size = 4,
+*   shape = 17,
+*   color = "blue",
+*   alpha = 0.5
+  )
+```
+- Have a look at [shape](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) and [color](https://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) codes:
+
+.center[![:scale 40%](img/day2/shape_codes.png)]
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-50-1.png" width="504" /&gt;
+]
+
+---
+# Change color scale
+
+We can also save a plot in a variable
+
+.pull-left[
+
+
+```r
+g &lt;- ggplot(and_vertebrates, aes(
+  x = length_1_mm,
+  y = weight_g,
+  color = species
+)) +
+  geom_point()
+g
+```
+- Other plot layers can still be added to `g`
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-52-1.png" width="504" /&gt;
+]
+
+---
+# `scale_color_viridis_d`
+
+Change the colors of the color aesthetic:
+
+--
+
+.pull-left[
+
+
+```r
+g +
+* scale_color_viridis_d()
+```
+
+- The viridis color palette is designed for viewers with common forms of color blindness
+- Different options of viridis color palettes are are:
+  - `"magma"`, `"inferno"`, `"plasma"`, `"viridis"`, `"cividis"`
+  - use the options with `scale_color_viridis_d(option = "cividis")`
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-54-1.png" width="504" /&gt;
+]
+
+---
+# `scale_color_manual`
 
 We can also manually specify colors:
 
@@ -596,14 +811,11 @@ We can also manually specify colors:
 
 
 ```r
-g &lt;- g + 
-* scale_color_manual(
-*   values = c("dodgerblue4",
-*              "darkolivegreen4",
-*              "darkorchid3",
-*              "orange",
-*              "grey"))
-g
+g +
+  scale_color_manual(values = c(
+    "darkolivegreen4",
+    "darkorchid3"
+  ))
 ```
 
 - Length of color vector has to match number of levels in your aesthetic
@@ -615,79 +827,100 @@ g
 
 .pull-right[
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-34-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-56-1.png" width="504" /&gt;
 ]
 
 ---
 # Other color scales
 
-There are many packages with preset color palettes, e.g.:
+You can use the `paletteer` package to access color scales from many packages.
 
-**ggsci:** scientific journal and sci-fi themed palettes
-
-
-```r
-install.packages("ggsci")
-# Examples
-ggsci::scale_color_npg() # nature publishing group
-ggsci::scale_color_rickandmorty()
-```
-
---
-
-**ggthemes:** software and publisher themed palettes:
+.pull-left[
 
 
 ```r
-install.packages("ggthemes")
-#Examples
-ggthemes::scale_color_excel_new() # colors from new Excel version
-ggthemes::scale_color_economist() # color palette from Economist graphs
+# install.packages("paletteer")
+library(paletteer)
+g &lt;- g +
+  scale_color_paletteer_d(
+    palette = "ggsci::default_uchicago"
+  )
+g
 ```
+
+- Use `scale_color_paletteer_d` for discrete and `scale_color_paletteer_c` for
+continuous color scales
+- Check out all palettes available [here](https://r-charts.com/color-palettes)
+
+]
+
+.pull-right[
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-58-1.png" width="504" /&gt;
+]
 
 --
 
 For a comprehensive list of color palettes available, check out [this repository](https://github.com/EmilHvitfeldt/r-color-palettes) by Emil Hvitfeldt.
 
 ---
-# `facet_wrap()` and `facet_grid()`
-
-Facets split a plot into small multiples along values of a variable from the data.
-
---
+# `scale_fill_*` vs. `scale_color_*`
 
 .pull-left[
 
+
 ```r
-g +
-* facet_wrap(~conservation)
+ggplot(
+  and_vertebrates,
+  aes(
+    x = section,
+    y = length_1_mm,
+*   color = unittype )) +
+  geom_boxplot() +
+* paletteer::scale_color_paletteer_d(
+    palette = "ggsci::default_uchicago"
+  )
 ```
 
-- You can even split plots along two variables using `facet_grid()` instead of `facet_wrap()`
-- The basic functioning is `facet_grid(yvar ~ xvar)` 
-  - `yvar` will be displayed as columns
-  - `xvar` will be displayed as rows
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-59-1.png" width="504" /&gt;
+
+- Check out all palettes available [here](https://r-charts.com/color-palettes/#continuous)
 
 ]
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-38-1.png" width="504" /&gt;
+
+
+```r
+ggplot(
+  and_vertebrates,
+  aes(
+    x = section,
+    y = length_1_mm,
+*   fill = unittype )) +
+  geom_boxplot() +
+* paletteer::scale_fill_paletteer_d(
+    palette = "ggsci::default_uchicago"
+  )
+```
+
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-60-1.png" width="504" /&gt;
 ]
 
 ---
-# `labs()`: change axis and legend titles and add plot title
+# `labs`: Change axis and legend titles and add plot title
 
 .pull-left[
 
 ```r
 g &lt;- g +
   labs(
-*   x = "brain weight [kg]",
-*   y = "total sleep [h/day]",
-*   color = "Diet",
-*   title = "Brain weight and sleep time in mammals",
-*   subtitle = "Larger brains seem to sleep less",
-*   caption = "Data from the ggplot2 package")
+*  x = "Length [mm]",
+*   y = "Weight [g]",
+*   color = "Species",
+*   title = "Length-Weight relationship",
+*   subtitle = "There seems to be an exponential relationship",
+*   caption = "Data from the `lterdatasampler` package")
 g
 ```
 
@@ -695,12 +928,12 @@ g
 
 
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-40-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-62-1.png" width="504" /&gt;
 
 ]
 
 ---
-# `theme_*()`: change appearance
+# `theme_*`: change appearance
 
 `ggplot2` offers many pre-defined themes that we can apply to change the appearance of a plot.
 
@@ -713,7 +946,7 @@ g +
 * theme_classic()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-42-1.png" width="504" height="370" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-64-1.png" width="504" /&gt;
 
 ]
 
@@ -721,37 +954,31 @@ g +
 
 ```r
 g + 
-* theme_linedraw()
+* theme_bw()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-44-1.png" width="504" height="370" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-66-1.png" width="504" /&gt;
 
 ]
 
 ---
-# `theme_*()`: change appearance
+# `theme_*`: change appearance
 
-`ggplot2` offers several pre-defined themes that we can apply to change the appearance of our plot.
+`ggplot2` offers many pre-defined themes that we can apply to change the appearance of a plot.
+
 
 .pull-left[
-
-```r
-g + 
-* theme_dark()
-```
-
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-46-1.png" width="504" height="370" /&gt;
-
-]
-
-.pull-right[
 
 ```r
 g + 
 * theme_minimal()
 ```
 
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-48-1.png" width="504" height="370" /&gt;
+
+]
+
+.pull-right[
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-68-1.png" width="504" /&gt;
 
 ]
 
@@ -775,6 +1002,8 @@ If you want a full list of what you can customize, have a look at
 ?theme
 ```
 
+- Look [here](https://github.com/claragranell/ggplot2/blob/main/ggplot_theme_system_cheatsheet.pdf) for an overview of the elemtens that you can change and the corresponding functions
+
 ---
 # `theme()`: customize theme
 
@@ -786,15 +1015,15 @@ To edit a theme, just add another `theme()` layer to your plot.
 
 ```r
 g + 
-  theme_minimal() + 
-* theme(
-*   axis.text = element_text(face = "bold"),
-*   axis.title = element_text(face = "italic"),
-*   legend.position = "bottom",
-*   plot.background = element_rect(
-*     fill = "lightblue",
-*     color = "yellow")
-* )
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    axis.text = element_text(face = "bold"),
+    plot.background = element_rect(
+      fill = "lightgrey",
+      color = "darkgrey"
+    )
+  )
 ```
 
 - The basic functioning is:
@@ -806,11 +1035,11 @@ theme(
 )
 ```
 
-- Look [here](https://github.com/claragranell/ggplot2/blob/main/ggplot_theme_system_cheatsheet.pdf) for an overview of the elemtens that you can change and the corresponding functions
+
 
 ]
 .pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-52-1.png" width="504" /&gt;
+&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-72-1.png" width="504" /&gt;
 ]
 
 ---
@@ -838,223 +1067,6 @@ theme_set(theme_minimal(base_size = 16))
 This is very practical if you want to achieve a consistent look, e.g. for a scientific journal.
 
 ---
-# `geom_boxplot()`
-
-A boxplot can be created with `geom_boxplot`:
-
-.pull-left[
-
-```r
-ggplot(msleep, aes(x = vore, y = bodywt)) +
-* geom_boxplot() +
-  scale_y_log10() 
-```
-  
-]
-
-.pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-56-1.png" width="504" /&gt;
-]
-
----
-# `aes(fill)` and `scale_fill_*()`
-
-Pay attention to fill vs. color aesthetic
-
-.pull-left[
-
-```r
-ggplot(msleep, aes(x = vore, y = bodywt)) +
-  geom_boxplot(
-*   aes(fill = vore)
-  ) + 
-  scale_y_log10() +
-*ggthemes::scale_fill_tableau(
-*   na.value = "gray",
-*   guide = "none")
-```
-  
-]
-
-.pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-58-1.png" width="504" /&gt;
-]
-
----
-# `aes(color)`and `scale_color_*()`
-
-Pay attention to fill vs. color aesthetic
-
-.pull-left[
-
-```r
-ggplot(msleep, aes(x = vore, y = bodywt)) +
-  geom_boxplot(
-*   aes(color = vore)
-  ) + 
-  scale_y_log10() +
-* ggthemes::scale_color_tableau(
-*   na.value = "gray",
-*   guide = "none")
-```
-  
-- `color` means the border color or the color of points and lines
-- `fill` means the fill color of boxes, bars, ...
-]
-
-.pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-60-1.png" width="504" /&gt;
-]
-
-&lt;!-- --- --&gt;
-&lt;!-- class: inverse, center, middle --&gt;
-
-&lt;!-- # .large[More geoms] --&gt;
-
-&lt;!-- ## Some more plot types you can create with ggplot for your reference --&gt;
-
----
-# Histograms: `geom_histogram()`
-
-Basic histogram of total sleep time:
-
-.pull-left[
-
-```r
-ggplot(msleep, aes(x=sleep_total)) +
-* geom_histogram() +
-  labs(x = "Total sleep time [h]", 
-       y = "Frequency")
-```
-  
-]
-
-.pull-right[
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-62-1.png" width="504" /&gt;
-]
-
----
-# Discrete vs. continous variables
-
-Let's add a sleep category to the data set depending on the hours of sleep an animal gets in total:
-
-
-```r
-msleep$category &lt;- ifelse(
-  msleep$sleep_total &lt; 5, 
-  1,
-  ifelse(msleep$sleep_total &gt; 5 &amp; msleep$sleep_total &lt; 10,
-         2,
-         3)
-)
-str(msleep)
-## tibble [83 x 12] (S3: tbl_df/tbl/data.frame)
-##  $ name        : chr [1:83] "Cheetah" "Owl monkey" "Mountain beaver" "Greater short-tailed shrew" ...
-##  $ genus       : chr [1:83] "Acinonyx" "Aotus" "Aplodontia" "Blarina" ...
-##  $ vore        : chr [1:83] "carni" "omni" "herbi" "omni" ...
-##  $ order       : chr [1:83] "Carnivora" "Primates" "Rodentia" "Soricomorpha" ...
-##  $ conservation: chr [1:83] "lc" NA "nt" "lc" ...
-##  $ sleep_total : num [1:83] 12.1 17 14.4 14.9 4 14.4 8.7 7 10.1 3 ...
-##  $ sleep_rem   : num [1:83] NA 1.8 2.4 2.3 0.7 2.2 1.4 NA 2.9 NA ...
-##  $ sleep_cycle : num [1:83] NA NA NA 0.133 0.667 ...
-##  $ awake       : num [1:83] 11.9 7 9.6 9.1 20 9.6 15.3 17 13.9 21 ...
-##  $ brainwt     : num [1:83] NA 0.0155 NA 0.00029 0.423 NA NA NA 0.07 0.0982 ...
-##  $ bodywt      : num [1:83] 50 0.48 1.35 0.019 600 ...
-##  $ category    : num [1:83] 3 3 3 3 1 3 2 2 3 1 ...
-```
-
----
-# Discrete vs. continous variables
-
-What's happening here?
-
-.pull-left[
-
-```r
-ggplot(msleep, 
-       aes(x = category, 
-           y = bodywt)) +
-  geom_boxplot() + 
-  scale_y_log10()
-```
-
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-65-1.png" width="65%" style="display: block; margin: auto;" /&gt;
-
-]
-
-.pull-right[
-
-```r
-ggplot(msleep,
-       aes(x = brainwt, 
-           y = sleep_total, 
-           color = category)) +
-  geom_point() +  scale_x_log10()
-```
-
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-67-1.png" width="65%" style="display: block; margin: auto;" /&gt;
-
-]
-
----
-# Discrete vs. continous variables
-
-.center[![:scale 60%](img/AllisonHorst/continuous_discrete.png)]
-
-.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
-
-
----
-# Discrete vs. continous variables 
-
-Solution: Turn continuous variable into a factor before plotting
-
-.pull-left[
-
-```r
-ggplot(msleep, 
-*      aes(x = factor(category),
-           y = bodywt)) +
-  geom_boxplot() + 
-  scale_y_log10()
-```
-
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-69-1.png" width="65%" style="display: block; margin: auto;" /&gt;
-
-]
-
-.pull-right[
-
-```r
-ggplot(msleep,
-       aes(x = brainwt, 
-           y = sleep_total, 
-*          color = factor(category))) +
-  geom_point() + scale_x_log10()
-```
-
-&lt;img src="02_01_tidyverse_ggplot_files/figure-html/unnamed-chunk-71-1.png" width="65%" style="display: block; margin: auto;" /&gt;
-
-]
-
----
-# Let's look at an example
-
-.left-column[
-What are the layers in this plot?
-
-- data
-- aesthetic mapping
-- geoms
-- themes
-]
-.right-column[
-![:scale 90%](img/figs-penguin/README-flipper-bill-1.png)
-]
-
-.footnote-right[Visualization from the [palmerpenguins package](https://allisonhorst.github.io/palmerpenguins/)]
-
----
 # `ggsave()`
 
 A ggplot object can be saved on disk in different formats.
@@ -1064,9 +1076,9 @@ Without specifications:
 
 ```r
 # save plot g in img as my_plot.pdf
-ggsave(filename = "./img/my_plot.pdf", plot = g)
+ggsave(filename = "img/my_plot.pdf", plot = g)
 # save plot g in img as my_plot.png
-ggsave(filename = "./img/my_plot.png", plot = g)
+ggsave(filename = "img/my_plot.png", plot = g)
 ```
 
 --
@@ -1076,7 +1088,7 @@ Or with specifications:
 
 ```r
 # save a plot named g in the img directory under the name my_plot.png with width 16 cm and height 9 cm
-ggsave(filename = "./img/my_plot.png",
+ggsave(filename = "img/my_plot.png",
        plot = g,
        width = 16,
        heigth = 9,
@@ -1086,24 +1098,13 @@ ggsave(filename = "./img/my_plot.png",
 Have a look at `?ggsave` to see all options.
 
 ---
-# Summary I
-
-#### Tidyverse and ggplot
-
-- The tidyverse is a collections of R packages for data analysis, including `ggplot2`,`readr`, `tidyr`, `dplyr`, `tibble`
-- All tidyverse packages are designed to work together seamlessly
-- basic idea of `ggplot` is to stack distinct layers of graphical elements to create a plot 
-
-- Check out the [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf) for an overview of how to create a ggplot
-
----
 class: inverse, middle, center
 
 # .large[Now you]
 
-## Task 1: Create your own penguin ggplots (90 min)
+## Task 1: Make your penguin plots more beautiful (30 min)
 
-#### Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/02_tasks_controller.html#ggplot2)
+#### Find the task description (task 1.4-1.5) [here](https://selinazitrone.github.io/intro-r-data-analysis/02_tasks_controller.html#beautify-the-plots)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

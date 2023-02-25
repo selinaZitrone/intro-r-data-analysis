@@ -718,6 +718,7 @@
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -1790,15 +1791,21 @@
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
-          var fn = $(this).children()[0]
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
           $(this).html(fn.shadowRoot.querySelector("sup"))
           $(this).id = fn.id
           fn.remove()
         }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -2307,7 +2314,7 @@
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -2338,17 +2345,26 @@ Slides
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
+<span class="nav-dropdown-header">Day 1</span>
 <a href="slides/01_01_RStudio.html">01 - Introduction RStudio</a>
 <a href="slides/01_02_Intro_R.html">01 - Introduction R</a>
 <a href="slides/01_03_Functions.html">01 - Functions</a>
 <a href="slides/01_04_tibbles_short.html">01 - Data &amp; Tibbles</a>
-<a href="slides/01_05_readr.html">01 - Tidyverse and Readr</a>
-<a href="slides/02_01_tidyverse_ggplot.html">02 - Ggplot2</a>
-<a href="slides/02_02_dplyr.html">02 - Dplyr</a>
-<a href="slides/02_03_tidyr.html">02 - Tidyr</a>
+<a href="slides/01_05_readr.html">01 - Tidyverse and readr</a>
+<hr/>
+<span class="nav-dropdown-header">Day 2</span>
+<a href="slides/02_01_tidyverse_ggplot.html">02 - ggplot2</a>
+<a href="slides/02_02_dplyr.html">02 - dplyr</a>
+<hr/>
+<span class="nav-dropdown-header">Day 3</span>
+<a href="slides/02_03_tidyr.html">03 - tidyr</a>
 <a href="slides/03_01_tests_short.html">03 - Statistical tests</a>
-<a href="slides/03_02_linear_models.html">03 - Linear models</a>
+<hr/>
+<span class="nav-dropdown-header">Day 4</span>
 <a href="slides/04_01_bring_your_own_data.html">04 - Bring your own data</a>
+<hr/>
+<span class="nav-dropdown-header">Extras</span>
+<a href="slides/03_02_linear_models.html">Linear models</a>
 <a href="slides/01_06_common_errors.html">Common R errors</a>
 </div>
 </div>
@@ -2360,8 +2376,11 @@ Tasks
 </button>
 <div class="nav-dropdown-content">
 <a href="01_tasks_controller.html">Day 1: Intro to R</a>
-<a href="02_tasks_controller.html">Day 2: Tidyverse</a>
-<a href="03_tasks_controller.html">Day 3: Statistics</a>
+<a href="02_tasks_controller.html">Day 2: ggplot and dplyr</a>
+<a href="03_tasks_controller.html">Day 3: tidyr and tests</a>
+<hr/>
+<span class="nav-dropdown-header">Extras</span>
+<a href="04_tasks_controller.html">Linear models</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2372,8 +2391,11 @@ Solutions
 </button>
 <div class="nav-dropdown-content">
 <a href="01_solutions_controller.html">Day 1: Intro to R</a>
-<a href="02_solutions_controller.html">Day 2: Tidyverse</a>
-<a href="03_solutions_controller.html">Day 3: Statistics</a>
+<a href="02_solutions_controller.html">Day 2: ggplot and dplyr</a>
+<a href="03_solutions_controller.html">Day 3: tidyr and tests</a>
+<hr/>
+<span class="nav-dropdown-header">Extras</span>
+<a href="04_solutions_controller.html">Linear models</a>
 </div>
 </div>
 <a href="online_resources.html">Resources</a>
@@ -2400,22 +2422,21 @@ Solutions
 <div class="d-article">
 <h1 id="mit-license">MIT License</h1>
 <p>Copyright (c) 2021 Selina Baldauf</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-“Software”), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

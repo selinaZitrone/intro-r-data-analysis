@@ -62,21 +62,15 @@ library(fontawesome)
 # What do I use `r fa("r-project")` for?
 
 
-- Short answer: everything
-
---
-
-- Long answer:
-
-  - **Cleaning data**
-  - **Visualizing data**
-  - **Wrangling data**
-  - **Performing statistical analyses**
-  - Modelling biocrusts
-  - Writing documents 
-  - Presentations
-  - Workflow automation
-  - ...
+- **Cleaning data**
+- **Visualizing data**
+- **Wrangling data**
+- **Performing statistical analyses**
+- Modelling biocrusts
+- Writing documents 
+- Presentations
+- Workflow automation
+- ...
   
 ---
 # Who are you?
@@ -88,12 +82,13 @@ library(fontawesome)
 
 .center[![](img/day1/workshop_topics.png)]
 
+--
 
 <b>.col2[Day 1: Introduction to R and RStudio and data import]</b>
 
-<b>.col1[Day 2: Data analysis with the tidyverse]</b>
+<b>.col1[Day 2: Data transformation and visualization with the tidyverse]</b>
 
-<b>.col3[Day 3: Statistical tests and models with R]</b>
+<b>.col3[Day 3: Cleaning data (optional: statistical tests and models with R)]</b>
 
 **Day 4: Bring your own data**
 
@@ -128,9 +123,8 @@ library(fontawesome)
   - Solutions
   - Additional resources
   
---
-
 - The complete material can be downloaded from the website after the workshop
+- Website will stay online after the workshop
 
 ---
 # Bring your own data
@@ -149,7 +143,7 @@ I will also provide some real life data sets from different topics.
 - Present/discuss your results, questions and problems at the end of the day
 
 ---
-# Bring your own data - preparation
+# Bring your own data
 
 - Keep the last workshop day in mind during the next days
 
@@ -157,27 +151,45 @@ I will also provide some real life data sets from different topics.
   
   - Think of questions that you would like to answer for your data set
   
-- Add your name and the methods that you would like to use to the [joint document](https://hackmd.io/@selinaZitrone/rJZe9qMgK/edit)
+- Add your name and some details on what you plan to do in this [joint table](https://docs.google.com/spreadsheets/d/1MuINiPjVvZrMRUYboDXdoPwj8daKj88k6K1hnfcoWxQ/edit?usp=sharing)
 
 ---
 # Before we get started I
 
-Any feedback and questions are very welcome.
+- Help each other if possible
+  - Have an eye on the chat
+  
+--
 
-I am curious to know
+- All questions and comments are welcome
 
-- What you liked/disliked
-- Which topics or methods you missed
-- Which tasks were too easy/too difficult or just right
-- ...
+--
 
-You can give feedback by
+- Feedback is welcome
+  - Evaluation at the end of the workshop
+  
+--
 
-- Telling me
-- Remember it until the end of the workshop and put in in the evaluation
+- Do you want to record the input sessions?
+  - Someone needs to be responsible for that
 
 ---
 # Before we get started II
+
+**How to use Webex teams**
+
+- `General` channel for our joint meetings and chat
+
+- `Groups 1-4` for group work
+  
+  - Group spaces have their own chat and meetings
+  - Use the chat in the groups for questions 
+  - Meet in your groups and solve the tasks jointly (if you want)
+
+- Please always have a look at the general chat during the tasks
+
+---
+# Before we get started III
 
 .large[Did anyone have problems installing R and RStudio?]
 
@@ -185,17 +197,6 @@ You can give feedback by
 
 ![:scale 10%](img/Rlogo.png) Download and install R from [https://cran.r-project.org](https://cran.r-project.org/)
 
-![:scale 10%](img/Rstudio_logo.png) Download and install RStudio from             [https://www.rstudio.com](https://www.rstudio.com/products/rstudio/download/#download  )
+![:scale 10%](img/Rstudio_logo.png) Download and install RStudio from             [https://www.posit.co](https://posit.co/download/rstudio-desktop/)
 
----
-# Before we get started III
 
-**How to use Webex teams**
-
-- Different groups for the tasks later
-
-- Use the chat in the groups for questions 
-
-- Meet in your groups and solve the tasks jointly (if you want)
-
-- Please always have a look at the general chat during the tasks

@@ -50,10 +50,12 @@ bodywt_kg <- c(
   0.3, 87000, 0.1, 192
 )
 
-brainwt_g <- c(
-  8.1, 423, 119.5, 115, 5.5, 50, 4603, 419, 655, 115, 25.6,
-  680, 406, 1320, 5712, 70, 179, 56, 1, 0.4, 12.1, 175,
-  157, 440, 1.9, 154.5, 3, 180
+brainwt_kg <- c(
+  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,
+  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,
+  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
+  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,
+  0.0019, 0.1545, 0.003, 0.18
 )
 
 # Goes through every element in species and returns TRUE if it appears in animals_to_check
@@ -63,9 +65,6 @@ species[species %in% animals_to_check]
 
 # Goes through every element in animals_to_check and returns TRUE if it appears in species
 animals_to_check %in% species
-
-#Convert brain weight from g to kg
-brainwt_kg <- brainwt_g / 1000
 
 # Calculate some descriptive statistics
 mean(brainwt_kg) # mean
@@ -98,17 +97,17 @@ species[brain_body_ratio == min(brain_body_ratio)]
 
 # Adding new species
 species_new <- c("Eagle", "Snail", "Lion")
-brainwt_g_new <- c(40, NA, 500)
+brainwt_kg_new <- c(0.0004, NA, 0.5)
 bodywt_kg_new <- c(18, 0.01, 550)
 
 species <- c(species, species_new)
-brainwt_g <- c(brainwt_g, brainwt_g_new)
+brainwt_kg <- c(brainwt_kg, brainwt_kg_new)
 bodywt_kg <- c(bodywt_kg, bodywt_kg_new)
 
 # na.rm = FALSE
-mean(brainwt_g)
+mean(brainwt_kg)
 # na.rm = TRUE
-mean(brainwt_g, na.rm = TRUE)
+mean(brainwt_kg, na.rm = TRUE)
 
 
 
@@ -133,16 +132,18 @@ bodywt_kg <- c(
   0.3, 87000, 0.1, 192
 )
 
-brainwt_g <- c(
-  8.1, 423, 119.5, 115, 5.5, 50, 4603, 419, 655, 115, 25.6,
-  680, 406, 1320, 5712, 70, 179, 56, 1, 0.4, 12.1, 175,
-  157, 440, 1.9, 154.5, 3, 180
+brainwt_kg <- c(
+  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,
+  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,
+  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
+  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,
+  0.0019, 0.1545, 0.003, 0.18
 )
 # Creating the tibble
 animals <- tibble(
   species = species,
   bodywt_kg = bodywt_kg,
-  brainwt_kg = brainwt_g / 1000
+  brainwt_kg = brainwt_kg
 )
 
 view(animals)
@@ -180,10 +181,10 @@ animals
 #library(tidyverse)
 library(readr)
 
-# write
-write_csv(x = animals, file = "./data/animals.csv") # write as csv
-write_tsv(x = animals, file = "./data/animals.txt") # write as txt
+# write (Note: Make sure that the /data folder exists in your working directory)
+write_csv(x = animals, file = "data/animals.csv") # write as csv
+write_tsv(x = animals, file = "data/animals.txt") # write as txt
 
 #Read the same data back into R:
-animals_csv <- read_csv("./data/animals.csv") # read the csv
-animals_tsv <- read_tsv("./data/animals.txt") # read the txt
+animals_csv <- read_csv("data/animals.csv") # read the csv
+animals_tsv <- read_tsv("data/animals.txt") # read the txt

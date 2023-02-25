@@ -263,7 +263,7 @@ names(cities_tbl)
 Look at the entire table in a separate window with `view()`:
 
 ```{r eval=FALSE}
-tibble::view(cities_tbl)
+view(cities_tbl)
 ```
 
 --
@@ -284,7 +284,7 @@ summary(cities_tbl)
 ---
 # Indexing tibbles
 
-Indexing tibbles works similar to indexing vectors but with two dimensions instead of 1:<br>
+Indexing tibbles works similar to indexing vectors but with 2 dimensions instead of 1:<br>
 
 <b>.center[ tibble [ .col1[row_index], .col2[col_index or col_name] ]]</b>
 

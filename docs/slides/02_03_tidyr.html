@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Selina Baldauf" />
     <meta name="date" content="2021-08-01" />
-    <script src="02_03_tidyr_files/header-attrs-2.16/header-attrs.js"></script>
+    <script src="02_03_tidyr_files/header-attrs-2.19/header-attrs.js"></script>
     <link href="02_03_tidyr_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/new_slides.css" type="text/css" />
   </head>
@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2022-08-30)
+  2021-08-01 (updated: 2023-02-25)
 ]
 
 ---
@@ -112,7 +112,7 @@ cities_tbl
 ```
 
 ```
-## # A tibble: 10 x 4
+## # A tibble: 10 × 4
 ##    city             population area_km2 country
 ##    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  
 ##  1 Istanbul           15100000     2576 Turkey 
@@ -142,14 +142,16 @@ cities_untidy
 
 
 ```
-## # A tibble: 2 x 11
-##   type     Turke~1 Russi~2 UK_Lo~3 Russi~4 Germa~5 Spain~6 Ukrai~7 Italy~8 Roman~9 Franc~*
-##   &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1 populat~  1.51e7  1.25e7 9000000 5400000 3800000 3200000 3000000 2800000 2200000 2100000
-## 2 area_km2  2.58e3  2.56e3    1572    1439     891     604     839    1285     228     105
-## # ... with abbreviated variable names 1: Turkey_Istanbul, 2: Russia_Moscow, 3: UK_London,
-## #   4: `Russia_Saint Petersburg`, 5: Germany_Berlin, 6: Spain_Madrid, 7: Ukraine_Kyiv,
-## #   8: Italy_Rome, 9: Romania_Bucharest, *: France_Paris
+## # A tibble: 2 × 11
+##   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Petersburg`
+##   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                     &lt;dbl&gt;
+## 1 population        15100000      12500000   9000000                   5400000
+## 2 area_km2              2576          2561      1572                      1439
+##   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest France…¹
+##            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;    &lt;dbl&gt;
+## 1        3800000      3200000      3000000    2800000           2200000  2100000
+## 2            891          604          839       1285               228      105
+## # … with abbreviated variable name ¹​France_Paris
 ```
 
 **What's not tidy here?**
@@ -180,14 +182,16 @@ Let's tidy this data using functions from the `tidyr` package!
 
 
 ```
-## # A tibble: 2 x 11
-##   type     Turke~1 Russi~2 UK_Lo~3 Russi~4 Germa~5 Spain~6 Ukrai~7 Italy~8 Roman~9 Franc~*
-##   &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1 populat~  1.51e7  1.25e7 9000000 5400000 3800000 3200000 3000000 2800000 2200000 2100000
-## 2 area_km2  2.58e3  2.56e3    1572    1439     891     604     839    1285     228     105
-## # ... with abbreviated variable names 1: Turkey_Istanbul, 2: Russia_Moscow, 3: UK_London,
-## #   4: `Russia_Saint Petersburg`, 5: Germany_Berlin, 6: Spain_Madrid, 7: Ukraine_Kyiv,
-## #   8: Italy_Rome, 9: Romania_Bucharest, *: France_Paris
+## # A tibble: 2 × 11
+##   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Petersburg`
+##   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                     &lt;dbl&gt;
+## 1 population        15100000      12500000   9000000                   5400000
+## 2 area_km2              2576          2561      1572                      1439
+##   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest France…¹
+##            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;    &lt;dbl&gt;
+## 1        3800000      3200000      3000000    2800000           2200000  2100000
+## 2            891          604          839       1285               228      105
+## # … with abbreviated variable name ¹​France_Paris
 ```
 
 --
@@ -205,14 +209,14 @@ step1 &lt;- pivot_longer(
 
 
 ```
-## # A tibble: 20 x 3
+## # A tibble: 20 × 3
 ##   type       location                   value
 ##   &lt;chr&gt;      &lt;chr&gt;                      &lt;dbl&gt;
 ## 1 population Turkey_Istanbul         15100000
 ## 2 population Russia_Moscow           12500000
 ## 3 population UK_London                9000000
 ## 4 population Russia_Saint Petersburg  5400000
-## # ... with 16 more rows
+## # … with 16 more rows
 ```
 
 ---
@@ -233,14 +237,14 @@ step1 &lt;- pivot_longer(
 
 
 ```
-## # A tibble: 20 x 3
+## # A tibble: 20 × 3
 ##   type       location                   value
 ##   &lt;chr&gt;      &lt;chr&gt;                      &lt;dbl&gt;
 ## 1 population Turkey_Istanbul         15100000
 ## 2 population Russia_Moscow           12500000
 ## 3 population UK_London                9000000
 ## 4 population Russia_Saint Petersburg  5400000
-## # ... with 16 more rows
+## # … with 16 more rows
 ```
 
 ---
@@ -250,12 +254,12 @@ step1 &lt;- pivot_longer(
 
 
 ```
-## # A tibble: 20 x 3
+## # A tibble: 20 × 3
 ##   type       location           value
 ##   &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt;
 ## 1 population Turkey_Istanbul 15100000
 ## 2 population Russia_Moscow   12500000
-## # ... with 18 more rows
+## # … with 18 more rows
 ```
 
 --
@@ -273,12 +277,12 @@ step2 &lt;- separate(
 
 
 ```
-## # A tibble: 20 x 4
+## # A tibble: 20 × 4
 ##   type       country city        value
 ##   &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;
 ## 1 population Turkey  Istanbul 15100000
 ## 2 population Russia  Moscow   12500000
-## # ... with 18 more rows
+## # … with 18 more rows
 ```
 
 --
@@ -292,12 +296,12 @@ The opposite function exists as well and is called `unite`. Check out `?unite` f
 
 
 ```
-## # A tibble: 20 x 4
+## # A tibble: 20 × 4
 ##   type       country city        value
 ##   &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;
 ## 1 population Turkey  Istanbul 15100000
 ## 2 population Russia  Moscow   12500000
-## # ... with 18 more rows
+## # … with 18 more rows
 ```
 
 --
@@ -314,7 +318,7 @@ step3 &lt;- pivot_wider(
 
 
 ```
-## # A tibble: 10 x 4
+## # A tibble: 10 × 4
 ##   country city             population area_km2
 ##   &lt;chr&gt;   &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;
 ## 1 Turkey  Istanbul           15100000     2576
@@ -322,7 +326,7 @@ step3 &lt;- pivot_wider(
 ## 3 UK      London              9000000     1572
 ## 4 Russia  Saint Petersburg    5400000     1439
 ## 5 Germany Berlin              3800000      891
-## # ... with 5 more rows
+## # … with 5 more rows
 ```
 
 ---

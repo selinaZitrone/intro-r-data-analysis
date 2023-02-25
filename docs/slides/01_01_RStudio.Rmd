@@ -91,16 +91,18 @@ library(fontawesome)
 [ModernDive Book](https://moderndive.com/1-getting-started.html#r-rstudio)]
 
 ---
-# Basic idea
+# Basic idea of writing code for data analysis
 
-- Write precise instructions telling the computer what to do step by step
-  - For this you need to use the language R
+- Break down your process into small steps
+
+- Write precise instructions telling the computer what to do in each step
+  - For this you can use the programming language R
   
 - Tell R to execute these instructions
   - R will return the result of your instructions (or an error message)
 
-- R code is basically just text that can be saved with file extension `.R`
-
+- You can do all of this inside RStudio
+  
 ---
 # A quick tour around RStudio
 
@@ -205,9 +207,6 @@ library(fontawesome)
 
 .pull-left[
 - Plots that are created with R will be shown here
-
-- You can export plots by clicking on export button
-  - But better to do it by code 
 ]
 
 .pull-right[
@@ -215,16 +214,19 @@ library(fontawesome)
 ]
 
 ---
-# Project oriented workflow with RStudio
+# How to organize an R project? 
+
+I recommend a **project oriented workflow** with RStudio
 
 .pull-left[
 - One directory with all files relevant for project
   - Scripts, data, plots, documents, ...
+  
 - An RStudio project is just a normal directory with an `*.Rproj` file
 
 - Advantages of using RStudio projects
     - Easy to navigate in R Studio (`File` pane)
-    - Easy to find and access scripts in RStudio
+    - Easy to find and access scripts and data in RStudio
     - Project root is working directory
     - Open multiple projects simultaneously in separate RStudio instances
 ]    

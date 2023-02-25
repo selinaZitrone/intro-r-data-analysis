@@ -391,6 +391,7 @@ dbl_var <- c(2.5, 3.4, 4.3)
 int_var <- c(1L, 45L, 234L)
 chr_var <- c("These are", "just", "some strings")
 ```
+
 --
 You can also combine multiple vectors into one:
 
@@ -522,7 +523,7 @@ population > mean_population | population > 3e6
 Check whether elements occur in a vector:
 
 ```{r}
-cities == "Istanbul" | cities == "Berlin" | cities == "Madrid"
+cities == "Istanbul"
 ```
 
 --
@@ -532,7 +533,7 @@ The `%in%` operator checks whether *multiple* elements occur in a vector.
 ```{r}
 # for each element of cities, checks whether that element is contained in to_check 
 to_check <- c("Istanbul", "Berlin", "Madrid")
-cities %in% to_check
+cities %in% to_check # same as cities %in% c("Istanbul", "Berlin", "Madrid")
 ```
 
 --
@@ -591,17 +592,20 @@ Imagine for example, that the population of
 --
 
 ```{r}
-# first copy the original vector to leave it untouched
-population_new <- population
 # Update Istanbul (1) and Rome(8)
-population_new[c(1, 8)] <- c(20e6, NA) # NA means missing value
+population[c(1, 8)] <- c(20e6, NA) # NA means missing value
 # Update Paris (10)
-population_new[10] <- population_new[10] - 200000 
+population[10] <- population[10] - 200000 
 ```
 
 ```{r}
-population_new
+population
 ```
+
+```{r echo=FALSE}
+population <- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)
+```
+
 
 ---
 # Indexing vectors
