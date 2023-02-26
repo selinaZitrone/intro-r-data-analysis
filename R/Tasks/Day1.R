@@ -181,10 +181,10 @@ animals
 #library(tidyverse)
 library(readr)
 
-# write
-write_csv(x = animals, file = "./data/animals.csv") # write as csv
-write_tsv(x = animals, file = "./data/animals.txt") # write as txt
+# write (Note: Make sure that the /data folder exists in your working directory)
+write_csv(x = animals, file = "data/animals.csv") # write as csv
+write_tsv(x = animals, file = "data/animals.txt") # write as txt
 
 #Read the same data back into R:
-animals_csv <- read_csv("./data/animals.csv") # read the csv
-animals_tsv <- read_tsv("./data/animals.txt") # read the txt
+animals_csv <- read_csv("data/animals.csv") # read the csv
+animals_tsv <- read_tsv("data/animals.txt") # read the txt

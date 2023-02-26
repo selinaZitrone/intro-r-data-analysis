@@ -6,9 +6,9 @@ output:
     toc_float: true
     number_sections: true
 params:
-  showDownload: TRUE
-  includeSolution0: TRUE
-  includeSolution1: TRUE
+  showDownload: FALSE
+  includeSolution0: FALSE
+  includeSolution1: FALSE
 ---
 
 
@@ -20,19 +20,20 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-## 1 Statistical tests
+## 1 Tidyr
 
-```{r test, echo=FALSE,child= if (params$includeSolution0) "tasks/day3/03_tasks_01_tests_solution.Rmd"}
+```{r test, echo=FALSE,child= if (params$includeSolution0) "tasks/day3/03_tasks_01_tidyr_solution.Rmd"}
 ```
 
-```{r test_empty,child= if (!params$includeSolution0) "tasks/day3/03_tasks_01_tests_solution_empty.Rmd"}
+```{r test_empty,child= if (!params$includeSolution0) "tasks/day3/03_tasks_01_tidyr_solution_empty.Rmd"}
+```
+
+## 2 Statistical tests
+
+```{r test, echo=FALSE,child= if (params$includeSolution0) "tasks/day3/03_tasks_02_tests_solution.Rmd"}
+```
+
+```{r test_empty,child= if (!params$includeSolution0) "tasks/day3/03_tasks_02_tests_solution_empty.Rmd"}
 ```
 
 
-## 2 Linear models
-
-```{r lm,child= if (params$includeSolution1) "tasks/day3/03_tasks_02_lm_solution.Rmd"}
-```
-
-```{r lm_empty, echo=FALSE,child= if (!params$includeSolution1) "tasks/day3/03_tasks_02_lm_solution_empty.Rmd"}
-```

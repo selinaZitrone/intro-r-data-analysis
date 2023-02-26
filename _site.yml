@@ -11,6 +11,7 @@ navbar:
       href: index.html
     - text: "Slides"
       menu:
+        - text: "Day 1"
         - text: "01 - Introduction RStudio"
           href: slides/01_01_RStudio.html
         - text: "01 - Introduction R"
@@ -19,20 +20,26 @@ navbar:
           href: slides/01_03_Functions.html
         - text: "01 - Data & Tibbles"
           href: slides/01_04_tibbles_short.html
-        - text: "01 - Tidyverse and Readr"
+        - text: "01 - Tidyverse and readr"
           href: slides/01_05_readr.html
-        - text: "02 - Ggplot2"
+        - text: "---"
+        - text: "Day 2"
+        - text: "02 - ggplot2"
           href: slides/02_01_tidyverse_ggplot.html
-        - text: "03 - Dplyr"
+        - text: "02 - dplyr"
           href: slides/02_02_dplyr.html
-        - text: "03 - Tidyr"
+        - text: "---"
+        - text: "Day 3"
+        - text: "03 - tidyr"
           href: slides/02_03_tidyr.html
+        - text: "03 - Statistical tests"
+          href: slides/03_01_tests_short.html
+        - text: "---"
+        - text: "Day 4"
         - text: "04 - Bring your own data"
           href: slides/04_01_bring_your_own_data.html
         - text: "---"
         - text: "Extras"
-        - text: "Statistical tests"
-          href: slides/03_01_tests_short.html
         - text: "Linear models"
           href: slides/03_02_linear_models.html
         - text: "Common R errors"
@@ -42,23 +49,26 @@ navbar:
       menu:
         - text: "Day 1: Intro to R"
           href: 01_tasks_controller.html
-        - text: "Day 2: Tidyverse"
+        - text: "Day 2: ggplot and dplyr"
           href: 02_tasks_controller.html
+        - text: "Day 3: tidyr and tests"
+          href: 03_tasks_controller.html
         - text: "---"
         - text: "Extras"
-        - text: "Statistics"
-          href: 03_tasks_controller.html
+        - text: "Linear models"
+          href: 04_tasks_controller.html
     - text: "Solutions"
       menu:
         - text: "Day 1: Intro to R"
           href: 01_solutions_controller.html
-        - text: "Day 2: Tidyverse"
+        - text: "Day 2: ggplot and dplyr"
           href: 02_solutions_controller.html
+        - text: "Day 3: tidyr and tests"
+          href: 03_solutions_controller.html
         - text: "---"
         - text: "Extras"
-        - text: "Statistics"
-        - text: "Statistics"
-          href: 03_solutions_controller.html
+        - text: "Linear models"
+          href: 04_solutions_controller.html
     - text: "Resources"
       href: online_resources.html
     - text: "Packages"

@@ -1,5 +1,5 @@
 ---
-title: "Tasks for day 2"
+title: "Extra task: Linear models"
 output: 
   distill::distill_article:
     toc: true
@@ -12,13 +12,7 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## 1 ggplot2
+## Linear models
 
-```{r ggplot, child="tasks/day2/02_tasks_01_ggplot.Rmd"}
-```
-
-## 2 dplyr
-
-
-```{r dplyr, child="tasks/day2/02_tasks_02_dplyr.Rmd"}
+```{r create_rstudio_project, child="tasks/extra/03_tasks_02_lm.Rmd"}
 ```

@@ -43,19 +43,13 @@ options(scipen = 0)
 ```
 
 ---
-# Classical approach in statistics
-
-.center[![:scale 60%](img/day3/statistics_approach.png)]
-
-.footnote-left[Please note the discussion going on about p-values as a basis for binary decisions.
-  See e.g. [here](https://www.nature.com/articles/s41592-019-0470-3) or [here](https://www.nature.com/articles/d41586-019-00857-9) as a starting point
-]
-
----
 # Overview of tests
 
 .center[![](img/day3/tests_overview.png)]
 
+.footnote-left[Please note the discussion going on about p-values as a basis for binary decisions.
+  See e.g. [here](https://www.nature.com/articles/s41592-019-0470-3) or [here](https://www.nature.com/articles/d41586-019-00857-9) as a starting point
+]
 
 ---
 class: inverse, center, middle

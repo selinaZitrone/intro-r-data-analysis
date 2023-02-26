@@ -63,39 +63,23 @@ pivot_longer(billboard,
              values_drop_na = TRUE)
 ```
 
-**3. `fish_encounters` (EXTRA)**
+To re-create the penguin plot from the task, the following observations help:
 
-Have a look at the `fish_encounters` data set that is included in the tidyverse package.
-The data set contains records of fish detected by different automatic monitoring stations.
+- Information needed: Species, bill depth and bill length
+  - In a first step, you can therefore use `select` from `dplyr` to select only these
+  three columns
+- Aesthetics are: Species on x-axis, value of bill depth and length on y-axis, 
+fill aesthetic is category bill depth or bill length.
+  - This needs some reformatting. You need one value column with the measurements,
+  and one name column with the category. You can use pivot longer for this
+  
+Use the pipe operator to do the calculations one after the other:
 
-```{r, echo=TRUE}
-fish_encounters
+```{r echo=TRUE, warning=FALSE}
+penguins %>%
+  select(species, bill_length_mm, bill_depth_mm) %>%
+  pivot_longer(!species) %>%
+  ggplot(aes(x = species, y = value, fill = name)) +
+  geom_boxplot()
 ```
 
-The column `seen` only contains values of 1 to indicate that the fish was seen at the respective station.
-
-```{r, echo=TRUE}
-summary(fish_encounters)
-```
-
-What is not tidy about this data set? Can you fix it?
-
-`r fontawesome::fa("arrow-right")` An observation (i.e. one fish) is spread across multiple rows and we have to use `pivot_wider` to give each fish just one row.
-
-```{r, echo=TRUE}
-pivot_wider(fish_encounters,
-            names_from = station,
-            values_from = seen)
-```
-
-#### Extra
-
-The `values_fill` argument can be used to enter values in cells where values are missing.
-In our case this makes sense because cells with missing values are not really missing information but we know that for this station the fish was not recorded. So we can add a 0 instead of NA.
-
-```{r, echo=TRUE}
-pivot_wider(fish_encounters,
-            names_from = station,
-            values_from = seen,
-            values_fill = 0)
-```

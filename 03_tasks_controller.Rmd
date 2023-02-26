@@ -12,13 +12,12 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## 1 Statistical tests
+## 1 Tidyr
 
-```{r tests, child="tasks/day3/03_tasks_01_tests.Rmd"}
+```{r tidyr, child="./tasks/day3/03_tasks_01_tidyr.Rmd"}
 ```
 
+## 2 Statistical tests
 
-## 2 Linear models
-
-```{r create_rstudio_project, child="tasks/day3/03_tasks_02_lm.Rmd"}
+```{r tests, child="tasks/day3/03_tasks_02_tests.Rmd"}
 ```

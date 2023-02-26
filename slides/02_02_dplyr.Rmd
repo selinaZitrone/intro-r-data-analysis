@@ -91,10 +91,6 @@ library(tidyverse)
 
 --
 
-- `arrange()` changes order of observations (rows)
-
---
-
 - `mutate()` adds new variables based on existing ones
 
 --
@@ -369,52 +365,6 @@ print(select(soybean_use, code:animal_feed), n=3)
 Be a bit careful with these commands: They are not robust if you e.g. change the order of your columns at some point. <br>
 
 ---
-class:inverse, center, middle
-
-# .large[`arrange()`]
-## change order of observations (rows)
-
----
-# `arrange()`
-
-Arrange the rows by **ascending** values of the processed variable:
-
-```{r eval=FALSE}
-arrange(soybean_use, processed)
-```
-
-```{r echo=FALSE}
-print(arrange(soybean_use, processed), n=3)
-```
-
---
-
-Arrange the rows by **descending** values of the processed variable:
-
-```{r eval=FALSE}
-arrange(soybean_use, desc(processed))
-```
-
---
-
-Arranging also works for character columns. They will be sorted **alphabetically**.
-
----
-# `arrange()`
-
-We can also sort rows by multiple variables
-
-```{r eval=FALSE}
-# sort first by year, then by entity
-arrange(soybean_use, year, entity)
-```
-
-```{r echo=FALSE}
-# sort first by year, then by entity
-print(arrange(soybean_use, year, entity),n=4)
-```
-
----
 class: inverse, center, middle
 
 # .large[`mutate()`]
@@ -571,9 +521,6 @@ soybean_new <- group_by(soybean_new, year)
 soybean_new <- summarize(soybean_new,
     mean_processed = mean(processed, na.rm=TRUE),
     sd_processed = sd(processed, na.rm = TRUE))
-
-# 4: reorder the observation with newest first
-soybean_new <- arrange(soybean_new, desc(year))
 ```
 
 --
@@ -586,16 +533,13 @@ soybean_new <- arrange(soybean_new, desc(year))
 We could do everything in one step without intermediate results by using use one **nested function**
 
 ```{r eval=FALSE}
-soybean_new <- arrange(
-  summarize(
-    group_by(
-      filter(soybean_use, !is.na(code)),
-      year
-    ),
-    mean_processed = mean(processed, na.rm = TRUE),
-    sd_processed = sd(processed, na.rm = TRUE)
+soybean_new <- summarize(
+  group_by(
+    filter(soybean_use, !is.na(code)),
+    year
   ),
-  desc(year)
+  mean_processed = mean(processed, na.rm = TRUE),
+  sd_processed = sd(processed, na.rm = TRUE)
 )
 ```
 
@@ -615,8 +559,7 @@ soybean_new <- soybean_use %>%
   summarize(
     mean_processed = mean(processed, na.rm = TRUE),
     sd_processed = sd(processed, na.rm = TRUE)
-  ) %>%
-  arrange(desc(year))
+  )
 ```
 
 --
@@ -681,7 +624,6 @@ soybean_use %>%
   ggplot(aes(x = year, y = processed)) +
   geom_line() +
   theme_gray(base_size = 16)
-  
 ```
 ]
 
