@@ -31,9 +31,9 @@ navbar:
         - text: "---"
         - text: "Day 3"
         - text: "03 - tidyr"
-          href: slides/02_03_tidyr.html
+          href: slides/03_01_tidyr.html
         - text: "03 - Statistical tests"
-          href: slides/03_01_tests_short.html
+          href: slides/03_02_tests_short.html
         - text: "---"
         - text: "Day 4"
         - text: "04 - Bring your own data"

@@ -66,6 +66,14 @@ relig_income %>%
   pivot_longer(-religion) %>%
   pivot_wider(names_from = religion, values_from = value)
 
+# Penguins boxplot
+
+penguins %>%
+  select(species, bill_length_mm, bill_depth_mm) %>%
+  pivot_longer(!species) %>%
+  ggplot(aes(x = species, y = value, fill = name)) +
+  geom_boxplot()
+
 # 2. Statistical tests -------------------------------------------------------
 
 # subset for 3 species flipper length
