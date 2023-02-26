@@ -165,7 +165,7 @@ Specify number of lines to skip reading with `skip`
 
 ```{r eval=FALSE}
 # without skipping first lines
-read_csv(file = "./data/meta_data_top.csv")
+read_csv(file = "data/meta_data_top.csv")
 ```
 
 
@@ -215,7 +215,7 @@ Specify whether the data has a header column or not with `col_names`
 
 ```{r eval=FALSE}
 # First line is expected to be column names
-read_csv(file = "./data/no_col_names.csv")
+read_csv(file = "data/no_col_names.csv")
 ```
 
 

@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-06-15 (updated: 2023-02-25)
+  2021-06-15 (updated: 2023-02-26)
 ]
 
 ---
@@ -82,10 +82,6 @@ library(tidyverse)
 --
 
 - `select()` picks variables (columns) based on their names
-
---
-
-- `arrange()` changes order of observations (rows)
 
 --
 
@@ -453,69 +449,6 @@ select(soybean_use, code:animal_feed)
 Be a bit careful with these commands: They are not robust if you e.g. change the order of your columns at some point. &lt;br&gt;
 
 ---
-class:inverse, center, middle
-
-# .large[`arrange()`]
-## change order of observations (rows)
-
----
-# `arrange()`
-
-Arrange the rows by **ascending** values of the processed variable:
-
-
-```r
-arrange(soybean_use, processed)
-```
-
-
-```
-## # A tibble: 9,897 × 6
-##   entity  code   year human_food animal_feed processed
-##   &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
-## 1 Albania ALB    1961          0          NA         0
-## 2 Albania ALB    1962          0          NA         0
-## 3 Albania ALB    1963          0          NA         0
-## # … with 9,894 more rows
-```
-
---
-
-Arrange the rows by **descending** values of the processed variable:
-
-
-```r
-arrange(soybean_use, desc(processed))
-```
-
---
-
-Arranging also works for character columns. They will be sorted **alphabetically**.
-
----
-# `arrange()`
-
-We can also sort rows by multiple variables
-
-
-```r
-# sort first by year, then by entity
-arrange(soybean_use, year, entity)
-```
-
-
-```
-## # A tibble: 9,897 × 6
-##   entity   code   year human_food animal_feed processed
-##   &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
-## 1 Africa   &lt;NA&gt;   1961      33000        6000     14000
-## 2 Albania  ALB    1961          0          NA         0
-## 3 Algeria  DZA    1961          0           0        NA
-## 4 Americas &lt;NA&gt;   1961       7000       96000  11656000
-## # … with 9,893 more rows
-```
-
----
 class: inverse, center, middle
 
 # .large[`mutate()`]
@@ -706,9 +639,6 @@ soybean_new &lt;- group_by(soybean_new, year)
 soybean_new &lt;- summarize(soybean_new,
     mean_processed = mean(processed, na.rm=TRUE),
     sd_processed = sd(processed, na.rm = TRUE))
-
-# 4: reorder the observation with newest first
-soybean_new &lt;- arrange(soybean_new, desc(year))
 ```
 
 --
@@ -722,16 +652,13 @@ We could do everything in one step without intermediate results by using use one
 
 
 ```r
-soybean_new &lt;- arrange(
-  summarize(
-    group_by(
-      filter(soybean_use, !is.na(code)),
-      year
-    ),
-    mean_processed = mean(processed, na.rm = TRUE),
-    sd_processed = sd(processed, na.rm = TRUE)
+soybean_new &lt;- summarize(
+  group_by(
+    filter(soybean_use, !is.na(code)),
+    year
   ),
-  desc(year)
+  mean_processed = mean(processed, na.rm = TRUE),
+  sd_processed = sd(processed, na.rm = TRUE)
 )
 ```
 
@@ -752,8 +679,7 @@ soybean_new &lt;- soybean_use %&gt;%
   summarize(
     mean_processed = mean(processed, na.rm = TRUE),
     sd_processed = sd(processed, na.rm = TRUE)
-  ) %&gt;%
-  arrange(desc(year))
+  )
 ```
 
 --
@@ -809,7 +735,7 @@ soybean_use %&gt;%
 ]
 .pull-right[
 
-&lt;img src="02_02_dplyr_files/figure-html/unnamed-chunk-49-1.png" width="453.6" /&gt;
+&lt;img src="02_02_dplyr_files/figure-html/unnamed-chunk-44-1.png" width="453.6" /&gt;
 ]
 
 ---
@@ -940,8 +866,8 @@ gdp
 ## # A tibble: 9,897 × 3
 ##   entity  year   gdp
 ##   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-## 1 Africa  1961  3.78
-## 2 Africa  1962  3.78
+## 1 Africa  1961  5.08
+## 2 Africa  1962  5.08
 ## # … with 9,895 more rows
 ```
 
@@ -961,9 +887,9 @@ left_join(soybean_use, gdp, by = c("entity", "year"))
 ## # A tibble: 9,897 × 7
 ##   entity code   year human_food animal_feed processed   gdp
 ##   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
-## 1 Africa &lt;NA&gt;   1961      33000        6000     14000  3.78
-## 2 Africa &lt;NA&gt;   1962      43000        7000     17000  3.78
-## 3 Africa &lt;NA&gt;   1963      31000        7000      5000  3.78
+## 1 Africa &lt;NA&gt;   1961      33000        6000     14000  5.08
+## 2 Africa &lt;NA&gt;   1962      43000        7000     17000  5.08
+## 3 Africa &lt;NA&gt;   1963      31000        7000      5000  5.08
 ## # … with 9,894 more rows
 ```
 

@@ -30,7 +30,7 @@ background-position: 90% 90%
 ### Freie Universität Berlin - Theoretical Ecology
 
 .footnote-left[
-  2021-08-01 (updated: 2023-02-25)
+  2021-08-01 (updated: 2023-02-26)
 ]
 
 ---
@@ -202,7 +202,7 @@ Remember argument matching by position?
 ]
 
 ---
-# `geom_*()`
+# `geom_*`
 
 `geoms` define how data points are represented. There are many different geoms to chose from
 
@@ -215,7 +215,7 @@ class: middle, center
 .footnote-right[from [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf)]
 
 ---
-# `geom_point()`
+# `geom_point`
 
 --
 
@@ -244,7 +244,7 @@ ggplot(data = and_vertebrates,
 ]
 
 ---
-# `geom_point()`
+# `geom_point`
 
 .pull-left[
 
@@ -403,7 +403,7 @@ ggplot(data = and_vertebrates,
 ]
 
 ---
-# `scale_x_log10()`
+# `scale_x_log10`
 
 The scales onto which the aesthetic elements are mapped can be changed.
 
@@ -434,7 +434,7 @@ In this example we scale the &lt;b&gt;.col1[x]&lt;/b&gt; and the  &lt;b&gt;.col1
 ]
 
 ---
-# `geom_smooth()`
+# `geom_smooth`
 
 Add a smoothing line that helps see patterns in the data
 
@@ -915,12 +915,13 @@ ggplot(
 ```r
 g &lt;- g +
   labs(
-*  x = "Length [mm]",
+*   x = "Length [mm]",
 *   y = "Weight [g]",
 *   color = "Species",
 *   title = "Length-Weight relationship",
 *   subtitle = "There seems to be an exponential relationship",
-*   caption = "Data from the `lterdatasampler` package")
+    caption = "Data from the `lterdatasampler` package"
+* )
 g
 ```
 

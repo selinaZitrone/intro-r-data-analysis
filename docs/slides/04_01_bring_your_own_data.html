@@ -154,20 +154,15 @@ athletes &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascienc
 
 
 ```
-##         date latitude site  size air_temp air_temp_sd water_temp water_temp_sd
-## 1 2016-07-24       30  GTM 12.43   21.792       6.391     24.502         6.121
-## 2 2016-07-24       30  GTM 14.18   21.792       6.391     24.502         6.121
-## 3 2016-07-24       30  GTM 14.52   21.792       6.391     24.502         6.121
-## 4 2016-07-24       30  GTM 12.94   21.792       6.391     24.502         6.121
-## 5 2016-07-24       30  GTM 12.45   21.792       6.391     24.502         6.121
-## 6 2016-07-24       30  GTM 12.99   21.792       6.391     24.502         6.121
-##                           name
-## 1 Guana Tolomoto Matanzas NERR
-## 2 Guana Tolomoto Matanzas NERR
-## 3 Guana Tolomoto Matanzas NERR
-## 4 Guana Tolomoto Matanzas NERR
-## 5 Guana Tolomoto Matanzas NERR
-## 6 Guana Tolomoto Matanzas NERR
+## # A tibble: 6 × 9
+##   date       latitude site   size air_temp air_temp_sd water_temp water_temp_sd name                   
+##   &lt;date&gt;        &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt; &lt;chr&gt;                  
+## 1 2016-07-24       30 GTM    12.4     21.8        6.39       24.5          6.12 Guana Tolomoto Matanza…
+## 2 2016-07-24       30 GTM    14.2     21.8        6.39       24.5          6.12 Guana Tolomoto Matanza…
+## 3 2016-07-24       30 GTM    14.5     21.8        6.39       24.5          6.12 Guana Tolomoto Matanza…
+## 4 2016-07-24       30 GTM    12.9     21.8        6.39       24.5          6.12 Guana Tolomoto Matanza…
+## 5 2016-07-24       30 GTM    12.4     21.8        6.39       24.5          6.12 Guana Tolomoto Matanza…
+## 6 2016-07-24       30 GTM    13.0     21.8        6.39       24.5          6.12 Guana Tolomoto Matanza…
 ```
 
 
@@ -233,26 +228,30 @@ Ice data:
 
 
 ```
-##         lakeid     ice_on    ice_off ice_duration year
-## 1 Lake Mendota       &lt;NA&gt; 1853-04-05           NA 1852
-## 2 Lake Mendota 1853-12-27       &lt;NA&gt;           NA 1853
-## 3 Lake Mendota 1855-12-18 1856-04-14          118 1855
-## 4 Lake Mendota 1856-12-06 1857-05-06          151 1856
-## 5 Lake Mendota 1857-11-25 1858-03-26          121 1857
-## 6 Lake Mendota 1858-12-08 1859-03-14           96 1858
+## # A tibble: 6 × 5
+##   lakeid       ice_on     ice_off    ice_duration  year
+##   &lt;fct&gt;        &lt;date&gt;     &lt;date&gt;            &lt;dbl&gt; &lt;dbl&gt;
+## 1 Lake Mendota NA         1853-04-05           NA  1852
+## 2 Lake Mendota 1853-12-27 NA                   NA  1853
+## 3 Lake Mendota 1855-12-18 1856-04-14          118  1855
+## 4 Lake Mendota 1856-12-06 1857-05-06          151  1856
+## 5 Lake Mendota 1857-11-25 1858-03-26          121  1857
+## 6 Lake Mendota 1858-12-08 1859-03-14           96  1858
 ```
 
 Temperature data:
 
 
 ```
-##   sampledate year ave_air_temp_adjusted
-## 1 1870-06-05 1870                  20.0
-## 2 1870-06-06 1870                  18.3
-## 3 1870-06-07 1870                  17.5
-## 4 1870-06-09 1870                  13.3
-## 5 1870-06-10 1870                  13.9
-## 6 1870-06-11 1870                  15.0
+## # A tibble: 6 × 3
+##   sampledate  year ave_air_temp_adjusted
+##   &lt;date&gt;     &lt;dbl&gt;                 &lt;dbl&gt;
+## 1 1870-06-05  1870                  20  
+## 2 1870-06-06  1870                  18.3
+## 3 1870-06-07  1870                  17.5
+## 4 1870-06-09  1870                  13.3
+## 5 1870-06-10  1870                  13.9
+## 6 1870-06-11  1870                  15
 ```
 
 ---

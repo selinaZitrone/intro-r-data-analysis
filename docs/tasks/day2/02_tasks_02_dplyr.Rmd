@@ -29,14 +29,6 @@ In the following, you find a lot of different data transformation tasks. First, 
 
 2. ... the number of penguins of each species on each island.
 
-**Sort ...**
-
-1. ... `penguins` to find penguins with lowest body mass
-
-2. ... `penguins` to find penguins with highest body mass
-
-3. ... `penguins` by species and sex, with longest flippers first
-
 **Select ...**
 
 1. ... only the variables species, sex and year

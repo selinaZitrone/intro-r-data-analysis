@@ -27,8 +27,19 @@ What is not tidy about this data set? Can you fix it?
 
 #### Extras
 
-- Check out the `values_drop_na` argument of `pivot_longer`. What does it do and how can you use it here?
-- Check out the `names_prefix` argument of `pivot_longer`. What does it do and how can you use it here?
+- Check out the `values_drop_na` and `names_prefix` argument of `pivot_longer`. What does it do and how can you use it with the `billboard` data?
+- This is a bit tricky: How would you have to change the `penguins` table if you 
+wanted to make such a plot:
+
+```{r echo=FALSE, warning=FALSE}
+penguins %>%
+  select(species, bill_length_mm, bill_depth_mm) %>%
+  pivot_longer(!species) %>%
+  ggplot(aes(x = species, y = value, fill = name)) +
+  geom_boxplot()
+```
+Hint: First use `dplyr` and only select the columns that you need for the plot. Then
+think about how to use `tidyr` to transform the data so it's ready for `ggplot`
 
 <!-- **3. `fish_encounters`** -->
 

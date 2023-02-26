@@ -55,26 +55,6 @@ count(penguins, island)
 count(penguins, island, species)
 ```
 
-**Sort ...**
-
-1. ... `penguins` to find penguins with lowest body mass
-
-```{r echo=TRUE}
-arrange(penguins, body_mass_g)
-```
-
-2. ... `penguins` to find penguins with highest body mass
-
-
-```{r echo=TRUE}
-arrange(penguins, desc(body_mass_g))
-```
-
-3. ... `penguins` by species and sex, with longest flippers first
-
-```{r echo=TRUE}
-arrange(penguins, species, sex, desc(flipper_length_mm))
-```
 **Select ...**
 
 1. ... only the variables species, sex and year
