@@ -76,6 +76,7 @@ fill aesthetic is category bill depth or bill length.
 Use the pipe operator to do the calculations one after the other:
 
 ```{r echo=TRUE, warning=FALSE}
+library(palmerpenguins)
 penguins %>%
   select(species, bill_length_mm, bill_depth_mm) %>%
   pivot_longer(!species) %>%
