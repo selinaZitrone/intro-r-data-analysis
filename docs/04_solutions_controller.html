@@ -2545,9 +2545,9 @@ Solutions
 
 Model:
 bill_depth_mm ~ bill_length_mm
-               Df Sum of Sq    RSS    AIC F value   Pr(&gt;F)    
-&lt;none&gt;                      1256.4 449.00                     
-bill_length_mm  1    73.473 1329.8 466.44  19.884 1.12e-05 ***
+               Df Sum of Sq    RSS    AIC F value    Pr(&gt;F)    
+&lt;none&gt;                      1256.4 449.00                      
+bill_length_mm  1    73.473 1329.8 466.44  19.884 0.0000112 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -2647,10 +2647,14 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 
 Model:
 bill_depth_mm ~ bill_length_mm + species
-               Df Sum of Sq     RSS    AIC F value    Pr(&gt;F)    
-&lt;none&gt;                       307.20 -28.70                      
-bill_length_mm  1    118.67  425.87  81.01  130.57 &lt; 2.2e-16 ***
-species         2    949.16 1256.36 449.00  522.17 &lt; 2.2e-16 ***
+               Df Sum of Sq     RSS    AIC F value
+&lt;none&gt;                       307.20 -28.70        
+bill_length_mm  1    118.67  425.87  81.01  130.57
+species         2    949.16 1256.36 449.00  522.17
+                              Pr(&gt;F)    
+&lt;none&gt;                                  
+bill_length_mm &lt; 0.00000000000000022 ***
+species        &lt; 0.00000000000000022 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode">
@@ -2748,10 +2752,14 @@ bill_length_mm:species  2   0.87243 307.20 -28.704  0.4785 0.6202</code></pre>
 
 Model:
 body_mass_g ~ sex + species
-        Df Sum of Sq       RSS    AIC F value    Pr(&gt;F)    
-&lt;none&gt;                32979185 3838.6                      
-sex      1  37090262  70069447 4087.5  370.01 &lt; 2.2e-16 ***
-species  2 143401584 176380769 4392.9  715.29 &lt; 2.2e-16 ***
+        Df Sum of Sq       RSS    AIC F value                Pr(&gt;F)
+&lt;none&gt;                32979185 3838.6                              
+sex      1  37090262  70069447 4087.5  370.01 &lt; 0.00000000000000022
+species  2 143401584 176380769 4392.9  715.29 &lt; 0.00000000000000022
+           
+&lt;none&gt;     
+sex     ***
+species ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode">

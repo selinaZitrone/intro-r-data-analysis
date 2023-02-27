@@ -1,13 +1,22 @@
 names <- c(
-  "Francisco", "Tamasri",
-  "Deborah", "Patrizia",
-  "Dhanur", "Jeane", "Ginevra",
-  "Hongyu", "Nadja", "Suchetana",
-  "Fabian", "Ahmad Rashad",
-  "Safiya", "Julia", "Subhakankha",
-  "Aya", "Lili")
-ngroups <- 5
-groupsize <- 3
+  "Jule",
+  "Mohamed",
+  "Khairy",
+  "Fabian",
+  "Tejal",
+  "Amit",
+  "Mohammed",
+  "Xiangfei",
+  "Nadra",
+  "Anna Carolina" ,
+  "Ann-Kathrin",
+  "Ozan",
+  "Joana-Lysiane",
+  "Shaoyi",
+  "Emanoela",
+  "Alina")
+ngroups <- 4
+groupsize <- 4
 
 assign_groups(ngroups = ngroups, groupsize = groupsize, names = names)
 
@@ -21,3 +30,5 @@ assign_groups <- function(ngroups, groupsize, names) {
   groups[["not_assigned_yet"]] <- names
   return(groups)
 }
+
+
