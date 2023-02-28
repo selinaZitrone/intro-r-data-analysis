@@ -155,7 +155,7 @@ ncol(animals)
 names(animals)
 
 # rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
-animals[c(1,5,7), c("species", "bodywt_kg")]
+animals[c(1, 5, 7), c("species", "bodywt_kg")]
 
 # select rows 1 to 10, all columns
 animals[1:10, ]
@@ -178,13 +178,13 @@ animals
 
 # 4. Readr ----------------------------------------------------------------
 
-#library(tidyverse)
+# library(tidyverse)
 library(readr)
 
-# write (Note: Make sure that the /data folder exists in your working directory)
+# write (Note: Make sure that the /data folder exists in your working directory
 write_csv(x = animals, file = "data/animals.csv") # write as csv
 write_tsv(x = animals, file = "data/animals.txt") # write as txt
 
-#Read the same data back into R:
+# Read the same data back into R:
 animals_csv <- read_csv("data/animals.csv") # read the csv
-animals_tsv <- read_tsv("data/animals.txt") # read the txt
+animals_tsv <- read_tsv("data/animals.txt") # read the txts
