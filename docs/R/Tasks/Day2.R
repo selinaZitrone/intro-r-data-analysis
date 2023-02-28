@@ -14,7 +14,7 @@ penguins
 # 1.3.1 Relationship between bill length and bill depth (scatterplot)
 
 ggplot(
-  data = penguins,
+  penguins,
   aes(
     x = bill_length_mm,
     y = bill_depth_mm
@@ -29,7 +29,7 @@ ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) +
   geom_smooth(method = "lm", se = FALSE)
 
 # color as aesthetic local to the point layer
-ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) +
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
   geom_point(aes(color = species)) +
   geom_smooth(method = "lm", se = FALSE)
 
@@ -46,12 +46,13 @@ ggplot(penguins, aes(
 
 # Basic boxplot of flipper length with notches
 ggplot(penguins, aes(species, flipper_length_mm)) +
-  geom_boxplot(notch = TRUE)
+  geom_boxplot(notch = TRUE) +
+  geom_point()
 
 # Add jittered points
 ggplot(penguins, aes(species, flipper_length_mm)) +
   geom_boxplot() +
-  geom_point(position = position_jitter(seed = 123))
+  geom_point(position = position_jitter(seed = 123, width = 0.2))
 
 
 ## 1.3.3 Differences between body mass of male and female penguins (boxplot)
@@ -137,7 +138,7 @@ ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
 # The following code is adapted from the palmerpengins package website
 # (https://allisonhorst.github.io/palmerpenguins/articles/examples.html).
 
-ggplot(
+penguin_scatter <- ggplot(
   data = penguins,
   aes(
     x = bill_length_mm,
@@ -155,13 +156,17 @@ ggplot(
     x = "Bill length (mm)",
     y = "Bill depth (mm)",
     color = "Penguin species",
-    shape = "Penguin species"
+    shape = "Penguin species",
+    caption = "Some caption"
   ) +
   theme_minimal() +
   theme(
     legend.position = c(0.85, 0.15),
-    legend.background = element_rect(fill = "white", color = NA)
+    legend.background = element_rect(fill = "white", color = "white"),
+    axis.title = element_text(size = 12),
+    plot.caption.position = "plot"
   )
+penguin_scatter
 
 ### 1.5 Save one of the plots on your machine
 flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
@@ -173,7 +178,15 @@ flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)
   theme(legend.position = "none")
 
 # save as png in /img directory of the project
-ggsave(filename = "./img/flipper_box.png", flipper_box)
+ggsave(filename = "img/flipper_box.png",
+       flipper_box,
+       width = 8,
+       height = 8,
+       units = "cm",
+       dpi = 600,
+       scale = 1.3
+      )
+
 # save as pdf in /img directory of the project
 ggsave(filename = "./img/flipper_box.pdf", flipper_box)
 
@@ -197,6 +210,51 @@ heatmap <- ggplot(penguins, aes(x = species, y = sex, fill = flipper_length_mm))
 # If you want to have an interactive plot
 # install.packages("plotly")
 plotly::ggplotly(heatmap)
+
+# Combined plots using patchwork package ----------------------------------
+# More info here: https://patchwork.data-imaginist.com/
+library(patchwork)
+
+# Simply combined the plots side by side
+flipper_box + penguin_scatter
+
+# Combine on top of each other
+flipper_box / penguin_scatter
+# Combined next to each other
+flipper_box | penguin_scatter
+
+# Collecting legends and defining a common theme
+plot_1 <- ggplot(penguins, aes(
+  x = bill_length_mm, y = bill_depth_mm,
+  color = species
+)) +
+  geom_point()
+
+plot_2 <- ggplot(penguins, aes(
+  x = bill_length_mm, y = body_mass_g,
+  color = species
+)) +
+  geom_point()
+
+# Simple combination of 2 plots in patchwork
+plot_1 + plot_2
+
+# more complex combination with annotation and definition of shared layers
+final_plot <- plot_1 + plot_2 +
+  plot_layout(guides = "collect") +
+  plot_annotation(tag_levels = "a", tag_prefix = "(", tag_suffix = ")") &
+  theme_minimal() &
+  scale_color_manual(values = c("darkorange", "purple", "cyan4")) &
+  labs(
+    color = "Penguin species"
+  ) &
+  theme(
+    plot.tag.position = c(0.1, 0.95),
+    plot.tag = element_text(face = "bold")
+  )
+final_plot
+
+ggsave("img/patchwork.png", final_plot)
 
 # 2 dplyr -------------------------------------------------------------------
 
@@ -353,5 +411,3 @@ another_tibble <- tibble(
 mutate(penguins,
   col_from_other_tibble = another_tibble$some_var
 )
-
-

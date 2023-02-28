@@ -30,26 +30,44 @@ olympics_medal %>%
   geom_histogram() +
   facet_grid(sex ~ medal, scales = "free_y") +
   scale_fill_manual(values = c("gold", "#BCBCBC", "#E2A863")) +
-  theme_minimal()
+  theme_minimal() +
+  theme(legend.position = "none")
 
+# Looks like age distribution is the same for the medals
+olympics_medal %>%
+  mutate(medal = factor(medal, levels = c("Gold","Silver", "Bronze"))) %>%
+  ggplot(aes(x = age, fill = medal)) +
+  geom_histogram(alpha = 0.5, position = "identity") +
+  facet_wrap(~sex, scales = "free_y") +
+  scale_fill_manual(values = c("gold", "#BCBCBC", "#E2A863")) +
+  theme_minimal() +
+  theme(legend.position = "none")
 
+olympics_medal %>%
+  mutate(medal = factor(medal, levels = c("Gold","Silver", "Bronze"))) %>%
+  ggplot(aes(x = age, fill = sex)) +
+  geom_histogram(alpha = 0.5, position = "identity") +
+  facet_wrap(~medal, scales = "free_y") +
+  scale_fill_manual(values = c("darkorange","cyan4")) +
+  theme_minimal() +
+  theme(legend.position = "none")
 
-
-olympics %>%
-  group_by(age) %>%
-  summarize(
-    medals = n()
-  ) %>%
-  ggplot(aes(x=age, y=medals))+
-  geom_line()
-
-olympics %>%
-  group_by(year) %>%
+# There seem to be more and more medals both in winter and in summer
+olympics_medal %>%
+  group_by(year, season) %>%
   summarize(
     medals = n()
   ) %>%
   ggplot(aes(x=year, y=medals))+
-  geom_line()
+  geom_line() +
+  facet_wrap(~season)
+
+# Maybe the number of sports also exploded?
+olympics_medal %>%
+  group_by(year, season, sport) %>%
+  summarize(
+    n = n_distinct()
+  )
 
 # Do male or female win more medals
 olympics %>%
