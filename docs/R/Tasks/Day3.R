@@ -96,9 +96,8 @@ g <- ggpubr::ggqqplot(gentoo) + labs(title = "gentoo")
 a + c + g
 
 # Other option
-penguins %>%
-  ggplot(aes(sample = flipper_length_mm, color = species))+
-  stat_qq()+
+ggplot(penguins, aes(sample = flipper_length_mm, color = species)) +
+  stat_qq() +
   stat_qq_line()
 
 # Test normality with Shapiro-Wilk test
@@ -130,7 +129,6 @@ wilcox.test(chinstrap, gentoo) # means differ
 # Comparison Gentoo- Adelie
 # Gentoo not normal: use Wilcoxon-rank-sum test to compare means
 wilcox.test(gentoo, adelie) # means differ
-
 
 # Compare flipper lengths of penguins visually using a boxplot
 # Add the p-values of the comparisons with the test into the plot

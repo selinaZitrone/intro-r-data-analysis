@@ -2,8 +2,13 @@ library(drc)
 ryegrass
 drc::acidiq
 drc::auxins
-drc::chickweed0
-drc::earthworms
-drc::finney71
-drc::terbuthylazin
+
+
+
+drc::terbuthylazin %>%
+  ggplot(aes(x=dose, y=rgr)) +geom_point()
+
+ToothGrowth %>%
+  ggplot(aes(x=dose, y=len)) +
+  geom_point()
 
