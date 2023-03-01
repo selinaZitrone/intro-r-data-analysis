@@ -289,6 +289,10 @@ filter(penguins, (species == "Adelie" | species == "Gentoo") &
 filter(penguins, island == "Dream" & year == 2007) %>%
   count(species)
 
+filter(penguins, island == "Dream") %>%
+  filter(year == 2007) %>%
+  count(species)
+
 # Count tasks -------------------------------------------------------------
 
 # number of penguins on each island
@@ -383,7 +387,9 @@ penguins %>%
   filter(!is.na(sex)) %>%
   ggplot(aes(x = sex, y = body_mass_g)) +
   geom_boxplot() +
-  facet_wrap(~species)
+  facet_wrap(~species) +
+  labs(caption = "Some caption") +
+  theme(plot.caption = element_text(face = "bold", hjust = 1))
 
 # scatterplot with ratio of bill length to bill depth on the y axis
 # and flipper length on the x axis
