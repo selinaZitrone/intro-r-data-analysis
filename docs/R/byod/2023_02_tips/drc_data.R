@@ -1,4 +1,8 @@
 library(drc)
+# Have a look at this tutorial:
+# They don't use ggplot, so I adapted it here
+# drc package has data included (the ryegrass data I'm using here also comes
+# from the package)
 # http://www.darrenkoppel.com/2020/09/04/dose-response-modelling-and-model-selection-in-r/
 
 # Show all functions that can be fit
@@ -45,7 +49,7 @@ ryegrass %>%
 # I took them from the example in the tutorial
 # Read more about the models here: http://www.darrenkoppel.com/2020/09/04/dose-response-modelling-and-model-selection-in-r/
 model.W23 <- drm(rootl ~ conc,
-  data = ryegrass, fct = W2.3(fixed = c(NA, 100, NA))
+  data = ryegrass, fct = W2.3()
 )
 model.W24 <- drm(rootl ~ conc,
   data = ryegrass, fct = W2.4()

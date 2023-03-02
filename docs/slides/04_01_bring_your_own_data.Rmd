@@ -151,14 +151,15 @@ athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/t
 
 - Use dplyr to
   - Create summaries of medal counts for different groups
-- Explores questions such as:
-  - Did the ratio of men/women winning medals change over time?
-  - Which countries were the most successful ones? Does this differ between sports type?
+- Did the ratio of men/women winning medals change over time?
+- Which countries were the most successful ones? Does this differ between sports type?
   - Which types of sports accumulated the most medals?
 - Make plots such as:
   - Age distribution of athletes winning gold, silver and bronze
   - Compare the total number of medals over the years between winter and summer olympics
-  - e.g. heat map showing the number of medals by medal type and sport/country/gender...
+
+---
+# Data set 2: Paralympic games from 1980-2016
 
 #### Hints
 

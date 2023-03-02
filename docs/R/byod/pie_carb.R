@@ -1,5 +1,7 @@
 library(lterdatasampler)
 library(tidyverse)
+library(corrplot)
+library(factoextra)
 
 write_csv(pie_crab, file = "data/pie_crab.csv", col_names = TRUE)
 read_csv(file = "data/pie_crab.csv", col_names = TRUE)
@@ -34,3 +36,29 @@ performance::check_model(lm_crab_temp) # high correlation between latitude and t
 # compare sites
 ggplot(pie_crab, aes(x = site, y = size, color = latitude)) +
   geom_boxplot()
+
+
+# PCA ---------------------------------------------------------------------
+pie_crab_no_na <- pie_crab %>% drop_na()
+
+pie_crab_no_na %>%
+  select(where(is.numeric)) %>%
+  as.matrix() %>%
+  cor() %>%
+  corrplot.mixed(lower = "shade", upper = "pie", order = "hclust")
+
+pie.pca <- pie_crab_no_na %>%
+  select(where(is.numeric)) %>%
+  prcomp(scale=TRUE)
+
+# Visualize eigenvalues (how much variance is explained by the pcs)
+fviz_eig(pie.pca)
+
+# Plot the variables on the first 2 PCs
+# How are the variables correlated with each other?
+# Longer arrows and more red colors mean higher contribution to the PC
+fviz_pca_var(pie.pca,
+             col.var = "contrib", # Color by contributions to the PC
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE # Avoid text overlapping
+)
