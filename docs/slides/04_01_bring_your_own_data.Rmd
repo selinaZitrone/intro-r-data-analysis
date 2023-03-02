@@ -33,6 +33,51 @@ output:
 - **15-16**: Feedback, conclusion
 
 ---
+# New methods: Correlation plots and PCAS
+
+- [`corrplot` package](https://taiyun.github.io/corrplot/) for correlation plots
+- [Tutorial for PCAs in R](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/), [PCA tutorial for penguins](https://biodash.github.io/codeclub/s03e03_pca/)
+- [`factoextra` package](https://rpkgs.datanovia.com/factoextra/index.html) for PCA visualization
+- Correlations and PCAs do not work with `NA` values: use `tidyr::drop_na()` to remove all `NA` values from the data first
+- These plots work for: penguins, wine, piecrab (?) dataset
+
+
+
+```{r echo=FALSE, message=FALSE, fig.width = 6, fig.height=6}
+library(tidyverse)
+library(corrplot)
+library(factoextra)
+library(patchwork)
+library(palmerpenguins)
+
+penguins %>%
+  select(where(is.numeric)) %>%
+  drop_na() %>%
+  as.matrix() %>%
+  cor() %>%
+  corrplot.mixed(lower = "shade", upper = "pie", order = "hclust")
+
+
+peng_no_na <- penguins %>% drop_na()
+peng_pca <- peng_no_na %>%
+  select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g)
+
+peng.pca <- prcomp(peng_pca, scale=TRUE)
+
+# Adding ellipses
+fviz_pca(peng.pca,
+                label = "var",
+                habillage = peng_no_na$species,
+                addEllipses = TRUE,
+                ellipse.level = 0.95,
+                palette = "Dark2")
+
+```
+
+
+
+
+---
 # Data set 1: What makes a good wine?
 
 **Physicochemical properties of wine and quality judgements**
@@ -73,47 +118,6 @@ Modeling wine preferences by data mining from physicochemical properties. In Dec
 
 - **Correlation plots**: How are the different wine properties correlated with each other?
 - **PCA**: How are the wine properties related to each other?
-
-```{r echo=FALSE, message=FALSE, fig.width = 6, fig.height=6}
-library(tidyverse)
-library(corrplot)
-library(factoextra)
-library(patchwork)
-wine <- read_csv("../data/wine.csv")
-wine <- janitor::clean_names(wine)
-wine <- wine %>% drop_na() %>% mutate(quality = as.factor(quality))
-
-M <- wine %>%
-  select(-quality) %>%
-  drop_na() %>%
-  cor()
-
-res.pca <- wine %>%
-  drop_na() %>%
-  select(-quality) %>%
-  prcomp(scale = TRUE)
-
-
-fviz_pca_biplot(res.pca,
-  label = "var",
-  habillage = wine %>% pull(quality) %>% factor(),
-  addEllipses = TRUE,
-  ellipse.level = 0.95,
-  palette = "Dark2"
-)
-
-corrplot.mixed(M, lower = "shade", upper = "pie", order = "hclust")
-
-```
----
-# Data set 1: What makes a good wine?
-
-#### Hints
-
-- [`corrplot` package](https://taiyun.github.io/corrplot/) for correlation plots
-- [Tutorial for PCAs in R](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/)
-- [`factoextra` package](https://rpkgs.datanovia.com/factoextra/index.html) for PCA visualization
-- Correlations and PCAs do not work with `NA` values: use `tidyr::drop_na()` to remove all `NA` values from the data
 
 ---
 # Data set 2: Paralympic games from 1980-2016

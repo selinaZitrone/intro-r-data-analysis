@@ -31,6 +31,22 @@
 - **15-16**: Feedback, conclusion
 
 ---
+# New methods: Correlation plots and PCAS
+
+- [`corrplot` package](https://taiyun.github.io/corrplot/) for correlation plots
+- [Tutorial for PCAs in R](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/), [PCA tutorial for penguins](https://biodash.github.io/codeclub/s03e03_pca/)
+- [`factoextra` package](https://rpkgs.datanovia.com/factoextra/index.html) for PCA visualization
+- Correlations and PCAs do not work with `NA` values: use `tidyr::drop_na()` to remove all `NA` values from the data first
+- These plots work for: penguins, wine, piecrab (?) dataset
+
+
+
+![](04_01_bring_your_own_data_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;![](04_01_bring_your_own_data_files/figure-html/unnamed-chunk-1-2.png)&lt;!-- --&gt;
+
+
+
+
+---
 # Data set 1: What makes a good wine?
 
 **Physicochemical properties of wine and quality judgements**
@@ -84,17 +100,6 @@ Modeling wine preferences by data mining from physicochemical properties. In Dec
 
 - **Correlation plots**: How are the different wine properties correlated with each other?
 - **PCA**: How are the wine properties related to each other?
-
-![](04_01_bring_your_own_data_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;![](04_01_bring_your_own_data_files/figure-html/unnamed-chunk-2-2.png)&lt;!-- --&gt;
----
-# Data set 1: What makes a good wine?
-
-#### Hints
-
-- [`corrplot` package](https://taiyun.github.io/corrplot/) for correlation plots
-- [Tutorial for PCAs in R](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/)
-- [`factoextra` package](https://rpkgs.datanovia.com/factoextra/index.html) for PCA visualization
-- Correlations and PCAs do not work with `NA` values: use `tidyr::drop_na()` to remove all `NA` values from the data
 
 ---
 # Data set 2: Paralympic games from 1980-2016
