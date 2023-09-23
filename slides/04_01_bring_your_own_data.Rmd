@@ -18,7 +18,8 @@ output:
 
 **Schedule of today**
 
-- **Now - 14** (or 14.30 if you are enthusiastic still): Work on the data set
+- **Now - 14** (or 14.30 if you are enthusiastic still): Work on the data set(s)
+  
   - Take break(s) as best fits your needs
   
 - **14 (14.30) - 15**: Short feedback round
@@ -32,9 +33,54 @@ output:
 - **15-16**: Feedback, conclusion
 
 ---
+# New methods: Correlation plots and PCAS
+
+- [`corrplot` package](https://taiyun.github.io/corrplot/) for correlation plots
+- [Tutorial for PCAs in R](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/), [PCA tutorial for penguins](https://biodash.github.io/codeclub/s03e03_pca/)
+- [`factoextra` package](https://rpkgs.datanovia.com/factoextra/index.html) for PCA visualization
+- Correlations and PCAs do not work with `NA` values: use `tidyr::drop_na()` to remove all `NA` values from the data first
+- These plots work for: penguins, wine, piecrab (?) dataset
+
+
+
+```{r echo=FALSE, message=FALSE, fig.width = 6, fig.height=6}
+library(tidyverse)
+library(corrplot)
+library(factoextra)
+library(patchwork)
+library(palmerpenguins)
+
+penguins %>%
+  select(where(is.numeric)) %>%
+  drop_na() %>%
+  as.matrix() %>%
+  cor() %>%
+  corrplot.mixed(lower = "shade", upper = "pie", order = "hclust")
+
+
+peng_no_na <- penguins %>% drop_na()
+peng_pca <- peng_no_na %>%
+  select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g)
+
+peng.pca <- prcomp(peng_pca, scale=TRUE)
+
+# Adding ellipses
+fviz_pca(peng.pca,
+                label = "var",
+                habillage = peng_no_na$species,
+                addEllipses = TRUE,
+                ellipse.level = 0.95,
+                palette = "Dark2")
+
+```
+
+
+
+
+---
 # Data set 1: What makes a good wine?
 
-**Physicochemical properties of wine and quality judgements by "experts"**
+**Physicochemical properties of wine and quality judgements**
 
 ```{r echo=FALSE}
 str(EcoData::wine)
@@ -48,21 +94,30 @@ Modeling wine preferences by data mining from physicochemical properties. In Dec
 
 .pull-left[
 
-**Ideas:**
+#### Ideas - know methods
 
-- Which chemical properties are associated with a good wine rating?
-- Plot chemical properties against each other
-- Plot quality judgement depending on different properties
-- Linear models for the relationship between properties
+- Plotting of wine quality against chemical properties
+- Plotting of distribution of the different chemical properties
 - Summary tables of the data using `dplyr`
 
-Hint: It might be a good idea to transform the quality column to a factor (use `dplyr::mutate` and `as.factor()` if you want to do this).
+#### Hints
+
+- Transform the quality column to a factor before plotting: use `dplyr::mutate` and `as.factor()` to tranform the column
+- Try the `janitor::clean_names()` function
 
 ]
 
 .pull-right[
 ![](img/wine.jpg)
 .footnote-right[.small[By Frederik Vandaele - originally posted to Flickr as Château Pétrus, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=5145286]]]
+
+---
+# Data set 1: What makes a good wine?
+
+#### Ideas - new methods
+
+- **Correlation plots**: How are the different wine properties correlated with each other?
+- **PCA**: How are the wine properties related to each other?
 
 ---
 # Data set 2: Paralympic games from 1980-2016
@@ -83,7 +138,6 @@ Hint: It might be a good idea to transform the quality column to a factor (use `
 
 Source: [International Paralympic Committee](https://db.ipc-services.org/sdms/hira/web/index) (provided by [tidytuesday](https://github.com/rfordatascience/tidytuesday/edit/master/data/2021/2021-08-03/readme.md))
 
-
 ---
 # Data set 2: Paralympic games from 1980-2016
 
@@ -93,15 +147,23 @@ Get the data:
 athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-03/athletes.csv')
 ```
 
-**Ideas**
+#### Ideas - know methods
 
-- Probably dplyr heavy task
-- Create summaries of medal counts for different groups
-- Explores questions such as:
-  - Did the ratio of men/women winning medals change over time?
-  - Which countries were the most successful ones? Does this differ between sports type?
+- Use dplyr to
+  - Create summaries of medal counts for different groups
+- Did the ratio of men/women winning medals change over time?
+- Which countries were the most successful ones? Does this differ between sports type?
   - Which types of sports accumulated the most medals?
-- Plots: e.g. heat map showing the number of medals by medal type and sport/country/gender...
+- Make plots such as:
+  - Age distribution of athletes winning gold, silver and bronze
+  - Compare the total number of medals over the years between winter and summer olympics
+
+---
+# Data set 2: Paralympic games from 1980-2016
+
+#### Hints
+
+- To reduce complexity of the data, first filter only the athletes that won a medal (`!is.na(medal)`)
 
 ---
 # Data set 3: Crab data set
@@ -113,15 +175,8 @@ athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/t
 - Crab from Florida is expanding northward due to ocean warming
 - Data on 13 marshes across a range of latitude in the USA
 - Recording of the size of of the crab
-
-**Ideas for data**
-
 - Rather small and good to handle
-- Explore Bergmann's rule (organisms are large in higher latitudes)
-- Linear model to explore relationship between latitude and body size
-- Anova or tests to compare size between locations
-- Plot relationship between latitude and size 
-- ...
+
 
 ]
 
@@ -134,18 +189,16 @@ athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/t
 ]
 
 
-
 .footnote-right[.small[Image under CC BY-SA 4.0]]
 
 ---
 # Data set 3: Crab data set
 
-```{r echo = FALSE}
+```{r, echo=FALSE}
+# install.packages("lterdatasampler")
 library(lterdatasampler)
 head(pie_crab)
 ```
-
-
 
 .small[Source: [Johnson, D. 2019.](https://doi.org/10.6073/pasta/4c27d2e778d3325d3830a5142e3839bb) Fiddler crab body size in salt marshes from Florida to Massachusetts, USA at PIE and VCR LTER and NOAA NERR sites during summer 2016. ver 1. Environmental Data Initiative.]
 
@@ -153,15 +206,39 @@ head(pie_crab)
 .footnote-right[.small[Image by LTER under CC BY-SA 4.0]]
 
 ---
+# Data set 3: Crab data set
+
+.pull-left[
+
+**Ideas - known methods**
+
+- Explore Bergmann's rule (organisms are large in higher latitudes)
+- t-tests to compare size between locations
+- Plot relationship between latitude and size 
+- Plot distributions of variables
+
+]
+
+.pull-right[
+
+.center[![](img/day4/lter.jpg)]
+
+.small[Source: [Johnson, D. 2019.](https://doi.org/10.6073/pasta/4c27d2e778d3325d3830a5142e3839bb) Fiddler crab body size in salt marshes from Florida to Massachusetts, USA at PIE and VCR LTER and NOAA NERR sites during summer 2016. ver 1. Environmental Data Initiative.]
+
+]
+
+.footnote-right[.small[Image under CC BY-SA 4.0]]
+
+---
 # Data set 4: Ice cover and temperature
 
 .pull-left[
 **Temperature and ice duration on lakes since 19th century**
 
-- 2 data sets that can be combined
-- measurements of
+- 2 data sets with measurements of
   - ice start, end and duration on 2 lakes in Wisconsin
   - daily air temperature since 1870
+- Explore the effect of climate change on ice cover
 ]
 .pull-right[
 
@@ -181,19 +258,33 @@ Source temperature data: [Anderson, L. and D. Robertson. 2020.](https://doi.org/
 ---
 # Data set 4: Ice cover and temperature
 
+Ice data:
+
+```{r echo=FALSE}
+# install.packages("lterdatasampler")
+# library(lterdatasampler)
+head(ntl_icecover)
+```
+
+
+Temperature data:
+
+```{r echo=FALSE}
+head(ntl_airtemp)
+```
+
+---
+# Data set 4: Ice cover and temperature
+
 .pull-left[
-**Ideas**
+**Ideas - known methods**
 
 - How did ice cover duration change over the years?
-  - Plotting of the time series
-  - Linear model to test effect
 - How did air temperature change over the years?
-  - Summarizing mean annual temperatur or mean temperature in winter
-  - Linear model to test the effect
-- Combine the two data sets together
-  - How do ice duration on the lakes correlate with temperure (e.g. with mean winter 
+  - Summarize mean annual temperature or mean temperature in winter
+- How do ice duration on the lakes correlate with temperature (e.g. with mean winter 
   temperature)
-
+  
 ]
 .pull-right[
 
@@ -201,21 +292,69 @@ Source temperature data: [Anderson, L. and D. Robertson. 2020.](https://doi.org/
 
 .footnote-right[.small[Image by LTER under CC BY-SA 4.0]]
 
+#### Hints
+
+- For some plots it might make sense to summarize annual means first
+- Use `left_join` to combined the tables with annual mean temperature and ice duration
+
 ---
-# Data set 4: Ice cover and temperature
+# Data set 5: RNAseq data
 
-Ice data:
+- Data from [FU et al. 2015, *Nature Cell Biology*](https://www.nature.com/articles/ncb3117)
+- Data found via [Tutorial on heat maps](https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-heatmap2/tutorial.html) using this data
 
-```{r echo = FALSE}
-#library(lterdatasampler)
-head(ntl_icecover)
-```
+- 3 csv files:
+  - `heatmap_genes.csv`: A list of the names of interesting genes to look at (Genes used in Figure 6b in paper)
+  - `DE_results.csv`: Gene expression in luminal cells in pregnant versus lactating mice
+    - logFC, AveExpr, t, p-value
+    - Also contains non-significantly expressed genes
+  - `normalized_counts`: Normalized counts for genes for the different samples
+  
+---
+# Data set 5: RNAseq data
 
-Temperature data:
+.pull-left[
 
-```{r echo=FALSE}
-head(ntl_airtemp)
-```
+#### Ideas:
+
+- Create a heatmap of the top 20 most significant genes (see plot in the tutorial)
+- Create a heatmap of the interesting genes (see Fig. 6 in the paper)
+- Crate a volcano plot of the data similar to the one [here](https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html)
+]
+
+.pull-right[
+
+![](img/day4/volcano.png)
+]
+
+---
+# Data set 5: RNAseq data
+
+.pull-left[
+
+![](img/day4/heat_top20.png)
+]
+
+.pull-right[
+![](img/day4/heat_top20_2.png)
+]
+
+---
+# Data set 5: RNAseq data
+
+#### Some tips:
+
+Data cleaning:
+  - Read in the data and then use the `janitor::clean_names` function to make the column headers nicer
+  - Join `DE_results` and `normalized_counts` by their shared columns
+  - Use `select` to remove columns you don't need for analysis to get a better overview
+  - Filter only significant genes ([tutorial](https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html)) defines them as `p_value < 0.01 & abs(logFC)` > 0.58)
+  
+Data analysis:
+  - Heatmap with ggplot or with `pheatmap::pheatmap()`
+    - `pheatmap` takes a matrix as input (use `as_matrix` on tibble to transform)
+  - scale the counts -> have a look at the `scale` function
+    - `pheatmap` can scale but with ggplot you have to scale before plotting
 
 ---
 # Some general tips
@@ -237,93 +376,12 @@ head(ntl_airtemp)
 
 - If you get stuck, ask in the chat or stop by in General
 
+--
 
 - Have a look at the cheat sheets [(list of all cheat sheets)](https://www.rstudio.com/resources/cheatsheets/)
   - [ggplot2](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf)
   - [dplyr](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf)
   - [Data import cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf): readr and tidyr cheat sheet
-
-
----
-# Read data from Excel (xlsx format)
-
-Use the `read_xlsx()` function from the `readxl` package.
-
-Read a single excel file:
-
-```{r eval=FALSE}
-# install.packages("readxl")
-library(readxl)
-
-# by default: reads the first sheet
-my_data <- read_xlsx(path = "data/my_datafile1.xlsx")
-
-# To read a specific sheet:
-# refer to the sheet by its name
-my_data <- read_xlsx(path = "data/my_datafile1.xlsx", sheet = "sheet1")
-# or refer to it by its id
-my_data <- read_xlsx(path = "data/my_datafile1.xlsx", sheet = 2)
-```
-
---
-
-- `read_xlsx` has similar options as `read_csv`, e.g. to skip rows etc.
-- have a look at `?read_xlsx` to see all options
-
----
-# Read data from Excel (xlsx format)
-
-If you data is **split into multiple excel sheets** (i.e. one excel file but multiple sheets) you can:
-
-- read in all the excel sheets at once into a list
-- use `bind_rows` to bind all the sheets together by row
-- This requires all sheets to have the same format and columns
-
---
-
-```{r eval=FALSE}
-# create a variable with the path to the file you want to read
-path_to_file <- "data/my_datafile1.xlsx"
-
-# list all the sheets that exist in this file
-sheets <- excel_sheets(path_to_file)
-
-# use lapply to read all sheets into a list using read_xlsx
-all_sheets <- lapply(sheets, function(x) read_xlsx(path_to_file, sheet = x))
-
-# bind all rows from the list together
-my_data <- do.call(bind_rows, all_sheets) # without id column
-my_data <- do.call(bind_rows, list(all_sheets, .id = "sheet_id")) # with id column
-```
-
----
-# Read data from Excel (xlsx format)
-
-If you data is **split into multiple excel files** (i.e. multiple excel files but one sheet per file) you can:
-
-
-- read in all the excel files at once into a list
-- use `bind_rows` to bind all the files together by row
-- This requires all files to have the same format and columns
-- My code requires the files to all be in the same folder
-
---
-
-```{r eval=FALSE}
-# List all xlsx files at a given location
-# this code will read in all xlsx files at the given location
-# if you don't want this, you have to adjust the `pattern`
-file_paths <- list.files(path = "./data", pattern = ".xlsx", full.names = TRUE)
-# check if this actually list your desired files
-file_paths
-
-# use lapply to read all files into a list using read_xlsx
-all_files <- lapply(file_paths, read_xlsx)
-
-# bind all rows from the list together
-my_data <- do.call(bind_rows, all_files) # without id column
-my_data <- do.call(bind_rows, list(all_files, .id = "file_id")) # with id column
-```
 
 ---
 class: inverse, middle, center
@@ -349,49 +407,32 @@ class: inverse, middle, center
 #### - Keep an eye on your group and the general chat
 
 ---
-# Presentation/Feedback round
+# Sharing
 
-- What did you find out about your data set? Plots, summaries, ...
+In 1-2 mins:
 
-- Which methods did you use?
+- What was the highlight of your analysis?
+  - Your favorite plot
+  - Some cool code
+  - A problem that you finally solved
+  - Something new you learned
 
-- Did you learn something new?
+- What was difficult?
 
-- Was there something you struggled with?
-
-- If you have a plot or a result to share, please post a screenshot in the chat or share your screen.
+- If you want: Share a screenshot in the chat or share your screen
 
 ---
 # Feedback
 
-Please take 5 mins to complete the feedback survey for the Graduate center (don't use Internet Explorer)
+Please take 10 mins to complete the feedback survey for the Graduate center (don't use Internet Explorer)
 
-.center[https://votingo.cedis.fu-berlin.de/survey/PCNLP3]
-
---
-
-Please take another 5 mins to complete my more specific survey to further improve the course
-
-
-.center[https://forms.gle/xfwKLDDomwoY44i66]
+.center[https://votingo.cedis.fu-berlin.de/PCNLP3]
 
 ---
 # Feedback
 
 
 - Any other feedback or comments from your side?
-
----
-# Workshop: Reproducible documents with Rmarkdown
-
- 
-  .center[**Tuesday 13.09. - Wednesday 14.09. ( + Thursday 15.09. optional)** <br> **1 p.m. - 5 p.m.** <br>
-  Write an email to [me](mailto:selina.baldauf@fu-berlin.de) or to [Simone](graduate-center@bcp.fu-berlin.de) if you want to join]
-  
-  .center[![:scale 60%](img/day4/rmarkdown_wizards.png)]
-
-.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
-
 
 ---
 # Conclusion
@@ -412,8 +453,9 @@ We learned a lot of stuff!
 - If you use Twitter: Follow some people that post R content regarding your interest
 - If you like plotting: Consider participating in the [tidytuesday](https://github.com/rfordatascience/tidytuesday)
 - [FU statistical consulting](http://www.stat.fu-berlin.de/en/dienstleistungen/index.html) for questions regarding statistical methods
+- [R Consulting by me](https://www.bcp.fu-berlin.de/en/graduiertenzentrum/promovierende/beratung/index.html)
+- Workshop on reproducible documents with Rmarkdown this summer
 ]
-
 .pull-right[
 
 ![](img/AllisonHorst/r_rollercoaster.png)
