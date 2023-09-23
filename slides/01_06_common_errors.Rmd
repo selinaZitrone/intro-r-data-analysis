@@ -26,6 +26,7 @@ knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE,
                       message = FALSE)
 library(fontawesome)
+library(palmerpenguins)
 ```
 
 ```{r child="title_slide.Rmd"}
@@ -86,12 +87,24 @@ mean(c(1,2,3)na.rm=TRUE)
 
 #### Examples
 
-```{r, echo=FALSE, error=TRUE}
-mutate(data.frame(b=1:10), a=1:10)
+.pull-left[
+
+```{r, error = TRUE}
+mutate(penguins, mean = mean(bill_length_mm, na.rm = TRUE))
 ```
+]
+
+.pull-right[
+
+```{r, error=TRUE, eval=FALSE}
+lenght(my_vector)
+```
+
 ```{r, echo=FALSE, error=TRUE}
 lenght(1:10)
 ```
+]
+
 --
 #### How to fix
 
