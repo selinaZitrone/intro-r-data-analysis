@@ -9,7 +9,7 @@ library(performance)
 relig_income
 
 pivot_longer(relig_income,
-             cols = !religion, # 2:11, `<$10k`:`>150k`
+             cols = !religion, # 2:11, `<$10k`:`Don't know/refused`
              names_to = "income",
              values_to = "count"
 )
@@ -26,15 +26,14 @@ pivot_longer(billboard,
 )
 
 #### Extras
-
 charts <- pivot_longer(billboard,
                        cols = wk1:wk76,
                        names_to = "week",
-                       names_prefix = "wk",
                        values_to = "rank",
+                       names_prefix = "wk",
                        values_drop_na = TRUE
 )
-
+charts
 separate(
   charts,
   date.entered, # column to separate
@@ -67,11 +66,10 @@ relig_income %>%
   pivot_wider(names_from = religion, values_from = value)
 
 # Penguins boxplot
-
 penguins %>%
-  select(species, bill_length_mm, bill_depth_mm) %>%
-  pivot_longer(!species) %>%
-  ggplot(aes(x = species, y = value, fill = name)) +
+  dplyr::select(species, bill_length_mm, bill_depth_mm) %>%
+  pivot_longer(!species, values_to = "penguin_measure") %>%
+  ggplot(aes(x = species, y = penguin_measure, fill = name)) +
   geom_boxplot()
 
 # 2. Statistical tests -------------------------------------------------------
@@ -98,9 +96,8 @@ g <- ggpubr::ggqqplot(gentoo) + labs(title = "gentoo")
 a + c + g
 
 # Other option
-penguins %>%
-  ggplot(aes(sample = flipper_length_mm, color = species))+
-  stat_qq()+
+ggplot(penguins, aes(sample = flipper_length_mm, color = species)) +
+  stat_qq() +
   stat_qq_line()
 
 # Test normality with Shapiro-Wilk test
@@ -132,7 +129,6 @@ wilcox.test(chinstrap, gentoo) # means differ
 # Comparison Gentoo- Adelie
 # Gentoo not normal: use Wilcoxon-rank-sum test to compare means
 wilcox.test(gentoo, adelie) # means differ
-
 
 # Compare flipper lengths of penguins visually using a boxplot
 # Add the p-values of the comparisons with the test into the plot
