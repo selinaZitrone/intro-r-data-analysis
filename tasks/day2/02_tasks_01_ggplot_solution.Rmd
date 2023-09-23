@@ -356,6 +356,46 @@ You can use any ggplot and wrap it in the `ggplotly` function from the `plotly` 
 plotly::ggplotly(flipper_box)
 ```
 
+### The `patchwork` package
+
+With the `patchwork` package, you can combine multiple ggplots into one plot. The package allows you to add annotations to the plot and to control the layout and appearance.
+
+Below you find a simple example of two different penugin scatterplots. For more explanation and an overview of what is possible with the package, please have a look at the [package documentation](https://patchwork.data-imaginist.com/)
+
+```{r echo=TRUE}
+# library(patchwork)
+# # Collecting legends and defining a common theme
+# plot_1 <- ggplot(penguins, aes(
+#   x = bill_length_mm, y = bill_depth_mm,
+#   color = species
+# )) +
+#   geom_point()
+# 
+# plot_2 <- ggplot(penguins, aes(
+#   x = bill_length_mm, y = body_mass_g,
+#   color = species
+# )) +
+#   geom_point()
+# 
+# # Simple combination of 2 plots in patchwork
+# plot_1 + plot_2
+# 
+# # more complex combination with annotation and definition of shared layers
+# final_plot <- plot_1 + plot_2 +
+#   plot_layout(guides = "collect") +
+#   plot_annotation(tag_levels = "a", tag_prefix = "(", tag_suffix = ")") &
+#   theme_minimal() &
+#   scale_color_manual(values = c("darkorange", "purple", "cyan4")) &
+#   labs(
+#     color = "Penguin species"
+#   ) &
+#   theme(
+#     plot.tag.position = c(0.1, 0.95),
+#     plot.tag = element_text(face = "bold")
+#   )
+```
+
+
 ### References
 
 Check out the [package website](https://allisonhorst.github.io/palmerpenguins/articles/examples.html) of the `palmerpenguin` package. They have more nice examples of data visualizations that you can do with ggplot.
