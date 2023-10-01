@@ -1,5 +1,0 @@
----
-title: "You can download the full material after the workshop is finished"
-description: |
-  For now, please use the material available from this website
----
