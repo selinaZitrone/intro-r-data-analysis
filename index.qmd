@@ -1,0 +1,12 @@
+---
+title: "Introduction to R for Data Analysis"
+---
+
+# Workshop organization and schedule
+
+🕘 9 a.m. - 4 p.m. (🥪 ~ 12 a.m. - 1 p.m.)<br>
+📍 We will meet every morning in the `General` meeting room of our Webex team.
+
+
+# Workshop Material
+

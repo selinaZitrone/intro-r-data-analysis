@@ -1,0 +1,35 @@
+---
+title: "Tasks for day 1"
+format:
+  html:
+    toc: true
+    toc_float: true
+    number_sections: true
+execute: 
+  echo: false
+---
+
+## 1 Set up an RStudio project
+
+```{r create_rstudio_project, child="../tasks/intro-rstudio.qmd"}
+```
+
+## 2 Working with vectors
+
+```{r vectors, child="../tasks/intro-r.qmd"}
+```
+
+## 3 Tibbles
+
+```{r tibbles, child="../tasks/data-tibbles.qmd"}
+```
+
+## 4 Reading and writing tibbles
+
+```{r tibbles, child="../tasks/readr.qmd"}
+```
+
+# Reference
+
+Wolfram Research, "Sample Data: Animal Weights" from the Wolfram Data Repository (2016) https://doi.org/10.24097/wolfram.43616.data
+

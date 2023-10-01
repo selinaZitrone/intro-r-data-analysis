@@ -1,0 +1,93 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    - "!*.Rmd"
+  resources:
+    - "slides/*.pdf"
+    - "slides/*.html"
+
+website:
+  page-navigation: true
+  repo-url: "https://github.com/selinaZitrone/intro-r-data-analysis"
+  site-url: "https://selinazitrone.github.io/intro-r-data-analysis/"
+  repo-actions: [edit, issue]
+  repo-branch: master
+  title: ""
+  navbar:
+    left:
+      - text: Home
+        href: index.qmd
+    right:
+      - text: "Sessions"
+        menu:
+          - text: "Day 1"
+          - text: "Introduction RStudio"
+            href: sessions/01_intro-rstudio.qmd
+          - text: "Introduction R"
+            href: sessions/02_intro-r.qmd
+          - text: "Functions"
+            href: sessions/03_functions.qmd
+          - text: "Data & Tibbles"
+            href: sessions/04_data-tibbles.qmd
+          - text: "Tidyverse and readr"
+            href: sessions/05_readr.qmd
+          - text: "---"
+          - text: "Day 2"
+          - text: "ggplot2"
+            href: sessions/07_ggplot.qmd
+          - text: "dplyr"
+            href: sessions/08_dplyr.qmd
+          - text: "---"
+          - text: "Day 3"
+          - text: "tidyr"
+            href: sessions/09_tidyr.qmd
+          - text: "03 - Statistical tests"
+            href: sessions/10_tests.qmd
+          - text: "---"
+          - text: "Day 4"
+          - text: "Bring your own data"
+            href: sessions/slides/bring-your-own-data.qmd
+            target: _blank
+          - text: "---"
+          - text: "Extras"
+          - text: "Common R errors"
+            href: sessions/06_common-errors.qmd
+          - text: "Good practice coding"
+            href: sessions/11_good-practice.qmd
+      - text: "Downloads"
+        menu:
+          - text: "R Script Day 1"
+          - text: "R Script Day 2"
+          - text: "R Script Day 3"
+
+      - text: "Resources"
+        href: online_resources.qmd
+
+      - text: "Packages"
+        href: packages.qmd
+
+      - icon: fa fa-github
+        href: https://github.com/selinaZitrone/intro-r-data-analysis
+
+format:
+  html:
+    embed-resources: true
+    theme:
+      light: [flatly, theme.scss]
+      dark: [darkly]
+    toc: true
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+    code-line-numbers: true
+    highlight-style: arrow
+
+editor: source
+
+execute:
+  freeze: auto
+  cache: true
+  error: true
+

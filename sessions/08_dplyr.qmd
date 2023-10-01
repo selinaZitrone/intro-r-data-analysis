@@ -1,0 +1,21 @@
+---
+title: "Data transformation with dplyr"
+---
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="slides/dplyr.html"></iframe>
+```
+
+[Slides in full screen](slides/dplyr.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/dplyr.pdf" download>Download PDF slides</a>
+
+:::{.panel-tabset}
+
+# Task
+
+{{< include tasks/dplyr.qmd >}}
+
+# Solution
+
+{{< include solutions/dplyr.qmd >}}
+
+:::

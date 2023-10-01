@@ -1,0 +1,74 @@
+### 3.1 Create a tibble and write it
+
+Load the package and create the tibble:
+
+```{r  echo=TRUE, eval=FALSE}
+library(tidyverse)
+
+species <- c(
+  "MountainBeaver", "Cow", "GreyWolf", "Goat",
+  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
+  "Horse", "PotarMonkey", "Cat", "Giraffe",
+  "Gorilla", "Human", "AfricanElephant", "Triceratops",
+  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
+  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
+  "Rat", "Brachiosaurus", "Mole", "Pig"
+)
+
+bodywt_kg <- c(
+  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
+  521, 10, 3.3, 529, 207, 62, 6654, 9400,
+  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
+  0.3, 87000, 0.1, 192
+)
+
+brainwt_kg <- c(
+  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, 
+  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, 
+  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
+  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,
+  0.0019, 0.1545, 0.003, 0.18
+)
+
+# Creating the tibble 
+animals <- tibble(
+  species = species,
+  bodywt_kg = bodywt_kg,
+  brainwt_kg = brainwt_kg
+)
+
+```
+
+Writing the data to disk:
+
+Note: In order for this command to work, the `/data` directory must already be present in your working directory.
+
+```{r echo=TRUE, eval=FALSE}
+write_csv(x = animals, file = "data/animals.csv") # write as csv
+write_tsv(x = animals, file = "data/animals.txt") # write as txt
+```
+
+### 3.2 Read data into R
+
+Read the same data back into R:
+
+```{r echo=TRUE, eval=FALSE}
+animals_csv <- read_csv("data/animals.csv") # read the csv
+animals_tsv <- read_tsv("data/animals.txt") # read the txt
+```
+
+If you use the `Files` pane to open data files, you can view them in R Studio. For csv files, you have the additional option to click on an `Import Dataset` button.
+
+```{r echo=FALSE}
+knitr::include_graphics(here::here("sessions/tasks/img/readr_import_button.png"))
+```
+
+If you click on this button, have the possibility to import the data set via a graphical user interface. 
+
+```{r echo=FALSE}
+knitr::include_graphics(here::here("sessions/tasks/img/readr_import_options.png"))
+```
+
+This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct `read_*()` function arguments. 
+
+Just play with these different options of reading data into R and find one that fits you best.

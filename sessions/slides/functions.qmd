@@ -1,0 +1,351 @@
+---
+title: "Functions in R"
+subtitle: "Day 1 - Introduction to Data Analysis with R"
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: today
+date-format: long
+format: 
+  revealjs:
+    footer: "Selina Baldauf // Functions in R"
+    highlight-style: breeze
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    auto-stretch: false
+    scrollable: true
+    fig-align: center
+    theme: slides.scss
+execute: 
+  echo: true
+  warning: false
+  message: false
+from: markdown+emoji
+---
+
+```{r setup, include=FALSE}
+library(fontawesome)
+```
+
+## Functions in R
+
+Functions make multiple operations available under one command.
+
+. . .
+
+<br>
+
+:::{.columns}
+
+:::{.column width="50%"}
+#### Functions:
+- Have a **name**
+- Have (0, 1, or any number of) **arguments as input**
+- They calculate something using the arguments
+- They have a **return value** (the output)
+- Can have **side effects** (like plotting)
+
+:::
+
+:::{.column width="50%"}
+
+<br>
+![](img/day1/function_general.png)
+
+:::
+
+:::
+
+. . .
+
+General structure of a function call: <b>[function_name]{.col-green} ( [argument]{.col-yellow} = [value]{.col-pink} )</b>
+
+## The mean function
+
+<b>[function_name]{.col-green} ( [argument]{.col-yellow} = [value]{.col-pink} )</b>
+
+<br>
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+<b>[mean]{.col-green} ( [x]{.col-yellow} = [c(1,5,6)]{.col-pink} )</b>
+
+
+```{r}
+mean(x = c(1,5,6)) # or short: mean(c(1,5,6))
+```
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/function_mean.png)
+
+:::
+
+:::
+
+. . .
+
+:::{.nonincremental}
+
+- Arguments can also be variables
+- The output of a function can be stored in a variable
+
+:::
+
+```{r}
+values <- c(1,5,6)
+result <- mean(x = values)
+result
+```
+
+## The mean function
+
+But what does the mean function do? What are the arguments that I can use?
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+
+`r fa("arrow-right")` &nbsp; Call the function help using `?`
+
+```{r eval=FALSE}
+?mean
+```
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/mean_help_blank.png)
+
+:::
+
+:::
+
+## Function arguments
+
+- Arguments are the **input** to a function
+- Functions can provide **default values** for some arguments
+- Default values for arguments are indicated in the function help
+
+. . .
+
+![](img/day1/mean_help_default_arguments.png){fig-align="center" width=75%}
+
+## Function arguments
+
+What happened here?&nbsp;&nbsp;
+<br>
+```{r}
+# NA is a missing value
+values <- c(1, 5, 6, NA)
+mean(x = values)
+```
+
+. . .
+
+`r fa("arrow-right")`&nbsp;  `na.rm` argument is `FALSE` by default.<br><br>
+
+. . .
+
+Set it to `TRUE` if you want to calculate the mean despite missing values:
+
+```{r}
+mean(x = values, na.rm = TRUE)
+```
+
+. . .
+
+<br>
+Arguments with default values are optional, arguments without default values are not!
+<br>
+```{r error=TRUE}
+mean()
+```
+
+## Function arguments
+
+**Argument matching** can be achieved by **position** or by **name**
+
+```{r, eval=FALSE}
+mean(x, trim = 0, na.rm = FALSE, ...)
+values <- c(1, 5, 6, NA)
+```
+
+. . .
+
+These calls to mean all are the same:
+
+```{r, eval=FALSE}
+mean(values, , TRUE) # by position
+```
+<br>
+
+. . .
+
+```{r, eval=FALSE}
+mean(x = values, na.rm = TRUE) # by name
+```
+<br>
+
+. . .
+
+```{r, eval=FALSE}
+mean(na.rm = TRUE, x = values) # this also works but is not really nice
+```
+<br>
+
+. . .
+
+```{r, eval=FALSE}
+mean(values, na.rm = TRUE) # a mix of both
+```
+
+## Function arguments
+
+**Argument matching** can be achieved by **position** or by **name**
+
+::: {fragment}
+::: {.nonincremental}
+
+Named arguments are (generally) preferred
+
+- Easier to remember
+- Easier to read
+- Some functions have a lot of arguments
+  
+:::
+  
+```{r, eval=FALSE}
+mean(x = values, na.rm = TRUE) # by name
+```
+
+:::
+
+::: {.fragment}
+
+However, it is common to match the first argument by position (especially when the first argument is the data)
+
+```{r, eval=FALSE}
+mean(values, na.rm = TRUE) # a mix of both
+```
+
+:::
+
+## Where do functions come from?
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+**Base R** functions: built into R
+
+:::
+
+:::{.column width="50%"}
+
+```{r eval=FALSE}
+mean() # calculate mean
+seq()  # generate a sequence of values
+[]     # This is also a (special) function
+```
+
+:::
+
+:::
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+From **additional packages**
+
+::: {.nonincremental}
+- Packages must be installed first
+- Call a function from a package using `packageName::functionName()`
+- Load the package with `library(packageName)` and then use the function
+:::
+
+:::
+
+:::{.column width="50%"}
+
+<br>
+
+```{r eval=FALSE}
+# use read_csv function from readr package
+readr::read_csv()
+
+# or use library()
+library(readr)
+read_csv()
+```
+
+:::
+
+:::
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+**Custom** functions:
+
+:::{.nonincremental}
+
+Write your own functions and then use them in the code
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+```{r eval = FALSE}
+# custom function that prints input in a sentence
+my_function <- function(x) {
+  return(x + 5)
+}
+my_function(5)
+```
+
+:::
+
+:::
+
+
+# Summary{.inverse}
+
+> R basics - Functions
+
+## Summary
+
+:::{.nonincremental}
+
+- Functions take **input** in the form of (named) arguments, calculate something and **return** a result
+
+- Functions are called by their name, followed by parentheses:<br> `functionName(argument1 = value, argument2 = value, ...)`
+
+- Functions from additional packages can be called in two ways:
+
+  - `packageName::functionName()`
+  - first load the package with `library(packageName)` then call the function 
+  anywhere in the script with `functionName()`
+
+- Call `?functionName` to open the help of a function
+
+:::

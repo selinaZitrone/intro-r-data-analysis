@@ -1,0 +1,29 @@
+---
+title: "Data visualization with ggplot2"
+---
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="slides/ggplot.html"></iframe>
+```
+
+[Slides in full screen](slides/ggplot.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/ggplot.pdf" download>Download PDF slides</a>
+
+:::{.panel-tabset}
+
+# Task 1
+
+{{< include tasks/ggplot.qmd >}}
+
+# Task 2
+
+{{< include tasks/ggplot-beautify.qmd >}}
+
+# Solution 1
+
+{{< include solutions/ggplot.qmd >}}
+
+# Solution 2
+
+{{< include solutions/ggplot-beautify.qmd >}}
+
+:::

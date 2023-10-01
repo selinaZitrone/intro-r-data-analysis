@@ -1,0 +1,21 @@
+---
+title: "Tidy data with tidyr"
+---
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="slides/tidyr.html"></iframe>
+```
+
+[Slides in full screen](slides/tidyr.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/tidyr.pdf" download>Download PDF slides</a>
+
+:::{.panel-tabset}
+
+# Task
+
+{{< include tasks/tidyr.qmd >}}
+
+# Solution
+
+{{< include solutions/tidyr.qmd >}}
+
+:::

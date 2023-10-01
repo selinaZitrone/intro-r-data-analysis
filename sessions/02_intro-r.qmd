@@ -1,0 +1,21 @@
+---
+title: "Introduction to R"
+---
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="slides/intro-r.html"></iframe>
+```
+
+[Slides in full screen](slides/intro-r.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/intro-r.pdf" download>Download PDF slides</a>
+
+:::{.panel-tabset}
+
+# Task
+
+{{< include tasks/intro-r.qmd >}}
+
+# Solution
+
+{{< include solutions/intro-r.qmd >}}
+
+:::

@@ -1,0 +1,197 @@
+---
+title: "Introduction to Data Analysis with R"
+subtitle: "Day 1: Welcome to the workshop"
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: today
+date-format: long
+format: 
+  revealjs:
+    footer: "Selina Baldauf // Welcome to the workshop"
+    highlight-style: breeze
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    auto-stretch: false
+    scrollable: true
+    fig-align: center
+    theme: slides.scss
+execute: 
+  echo: true
+  warning: false
+  message: false
+from: markdown+emoji
+title-slide-attributes: 
+  data-background-image: img/AllisonHorst/rainbowr.gif
+  data-background-position: 90% 85%
+  data-background-size: "20%"
+---
+
+
+```{r setup, include=FALSE}
+library(fontawesome)
+```
+
+# Who am I? {.inverse}
+
+:computer: **Scientific programmer** @[theoretical ecology group](https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/botanik/ag_tietjen/index.html)<br>
+:mortar_board: PhD in **dryland ecology**<br>
+:woman_teacher: **Teaching** R, Git, good scientific practice, ...
+
+<!-- ![](img/day1/crust.png) -->
+
+<!-- ![](img/day1/el_cautivo.jpg) -->
+
+
+## I'm using `r fontawesome::fa("r-project")` a lot for ...
+
+... **data analysis**
+
+... ecological modelling
+
+... writing documents
+
+.... workflow automation
+
+...
+
+## Who are you?
+
+[Results of questionnaire](https://docs.google.com/forms/d/12t0jqM5-XjWKFLzbyoFUeGZsPNjokoygEiwo-iHlpEM/edit#responses)
+
+## Workshop topics
+
+![Image adapted from Wickham & Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)](img/day1/workshop_topics.png){fig-align="center"}
+
+. . .
+
+<b><span style="color:#68bda0;">Day1</span></b>
+Introduction to R and RStudio and data import
+
+. . .
+
+<b><span style="color:#ff9dd8;">Day2</span></b>
+Data transformation and visualization with the tidyverse
+
+. . .
+
+<b><span style="color:#FFD166;">Day3</span></b>
+Cleaning data and statistical tests
+
+. . .
+
+**Day 4 Bring your own data**
+
+## Schedule and Organization {.nonincremental}
+
+:clock9: 9 a.m. - 4 p.m. <br>
+:ramen: ~ 12 a.m. - 1 p.m.,  :coffee: in between <br>
+:pushpin: We will meet in the `General` meeting on Webex
+
+<br>
+
+:::{.fragment .nonincremental}
+
+#### Input sessions
+
+- Presentation and demonstration of a topic
+- Some examples
+
+:::
+
+:::{.fragment .nonincremental}
+  
+#### Tasks
+- Solve them in small groups
+
+:::
+
+:::{.fragment}
+  
+#### Joint discussion of tasks questions
+
+:::
+
+## Material
+
+- All material can be found on the [workshop's website](https://selinazitrone.github.io/intro-r-data-analysis/)
+
+  - Presentations, Tasks, Solutions, Additional resources
+  
+- The complete material can be downloaded from the website after the workshop
+- Website will stay online after the workshop
+
+
+## Bring your own data
+
+On the last workshop day, you can work with your own research data.
+I will also provide some real life data sets from different topics. 
+
+. . .
+
+#### Learning by doing
+
+- Get started using R for your own analyses
+
+- Use any of the methods from the course or try new things, ...
+
+- Present/discuss your results, questions and problems at the end of the day
+
+## Bring your own data
+
+- Keep the last workshop day in mind during the next days
+
+  - Take a mental note if you learn something that is applicable to your data
+  
+  - Think of questions that you would like to answer for your data set
+  
+- Add your name and some details on what you plan to do in this [joint table](https://docs.google.com/spreadsheets/d/1MuINiPjVvZrMRUYboDXdoPwj8daKj88k6K1hnfcoWxQ/edit?usp=sharing)
+
+
+## Before we get started I
+
+- **Help each other** if possible
+  - Have an eye on the chat
+ 
+- All questions and comments are welcome
+
+- Feedback is welcome
+  - Evaluation at the end of the workshop
+  
+## Before we get started II
+
+**How to use Webex teams**
+
+- `General` channel for our joint meetings and chat
+- `Groups 1-4` for group work
+  - Group spaces have their own chat and meetings
+  - Use the chat in the groups for questions 
+  - Meet in your groups and solve the tasks jointly
+- Please always have a look at the general chat during the tasks
+
+# Now you (5 min){.inverse}
+> Let's try the Webex groups
+
+:::{.nonincremental}
+
+- **Go into your groups** and **start a meeting** there
+- **Say hello** to your team briefly
+  - What do you study and what types of data analysis do you do? 
+- **Come back to the general meeting** when I write in the general chat
+
+:::
+
+## Before we get started III
+
+Did anyone have problems installing R and RStudio?
+
+<br>
+
+![](img/Rlogo.png){width=10%} Download and install R from [https://cran.r-project.org](https://cran.r-project.org/)
+
+![](img/Rstudio_logo.png){width=10%} Download and install RStudio from             [https://www.posit.co](https://posit.co/download/rstudio-desktop/)
+
+

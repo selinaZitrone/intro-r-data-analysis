@@ -1,0 +1,108 @@
+---
+title: "Introduction to version control with Git"
+subtitle: "Day 2: Branching, Merging and collaboration workflows"
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: today
+date-format: long
+format: 
+  revealjs:
+    footer: "Branching, Merging and Collaboration with Git"
+    highlight-style: breeze
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    auto-stretch: false
+    scrollable: true
+    fig-align: center
+    theme: slides.scss
+execute: 
+  echo: true
+  warning: false
+  message: false
+  collapse: true
+from: markdown+emoji
+---
+
+# Examples in light mode
+
+> And a block quote
+
+## Heading 2
+
+### Heading 3
+
+Some text with [some yellow]{.highlight-ylw} and with [some green]{.highlight-grn} and [some pink]{.highlight-pink} and [some blue]{.highlight-blue}
+
+[And a test of ]{.circle-sketch-highlight} a circle highlight.
+
+#### Heading 4
+
+Here we have [a link](google.com) and some **bold** and **italic**
+
+```r
+library(ggplot2)
+ggplot(penugins, aes(1:10,1:0)) +
+  geom_point("test")
+```
+
+```{r}
+head(iris)
+```
+
+Here we have some `inline code`, or even real code `mean(1:10)`
+
+# Examples in dark mode {.inverse}
+
+> And a block quote
+
+## Heading 2 {.inverse}
+
+### Heading 3
+
+Some text with [some yellow]{.highlight-ylw} and with [some green]{.highlight-grn} and [some pink]{.highlight-pink} and [some blue]{.highlight-blue}
+
+
+[And a test of ]{.circle-sketch-highlight} a circle highlight.
+
+#### Heading 4
+
+Here we have [a link](google.com) and some **bold** and **italic**
+
+```r
+library(ggplot2)
+ggplot(penugins, aes(1:10,1:0)) +
+  geom_point()
+```
+
+Here we have some `inline code`, or even real code `mean(1:10)`
+
+# Examples in blue mode {.inverse}
+
+> And a block quote
+
+## Heading 2 {.inverse}
+
+### Heading 3
+
+Some text with [some yellow]{.highlight-ylw} and with [some green]{.highlight-grn} and [some pink]{.highlight-pink} and [some blue]{.highlight-blue}
+
+
+[And a test of ]{.circle-sketch-highlight} a circle highlight.
+
+#### Heading 4
+
+Here we have [a link](google.com) and some **bold** and **italic**
+
+```r
+library(ggplot2)
+ggplot(penugins, aes(1:10,1:0)) +
+  geom_point()
+```
+
+Here we have some `inline code`, or even real code `mean(1:10)`
+
+

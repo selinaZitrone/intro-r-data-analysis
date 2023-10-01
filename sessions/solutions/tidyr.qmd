@@ -1,0 +1,86 @@
+### 4.1 Getting started with tidyr
+
+```{r echo=TRUE, eval=TRUE}
+library(tidyverse)
+```
+
+### 4.2 Let's tidy some data sets
+
+**1. `relig_income`**
+
+Have a look at the `relig_income` data set that is included in tidyverse package.
+The data set contains the results of a survey asking people about their religion and income category.
+
+```{r, echo=TRUE}
+relig_income
+```
+
+What is not tidy about this data set? Can you fix it?
+
+`r fontawesome::fa("arrow-right")` The variable income is spread across multiple columns, so we have to use `pivot_longer` to pivot the columns containing the income information:
+
+```{r, echo=TRUE}
+pivot_longer(relig_income,
+             cols = !religion,
+             names_to = "income",
+             values_to = "count"
+             )
+```
+
+
+**2. `billboard`**
+
+Have a look at the `billboard` data set that is included in the tidyverse package.
+The data set contains information about the chart rank of songs in the year 2000.
+
+```{r, echo=TRUE}
+billboard
+```
+
+What is not tidy about this data set? Can you fix it?
+
+`r fontawesome::fa("arrow-right")` The variable week is spread across multiple columns. We have to use pivot longer to pivot the week columns:
+
+```{r, echo=TRUE}
+pivot_longer(billboard,
+             cols = wk1:wk76,
+             names_to = "week",
+             values_to = "rank")
+```
+
+#### Extras
+
+The argument `values_drop_na` drops rows with missing values in the rank column. Here it makes sense because not every song is in the charts for all 76 weeks.
+
+With the `names_prefix` argument we can remove the `wk` before the values of the week variable. This makes it easier to work with later.
+
+```{r, echo=TRUE}
+pivot_longer(billboard,
+             cols = wk1:wk76,
+             names_to = "week",
+             names_prefix = "wk",
+             values_to = "rank",
+             values_drop_na = TRUE)
+```
+
+To re-create the penguin plot from the task, the following observations help:
+
+- Information needed: Species, bill depth and bill length
+  - In a first step, you can therefore use `select` from `dplyr` to select only these
+  three columns
+- Aesthetics are: Species on x-axis, value of bill depth and length on y-axis, 
+fill aesthetic is category bill depth or bill length.
+  - This needs some reformatting. You need one value column with the measurements,
+  and one name column with the category. You can use pivot longer for this
+  
+Use the pipe operator to do the calculations one after the other:
+
+```{r echo=TRUE, warning=FALSE}
+library(palmerpenguins)
+penguins %>%
+  select(species, bill_length_mm, bill_depth_mm) %>%
+  pivot_longer(!species) %>%
+  ggplot(aes(x = species, y = value, fill = name)) +
+  geom_boxplot()
+```
+

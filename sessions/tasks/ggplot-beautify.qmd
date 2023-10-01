@@ -1,0 +1,55 @@
+## 1 Beautify the plots
+
+First, choose one of the tasks 1.1 or 1.2, then do task 2 on saving plots. If you still have time, you can come back to the task you didn’t do.
+
+But also here, if you have other ideas, feel free to deviate from the tasks.
+
+### 1.1 Beautify the plots from Task 1
+
+Take the plot from before that you liked the most and try to make them look nicer.
+
+Here's a list of ideas:
+
+- Add a theme layer
+- Customize the theme, e.g.
+  - Change the position of the legend
+  - Make the axis titles bold
+- Change the color/fill scale of the plot
+  - Use `scale_color_manual` or `scale_fill_manual`
+  - Try `scale_color_viridis_d()` or `scale_fill_viridis_d()` with different options
+  - Try a color scale from the `paletteer` package
+    - First you have to install the package, then have a look at the [available palettes](https://r-charts.com/color-palettes)
+- Change the labels of the x- and y-axis and add a title to the plot
+- Make the points transparent, give them a different shape, ...
+
+### 1.2 Can you reproduce this plot?
+
+Take a look at this plot:
+
+```{r fig.cap="Visualization from the [palmerpenguins package](https://allisonhorst.github.io/palmerpenguins/)"}
+knitr::include_graphics(here::here("sessions/slides/img/figs-penguin/README-flipper-bill-1.png"))
+```
+
+It is similar to the one from Task 1-3.1 but more beautiful.
+Can you reproduce this plot?
+
+The colors that are used are:
+
+```{r echo=TRUE, eval=FALSE}
+penguin_cols <- c("darkorange", "purple", "cyan4")
+```
+
+## 2 Save one of the plots on your machine
+
+Save one of the plots you produced in a variable and then use `ggsave` to save the plot on your machine.
+Save the plot in a dedicated plot directory in your RStudio project. 
+
+Note: Make sure the path where you save the image exists. If you e.g. want to save in
+`img/`, then you first have to create the `img` folder in your project directory.
+For this you can use the Files pane of RStudio.
+
+### References
+
+Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0.
+https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218.
+

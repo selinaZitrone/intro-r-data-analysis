@@ -1,0 +1,522 @@
+---
+title: "Tables in R - Data frames and Tibbles"
+subtitle: "Day 1 - Introduction to Data Analysis with R"
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: today
+date-format: long
+format: 
+  revealjs:
+    footer: "Selina Baldauf // Data frames and tibbles"
+    highlight-style: breeze
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    auto-stretch: false
+    scrollable: true
+    fig-align: center
+    theme: slides.scss
+execute: 
+  echo: true
+  warning: false
+  message: false
+from: markdown+emoji
+---
+
+## Data frames
+
+The built-in data structure for tables in R is a `data frame`.
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+Vectors in R can't represent a table with data that is connected via rows
+
+> Data frames are one of the **biggest and most important ideas** in R, and one of the things that make R different from other programming languages.<br>[(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble))]{.text-small}
+
+:::
+
+:::{.column width="50%"}
+
+```{r echo=FALSE}
+# list of 10 biggest cities in Europe
+cities <- c("Istanbul", "Moscow", "London", "Saint Petersburg", "Berlin", 
+            "Madrid", "Kyiv", "Rome", "Bucharest", "Paris")
+population <- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)
+area_km2 <- c(2576, 2561, 1572, 1439,891,604, 839, 1285, 228, 105 )
+
+data.frame(cities = cities,
+           population = population,
+           area_km2 = area_km2) |> 
+  knitr::kable(
+    
+  )
+```
+
+:::
+
+:::
+
+## Data frames
+
+A data frame is a **named list of vectors** of the same length.<br>
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+<br>
+
+#### Basic properties of a data frame
+
+- every [column is a vector]{.highlight-grn}
+- columns have a [header]{.highlight-ylw}
+  - this is the name of the vector in the list
+- within one column, all values are of the [same data type]{.highlight-pink}
+- every column has the same length
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/data_frame_specs_all.png){width=85%}
+
+:::
+
+:::
+
+## Data frames
+
+Data frames are created with the function `data.frame()`:
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r eval=FALSE}
+cities <- c(
+  "Istanbul", "Moscow", "London", 
+  "Saint Petersburg", "Berlin","Madrid",
+  "Kyiv", "Rome", "Bucharest","Paris")
+
+population <- c(
+  15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6,
+  3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)
+
+area_km2 <- c(2576, 2561, 1572, 1439, 
+  891, 604, 839, 1285, 228, 105)
+
+```
+<br>
+```{r eval=FALSE}
+data.frame(
+  cities = cities,
+  population = population,
+  area_km2 = area_km2
+  )
+```
+
+:::
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+```{r echo=FALSE}
+# list of 10 biggest cities in Europe
+cities <- c("Istanbul", "Moscow", "London", "Saint Petersburg", "Berlin", 
+            "Madrid", "Kyiv", "Rome", "Bucharest", "Paris")
+population <- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)
+area_km2 <- c(2576, 2561, 1572, 1439, 891, 604, 839, 1285, 228, 105)
+
+data.frame(
+  cities = cities,
+  population = population,
+  area_km2 = area_km2
+)
+```
+
+:::
+
+:::
+
+:::
+
+## Tibbles
+
+Tibbles are 
+
+> a **modern reimagining of the data frame**. Tibbles are designed to be (as much as possible) **drop-in replacements** for data frames. 
+<br>[(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble))]{.text-small}
+
+. . .
+
+Have a look at [this book chapter](https://adv-r.hadley.nz/vectors-chap.html#tibble) for a full list of the differences between data frames and tibbles and the advantages of using tibbles.
+
+. . .
+
+:::{.columns}
+
+:::{.column width="70%"}
+
+:::{.nonincremental}
+
+- Tibbles have the same basic properties as data frames (named list of vectors)
+
+- Everything that you can do with data frames, you can do with tibbles
+
+:::
+
+:::
+
+:::{.column width="30%"}
+
+![](img/day1/data_frame_tibble.png)
+
+:::
+
+:::
+
+## Tibbles
+
+![](img/hex-stickers/tibble.png){style="float:right;padding: 0 0 0 10px;" fig-alt="Tibble Hex Logo" width="185"}
+<br><br>
+Tibbles are a available from the `tibble` package.
+
+. . .
+
+<br><br>
+
+Before we use tibbles, we need to install the package once using the function `install.packages`:
+
+```{r eval=FALSE}
+# This has do be done only once (in the console, not in the script)
+install.packages("tibble")
+```
+
+Then, we need to load and attach the package to our current R session using `library`:
+
+```{r}
+# This has to be done every time R restarts
+# Put it at the top of a script
+library(tibble)
+```
+
+
+
+## Tibbles
+
+Create a tibble using the `tibble()` function:
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+library(tibble) 
+
+tibble(
+  cities = cities,
+  population = population,
+  area_km2 = area_km2
+)
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r echo=FALSE}
+cities_tbl<- tibble(
+  cities = cities,
+  population = population,
+  area_km2 = area_km2
+)
+cities_tbl
+```
+
+:::
+
+:::
+
+## Exploring tibbles
+
+Look at the structure of an object using `str()`:
+
+```{r}
+str(cities_tbl)
+```
+
+. . .
+
+Or do it in the environment pane of RStudio (click little blue arrow next to the object):
+
+![](img/day1/str_RStudio.png)
+
+. . .
+
+`str()` works for every R object and is very useful if code doesn't work and you don't know why
+
+## Exploring tibbles
+
+How many rows?
+
+```{r}
+nrow(cities_tbl)
+```
+
+. . .
+
+How many columns?
+
+```{r}
+ncol(cities_tbl)
+```
+
+. . .
+
+What are the column headers?
+
+```{r}
+names(cities_tbl)
+```
+
+## Exploring tibbles
+
+Look at the entire table in a separate window with `view()`:
+
+```{r eval=FALSE}
+view(cities_tbl)
+```
+
+. . .
+
+Or click on the little table sign in the Environment pane:
+
+![](img/day1/view_RStudio.png)
+
+## Exploring tibbles
+
+Get a quick summary of all columns:
+
+```{r}
+summary(cities_tbl)
+```
+
+## Indexing tibbles
+
+Indexing tibbles works similar to indexing vectors but with 2 dimensions instead of 1:<br>
+
+:::{.r-stack}
+
+<b>tibble [ [row_index]{.col-green}, [col_index or col_name]{.col-pink} ]</b>
+
+:::
+
+- Missing row_index or col_index means *all rows* or *all columns* respectively.
+- Indexing a tibble using `[]` always returns another tibble.
+
+## Indexing tibbles
+
+```{r}
+# First row and first column
+cities_tbl[1, 1]
+```
+
+. . .
+
+This is the same as 
+
+```{r eval=FALSE}
+cities_tbl[1, "cities"]
+```
+
+## Indexing tibbles: rows
+
+```{r}
+# rows 1 & 5, all columns:
+cities_tbl[c(1, 5), ]
+```
+
+## Indexing tibbles: columns 
+
+```{r eval=FALSE}
+# All rows, first 2 columns
+cities_tbl[ ,1:2] # same as cities_tbl[ , c(1, 2)]
+# same as
+cities_tbl[ ,c("cities", "population")]
+```
+
+```{r echo=FALSE}
+print(cities_tbl[ ,c("cities", "population")], n=3)
+```
+
+## Indexing tibbles: columns
+
+Indexing columns by name is usually preferred to indexing by position
+
+```{r eval=FALSE}
+cities_tbl[ ,1:2] # okay
+cities_tbl[ ,c("cities", "population")] # better
+```
+
+#### Why?
+
+- Code is much easier to read
+
+- Code is more robust against
+  - changes in column order
+  - mistakes in the code (e.g. typos)
+
+:::{.fragment}
+  
+```{r eval=FALSE}
+cities_tbl[ ,c(1,3)] # 3 instead of 2 -> wrong but no error
+cities_tbl[ ,c("cities", "popluation")] # typo -> wrong and error
+```
+
+:::
+
+:::{.fragment}
+
+:::{.callout-tip}
+
+## General rule
+
+Good code produces errors when something unintended or wrong happens
+
+:::
+
+:::
+
+## Tibbles: Select columns with `$`
+
+Select an entire column from a tibble using `$` (this returns a vector instead of a tibble):
+
+```{r}
+cities_tbl$cities
+```
+
+## Adding new columns
+
+New columns can be added as vectors using the `$` operator. The vectors need to have the same length as the tibble has rows.
+
+. . .
+
+```{r}
+# add a country column
+cities_tbl$country <- c(
+  "Turkey", "Russia", "UK", "Russia", "Germany", "Spain",
+  "Ukraine", "Italy", "Romania", "France"
+)
+```
+```{r echo=FALSE}
+cities_tbl
+```
+
+# Summary{.inverse}
+
+> Tables in R: Data frames and tibbles
+
+## Summary I
+
+#### data frames and tibbles
+
+:::{.nonincremental}
+
+- can be used to represent tables in R
+- are pretty similar, however tibbles are slightly conventient and modern
+- are **named lists of vectors of the same length**
+  - every column is a vector
+  - columns have a header which is the name of the vector in the list
+  - within one column, values are of same data type
+  - every column has the same length
+  
+#### tibbles
+
+- to use tibbles, install the package once with `install.packages("tibble")`
+- put `library(tibble)` at the beginning of your script to load package
+
+:::
+
+## Summary II
+
+#### Creating tibbles and data frames
+
+```{r eval=FALSE}
+# data frame
+data.frame(
+  a = 1:3,
+  b = c("a", "b", "c"),
+  c = c(TRUE, FALSE, FALSE) 
+)
+# tibble
+tibble(
+  a = 1:3,
+  b = c("a", "b", "c"),
+  c = c(TRUE, FALSE, FALSE) 
+)
+# convert data frame to tibble
+as_tibble(df)
+```
+
+## Summary III
+
+#### Looking at tibble structure
+
+```{r eval=FALSE}
+# structure of tibble and data types of columns
+str(tbl)
+# number of rows
+nrow(tbl)
+# number of columns
+ncol(tbl)
+# column headers
+names(tbl)
+# look at the data in a new window
+tibble::view(tbl)
+# summary of values from each column
+summary(tbl)
+```
+
+## Summary IV
+
+#### Indexing tibbles and selecting columns
+
+Return result as tibble:
+
+```{r eval=FALSE}
+# rows and columns by position
+tbl[1:3, c(1, 3)]
+tbl[1:3, ] # all columns
+tbl[, 3] # column 3, all rows
+tbl[3] # same as above
+
+# columns by name
+tbl[, c("colA", "colB")]
+tbl[c("colA", "colB")]
+```
+
+Return result as vector:
+
+```{r eval=FALSE}
+tbl$colA # select colA  
+```
+
+# Now you{.inverse}
+
+[Task 3 (20 min)]{.highlight-blue}<br>
+
+[Tibbles]{.big-text}
+
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/01_tasks_controller.html#tibbles)**
