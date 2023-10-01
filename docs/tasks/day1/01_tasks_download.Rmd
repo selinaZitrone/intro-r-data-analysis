@@ -1,1 +1,0 @@
-Download an R script with the solutions from day 1 from <a href="./R/Tasks/Day1.R" download>here</a>.
