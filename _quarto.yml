@@ -89,7 +89,7 @@ format:
       light: [flatly, theme.scss]
       dark: [darkly]
     toc: true
-    number-sections: false
+    number-sections: true
     code-copy: true
     code-overflow: wrap
     code-line-numbers: true
