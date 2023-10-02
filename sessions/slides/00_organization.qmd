@@ -86,8 +86,8 @@ Cleaning data and statistical tests
 **Day 4 Bring your own data**
 
 ## Schedule and Organization {.nonincremental}
-
-:clock9: 9 a.m. - 4 p.m. <br>
+📅 09.10.2023 - 10.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
+📅 16.10.2023 - 17.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
 :ramen: ~ 12 a.m. - 1 p.m.,  :coffee: in between <br>
 :pushpin: We will meet in the `General` meeting on Webex
 
@@ -111,7 +111,7 @@ Cleaning data and statistical tests
 
 :::{.fragment}
   
-#### Joint discussion of tasks questions
+#### Joint discussion of tasks & questions
 
 :::
 
@@ -121,14 +121,14 @@ Cleaning data and statistical tests
 
   - Presentations, Tasks, Solutions, Additional resources
   
-- The complete material can be downloaded from the website after the workshop
+- You can download slides and R Scripts from there
 - Website will stay online after the workshop
 
 
 ## Bring your own data
 
-On the last workshop day, you can work with your own research data.
-I will also provide some real life data sets from different topics. 
+On the last workshop day, you can **work with your own research data**.
+I will also provide some **real life data sets** from different topics. 
 
 . . .
 
