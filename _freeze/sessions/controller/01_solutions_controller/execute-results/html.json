@@ -1,0 +1,14 @@
+{
+  "hash": "fec49f81fa41ed0cb0107a8abeb3c3c3",
+  "result": {
+    "markdown": "---\ntitle: \"Solutions for day 1\"\nformat:\n  html:\n    toc: true\n    toc_float: true\n    number_sections: true\nexecute: \n  echo: false\nparams:\n  showDownload: FALSE\n  includeSolution2: FALSE\n  includeSolution3: FALSE\n  includeSolution4: FALSE\n---\n\n::: {.cell hash='01_solutions_controller_cache/html/download_script_f1d8200f055dfad780e6a6835799a67c'}\n\n:::\n\n\n## 2 Working with vectors\n\n\n::: {.cell hash='01_solutions_controller_cache/html/vectors_f476367acbb664e4faed9ccb98317259'}\n\n:::\n\n\nSolution will be uploaded later\n\n\n## 3 Tibbles\n\n\n::: {.cell hash='01_solutions_controller_cache/html/tibbles_7eb27c1c7ff2950b43714d1e56e5217b'}\n\n:::\n\n\nSolution will be uploaded later\n\n\n## 4 Reading and writing tibbles\n\n\n::: {.cell hash='01_solutions_controller_cache/html/readr_5677907ec21a1228f1879ca41c75151d'}\n\n:::\n\n\nSolution will be uploaded later\n\n\n# Reference\n\nWolfram Research, \"Sample Data: Animal Weights\" from the Wolfram Data Repository (2016) https://doi.org/10.24097/wolfram.43616.data\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

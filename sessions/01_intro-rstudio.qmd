@@ -8,10 +8,6 @@ title: "Introduction to RStudio"
 
 [Slides in full screen](slides/intro-rstudio.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/intro-rstudio.pdf" download>Download PDF slides</a>
 
-:::{.panel-tabset}
-
 # Task
 
 {{< include tasks/intro-rstudio.qmd >}}
-
-:::

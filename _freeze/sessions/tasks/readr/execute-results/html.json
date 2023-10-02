@@ -1,0 +1,14 @@
+{
+  "hash": "c2610e89bccc19d944c73ec859cf6423",
+  "result": {
+    "markdown": "---\nnumber-sections: true\n---\n\n\n## Getting started with readr and the tidyverse\n\nBefore you start, make sure to install the `tidyverse` packages by calling\n\n\n::: {.cell hash='readr_cache/html/unnamed-chunk-1_81f85e4ec45a60202d3c623876b62a14'}\n\n```{.r .cell-code}\ninstall.packages(\"tidyverse\")\n```\n:::\n\n\nThis will install readr along with other tidyverse packages.\n\nRemember to put `library(tidyverse)` (or `library(readr)`) on top of your script to access the readr functions.\n\n### Write a tibble to disk\n\nLet's use the `animals` tibble from the previous task and write it into the data folder in our project.\n\nBefore writing the tibble\n\n- Create a `data` sub-directory in your RStudio project (if you don't have one yet)\n  - Hint: You can do that from within RStudio by using the `New Folder` button in the *Files pane* \n\nNow write the `animals` tibble to that `/data` sub-directory as `animals.csv` using a comma separator.\n\nCheck if the file was written into the correct folder.\n\n## Read data into R\n\nNow, try to read the data set back into R using the appropriate `read_*` function.\n\n---\n\n## Extra\n\nNavigate to your `data` directory using the `Files` pane of RStudio.\nClick on both the `.csv` file that you just saved there. What can you do? Try the `Import Dataset` button and see what you can do there.\n\n- Try reading some `xlsx` or `csv` tables that you have on your machine into R\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
