@@ -16,7 +16,7 @@ format:
     self-contained: true
     code-line-numbers: false
     auto-stretch: false
-    scrollable: true
+    scrollable: false
     fig-align: center
     theme: slides.scss
 execute: 
@@ -79,19 +79,21 @@ RStudio is the **integrated development environment** (IDE)
 :::{.column width="50%"}
 
 ![](img/Rlogo.png){width=15% }<br>
-R is the **programming language** and the **program** that does the actual work
 
 :::
-  
+
 :::{.column width="50%"}
 
 ![](img/Rstudio_logo.png){width=12%}<br>
 
-RStudio is the **integrated development environment** (IDE)
-  
 :::
 
 :::
+
+![Analogy and image from 
+[ModernDive Book](https://moderndive.com/1-getting-started.html#r-rstudio)](img/day1/car_engine.png)
+
+. . .
 
 ::: {.callout-note}
 
@@ -100,29 +102,6 @@ RStudio is the **integrated development environment** (IDE)
 You can use R without RStudio but RStudio without R would be of little use
 
 :::
-
-
-## Difference between R and RStudio
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-**R** is like the engine
-
-
-:::
-
-:::{.column width="50%"}
-
-  **RStudio** is more like the dashboard, etc.
-
-:::
-
-:::
-
-![Analogy and image from 
-[ModernDive Book](https://moderndive.com/1-getting-started.html#r-rstudio)](img/day1/car_engine.png)
 
 ## Basic idea of writing code for data analysis
 
@@ -463,10 +442,28 @@ To open an RStudio project from RStudio, click on the project symbol on the top 
 
 ![](img/day1/open_project_rstudio.png){fig-align="center" width=45%}
 
+## A tip before we get started
+
+<br>
+[Learn the most important keyboard shortcuts]{.highlight-grn} of R Studio.
+
+<br>
+
+Find all shortcuts under **Tools -> Keyboard Shortcuts Help**
+
+:::{.nonincremental}
+- Save active file: Ctrl/Cmd + S
+- Run current line: Ctrl/Cmd + Enter
+- Create new R Script: Ctrl/Cmd + N
+- Undo: Ctrl/Cmd + Z
+- Redo: Ctrl/Cmd + Y
+- Copy/Paste: Ctrl/Cmd + C/V
+:::
+
 # Now you {.inverse}
 
 [Task 1 (25 min)]{.highlight-blue}<br>
 
 [Set up your own RStudio project for this workshop]{.big-text}
 
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/01_tasks_controller.html#set-up-an-rstudio-project)**
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/01_intro-rstudio.html)**

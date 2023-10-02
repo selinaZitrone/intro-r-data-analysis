@@ -1,7 +1,3 @@
----
-number-sections: true
----
-
 ## Change settings
 
 Before you get started, there is an important setting that you should change in RStudio.
@@ -9,10 +5,10 @@ By default, RStudio will save the workspace of your current session in an `.Rdat
 
 This is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.
 
-In RStudio go to `Tools -> Global Options -> General` and 
+In RStudio go to **Tools -> Global Options -> General** and 
 
-- Remove the check mark for "Restore `.RData` into workspace at startup"
-- **Never** save workspace to `.RData` on exit
+- Remove the check mark for "Restore .RData into workspace at startup"
+- **Never** "Save workspace to .RData on exit"
 
 ```{r fig.height=20}
 knitr::include_graphics(here::here("sessions/tasks/img/setting_workspace.png"))
@@ -20,21 +16,23 @@ knitr::include_graphics(here::here("sessions/tasks/img/setting_workspace.png"))
 
 ## Create an RStudio project
 
-Create an RStudio project for all the scripts, notes, data, etc. from this workshop.
+Create an RStudio project for all the scripts, notes, data, etc. from this workshop:
 
-- Create a project in a directory of your choice following the instructions from the slides
-- Use the `File` pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days
-  - E.g. create the folders `data`, `R`, `documents`,...
-  - You can always change the structure of your project later, but for now, we want some basic folders that we can navigate
+1. Create a project in a directory of your choice following the instructions from the slides
+2. Use the **Files pane** in RStudio to create a basic folder structure in your project which will be filled with files in the next days
+  - Folder `data/` for all data files 
+  - Folder `R/` for all R scripts
+  - Folder `docs/` for other documents (e.g. lecture notes or slides)
+  - You can always change the structure of your project later
 
 You can add files to your project either directly in RStudio, or in the file explorer of your operating system.
 
 ## Add an R script to the project
 
-- Create a new R script and save it in the appropriate folder of your project (e.g. `scripts` or `R`)
+- Create a new R script and save it in the `R/` folder of your project
 - Copy and paste the code from below into your script
   - Don't worry if you don't understand the code yet, we will learn all this later
-- Run the code in the script line by line. Try both, running code using the `Run` button (in the top right corner of your script pane) and the keyboard shortcut `Ctrl/Cmd + Enter/Return`
+- Run the code in the script line by line. Try both, running code using the **Run button** (in the top right corner of your script pane) and the keyboard shortcut `Ctrl/Cmd + Enter`
   - For each line that you run, observe what is happening to the different panes (console, environment, ...) in RStudio. Can you explain what is happening?
 
 ```{r eval=FALSE, echo=TRUE}
