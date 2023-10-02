@@ -129,7 +129,12 @@ and_vertebrates <- and_vertebrates %>%
 
 Data set `and_vertebrates` with measurements of a trout and 2 salamander species in different forest sections.
 
-```{r}
+```{r eval=FALSE}
+library(lterdatasampler)
+and_vertebrates
+```
+
+```{r echo=FALSE}
 and_vertebrates
 ```
 

@@ -2,7 +2,10 @@
 title: "Solution to dplyr tasks"
 ---
 
+## Get started
+
 ```{r echo=TRUE}
+#| message: false
 library(tidyverse)
 library(palmerpenguins)
 ```
@@ -12,7 +15,7 @@ theme_set(theme_grey())
 
 ## Data transformation with dplyr
 
-#### Find all penguins that ...
+**Find all penguins that ...**
 
 1. ... have a bill length between 40 and 45 mm.
 
@@ -41,11 +44,11 @@ filter(penguins, species %in% c("Adelie", "Gentoo") &
 4. ... lived on the island Dream in the year 2007. How many of them were from each of the 3 species?
 
 ```{r echo=TRUE}
-filter(penguins, island == "Dream" & year == 2007) %>% 
+filter(penguins, island == "Dream" & year == 2007) |> 
   count(species)
 ```
 
-#### Count ...
+**Count ...**
 
 1. ... the number of penguins on each island.
 
@@ -59,7 +62,7 @@ count(penguins, island)
 count(penguins, island, species)
 ```
 
-#### Select ...
+**Select ...**
 
 1. ... only the variables species, sex and year
 
@@ -84,7 +87,7 @@ select(penguins, ends_with("mm"))
 #select(penguins, contains("_mm"))
 ```
 
-#### Add a column ...
+**Add a column ...**
 
 1. ... with the ratio of bill length to bill depth
 
@@ -104,13 +107,13 @@ mutate(penguins,
        ))
 ```
 
-#### Calculate ...
+**Calculate ...**
 
 1. ... mean flipper length and body mass for the 3 species and male and female penguins separately
 
 ```{r echo=TRUE}
-penguins %>%
-  group_by(species, sex) %>%
+penguins |>
+  group_by(species, sex) |>
   summarize(
     mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
     mean_body = mean(body_mass_g, na.rm = TRUE)
@@ -120,9 +123,9 @@ penguins %>%
 2. Can you do the same but remove the penguins for which we don't know the sex first?
 
 ```{r echo=TRUE}
-penguins %>% 
-  filter(!is.na(sex)) %>% 
-  group_by(species, sex) %>% 
+penguins |> 
+  filter(!is.na(sex)) |> 
+  group_by(species, sex) |> 
   summarize(
     mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
     mean_body = mean(body_mass_g, na.rm = TRUE)
@@ -134,8 +137,8 @@ penguins %>%
 1. Make a boxplot of penguin body mass with sex on the y-axis and facets for the different species. Can you remove the penguins with missing values for sex first?
 
 ```{r echo=TRUE}
-penguins %>%
-  filter(!is.na(sex)) %>%
+penguins |>
+  filter(!is.na(sex)) |>
   ggplot(aes(x = sex, y = body_mass_g)) +
   geom_boxplot() +
   facet_wrap(~species)
@@ -144,9 +147,9 @@ penguins %>%
 2. Make a scatterplot with the ratio of bill length to bill depth on the y axis and flipper length on the x axis? Can you distinguish the point between male and female penguins and remove penguins with unknown sex before making the plot?
 
 ```{r echo=TRUE}
-penguins %>%
-  mutate(ratio = bill_length_mm / bill_depth_mm) %>%
-  filter(!is.na(sex)) %>%
+penguins |>
+  mutate(ratio = bill_length_mm / bill_depth_mm) |>
+  filter(!is.na(sex)) |>
   ggplot(aes(x = flipper_length_mm, y = ratio, color = sex)) +
   geom_point() +
   scale_color_manual(values = c("cyan4", "darkorange")) +

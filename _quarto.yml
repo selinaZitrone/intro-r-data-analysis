@@ -45,15 +45,15 @@ website:
             href: sessions/05_readr.qmd
           - text: "---"
           - text: "<b>Day 2</b>"
-          - text: "ggplot2"
+          - text: "Ggplot2"
             href: sessions/07_ggplot.qmd
-          - text: "dplyr"
+          - text: "Dplyr"
             href: sessions/08_dplyr.qmd
           - text: "---"
           - text: "<b>Day 3</b>"
-          - text: "tidyr"
+          - text: "Tidyr"
             href: sessions/09_tidyr.qmd
-          - text: "03 - Statistical tests"
+          - text: "Statistical tests"
             href: sessions/10_tests.qmd
           - text: "---"
           - text: "<b>Day 4</b>"

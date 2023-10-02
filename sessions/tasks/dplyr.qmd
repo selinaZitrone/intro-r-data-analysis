@@ -1,4 +1,4 @@
-## Getting started with dplyr
+## Get started
 
 A helpful resource for to consult for this task can be the [dplyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf).
 
@@ -11,7 +11,7 @@ library(palmerpenguins)
 
 ## Data transformation with dplyr
 
-In the following, you find a lot of different data transformation tasks. First, do 2 from each category before you do the remaining ones. You don't have to finish all the tasks but make sure you covered each category. Generally, the first tasks from a category are easier than the last tasks of a category.
+In the following, you find a lot of different data transformation tasks. First, do 1-2 from each category before you do the remaining ones. You don't have to finish all the tasks but make sure you covered each category. Generally, the first tasks from a category are easier than the last tasks of a category.
 
 **Find all penguins that ...**
 
@@ -53,8 +53,6 @@ cols <- c("species", "bill_length_mm", "flipper_length_mm", "body_mass_kg")
 1. ... mean flipper length and body mass for the 3 species and male and female penguins separately
 
 2. Can you do the same but remove the penguins for which we don't know the sex first?
-
----
 
 ## Extras
 

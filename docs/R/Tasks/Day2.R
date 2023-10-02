@@ -256,6 +256,15 @@ final_plot
 
 ggsave("img/patchwork.png", final_plot)
 
+
+# Use esquisser for visual plotting ---------------------------------------
+# Nice package for visually designing plots
+# More here: https://github.com/dreamRs/esquisse
+# install.packages("esquisse")
+
+esquisse::esquisser(penguins)
+
+
 # 2 dplyr -------------------------------------------------------------------
 
 # library(tidyverse)

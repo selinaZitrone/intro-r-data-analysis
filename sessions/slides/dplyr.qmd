@@ -16,7 +16,7 @@ format:
     self-contained: true
     code-line-numbers: true
     auto-stretch: false
-    scrollable: true
+    scrollable: false
     theme: slides.scss
     fig-align: center
 execute: 
@@ -24,6 +24,10 @@ execute:
   warning: false
   message: false
   cache: true
+knitr: 
+  opts_chunk: 
+    collapse: true
+    comment: "#>"
 from: markdown+emoji
 title-slide-attributes: 
   data-background-image: img/hex-stickers/dplyr.png
@@ -50,18 +54,17 @@ We can use the tidyverse package `dplyr` for this.
 
 With `dplyr` we can (among other things)
 
-  - **Filter** data to analyse only a part of it
-  
-  - **Create** new variables
-  
-  - **Summarize** data
-  
-  - **Combine** multiple tables
-  
-  - **Rename** variables
-  
-  - **Reorder** observations or variables
-  
+:::{.nonincremental}
+
+- **Filter** data to analyse only a part of it
+- **Create** new variables
+- **Summarize** data
+- **Combine** multiple tables
+- **Rename** variables
+- **Reorder** observations or variables
+
+:::
+
 . . .
   
 To get started load the package `dplyr`:
@@ -99,13 +102,9 @@ All of the `dplyr` functions work similarly: <br>
 
 Soybean production for different use by year and country.
 
-```{r eval=FALSE}
-soybean_use
-```
-
-```{r echo=FALSE}
+```{r}
 soybean_use <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-04-06/soybean_use.csv')
-print(soybean_use, n=5)
+soybean_use
 ```
 
 :::{.aside}
@@ -114,7 +113,7 @@ Data from [Our World in Data](https://ourworldindata.org/forests-and-deforestati
 
 :::
 
-# `filter()`{.inverse}
+# `filter()` {.inverse}
 
 > picks observations (rows) based on their value
 
@@ -124,6 +123,8 @@ Data from [Our World in Data](https://ourworldindata.org/forests-and-deforestati
 
 These functions and operators help you filter your observations:
 
+:::{.nonincremental}
+
 - relational operators `<`, `>`, `==`, ...
 - logical operators `&`, `|`, `!`
 - `%in%` to filter multiple values
@@ -131,16 +132,14 @@ These functions and operators help you filter your observations:
 - `between()` to filter values that are between an upper and lower boundary
 - `near()` to compare floating points (use instead of `==` for doubles)
 
+:::
+
 ## `filter()`
 
 Filter rows that contain the values for Germany
 
-```{r eval=FALSE}
+```{r}
 filter(soybean_use, entity == "Germany")
-```
-
-```{r echo=FALSE}
-print(filter(soybean_use, entity == "Germany"), n=5)
 ```
 
 . . .
@@ -149,28 +148,21 @@ print(filter(soybean_use, entity == "Germany"), n=5)
 
 ## `filter()` + `%in%`
 
-Use the `%in%` operator to filter multiple countries
+Use the `%in%` operator to filter rows based on multiple values, e.g. countries
 
-```{r eval=FALSE}
+. . .
+
+```{r}
 countries_select <- c("Germany", "Austria", "Switzerland")
 filter(soybean_use, entity %in% countries_select)
-```
-
-```{r echo=FALSE}
-countries_select <- c("Germany", "Austria", "Switzerland")
-print(filter(soybean_use, entity %in% countries_select), n=5)
 ```
 
 ## `filter()` + `is.na()`
 
 Filter only rows that don't have a country code (i.e. the continents etc.)
 
-```{r eval=FALSE}
+```{r}
 filter(soybean_use, is.na(code))
-```
-
-```{r echo=FALSE}
-print(filter(soybean_use, is.na(code)), n=5)
 ```
 
 . . .
@@ -192,36 +184,33 @@ Select rows where
 
 :::{.fragment}
 
-```{r eval=FALSE}
+```{r}
 filter(soybean_use, between(year, 1970, 1980) & entity == "Germany")
 ```
 
-```{r echo=FALSE}
-print(filter(soybean_use, between(year, 1970, 1980) & entity == "Germany"), n=5)
-```
 :::
 
-# `select()`{.inverse}
+# `select()` {.inverse}
 
 > picks variables (columns) based on their names
 
 ## Useful `select()` helpers
+
+:::{.nonincremental}
 
 - `starts_with()` and `ends_with()`: variable names that start/end with a specific string
 - `contains()`: variable names that contain a specific string
 - `matches()`: variable names that  match a regular expression
 - `any_of()` and `all_of()`: variables that are contained in a character vector
 
+:::
+
 ## `select()`
 
 Select the variables entity, year and human food
 
-```{r eval=FALSE}
+```{r}
 select(soybean_use, entity, year, human_food)
-```
-
-```{r echo=FALSE}
-print(select(soybean_use, entity, year, human_food), n=2)
 ```
 
 . . .
@@ -230,11 +219,6 @@ Remove variables using `-`
 
 ```{r eval=FALSE}
 select(soybean_use, -entity, -year, -human_food)
-```
-
-
-```{r echo=FALSE}
-print(select(soybean_use, -entity, -year, -human_food),n=2)
 ```
 
 ## `select()` + `ends_with()`
@@ -310,7 +294,7 @@ print(select(soybean_use, code:animal_feed), n=3)
 
 Be a bit careful with these commands: They are not robust if you e.g. change the order of your columns at some point. <br>
 
-# `mutate()`{.inverse}
+# `mutate()` {.inverse}
 > Adds new variables
 
 ![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/dplyr_mutate.png){width=45%}
@@ -346,22 +330,14 @@ Use `case_when` to add column values conditional on other columns.
 
 `case_when()` can combine many cases into one.
 
-```{r eval=FALSE}
+```{r}
 mutate(soybean_use,
   legislation = case_when(
-    year < 2000 & year >= 1980 ~ "legislation_1",    # case 1
-    year >= 2000 ~ "legislation_2",                  # case 2
-    .default = "no_legislation"                      # any other cases
+    between(year, 1980, 2000) ~ "legislation_1",  # case 1
+    year >= 2000 ~ "legislation_2",               # case 2
+    .default = "no_legislation"                   # all other cases
   )
 )
-```
-
-```{r echo=FALSE}
-mutate(soybean_use, legislation = case_when(
-  year < 2000 & year >=1980 ~ "legislation_1",
-  year >= 2000 ~ "legislation_2",
-  .default = "no_legislation"
-)) |> print(n=3)
 ```
 
 # `summarize()` {.inverse}
@@ -389,9 +365,7 @@ summarize(soybean_use,
 
 . . .
 
-```{r eval=FALSE}
-#| eval: false
-#| code-line-numbers: "5"
+```{r}
 # summarize the grouped data
 summarize(soybean_use,
   total_animal = sum(animal_feed, na.rm = TRUE),
@@ -400,25 +374,13 @@ summarize(soybean_use,
 )
 ```
 
-```{r echo=FALSE}
-# group the data by year
-summarize(soybean_use,
-          total_animal = sum(animal_feed, na.rm = TRUE),
-          total_human = sum(human_food, na.rm = TRUE),
-          .by = year) |> print(n=2)
-```
-
 ## `count()`
 
 Counts observations by group
 
-```{r eval = FALSE}
+```{r}
 # count rows grouped by year
 count(soybean_use, year)
-```
-
-```{r echo = FALSE}
-count(soybean_use, year) |> print(n=4)
 ```
 
 # The pipe ` |> ` {.inverse}
@@ -432,11 +394,9 @@ Data transformation often requires **multiple operations** in sequence.
 The pipe operator `|>` helps to keep these operations clear and readable.
 
 - You may also see `%>%` from the `magrittr` package
-
-:::{.fragment}
-
 - Turn on the native R pipe ` |> ` in **Tools -> Global Options -> Code**
 
+:::{.fragment}
 
 ![](img/day2/native-pipe.png){width=50%}
 
@@ -535,11 +495,8 @@ Use the keyboard shortcut ` Ctrl/Cmd + Shift + M ` to insert ` |> `
 
 Piping also works well together with `ggplot`
 
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r eval=FALSE}
+```{r}
+#| output-location: column
 soybean_use |>
   filter(!is.na(code)) |>
   select(year, processed) |>
@@ -555,30 +512,6 @@ soybean_use |>
   )) +
   geom_line()
 ```
-
-:::
-
-:::{.column width="50%"}
-
-```{r echo=FALSE, fig.width=6.3}
-soybean_use |>
-  filter(!is.na(code)) |>
-  select(year, processed) |>
-  summarize(
-    processed = sum(processed, na.rm = TRUE),
-    .by = year
-  ) |>
-  ggplot(aes(
-    x = year,
-    y = processed
-  )) +
-    geom_line()+
-  theme_gray(base_size = 16)
-```
-
-:::
-
-:::
 
 # Combining mulitiple tables{.inverse}
 
@@ -670,13 +603,8 @@ print(gdp, n=2)
 
 Join the two tables by the two common columns `entity` and `year`
 
-```{r, eval=FALSE}
+```{r}
 left_join(soybean_use, gdp, by = c("entity", "year"))
-```
-
-
-```{r, echo=FALSE}
-print(left_join(soybean_use, gdp, by = c("entity", "year")), n = 3)
 ```
 
 . . .
@@ -684,9 +612,9 @@ print(left_join(soybean_use, gdp, by = c("entity", "year")), n = 3)
 `left_join()` means that the resulting tibble will contain all rows of `soybean_use`,
 but not necessarily all rows of `gdp`
 
-# Different `*_join()` functions
+## Different `*_join()` functions
 
-![](img/day2/dplyr_join.png){width=70%}
+![](img/day2/dplyr_join.png){width=70% fig-align="center"}
 
 # Summary{.inverse}
 
@@ -775,8 +703,8 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
 
 # Now you {.inverse}
 
-[Task 1 (60 min)]{.highlight-blue}<br>
+[Task (60 min)]{.highlight-blue}<br>
 
-[Transforming the penguin data set]{.big-text}
+[Transform the penguin data set]{.big-text}
 
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/02_tasks_controller.html#dplyr)**
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/08_dplyr.html)**

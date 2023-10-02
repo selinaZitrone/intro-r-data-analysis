@@ -12,7 +12,7 @@ title: "Data transformation with dplyr"
 
 :::{.callout-note}
 
-Find the solution [here](solutions/dplyr.qmd).
+## Find the solution [here](solutions/dplyr.qmd){target="_blank"}.
 
 :::
 
