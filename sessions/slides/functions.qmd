@@ -16,13 +16,17 @@ format:
     self-contained: true
     code-line-numbers: false
     auto-stretch: false
-    scrollable: true
+    scrollable: false
     fig-align: center
     theme: slides.scss
 execute: 
   echo: true
   warning: false
   message: false
+knitr: 
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
 from: markdown+emoji
 ---
 
@@ -201,13 +205,6 @@ mean(x = values, na.rm = TRUE) # by name
 . . .
 
 ```{r, eval=FALSE}
-mean(na.rm = TRUE, x = values) # this also works but is not really nice
-```
-<br>
-
-. . .
-
-```{r, eval=FALSE}
 mean(values, na.rm = TRUE) # a mix of both
 ```
 
@@ -257,7 +254,6 @@ mean(values, na.rm = TRUE) # a mix of both
 ```{r eval=FALSE}
 mean() # calculate mean
 seq()  # generate a sequence of values
-[]     # This is also a (special) function
 ```
 
 :::
@@ -303,7 +299,7 @@ read_csv()
 
 :::{.column width="50%"}
 
-**Custom** functions:
+**Custom functions:**
 
 :::{.nonincremental}
 

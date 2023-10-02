@@ -12,7 +12,7 @@ title: "Introduction to R"
 
 :::{.callout-note}
 
-Find the solution [here](solutions/intro-r.qmd).
+## Find the solution [here](solutions/intro-r.qmd){target="_blank"}.
 
 :::
 

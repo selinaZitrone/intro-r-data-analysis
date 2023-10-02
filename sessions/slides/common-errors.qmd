@@ -16,7 +16,7 @@ format:
     self-contained: true
     code-line-numbers: false
     auto-stretch: false
-    scrollable: true
+    scrollable: false
     fig-align: center
     theme: slides.scss
 execute: 
@@ -24,6 +24,10 @@ execute:
   warning: false
   message: false
   error: true
+knitr: 
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
 from: markdown+emoji
 ---
 
@@ -31,8 +35,7 @@ from: markdown+emoji
 
 When learning a programming language, you have to be prepared to spend a lot of 
 your time with fixing bugs in the code. So don't worry: It's not you, it's just how programming works!
-![](img/AllisonHorst/debugging.jpg)
-.footnote-right[Artwork by [Allison Horst](https://twitter.com/allison_horst)]
+![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/debugging.jpg)
 
 ## Debugging
 
@@ -63,7 +66,6 @@ Debugging can be annoying and we can't avoid it, but ...
 # Most common errors for beginners {.inverse}
 
 > and how to deal with them
-class: inverse, center, middle
 
 ## Syntax errors
 
@@ -73,7 +75,7 @@ class: inverse, center, middle
 mean(c(1,2,3)na.rm=TRUE)
 ```
 
-. . .
+<br>
 
 #### How to fix
 
@@ -94,18 +96,14 @@ mean(c(1,2,3)na.rm=TRUE)
 :::{.column width="50%"}
 
 ```{r, error = TRUE}
-mutate(penguins, mean = mean(bill_length_mm, na.rm = TRUE))
+select(penguins, bill_length_mm)
 ```
 
 :::
 
 :::{.column width="50%"}
 
-```{r, error=TRUE, eval=FALSE}
-lenght(my_vector)
-```
-
-```{r, echo=FALSE, error=TRUE}
+```{r, error=TRUE}
 lenght(1:10)
 ```
 
@@ -113,36 +111,42 @@ lenght(1:10)
 
 :::
 
-. . .
+<br>
+
+:::{.fragment}
 
 #### How to fix
 
-`Could not find function` errors have two main reasons:
+"Could not find function" errors have two main reasons:
 
 1. You forgot to load the package that the function belongs to
   - load the package using `library()` or call the function with `packageName::functionName()`
 2. You have a typo in your function call (e.g. `lenght()` instead of `length()`)
 
+:::
+
 ## Error: object `x` not found
 
 #### Example
 
-```{r echo=FALSE,error=TRUE}
-hello
+```{r error=TRUE}
 variable_A
 ```
 
-. . .
+<br>
+
+:::{.fragment}
 
 #### How to fix
 
 - you are trying to access an object that does not exist
-- Mostly because:
   - typos in variable name (variable name is `variableA` but you try to access `variable_A`)
   - forgot to put quotes around string: `print(hello)`
-  `r fontawesome::fa("arrow-right")` looks for a variable named hello but instead you wanted to print the string `print("hello")`
+  `r fontawesome::fa("arrow-right")` looks for a variable named `hello` but instead you wanted to print the string `print("hello")`
+  
+:::
 
-## Wrong data format
+## Wrong data format {visibility="hidden"}
 
 #### Example
 
@@ -185,8 +189,7 @@ R is not running code anymore and the console only prints `+` if you try to exec
 #### How to fix it
 
 - First, go to the console and hit `Escape`. Then you should see the `>` sign instead of `+` again.
-- Likely you forgot to close a bracket somewhere. Go to your script and check where this happened
-  - look for &nbsp;![](img/day1/red_x.png)&nbsp; next to line numers
+- Likely you forgot to close a bracket somewhere. Go to your script and check where this happened (look for &nbsp;![](img/day1/red_x.png)&nbsp;) next to line numers
 
 ## Warnings
 
@@ -212,35 +215,14 @@ Warnings are no errors and can sometimes be ignored but:
 
 Often, you don't need to do all the steps but a systemmatic approach to bug fixing is very helpful.
 
-. . . 
+1. Carefully read the error message and try to fix it
+2. Is it any of the errors you learned about just now?
+3. If the error is about data or other variables: look at the structure using `str()`
+4. If the error is about a function: Read the documentation using `?functionName`: Did you use the function correctly? Did you forget an argument?
+5. Look for answers online
+6. Ask others for help
 
-**Step 1:** Carefully read the error message and try to fix it <br>
-
-. . .
-
-**Step 2:** Is it any of the errors you learned about just now? <br>
-
-. . .
-
-**Step 3:** If the error is about data or other variables: look at the structure using
-`str()`
-
-. . .
-
-**Step 4:** If the error is about a function: Read the documentation using `?functionName`. 
-  - Did you use the function correctly?
-  - Did you forget an argument?<br>
-
-. . .
-
-**Step 5:** Look for answers online
-  - often you can also jump directly to this step
-
-. . .
-
-**Step 6:** Ask others for help
-
-## Step 5: Look for answers online
+## Look for answers online
 
 - Search with keywords **R + package name + Error message/Warning**
  If you don't know how do do something try searching **R + package name + What you want to do**, e.g.
@@ -255,7 +237,7 @@ Often, you don't need to do all the steps but a systemmatic approach to bug fixi
 Change language of R messages to English with `Sys.setenv(LANGUAGE='en')`
 :::
 
-## Step 6: Ask others for help
+## Ask others for help
 
 There are plenty of places where you can ask for help online.
 Some common and good options are:
@@ -272,10 +254,6 @@ Some common and good options are:
 
 . . .
 
-To ask questions online, you have to learn **how to ask a good R question.**
-This includes:
-
-- clear question
-- reproducible example
+To ask questions online, you have to learn how to ask a **clear question** including a **reproducible example**
 
 Look [here](https://github.com/selinaZitrone/R_AskQuestions) for more info on how to ask a good question about R
