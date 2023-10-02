@@ -24,6 +24,10 @@ execute:
   warning: false
   message: false
   cache: true
+knitr: 
+  opts_chunk: 
+    collapse: true
+    comment: "#>"
 from: markdown+emoji
 title-slide-attributes: 
   data-background-image: img/hex-stickers/tidyr.png
@@ -167,6 +171,7 @@ print(cities_untidy, width = 90)
 
 . . .
 
+<br>
 ```{r}
 step1 <- pivot_longer(
     cities_untidy,                         # the tibble
@@ -279,8 +284,8 @@ cities_tidy <- cities_untidy |>
 
 # Now you {.inverse}
 
-[Task 1 (30 min)]{.highlight-blue}<br>
+[Task (30 min)]{.highlight-blue}<br>
 
-[Tidying data]{.big-text}
+[Tidy data with tidyr]{.big-text}
 
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/03_tasks_controller.html#tidyr)**
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/09_tidyr.html)**

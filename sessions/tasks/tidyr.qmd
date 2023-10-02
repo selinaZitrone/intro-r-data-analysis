@@ -1,4 +1,4 @@
-## Getting started with tidyr
+## Get started
 
 Before you start, make sure to load the `tidyverse` package.
 
@@ -9,7 +9,7 @@ library(tidyverse)
 
 ## Let's tidy some data sets
 
-First, complete all the tasks before you move to the **extras**.
+First, complete both tasks before you move to the extras.
 
 **1. `relig_incom`**
 
@@ -26,8 +26,6 @@ The data set contains information about the chart rank of songs in the year 2000
 
 What is not tidy about this data set? Can you fix it?
 
----
-
 ## Extras
 
 - Check out the `values_drop_na` and `names_prefix` argument of `pivot_longer`. What does it do and how can you use it with the `billboard` data?
@@ -38,10 +36,11 @@ wanted to make such a plot:
 library(palmerpenguins)
 penguins %>%
   select(species, bill_length_mm, bill_depth_mm) %>%
-  pivot_longer(!species) %>%
-  ggplot(aes(x = species, y = value, fill = name)) +
+  pivot_longer(!species, values_to = "variable") %>%
+  ggplot(aes(x = species, y = value, fill = variable)) +
   geom_boxplot()
 ```
+
 Hint: First use `dplyr` and only select the columns that you need for the plot. Then
 think about how to use `tidyr` to transform the data so it's ready for `ggplot`
 

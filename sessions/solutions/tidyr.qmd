@@ -2,9 +2,10 @@
 title: "Solution to tidyr task"
 ---
 
-## Getting started with tidyr
+## Get started
 
-```{r echo=TRUE, eval=TRUE}
+```{r}
+#| message: false
 library(tidyverse)
 ```
 
@@ -19,7 +20,7 @@ The data set contains the results of a survey asking people about their religion
 relig_income
 ```
 
-What is not tidy about this data set? Can you fix it?
+What is not tidy about this data set?
 
 `r fontawesome::fa("arrow-right")` The variable income is spread across multiple columns, so we have to use `pivot_longer` to pivot the columns containing the income information:
 
@@ -41,7 +42,7 @@ The data set contains information about the chart rank of songs in the year 2000
 billboard
 ```
 
-What is not tidy about this data set? Can you fix it?
+What is not tidy about this data set?
 
 `r fontawesome::fa("arrow-right")` The variable week is spread across multiple columns. We have to use pivot longer to pivot the week columns:
 
@@ -52,9 +53,9 @@ pivot_longer(billboard,
              values_to = "rank")
 ```
 
----
-
 ## Extras
+
+**`values_drop_na` argument**
 
 The argument `values_drop_na` drops rows with missing values in the rank column. Here it makes sense because not every song is in the charts for all 76 weeks.
 
@@ -69,7 +70,9 @@ pivot_longer(billboard,
              values_drop_na = TRUE)
 ```
 
-To re-create the penguin plot from the task, the following observations help:
+**Recreating the penguin plot**
+
+To recreate the penguin plot from the task, the following observations help:
 
 - Information needed: Species, bill depth and bill length
   - In a first step, you can therefore use `select` from `dplyr` to select only these
@@ -83,10 +86,10 @@ Use the pipe operator to do the calculations one after the other:
 
 ```{r echo=TRUE, warning=FALSE}
 library(palmerpenguins)
-penguins %>%
-  select(species, bill_length_mm, bill_depth_mm) %>%
-  pivot_longer(!species) %>%
-  ggplot(aes(x = species, y = value, fill = name)) +
+penguins |> 
+  select(species, bill_length_mm, bill_depth_mm) |> 
+  pivot_longer(!species, values_to = "variable") |> 
+  ggplot(aes(x = species, y = value, fill = variable)) +
   geom_boxplot()
 ```
 

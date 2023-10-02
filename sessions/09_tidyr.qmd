@@ -12,7 +12,7 @@ title: "Tidy data with tidyr"
 
 :::{.callout-note}
 
-Find the solution [here](solutions/tidyr.qmd).
+## Find the solution [here](solutions/tidyr.qmd){target="_blank".
 
 :::
 
