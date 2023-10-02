@@ -14,9 +14,9 @@ format:
     show-slide-number: all
     incremental: true
     self-contained: true
-    code-line-numbers: false
+    code-line-numbers: true
     auto-stretch: false
-    scrollable: true
+    scrollable: false
     theme: slides.scss
     fig-align: center
     fig-width: 6.3
@@ -26,6 +26,10 @@ execute:
   warning: false
   message: false
   cache: true
+knitr: 
+  opts_chunk: 
+    collapse: true
+    comment: "#>"
 from: markdown+emoji
 ---
 
@@ -206,7 +210,7 @@ ggpubr::ggqqplot(mydata$normal)
 :::{.column width="50%"}
 
 ```{r, fig.height=5.1}
-# ggplot(mydata, aes(sample = non_normal))+
+# ggplot(mydata,aes(sample = non_normal))+
 #   stat_qq() + stat_qq_line()
 ggpubr::ggqqplot(mydata$non_normal)
 ```
@@ -238,16 +242,13 @@ Create subsets before: count variable for each treatment as a vector
 ```{r}
 TreatA <- filter(
   InsectSprays,
-  spray == "A"
-)$count
+  spray == "A")$count
 TreatB <- filter(
   InsectSprays,
-  spray == "B"
-)$count
+  spray == "B")$count
 TreatC <- filter(
   InsectSprays,
-  spray == "C"
-)$count
+  spray == "C")$count
 ```
 
 :::
@@ -424,6 +425,8 @@ Are there pairs of data points?
 
 :::
 
+. . .
+
 Use `paired = TRUE` in the test.
 
 ```{r eval=FALSE}
@@ -439,20 +442,21 @@ Careful: your treatment vector both have to have the same order
 The [`ggsignif`](https://const-ae.github.io/ggsignif/) package offers a `geom_signif()`
 layer that can be added to a ggplot to annotate significance levels
 
-```{r eval=FALSE}
+```{r}
 # install.packages("ggsignif")
 library(ggsignif)
 ```
 
 ## Plot test results with `geom_signif()`
 
-:::{.columns}
+```{r echo=FALSE}
+library(ggsignif)
+```
 
-:::{.column width="50%"}
 
-```{r eval=FALSE}
-#| eval: false
+```{r}
 #| code-line-numbers: "6-14"
+#| output-location: column
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -471,41 +475,15 @@ ggplot(
 
 - By default, a Wilcoxon test is performed
 
-:::
-
-:::{.column width="50%"}
-
-```{r}
-#| echo: false
-ggplot(
-  InsectSprays,
-  aes(x = spray, y = count)
-) +
-  geom_boxplot(notch = TRUE) +
-  ggsignif::geom_signif( #<<
-    comparisons = list( #<<
-      c("A", "B"), #<<
-      c("B", "C"), #<<
-      c("A", "C") #<<
-    ), #<<
-    map_signif_level = TRUE, #<<
-    y_position = c(23, 24, 25) #<<
-  ) #<<
-```
-
-:::
-
-:::
-
 ## Plot test results with `geom_signif()`
 
 :::{.columns}
 
 :::{.column width="50%"}
 
-```{r eval=FALSE}
-#| eval: false
+```{r}
 #| code-line-numbers: "12-15"
+#| eval: false
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -534,21 +512,26 @@ ggplot(
 
 :::{.column width="50%"}
 
-```{r echo = FALSE}
-ggplot(InsectSprays, aes(x = spray, y = count)) +
+```{r}
+#| code-line-numbers: "12-15"
+#| echo: false
+ggplot(
+  InsectSprays,
+  aes(x = spray, y = count)
+) +
   geom_boxplot(notch = TRUE) +
-  ggsignif::geom_signif( #<<
-    comparisons = list( #<<
-      c("A", "B"), #<<
-      c("B", "C"), #<<
-      c("A", "C") #<<
-    ), #<<
-    test = "t.test", #<<
-    test.args = list(
-      var.equal = TRUE
+  geom_signif(
+    comparisons = list(
+      c("A", "B"),
+      c("B", "C"),
+      c("A", "C")
     ),
-    map_signif_level = TRUE, #<<
-    y_position = c(23, 24, 25) #<<
+    test = "t.test", 
+    test.args = list( 
+      var.equal = TRUE 
+    ), 
+    map_signif_level = TRUE,
+    y_position = c(23, 24, 25)
   )
 ```
 
@@ -600,8 +583,9 @@ Another way to plot the results is to plot mean and standard error of the mean:
 
 :::{.column width="50%"}
 
-
-```{r eval = FALSE}
+```{r}
+#| eval: false
+#| code-line-numbers: "5-14"
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -621,18 +605,23 @@ ggplot(
 :::{.nonincremental}
 
 - Inside `stat_summary`, define summary function
-  - `fun.data` for errorbars
-  - `fun.y` for point values (e.g. mean)
+  - `fun.data` for errorbars, `fun.y` for points (e.g. mean)
 - Define the geom that represents the summary
 
 :::
+
 
 :::
 
 :::{.column width="50%"}
 
-```{r echo = FALSE}
-ggplot(InsectSprays, aes(x = spray, y = count)) +
+```{r}
+#| echo: false
+#| code-line-numbers: "5-14"
+ggplot(
+  InsectSprays,
+  aes(x = spray, y = count)
+) +
   stat_summary(
     fun.data = mean_se,
     geom = "errorbar"
@@ -653,13 +642,9 @@ ggplot(InsectSprays, aes(x = spray, y = count)) +
 
 Another way to plot the results is to plot mean and standard error of the mean:
 
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r eval = FALSE}
-#| eval: false
+```{r}
 #| code-line-numbers: "12"
+#| output-location: column
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -671,43 +656,18 @@ ggplot(
   ) +
   stat_summary(
     fun.y = mean,
-    geom = "bar", #<<
+    geom = "bar",
     size = 4
   )
 ```
-
-:::
-
-:::{.column width="50%"}
-
-
-```{r echo = FALSE}
-ggplot(InsectSprays, aes(x = spray, y = count)) +
-  stat_summary(
-    fun.data = mean_se,
-    geom = "errorbar",
-    width = 0.3
-  ) +
-  stat_summary(
-    fun.y = mean,
-    geom = "bar", #<<
-    size = 4
-  )
-```
-
-:::
-
-:::
 
 ## Plot mean +- se using `stat_summary`
 
 Just like before, you can also add a `geom_signif` to a barplot:
 
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r eval = FALSE}
+```{r}
+#| code-line-numbers: "14-23"
+#| output-location: column
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -733,36 +693,6 @@ ggplot(
   )
 ```
 
-:::
-
-:::{.column width="50%"}
-
-```{r echo = FALSE}
-ggplot(InsectSprays, aes(x = spray, y = count)) +
-  stat_summary(
-    fun.data = mean_se,
-    geom = "errorbar",
-    width = .3
-  ) +
-  stat_summary(
-    fun.y = mean,
-    geom = "bar"
-  ) +
-  ggsignif::geom_signif(
-    comparisons = list(
-      c("A", "B"),
-      c("B", "C"),
-      c("A", "C")
-    ),
-    test = "t.test",
-    map_signif_level = TRUE,
-    y_position = c(17, 18, 19)
-  )
-```
-
-:::
-
-:::
 
 # Now you {.inverse}
 

@@ -2356,21 +2356,21 @@
     "href": "sessions/slides/tests.html#shapiro-wilk-test",
     "title": "Statistical tests",
     "section": "Shapiro-Wilk-Test",
-    "text": "Shapiro-Wilk-Test\n\\(H_0\\): Data does not differ from a normal distribution\n\n\n\n\nshapiro.test(mydata$normal)\n\n\n    Shapiro-Wilk normality test\n\ndata:  mydata$normal\nW = 0.99076, p-value = 0.2298\n\n\n\n\n\nW: test statistic\np-value: probability to observe the data if \\(H_0\\) was true\n\n\n\n\nThe data does not deviate significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.991, p = 0.23).\n\n\n\n\nshapiro.test(mydata$non_normal)\n\n\n    Shapiro-Wilk normality test\n\ndata:  mydata$non_normal\nW = 0.95114, p-value = 2.435e-06\n\n\n\n\nThe data deviates significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.95, p &lt; 0.001)."
+    "text": "Shapiro-Wilk-Test\n\\(H_0\\): Data does not differ from a normal distribution\n\n\n\n\nshapiro.test(mydata$normal)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  mydata$normal\n#&gt; W = 0.99076, p-value = 0.2298\n\n\n\n\nW: test statistic\np-value: probability to observe the data if \\(H_0\\) was true\n\n\n\n\nThe data does not deviate significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.991, p = 0.23).\n\n\n\n\nshapiro.test(mydata$non_normal)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  mydata$non_normal\n#&gt; W = 0.95114, p-value = 2.435e-06\n\n\n\nThe data deviates significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.95, p &lt; 0.001)."
   },
   {
     "objectID": "sessions/slides/tests.html#visual-test-with-qq-plot",
     "href": "sessions/slides/tests.html#visual-test-with-qq-plot",
     "title": "Statistical tests",
     "section": "Visual test with QQ-Plot",
-    "text": "Visual test with QQ-Plot\nPoints should match the straight line. Small deviations are okay.\n\n\n\n# ggplot(mydata, aes(sample = normal)) +\n#   stat_qq() + stat_qq_line()\nggpubr::ggqqplot(mydata$normal)\n\n\n\n\n\n\n# ggplot(mydata, aes(sample = non_normal))+\n#   stat_qq() + stat_qq_line()\nggpubr::ggqqplot(mydata$non_normal)"
+    "text": "Visual test with QQ-Plot\nPoints should match the straight line. Small deviations are okay.\n\n\n\n# ggplot(mydata, aes(sample = normal)) +\n#   stat_qq() + stat_qq_line()\nggpubr::ggqqplot(mydata$normal)\n\n\n\n\n\n\n# ggplot(mydata,aes(sample = non_normal))+\n#   stat_qq() + stat_qq_line()\nggpubr::ggqqplot(mydata$non_normal)"
   },
   {
     "objectID": "sessions/slides/tests.html#the-data-1",
     "href": "sessions/slides/tests.html#the-data-1",
     "title": "Statistical tests",
     "section": "The data",
-    "text": "The data\nCounts of insects in agricultural units treated with different insecticides.\n\n\nCompare treatments A, B and C:\nCreate subsets before: count variable for each treatment as a vector\n\nTreatA &lt;- filter(\n  InsectSprays,\n  spray == \"A\"\n)$count\nTreatB &lt;- filter(\n  InsectSprays,\n  spray == \"B\"\n)$count\nTreatC &lt;- filter(\n  InsectSprays,\n  spray == \"C\"\n)$count"
+    "text": "The data\nCounts of insects in agricultural units treated with different insecticides.\n\n\nCompare treatments A, B and C:\nCreate subsets before: count variable for each treatment as a vector\n\nTreatA &lt;- filter(\n  InsectSprays,\n  spray == \"A\")$count\nTreatB &lt;- filter(\n  InsectSprays,\n  spray == \"B\")$count\nTreatC &lt;- filter(\n  InsectSprays,\n  spray == \"C\")$count"
   },
   {
     "objectID": "sessions/slides/tests.html#test-for-equal-variance",
@@ -2384,21 +2384,21 @@
     "href": "sessions/slides/tests.html#test-for-equal-variances",
     "title": "Statistical tests",
     "section": "Test for equal variances",
-    "text": "Test for equal variances\nIf we want to compare variances between treatments A, B and C, we first test for normal distribution\n\nshapiro.test(TreatA)\n\n\n    Shapiro-Wilk normality test\n\ndata:  TreatA\nW = 0.95757, p-value = 0.7487\n\nshapiro.test(TreatB)\n\n\n    Shapiro-Wilk normality test\n\ndata:  TreatB\nW = 0.95031, p-value = 0.6415\n\nshapiro.test(TreatC)\n\n\n    Shapiro-Wilk normality test\n\ndata:  TreatC\nW = 0.92128, p-value = 0.2967\n\n\nResult: All 3 treatments are normally distributed."
+    "text": "Test for equal variances\nIf we want to compare variances between treatments A, B and C, we first test for normal distribution\n\nshapiro.test(TreatA)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatA\n#&gt; W = 0.95757, p-value = 0.7487\nshapiro.test(TreatB)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatB\n#&gt; W = 0.95031, p-value = 0.6415\nshapiro.test(TreatC)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatC\n#&gt; W = 0.92128, p-value = 0.2967\n\nResult: All 3 treatments are normally distributed."
   },
   {
     "objectID": "sessions/slides/tests.html#f-test",
     "href": "sessions/slides/tests.html#f-test",
     "title": "Statistical tests",
     "section": "F-Test",
-    "text": "F-Test\n\\(H_0\\): Variances do not differ between groups\n\n\nvar.test(TreatA, TreatB)\n\n\n    F test to compare two variances\n\ndata:  TreatA and TreatB\nF = 1.2209, num df = 11, denom df = 11, p-value = 0.7464\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.3514784 4.2411442\nsample estimates:\nratio of variances \n           1.22093 \n\n\n\n\n\n\nF: test statistics, ratio of variances (if F = 1, variances are equal)\ndf: degrees of freedom of both groups\np-value: how likely is it to observe the data if \\(H_0\\) was true?\n\n\nResult: The variances of sprays A and B do not differ significantly (F-Test, \\(F_{11,11}\\) = 1.22, p = 0.75)"
+    "text": "F-Test\n\\(H_0\\): Variances do not differ between groups\n\n\nvar.test(TreatA, TreatB)\n#&gt; \n#&gt;  F test to compare two variances\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; F = 1.2209, num df = 11, denom df = 11, p-value = 0.7464\n#&gt; alternative hypothesis: true ratio of variances is not equal to 1\n#&gt; 95 percent confidence interval:\n#&gt;  0.3514784 4.2411442\n#&gt; sample estimates:\n#&gt; ratio of variances \n#&gt;            1.22093\n\n\n\n\n\nF: test statistics, ratio of variances (if F = 1, variances are equal)\ndf: degrees of freedom of both groups\np-value: how likely is it to observe the data if \\(H_0\\) was true?\n\n\nResult: The variances of sprays A and B do not differ significantly (F-Test, \\(F_{11,11}\\) = 1.22, p = 0.75)"
   },
   {
     "objectID": "sessions/slides/tests.html#f-test-1",
     "href": "sessions/slides/tests.html#f-test-1",
     "title": "Statistical tests",
     "section": "F-Test",
-    "text": "F-Test\n\\(H_0\\): Variances do not differ between groups\n\n\nvar.test(TreatA, TreatC)\n\n\n    F test to compare two variances\n\ndata:  TreatA and TreatC\nF = 7.4242, num df = 11, denom df = 11, p-value = 0.002435\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n  2.137273 25.789584\nsample estimates:\nratio of variances \n          7.424242 \n\n\nResult: The variances of sprays A and C differ significantly (F-Test, \\(F_{11,11}\\) = 7.42, p = 0.002)"
+    "text": "F-Test\n\\(H_0\\): Variances do not differ between groups\n\n\nvar.test(TreatA, TreatC)\n#&gt; \n#&gt;  F test to compare two variances\n#&gt; \n#&gt; data:  TreatA and TreatC\n#&gt; F = 7.4242, num df = 11, denom df = 11, p-value = 0.002435\n#&gt; alternative hypothesis: true ratio of variances is not equal to 1\n#&gt; 95 percent confidence interval:\n#&gt;   2.137273 25.789584\n#&gt; sample estimates:\n#&gt; ratio of variances \n#&gt;           7.424242\n\nResult: The variances of sprays A and C differ significantly (F-Test, \\(F_{11,11}\\) = 7.42, p = 0.002)"
   },
   {
     "objectID": "sessions/slides/tests.html#test-for-equal-means-1",
@@ -2412,28 +2412,28 @@
     "href": "sessions/slides/tests.html#t-test",
     "title": "Statistical tests",
     "section": "t-test",
-    "text": "t-test\n\\(H_0\\): The samples do not differ in their mean\n\nTreatment A and B: normally distributed and equal variance\n\nt.test(TreatA, TreatB, var.equal = TRUE)\n\n\n    Two Sample t-test\n\ndata:  TreatA and TreatB\nt = -0.45352, df = 22, p-value = 0.6546\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -4.643994  2.977327\nsample estimates:\nmean of x mean of y \n 14.50000  15.33333 \n\n\n\n\nt: test statistics (t = 0 means equal means)\ndf: degrees of freedom of t-statistics\np-value: how likely is it to observe the data if \\(H_0\\) was true?\n\n\n\n\nResult: The means of spray A and B don’t differ significantly (t = -0.45, df = 22, p = 0.66)"
+    "text": "t-test\n\\(H_0\\): The samples do not differ in their mean\n\nTreatment A and B: normally distributed and equal variance\n\nt.test(TreatA, TreatB, var.equal = TRUE)\n#&gt; \n#&gt;  Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; t = -0.45352, df = 22, p-value = 0.6546\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -4.643994  2.977327\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;  14.50000  15.33333\n\n\n\nt: test statistics (t = 0 means equal means)\ndf: degrees of freedom of t-statistics\np-value: how likely is it to observe the data if \\(H_0\\) was true?\n\n\n\n\nResult: The means of spray A and B don’t differ significantly (t = -0.45, df = 22, p = 0.66)"
   },
   {
     "objectID": "sessions/slides/tests.html#welch-test",
     "href": "sessions/slides/tests.html#welch-test",
     "title": "Statistical tests",
     "section": "Welch-Test",
-    "text": "Welch-Test\n\\(H_0\\): The samples do not differ in their mean\n\nTreatment A and C: normally distributed and non-equal variance\n\nt.test(TreatA, TreatC, var.equal = FALSE)\n\n\n    Welch Two Sample t-test\n\ndata:  TreatA and TreatC\nt = 7.5798, df = 13.91, p-value = 2.655e-06\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n  7.885546 14.114454\nsample estimates:\nmean of x mean of y \n     14.5       3.5 \n\n\n\n\nResult: The means of spray A and C do differ significantly (t = 7.58, df = 13.9, p &lt; 0.001)"
+    "text": "Welch-Test\n\\(H_0\\): The samples do not differ in their mean\n\nTreatment A and C: normally distributed and non-equal variance\n\nt.test(TreatA, TreatC, var.equal = FALSE)\n#&gt; \n#&gt;  Welch Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatC\n#&gt; t = 7.5798, df = 13.91, p-value = 2.655e-06\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;   7.885546 14.114454\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;      14.5       3.5\n\n\n\nResult: The means of spray A and C do differ significantly (t = 7.58, df = 13.9, p &lt; 0.001)"
   },
   {
     "objectID": "sessions/slides/tests.html#wilcoxon-rank-sum-test",
     "href": "sessions/slides/tests.html#wilcoxon-rank-sum-test",
     "title": "Statistical tests",
     "section": "Wilcoxon-rank-sum Test",
-    "text": "Wilcoxon-rank-sum Test\n\\(H_0\\): The samples do not differ in their mean\n\nWe don’t need the Wilcoxon test to compare treatment A and B, but for the sake of an example:\n\nwilcox.test(TreatA, TreatB)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  TreatA and TreatB\nW = 62, p-value = 0.5812\nalternative hypothesis: true location shift is not equal to 0\n\n\n\n\nResult: The means of spray A and B do not differ significantly (W = 62, p = 0.58)"
+    "text": "Wilcoxon-rank-sum Test\n\\(H_0\\): The samples do not differ in their mean\n\nWe don’t need the Wilcoxon test to compare treatment A and B, but for the sake of an example:\n\nwilcox.test(TreatA, TreatB)\n#&gt; \n#&gt;  Wilcoxon rank sum test with continuity correction\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; W = 62, p-value = 0.5812\n#&gt; alternative hypothesis: true location shift is not equal to 0\n\n\n\nResult: The means of spray A and B do not differ significantly (W = 62, p = 0.58)"
   },
   {
     "objectID": "sessions/slides/tests.html#paired-values",
     "href": "sessions/slides/tests.html#paired-values",
     "title": "Statistical tests",
     "section": "Paired values",
-    "text": "Paired values\nAre there pairs of data points?\nExample: samples of invertebrates across various rivers before and after sewage plants.\n\n\n\nFor each plant, there is a pair of data points (before and after the plant)\nQuestion: Is the change (before-after) significant\n\n\n\nUse paired = TRUE in the test.\n\nt.test(TreatA, TreatB, var.equal = TRUE, paired = TRUE)\nt.test(TreatA, TreatB, var.equal = FALSE, paired = TRUE)\nwilcox.test(TreatA, TreatB, paired = TRUE)\n\nCareful: your treatment vector both have to have the same order"
+    "text": "Paired values\nAre there pairs of data points?\nExample: samples of invertebrates across various rivers before and after sewage plants.\n\n\n\nFor each plant, there is a pair of data points (before and after the plant)\nQuestion: Is the change (before-after) significant\n\n\n\n\nUse paired = TRUE in the test.\n\nt.test(TreatA, TreatB, var.equal = TRUE, paired = TRUE)\nt.test(TreatA, TreatB, var.equal = FALSE, paired = TRUE)\nwilcox.test(TreatA, TreatB, paired = TRUE)\n\nCareful: your treatment vector both have to have the same order"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-test-results-with-ggsignif",
@@ -2447,7 +2447,7 @@
     "href": "sessions/slides/tests.html#plot-test-results-with-geom_signif",
     "title": "Statistical tests",
     "section": "Plot test results with geom_signif()",
-    "text": "Plot test results with geom_signif()\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif( \n    comparisons = list(\n      c(\"A\", \"B\"), \n      c(\"B\", \"C\"), \n      c(\"A\", \"C\") \n    ), \n    map_signif_level = TRUE, \n    y_position = c(23, 24, 25) \n  )\n\n\nBy default, a Wilcoxon test is performed"
+    "text": "Plot test results with geom_signif()\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif( \n    comparisons = list(\n      c(\"A\", \"B\"), \n      c(\"B\", \"C\"), \n      c(\"A\", \"C\") \n    ), \n    map_signif_level = TRUE, \n    y_position = c(23, 24, 25) \n  )\n\n\n\n\n\n\n\nBy default, a Wilcoxon test is performed"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-test-results-with-geom_signif-1",
@@ -2468,21 +2468,21 @@
     "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-1",
     "title": "Statistical tests",
     "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\"\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"point\",\n    color = \"#28a87d\",\n    size = 4\n  )\n\n\n\nInside stat_summary, define summary function\n\nfun.data for errorbars\nfun.y for point values (e.g. mean)\n\nDefine the geom that represents the summary"
+    "text": "Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\"\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"point\",\n    color = \"#28a87d\",\n    size = 4\n  )\n\n\n\nInside stat_summary, define summary function\n\nfun.data for errorbars, fun.y for points (e.g. mean)\n\nDefine the geom that represents the summary"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-2",
     "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-2",
     "title": "Statistical tests",
     "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.3\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"bar\", #&lt;&lt;\n    size = 4\n  )"
+    "text": "Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.3\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"bar\",\n    size = 4\n  )"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-3",
     "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-3",
     "title": "Statistical tests",
     "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nJust like before, you can also add a geom_signif to a barplot:\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.3\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"bar\"\n  ) +\n  ggsignif::geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\",\n    map_signif_level = TRUE,\n    y_position = c(17, 18, 19)\n  )"
+    "text": "Plot mean +- se using stat_summary\nJust like before, you can also add a geom_signif to a barplot:\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.3\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"bar\"\n  ) +\n  ggsignif::geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\",\n    map_signif_level = TRUE,\n    y_position = c(17, 18, 19)\n  )"
   },
   {
     "objectID": "sessions/solutions/data-tibbles.html",

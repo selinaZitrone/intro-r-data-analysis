@@ -12,7 +12,7 @@ title: "Statistical tests"
 
 :::{.callout-note}
 
-Find the solution [here](solutions/tests.qmd).
+## Find the solution [here](solutions/tests.qmd){target="_blank"}.
 
 :::
 

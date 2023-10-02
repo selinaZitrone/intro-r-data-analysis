@@ -1,4 +1,4 @@
-## Getting started
+## Get started
 
 We will again use the `penguins` tibble from the `palmerpenguins` package for this task.
 
@@ -35,8 +35,6 @@ Follow the decision tree for statistical tests:
 ```{r echo = FALSE}
 knitr::include_graphics(here::here("sessions/slides/img/day3/tests_overview.png"))
 ```
-
----
 
 ## Extra
 
