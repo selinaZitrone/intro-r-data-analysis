@@ -23,9 +23,13 @@ execute:
   echo: true
   warning: false
   message: false
+knitr: 
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
 from: markdown+emoji
 title-slide-attributes: 
-  data-background-image: img/Rlogo.png"
+  data-background-image: ./img/Rlogo.png"
   data-background-position: 90% 85%
   data-background-size: "20%"
 ---
@@ -48,32 +52,26 @@ library(fontawesome)
   <tr>
     <td><b>Addition</b></td>
     <td><code>+</code></td>
-    </td>
   </tr>
-    <tr>
+  <tr>
     <td><b>Subtraction</b></td>
     <td><code>-</code></td>
-    </td>
   </tr>
-    <tr>
+  <tr>
     <td><b>Multiplication</b></td>
     <td><code>*</code></td>
-    </td>
   </tr>
     <tr>
     <td><b>Division</b></td>
     <td><code>/</code></td>
-    </td>
   </tr>
-    <tr>
+  <tr>
     <td><b>Modulo</b></td>
     <td><code>%%</code></td>
-    </td>
   </tr>
-    <tr>
+  <tr>
     <td><b>Power</b></td>
     <td><code>^</code></td>
-    </td>
   </tr>
 </table>
 
@@ -117,32 +115,26 @@ library(fontawesome)
   <tr>
     <td><b>Equal to</b></td>
     <td><code>==</code></td>
-    </td>
   </tr>
     <tr>
     <td><b>Not equal to</b></td>
     <td><code>!=</code></td>
-    </td>
   </tr>
-    <tr>
+  <tr>
     <td><b>Less than</b></td>
     <td><code><</code></td>
-    </td>
   </tr>
-    <tr>
+  <tr>
     <td><b>Greater than</b></td>
     <td><code>></code></td>
-    </td>
   </tr>
-    <tr>
+  <tr>
     <td><b>Less or equal than</b></td>
     <td><code><=</code></td>
-    </td>
   </tr>
-    <tr>
+  <tr>
     <td><b>Greater or equal than</b></td>
     <td><code>>=</code></td>
-    </td>
   </tr>
 </table>
 
@@ -164,9 +156,9 @@ library(fontawesome)
 
 ##  R as a calculator
 
-<br>
-
 ### Logical operators
+
+<br>
 
 :::{.columns}
 
@@ -288,6 +280,28 @@ library(fontawesome)
 
 :::
 
+## Basic R Syntax
+
+- Whitespace does not matter
+  
+```{r}
+#| eval: false
+
+# this
+data<-read_csv("data/my-data.csv")
+
+# is the same as this
+
+data <- 
+  read_csv(    "data/my-data.csv"   )
+
+```
+
+- There are good practice rules however -> More on that later
+
+- R Studio will tell you if something is incorrect
+  - Find ![](img/day1/red_x.png) on the side of your script
+
 ## Comments in R
 
 ```{r, eval=FALSE}
@@ -340,9 +354,7 @@ data <- janitor::clean_names(data)
 - Variables are available in the global environment
 - R is case sensitive: **r**adius != **R**adius
 - Variables can hold any R objects, e.g.
-  - Simple numbers
-  - Tables with data
-  - ...
+  - Simple numbers, tables with data, ...
 - Choose meaningful variable names
   - Make your code easier to read
 
@@ -412,16 +424,20 @@ chr_var <- c("These are", "just", "some strings")
 
 . . .
 
-You can also combine multiple vectors into one:
+The `:` operator creates a sequence between two numbers with an increment of (-)1
 
 ```{r}
-# Combine multiple vectors
-v1 <- c(1,2,3)
-v2 <- c(800, 83, 37)
-v3 <- c(v1, v2)
+1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 ```
 
-## Creating vectors: `c()`
+. . .
+
+There are many more options to create vectors
+
+- `seq()` to create a sequence of numbers
+- `rep()` ro repeat values
+
+## Creating vectors: `c()` {.hidden}
 
 Be aware of implicit **type conversion** when combining vectors of different types
 
@@ -440,7 +456,7 @@ c(lgl_var, chr_var)
 
 . . .
 
-## Creating vectors: `:` and `seq()`
+## Creating vectors: `:` and `seq()` {visibility="hidden"}
 
 The `:` operator creates a sequence between two numbers with an increment of (-)1
 
@@ -457,7 +473,7 @@ seq(from = 1, to = 10, by = 1) # specify increment of sequence with by
 seq(from = 1, to = 10, length.out = 20) # specify desired length with length.out
 ```
 
-## Creating vectors: `rep()`
+## Creating vectors: `rep()` {visibility="hidden"}
 
 Repeat values multiple times with `rep()`
 
@@ -581,7 +597,7 @@ The basic structure is:
 
 :::{.r-stack}
 
-<b>[vector]{.col-green} [ [vector of indexes to select]{.col-pink}]</b>
+<b>[vector]{.col-green} [ [vector of indexes to select ]{.col-pink}]</b>
 
 :::
 
@@ -615,9 +631,12 @@ Change the values of a vector at specified indexes using the assignment operator
 
 Imagine for example, that the population of 
 
+:::{.nonincremental}
+
 - Istanbul (index 1) increased to 20 Million
 - Rome (index 8) changed but is unknown
 - Paris (index 10) decreased by 200,000
+:::
 
 . . .
 
@@ -628,6 +647,9 @@ population[c(1, 8)] <- c(20e6, NA) # NA means missing value
 population[10] <- population[10] - 200000 
 ```
 <br>
+
+. . .
+
 ```{r}
 population
 ```
@@ -665,7 +687,7 @@ cities[mega_city] # or short: cities[population > mean_population]
 
 Index only the cities that return `TRUE` for the comparison of their population against the mean population
 
-## Indexing vectors
+## Indexing vectors {visibility="hidden"}
 
 We also use `%in%`for logical indexing.
 
@@ -694,36 +716,15 @@ cities %in% c("Berlin", "Paris", "Stockholm", "Madrid")
 ```{r eval=FALSE}
 radius <- 5
 ```
+
 - Vectors are a collection of values of the same data type:
   - character (`"hello"`)
   - numeric: integer (`23L`) and double (`2.23`)
   - logical (`TRUE` and `FALSE`)
   
-- Be careful about implicit type conversion:
-  - numeric to character
-  - logical to character
-  - logical to numeric
-
 :::
   
 ## Summary II
-
-#### Data types
-
-```{r eval=FALSE}
-# check the data type of a variable
-typeof("hello")
-
-# check if a variable is of a certain data type
-is.*()
-is.integer(1L)
-
-# convert a variable into a certain data type
-as.*()
-as.logical("hello")
-```
-
-## Summary III
 
 #### Create vectors
 
@@ -741,7 +742,7 @@ rep(c(1,2), times = 2)
 rep(c("a", "b"), each = 2)
 ```
 
-## Summary IV
+## Summary III
 
 #### Indexing and subsetting vectors
 
@@ -761,7 +762,7 @@ v[y == "bird"] # return the value in v for which index y == "bird"
 v[y == max(y)] # return the value in v for which y is the maximum of y
 ```
 
-## Summary V
+## Summary IV
 
 #### Working with vectors
 
@@ -787,6 +788,6 @@ min(v)
 
 [Task 2 (35 min)]{.highlight-blue}<br>
 
-[Data types and vectors]{.big-text}
+[Working with vectors]{.big-text}
 
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/01_tasks_controller.html#working-with-vectors)**
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/02_intro-r.html)**
