@@ -786,7 +786,7 @@ min(v)
 
 # Now you {.inverse}
 
-[Task 2 (35 min)]{.highlight-blue}<br>
+[Task (35 min)]{.highlight-blue}<br>
 
 [Working with vectors]{.big-text}
 

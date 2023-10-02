@@ -1,37 +1,33 @@
-## Getting started with tibbles
+## Get started with tibbles
 
 Before you start the task:
 
 - Install the tibble package by calling `install.packages("tibble")` in the console.
+  - You don't need to put this command in your script as you only need to call it once to install the package
 - Open your script for the task and put `library(tibble)` on top
-- Execute this line and the tibble package is loaded into your R session and ready to use
+- Execute this line and the tibble package is loaded into your R session
 
-## Creating a tibble
+## Create a tibble
 
-Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from before and combine them in a tibble.
+Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from [before](02_intro-r.qmd#Task) and combine them in a tibble.
 
-## Exploring the tibble
+## Explore the tibble
 
-Explore the tibble you created with the different functions that you learned in the presentation.
-You can for example try 
+Explore the tibble you created with the different functions that you learned in the presentation. You can for example try 
 
 - `view()` and explore what you can do in the view window that opens: searching, filtering, sorting columns
-- `str()` to view the structure of the data
 - `summary()`
 - ...
 
 
-## Indexing and selecting
+## Index, filter and select
 
 Now let's try some indexing on the data.
 
-Select
-
 - Rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
-- select rows 1 to 10, all columns
-- select the column `bodywt_kg` as a vector
+- Filter rows 1 to 10, all columns
+- Select the column `bodywt_kg` as a vector
 
----
 
 ## Extra
 

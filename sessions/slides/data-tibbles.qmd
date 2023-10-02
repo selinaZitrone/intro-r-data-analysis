@@ -16,19 +16,24 @@ format:
     self-contained: true
     code-line-numbers: false
     auto-stretch: false
-    scrollable: true
+    scrollable: false
     fig-align: center
     theme: slides.scss
 execute: 
   echo: true
   warning: false
   message: false
+  cache: true
+knitr: 
+  opts_chunk: 
+    collapse: true
+    comment: "#>"
 from: markdown+emoji
 ---
 
 ## Data frames
 
-The built-in data structure for tables in R is a `data frame`.
+The built-in data structure for tables in R is a **data frame**.
 
 . . .
 
@@ -36,9 +41,9 @@ The built-in data structure for tables in R is a `data frame`.
 
 :::{.column width="50%"}
 
-Vectors in R can't represent a table with data that is connected via rows
+Vectors in R can't represent data table where values are connected via rows
 
-> Data frames are one of the **biggest and most important ideas** in R, and one of the things that make R different from other programming languages.<br>[(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble))]{.text-small}
+> Data frames are one of the **biggest and most important ideas** in R, and one of the things that make R different from other programming languages.<br>[(H. Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble))]{.text-small}
 
 :::
 
@@ -54,8 +59,10 @@ area_km2 <- c(2576, 2561, 1572, 1439,891,604, 839, 1285, 228, 105 )
 data.frame(cities = cities,
            population = population,
            area_km2 = area_km2) |> 
-  knitr::kable(
-    
+  knitr::kable() |> 
+  kableExtra::kable_styling(
+    "striped",
+    font_size = 20
   )
 ```
 
@@ -113,14 +120,12 @@ population <- c(
 area_km2 <- c(2576, 2561, 1572, 1439, 
   891, 604, 839, 1285, 228, 105)
 
-```
-<br>
-```{r eval=FALSE}
 data.frame(
   cities = cities,
   population = population,
   area_km2 = area_km2
   )
+
 ```
 
 :::
@@ -200,12 +205,13 @@ Before we use tibbles, we need to install the package once using the function `i
 # This has do be done only once (in the console, not in the script)
 install.packages("tibble")
 ```
+<br>
 
-Then, we need to load and attach the package to our current R session using `library`:
+Then, we need to load the package into our current R session using `library`:
 
 ```{r}
 # This has to be done every time R restarts
-# Put it at the top of a script
+# Put it at the top of your script
 library(tibble)
 ```
 
@@ -249,7 +255,7 @@ cities_tbl
 
 :::
 
-## Exploring tibbles
+## Exploring tibbles {visibility="hidden"}
 
 Look at the structure of an object using `str()`:
 
@@ -270,6 +276,8 @@ Or do it in the environment pane of RStudio (click little blue arrow next to the
 ## Exploring tibbles
 
 How many rows?
+
+<br>
 
 ```{r}
 nrow(cities_tbl)
@@ -308,6 +316,9 @@ Or click on the little table sign in the Environment pane:
 ## Exploring tibbles
 
 Get a quick summary of all columns:
+
+<br>
+
 
 ```{r}
 summary(cities_tbl)
@@ -365,10 +376,14 @@ print(cities_tbl[ ,c("cities", "population")], n=3)
 
 Indexing columns by name is usually preferred to indexing by position
 
+<br>
+
 ```{r eval=FALSE}
 cities_tbl[ ,1:2] # okay
 cities_tbl[ ,c("cities", "population")] # better
 ```
+
+<br>
 
 #### Why?
 
@@ -515,8 +530,8 @@ tbl$colA # select colA
 
 # Now you{.inverse}
 
-[Task 3 (20 min)]{.highlight-blue}<br>
+[Task (15 min)]{.highlight-blue}<br>
 
 [Tibbles]{.big-text}
 
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/01_tasks_controller.html#tibbles)**
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/04_data-tibbles.html)**

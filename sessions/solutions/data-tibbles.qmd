@@ -2,7 +2,7 @@
 title: "Solution to tibble tasks"
 ---
 
-## Creating a tibble
+## Create a tibble
 
 Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and put them in a tibble.
 
@@ -35,7 +35,7 @@ brainwt_kg <- c(
   0.0019, 0.1545, 0.003, 0.18
 )
 
-# Creating the tibble 
+# Create the tibble 
 animals <- tibble(
   species = species,
   bodywt_kg = bodywt_kg,
@@ -44,13 +44,15 @@ animals <- tibble(
 ```
 
 
-## Exploring the tibble
+## Explore the tibble
 
-In the view window that opens, you have some options to filter the data and sort rows.
+In the view window that opens, you have some options to filter the data and sort rows. Check out these options as well.
 
 ```{r echo=TRUE, eval=FALSE}
 view(animals)
 ```
+
+Print a summary of the table:
 
 ```{r echo=TRUE}
 summary(animals)
@@ -60,7 +62,7 @@ ncol(animals)
 names(animals)
 ```
 
-## Indexing and selecting
+## Index, filter and select
 
 - Rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
 
@@ -68,7 +70,7 @@ names(animals)
 animals[c(1,5,7), c("species", "bodywt_kg")]
 ```
 
-- Select rows 1 to 10, all columns
+- Filter rows 1 to 10, all columns
 
 ```{r, echo=TRUE}
 animals[1:10, ]
@@ -79,8 +81,6 @@ animals[1:10, ]
 ```{r, echo=TRUE}
 animals$bodywt_kg
 ```
-
----
 
 ## Extra
 
