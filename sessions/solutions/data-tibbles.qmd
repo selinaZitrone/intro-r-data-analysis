@@ -1,0 +1,107 @@
+---
+title: "Solution to tibble tasks"
+number-sections: true
+---
+
+## Creating a tibble
+
+Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and put them in a tibble.
+
+```{r echo=TRUE}
+# install.packages("tibble")
+library(tibble)
+
+species <- c(
+  "MountainBeaver", "Cow", "GreyWolf", "Goat",
+  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
+  "Horse", "PotarMonkey", "Cat", "Giraffe",
+  "Gorilla", "Human", "AfricanElephant", "Triceratops",
+  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
+  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
+  "Rat", "Brachiosaurus", "Mole", "Pig"
+)
+
+bodywt_kg <- c(
+  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
+  521, 10, 3.3, 529, 207, 62, 6654, 9400,
+  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
+  0.3, 87000, 0.1, 192
+)
+
+brainwt_kg <- c(
+  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, 
+  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, 
+  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
+  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,
+  0.0019, 0.1545, 0.003, 0.18
+)
+
+# Creating the tibble 
+animals <- tibble(
+  species = species,
+  bodywt_kg = bodywt_kg,
+  brainwt_kg = brainwt_kg
+)
+```
+
+
+## Exploring the tibble
+
+In the view window that opens, you have some options to filter the data and sort rows.
+
+```{r echo=TRUE, eval=FALSE}
+view(animals)
+```
+
+```{r echo=TRUE}
+summary(animals)
+str(animals)
+nrow(animals)
+ncol(animals)
+names(animals)
+```
+
+## Indexing and selecting
+
+- Rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
+
+```{r, echo=TRUE}
+animals[c(1,5,7), c("species", "bodywt_kg")]
+```
+
+- Select rows 1 to 10, all columns
+
+```{r, echo=TRUE}
+animals[1:10, ]
+```
+
+- Select the column `bodywt_kg` as a vector using `$`
+
+```{r, echo=TRUE}
+animals$bodywt_kg
+```
+
+---
+
+## Extra
+
+- Select the last column of the last row without using the row and column index (so don't use any numbers in this command)
+
+```{r, echo=TRUE}
+animals[nrow(animals), ncol(animals)]
+```
+
+- Calculate the mean of the `bodywt_kg` column and save it in a variable
+
+```{r, echo=TRUE}
+mean_wt <- mean(animals$bodywt_kg)
+mean_wt
+```
+
+- Add a new column to the data called `ratio_body_brain` with the ratio of the columns `bodywt_kg` and `brainwt_kg`
+
+```{r, echo=TRUE}
+animals$ratio_body_brain <- animals$bodywt_kg / animals$brainwt_kg
+animals
+```
+

@@ -1,0 +1,14 @@
+{
+  "hash": "ac40a7ef05b39578d03ae8e1fa6726c9",
+  "result": {
+    "markdown": "---\ntitle: \"Solutions for day 3\"\nformat:\n  html:\n    toc: true\n    toc_float: true\n    number_sections: true\nexecute: \n  echo: false\nparams:\n  showDownload: FALSE\n  includeSolution0: FALSE\n  includeSolution1: FALSE\n---\n\n::: {.cell hash='03_solutions_controller_cache/html/download_script_78608ee77564a8673fbdcdcbdc46d9bc'}\n\n:::\n\n\n## 1 Tidyr\n\n\n::: {.cell hash='03_solutions_controller_cache/html/test_fc191325675b7797bd306439c99daa98'}\n\n:::\n\n\nSolution will be uploaded later\n\n\n## 2 Statistical tests\n\n\n::: {.cell hash='03_solutions_controller_cache/html/test_144838fcefe6e12f2c8c08df8274e264'}\n\n:::\n\n\nSolution will be uploaded later\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

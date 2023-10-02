@@ -1,0 +1,9 @@
+---
+title: "Functions in R"
+---
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="slides/functions.html"></iframe>
+```
+
+[Slides in full screen](slides/functions.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/functions.pdf" download>Download PDF slides</a>

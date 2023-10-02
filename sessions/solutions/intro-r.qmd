@@ -1,0 +1,130 @@
+---
+title: "Solution to introduction to R"
+number-sections: true
+---
+
+```{r}
+options(scipen = 999)
+```
+
+You have the following three vectors:
+
+```{r echo=TRUE}
+species <- c(
+  "MountainBeaver", "Cow", "GreyWolf", "Goat",
+  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
+  "Horse", "PotarMonkey", "Cat", "Giraffe",
+  "Gorilla", "Human", "AfricanElephant", "Triceratops",
+  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
+  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
+  "Rat", "Brachiosaurus", "Mole", "Pig"
+)
+
+bodywt_kg <- c(
+  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
+  521, 10, 3.3, 529, 207, 62, 6654, 9400,
+  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
+  0.3, 87000, 0.1, 192
+)
+
+brainwt_kg <- c(
+  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, 
+  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, 
+  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
+  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,
+  0.0019, 0.1545, 0.003, 0.18
+)
+```
+
+- Check which of the following animals are contained in the `species` vector:
+
+Note: If you use `%in%` to check if elements are contained in a vector, the result vector is of the same length as the vector that is **before** the `%in%`
+
+```{r echo=TRUE}
+animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
+# Goes through every element in species and returns TRUE if it appears in animals_to_check
+species %in% animals_to_check
+# Goes through every element in animals_to_check and returns TRUE if it appears in species
+animals_to_check %in% species
+```
+
+
+- Calculate mean and standard deviation of brain weight:
+
+```{r echo=TRUE}
+mean(brainwt_kg)
+sd(brainwt_kg)
+```
+
+- Which species have brain weight larger than the mean brain weight of all species?
+
+```{r echo=TRUE}
+species[brainwt_kg > mean(brainwt_kg)]
+```
+
+- Calculate the ratio brain weight / body weight in percent and save it in a vector:
+
+```{r echo=TRUE}
+brain_body_ratio <- brainwt_kg / bodywt_kg * 100
+```
+
+##### Which animals have a larger brain to body weight ratio than humans?
+
+Step 1: Look at the brain to body ratio of humans
+
+```{r echo=TRUE}
+brain_body_ratio[species == "Human"]
+```
+
+Step 2: Compare it with the other animals
+
+```{r echo=TRUE}
+# New variable for human brain to body ratio
+bbr_human <- brain_body_ratio[species == "Human"]
+# Are there animals that have a larger brain to body ratio than humans?
+brain_body_ratio > bbr_human
+# Which are these animals
+species[brain_body_ratio > bbr_human]
+
+# or short
+species[brain_body_ratio > brain_body_ratio[species == "Human"]]
+```
+
+---
+
+## Extras
+
+- Round the vector to 4 decimal places:
+
+```{r echo=TRUE}
+brain_body_ratio <- round(brain_body_ratio, digits = 4)
+```
+
+
+- Which animal has the smallest brain to body ratio?
+
+```{r echo=TRUE}
+species[brain_body_ratio == min(brain_body_ratio)]
+```
+
+The `r species[brain_body_ratio == min(brain_body_ratio)]` has a really small brain with a weight of just `r brainwt_kg[species == species[brain_body_ratio == min(brain_body_ratio)]]` kg at a body weight of `r bodywt_kg[species == species[brain_body_ratio == min(brain_body_ratio)]]` kg!
+
+- Add elements to the vector
+
+```{r echo=TRUE}
+species_new <- c("Eagle", "Snail", "Lion")
+brainwt_kg_new <- c(0.0004, NA, 0.5)
+bodywt_kg_new <- c(18, 0.01, 550)
+
+species <- c(species, species_new)
+brainwt_kg <- c(brainwt_kg, brainwt_kg_new)
+bodywt_kg <- c(bodywt_kg, bodywt_kg_new)
+```
+
+- What is the mean brain weight now?
+
+```{r echo=TRUE}
+mean(brainwt_kg)
+# na.rm = TRUE removes missing values before calculating the mean
+mean(brainwt_kg, na.rm = TRUE)
+```

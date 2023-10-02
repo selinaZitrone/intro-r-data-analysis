@@ -1,0 +1,19 @@
+---
+title: "Tabels in R - Data frames and tibbles"
+---
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="slides/data-tibbles.html"></iframe>
+```
+
+[Slides in full screen](slides/data-tibbles.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/data-tibbles.pdf" download>Download PDF slides</a>
+
+# Task
+
+:::{.callout-note}
+
+Find the solution [here](solutions/data-tibbles.qmd).
+
+:::
+
+{{< include tasks/data-tibbles.qmd >}}

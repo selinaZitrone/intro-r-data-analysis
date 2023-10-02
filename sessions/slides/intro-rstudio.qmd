@@ -1,0 +1,472 @@
+---
+title: "Introduction to RStudio"
+subtitle: "Day 1 - Introduction to Data Analysis with R"
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: today
+date-format: long
+format: 
+  revealjs:
+    footer: "Selina Baldauf // Introduction RStudio"
+    highlight-style: breeze
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: false
+    self-contained: true
+    code-line-numbers: false
+    auto-stretch: false
+    scrollable: true
+    fig-align: center
+    theme: slides.scss
+execute: 
+  echo: true
+  warning: false
+  message: false
+from: markdown+emoji
+title-slide-attributes: 
+  data-background-image: img/Rstudio_logo.png
+  data-background-position: 90% 85%
+  data-background-size: "20%"
+---
+
+```{r setup, include=FALSE}
+
+library(fontawesome)
+```
+
+## Difference between R and RStudio
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+![](img/Rlogo.png){fig-align="center" width=15% }<br>
+R is the **programming language** and the **program** that does the actual work
+
+- Can be used with many different programming environments (But RStudio is the best for R)
+
+:::
+  
+:::{.column width="50%"}
+
+:::{.fragment}
+
+![](img/Rstudio_logo.png){fig-align="center" width=12%}<br>
+  
+
+RStudio is the **integrated development environment** (IDE)
+
+- Provides an interface to R
+- Specifically built around R code 
+- Execute code
+- Syntax highlighting
+- File and project management
+- ...
+
+:::
+
+:::
+
+:::
+
+## Difference between R and RStudio
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+![](img/Rlogo.png){width=15% }<br>
+R is the **programming language** and the **program** that does the actual work
+
+:::
+  
+:::{.column width="50%"}
+
+![](img/Rstudio_logo.png){width=12%}<br>
+
+RStudio is the **integrated development environment** (IDE)
+  
+:::
+
+:::
+
+::: {.callout-note}
+
+## Summary
+
+You can use R without RStudio but RStudio without R would be of little use
+
+:::
+
+
+## Difference between R and RStudio
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+**R** is like the engine
+
+
+:::
+
+:::{.column width="50%"}
+
+  **RStudio** is more like the dashboard, etc.
+
+:::
+
+:::
+
+![Analogy and image from 
+[ModernDive Book](https://moderndive.com/1-getting-started.html#r-rstudio)](img/day1/car_engine.png)
+
+## Basic idea of writing code for data analysis
+
+::: {.incremental}
+
+- Break down your process into small steps
+
+- Write precise instructions telling the computer what to do in each step
+  - For this you can use the programming language R
+  
+- Tell R to execute these instructions
+  - R will return the result of your instructions (or an error message)
+
+- You can do all of this inside RStudio
+
+:::
+  
+## A quick tour around RStudio
+
+![](img/day1/RStudio_all.png){fig-align="center" width=85%}
+
+## Console pane{.nonincremtal}
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+- Execute R code
+
+- Output from R code in scripts is printed there
+
+- Type a command into the console and execute with `Enter/Return`
+
+::: {.callout-tip}
+
+Use arrow keys to bring back last commands
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/RStudio_console.png)
+
+:::
+
+:::
+
+## Script pane
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+
+- Write scripts with R code
+
+  - Scripts are text files with R commands (file ending `.R`)
+  
+  - Use scripts to save commands for reuse
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/RStudio_script.png)
+
+:::
+
+:::
+
+## Script pane
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+- Create a new R script: <br> **File -> New File -> R Script**
+- Save an R script:<br> **File->Save (Ctrl/Cmd + S)**
+- Run code line by line with **Run button (Ctrl+Enter/Cmd+Return)**
+- You can open multiple scripts
+
+:::
+
+:::{.column width="50%"}
+
+ ![](img/day1/RStudio_script.png)
+
+:::
+
+:::
+
+::: {.callout-note}
+
+## Summary
+
+Use **scripts** for all your analysis and for commands that you want to save.<br>
+Use **console** for temporary commands, e.g. to test something.
+
+:::
+
+## Environment pane
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+- Shows objects currently present in the R session
+
+- Is empty if you start R
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/RStudio_environment.png)
+
+:::
+
+:::
+
+## Files pane
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+- Similar to Explorer/Finder
+
+- Browse project structure and files
+  - Find and open files
+  - Create new folders
+  - Delete files
+  - Rename files 
+  - ...
+  
+- Practical if you don't want to switch between File Explorer and RStudio all the time
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/RStudio_Files.png)
+
+:::
+
+:::
+
+## Plot pane {.nonincremental}
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+- Plots that are created with R will be shown here
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/RStudio_plot.png)
+
+:::
+
+:::
+
+## Project oriented workflow 
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+- One directory with all files relevant for project
+  - Scripts, data, plots, documents, ...
+  
+:::
+
+:::{.column width="50%"}
+
+```md
+Project
+|
+|- data
+|
+|- documents
+|   |
+|   |- notes
+|   |
+|   |- reports
+|
+|- analysis
+|   |
+|   |- clean_data.R 
+|   |
+|   |- statistics.R
+|
+|
+```
+
+[Example project structure]{.text-small}
+
+:::
+
+:::
+
+## Project oriented workflow 
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+- One directory with all files relevant for project
+  - Scripts, data, plots, documents, ...
+ 
+- An RStudio project is just a normal directory with an **.Rproj** file
+
+:::
+
+:::{.column width="50%"}
+
+```md
+Project
+|
+|- data
+|
+|- documents
+|   |
+|   |- notes
+|   |
+|   |- reports
+|
+|- analysis
+|   |
+|   |- clean_data.R 
+|   |
+|   |- statistics.R
+|
+|- *.RProj
+```
+
+[Example R Studio project structure]{.text-small}
+
+:::
+
+:::
+
+## Project oriented workflow 
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+**Advantages** of using RStudio projects
+
+::: {.incremental}
+
+- Easy to navigate in R Studio (**File pane**)
+- Easy to find and access scripts and data in RStudio
+- Project root is working directory
+- Open multiple projects simultaneously in separate RStudio instances
+
+:::
+    
+:::
+
+:::{.column width="50%"}
+
+```md
+Project
+|
+|- data
+|
+|- documents
+|   |
+|   |- notes
+|   |
+|   |- reports
+|
+|- analysis
+|   |
+|   |- clean_data.R 
+|   |
+|   |- statistics.R
+|
+|- *.RProj
+```
+
+[Example R Studio project structure]{.text-small}
+
+:::
+
+:::
+
+
+## Create an RStudio project {.nonincremental}
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+Create a project from scratch:
+  
+1. **File -> New Project -> New Directory -> New Project**
+2. Enter a directory name (this will be the name of your project)
+3. Choose the Directory where the project should be initiated
+4. **Create Project**
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/RStudio_Files.png)
+
+[Example project structure in RStudio]{.text-small}
+
+:::
+
+:::
+
+RStudio will now create and open the project for you. 
+
+## Navigate an RStudio project
+
+
+![](img/day1/RStudio_Files_navig.png){fig-align="center"}
+
+## Open a project from outside RStudio
+
+To open an RStudio project from your file explorer/finder, just double click on the **.Rproj** file
+
+![](img/day1/open_project.png){fig-align=center}
+
+## Open a project inside RStudio
+
+To open an RStudio project from RStudio, click on the project symbol on the top right of R Studio and select the project from the list.
+
+
+![](img/day1/open_project_rstudio.png){fig-align="center" width=45%}
+
+# Now you {.inverse}
+
+[Task 1 (25 min)]{.highlight-blue}<br>
+
+[Set up your own RStudio project for this workshop]{.big-text}
+
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/01_tasks_controller.html#set-up-an-rstudio-project)**

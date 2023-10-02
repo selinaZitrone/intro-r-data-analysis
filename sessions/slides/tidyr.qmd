@@ -1,0 +1,286 @@
+---
+title: "Tidy data with tidyr"
+subtitle: "Day 3 - Introduction to Data Analysis with R"
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: today
+date-format: long
+format: 
+  revealjs:
+    footer: "Selina Baldauf // Tidy data with tidyr"
+    highlight-style: breeze
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: true
+    auto-stretch: false
+    scrollable: true
+    theme: slides.scss
+    fig-align: center
+execute: 
+  echo: true
+  warning: false
+  message: false
+  cache: true
+from: markdown+emoji
+title-slide-attributes: 
+  data-background-image: img/hex-stickers/tidyr.png
+  data-background-position: 90% 85%
+  data-background-size: "20%"
+---
+
+```{r setup, include=FALSE}
+library(tibble)
+library(tidyr)
+```
+
+# What is tidy data?{.inverse}
+
+## What is tidy data?
+
+![Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst](img/AllisonHorst/tidydata_1.jpg){width=85%}
+
+## What is tidy data?
+
+Let's look at some examples
+
+:::{.columns}
+
+:::{.column width="40%"}
+
+**Tidy**
+```{r echo=FALSE}
+data.frame(id = 1:6,
+           name = c("floof", "max", "cat", "donut", "merlin", "panda"),
+           color = c("gray", "black", "orange", "gray", "black", "calico")) |> 
+  knitr::kable()
+```
+
+:::
+
+:::{.column width="60%"}
+
+:::{.fragment}
+
+**Non-tidy**
+```{r echo=FALSE}
+data.frame(floof = "gray",
+           max = "black",
+           cat = "orange",
+           donut = "gray",
+           merlin = "black",
+           panda = "calico") |> 
+  knitr::kable()
+```  
+
+<br>
+```{r echo=FALSE}
+data.frame(gray = c("floof", "donut"),
+           black = c("max", "merlin"),
+           orange = c("cat", ""),
+           calico = c("panda", "")) |> 
+  knitr::kable()
+```  
+
+:::
+
+:::
+
+:::
+
+. . .
+
+<br>
+
+Sometimes ***raw data*** is non-tidy because its structure is optimized for data entry or viewing rather than analysis.
+
+## Why tidy data?
+
+The main advantages of **tidy** data is that the `tidyverse` packages are built to work with it.
+
+
+![Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst](img/AllisonHorst/tidydata_3.jpg){width=70%}
+
+## Example
+
+Let's go back to the city data set from earlier:
+
+
+```{r echo=FALSE}
+cities_v <- c("Istanbul", "Moscow", "London", "Saint Petersburg", "Berlin", "Madrid", "Kyiv", "Rome", "Bucharest", "Paris")
+population <- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)
+area_km2 <- c(2576, 2561, 1572, 1439,891,604, 839, 1285, 228, 105 )
+
+country <- c("Turkey", "Russia", "UK", "Russia", "Germany", "Spain",
+                        "Ukraine", "Italy", "Romania", "France")
+# tidy
+cities_tbl <- tibble(city = cities_v,
+           population = population,
+           area_km2 = area_km2,
+           country = country)
+```
+
+```{r}
+cities_tbl
+```
+
+. . .
+
+This already looks pretty tidy.
+
+## Same data different format
+
+```{r eval=FALSE}
+cities_untidy
+```
+
+
+```{r echo=FALSE}
+cities_untidy <- unite(cities_tbl, col = "location", c("country", "city")) %>%
+  pivot_longer(c("population", "area_km2"), names_to = "type") %>%
+  pivot_wider(names_from = "location", values_from = "value")
+print(cities_untidy, width = 90)
+```
+
+**What's not tidy here?**
+
+. . .
+
+- Each row has multiple observation
+- At the same time, each observation is split across multiple rows
+- Country and city variable are split into multiple columns
+- Country and city variable values are united to one value
+
+. . .
+
+Let's tidy this data using functions from the `tidyr` package!
+
+## `pivot_longer()`
+
+**One variable split into multiple column**s can be solved with `pivot_longer`
+
+```{r echo=FALSE}
+print(cities_untidy, width = 90)
+```
+
+. . .
+
+```{r}
+step1 <- pivot_longer(
+    cities_untidy,                         # the tibble
+    cols = Turkey_Istanbul:France_Paris,   # the columns to pivot from:to
+    names_to = "location",                 # name of the new column
+    values_to = "value")                   # name of the value column
+```
+
+. . .
+
+```{r echo=FALSE}
+print(step1, n=4)
+```
+
+## `pivot_longer()`
+
+**One variable split into multiple column**s can be solved with `pivot_longer`
+
+```{r}
+#| eval: false
+step1 <- pivot_longer(
+    cities_untidy,                         # the tibble
+    cols = Turkey_Istanbul:France_Paris,   # the columns to pivot from:to
+    names_to = "location",                 # name of the new column
+    values_to = "value")                   # name of the value column
+```
+
+Another way to select the columns to pivot:
+
+```{r}
+#| eval: false
+#| code-line-numbers: "3"
+step1 <- pivot_longer(
+    cities_untidy,           # the tibble
+    cols = !type,            # All columns except type#<<        
+    names_to = "location",   # name of the new column
+    values_to = "value")     # name of the value column
+```
+
+## `separate_wider_delim()`
+
+**Multiple variable values that are united into one** can be separated using `separate_wider_delim`
+
+```{r echo=FALSE}
+print(step1,n=2)
+```
+
+. . .
+
+```{r}
+step2 <- separate_wider_delim(
+  step1,                        # the tibble
+  location,                     # the column to separate
+  delim = "_",                  # the separator
+  names = c("country", "city")) # names of new columns
+```
+
+. . .
+
+```{r echo=FALSE}
+print(step2, n=2)
+```
+
+. . .
+
+The opposite function exists as well and is called `unite`. Check out `?unite` for details.
+
+## `pivot_wider()`
+
+**One observation split into multiple rows** can solved with `pivot_wider`
+
+```{r echo=FALSE}
+print(step2,n=2)
+```
+
+. . .
+
+```{r}
+step3 <- pivot_wider(
+  step2,                      # the tibble
+  names_from = type,          # the variables
+  values_from = value)        # the values
+```
+
+. . .
+
+```{r echo=FALSE}
+print(step3, n=5)
+```
+
+## All steps in 1
+
+We can also use a pipe to do all these steps in one:
+
+```{r}
+cities_tidy <- cities_untidy |>
+  pivot_longer(Turkey_Istanbul:France_Paris,
+    names_to = "location",
+    values_to = "values"
+  ) |>
+  separate(location,
+    sep = "_",
+    into = c("country", "city")
+  ) |>
+  pivot_wider(
+    names_from = type,
+    values_from = values
+  )
+```
+
+# Now you {.inverse}
+
+[Task 1 (30 min)]{.highlight-blue}<br>
+
+[Tidying data]{.big-text}
+
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/03_tasks_controller.html#tidyr)**

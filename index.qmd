@@ -1,0 +1,41 @@
+---
+title: "Introduction to R for Data Analysis"
+subtitle: "Workshop by Selina Baldauf"
+---
+
+<hr>
+**Workshop sessions**<br>
+📅 09.10.2023 - 10.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
+📅 16.10.2023 - 17.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
+📍 Online on Webex <br>
+<hr>
+
+# Workshop description
+
+The workshop's main goal is to equip you with essential R skills for analyzing your own research data, covering data processing and visualization. After the workshop you are equipped to confidently advance your R skills for your specific research needs.
+
+### Outline
+
+In 4 Workshop days we will cover the following topics:
+
+- **Day 1**: Introduction to R and R Studio, Good programming practice, Reading data into R
+- **Day 2**: Data visualization with the ggplot package
+- **Day 3**: Data wrangling with dplyr, data cleaning with tidyr
+- **Day 4**: Bring your own research data (or get some real-life data from me)
+
+### Concept
+
+To learn programming, it is essential to practice writing code yourself. Therefore, every input session will be followed by practical exercises. On day 4, you can apply the methods you learned to your own research data or a provided real-life data set.
+
+The course will be in English and will be in an online format.
+
+# For whom is this workshop?
+
+This workshop is for beginners without prior experience in R or any other programming language. You can still participate if you already know other programming languages though.
+
+# The instructor
+
+I'm a scientific programmer at Freie Universität specializing in theoretical ecology. R is integral to my daily work, and I enjoy sharing my expertise. I've previously taught R statistics courses for biology master's and PhD students.
+
+Feel free to reach out with any course-related questions via [selina.baldauf@fu-berlin.de](mailto:selina.baldauf@fu-berlin.de).
+

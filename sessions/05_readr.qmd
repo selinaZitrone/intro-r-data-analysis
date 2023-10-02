@@ -1,0 +1,19 @@
+---
+title: "Import and Export Data with readr"
+---
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="slides/readr.html"></iframe>
+```
+
+[Slides in full screen](slides/readr.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/readr.pdf" download>Download PDF slides</a>
+
+# Task
+
+:::{.callout-note}
+
+Find the solution [here](solutions/readr.qmd).
+
+:::
+
+{{< include tasks/readr.qmd >}}

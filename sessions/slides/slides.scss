@@ -1,0 +1,296 @@
+/*-- scss:defaults --*/
+  // importing fonts
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600&family=Jost:wght@200;300&family=Source+Sans+Pro:ital,wght@0,300;0,400;1,300&display=swap');
+
+// Define base colors
+$white:    #fff !default;
+$white2:   #f8f8f8 !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #ecf0f1 !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #b4bcc2 !default;
+$gray-600: #95a5a6 !default;
+$gray-700: #7b8a8b !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$theme-black: #100F0F !default;
+$theme-white: #F1F1F1 !default;
+$theme-green: #68bda0 !default;
+$theme-yellow: #FFD166;
+$theme-pink: #ff9dd8;
+$theme-blue: #75aadb;
+$theme-blue-light: lighten($theme-blue, 10%);
+$theme-blue-dark: darken($theme-blue, 20%);
+
+// font size-adjust
+$h1-font-size: 1.6em;
+$h2-font-size: 1.3em;
+$h3-font-size: 1.15em;
+$presentation-font-size-root: 30px;
+
+// fonts
+$font-family-sans-serif: 'Jost', sans-serif !default;
+$presentation-heading-font: 'Abhaya Libre', serif  !default;
+$font-family-monospace: 'Inconsolata', monospace  !default;
+
+// Define colors
+$code-color: darken($theme-green, 20%);
+$body-bg: $white2;
+$body-color: $theme-black;
+$link-color: $theme-blue-dark;
+
+// light
+$light-bg-text-color: $theme-black;
+
+// dark
+$dark-bg-text-color: $theme-white;
+
+/*-- scss:rules --*/
+
+// title slide ---------------------------------------------
+/*
+h1.title {
+  font-style: bold;
+  font-weight: 800;
+  color: $theme-purple !important;
+  line-height: 1.07;
+  margin-bottom: .4em;
+}
+
+.reveal h1 {
+  color: $theme-purple;
+}
+*/
+
+
+
+p.subtitle {
+  font-weight: 600;
+  line-height: .97;
+  text-align: center;
+  background-color: $theme-blue-light;
+ padding: 0.1em 0.2em;
+ font-weight: bold;
+}
+
+/*
+.quarto-title-author {
+  font-size: .8em;
+  font-weight: 600;
+  font-style: italic;
+  margin-top: 1.2em;
+  color: $theme-green;
+  font-size: 1.3em;
+  font-family: $font-family-serif;
+}
+*/
+// headings ---------------------------------------------
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5 {
+  color: $theme-blue-dark;
+}
+
+// font sizes and colors -----------------------------------------------------------
+.text-small{
+  font-size: 80%;
+}
+
+.text-big{
+  font-size: 120%;
+}
+
+.col-green{
+  color: $theme-green;
+}
+
+.col-yellow{
+  color: $theme-yellow;
+}
+
+.col-pink{
+  color: $theme-pink
+}
+
+// bold and italic text ---------------------------------------------
+/*
+.reveal strong,
+.reveal b {
+  font-weight: bold;
+  color: $theme-orange;
+}
+
+.reveal em {
+	font-style: italic;
+	color: $theme-orange;
+}
+
+
+// code ---------------------------------------------
+
+.reveal code {
+  font-size: 100%;
+}
+
+
+.reveal pre code {
+    background-color: $gray-100;
+    //font-size: 1em;
+    padding: 0.5em;
+    line-height: 1.2em;
+}
+*/
+// menu and progress bar ---------------------------------------------
+/*
+.reveal .slide-menu {
+  color: $menu-color;
+}
+
+.reveal .progress {
+  color: $menu-color;
+}
+*/
+
+// footer ---------------------------------------------
+/*
+.reveal .footer {
+  color: $theme-green;
+}
+
+.slide-number, .reveal.has-logo .slide-number {
+  bottom: 10px !important;
+  right: 10px !important;
+  top: unset !important;
+  color: $theme-green !important;
+}
+
+.reveal .progress {
+  color: $theme-green !important;
+}
+*/
+
+.reveal {
+  .slides {
+    .slide {
+      img+p.caption {
+        font-size: 0.5em;
+      }
+    }
+  }
+}
+
+// Inverse background slides -----------------------------------------------
+
+.inverse {
+    color: $theme-white;
+    h1, h2, h3, h4 {
+      color: $theme-blue-light;
+    }
+    .slide-background-content {
+      background-color: $theme-black;
+    }
+    blockquote {
+      color: $gray-200
+    }
+    a {
+      color: $theme-blue
+    }
+    code {
+      color: $theme-green;
+    }
+}
+
+section.has-dark-background {
+  color: $theme-white;
+}
+
+// blue slide
+
+.slide-blue{
+  color: $theme-white;
+    h1, h2, h3, h4 {
+      color: $theme-white;
+    }
+    .slide-background-content {
+      background-color: $theme-blue-dark;
+    }
+    blockquote {
+      color: $gray-200
+    }
+}
+// extra stuff -----------------------------------------------------------
+
+.highlight-blue {
+ background-color: $theme-blue-light;
+ color: $theme-black;
+ padding: 0.1em 0.2em;
+ font-weight: bold;
+}
+
+.highlight-ylw {
+ background-color: $theme-yellow;
+ color: $theme-black;
+ padding: 0.1em 0.2em;
+ font-weight: bold;
+}
+
+.highlight-pink {
+ background-color: $theme-pink;
+ color: $theme-black;
+ padding: 0.1em 0.2em;
+ font-weight: bold;
+}
+
+.highlight-grn {
+ background-color: #79dfbd;
+ color: $theme-black;
+ padding: 0.1em 0.2em;
+ font-weight: bold;
+}
+
+.circle-sketch-highlight{
+  position:relative;
+  left:0.5em;
+  right:0.5em;
+  font-weight: bold;
+}
+.circle-sketch-highlight:before{
+  content:"";
+  z-index:-1;
+  left:-0.5em;
+  top:-0.1em;
+  border-width:2px;
+  border-style:solid;
+  border-color:$theme-green;
+  position:absolute;
+  border-right-color:transparent;
+  width:100%;
+  height:1em;
+  transform:rotate(2deg);
+  opacity:0.7;
+  border-radius:50%;
+  padding:0.1em 0.25em;
+}
+.circle-sketch-highlight:after{
+  content:"";
+  z-index:-1;
+  left:-0.5em;
+  top:0.1em;
+  padding:0.1em 0.25em;
+  border-width:2px;
+  border-style:solid;
+  border-color:$theme-green;
+  border-left-color:transparent;
+  border-top-color:transparent;
+  position:absolute;
+  width:100%;
+  height:1em;
+  transform:rotate(-1deg);
+  opacity:0.7;
+  border-radius:50%;
+}

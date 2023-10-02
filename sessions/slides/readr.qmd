@@ -1,0 +1,489 @@
+---
+title: "Import and Export Data with readr"
+subtitle: "Day 1 - Introduction to Data Analysis with R"
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: today
+date-format: long
+format: 
+  revealjs:
+    footer: "Selina Baldauf // Import and export data"
+    highlight-style: breeze
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    auto-stretch: false
+    scrollable: true
+    fig-align: center
+    theme: slides.scss
+execute: 
+  echo: true
+  warning: false
+  message: false
+from: markdown+emoji
+title-slide-attributes: 
+  data-background-image: img/hex-stickers/readr.png
+  data-background-position: 90% 85%
+  data-background-size: "20%"
+---
+
+# The tidyverse{.inverse}
+
+![](img/hex-stickers/tidyverse.png){style="float:right;padding: 0 0 0 10px;" fig-alt="Tidyverse Hex Logo" width="300"}
+
+## The tidyverse
+
+> The tidyverse is an opinonated <b>collection of R packages</b> designed for data science. All packages share an underlying design philosophy, grammar, and data structures.<br>
+[([www.tidyverse.org](https://www.tidyverse.org/))]{.text-small}                                                                   
+
+These are the main packages from the tidyverse that we will use:<br><br>
+
+:::{.r-stack}
+
+![](img/hex-stickers/tibble.png){width=15%}![](img/hex-stickers/readr.png){width=15%}![](img/hex-stickers/tidyr.png){width=15%}![](img/hex-stickers/ggplot2.png){width=15%}![](img/hex-stickers/dplyr.png){width=15%}
+
+:::
+
+## Workflow data analysis
+
+
+![](img/day1/datascience_workflow_tidyverse.png){fig-align="center"}
+
+:::{.aside}
+
+Image adapted from Wickham & Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)
+
+:::
+
+## The tidyverse
+
+Install the tidyverse once with:
+
+```{r eval=FALSE}
+install.packages("tidyverse")
+```
+
+Then load and attach the packages at the beginning of your script:
+
+```{r}
+library(tidyverse)
+```
+
+. . .
+
+You can also install and load the tidyverse packages individually, but since we will use so many of them together, it's easier to load and attach them together.
+
+# Import and export data with readr{.inverse}
+
+![](img/hex-stickers/readr.png){style="float:right;padding: 0 0 0 10px;" fig-alt="Tidyverse Hex Logo" width="300"}
+
+## Readr
+
+`readr` is a tidyverse package. To use it, you can load the tidyverse:
+
+```{r eval=FALSE}
+library(tidyverse) # or library(readr) 
+```
+
+. . .
+
+The most important functions are:
+
+- `read_csv`/`write_csv` to read/write **comma delimited** files
+
+- `read_tsv`/`write_tsv` to read/write **tab delimited** files
+
+- `read_delim`/`write_delim` to read/write files with **any delimiter**
+
+## Read files with `read_*()`
+
+All `read_*` functions take a path to the data file as a first argument:
+
+:::{.r-stack}
+
+<code><b>read_*(file = ["path/to/your/file"]{.col-yellow}, ...)</b></code>
+
+:::
+
+. . .
+
+Import files with a `readr` function fitting the delimiter of your file:
+
+```{r eval=FALSE}
+dat <- read_csv("data/your_data.csv") # comma delimiter
+
+dat <- read_tsv("data/your_data.txt") # tab delimiter
+```
+
+. . .
+
+Use `read_delim` for a generic type of delimiter:
+
+```{r eval=FALSE}
+dat <- read_delim("data/your_data.txt", delim = "\t") # tab delimiter
+
+dat <- read_delim("data/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
+```
+
+. . .
+
+All `read_*` functions return a `tibble`
+
+## Read files with `read_*()`
+
+The read functions provide several options to modify the reading of data.
+
+Have a look at `?read_delim` for all options. 
+
+. . .
+
+Useful if your data is not a "perfect table"
+
+## Read files with `read_*()`
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+Specify number of lines to skip reading with `skip`
+
+- Useful if you have metadata on top of the file
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/meta_data_top.png)
+
+:::
+
+:::
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+
+```{r eval=FALSE}
+# without skipping first lines
+read_csv(file = "data/meta_data_top.csv")
+```
+
+
+```{r echo=FALSE}
+print(read_csv(file = "data/meta_data_top.csv"))
+```
+
+:::
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+```{r eval=FALSE}
+# skip meta data lines
+read_csv(
+  file = "data/meta_data_top.csv",
+  skip = 4
+)
+```
+
+
+```{r, echo=FALSE}
+print(read_csv(file = "data/meta_data_top.csv", skip=4))
+```
+
+:::
+
+:::
+
+:::
+
+## Read files with `read_*()`
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+Specify whether the data has a header column or not with `col_names`
+
+- Useful if you don't have column names or you want to change them
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/no_col_names.png)
+
+:::
+
+:::
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r eval=FALSE}
+# First line is expected to be column names
+read_csv(file = "data/no_col_names.csv")
+```
+
+
+```{r echo=FALSE}
+print(read_csv(file = "data/no_col_names.csv"))
+```
+
+:::
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+```{r eval=FALSE}
+# Default column names are given
+read_csv(
+  file = "data/no_col_names.csv",
+  col_names = FALSE
+)
+```
+
+
+```{r, echo=FALSE}
+print(read_csv(file = "data/no_col_names.csv", col_names = FALSE))
+```
+
+:::
+
+:::
+
+:::
+
+## Read files with `read_*()`
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+Specify whether the data has a header column or not with `col_names`
+
+- Useful if you don't have column names or you want to change them
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/no_col_names.png)
+
+:::
+
+:::
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+
+```{r eval=FALSE}
+# First line is expected to be column names
+read_csv(file = "data/no_col_names.csv")
+```
+
+
+```{r echo=FALSE}
+print(read_csv(file = "data/no_col_names.csv"))
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r eval=FALSE}
+# Specify custom column names
+read_csv(
+  file = "data/no_col_names.csv",
+  col_names = c("Temperature", "Rainfall")
+)
+```
+
+
+```{r, echo=FALSE}
+print(read_csv(file = "data/no_col_names.csv",
+  col_names = c("Temperature", "Rainfall")))
+```
+
+:::
+
+:::
+
+## Write files with `write_*()`
+
+Every `read_*` has a corresponding `write_*` function to export data from R.
+
+. . .
+
+Write data from R e.g.
+
+- To share transformed or summarized data
+
+- Summarize complex raw data and continue working with summarized data
+
+- ...
+
+## Write files with `write_*()`
+
+All `write_*` functions take the data to write as the first and the file to write to as the second argument:
+
+:::{.r-stack}
+ <code><b>write_\*(x = [dat]{.col-green}, file = ["path/to/save/file.\*"]{.col-yellow}, ...)</b></code>
+:::
+
+<br>
+. . .
+
+```{r eval=FALSE}
+write_csv(dat, file = "data-clean/your_data.csv") # comma delimiter
+
+write_tsv(dat, file = "data-clean/your_data.txt") # tab delimiter
+```
+
+. . .
+
+Use `write_delim` for a generic type of delimiter:
+
+```{r eval=FALSE}
+write_delim(dat, file = "data-clean/your_data.txt", delim = "\t") # tab delimiter
+
+write_delim(dat, file = "data-clean/your_data.txt", delim = "..xyz..") # ..xyz.. delimiter
+```
+
+# Import excel files{.inverse}
+
+![](img/hex-stickers/readxl.png){style="float:right;padding: 0 0 0 10px;" fig-alt="readxl Hex Logo" width="300"}
+
+## Readxl
+
+The `readxl` package is part of the tidyverse, but you need to load it explicitly
+
+```{r}
+library(readxl)
+```
+
+. . .
+
+Use the `read_excel` function to read an excel file:
+
+```{r eval = FALSE}
+dat <- read_excel(path = "data/your_data.xlsx")
+```
+
+. . .
+
+By default, this reads the first sheet. You can read other sheets with
+
+```{r eval = FALSE}
+dat <- read_excel(path = "data/your_data.xlsx", sheet = "sheetName") # via sheet name
+dat <- read_excel(path = "data/your_data.xlsx", sheet = 2) # via sheet number
+```
+
+. . .
+
+- `read_excel` also has other functionality, like skipping rows etc.
+- Check out the [package documentation](https://readxl.tidyverse.org/index.html) for more functionality
+
+## Readxl
+
+A little warning:
+
+- Reading from a csv file is more reliable
+- Be careful with complicated excel sheets with formulas etc.
+- Always double check the data that you imported, e.g. by using the `summary` function and checking 
+if the number of rows etc. is correct
+
+## Absolute vs. relative paths in R
+
+#### Absolute paths
+
+`C:/Users/Selina/folder1/folder2/data/file_to_read.csv`
+
+#### Relative paths
+
+`data/file_to_read.csv`
+
+- Relative paths are interpreted relative to the **working directory**
+- Check out where your working directory is with `getwd()`
+- In RStudio projects, the **working directory is always the project root**
+
+## Absolute vs. relative paths
+
+Working with R and RStudio, the best way is to:
+
+- **Organize your work in an RStudio project**
+  - The project root is automatically the working directory
+  - All your files (also your data) are in one place
+- **Use paths relative to the project root**
+
+. . .
+
+#### Why?
+
+- No need to change the working directory
+- Portable paths: will also work on other machines that copied the project
+- Makes the code more readable
+- Less error prone
+
+# Guidelines for data sets in `r fontawesome::fa("r-project")`{.inverse}
+
+## Data format
+
+Follow these guidelines to make data import to R easier and less frustrating
+
+- In general: prefer machine-readable file formats (`.csv`, `.txt` instead of `.xlsx`)
+
+. . .
+
+Save an Excel spreadsheet as csv
+
+1. `File -> Save As` and select comma separated from the drop down menu
+2. `File -> Export`
+
+![](img/day1/excel_export.png){width=40%}
+  
+## Data format
+
+Follow these guidelines to make data import to R easier and less frustrating
+
+:::{.nonincremental}
+- In general: prefer machine-readable file formats (`.csv`, `.txt` instead of `.xlsx`)
+:::
+
+- No white space in column headers
+  - Use a character as separator, e.g. `species_name` instead of `species name`
+  - If this is unpractical, have a look at the function `janitor::clean_names()` from the [`janitor` package](https://garthtarr.github.io/meatR/janitor.html)
+- Avoid special characters
+  - No ä, ö, ü, ß, é, ê, ...
+- Use `.` as a decimal separator (not `,`)
+
+## Paths
+
+- Avoid white space in paths
+  - `data-raw/my_data.csv` instead of `data raw/my_data.csv`
+- Avoid special characters in paths
+  - No ä, ö, ü, ß, é, ê, ...
+
+
+# Now you {.inverse}
+
+[Task 4 (20 min)]{.highlight-blue}<br>
+
+[Read and write data files]{.big-text}
+
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/01_tasks_controller.html#reading-and-writing-tibbles)**

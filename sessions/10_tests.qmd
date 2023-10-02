@@ -1,0 +1,19 @@
+---
+title: "Statistical tests"
+---
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="slides/tests.html"></iframe>
+```
+
+[Slides in full screen](slides/tests.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/tests.pdf" download>Download PDF slides</a>
+
+# Task
+
+:::{.callout-note}
+
+Find the solution [here](solutions/tests.qmd).
+
+:::
+
+{{< include tasks/tests.qmd >}}

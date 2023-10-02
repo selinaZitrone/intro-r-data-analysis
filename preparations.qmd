@@ -1,0 +1,38 @@
+---
+title: "Course preparations"
+number-sections: true
+---
+
+In order to have a smooth workshop start, you need to prepare a few technical things
+so we can jump right into practicing.
+
+If you don't have R and RStudio installed yet, follow @sec-install. If you just need to update R and RStudio, follow @sec-update.
+
+# Install R and R Studio {#sec-install}
+
+## Download and install R and R Studio for your operating system
+
+On the [posit website](https://posit.co/download/rstudio-desktop/) click on the button "Download and install R". You will get to the a website where on  top you can find a download link for Windows, MacOs and Linux. Chose the appropriate operating system.
+Click on the file that you downloaded and install R following the instructions (leave the suggested defaults during the process).
+
+## Download and install RStudio for your operating system
+
+Download the free RStudio Desktop version for your operating system from by clicking on the "Download Rstudio Desktop" button on the [posit website](https://posit.co/download/rstudio-desktop/). The button should already specify your operating system. If not, you can scroll down on the website and select the installer for your respective system. Install the program following the instructions from the installer.
+
+## Test if everything worked
+
+If both R and RStudio are installed, open RStudio. In the Console (the window on the bottom left where your cursor is and where you can see a > sign), try to type a calculation (e.g. `2 + 2`) and hit Enter to execute it. If R is installed correctly, you should see the result of your calculation printed to the console.
+
+# Update R and R Studio {#sec-update}
+
+## Update RStudio
+
+Open RStudio and click on "Help -> Check for Updates". RStudio will tell you, if there is a newer version available or not. If you already use the most current one, you are all set for the workshop. If not, follow the instructions that RStudio gives you and update your version of RStudio.
+
+## Update R
+
+If you want to check the current installed version of R, open RStudio and type *version* in the console. This will print some information about your R version, among them, the version number.
+
+I will be using R version 4.3.1 (Beagle Scouts). You don't need the newest version of R, but if you are still at a version below 4.2, you should update you version.
+
+If you want to update R, just download and install the newest version of R (see Step 1 for instructions).

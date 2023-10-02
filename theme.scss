@@ -1,0 +1,50 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600&family=Jost:wght@200;300&family=Source+Sans+Pro:ital,wght@0,300;0,400;1,300&display=swap');
+
+// Define base colors
+$white:    #fff !default;
+$white2:   #f8f8f8 !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #ecf0f1 !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #b4bcc2 !default;
+$gray-600: #95a5a6 !default;
+$gray-700: #7b8a8b !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$theme-black: #100F0F !default;
+$theme-white: #F1F1F1 !default;
+$theme-green: #68bda0 !default;
+$theme-yellow: #FFD166;
+$theme-pink: #ff9dd8;
+$theme-blue: #75aadb;
+$theme-blue-light: lighten($theme-blue, 10%);
+$theme-blue-dark: darken($theme-blue, 20%);
+
+$primary:       darken($theme-blue, 30%);
+
+$code-color: darken($theme-green, 20%);
+$body-bg: $white2;
+$body-color: $theme-black;
+$link-color: $theme-blue-dark;
+
+/*-- scss:rules --*/
+
+.slide-deck {
+  border: 3px solid #dee2e6;
+  width: 100%;
+  height: 475px;
+}
+
+@media only screen and (max-width: 600px) {
+ .slide-deck {
+    height: 400px;
+  }
+}
+
+
+
