@@ -2,6 +2,7 @@
 title: "Additional online resources"
 description: |
   Below you can find a collection of helpful links to further online resources regarding the workshop topics.
+number-sections: false
 ---
 
 ## General

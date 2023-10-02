@@ -37,6 +37,8 @@ brainwt_kg <- c(
 )
 ```
 
+## Working with the vectors
+
 - **Check which of the following animals are contained in the `species` vector**
 
 ```{r echo=TRUE}

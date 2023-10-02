@@ -90,6 +90,7 @@ format:
       dark: [darkly]
     toc: true
     number-sections: true
+    number-depth: 3
     code-copy: true
     code-overflow: wrap
     code-line-numbers: true

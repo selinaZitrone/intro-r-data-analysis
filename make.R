@@ -1,11 +1,15 @@
 quarto::quarto_render()
 
 # render slides as pdf
-slides_html <- list.files(here::here("docs/slides"),
-                          pattern = "!00_", full.names = TRUE
+slides_html <- list.files(here::here("docs/sessions/slides"),
+                          pattern = "*.html", full.names = TRUE
 )
 
-lapply(slides_html, function(x) {
+# does not work
+slides_html <- slides_html[4]
+
+lapply(slides_html[5], function(x) {
+  print(paste0("Printing ", x))
   pagedown::chrome_print(x,
                          format = "pdf"
   )

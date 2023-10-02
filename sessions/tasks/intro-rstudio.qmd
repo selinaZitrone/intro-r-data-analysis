@@ -11,6 +11,7 @@ In RStudio go to **Tools -> Global Options -> General** and
 - **Never** "Save workspace to .RData on exit"
 
 ```{r fig.height=20}
+#| echo: false
 knitr::include_graphics(here::here("sessions/tasks/img/setting_workspace.png"))
 ```
 
