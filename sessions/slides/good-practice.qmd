@@ -27,41 +27,11 @@ execute:
 from: markdown+emoji
 ---
 
-## Who am I?
-
-- Ecologist, PhD student for some years and now scientific programmer
-
-. . .
-
-::: {.columns}
-
-
-::: {.column width="50%"}
-:::{.fragement}
-![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](img/2023_04_20_what_they_forgot_to_teach_you/R_rain.gif){fig-alt="Animated gif of the R logo under a dark rain cloud, with pelting rain coming down."}
-:::
-:::
-
-::: {.column width="50%"}
-::: {.fragment}
-
-![](img/2023_04_20_what_they_forgot_to_teach_you/R_love.gif){fig-alt="Animated gif of the R logo with magenta and red hearts moving upward in a loop to the left of the \"R.\""}
-
-:::
-:::
-:::
-
-## What they forgot to teach you about R
-
- It's [a book](https://rstats.wtf/) by J. Bryan and J. Hesters
-
-![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](img/2023_04_20_what_they_forgot_to_teach_you/18_course_content.png){fig-alt="An exasperated teacher holding a box that says \"Another important thing\" walks towards a box labeled \"course content\", where different unruly topics labeled \"essential\", \"core\" etc. are leaping out and running away." width="80%"}
-
 ## Chaotic projects and workflows ...
 
 ... can make even small changes frustrating and difficult.
   
-![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](img/2023_04_20_what_they_forgot_to_teach_you/02_kitchen_chaos.png){fig-alt="A frustrated looking little monster in front of a very disorganized cooking area, with smoke and fire coming from a pot surrounded by a mess of bowls, utensils, and scattered ingredients."}
+![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](img/2023_04_20_what_they_forgot_to_teach_you/02_kitchen_chaos.png){fig-alt="A frustrated looking little monster in front of a very disorganized cooking area, with smoke and fire coming from a pot surrounded by a mess of bowls, utensils, and scattered ingredients." width=80%}
 
 ## Background
 
@@ -72,15 +42,8 @@ from: markdown+emoji
 - **Reusability** :gear: 
   - Can someone else actually use my code?
   
-. . .
-  
-Today: Talk **best practice** rules to write clean, clear and maintainable code.
+# First things first {.inverse}
 
-In other words: How to clean the kitchen?
-
-
-
-# First things first
 Project setup and structure
 
 ## Use R Studio projects
@@ -89,80 +52,7 @@ Project setup and structure
 
 . . .
 
-::: {.columns}
-
-::: {.column width="60%"}
-
-- Keep your files together
-- An R Studio Project is just a normal directory with an `*.Rproj` file
-  - double-click this file to open your project in R Studio
-  
-- Advantages:
-
-  - Easy to navigate in R Studio
-  - Project root is the working directory
-  - Open multiple projects in separate R Studio instances
-:::
-
-::: {.column width="35%"}
-
-![](img/2023_04_20_what_they_forgot_to_teach_you/04_folder_structures_rstudio.png)
-:::
-:::
-
-## Create an R Studio Project
-
-. . .
-
-::: {.fragment}
-
-### From scratch:
-
-::: {.nonincremental}
-
-1. `File -> New Project -> New Directory -> New Project`
-2. Enter a directory name (this will be the name of your project)
-3. Choose the directory where the project should be initiated
-4. `Create Project`
-
-:::
-:::
-
-::: {.fragment}
-
-### Associate an existing folder with an R Studio Project:
-
-::: {.nonincremental}
-
-
-1. `File -> New Project -> Existing Directory`
-2. Choose your project folder
-3. `Create Project`
-
-:::
-:::
-
-## Navigate an R Studio Project
-
-You can use the `Files` pane in R Studio to interact with your project folder:
-
-::: {.columns}
-
-::: {.column width="50%"}
-
-- Navigate and open files
-- Create files and folders
-- Rename and delete
-- ...
-
-:::
-
-::: {.column width="50%"}
-
-![](img/2023_04_20_what_they_forgot_to_teach_you/06_RStudio_project_navigation.png)
-:::
-
-:::
+:white_check_mark: You already did that.
 
 ## Set up your project
 
@@ -170,32 +60,10 @@ You can use the `Files` pane in R Studio to interact with your project folder:
 
 R Studio offers a lot of settings and options. 
 
-So have a :coffee: and check out `Tools -> Global Options` and all the other buttons.
+So have a :coffee: and check out **Tools -> Global Options** and all the other buttons.
 
 - [R Studio cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rstudio-ide.pdf) that explains all the buttons
-- Update R Studio from time to time to get new settings (`Help -> Check for Updates`)
-
-## Set up your project
-
-R Studio offers a lot of settings and options.
-
-::: {.columns}
-
-::: {.column width="60%"}
-
-Most important setting for reproducibility:
-
-- Never save or restore your work space as `.Rdata` -> You always want to start working with a clean slate
-
-:::
-
-::: {.column width="35%"}
-
-::: {.fragment}
-![](img/2023_04_20_what_they_forgot_to_teach_you/15_settings_workspace.png)
-:::
-:::
-:::
+- Update R Studio from time to time to get new settings (**Help -> Check for Updates**)
 
 ## Name your files properly
 
@@ -207,10 +75,14 @@ Your collaborators and your future self will love you for this.
 
 File names should be
 
+:::{.nonincremental}
+
   1. Machine readable
   2. Human readable
   3. Working with default file ordering
-  
+
+:::
+
 [^1]: From [this talk](https://speakerdeck.com/jennybc/how-to-name-files) by J. Bryan
 
 ## 1. Machine readable file names
@@ -249,15 +121,15 @@ Which file names would you like to read at 4 a.m. in the morning?
 
 #### Bad examples :x:
 
-:page_facing_up: `01preparedataforanalysis.R` <br>
+:page_facing_up: `01preparedata.R` <br>
 :page_facing_up: `01firstscript.R` <br>
 
 ::: {.fragment}
 
 #### Good examples :heavy_check_mark: 
 
-:page_facing_up: `01_prepare-data-for-analysis.R` <br>
-:page_facing_up: `01_lm-temperature-trend.R` <br>
+:page_facing_up: `01_prepare-data.R` <br>
+:page_facing_up: `01_temperature-trend-analysis.R` <br>
 
 :::
 
@@ -285,15 +157,29 @@ If you order your files by name, the ordering should make sense:
 
 :::
 
-# Let's start coding
+# Let's start coding {.inverse}
+
+> Good practice R coding
 
 ## Write beautiful code
 
-![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](img/2023_04_20_what_they_forgot_to_teach_you/17_beatuiful_code.png)
+:::{.columns}
+
+:::{.column width="50%"}
 
 - Try to write code that others (i.e. future you) can understand
 - Follow standards for readable and maintainable code
   - For R: [tidyverse style guide](https://style.tidyverse.org/index.html) defines code organization, syntax standards, ...
+
+:::
+
+:::{.column width="50%"}
+
+![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](img/2023_04_20_what_they_forgot_to_teach_you/17_beatuiful_code.png)
+
+:::
+
+:::
 
 ## Standard code structure
 
@@ -338,7 +224,9 @@ input_data <- read_csv(input_file)
 
 ## Mark sections
 
+:::{.nonincremental}
 - Use comments to break up your file into sections
+:::
 
 . . .
 
@@ -360,77 +248,11 @@ ggplot(input_data, aes(x = x, y = y)) +
 
 ![](img/2023_04_20_what_they_forgot_to_teach_you/07_document_outline.png){width="80%"}
 
-
-## Modularize your Code
-
-- Don't put all your code into one long file (hard to maintain)
-  - Write multiple files that can be called sequentially
-    - E.g. `01_prepare-data.R`, `02_lm-temperature-trend.R`, `03_plot-temperture-trends.R`
-  - Write functions that can be called in other scripts
-    - Use the `source()` function to source these files
-    - Have one main workflow script that calls these functions sequentially
-
-## Use save paths
-
-To read and write files, you need to tell R where to find them. 
-
-. . .
-
-Common workflow: set **working directory** with `setwd()`, then read files from there. But to this [Jenny Bryan said](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/):
-
-. . .
-
-> If the first line of your R script is <br>
-  `setwd("C:\Users\jenny\path\that\only\I\have")` <br>
-  I will come into your office and SET YOUR COMPUTER ON FIRE :fire:.
-  
-. . .
-
-#### Why?
-
-This is **100% not reproducible**: Your computer at exactly this time is (probably) the only one in the world that has this working directory
-
-. . .
-
-Avoid `setwd()` if it is possible in any way!
-
-## Avoid `setwd()`
-
-. . .
-
-Use R Studio projects
-
-  - Project root is automatically the working directory
-  - Give your project to a friend at it will work on their machine as well
-
-. . .
-
-Instead of
-
-```{r}
-# my unique path from hell with white space and special characters 
-setwd("C:/Users/Selina's PC/My Projects/Göttingen Temperatures/temperatures")
-
-read_csv("data/2023-04-20_temperature_goettingen.csv")
-```
-
-. . .
-
-You just need
-  
-```{r}
-read_csv("data/2023-04-20_temperature_goettingen.csv")
-```
-
-. . .
-
-If you don't use R Studio Projects, have a look at the [`{here}` package](https://here.r-lib.org/) for reproducible paths
-
 ## Coding style - Object names
 
 . . .
 
-- Variables and function names should only have lowercase letters, numbers, and `_`
+- Variables should only have *lowercase letters*, *numbers*, and *_*
 - Use `snake_case` for longer variable names
 - Try to use concise but meaningful names
 
@@ -514,19 +336,19 @@ mean(x, na.rm=TRUE)
 - Always put spaces after a comma
 - No spaces around parentheses for normal function calls
 - Spaces around most operators (`<-`, `==`, `+`, etc.)
-- Spaces before pipes (`%>%`, `|>`) followed by new line
+- Spaces before pipe (`|>`) followed by new line
 
 :::
 
 ```{r spaces-pipes}
 # Good
-iris %>%
-  group_by(Species) %>%
-  summarize_if(is.numeric, mean) %>%
+iris |> 
+  group_by(Species)  |> 
+  summarize_if(is.numeric, mean)  |> 
   ungroup()
 
 # Bad
-iris %>% group_by(Species) %>% summarize_all(mean) %>% ungroup() 
+iris |> group_by(Species) |> summarize_all(mean) |> ungroup() 
 ```
 
 ## Coding style - Spacing
@@ -536,7 +358,7 @@ iris %>% group_by(Species) %>% summarize_all(mean) %>% ungroup()
 - Always put spaces after a comma
 - No spaces around parentheses for normal function calls
 - Spaces around most operators (`<-`, `==`, `+`, etc.)
-- Spaces before pipes (`%>%`, `|>`) followed by new line
+- Spaces before pipes (`|>`, `|>`) followed by new line
 - Spaces before `+` in ggplot followed by new line
 
 :::
@@ -563,13 +385,13 @@ Try to limit your line width to 80 characters.
 
 ```{r linewidth-ggplot}
 # Bad
-iris %>%
-  group_by(Species) %>%
+iris  |> 
+  group_by(Species) |>
   summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))
 
 # Good
-iris %>%
-  group_by(Species) %>%
+iris |>
+  group_by(Species) |>
   summarise(
     Sepal.Length = mean(Sepal.Length),
     Sepal.Width = mean(Sepal.Width),
@@ -589,9 +411,9 @@ Luckily, no! R and R Studio provide some nice helpers
 
 R Studio has style diagnostics that tell you where something is wrong
 
-- `Tools -> Gloabl Options -> Code -> Diagnostics`
-
 . . .
+
+- **Tools -> Gloabl Options -> Code -> Diagnostics**
 
 ::: {.columns}
 
@@ -607,25 +429,6 @@ R Studio has style diagnostics that tell you where something is wrong
 
 :::
 
-## Coding style helpers - `{lintr}`
-
-The [`lintr` package](https://github.com/jimhester/lintr) analyses your code files or entire project and tells you what to fix.
-
-. . .
-
-```{r}
-# install the package before you can use it
-install.packages("lintr")
-# lint specific file
-lintr::lint(filename = "analysis/01_prepare_data.R")
-# lint a directory (by default the whole project)
-lintr::lint_dir()
-```
-
-## Coding style helpers - `{lintr}`
-
-![](img/2023_04_20_what_they_forgot_to_teach_you/16_lintr_output.png){fig-align="center"}
-
 ## Coding style helpers - `{styler}`
 
 The [styler package](http://styler.r-lib.org/) package automatically styles your files and projects
@@ -638,7 +441,7 @@ according to the tidyverse style guide.
 install.packages("styler")
 ```
 
-- Use the R Studio `Addins` for styler:
+- Use the R Studio **Addins** for styler:
 
 . . .
 
@@ -647,60 +450,14 @@ install.packages("styler")
 ## Coding style helpers - `{styler}`
 
 - Pro-Tip: Add a custom keyboard short cut to style your files
-  - `Tools -> Modify Keyboard Shortcuts`
+  - **Tools -> Modify Keyboard Shortcuts**
   
 . . .
   
 ![](img/2023_04_20_what_they_forgot_to_teach_you/13_styler_shortcut.png)
 
-# Summary
-
 ## Clean projects and workflows ...
 
 ... allow you and others to work productively.
 
-![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](img/2023_04_20_what_they_forgot_to_teach_you/03_kitchen_clean.png){fig-alt="An organized kitchen with sections labeled \"tools\", \"report\" and \"files\", while a monster in a chef's hat stirs in a bowl labeled \"code.\""}
-
-## Take aways
-
-There are a lot of things that require minimal effort and that you can start to implement into your workflow NOW
-
-1. Use R Studio projects -> Avoid `setwd()`!
-2. Keep your projects clean
-  - Sort your files into folders
-  - Give your files meaningful names
-3. Use `styler` to style your code automatically 
-4. Use `lintr` and let R analyse your project
-5. Consider `renv` for project local environments
-
-## Outlook
-
-Of course there is much more:
-
-- Version control with Git
-- Using R packages to build a research compendium
-- Docker containers for full reproducibility
-- ...
-
-. . . 
-
-But this is for another time
-
-# Thank you for your attention :) 
-Questions?
-
-# References
-
-:::{.nonincremental}
-
-- [What they forgot to teach you about R book](https://rstats.wtf/) by Jenny Bryan and Jim Hester
-- [Blogpost](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/) by Jenny Bryan on good project-oriented workflows
-- [R best practice blogpost](https://kdestasio.github.io/post/r_best_practices/) by Krista L. DeStasio
-- [Book about coding style for R](https://style.tidyverse.org/): The tidyverse style guide
-- [The Turing way book](https://the-turing-way.netlify.app/index.html) General concepts and things to think about regarding reproducible research
-
-- [renv package website](https://rstudio.github.io/renv/articles/renv.html)
-- [styler package website](https://styler.r-lib.org/)
-- [lintr package website](https://lintr.r-lib.org/)
-
-:::
+![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](img/2023_04_20_what_they_forgot_to_teach_you/03_kitchen_clean.png){fig-alt="An organized kitchen with sections labeled \"tools\", \"report\" and \"files\", while a monster in a chef's hat stirs in a bowl labeled \"code.\"" width=80%}

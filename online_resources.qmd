@@ -20,6 +20,7 @@ description: |
 
 - The [Tidyverse style guide](https://style.tidyverse.org/) provides information on how to style your code according to good practice.
 
+- Book [What they forgot to teach you about R](https://rstats.wtf/) by J. Bryan and J. Hesters contains a lot of very nice good practice tips for R code and R projects.
 
 ## Tidyverse
 
