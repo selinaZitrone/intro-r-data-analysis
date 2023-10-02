@@ -8,6 +8,8 @@ First, I load the `tidyverse` package to have all readr functions available. The
 
 ```{r}
 #| include: false
+library(tibble)
+library(readr)
 species <- c(
   "MountainBeaver", "Cow", "GreyWolf", "Goat",
   "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
@@ -41,9 +43,11 @@ animals <- tibble(
 )
 ```
 
-```{r  echo=TRUE, eval=FALSE}
+```{r eval=FALSE}
 library(tidyverse)
+```
 
+```{r}
 # The variable animals with the tibble from the previous task
 animals
 ```
@@ -51,8 +55,7 @@ animals
 Now I write the `animals` table into my project's `data/` folder:
 
 
-
-```{r echo=TRUE, eval=FALSE}
+```{r eval=FALSE}
 write_csv(x = animals, file = "data/animals.csv") # write as csv
 write_tsv(x = animals, file = "data/animals.txt") # write as txt
 ```
