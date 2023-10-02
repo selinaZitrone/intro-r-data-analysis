@@ -1,7 +1,3 @@
----
-number-sections: true
----
-
 ## Getting started
 
 A helpful resource to consult for this task can be the [ggplot2 cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf).

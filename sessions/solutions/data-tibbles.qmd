@@ -1,6 +1,5 @@
 ---
 title: "Solution to tibble tasks"
-number-sections: true
 ---
 
 ## Creating a tibble

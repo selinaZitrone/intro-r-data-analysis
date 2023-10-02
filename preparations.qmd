@@ -1,6 +1,5 @@
 ---
 title: "Course preparations"
-number-sections: true
 ---
 
 In order to have a smooth workshop start, you need to prepare a few technical things

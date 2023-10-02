@@ -1,6 +1,5 @@
 ---
 title: "Solution to statistical test task"
-number-sections: true
 ---
 
 ## Compare the flipper length of penguins using statistical tests

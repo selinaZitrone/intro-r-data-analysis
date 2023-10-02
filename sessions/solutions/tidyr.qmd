@@ -1,6 +1,5 @@
 ---
 title: "Solution to tidyr task"
-number-sections: true
 ---
 
 ## Getting started with tidyr

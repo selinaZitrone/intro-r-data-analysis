@@ -1,7 +1,3 @@
----
-number-sections: true
----
-
 ## Getting started with tibbles
 
 Before you start the task:

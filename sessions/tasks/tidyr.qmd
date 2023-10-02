@@ -1,7 +1,3 @@
----
-number-sections: true
----
-
 ## Getting started with tidyr
 
 Before you start, make sure to load the `tidyverse` package.

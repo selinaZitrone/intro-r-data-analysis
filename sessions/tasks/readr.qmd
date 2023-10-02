@@ -1,7 +1,3 @@
----
-number-sections: true
----
-
 ## Getting started with readr and the tidyverse
 
 Before you start, make sure to install the `tidyverse` packages by calling

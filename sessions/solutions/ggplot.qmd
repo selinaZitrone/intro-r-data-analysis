@@ -1,6 +1,5 @@
 ---
 title: "Solution to ggplot tasks"
-number-sections: true
 ---
 
 ## Getting started with ggplot and palmerpenguins
