@@ -42,7 +42,6 @@ Really great list with links to ggplot tutorials (sorted by topic and difficulty
 - A great [workshop on ggplot by Cédric Scherer](https://rstudio-conf-2022.github.io/ggplot2-graphic-design/) with everything from basics of ggplot, over using colors, graphic design and plot composition.
 
  
-
 ### dplyr
 
 - [dplyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf)

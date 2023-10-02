@@ -27,6 +27,29 @@ execute:
 from: markdown+emoji
 ---
 
+# {.background-no-title .inverse}
+
+![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/ggplot2_exploratory.png){widht=70%}
+
+## `ggplot(data)`
+
+The `ggplot()` function initializes a ggplot object. Every ggplot needs this function.
+
+. . .
+
+```{r}
+#| output-location: column-fragment
+#| fig-width: 6.3
+#| fig-height: 6.3
+library(ggplot2) # or library(tidyverse)
+library(lterdatasampler)
+
+ggplot(data = and_vertebrates)
+```
+
+- Empty plot because we did not specify the mapping of data variables
+
+
 # Examples in light mode
 
 > And a block quote

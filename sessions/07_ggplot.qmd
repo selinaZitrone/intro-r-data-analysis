@@ -12,7 +12,7 @@ title: "Data visualization with ggplot2"
 
 :::{.callout-note}
 
-Find the solution [here](solutions/ggplot.qmd).
+## Find the solution [here](solutions/ggplot.qmd){target="_blank"}.
 
 :::
 
