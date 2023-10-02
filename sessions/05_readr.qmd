@@ -12,7 +12,7 @@ title: "Import and Export Data with readr"
 
 :::{.callout-note}
 
-Find the solution [here](solutions/readr.qmd).
+## Find the solution [here](solutions/readr.qmd){target="_blank"}.
 
 :::
 

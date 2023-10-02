@@ -2,13 +2,12 @@
 title: "Solution to readr task"
 ---
 
-## Create a tibble and write it
+## Write a tibble to disk
 
-Load the package and create the tibble:
+First, I load the `tidyverse` package to have all readr functions available. Then I will write the tibble that I called `animals` from the [previous task](02_data-tibbles.qmd).
 
-```{r  echo=TRUE, eval=FALSE}
-library(tidyverse)
-
+```{r}
+#| include: false
 species <- c(
   "MountainBeaver", "Cow", "GreyWolf", "Goat",
   "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
@@ -40,34 +39,56 @@ animals <- tibble(
   bodywt_kg = bodywt_kg,
   brainwt_kg = brainwt_kg
 )
-
 ```
 
-Writing the data to disk:
+```{r  echo=TRUE, eval=FALSE}
+library(tidyverse)
 
-Note: In order for this command to work, the `/data` directory must already be present in your working directory.
+# The variable animals with the tibble from the previous task
+animals
+```
+
+Now I write the `animals` table into my project's `data/` folder:
+
+
 
 ```{r echo=TRUE, eval=FALSE}
 write_csv(x = animals, file = "data/animals.csv") # write as csv
 write_tsv(x = animals, file = "data/animals.txt") # write as txt
 ```
 
+:::{.callout-note}
+
+In order for this command to work, the `/data` directory must already be present in your working directory. Otherwise the path cannot be found
+and you will get an error message.
+
+:::
+
+
 ## Read data into R
 
-Read the same data back into R:
+Now I take the same data that I just wrote and read it back into R:
 
 ```{r echo=TRUE, eval=FALSE}
 animals_csv <- read_csv("data/animals.csv") # read the csv
 animals_tsv <- read_tsv("data/animals.txt") # read the txt
 ```
 
-If you use the `Files` pane to open data files, you can view them in R Studio. For csv files, you have the additional option to click on an `Import Dataset` button.
+:::{.callout-note}
+
+I saved the data that I read in in two new variables: `animals_csv` and `animals_tsv`. You always need to do this, otherwise you don't have the data available for the following analysis.
+
+:::
+
+## Extra
+
+You can use the **Files pane** to import csv files. Just click on the csv file and then click on the **Import Dataset** button:
 
 ```{r echo=FALSE}
 knitr::include_graphics(here::here("sessions/tasks/img/readr_import_button.png"))
 ```
 
-If you click on this button, have the possibility to import the data set via a graphical user interface. 
+Now have the possibility to import a data set via a graphical user interface. 
 
 ```{r echo=FALSE}
 knitr::include_graphics(here::here("sessions/tasks/img/readr_import_options.png"))
@@ -76,3 +97,11 @@ knitr::include_graphics(here::here("sessions/tasks/img/readr_import_options.png"
 This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct `read_*()` function arguments. 
 
 Just play with these different options of reading data into R and find one that fits you best.
+
+:::{callout-warning}
+
+This workflow is not reproducible. If you use this option to import data, you have to click the button every time you want to import the data set.
+
+Importing the data set directly in your script using R code is the much better option. But check out the **Code Preview** window in the bottom right. You can just copy the code from there, paste it in your script and next time use the code instead of the graphical user interface.
+
+:::

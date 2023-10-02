@@ -23,11 +23,11 @@ execute:
   echo: true
   warning: false
   message: false
+knitr: 
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
 from: markdown+emoji
-title-slide-attributes: 
-  data-background-image: img/hex-stickers/readr.png
-  data-background-position: 90% 85%
-  data-background-size: "20%"
 ---
 
 # The tidyverse{.inverse}
@@ -49,18 +49,17 @@ These are the main packages from the tidyverse that we will use:<br><br>
 
 ## Workflow data analysis
 
+:::{.r-stack}
 
-![](img/day1/datascience_workflow_tidyverse.png){fig-align="center"}
-
-:::{.aside}
-
-Image adapted from Wickham & Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)
+![Image adapted from Wickham & Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)](img/day1/datascience_workflow_tidyverse.png){fig-align="center"}
 
 :::
 
 ## The tidyverse
 
 Install the tidyverse once with:
+
+<br>
 
 ```{r eval=FALSE}
 install.packages("tidyverse")
@@ -104,7 +103,7 @@ All `read_*` functions take a path to the data file as a first argument:
 
 :::{.r-stack}
 
-<code><b>read_*(file = ["path/to/your/file"]{.col-yellow}, ...)</b></code>
+<code><b>read_*(file = "path/to/your/file", ...)</b></code>
 
 :::
 
@@ -150,7 +149,11 @@ Useful if your data is not a "perfect table"
 
 Specify number of lines to skip reading with `skip`
 
+:::{.nonincremental}
+
 - Useful if you have metadata on top of the file
+
+:::
 
 :::
 
@@ -212,7 +215,11 @@ print(read_csv(file = "data/meta_data_top.csv", skip=4))
 
 Specify whether the data has a header column or not with `col_names`
 
+:::{.nonincremental}
+
 - Useful if you don't have column names or you want to change them
+
+:::
 
 :::
 
@@ -273,7 +280,11 @@ print(read_csv(file = "data/no_col_names.csv", col_names = FALSE))
 
 Specify whether the data has a header column or not with `col_names`
 
+:::{.nonincremental}
+
 - Useful if you don't have column names or you want to change them
+
+:::
 
 :::
 
@@ -284,8 +295,6 @@ Specify whether the data has a header column or not with `col_names`
 :::
 
 :::
-
-. . .
 
 :::{.columns}
 
@@ -343,10 +352,11 @@ Write data from R e.g.
 All `write_*` functions take the data to write as the first and the file to write to as the second argument:
 
 :::{.r-stack}
- <code><b>write_\*(x = [dat]{.col-green}, file = ["path/to/save/file.\*"]{.col-yellow}, ...)</b></code>
+ <code><b>write_\*(x = dat, file = "path/to/save/file.\*", ...)</b></code>
 :::
 
 <br>
+
 . . .
 
 ```{r eval=FALSE}
@@ -354,6 +364,7 @@ write_csv(dat, file = "data-clean/your_data.csv") # comma delimiter
 
 write_tsv(dat, file = "data-clean/your_data.txt") # tab delimiter
 ```
+<br>
 
 . . .
 
@@ -403,7 +414,7 @@ dat <- read_excel(path = "data/your_data.xlsx", sheet = 2) # via sheet number
 
 A little warning:
 
-- Reading from a csv file is more reliable
+- Reading from a text file (.txt or .csv) is more reliable
 - Be careful with complicated excel sheets with formulas etc.
 - Always double check the data that you imported, e.g. by using the `summary` function and checking 
 if the number of rows etc. is correct
@@ -482,8 +493,8 @@ Follow these guidelines to make data import to R easier and less frustrating
 
 # Now you {.inverse}
 
-[Task 4 (20 min)]{.highlight-blue}<br>
+[Task (20 min)]{.highlight-blue}<br>
 
 [Read and write data files]{.big-text}
 
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/01_tasks_controller.html#reading-and-writing-tibbles)**
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/05_readr.html)**
