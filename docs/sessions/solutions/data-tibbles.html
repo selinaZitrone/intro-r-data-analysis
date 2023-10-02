@@ -4625,9 +4625,9 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#creating-a-tibble" id="toc-creating-a-tibble" class="nav-link active" data-scroll-target="#creating-a-tibble"><span class="header-section-number">1</span> Creating a tibble</a></li>
-  <li><a href="#exploring-the-tibble" id="toc-exploring-the-tibble" class="nav-link" data-scroll-target="#exploring-the-tibble"><span class="header-section-number">2</span> Exploring the tibble</a></li>
-  <li><a href="#indexing-and-selecting" id="toc-indexing-and-selecting" class="nav-link" data-scroll-target="#indexing-and-selecting"><span class="header-section-number">3</span> Indexing and selecting</a></li>
+  <li><a href="#create-a-tibble" id="toc-create-a-tibble" class="nav-link active" data-scroll-target="#create-a-tibble"><span class="header-section-number">1</span> Create a tibble</a></li>
+  <li><a href="#explore-the-tibble" id="toc-explore-the-tibble" class="nav-link" data-scroll-target="#explore-the-tibble"><span class="header-section-number">2</span> Explore the tibble</a></li>
+  <li><a href="#index-filter-and-select" id="toc-index-filter-and-select" class="nav-link" data-scroll-target="#index-filter-and-select"><span class="header-section-number">3</span> Index, filter and select</a></li>
   <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra"><span class="header-section-number">4</span> Extra</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/selinaZitrone/intro-r-data-analysis/edit/master/sessions/solutions/data-tibbles.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/selinaZitrone/intro-r-data-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -4652,10 +4652,10 @@ vertical-align: -.125em;
 
 </header>
 
-<section id="creating-a-tibble" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="creating-a-tibble"><span class="header-section-number">1</span> Creating a tibble</h2>
+<section id="create-a-tibble" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="create-a-tibble"><span class="header-section-number">1</span> Create a tibble</h2>
 <p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from the last task and put them in a tibble.</p>
-<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-1_738dfb155255ee3fc10440396419374a">
+<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-1_c6317a6baaa00e97fc5e859bac774414">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># install.packages(&quot;tibble&quot;)</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tibble)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -4684,7 +4684,7 @@ vertical-align: -.125em;
 <span id="cb1-26"><a href="#cb1-26"></a>  <span class="fl">0.0019</span>, <span class="fl">0.1545</span>, <span class="fl">0.003</span>, <span class="fl">0.18</span></span>
 <span id="cb1-27"><a href="#cb1-27"></a>)</span>
 <span id="cb1-28"><a href="#cb1-28"></a></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co"># Creating the tibble </span></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co"># Create the tibble </span></span>
 <span id="cb1-30"><a href="#cb1-30"></a>animals <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb1-31"><a href="#cb1-31"></a>  <span class="at">species =</span> species,</span>
 <span id="cb1-32"><a href="#cb1-32"></a>  <span class="at">bodywt_kg =</span> bodywt_kg,</span>
@@ -4692,12 +4692,13 @@ vertical-align: -.125em;
 <span id="cb1-34"><a href="#cb1-34"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="exploring-the-tibble" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="exploring-the-tibble"><span class="header-section-number">2</span> Exploring the tibble</h2>
-<p>In the view window that opens, you have some options to filter the data and sort rows.</p>
+<section id="explore-the-tibble" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="explore-the-tibble"><span class="header-section-number">2</span> Explore the tibble</h2>
+<p>In the view window that opens, you have some options to filter the data and sort rows. Check out these options as well.</p>
 <div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-2_31be038b334776ea5193984745efbe78">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">view</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Print a summary of the table:</p>
 <div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-3_25be245c7722045d433d9adc73626285">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">summary</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -4730,8 +4731,8 @@ vertical-align: -.125em;
 </div>
 </div>
 </section>
-<section id="indexing-and-selecting" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="indexing-and-selecting"><span class="header-section-number">3</span> Indexing and selecting</h2>
+<section id="index-filter-and-select" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="index-filter-and-select"><span class="header-section-number">3</span> Index, filter and select</h2>
 <ul>
 <li>Rows 1, 5, and 7 and the columns <code>species</code> and <code>bodywt_kg</code></li>
 </ul>
@@ -4747,7 +4748,7 @@ vertical-align: -.125em;
 </div>
 </div>
 <ul>
-<li>Select rows 1 to 10, all columns</li>
+<li>Filter rows 1 to 10, all columns</li>
 </ul>
 <div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-5_03db6410bcc27c3106c8da281c27d497">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>animals[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -4779,7 +4780,6 @@ vertical-align: -.125em;
 [25]     0.30 87000.00     0.10   192.00</code></pre>
 </div>
 </div>
-<hr>
 </section>
 <section id="extra" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="extra"><span class="header-section-number">4</span> Extra</h2>

@@ -4625,7 +4625,7 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#getting-started-with-readr-and-the-tidyverse" id="toc-getting-started-with-readr-and-the-tidyverse" class="nav-link active" data-scroll-target="#getting-started-with-readr-and-the-tidyverse"><span class="header-section-number">1</span> Getting started with readr and the tidyverse</a>
+  <li><a href="#get-started-with-readr-and-the-tidyverse" id="toc-get-started-with-readr-and-the-tidyverse" class="nav-link active" data-scroll-target="#get-started-with-readr-and-the-tidyverse"><span class="header-section-number">1</span> Get started with readr and the tidyverse</a>
   <ul class="collapse">
   <li><a href="#write-a-tibble-to-disk" id="toc-write-a-tibble-to-disk" class="nav-link" data-scroll-target="#write-a-tibble-to-disk"><span class="header-section-number">1.1</span> Write a tibble to disk</a></li>
   </ul></li>
@@ -4639,8 +4639,8 @@ vertical-align: -.125em;
 
 
 
-<section id="getting-started-with-readr-and-the-tidyverse" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="getting-started-with-readr-and-the-tidyverse"><span class="header-section-number">1</span> Getting started with readr and the tidyverse</h2>
+<section id="get-started-with-readr-and-the-tidyverse" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="get-started-with-readr-and-the-tidyverse"><span class="header-section-number">1</span> Get started with readr and the tidyverse</h2>
 <p>Before you start, make sure to install the <code>tidyverse</code> packages by calling</p>
 <div class="cell" data-hash="readr_cache/html/unnamed-chunk-1_81f85e4ec45a60202d3c623876b62a14">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -4652,25 +4652,41 @@ vertical-align: -.125em;
 <p>Let’s use the <code>animals</code> tibble from the previous task and write it into the data folder in our project.</p>
 <p>Before writing the tibble</p>
 <ul>
-<li>Create a <code>data</code> sub-directory in your RStudio project (if you don’t have one yet)
+<li>Create a <code>data</code> sub-folder in your RStudio project (if you don’t have one yet)
 <ul>
 <li>Hint: You can do that from within RStudio by using the <code>New Folder</code> button in the <em>Files pane</em></li>
 </ul></li>
 </ul>
-<p>Now write the <code>animals</code> tibble to that <code>/data</code> sub-directory as <code>animals.csv</code> using a comma separator.</p>
+<p>Now write the <code>animals</code> tibble into that <code>/data</code> sub-directory as <code>animals.csv</code> using a comma separator.</p>
 <p>Check if the file was written into the correct folder.</p>
 </section>
 </section>
 <section id="read-data-into-r" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="read-data-into-r"><span class="header-section-number">2</span> Read data into R</h2>
 <p>Now, try to read the data set back into R using the appropriate <code>read_*</code> function.</p>
-<hr>
+<p>Make sure that you save the table you read in in a new variable to have it available for later use.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Don’t type the input path of the table to read. Instead, make the “” to start writing the path and then us the tab key on your keyboard to auto-complete.</p>
+</div>
+</div>
 </section>
 <section id="extra" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="extra"><span class="header-section-number">3</span> Extra</h2>
-<p>Navigate to your <code>data</code> directory using the <code>Files</code> pane of RStudio. Click on both the <code>.csv</code> file that you just saved there. What can you do? Try the <code>Import Dataset</code> button and see what you can do there.</p>
 <ul>
-<li>Try reading some <code>xlsx</code> or <code>csv</code> tables that you have on your machine into R</li>
+<li><p>Navigate to your <code>data/</code> folder using the <strong>Files pane</strong> of RStudio. Click on the <code>.csv</code> file that you just saved there. What can you do? Try the <strong>Import Dataset</strong> button and see what you can do there.</p></li>
+<li><p>Try reading some <code>xlsx</code> or <code>csv</code> tables that you have on your machine into R</p>
+<ul>
+<li>First copy the table into the <code>data/</code> folder in your project, then use the appropiate function to read in the data</li>
+</ul></li>
 </ul>
 
 

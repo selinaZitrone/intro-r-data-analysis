@@ -4625,11 +4625,11 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#task" id="toc-task" class="nav-link active" data-scroll-target="#task">Task</a>
+  <li><a href="#task" id="toc-task" class="nav-link active" data-scroll-target="#task"><span class="header-section-number">1</span> Task</a>
   <ul class="collapse">
-  <li><a href="#getting-started-with-tidyr" id="toc-getting-started-with-tidyr" class="nav-link" data-scroll-target="#getting-started-with-tidyr">Getting started with tidyr</a></li>
-  <li><a href="#lets-tidy-some-data-sets" id="toc-lets-tidy-some-data-sets" class="nav-link" data-scroll-target="#lets-tidy-some-data-sets">Let’s tidy some data sets</a></li>
-  <li><a href="#extras" id="toc-extras" class="nav-link" data-scroll-target="#extras">Extras</a></li>
+  <li><a href="#getting-started-with-tidyr" id="toc-getting-started-with-tidyr" class="nav-link" data-scroll-target="#getting-started-with-tidyr"><span class="header-section-number">1.1</span> Getting started with tidyr</a></li>
+  <li><a href="#lets-tidy-some-data-sets" id="toc-lets-tidy-some-data-sets" class="nav-link" data-scroll-target="#lets-tidy-some-data-sets"><span class="header-section-number">1.2</span> Let’s tidy some data sets</a></li>
+  <li><a href="#extras" id="toc-extras" class="nav-link" data-scroll-target="#extras"><span class="header-section-number">1.3</span> Extras</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/selinaZitrone/intro-r-data-analysis/edit/master/sessions/09_tidyr.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/selinaZitrone/intro-r-data-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -4656,8 +4656,8 @@ vertical-align: -.125em;
 
 <iframe class="slide-deck" width="780" height="500" src="slides/tidyr.html"></iframe>
 <p><a href="slides/tidyr.html" target="_blank">Slides in full screen</a>     <a href="slides/tidyr.pdf" download>Download PDF slides</a></p>
-<section id="task" class="level1">
-<h1>Task</h1>
+<section id="task" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Task</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4671,15 +4671,15 @@ Note
 <p>Find the solution <a href="../sessions/solutions/tidyr.html">here</a>.</p>
 </div>
 </div>
-<section id="getting-started-with-tidyr" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started-with-tidyr">Getting started with tidyr</h2>
+<section id="getting-started-with-tidyr" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="getting-started-with-tidyr"><span class="header-section-number">1.1</span> Getting started with tidyr</h2>
 <p>Before you start, make sure to load the <code>tidyverse</code> package.</p>
 <div class="cell" data-hash="09_tidyr_cache/html/unnamed-chunk-1_c48a9e03e7d32c1db5f0e5120896ff33">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="lets-tidy-some-data-sets" class="level2">
-<h2 class="anchored" data-anchor-id="lets-tidy-some-data-sets">Let’s tidy some data sets</h2>
+<section id="lets-tidy-some-data-sets" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="lets-tidy-some-data-sets"><span class="header-section-number">1.2</span> Let’s tidy some data sets</h2>
 <p>First, complete all the tasks before you move to the <strong>extras</strong>.</p>
 <p><strong>1. <code>relig_incom</code></strong></p>
 <p>Have a look at the <code>relig_income</code> data set that is included in tidyverse package. The data set contains the results of a survey asking people about their religion and income category.</p>
@@ -4689,8 +4689,8 @@ Note
 <p>What is not tidy about this data set? Can you fix it?</p>
 <hr>
 </section>
-<section id="extras" class="level2">
-<h2 class="anchored" data-anchor-id="extras">Extras</h2>
+<section id="extras" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="extras"><span class="header-section-number">1.3</span> Extras</h2>
 <ul>
 <li>Check out the <code>values_drop_na</code> and <code>names_prefix</code> argument of <code>pivot_longer</code>. What does it do and how can you use it with the <code>billboard</code> data?</li>
 <li>This is a bit tricky: How would you have to change the <code>penguins</code> table if you wanted to make such a plot:</li>

@@ -4640,10 +4640,10 @@ vertical-align: -.125em;
 <h2 data-number="1" class="anchored" data-anchor-id="change-settings"><span class="header-section-number">1</span> Change settings</h2>
 <p>Before you get started, there is an important setting that you should change in RStudio. By default, RStudio will save the workspace of your current session in an <code>.Rdata</code> file. This would allow you to start the next session exactly where you left it by loading the <code>.Rdata</code> file.</p>
 <p>This is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.</p>
-<p>In RStudio go to <code>Tools -&gt; Global Options -&gt; General</code> and</p>
+<p>In RStudio go to <strong>Tools -&gt; Global Options -&gt; General</strong> and</p>
 <ul>
-<li>Remove the check mark for “Restore <code>.RData</code> into workspace at startup”</li>
-<li><strong>Never</strong> save workspace to <code>.RData</code> on exit</li>
+<li>Remove the check mark for “Restore .RData into workspace at startup”</li>
+<li><strong>Never</strong> “Save workspace to .RData on exit”</li>
 </ul>
 <div class="cell" data-hash="intro-rstudio_cache/html/unnamed-chunk-1_8be43fd86b790fd4cfd25a9bdddb4777">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;sessions/tasks/img/setting_workspace.png&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -4654,26 +4654,28 @@ vertical-align: -.125em;
 </section>
 <section id="create-an-rstudio-project" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="create-an-rstudio-project"><span class="header-section-number">2</span> Create an RStudio project</h2>
-<p>Create an RStudio project for all the scripts, notes, data, etc. from this workshop.</p>
-<ul>
+<p>Create an RStudio project for all the scripts, notes, data, etc. from this workshop:</p>
+<ol type="1">
 <li>Create a project in a directory of your choice following the instructions from the slides</li>
-<li>Use the <code>File</code> pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days
+<li>Use the <strong>Files pane</strong> in RStudio to create a basic folder structure in your project which will be filled with files in the next days</li>
+</ol>
 <ul>
-<li>E.g. create the folders <code>data</code>, <code>R</code>, <code>documents</code>,…</li>
-<li>You can always change the structure of your project later, but for now, we want some basic folders that we can navigate</li>
-</ul></li>
+<li>Folder <code>data/</code> for all data files</li>
+<li>Folder <code>R/</code> for all R scripts</li>
+<li>Folder <code>docs/</code> for other documents (e.g. lecture notes or slides)</li>
+<li>You can always change the structure of your project later</li>
 </ul>
 <p>You can add files to your project either directly in RStudio, or in the file explorer of your operating system.</p>
 </section>
 <section id="add-an-r-script-to-the-project" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="add-an-r-script-to-the-project"><span class="header-section-number">3</span> Add an R script to the project</h2>
 <ul>
-<li>Create a new R script and save it in the appropriate folder of your project (e.g. <code>scripts</code> or <code>R</code>)</li>
+<li>Create a new R script and save it in the <code>R/</code> folder of your project</li>
 <li>Copy and paste the code from below into your script
 <ul>
 <li>Don’t worry if you don’t understand the code yet, we will learn all this later</li>
 </ul></li>
-<li>Run the code in the script line by line. Try both, running code using the <code>Run</code> button (in the top right corner of your script pane) and the keyboard shortcut <code>Ctrl/Cmd + Enter/Return</code>
+<li>Run the code in the script line by line. Try both, running code using the <strong>Run button</strong> (in the top right corner of your script pane) and the keyboard shortcut <code>Ctrl/Cmd + Enter</code>
 <ul>
 <li>For each line that you run, observe what is happening to the different panes (console, environment, …) in RStudio. Can you explain what is happening?</li>
 </ul></li>

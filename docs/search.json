@@ -32,28 +32,28 @@
     "href": "sessions/tasks/readr.html",
     "title": "",
     "section": "",
-    "text": "Before you start, make sure to install the tidyverse packages by calling\n\ninstall.packages(\"tidyverse\")\n\nThis will install readr along with other tidyverse packages.\nRemember to put library(tidyverse) (or library(readr)) on top of your script to access the readr functions.\n\n\nLet’s use the animals tibble from the previous task and write it into the data folder in our project.\nBefore writing the tibble\n\nCreate a data sub-directory in your RStudio project (if you don’t have one yet)\n\nHint: You can do that from within RStudio by using the New Folder button in the Files pane\n\n\nNow write the animals tibble to that /data sub-directory as animals.csv using a comma separator.\nCheck if the file was written into the correct folder."
+    "text": "Before you start, make sure to install the tidyverse packages by calling\n\ninstall.packages(\"tidyverse\")\n\nThis will install readr along with other tidyverse packages.\nRemember to put library(tidyverse) (or library(readr)) on top of your script to access the readr functions.\n\n\nLet’s use the animals tibble from the previous task and write it into the data folder in our project.\nBefore writing the tibble\n\nCreate a data sub-folder in your RStudio project (if you don’t have one yet)\n\nHint: You can do that from within RStudio by using the New Folder button in the Files pane\n\n\nNow write the animals tibble into that /data sub-directory as animals.csv using a comma separator.\nCheck if the file was written into the correct folder."
   },
   {
-    "objectID": "sessions/tasks/readr.html#getting-started-with-readr-and-the-tidyverse",
-    "href": "sessions/tasks/readr.html#getting-started-with-readr-and-the-tidyverse",
+    "objectID": "sessions/tasks/readr.html#get-started-with-readr-and-the-tidyverse",
+    "href": "sessions/tasks/readr.html#get-started-with-readr-and-the-tidyverse",
     "title": "",
     "section": "",
-    "text": "Before you start, make sure to install the tidyverse packages by calling\n\ninstall.packages(\"tidyverse\")\n\nThis will install readr along with other tidyverse packages.\nRemember to put library(tidyverse) (or library(readr)) on top of your script to access the readr functions.\n\n\nLet’s use the animals tibble from the previous task and write it into the data folder in our project.\nBefore writing the tibble\n\nCreate a data sub-directory in your RStudio project (if you don’t have one yet)\n\nHint: You can do that from within RStudio by using the New Folder button in the Files pane\n\n\nNow write the animals tibble to that /data sub-directory as animals.csv using a comma separator.\nCheck if the file was written into the correct folder."
+    "text": "Before you start, make sure to install the tidyverse packages by calling\n\ninstall.packages(\"tidyverse\")\n\nThis will install readr along with other tidyverse packages.\nRemember to put library(tidyverse) (or library(readr)) on top of your script to access the readr functions.\n\n\nLet’s use the animals tibble from the previous task and write it into the data folder in our project.\nBefore writing the tibble\n\nCreate a data sub-folder in your RStudio project (if you don’t have one yet)\n\nHint: You can do that from within RStudio by using the New Folder button in the Files pane\n\n\nNow write the animals tibble into that /data sub-directory as animals.csv using a comma separator.\nCheck if the file was written into the correct folder."
   },
   {
     "objectID": "sessions/tasks/readr.html#read-data-into-r",
     "href": "sessions/tasks/readr.html#read-data-into-r",
     "title": "",
     "section": "2 Read data into R",
-    "text": "2 Read data into R\nNow, try to read the data set back into R using the appropriate read_* function."
+    "text": "2 Read data into R\nNow, try to read the data set back into R using the appropriate read_* function.\nMake sure that you save the table you read in in a new variable to have it available for later use.\n\n\n\n\n\n\nTip\n\n\n\nDon’t type the input path of the table to read. Instead, make the “” to start writing the path and then us the tab key on your keyboard to auto-complete."
   },
   {
     "objectID": "sessions/tasks/readr.html#extra",
     "href": "sessions/tasks/readr.html#extra",
     "title": "",
     "section": "3 Extra",
-    "text": "3 Extra\nNavigate to your data directory using the Files pane of RStudio. Click on both the .csv file that you just saved there. What can you do? Try the Import Dataset button and see what you can do there.\n\nTry reading some xlsx or csv tables that you have on your machine into R"
+    "text": "3 Extra\n\nNavigate to your data/ folder using the Files pane of RStudio. Click on the .csv file that you just saved there. What can you do? Try the Import Dataset button and see what you can do there.\nTry reading some xlsx or csv tables that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropiate function to read in the data"
   },
   {
     "objectID": "sessions/tasks/intro-r.html",
@@ -137,21 +137,28 @@
     "href": "sessions/solutions/readr.html",
     "title": "Solution to readr task",
     "section": "",
-    "text": "Load the package and create the tibble:\n\nlibrary(tidyverse)\n\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)\n\n# Creating the tibble \nanimals &lt;- tibble(\n  species = species,\n  bodywt_kg = bodywt_kg,\n  brainwt_kg = brainwt_kg\n)\n\nWriting the data to disk:\nNote: In order for this command to work, the /data directory must already be present in your working directory.\n\nwrite_csv(x = animals, file = \"data/animals.csv\") # write as csv\nwrite_tsv(x = animals, file = \"data/animals.txt\") # write as txt"
+    "text": "First, I load the tidyverse package to have all readr functions available. Then I will write the tibble that I called animals from the previous task.\n\nlibrary(tidyverse)\n\n\n# The variable animals with the tibble from the previous task\nanimals\n\n# A tibble: 28 × 3\n   species        bodywt_kg brainwt_kg\n   &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;\n 1 MountainBeaver       1.4     0.0081\n 2 Cow                465       0.423 \n 3 GreyWolf            36.3     0.120 \n 4 Goat                27.7     0.115 \n 5 GuineaPig            1       0.0055\n 6 Diplodocus       11700       0.05  \n 7 AsianElephant     2547       4.60  \n 8 Donkey             187.      0.419 \n 9 Horse              521       0.655 \n10 PotarMonkey         10       0.115 \n# ℹ 18 more rows\n\n\nNow I write the animals table into my project’s data/ folder:\n\nwrite_csv(x = animals, file = \"data/animals.csv\") # write as csv\nwrite_tsv(x = animals, file = \"data/animals.txt\") # write as txt\n\n\n\n\n\n\n\nNote\n\n\n\nIn order for this command to work, the /data directory must already be present in your working directory. Otherwise the path cannot be found and you will get an error message."
   },
   {
-    "objectID": "sessions/solutions/readr.html#create-a-tibble-and-write-it",
-    "href": "sessions/solutions/readr.html#create-a-tibble-and-write-it",
+    "objectID": "sessions/solutions/readr.html#write-a-tibble-to-disk",
+    "href": "sessions/solutions/readr.html#write-a-tibble-to-disk",
     "title": "Solution to readr task",
     "section": "",
-    "text": "Load the package and create the tibble:\n\nlibrary(tidyverse)\n\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)\n\n# Creating the tibble \nanimals &lt;- tibble(\n  species = species,\n  bodywt_kg = bodywt_kg,\n  brainwt_kg = brainwt_kg\n)\n\nWriting the data to disk:\nNote: In order for this command to work, the /data directory must already be present in your working directory.\n\nwrite_csv(x = animals, file = \"data/animals.csv\") # write as csv\nwrite_tsv(x = animals, file = \"data/animals.txt\") # write as txt"
+    "text": "First, I load the tidyverse package to have all readr functions available. Then I will write the tibble that I called animals from the previous task.\n\nlibrary(tidyverse)\n\n\n# The variable animals with the tibble from the previous task\nanimals\n\n# A tibble: 28 × 3\n   species        bodywt_kg brainwt_kg\n   &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;\n 1 MountainBeaver       1.4     0.0081\n 2 Cow                465       0.423 \n 3 GreyWolf            36.3     0.120 \n 4 Goat                27.7     0.115 \n 5 GuineaPig            1       0.0055\n 6 Diplodocus       11700       0.05  \n 7 AsianElephant     2547       4.60  \n 8 Donkey             187.      0.419 \n 9 Horse              521       0.655 \n10 PotarMonkey         10       0.115 \n# ℹ 18 more rows\n\n\nNow I write the animals table into my project’s data/ folder:\n\nwrite_csv(x = animals, file = \"data/animals.csv\") # write as csv\nwrite_tsv(x = animals, file = \"data/animals.txt\") # write as txt\n\n\n\n\n\n\n\nNote\n\n\n\nIn order for this command to work, the /data directory must already be present in your working directory. Otherwise the path cannot be found and you will get an error message."
   },
   {
     "objectID": "sessions/solutions/readr.html#read-data-into-r",
     "href": "sessions/solutions/readr.html#read-data-into-r",
     "title": "Solution to readr task",
     "section": "2 Read data into R",
-    "text": "2 Read data into R\nRead the same data back into R:\n\nanimals_csv &lt;- read_csv(\"data/animals.csv\") # read the csv\nanimals_tsv &lt;- read_tsv(\"data/animals.txt\") # read the txt\n\nIf you use the Files pane to open data files, you can view them in R Studio. For csv files, you have the additional option to click on an Import Dataset button.\n\n\n\n\n\nIf you click on this button, have the possibility to import the data set via a graphical user interface.\n\n\n\n\n\nThis is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct read_*() function arguments.\nJust play with these different options of reading data into R and find one that fits you best."
+    "text": "2 Read data into R\nNow I take the same data that I just wrote and read it back into R:\n\nanimals_csv &lt;- read_csv(\"data/animals.csv\") # read the csv\nanimals_tsv &lt;- read_tsv(\"data/animals.txt\") # read the txt\n\n\n\n\n\n\n\nNote\n\n\n\nI saved the data that I read in in two new variables: animals_csv and animals_tsv. You always need to do this, otherwise you don’t have the data available for the following analysis."
+  },
+  {
+    "objectID": "sessions/solutions/readr.html#extra",
+    "href": "sessions/solutions/readr.html#extra",
+    "title": "Solution to readr task",
+    "section": "3 Extra",
+    "text": "3 Extra\nYou can use the Files pane to import csv files. Just click on the csv file and then click on the Import Dataset button:\n\n\n\n\n\nNow have the possibility to import a data set via a graphical user interface.\n\n\n\n\n\nThis is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct read_*() function arguments.\nJust play with these different options of reading data into R and find one that fits you best.\n\nThis workflow is not reproducible. If you use this option to import data, you have to click the button every time you want to import the data set.\nImporting the data set directly in your script using R code is the much better option. But check out the Code Preview window in the bottom right. You can just copy the code from there, paste it in your script and next time use the code instead of the graphical user interface."
   },
   {
     "objectID": "sessions/solutions/ggplot.html",
@@ -326,14 +333,7 @@
     "href": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio-1",
     "title": "Introduction to RStudio",
     "section": "Difference between R and RStudio",
-    "text": "Difference between R and RStudio\n\n\n R is the programming language and the program that does the actual work\n\n\nRStudio is the integrated development environment (IDE)\n\n\n\n\n\n\n\n\nSummary\n\n\nYou can use R without RStudio but RStudio without R would be of little use"
-  },
-  {
-    "objectID": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio-2",
-    "href": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio-2",
-    "title": "Introduction to RStudio",
-    "section": "Difference between R and RStudio",
-    "text": "Difference between R and RStudio\n\n\nR is like the engine\n\nRStudio is more like the dashboard, etc.\n\n\n\n\n\nAnalogy and image from ModernDive Book"
+    "text": "Difference between R and RStudio\n\n\n\n\n\n\n\n\n\n\nAnalogy and image from ModernDive Book\n\n\n\n\n\n\n\n\n\nSummary\n\n\nYou can use R without RStudio but RStudio without R would be of little use"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#basic-idea-of-writing-code-for-data-analysis",
@@ -441,18 +441,11 @@
     "text": "Open a project inside RStudio\nTo open an RStudio project from RStudio, click on the project symbol on the top right of R Studio and select the project from the list."
   },
   {
-    "objectID": "sessions/slides/good-practice.html#who-am-i",
-    "href": "sessions/slides/good-practice.html#who-am-i",
-    "title": "Good practice R coding",
-    "section": "Who am I?",
-    "text": "Who am I?\n\nEcologist, PhD student for some years and now scientific programmer\n\n\n\n\n\n\n\n\nArtwork by Allison Horst, CC BY 4.0"
-  },
-  {
-    "objectID": "sessions/slides/good-practice.html#what-they-forgot-to-teach-you-about-r",
-    "href": "sessions/slides/good-practice.html#what-they-forgot-to-teach-you-about-r",
-    "title": "Good practice R coding",
-    "section": "What they forgot to teach you about R",
-    "text": "What they forgot to teach you about R\nIt’s a book by J. Bryan and J. Hesters\n\n\n\nArtwork by Allison Horst, CC BY 4.0"
+    "objectID": "sessions/slides/intro-rstudio.html#a-tip-before-we-get-started",
+    "href": "sessions/slides/intro-rstudio.html#a-tip-before-we-get-started",
+    "title": "Introduction to RStudio",
+    "section": "A tip before we get started",
+    "text": "A tip before we get started\n Learn the most important keyboard shortcuts of R Studio.\n\nFind all shortcuts under Tools -&gt; Keyboard Shortcuts Help\n\n\nSave active file: Ctrl/Cmd + S\nRun current line: Ctrl/Cmd + Enter\nCreate new R Script: Ctrl/Cmd + N\nUndo: Ctrl/Cmd + Z\nRedo: Ctrl/Cmd + Y\nCopy/Paste: Ctrl/Cmd + C/V"
   },
   {
     "objectID": "sessions/slides/good-practice.html#chaotic-projects-and-workflows",
@@ -466,28 +459,14 @@
     "href": "sessions/slides/good-practice.html#background",
     "title": "Good practice R coding",
     "section": "Background",
-    "text": "Background\n\nReproducibility 🔄\n\nCan someone else reproduce my results?\n\nReliability 🏋\n\nWill my code work in the future?\n\nReusability ⚙️\n\nCan someone else actually use my code?\n\n\n\nToday: Talk best practice rules to write clean, clear and maintainable code.\nIn other words: How to clean the kitchen?"
+    "text": "Background\n\nReproducibility 🔄\n\nCan someone else reproduce my results?\n\nReliability 🏋\n\nWill my code work in the future?\n\nReusability ⚙️\n\nCan someone else actually use my code?"
   },
   {
     "objectID": "sessions/slides/good-practice.html#use-r-studio-projects",
     "href": "sessions/slides/good-practice.html#use-r-studio-projects",
     "title": "Good practice R coding",
     "section": "Use R Studio projects",
-    "text": "Use R Studio projects\nAlways make your project an R Studio Project (if possible)!\n\n\n\n\nKeep your files together\nAn R Studio Project is just a normal directory with an *.Rproj file\n\ndouble-click this file to open your project in R Studio\n\nAdvantages:\n\nEasy to navigate in R Studio\nProject root is the working directory\nOpen multiple projects in separate R Studio instances"
-  },
-  {
-    "objectID": "sessions/slides/good-practice.html#create-an-r-studio-project",
-    "href": "sessions/slides/good-practice.html#create-an-r-studio-project",
-    "title": "Good practice R coding",
-    "section": "Create an R Studio Project",
-    "text": "Create an R Studio Project\n\n\n\nFrom scratch:\n\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nEnter a directory name (this will be the name of your project)\nChoose the directory where the project should be initiated\nCreate Project\n\n\n\n\n\nAssociate an existing folder with an R Studio Project:\n\n\nFile -&gt; New Project -&gt; Existing Directory\nChoose your project folder\nCreate Project"
-  },
-  {
-    "objectID": "sessions/slides/good-practice.html#navigate-an-r-studio-project",
-    "href": "sessions/slides/good-practice.html#navigate-an-r-studio-project",
-    "title": "Good practice R coding",
-    "section": "Navigate an R Studio Project",
-    "text": "Navigate an R Studio Project\nYou can use the Files pane in R Studio to interact with your project folder:\n\n\n\nNavigate and open files\nCreate files and folders\nRename and delete\n…"
+    "text": "Use R Studio projects\nAlways make your project an R Studio Project (if possible)!\n\n✅ You already did that."
   },
   {
     "objectID": "sessions/slides/good-practice.html#set-up-your-project",
@@ -497,18 +476,11 @@
     "text": "Set up your project\n\nR Studio offers a lot of settings and options.\nSo have a ☕ and check out Tools -&gt; Global Options and all the other buttons.\n\nR Studio cheat sheet that explains all the buttons\nUpdate R Studio from time to time to get new settings (Help -&gt; Check for Updates)"
   },
   {
-    "objectID": "sessions/slides/good-practice.html#set-up-your-project-1",
-    "href": "sessions/slides/good-practice.html#set-up-your-project-1",
-    "title": "Good practice R coding",
-    "section": "Set up your project",
-    "text": "Set up your project\nR Studio offers a lot of settings and options.\n\n\nMost important setting for reproducibility:\n\nNever save or restore your work space as .Rdata -&gt; You always want to start working with a clean slate"
-  },
-  {
     "objectID": "sessions/slides/good-practice.html#name-your-files-properly",
     "href": "sessions/slides/good-practice.html#name-your-files-properly",
     "title": "Good practice R coding",
     "section": "Name your files properly",
-    "text": "Name your files properly\nYour collaborators and your future self will love you for this.\n\nPrinciples 1\nFile names should be\n\nMachine readable\nHuman readable\nWorking with default file ordering\n\n\nFrom this talk by J. Bryan"
+    "text": "Name your files properly\nYour collaborators and your future self will love you for this.\n\nPrinciples 1\nFile names should be\n\n\nMachine readable\nHuman readable\nWorking with default file ordering\n\n\n\nFrom this talk by J. Bryan"
   },
   {
     "objectID": "sessions/slides/good-practice.html#machine-readable-file-names",
@@ -522,7 +494,7 @@
     "href": "sessions/slides/good-practice.html#human-readable-file-names",
     "title": "Good practice R coding",
     "section": "2. Human readable file names",
-    "text": "2. Human readable file names\nWhich file names would you like to read at 4 a.m. in the morning?\n\nFile names should reveal the file content\nUse separators to make it readable\n\n\nBad examples ❌\n📄 01preparedataforanalysis.R  📄 01firstscript.R \n\n\nGood examples ✔️\n📄 01_prepare-data-for-analysis.R  📄 01_lm-temperature-trend.R"
+    "text": "2. Human readable file names\nWhich file names would you like to read at 4 a.m. in the morning?\n\nFile names should reveal the file content\nUse separators to make it readable\n\n\nBad examples ❌\n📄 01preparedata.R  📄 01firstscript.R \n\n\nGood examples ✔️\n📄 01_prepare-data.R  📄 01_temperature-trend-analysis.R"
   },
   {
     "objectID": "sessions/slides/good-practice.html#default-ordering",
@@ -536,7 +508,7 @@
     "href": "sessions/slides/good-practice.html#write-beautiful-code",
     "title": "Good practice R coding",
     "section": "Write beautiful code",
-    "text": "Write beautiful code\n\n\n\nArtwork by Allison Horst, CC BY 4.0\n\n\n\nTry to write code that others (i.e. future you) can understand\nFollow standards for readable and maintainable code\n\nFor R: tidyverse style guide defines code organization, syntax standards, …"
+    "text": "Write beautiful code\n\n\n\nTry to write code that others (i.e. future you) can understand\nFollow standards for readable and maintainable code\n\nFor R: tidyverse style guide defines code organization, syntax standards, …\n\n\n\n\n\n\nArtwork by Allison Horst, CC BY 4.0"
   },
   {
     "objectID": "sessions/slides/good-practice.html#standard-code-structure",
@@ -550,35 +522,14 @@
     "href": "sessions/slides/good-practice.html#mark-sections",
     "title": "Good practice R coding",
     "section": "Mark sections",
-    "text": "Mark sections\n\nUse comments to break up your file into sections\n\n\n\n# Load data ---------------------------------------------------------------\n\ninput_data &lt;- read_csv(input_file)\n\n# Plot data ---------------------------------------------------------------\n\nggplot(input_data, aes(x = x, y = y)) +\n  geom_point()\n\n\nInsert a section label with Ctrl/Cmd + Shift\nNavigate sections in the file outline"
-  },
-  {
-    "objectID": "sessions/slides/good-practice.html#modularize-your-code",
-    "href": "sessions/slides/good-practice.html#modularize-your-code",
-    "title": "Good practice R coding",
-    "section": "Modularize your Code",
-    "text": "Modularize your Code\n\nDon’t put all your code into one long file (hard to maintain)\n\nWrite multiple files that can be called sequentially\n\nE.g. 01_prepare-data.R, 02_lm-temperature-trend.R, 03_plot-temperture-trends.R\n\nWrite functions that can be called in other scripts\n\nUse the source() function to source these files\nHave one main workflow script that calls these functions sequentially"
-  },
-  {
-    "objectID": "sessions/slides/good-practice.html#use-save-paths",
-    "href": "sessions/slides/good-practice.html#use-save-paths",
-    "title": "Good practice R coding",
-    "section": "Use save paths",
-    "text": "Use save paths\nTo read and write files, you need to tell R where to find them.\n\nCommon workflow: set working directory with setwd(), then read files from there. But to this Jenny Bryan said:\n\n\n\nIf the first line of your R script is  setwd(\"C:\\Users\\jenny\\path\\that\\only\\I\\have\")  I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.\n\n\n\nWhy?\nThis is 100% not reproducible: Your computer at exactly this time is (probably) the only one in the world that has this working directory\n. . .\nAvoid setwd() if it is possible in any way!"
-  },
-  {
-    "objectID": "sessions/slides/good-practice.html#avoid-setwd",
-    "href": "sessions/slides/good-practice.html#avoid-setwd",
-    "title": "Good practice R coding",
-    "section": "Avoid setwd()",
-    "text": "Avoid setwd()\n\nUse R Studio projects\n\nProject root is automatically the working directory\nGive your project to a friend at it will work on their machine as well\n\n\n\nInstead of\n\n# my unique path from hell with white space and special characters \nsetwd(\"C:/Users/Selina's PC/My Projects/Göttingen Temperatures/temperatures\")\n\nread_csv(\"data/2023-04-20_temperature_goettingen.csv\")\n\n\n\nYou just need\n\nread_csv(\"data/2023-04-20_temperature_goettingen.csv\")\n\n\n\nIf you don’t use R Studio Projects, have a look at the {here} package for reproducible paths"
+    "text": "Mark sections\n\n\nUse comments to break up your file into sections\n\n\n\n\n# Load data ---------------------------------------------------------------\n\ninput_data &lt;- read_csv(input_file)\n\n# Plot data ---------------------------------------------------------------\n\nggplot(input_data, aes(x = x, y = y)) +\n  geom_point()\n\n\nInsert a section label with Ctrl/Cmd + Shift\nNavigate sections in the file outline"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---object-names",
     "href": "sessions/slides/good-practice.html#coding-style---object-names",
     "title": "Good practice R coding",
     "section": "Coding style - Object names",
-    "text": "Coding style - Object names\n\n\nVariables and function names should only have lowercase letters, numbers, and _\nUse snake_case for longer variable names\nTry to use concise but meaningful names\n\n\n\n\n# Good\nday_one\nday_1\n\n# Bad\nDayOne\ndayone\nfirst_day_of_the_month\ndm1"
+    "text": "Coding style - Object names\n\n\nVariables should only have lowercase letters, numbers, and *_*\nUse snake_case for longer variable names\nTry to use concise but meaningful names\n\n\n\n\n# Good\nday_one\nday_1\n\n# Bad\nDayOne\ndayone\nfirst_day_of_the_month\ndm1"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---spacing",
@@ -606,21 +557,21 @@
     "href": "sessions/slides/good-practice.html#coding-style---spacing-3",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipes (%&gt;%, |&gt;) followed by new line\n\n\n\n# Good\niris %&gt;%\n  group_by(Species) %&gt;%\n  summarize_if(is.numeric, mean) %&gt;%\n  ungroup()\n\n# Bad\niris %&gt;% group_by(Species) %&gt;% summarize_all(mean) %&gt;% ungroup()"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipe (|&gt;) followed by new line\n\n\n\n# Good\niris |&gt; \n  group_by(Species)  |&gt; \n  summarize_if(is.numeric, mean)  |&gt; \n  ungroup()\n\n# Bad\niris |&gt; group_by(Species) |&gt; summarize_all(mean) |&gt; ungroup()"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---spacing-4",
     "href": "sessions/slides/good-practice.html#coding-style---spacing-4",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipes (%&gt;%, |&gt;) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipes (|&gt;, |&gt;) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---line-width",
     "href": "sessions/slides/good-practice.html#coding-style---line-width",
     "title": "Good practice R coding",
     "section": "Coding style - Line width",
-    "text": "Coding style - Line width\nTry to limit your line width to 80 characters.\n\nYou don’t want to scroll to the right to read all code\n80 characters can be displayed on most displays and programs\nSplit your code into multiple lines if it is too long\n\nSee this grey vertical line in R Studio?\n\n\n\n\n# Bad\niris %&gt;%\n  group_by(Species) %&gt;%\n  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))\n\n# Good\niris %&gt;%\n  group_by(Species) %&gt;%\n  summarise(\n    Sepal.Length = mean(Sepal.Length),\n    Sepal.Width = mean(Sepal.Width),\n    Species = n_distinct(Species)\n  )"
+    "text": "Coding style - Line width\nTry to limit your line width to 80 characters.\n\nYou don’t want to scroll to the right to read all code\n80 characters can be displayed on most displays and programs\nSplit your code into multiple lines if it is too long\n\nSee this grey vertical line in R Studio?\n\n\n\n\n# Bad\niris  |&gt; \n  group_by(Species) |&gt;\n  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))\n\n# Good\niris |&gt;\n  group_by(Species) |&gt;\n  summarise(\n    Sepal.Length = mean(Sepal.Length),\n    Sepal.Width = mean(Sepal.Width),\n    Species = n_distinct(Species)\n  )"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style",
@@ -634,21 +585,7 @@
     "href": "sessions/slides/good-practice.html#coding-style-helpers---r-studio",
     "title": "Good practice R coding",
     "section": "Coding style helpers - R Studio",
-    "text": "Coding style helpers - R Studio\nR Studio has style diagnostics that tell you where something is wrong\n\nTools -&gt; Gloabl Options -&gt; Code -&gt; Diagnostics"
-  },
-  {
-    "objectID": "sessions/slides/good-practice.html#coding-style-helpers---lintr",
-    "href": "sessions/slides/good-practice.html#coding-style-helpers---lintr",
-    "title": "Good practice R coding",
-    "section": "Coding style helpers - {lintr}",
-    "text": "Coding style helpers - {lintr}\nThe lintr package analyses your code files or entire project and tells you what to fix.\n\n\n# install the package before you can use it\ninstall.packages(\"lintr\")\n# lint specific file\nlintr::lint(filename = \"analysis/01_prepare_data.R\")\n# lint a directory (by default the whole project)\nlintr::lint_dir()"
-  },
-  {
-    "objectID": "sessions/slides/good-practice.html#coding-style-helpers---lintr-1",
-    "href": "sessions/slides/good-practice.html#coding-style-helpers---lintr-1",
-    "title": "Good practice R coding",
-    "section": "Coding style helpers - {lintr}",
-    "text": "Coding style helpers - {lintr}"
+    "text": "Coding style helpers - R Studio\nR Studio has style diagnostics that tell you where something is wrong\n\n\nTools -&gt; Gloabl Options -&gt; Code -&gt; Diagnostics"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style-helpers---styler",
@@ -669,21 +606,7 @@
     "href": "sessions/slides/good-practice.html#clean-projects-and-workflows",
     "title": "Good practice R coding",
     "section": "Clean projects and workflows …",
-    "text": "Clean projects and workflows …\n… allow you and others to work productively.\n\n\n\nArtwork by Allison Horst, CC BY 4.0"
-  },
-  {
-    "objectID": "sessions/slides/good-practice.html#take-aways",
-    "href": "sessions/slides/good-practice.html#take-aways",
-    "title": "Good practice R coding",
-    "section": "Take aways",
-    "text": "Take aways\nThere are a lot of things that require minimal effort and that you can start to implement into your workflow NOW\n\nUse R Studio projects -&gt; Avoid setwd()!\nKeep your projects clean\n\n\nSort your files into folders\nGive your files meaningful names\n\n\nUse styler to style your code automatically\nUse lintr and let R analyse your project\nConsider renv for project local environments"
-  },
-  {
-    "objectID": "sessions/slides/good-practice.html#outlook",
-    "href": "sessions/slides/good-practice.html#outlook",
-    "title": "Good practice R coding",
-    "section": "Outlook",
-    "text": "Outlook\nOf course there is much more:\n\nVersion control with Git\nUsing R packages to build a research compendium\nDocker containers for full reproducibility\n…\n\n\nBut this is for another time"
+    "text": "Clean projects and workflows …\n… allow you and others to work productively.\n\n\n\nArtwork by Allison Horst, CC BY 4.0\n\n\n\n\nSelina Baldauf // Good practice R coding"
   },
   {
     "objectID": "sessions/slides/functions.html#functions-in-r",
@@ -697,7 +620,7 @@
     "href": "sessions/slides/functions.html#the-mean-function",
     "title": "Functions in R",
     "section": "The mean function",
-    "text": "The mean function\nfunction_name ( argument = value )\n\n\n\nmean ( x = c(1,5,6) )\n\nmean(x = c(1,5,6)) # or short: mean(c(1,5,6))\n\n[1] 4\n\n\n\n\n\n\n\n\n\nArguments can also be variables\nThe output of a function can be stored in a variable\n\n\n\nvalues &lt;- c(1,5,6)\nresult &lt;- mean(x = values)\nresult\n\n[1] 4"
+    "text": "The mean function\nfunction_name ( argument = value )\n\n\n\nmean ( x = c(1,5,6) )\n\nmean(x = c(1,5,6)) # or short: mean(c(1,5,6))\n#&gt; [1] 4\n\n\n\n\n\n\n\n\nArguments can also be variables\nThe output of a function can be stored in a variable\n\n\n\nvalues &lt;- c(1,5,6)\nresult &lt;- mean(x = values)\nresult\n#&gt; [1] 4"
   },
   {
     "objectID": "sessions/slides/functions.html#the-mean-function-1",
@@ -718,14 +641,14 @@
     "href": "sessions/slides/functions.html#function-arguments-1",
     "title": "Functions in R",
     "section": "Function arguments",
-    "text": "Function arguments\nWhat happened here?   \n\n# NA is a missing value\nvalues &lt;- c(1, 5, 6, NA)\nmean(x = values)\n\n[1] NA\n\n\n\n  na.rm argument is FALSE by default.\n\n\nSet it to TRUE if you want to calculate the mean despite missing values:\n\nmean(x = values, na.rm = TRUE)\n\n[1] 4\n\n\n\n\n Arguments with default values are optional, arguments without default values are not! \n\nmean()\n\nError in mean.default(): argument \"x\" is missing, with no default"
+    "text": "Function arguments\nWhat happened here?   \n\n# NA is a missing value\nvalues &lt;- c(1, 5, 6, NA)\nmean(x = values)\n#&gt; [1] NA\n\n\n  na.rm argument is FALSE by default.\n\n\nSet it to TRUE if you want to calculate the mean despite missing values:\n\nmean(x = values, na.rm = TRUE)\n#&gt; [1] 4\n\n\n\n Arguments with default values are optional, arguments without default values are not! \n\nmean()\n#&gt; Error in mean.default(): argument \"x\" is missing, with no default"
   },
   {
     "objectID": "sessions/slides/functions.html#function-arguments-2",
     "href": "sessions/slides/functions.html#function-arguments-2",
     "title": "Functions in R",
     "section": "Function arguments",
-    "text": "Function arguments\nArgument matching can be achieved by position or by name\n\nmean(x, trim = 0, na.rm = FALSE, ...)\nvalues &lt;- c(1, 5, 6, NA)\n\n\nThese calls to mean all are the same:\n\nmean(values, , TRUE) # by position\n\n\n\n\n\nmean(x = values, na.rm = TRUE) # by name\n\n\n\n\n\nmean(na.rm = TRUE, x = values) # this also works but is not really nice\n\n\n\n\n\nmean(values, na.rm = TRUE) # a mix of both"
+    "text": "Function arguments\nArgument matching can be achieved by position or by name\n\nmean(x, trim = 0, na.rm = FALSE, ...)\nvalues &lt;- c(1, 5, 6, NA)\n\n\nThese calls to mean all are the same:\n\nmean(values, , TRUE) # by position\n\n\n\n\n\nmean(x = values, na.rm = TRUE) # by name\n\n\n\n\n\nmean(values, na.rm = TRUE) # a mix of both"
   },
   {
     "objectID": "sessions/slides/functions.html#function-arguments-3",
@@ -739,7 +662,7 @@
     "href": "sessions/slides/functions.html#where-do-functions-come-from",
     "title": "Functions in R",
     "section": "Where do functions come from?",
-    "text": "Where do functions come from?\n\n\nBase R functions: built into R\n\n\nmean() # calculate mean\nseq()  # generate a sequence of values\n[]     # This is also a (special) function\n\n\n\n\n\n\nFrom additional packages\n\n\nPackages must be installed first\nCall a function from a package using packageName::functionName()\nLoad the package with library(packageName) and then use the function\n\n\n\n\n\n# use read_csv function from readr package\nreadr::read_csv()\n\n# or use library()\nlibrary(readr)\nread_csv()\n\n\n\n\n\n\n\nCustom functions:\n\nWrite your own functions and then use them in the code\n\n\n\n# custom function that prints input in a sentence\nmy_function &lt;- function(x) {\n  return(x + 5)\n}\nmy_function(5)"
+    "text": "Where do functions come from?\n\n\nBase R functions: built into R\n\n\nmean() # calculate mean\nseq()  # generate a sequence of values\n\n\n\n\n\n\nFrom additional packages\n\n\nPackages must be installed first\nCall a function from a package using packageName::functionName()\nLoad the package with library(packageName) and then use the function\n\n\n\n\n\n# use read_csv function from readr package\nreadr::read_csv()\n\n# or use library()\nlibrary(readr)\nread_csv()\n\n\n\n\n\n\n\nCustom functions:\n\nWrite your own functions and then use them in the code\n\n\n\n# custom function that prints input in a sentence\nmy_function &lt;- function(x) {\n  return(x + 5)\n}\nmy_function(5)"
   },
   {
     "objectID": "sessions/slides/functions.html#summary-1",
@@ -753,7 +676,7 @@
     "href": "sessions/slides/data-tibbles.html#data-frames",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Data frames",
-    "text": "Data frames\nThe built-in data structure for tables in R is a data frame.\n\n\n\nVectors in R can’t represent a table with data that is connected via rows\n\nData frames are one of the biggest and most important ideas in R, and one of the things that make R different from other programming languages.(Wickham, Advanced R)\n\n\n\n\n\n\n\ncities\npopulation\narea_km2\n\n\n\n\nIstanbul\n15100000\n2576\n\n\nMoscow\n12500000\n2561\n\n\nLondon\n9000000\n1572\n\n\nSaint Petersburg\n5400000\n1439\n\n\nBerlin\n3800000\n891\n\n\nMadrid\n3200000\n604\n\n\nKyiv\n3000000\n839\n\n\nRome\n2800000\n1285\n\n\nBucharest\n2200000\n228\n\n\nParis\n2100000\n105"
+    "text": "Data frames\nThe built-in data structure for tables in R is a data frame.\n\n\n\nVectors in R can’t represent data table where values are connected via rows\n\nData frames are one of the biggest and most important ideas in R, and one of the things that make R different from other programming languages.(H. Wickham, Advanced R)\n\n\n\n\n\n\n\ncities\npopulation\narea_km2\n\n\n\n\nIstanbul\n15100000\n2576\n\n\nMoscow\n12500000\n2561\n\n\nLondon\n9000000\n1572\n\n\nSaint Petersburg\n5400000\n1439\n\n\nBerlin\n3800000\n891\n\n\nMadrid\n3200000\n604\n\n\nKyiv\n3000000\n839\n\n\nRome\n2800000\n1285\n\n\nBucharest\n2200000\n228\n\n\nParis\n2100000\n105"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#data-frames-1",
@@ -767,7 +690,7 @@
     "href": "sessions/slides/data-tibbles.html#data-frames-2",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Data frames",
-    "text": "Data frames\nData frames are created with the function data.frame():\n\n\n\ncities &lt;- c(\n  \"Istanbul\", \"Moscow\", \"London\", \n  \"Saint Petersburg\", \"Berlin\",\"Madrid\",\n  \"Kyiv\", \"Rome\", \"Bucharest\",\"Paris\")\n\npopulation &lt;- c(\n  15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6,\n  3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)\n\narea_km2 &lt;- c(2576, 2561, 1572, 1439, \n  891, 604, 839, 1285, 228, 105)\n\n\n\ndata.frame(\n  cities = cities,\n  population = population,\n  area_km2 = area_km2\n  )\n\n\n\n\n\n             cities population area_km2\n1          Istanbul   15100000     2576\n2            Moscow   12500000     2561\n3            London    9000000     1572\n4  Saint Petersburg    5400000     1439\n5            Berlin    3800000      891\n6            Madrid    3200000      604\n7              Kyiv    3000000      839\n8              Rome    2800000     1285\n9         Bucharest    2200000      228\n10            Paris    2100000      105"
+    "text": "Data frames\nData frames are created with the function data.frame():\n\n\n\ncities &lt;- c(\n  \"Istanbul\", \"Moscow\", \"London\", \n  \"Saint Petersburg\", \"Berlin\",\"Madrid\",\n  \"Kyiv\", \"Rome\", \"Bucharest\",\"Paris\")\n\npopulation &lt;- c(\n  15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6,\n  3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)\n\narea_km2 &lt;- c(2576, 2561, 1572, 1439, \n  891, 604, 839, 1285, 228, 105)\n\ndata.frame(\n  cities = cities,\n  population = population,\n  area_km2 = area_km2\n  )\n\n\n\n\n#&gt;              cities population area_km2\n#&gt; 1          Istanbul   15100000     2576\n#&gt; 2            Moscow   12500000     2561\n#&gt; 3            London    9000000     1572\n#&gt; 4  Saint Petersburg    5400000     1439\n#&gt; 5            Berlin    3800000      891\n#&gt; 6            Madrid    3200000      604\n#&gt; 7              Kyiv    3000000      839\n#&gt; 8              Rome    2800000     1285\n#&gt; 9         Bucharest    2200000      228\n#&gt; 10            Paris    2100000      105"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#tibbles",
@@ -781,28 +704,21 @@
     "href": "sessions/slides/data-tibbles.html#tibbles-1",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Tibbles",
-    "text": "Tibbles\n  Tibbles are a available from the tibble package.\n\n\nBefore we use tibbles, we need to install the package once using the function install.packages:\n\n# This has do be done only once (in the console, not in the script)\ninstall.packages(\"tibble\")\n\nThen, we need to load and attach the package to our current R session using library:\n\n# This has to be done every time R restarts\n# Put it at the top of a script\nlibrary(tibble)"
+    "text": "Tibbles\n  Tibbles are a available from the tibble package.\n\n\nBefore we use tibbles, we need to install the package once using the function install.packages:\n\n# This has do be done only once (in the console, not in the script)\ninstall.packages(\"tibble\")\n\n\nThen, we need to load the package into our current R session using library:\n\n# This has to be done every time R restarts\n# Put it at the top of your script\nlibrary(tibble)"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#tibbles-2",
     "href": "sessions/slides/data-tibbles.html#tibbles-2",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Tibbles",
-    "text": "Tibbles\nCreate a tibble using the tibble() function:\n\n\n\n\nlibrary(tibble) \n\ntibble(\n  cities = cities,\n  population = population,\n  area_km2 = area_km2\n)\n\n\n\n\n# A tibble: 10 × 3\n   cities           population area_km2\n   &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n 1 Istanbul           15100000     2576\n 2 Moscow             12500000     2561\n 3 London              9000000     1572\n 4 Saint Petersburg    5400000     1439\n 5 Berlin              3800000      891\n 6 Madrid              3200000      604\n 7 Kyiv                3000000      839\n 8 Rome                2800000     1285\n 9 Bucharest           2200000      228\n10 Paris               2100000      105"
-  },
-  {
-    "objectID": "sessions/slides/data-tibbles.html#exploring-tibbles",
-    "href": "sessions/slides/data-tibbles.html#exploring-tibbles",
-    "title": "Tables in R - Data frames and Tibbles",
-    "section": "Exploring tibbles",
-    "text": "Exploring tibbles\nLook at the structure of an object using str():\n\nstr(cities_tbl)\n\ntibble [10 × 3] (S3: tbl_df/tbl/data.frame)\n $ cities    : chr [1:10] \"Istanbul\" \"Moscow\" \"London\" \"Saint Petersburg\" ...\n $ population: num [1:10] 15100000 12500000 9000000 5400000 3800000 3200000 3000000 2800000 2200000 2100000\n $ area_km2  : num [1:10] 2576 2561 1572 1439 891 ...\n\n\n\nOr do it in the environment pane of RStudio (click little blue arrow next to the object):\n\n\n\nstr() works for every R object and is very useful if code doesn’t work and you don’t know why"
+    "text": "Tibbles\nCreate a tibble using the tibble() function:\n\n\n\n\nlibrary(tibble) \n\ntibble(\n  cities = cities,\n  population = population,\n  area_km2 = area_km2\n)\n\n\n\n#&gt; # A tibble: 10 × 3\n#&gt;    cities           population area_km2\n#&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1 Istanbul           15100000     2576\n#&gt;  2 Moscow             12500000     2561\n#&gt;  3 London              9000000     1572\n#&gt;  4 Saint Petersburg    5400000     1439\n#&gt;  5 Berlin              3800000      891\n#&gt;  6 Madrid              3200000      604\n#&gt;  7 Kyiv                3000000      839\n#&gt;  8 Rome                2800000     1285\n#&gt;  9 Bucharest           2200000      228\n#&gt; 10 Paris               2100000      105"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#exploring-tibbles-1",
     "href": "sessions/slides/data-tibbles.html#exploring-tibbles-1",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Exploring tibbles",
-    "text": "Exploring tibbles\nHow many rows?\n\nnrow(cities_tbl)\n\n[1] 10\n\n\n\nHow many columns?\n\nncol(cities_tbl)\n\n[1] 3\n\n\n\n\nWhat are the column headers?\n\nnames(cities_tbl)\n\n[1] \"cities\"     \"population\" \"area_km2\""
+    "text": "Exploring tibbles\nHow many rows?\n\n\nnrow(cities_tbl)\n#&gt; [1] 10\n\n\nHow many columns?\n\nncol(cities_tbl)\n#&gt; [1] 3\n\n\n\nWhat are the column headers?\n\nnames(cities_tbl)\n#&gt; [1] \"cities\"     \"population\" \"area_km2\""
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#exploring-tibbles-2",
@@ -816,7 +732,7 @@
     "href": "sessions/slides/data-tibbles.html#exploring-tibbles-3",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Exploring tibbles",
-    "text": "Exploring tibbles\nGet a quick summary of all columns:\n\nsummary(cities_tbl)\n\n    cities            population          area_km2     \n Length:10          Min.   : 2100000   Min.   : 105.0  \n Class :character   1st Qu.: 2850000   1st Qu.: 662.8  \n Mode  :character   Median : 3500000   Median :1088.0  \n                    Mean   : 5910000   Mean   :1210.0  \n                    3rd Qu.: 8100000   3rd Qu.:1538.8  \n                    Max.   :15100000   Max.   :2576.0"
+    "text": "Exploring tibbles\nGet a quick summary of all columns:\n\n\nsummary(cities_tbl)\n#&gt;     cities            population          area_km2     \n#&gt;  Length:10          Min.   : 2100000   Min.   : 105.0  \n#&gt;  Class :character   1st Qu.: 2850000   1st Qu.: 662.8  \n#&gt;  Mode  :character   Median : 3500000   Median :1088.0  \n#&gt;                     Mean   : 5910000   Mean   :1210.0  \n#&gt;                     3rd Qu.: 8100000   3rd Qu.:1538.8  \n#&gt;                     Max.   :15100000   Max.   :2576.0"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles",
@@ -830,42 +746,42 @@
     "href": "sessions/slides/data-tibbles.html#indexing-tibbles-1",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Indexing tibbles",
-    "text": "Indexing tibbles\n\n# First row and first column\ncities_tbl[1, 1]\n\n# A tibble: 1 × 1\n  cities  \n  &lt;chr&gt;   \n1 Istanbul\n\n\n\nThis is the same as\n\ncities_tbl[1, \"cities\"]"
+    "text": "Indexing tibbles\n\n# First row and first column\ncities_tbl[1, 1]\n#&gt; # A tibble: 1 × 1\n#&gt;   cities  \n#&gt;   &lt;chr&gt;   \n#&gt; 1 Istanbul\n\n\nThis is the same as\n\ncities_tbl[1, \"cities\"]"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles-rows",
     "href": "sessions/slides/data-tibbles.html#indexing-tibbles-rows",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Indexing tibbles: rows",
-    "text": "Indexing tibbles: rows\n\n# rows 1 & 5, all columns:\ncities_tbl[c(1, 5), ]\n\n# A tibble: 2 × 3\n  cities   population area_km2\n  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n1 Istanbul   15100000     2576\n2 Berlin      3800000      891"
+    "text": "Indexing tibbles: rows\n\n# rows 1 & 5, all columns:\ncities_tbl[c(1, 5), ]\n#&gt; # A tibble: 2 × 3\n#&gt;   cities   population area_km2\n#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1 Istanbul   15100000     2576\n#&gt; 2 Berlin      3800000      891"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles-columns",
     "href": "sessions/slides/data-tibbles.html#indexing-tibbles-columns",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Indexing tibbles: columns",
-    "text": "Indexing tibbles: columns\n\n# All rows, first 2 columns\ncities_tbl[ ,1:2] # same as cities_tbl[ , c(1, 2)]\n# same as\ncities_tbl[ ,c(\"cities\", \"population\")]\n\n\n\n# A tibble: 10 × 2\n  cities   population\n  &lt;chr&gt;         &lt;dbl&gt;\n1 Istanbul   15100000\n2 Moscow     12500000\n3 London      9000000\n# ℹ 7 more rows"
+    "text": "Indexing tibbles: columns\n\n# All rows, first 2 columns\ncities_tbl[ ,1:2] # same as cities_tbl[ , c(1, 2)]\n# same as\ncities_tbl[ ,c(\"cities\", \"population\")]\n\n\n#&gt; # A tibble: 10 × 2\n#&gt;   cities   population\n#&gt;   &lt;chr&gt;         &lt;dbl&gt;\n#&gt; 1 Istanbul   15100000\n#&gt; 2 Moscow     12500000\n#&gt; 3 London      9000000\n#&gt; # ℹ 7 more rows"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles-columns-1",
     "href": "sessions/slides/data-tibbles.html#indexing-tibbles-columns-1",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Indexing tibbles: columns",
-    "text": "Indexing tibbles: columns\nIndexing columns by name is usually preferred to indexing by position\n\ncities_tbl[ ,1:2] # okay\ncities_tbl[ ,c(\"cities\", \"population\")] # better\n\nWhy?\n\nCode is much easier to read\nCode is more robust against\n\nchanges in column order\nmistakes in the code (e.g. typos)\n\n\n\n\ncities_tbl[ ,c(1,3)] # 3 instead of 2 -&gt; wrong but no error\ncities_tbl[ ,c(\"cities\", \"popluation\")] # typo -&gt; wrong and error\n\n\n\n\n\n\n\n\n\nGeneral rule\n\n\nGood code produces errors when something unintended or wrong happens"
+    "text": "Indexing tibbles: columns\nIndexing columns by name is usually preferred to indexing by position\n\n\ncities_tbl[ ,1:2] # okay\ncities_tbl[ ,c(\"cities\", \"population\")] # better\n\n\nWhy?\n\nCode is much easier to read\nCode is more robust against\n\nchanges in column order\nmistakes in the code (e.g. typos)\n\n\n\n\ncities_tbl[ ,c(1,3)] # 3 instead of 2 -&gt; wrong but no error\ncities_tbl[ ,c(\"cities\", \"popluation\")] # typo -&gt; wrong and error\n\n\n\n\n\n\n\n\n\nGeneral rule\n\n\nGood code produces errors when something unintended or wrong happens"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#tibbles-select-columns-with",
     "href": "sessions/slides/data-tibbles.html#tibbles-select-columns-with",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Tibbles: Select columns with $",
-    "text": "Tibbles: Select columns with $\nSelect an entire column from a tibble using $ (this returns a vector instead of a tibble):\n\ncities_tbl$cities\n\n [1] \"Istanbul\"         \"Moscow\"           \"London\"           \"Saint Petersburg\"\n [5] \"Berlin\"           \"Madrid\"           \"Kyiv\"             \"Rome\"            \n [9] \"Bucharest\"        \"Paris\""
+    "text": "Tibbles: Select columns with $\nSelect an entire column from a tibble using $ (this returns a vector instead of a tibble):\n\ncities_tbl$cities\n#&gt;  [1] \"Istanbul\"         \"Moscow\"           \"London\"           \"Saint Petersburg\"\n#&gt;  [5] \"Berlin\"           \"Madrid\"           \"Kyiv\"             \"Rome\"            \n#&gt;  [9] \"Bucharest\"        \"Paris\""
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#adding-new-columns",
     "href": "sessions/slides/data-tibbles.html#adding-new-columns",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Adding new columns",
-    "text": "Adding new columns\nNew columns can be added as vectors using the $ operator. The vectors need to have the same length as the tibble has rows.\n\n\n# add a country column\ncities_tbl$country &lt;- c(\n  \"Turkey\", \"Russia\", \"UK\", \"Russia\", \"Germany\", \"Spain\",\n  \"Ukraine\", \"Italy\", \"Romania\", \"France\"\n)\n\n\n\n# A tibble: 10 × 4\n   cities           population area_km2 country\n   &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  \n 1 Istanbul           15100000     2576 Turkey \n 2 Moscow             12500000     2561 Russia \n 3 London              9000000     1572 UK     \n 4 Saint Petersburg    5400000     1439 Russia \n 5 Berlin              3800000      891 Germany\n 6 Madrid              3200000      604 Spain  \n 7 Kyiv                3000000      839 Ukraine\n 8 Rome                2800000     1285 Italy  \n 9 Bucharest           2200000      228 Romania\n10 Paris               2100000      105 France"
+    "text": "Adding new columns\nNew columns can be added as vectors using the $ operator. The vectors need to have the same length as the tibble has rows.\n\n\n# add a country column\ncities_tbl$country &lt;- c(\n  \"Turkey\", \"Russia\", \"UK\", \"Russia\", \"Germany\", \"Spain\",\n  \"Ukraine\", \"Italy\", \"Romania\", \"France\"\n)\n\n\n#&gt; # A tibble: 10 × 4\n#&gt;    cities           population area_km2 country\n#&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  \n#&gt;  1 Istanbul           15100000     2576 Turkey \n#&gt;  2 Moscow             12500000     2561 Russia \n#&gt;  3 London              9000000     1572 UK     \n#&gt;  4 Saint Petersburg    5400000     1439 Russia \n#&gt;  5 Berlin              3800000      891 Germany\n#&gt;  6 Madrid              3200000      604 Spain  \n#&gt;  7 Kyiv                3000000      839 Ukraine\n#&gt;  8 Rome                2800000     1285 Italy  \n#&gt;  9 Bucharest           2200000      228 Romania\n#&gt; 10 Paris               2100000      105 France"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#summary-i",
@@ -1092,6 +1008,13 @@
     "text": "Slides in full screen     Download PDF slides"
   },
   {
+    "objectID": "sessions/11_good-practice.html#good-practice-summary",
+    "href": "sessions/11_good-practice.html#good-practice-summary",
+    "title": "Good coding practice",
+    "section": "1 Good practice summary",
+    "text": "1 Good practice summary\nIn the following you get some tips to style your code for the purpose of good practice, readability and standardization. This is not mandatory for your R code to work but it is nice to have.\n\n1.1 General tip\nHave a look at all the options you have available if you go to Tools -&gt; Global Options. You can click through different sections on the right (the top ones are probably most interesting to you) and for every section there are again some tabs on top that show different options.\nI will show you some useful options below as well.\n\n\n1.2 White space\nUse whitespace around operators, =, &lt;-, …\n\n# works but not so nice\na&lt;-3\nmean(x=c(1,2,3))\n\n[1] 2\n\n2==2\n\n[1] TRUE\n\n# better\na &lt;- 3\nmean(x = c(1,2,3))\n\n[1] 2\n\n2 == 2\n\n[1] TRUE\n\n\nTip:\nYou can turn on information about recommended white space in RStudio. Then RStudio will let you know in the side bar, if you are missing white space that is recommended. This information will look like this:\n\nYou can turn on this option by going to Tools -&gt; Global Options -&gt; Code -&gt; Diagnostics and put a checkmark for Provide R style diagnostics\n\n\n\n1.3 Line width\nLimit the width of a line of code and start a new line regularly. A standard is 80 characters.\nThis for example means:\n\nIn ggplot always start a new line for each layer (after the +)\nIf you have long comments, split them into multiple lines\nIf you have functions with a lot of arguments, put each argument in its own line\n\nThere is a setting in RStudio that helps you with this. It puts a very thin, vertical line into each of your scripts to show you where you should better start a new line. To turn this on go to Tools -&gt; Global Options -&gt; Code -&gt; Display, put a checkmark for Show margin\n\nWhy? Screens are always different and if you write very long lines you have to scroll right to read all your code.\nA ggplot example:\n\n# Don't do this:\nggplot(iris, aes(x = species, y = Petal.Width)) + geom_boxplot()\n\nError in ggplot(iris, aes(x = species, y = Petal.Width)): could not find function \"ggplot\"\n\n# Do this\nggplot(iris, aes(x = species, y = Petal.Width)) + \n  geom_boxplot()\n\nError in ggplot(iris, aes(x = species, y = Petal.Width)): could not find function \"ggplot\"\n\n# Or even this (depending on how long your lines are - here it's a bit\n# overkill):\nggplot(\n  iris,\n  aes(x = species, y = Petal.Width)\n) +\n  geom_boxplot()\n\nError in ggplot(iris, aes(x = species, y = Petal.Width)): could not find function \"ggplot\"\n\n\n\n\n1.4 Use the styler package\nFind the webpage with documentation of the package here.\nThe styler package lets you style sections of your code automatically according to the tidyverse styleguide.\nTo use the package, you need to install it:\n\ninstall.packages(\"styler\")\n\nError in contrib.url(repos, \"source\"): trying to use CRAN without setting a mirror\n\n\nAfter you did that you have some new styling options available. You might have to restart RStudio first.\nNow on top of RStudio, look for Addins, there should now be a section for Styler that looks like this:\n\nThe two interesting options that you have are:\n\nStyle selection: If you highlighted a piece of code (it always has to be an entire section of code, not just a small part of it) and you click on this, the section will be automatically styled for you.\nStyle active file: If you click this, the R file that you have currently open will be styled automatically for you.\n\nI you want, you can also add a keyboard shortcut to RStudio, so you don’t have to click on the Addin buttons but you can style your code with a keyboard shortcut. To to this, go to Tools -&gt; Modify Keyboard Shortcuts. Then on top filter for style and and you can select the styler add in that you want to assign a keyboard shortcut to. Just type in the shortcut you want to use and you can start using the shortcut. My keyboard shortcuts e.g. look like this:"
+  },
+  {
     "objectID": "sessions/09_tidyr.html",
     "href": "sessions/09_tidyr.html",
     "title": "Tidy data with tidyr",
@@ -1102,22 +1025,22 @@
     "objectID": "sessions/09_tidyr.html#getting-started-with-tidyr",
     "href": "sessions/09_tidyr.html#getting-started-with-tidyr",
     "title": "Tidy data with tidyr",
-    "section": "Getting started with tidyr",
-    "text": "Getting started with tidyr\nBefore you start, make sure to load the tidyverse package.\n\nlibrary(tidyverse)"
+    "section": "1.1 Getting started with tidyr",
+    "text": "1.1 Getting started with tidyr\nBefore you start, make sure to load the tidyverse package.\n\nlibrary(tidyverse)"
   },
   {
     "objectID": "sessions/09_tidyr.html#lets-tidy-some-data-sets",
     "href": "sessions/09_tidyr.html#lets-tidy-some-data-sets",
     "title": "Tidy data with tidyr",
-    "section": "Let’s tidy some data sets",
-    "text": "Let’s tidy some data sets\nFirst, complete all the tasks before you move to the extras.\n1. relig_incom\nHave a look at the relig_income data set that is included in tidyverse package. The data set contains the results of a survey asking people about their religion and income category.\nWhat is not tidy about this data set? Can you fix it?\n2. billboard\nHave a look at the billboard data set that is included in the tidyverse package. The data set contains information about the chart rank of songs in the year 2000.\nWhat is not tidy about this data set? Can you fix it?"
+    "section": "1.2 Let’s tidy some data sets",
+    "text": "1.2 Let’s tidy some data sets\nFirst, complete all the tasks before you move to the extras.\n1. relig_incom\nHave a look at the relig_income data set that is included in tidyverse package. The data set contains the results of a survey asking people about their religion and income category.\nWhat is not tidy about this data set? Can you fix it?\n2. billboard\nHave a look at the billboard data set that is included in the tidyverse package. The data set contains information about the chart rank of songs in the year 2000.\nWhat is not tidy about this data set? Can you fix it?"
   },
   {
     "objectID": "sessions/09_tidyr.html#extras",
     "href": "sessions/09_tidyr.html#extras",
     "title": "Tidy data with tidyr",
-    "section": "Extras",
-    "text": "Extras\n\nCheck out the values_drop_na and names_prefix argument of pivot_longer. What does it do and how can you use it with the billboard data?\nThis is a bit tricky: How would you have to change the penguins table if you wanted to make such a plot:\n\n\n\n\n\n\nHint: First use dplyr and only select the columns that you need for the plot. Then think about how to use tidyr to transform the data so it’s ready for ggplot"
+    "section": "1.3 Extras",
+    "text": "1.3 Extras\n\nCheck out the values_drop_na and names_prefix argument of pivot_longer. What does it do and how can you use it with the billboard data?\nThis is a bit tricky: How would you have to change the penguins table if you wanted to make such a plot:\n\n\n\n\n\n\nHint: First use dplyr and only select the columns that you need for the plot. Then think about how to use tidyr to transform the data so it’s ready for ggplot"
   },
   {
     "objectID": "sessions/07_ggplot.html",
@@ -1130,36 +1053,36 @@
     "objectID": "sessions/07_ggplot.html#getting-started",
     "href": "sessions/07_ggplot.html#getting-started",
     "title": "Data visualization with ggplot2",
-    "section": "Getting started",
-    "text": "Getting started\nA helpful resource to consult for this task can be the ggplot2 cheatsheet.\nRemember to put library(tidyverse) (or library(ggplot2)) on top of your script to access the ggplot functions."
+    "section": "1.1 Getting started",
+    "text": "1.1 Getting started\nA helpful resource to consult for this task can be the ggplot2 cheatsheet.\nRemember to put library(tidyverse) (or library(ggplot2)) on top of your script to access the ggplot functions."
   },
   {
     "objectID": "sessions/07_ggplot.html#getting-the-data",
     "href": "sessions/07_ggplot.html#getting-the-data",
     "title": "Data visualization with ggplot2",
-    "section": "Getting the data",
-    "text": "Getting the data\nTo practice plotting with the ggplot2 package, we will use a data set on 3 species of penguins on islands in Antarctica.\n\n\n\n\n\nArtwork by Allison Horst\n\n\n\n\nThe data is available from the palmerpenguins package. To get it, you have to:\n\nInstall the package with install.packages(\"palmerpenguins\")\nLoad the package at the beginning of your script with library(palmerpenguins)\n\nThe data set is called penguins:\n\nThe data set is available after you loaded the package\nJust type penguins in the console and you should see the penguins tibble\nFind a description of the variables in the help page ?penguins\n\nTake a moment to get familiar with the data set and its variables."
+    "section": "1.2 Getting the data",
+    "text": "1.2 Getting the data\nTo practice plotting with the ggplot2 package, we will use a data set on 3 species of penguins on islands in Antarctica.\n\n\n\n\n\nArtwork by Allison Horst\n\n\n\n\nThe data is available from the palmerpenguins package. To get it, you have to:\n\nInstall the package with install.packages(\"palmerpenguins\")\nLoad the package at the beginning of your script with library(palmerpenguins)\n\nThe data set is called penguins:\n\nThe data set is available after you loaded the package\nJust type penguins in the console and you should see the penguins tibble\nFind a description of the variables in the help page ?penguins\n\nTake a moment to get familiar with the data set and its variables."
   },
   {
     "objectID": "sessions/07_ggplot.html#exploratory-plotting",
     "href": "sessions/07_ggplot.html#exploratory-plotting",
     "title": "Data visualization with ggplot2",
-    "section": "Exploratory plotting",
-    "text": "Exploratory plotting\nExplore the data set and it’s variables with ggplot. Below, you find some suggestions for plots. You can start with the plot type your are most interested in and then continue from there. You don’t have to finish all the plots If you have your own ideas for interesting plots with the penguin data set, feel free to do them instead of the tasks.\nIn the exploratory section, don’t worry about the beauty of your plots. This task is about exploring the data and testing different visualization options in ggplot.\n\nRelationship between bill length and bill depth (scatterplot)\nWhat is the relationship between bill length and bill depth?\n\nCreate a scatterplot with bill length on the x-axis and bill depth on the y-axis\nCan you add a regression line?\nAdd species as color aesthetic. Does your interpretation of the data change?\n\nWhat is the difference between adding color as a global aesthetic or as a local aesthetic of the point layer?\n\nAdd species as shape aesthetic to distinguish the species\n\n\n\nDifference in flipper length between species (boxplot)\nIs there a difference in flipper length between the species?\n\nCreate a boxplot of the flipper length (y-axis) for the different species (x-axis)\nTry adding notches to the boxplots\nExtra: Add a layer with geom_point(). Try setting position = position_jitter() as argument in the point layer. What does it do?\n\n\n\nDifferences between body mass of male and female penguins (boxplot)\nAre male penguins heavier than female penguins? And is this different between the 3 species?\n\nCreate a boxplot with body mass on the y axis and sex on the x axis\nAdd the difference between penguin species to this plot. Try the different options ggplot offers\n\nSpecies as color aesthetic\nSpecies as fill aesthetic\nSpecies as facet using facet_wrap\n\nExtra: What happens if you use geom_violin instead of geom_boxplot? Can you combine both geoms in one plot?\n\n\n\nDistribution of flipper length between species (histogram)\nMake a histogram of the the flipper length separated by species.\nTry different methods of separating the species (color or facet).\nCompare stacked and overlapping histograms.\n\n\nPenguin flipper length by species and sex (heatmap)\nCreate a heat map that shows:\n\nThe categories sex and species on x- and y-axis\nThe flipper length as color"
+    "section": "1.3 Exploratory plotting",
+    "text": "1.3 Exploratory plotting\nExplore the data set and it’s variables with ggplot. Below, you find some suggestions for plots. You can start with the plot type your are most interested in and then continue from there. You don’t have to finish all the plots If you have your own ideas for interesting plots with the penguin data set, feel free to do them instead of the tasks.\nIn the exploratory section, don’t worry about the beauty of your plots. This task is about exploring the data and testing different visualization options in ggplot.\n\n1.3.1 Relationship between bill length and bill depth (scatterplot)\nWhat is the relationship between bill length and bill depth?\n\nCreate a scatterplot with bill length on the x-axis and bill depth on the y-axis\nCan you add a regression line?\nAdd species as color aesthetic. Does your interpretation of the data change?\n\nWhat is the difference between adding color as a global aesthetic or as a local aesthetic of the point layer?\n\nAdd species as shape aesthetic to distinguish the species\n\n\n\n1.3.2 Difference in flipper length between species (boxplot)\nIs there a difference in flipper length between the species?\n\nCreate a boxplot of the flipper length (y-axis) for the different species (x-axis)\nTry adding notches to the boxplots\nExtra: Add a layer with geom_point(). Try setting position = position_jitter() as argument in the point layer. What does it do?\n\n\n\n1.3.3 Differences between body mass of male and female penguins (boxplot)\nAre male penguins heavier than female penguins? And is this different between the 3 species?\n\nCreate a boxplot with body mass on the y axis and sex on the x axis\nAdd the difference between penguin species to this plot. Try the different options ggplot offers\n\nSpecies as color aesthetic\nSpecies as fill aesthetic\nSpecies as facet using facet_wrap\n\nExtra: What happens if you use geom_violin instead of geom_boxplot? Can you combine both geoms in one plot?\n\n\n\n1.3.4 Distribution of flipper length between species (histogram)\nMake a histogram of the the flipper length separated by species.\nTry different methods of separating the species (color or facet).\nCompare stacked and overlapping histograms.\n\n\n1.3.5 Penguin flipper length by species and sex (heatmap)\nCreate a heat map that shows:\n\nThe categories sex and species on x- and y-axis\nThe flipper length as color"
   },
   {
     "objectID": "sessions/07_ggplot.html#beautify-the-plots",
     "href": "sessions/07_ggplot.html#beautify-the-plots",
     "title": "Data visualization with ggplot2",
-    "section": "Beautify the plots",
-    "text": "Beautify the plots\nFirst, choose one of the tasks 1.1 or 1.2, then do task 2 on saving plots. If you still have time, you can come back to the task you didn’t do.\nBut also here, if you have other ideas, feel free to deviate from the tasks.\n\nBeautify the plots from Task 1\nTake the plot from before that you liked the most and try to make them look nicer.\nHere’s a list of ideas:\n\nAdd a theme layer\nCustomize the theme, e.g.\n\nChange the position of the legend\nMake the axis titles bold\n\nChange the color/fill scale of the plot\n\nUse scale_color_manual or scale_fill_manual\nTry scale_color_viridis_d() or scale_fill_viridis_d() with different options\nTry a color scale from the paletteer package\n\nFirst you have to install the package, then have a look at the available palettes\n\n\nChange the labels of the x- and y-axis and add a title to the plot\nMake the points transparent, give them a different shape, …\n\n\n\nCan you reproduce this plot?\nTake a look at this plot:\n\nknitr::include_graphics(here::here(\"sessions/slides/img/figs-penguin/README-flipper-bill-1.png\"))\n\n\n\n\nVisualization from the palmerpenguins package\n\n\n\n\nIt is similar to the one from Task 1-3.1 but more beautiful. Can you reproduce this plot?\nThe colors that are used are:\n\npenguin_cols &lt;- c(\"darkorange\", \"purple\", \"cyan4\")"
+    "section": "1.4 Beautify the plots",
+    "text": "1.4 Beautify the plots\nFirst, choose one of the tasks 1.1 or 1.2, then do task 2 on saving plots. If you still have time, you can come back to the task you didn’t do.\nBut also here, if you have other ideas, feel free to deviate from the tasks.\n\n1.4.1 Beautify the plots from Task 1\nTake the plot from before that you liked the most and try to make them look nicer.\nHere’s a list of ideas:\n\nAdd a theme layer\nCustomize the theme, e.g.\n\nChange the position of the legend\nMake the axis titles bold\n\nChange the color/fill scale of the plot\n\nUse scale_color_manual or scale_fill_manual\nTry scale_color_viridis_d() or scale_fill_viridis_d() with different options\nTry a color scale from the paletteer package\n\nFirst you have to install the package, then have a look at the available palettes\n\n\nChange the labels of the x- and y-axis and add a title to the plot\nMake the points transparent, give them a different shape, …\n\n\n\n1.4.2 Can you reproduce this plot?\nTake a look at this plot:\n\nknitr::include_graphics(here::here(\"sessions/slides/img/figs-penguin/README-flipper-bill-1.png\"))\n\n\n\n\nVisualization from the palmerpenguins package\n\n\n\n\nIt is similar to the one from Task 1-3.1 but more beautiful. Can you reproduce this plot?\nThe colors that are used are:\n\npenguin_cols &lt;- c(\"darkorange\", \"purple\", \"cyan4\")"
   },
   {
     "objectID": "sessions/07_ggplot.html#save-one-of-the-plots-on-your-machine",
     "href": "sessions/07_ggplot.html#save-one-of-the-plots-on-your-machine",
     "title": "Data visualization with ggplot2",
-    "section": "Save one of the plots on your machine",
-    "text": "Save one of the plots on your machine\nSave one of the plots you produced in a variable and then use ggsave to save the plot on your machine. Save the plot in a dedicated plot directory in your RStudio project.\nNote: Make sure the path where you save the image exists. If you e.g. want to save in img/, then you first have to create the img folder in your project directory. For this you can use the Files pane of RStudio.\n\nReferences\nHorst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218."
+    "section": "1.5 Save one of the plots on your machine",
+    "text": "1.5 Save one of the plots on your machine\nSave one of the plots you produced in a variable and then use ggsave to save the plot on your machine. Save the plot in a dedicated plot directory in your RStudio project.\nNote: Make sure the path where you save the image exists. If you e.g. want to save in img/, then you first have to create the img folder in your project directory. For this you can use the Files pane of RStudio.\n\n1.5.1 References\nHorst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218."
   },
   {
     "objectID": "sessions/05_readr.html",
@@ -1169,25 +1092,25 @@
     "text": "Slides in full screen     Download PDF slides"
   },
   {
-    "objectID": "sessions/05_readr.html#getting-started-with-readr-and-the-tidyverse",
-    "href": "sessions/05_readr.html#getting-started-with-readr-and-the-tidyverse",
+    "objectID": "sessions/05_readr.html#get-started-with-readr-and-the-tidyverse",
+    "href": "sessions/05_readr.html#get-started-with-readr-and-the-tidyverse",
     "title": "Import and Export Data with readr",
-    "section": "Getting started with readr and the tidyverse",
-    "text": "Getting started with readr and the tidyverse\nBefore you start, make sure to install the tidyverse packages by calling\n\ninstall.packages(\"tidyverse\")\n\nThis will install readr along with other tidyverse packages.\nRemember to put library(tidyverse) (or library(readr)) on top of your script to access the readr functions.\n\nWrite a tibble to disk\nLet’s use the animals tibble from the previous task and write it into the data folder in our project.\nBefore writing the tibble\n\nCreate a data sub-directory in your RStudio project (if you don’t have one yet)\n\nHint: You can do that from within RStudio by using the New Folder button in the Files pane\n\n\nNow write the animals tibble to that /data sub-directory as animals.csv using a comma separator.\nCheck if the file was written into the correct folder."
+    "section": "1.1 Get started with readr and the tidyverse",
+    "text": "1.1 Get started with readr and the tidyverse\nBefore you start, make sure to install the tidyverse packages by calling\n\ninstall.packages(\"tidyverse\")\n\nThis will install readr along with other tidyverse packages.\nRemember to put library(tidyverse) (or library(readr)) on top of your script to access the readr functions.\n\n1.1.1 Write a tibble to disk\nLet’s use the animals tibble from the previous task and write it into the data folder in our project.\nBefore writing the tibble\n\nCreate a data sub-folder in your RStudio project (if you don’t have one yet)\n\nHint: You can do that from within RStudio by using the New Folder button in the Files pane\n\n\nNow write the animals tibble into that /data sub-directory as animals.csv using a comma separator.\nCheck if the file was written into the correct folder."
   },
   {
     "objectID": "sessions/05_readr.html#read-data-into-r",
     "href": "sessions/05_readr.html#read-data-into-r",
     "title": "Import and Export Data with readr",
-    "section": "Read data into R",
-    "text": "Read data into R\nNow, try to read the data set back into R using the appropriate read_* function."
+    "section": "1.2 Read data into R",
+    "text": "1.2 Read data into R\nNow, try to read the data set back into R using the appropriate read_* function.\nMake sure that you save the table you read in in a new variable to have it available for later use.\n\n\n\n\n\n\nTip\n\n\n\nDon’t type the input path of the table to read. Instead, make the “” to start writing the path and then us the tab key on your keyboard to auto-complete."
   },
   {
     "objectID": "sessions/05_readr.html#extra",
     "href": "sessions/05_readr.html#extra",
     "title": "Import and Export Data with readr",
-    "section": "Extra",
-    "text": "Extra\nNavigate to your data directory using the Files pane of RStudio. Click on both the .csv file that you just saved there. What can you do? Try the Import Dataset button and see what you can do there.\n\nTry reading some xlsx or csv tables that you have on your machine into R"
+    "section": "1.3 Extra",
+    "text": "1.3 Extra\n\nNavigate to your data/ folder using the Files pane of RStudio. Click on the .csv file that you just saved there. What can you do? Try the Import Dataset button and see what you can do there.\nTry reading some xlsx or csv tables that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropiate function to read in the data"
   },
   {
     "objectID": "sessions/03_functions.html",
@@ -1207,22 +1130,22 @@
     "objectID": "sessions/01_intro-rstudio.html#change-settings",
     "href": "sessions/01_intro-rstudio.html#change-settings",
     "title": "Introduction to RStudio",
-    "section": "Change settings",
-    "text": "Change settings\nBefore you get started, there is an important setting that you should change in RStudio. By default, RStudio will save the workspace of your current session in an .Rdata file. This would allow you to start the next session exactly where you left it by loading the .Rdata file.\nThis is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.\nIn RStudio go to Tools -&gt; Global Options -&gt; General and\n\nRemove the check mark for “Restore .RData into workspace at startup”\nNever save workspace to .RData on exit\n\n\nknitr::include_graphics(here::here(\"sessions/tasks/img/setting_workspace.png\"))"
+    "section": "1.1 Change settings",
+    "text": "1.1 Change settings\nBefore you get started, there is an important setting that you should change in RStudio. By default, RStudio will save the workspace of your current session in an .Rdata file. This would allow you to start the next session exactly where you left it by loading the .Rdata file.\nThis is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.\nIn RStudio go to Tools -&gt; Global Options -&gt; General and\n\nRemove the check mark for “Restore .RData into workspace at startup”\nNever save workspace to .RData on exit\n\n\nknitr::include_graphics(here::here(\"sessions/tasks/img/setting_workspace.png\"))"
   },
   {
     "objectID": "sessions/01_intro-rstudio.html#create-an-rstudio-project",
     "href": "sessions/01_intro-rstudio.html#create-an-rstudio-project",
     "title": "Introduction to RStudio",
-    "section": "Create an RStudio project",
-    "text": "Create an RStudio project\nCreate an RStudio project for all the scripts, notes, data, etc. from this workshop.\n\nCreate a project in a directory of your choice following the instructions from the slides\nUse the File pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days\n\nE.g. create the folders data, R, documents,…\nYou can always change the structure of your project later, but for now, we want some basic folders that we can navigate\n\n\nYou can add files to your project either directly in RStudio, or in the file explorer of your operating system."
+    "section": "1.2 Create an RStudio project",
+    "text": "1.2 Create an RStudio project\nCreate an RStudio project for all the scripts, notes, data, etc. from this workshop.\n\nCreate a project in a directory of your choice following the instructions from the slides\nUse the File pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days\n\nE.g. create the folders data, R, documents,…\nYou can always change the structure of your project later, but for now, we want some basic folders that we can navigate\n\n\nYou can add files to your project either directly in RStudio, or in the file explorer of your operating system."
   },
   {
     "objectID": "sessions/01_intro-rstudio.html#add-an-r-script-to-the-project",
     "href": "sessions/01_intro-rstudio.html#add-an-r-script-to-the-project",
     "title": "Introduction to RStudio",
-    "section": "Add an R script to the project",
-    "text": "Add an R script to the project\n\nCreate a new R script and save it in the appropriate folder of your project (e.g. scripts or R)\nCopy and paste the code from below into your script\n\nDon’t worry if you don’t understand the code yet, we will learn all this later\n\nRun the code in the script line by line. Try both, running code using the Run button (in the top right corner of your script pane) and the keyboard shortcut Ctrl/Cmd + Enter/Return\n\nFor each line that you run, observe what is happening to the different panes (console, environment, …) in RStudio. Can you explain what is happening?\n\n\n\n# Look at the first lines of the iris dataset\nhead(iris)\n# What is the iris dataset -&gt; Call the help\n?iris\n# How many rows and columns does the data set have?\nrownum &lt;- nrow(iris)\ncolnum &lt;- ncol(iris)\nprint(paste0(\"The iris dataset has \", rownum, \" rows and \", colnum, \" columns.\"))\n# Some summary statistics on the iris data set\nsummary(iris)\n\n# create a plot\nplot(iris$Petal.Length, iris$Petal.Width,\n  xlab = \"Petal Length\",\n  ylab = \"Petal Width\",\n  main = \"Petal Width vs Petal Length\",\n  pch = 20,\n  col = ifelse(iris$Species == \"setosa\", \"coral1\",\n    ifelse(iris$Species == \"virginica\", \"cyan4\",\n      ifelse(iris$Species == \"versicolor\",\n        \"darkgoldenrod2\", \"grey\"\n      )\n    )\n  )\n)\n# add a legend\nlegend(\"bottomright\", c(\"setosa\", \"virginica\", \"versicolor\"),\n  col = c(\"coral1\", \"cyan4\", \"darkgoldenrod2\"), pch = 20\n)"
+    "section": "1.3 Add an R script to the project",
+    "text": "1.3 Add an R script to the project\n\nCreate a new R script and save it in the appropriate folder of your project (e.g. scripts or R)\nCopy and paste the code from below into your script\n\nDon’t worry if you don’t understand the code yet, we will learn all this later\n\nRun the code in the script line by line. Try both, running code using the Run button (in the top right corner of your script pane) and the keyboard shortcut Ctrl/Cmd + Enter/Return\n\nFor each line that you run, observe what is happening to the different panes (console, environment, …) in RStudio. Can you explain what is happening?\n\n\n\n# Look at the first lines of the iris dataset\nhead(iris)\n# What is the iris dataset -&gt; Call the help\n?iris\n# How many rows and columns does the data set have?\nrownum &lt;- nrow(iris)\ncolnum &lt;- ncol(iris)\nprint(paste0(\"The iris dataset has \", rownum, \" rows and \", colnum, \" columns.\"))\n# Some summary statistics on the iris data set\nsummary(iris)\n\n# create a plot\nplot(iris$Petal.Length, iris$Petal.Width,\n  xlab = \"Petal Length\",\n  ylab = \"Petal Width\",\n  main = \"Petal Width vs Petal Length\",\n  pch = 20,\n  col = ifelse(iris$Species == \"setosa\", \"coral1\",\n    ifelse(iris$Species == \"virginica\", \"cyan4\",\n      ifelse(iris$Species == \"versicolor\",\n        \"darkgoldenrod2\", \"grey\"\n      )\n    )\n  )\n)\n# add a legend\nlegend(\"bottomright\", c(\"setosa\", \"virginica\", \"versicolor\"),\n  col = c(\"coral1\", \"cyan4\", \"darkgoldenrod2\"), pch = 20\n)"
   },
   {
     "objectID": "packages.html",
@@ -1243,35 +1166,35 @@
     "href": "online_resources.html",
     "title": "Additional online resources",
     "section": "",
-    "text": "List of RStudio cheatsheets: You can find a list of all the cheat sheets that RStudio provides there. Below, I listed the individual cheat sheets that are interesting for our course.\nRStudio cheatsheet: Explains the most important buttons, options, keyboard shortcuts, etc that you have in RStudio.\nThe modern dive book explains how to get started with R and data analysis with the tidyverse.\nThe R for Data Science book by Hadley Wickham is a very good book to start with. It is specifically about data analysis using the tidyverse packages.\nThe Big book of R is a book that list all books about R that are freely available only. The book is sorted by topics and can be used to find resources to learn a specific topic.\nA curated collection of R resources. Not just books but also websites, tutorials, help channels, …\nThe Tidyverse style guide provides information on how to style your code according to good practice."
+    "text": "List of RStudio cheatsheets: You can find a list of all the cheat sheets that RStudio provides there. Below, I listed the individual cheat sheets that are interesting for our course.\nRStudio cheatsheet: Explains the most important buttons, options, keyboard shortcuts, etc that you have in RStudio.\nThe modern dive book explains how to get started with R and data analysis with the tidyverse.\nThe R for Data Science book by Hadley Wickham is a very good book to start with. It is specifically about data analysis using the tidyverse packages.\nThe Big book of R is a book that list all books about R that are freely available only. The book is sorted by topics and can be used to find resources to learn a specific topic.\nA curated collection of R resources. Not just books but also websites, tutorials, help channels, …\nThe Tidyverse style guide provides information on how to style your code according to good practice.\nBook What they forgot to teach you about R by J. Bryan and J. Hesters contains a lot of very nice good practice tips for R code and R projects."
   },
   {
     "objectID": "online_resources.html#general",
     "href": "online_resources.html#general",
     "title": "Additional online resources",
     "section": "",
-    "text": "List of RStudio cheatsheets: You can find a list of all the cheat sheets that RStudio provides there. Below, I listed the individual cheat sheets that are interesting for our course.\nRStudio cheatsheet: Explains the most important buttons, options, keyboard shortcuts, etc that you have in RStudio.\nThe modern dive book explains how to get started with R and data analysis with the tidyverse.\nThe R for Data Science book by Hadley Wickham is a very good book to start with. It is specifically about data analysis using the tidyverse packages.\nThe Big book of R is a book that list all books about R that are freely available only. The book is sorted by topics and can be used to find resources to learn a specific topic.\nA curated collection of R resources. Not just books but also websites, tutorials, help channels, …\nThe Tidyverse style guide provides information on how to style your code according to good practice."
+    "text": "List of RStudio cheatsheets: You can find a list of all the cheat sheets that RStudio provides there. Below, I listed the individual cheat sheets that are interesting for our course.\nRStudio cheatsheet: Explains the most important buttons, options, keyboard shortcuts, etc that you have in RStudio.\nThe modern dive book explains how to get started with R and data analysis with the tidyverse.\nThe R for Data Science book by Hadley Wickham is a very good book to start with. It is specifically about data analysis using the tidyverse packages.\nThe Big book of R is a book that list all books about R that are freely available only. The book is sorted by topics and can be used to find resources to learn a specific topic.\nA curated collection of R resources. Not just books but also websites, tutorials, help channels, …\nThe Tidyverse style guide provides information on how to style your code according to good practice.\nBook What they forgot to teach you about R by J. Bryan and J. Hesters contains a lot of very nice good practice tips for R code and R projects."
   },
   {
     "objectID": "online_resources.html#tidyverse",
     "href": "online_resources.html#tidyverse",
     "title": "Additional online resources",
-    "section": "Tidyverse",
-    "text": "Tidyverse\n\nThe tidyverse website has links to all tidyverse packages which all have very good examples and use cases. These websites are an excelent point to get started with a package.\n\n\nreadr\n\ndata import cheatsheet\n\n\n\nggplot\n\nggplot cheatsheet offers an overview of all possibilities of ggplot\nCurated list of ggplot resources: Really great list with links to ggplot tutorials (sorted by topic and difficulty), books, additional packages to make your plots look nicer, …\nIn the R graph gallery you can browse through hundreds of different types of plots and find code to reproduce them.\nA great workshop on ggplot by Cédric Scherer with everything from basics of ggplot, over using colors, graphic design and plot composition.\n\n\n\ndplyr\n\ndplyr cheatsheet\n\n\n\ntidyr\n\ndata import cheatsheet"
+    "section": "2 Tidyverse",
+    "text": "2 Tidyverse\n\nThe tidyverse website has links to all tidyverse packages which all have very good examples and use cases. These websites are an excelent point to get started with a package.\n\n\n2.1 readr\n\ndata import cheatsheet\n\n\n\n2.2 ggplot\n\nggplot cheatsheet offers an overview of all possibilities of ggplot\nCurated list of ggplot resources: Really great list with links to ggplot tutorials (sorted by topic and difficulty), books, additional packages to make your plots look nicer, …\nIn the R graph gallery you can browse through hundreds of different types of plots and find code to reproduce them.\nA great workshop on ggplot by Cédric Scherer with everything from basics of ggplot, over using colors, graphic design and plot composition.\n\n\n\n2.3 dplyr\n\ndplyr cheatsheet\n\n\n\n2.4 tidyr\n\ndata import cheatsheet"
   },
   {
     "objectID": "online_resources.html#linear-models",
     "href": "online_resources.html#linear-models",
     "title": "Additional online resources",
-    "section": "Linear models",
-    "text": "Linear models\n\nanova with R: explanation why an anova is also a linear model"
+    "section": "3 Linear models",
+    "text": "3 Linear models\n\nanova with R: explanation why an anova is also a linear model"
   },
   {
     "objectID": "online_resources.html#twitter-accounts-to-follow",
     "href": "online_resources.html#twitter-accounts-to-follow",
     "title": "Additional online resources",
-    "section": "Twitter accounts to follow",
-    "text": "Twitter accounts to follow\nI personally learn a lot of tricks and find a lot of inspiration and resources by following some R people and accounts on twitter. Often people post helpful tutorials or blogpost that you would not find otherwise. If you are a twitter user, you can try that as well. Some suggestions that are in no way complete are:\n\nCédric Scherer mainly data visualization and ggplot content\nAllison Horst\nRStudio official RStudio account\nHadley Wickham data visualisation, tidyverse\nJenny Bryan\nrOpenSci develop R tools for open science\nOne R Tip a Day one helpful R tip every day\nR posts you might have missed repost R blog posts from different topics"
+    "section": "4 Twitter accounts to follow",
+    "text": "4 Twitter accounts to follow\nI personally learn a lot of tricks and find a lot of inspiration and resources by following some R people and accounts on twitter. Often people post helpful tutorials or blogpost that you would not find otherwise. If you are a twitter user, you can try that as well. Some suggestions that are in no way complete are:\n\nCédric Scherer mainly data visualization and ggplot content\nAllison Horst\nRStudio official RStudio account\nHadley Wickham data visualisation, tidyverse\nJenny Bryan\nrOpenSci develop R tools for open science\nOne R Tip a Day one helpful R tip every day\nR posts you might have missed repost R blog posts from different topics"
   },
   {
     "objectID": "preparations.html",
@@ -1326,15 +1249,15 @@
     "objectID": "sessions/02_intro-r.html#tasks",
     "href": "sessions/02_intro-r.html#tasks",
     "title": "Introduction to R",
-    "section": "Tasks",
-    "text": "Tasks\n\nCheck which of the following animals are contained in the species vector:\n\n\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")\n\n\nCalculate mean and standard deviation of the brain weight\n\nHint: have a look at the summary slides to find the functions\n\nWhich species have a brain weight larger than the mean brain weight of all species?\nCalculate the ratio of brain weight to body weight in percent for all animals and save the result in a new vector\nAre there any animals with a larger brain to body weight ratio than humans? If yes, which ones?\n\nHint: calculate the ratio for humans and save it in a separate variable first"
+    "section": "1.1 Tasks",
+    "text": "1.1 Tasks\n\nCheck which of the following animals are contained in the species vector:\n\n\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")\n\n\nCalculate mean and standard deviation of the brain weight\n\nHint: have a look at the summary slides to find the functions\n\nWhich species have a brain weight larger than the mean brain weight of all species?\nCalculate the ratio of brain weight to body weight in percent for all animals and save the result in a new vector\nAre there any animals with a larger brain to body weight ratio than humans? If yes, which ones?\n\nHint: calculate the ratio for humans and save it in a separate variable first"
   },
   {
     "objectID": "sessions/02_intro-r.html#extras",
     "href": "sessions/02_intro-r.html#extras",
     "title": "Introduction to R",
-    "section": "Extras",
-    "text": "Extras\n\nRound the ratio vector to 4 decimal places with the round function\n\nType ?round into the console to open the help of the round function\n\nWhich animal has the smallest brain to body weight ratio?\n\nHint: have a look at the min function\n\nAdd the following three animals to the data vectors\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nNow calculate the mean brain weight again. Can you explain what happens? Can you fix it?\n\nHint: have a look at ?mean"
+    "section": "1.2 Extras",
+    "text": "1.2 Extras\n\nRound the ratio vector to 4 decimal places with the round function\n\nType ?round into the console to open the help of the round function\n\nWhich animal has the smallest brain to body weight ratio?\n\nHint: have a look at the min function\n\nAdd the following three animals to the data vectors\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nNow calculate the mean brain weight again. Can you explain what happens? Can you fix it?\n\nHint: have a look at ?mean"
   },
   {
     "objectID": "sessions/04_data-tibbles.html",
@@ -1344,39 +1267,39 @@
     "text": "Slides in full screen     Download PDF slides"
   },
   {
-    "objectID": "sessions/04_data-tibbles.html#getting-started-with-tibbles",
-    "href": "sessions/04_data-tibbles.html#getting-started-with-tibbles",
+    "objectID": "sessions/04_data-tibbles.html#get-started-with-tibbles",
+    "href": "sessions/04_data-tibbles.html#get-started-with-tibbles",
     "title": "Tabels in R - Data frames and tibbles",
-    "section": "Getting started with tibbles",
-    "text": "Getting started with tibbles\nBefore you start the task:\n\nInstall the tibble package by calling install.packages(\"tibble\") in the console.\nOpen your script for the task and put library(tibble) on top\nExecute this line and the tibble package is loaded into your R session and ready to use"
+    "section": "1.1 Get started with tibbles",
+    "text": "1.1 Get started with tibbles\nBefore you start the task:\n\nInstall the tibble package by calling install.packages(\"tibble\") in the console.\n\nYou don’t need to put this command in your script as you only need to call it once to install the package\n\nOpen your script for the task and put library(tibble) on top\nExecute this line and the tibble package is loaded into your R session"
   },
   {
-    "objectID": "sessions/04_data-tibbles.html#creating-a-tibble",
-    "href": "sessions/04_data-tibbles.html#creating-a-tibble",
+    "objectID": "sessions/04_data-tibbles.html#create-a-tibble",
+    "href": "sessions/04_data-tibbles.html#create-a-tibble",
     "title": "Tabels in R - Data frames and tibbles",
-    "section": "Creating a tibble",
-    "text": "Creating a tibble\nUse the vectors species, brainwt_kg, bodywt_kg from before and combine them in a tibble."
+    "section": "1.2 Create a tibble",
+    "text": "1.2 Create a tibble\nUse the vectors species, brainwt_kg, bodywt_kg from before and combine them in a tibble."
   },
   {
-    "objectID": "sessions/04_data-tibbles.html#exploring-the-tibble",
-    "href": "sessions/04_data-tibbles.html#exploring-the-tibble",
+    "objectID": "sessions/04_data-tibbles.html#explore-the-tibble",
+    "href": "sessions/04_data-tibbles.html#explore-the-tibble",
     "title": "Tabels in R - Data frames and tibbles",
-    "section": "Exploring the tibble",
-    "text": "Exploring the tibble\nExplore the tibble you created with the different functions that you learned in the presentation. You can for example try\n\nview() and explore what you can do in the view window that opens: searching, filtering, sorting columns\nstr() to view the structure of the data\nsummary()\n…"
+    "section": "1.3 Explore the tibble",
+    "text": "1.3 Explore the tibble\nExplore the tibble you created with the different functions that you learned in the presentation. You can for example try\n\nview() and explore what you can do in the view window that opens: searching, filtering, sorting columns\nsummary()\n…"
   },
   {
-    "objectID": "sessions/04_data-tibbles.html#indexing-and-selecting",
-    "href": "sessions/04_data-tibbles.html#indexing-and-selecting",
+    "objectID": "sessions/04_data-tibbles.html#index-filter-and-select",
+    "href": "sessions/04_data-tibbles.html#index-filter-and-select",
     "title": "Tabels in R - Data frames and tibbles",
-    "section": "Indexing and selecting",
-    "text": "Indexing and selecting\nNow let’s try some indexing on the data.\nSelect\n\nRows 1, 5, and 7 and the columns species and bodywt_kg\nselect rows 1 to 10, all columns\nselect the column bodywt_kg as a vector"
+    "section": "1.4 Index, filter and select",
+    "text": "1.4 Index, filter and select\nNow let’s try some indexing on the data.\n\nRows 1, 5, and 7 and the columns species and bodywt_kg\nFilter rows 1 to 10, all columns\nSelect the column bodywt_kg as a vector"
   },
   {
     "objectID": "sessions/04_data-tibbles.html#extra",
     "href": "sessions/04_data-tibbles.html#extra",
     "title": "Tabels in R - Data frames and tibbles",
-    "section": "Extra",
-    "text": "Extra\n\nSelect the last column of the last row without using the row and column index (so don’t use any numbers in this command)\nCalculate the mean of the bodywt_kg column and save it in a variable\nAdd a new column to the data called ratio_body_brain with the ratio of the columns bodywt_kg and brainwt_kg"
+    "section": "1.5 Extra",
+    "text": "1.5 Extra\n\nSelect the last column of the last row without using the row and column index (so don’t use any numbers in this command)\nCalculate the mean of the bodywt_kg column and save it in a variable\nAdd a new column to the data called ratio_body_brain with the ratio of the columns bodywt_kg and brainwt_kg"
   },
   {
     "objectID": "sessions/06_common-errors.html",
@@ -1396,22 +1319,22 @@
     "objectID": "sessions/08_dplyr.html#getting-started-with-dplyr",
     "href": "sessions/08_dplyr.html#getting-started-with-dplyr",
     "title": "Data transformation with dplyr",
-    "section": "Getting started with dplyr",
-    "text": "Getting started with dplyr\nA helpful resource for to consult for this task can be the dplyr cheatsheet.\nBefore you start, make sure to load the tidyverse package and the palmerpenguins package.\n\nlibrary(tidyverse)\nlibrary(palmerpenguins)"
+    "section": "1.1 Getting started with dplyr",
+    "text": "1.1 Getting started with dplyr\nA helpful resource for to consult for this task can be the dplyr cheatsheet.\nBefore you start, make sure to load the tidyverse package and the palmerpenguins package.\n\nlibrary(tidyverse)\nlibrary(palmerpenguins)"
   },
   {
     "objectID": "sessions/08_dplyr.html#data-transformation-with-dplyr",
     "href": "sessions/08_dplyr.html#data-transformation-with-dplyr",
     "title": "Data transformation with dplyr",
-    "section": "Data transformation with dplyr",
-    "text": "Data transformation with dplyr\nIn the following, you find a lot of different data transformation tasks. First, do 2 from each category before you do the remaining ones. You don’t have to finish all the tasks but make sure you covered each category. Generally, the first tasks from a category are easier than the last tasks of a category.\nFind all penguins that …\n\n… have a bill length between 40 and 45 mm.\n… for which we know the sex.\n… which are of the species Adelie or Gentoo and live either on Dream or on Torgersen\n… lived on the island Dream in the year 2007. How many of them were from each of the 3 species?\n\nCount …\n\n… the number of penguins on each island.\n… the number of penguins of each species on each island.\n\nSelect …\n\n… only the variables species, sex and year\n… variables based on the following vector\n\n\ncols &lt;- c(\"species\", \"bill_length_mm\", \"flipper_length_mm\", \"body_mass_kg\")\n\n\n… only columns that contain measurements in mm\n\nAdd a column …\n\n… with the ratio of bill length to bill depth\n… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).\n\nCalculate …\n\n… mean flipper length and body mass for the 3 species and male and female penguins separately\nCan you do the same but remove the penguins for which we don’t know the sex first?"
+    "section": "1.2 Data transformation with dplyr",
+    "text": "1.2 Data transformation with dplyr\nIn the following, you find a lot of different data transformation tasks. First, do 2 from each category before you do the remaining ones. You don’t have to finish all the tasks but make sure you covered each category. Generally, the first tasks from a category are easier than the last tasks of a category.\nFind all penguins that …\n\n… have a bill length between 40 and 45 mm.\n… for which we know the sex.\n… which are of the species Adelie or Gentoo and live either on Dream or on Torgersen\n… lived on the island Dream in the year 2007. How many of them were from each of the 3 species?\n\nCount …\n\n… the number of penguins on each island.\n… the number of penguins of each species on each island.\n\nSelect …\n\n… only the variables species, sex and year\n… variables based on the following vector\n\n\ncols &lt;- c(\"species\", \"bill_length_mm\", \"flipper_length_mm\", \"body_mass_kg\")\n\n\n… only columns that contain measurements in mm\n\nAdd a column …\n\n… with the ratio of bill length to bill depth\n… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).\n\nCalculate …\n\n… mean flipper length and body mass for the 3 species and male and female penguins separately\nCan you do the same but remove the penguins for which we don’t know the sex first?"
   },
   {
     "objectID": "sessions/08_dplyr.html#extras",
     "href": "sessions/08_dplyr.html#extras",
     "title": "Data transformation with dplyr",
-    "section": "Extras",
-    "text": "Extras\n\nMake a boxplot of penguin body mass with sex on the x-axis and facets for the different species. Can you remove the penguins with missing values for sex first?\nMake a scatterplot with the ratio of bill length to bill depth on the y axis and flipper length on the x axis? Can you distinguish the point between male and female penguins and remove penguins with unknown sex before making the plot?"
+    "section": "1.3 Extras",
+    "text": "1.3 Extras\n\nMake a boxplot of penguin body mass with sex on the x-axis and facets for the different species. Can you remove the penguins with missing values for sex first?\nMake a scatterplot with the ratio of bill length to bill depth on the y axis and flipper length on the x axis? Can you distinguish the point between male and female penguins and remove penguins with unknown sex before making the plot?"
   },
   {
     "objectID": "sessions/10_tests.html",
@@ -1424,22 +1347,22 @@
     "objectID": "sessions/10_tests.html#getting-started",
     "href": "sessions/10_tests.html#getting-started",
     "title": "Statistical tests",
-    "section": "Getting started",
-    "text": "Getting started\nWe will again use the penguins tibble from the palmerpenguins package for this task.\nSo before you get started with the exercise, make sure that you load the palmerpenguins package and the tidyverse\n\nlibrary(palmerpenguins)\nlibrary(tidyverse)"
+    "section": "1.1 Getting started",
+    "text": "1.1 Getting started\nWe will again use the penguins tibble from the palmerpenguins package for this task.\nSo before you get started with the exercise, make sure that you load the palmerpenguins package and the tidyverse\n\nlibrary(palmerpenguins)\nlibrary(tidyverse)"
   },
   {
     "objectID": "sessions/10_tests.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
     "href": "sessions/10_tests.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
     "title": "Statistical tests",
-    "section": "Compare the flipper length of penguins using statistical tests",
-    "text": "Compare the flipper length of penguins using statistical tests\nQuestion: Does the mean flipper length differ between the 3 penguin species?\nDo separate comparisons for\n\nGentoo vs. Adelie\nGentoo vs. Chinstrap\nAdelie vs. Chinstrap\n\nBefore you start, create a subset of each species as a vector.\nFor this, you can use the $ operator:\n\nlibrary(palmerpenguins)\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_length_mm\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_length_mm\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_length_mm\n\nFollow the decision tree for statistical tests:"
+    "section": "1.2 Compare the flipper length of penguins using statistical tests",
+    "text": "1.2 Compare the flipper length of penguins using statistical tests\nQuestion: Does the mean flipper length differ between the 3 penguin species?\nDo separate comparisons for\n\nGentoo vs. Adelie\nGentoo vs. Chinstrap\nAdelie vs. Chinstrap\n\nBefore you start, create a subset of each species as a vector.\nFor this, you can use the $ operator:\n\nlibrary(palmerpenguins)\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_length_mm\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_length_mm\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_length_mm\n\nFollow the decision tree for statistical tests:"
   },
   {
     "objectID": "sessions/10_tests.html#extra",
     "href": "sessions/10_tests.html#extra",
     "title": "Statistical tests",
-    "section": "Extra",
-    "text": "Extra\nCreate a plot to show the results of your tests. Choose one of the following:\n\nCreate a boxplot with notches to visually compare differences in flipper length between species\nMake a plot showing the mean and standard error of the mean as pointrange or point with errorbars\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
+    "section": "1.3 Extra",
+    "text": "1.3 Extra\nCreate a plot to show the results of your tests. Choose one of the following:\n\nCreate a boxplot with notches to visually compare differences in flipper length between species\nMake a plot showing the mean and standard error of the mean as pointrange or point with errorbars\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
   },
   {
     "objectID": "sessions/slides/00_organization.html#im-using-a-lot-for",
@@ -1523,28 +1446,21 @@
     "href": "sessions/slides/common-errors.html#syntax-errors",
     "title": "Common errors and how to fix them",
     "section": "Syntax errors",
-    "text": "Syntax errors\nExample\nmean(c(1,2,3)na.rm=TRUE)\n. . .\nHow to fix\n\nlook for missing commas, misspelled arguments, …\nread the error message\nthe RStudio syntax checker warns you before you run code with syntax errors\n\nlook for    next to line numbers in your script"
+    "text": "Syntax errors\nExample\nmean(c(1,2,3)na.rm=TRUE)\n\nHow to fix\n\nlook for missing commas, misspelled arguments, …\nread the error message\nthe RStudio syntax checker warns you before you run code with syntax errors\n\nlook for    next to line numbers in your script"
   },
   {
     "objectID": "sessions/slides/common-errors.html#error-could-not-find-function",
     "href": "sessions/slides/common-errors.html#error-could-not-find-function",
     "title": "Common errors and how to fix them",
     "section": "Error: could not find function",
-    "text": "Error: could not find function\nExamples\n\n\n\nmutate(penguins, mean = mean(bill_length_mm, na.rm = TRUE))\n\nError in mutate(penguins, mean = mean(bill_length_mm, na.rm = TRUE)): could not find function \"mutate\"\n\n\n\n\nlenght(my_vector)\n\n\n\nError in lenght(1:10): could not find function \"lenght\"\n\n\n\n\n. . .\nHow to fix\nCould not find function errors have two main reasons:\n\nYou forgot to load the package that the function belongs to\n\n\nload the package using library() or call the function with packageName::functionName()\n\n\nYou have a typo in your function call (e.g. lenght() instead of length())"
+    "text": "Error: could not find function\nExamples\n\n\n\nselect(penguins, bill_length_mm)\n#&gt; Error in select(penguins, bill_length_mm): could not find function \"select\"\n\n\n\nlenght(1:10)\n#&gt; Error in lenght(1:10): could not find function \"lenght\"\n\n\n\n\n\n\nHow to fix\n“Could not find function” errors have two main reasons:\n\nYou forgot to load the package that the function belongs to\n\n\nload the package using library() or call the function with packageName::functionName()\n\n\nYou have a typo in your function call (e.g. lenght() instead of length())"
   },
   {
     "objectID": "sessions/slides/common-errors.html#error-object-x-not-found",
     "href": "sessions/slides/common-errors.html#error-object-x-not-found",
     "title": "Common errors and how to fix them",
     "section": "Error: object x not found",
-    "text": "Error: object x not found\nExample\n\n\nError in eval(expr, envir, enclos): object 'hello' not found\n\n\nError in eval(expr, envir, enclos): object 'variable_A' not found\n\n\n. . .\nHow to fix\n\nyou are trying to access an object that does not exist\nMostly because:\n\ntypos in variable name (variable name is variableA but you try to access variable_A)\nforgot to put quotes around string: print(hello)  looks for a variable named hello but instead you wanted to print the string print(\"hello\")"
-  },
-  {
-    "objectID": "sessions/slides/common-errors.html#wrong-data-format",
-    "href": "sessions/slides/common-errors.html#wrong-data-format",
-    "title": "Common errors and how to fix them",
-    "section": "Wrong data format",
-    "text": "Wrong data format\nExample\n\ndoes not necessarily trigger an error message\nif there is an error message, it can also appear later in your code\n\n. . .\nHow to fix it\n\nLook at str() of your data and check whether all columns are there and in correct format\n\ne.g. is a column of type character but should be of type integer?\n\nDo that at multiple locations in your script to find the line where the error actually happens\n\neverytime you change something in your data, check its structure"
+    "text": "Error: object x not found\nExample\n\nvariable_A\n#&gt; Error in eval(expr, envir, enclos): object 'variable_A' not found\n\n\n\n\nHow to fix\n\nyou are trying to access an object that does not exist\n\ntypos in variable name (variable name is variableA but you try to access variable_A)\nforgot to put quotes around string: print(hello)  looks for a variable named hello but instead you wanted to print the string print(\"hello\")"
   },
   {
     "objectID": "sessions/slides/common-errors.html#r-crashes",
@@ -1558,7 +1474,7 @@
     "href": "sessions/slides/common-errors.html#console-prints",
     "title": "Common errors and how to fix them",
     "section": "Console prints +",
-    "text": "Console prints +\nR is not running code anymore and the console only prints + if you try to execute a command.\n\n\nHow to fix it\n\nFirst, go to the console and hit Escape. Then you should see the &gt; sign instead of + again.\nLikely you forgot to close a bracket somewhere. Go to your script and check where this happened\n\nlook for    next to line numers"
+    "text": "Console prints +\nR is not running code anymore and the console only prints + if you try to execute a command.\n\n\nHow to fix it\n\nFirst, go to the console and hit Escape. Then you should see the &gt; sign instead of + again.\nLikely you forgot to close a bracket somewhere. Go to your script and check where this happened (look for   ) next to line numers"
   },
   {
     "objectID": "sessions/slides/common-errors.html#warnings",
@@ -1572,21 +1488,21 @@
     "href": "sessions/slides/common-errors.html#troubleshoot-r-step-by-step",
     "title": "Common errors and how to fix them",
     "section": "Troubleshoot R: Step by step",
-    "text": "Troubleshoot R: Step by step\nOften, you don’t need to do all the steps but a systemmatic approach to bug fixing is very helpful.\n\nStep 1: Carefully read the error message and try to fix it \n\n\nStep 2: Is it any of the errors you learned about just now? \n\n\nStep 3: If the error is about data or other variables: look at the structure using str()\n\n\nStep 4: If the error is about a function: Read the documentation using ?functionName. - Did you use the function correctly? - Did you forget an argument?\n\n\nStep 5: Look for answers online - often you can also jump directly to this step\n\n\nStep 6: Ask others for help"
+    "text": "Troubleshoot R: Step by step\nOften, you don’t need to do all the steps but a systemmatic approach to bug fixing is very helpful.\n\nCarefully read the error message and try to fix it\nIs it any of the errors you learned about just now?\nIf the error is about data or other variables: look at the structure using str()\nIf the error is about a function: Read the documentation using ?functionName: Did you use the function correctly? Did you forget an argument?\nLook for answers online\nAsk others for help"
   },
   {
-    "objectID": "sessions/slides/common-errors.html#step-5-look-for-answers-online",
-    "href": "sessions/slides/common-errors.html#step-5-look-for-answers-online",
+    "objectID": "sessions/slides/common-errors.html#look-for-answers-online",
+    "href": "sessions/slides/common-errors.html#look-for-answers-online",
     "title": "Common errors and how to fix them",
-    "section": "Step 5: Look for answers online",
-    "text": "Step 5: Look for answers online\n\nSearch with keywords R + package name + Error message/Warning If you don’t know how do do something try searching R + package name + What you want to do, e.g.\n\n“R ggplot change axis title”\n“R sort vector”\n\nUsually you can pick any of the top search results, but I recommend results from Stack Overflow\nAlways search in English to get more results\n\n\n\n\n\n\n\n\nTip\n\n\nChange language of R messages to English with Sys.setenv(LANGUAGE='en')"
+    "section": "Look for answers online",
+    "text": "Look for answers online\n\nSearch with keywords R + package name + Error message/Warning If you don’t know how do do something try searching R + package name + What you want to do, e.g.\n\n“R ggplot change axis title”\n“R sort vector”\n\nUsually you can pick any of the top search results, but I recommend results from Stack Overflow\nAlways search in English to get more results\n\n\n\n\n\n\n\n\nTip\n\n\nChange language of R messages to English with Sys.setenv(LANGUAGE='en')"
   },
   {
-    "objectID": "sessions/slides/common-errors.html#step-6-ask-others-for-help",
-    "href": "sessions/slides/common-errors.html#step-6-ask-others-for-help",
+    "objectID": "sessions/slides/common-errors.html#ask-others-for-help",
+    "href": "sessions/slides/common-errors.html#ask-others-for-help",
     "title": "Common errors and how to fix them",
-    "section": "Step 6: Ask others for help",
-    "text": "Step 6: Ask others for help\nThere are plenty of places where you can ask for help online. Some common and good options are:\n\nAsk a question on Stack Overflow\nAsk in the R Discord server\n\nusually fast answers\nbut: you need a Discord account\n\n\n\nBut: You have to make sure that before, you tried all the other 5 steps.\n\n\nTo ask questions online, you have to learn how to ask a good R question. This includes:\n\nclear question\nreproducible example\n\nLook here for more info on how to ask a good question about R\n\n\nSelina Baldauf // Common errors"
+    "section": "Ask others for help",
+    "text": "Ask others for help\nThere are plenty of places where you can ask for help online. Some common and good options are:\n\nAsk a question on Stack Overflow\nAsk in the R Discord server\n\nusually fast answers\nbut: you need a Discord account\n\n\n\nBut: You have to make sure that before, you tried all the other 5 steps.\n\n\nTo ask questions online, you have to learn how to ask a clear question including a reproducible example\nLook here for more info on how to ask a good question about R\n\n\nSelina Baldauf // Common errors"
   },
   {
     "objectID": "sessions/slides/dplyr.html#data-transformation",
@@ -2132,49 +2048,56 @@
     "href": "sessions/slides/intro-r.html#r-as-a-calculator",
     "title": "Introduction to R",
     "section": "R as a calculator",
-    "text": "R as a calculator\nArithmetic operators\n\n\n\n\n\n\n\nAddition\n\n\n+\n\n\n\n\n\nSubtraction\n\n\n-\n\n\n\n\n\nMultiplication\n\n\n*\n\n\n\n\n\nDivision\n\n\n/\n\n\n\n\n\nModulo\n\n\n%%\n\n\n\n\n\nPower\n\n\n^\n\n\n\n\n\n\n\n# Addition\n2 + 2\n# Subtraction\n5.432 - 34234\n# Multiplication\n33 * 42\n# Division\n3 / 42\n# Modulo (Remainder)\n2 %% 2\n# Power\n2^2\n# Combine operations\n((2 + 2) * 5)^(10 %% 10)"
+    "text": "R as a calculator\nArithmetic operators\n\n\n\n\n\n\n\nAddition\n\n\n+\n\n\n\n\nSubtraction\n\n\n-\n\n\n\n\nMultiplication\n\n\n*\n\n\n\n\nDivision\n\n\n/\n\n\n\n\nModulo\n\n\n%%\n\n\n\n\nPower\n\n\n^\n\n\n\n\n\n\n# Addition\n2 + 2\n# Subtraction\n5.432 - 34234\n# Multiplication\n33 * 42\n# Division\n3 / 42\n# Modulo (Remainder)\n2 %% 2\n# Power\n2^2\n# Combine operations\n((2 + 2) * 5)^(10 %% 10)"
   },
   {
     "objectID": "sessions/slides/intro-r.html#r-as-a-calculator-1",
     "href": "sessions/slides/intro-r.html#r-as-a-calculator-1",
     "title": "Introduction to R",
     "section": "R as a calculator",
-    "text": "R as a calculator\nRelational operators\n\n\n\n\n\n\n\nEqual to\n\n\n==\n\n\n\n\n\nNot equal to\n\n\n!=\n\n\n\n\n\nLess than\n\n\n&lt;\n\n\n\n\n\nGreater than\n\n\n&gt;\n\n\n\n\n\nLess or equal than\n\n\n&lt;=\n\n\n\n\n\nGreater or equal than\n\n\n&gt;=\n\n\n\n\n\n\n\n2 == 2\n\n[1] TRUE\n\n2 != 2\n\n[1] FALSE\n\n33 &lt;= 32\n\n[1] FALSE\n\n20 &lt; 20\n\n[1] FALSE"
+    "text": "R as a calculator\nRelational operators\n\n\n\n\n\n\n\nEqual to\n\n\n==\n\n\n\n\nNot equal to\n\n\n!=\n\n\n\n\nLess than\n\n\n&lt;\n\n\n\n\nGreater than\n\n\n&gt;\n\n\n\n\nLess or equal than\n\n\n&lt;=\n\n\n\n\nGreater or equal than\n\n\n&gt;=\n\n\n\n\n\n\n2 == 2\n#&gt; [1] TRUE\n2 != 2\n#&gt; [1] FALSE\n33 &lt;= 32\n#&gt; [1] FALSE\n20 &lt; 20\n#&gt; [1] FALSE"
   },
   {
     "objectID": "sessions/slides/intro-r.html#r-as-a-calculator-2",
     "href": "sessions/slides/intro-r.html#r-as-a-calculator-2",
     "title": "Introduction to R",
     "section": "R as a calculator",
-    "text": "R as a calculator\n\nLogical operators\n\n\n\n\n\n\nNot\n\n\n!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n!TRUE\n\n[1] FALSE\n\n!(3 &lt; 1)\n\n[1] TRUE"
+    "text": "R as a calculator\nLogical operators\n\n\n\n\n\n\n\nNot\n\n\n!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n!TRUE\n#&gt; [1] FALSE\n!(3 &lt; 1)\n#&gt; [1] TRUE"
   },
   {
     "objectID": "sessions/slides/intro-r.html#r-as-a-calculator-3",
     "href": "sessions/slides/intro-r.html#r-as-a-calculator-3",
     "title": "Introduction to R",
     "section": "R as a calculator",
-    "text": "R as a calculator\nLogical operators\n\n\n\n\n\n\n\nNot\n\n\n!\n\n\n\n\n\nAnd\n\n\n&\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(3 &lt; 1) & (3 == 3) # FALSE & TRUE = FALSE\n\n[1] FALSE\n\n(1 &lt; 3) & (3 == 3) # TRUE & TRUE = TRUE\n\n[1] TRUE\n\n(3 &lt; 1) & (3 != 3) # FALSE & FALSE = FALSE\n\n[1] FALSE"
+    "text": "R as a calculator\nLogical operators\n\n\n\n\n\n\n\nNot\n\n\n!\n\n\n\n\n\nAnd\n\n\n&\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(3 &lt; 1) & (3 == 3) # FALSE & TRUE = FALSE\n#&gt; [1] FALSE\n(1 &lt; 3) & (3 == 3) # TRUE & TRUE = TRUE\n#&gt; [1] TRUE\n(3 &lt; 1) & (3 != 3) # FALSE & FALSE = FALSE\n#&gt; [1] FALSE"
   },
   {
     "objectID": "sessions/slides/intro-r.html#r-as-a-calculator-4",
     "href": "sessions/slides/intro-r.html#r-as-a-calculator-4",
     "title": "Introduction to R",
     "section": "R as a calculator",
-    "text": "R as a calculator\nLogical operators\n\n\n\n\n\n\n\nNot\n\n\n!\n\n\n\n\n\nAnd\n\n\n&\n\n\n\n\n\nOr\n\n\n|\n\n\n\n\n\n\n\n(3 &lt; 1) | (3 == 3) # FALSE | TRUE = TRUE\n\n[1] TRUE\n\n(1 &lt; 3) | (3 == 3) # TRUE | TRUE = TRUE\n\n[1] TRUE\n\n(3 &lt; 1) | (3 != 3) # FALSE | FALSE = FALSE\n\n[1] FALSE"
+    "text": "R as a calculator\nLogical operators\n\n\n\n\n\n\n\nNot\n\n\n!\n\n\n\n\n\nAnd\n\n\n&\n\n\n\n\n\nOr\n\n\n|\n\n\n\n\n\n\n\n(3 &lt; 1) | (3 == 3) # FALSE | TRUE = TRUE\n#&gt; [1] TRUE\n(1 &lt; 3) | (3 == 3) # TRUE | TRUE = TRUE\n#&gt; [1] TRUE\n(3 &lt; 1) | (3 != 3) # FALSE | FALSE = FALSE\n#&gt; [1] FALSE"
+  },
+  {
+    "objectID": "sessions/slides/intro-r.html#basic-r-syntax",
+    "href": "sessions/slides/intro-r.html#basic-r-syntax",
+    "title": "Introduction to R",
+    "section": "Basic R Syntax",
+    "text": "Basic R Syntax\n\nWhitespace does not matter\n\n\n# this\ndata&lt;-read_csv(\"data/my-data.csv\")\n\n# is the same as this\n\ndata &lt;- \n  read_csv(    \"data/my-data.csv\"   )\n\n\nThere are good practice rules however -&gt; More on that later\nR Studio will tell you if something is incorrect\n\nFind  on the side of your script"
   },
   {
     "objectID": "sessions/slides/intro-r.html#comments-in-r",
     "href": "sessions/slides/intro-r.html#comments-in-r",
     "title": "Introduction to R",
     "section": "Comments in R",
-    "text": "Comments in R\n\n# Reading and cleaning the data -----------------\n\ndata &lt;- read_csv(\"data/my-data.csv\")\n# clean all column headers \n# (found on https://stackoverflow.com/questions/68177507/)\ndata &lt;- janitor::clean_names(data)\n\n# Analysis --------------------------------------\n\n\nEverything that follows a # is a comment\nComments are not evaluated\nNotes that make code more readable or add information\n\n\n\n\nComments can be used for\n\nExplanation of code (if necessary)\nInclude links, names of authors, …\nMark different sections of your code ( try Ctrl/Cmd + Shift + R)"
+    "text": "Comments in R\n\n\n# Reading and cleaning the data -----------------\n\ndata &lt;- read_csv(\"data/my-data.csv\")\n# clean all column headers \n# (found on https://stackoverflow.com/questions/68177507/)\ndata &lt;- janitor::clean_names(data)\n\n# Analysis --------------------------------------\n\n\nEverything that follows a # is a comment\nComments are not evaluated\nNotes that make code more readable or add information\n\n\n\n\nComments can be used for\n\nExplanation of code (if necessary)\nInclude links, names of authors, …\nMark different sections of your code ( try Ctrl/Cmd + Shift + R)"
   },
   {
     "objectID": "sessions/slides/intro-r.html#variables",
     "href": "sessions/slides/intro-r.html#variables",
     "title": "Introduction to R",
     "section": "Variables",
-    "text": "Variables\n\nStore values under meaningful names to reuse them\nA variable has a name and value and is created using the assignment operator\n\n\n\nradius   &lt;-   5\n\n\n\n\nVariables are available in the global environment\nR is case sensitive: radius != Radius\nVariables can hold any R objects, e.g.\n\nSimple numbers\nTables with data\n…\n\nChoose meaningful variable names\n\nMake your code easier to read"
+    "text": "Variables\n\nStore values under meaningful names to reuse them\nA variable has a name and value and is created using the assignment operator\n\n\n\nradius   &lt;-   5\n\n\n\n\nVariables are available in the global environment\nR is case sensitive: radius != Radius\nVariables can hold any R objects, e.g.\n\nSimple numbers, tables with data, …\n\nChoose meaningful variable names\n\nMake your code easier to read"
   },
   {
     "objectID": "sessions/slides/intro-r.html#variables-1",
@@ -2202,112 +2125,84 @@
     "href": "sessions/slides/intro-r.html#creating-vectors-c",
     "title": "Introduction to R",
     "section": "Creating vectors: c()",
-    "text": "Creating vectors: c()\nUse the function c() to combine values into a vector\n\nlgl_var &lt;- c(TRUE, TRUE, FALSE)\ndbl_var &lt;- c(2.5, 3.4, 4.3)\nint_var &lt;- c(1L, 45L, 234L)\nchr_var &lt;- c(\"These are\", \"just\", \"some strings\")\n\n\nYou can also combine multiple vectors into one:\n\n# Combine multiple vectors\nv1 &lt;- c(1,2,3)\nv2 &lt;- c(800, 83, 37)\nv3 &lt;- c(v1, v2)"
+    "text": "Creating vectors: c()\nUse the function c() to combine values into a vector\n\nlgl_var &lt;- c(TRUE, TRUE, FALSE)\ndbl_var &lt;- c(2.5, 3.4, 4.3)\nint_var &lt;- c(1L, 45L, 234L)\nchr_var &lt;- c(\"These are\", \"just\", \"some strings\")\n\n\nThe : operator creates a sequence between two numbers with an increment of (-)1\n\n1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)\n#&gt;  [1]  1  2  3  4  5  6  7  8  9 10\n\n\n\nThere are many more options to create vectors\n\nseq() to create a sequence of numbers\nrep() ro repeat values"
   },
   {
     "objectID": "sessions/slides/intro-r.html#creating-vectors-c-1",
     "href": "sessions/slides/intro-r.html#creating-vectors-c-1",
     "title": "Introduction to R",
     "section": "Creating vectors: c()",
-    "text": "Creating vectors: c()\nBe aware of implicit type conversion when combining vectors of different types\n\n\n# integer + logical -&gt; integer (same with double + logical)\nc(int_var, lgl_var)\n\n[1]   1  45 234   1   1   0\n\n# integer + character -&gt; character (same with double + character)\nc(int_var, chr_var)\n\n[1] \"1\"            \"45\"           \"234\"          \"These are\"    \"just\"        \n[6] \"some strings\"\n\n# logical + character -&gt; character\nc(lgl_var, chr_var)\n\n[1] \"TRUE\"         \"TRUE\"         \"FALSE\"        \"These are\"    \"just\"        \n[6] \"some strings\""
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#creating-vectors-and-seq",
-    "href": "sessions/slides/intro-r.html#creating-vectors-and-seq",
-    "title": "Introduction to R",
-    "section": "Creating vectors: : and seq()",
-    "text": "Creating vectors: : and seq()\nThe : operator creates a sequence between two numbers with an increment of (-)1\n\n1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n\n\nThe seq() function creates a sequence of values\n\nseq(from = 1, to = 10, by = 1) # specify increment of sequence with by\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\nseq(from = 1, to = 10, length.out = 20) # specify desired length with length.out\n\n [1]  1.000000  1.473684  1.947368  2.421053  2.894737  3.368421  3.842105\n [8]  4.315789  4.789474  5.263158  5.736842  6.210526  6.684211  7.157895\n[15]  7.631579  8.105263  8.578947  9.052632  9.526316 10.000000"
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#creating-vectors-rep",
-    "href": "sessions/slides/intro-r.html#creating-vectors-rep",
-    "title": "Introduction to R",
-    "section": "Creating vectors: rep()",
-    "text": "Creating vectors: rep()\nRepeat values multiple times with rep()\n\n\nrep(\"hello\", times = 5)\n\n[1] \"hello\" \"hello\" \"hello\" \"hello\" \"hello\""
+    "text": "Creating vectors: c()\nBe aware of implicit type conversion when combining vectors of different types\n\n\n# integer + logical -&gt; integer (same with double + logical)\nc(int_var, lgl_var)\n#&gt; [1]   1  45 234   1   1   0\n\n# integer + character -&gt; character (same with double + character)\nc(int_var, chr_var)\n#&gt; [1] \"1\"            \"45\"           \"234\"          \"These are\"    \"just\"        \n#&gt; [6] \"some strings\"\n\n# logical + character -&gt; character\nc(lgl_var, chr_var)\n#&gt; [1] \"TRUE\"         \"TRUE\"         \"FALSE\"        \"These are\"    \"just\"        \n#&gt; [6] \"some strings\""
   },
   {
     "objectID": "sessions/slides/intro-r.html#working-with-vectors",
     "href": "sessions/slides/intro-r.html#working-with-vectors",
     "title": "Introduction to R",
     "section": "Working with vectors",
-    "text": "Working with vectors\nLet’s create some vectors to work with.\n\n# list of 10 biggest cities in Europe\ncities &lt;- c(\"Istanbul\", \"Moscow\", \"London\", \"Saint Petersburg\", \"Berlin\", \n            \"Madrid\", \"Kyiv\", \"Rome\", \"Bucharest\", \"Paris\")\n\npopulation &lt;- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)\n\narea_km2 &lt;- c(2576, 2561, 1572, 1439,891,604, 839, 1285, 228, 105 )\n\n\n We can check the length of a vector using the length() function:\n\nlength(cities)\n\n[1] 10\n\n\n\n\n\nData from Wikipedia"
+    "text": "Working with vectors\nLet’s create some vectors to work with.\n\n# list of 10 biggest cities in Europe\ncities &lt;- c(\"Istanbul\", \"Moscow\", \"London\", \"Saint Petersburg\", \"Berlin\", \n            \"Madrid\", \"Kyiv\", \"Rome\", \"Bucharest\", \"Paris\")\n\npopulation &lt;- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)\n\narea_km2 &lt;- c(2576, 2561, 1572, 1439,891,604, 839, 1285, 228, 105 )\n\n\n We can check the length of a vector using the length() function:\n\nlength(cities)\n#&gt; [1] 10\n\n\n\n\nData from Wikipedia"
   },
   {
     "objectID": "sessions/slides/intro-r.html#working-with-vectors-1",
     "href": "sessions/slides/intro-r.html#working-with-vectors-1",
     "title": "Introduction to R",
     "section": "Working with vectors",
-    "text": "Working with vectors\nDivide the population and area vector to calculate the population density in each city: \n\npopulation / area_km2\n\n [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685\n [8]  2178.988  9649.123 20000.000\n\n\n\nThe operation is performed separately for each element of the two vectors and the result is a vector.\n\n\nSame, if a vector is divided by vector of length 1 (i.e. a single number). Result is always a vector.\n\nmean_population &lt;- mean(population) # calculate the mean of population vector\nmean_population\n\n[1] 5910000\n\npopulation / mean_population # divide population vector by the mean\n\n [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142\n [8] 0.4737733 0.3722504 0.3553299"
+    "text": "Working with vectors\nDivide the population and area vector to calculate the population density in each city: \n\npopulation / area_km2\n#&gt;  [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685\n#&gt;  [8]  2178.988  9649.123 20000.000\n\n\nThe operation is performed separately for each element of the two vectors and the result is a vector.\n\n\nSame, if a vector is divided by vector of length 1 (i.e. a single number). Result is always a vector.\n\nmean_population &lt;- mean(population) # calculate the mean of population vector\nmean_population\n#&gt; [1] 5910000\npopulation / mean_population # divide population vector by the mean\n#&gt;  [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142\n#&gt;  [8] 0.4737733 0.3722504 0.3553299"
   },
   {
     "objectID": "sessions/slides/intro-r.html#working-with-vectors-2",
     "href": "sessions/slides/intro-r.html#working-with-vectors-2",
     "title": "Introduction to R",
     "section": "Working with vectors",
-    "text": "Working with vectors\nWe can also work with relational and logical operators\n\npopulation &gt; mean_population\n\n [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\n\nThe result is a vector containing TRUE and FALSE, depending on whether the city’s population is larger than the mean population or not.\n\n\n Logical and relational operators can be combined\n\n# population larger than mean population OR population larger than 3 million\npopulation &gt; mean_population | population &gt; 3e6\n\n [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE"
+    "text": "Working with vectors\nWe can also work with relational and logical operators\n\npopulation &gt; mean_population\n#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\nThe result is a vector containing TRUE and FALSE, depending on whether the city’s population is larger than the mean population or not.\n\n\n Logical and relational operators can be combined\n\n# population larger than mean population OR population larger than 3 million\npopulation &gt; mean_population | population &gt; 3e6\n#&gt;  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE"
   },
   {
     "objectID": "sessions/slides/intro-r.html#indexing-vectors",
     "href": "sessions/slides/intro-r.html#indexing-vectors",
     "title": "Introduction to R",
     "section": "Indexing vectors",
-    "text": "Indexing vectors\nYou can use square brackets [] to access specific elements from a vector.\nThe basic structure is:\n\nvector [ vector of indexes to select]\n\n\n\n\ncities[5]\n\n[1] \"Berlin\"\n\n\n\n\n\n# the three most populated cities\ncities[1:3] # same as cities[c(1,2,3)]\n\n[1] \"Istanbul\" \"Moscow\"   \"London\"  \n\n\n\n\n\n# the last entry of the cities vector\ncities[length(cities)] # same as cities[10]\n\n[1] \"Paris\""
+    "text": "Indexing vectors\nYou can use square brackets [] to access specific elements from a vector.\nThe basic structure is:\n\nvector [ vector of indexes to select]\n\n\n\n\ncities[5]\n#&gt; [1] \"Berlin\"\n\n\n\n\n# the three most populated cities\ncities[1:3] # same as cities[c(1,2,3)]\n#&gt; [1] \"Istanbul\" \"Moscow\"   \"London\"\n\n\n\n\n# the last entry of the cities vector\ncities[length(cities)] # same as cities[10]\n#&gt; [1] \"Paris\""
   },
   {
     "objectID": "sessions/slides/intro-r.html#indexing-vectors-1",
     "href": "sessions/slides/intro-r.html#indexing-vectors-1",
     "title": "Introduction to R",
     "section": "Indexing vectors",
-    "text": "Indexing vectors\nChange the values of a vector at specified indexes using the assignment operator &lt;-\n\nImagine for example, that the population of\n\nIstanbul (index 1) increased to 20 Million\nRome (index 8) changed but is unknown\nParis (index 10) decreased by 200,000\n\n\n\n\n# Update Istanbul (1) and Rome(8)\npopulation[c(1, 8)] &lt;- c(20e6, NA) # NA means missing value\n# Update Paris (10)\npopulation[10] &lt;- population[10] - 200000 \n\n\n\npopulation\n\n [1] 20000000 12500000  9000000  5400000  3800000  3200000  3000000       NA\n [9]  2200000  1900000"
+    "text": "Indexing vectors\nChange the values of a vector at specified indexes using the assignment operator &lt;-\n\nImagine for example, that the population of\n\n\nIstanbul (index 1) increased to 20 Million\nRome (index 8) changed but is unknown\nParis (index 10) decreased by 200,000\n\n\n\n\n\n# Update Istanbul (1) and Rome(8)\npopulation[c(1, 8)] &lt;- c(20e6, NA) # NA means missing value\n# Update Paris (10)\npopulation[10] &lt;- population[10] - 200000 \n\n\n\n\n\npopulation\n#&gt;  [1] 20000000 12500000  9000000  5400000  3800000  3200000  3000000       NA\n#&gt;  [9]  2200000  1900000"
   },
   {
     "objectID": "sessions/slides/intro-r.html#indexing-vectors-2",
     "href": "sessions/slides/intro-r.html#indexing-vectors-2",
     "title": "Introduction to R",
     "section": "Indexing vectors",
-    "text": "Indexing vectors\nYou can also index a vector using logical tests. The basic structure is:\n\nvector [ logical vector of same length]\n\n\n\n\nmega_city &lt;- population &gt; mean_population\nmega_city\n\n [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\n\n\nWhich are the mega cities?\n\ncities[mega_city] # or short: cities[population &gt; mean_population]\n\n[1] \"Istanbul\" \"Moscow\"   \"London\"  \n\n\nIndex only the cities that return TRUE for the comparison of their population against the mean population"
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#indexing-vectors-3",
-    "href": "sessions/slides/intro-r.html#indexing-vectors-3",
-    "title": "Introduction to R",
-    "section": "Indexing vectors",
-    "text": "Indexing vectors\nWe also use %in%for logical indexing.\n\npopulation[ cities %in% c(\"Berlin\", \"Paris\", \"Stockholm\", \"Madrid\")]\n\n[1] 3800000 3200000 2100000\n\n\n\nReturns only 3 values for population, because Stockholm is not a city in our vector\n\nNo city in cities returns TRUE for the comparison with \"Stockholm\"\n\n\n\n\ncities %in% c(\"Berlin\", \"Paris\", \"Stockholm\", \"Madrid\")\n\n [1] FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE"
+    "text": "Indexing vectors\nYou can also index a vector using logical tests. The basic structure is:\n\nvector [ logical vector of same length]\n\n\n\n\nmega_city &lt;- population &gt; mean_population\nmega_city\n#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\n\nWhich are the mega cities?\n\ncities[mega_city] # or short: cities[population &gt; mean_population]\n#&gt; [1] \"Istanbul\" \"Moscow\"   \"London\"\n\nIndex only the cities that return TRUE for the comparison of their population against the mean population"
   },
   {
     "objectID": "sessions/slides/intro-r.html#summary-i",
     "href": "sessions/slides/intro-r.html#summary-i",
     "title": "Introduction to R",
     "section": "Summary I",
-    "text": "Summary I\n\n\nVariables have a name and a value and are created using the assignment operator &lt;-, e.g.\n\n\nradius &lt;- 5\n\n\nVectors are a collection of values of the same data type:\n\ncharacter (\"hello\")\nnumeric: integer (23L) and double (2.23)\nlogical (TRUE and FALSE)\n\nBe careful about implicit type conversion:\n\nnumeric to character\nlogical to character\nlogical to numeric"
+    "text": "Summary I\n\n\nVariables have a name and a value and are created using the assignment operator &lt;-, e.g.\n\n\nradius &lt;- 5\n\n\nVectors are a collection of values of the same data type:\n\ncharacter (\"hello\")\nnumeric: integer (23L) and double (2.23)\nlogical (TRUE and FALSE)"
   },
   {
     "objectID": "sessions/slides/intro-r.html#summary-ii",
     "href": "sessions/slides/intro-r.html#summary-ii",
     "title": "Introduction to R",
     "section": "Summary II",
-    "text": "Summary II\nData types\n\n# check the data type of a variable\ntypeof(\"hello\")\n\n# check if a variable is of a certain data type\nis.*()\nis.integer(1L)\n\n# convert a variable into a certain data type\nas.*()\nas.logical(\"hello\")"
+    "text": "Summary II\nCreate vectors\n\n# combine objects into vector\nc(1,2,3)\n\n# create a sequence of values\nseq(from = 3, to = 6, by = 0.5)\nseq(from = 3, to = 6, length.out = 10)\n2:10\n\n# repeat values from a vector\nrep(c(1,2), times = 2)\nrep(c(\"a\", \"b\"), each = 2)"
   },
   {
     "objectID": "sessions/slides/intro-r.html#summary-iii",
     "href": "sessions/slides/intro-r.html#summary-iii",
     "title": "Introduction to R",
     "section": "Summary III",
-    "text": "Summary III\nCreate vectors\n\n# combine objects into vector\nc(1,2,3)\n\n# create a sequence of values\nseq(from = 3, to = 6, by = 0.5)\nseq(from = 3, to = 6, length.out = 10)\n2:10\n\n# repeat values from a vector\nrep(c(1,2), times = 2)\nrep(c(\"a\", \"b\"), each = 2)"
+    "text": "Summary III\nIndexing and subsetting vectors\n\n# By index\nv[3]\nv[1:4]\nv[c(1,5,7)]\n\n# Logical indexing with 1 vector\nv[v &gt; 5]\nv[v != \"bird\" | v == \"rabbit\"]\nv[v %in% c(1,2,3)] # same as v[v == 1 | v == 2 | v == 3]\n\n# Logical indexing with two vectors of same length\nv[y == \"bird\"] # return the value in v for which index y == \"bird\"\nv[y == max(y)] # return the value in v for which y is the maximum of y"
   },
   {
     "objectID": "sessions/slides/intro-r.html#summary-iv",
     "href": "sessions/slides/intro-r.html#summary-iv",
     "title": "Introduction to R",
     "section": "Summary IV",
-    "text": "Summary IV\nIndexing and subsetting vectors\n\n# By index\nv[3]\nv[1:4]\nv[c(1,5,7)]\n\n# Logical indexing with 1 vector\nv[v &gt; 5]\nv[v != \"bird\" | v == \"rabbit\"]\nv[v %in% c(1,2,3)] # same as v[v == 1 | v == 2 | v == 3]\n\n# Logical indexing with two vectors of same length\nv[y == \"bird\"] # return the value in v for which index y == \"bird\"\nv[y == max(y)] # return the value in v for which y is the maximum of y"
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#summary-v",
-    "href": "sessions/slides/intro-r.html#summary-v",
-    "title": "Introduction to R",
-    "section": "Summary V",
-    "text": "Summary V\nWorking with vectors\n\n# length\nlength(v)\n# rounding numbers\nround(v, digits = 2)\n# sum\nsum(v)\n# mean\nmean(v)\n# median\nmedian(v)\n# standard deviation\nsd(v)\n# find the min value\nmin(v)\n# find the max value"
+    "text": "Summary IV\nWorking with vectors\n\n# length\nlength(v)\n# rounding numbers\nround(v, digits = 2)\n# sum\nsum(v)\n# mean\nmean(v)\n# median\nmedian(v)\n# standard deviation\nsd(v)\n# find the min value\nmin(v)\n# find the max value"
   },
   {
     "objectID": "sessions/slides/readr.html#the-tidyverse-1",
@@ -2321,14 +2216,14 @@
     "href": "sessions/slides/readr.html#workflow-data-analysis",
     "title": "Import and Export Data with readr",
     "section": "Workflow data analysis",
-    "text": "Workflow data analysis\n\n\n\n\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science"
+    "text": "Workflow data analysis\n\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science"
   },
   {
     "objectID": "sessions/slides/readr.html#the-tidyverse-2",
     "href": "sessions/slides/readr.html#the-tidyverse-2",
     "title": "Import and Export Data with readr",
     "section": "The tidyverse",
-    "text": "The tidyverse\nInstall the tidyverse once with:\n\ninstall.packages(\"tidyverse\")\n\nThen load and attach the packages at the beginning of your script:\n\nlibrary(tidyverse)\n\n\nYou can also install and load the tidyverse packages individually, but since we will use so many of them together, it’s easier to load and attach them together."
+    "text": "The tidyverse\nInstall the tidyverse once with:\n\n\ninstall.packages(\"tidyverse\")\n\nThen load and attach the packages at the beginning of your script:\n\nlibrary(tidyverse)\n\n\nYou can also install and load the tidyverse packages individually, but since we will use so many of them together, it’s easier to load and attach them together."
   },
   {
     "objectID": "sessions/slides/readr.html#readr",
@@ -2356,21 +2251,21 @@
     "href": "sessions/slides/readr.html#read-files-with-read_-2",
     "title": "Import and Export Data with readr",
     "section": "Read files with read_*()",
-    "text": "Read files with read_*()\n\n\nSpecify number of lines to skip reading with skip\n\nUseful if you have metadata on top of the file\n\n\n\n\n\n\n\n\n\n# without skipping first lines\nread_csv(file = \"data/meta_data_top.csv\")\n\n\n\n# A tibble: 6 × 1\n  Metadata              \n  &lt;chr&gt;                 \n1 Date: June, 12, 1989  \n2 Author: Selina Baldauf\n3 Temperature, Rainfall \n4 1.5, 2                \n5 1, 0                  \n6 0.5, 0.6              \n\n\n\n\n\n# skip meta data lines\nread_csv(\n  file = \"data/meta_data_top.csv\",\n  skip = 4\n)\n\n\n\n# A tibble: 3 × 2\n  Temperature Rainfall\n        &lt;dbl&gt;    &lt;dbl&gt;\n1         1.5      2  \n2         1        0  \n3         0.5      0.6"
+    "text": "Read files with read_*()\n\n\nSpecify number of lines to skip reading with skip\n\n\nUseful if you have metadata on top of the file\n\n\n\n\n\n\n\n\n\n\n# without skipping first lines\nread_csv(file = \"data/meta_data_top.csv\")\n\n\n#&gt; # A tibble: 6 × 1\n#&gt;   Metadata              \n#&gt;   &lt;chr&gt;                 \n#&gt; 1 Date: June, 12, 1989  \n#&gt; 2 Author: Selina Baldauf\n#&gt; 3 Temperature, Rainfall \n#&gt; 4 1.5, 2                \n#&gt; 5 1, 0                  \n#&gt; 6 0.5, 0.6\n\n\n\n\n# skip meta data lines\nread_csv(\n  file = \"data/meta_data_top.csv\",\n  skip = 4\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;   Temperature Rainfall\n#&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1         1.5      2  \n#&gt; 2         1        0  \n#&gt; 3         0.5      0.6"
   },
   {
     "objectID": "sessions/slides/readr.html#read-files-with-read_-3",
     "href": "sessions/slides/readr.html#read-files-with-read_-3",
     "title": "Import and Export Data with readr",
     "section": "Read files with read_*()",
-    "text": "Read files with read_*()\n\n\nSpecify whether the data has a header column or not with col_names\n\nUseful if you don’t have column names or you want to change them\n\n\n\n\n\n\n\n\n\n# First line is expected to be column names\nread_csv(file = \"data/no_col_names.csv\")\n\n\n\n# A tibble: 2 × 2\n  `1.5`   `2`\n  &lt;dbl&gt; &lt;dbl&gt;\n1   1     0  \n2   0.5   0.6\n\n\n\n\n\n# Default column names are given\nread_csv(\n  file = \"data/no_col_names.csv\",\n  col_names = FALSE\n)\n\n\n\n# A tibble: 3 × 2\n     X1    X2\n  &lt;dbl&gt; &lt;dbl&gt;\n1   1.5   2  \n2   1     0  \n3   0.5   0.6"
+    "text": "Read files with read_*()\n\n\nSpecify whether the data has a header column or not with col_names\n\n\nUseful if you don’t have column names or you want to change them\n\n\n\n\n\n\n\n\n\n\n# First line is expected to be column names\nread_csv(file = \"data/no_col_names.csv\")\n\n\n#&gt; # A tibble: 2 × 2\n#&gt;   `1.5`   `2`\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1     0  \n#&gt; 2   0.5   0.6\n\n\n\n\n# Default column names are given\nread_csv(\n  file = \"data/no_col_names.csv\",\n  col_names = FALSE\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;      X1    X2\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1.5   2  \n#&gt; 2   1     0  \n#&gt; 3   0.5   0.6"
   },
   {
     "objectID": "sessions/slides/readr.html#read-files-with-read_-4",
     "href": "sessions/slides/readr.html#read-files-with-read_-4",
     "title": "Import and Export Data with readr",
     "section": "Read files with read_*()",
-    "text": "Read files with read_*()\n\n\nSpecify whether the data has a header column or not with col_names\n\nUseful if you don’t have column names or you want to change them\n\n\n\n\n\n\n\n\n\n# First line is expected to be column names\nread_csv(file = \"data/no_col_names.csv\")\n\n\n\n# A tibble: 2 × 2\n  `1.5`   `2`\n  &lt;dbl&gt; &lt;dbl&gt;\n1   1     0  \n2   0.5   0.6\n\n\n\n\n# Specify custom column names\nread_csv(\n  file = \"data/no_col_names.csv\",\n  col_names = c(\"Temperature\", \"Rainfall\")\n)\n\n\n\n# A tibble: 3 × 2\n  Temperature Rainfall\n        &lt;dbl&gt;    &lt;dbl&gt;\n1         1.5      2  \n2         1        0  \n3         0.5      0.6"
+    "text": "Read files with read_*()\n\n\nSpecify whether the data has a header column or not with col_names\n\n\nUseful if you don’t have column names or you want to change them\n\n\n\n\n\n\n\n\n\n# First line is expected to be column names\nread_csv(file = \"data/no_col_names.csv\")\n\n\n#&gt; # A tibble: 2 × 2\n#&gt;   `1.5`   `2`\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1     0  \n#&gt; 2   0.5   0.6\n\n\n\n# Specify custom column names\nread_csv(\n  file = \"data/no_col_names.csv\",\n  col_names = c(\"Temperature\", \"Rainfall\")\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;   Temperature Rainfall\n#&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1         1.5      2  \n#&gt; 2         1        0  \n#&gt; 3         0.5      0.6"
   },
   {
     "objectID": "sessions/slides/readr.html#write-files-with-write_",
@@ -2384,7 +2279,7 @@
     "href": "sessions/slides/readr.html#write-files-with-write_-1",
     "title": "Import and Export Data with readr",
     "section": "Write files with write_*()",
-    "text": "Write files with write_*()\nAll write_* functions take the data to write as the first and the file to write to as the second argument:\n\nwrite_*(x = dat, file = “path/to/save/file.*”, …)\n\n . . .\n\nwrite_csv(dat, file = \"data-clean/your_data.csv\") # comma delimiter\n\nwrite_tsv(dat, file = \"data-clean/your_data.txt\") # tab delimiter\n\n\nUse write_delim for a generic type of delimiter:\n\nwrite_delim(dat, file = \"data-clean/your_data.txt\", delim = \"\\t\") # tab delimiter\n\nwrite_delim(dat, file = \"data-clean/your_data.txt\", delim = \"..xyz..\") # ..xyz.. delimiter"
+    "text": "Write files with write_*()\nAll write_* functions take the data to write as the first and the file to write to as the second argument:\n\nwrite_*(x = dat, file = “path/to/save/file.*”, …)\n\n\n\n\nwrite_csv(dat, file = \"data-clean/your_data.csv\") # comma delimiter\n\nwrite_tsv(dat, file = \"data-clean/your_data.txt\") # tab delimiter\n\n\n\n\nUse write_delim for a generic type of delimiter:\n\nwrite_delim(dat, file = \"data-clean/your_data.txt\", delim = \"\\t\") # tab delimiter\n\nwrite_delim(dat, file = \"data-clean/your_data.txt\", delim = \"..xyz..\") # ..xyz.. delimiter"
   },
   {
     "objectID": "sessions/slides/readr.html#readxl",
@@ -2398,7 +2293,7 @@
     "href": "sessions/slides/readr.html#readxl-1",
     "title": "Import and Export Data with readr",
     "section": "Readxl",
-    "text": "Readxl\nA little warning:\n\nReading from a csv file is more reliable\nBe careful with complicated excel sheets with formulas etc.\nAlways double check the data that you imported, e.g. by using the summary function and checking if the number of rows etc. is correct"
+    "text": "Readxl\nA little warning:\n\nReading from a text file (.txt or .csv) is more reliable\nBe careful with complicated excel sheets with formulas etc.\nAlways double check the data that you imported, e.g. by using the summary function and checking if the number of rows etc. is correct"
   },
   {
     "objectID": "sessions/slides/readr.html#absolute-vs.-relative-paths-in-r",
@@ -2426,14 +2321,14 @@
     "href": "sessions/slides/readr.html#data-format-1",
     "title": "Import and Export Data with readr",
     "section": "Data format",
-    "text": "Data format\nFollow these guidelines to make data import to R easier and less frustrating\n\n\nIn general: prefer machine-readable file formats (.csv, .txt instead of .xlsx)\n\n\n\nNo white space in column headers\n\nUse a character as separator, e.g. species_name instead of species name\nIf this is unpractical, have a look at the function janitor::clean_names() from the janitor package\n\nAvoid special characters\n\nNo ä, ö, ü, ß, é, ê, …\n\nUse . as a decimal separator (not ,)"
+    "text": "Data format\nFollow these guidelines to make data import to R easier and less frustrating\n\n\nIn general: prefer machine-readable file formats (.csv, .txt instead of .xlsx)\n\n\n\nNo white space in column headers\n\nUse a character as separator, e.g. species_name instead of species name\nIf this is unpractical, have a look at the function janitor::clean_names() from the janitor package\n\nNo special characters in column headers (ä,, ß, é, ê, %, °C, µ …)\nUse . as a decimal separator (not ,)"
   },
   {
-    "objectID": "sessions/slides/readr.html#paths",
-    "href": "sessions/slides/readr.html#paths",
+    "objectID": "sessions/slides/readr.html#paths-and-file-names",
+    "href": "sessions/slides/readr.html#paths-and-file-names",
     "title": "Import and Export Data with readr",
-    "section": "Paths",
-    "text": "Paths\n\nAvoid white space in paths\n\ndata-raw/my_data.csv instead of data raw/my_data.csv\n\nAvoid special characters in paths\n\nNo ä, ö, ü, ß, é, ê, …"
+    "section": "Paths and file names",
+    "text": "Paths and file names\n\nAvoid white space in paths and file names\n\ndata-raw/my_data.csv instead of data raw/my data.csv\n\nAvoid special characters in paths"
   },
   {
     "objectID": "sessions/slides/tests.html#overview-of-tests",
@@ -2594,28 +2489,28 @@
     "href": "sessions/solutions/data-tibbles.html",
     "title": "Solution to tibble tasks",
     "section": "",
-    "text": "Use the vectors species, brainwt_kg, bodywt_kg from the last task and put them in a tibble.\n\n# install.packages(\"tibble\")\nlibrary(tibble)\n\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)\n\n# Creating the tibble \nanimals &lt;- tibble(\n  species = species,\n  bodywt_kg = bodywt_kg,\n  brainwt_kg = brainwt_kg\n)"
+    "text": "Use the vectors species, brainwt_kg, bodywt_kg from the last task and put them in a tibble.\n\n# install.packages(\"tibble\")\nlibrary(tibble)\n\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)\n\n# Create the tibble \nanimals &lt;- tibble(\n  species = species,\n  bodywt_kg = bodywt_kg,\n  brainwt_kg = brainwt_kg\n)"
   },
   {
-    "objectID": "sessions/solutions/data-tibbles.html#creating-a-tibble",
-    "href": "sessions/solutions/data-tibbles.html#creating-a-tibble",
+    "objectID": "sessions/solutions/data-tibbles.html#create-a-tibble",
+    "href": "sessions/solutions/data-tibbles.html#create-a-tibble",
     "title": "Solution to tibble tasks",
     "section": "",
-    "text": "Use the vectors species, brainwt_kg, bodywt_kg from the last task and put them in a tibble.\n\n# install.packages(\"tibble\")\nlibrary(tibble)\n\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)\n\n# Creating the tibble \nanimals &lt;- tibble(\n  species = species,\n  bodywt_kg = bodywt_kg,\n  brainwt_kg = brainwt_kg\n)"
+    "text": "Use the vectors species, brainwt_kg, bodywt_kg from the last task and put them in a tibble.\n\n# install.packages(\"tibble\")\nlibrary(tibble)\n\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)\n\n# Create the tibble \nanimals &lt;- tibble(\n  species = species,\n  bodywt_kg = bodywt_kg,\n  brainwt_kg = brainwt_kg\n)"
   },
   {
-    "objectID": "sessions/solutions/data-tibbles.html#exploring-the-tibble",
-    "href": "sessions/solutions/data-tibbles.html#exploring-the-tibble",
+    "objectID": "sessions/solutions/data-tibbles.html#explore-the-tibble",
+    "href": "sessions/solutions/data-tibbles.html#explore-the-tibble",
     "title": "Solution to tibble tasks",
-    "section": "2 Exploring the tibble",
-    "text": "2 Exploring the tibble\nIn the view window that opens, you have some options to filter the data and sort rows.\n\nview(animals)\n\n\nsummary(animals)\n\n   species            bodywt_kg          brainwt_kg     \n Length:28          Min.   :    0.02   Min.   :0.00040  \n Class :character   1st Qu.:    3.10   1st Qu.:0.02223  \n Mode  :character   Median :   53.85   Median :0.13700  \n                    Mean   : 4278.44   Mean   :0.57452  \n                    3rd Qu.:  479.00   3rd Qu.:0.42000  \n                    Max.   :87000.00   Max.   :5.71200  \n\nstr(animals)\n\ntibble [28 × 3] (S3: tbl_df/tbl/data.frame)\n $ species   : chr [1:28] \"MountainBeaver\" \"Cow\" \"GreyWolf\" \"Goat\" ...\n $ bodywt_kg : num [1:28] 1.4 465 36.3 27.7 1 ...\n $ brainwt_kg: num [1:28] 0.0081 0.423 0.1195 0.115 0.0055 ...\n\nnrow(animals)\n\n[1] 28\n\nncol(animals)\n\n[1] 3\n\nnames(animals)\n\n[1] \"species\"    \"bodywt_kg\"  \"brainwt_kg\""
+    "section": "2 Explore the tibble",
+    "text": "2 Explore the tibble\nIn the view window that opens, you have some options to filter the data and sort rows. Check out these options as well.\n\nview(animals)\n\nPrint a summary of the table:\n\nsummary(animals)\n\n   species            bodywt_kg          brainwt_kg     \n Length:28          Min.   :    0.02   Min.   :0.00040  \n Class :character   1st Qu.:    3.10   1st Qu.:0.02223  \n Mode  :character   Median :   53.85   Median :0.13700  \n                    Mean   : 4278.44   Mean   :0.57452  \n                    3rd Qu.:  479.00   3rd Qu.:0.42000  \n                    Max.   :87000.00   Max.   :5.71200  \n\nstr(animals)\n\ntibble [28 × 3] (S3: tbl_df/tbl/data.frame)\n $ species   : chr [1:28] \"MountainBeaver\" \"Cow\" \"GreyWolf\" \"Goat\" ...\n $ bodywt_kg : num [1:28] 1.4 465 36.3 27.7 1 ...\n $ brainwt_kg: num [1:28] 0.0081 0.423 0.1195 0.115 0.0055 ...\n\nnrow(animals)\n\n[1] 28\n\nncol(animals)\n\n[1] 3\n\nnames(animals)\n\n[1] \"species\"    \"bodywt_kg\"  \"brainwt_kg\""
   },
   {
-    "objectID": "sessions/solutions/data-tibbles.html#indexing-and-selecting",
-    "href": "sessions/solutions/data-tibbles.html#indexing-and-selecting",
+    "objectID": "sessions/solutions/data-tibbles.html#index-filter-and-select",
+    "href": "sessions/solutions/data-tibbles.html#index-filter-and-select",
     "title": "Solution to tibble tasks",
-    "section": "3 Indexing and selecting",
-    "text": "3 Indexing and selecting\n\nRows 1, 5, and 7 and the columns species and bodywt_kg\n\n\nanimals[c(1,5,7), c(\"species\", \"bodywt_kg\")]\n\n# A tibble: 3 × 2\n  species        bodywt_kg\n  &lt;chr&gt;              &lt;dbl&gt;\n1 MountainBeaver       1.4\n2 GuineaPig            1  \n3 AsianElephant     2547  \n\n\n\nSelect rows 1 to 10, all columns\n\n\nanimals[1:10, ]\n\n# A tibble: 10 × 3\n   species        bodywt_kg brainwt_kg\n   &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;\n 1 MountainBeaver       1.4     0.0081\n 2 Cow                465       0.423 \n 3 GreyWolf            36.3     0.120 \n 4 Goat                27.7     0.115 \n 5 GuineaPig            1       0.0055\n 6 Diplodocus       11700       0.05  \n 7 AsianElephant     2547       4.60  \n 8 Donkey             187.      0.419 \n 9 Horse              521       0.655 \n10 PotarMonkey         10       0.115 \n\n\n\nSelect the column bodywt_kg as a vector using $\n\n\nanimals$bodywt_kg\n\n [1]     1.40   465.00    36.30    27.70     1.00 11700.00  2547.00   187.10\n [9]   521.00    10.00     3.30   529.00   207.00    62.00  6654.00  9400.00\n[17]     6.80    35.00     0.10     0.02     2.50    55.50   100.00    52.20\n[25]     0.30 87000.00     0.10   192.00"
+    "section": "3 Index, filter and select",
+    "text": "3 Index, filter and select\n\nRows 1, 5, and 7 and the columns species and bodywt_kg\n\n\nanimals[c(1,5,7), c(\"species\", \"bodywt_kg\")]\n\n# A tibble: 3 × 2\n  species        bodywt_kg\n  &lt;chr&gt;              &lt;dbl&gt;\n1 MountainBeaver       1.4\n2 GuineaPig            1  \n3 AsianElephant     2547  \n\n\n\nFilter rows 1 to 10, all columns\n\n\nanimals[1:10, ]\n\n# A tibble: 10 × 3\n   species        bodywt_kg brainwt_kg\n   &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;\n 1 MountainBeaver       1.4     0.0081\n 2 Cow                465       0.423 \n 3 GreyWolf            36.3     0.120 \n 4 Goat                27.7     0.115 \n 5 GuineaPig            1       0.0055\n 6 Diplodocus       11700       0.05  \n 7 AsianElephant     2547       4.60  \n 8 Donkey             187.      0.419 \n 9 Horse              521       0.655 \n10 PotarMonkey         10       0.115 \n\n\n\nSelect the column bodywt_kg as a vector using $\n\n\nanimals$bodywt_kg\n\n [1]     1.40   465.00    36.30    27.70     1.00 11700.00  2547.00   187.10\n [9]   521.00    10.00     3.30   529.00   207.00    62.00  6654.00  9400.00\n[17]     6.80    35.00     0.10     0.02     2.50    55.50   100.00    52.20\n[25]     0.30 87000.00     0.10   192.00"
   },
   {
     "objectID": "sessions/solutions/data-tibbles.html#extra",
@@ -2634,16 +2529,16 @@
   {
     "objectID": "sessions/solutions/intro-r.html",
     "href": "sessions/solutions/intro-r.html",
-    "title": "Solution to introduction to R",
+    "title": "Solution to working with vectors",
     "section": "",
-    "text": "options(scipen = 999)\nYou have the following three vectors:\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)\nNote: If you use %in% to check if elements are contained in a vector, the result vector is of the same length as the vector that is before the %in%\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")\n# Goes through every element in species and returns TRUE if it appears in animals_to_check\nspecies %in% animals_to_check\n\n [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE\n[25]  TRUE FALSE FALSE FALSE\n\n# Goes through every element in animals_to_check and returns TRUE if it appears in species\nanimals_to_check %in% species\n\n[1] FALSE  TRUE  TRUE  TRUE FALSE FALSE\nmean(brainwt_kg)\n\n[1] 0.5745214\n\nsd(brainwt_kg)\n\n[1] 1.334929\nspecies[brainwt_kg &gt; mean(brainwt_kg)]\n\n[1] \"AsianElephant\"   \"Horse\"           \"Giraffe\"         \"Human\"          \n[5] \"AfricanElephant\"\nbrain_body_ratio &lt;- brainwt_kg / bodywt_kg * 100"
+    "text": "You have the following three vectors:\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")\n\n# Goes through every element in animals_to_check and returns TRUE\n# if it appears in species\nanimals_to_check %in% species\n\n[1] FALSE  TRUE  TRUE  TRUE FALSE FALSE\nYou can see that Goat, Chimpanzee and Rat are contained in species.\nmean(brainwt_kg)\n\n[1] 0.5745214\n\nsd(brainwt_kg)\n\n[1] 1.334929\nspecies[brainwt_kg &gt; mean(brainwt_kg)]\n\n[1] \"AsianElephant\"   \"Horse\"           \"Giraffe\"         \"Human\"          \n[5] \"AfricanElephant\"\nbrain_body_ratio &lt;- brainwt_kg / bodywt_kg * 100\nStep 1: Look at the brain to body ratio of humans\nbrain_body_ratio[species == \"Human\"]\n\n[1] 2.129032\nStep 2: Compare it with the other animals\n# New variable for human brain to body ratio\nbbr_human &lt;- brain_body_ratio[species == \"Human\"]\n# Are there animals that have a larger brain to body ratio than humans?\nbrain_body_ratio &gt; bbr_human\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[25] FALSE FALSE  TRUE FALSE\n\n# Which are these animals\nspecies[brain_body_ratio &gt; bbr_human]\n\n[1] \"RhesusMonkey\" \"Mole\"        \n\n# or short\nspecies[brain_body_ratio &gt; brain_body_ratio[species == \"Human\"]]\n\n[1] \"RhesusMonkey\" \"Mole\""
   },
   {
     "objectID": "sessions/solutions/intro-r.html#extras",
     "href": "sessions/solutions/intro-r.html#extras",
-    "title": "Solution to introduction to R",
+    "title": "Solution to working with vectors",
     "section": "1 Extras",
-    "text": "1 Extras\n\nRound the vector to 4 decimal places:\n\n\nbrain_body_ratio &lt;- round(brain_body_ratio, digits = 4)\n\n\nWhich animal has the smallest brain to body ratio?\n\n\nspecies[brain_body_ratio == min(brain_body_ratio)]\n\n[1] \"Brachiosaurus\"\n\n\nThe Brachiosaurus has a really small brain with a weight of just 0.1545 kg at a body weight of 8.7^{4} kg!\n\nAdd elements to the vector\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nspecies &lt;- c(species, species_new)\nbrainwt_kg &lt;- c(brainwt_kg, brainwt_kg_new)\nbodywt_kg &lt;- c(bodywt_kg, bodywt_kg_new)\n\n\nWhat is the mean brain weight now?\n\n\nmean(brainwt_kg)\n\n[1] NA\n\n# na.rm = TRUE removes missing values before calculating the mean\nmean(brainwt_kg, na.rm = TRUE)\n\n[1] 0.5529"
+    "text": "1 Extras\n\nRound the vector to 4 decimal places:\n\n\nbrain_body_ratio &lt;- round(brain_body_ratio, digits = 4)\n\n\nWhich animal has the smallest brain to body ratio?\n\n\nspecies[brain_body_ratio == min(brain_body_ratio)]\n\n[1] \"Brachiosaurus\"\n\n\nThe Brachiosaurus has a really small brain with a weight of just 0.1545 kg at a body weight of 87000 kg!\n\nAdd elements to the vector\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nspecies &lt;- c(species, species_new)\nbrainwt_kg &lt;- c(brainwt_kg, brainwt_kg_new)\nbodywt_kg &lt;- c(bodywt_kg, bodywt_kg_new)\n\n\nWhat is the mean brain weight now?\n\n\nmean(brainwt_kg)\n\n[1] NA\n\n# na.rm = TRUE removes missing values before calculating the mean\nmean(brainwt_kg, na.rm = TRUE)\n\n[1] 0.5529"
   },
   {
     "objectID": "sessions/solutions/tests.html",
@@ -2664,35 +2559,35 @@
     "href": "sessions/tasks/data-tibbles.html",
     "title": "",
     "section": "",
-    "text": "Before you start the task:\n\nInstall the tibble package by calling install.packages(\"tibble\") in the console.\nOpen your script for the task and put library(tibble) on top\nExecute this line and the tibble package is loaded into your R session and ready to use"
+    "text": "Before you start the task:\n\nInstall the tibble package by calling install.packages(\"tibble\") in the console.\n\nYou don’t need to put this command in your script as you only need to call it once to install the package\n\nOpen your script for the task and put library(tibble) on top\nExecute this line and the tibble package is loaded into your R session"
   },
   {
-    "objectID": "sessions/tasks/data-tibbles.html#getting-started-with-tibbles",
-    "href": "sessions/tasks/data-tibbles.html#getting-started-with-tibbles",
+    "objectID": "sessions/tasks/data-tibbles.html#get-started-with-tibbles",
+    "href": "sessions/tasks/data-tibbles.html#get-started-with-tibbles",
     "title": "",
     "section": "",
-    "text": "Before you start the task:\n\nInstall the tibble package by calling install.packages(\"tibble\") in the console.\nOpen your script for the task and put library(tibble) on top\nExecute this line and the tibble package is loaded into your R session and ready to use"
+    "text": "Before you start the task:\n\nInstall the tibble package by calling install.packages(\"tibble\") in the console.\n\nYou don’t need to put this command in your script as you only need to call it once to install the package\n\nOpen your script for the task and put library(tibble) on top\nExecute this line and the tibble package is loaded into your R session"
   },
   {
-    "objectID": "sessions/tasks/data-tibbles.html#creating-a-tibble",
-    "href": "sessions/tasks/data-tibbles.html#creating-a-tibble",
+    "objectID": "sessions/tasks/data-tibbles.html#create-a-tibble",
+    "href": "sessions/tasks/data-tibbles.html#create-a-tibble",
     "title": "",
-    "section": "2 Creating a tibble",
-    "text": "2 Creating a tibble\nUse the vectors species, brainwt_kg, bodywt_kg from before and combine them in a tibble."
+    "section": "2 Create a tibble",
+    "text": "2 Create a tibble\nUse the vectors species, brainwt_kg, bodywt_kg from before and combine them in a tibble."
   },
   {
-    "objectID": "sessions/tasks/data-tibbles.html#exploring-the-tibble",
-    "href": "sessions/tasks/data-tibbles.html#exploring-the-tibble",
+    "objectID": "sessions/tasks/data-tibbles.html#explore-the-tibble",
+    "href": "sessions/tasks/data-tibbles.html#explore-the-tibble",
     "title": "",
-    "section": "3 Exploring the tibble",
-    "text": "3 Exploring the tibble\nExplore the tibble you created with the different functions that you learned in the presentation. You can for example try\n\nview() and explore what you can do in the view window that opens: searching, filtering, sorting columns\nstr() to view the structure of the data\nsummary()\n…"
+    "section": "3 Explore the tibble",
+    "text": "3 Explore the tibble\nExplore the tibble you created with the different functions that you learned in the presentation. You can for example try\n\nview() and explore what you can do in the view window that opens: searching, filtering, sorting columns\nsummary()\n…"
   },
   {
-    "objectID": "sessions/tasks/data-tibbles.html#indexing-and-selecting",
-    "href": "sessions/tasks/data-tibbles.html#indexing-and-selecting",
+    "objectID": "sessions/tasks/data-tibbles.html#index-filter-and-select",
+    "href": "sessions/tasks/data-tibbles.html#index-filter-and-select",
     "title": "",
-    "section": "4 Indexing and selecting",
-    "text": "4 Indexing and selecting\nNow let’s try some indexing on the data.\nSelect\n\nRows 1, 5, and 7 and the columns species and bodywt_kg\nselect rows 1 to 10, all columns\nselect the column bodywt_kg as a vector"
+    "section": "4 Index, filter and select",
+    "text": "4 Index, filter and select\nNow let’s try some indexing on the data.\n\nRows 1, 5, and 7 and the columns species and bodywt_kg\nFilter rows 1 to 10, all columns\nSelect the column bodywt_kg as a vector"
   },
   {
     "objectID": "sessions/tasks/data-tibbles.html#extra",
@@ -2748,28 +2643,28 @@
     "href": "sessions/tasks/intro-rstudio.html",
     "title": "",
     "section": "",
-    "text": "Before you get started, there is an important setting that you should change in RStudio. By default, RStudio will save the workspace of your current session in an .Rdata file. This would allow you to start the next session exactly where you left it by loading the .Rdata file.\nThis is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.\nIn RStudio go to Tools -&gt; Global Options -&gt; General and\n\nRemove the check mark for “Restore .RData into workspace at startup”\nNever save workspace to .RData on exit\n\n\nknitr::include_graphics(here::here(\"sessions/tasks/img/setting_workspace.png\"))"
+    "text": "Before you get started, there is an important setting that you should change in RStudio. By default, RStudio will save the workspace of your current session in an .Rdata file. This would allow you to start the next session exactly where you left it by loading the .Rdata file.\nThis is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.\nIn RStudio go to Tools -&gt; Global Options -&gt; General and\n\nRemove the check mark for “Restore .RData into workspace at startup”\nNever “Save workspace to .RData on exit”\n\n\nknitr::include_graphics(here::here(\"sessions/tasks/img/setting_workspace.png\"))"
   },
   {
     "objectID": "sessions/tasks/intro-rstudio.html#change-settings",
     "href": "sessions/tasks/intro-rstudio.html#change-settings",
     "title": "",
     "section": "",
-    "text": "Before you get started, there is an important setting that you should change in RStudio. By default, RStudio will save the workspace of your current session in an .Rdata file. This would allow you to start the next session exactly where you left it by loading the .Rdata file.\nThis is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.\nIn RStudio go to Tools -&gt; Global Options -&gt; General and\n\nRemove the check mark for “Restore .RData into workspace at startup”\nNever save workspace to .RData on exit\n\n\nknitr::include_graphics(here::here(\"sessions/tasks/img/setting_workspace.png\"))"
+    "text": "Before you get started, there is an important setting that you should change in RStudio. By default, RStudio will save the workspace of your current session in an .Rdata file. This would allow you to start the next session exactly where you left it by loading the .Rdata file.\nThis is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.\nIn RStudio go to Tools -&gt; Global Options -&gt; General and\n\nRemove the check mark for “Restore .RData into workspace at startup”\nNever “Save workspace to .RData on exit”\n\n\nknitr::include_graphics(here::here(\"sessions/tasks/img/setting_workspace.png\"))"
   },
   {
     "objectID": "sessions/tasks/intro-rstudio.html#create-an-rstudio-project",
     "href": "sessions/tasks/intro-rstudio.html#create-an-rstudio-project",
     "title": "",
     "section": "2 Create an RStudio project",
-    "text": "2 Create an RStudio project\nCreate an RStudio project for all the scripts, notes, data, etc. from this workshop.\n\nCreate a project in a directory of your choice following the instructions from the slides\nUse the File pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days\n\nE.g. create the folders data, R, documents,…\nYou can always change the structure of your project later, but for now, we want some basic folders that we can navigate\n\n\nYou can add files to your project either directly in RStudio, or in the file explorer of your operating system."
+    "text": "2 Create an RStudio project\nCreate an RStudio project for all the scripts, notes, data, etc. from this workshop:\n\nCreate a project in a directory of your choice following the instructions from the slides\nUse the Files pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days\n\n\nFolder data/ for all data files\nFolder R/ for all R scripts\nFolder docs/ for other documents (e.g. lecture notes or slides)\nYou can always change the structure of your project later\n\nYou can add files to your project either directly in RStudio, or in the file explorer of your operating system."
   },
   {
     "objectID": "sessions/tasks/intro-rstudio.html#add-an-r-script-to-the-project",
     "href": "sessions/tasks/intro-rstudio.html#add-an-r-script-to-the-project",
     "title": "",
     "section": "3 Add an R script to the project",
-    "text": "3 Add an R script to the project\n\nCreate a new R script and save it in the appropriate folder of your project (e.g. scripts or R)\nCopy and paste the code from below into your script\n\nDon’t worry if you don’t understand the code yet, we will learn all this later\n\nRun the code in the script line by line. Try both, running code using the Run button (in the top right corner of your script pane) and the keyboard shortcut Ctrl/Cmd + Enter/Return\n\nFor each line that you run, observe what is happening to the different panes (console, environment, …) in RStudio. Can you explain what is happening?\n\n\n\n# Look at the first lines of the iris dataset\nhead(iris)\n# What is the iris dataset -&gt; Call the help\n?iris\n# How many rows and columns does the data set have?\nrownum &lt;- nrow(iris)\ncolnum &lt;- ncol(iris)\nprint(paste0(\"The iris dataset has \", rownum, \" rows and \", colnum, \" columns.\"))\n# Some summary statistics on the iris data set\nsummary(iris)\n\n# create a plot\nplot(iris$Petal.Length, iris$Petal.Width,\n  xlab = \"Petal Length\",\n  ylab = \"Petal Width\",\n  main = \"Petal Width vs Petal Length\",\n  pch = 20,\n  col = ifelse(iris$Species == \"setosa\", \"coral1\",\n    ifelse(iris$Species == \"virginica\", \"cyan4\",\n      ifelse(iris$Species == \"versicolor\",\n        \"darkgoldenrod2\", \"grey\"\n      )\n    )\n  )\n)\n# add a legend\nlegend(\"bottomright\", c(\"setosa\", \"virginica\", \"versicolor\"),\n  col = c(\"coral1\", \"cyan4\", \"darkgoldenrod2\"), pch = 20\n)"
+    "text": "3 Add an R script to the project\n\nCreate a new R script and save it in the R/ folder of your project\nCopy and paste the code from below into your script\n\nDon’t worry if you don’t understand the code yet, we will learn all this later\n\nRun the code in the script line by line. Try both, running code using the Run button (in the top right corner of your script pane) and the keyboard shortcut Ctrl/Cmd + Enter\n\nFor each line that you run, observe what is happening to the different panes (console, environment, …) in RStudio. Can you explain what is happening?\n\n\n\n# Look at the first lines of the iris dataset\nhead(iris)\n# What is the iris dataset -&gt; Call the help\n?iris\n# How many rows and columns does the data set have?\nrownum &lt;- nrow(iris)\ncolnum &lt;- ncol(iris)\nprint(paste0(\"The iris dataset has \", rownum, \" rows and \", colnum, \" columns.\"))\n# Some summary statistics on the iris data set\nsummary(iris)\n\n# create a plot\nplot(iris$Petal.Length, iris$Petal.Width,\n  xlab = \"Petal Length\",\n  ylab = \"Petal Width\",\n  main = \"Petal Width vs Petal Length\",\n  pch = 20,\n  col = ifelse(iris$Species == \"setosa\", \"coral1\",\n    ifelse(iris$Species == \"virginica\", \"cyan4\",\n      ifelse(iris$Species == \"versicolor\",\n        \"darkgoldenrod2\", \"grey\"\n      )\n    )\n  )\n)\n# add a legend\nlegend(\"bottomright\", c(\"setosa\", \"virginica\", \"versicolor\"),\n  col = c(\"coral1\", \"cyan4\", \"darkgoldenrod2\"), pch = 20\n)"
   },
   {
     "objectID": "sessions/tasks/tests.html",

@@ -4591,13 +4591,13 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#task" id="toc-task" class="nav-link active" data-scroll-target="#task">Task</a>
+  <li><a href="#task" id="toc-task" class="nav-link active" data-scroll-target="#task"><span class="header-section-number">1</span> Task</a>
   <ul class="collapse">
-  <li><a href="#getting-started-with-tibbles" id="toc-getting-started-with-tibbles" class="nav-link" data-scroll-target="#getting-started-with-tibbles">Getting started with tibbles</a></li>
-  <li><a href="#creating-a-tibble" id="toc-creating-a-tibble" class="nav-link" data-scroll-target="#creating-a-tibble">Creating a tibble</a></li>
-  <li><a href="#exploring-the-tibble" id="toc-exploring-the-tibble" class="nav-link" data-scroll-target="#exploring-the-tibble">Exploring the tibble</a></li>
-  <li><a href="#indexing-and-selecting" id="toc-indexing-and-selecting" class="nav-link" data-scroll-target="#indexing-and-selecting">Indexing and selecting</a></li>
-  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra">Extra</a></li>
+  <li><a href="#get-started-with-tibbles" id="toc-get-started-with-tibbles" class="nav-link" data-scroll-target="#get-started-with-tibbles"><span class="header-section-number">1.1</span> Get started with tibbles</a></li>
+  <li><a href="#create-a-tibble" id="toc-create-a-tibble" class="nav-link" data-scroll-target="#create-a-tibble"><span class="header-section-number">1.2</span> Create a tibble</a></li>
+  <li><a href="#explore-the-tibble" id="toc-explore-the-tibble" class="nav-link" data-scroll-target="#explore-the-tibble"><span class="header-section-number">1.3</span> Explore the tibble</a></li>
+  <li><a href="#index-filter-and-select" id="toc-index-filter-and-select" class="nav-link" data-scroll-target="#index-filter-and-select"><span class="header-section-number">1.4</span> Index, filter and select</a></li>
+  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra"><span class="header-section-number">1.5</span> Extra</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/selinaZitrone/intro-r-data-analysis/edit/master/sessions/04_data-tibbles.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/selinaZitrone/intro-r-data-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -4624,57 +4624,57 @@ vertical-align: -.125em;
 
 <iframe class="slide-deck" width="780" height="500" src="slides/data-tibbles.html"></iframe>
 <p><a href="slides/data-tibbles.html" target="_blank">Slides in full screen</a>     <a href="slides/data-tibbles.pdf" download>Download PDF slides</a></p>
-<section id="task" class="level1">
-<h1>Task</h1>
+<section id="task" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Task</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Find the solution <a href="../sessions/solutions/data-tibbles.html" target="_blank">here</a>.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Find the solution <a href="../sessions/solutions/data-tibbles.html">here</a>.</p>
+
 </div>
 </div>
-<section id="getting-started-with-tibbles" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started-with-tibbles">Getting started with tibbles</h2>
+<section id="get-started-with-tibbles" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="get-started-with-tibbles"><span class="header-section-number">1.1</span> Get started with tibbles</h2>
 <p>Before you start the task:</p>
 <ul>
-<li>Install the tibble package by calling <code>install.packages(&quot;tibble&quot;)</code> in the console.</li>
+<li>Install the tibble package by calling <code>install.packages(&quot;tibble&quot;)</code> in the console.
+<ul>
+<li>You don’t need to put this command in your script as you only need to call it once to install the package</li>
+</ul></li>
 <li>Open your script for the task and put <code>library(tibble)</code> on top</li>
-<li>Execute this line and the tibble package is loaded into your R session and ready to use</li>
+<li>Execute this line and the tibble package is loaded into your R session</li>
 </ul>
 </section>
-<section id="creating-a-tibble" class="level2">
-<h2 class="anchored" data-anchor-id="creating-a-tibble">Creating a tibble</h2>
-<p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from before and combine them in a tibble.</p>
+<section id="create-a-tibble" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="create-a-tibble"><span class="header-section-number">1.2</span> Create a tibble</h2>
+<p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from <a href="../sessions/02_intro-r.html#Task">before</a> and combine them in a tibble.</p>
 </section>
-<section id="exploring-the-tibble" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-the-tibble">Exploring the tibble</h2>
+<section id="explore-the-tibble" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="explore-the-tibble"><span class="header-section-number">1.3</span> Explore the tibble</h2>
 <p>Explore the tibble you created with the different functions that you learned in the presentation. You can for example try</p>
 <ul>
 <li><code>view()</code> and explore what you can do in the view window that opens: searching, filtering, sorting columns</li>
-<li><code>str()</code> to view the structure of the data</li>
 <li><code>summary()</code></li>
 <li>…</li>
 </ul>
 </section>
-<section id="indexing-and-selecting" class="level2">
-<h2 class="anchored" data-anchor-id="indexing-and-selecting">Indexing and selecting</h2>
+<section id="index-filter-and-select" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="index-filter-and-select"><span class="header-section-number">1.4</span> Index, filter and select</h2>
 <p>Now let’s try some indexing on the data.</p>
-<p>Select</p>
 <ul>
 <li>Rows 1, 5, and 7 and the columns <code>species</code> and <code>bodywt_kg</code></li>
-<li>select rows 1 to 10, all columns</li>
-<li>select the column <code>bodywt_kg</code> as a vector</li>
+<li>Filter rows 1 to 10, all columns</li>
+<li>Select the column <code>bodywt_kg</code> as a vector</li>
 </ul>
-<hr>
 </section>
-<section id="extra" class="level2">
-<h2 class="anchored" data-anchor-id="extra">Extra</h2>
+<section id="extra" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="extra"><span class="header-section-number">1.5</span> Extra</h2>
 <ul>
 <li>Select the last column of the last row without using the row and column index (so don’t use any numbers in this command)</li>
 <li>Calculate the mean of the <code>bodywt_kg</code> column and save it in a variable</li>

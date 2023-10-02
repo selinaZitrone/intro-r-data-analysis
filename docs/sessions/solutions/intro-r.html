@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Solution to introduction to R</title>
+<title>Solution to working with vectors</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4634,7 +4634,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Solution to introduction to R</h1>
+<h1 class="title">Solution to working with vectors</h1>
 </div>
 
 
@@ -4649,157 +4649,172 @@ vertical-align: -.125em;
 
 </header>
 
-<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-1_70c4f47c6fc8a0f2188352bd06d71b4a">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>You have the following three vectors:</p>
 <div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-2_7df27596bcfd8cf2c8858bd8de625bd6">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>species <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="st">&quot;MountainBeaver&quot;</span>, <span class="st">&quot;Cow&quot;</span>, <span class="st">&quot;GreyWolf&quot;</span>, <span class="st">&quot;Goat&quot;</span>,</span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="st">&quot;GuineaPig&quot;</span>, <span class="st">&quot;Diplodocus&quot;</span>, <span class="st">&quot;AsianElephant&quot;</span>, <span class="st">&quot;Donkey&quot;</span>,</span>
-<span id="cb2-4"><a href="#cb2-4"></a>  <span class="st">&quot;Horse&quot;</span>, <span class="st">&quot;PotarMonkey&quot;</span>, <span class="st">&quot;Cat&quot;</span>, <span class="st">&quot;Giraffe&quot;</span>,</span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="st">&quot;Gorilla&quot;</span>, <span class="st">&quot;Human&quot;</span>, <span class="st">&quot;AfricanElephant&quot;</span>, <span class="st">&quot;Triceratops&quot;</span>,</span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="st">&quot;RhesusMonkey&quot;</span>, <span class="st">&quot;Kangaroo&quot;</span>, <span class="st">&quot;GoldenHamster&quot;</span>, <span class="st">&quot;Mouse&quot;</span>,</span>
-<span id="cb2-7"><a href="#cb2-7"></a>  <span class="st">&quot;Rabbit&quot;</span>, <span class="st">&quot;Sheep&quot;</span>, <span class="st">&quot;Jaguar&quot;</span>, <span class="st">&quot;Chimpanzee&quot;</span>,</span>
-<span id="cb2-8"><a href="#cb2-8"></a>  <span class="st">&quot;Rat&quot;</span>, <span class="st">&quot;Brachiosaurus&quot;</span>, <span class="st">&quot;Mole&quot;</span>, <span class="st">&quot;Pig&quot;</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>)</span>
-<span id="cb2-10"><a href="#cb2-10"></a></span>
-<span id="cb2-11"><a href="#cb2-11"></a>bodywt_kg <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb2-12"><a href="#cb2-12"></a>  <span class="fl">1.4</span>, <span class="dv">465</span>, <span class="fl">36.3</span>, <span class="fl">27.7</span>, <span class="fl">1.</span>, <span class="dv">11700</span>, <span class="dv">2547</span>, <span class="fl">187.1</span>,</span>
-<span id="cb2-13"><a href="#cb2-13"></a>  <span class="dv">521</span>, <span class="dv">10</span>, <span class="fl">3.3</span>, <span class="dv">529</span>, <span class="dv">207</span>, <span class="dv">62</span>, <span class="dv">6654</span>, <span class="dv">9400</span>,</span>
-<span id="cb2-14"><a href="#cb2-14"></a>  <span class="fl">6.8</span>, <span class="dv">35</span>, <span class="fl">0.1</span>, <span class="fl">0.02</span>, <span class="fl">2.5</span>, <span class="fl">55.5</span>, <span class="dv">100</span>, <span class="fl">52.2</span>,</span>
-<span id="cb2-15"><a href="#cb2-15"></a>  <span class="fl">0.3</span>, <span class="dv">87000</span>, <span class="fl">0.1</span>, <span class="dv">192</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a>)</span>
-<span id="cb2-17"><a href="#cb2-17"></a></span>
-<span id="cb2-18"><a href="#cb2-18"></a>brainwt_kg <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb2-19"><a href="#cb2-19"></a>  <span class="fl">0.0081</span>, <span class="fl">0.423</span>, <span class="fl">0.1195</span>, <span class="fl">0.115</span>, <span class="fl">0.0055</span>, <span class="fl">0.05</span>, </span>
-<span id="cb2-20"><a href="#cb2-20"></a>  <span class="fl">4.603</span>, <span class="fl">0.419</span>, <span class="fl">0.655</span>, <span class="fl">0.115</span>, <span class="fl">0.0256</span>, <span class="fl">0.68</span>, </span>
-<span id="cb2-21"><a href="#cb2-21"></a>  <span class="fl">0.406</span>, <span class="fl">1.32</span>, <span class="fl">5.712</span>, <span class="fl">0.07</span>, <span class="fl">0.179</span>, <span class="fl">0.056</span>,</span>
-<span id="cb2-22"><a href="#cb2-22"></a>  <span class="fl">0.001</span>, <span class="fl">0.0004</span>, <span class="fl">0.0121</span>, <span class="fl">0.175</span>, <span class="fl">0.157</span>, <span class="fl">0.44</span>,</span>
-<span id="cb2-23"><a href="#cb2-23"></a>  <span class="fl">0.0019</span>, <span class="fl">0.1545</span>, <span class="fl">0.003</span>, <span class="fl">0.18</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>species <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="st">&quot;MountainBeaver&quot;</span>, <span class="st">&quot;Cow&quot;</span>, <span class="st">&quot;GreyWolf&quot;</span>, <span class="st">&quot;Goat&quot;</span>,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="st">&quot;GuineaPig&quot;</span>, <span class="st">&quot;Diplodocus&quot;</span>, <span class="st">&quot;AsianElephant&quot;</span>, <span class="st">&quot;Donkey&quot;</span>,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="st">&quot;Horse&quot;</span>, <span class="st">&quot;PotarMonkey&quot;</span>, <span class="st">&quot;Cat&quot;</span>, <span class="st">&quot;Giraffe&quot;</span>,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="st">&quot;Gorilla&quot;</span>, <span class="st">&quot;Human&quot;</span>, <span class="st">&quot;AfricanElephant&quot;</span>, <span class="st">&quot;Triceratops&quot;</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="st">&quot;RhesusMonkey&quot;</span>, <span class="st">&quot;Kangaroo&quot;</span>, <span class="st">&quot;GoldenHamster&quot;</span>, <span class="st">&quot;Mouse&quot;</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="st">&quot;Rabbit&quot;</span>, <span class="st">&quot;Sheep&quot;</span>, <span class="st">&quot;Jaguar&quot;</span>, <span class="st">&quot;Chimpanzee&quot;</span>,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="st">&quot;Rat&quot;</span>, <span class="st">&quot;Brachiosaurus&quot;</span>, <span class="st">&quot;Mole&quot;</span>, <span class="st">&quot;Pig&quot;</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a>bodywt_kg <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-12"><a href="#cb1-12"></a>  <span class="fl">1.4</span>, <span class="dv">465</span>, <span class="fl">36.3</span>, <span class="fl">27.7</span>, <span class="fl">1.</span>, <span class="dv">11700</span>, <span class="dv">2547</span>, <span class="fl">187.1</span>,</span>
+<span id="cb1-13"><a href="#cb1-13"></a>  <span class="dv">521</span>, <span class="dv">10</span>, <span class="fl">3.3</span>, <span class="dv">529</span>, <span class="dv">207</span>, <span class="dv">62</span>, <span class="dv">6654</span>, <span class="dv">9400</span>,</span>
+<span id="cb1-14"><a href="#cb1-14"></a>  <span class="fl">6.8</span>, <span class="dv">35</span>, <span class="fl">0.1</span>, <span class="fl">0.02</span>, <span class="fl">2.5</span>, <span class="fl">55.5</span>, <span class="dv">100</span>, <span class="fl">52.2</span>,</span>
+<span id="cb1-15"><a href="#cb1-15"></a>  <span class="fl">0.3</span>, <span class="dv">87000</span>, <span class="fl">0.1</span>, <span class="dv">192</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>)</span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a>brainwt_kg <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-19"><a href="#cb1-19"></a>  <span class="fl">0.0081</span>, <span class="fl">0.423</span>, <span class="fl">0.1195</span>, <span class="fl">0.115</span>, <span class="fl">0.0055</span>, <span class="fl">0.05</span>, </span>
+<span id="cb1-20"><a href="#cb1-20"></a>  <span class="fl">4.603</span>, <span class="fl">0.419</span>, <span class="fl">0.655</span>, <span class="fl">0.115</span>, <span class="fl">0.0256</span>, <span class="fl">0.68</span>, </span>
+<span id="cb1-21"><a href="#cb1-21"></a>  <span class="fl">0.406</span>, <span class="fl">1.32</span>, <span class="fl">5.712</span>, <span class="fl">0.07</span>, <span class="fl">0.179</span>, <span class="fl">0.056</span>,</span>
+<span id="cb1-22"><a href="#cb1-22"></a>  <span class="fl">0.001</span>, <span class="fl">0.0004</span>, <span class="fl">0.0121</span>, <span class="fl">0.175</span>, <span class="fl">0.157</span>, <span class="fl">0.44</span>,</span>
+<span id="cb1-23"><a href="#cb1-23"></a>  <span class="fl">0.0019</span>, <span class="fl">0.1545</span>, <span class="fl">0.003</span>, <span class="fl">0.18</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Check which of the following animals are contained in the <code>species</code> vector:</li>
+<li><strong>Check which of the following animals are contained in the <code>species</code> vector</strong></li>
 </ul>
-<p>Note: If you use <code>%in%</code> to check if elements are contained in a vector, the result vector is of the same length as the vector that is <strong>before</strong> the <code>%in%</code></p>
-<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-3_fc8113fd2bc003d7ae072305cad3410e">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>animals_to_check <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Snail&quot;</span>, <span class="st">&quot;Goat&quot;</span>, <span class="st">&quot;Chimpanzee&quot;</span>, <span class="st">&quot;Rat&quot;</span>, <span class="st">&quot;Dragon&quot;</span>, <span class="st">&quot;Eagle&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># Goes through every element in species and returns TRUE if it appears in animals_to_check</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>species <span class="sc">%in%</span> animals_to_check</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-3_8a7ba8619cb1cb2cd2e93cc741022e50">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>animals_to_check <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Snail&quot;</span>, <span class="st">&quot;Goat&quot;</span>, <span class="st">&quot;Chimpanzee&quot;</span>, <span class="st">&quot;Rat&quot;</span>, <span class="st">&quot;Dragon&quot;</span>, <span class="st">&quot;Eagle&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Goes through every element in animals_to_check and returns TRUE</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># if it appears in species</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>animals_to_check <span class="sc">%in%</span> species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
+</div>
+</div>
+<p>You can see that Goat, Chimpanzee and Rat are contained in <code>species</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you use <code>%in%</code> to check if elements are contained in a vector, the result vector is of the same length as the vector that is <strong>before</strong> the <code>%in%</code>.</p>
+<p>Compare the result from above with the following:</p>
+<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-4_c1984ffc662cd4901e4f6e5bc8b07aef">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Goes through every element in species and returns TRUE</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co"># if it appears in animals_to_check</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>species <span class="sc">%in%</span> animals_to_check</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
 [25]  TRUE FALSE FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Goes through every element in animals_to_check and returns TRUE if it appears in species</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>animals_to_check <span class="sc">%in%</span> species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
+</div>
 </div>
 </div>
 <ul>
-<li>Calculate mean and standard deviation of brain weight:</li>
+<li><strong>Calculate mean and standard deviation of brain weight</strong></li>
 </ul>
-<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-4_f26f069dd8ed3df6ffd1541710a30104">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">mean</span>(brainwt_kg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-5_5f66a4b93503df12b541a554e466614d">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">mean</span>(brainwt_kg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5745214</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">sd</span>(brainwt_kg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">sd</span>(brainwt_kg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.334929</code></pre>
 </div>
 </div>
 <ul>
-<li>Which species have brain weight larger than the mean brain weight of all species?</li>
+<li>Which species have a brain weight larger than the mean brain weight of all species?</li>
 </ul>
-<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-5_88edfe11dc24cc128445b95b341d9aad">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>species[brainwt_kg <span class="sc">&gt;</span> <span class="fu">mean</span>(brainwt_kg)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-6_3ba3db3cf8bb3b168f97ade72f03bff9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>species[brainwt_kg <span class="sc">&gt;</span> <span class="fu">mean</span>(brainwt_kg)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;AsianElephant&quot;   &quot;Horse&quot;           &quot;Giraffe&quot;         &quot;Human&quot;          
 [5] &quot;AfricanElephant&quot;</code></pre>
 </div>
 </div>
 <ul>
-<li>Calculate the ratio brain weight / body weight in percent and save it in a vector:</li>
+<li><strong>Calculate the ratio brain weight / body weight in percent and save it in a vector</strong></li>
 </ul>
-<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-6_9300b9e025161f6a0a849fb872354ff8">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>brain_body_ratio <span class="ot">&lt;-</span> brainwt_kg <span class="sc">/</span> bodywt_kg <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-7_c7d8a1fea57a08316be3fa8d4db940e9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>brain_body_ratio <span class="ot">&lt;-</span> brainwt_kg <span class="sc">/</span> bodywt_kg <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="which-animals-have-a-larger-brain-to-body-weight-ratio-than-humans" class="level5" data-number="0.0.0.1">
-<h5 data-number="0.0.0.1" class="anchored" data-anchor-id="which-animals-have-a-larger-brain-to-body-weight-ratio-than-humans"><span class="header-section-number">0.0.0.1</span> Which animals have a larger brain to body weight ratio than humans?</h5>
-<p>Step 1: Look at the brain to body ratio of humans</p>
-<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-7_f7373e9ec210d8d3317795986be32869">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>brain_body_ratio[species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Are there any animals with a larger brain to body weight ratio than humans? If yes, which ones?</strong></li>
+</ul>
+<p><strong>Step 1:</strong> Look at the brain to body ratio of humans</p>
+<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-8_ea077ddbfc62d6d347542e8be125e824">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>brain_body_ratio[species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.129032</code></pre>
 </div>
 </div>
-<p>Step 2: Compare it with the other animals</p>
-<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-8_cf3d3266986ab802b6f3569fa39618e9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># New variable for human brain to body ratio</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>bbr_human <span class="ot">&lt;-</span> brain_body_ratio[species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>]</span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="co"># Are there animals that have a larger brain to body ratio than humans?</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a>brain_body_ratio <span class="sc">&gt;</span> bbr_human</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step 2</strong>: Compare it with the other animals</p>
+<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-9_1574b435c88c6c47689583d1e7d2de3d">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># New variable for human brain to body ratio</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>bbr_human <span class="ot">&lt;-</span> brain_body_ratio[species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>]</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co"># Are there animals that have a larger brain to body ratio than humans?</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>brain_body_ratio <span class="sc">&gt;</span> bbr_human</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 [13] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 [25] FALSE FALSE  TRUE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Which are these animals</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>species[brain_body_ratio <span class="sc">&gt;</span> bbr_human]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Which are these animals</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>species[brain_body_ratio <span class="sc">&gt;</span> bbr_human]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;RhesusMonkey&quot; &quot;Mole&quot;        </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># or short</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>species[brain_body_ratio <span class="sc">&gt;</span> brain_body_ratio[species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># or short</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>species[brain_body_ratio <span class="sc">&gt;</span> brain_body_ratio[species <span class="sc">==</span> <span class="st">&quot;Human&quot;</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;RhesusMonkey&quot; &quot;Mole&quot;        </code></pre>
 </div>
 </div>
-<hr>
-</section>
 <section id="extras" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="extras"><span class="header-section-number">1</span> Extras</h2>
 <ul>
-<li>Round the vector to 4 decimal places:</li>
+<li><strong>Round the vector to 4 decimal places:</strong></li>
 </ul>
-<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-9_520a11a83dc0a36183f84587e9058aaf">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>brain_body_ratio <span class="ot">&lt;-</span> <span class="fu">round</span>(brain_body_ratio, <span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-10_ba4f42d7b531215da4e05b9fc3e01321">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>brain_body_ratio <span class="ot">&lt;-</span> <span class="fu">round</span>(brain_body_ratio, <span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Which animal has the smallest brain to body ratio?</li>
+<li><strong>Which animal has the smallest brain to body ratio?</strong></li>
 </ul>
-<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-10_df83afac272b4f66c3c06caccbbe12f0">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>species[brain_body_ratio <span class="sc">==</span> <span class="fu">min</span>(brain_body_ratio)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-11_9e984bcb3861a2ebcdac6bcf343d01af">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>species[brain_body_ratio <span class="sc">==</span> <span class="fu">min</span>(brain_body_ratio)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;Brachiosaurus&quot;</code></pre>
 </div>
 </div>
-<p>The Brachiosaurus has a really small brain with a weight of just 0.1545 kg at a body weight of 8.7^{4} kg!</p>
+<p>The Brachiosaurus has a really small brain with a weight of just 0.1545 kg at a body weight of 87000 kg!</p>
 <ul>
-<li>Add elements to the vector</li>
+<li><strong>Add elements to the vector</strong></li>
 </ul>
-<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-11_268ef774d13914521f5c7cc06ce4150b">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>species_new <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Eagle&quot;</span>, <span class="st">&quot;Snail&quot;</span>, <span class="st">&quot;Lion&quot;</span>)</span>
-<span id="cb25-2"><a href="#cb25-2"></a>brainwt_kg_new <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.0004</span>, <span class="cn">NA</span>, <span class="fl">0.5</span>)</span>
-<span id="cb25-3"><a href="#cb25-3"></a>bodywt_kg_new <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="fl">0.01</span>, <span class="dv">550</span>)</span>
-<span id="cb25-4"><a href="#cb25-4"></a></span>
-<span id="cb25-5"><a href="#cb25-5"></a>species <span class="ot">&lt;-</span> <span class="fu">c</span>(species, species_new)</span>
-<span id="cb25-6"><a href="#cb25-6"></a>brainwt_kg <span class="ot">&lt;-</span> <span class="fu">c</span>(brainwt_kg, brainwt_kg_new)</span>
-<span id="cb25-7"><a href="#cb25-7"></a>bodywt_kg <span class="ot">&lt;-</span> <span class="fu">c</span>(bodywt_kg, bodywt_kg_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-12_c5a62a1acda9aa8d0ee1807d584e879e">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>species_new <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Eagle&quot;</span>, <span class="st">&quot;Snail&quot;</span>, <span class="st">&quot;Lion&quot;</span>)</span>
+<span id="cb24-2"><a href="#cb24-2"></a>brainwt_kg_new <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.0004</span>, <span class="cn">NA</span>, <span class="fl">0.5</span>)</span>
+<span id="cb24-3"><a href="#cb24-3"></a>bodywt_kg_new <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="fl">0.01</span>, <span class="dv">550</span>)</span>
+<span id="cb24-4"><a href="#cb24-4"></a></span>
+<span id="cb24-5"><a href="#cb24-5"></a>species <span class="ot">&lt;-</span> <span class="fu">c</span>(species, species_new)</span>
+<span id="cb24-6"><a href="#cb24-6"></a>brainwt_kg <span class="ot">&lt;-</span> <span class="fu">c</span>(brainwt_kg, brainwt_kg_new)</span>
+<span id="cb24-7"><a href="#cb24-7"></a>bodywt_kg <span class="ot">&lt;-</span> <span class="fu">c</span>(bodywt_kg, bodywt_kg_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>What is the mean brain weight now?</li>
+<li><strong>What is the mean brain weight now?</strong></li>
 </ul>
-<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-12_1416a6dc6eac202fcf0d032b78f68a64">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">mean</span>(brainwt_kg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="intro-r_cache/html/unnamed-chunk-13_48eacd1fd52946aad5781339a82fdbfe">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">mean</span>(brainwt_kg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># na.rm = TRUE removes missing values before calculating the mean</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="fu">mean</span>(brainwt_kg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># na.rm = TRUE removes missing values before calculating the mean</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">mean</span>(brainwt_kg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5529</code></pre>
 </div>
