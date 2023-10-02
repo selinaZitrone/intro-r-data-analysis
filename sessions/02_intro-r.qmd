@@ -8,14 +8,12 @@ title: "Introduction to R"
 
 [Slides in full screen](slides/intro-r.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/intro-r.pdf" download>Download PDF slides</a>
 
-:::{.panel-tabset}
-
 # Task
 
-{{< include tasks/intro-r.qmd >}}
+:::{.callout-note}
 
-# Solution
-
-{{< include solutions/intro-r.qmd >}}
+Find the solution [here](solutions/intro-r.qmd).
 
 :::
+
+{{< include tasks/intro-r.qmd >}}

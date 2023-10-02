@@ -8,14 +8,12 @@ title: "Import and Export Data with readr"
 
 [Slides in full screen](slides/readr.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/readr.pdf" download>Download PDF slides</a>
 
-:::{.panel-tabset}
-
 # Task
 
-{{< include tasks/readr.qmd >}}
+:::{.callout-note}
 
-# Solution
-
-{{< include solutions/readr.qmd >}}
+Find the solution [here](solutions/readr.qmd).
 
 :::
+
+{{< include tasks/readr.qmd >}}

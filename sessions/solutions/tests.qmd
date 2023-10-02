@@ -1,4 +1,9 @@
-### Compare the flipper length of penguins using statistical tests
+---
+title: "Solution to statistical test task"
+number-sections: true
+---
+
+## Compare the flipper length of penguins using statistical tests
 
 First, create subsets of the flipper length of all species as vectors:
 

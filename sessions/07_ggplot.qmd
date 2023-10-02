@@ -8,22 +8,12 @@ title: "Data visualization with ggplot2"
 
 [Slides in full screen](slides/ggplot.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/ggplot.pdf" download>Download PDF slides</a>
 
-:::{.panel-tabset}
+# Task
 
-# Task 1
+:::{.callout-note}
 
-{{< include tasks/ggplot.qmd >}}
-
-# Task 2
-
-{{< include tasks/ggplot-beautify.qmd >}}
-
-# Solution 1
-
-{{< include solutions/ggplot.qmd >}}
-
-# Solution 2
-
-{{< include solutions/ggplot-beautify.qmd >}}
+Find the solution [here](solutions/ggplot.qmd).
 
 :::
+
+{{< include tasks/ggplot.qmd >}}

@@ -1,4 +1,9 @@
-### 1.1 and 1.2 Getting started with ggplot and palmerpenguins
+---
+title: "Solution to ggplot tasks"
+number-sections: true
+---
+
+## Getting started with ggplot and palmerpenguins
 
 ```{r eval=TRUE, echo=TRUE}
 # install.packages("tidyverse")
@@ -17,9 +22,9 @@ print(penguins, n=6)
 ```
 
 
-### 1.3 Exploratory plotting
+## Exploratory plotting
 
-#### 1.3.1 Relationship between bill length and bill depth (scatterplot)
+### Relationship between bill length and bill depth (scatterplot)
 
 What is the relationship between bill length and bill depth?
 
@@ -82,7 +87,7 @@ ggplot(penguins, aes(
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-#### 1.3.2 Difference in flipper length between species (boxplot)
+### Difference in flipper length between species (boxplot)
 
 Is there a difference in flipper length between the species?
 
@@ -104,7 +109,7 @@ ggplot(penguins, aes(species, flipper_length_mm)) +
 ```
 
 
-#### 1.3.3 Differences between body mass of male and female penguins (boxplot)
+### Differences between body mass of male and female penguins (boxplot)
 
 Are male penguins heavier than female penguins? And is this different between the 3 species?
 
@@ -150,7 +155,7 @@ ggplot(penguins, aes(x = sex, y = body_mass_g)) +
   facet_wrap(~species)
 ```
 
-#### 1.3.4 Distribution of flipper length between species (histogram)
+### Distribution of flipper length between species (histogram)
 
 Make a histogram of the the flipper length separated by species.
 
@@ -193,7 +198,7 @@ ggplot(penguins, aes(
   facet_wrap(~species, scales = "free_x", ncol = 1)
 ```
 
-#### 1.3.5 Penguin flipper length by species and sex (heatmap)
+### Penguin flipper length by species and sex (heatmap)
 
 Create a heat map that shows:
 
@@ -211,9 +216,192 @@ ggplot(penguins, aes(
   geom_tile()
 ```
 
-### References
+## Beautify the plots
+
+### Beatuify plots from 1.3
+
+Here are just some examples of how to make the plots from before prettier. Of course there a many other options as well.
+
+**Example one: Boxplot of flipper length and species**
+
+```{r echo = TRUE}
+ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
+  geom_boxplot(width = 0.3) +
+  geom_point(
+    alpha = 0.5,
+    position = position_jitter(width = 0.1, seed = 123)
+  ) +
+  ggsci::scale_color_uchicago() +
+  labs(x = "Species", y = "Flipper length (mm)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+What was changed compared to the basic plot?
+
+- Add color for each species by setting a global `color` aesthetic
+- Make boxes and jitter points less wide by setting `width` for both layers
+- Make jitter points slightly transparent by specifying `alpha = 0.5` for the jitter layer
+- Change the color to nicer colors from the `ggsci` package
+- Change from default theme to `theme_minimal()`
+- Remove the legend with `legend.position = "none"`
+- Change the axis labels with `labs()`
+
+
+**Example two: Reproducing the plot from the presentation**
+
+The following code is adapted from the [palmerpengins package website](https://allisonhorst.github.io/palmerpenguins/articles/examples.html).
+
+```{r eval=TRUE, echo=TRUE}
+ggplot(
+  data = penguins,
+  aes(
+    x = bill_length_mm,
+    y = bill_depth_mm,
+    color = species,
+    shape = species
+  )
+) +
+  geom_point(size = 3, alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_color_manual(values = c("darkorange", "purple", "cyan4")) +
+  labs(
+    title = "Penguin bill dimensions",
+    subtitle = "Bill length and depth for Adelie, Chinstrap and Gentoo Penguins at Palmer Station LTER",
+    x = "Bill length (mm)",
+    y = "Bill depth (mm)",
+    color = "Penguin species",
+    shape = "Penguin species"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = c(0.85, 0.15),
+    legend.background = element_rect(fill = "white", color = NA)
+  )
+```
+
+What was changed compared to the basic plot?
+
+- Make points larger and slightly transparent by setting `size` and `alpha` for the point layer
+- Change to custom color scale
+- Add title and subtitle with `labs`
+- Change title of x-axis, y-axis and legend for color and shape aesthetic with `labs`
+- Use `theme_minimal()` instead of default theme
+- Change legend position to bottom right corner within the plot
+  - Positions are relative to the bottom left corner of the plot
+  - 0.85 (85% of plot width) to the right
+  - 0.15 (15% of plot height) towards the top
+
+## Save one of the plots on your machine
+
+Example with one of the plots from above:
+
+```{r echo = TRUE}
+flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
+  geom_boxplot(width = 0.3) +
+  geom_jitter(alpha = 0.5, position = position_jitter(width = 0.2, seed = 123)) +
+  ggsci::scale_color_uchicago() +
+  labs(x = "Species", y = "Flipper length (mm)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+```{r echo= TRUE, eval=FALSE}
+# save as png in /img directory of the project
+ggsave(filename = "./img/flipper_box.png", flipper_box)
+# save as pdf in /img directory of the project
+ggsave(filename = "./img/flipper_box.pdf", flipper_box)
+```
+
+
+## Some more examples
+
+**Histogram**
+
+```{r echo = TRUE}
+ggplot(penguins, aes(x = flipper_length_mm, fill = species)) +
+  geom_histogram(alpha = 0.6) +
+  ggsci::scale_fill_d3() +
+  labs(
+    y = "Frequency",
+    x = "Flipper length [mm]",
+    fill = "Penguin species"
+  ) +
+  theme_minimal()
+```
+
+**Heat map**
+
+For the penguin data set a heat map does not make that much sense. But an example would be:
+
+```{r echo=TRUE}
+ggplot(penguins, aes(
+  x = species,
+  y = sex,
+  fill = flipper_length_mm
+)) +
+  geom_tile() +
+  scale_fill_viridis_c() +
+  theme_classic()
+```
+
+### The `plotly` package
+
+You can use the `plotly package` to create interactive plots where you can e.g. hover over an area of your plot with the mouse and the respective values will be displayed.
+
+To get started, you have to install the plotly package
+
+```{r echo=TRUE, eval=FALSE}
+install.packages("plotly")
+```
+
+You can use any ggplot and wrap it in the `ggplotly` function from the `plotly` package to make it interactive, e.g.
+
+```{r echo=TRUE}
+plotly::ggplotly(flipper_box)
+```
+
+### The `patchwork` package
+
+With the `patchwork` package, you can combine multiple ggplots into one plot. The package allows you to add annotations to the plot and to control the layout and appearance.
+
+Below you find a simple example of two different penugin scatterplots. For more explanation and an overview of what is possible with the package, please have a look at the [package documentation](https://patchwork.data-imaginist.com/)
+
+```{r echo=TRUE}
+# library(patchwork)
+# # Collecting legends and defining a common theme
+# plot_1 <- ggplot(penguins, aes(
+#   x = bill_length_mm, y = bill_depth_mm,
+#   color = species
+# )) +
+#   geom_point()
+# 
+# plot_2 <- ggplot(penguins, aes(
+#   x = bill_length_mm, y = body_mass_g,
+#   color = species
+# )) +
+#   geom_point()
+# 
+# # Simple combination of 2 plots in patchwork
+# plot_1 + plot_2
+# 
+# # more complex combination with annotation and definition of shared layers
+# final_plot <- plot_1 + plot_2 +
+#   plot_layout(guides = "collect") +
+#   plot_annotation(tag_levels = "a", tag_prefix = "(", tag_suffix = ")") &
+#   theme_minimal() &
+#   scale_color_manual(values = c("darkorange", "purple", "cyan4")) &
+#   labs(
+#     color = "Penguin species"
+#   ) &
+#   theme(
+#     plot.tag.position = c(0.1, 0.95),
+#     plot.tag = element_text(face = "bold")
+#   )
+```
+
+## References
 
 Check out the [package website](https://allisonhorst.github.io/palmerpenguins/articles/examples.html) of the `palmerpenguin` package. They have more nice examples of data visualizations that you can do with ggplot.
 
 Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218.
-

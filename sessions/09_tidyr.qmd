@@ -8,14 +8,12 @@ title: "Tidy data with tidyr"
 
 [Slides in full screen](slides/tidyr.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/tidyr.pdf" download>Download PDF slides</a>
 
-:::{.panel-tabset}
-
 # Task
 
-{{< include tasks/tidyr.qmd >}}
+:::{.callout-note}
 
-# Solution
-
-{{< include solutions/tidyr.qmd >}}
+Find the solution [here](solutions/tidyr.qmd).
 
 :::
+
+{{< include tasks/tidyr.qmd >}}

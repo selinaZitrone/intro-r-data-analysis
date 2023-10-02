@@ -1,3 +1,7 @@
+---
+number-sections: true
+---
+
 You have the following three vectors:
 
 - `species`: name of the species

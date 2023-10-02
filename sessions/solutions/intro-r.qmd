@@ -1,3 +1,8 @@
+---
+title: "Solution to introduction to R"
+number-sections: true
+---
+
 ```{r}
 options(scipen = 999)
 ```
@@ -85,8 +90,9 @@ species[brain_body_ratio > bbr_human]
 species[brain_body_ratio > brain_body_ratio[species == "Human"]]
 ```
 
+---
 
-### Extras
+## Extras
 
 - Round the vector to 4 decimal places:
 

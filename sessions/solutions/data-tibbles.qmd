@@ -1,4 +1,9 @@
-### 3.2 Creating a tibble
+---
+title: "Solution to tibble tasks"
+number-sections: true
+---
+
+## Creating a tibble
 
 Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and put them in a tibble.
 
@@ -40,7 +45,7 @@ animals <- tibble(
 ```
 
 
-### 3.3 Exploring the tibble
+## Exploring the tibble
 
 In the view window that opens, you have some options to filter the data and sort rows.
 
@@ -56,7 +61,7 @@ ncol(animals)
 names(animals)
 ```
 
-### 3.4 Indexing and selecting
+## Indexing and selecting
 
 - Rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
 
@@ -76,7 +81,9 @@ animals[1:10, ]
 animals$bodywt_kg
 ```
 
-#### Extra
+---
+
+## Extra
 
 - Select the last column of the last row without using the row and column index (so don't use any numbers in this command)
 

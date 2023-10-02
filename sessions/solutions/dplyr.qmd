@@ -1,3 +1,8 @@
+---
+title: "Solution to dplyr tasks"
+number-sections: true
+---
+
 ```{r echo=TRUE}
 library(tidyverse)
 library(palmerpenguins)
@@ -6,9 +11,9 @@ library(palmerpenguins)
 theme_set(theme_grey())
 ```
 
-### 2.2 Data transformation with dplyr
+## Data transformation with dplyr
 
-**Find all penguins that ...**
+#### Find all penguins that ...
 
 1. ... have a bill length between 40 and 45 mm.
 
@@ -41,7 +46,7 @@ filter(penguins, island == "Dream" & year == 2007) %>%
   count(species)
 ```
 
-**Count ...**
+#### Count ...
 
 1. ... the number of penguins on each island.
 
@@ -55,7 +60,7 @@ count(penguins, island)
 count(penguins, island, species)
 ```
 
-**Select ...**
+#### Select ...
 
 1. ... only the variables species, sex and year
 
@@ -80,7 +85,7 @@ select(penguins, ends_with("mm"))
 #select(penguins, contains("_mm"))
 ```
 
-**Add a column ...**
+#### Add a column ...
 
 1. ... with the ratio of bill length to bill depth
 
@@ -100,7 +105,7 @@ mutate(penguins,
        ))
 ```
 
-**Calculate ...**
+#### Calculate ...
 
 1. ... mean flipper length and body mass for the 3 species and male and female penguins separately
 
@@ -125,7 +130,7 @@ penguins %>%
   )
 ```
 
-### Extras
+## Extras
 
 1. Make a boxplot of penguin body mass with sex on the y-axis and facets for the different species. Can you remove the penguins with missing values for sex first?
 

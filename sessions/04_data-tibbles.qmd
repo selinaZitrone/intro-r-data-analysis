@@ -8,14 +8,12 @@ title: "Tabels in R - Data frames and tibbles"
 
 [Slides in full screen](slides/data-tibbles.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/data-tibbles.pdf" download>Download PDF slides</a>
 
-:::{.panel-tabset}
-
 # Task
 
-{{< include tasks/data-tibbles.qmd >}}
+:::{.callout-note}
 
-# Solution
-
-{{< include solutions/data-tibbles.qmd >}}
+Find the solution [here](solutions/data-tibbles.qmd).
 
 :::
+
+{{< include tasks/data-tibbles.qmd >}}

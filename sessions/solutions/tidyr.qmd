@@ -1,10 +1,15 @@
-### 4.1 Getting started with tidyr
+---
+title: "Solution to tidyr task"
+number-sections: true
+---
+
+## Getting started with tidyr
 
 ```{r echo=TRUE, eval=TRUE}
 library(tidyverse)
 ```
 
-### 4.2 Let's tidy some data sets
+## Let's tidy some data sets
 
 **1. `relig_income`**
 
@@ -48,7 +53,9 @@ pivot_longer(billboard,
              values_to = "rank")
 ```
 
-#### Extras
+---
+
+## Extras
 
 The argument `values_drop_na` drops rows with missing values in the rank column. Here it makes sense because not every song is in the charts for all 76 weeks.
 

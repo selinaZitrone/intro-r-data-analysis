@@ -1,4 +1,8 @@
-## 1 Getting started with tibbles
+---
+number-sections: true
+---
+
+## Getting started with tibbles
 
 Before you start the task:
 
@@ -6,11 +10,11 @@ Before you start the task:
 - Open your script for the task and put `library(tibble)` on top
 - Execute this line and the tibble package is loaded into your R session and ready to use
 
-## 2 Creating a tibble
+## Creating a tibble
 
 Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from before and combine them in a tibble.
 
-## 3 Exploring the tibble
+## Exploring the tibble
 
 Explore the tibble you created with the different functions that you learned in the presentation.
 You can for example try 
@@ -21,7 +25,7 @@ You can for example try
 - ...
 
 
-## 4 Indexing and selecting
+## Indexing and selecting
 
 Now let's try some indexing on the data.
 

@@ -14,3 +14,5 @@ img/*
 additional_docs/*.pdf
 data/*
 R/byod/
+
+/.quarto/

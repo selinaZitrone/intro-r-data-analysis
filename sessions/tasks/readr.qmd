@@ -1,4 +1,8 @@
-## 1 Getting started with readr and the tidyverse
+---
+number-sections: true
+---
+
+## Getting started with readr and the tidyverse
 
 Before you start, make sure to install the `tidyverse` packages by calling
 
@@ -10,7 +14,7 @@ This will install readr along with other tidyverse packages.
 
 Remember to put `library(tidyverse)` (or `library(readr)`) on top of your script to access the readr functions.
 
-### 2 Write a tibble to disk
+### Write a tibble to disk
 
 Let's use the `animals` tibble from the previous task and write it into the data folder in our project.
 
@@ -23,13 +27,13 @@ Now write the `animals` tibble to that `/data` sub-directory as `animals.csv` us
 
 Check if the file was written into the correct folder.
 
-## 3 Read data into R
+## Read data into R
 
 Now, try to read the data set back into R using the appropriate `read_*` function.
 
 ---
 
-#### Extra
+## Extra
 
 Navigate to your `data` directory using the `Files` pane of RStudio.
 Click on both the `.csv` file that you just saved there. What can you do? Try the `Import Dataset` button and see what you can do there.

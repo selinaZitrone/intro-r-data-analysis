@@ -4,9 +4,11 @@ project:
   render:
     - "*.qmd"
     - "!*.Rmd"
+    - "!additional_docs/"
   resources:
     - "slides/*.pdf"
     - "slides/*.html"
+    - "R/Tasks/"
 
 website:
   page-navigation: true
@@ -16,13 +18,21 @@ website:
   repo-branch: master
   title: ""
   navbar:
+    background: "#91BCE6"
     left:
-      - text: Home
+      - text: "Home"
         href: index.qmd
+      - text: "Preparations"
+        href: preparations.qmd
+      - text: "Resources"
+        href: online_resources.qmd
+      - text: "Packages"
+        href: packages.qmd
+
     right:
       - text: "Sessions"
         menu:
-          - text: "Day 1"
+          - text: "<b>Day 1</b>"
           - text: "Introduction RStudio"
             href: sessions/01_intro-rstudio.qmd
           - text: "Introduction R"
@@ -34,24 +44,24 @@ website:
           - text: "Tidyverse and readr"
             href: sessions/05_readr.qmd
           - text: "---"
-          - text: "Day 2"
+          - text: "<b>Day 2</b>"
           - text: "ggplot2"
             href: sessions/07_ggplot.qmd
           - text: "dplyr"
             href: sessions/08_dplyr.qmd
           - text: "---"
-          - text: "Day 3"
+          - text: "<b>Day 3</b>"
           - text: "tidyr"
             href: sessions/09_tidyr.qmd
           - text: "03 - Statistical tests"
             href: sessions/10_tests.qmd
           - text: "---"
-          - text: "Day 4"
+          - text: "<b>Day 4</b>"
           - text: "Bring your own data"
             href: sessions/slides/bring-your-own-data.qmd
             target: _blank
           - text: "---"
-          - text: "Extras"
+          - text: "<b>Extras</b>"
           - text: "Common R errors"
             href: sessions/06_common-errors.qmd
           - text: "Good practice coding"
@@ -59,17 +69,18 @@ website:
       - text: "Downloads"
         menu:
           - text: "R Script Day 1"
+            href:  R/Tasks/Day1.R
           - text: "R Script Day 2"
+            href: R/Tasks/Day2.R
           - text: "R Script Day 3"
+            href: R/Tasks/Day3.R
 
-      - text: "Resources"
-        href: online_resources.qmd
-
-      - text: "Packages"
-        href: packages.qmd
-
-      - icon: fa fa-github
-        href: https://github.com/selinaZitrone/intro-r-data-analysis
+      - icon: github
+        menu:
+          - text: Source Code
+            url: https://github.com/selinaZitrone/intro-r-data-analysis
+          - text: Report an Issue
+            url: https://github.com/selinaZitrone/intro-r-data-analysis/issues/new
 
 format:
   html:

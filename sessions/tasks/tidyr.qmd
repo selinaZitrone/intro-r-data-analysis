@@ -1,4 +1,8 @@
-## 1 Getting started with tidyr
+---
+number-sections: true
+---
+
+## Getting started with tidyr
 
 Before you start, make sure to load the `tidyverse` package.
 
@@ -7,7 +11,7 @@ Before you start, make sure to load the `tidyverse` package.
 library(tidyverse)
 ```
 
-## 2 Let's tidy some data sets
+## Let's tidy some data sets
 
 First, complete all the tasks before you move to the **extras**.
 

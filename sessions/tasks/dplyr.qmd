@@ -1,3 +1,7 @@
+---
+number-sections: true
+---
+
 ## Getting started with dplyr
 
 A helpful resource for to consult for this task can be the [dplyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf).

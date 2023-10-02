@@ -1,4 +1,9 @@
-### 3.1 Create a tibble and write it
+---
+title: "Solution to readr task"
+number-sections: true
+---
+
+## Create a tibble and write it
 
 Load the package and create the tibble:
 
@@ -48,7 +53,7 @@ write_csv(x = animals, file = "data/animals.csv") # write as csv
 write_tsv(x = animals, file = "data/animals.txt") # write as txt
 ```
 
-### 3.2 Read data into R
+## Read data into R
 
 Read the same data back into R:
 

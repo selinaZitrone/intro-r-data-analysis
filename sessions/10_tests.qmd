@@ -8,14 +8,12 @@ title: "Statistical tests"
 
 [Slides in full screen](slides/tests.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/tests.pdf" download>Download PDF slides</a>
 
-:::{.panel-tabset}
-
 # Task
 
-{{< include tasks/tests.qmd >}}
+:::{.callout-note}
 
-# Solution
-
-{{< include solutions/tests.qmd >}}
+Find the solution [here](solutions/tests.qmd).
 
 :::
+
+{{< include tasks/tests.qmd >}}
