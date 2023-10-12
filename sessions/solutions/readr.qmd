@@ -1,5 +1,6 @@
 ---
 title: "Solution to readr task"
+code-line-numbers: false
 ---
 
 ## Write a tibble to disk

@@ -32,7 +32,7 @@ from: markdown+emoji
 
 # The tidyverse{.inverse}
 
-![](img/hex-stickers/tidyverse.png){style="float:right;padding: 0 0 0 10px;" fig-alt="Tidyverse Hex Logo" width="300"}
+![](img/hex-stickers/tidyverse.png){fig-align="center" width=20%}
 
 ## The tidyverse
 
@@ -59,8 +59,6 @@ These are the main packages from the tidyverse that we will use:<br><br>
 
 Install the tidyverse once with:
 
-<br>
-
 ```{r eval=FALSE}
 install.packages("tidyverse")
 ```
@@ -77,7 +75,7 @@ You can also install and load the tidyverse packages individually, but since we 
 
 # Import and export data with readr{.inverse}
 
-![](img/hex-stickers/readr.png){style="float:right;padding: 0 0 0 10px;" fig-alt="Tidyverse Hex Logo" width="300"}
+![](img/hex-stickers/readr.png){fig-align="center" width=20%}
 
 ## Readr
 
@@ -107,6 +105,8 @@ All `read_*` functions take a path to the data file as a first argument:
 
 :::
 
+<br>
+
 . . .
 
 Import files with a `readr` function fitting the delimiter of your file:
@@ -116,6 +116,7 @@ dat <- read_csv("data/your_data.csv") # comma delimiter
 
 dat <- read_tsv("data/your_data.txt") # tab delimiter
 ```
+<br>
 
 . . .
 
@@ -238,7 +239,7 @@ Specify whether the data has a header column or not with `col_names`
 :::{.column width="50%"}
 
 ```{r eval=FALSE}
-# First line is expected to be column names
+# First line expected to be column names
 read_csv(file = "data/no_col_names.csv")
 ```
 
@@ -302,7 +303,7 @@ Specify whether the data has a header column or not with `col_names`
 
 
 ```{r eval=FALSE}
-# First line is expected to be column names
+# First line expected to be column names
 read_csv(file = "data/no_col_names.csv")
 ```
 
@@ -378,7 +379,7 @@ write_delim(dat, file = "data-clean/your_data.txt", delim = "..xyz..") # ..xyz..
 
 # Import excel files{.inverse}
 
-![](img/hex-stickers/readxl.png){style="float:right;padding: 0 0 0 10px;" fig-alt="readxl Hex Logo" width="300"}
+![](img/hex-stickers/readxl.png){fig-align="center" width=20%}
 
 ## Readxl
 

@@ -2230,7 +2230,7 @@
     "href": "sessions/slides/readr.html#the-tidyverse-2",
     "title": "Import and Export Data with readr",
     "section": "The tidyverse",
-    "text": "The tidyverse\nInstall the tidyverse once with:\n\n\ninstall.packages(\"tidyverse\")\n\nThen load and attach the packages at the beginning of your script:\n\nlibrary(tidyverse)\n\n\nYou can also install and load the tidyverse packages individually, but since we will use so many of them together, it’s easier to load and attach them together."
+    "text": "The tidyverse\nInstall the tidyverse once with:\n\ninstall.packages(\"tidyverse\")\n\nThen load and attach the packages at the beginning of your script:\n\nlibrary(tidyverse)\n\n\nYou can also install and load the tidyverse packages individually, but since we will use so many of them together, it’s easier to load and attach them together."
   },
   {
     "objectID": "sessions/slides/readr.html#readr",
@@ -2244,7 +2244,7 @@
     "href": "sessions/slides/readr.html#read-files-with-read_",
     "title": "Import and Export Data with readr",
     "section": "Read files with read_*()",
-    "text": "Read files with read_*()\nAll read_* functions take a path to the data file as a first argument:\n\nread_*(file = “path/to/your/file”, …)\n\n\nImport files with a readr function fitting the delimiter of your file:\n\ndat &lt;- read_csv(\"data/your_data.csv\") # comma delimiter\n\ndat &lt;- read_tsv(\"data/your_data.txt\") # tab delimiter\n\n\n\nUse read_delim for a generic type of delimiter:\n\ndat &lt;- read_delim(\"data/your_data.txt\", delim = \"\\t\") # tab delimiter\n\ndat &lt;- read_delim(\"data/your_data.txt\", delim = \"..xyz..\") # ..xyz.. delimiter\n\n\n\nAll read_* functions return a tibble"
+    "text": "Read files with read_*()\nAll read_* functions take a path to the data file as a first argument:\n\nread_*(file = “path/to/your/file”, …)\n\n\n\nImport files with a readr function fitting the delimiter of your file:\n\ndat &lt;- read_csv(\"data/your_data.csv\") # comma delimiter\n\ndat &lt;- read_tsv(\"data/your_data.txt\") # tab delimiter\n\n\n\n\nUse read_delim for a generic type of delimiter:\n\ndat &lt;- read_delim(\"data/your_data.txt\", delim = \"\\t\") # tab delimiter\n\ndat &lt;- read_delim(\"data/your_data.txt\", delim = \"..xyz..\") # ..xyz.. delimiter\n\n\n\nAll read_* functions return a tibble"
   },
   {
     "objectID": "sessions/slides/readr.html#read-files-with-read_-1",
@@ -2265,14 +2265,14 @@
     "href": "sessions/slides/readr.html#read-files-with-read_-3",
     "title": "Import and Export Data with readr",
     "section": "Read files with read_*()",
-    "text": "Read files with read_*()\n\n\nSpecify whether the data has a header column or not with col_names\n\n\nUseful if you don’t have column names or you want to change them\n\n\n\n\n\n\n\n\n\n\n# First line is expected to be column names\nread_csv(file = \"data/no_col_names.csv\")\n\n\n#&gt; # A tibble: 2 × 2\n#&gt;   `1.5`   `2`\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1     0  \n#&gt; 2   0.5   0.6\n\n\n\n\n# Default column names are given\nread_csv(\n  file = \"data/no_col_names.csv\",\n  col_names = FALSE\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;      X1    X2\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1.5   2  \n#&gt; 2   1     0  \n#&gt; 3   0.5   0.6"
+    "text": "Read files with read_*()\n\n\nSpecify whether the data has a header column or not with col_names\n\n\nUseful if you don’t have column names or you want to change them\n\n\n\n\n\n\n\n\n\n\n# First line expected to be column names\nread_csv(file = \"data/no_col_names.csv\")\n\n\n#&gt; # A tibble: 2 × 2\n#&gt;   `1.5`   `2`\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1     0  \n#&gt; 2   0.5   0.6\n\n\n\n\n# Default column names are given\nread_csv(\n  file = \"data/no_col_names.csv\",\n  col_names = FALSE\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;      X1    X2\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1.5   2  \n#&gt; 2   1     0  \n#&gt; 3   0.5   0.6"
   },
   {
     "objectID": "sessions/slides/readr.html#read-files-with-read_-4",
     "href": "sessions/slides/readr.html#read-files-with-read_-4",
     "title": "Import and Export Data with readr",
     "section": "Read files with read_*()",
-    "text": "Read files with read_*()\n\n\nSpecify whether the data has a header column or not with col_names\n\n\nUseful if you don’t have column names or you want to change them\n\n\n\n\n\n\n\n\n\n# First line is expected to be column names\nread_csv(file = \"data/no_col_names.csv\")\n\n\n#&gt; # A tibble: 2 × 2\n#&gt;   `1.5`   `2`\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1     0  \n#&gt; 2   0.5   0.6\n\n\n\n# Specify custom column names\nread_csv(\n  file = \"data/no_col_names.csv\",\n  col_names = c(\"Temperature\", \"Rainfall\")\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;   Temperature Rainfall\n#&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1         1.5      2  \n#&gt; 2         1        0  \n#&gt; 3         0.5      0.6"
+    "text": "Read files with read_*()\n\n\nSpecify whether the data has a header column or not with col_names\n\n\nUseful if you don’t have column names or you want to change them\n\n\n\n\n\n\n\n\n\n# First line expected to be column names\nread_csv(file = \"data/no_col_names.csv\")\n\n\n#&gt; # A tibble: 2 × 2\n#&gt;   `1.5`   `2`\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1     0  \n#&gt; 2   0.5   0.6\n\n\n\n# Specify custom column names\nread_csv(\n  file = \"data/no_col_names.csv\",\n  col_names = c(\"Temperature\", \"Rainfall\")\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;   Temperature Rainfall\n#&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1         1.5      2  \n#&gt; 2         1        0  \n#&gt; 3         0.5      0.6"
   },
   {
     "objectID": "sessions/slides/readr.html#write-files-with-write_",

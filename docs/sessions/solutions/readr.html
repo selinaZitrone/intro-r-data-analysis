@@ -4492,7 +4492,7 @@ vertical-align: -.125em;
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../index.html" rel target>
- <span class="menu-text">Home</span></a>
+ <span class="menu-text"><b>Home</b></span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../preparations.html" rel target>
@@ -4528,7 +4528,7 @@ vertical-align: -.125em;
   </li>  
         <li>
     <a class="dropdown-item" href="../../sessions/04_data-tibbles.html" rel target>
- <span class="dropdown-text">Data &amp; Tibbles</span></a>
+ <span class="dropdown-text">Data frames &amp; tibbles</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../sessions/05_readr.html" rel target>
@@ -4655,11 +4655,11 @@ vertical-align: -.125em;
 <h2 data-number="1" class="anchored" data-anchor-id="write-a-tibble-to-disk"><span class="header-section-number">1</span> Write a tibble to disk</h2>
 <p>First, I load the <code>tidyverse</code> package to have all readr functions available. Then I will write the tibble that I called <code>animals</code> from the <a href="02_data-tibbles.qmd">previous task</a>.</p>
 <div class="cell" data-hash="readr_cache/html/unnamed-chunk-2_d339e943dd5d9414b9d32ef83d456ada">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-hash="readr_cache/html/unnamed-chunk-3_7cbd396372db732aa53b342fb7ba7613">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># The variable animals with the tibble from the previous task</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>animals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The variable animals with the tibble from the previous task</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>animals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 28 × 3
    species        bodywt_kg brainwt_kg
@@ -4679,8 +4679,8 @@ vertical-align: -.125em;
 </div>
 <p>Now I write the <code>animals</code> table into my project’s <code>data/</code> folder:</p>
 <div class="cell" data-hash="readr_cache/html/unnamed-chunk-4_b7382c624a2ff6c810b20465488d8356">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">write_csv</span>(<span class="at">x =</span> animals, <span class="at">file =</span> <span class="st">&quot;data/animals.csv&quot;</span>) <span class="co"># write as csv</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">write_tsv</span>(<span class="at">x =</span> animals, <span class="at">file =</span> <span class="st">&quot;data/animals.txt&quot;</span>) <span class="co"># write as txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(<span class="at">x =</span> animals, <span class="at">file =</span> <span class="st">&quot;data/animals.csv&quot;</span>) <span class="co"># write as csv</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(<span class="at">x =</span> animals, <span class="at">file =</span> <span class="st">&quot;data/animals.txt&quot;</span>) <span class="co"># write as txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -4700,8 +4700,8 @@ Note
 <h2 data-number="2" class="anchored" data-anchor-id="read-data-into-r"><span class="header-section-number">2</span> Read data into R</h2>
 <p>Now I take the same data that I just wrote and read it back into R:</p>
 <div class="cell" data-hash="readr_cache/html/unnamed-chunk-5_d8d0f274255101ba81b3cb276edb25a4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>animals_csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/animals.csv&quot;</span>) <span class="co"># read the csv</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>animals_tsv <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;data/animals.txt&quot;</span>) <span class="co"># read the txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>animals_csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/animals.csv&quot;</span>) <span class="co"># read the csv</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>animals_tsv <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;data/animals.txt&quot;</span>) <span class="co"># read the txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
