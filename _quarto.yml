@@ -20,7 +20,7 @@ website:
   navbar:
     background: "#91BCE6"
     left:
-      - text: "Home"
+      - text: "<b>Home</b>"
         href: index.qmd
       - text: "Preparations"
         href: preparations.qmd

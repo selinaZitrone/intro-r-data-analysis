@@ -340,7 +340,7 @@
     "href": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio",
     "title": "Introduction to RStudio",
     "section": "Difference between R and RStudio",
-    "text": "Difference between R and RStudio\n\n\n\n R is the programming language and the program that does the actual work\n\nCan be used with many different programming environments (But RStudio is the best for R)\n\n\n\n\nRStudio is the integrated development environment (IDE)\n\nProvides an interface to R\nSpecifically built around R code\nExecute code\nSyntax highlighting\nFile and project management\n…"
+    "text": "Difference between R and RStudio\n\n\n\n\n\n\n\n\n\n\nR is the programming language and the program that does the actual work\n\nCan be used with many different programming environments\n\n\n\n\nRStudio is the integrated development environment (IDE)\n\nProvides an interface to R\nSpecifically built around R code\nExecute code\nSyntax highlighting\nFile and project management\n…"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio-1",
@@ -354,7 +354,7 @@
     "href": "sessions/slides/intro-rstudio.html#basic-idea-of-writing-code-for-data-analysis",
     "title": "Introduction to RStudio",
     "section": "Basic idea of writing code for data analysis",
-    "text": "Basic idea of writing code for data analysis\n\n\nBreak down your process into small steps\nWrite precise instructions telling the computer what to do in each step\n\nFor this you can use the programming language R\n\nTell R to execute these instructions\n\nR will return the result of your instructions (or an error message)\n\nYou can do all of this inside RStudio"
+    "text": "Basic idea of writing code for data analysis\n\n\nBreak down your process into small steps\nWrite precise instructions in the R language for each step\n\n\nYou do this in a document called an R script\n\n\nTell R to execute these instructions\nR will give you the results (or an error message)"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio",
@@ -417,21 +417,21 @@
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-1",
     "title": "Introduction to RStudio",
     "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nAn RStudio project is just a normal directory with an .Rproj file\n\n\nProject\n|\n|- data\n|\n|- documents\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- analysis\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- *.RProj\nExample R Studio project structure"
+    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\n\n\nMyProject\n|\n|- data\n|\n|- documents\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- analysis\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|\nExample project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-2",
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-2",
     "title": "Introduction to RStudio",
     "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nProject\n|\n|- data\n|\n|- documents\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- analysis\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- *.RProj\nExample R Studio project structure"
+    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nAn RStudio project is just a normal directory with an .Rproj file\n\n\nProject\n|\n|- data\n|\n|- documents\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- analysis\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#create-an-rstudio-project",
     "href": "sessions/slides/intro-rstudio.html#create-an-rstudio-project",
     "title": "Introduction to RStudio",
     "section": "Create an RStudio project",
-    "text": "Create an RStudio project\n\n\nCreate a project from scratch:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nEnter a directory name (this will be the name of your project)\nChoose the Directory where the project should be initiated\nCreate Project\n\n\n\nExample project structure in RStudio\n\n\nRStudio will now create and open the project for you."
+    "text": "Create an RStudio project\n\n\nCreate a project from scratch:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nEnter a directory name (this will be the name of your project)\nChoose the Directory where the project should be initiated\nCreate Project\n\n\n\n\n\nExample RStudio project structure in the Files pane\n\n\n\n\nRStudio will now create and open the project for you."
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#navigate-an-rstudio-project",
@@ -459,7 +459,7 @@
     "href": "sessions/slides/intro-rstudio.html#a-tip-before-we-get-started",
     "title": "Introduction to RStudio",
     "section": "A tip before we get started",
-    "text": "A tip before we get started\n Learn the most important keyboard shortcuts of R Studio.\n\nFind all shortcuts under Tools -&gt; Keyboard Shortcuts Help\n\n\nSave active file: Ctrl/Cmd + S\nRun current line: Ctrl/Cmd + Enter\nCreate new R Script: Ctrl/Cmd + N\nUndo: Ctrl/Cmd + Z\nRedo: Ctrl/Cmd + Y\nCopy/Paste: Ctrl/Cmd + C/V"
+    "text": "A tip before we get started\nLearn the most important keyboard shortcuts of R Studio.\n\nFind all shortcuts under Tools -&gt; Keyboard Shortcuts Help\n\n\nSave active file: Ctrl/Cmd + S\nRun current line: Ctrl/Cmd + Enter\nCreate new R Script: Ctrl/Cmd + N\nUndo: Ctrl/Cmd + Z\nRedo: Ctrl/Cmd + Y\nCopy/Paste: Ctrl/Cmd + C/V"
   },
   {
     "objectID": "sessions/slides/good-practice.html#chaotic-projects-and-workflows",
@@ -1145,21 +1145,21 @@
     "href": "sessions/01_intro-rstudio.html#change-settings",
     "title": "Introduction to RStudio",
     "section": "1.1 Change settings",
-    "text": "1.1 Change settings\nBefore you get started, there is an important setting that you should change in RStudio. By default, RStudio will save the workspace of your current session in an .Rdata file. This would allow you to start the next session exactly where you left it by loading the .Rdata file.\nThis is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.\nIn RStudio go to Tools -&gt; Global Options -&gt; General and\n\nRemove the check mark for “Restore .RData into workspace at startup”\nNever save workspace to .RData on exit\n\n\nknitr::include_graphics(here::here(\"sessions/tasks/img/setting_workspace.png\"))"
+    "text": "1.1 Change settings\nBefore you get started, there is an important setting that you should change in RStudio. By default, RStudio will save the workspace of your current session in an .Rdata file. This would allow you to start the next session exactly where you left it by loading the .Rdata file.\nThis is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.\nIn RStudio go to Tools -&gt; Global Options -&gt; General and\n\nRemove the check mark for “Restore .RData into workspace at startup”\nNever “Save workspace to .RData on exit”"
   },
   {
     "objectID": "sessions/01_intro-rstudio.html#create-an-rstudio-project",
     "href": "sessions/01_intro-rstudio.html#create-an-rstudio-project",
     "title": "Introduction to RStudio",
     "section": "1.2 Create an RStudio project",
-    "text": "1.2 Create an RStudio project\nCreate an RStudio project for all the scripts, notes, data, etc. from this workshop.\n\nCreate a project in a directory of your choice following the instructions from the slides\nUse the File pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days\n\nE.g. create the folders data, R, documents,…\nYou can always change the structure of your project later, but for now, we want some basic folders that we can navigate\n\n\nYou can add files to your project either directly in RStudio, or in the file explorer of your operating system."
+    "text": "1.2 Create an RStudio project\nCreate an RStudio project for all the scripts, notes, data, etc. from this workshop:\n\nCreate a project in a directory of your choice following the instructions from the slides\nUse the Files pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days:\n\n\nFolder data/ for all data files\nFolder R/ for all R scripts\nFolder docs/ for other documents (e.g. lecture notes or slides)\nYou can always change the structure of your project later\n\nYou can add files to your project either directly in RStudio, or in the file explorer of your operating system."
   },
   {
     "objectID": "sessions/01_intro-rstudio.html#add-an-r-script-to-the-project",
     "href": "sessions/01_intro-rstudio.html#add-an-r-script-to-the-project",
     "title": "Introduction to RStudio",
     "section": "1.3 Add an R script to the project",
-    "text": "1.3 Add an R script to the project\n\nCreate a new R script and save it in the appropriate folder of your project (e.g. scripts or R)\nCopy and paste the code from below into your script\n\nDon’t worry if you don’t understand the code yet, we will learn all this later\n\nRun the code in the script line by line. Try both, running code using the Run button (in the top right corner of your script pane) and the keyboard shortcut Ctrl/Cmd + Enter/Return\n\nFor each line that you run, observe what is happening to the different panes (console, environment, …) in RStudio. Can you explain what is happening?\n\n\n\n# Look at the first lines of the iris dataset\nhead(iris)\n# What is the iris dataset -&gt; Call the help\n?iris\n# How many rows and columns does the data set have?\nrownum &lt;- nrow(iris)\ncolnum &lt;- ncol(iris)\nprint(paste0(\"The iris dataset has \", rownum, \" rows and \", colnum, \" columns.\"))\n# Some summary statistics on the iris data set\nsummary(iris)\n\n# create a plot\nplot(iris$Petal.Length, iris$Petal.Width,\n  xlab = \"Petal Length\",\n  ylab = \"Petal Width\",\n  main = \"Petal Width vs Petal Length\",\n  pch = 20,\n  col = ifelse(iris$Species == \"setosa\", \"coral1\",\n    ifelse(iris$Species == \"virginica\", \"cyan4\",\n      ifelse(iris$Species == \"versicolor\",\n        \"darkgoldenrod2\", \"grey\"\n      )\n    )\n  )\n)\n# add a legend\nlegend(\"bottomright\", c(\"setosa\", \"virginica\", \"versicolor\"),\n  col = c(\"coral1\", \"cyan4\", \"darkgoldenrod2\"), pch = 20\n)"
+    "text": "1.3 Add an R script to the project\n\nCreate a new R script and save it in the R/ folder of your project\nCopy and paste the code from below into your script\n\nDon’t worry if you don’t understand the code yet, we will learn all this later\n\nRun the code in the script line by line. Try both, running code using the Run button (in the top right corner of your script pane) and the keyboard shortcut Ctrl/Cmd + Enter\n\nFor each line that you run, observe what is happening to the different panes (console, environment, …) in RStudio. Can you explain what is happening?\n\n\n\n# Look at the first lines of the iris dataset\nhead(iris)\n# What is the iris dataset -&gt; Call the help\n?iris\n# How many rows and columns does the data set have?\nrownum &lt;- nrow(iris)\ncolnum &lt;- ncol(iris)\nprint(paste0(\"The iris dataset has \", rownum, \" rows and \", colnum, \" columns.\"))\n# Some summary statistics on the iris data set\nsummary(iris)\n\n# create a plot\nplot(iris$Petal.Length, iris$Petal.Width,\n  xlab = \"Petal Length\",\n  ylab = \"Petal Width\",\n  main = \"Petal Width vs Petal Length\",\n  pch = 20,\n  col = ifelse(iris$Species == \"setosa\", \"coral1\",\n    ifelse(iris$Species == \"virginica\", \"cyan4\",\n      ifelse(iris$Species == \"versicolor\",\n        \"darkgoldenrod2\", \"grey\"\n      )\n    )\n  )\n)\n# add a legend\nlegend(\"bottomright\", c(\"setosa\", \"virginica\", \"versicolor\"),\n  col = c(\"coral1\", \"cyan4\", \"darkgoldenrod2\"), pch = 20\n)"
   },
   {
     "objectID": "packages.html",
@@ -2664,7 +2664,7 @@
     "href": "sessions/tasks/intro-rstudio.html#create-an-rstudio-project",
     "title": "",
     "section": "2 Create an RStudio project",
-    "text": "2 Create an RStudio project\nCreate an RStudio project for all the scripts, notes, data, etc. from this workshop:\n\nCreate a project in a directory of your choice following the instructions from the slides\nUse the Files pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days\n\n\nFolder data/ for all data files\nFolder R/ for all R scripts\nFolder docs/ for other documents (e.g. lecture notes or slides)\nYou can always change the structure of your project later\n\nYou can add files to your project either directly in RStudio, or in the file explorer of your operating system."
+    "text": "2 Create an RStudio project\nCreate an RStudio project for all the scripts, notes, data, etc. from this workshop:\n\nCreate a project in a directory of your choice following the instructions from the slides\nUse the Files pane in RStudio to create a basic folder structure in your project which will be filled with files in the next days:\n\n\nFolder data/ for all data files\nFolder R/ for all R scripts\nFolder docs/ for other documents (e.g. lecture notes or slides)\nYou can always change the structure of your project later\n\nYou can add files to your project either directly in RStudio, or in the file explorer of your operating system."
   },
   {
     "objectID": "sessions/tasks/intro-rstudio.html#add-an-r-script-to-the-project",
@@ -2728,5 +2728,26 @@
     "title": "Solution to working with vectors",
     "section": "1 Working with the vectors",
     "text": "1 Working with the vectors\n\nCheck which of the following animals are contained in the species vector\n\n\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")\n\n# Goes through every element in animals_to_check and returns TRUE\n# if it appears in species\nanimals_to_check %in% species\n\n[1] FALSE  TRUE  TRUE  TRUE FALSE FALSE\n\n\nYou can see that Goat, Chimpanzee and Rat are contained in species.\n\n\n\n\n\n\nNote\n\n\n\nIf you use %in% to check if elements are contained in a vector, the result vector is of the same length as the vector that is before the %in%.\nCompare the result from above with the following:\n\n# Goes through every element in species and returns TRUE\n# if it appears in animals_to_check\nspecies %in% animals_to_check\n\n [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE\n[25]  TRUE FALSE FALSE FALSE\n\n\n\n\n\nCalculate mean and standard deviation of brain weight\n\n\nmean(brainwt_kg)\n\n[1] 0.5745214\n\nsd(brainwt_kg)\n\n[1] 1.334929\n\n\n\nWhich species have a brain weight larger than the mean brain weight of all species?\n\n\nspecies[brainwt_kg &gt; mean(brainwt_kg)]\n\n[1] \"AsianElephant\"   \"Horse\"           \"Giraffe\"         \"Human\"          \n[5] \"AfricanElephant\"\n\n\n\nCalculate the ratio brain weight / body weight in percent and save it in a vector\n\n\nbrain_body_ratio &lt;- brainwt_kg / bodywt_kg * 100\n\n\nAre there any animals with a larger brain to body weight ratio than humans? If yes, which ones?\n\nStep 1: Look at the brain to body ratio of humans\n\nbrain_body_ratio[species == \"Human\"]\n\n[1] 2.129032\n\n\nStep 2: Compare it with the other animals\n\n# New variable for human brain to body ratio\nbbr_human &lt;- brain_body_ratio[species == \"Human\"]\n# Are there animals that have a larger brain to body ratio than humans?\nbrain_body_ratio &gt; bbr_human\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[25] FALSE FALSE  TRUE FALSE\n\n# Which are these animals\nspecies[brain_body_ratio &gt; bbr_human]\n\n[1] \"RhesusMonkey\" \"Mole\"        \n\n# or short\nspecies[brain_body_ratio &gt; brain_body_ratio[species == \"Human\"]]\n\n[1] \"RhesusMonkey\" \"Mole\""
+  },
+  {
+    "objectID": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio-1",
+    "href": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio-1",
+    "title": "Introduction to RStudio",
+    "section": "A quick tour around RStudio",
+    "text": "A quick tour around RStudio"
+  },
+  {
+    "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
+    "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
+    "title": "Introduction to RStudio",
+    "section": "Project oriented workflow",
+    "text": "Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nProject\n|\n|- data\n|\n|- documents\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- analysis\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- *.RProj\nExample RStudio project structure"
+  },
+  {
+    "objectID": "sessions/slides/intro-rstudio.html",
+    "href": "sessions/slides/intro-rstudio.html",
+    "title": "Introduction to RStudio",
+    "section": "",
+    "text": "R is the programming language and the program that does the actual work\n\nCan be used with many different programming environments\n\n\n\n\nRStudio is the integrated development environment (IDE)\n\nProvides an interface to R\nSpecifically built around R code\nExecute code\nSyntax highlighting\nFile and project management\n…"
   }
 ]

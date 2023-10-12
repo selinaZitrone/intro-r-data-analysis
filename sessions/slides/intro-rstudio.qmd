@@ -24,10 +24,6 @@ execute:
   warning: false
   message: false
 from: markdown+emoji
-title-slide-attributes: 
-  data-background-image: img/Rstudio_logo.png
-  data-background-position: 90% 85%
-  data-background-size: "20%"
 ---
 
 ```{r setup, include=FALSE}
@@ -37,25 +33,41 @@ library(fontawesome)
 
 ## Difference between R and RStudio
 
-. . .
-
 :::{.columns}
 
 :::{.column width="50%"}
 
 ![](img/Rlogo.png){fig-align="center" width=15% }<br>
+
+:::
+
+:::{.column width="50%"}
+
+![](img/Rstudio_logo.png){fig-align="center" width=12%}<br>
+
+:::
+
+:::
+
+:::{.columns}
+
+
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
 R is the **programming language** and the **program** that does the actual work
 
-- Can be used with many different programming environments (But RStudio is the best for R)
+- Can be used with many different programming environments
+
+:::
 
 :::
   
 :::{.column width="50%"}
 
 :::{.fragment}
-
-![](img/Rstudio_logo.png){fig-align="center" width=12%}<br>
-  
 
 RStudio is the **integrated development environment** (IDE)
 
@@ -107,17 +119,18 @@ You can use R without RStudio but RStudio without R would be of little use
 
 ::: {.incremental}
 
-- Break down your process into small steps
+1. Break down your process into small steps
 
-- Write precise instructions telling the computer what to do in each step
-  - For this you can use the programming language R
-  
-- Tell R to execute these instructions
-  - R will return the result of your instructions (or an error message)
+2. Write precise instructions in the R language for each step
+  - You do this in a document called an R script
 
-- You can do all of this inside RStudio
+3. Tell R to execute these instructions
+
+4. R will give you the results (or an error message)
 
 :::
+
+# A quick tour around RStudio {.inverse}
   
 ## A quick tour around RStudio
 
@@ -269,6 +282,10 @@ Use **console** for temporary commands, e.g. to test something.
 
 :::
 
+# Project oriented workflow {.inverse}
+
+> How to use RStudio to organize your projects
+
 ## Project oriented workflow 
 
 :::{.columns}
@@ -283,7 +300,7 @@ Use **console** for temporary commands, e.g. to test something.
 :::{.column width="50%"}
 
 ```md
-Project
+MyProject
 |
 |- data
 |
@@ -340,10 +357,10 @@ Project
 |   |
 |   |- statistics.R
 |
-|- *.RProj
+|- MyProject.RProj
 ```
 
-[Example R Studio project structure]{.text-small}
+[Example RStudio project structure]{.text-small}
 
 :::
 
@@ -390,7 +407,7 @@ Project
 |- *.RProj
 ```
 
-[Example R Studio project structure]{.text-small}
+[Example RStudio project structure]{.text-small}
 
 :::
 
@@ -414,9 +431,7 @@ Create a project from scratch:
 
 :::{.column width="50%"}
 
-![](img/day1/RStudio_Files.png)
-
-[Example project structure in RStudio]{.text-small}
+![[Example RStudio project structure in the Files pane]{.text-small}](img/day1/RStudio_Files.png)
 
 :::
 
@@ -426,8 +441,11 @@ RStudio will now create and open the project for you.
 
 ## Navigate an RStudio project
 
+:::{.r-stack}
 
-![](img/day1/RStudio_Files_navig.png){fig-align="center"}
+![](img/day1/RStudio_Files_navig.png)
+
+:::
 
 ## Open a project from outside RStudio
 
@@ -444,10 +462,9 @@ To open an RStudio project from RStudio, click on the project symbol on the top 
 
 ## A tip before we get started
 
-<br>
-[Learn the most important keyboard shortcuts]{.highlight-grn} of R Studio.
+Learn the most important keyboard shortcuts of R Studio.
 
-<br>
+. . .
 
 Find all shortcuts under **Tools -> Keyboard Shortcuts Help**
 

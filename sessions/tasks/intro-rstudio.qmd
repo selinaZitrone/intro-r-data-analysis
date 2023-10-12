@@ -20,7 +20,7 @@ knitr::include_graphics(here::here("sessions/tasks/img/setting_workspace.png"))
 Create an RStudio project for all the scripts, notes, data, etc. from this workshop:
 
 1. Create a project in a directory of your choice following the instructions from the slides
-2. Use the **Files pane** in RStudio to create a basic folder structure in your project which will be filled with files in the next days
+2. Use the **Files pane** in RStudio to create a basic folder structure in your project which will be filled with files in the next days:
   - Folder `data/` for all data files 
   - Folder `R/` for all R scripts
   - Folder `docs/` for other documents (e.g. lecture notes or slides)
