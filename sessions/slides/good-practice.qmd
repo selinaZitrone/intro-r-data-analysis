@@ -343,12 +343,11 @@ mean(x, na.rm=TRUE)
 ```{r spaces-pipes}
 # Good
 iris |> 
-  group_by(Species)  |> 
-  summarize_if(is.numeric, mean)  |> 
-  ungroup()
+  summarize_if(is.numeric, mean, .by = Species)  |> 
+  arrange(desc(Sepal.Length))
 
 # Bad
-iris |> group_by(Species) |> summarize_all(mean) |> ungroup() 
+iris|>summarize_if(is.numeric, mean, .by = Species)|>arrange(desc(Sepal.Length))
 ```
 
 ## Coding style - Spacing
@@ -385,17 +384,15 @@ Try to limit your line width to 80 characters.
 
 ```{r linewidth-ggplot}
 # Bad
-iris  |> 
-  group_by(Species) |>
-  summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species))
+iris |> summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species), .by = Species)
 
 # Good
 iris |>
-  group_by(Species) |>
   summarise(
     Sepal.Length = mean(Sepal.Length),
     Sepal.Width = mean(Sepal.Width),
-    Species = n_distinct(Species)
+    Species = n_distinct(Species),
+    .by = Species
   )
 ```
 

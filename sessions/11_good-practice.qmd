@@ -1,5 +1,8 @@
 ---
 title: "Good coding practice"
+code-line-numbers: false
+execute:
+  eval: false
 ---
 
 ```{=html}
