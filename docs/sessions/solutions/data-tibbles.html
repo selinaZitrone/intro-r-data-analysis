@@ -4492,7 +4492,7 @@ vertical-align: -.125em;
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../index.html" rel target>
- <span class="menu-text">Home</span></a>
+ <span class="menu-text"><b>Home</b></span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../preparations.html" rel target>
@@ -4528,7 +4528,7 @@ vertical-align: -.125em;
   </li>  
         <li>
     <a class="dropdown-item" href="../../sessions/04_data-tibbles.html" rel target>
- <span class="dropdown-text">Data &amp; Tibbles</span></a>
+ <span class="dropdown-text">Data frames &amp; tibbles</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../sessions/05_readr.html" rel target>
@@ -4655,52 +4655,52 @@ vertical-align: -.125em;
 <section id="create-a-tibble" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="create-a-tibble"><span class="header-section-number">1</span> Create a tibble</h2>
 <p>Use the vectors <code>species</code>, <code>brainwt_kg</code>, <code>bodywt_kg</code> from the last task and put them in a tibble.</p>
-<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-1_c6317a6baaa00e97fc5e859bac774414">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># install.packages(&quot;tibble&quot;)</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a>species <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="st">&quot;MountainBeaver&quot;</span>, <span class="st">&quot;Cow&quot;</span>, <span class="st">&quot;GreyWolf&quot;</span>, <span class="st">&quot;Goat&quot;</span>,</span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="st">&quot;GuineaPig&quot;</span>, <span class="st">&quot;Diplodocus&quot;</span>, <span class="st">&quot;AsianElephant&quot;</span>, <span class="st">&quot;Donkey&quot;</span>,</span>
-<span id="cb1-7"><a href="#cb1-7"></a>  <span class="st">&quot;Horse&quot;</span>, <span class="st">&quot;PotarMonkey&quot;</span>, <span class="st">&quot;Cat&quot;</span>, <span class="st">&quot;Giraffe&quot;</span>,</span>
-<span id="cb1-8"><a href="#cb1-8"></a>  <span class="st">&quot;Gorilla&quot;</span>, <span class="st">&quot;Human&quot;</span>, <span class="st">&quot;AfricanElephant&quot;</span>, <span class="st">&quot;Triceratops&quot;</span>,</span>
-<span id="cb1-9"><a href="#cb1-9"></a>  <span class="st">&quot;RhesusMonkey&quot;</span>, <span class="st">&quot;Kangaroo&quot;</span>, <span class="st">&quot;GoldenHamster&quot;</span>, <span class="st">&quot;Mouse&quot;</span>,</span>
-<span id="cb1-10"><a href="#cb1-10"></a>  <span class="st">&quot;Rabbit&quot;</span>, <span class="st">&quot;Sheep&quot;</span>, <span class="st">&quot;Jaguar&quot;</span>, <span class="st">&quot;Chimpanzee&quot;</span>,</span>
-<span id="cb1-11"><a href="#cb1-11"></a>  <span class="st">&quot;Rat&quot;</span>, <span class="st">&quot;Brachiosaurus&quot;</span>, <span class="st">&quot;Mole&quot;</span>, <span class="st">&quot;Pig&quot;</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>)</span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a>bodywt_kg <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb1-15"><a href="#cb1-15"></a>  <span class="fl">1.4</span>, <span class="dv">465</span>, <span class="fl">36.3</span>, <span class="fl">27.7</span>, <span class="fl">1.</span>, <span class="dv">11700</span>, <span class="dv">2547</span>, <span class="fl">187.1</span>,</span>
-<span id="cb1-16"><a href="#cb1-16"></a>  <span class="dv">521</span>, <span class="dv">10</span>, <span class="fl">3.3</span>, <span class="dv">529</span>, <span class="dv">207</span>, <span class="dv">62</span>, <span class="dv">6654</span>, <span class="dv">9400</span>,</span>
-<span id="cb1-17"><a href="#cb1-17"></a>  <span class="fl">6.8</span>, <span class="dv">35</span>, <span class="fl">0.1</span>, <span class="fl">0.02</span>, <span class="fl">2.5</span>, <span class="fl">55.5</span>, <span class="dv">100</span>, <span class="fl">52.2</span>,</span>
-<span id="cb1-18"><a href="#cb1-18"></a>  <span class="fl">0.3</span>, <span class="dv">87000</span>, <span class="fl">0.1</span>, <span class="dv">192</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a>)</span>
-<span id="cb1-20"><a href="#cb1-20"></a></span>
-<span id="cb1-21"><a href="#cb1-21"></a>brainwt_kg <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb1-22"><a href="#cb1-22"></a>  <span class="fl">0.0081</span>, <span class="fl">0.423</span>, <span class="fl">0.1195</span>, <span class="fl">0.115</span>, <span class="fl">0.0055</span>, <span class="fl">0.05</span>, </span>
-<span id="cb1-23"><a href="#cb1-23"></a>  <span class="fl">4.603</span>, <span class="fl">0.419</span>, <span class="fl">0.655</span>, <span class="fl">0.115</span>, <span class="fl">0.0256</span>, <span class="fl">0.68</span>, </span>
-<span id="cb1-24"><a href="#cb1-24"></a>  <span class="fl">0.406</span>, <span class="fl">1.32</span>, <span class="fl">5.712</span>, <span class="fl">0.07</span>, <span class="fl">0.179</span>, <span class="fl">0.056</span>,</span>
-<span id="cb1-25"><a href="#cb1-25"></a>  <span class="fl">0.001</span>, <span class="fl">0.0004</span>, <span class="fl">0.0121</span>, <span class="fl">0.175</span>, <span class="fl">0.157</span>, <span class="fl">0.44</span>,</span>
-<span id="cb1-26"><a href="#cb1-26"></a>  <span class="fl">0.0019</span>, <span class="fl">0.1545</span>, <span class="fl">0.003</span>, <span class="fl">0.18</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a>)</span>
-<span id="cb1-28"><a href="#cb1-28"></a></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co"># Create the tibble </span></span>
-<span id="cb1-30"><a href="#cb1-30"></a>animals <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb1-31"><a href="#cb1-31"></a>  <span class="at">species =</span> species,</span>
-<span id="cb1-32"><a href="#cb1-32"></a>  <span class="at">bodywt_kg =</span> bodywt_kg,</span>
-<span id="cb1-33"><a href="#cb1-33"></a>  <span class="at">brainwt_kg =</span> brainwt_kg</span>
-<span id="cb1-34"><a href="#cb1-34"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-1_ecf6c8758e6e34c142e4c262d97188e2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;tibble&quot;)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>species <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;MountainBeaver&quot;</span>, <span class="st">&quot;Cow&quot;</span>, <span class="st">&quot;GreyWolf&quot;</span>, <span class="st">&quot;Goat&quot;</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;GuineaPig&quot;</span>, <span class="st">&quot;Diplodocus&quot;</span>, <span class="st">&quot;AsianElephant&quot;</span>, <span class="st">&quot;Donkey&quot;</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Horse&quot;</span>, <span class="st">&quot;PotarMonkey&quot;</span>, <span class="st">&quot;Cat&quot;</span>, <span class="st">&quot;Giraffe&quot;</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Gorilla&quot;</span>, <span class="st">&quot;Human&quot;</span>, <span class="st">&quot;AfricanElephant&quot;</span>, <span class="st">&quot;Triceratops&quot;</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;RhesusMonkey&quot;</span>, <span class="st">&quot;Kangaroo&quot;</span>, <span class="st">&quot;GoldenHamster&quot;</span>, <span class="st">&quot;Mouse&quot;</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Rabbit&quot;</span>, <span class="st">&quot;Sheep&quot;</span>, <span class="st">&quot;Jaguar&quot;</span>, <span class="st">&quot;Chimpanzee&quot;</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Rat&quot;</span>, <span class="st">&quot;Brachiosaurus&quot;</span>, <span class="st">&quot;Mole&quot;</span>, <span class="st">&quot;Pig&quot;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>bodywt_kg <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fl">1.4</span>, <span class="dv">465</span>, <span class="fl">36.3</span>, <span class="fl">27.7</span>, <span class="fl">1.</span>, <span class="dv">11700</span>, <span class="dv">2547</span>, <span class="fl">187.1</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="dv">521</span>, <span class="dv">10</span>, <span class="fl">3.3</span>, <span class="dv">529</span>, <span class="dv">207</span>, <span class="dv">62</span>, <span class="dv">6654</span>, <span class="dv">9400</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fl">6.8</span>, <span class="dv">35</span>, <span class="fl">0.1</span>, <span class="fl">0.02</span>, <span class="fl">2.5</span>, <span class="fl">55.5</span>, <span class="dv">100</span>, <span class="fl">52.2</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.3</span>, <span class="dv">87000</span>, <span class="fl">0.1</span>, <span class="dv">192</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>brainwt_kg <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.0081</span>, <span class="fl">0.423</span>, <span class="fl">0.1195</span>, <span class="fl">0.115</span>, <span class="fl">0.0055</span>, <span class="fl">0.05</span>, </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fl">4.603</span>, <span class="fl">0.419</span>, <span class="fl">0.655</span>, <span class="fl">0.115</span>, <span class="fl">0.0256</span>, <span class="fl">0.68</span>, </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.406</span>, <span class="fl">1.32</span>, <span class="fl">5.712</span>, <span class="fl">0.07</span>, <span class="fl">0.179</span>, <span class="fl">0.056</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.001</span>, <span class="fl">0.0004</span>, <span class="fl">0.0121</span>, <span class="fl">0.175</span>, <span class="fl">0.157</span>, <span class="fl">0.44</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.0019</span>, <span class="fl">0.1545</span>, <span class="fl">0.003</span>, <span class="fl">0.18</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the tibble </span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">species =</span> species,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">bodywt_kg =</span> bodywt_kg,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">brainwt_kg =</span> brainwt_kg</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="explore-the-tibble" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="explore-the-tibble"><span class="header-section-number">2</span> Explore the tibble</h2>
-<p>In the view window that opens, you have some options to filter the data and sort rows. Check out these options as well.</p>
-<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-2_31be038b334776ea5193984745efbe78">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">view</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When you use the <code>view</code> function, the tibble will open in a new window. In this window, you also have some options to filter the data and sort rows. Check out these options as well.</p>
+<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-2_70c846f3fd78ad48ecbf51f7f3e817a0">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Print a summary of the table:</p>
-<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-3_25be245c7722045d433d9adc73626285">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">summary</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-3_38af7b21db7ab1ca6bd38438b88480ba">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   species            bodywt_kg          brainwt_kg     
  Length:28          Min.   :    0.02   Min.   :0.00040  
@@ -4710,22 +4710,29 @@ vertical-align: -.125em;
                     3rd Qu.:  479.00   3rd Qu.:0.42000  
                     Max.   :87000.00   Max.   :5.71200  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">str</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here a couple of other function you could use on a tibble:</p>
+<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-4_d31f1f12cfe69569684b174da1b9943e">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the structure of the tibble</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [28 × 3] (S3: tbl_df/tbl/data.frame)
  $ species   : chr [1:28] &quot;MountainBeaver&quot; &quot;Cow&quot; &quot;GreyWolf&quot; &quot;Goat&quot; ...
  $ bodywt_kg : num [1:28] 1.4 465 36.3 27.7 1 ...
  $ brainwt_kg: num [1:28] 0.0081 0.423 0.1195 0.115 0.0055 ...</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">nrow</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of rows</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 28</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">ncol</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of columns</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">names</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Column names</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(animals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] &quot;species&quot;    &quot;bodywt_kg&quot;  &quot;brainwt_kg&quot;</code></pre>
 </div>
@@ -4736,8 +4743,8 @@ vertical-align: -.125em;
 <ul>
 <li>Rows 1, 5, and 7 and the columns <code>species</code> and <code>bodywt_kg</code></li>
 </ul>
-<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-4_c10edc4fe6ba3f7018c35618256df23f">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>animals[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">7</span>), <span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;bodywt_kg&quot;</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-5_315ebce4af199202c5e39cda15dd398a">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>animals[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">7</span>), <span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;bodywt_kg&quot;</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   species        bodywt_kg
@@ -4750,8 +4757,8 @@ vertical-align: -.125em;
 <ul>
 <li>Filter rows 1 to 10, all columns</li>
 </ul>
-<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-5_03db6410bcc27c3106c8da281c27d497">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>animals[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-6_3c90f011b1a257ca89aa24898d11a3bd">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>animals[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
    species        bodywt_kg brainwt_kg
@@ -4771,8 +4778,8 @@ vertical-align: -.125em;
 <ul>
 <li>Select the column <code>bodywt_kg</code> as a vector using <code>$</code></li>
 </ul>
-<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-6_f12db90e5b24cb8ccc462ac9ec350146">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>animals<span class="sc">$</span>bodywt_kg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-7_63cddbf276c2fd5fabeee75d50ac69d3">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>animals<span class="sc">$</span>bodywt_kg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]     1.40   465.00    36.30    27.70     1.00 11700.00  2547.00   187.10
  [9]   521.00    10.00     3.30   529.00   207.00    62.00  6654.00  9400.00
@@ -4786,8 +4793,8 @@ vertical-align: -.125em;
 <ul>
 <li>Select the last column of the last row without using the row and column index (so don’t use any numbers in this command)</li>
 </ul>
-<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-7_ba64c34288ce36723bd1651cb9470132">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>animals[<span class="fu">nrow</span>(animals), <span class="fu">ncol</span>(animals)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-8_04d7620349d48bcd38be3073523ffb1f">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>animals[<span class="fu">nrow</span>(animals), <span class="fu">ncol</span>(animals)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   brainwt_kg
@@ -4798,9 +4805,9 @@ vertical-align: -.125em;
 <ul>
 <li>Calculate the mean of the <code>bodywt_kg</code> column and save it in a variable</li>
 </ul>
-<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-8_e481cab73cea2bbe35b30314727091ad">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>mean_wt <span class="ot">&lt;-</span> <span class="fu">mean</span>(animals<span class="sc">$</span>bodywt_kg)</span>
-<span id="cb21-2"><a href="#cb21-2"></a>mean_wt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-9_7c2bd8d4e4214b55f1fd99247864201b">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mean_wt <span class="ot">&lt;-</span> <span class="fu">mean</span>(animals<span class="sc">$</span>bodywt_kg)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mean_wt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4278.44</code></pre>
 </div>
@@ -4808,9 +4815,9 @@ vertical-align: -.125em;
 <ul>
 <li>Add a new column to the data called <code>ratio_body_brain</code> with the ratio of the columns <code>bodywt_kg</code> and <code>brainwt_kg</code></li>
 </ul>
-<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-9_b50c9d04d40239e750ba194daf6b71b1">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>animals<span class="sc">$</span>ratio_body_brain <span class="ot">&lt;-</span> animals<span class="sc">$</span>bodywt_kg <span class="sc">/</span> animals<span class="sc">$</span>brainwt_kg</span>
-<span id="cb23-2"><a href="#cb23-2"></a>animals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="data-tibbles_cache/html/unnamed-chunk-10_e5d0c81a83d5df3c549385f60e1f7814">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>animals<span class="sc">$</span>ratio_body_brain <span class="ot">&lt;-</span> animals<span class="sc">$</span>bodywt_kg <span class="sc">/</span> animals<span class="sc">$</span>brainwt_kg</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>animals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 28 × 4
    species        bodywt_kg brainwt_kg ratio_body_brain

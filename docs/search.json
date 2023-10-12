@@ -732,7 +732,7 @@
     "href": "sessions/slides/data-tibbles.html#exploring-tibbles-1",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Exploring tibbles",
-    "text": "Exploring tibbles\nHow many rows?\n\n\nnrow(cities_tbl)\n#&gt; [1] 10\n\n\nHow many columns?\n\nncol(cities_tbl)\n#&gt; [1] 3\n\n\n\nWhat are the column headers?\n\nnames(cities_tbl)\n#&gt; [1] \"cities\"     \"population\" \"area_km2\""
+    "text": "Exploring tibbles\nHow many rows?\n\nnrow(cities_tbl)\n#&gt; [1] 10\n\n\nHow many columns?\n\nncol(cities_tbl)\n#&gt; [1] 3\n\n\n\nWhat are the column headers?\n\nnames(cities_tbl)\n#&gt; [1] \"cities\"     \"population\" \"area_km2\""
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#exploring-tibbles-2",
@@ -746,7 +746,7 @@
     "href": "sessions/slides/data-tibbles.html#exploring-tibbles-3",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Exploring tibbles",
-    "text": "Exploring tibbles\nGet a quick summary of all columns:\n\n\nsummary(cities_tbl)\n#&gt;     cities            population          area_km2     \n#&gt;  Length:10          Min.   : 2100000   Min.   : 105.0  \n#&gt;  Class :character   1st Qu.: 2850000   1st Qu.: 662.8  \n#&gt;  Mode  :character   Median : 3500000   Median :1088.0  \n#&gt;                     Mean   : 5910000   Mean   :1210.0  \n#&gt;                     3rd Qu.: 8100000   3rd Qu.:1538.8  \n#&gt;                     Max.   :15100000   Max.   :2576.0"
+    "text": "Exploring tibbles\nGet a quick summary of all columns:\n\nsummary(cities_tbl)\n#&gt;     cities            population          area_km2     \n#&gt;  Length:10          Min.   : 2100000   Min.   : 105.0  \n#&gt;  Class :character   1st Qu.: 2850000   1st Qu.: 662.8  \n#&gt;  Mode  :character   Median : 3500000   Median :1088.0  \n#&gt;                     Mean   : 5910000   Mean   :1210.0  \n#&gt;                     3rd Qu.: 8100000   3rd Qu.:1538.8  \n#&gt;                     Max.   :15100000   Max.   :2576.0"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles",
@@ -781,7 +781,7 @@
     "href": "sessions/slides/data-tibbles.html#indexing-tibbles-columns-1",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Indexing tibbles: columns",
-    "text": "Indexing tibbles: columns\nIndexing columns by name is usually preferred to indexing by position\n\n\ncities_tbl[ ,1:2] # okay\ncities_tbl[ ,c(\"cities\", \"population\")] # better\n\n\nWhy?\n\nCode is much easier to read\nCode is more robust against\n\nchanges in column order\nmistakes in the code (e.g. typos)\n\n\n\n\ncities_tbl[ ,c(1,3)] # 3 instead of 2 -&gt; wrong but no error\ncities_tbl[ ,c(\"cities\", \"popluation\")] # typo -&gt; wrong and error\n\n\n\n\n\n\n\n\n\nGeneral rule\n\n\nGood code produces errors when something unintended or wrong happens"
+    "text": "Indexing tibbles: columns\nIndexing columns by name is usually preferred to indexing by position\n\ncities_tbl[ ,1:2] # okay\ncities_tbl[ ,c(\"cities\", \"population\")] # better\n\n\nWhy?\n\nCode is much easier to read\nCode is more robust against\n\nchanges in column order\nmistakes in the code (e.g. typos)\n\n\n\n\ncities_tbl[ ,c(1,3)] # 3 instead of 2 -&gt; wrong but no error\ncities_tbl[ ,c(\"cities\", \"popluation\")] # typo -&gt; wrong and error\n\n\n\n\n\n\n\n\n\nGeneral rule\n\n\nGood code produces errors when something unintended or wrong happens"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#tibbles-select-columns-with",
@@ -2510,7 +2510,7 @@
     "href": "sessions/solutions/data-tibbles.html#explore-the-tibble",
     "title": "Solution to tibble tasks",
     "section": "2 Explore the tibble",
-    "text": "2 Explore the tibble\nIn the view window that opens, you have some options to filter the data and sort rows. Check out these options as well.\n\nview(animals)\n\nPrint a summary of the table:\n\nsummary(animals)\n\n   species            bodywt_kg          brainwt_kg     \n Length:28          Min.   :    0.02   Min.   :0.00040  \n Class :character   1st Qu.:    3.10   1st Qu.:0.02223  \n Mode  :character   Median :   53.85   Median :0.13700  \n                    Mean   : 4278.44   Mean   :0.57452  \n                    3rd Qu.:  479.00   3rd Qu.:0.42000  \n                    Max.   :87000.00   Max.   :5.71200  \n\nstr(animals)\n\ntibble [28 × 3] (S3: tbl_df/tbl/data.frame)\n $ species   : chr [1:28] \"MountainBeaver\" \"Cow\" \"GreyWolf\" \"Goat\" ...\n $ bodywt_kg : num [1:28] 1.4 465 36.3 27.7 1 ...\n $ brainwt_kg: num [1:28] 0.0081 0.423 0.1195 0.115 0.0055 ...\n\nnrow(animals)\n\n[1] 28\n\nncol(animals)\n\n[1] 3\n\nnames(animals)\n\n[1] \"species\"    \"bodywt_kg\"  \"brainwt_kg\""
+    "text": "2 Explore the tibble\nWhen you use the view function, the tibble will open in a new window. In this window, you also have some options to filter the data and sort rows. Check out these options as well.\n\nview(animals)\n\nPrint a summary of the table:\n\nsummary(animals)\n\n   species            bodywt_kg          brainwt_kg     \n Length:28          Min.   :    0.02   Min.   :0.00040  \n Class :character   1st Qu.:    3.10   1st Qu.:0.02223  \n Mode  :character   Median :   53.85   Median :0.13700  \n                    Mean   : 4278.44   Mean   :0.57452  \n                    3rd Qu.:  479.00   3rd Qu.:0.42000  \n                    Max.   :87000.00   Max.   :5.71200  \n\n\nHere a couple of other function you could use on a tibble:\n\n# Look at the structure of the tibble\nstr(animals)\n\ntibble [28 × 3] (S3: tbl_df/tbl/data.frame)\n $ species   : chr [1:28] \"MountainBeaver\" \"Cow\" \"GreyWolf\" \"Goat\" ...\n $ bodywt_kg : num [1:28] 1.4 465 36.3 27.7 1 ...\n $ brainwt_kg: num [1:28] 0.0081 0.423 0.1195 0.115 0.0055 ...\n\n# Number of rows\nnrow(animals)\n\n[1] 28\n\n# Number of columns\nncol(animals)\n\n[1] 3\n\n# Column names\nnames(animals)\n\n[1] \"species\"    \"bodywt_kg\"  \"brainwt_kg\""
   },
   {
     "objectID": "sessions/solutions/data-tibbles.html#index-filter-and-select",

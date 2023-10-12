@@ -1,12 +1,13 @@
 ---
 title: "Solution to tibble tasks"
+code-line-numbers: false
 ---
 
 ## Create a tibble
 
 Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and put them in a tibble.
 
-```{r echo=TRUE}
+```{r}
 # install.packages("tibble")
 library(tibble)
 
@@ -46,19 +47,28 @@ animals <- tibble(
 
 ## Explore the tibble
 
-In the view window that opens, you have some options to filter the data and sort rows. Check out these options as well.
+When you use the `view` function, the tibble will open in a new window. In this window, you also have some options to filter the data and sort rows. Check out these options as well.
 
-```{r echo=TRUE, eval=FALSE}
+```{r eval=FALSE}
 view(animals)
 ```
 
 Print a summary of the table:
 
-```{r echo=TRUE}
+```{r}
 summary(animals)
+```
+
+Here a couple of other function you could use on a tibble:
+
+```{r}
+# Look at the structure of the tibble
 str(animals)
+# Number of rows
 nrow(animals)
+# Number of columns
 ncol(animals)
+# Column names
 names(animals)
 ```
 

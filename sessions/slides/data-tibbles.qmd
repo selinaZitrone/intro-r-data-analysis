@@ -277,8 +277,6 @@ Or do it in the environment pane of RStudio (click little blue arrow next to the
 
 How many rows?
 
-<br>
-
 ```{r}
 nrow(cities_tbl)
 ```
@@ -317,9 +315,6 @@ Or click on the little table sign in the Environment pane:
 
 Get a quick summary of all columns:
 
-<br>
-
-
 ```{r}
 summary(cities_tbl)
 ```
@@ -330,7 +325,7 @@ Indexing tibbles works similar to indexing vectors but with 2 dimensions instead
 
 :::{.r-stack}
 
-<b>tibble [ [row_index]{.col-green}, [col_index or col_name]{.col-pink} ]</b>
+<b>tibble [ row_index, col_index or col_name ]</b>
 
 :::
 
@@ -376,14 +371,12 @@ print(cities_tbl[ ,c("cities", "population")], n=3)
 
 Indexing columns by name is usually preferred to indexing by position
 
-<br>
-
 ```{r eval=FALSE}
 cities_tbl[ ,1:2] # okay
 cities_tbl[ ,c("cities", "population")] # better
 ```
 
-<br>
+. . .
 
 #### Why?
 
