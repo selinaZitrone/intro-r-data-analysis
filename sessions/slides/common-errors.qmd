@@ -34,8 +34,14 @@ from: markdown+emoji
 # {.background-no-title}
 
 When learning a programming language, you have to be prepared to spend a lot of 
-your time with fixing bugs in the code. So don't worry: It's not you, it's just how programming works!
-![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/debugging.jpg)
+time fixing bugs. Don't worry: It's not you, it's just how programming works!
+![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/debugging.jpg){fig-align="center" width=90%}
+
+:::{.aside}
+
+[Artwork by [Allison Horst](https://twitter.com/allison_horst)]{.small}
+
+:::
 
 ## Debugging
 
@@ -83,33 +89,22 @@ mean(c(1,2,3)na.rm=TRUE)
 - read the error message
 - the RStudio syntax checker warns you before you run code with syntax errors
   - look for &nbsp;![](img/day1/red_x.png)&nbsp; next to line numbers in your script
+  
+:::{.fragment}
 
 ![](img/day1/errors_syntax.png)
 
+:::
 
 ## Error: could not find function
 
 #### Examples
 
-:::{.columns}
-
-:::{.column width="50%"}
 
 ```{r, error = TRUE}
 select(penguins, bill_length_mm)
-```
-
-:::
-
-:::{.column width="50%"}
-
-```{r, error=TRUE}
 lenght(1:10)
 ```
-
-:::
-
-:::
 
 <br>
 
@@ -125,7 +120,7 @@ lenght(1:10)
 
 :::
 
-## Error: object `x` not found
+## Error: object not found
 
 #### Example
 
@@ -196,7 +191,6 @@ R is not running code anymore and the console only prints `+` if you try to exec
 R can give you warnings for many reasons, e.g.
 
 - you have `NA` values in your data and try to plot them
-- implicit type conversion returned `NA`
 - the function you are using is deprecated
 - the package you are using was built for another version of R
 

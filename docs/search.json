@@ -1467,7 +1467,7 @@
     "href": "sessions/slides/common-errors.html#error-could-not-find-function",
     "title": "Common errors and how to fix them",
     "section": "Error: could not find function",
-    "text": "Error: could not find function\nExamples\n\n\n\nselect(penguins, bill_length_mm)\n#&gt; Error in select(penguins, bill_length_mm): could not find function \"select\"\n\n\n\nlenght(1:10)\n#&gt; Error in lenght(1:10): could not find function \"lenght\"\n\n\n\n\n\n\nHow to fix\n“Could not find function” errors have two main reasons:\n\nYou forgot to load the package that the function belongs to\n\n\nload the package using library() or call the function with packageName::functionName()\n\n\nYou have a typo in your function call (e.g. lenght() instead of length())"
+    "text": "Error: could not find function\nExamples\n\nselect(penguins, bill_length_mm)\n#&gt; Error in select(penguins, bill_length_mm): could not find function \"select\"\nlenght(1:10)\n#&gt; Error in lenght(1:10): could not find function \"lenght\"\n\n\n\n\nHow to fix\n“Could not find function” errors have two main reasons:\n\nYou forgot to load the package that the function belongs to\n\n\nload the package using library() or call the function with packageName::functionName()\n\n\nYou have a typo in your function call (e.g. lenght() instead of length())"
   },
   {
     "objectID": "sessions/slides/common-errors.html#error-object-x-not-found",
@@ -1495,7 +1495,7 @@
     "href": "sessions/slides/common-errors.html#warnings",
     "title": "Common errors and how to fix them",
     "section": "Warnings",
-    "text": "Warnings\nR can give you warnings for many reasons, e.g.\n\nyou have NA values in your data and try to plot them\nimplicit type conversion returned NA\nthe function you are using is deprecated\nthe package you are using was built for another version of R\n\n\nWarnings are no errors and can sometimes be ignored but:\n\nmake sure to read and understand warnings\nonly ignore them if you know that that’s okay, otherwise fix the underlying issue"
+    "text": "Warnings\nR can give you warnings for many reasons, e.g.\n\nyou have NA values in your data and try to plot them\nthe function you are using is deprecated\nthe package you are using was built for another version of R\n\n\nWarnings are no errors and can sometimes be ignored but:\n\nmake sure to read and understand warnings\nonly ignore them if you know that that’s okay, otherwise fix the underlying issue"
   },
   {
     "objectID": "sessions/slides/common-errors.html#troubleshoot-r-step-by-step",
@@ -2805,5 +2805,12 @@
     "title": "Introduction to R",
     "section": "2.8 Indexing vectors",
     "text": "2.8 Indexing vectors\nWe also use %in%for logical indexing.\n\npopulation[ cities %in% c(\"Berlin\", \"Paris\", \"Stockholm\", \"Madrid\")]\n#&gt; [1] 3800000 3200000 2100000\n\n\nReturns only 3 values for population, because Stockholm is not a city in our vector\n\nNo city in cities returns TRUE for the comparison with \"Stockholm\"\n\n\n. . .\n\ncities %in% c(\"Berlin\", \"Paris\", \"Stockholm\", \"Madrid\")\n#&gt;  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE"
+  },
+  {
+    "objectID": "sessions/slides/common-errors.html#error-object-not-found",
+    "href": "sessions/slides/common-errors.html#error-object-not-found",
+    "title": "Common errors and how to fix them",
+    "section": "Error: object not found",
+    "text": "Error: object not found\nExample\n\nvariable_A\n#&gt; Error in eval(expr, envir, enclos): object 'variable_A' not found\n\n\n\n\nHow to fix\n\nyou are trying to access an object that does not exist\n\ntypos in variable name (variable name is variableA but you try to access variable_A)\nforgot to put quotes around string: print(hello)  looks for a variable named hello but instead you wanted to print the string print(\"hello\")"
   }
 ]
