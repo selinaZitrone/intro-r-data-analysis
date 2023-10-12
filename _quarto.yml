@@ -39,7 +39,7 @@ website:
             href: sessions/02_intro-r.qmd
           - text: "Functions"
             href: sessions/03_functions.qmd
-          - text: "Data & Tibbles"
+          - text: "Data frames & tibbles"
             href: sessions/04_data-tibbles.qmd
           - text: "Tidyverse and readr"
             href: sessions/05_readr.qmd

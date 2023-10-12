@@ -59,6 +59,8 @@ Functions make multiple operations available under one command.
 <br>
 ![](img/day1/function_general.png)
 
+![](img/day1/function_mean.png)
+
 :::
 
 :::
@@ -73,26 +75,12 @@ General structure of a function call: <b>[function_name]{.col-green} ( [argument
 
 <br>
 
-:::{.columns}
-
-:::{.column width="50%"}
-
 <b>[mean]{.col-green} ( [x]{.col-yellow} = [c(1,5,6)]{.col-pink} )</b>
 
 
 ```{r}
 mean(x = c(1,5,6)) # or short: mean(c(1,5,6))
 ```
-
-:::
-
-:::{.column width="50%"}
-
-![](img/day1/function_mean.png)
-
-:::
-
-:::
 
 . . .
 
@@ -120,7 +108,7 @@ But what does the mean function do? What are the arguments that I can use?
 :::{.column width="50%"}
 
 
-`r fa("arrow-right")` &nbsp; Call the function help using `?`
+`r fontawesome::fa("arrow-right")` &nbsp; Call the function help using `?`
 
 ```{r eval=FALSE}
 ?mean
@@ -158,7 +146,7 @@ mean(x = values)
 
 . . .
 
-`r fa("arrow-right")`&nbsp;  `na.rm` argument is `FALSE` by default.<br><br>
+`r fontawesome::fa("arrow-right")`&nbsp;  `na.rm` argument is `FALSE` by default.<br><br>
 
 . . .
 
@@ -192,19 +180,7 @@ These calls to mean all are the same:
 
 ```{r, eval=FALSE}
 mean(values, , TRUE) # by position
-```
-<br>
-
-. . .
-
-```{r, eval=FALSE}
 mean(x = values, na.rm = TRUE) # by name
-```
-<br>
-
-. . .
-
-```{r, eval=FALSE}
 mean(values, na.rm = TRUE) # a mix of both
 ```
 
@@ -213,6 +189,7 @@ mean(values, na.rm = TRUE) # a mix of both
 **Argument matching** can be achieved by **position** or by **name**
 
 ::: {fragment}
+
 ::: {.nonincremental}
 
 Named arguments are (generally) preferred

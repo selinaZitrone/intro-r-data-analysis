@@ -627,14 +627,14 @@
     "href": "sessions/slides/functions.html#functions-in-r",
     "title": "Functions in R",
     "section": "Functions in R",
-    "text": "Functions in R\nFunctions make multiple operations available under one command.\n\n\n\n\nFunctions:\n\nHave a name\nHave (0, 1, or any number of) arguments as input\nThey calculate something using the arguments\nThey have a return value (the output)\nCan have side effects (like plotting)\n\n\n \n\n\n\n\nGeneral structure of a function call: function_name ( argument = value )"
+    "text": "Functions in R\nFunctions make multiple operations available under one command.\n\n\n\n\nFunctions:\n\nHave a name\nHave (0, 1, or any number of) arguments as input\nThey calculate something using the arguments\nThey have a return value (the output)\nCan have side effects (like plotting)\n\n\n \n\n\n\n\n\nGeneral structure of a function call: function_name ( argument = value )"
   },
   {
     "objectID": "sessions/slides/functions.html#the-mean-function",
     "href": "sessions/slides/functions.html#the-mean-function",
     "title": "Functions in R",
     "section": "The mean function",
-    "text": "The mean function\nfunction_name ( argument = value )\n\n\n\nmean ( x = c(1,5,6) )\n\nmean(x = c(1,5,6)) # or short: mean(c(1,5,6))\n#&gt; [1] 4\n\n\n\n\n\n\n\n\nArguments can also be variables\nThe output of a function can be stored in a variable\n\n\n\nvalues &lt;- c(1,5,6)\nresult &lt;- mean(x = values)\nresult\n#&gt; [1] 4"
+    "text": "The mean function\nfunction_name ( argument = value )\n\nmean ( x = c(1,5,6) )\n\nmean(x = c(1,5,6)) # or short: mean(c(1,5,6))\n#&gt; [1] 4\n\n\n\n\nArguments can also be variables\nThe output of a function can be stored in a variable\n\n\n\nvalues &lt;- c(1,5,6)\nresult &lt;- mean(x = values)\nresult\n#&gt; [1] 4"
   },
   {
     "objectID": "sessions/slides/functions.html#the-mean-function-1",
@@ -662,7 +662,7 @@
     "href": "sessions/slides/functions.html#function-arguments-2",
     "title": "Functions in R",
     "section": "Function arguments",
-    "text": "Function arguments\nArgument matching can be achieved by position or by name\n\nmean(x, trim = 0, na.rm = FALSE, ...)\nvalues &lt;- c(1, 5, 6, NA)\n\n\nThese calls to mean all are the same:\n\nmean(values, , TRUE) # by position\n\n\n\n\n\nmean(x = values, na.rm = TRUE) # by name\n\n\n\n\n\nmean(values, na.rm = TRUE) # a mix of both"
+    "text": "Function arguments\nArgument matching can be achieved by position or by name\n\nmean(x, trim = 0, na.rm = FALSE, ...)\nvalues &lt;- c(1, 5, 6, NA)\n\n\nThese calls to mean all are the same:\n\nmean(values, , TRUE) # by position\nmean(x = values, na.rm = TRUE) # by name\nmean(values, na.rm = TRUE) # a mix of both"
   },
   {
     "objectID": "sessions/slides/functions.html#function-arguments-3",
