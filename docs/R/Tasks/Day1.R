@@ -60,11 +60,13 @@ brainwt_kg <- c(
 
 # Goes through every element in species and returns TRUE if it appears in animals_to_check
 animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
-species %in% animals_to_check
-species[species %in% animals_to_check]
-
 # Goes through every element in animals_to_check and returns TRUE if it appears in species
 animals_to_check %in% species
+animals_to_check[animals_to_check %in% species]
+
+# Or using the species vector instead
+species %in% animals_to_check
+species[species %in% animals_to_check]
 
 # Calculate some descriptive statistics
 mean(brainwt_kg) # mean
@@ -108,8 +110,6 @@ bodywt_kg <- c(bodywt_kg, bodywt_kg_new)
 mean(brainwt_kg)
 # na.rm = TRUE
 mean(brainwt_kg, na.rm = TRUE)
-
-
 
 # 3. Tibbles -----------------------------------------------------------------
 # install.packages("tibble")

@@ -1,5 +1,6 @@
 ---
 title: "Solution to working with vectors"
+code-line-numbers: false
 ---
 
 ```{r}
@@ -37,8 +38,6 @@ brainwt_kg <- c(
 )
 ```
 
-## Working with the vectors
-
 - **Check which of the following animals are contained in the `species` vector**
 
 ```{r echo=TRUE}
@@ -50,6 +49,14 @@ animals_to_check %in% species
 ```
 
 You can see that Goat, Chimpanzee and Rat are contained in `species`.
+
+To see the actual species name instead of just `TRUE` and `FALSE`, you have to index the vector:
+
+
+```{r}
+animals_to_check[animals_to_check %in% species]
+```
+
 
 :::{.callout-note}
 
@@ -112,6 +119,7 @@ species[brain_body_ratio > brain_body_ratio[species == "Human"]]
 
 ```{r echo=TRUE}
 brain_body_ratio <- round(brain_body_ratio, digits = 4)
+brain_body_ratio
 ```
 
 

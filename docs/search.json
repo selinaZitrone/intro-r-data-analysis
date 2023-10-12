@@ -60,7 +60,7 @@
     "href": "sessions/tasks/intro-r.html",
     "title": "",
     "section": "",
-    "text": "You have the following three vectors:\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)\nCopy and paste the vectors into your R script and solve the following tasks."
+    "text": "You have the following three vectors:\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)\nCopy and paste the vectors into your R script and solve the following tasks.\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")"
   },
   {
     "objectID": "sessions/tasks/intro-r.html#tasks",
@@ -73,8 +73,8 @@
     "objectID": "sessions/tasks/intro-r.html#extras",
     "href": "sessions/tasks/intro-r.html#extras",
     "title": "",
-    "section": "2 Extras",
-    "text": "2 Extras\n\nRound the ratio vector to 4 decimal places with the round function\n\nType ?round into the console to open the help of the round function\n\nWhich animal has the smallest brain to body weight ratio?\n\nHint: have a look at the min function\n\nAdd the following three animals to the data vectors\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nNow calculate the mean brain weight again. Can you explain what happens? Can you fix it?\n\nHint: have a look at ?mean"
+    "section": "1 Extras",
+    "text": "1 Extras\n\nRound the ratio vector to 4 decimal places with the round function\n\nType ?round into the console to open the help of the round function\n\nWhich animal has the smallest brain to body weight ratio?\n\nHint: have a look at the min function\n\nAdd the following three animals to the data vectors\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nNow calculate the mean brain weight again. Can you explain what happens? Can you fix it?\n\nHint: have a look at ?mean"
   },
   {
     "objectID": "sessions/tasks/dplyr.html",
@@ -1270,8 +1270,8 @@
     "objectID": "sessions/02_intro-r.html#extras",
     "href": "sessions/02_intro-r.html#extras",
     "title": "Introduction to R",
-    "section": "1.2 Extras",
-    "text": "1.2 Extras\n\nRound the ratio vector to 4 decimal places with the round function\n\nType ?round into the console to open the help of the round function\n\nWhich animal has the smallest brain to body weight ratio?\n\nHint: have a look at the min function\n\nAdd the following three animals to the data vectors\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nNow calculate the mean brain weight again. Can you explain what happens? Can you fix it?\n\nHint: have a look at ?mean"
+    "section": "1.1 Extras",
+    "text": "1.1 Extras\n\nRound the ratio vector to 4 decimal places with the round function\n\nType ?round into the console to open the help of the round function\n\nWhich animal has the smallest brain to body weight ratio?\n\nHint: have a look at the min function\n\nAdd the following three animals to the data vectors\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nNow calculate the mean brain weight again. Can you explain what happens? Can you fix it?\n\nHint: have a look at ?mean"
   },
   {
     "objectID": "sessions/04_data-tibbles.html",
@@ -2090,21 +2090,21 @@
     "href": "sessions/slides/intro-r.html#basic-r-syntax",
     "title": "Introduction to R",
     "section": "Basic R Syntax",
-    "text": "Basic R Syntax\n\nWhitespace does not matter\n\n\n# this\ndata&lt;-read_csv(\"data/my-data.csv\")\n\n# is the same as this\n\ndata &lt;- \n  read_csv(    \"data/my-data.csv\"   )\n\n\nThere are good practice rules however -&gt; More on that later\nR Studio will tell you if something is incorrect\n\nFind  on the side of your script"
+    "text": "Basic R Syntax\n\nWhitespace does not matter\n\n\n\n# this\ndata&lt;-read_csv(\"data/my-data.csv\")\n\n# is the same as this\n\ndata &lt;- \n  read_csv(    \"data/my-data.csv\"   )\n\n\nThere are good practice rules however -&gt; More on that later\nRStudio will (often) tell you if something is incorrect\n\nFind  on the side of your script"
   },
   {
     "objectID": "sessions/slides/intro-r.html#comments-in-r",
     "href": "sessions/slides/intro-r.html#comments-in-r",
     "title": "Introduction to R",
     "section": "Comments in R",
-    "text": "Comments in R\n\n\n# Reading and cleaning the data -----------------\n\ndata &lt;- read_csv(\"data/my-data.csv\")\n# clean all column headers \n# (found on https://stackoverflow.com/questions/68177507/)\ndata &lt;- janitor::clean_names(data)\n\n# Analysis --------------------------------------\n\n\nEverything that follows a # is a comment\nComments are not evaluated\nNotes that make code more readable or add information\n\n\n\n\nComments can be used for\n\nExplanation of code (if necessary)\nInclude links, names of authors, …\nMark different sections of your code ( try Ctrl/Cmd + Shift + R)"
+    "text": "Comments in R\n\n# Reading and cleaning the data -----------------\n\ndata &lt;- read_csv(\"data/my-data.csv\")\n# clean all column headers \n# (found on https://stackoverflow.com/questions/68177507/)\ndata &lt;- janitor::clean_names(data)\n\n# Analysis --------------------------------------\n\n\nEverything that follows a # is a comment\nComments are not evaluated\nNotes that make code more readable or add information\n\n\n\n\nComments can be used for\n\nExplanation of code (if necessary)\nInclude links, names of authors, …\nMark different sections of your code ( try Ctrl/Cmd + Shift + R)"
   },
   {
     "objectID": "sessions/slides/intro-r.html#variables",
     "href": "sessions/slides/intro-r.html#variables",
     "title": "Introduction to R",
     "section": "Variables",
-    "text": "Variables\n\nStore values under meaningful names to reuse them\nA variable has a name and value and is created using the assignment operator\n\n\n\nradius   &lt;-   5\n\n\n\n\nVariables are available in the global environment\nR is case sensitive: radius != Radius\nVariables can hold any R objects, e.g.\n\nSimple numbers, tables with data, …\n\nChoose meaningful variable names\n\nMake your code easier to read"
+    "text": "Variables\n\nStore values under meaningful names to reuse them\nA variable has a name and value and is created using the assignment operator\n\n\n\nradius   &lt;-   5\n\n\n\n\nVariables are available in the global environment\nR is case sensitive: radius != Radius\nVariables can hold any R objects, e.g. numbers, tables with data, …\nChoose meaningful variable names\n\nMake your code easier to read"
   },
   {
     "objectID": "sessions/slides/intro-r.html#variables-1",
@@ -2132,7 +2132,7 @@
     "href": "sessions/slides/intro-r.html#creating-vectors-c",
     "title": "Introduction to R",
     "section": "Creating vectors: c()",
-    "text": "Creating vectors: c()\nUse the function c() to combine values into a vector\n\nlgl_var &lt;- c(TRUE, TRUE, FALSE)\ndbl_var &lt;- c(2.5, 3.4, 4.3)\nint_var &lt;- c(1L, 45L, 234L)\nchr_var &lt;- c(\"These are\", \"just\", \"some strings\")\n\n\nThe : operator creates a sequence between two numbers with an increment of (-)1\n\n1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)\n#&gt;  [1]  1  2  3  4  5  6  7  8  9 10\n\n\n\nThere are many more options to create vectors\n\nseq() to create a sequence of numbers\nrep() ro repeat values"
+    "text": "Creating vectors: c()\nBe aware of implicit type conversion when combining vectors of different types\n\n\n# integer + logical -&gt; integer (same with double + logical)\nc(int_var, lgl_var)\n#&gt; [1]   1  45 234   1   1   0\n\n# integer + character -&gt; character (same with double + character)\nc(int_var, chr_var)\n#&gt; [1] \"1\"            \"45\"           \"234\"          \"These are\"    \"just\"        \n#&gt; [6] \"some strings\"\n\n# logical + character -&gt; character\nc(lgl_var, chr_var)\n#&gt; [1] \"TRUE\"         \"TRUE\"         \"FALSE\"        \"These are\"    \"just\"        \n#&gt; [6] \"some strings\""
   },
   {
     "objectID": "sessions/slides/intro-r.html#creating-vectors-c-1",
@@ -2153,35 +2153,35 @@
     "href": "sessions/slides/intro-r.html#working-with-vectors-1",
     "title": "Introduction to R",
     "section": "Working with vectors",
-    "text": "Working with vectors\nDivide the population and area vector to calculate the population density in each city: \n\npopulation / area_km2\n#&gt;  [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685\n#&gt;  [8]  2178.988  9649.123 20000.000\n\n\nThe operation is performed separately for each element of the two vectors and the result is a vector.\n\n\nSame, if a vector is divided by vector of length 1 (i.e. a single number). Result is always a vector.\n\nmean_population &lt;- mean(population) # calculate the mean of population vector\nmean_population\n#&gt; [1] 5910000\npopulation / mean_population # divide population vector by the mean\n#&gt;  [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142\n#&gt;  [8] 0.4737733 0.3722504 0.3553299"
+    "text": "Working with vectors\nLet’s create some vectors to work with.\n\n# list of 10 biggest cities in Europe\ncities &lt;- c(\"Istanbul\", \"Moscow\", \"London\", \"Saint Petersburg\", \"Berlin\", \n            \"Madrid\", \"Kyiv\", \"Rome\", \"Bucharest\", \"Paris\")\n\npopulation &lt;- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)\n\narea_km2 &lt;- c(2576, 2561, 1572, 1439,891,604, 839, 1285, 228, 105 )\n\n\n We can check the length of a vector using the length() function:\n\nlength(cities)\n#&gt; [1] 10\n\n\n\n\nData from Wikipedia"
   },
   {
     "objectID": "sessions/slides/intro-r.html#working-with-vectors-2",
     "href": "sessions/slides/intro-r.html#working-with-vectors-2",
     "title": "Introduction to R",
     "section": "Working with vectors",
-    "text": "Working with vectors\nWe can also work with relational and logical operators\n\npopulation &gt; mean_population\n#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\nThe result is a vector containing TRUE and FALSE, depending on whether the city’s population is larger than the mean population or not.\n\n\n Logical and relational operators can be combined\n\n# population larger than mean population OR population larger than 3 million\npopulation &gt; mean_population | population &gt; 3e6\n#&gt;  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE"
+    "text": "Working with vectors\nDivide population and area vector to calculate population density in each city: \n\npopulation / area_km2\n#&gt;  [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685\n#&gt;  [8]  2178.988  9649.123 20000.000\n\n\nThe operation is performed separately for each element of the two vectors and the result is a vector.\n\n\nSame, if a vector is divided by vector of length 1 (i.e. a single number). Result is always a vector.\n\nmean_population &lt;- mean(population) # calculate the mean of population vector\nmean_population\n#&gt; [1] 5910000\npopulation / mean_population # divide population vector by the mean\n#&gt;  [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142\n#&gt;  [8] 0.4737733 0.3722504 0.3553299"
   },
   {
     "objectID": "sessions/slides/intro-r.html#indexing-vectors",
     "href": "sessions/slides/intro-r.html#indexing-vectors",
     "title": "Introduction to R",
     "section": "Indexing vectors",
-    "text": "Indexing vectors\nYou can use square brackets [] to access specific elements from a vector.\nThe basic structure is:\n\nvector [ vector of indexes to select]\n\n\n\n\ncities[5]\n#&gt; [1] \"Berlin\"\n\n\n\n\n# the three most populated cities\ncities[1:3] # same as cities[c(1,2,3)]\n#&gt; [1] \"Istanbul\" \"Moscow\"   \"London\"\n\n\n\n\n# the last entry of the cities vector\ncities[length(cities)] # same as cities[10]\n#&gt; [1] \"Paris\""
+    "text": "Indexing vectors\nYou can use square brackets [] to access specific elements from a vector.\nThe basic structure is:\n\nvector [ vector of indexes to select ]\n\n\n\n\ncities[5]\n#&gt; [1] \"Berlin\"\n\n\n\n\n\n# the three most populated cities\ncities[1:3] # same as cities[c(1,2,3)]\n#&gt; [1] \"Istanbul\" \"Moscow\"   \"London\"\n\n\n\n\n\n# the last entry of the cities vector\ncities[length(cities)] # same as cities[10]\n#&gt; [1] \"Paris\""
   },
   {
     "objectID": "sessions/slides/intro-r.html#indexing-vectors-1",
     "href": "sessions/slides/intro-r.html#indexing-vectors-1",
     "title": "Introduction to R",
     "section": "Indexing vectors",
-    "text": "Indexing vectors\nChange the values of a vector at specified indexes using the assignment operator &lt;-\n\nImagine for example, that the population of\n\n\nIstanbul (index 1) increased to 20 Million\nRome (index 8) changed but is unknown\nParis (index 10) decreased by 200,000\n\n\n\n\n\n# Update Istanbul (1) and Rome(8)\npopulation[c(1, 8)] &lt;- c(20e6, NA) # NA means missing value\n# Update Paris (10)\npopulation[10] &lt;- population[10] - 200000 \n\n\n\n\n\npopulation\n#&gt;  [1] 20000000 12500000  9000000  5400000  3800000  3200000  3000000       NA\n#&gt;  [9]  2200000  1900000"
+    "text": "Indexing vectors\nChange the values of a vector at specified indexes using the assignment operator &lt;-\n\nImagine for example, that the population of\n\n\nIstanbul (index 1) increased to 20 Million\nRome (index 8) changed but is unknown\nParis (index 10) decreased by 200,000\n\n\n\n\n\n# Update Istanbul (1) and Rome(8)\npopulation[c(1, 8)] &lt;- c(20e6, NA) # NA means missing value\n# Update Paris (10)\npopulation[10] &lt;- population[10] - 200000 \n\n# Look at the result\npopulation\n#&gt;  [1] 20000000 12500000  9000000  5400000  3800000  3200000  3000000       NA\n#&gt;  [9]  2200000  1900000"
   },
   {
     "objectID": "sessions/slides/intro-r.html#indexing-vectors-2",
     "href": "sessions/slides/intro-r.html#indexing-vectors-2",
     "title": "Introduction to R",
     "section": "Indexing vectors",
-    "text": "Indexing vectors\nYou can also index a vector using logical tests. The basic structure is:\n\nvector [ logical vector of same length]\n\n\n\n\nmega_city &lt;- population &gt; mean_population\nmega_city\n#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\n\nWhich are the mega cities?\n\ncities[mega_city] # or short: cities[population &gt; mean_population]\n#&gt; [1] \"Istanbul\" \"Moscow\"   \"London\"\n\nIndex only the cities that return TRUE for the comparison of their population against the mean population"
+    "text": "Indexing vectors\nYou can also index a vector using logical tests. The basic structure is:\n\nvector [ logical vector of same length ]\n\n\n\n\nmega_city &lt;- population &gt; mean_population\nmega_city\n#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\n\nWhich are the mega cities?\n\ncities[mega_city] # or short: cities[population &gt; mean_population]\n#&gt; [1] \"Istanbul\" \"Moscow\"   \"London\"\n\nReturn only the cities for which the comparison of their population against the mean population is TRUE"
   },
   {
     "objectID": "sessions/slides/intro-r.html#summary-i",
@@ -2538,14 +2538,14 @@
     "href": "sessions/solutions/intro-r.html",
     "title": "Solution to working with vectors",
     "section": "",
-    "text": "You have the following three vectors:\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)"
+    "text": "You have the following three vectors:\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")\n\n# Goes through every element in animals_to_check and returns TRUE\n# if it appears in species\nanimals_to_check %in% species\n\n[1] FALSE  TRUE  TRUE  TRUE FALSE FALSE\nYou can see that Goat, Chimpanzee and Rat are contained in species.\nTo see the actual species name instead of just TRUE and FALSE, you have to index the vector:\nanimals_to_check[animals_to_check %in% species]\n\n[1] \"Goat\"       \"Chimpanzee\" \"Rat\"\nmean(brainwt_kg)\n\n[1] 0.5745214\n\nsd(brainwt_kg)\n\n[1] 1.334929\nspecies[brainwt_kg &gt; mean(brainwt_kg)]\n\n[1] \"AsianElephant\"   \"Horse\"           \"Giraffe\"         \"Human\"          \n[5] \"AfricanElephant\"\nbrain_body_ratio &lt;- brainwt_kg / bodywt_kg * 100\nStep 1: Look at the brain to body ratio of humans\nbrain_body_ratio[species == \"Human\"]\n\n[1] 2.129032\nStep 2: Compare it with the other animals\n# New variable for human brain to body ratio\nbbr_human &lt;- brain_body_ratio[species == \"Human\"]\n# Are there animals that have a larger brain to body ratio than humans?\nbrain_body_ratio &gt; bbr_human\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[25] FALSE FALSE  TRUE FALSE\n\n# Which are these animals\nspecies[brain_body_ratio &gt; bbr_human]\n\n[1] \"RhesusMonkey\" \"Mole\"        \n\n# or short\nspecies[brain_body_ratio &gt; brain_body_ratio[species == \"Human\"]]\n\n[1] \"RhesusMonkey\" \"Mole\""
   },
   {
     "objectID": "sessions/solutions/intro-r.html#extras",
     "href": "sessions/solutions/intro-r.html#extras",
     "title": "Solution to working with vectors",
-    "section": "2 Extras",
-    "text": "2 Extras\n\nRound the vector to 4 decimal places:\n\n\nbrain_body_ratio &lt;- round(brain_body_ratio, digits = 4)\n\n\nWhich animal has the smallest brain to body ratio?\n\n\nspecies[brain_body_ratio == min(brain_body_ratio)]\n\n[1] \"Brachiosaurus\"\n\n\nThe Brachiosaurus has a really small brain with a weight of just 0.1545 kg at a body weight of 8.7^{4} kg!\n\nAdd elements to the vector\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nspecies &lt;- c(species, species_new)\nbrainwt_kg &lt;- c(brainwt_kg, brainwt_kg_new)\nbodywt_kg &lt;- c(bodywt_kg, bodywt_kg_new)\n\n\nWhat is the mean brain weight now?\n\n\nmean(brainwt_kg)\n\n[1] NA\n\n# na.rm = TRUE removes missing values before calculating the mean\nmean(brainwt_kg, na.rm = TRUE)\n\n[1] 0.5529"
+    "section": "1 Extras",
+    "text": "1 Extras\n\nRound the vector to 4 decimal places:\n\n\nbrain_body_ratio &lt;- round(brain_body_ratio, digits = 4)\nbrain_body_ratio\n\n [1] 0.5786 0.0910 0.3292 0.4152 0.5500 0.0004 0.1807 0.2239 0.1257 1.1500\n[11] 0.7758 0.1285 0.1961 2.1290 0.0858 0.0007 2.6324 0.1600 1.0000 2.0000\n[21] 0.4840 0.3153 0.1570 0.8429 0.6333 0.0002 3.0000 0.0938\n\n\n\nWhich animal has the smallest brain to body ratio?\n\n\nspecies[brain_body_ratio == min(brain_body_ratio)]\n\n[1] \"Brachiosaurus\"\n\n\nThe Brachiosaurus has a really small brain with a weight of just 0.1545 kg at a body weight of 8.7^{4} kg!\n\nAdd elements to the vector\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nspecies &lt;- c(species, species_new)\nbrainwt_kg &lt;- c(brainwt_kg, brainwt_kg_new)\nbodywt_kg &lt;- c(bodywt_kg, bodywt_kg_new)\n\n\nWhat is the mean brain weight now?\n\n\nmean(brainwt_kg)\n\n[1] NA\n\n# na.rm = TRUE removes missing values before calculating the mean\nmean(brainwt_kg, na.rm = TRUE)\n\n[1] 0.5529"
   },
   {
     "objectID": "sessions/solutions/tests.html",
@@ -2749,5 +2749,61 @@
     "title": "Introduction to RStudio",
     "section": "",
     "text": "R is the programming language and the program that does the actual work\n\nCan be used with many different programming environments\n\n\n\n\nRStudio is the integrated development environment (IDE)\n\nProvides an interface to R\nSpecifically built around R code\nExecute code\nSyntax highlighting\nFile and project management\n…"
+  },
+  {
+    "objectID": "sessions/slides/intro-r.html#vectors",
+    "href": "sessions/slides/intro-r.html#vectors",
+    "title": "Introduction to R",
+    "section": "Vectors",
+    "text": "Vectors\nVectors are data structures that are built on top of atomic data types.\nImagine a vector as a collection of values that are all of the same data type.  \n\n\n\nImage from Advanced R book"
+  },
+  {
+    "objectID": "sessions/slides/intro-r.html#creating-vectors",
+    "href": "sessions/slides/intro-r.html#creating-vectors",
+    "title": "Introduction to R",
+    "section": "Creating vectors",
+    "text": "Creating vectors\nUse the function c() to combine values into a vector\n\nlgl_var &lt;- c(TRUE, TRUE, FALSE)\ndbl_var &lt;- c(2.5, 3.4, 4.3)\nint_var &lt;- c(1L, 45L, 234L)\nchr_var &lt;- c(\"These are\", \"just\", \"some strings\")\n\n\nThe : operator creates a sequence between two numbers with an increment of (-)1\n\n1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)\n#&gt;  [1]  1  2  3  4  5  6  7  8  9 10\n\n\n\nThere are many more options to create vectors\n\nseq() to create a sequence of numbers\nrep() ro repeat values\n…"
+  },
+  {
+    "objectID": "sessions/slides/intro-r.html#working-with-vectors-3",
+    "href": "sessions/slides/intro-r.html#working-with-vectors-3",
+    "title": "Introduction to R",
+    "section": "Working with vectors",
+    "text": "Working with vectors\nWe can also work with relational and logical operators\n\npopulation &gt; mean_population\n#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\nThe result is a vector containing TRUE and FALSE, depending on whether the city’s population is larger than the mean population or not.\n\n\n Logical and relational operators can be combined\n\n# population larger than mean population OR population larger than 3 million\npopulation &gt; mean_population | population &gt; 3e6\n#&gt;  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE"
+  },
+  {
+    "objectID": "sessions/slides/intro-r.html#working-with-vectors-4",
+    "href": "sessions/slides/intro-r.html#working-with-vectors-4",
+    "title": "Introduction to R",
+    "section": "Working with vectors",
+    "text": "Working with vectors\nCheck whether elements occur in a vector:\n\ncities == \"Istanbul\"\n#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\n\nThe %in% operator checks whether multiple elements occur in a vector.\n\n# for each element of cities, checks whether that element is contained in to_check \nto_check &lt;- c(\"Istanbul\", \"Berlin\", \"Madrid\")\ncities %in% to_check # same as cities %in% c(\"Istanbul\", \"Berlin\", \"Madrid\")\n#&gt;  [1]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE\n\n\n\n\n%in% always returns a vector of the same length as the vector on the left side\n\n\n\n# for each element of to_check, check whether that element is contained in cities \nto_check %in% cities\n#&gt; [1] TRUE TRUE TRUE"
+  },
+  {
+    "objectID": "sessions/slides/intro-r.html",
+    "href": "sessions/slides/intro-r.html",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "Addition\n\n\n+\n\n\n\n\nSubtraction\n\n\n-\n\n\n\n\nMultiplication\n\n\n*\n\n\n\n\nDivision\n\n\n/\n\n\n\n\nModulo\n\n\n%%\n\n\n\n\nPower\n\n\n^\n\n\n\n\n\n\n# Addition\n2 + 2\n# Subtraction\n5.432 - 34234\n# Multiplication\n33 * 42\n# Division\n3 / 42\n# Modulo (Remainder)\n2 %% 2\n# Power\n2^2\n# Combine operations\n((2 + 2) * 5)^(10 %% 10)"
+  },
+  {
+    "objectID": "sessions/slides/intro-r.html#creating-vectors-and-seq",
+    "href": "sessions/slides/intro-r.html#creating-vectors-and-seq",
+    "title": "Introduction to R",
+    "section": "1.7 Creating vectors: : and seq()",
+    "text": "1.7 Creating vectors: : and seq()\nThe : operator creates a sequence between two numbers with an increment of (-)1\n\n1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)\n#&gt;  [1]  1  2  3  4  5  6  7  8  9 10\n\n. . .\nThe seq() function creates a sequence of values\n\nseq(from = 1, to = 10, by = 1) # specify increment of sequence with by\n#&gt;  [1]  1  2  3  4  5  6  7  8  9 10\nseq(from = 1, to = 10, length.out = 20) # specify desired length with length.out\n#&gt;  [1]  1.000000  1.473684  1.947368  2.421053  2.894737  3.368421  3.842105\n#&gt;  [8]  4.315789  4.789474  5.263158  5.736842  6.210526  6.684211  7.157895\n#&gt; [15]  7.631579  8.105263  8.578947  9.052632  9.526316 10.000000"
+  },
+  {
+    "objectID": "sessions/slides/intro-r.html#creating-vectors-rep",
+    "href": "sessions/slides/intro-r.html#creating-vectors-rep",
+    "title": "Introduction to R",
+    "section": "1.8 Creating vectors: rep()",
+    "text": "1.8 Creating vectors: rep()\nRepeat values multiple times with rep()\n\n\nrep(\"hello\", times = 5)\n#&gt; [1] \"hello\" \"hello\" \"hello\" \"hello\" \"hello\""
+  },
+  {
+    "objectID": "sessions/slides/intro-r.html#indexing-vectors-3",
+    "href": "sessions/slides/intro-r.html#indexing-vectors-3",
+    "title": "Introduction to R",
+    "section": "2.8 Indexing vectors",
+    "text": "2.8 Indexing vectors\nWe also use %in%for logical indexing.\n\npopulation[ cities %in% c(\"Berlin\", \"Paris\", \"Stockholm\", \"Madrid\")]\n#&gt; [1] 3800000 3200000 2100000\n\n\nReturns only 3 values for population, because Stockholm is not a city in our vector\n\nNo city in cities returns TRUE for the comparison with \"Stockholm\"\n\n\n. . .\n\ncities %in% c(\"Berlin\", \"Paris\", \"Stockholm\", \"Madrid\")\n#&gt;  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE"
   }
 ]

@@ -33,8 +33,6 @@ brainwt_kg <- c(
 
 Copy and paste the vectors into your R script and solve the following tasks.
 
-## Working with the vectors
-
 - Check which of the following animals are contained in the `species` vector:
 
 ```{r echo=TRUE, eval=FALSE}
@@ -45,7 +43,7 @@ animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
   - Hint: have a look at the summary slides to find the functions
 - Which species have a brain weight larger than the mean brain weight of all species?
 - Calculate the ratio of brain weight to body weight in percent for all animals and save the result in a new vector
-- Are there any animals with a larger brain to body weight ratio than humans? If yes, which ones?
+- A bit more tricky: Are there any animals with a larger brain to body weight ratio than humans? If yes, which ones?
   - Hint: calculate the ratio for humans and save it in a separate variable first
 
 ## Extras

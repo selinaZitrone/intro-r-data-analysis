@@ -28,10 +28,6 @@ knitr:
     collapse: true
     comment: "#>" 
 from: markdown+emoji
-title-slide-attributes: 
-  data-background-image: ./img/Rlogo.png"
-  data-background-position: 90% 85%
-  data-background-size: "20%"
 ---
 
 ```{r setup, include=FALSE}
@@ -283,6 +279,8 @@ library(fontawesome)
 ## Basic R Syntax
 
 - Whitespace does not matter
+
+. . .
   
 ```{r}
 #| eval: false
@@ -299,13 +297,12 @@ data <-
 
 - There are good practice rules however -> More on that later
 
-- R Studio will tell you if something is incorrect
+- RStudio will (often) tell you if something is incorrect
   - Find ![](img/day1/red_x.png) on the side of your script
 
 ## Comments in R
 
 ```{r, eval=FALSE}
-
 # Reading and cleaning the data -----------------
 
 data <- read_csv("data/my-data.csv")
@@ -353,8 +350,7 @@ data <- janitor::clean_names(data)
 
 - Variables are available in the global environment
 - R is case sensitive: **r**adius != **R**adius
-- Variables can hold any R objects, e.g.
-  - Simple numbers, tables with data, ...
+- Variables can hold any R objects, e.g. numbers, tables with data, ...
 - Choose meaningful variable names
   - Make your code easier to read
 
@@ -399,8 +395,6 @@ There are 6 so-called **atomic data types** in R. The 4 most important are:
 
 **Character:** also called string. Sequence of characters surrounded by quotes (`"hello"` , `"sample_1"`)
 
-# Vectors {.inverse}
-
 ## Vectors
 
 Vectors are data structures that are built on top of atomic data types.<br>
@@ -411,7 +405,7 @@ Imagine a vector as a **collection of values** that are all **of the same data t
 
 ![Image from [Advanced R book](https://adv-r.hadley.nz/vectors-chap.html#atomic-vectors)](img/day1/vector_data_type.png){fig-align="center"}
 
-## Creating vectors: `c()`
+## Creating vectors
 
 Use the function `c()` to *combine* values into a vector
 
@@ -436,6 +430,7 @@ There are many more options to create vectors
 
 - `seq()` to create a sequence of numbers
 - `rep()` ro repeat values
+- ...
 
 ## Creating vectors: `c()` {.hidden}
 
@@ -483,6 +478,8 @@ Repeat values multiple times with `rep()`
 rep("hello", times = 5)
 ```
 
+# Working with vectors {.inverse}
+
 ## Working with vectors
 
 Let's create some vectors to work with.
@@ -514,7 +511,7 @@ Data from [Wikipedia](https://en.wikipedia.org/wiki/List_of_European_cities_by_p
 
 ## Working with vectors
 
-Divide the population and area vector to calculate the population density in each city:
+Divide population and area vector to calculate population density in each city:
 <br>
 ```{r}
 population / area_km2
@@ -556,7 +553,7 @@ Logical and relational operators can be combined
 population > mean_population | population > 3e6
 ```
 
-# Working with vectors
+## Working with vectors
 
 Check whether elements occur in a vector:
 
@@ -566,7 +563,11 @@ cities == "Istanbul"
 
 . . .
 
+<br>
+
 The `%in%` operator checks whether *multiple* elements occur in a vector.
+
+
 
 ```{r}
 # for each element of cities, checks whether that element is contained in to_check 
@@ -578,16 +579,14 @@ cities %in% to_check # same as cities %in% c("Istanbul", "Berlin", "Madrid")
 
 <br>
 
+`%in%` always returns a vector of the same length as the vector on the left side
+
+. . .
+
 ```{r}
 # for each element of to_check, check whether that element is contained in cities 
 to_check %in% cities
 ```
-
-. . .
-
-<br>
-
-`%in%` always returns a vector of the same length as the vector on the left side
 
 ## Indexing vectors
 
@@ -597,7 +596,7 @@ The basic structure is:
 
 :::{.r-stack}
 
-<b>[vector]{.col-green} [ [vector of indexes to select ]{.col-pink}]</b>
+<b>vector [ vector of indexes to select ]</b>
 
 :::
 
@@ -608,6 +607,7 @@ The basic structure is:
 ```{r}
 cities[5]
 ```
+<br>
 
 . . . 
 
@@ -615,6 +615,7 @@ cities[5]
 # the three most populated cities
 cities[1:3] # same as cities[c(1,2,3)]
 ```
+<br>
 
 . . . 
 
@@ -645,12 +646,8 @@ Imagine for example, that the population of
 population[c(1, 8)] <- c(20e6, NA) # NA means missing value
 # Update Paris (10)
 population[10] <- population[10] - 200000 
-```
-<br>
 
-. . .
-
-```{r}
+# Look at the result
 population
 ```
 
@@ -664,7 +661,7 @@ You can also index a vector using logical tests. The basic structure is:
 
 :::{.r-stack}
 
-<b>[vector]{.col-green} [ [logical vector of same length]{.col-pink}]</b>
+<b>vector [ logical vector of same length ]</b>
 
 :::
 
@@ -685,7 +682,7 @@ Which are the mega cities?
 cities[mega_city] # or short: cities[population > mean_population]
 ```
 
-Index only the cities that return `TRUE` for the comparison of their population against the mean population
+Return only the cities for which the comparison of their population against the mean population is `TRUE`
 
 ## Indexing vectors {visibility="hidden"}
 
