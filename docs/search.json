@@ -1390,7 +1390,7 @@
     "href": "sessions/slides/00_organization.html#who-are-you",
     "title": "Introduction to Data Analysis with R",
     "section": "Who are you?",
-    "text": "Who are you?\nResults of questionnaire"
+    "text": "Who are you?"
   },
   {
     "objectID": "sessions/slides/00_organization.html#workshop-topics",
@@ -2812,5 +2812,26 @@
     "title": "Common errors and how to fix them",
     "section": "Error: object not found",
     "text": "Error: object not found\nExample\n\nvariable_A\n#&gt; Error in eval(expr, envir, enclos): object 'variable_A' not found\n\n\n\n\nHow to fix\n\nyou are trying to access an object that does not exist\n\ntypos in variable name (variable name is variableA but you try to access variable_A)\nforgot to put quotes around string: print(hello)  looks for a variable named hello but instead you wanted to print the string print(\"hello\")"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#who-are-you-1",
+    "href": "sessions/slides/00_organization.html#who-are-you-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Who are you?",
+    "text": "Who are you?"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#who-are-you-2",
+    "href": "sessions/slides/00_organization.html#who-are-you-2",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Who are you?",
+    "text": "Who are you?"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#who-are-you-3",
+    "href": "sessions/slides/00_organization.html#who-are-you-3",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Who are you?",
+    "text": "Who are you?"
   }
 ]

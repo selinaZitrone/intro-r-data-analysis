@@ -60,7 +60,19 @@ library(fontawesome)
 
 ## Who are you?
 
-[Results of questionnaire](https://docs.google.com/forms/d/12t0jqM5-XjWKFLzbyoFUeGZsPNjokoygEiwo-iHlpEM/edit#responses)
+![](img/day1/topics.png)
+
+## Who are you?
+
+![](img/day1/tools.png)
+
+## Who are you?
+
+![](img/day1/methods.png)
+
+## Who are you?
+
+![](img/day1/plots.png)
 
 ## Workshop topics
 
@@ -86,8 +98,8 @@ Cleaning data and statistical tests
 **Day 4 Bring your own data**
 
 ## Schedule and Organization {.nonincremental}
-📅 09.10.2023 - 10.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
 📅 16.10.2023 - 17.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
+📅 30.10.2023 - 31.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
 :ramen: ~ 12 a.m. - 1 p.m.,  :coffee: in between <br>
 :pushpin: We will meet in the `General` meeting on Webex
 
