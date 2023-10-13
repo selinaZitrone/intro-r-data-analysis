@@ -59,11 +59,7 @@ area_km2 <- c(2576, 2561, 1572, 1439,891,604, 839, 1285, 228, 105 )
 data.frame(cities = cities,
            population = population,
            area_km2 = area_km2) |> 
-  knitr::kable() |> 
-  kableExtra::kable_styling(
-    "striped",
-    font_size = 20
-  )
+  knitr::kable()
 ```
 
 :::
