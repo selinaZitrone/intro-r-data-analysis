@@ -36,7 +36,7 @@ wanted to make such a plot:
 library(palmerpenguins)
 penguins %>%
   select(species, bill_length_mm, bill_depth_mm) %>%
-  pivot_longer(!species, values_to = "variable") %>%
+  pivot_longer(!species, names_to = "variable") %>%
   ggplot(aes(x = species, y = value, fill = variable)) +
   geom_boxplot()
 ```

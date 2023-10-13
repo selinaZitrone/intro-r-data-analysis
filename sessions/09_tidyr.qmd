@@ -1,5 +1,6 @@
 ---
 title: "Tidy data with tidyr"
+code-line-numbers: false
 ---
 
 ```{=html}
@@ -12,7 +13,7 @@ title: "Tidy data with tidyr"
 
 :::{.callout-note}
 
-## Find the solution [here](solutions/tidyr.qmd){target="_blank".
+## Find the solution [here](solutions/tidyr.qmd){target="_blank"}.
 
 :::
 

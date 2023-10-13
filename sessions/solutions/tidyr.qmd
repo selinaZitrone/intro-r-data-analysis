@@ -1,5 +1,6 @@
 ---
 title: "Solution to tidyr task"
+code-line-numbers: false
 ---
 
 ## Get started
@@ -88,7 +89,7 @@ Use the pipe operator to do the calculations one after the other:
 library(palmerpenguins)
 penguins |> 
   select(species, bill_length_mm, bill_depth_mm) |> 
-  pivot_longer(!species, values_to = "variable") |> 
+  pivot_longer(!species, names_to = "variable") |> 
   ggplot(aes(x = species, y = value, fill = variable)) +
   geom_boxplot()
 ```

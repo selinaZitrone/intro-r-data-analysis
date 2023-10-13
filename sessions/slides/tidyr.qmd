@@ -14,7 +14,7 @@ format:
     show-slide-number: all
     incremental: true
     self-contained: true
-    code-line-numbers: true
+    code-line-numbers: false
     auto-stretch: false
     scrollable: true
     theme: slides.scss
@@ -29,10 +29,6 @@ knitr:
     collapse: true
     comment: "#>"
 from: markdown+emoji
-title-slide-attributes: 
-  data-background-image: img/hex-stickers/tidyr.png
-  data-background-position: 90% 85%
-  data-background-size: "20%"
 ---
 
 ```{r setup, include=FALSE}
@@ -169,9 +165,10 @@ Let's tidy this data using functions from the `tidyr` package!
 print(cities_untidy, width = 90)
 ```
 
-. . .
+## `pivot_longer()`
 
-<br>
+**One variable split into multiple column**s can be solved with `pivot_longer`
+
 ```{r}
 step1 <- pivot_longer(
     cities_untidy,                         # the tibble

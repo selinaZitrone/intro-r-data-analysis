@@ -61,15 +61,15 @@ pivot_wider(fish_encounters,
 
 # Transpose a tibble with a combination of pivot_longer and pivot_wider
 
-relig_income %>%
-  pivot_longer(-religion) %>%
+relig_income |>
+  pivot_longer(-religion) |>
   pivot_wider(names_from = religion, values_from = value)
 
 # Penguins boxplot
-penguins %>%
-  dplyr::select(species, bill_length_mm, bill_depth_mm) %>%
-  pivot_longer(!species, values_to = "penguin_measure") %>%
-  ggplot(aes(x = species, y = penguin_measure, fill = name)) +
+penguins |>
+  select(species, bill_length_mm, bill_depth_mm) |>
+  pivot_longer(!species, names_to = "variable") |>
+  ggplot(aes(x = species, y = value, fill = variable)) +
   geom_boxplot()
 
 # 2. Statistical tests -------------------------------------------------------
@@ -79,9 +79,9 @@ adelie <- filter(penguins, species == "Adelie")$flipper_length_mm
 chinstrap <- filter(penguins, species == "Chinstrap")$flipper_length_mm
 gentoo <- filter(penguins, species == "Gentoo")$flipper_length_mm
 
-adelie <- filter(penguins, species == "Adelie") %>% pull(flipper_length_mm)
-chinstrap <- filter(penguins, species == "Chinstrap") %>% pull(flipper_length_mm)
-gentoo <- filter(penguins, species == "Gentoo") %>% pull(flipper_length_mm)
+adelie <- filter(penguins, species == "Adelie") |> pull(flipper_length_mm)
+chinstrap <- filter(penguins, species == "Chinstrap") |> pull(flipper_length_mm)
+gentoo <- filter(penguins, species == "Gentoo") |> pull(flipper_length_mm)
 
 # Step 1: test for normality
 
@@ -133,7 +133,7 @@ wilcox.test(gentoo, adelie) # means differ
 # Compare flipper lengths of penguins visually using a boxplot
 # Add the p-values of the comparisons with the test into the plot
 library(ggsignif)
-penguins %>%
+penguins |>
   ggplot(aes(x = species, y = flipper_length_mm)) +
   geom_boxplot(notch = TRUE) +
   geom_signif(
@@ -155,7 +155,7 @@ penguins %>%
   )
 
 # Plot with mean and errorbars:
-penguins %>%
+penguins |>
   ggplot(aes(x = species, y = flipper_length_mm)) +
   stat_summary() +
   geom_signif(
