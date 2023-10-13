@@ -4492,7 +4492,7 @@ vertical-align: -.125em;
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html" rel target>
- <span class="menu-text">Home</span></a>
+ <span class="menu-text"><b>Home</b></span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../preparations.html" rel target>
@@ -4528,7 +4528,7 @@ vertical-align: -.125em;
   </li>  
         <li>
     <a class="dropdown-item" href="../sessions/04_data-tibbles.html" rel target>
- <span class="dropdown-text">Data &amp; Tibbles</span></a>
+ <span class="dropdown-text">Data frames &amp; tibbles</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../sessions/05_readr.html" rel target>
@@ -4676,8 +4676,8 @@ Find the solution <a href="../sessions/solutions/tests.html" target="_blank">her
 <p>We will again use the <code>penguins</code> tibble from the <code>palmerpenguins</code> package for this task.</p>
 <p>So before you get started with the exercise, make sure that you load the <code>palmerpenguins</code> package and the <code>tidyverse</code></p>
 <div class="cell" data-hash="10_tests_cache/html/unnamed-chunk-1_7ae5a9d49234098b08a4b6731dfc69e9">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="compare-the-flipper-length-of-penguins-using-statistical-tests" class="level2" data-number="1.2">
@@ -4692,10 +4692,10 @@ Find the solution <a href="../sessions/solutions/tests.html" target="_blank">her
 <p>Before you start, create a subset of each species as a vector.</p>
 <p>For this, you can use the <code>$</code> operator:</p>
 <div class="cell" data-hash="10_tests_cache/html/unnamed-chunk-2_cc4761a1061e6112782e768bd825d9b5">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)<span class="sc">$</span>flipper_length_mm</span>
-<span id="cb2-3"><a href="#cb2-3"></a>chinstrap <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Chinstrap&quot;</span>)<span class="sc">$</span>flipper_length_mm</span>
-<span id="cb2-4"><a href="#cb2-4"></a>gentoo <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Gentoo&quot;</span>)<span class="sc">$</span>flipper_length_mm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)<span class="sc">$</span>flipper_length_mm</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>chinstrap <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Chinstrap&quot;</span>)<span class="sc">$</span>flipper_length_mm</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>gentoo <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">&quot;Gentoo&quot;</span>)<span class="sc">$</span>flipper_length_mm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Follow the decision tree for statistical tests:</p>
 <div class="cell" data-hash="10_tests_cache/html/unnamed-chunk-3_b67151de1ab031b762190061d66cda53">

@@ -1,5 +1,6 @@
 ---
 title: "Statistical tests"
+code-line-numbers: false
 ---
 
 ```{=html}

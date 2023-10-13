@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/tidyr.html</loc>
-    <lastmod>2023-10-02T21:58:03.045Z</lastmod>
+    <lastmod>2023-10-13T18:29:22.664Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/readr.html</loc>
@@ -118,7 +118,7 @@
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/10_tests.html</loc>
-    <lastmod>2023-10-02T21:51:04.717Z</lastmod>
+    <lastmod>2023-10-13T18:29:30.437Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/00_organization.html</loc>
@@ -146,7 +146,7 @@
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/tests.html</loc>
-    <lastmod>2023-10-02T21:55:09.353Z</lastmod>
+    <lastmod>2023-10-13T18:29:40.991Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/data-tibbles.html</loc>
@@ -162,7 +162,7 @@
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/tests.html</loc>
-    <lastmod>2023-10-02T21:56:38.848Z</lastmod>
+    <lastmod>2023-10-13T18:31:21.034Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/data-tibbles.html</loc>
@@ -178,6 +178,6 @@
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/tests.html</loc>
-    <lastmod>2023-10-02T21:57:48.667Z</lastmod>
+    <lastmod>2023-10-13T18:29:09.993Z</lastmod>
   </url>
 </urlset>

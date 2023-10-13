@@ -1,5 +1,6 @@
 ---
 title: "Solution to statistical test task"
+code-line-numbers: false
 ---
 
 ## Compare the flipper length of penguins using statistical tests
@@ -86,7 +87,7 @@ The boxplot supports the findings of the statistical tests. Notches do not overl
 
 ```{r, echo=TRUE}
 #| warning: false
-penguins %>%
+penguins |> 
   ggplot(aes(x = species, y = flipper_length_mm)) +
   geom_boxplot(notch = TRUE)
 ```
@@ -95,7 +96,7 @@ Similarly the standard errors of the means do not overlap between the species.
 
 ```{r echo = TRUE}
 #| warning: false
-penguins %>%
+penguins |>
   ggplot(aes(x = species, y = flipper_length_mm)) +
   stat_summary() 
 ```

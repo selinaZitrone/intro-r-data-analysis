@@ -24,7 +24,6 @@ Before you start, create a subset of each species as a vector.
 For this, you can use the `$` operator:
 
 ```{r eval=FALSE, echo = TRUE}
-library(palmerpenguins)
 adelie <- filter(penguins, species == "Adelie")$flipper_length_mm
 chinstrap <- filter(penguins, species == "Chinstrap")$flipper_length_mm
 gentoo <- filter(penguins, species == "Gentoo")$flipper_length_mm

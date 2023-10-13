@@ -14,7 +14,7 @@ format:
     show-slide-number: all
     incremental: true
     self-contained: true
-    code-line-numbers: true
+    code-line-numbers: false
     auto-stretch: false
     scrollable: false
     theme: slides.scss
@@ -79,7 +79,7 @@ There are **various tests** and the outcome might differ!
 
 :::{.column width="50%"}
 
-Create a tibble with two variables
+A tibble with two variables
 
 :::{.nonincremental}
 
@@ -88,7 +88,13 @@ Create a tibble with two variables
 
 :::
 
+:::
+
+:::{.column width="50%"}
+
+
 ```{r}
+#| echo: false
 set.seed(123)
 mydata <- tibble(
   normal = rnorm(
@@ -104,11 +110,9 @@ mydata <- tibble(
 )
 ```
 
-:::
-
-:::{.column width="50%"}
-
 ```{r echo=FALSE}
+#| fig-width: 6
+#| fig-height: 6
 mydata %>%
   pivot_longer(cols = 1:2, names_to = "type", values_to = "value") %>%
   ggplot() +
@@ -280,9 +284,9 @@ First, test for normal distribution!
 - **Non-normal distribution** of groups
 - Compare difference between data sets with difference within data sets
 
-## Test for equal variances
+## Test for equal variance
 
-If we want to compare variances between treatments A, B and C, we first test for normal distribution
+First, test for normal distribution
 
 ```{r}
 shapiro.test(TreatA)
@@ -313,7 +317,7 @@ var.test(TreatA, TreatB)
 
 :::
 
-Result: The variances of sprays A and B do not differ significantly (F-Test, $F_{11,11}$ = 1.22, p = 0.75)
+Variances of sprays A & B don't differ significantly (F-Test, $F_{11,11}$ = 1.22, p = 0.75)
 
 ## F-Test
 
@@ -325,7 +329,7 @@ $H_0$: Variances do not differ between groups
 var.test(TreatA, TreatC)
 ```
 
-Result: The variances of sprays A and C differ significantly (F-Test, $F_{11,11}$ = 7.42, p = 0.002)
+Variances of sprays A & C differ significantly (F-Test, $F_{11,11}$ = 7.42, p = 0.002)
 
 # Test for equal means{.inverse}
 
@@ -372,7 +376,15 @@ t.test(TreatA, TreatB, var.equal = TRUE)
 
 :::
 
-. . .
+## t-test
+
+$H_0$: The samples do not differ in their mean
+
+Treatment A and B: **normally distributed** and **equal variance**
+
+```{r}
+t.test(TreatA, TreatB, var.equal = TRUE)
+```
 
 **Result:** The means of spray A and B don't differ significantly (t = -0.45, df = 22, p = 0.66)
 
@@ -606,7 +618,6 @@ ggplot(
 
 - Inside `stat_summary`, define summary function
   - `fun.data` for errorbars, `fun.y` for points (e.g. mean)
-- Define the geom that represents the summary
 
 :::
 
@@ -700,4 +711,4 @@ ggplot(
 
 [Statistical tests]{.big-text}
 
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/03_tasks_controller.html#statistical-tests)**
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/10_tests.html)**
