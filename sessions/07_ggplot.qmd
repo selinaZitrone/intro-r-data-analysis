@@ -1,5 +1,6 @@
 ---
 title: "Data visualization with ggplot2"
+code-line-numbers: false
 ---
 
 ```{=html}

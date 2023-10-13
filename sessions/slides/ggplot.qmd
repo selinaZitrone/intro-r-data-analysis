@@ -14,7 +14,7 @@ format:
     show-slide-number: all
     incremental: true
     self-contained: true
-    code-line-numbers: true
+    code-line-numbers: false
     auto-stretch: false
     scrollable: false
     theme: slides.scss
@@ -31,10 +31,6 @@ knitr:
     collapse: true
     comment: "#>"
 from: markdown+emoji
-title-slide-attributes: 
-  data-background-image: img/hex-stickers/ggplot2.png
-  data-background-position: 90% 85%
-  data-background-size: "20%"
 ---
 
 
@@ -49,8 +45,11 @@ theme_set(theme_grey(base_size = 16))
 
 ## A ggplot showcase
 
+:::{.r-stack}
+
 ![Visualization by [Jake Kaupp](https://twitter.com/jakekaupp), code available on [Github](https://github.com/jkaupp/tidytuesdays/tree/master/2021/week27)](https://raw.githubusercontent.com/jkaupp/tidytuesdays/master/2021/week27/tw27_plot.png)
 
+:::
 
 ## A ggplot showcase
 
@@ -58,25 +57,14 @@ theme_set(theme_grey(base_size = 16))
 
 ## A ggplot showcase
 
-![Visualization by [Cédric Scherer](https://twitter.com/CedScherer), code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_31_PalmerPenguins.Rmd)](https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_31/2020_31_PalmerPenguins.png){width=20%}
+![Visualization by [Cédric Scherer](https://twitter.com/CedScherer), code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_31_PalmerPenguins.Rmd)](https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_31/2020_31_PalmerPenguins.png){width=35%}
 
 ## Advantages of ggplot
 
 - **Consistent** grammar/structure
 - **Flexible** structure allows you to produce any type of plots
 - Highly **customizable appearance** (themes)
-
-:::{.nonincremental}
-
-- Many **extension packages** that provide 
-  - Additional plot types
-	- Additional themes and colors
-	- Animation
-	- Composition of multiple plots
-	- ...
-
-:::
-
+- Many **extension packages** that provide additional plot types, themes, colors, animation, ...
 - Active community that provides help and inspiration
 - Perfect package for **exploratory data analysis** and **beautiful plots**
 
@@ -120,8 +108,8 @@ References: [Kaylor, M.J. and D.R. Warren. (2017)](https://doi.org/10.1002/ecs2.
 
 ```{r echo=FALSE}
 library(lterdatasampler)
-and_vertebrates <- and_vertebrates %>% 
-  select(year, section, unittype, species, length_1_mm, weight_g) %>% 
+and_vertebrates <- and_vertebrates %>%
+  select(year, section, unittype, species, length_1_mm, weight_g) %>%
   filter(species != "Cascade torrent salamander")
 ```
 
@@ -129,12 +117,8 @@ and_vertebrates <- and_vertebrates %>%
 
 Data set `and_vertebrates` with measurements of a trout and 2 salamander species in different forest sections.
 
-```{r eval=FALSE}
+```{r}
 library(lterdatasampler)
-and_vertebrates
-```
-
-```{r echo=FALSE}
 and_vertebrates
 ```
 
@@ -155,7 +139,8 @@ The `ggplot()` function initializes a ggplot object. Every ggplot needs this fun
 
 
 ```{r eval=FALSE}
-library(ggplot2) # or library(tidyverse)
+library(ggplot2)
+# or library(tidyverse)
 
 ggplot(data = and_vertebrates)
 ```
@@ -186,10 +171,13 @@ The **aes**thetics define how data variables are mapped plot properties.
 :::{.column width="50%"}
 
 ```{r eval=FALSE}
-ggplot(data = and_vertebrates,
-       mapping = aes(
-         x = length_1_mm, 
-         y = weight_g))
+ggplot(
+  data = and_vertebrates,
+  mapping = aes(
+    x = length_1_mm,
+    y = weight_g
+  )
+)
 ```
 
 - Map variable `length_1_mm` to x-axis and `weight_g` to y-axis
@@ -200,9 +188,13 @@ ggplot(data = and_vertebrates,
 This is the same but shorter:
 
 ```{r eval=FALSE}
-ggplot(and_vertebrates, 
-       aes(x = length_1_mm,
-           y = weight_g))
+ggplot(
+  and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g
+  )
+)
 ```
 
 Remember argument matching by position?
@@ -214,8 +206,10 @@ Remember argument matching by position?
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, y = weight_g))
+ggplot(
+  data = and_vertebrates,
+  aes(x = length_1_mm, y = weight_g)
+)
 ```
 
 :::
@@ -226,7 +220,7 @@ ggplot(data = and_vertebrates,
 
 `geoms` define how data points are represented. There are many different geoms to chose from
 
-![from [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf)](img/day2/geom_ggplot.png){width = 70%}
+![from [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf)](img/day2/geom_ggplot.png){width=60%}
 
 ## `geom_point`
 
@@ -236,18 +230,45 @@ ggplot(data = and_vertebrates,
 
 ```{r eval=FALSE}
 #| code-line-numbers: "4"
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g)) +
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g
+  )
+) +
   geom_point()
 ```
 
 - New plot layers added with `+`
 - Warning that points could not be plotted due to missing values
 - `data` and `aes` defined in `ggplot` call are inherited to all plot layers
-- `data` and `aes` can be local to a layer:
 
-:::{.fragment}
+:::
+
+:::{.column width="50%"}
+
+```{r echo=FALSE, warning=TRUE}
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g
+  )
+) +
+  geom_point()
+```
+
+:::
+
+:::
+
+## `geom_point`
+
+:::{.columns}
+
+:::{.column width="50%"}
+
 
 ```{r eval=FALSE}
 ggplot() +
@@ -256,10 +277,15 @@ ggplot() +
     aes(
       x = length_1_mm,
       y = weight_g
-    ))
+    )
+  )
 ```
 
-Here, it does not make a difference.
+- `data` and `aes` can also be local to a layer:
+
+:::{.fragment}
+
+Here, it does not make a difference in the result.
 
 :::
 
@@ -268,9 +294,13 @@ Here, it does not make a difference.
 :::{.column width="50%"}
 
 ```{r echo=FALSE, warning=TRUE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g)) +
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g
+  )
+) +
   geom_point()
 ```
 
@@ -291,10 +321,14 @@ Looks like there are two groups of data: **Map color of points to a variable** b
 ```{r}
 #| eval: false
 #| code-line-numbers: "4"
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = species)) +
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point()
 ```
 
@@ -305,10 +339,14 @@ ggplot(data = and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = species)) +
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point()
 ```
 
@@ -327,10 +365,14 @@ We can do the same with size:
 ```{r}
 #| eval: false
 #| code-line-numbers: "4"
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           size = species)) +
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    size = species
+  )
+) +
   geom_point()
 ```
 
@@ -339,10 +381,14 @@ ggplot(data = and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           size = species)) + #<<
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    size = species
+  )
+) + #<<
   geom_point()
 ```
 
@@ -361,10 +407,14 @@ We can do the same with shape:
 ```{r}
 #| eval: false
 #| code-line-numbers: "4"
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           shape = species)) +
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    shape = species
+  )
+) +
   geom_point()
 ```
 
@@ -373,10 +423,14 @@ ggplot(data = and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           shape = species)) + #<<
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    shape = species
+  )
+) + #<<
   geom_point()
 ```
 
@@ -395,12 +449,16 @@ We can also combine these aesthetics and map different variables
 ```{r eval = FALSE}
 #| eval: false
 #| code-line-numbers: "4-6"
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = unittype,
-           shape = species,
-           size = year)) +
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = unittype,
+    shape = species,
+    size = year
+  )
+) +
   geom_point()
 ```
 
@@ -411,12 +469,16 @@ ggplot(data = and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = unittype, #<<
-           shape = species, #<<
-           size = year)) + #<<
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = unittype, #<<
+    shape = species, #<<
+    size = year
+  )
+) + #<<
   geom_point()
 ```
 
@@ -433,10 +495,14 @@ The scales onto which the aesthetic elements are mapped can be changed.
 :::{.column width="50%"}
 
 ```{r eval=FALSE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = species)) + 
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point()
 ```
 
@@ -448,10 +514,14 @@ ggplot(data = and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = species)) + 
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point()
 ```
 
@@ -470,10 +540,14 @@ The scales onto which the aesthetic elements are mapped can be changed.
 ```{r}
 #| eval: false
 #| code-line-numbers: "6-7"
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = species)) + 
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point() +
   scale_x_log10() +
   scale_y_log10()
@@ -486,7 +560,7 @@ ggplot(data = and_vertebrates,
 
 <code><b>scale\_[aes-name]{.highlight-ylw}\_[scale-type]{.highlight-pink}</b></code>
 
-In this example we scale the <b>[x]{.higlight-ylw}</b> and the  <b>[y]{.higlight-ylw}</b>  aesthetic to <b>[log10]{.highlight-pink}</b>.
+In this example we scale the <b>[x]{.highlight-ylw}</b> and the  <b>[y]{.highlight-ylw}</b>  aesthetic to <b>[log10]{.highlight-pink}</b>.
 
 :::
 
@@ -495,10 +569,14 @@ In this example we scale the <b>[x]{.higlight-ylw}</b> and the  <b>[y]{.higlight
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = species)) + 
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point() +
   scale_x_log10() + #<<
   scale_y_log10() #<<
@@ -521,13 +599,17 @@ Add a smoothing line that helps see patterns in the data
 ```{r eval =FALSE}
 #| eval: false
 #| code-line-numbers: "6"
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = species)) + 
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm") +
-  scale_x_log10() + 
+  scale_x_log10() +
   scale_y_log10()
 ```
 
@@ -540,13 +622,17 @@ ggplot(data = and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = species)) + 
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point(alpha = 0.3) +
   geom_smooth(method = "lm") + #<<
-  scale_x_log10() + 
+  scale_x_log10() +
   scale_y_log10()
 ```  
 
@@ -566,9 +652,13 @@ Compare groups using a boxplot
 
 ```{r eval =FALSE}
 #| eval: false
-ggplot(and_vertebrates, 
-       aes(x = species, 
-           y = length_1_mm)) +
+ggplot(
+  and_vertebrates,
+  aes(
+    x = species,
+    y = length_1_mm
+  )
+) +
   geom_boxplot()
 ```
 
@@ -577,9 +667,13 @@ ggplot(and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(and_vertebrates, 
-       aes(x = species, 
-           y = length_1_mm)) +
+ggplot(
+  and_vertebrates,
+  aes(
+    x = species,
+    y = length_1_mm
+  )
+) +
   geom_boxplot() #<<
 ```  
 
@@ -598,9 +692,13 @@ Compare groups using a boxplot
 ```{r eval =FALSE}
 #| eval: false
 #| code-line-numbers: "4"
-ggplot(and_vertebrates, 
-       aes(x = species, 
-           y = length_1_mm)) +
+ggplot(
+  and_vertebrates,
+  aes(
+    x = species,
+    y = length_1_mm
+  )
+) +
   geom_boxplot(notch = TRUE)
 ```
 
@@ -611,9 +709,13 @@ ggplot(and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(and_vertebrates, 
-       aes(x = species, 
-           y = length_1_mm)) +
+ggplot(
+  and_vertebrates,
+  aes(
+    x = species,
+    y = length_1_mm
+  )
+) +
   geom_boxplot(notch = TRUE) #<<
 ```  
 
@@ -634,11 +736,15 @@ Map the `unittype` to the **color** aesthetic of the boxplot
 ```{r eval =FALSE}
 #| eval: false
 #| code-line-numbers: "4"
-ggplot(and_vertebrates, 
-       aes(x = species, 
-           y = length_1_mm,
-           color = unittype)) +
-  geom_boxplot() 
+ggplot(
+  and_vertebrates,
+  aes(
+    x = species,
+    y = length_1_mm,
+    color = unittype
+  )
+) +
+  geom_boxplot()
 ```
 
 :::
@@ -646,11 +752,15 @@ ggplot(and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(and_vertebrates, 
-       aes(x = species, 
-           y = length_1_mm,
-           color = unittype)) +
-  geom_boxplot() 
+ggplot(
+  and_vertebrates,
+  aes(
+    x = species,
+    y = length_1_mm,
+    color = unittype
+  )
+) +
+  geom_boxplot()
 ```  
 
 :::
@@ -670,11 +780,15 @@ Map the `unittype` to the **fill** aesthetic of the box
 ```{r eval =FALSE}
 #| eval: false
 #| code-line-numbers: "4"
-ggplot(and_vertebrates, 
-       aes(x = species, 
-           y = length_1_mm,
-           fill = unittype)) +
-  geom_boxplot(notch = TRUE) 
+ggplot(
+  and_vertebrates,
+  aes(
+    x = species,
+    y = length_1_mm,
+    fill = unittype
+  )
+) +
+  geom_boxplot(notch = TRUE)
 ```
 
 :::
@@ -682,11 +796,15 @@ ggplot(and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(and_vertebrates, 
-       aes(x = species, 
-           y = length_1_mm,
-           fill = unittype)) +
-  geom_boxplot(notch = TRUE) 
+ggplot(
+  and_vertebrates,
+  aes(
+    x = species,
+    y = length_1_mm,
+    fill = unittype
+  )
+) +
+  geom_boxplot(notch = TRUE)
 ```  
 
 :::
@@ -700,9 +818,13 @@ ggplot(and_vertebrates,
 :::{.column width="50%"}
 
 ```{r eval =FALSE}
-ggplot(and_vertebrates, 
-       aes(x = length_1_mm, 
-           fill = section)) +
+ggplot(
+  and_vertebrates,
+  aes(
+    x = length_1_mm,
+    fill = section
+  )
+) +
   geom_histogram()
 ```
 
@@ -713,9 +835,13 @@ ggplot(and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(and_vertebrates, 
-       aes(x = length_1_mm, 
-           fill = section)) +
+ggplot(
+  and_vertebrates,
+  aes(
+    x = length_1_mm,
+    fill = section
+  )
+) +
   geom_histogram()
 ```  
 
@@ -732,13 +858,17 @@ ggplot(and_vertebrates,
 ```{r eval =FALSE}
 #| eval: false
 #| code-line-numbers: "5-6"
-ggplot(and_vertebrates, 
-       aes(x = length_1_mm, 
-           fill = section)) +
+ggplot(
+  and_vertebrates,
+  aes(
+    x = length_1_mm,
+    fill = section
+  )
+) +
   geom_histogram(
     position = "identity",
     alpha = 0.5
-    )
+  )
 ```
 
 - Change the position of the histogram to `"identity"`, if you
@@ -750,12 +880,17 @@ don't want it stacked
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(and_vertebrates, 
-       aes(x = length_1_mm, 
-           fill = section)) +
+ggplot(
+  and_vertebrates,
+  aes(
+    x = length_1_mm,
+    fill = section
+  )
+) +
   geom_histogram(
     position = "identity", #<<
-    alpha = 0.5) #<<
+    alpha = 0.5
+  ) #<<
 ```  
 
 :::
@@ -773,10 +908,14 @@ You can create a simple heatmap with `geom_tile`
 :::{.column width="50%"}
 
 ```{r eval =FALSE}
-ggplot(and_vertebrates, 
-       aes(x = section,
-           y = species,
-           fill = weight_g)) +
+ggplot(
+  and_vertebrates,
+  aes(
+    x = section,
+    y = species,
+    fill = weight_g
+  )
+) +
   geom_tile()
 ```
 
@@ -787,10 +926,14 @@ ggplot(and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(and_vertebrates, 
-       aes(x = section,
-           y = species,
-           fill = weight_g)) +
+ggplot(
+  and_vertebrates,
+  aes(
+    x = section,
+    y = species,
+    fill = weight_g
+  )
+) +
   geom_tile() #<<
 ```  
 
@@ -811,10 +954,14 @@ Split your plots along one variable with `facet_wrap`
 ```{r eval=FALSE}
 #| eval: false
 #| code-line-numbers: "6"
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = species)) + 
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point() +
   facet_wrap(~section)
 ```
@@ -824,10 +971,14 @@ ggplot(data = and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = species)) + 
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point() +
   facet_wrap(~section)
 ```
@@ -847,40 +998,46 @@ Split your plots along one variable with `facet_wrap`
 ```{r eval=FALSE}
 #| eval: false
 #| code-line-numbers: "7-8"
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = species)) + 
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point() +
-  facet_wrap(~section, 
-             nrow = 2,
-             scales = "free")
+  facet_wrap(~section,
+    nrow = 2,
+    scales = "free"
+  )
 ```
 
 - Specify number of rows and columns with `nrow`/`ncol`
-
-:::{.nonincremental}
 
 - Set separate scales for x and y with `scales`
   - `"free"`: x and y axis are free
   - `"free_y"`: only y-axis is free
   - `"free_x"`: only x-axis is free
 
-:::
-
 ::: 
 
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = species)) + 
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point() +
-  facet_wrap(~section, 
-             scales = "free",#<<
-             nrow = 2) #<<
+  facet_wrap(~section,
+    scales = "free", #<<
+    nrow = 2
+  ) #<<
 ```
 
 :::
@@ -900,10 +1057,14 @@ Split your plots along two variables with `facet_grid`
 ```{r eval=FALSE}
 #| eval: false
 #| code-line-numbers: "6"
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = unittype)) + 
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = unittype
+  )
+) +
   geom_point() +
   facet_grid(section ~ species)
 ```
@@ -915,10 +1076,14 @@ ggplot(data = and_vertebrates,
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(data = and_vertebrates,
-       aes(x = length_1_mm, 
-           y = weight_g,
-           color = unittype)) + 
+ggplot(
+  data = and_vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = unittype
+  )
+) +
   geom_point() +
   facet_grid(section ~ species) #<<
 ```
@@ -929,11 +1094,13 @@ ggplot(data = and_vertebrates,
 
 # Now you {.inverse}
 
-[Task 1.1 - 1.3 (45 min)]{.highlight-blue}<br>
+[Task 1.1 - 1.2 (45 min)]{.highlight-blue}<br>
 
 [Exploratory data analysis with the penguin data set]{.big-text}
 
 **Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/07_ggplot.html)**
+
+(Don't do the "Beautify" task)
 
 
 # {.background-no-title .inverse}
@@ -965,16 +1132,17 @@ ggplot(and_vertebrates, aes(
 
 :::{.fragment}
 
-- [shape](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) and [color](https://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) codes:
 
 ```{r}
 #| echo: false
+#| fig-width: 6
+#| fig-height: 3
 shapes <- data.frame(
   shape = c(0:19, 22, 21, 24, 23, 20),
   x = 0:24 %/% 5,
   y = -(0:24 %% 5)
 )
-ggplot(shapes, aes(x, y)) + 
+ggplot(shapes, aes(x, y)) +
   geom_point(aes(shape = shape), size = 5, fill = "red") +
   geom_text(aes(label = shape), hjust = 0, nudge_x = 0.15) +
   scale_shape_identity() +
@@ -982,6 +1150,7 @@ ggplot(shapes, aes(x, y)) +
   theme_void()
 ```
 
+[Shape](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) and [color](https://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) codes
 
 :::
 
@@ -1021,8 +1190,11 @@ g <- ggplot(and_vertebrates, aes(
   color = species
 )) +
   geom_point()
+
 g
 ```
+
+<br>
 
 - Other plot layers can still be added to `g`
 
@@ -1101,15 +1273,17 @@ g +
   )
 ```
 
-<br>
-
 - Length of color vector has to match number of levels in your aesthetic
 
 :::{.nonincremental}
 
+:::{.fragment}
+
 - Specify colors 
   - Via their [name](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
   - Via their Hex color codes (use websites to generate your own color palettes, e.g. [here](https://coolors.co/))
+
+:::
 
 :::
 
@@ -1174,15 +1348,17 @@ g
 :::{.column width="50%"}
 
 ```{r fig.height=4}
-#| code-line-numbers: "6,8-10" 
+#| code-line-numbers: "6,8-10"
 ggplot(
   and_vertebrates,
   aes(
     x = section,
     y = length_1_mm,
-    color = unittype )) +
+    color = unittype
+  )
+) +
   geom_boxplot() +
-  paletteer::scale_color_paletteer_d( 
+  paletteer::scale_color_paletteer_d(
     palette = "ggsci::default_uchicago"
   )
 ```
@@ -1192,15 +1368,17 @@ ggplot(
 :::{.column width="50%"}
 
 ```{r fig.height=4}
-#| code-line-numbers: "6,8-10" 
+#| code-line-numbers: "6,8-10"
 ggplot(
   and_vertebrates,
   aes(
     x = section,
     y = length_1_mm,
-    fill = unittype )) + 
+    fill = unittype
+  )
+) +
   geom_boxplot() +
-  paletteer::scale_fill_paletteer_d( 
+  paletteer::scale_fill_paletteer_d(
     palette = "ggsci::default_uchicago"
   )
 ```
@@ -1211,17 +1389,21 @@ ggplot(
 
 ## `labs`: Change axis and legend titles and add plot title
 
+
 ```{r}
 #| code-line-numbers: "2-9"
+#| output-location: slide
+#| fig-width: 8
+#| fig-height: 6
 g <- g +
   labs(
-    x = "Length [mm]", 
+    x = "Length [mm]",
     y = "Weight [g]",
-    color = "Species", 
+    color = "Species",
     title = "Length-Weight relationship",
-    subtitle = "There seems to be an exponential relationship", 
+    subtitle = "There seems to be an exponential relationship",
     caption = "Data from the `lterdatasampler` package"
-  ) 
+  )
 g
 ```
 
@@ -1238,13 +1420,13 @@ g
 ```{r}
 #| eval: false
 #| code-line-numbers: "2"
-g + 
+g +
   theme_classic()
 ```
 
 ```{r echo=FALSE, fig.height=5}
 g +
-  theme_classic(base_size = 16)#<<
+  theme_classic(base_size = 16) #<<
 ```
 
 ::: 
@@ -1254,13 +1436,13 @@ g +
 ```{r}
 #| eval: false
 #| code-line-numbers: "2"
-g + 
+g +
   theme_bw()
 ```
 
 ```{r echo=FALSE, fig.height= 5}
 g +
-  theme_bw(base_size = 16)#<<
+  theme_bw(base_size = 16) #<<
 ```
 
 :::
@@ -1279,13 +1461,13 @@ g +
 ```{r eval=FALSE}
 #| eval: false
 #| code-line-numbers: "2"
-g + 
+g +
   theme_minimal()
 ```
 
 ```{r echo=FALSE, fig.height= 5}
 g +
-  theme_minimal(base_size = 16)#<<
+  theme_minimal(base_size = 16) #<<
 ```
 
 :::  
@@ -1295,13 +1477,13 @@ g +
 ```{r eval=FALSE}
 #| eval: false
 #| code-line-numbers: "2"
-g + 
+g +
   theme_dark()
 ```
 
 ```{r echo=FALSE, fig.height= 5}
 g +
-  theme_dark(base_size = 16)#<<
+  theme_dark(base_size = 16) #<<
 ```
 
 :::
@@ -1349,11 +1531,13 @@ To edit a theme, just add another `theme()` layer to your plot.
 ```{r eval=FALSE}
 #| eval: false
 #| code-line-numbers: "3-10"
-g + 
+g +
   theme_minimal() +
   theme(
     legend.position = "bottom",
-    axis.text = element_text(face = "bold"),
+    axis.text = element_text(
+      face = "bold"
+    ),
     plot.background = element_rect(
       fill = "lightgrey",
       color = "darkred"
@@ -1378,7 +1562,7 @@ theme(
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-g + 
+g +
   theme_minimal() +
   theme(
     legend.position = "bottom",
@@ -1402,8 +1586,6 @@ You can set a global theme that will be applied to all ggplot objects in the cur
 # Globally set theme_minimal as the default theme
 theme_set(theme_minimal())
 ```
-
-<br>
 
 Add this to the beginning of your script.
 
@@ -1437,11 +1619,13 @@ Or with specifications:
 ```{r eval=FALSE}
 # save a plot named g in the img directory under the name my_plot.png
 # with width 16 cm and height 9 cm
-ggsave(filename = "img/my_plot.png",
-       plot = g,
-       width = 16,
-       heigth = 9,
-       units = "cm")
+ggsave(
+  filename = "img/my_plot.png",
+  plot = g,
+  width = 16,
+  heigth = 9,
+  units = "cm"
+)
 ```
 
 Have a look at `?ggsave` to see all options.

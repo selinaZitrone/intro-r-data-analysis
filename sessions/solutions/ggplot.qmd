@@ -1,5 +1,6 @@
 ---
 title: "Solution to ggplot tasks"
+code-line-numbers: false
 ---
 
 ## Get started
