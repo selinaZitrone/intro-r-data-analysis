@@ -1,5 +1,6 @@
 ---
 title: "Solution to dplyr tasks"
+code-line-numbers: false
 ---
 
 ## Get started
@@ -113,10 +114,10 @@ mutate(penguins,
 
 ```{r echo=TRUE}
 penguins |>
-  group_by(species, sex) |>
   summarize(
     mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
-    mean_body = mean(body_mass_g, na.rm = TRUE)
+    mean_body = mean(body_mass_g, na.rm = TRUE),
+    .by = c(species, sex)
   )  
 ```
 
@@ -125,10 +126,10 @@ penguins |>
 ```{r echo=TRUE}
 penguins |> 
   filter(!is.na(sex)) |> 
-  group_by(species, sex) |> 
   summarize(
     mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
-    mean_body = mean(body_mass_g, na.rm = TRUE)
+    mean_body = mean(body_mass_g, na.rm = TRUE),
+    .by = c(species, sex)
   )
 ```
 

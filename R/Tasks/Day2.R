@@ -295,11 +295,11 @@ filter(penguins, (species == "Adelie" | species == "Gentoo") &
 # lived on Dream in 2007
 # How many of them were from each of the 3 species?
 
-filter(penguins, island == "Dream" & year == 2007) %>%
+filter(penguins, island == "Dream" & year == 2007) |>
   count(species)
 
-filter(penguins, island == "Dream") %>%
-  filter(year == 2007) %>%
+filter(penguins, island == "Dream") |>
+  filter(year == 2007) |>
   count(species)
 
 # Count tasks -------------------------------------------------------------
@@ -325,10 +325,6 @@ arrange(penguins, desc(body_mass_g))
 # penguins by species and sex, with longest flippers first
 
 arrange(penguins, species, sex, desc(flipper_length_mm))
-
-penguins %>%
-  group_by(species, sex) %>%
-  arrange(desc(flipper_length_mm))
 
 # Select tasks --------------------------------------------------------------
 
@@ -369,21 +365,21 @@ mutate(penguins,
 # mean flipper length and body mass for the 3 species and
 # male and female penguins separately
 
-penguins %>%
-  group_by(species, sex) %>%
+penguins |>
   summarize(
     mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
-    mean_body = mean(body_mass_g, na.rm = TRUE)
+    mean_body = mean(body_mass_g, na.rm = TRUE),
+    .by = c(species, sex)
   )
 
 # same but remove the penguins with unknown sex
 
-penguins %>%
-  filter(!is.na(sex)) %>%
-  group_by(species, sex) %>%
+penguins |>
+  filter(!is.na(sex)) |>
   summarize(
     mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
-    mean_body = mean(body_mass_g, na.rm = TRUE)
+    mean_body = mean(body_mass_g, na.rm = TRUE),
+    .by = c(species, sex)
   )
 
 ### Extras
@@ -392,8 +388,8 @@ penguins %>%
 # facets for the different species.
 # remove the penguins with missing values for sex first
 
-penguins %>%
-  filter(!is.na(sex)) %>%
+penguins |>
+  filter(!is.na(sex)) |>
   ggplot(aes(x = sex, y = body_mass_g)) +
   geom_boxplot() +
   facet_wrap(~species) +
@@ -405,9 +401,9 @@ penguins %>%
 # distinguish between male and female penguins
 # remove penguins with unknown sex before making the plot
 
-penguins %>%
-  mutate(ratio = bill_length_mm / bill_depth_mm) %>%
-  filter(!is.na(sex)) %>%
+penguins |>
+  mutate(ratio = bill_length_mm / bill_depth_mm) |>
+  filter(!is.na(sex)) |>
   ggplot(aes(x = flipper_length_mm, y = ratio, color = sex)) +
   geom_point() +
   scale_color_manual(values = c("cyan4", "darkorange")) +

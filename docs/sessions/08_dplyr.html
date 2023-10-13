@@ -4492,7 +4492,7 @@ vertical-align: -.125em;
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html" rel target>
- <span class="menu-text">Home</span></a>
+ <span class="menu-text"><b>Home</b></span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../preparations.html" rel target>
@@ -4528,7 +4528,7 @@ vertical-align: -.125em;
   </li>  
         <li>
     <a class="dropdown-item" href="../sessions/04_data-tibbles.html" rel target>
- <span class="dropdown-text">Data &amp; Tibbles</span></a>
+ <span class="dropdown-text">Data frames &amp; tibbles</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../sessions/05_readr.html" rel target>
@@ -4676,8 +4676,8 @@ Find the solution <a href="../sessions/solutions/dplyr.html" target="_blank">her
 <p>A helpful resource for to consult for this task can be the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf">dplyr cheatsheet</a>.</p>
 <p>Before you start, make sure to load the <code>tidyverse</code> package and the <code>palmerpenguins</code> package.</p>
 <div class="cell" data-hash="08_dplyr_cache/html/unnamed-chunk-1_b96d9239a2f66c266389d98e32212149">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="data-transformation-with-dplyr" class="level2" data-number="1.2">
@@ -4701,7 +4701,7 @@ Find the solution <a href="../sessions/solutions/dplyr.html" target="_blank">her
 <li><p>… variables based on the following vector</p></li>
 </ol>
 <div class="cell" data-hash="08_dplyr_cache/html/unnamed-chunk-2_6942e77454369cb59b608d9f0b196b97">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;bill_length_mm&quot;</span>, <span class="st">&quot;flipper_length_mm&quot;</span>, <span class="st">&quot;body_mass_kg&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;bill_length_mm&quot;</span>, <span class="st">&quot;flipper_length_mm&quot;</span>, <span class="st">&quot;body_mass_kg&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="1">
 <li>… only columns that contain measurements in mm</li>
@@ -4714,7 +4714,7 @@ Find the solution <a href="../sessions/solutions/dplyr.html" target="_blank">her
 <p><strong>Calculate …</strong></p>
 <ol type="1">
 <li><p>… mean flipper length and body mass for the 3 species and male and female penguins separately</p></li>
-<li><p>Can you do the same but remove the penguins for which we don’t know the sex first?</p></li>
+<li><p>… Can you do the same but remove the penguins for which we don’t know the sex first?</p></li>
 </ol>
 </section>
 <section id="extras" class="level2" data-number="1.3">

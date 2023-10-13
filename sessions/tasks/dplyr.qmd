@@ -52,7 +52,7 @@ cols <- c("species", "bill_length_mm", "flipper_length_mm", "body_mass_kg")
 
 1. ... mean flipper length and body mass for the 3 species and male and female penguins separately
 
-2. Can you do the same but remove the penguins for which we don't know the sex first?
+2. ... Can you do the same but remove the penguins for which we don't know the sex first?
 
 ## Extras
 

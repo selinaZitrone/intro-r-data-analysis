@@ -29,15 +29,13 @@ knitr:
     collapse: true
     comment: "#>"
 from: markdown+emoji
-title-slide-attributes: 
-  data-background-image: img/hex-stickers/dplyr.png
-  data-background-position: 90% 85%
-  data-background-size: "20%"
 ---
 
 ```{r setup, include=FALSE}
 library(dplyr)
 library(ggplot2)
+options(dplyr.print_max = 5,
+        pillar.print_max = 5)
 ```
 
 ## Data transformation
@@ -626,7 +624,7 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
 
 #### `filter()`
 
-:::{nonincremental}
+:::{.nonincremental}
 
 - **pick rows** with helpers
   - relational and logical operators
@@ -639,7 +637,7 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
 
 ## Summary II
 
-:::{nonincremental}
+:::{.nonincremental}
 
 All `dplyr` functions take a tibble as first argument and return a tibble.
   
@@ -657,7 +655,7 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
 
 #### `arrange()`
 
-:::{nonincremental}
+:::{.nonincremental}
 
 - **change order** of rows (adscending)
   - or descending with `desc()`
@@ -669,9 +667,9 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
   
 :::
 
-## Summary III
+## Summary IV
 
-:::{nonincremental}
+:::{.nonincremental}
 
 #### `summarize()`
 
@@ -684,9 +682,9 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
 
 :::
   
-## Summary IV
+## Summary V
 
-:::{nonincremental}
+:::{.nonincremental}
 
 #### `bind_rows()`
 

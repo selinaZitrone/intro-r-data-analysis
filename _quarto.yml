@@ -93,7 +93,7 @@ format:
     number-depth: 3
     code-copy: true
     code-overflow: wrap
-    code-line-numbers: true
+    code-line-numbers: false
     highlight-style: arrow
 
 editor: source
