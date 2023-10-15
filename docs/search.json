@@ -63,13 +63,6 @@
     "text": "You have the following three vectors:\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, \n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, \n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,\n  0.0019, 0.1545, 0.003, 0.18\n)\nCopy and paste the vectors into your R script and solve the following tasks.\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")"
   },
   {
-    "objectID": "sessions/tasks/intro-r.html#tasks",
-    "href": "sessions/tasks/intro-r.html#tasks",
-    "title": "",
-    "section": "1 Tasks",
-    "text": "1 Tasks\n\nCheck which of the following animals are contained in the species vector:\n\n\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")\n\n\nCalculate mean and standard deviation of the brain weight\n\nHint: have a look at the summary slides to find the functions\n\nWhich species have a brain weight larger than the mean brain weight of all species?\nCalculate the ratio of brain weight to body weight in percent for all animals and save the result in a new vector\nAre there any animals with a larger brain to body weight ratio than humans? If yes, which ones?\n\nHint: calculate the ratio for humans and save it in a separate variable first"
-  },
-  {
     "objectID": "sessions/tasks/intro-r.html#extras",
     "href": "sessions/tasks/intro-r.html#extras",
     "title": "",
@@ -287,6 +280,13 @@
     "text": "pivot_longer()\nOne variable split into multiple columns can be solved with pivot_longer\n\nstep1 &lt;- pivot_longer(\n    cities_untidy,                         # the tibble\n    cols = Turkey_Istanbul:France_Paris,   # the columns to pivot from:to\n    names_to = \"location\",                 # name of the new column\n    values_to = \"value\")                   # name of the value column\n\n\n\n#&gt; # A tibble: 20 × 3\n#&gt;   type       location                   value\n#&gt;   &lt;chr&gt;      &lt;chr&gt;                      &lt;dbl&gt;\n#&gt; 1 population Turkey_Istanbul         15100000\n#&gt; 2 population Russia_Moscow           12500000\n#&gt; 3 population UK_London                9000000\n#&gt; 4 population Russia_Saint Petersburg  5400000\n#&gt; # ℹ 16 more rows"
   },
   {
+    "objectID": "sessions/slides/tidyr.html#pivot_longer-2",
+    "href": "sessions/slides/tidyr.html#pivot_longer-2",
+    "title": "Tidy data with tidyr",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\nOne variable split into multiple columns can be solved with pivot_longer\n\nstep1 &lt;- pivot_longer(\n    cities_untidy,                         # the tibble\n    cols = Turkey_Istanbul:France_Paris,   # the columns to pivot from:to\n    names_to = \"location\",                 # name of the new column\n    values_to = \"value\")                   # name of the value column\n\nAnother way to select the columns to pivot:\n\nstep1 &lt;- pivot_longer(\n    cities_untidy,           # the tibble\n    cols = !type,            # All columns except type#&lt;&lt;        \n    names_to = \"location\",   # name of the new column\n    values_to = \"value\")     # name of the value column"
+  },
+  {
     "objectID": "sessions/slides/tidyr.html#separate_wider_delim",
     "href": "sessions/slides/tidyr.html#separate_wider_delim",
     "title": "Tidy data with tidyr",
@@ -305,7 +305,7 @@
     "href": "sessions/slides/tidyr.html#all-steps-in-1",
     "title": "Tidy data with tidyr",
     "section": "All steps in 1",
-    "text": "All steps in 1\nWe can also use a pipe to do all these steps in one:\n\ncities_tidy &lt;- cities_untidy |&gt;\n  pivot_longer(Turkey_Istanbul:France_Paris,\n    names_to = \"location\",\n    values_to = \"values\"\n  ) |&gt;\n  separate(location,\n    sep = \"_\",\n    into = c(\"country\", \"city\")\n  ) |&gt;\n  pivot_wider(\n    names_from = type,\n    values_from = values\n  )"
+    "text": "All steps in 1\nWe can also use a pipe to do all these steps in one:\n\ncities_tidy &lt;- cities_untidy |&gt;\n  pivot_longer(\n    Turkey_Istanbul:France_Paris,\n    names_to = \"location\",\n    values_to = \"values\"\n  ) |&gt;\n  separate_wider_delim(\n    location,\n    delim = \"_\",\n    names = c(\"country\", \"city\")\n  ) |&gt;\n  pivot_wider(\n    names_from = type,\n    values_from = values\n  )"
   },
   {
     "objectID": "sessions/slides/template.html#ggplotdata",
@@ -357,8 +357,8 @@
     "text": "Basic idea of writing code for data analysis\n\n\nBreak down your process into small steps\nWrite precise instructions in the R language for each step\n\n\nYou do this in a document called an R script\n\n\nTell R to execute these instructions\nR will give you the results (or an error message)"
   },
   {
-    "objectID": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio",
-    "href": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio",
+    "objectID": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio-1",
+    "href": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio-1",
     "title": "Introduction to RStudio",
     "section": "A quick tour around RStudio",
     "text": "A quick tour around RStudio"
@@ -406,13 +406,6 @@
     "text": "Plot pane\n\n\n\nPlots that are created with R will be shown here"
   },
   {
-    "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow",
-    "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow",
-    "title": "Introduction to RStudio",
-    "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\n\n\nProject\n|\n|- data\n|\n|- documents\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- analysis\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|\nExample project structure"
-  },
-  {
     "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-1",
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-1",
     "title": "Introduction to RStudio",
@@ -425,6 +418,13 @@
     "title": "Introduction to RStudio",
     "section": "Project oriented workflow",
     "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nAn RStudio project is just a normal directory with an .Rproj file\n\n\nProject\n|\n|- data\n|\n|- documents\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- analysis\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
+  },
+  {
+    "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
+    "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
+    "title": "Introduction to RStudio",
+    "section": "Project oriented workflow",
+    "text": "Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nProject\n|\n|- data\n|\n|- documents\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- analysis\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- *.RProj\nExample RStudio project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#create-an-rstudio-project",
@@ -1054,7 +1054,7 @@
     "href": "sessions/09_tidyr.html#extras",
     "title": "Tidy data with tidyr",
     "section": "1.3 Extras",
-    "text": "1.3 Extras\n\nCheck out the values_drop_na and names_prefix argument of pivot_longer. What does it do and how can you use it with the billboard data?\nThis is a bit tricky: How would you have to change the penguins table if you wanted to make such a plot:\n\n\n\nError in `geom_boxplot()`:\n! Problem while computing aesthetics.\nℹ Error occurred in the 1st layer.\nCaused by error:\n! object 'value' not found\n\n\nHint: First use dplyr and only select the columns that you need for the plot. Then think about how to use tidyr to transform the data so it’s ready for ggplot"
+    "text": "1.3 Extras\n\nCheck out the values_drop_na and names_prefix argument of pivot_longer. What does it do and how can you use it with the billboard data?\nThis is a bit tricky: How would you have to change the penguins table if you wanted to make such a plot:\n\n\n\n\n\n\nHint: First use dplyr and only select the columns that you need for the plot. Then think about how to use tidyr to transform the data so it’s ready for ggplot"
   },
   {
     "objectID": "sessions/07_ggplot.html",
@@ -1260,13 +1260,6 @@
     "text": "Slides in full screen     Download PDF slides"
   },
   {
-    "objectID": "sessions/02_intro-r.html#tasks",
-    "href": "sessions/02_intro-r.html#tasks",
-    "title": "Introduction to R",
-    "section": "1.1 Tasks",
-    "text": "1.1 Tasks\n\nCheck which of the following animals are contained in the species vector:\n\n\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")\n\n\nCalculate mean and standard deviation of the brain weight\n\nHint: have a look at the summary slides to find the functions\n\nWhich species have a brain weight larger than the mean brain weight of all species?\nCalculate the ratio of brain weight to body weight in percent for all animals and save the result in a new vector\nAre there any animals with a larger brain to body weight ratio than humans? If yes, which ones?\n\nHint: calculate the ratio for humans and save it in a separate variable first"
-  },
-  {
     "objectID": "sessions/02_intro-r.html#extras",
     "href": "sessions/02_intro-r.html#extras",
     "title": "Introduction to R",
@@ -1369,7 +1362,7 @@
     "href": "sessions/10_tests.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
     "title": "Statistical tests",
     "section": "1.2 Compare the flipper length of penguins using statistical tests",
-    "text": "1.2 Compare the flipper length of penguins using statistical tests\nQuestion: Does the mean flipper length differ between the 3 penguin species?\nDo separate comparisons for\n\nGentoo vs. Adelie\nGentoo vs. Chinstrap\nAdelie vs. Chinstrap\n\nBefore you start, create a subset of each species as a vector.\nFor this, you can use the $ operator:\n\nlibrary(palmerpenguins)\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_length_mm\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_length_mm\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_length_mm\n\nFollow the decision tree for statistical tests:"
+    "text": "1.2 Compare the flipper length of penguins using statistical tests\nQuestion: Does the mean flipper length differ between the 3 penguin species?\nDo separate comparisons for\n\nGentoo vs. Adelie\nGentoo vs. Chinstrap\nAdelie vs. Chinstrap\n\nBefore you start, create a subset of each species as a vector.\nFor this, you can use the $ operator:\n\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_length_mm\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_length_mm\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_length_mm\n\nFollow the decision tree for statistical tests:"
   },
   {
     "objectID": "sessions/10_tests.html#extra",
@@ -1382,8 +1375,8 @@
     "objectID": "sessions/slides/00_organization.html#im-using-a-lot-for",
     "href": "sessions/slides/00_organization.html#im-using-a-lot-for",
     "title": "Introduction to Data Analysis with R",
-    "section": "",
-    "text": "… data analysis\n… ecological modelling\n… writing documents\n…. workflow automation\n…"
+    "section": "I’m using  a lot for …",
+    "text": "I’m using  a lot for …\n… data analysis\n… ecological modelling\n… writing documents\n…. workflow automation\n…"
   },
   {
     "objectID": "sessions/slides/00_organization.html#who-are-you",
@@ -1393,60 +1386,81 @@
     "text": "Who are you?"
   },
   {
+    "objectID": "sessions/slides/00_organization.html#who-are-you-1",
+    "href": "sessions/slides/00_organization.html#who-are-you-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Who are you?",
+    "text": "Who are you?"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#who-are-you-2",
+    "href": "sessions/slides/00_organization.html#who-are-you-2",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Who are you?",
+    "text": "Who are you?"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#who-are-you-3",
+    "href": "sessions/slides/00_organization.html#who-are-you-3",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Who are you?",
+    "text": "Who are you?"
+  },
+  {
     "objectID": "sessions/slides/00_organization.html#workshop-topics",
     "href": "sessions/slides/00_organization.html#workshop-topics",
     "title": "Introduction to Data Analysis with R",
-    "section": "",
-    "text": "Image adapted from Wickham & Grolemund: R for Data Science\n\n\n. . .\nDay1 Introduction to R and RStudio and data import\n. . .\nDay2 Data transformation and visualization with the tidyverse\n. . .\nDay3 Cleaning data and statistical tests\n. . .\nDay 4 Bring your own data"
+    "section": "Workshop topics",
+    "text": "Workshop topics\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science\n\n\n\nDay1 Introduction to R and RStudio and data import\n\n\nDay2 Data transformation and visualization with the tidyverse\n\n\nDay3 Cleaning data and statistical tests\n\n\nDay 4 Bring your own data"
   },
   {
     "objectID": "sessions/slides/00_organization.html#schedule-and-organization",
     "href": "sessions/slides/00_organization.html#schedule-and-organization",
     "title": "Introduction to Data Analysis with R",
-    "section": "",
-    "text": "📅 16.10.2023 - 17.10.2023 from 🕘 9 a.m. - 4 p.m.  📅 30.10.2023 - 31.10.2023 from 🕘 9 a.m. - 4 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ in between  📌 We will meet in the General meeting on Webex\n\n\n\n\n\nPresentation and demonstration of a topic\nSome examples\n\n\n\n\n\n\n\nSolve them in small groups"
+    "section": "Schedule and Organization",
+    "text": "Schedule and Organization\n📅 16.10.2023 - 17.10.2023 from 🕘 9 a.m. - 4 p.m.  📅 30.10.2023 - 31.10.2023 from 🕘 9 a.m. - 4 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ in between  📌 We will meet in the General meeting on Webex\n\n\n\nInput sessions\n\nPresentation and demonstration of a topic\nSome examples\n\n\n\n\nTasks\n\nSolve them in small groups\n\n\n\n\nJoint discussion of tasks & questions"
   },
   {
     "objectID": "sessions/slides/00_organization.html#material",
     "href": "sessions/slides/00_organization.html#material",
     "title": "Introduction to Data Analysis with R",
-    "section": "",
-    "text": "All material can be found on the workshop’s website\n\nPresentations, Tasks, Solutions, Additional resources\n\nYou can download slides and R Scripts from there\nWebsite will stay online after the workshop"
+    "section": "Material",
+    "text": "Material\n\nAll material can be found on the workshop’s website\n\nPresentations, Tasks, Solutions, Additional resources\n\nYou can download slides and R Scripts from there\nWebsite will stay online after the workshop"
   },
   {
     "objectID": "sessions/slides/00_organization.html#bring-your-own-data",
     "href": "sessions/slides/00_organization.html#bring-your-own-data",
     "title": "Introduction to Data Analysis with R",
-    "section": "",
-    "text": "On the last workshop day, you can work with your own research data. I will also provide some real life data sets from different topics.\n. . .\n\n\n\nGet started using R for your own analyses\nUse any of the methods from the course or try new things, …\nPresent/discuss your results, questions and problems at the end of the day"
+    "section": "Bring your own data",
+    "text": "Bring your own data\nOn the last workshop day, you can work with your own research data. I will also provide some real life data sets from different topics.\n\nLearning by doing\n\nGet started using R for your own analyses\nUse any of the methods from the course or try new things, …\nPresent/discuss your results, questions and problems at the end of the day"
   },
   {
     "objectID": "sessions/slides/00_organization.html#bring-your-own-data-1",
     "href": "sessions/slides/00_organization.html#bring-your-own-data-1",
     "title": "Introduction to Data Analysis with R",
-    "section": "",
-    "text": "Keep the last workshop day in mind during the next days\n\nTake a mental note if you learn something that is applicable to your data\nThink of questions that you would like to answer for your data set\n\nAdd your name and some details on what you plan to do in this joint table"
+    "section": "Bring your own data",
+    "text": "Bring your own data\n\nKeep the last workshop day in mind during the next days\n\nTake a mental note if you learn something that is applicable to your data\nThink of questions that you would like to answer for your data set\n\nAdd your name and some details on what you plan to do in this joint table"
   },
   {
     "objectID": "sessions/slides/00_organization.html#before-we-get-started-i",
     "href": "sessions/slides/00_organization.html#before-we-get-started-i",
     "title": "Introduction to Data Analysis with R",
-    "section": "",
-    "text": "Help each other if possible\n\nHave an eye on the chat\n\nAll questions and comments are welcome\nFeedback is welcome\n\nEvaluation at the end of the workshop"
+    "section": "Before we get started I",
+    "text": "Before we get started I\n\nHelp each other if possible\n\nHave an eye on the chat\n\nAll questions and comments are welcome\nFeedback is welcome\n\nEvaluation at the end of the workshop"
   },
   {
     "objectID": "sessions/slides/00_organization.html#before-we-get-started-ii",
     "href": "sessions/slides/00_organization.html#before-we-get-started-ii",
     "title": "Introduction to Data Analysis with R",
-    "section": "",
-    "text": "How to use Webex teams\n\nGeneral channel for our joint meetings and chat\nGroups 1-4 for group work\n\nGroup spaces have their own chat and meetings\nUse the chat in the groups for questions\nMeet in your groups and solve the tasks jointly\n\nPlease always have a look at the general chat during the tasks"
+    "section": "Before we get started II",
+    "text": "Before we get started II\nHow to use Webex teams\n\nGeneral channel for our joint meetings and chat\nGroups 1-4 for group work\n\nGroup spaces have their own chat and meetings\nUse the chat in the groups for questions\nMeet in your groups and solve the tasks jointly\n\nPlease always have a look at the general chat during the tasks"
   },
   {
     "objectID": "sessions/slides/00_organization.html#before-we-get-started-iii",
     "href": "sessions/slides/00_organization.html#before-we-get-started-iii",
     "title": "Introduction to Data Analysis with R",
-    "section": "2.1 Before we get started III",
-    "text": "2.1 Before we get started III\nDid anyone have problems installing R and RStudio?\n\n Download and install R from https://cran.r-project.org\n Download and install RStudio from https://www.posit.co"
+    "section": "Before we get started III",
+    "text": "Before we get started III\nDid anyone have problems installing R and RStudio?\n\n Download and install R from https://cran.r-project.org\n Download and install RStudio from https://www.posit.co\n\n\nSelina Baldauf // Welcome to the workshop"
   },
   {
     "objectID": "sessions/slides/common-errors.html#debugging",
@@ -1470,11 +1484,11 @@
     "text": "Error: could not find function\nExamples\n\nselect(penguins, bill_length_mm)\n#&gt; Error in select(penguins, bill_length_mm): could not find function \"select\"\nlenght(1:10)\n#&gt; Error in lenght(1:10): could not find function \"lenght\"\n\n\n\n\nHow to fix\n“Could not find function” errors have two main reasons:\n\nYou forgot to load the package that the function belongs to\n\n\nload the package using library() or call the function with packageName::functionName()\n\n\nYou have a typo in your function call (e.g. lenght() instead of length())"
   },
   {
-    "objectID": "sessions/slides/common-errors.html#error-object-x-not-found",
-    "href": "sessions/slides/common-errors.html#error-object-x-not-found",
+    "objectID": "sessions/slides/common-errors.html#error-object-not-found",
+    "href": "sessions/slides/common-errors.html#error-object-not-found",
     "title": "Common errors and how to fix them",
-    "section": "Error: object x not found",
-    "text": "Error: object x not found\nExample\n\nvariable_A\n#&gt; Error in eval(expr, envir, enclos): object 'variable_A' not found\n\n\n\n\nHow to fix\n\nyou are trying to access an object that does not exist\n\ntypos in variable name (variable name is variableA but you try to access variable_A)\nforgot to put quotes around string: print(hello)  looks for a variable named hello but instead you wanted to print the string print(\"hello\")"
+    "section": "Error: object not found",
+    "text": "Error: object not found\nExample\n\nvariable_A\n#&gt; Error in eval(expr, envir, enclos): object 'variable_A' not found\n\n\n\n\nHow to fix\n\nyou are trying to access an object that does not exist\n\ntypos in variable name (variable name is variableA but you try to access variable_A)\nforgot to put quotes around string: print(hello)  looks for a variable named hello but instead you wanted to print the string print(\"hello\")"
   },
   {
     "objectID": "sessions/slides/common-errors.html#r-crashes",
@@ -1757,18 +1771,18 @@
     "text": "Summary III\narrange()\n\n\nchange order of rows (adscending)\n\nor descending with desc()\n\n\nmutate()\n\nadd columns but keep all columns\n\ncase_when() for conditional values"
   },
   {
-    "objectID": "sessions/slides/dplyr.html#summary-iii-1",
-    "href": "sessions/slides/dplyr.html#summary-iii-1",
-    "title": "Data transformation with dplyr",
-    "section": "Summary III",
-    "text": "Summary III\n\nsummarize()\n\ncollapse rows into one row by some summary\n\nuse .by argument to summarize by group\n\n\ncount\n\ncount rows based on a group"
-  },
-  {
     "objectID": "sessions/slides/dplyr.html#summary-iv",
     "href": "sessions/slides/dplyr.html#summary-iv",
     "title": "Data transformation with dplyr",
     "section": "Summary IV",
     "text": "Summary IV\n\nsummarize()\n\ncollapse rows into one row by some summary\n\nuse .by argument to summarize by group\n\n\ncount\n\ncount rows based on a group"
+  },
+  {
+    "objectID": "sessions/slides/dplyr.html#summary-v",
+    "href": "sessions/slides/dplyr.html#summary-v",
+    "title": "Data transformation with dplyr",
+    "section": "Summary V",
+    "text": "Summary V\n\nbind_rows()\n\ncombine rows of multiple tibbles into one\n\nthe tibbles need to have the same columns\nadd an id column with the argument .id = \"id\"\nfunction bind_cols() works similarly just for columns\n\n\nleft_join()\n\ncombine tables based on common columns"
   },
   {
     "objectID": "sessions/slides/ggplot.html#a-ggplot-showcase-1",
@@ -1839,6 +1853,13 @@
     "title": "Data visualization with ggplot2",
     "section": "geom_point",
     "text": "geom_point\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n) +\n  geom_point()\n\n\nNew plot layers added with +\nWarning that points could not be plotted due to missing values\ndata and aes defined in ggplot call are inherited to all plot layers\n\n\n\n#&gt; Warning: Removed 13270 rows containing missing values (`geom_point()`)."
+  },
+  {
+    "objectID": "sessions/slides/ggplot.html#geom_point-1",
+    "href": "sessions/slides/ggplot.html#geom_point-1",
+    "title": "Data visualization with ggplot2",
+    "section": "geom_point",
+    "text": "geom_point\n\n\n\nggplot() +\n  geom_point(\n    data = and_vertebrates,\n    aes(\n      x = length_1_mm,\n      y = weight_g\n    )\n  )\n\n\ndata and aes can also be local to a layer:\n\n\nHere, it does not make a difference in the result.\n\n\n\n#&gt; Warning: Removed 13270 rows containing missing values (`geom_point()`)."
   },
   {
     "objectID": "sessions/slides/ggplot.html#aescolor-mapping-color-to-a-variable",
@@ -2009,6 +2030,13 @@
     "text": "labs: Change axis and legend titles and add plot title\n\ng &lt;- g +\n  labs(\n    x = \"Length [mm]\",\n    y = \"Weight [g]\",\n    color = \"Species\",\n    title = \"Length-Weight relationship\",\n    subtitle = \"There seems to be an exponential relationship\",\n    caption = \"Data from the `lterdatasampler` package\"\n  )\ng"
   },
   {
+    "objectID": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title-output",
+    "href": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title-output",
+    "title": "Data visualization with ggplot2",
+    "section": "labs: Change axis and legend titles and add plot title",
+    "text": "labs: Change axis and legend titles and add plot title"
+  },
+  {
     "objectID": "sessions/slides/ggplot.html#theme_-change-appearance",
     "href": "sessions/slides/ggplot.html#theme_-change-appearance",
     "title": "Data visualization with ggplot2",
@@ -2121,11 +2149,18 @@
     "text": "Atomic data types\nThere are 6 so-called atomic data types in R. The 4 most important are:\n\nNumeric: There are two numeric data types:\n\nDouble: can be specified in decimal (1.243 or -0.2134), scientific notation (2.32e4) or hexadecimal (0xd3f1)\nInteger: numbers that are not represented by fraction. Must be followed by an L (1L, 2038459L, -5L)\n\n\n\nLogical: only two possible values TRUE and FALSE (abbreviation: T or F - but better use non-abbreviated form)\n\n\nCharacter: also called string. Sequence of characters surrounded by quotes (\"hello\" , \"sample_1\")"
   },
   {
-    "objectID": "sessions/slides/intro-r.html#vectors-1",
-    "href": "sessions/slides/intro-r.html#vectors-1",
+    "objectID": "sessions/slides/intro-r.html#vectors",
+    "href": "sessions/slides/intro-r.html#vectors",
     "title": "Introduction to R",
     "section": "Vectors",
     "text": "Vectors\nVectors are data structures that are built on top of atomic data types.\nImagine a vector as a collection of values that are all of the same data type.  \n\n\n\nImage from Advanced R book"
+  },
+  {
+    "objectID": "sessions/slides/intro-r.html#creating-vectors",
+    "href": "sessions/slides/intro-r.html#creating-vectors",
+    "title": "Introduction to R",
+    "section": "Creating vectors",
+    "text": "Creating vectors\nUse the function c() to combine values into a vector\n\nlgl_var &lt;- c(TRUE, TRUE, FALSE)\ndbl_var &lt;- c(2.5, 3.4, 4.3)\nint_var &lt;- c(1L, 45L, 234L)\nchr_var &lt;- c(\"These are\", \"just\", \"some strings\")\n\n\nThe : operator creates a sequence between two numbers with an increment of (-)1\n\n1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)\n#&gt;  [1]  1  2  3  4  5  6  7  8  9 10\n\n\n\nThere are many more options to create vectors\n\nseq() to create a sequence of numbers\nrep() ro repeat values\n…"
   },
   {
     "objectID": "sessions/slides/intro-r.html#creating-vectors-c",
@@ -2133,20 +2168,6 @@
     "title": "Introduction to R",
     "section": "Creating vectors: c()",
     "text": "Creating vectors: c()\nBe aware of implicit type conversion when combining vectors of different types\n\n\n# integer + logical -&gt; integer (same with double + logical)\nc(int_var, lgl_var)\n#&gt; [1]   1  45 234   1   1   0\n\n# integer + character -&gt; character (same with double + character)\nc(int_var, chr_var)\n#&gt; [1] \"1\"            \"45\"           \"234\"          \"These are\"    \"just\"        \n#&gt; [6] \"some strings\"\n\n# logical + character -&gt; character\nc(lgl_var, chr_var)\n#&gt; [1] \"TRUE\"         \"TRUE\"         \"FALSE\"        \"These are\"    \"just\"        \n#&gt; [6] \"some strings\""
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#creating-vectors-c-1",
-    "href": "sessions/slides/intro-r.html#creating-vectors-c-1",
-    "title": "Introduction to R",
-    "section": "Creating vectors: c()",
-    "text": "Creating vectors: c()\nBe aware of implicit type conversion when combining vectors of different types\n\n\n# integer + logical -&gt; integer (same with double + logical)\nc(int_var, lgl_var)\n#&gt; [1]   1  45 234   1   1   0\n\n# integer + character -&gt; character (same with double + character)\nc(int_var, chr_var)\n#&gt; [1] \"1\"            \"45\"           \"234\"          \"These are\"    \"just\"        \n#&gt; [6] \"some strings\"\n\n# logical + character -&gt; character\nc(lgl_var, chr_var)\n#&gt; [1] \"TRUE\"         \"TRUE\"         \"FALSE\"        \"These are\"    \"just\"        \n#&gt; [6] \"some strings\""
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#working-with-vectors",
-    "href": "sessions/slides/intro-r.html#working-with-vectors",
-    "title": "Introduction to R",
-    "section": "Working with vectors",
-    "text": "Working with vectors\nLet’s create some vectors to work with.\n\n# list of 10 biggest cities in Europe\ncities &lt;- c(\"Istanbul\", \"Moscow\", \"London\", \"Saint Petersburg\", \"Berlin\", \n            \"Madrid\", \"Kyiv\", \"Rome\", \"Bucharest\", \"Paris\")\n\npopulation &lt;- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)\n\narea_km2 &lt;- c(2576, 2561, 1572, 1439,891,604, 839, 1285, 228, 105 )\n\n\n We can check the length of a vector using the length() function:\n\nlength(cities)\n#&gt; [1] 10\n\n\n\n\nData from Wikipedia"
   },
   {
     "objectID": "sessions/slides/intro-r.html#working-with-vectors-1",
@@ -2161,6 +2182,20 @@
     "title": "Introduction to R",
     "section": "Working with vectors",
     "text": "Working with vectors\nDivide population and area vector to calculate population density in each city: \n\npopulation / area_km2\n#&gt;  [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685\n#&gt;  [8]  2178.988  9649.123 20000.000\n\n\nThe operation is performed separately for each element of the two vectors and the result is a vector.\n\n\nSame, if a vector is divided by vector of length 1 (i.e. a single number). Result is always a vector.\n\nmean_population &lt;- mean(population) # calculate the mean of population vector\nmean_population\n#&gt; [1] 5910000\npopulation / mean_population # divide population vector by the mean\n#&gt;  [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142\n#&gt;  [8] 0.4737733 0.3722504 0.3553299"
+  },
+  {
+    "objectID": "sessions/slides/intro-r.html#working-with-vectors-3",
+    "href": "sessions/slides/intro-r.html#working-with-vectors-3",
+    "title": "Introduction to R",
+    "section": "Working with vectors",
+    "text": "Working with vectors\nWe can also work with relational and logical operators\n\npopulation &gt; mean_population\n#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\nThe result is a vector containing TRUE and FALSE, depending on whether the city’s population is larger than the mean population or not.\n\n\n Logical and relational operators can be combined\n\n# population larger than mean population OR population larger than 3 million\npopulation &gt; mean_population | population &gt; 3e6\n#&gt;  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE"
+  },
+  {
+    "objectID": "sessions/slides/intro-r.html#working-with-vectors-4",
+    "href": "sessions/slides/intro-r.html#working-with-vectors-4",
+    "title": "Introduction to R",
+    "section": "Working with vectors",
+    "text": "Working with vectors\nCheck whether elements occur in a vector:\n\ncities == \"Istanbul\"\n#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\n\nThe %in% operator checks whether multiple elements occur in a vector.\n\n# for each element of cities, checks whether that element is contained in to_check \nto_check &lt;- c(\"Istanbul\", \"Berlin\", \"Madrid\")\ncities %in% to_check # same as cities %in% c(\"Istanbul\", \"Berlin\", \"Madrid\")\n#&gt;  [1]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE\n\n\n\n\n%in% always returns a vector of the same length as the vector on the left side\n\n\n\n# for each element of to_check, check whether that element is contained in cities \nto_check %in% cities\n#&gt; [1] TRUE TRUE TRUE"
   },
   {
     "objectID": "sessions/slides/intro-r.html#indexing-vectors",
@@ -2387,11 +2422,11 @@
     "text": "Test for equal variance\nFirst, test for normal distribution!\nF-Test\n\nNormal distribution of groups\nCalculates ratio of variances (if equal, ratio = 1)\np: How likely is ratio if variances were equal?\n\nLevene test\n\nNon-normal distribution of groups\nCompare difference between data sets with difference within data sets"
   },
   {
-    "objectID": "sessions/slides/tests.html#test-for-equal-variances",
-    "href": "sessions/slides/tests.html#test-for-equal-variances",
+    "objectID": "sessions/slides/tests.html#test-for-equal-variance-1",
+    "href": "sessions/slides/tests.html#test-for-equal-variance-1",
     "title": "Statistical tests",
-    "section": "Test for equal variances",
-    "text": "Test for equal variances\nIf we want to compare variances between treatments A, B and C, we first test for normal distribution\n\nshapiro.test(TreatA)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatA\n#&gt; W = 0.95757, p-value = 0.7487\nshapiro.test(TreatB)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatB\n#&gt; W = 0.95031, p-value = 0.6415\nshapiro.test(TreatC)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatC\n#&gt; W = 0.92128, p-value = 0.2967\n\nResult: All 3 treatments are normally distributed."
+    "section": "Test for equal variance",
+    "text": "Test for equal variance\nFirst, test for normal distribution\n\nshapiro.test(TreatA)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatA\n#&gt; W = 0.95757, p-value = 0.7487\nshapiro.test(TreatB)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatB\n#&gt; W = 0.95031, p-value = 0.6415\nshapiro.test(TreatC)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatC\n#&gt; W = 0.92128, p-value = 0.2967\n\nResult: All 3 treatments are normally distributed."
   },
   {
     "objectID": "sessions/slides/tests.html#f-test",
@@ -2420,6 +2455,13 @@
     "title": "Statistical tests",
     "section": "t-test",
     "text": "t-test\n\\(H_0\\): The samples do not differ in their mean\n\nTreatment A and B: normally distributed and equal variance\n\nt.test(TreatA, TreatB, var.equal = TRUE)\n#&gt; \n#&gt;  Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; t = -0.45352, df = 22, p-value = 0.6546\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -4.643994  2.977327\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;  14.50000  15.33333\n\n\n\nt: test statistics (t = 0 means equal means)\ndf: degrees of freedom of t-statistics\np-value: how likely is it to observe the data if \\(H_0\\) was true?"
+  },
+  {
+    "objectID": "sessions/slides/tests.html#t-test-1",
+    "href": "sessions/slides/tests.html#t-test-1",
+    "title": "Statistical tests",
+    "section": "t-test",
+    "text": "t-test\n\\(H_0\\): The samples do not differ in their mean\nTreatment A and B: normally distributed and equal variance\n\nt.test(TreatA, TreatB, var.equal = TRUE)\n#&gt; \n#&gt;  Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; t = -0.45352, df = 22, p-value = 0.6546\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -4.643994  2.977327\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;  14.50000  15.33333\n\nResult: The means of spray A and B don’t differ significantly (t = -0.45, df = 22, p = 0.66)"
   },
   {
     "objectID": "sessions/slides/tests.html#welch-test",
@@ -2700,187 +2742,5 @@
     "title": "",
     "section": "3 Extra",
     "text": "3 Extra\nCreate a plot to show the results of your tests. Choose one of the following:\n\nCreate a boxplot with notches to visually compare differences in flipper length between species\nMake a plot showing the mean and standard error of the mean as pointrange or point with errorbars\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
-  },
-  {
-    "objectID": "sessions/tasks/intro-r.html#working-with-the-vectors",
-    "href": "sessions/tasks/intro-r.html#working-with-the-vectors",
-    "title": "",
-    "section": "1 Working with the vectors",
-    "text": "1 Working with the vectors\n\nCheck which of the following animals are contained in the species vector:\n\n\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")\n\n\nCalculate mean and standard deviation of the brain weight\n\nHint: have a look at the summary slides to find the functions\n\nWhich species have a brain weight larger than the mean brain weight of all species?\nCalculate the ratio of brain weight to body weight in percent for all animals and save the result in a new vector\nAre there any animals with a larger brain to body weight ratio than humans? If yes, which ones?\n\nHint: calculate the ratio for humans and save it in a separate variable first"
-  },
-  {
-    "objectID": "sessions/02_intro-r.html#working-with-the-vectors",
-    "href": "sessions/02_intro-r.html#working-with-the-vectors",
-    "title": "Introduction to R",
-    "section": "1.1 Working with the vectors",
-    "text": "1.1 Working with the vectors\n\nCheck which of the following animals are contained in the species vector:\n\n\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")\n\n\nCalculate mean and standard deviation of the brain weight\n\nHint: have a look at the summary slides to find the functions\n\nWhich species have a brain weight larger than the mean brain weight of all species?\nCalculate the ratio of brain weight to body weight in percent for all animals and save the result in a new vector\nAre there any animals with a larger brain to body weight ratio than humans? If yes, which ones?\n\nHint: calculate the ratio for humans and save it in a separate variable first"
-  },
-  {
-    "objectID": "sessions/solutions/intro-r.html#working-with-vectors",
-    "href": "sessions/solutions/intro-r.html#working-with-vectors",
-    "title": "Solution to working with vectors",
-    "section": "1 Working with vectors",
-    "text": "1 Working with vectors\n\nCheck which of the following animals are contained in the species vector\n\n\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")\n\n# Goes through every element in animals_to_check and returns TRUE\n# if it appears in species\nanimals_to_check %in% species\n\n[1] FALSE  TRUE  TRUE  TRUE FALSE FALSE\n\n\nYou can see that Goat, Chimpanzee and Rat are contained in species.\n\n\n\n\n\n\nNote\n\n\n\nIf you use %in% to check if elements are contained in a vector, the result vector is of the same length as the vector that is before the %in%.\nCompare the result from above with the following:\n\n# Goes through every element in species and returns TRUE\n# if it appears in animals_to_check\nspecies %in% animals_to_check\n\n [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE\n[25]  TRUE FALSE FALSE FALSE\n\n\n\n\n\nCalculate mean and standard deviation of brain weight\n\n\nmean(brainwt_kg)\n\n[1] 0.5745214\n\nsd(brainwt_kg)\n\n[1] 1.334929\n\n\n\nWhich species have a brain weight larger than the mean brain weight of all species?\n\n\nspecies[brainwt_kg &gt; mean(brainwt_kg)]\n\n[1] \"AsianElephant\"   \"Horse\"           \"Giraffe\"         \"Human\"          \n[5] \"AfricanElephant\"\n\n\n\nCalculate the ratio brain weight / body weight in percent and save it in a vector\n\n\nbrain_body_ratio &lt;- brainwt_kg / bodywt_kg * 100\n\n\nAre there any animals with a larger brain to body weight ratio than humans? If yes, which ones?\n\nStep 1: Look at the brain to body ratio of humans\n\nbrain_body_ratio[species == \"Human\"]\n\n[1] 2.129032\n\n\nStep 2: Compare it with the other animals\n\n# New variable for human brain to body ratio\nbbr_human &lt;- brain_body_ratio[species == \"Human\"]\n# Are there animals that have a larger brain to body ratio than humans?\nbrain_body_ratio &gt; bbr_human\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[25] FALSE FALSE  TRUE FALSE\n\n# Which are these animals\nspecies[brain_body_ratio &gt; bbr_human]\n\n[1] \"RhesusMonkey\" \"Mole\"        \n\n# or short\nspecies[brain_body_ratio &gt; brain_body_ratio[species == \"Human\"]]\n\n[1] \"RhesusMonkey\" \"Mole\""
-  },
-  {
-    "objectID": "sessions/solutions/intro-r.html#working-with-the-vectors",
-    "href": "sessions/solutions/intro-r.html#working-with-the-vectors",
-    "title": "Solution to working with vectors",
-    "section": "1 Working with the vectors",
-    "text": "1 Working with the vectors\n\nCheck which of the following animals are contained in the species vector\n\n\nanimals_to_check &lt;- c(\"Snail\", \"Goat\", \"Chimpanzee\", \"Rat\", \"Dragon\", \"Eagle\")\n\n# Goes through every element in animals_to_check and returns TRUE\n# if it appears in species\nanimals_to_check %in% species\n\n[1] FALSE  TRUE  TRUE  TRUE FALSE FALSE\n\n\nYou can see that Goat, Chimpanzee and Rat are contained in species.\n\n\n\n\n\n\nNote\n\n\n\nIf you use %in% to check if elements are contained in a vector, the result vector is of the same length as the vector that is before the %in%.\nCompare the result from above with the following:\n\n# Goes through every element in species and returns TRUE\n# if it appears in animals_to_check\nspecies %in% animals_to_check\n\n [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE\n[25]  TRUE FALSE FALSE FALSE\n\n\n\n\n\nCalculate mean and standard deviation of brain weight\n\n\nmean(brainwt_kg)\n\n[1] 0.5745214\n\nsd(brainwt_kg)\n\n[1] 1.334929\n\n\n\nWhich species have a brain weight larger than the mean brain weight of all species?\n\n\nspecies[brainwt_kg &gt; mean(brainwt_kg)]\n\n[1] \"AsianElephant\"   \"Horse\"           \"Giraffe\"         \"Human\"          \n[5] \"AfricanElephant\"\n\n\n\nCalculate the ratio brain weight / body weight in percent and save it in a vector\n\n\nbrain_body_ratio &lt;- brainwt_kg / bodywt_kg * 100\n\n\nAre there any animals with a larger brain to body weight ratio than humans? If yes, which ones?\n\nStep 1: Look at the brain to body ratio of humans\n\nbrain_body_ratio[species == \"Human\"]\n\n[1] 2.129032\n\n\nStep 2: Compare it with the other animals\n\n# New variable for human brain to body ratio\nbbr_human &lt;- brain_body_ratio[species == \"Human\"]\n# Are there animals that have a larger brain to body ratio than humans?\nbrain_body_ratio &gt; bbr_human\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[25] FALSE FALSE  TRUE FALSE\n\n# Which are these animals\nspecies[brain_body_ratio &gt; bbr_human]\n\n[1] \"RhesusMonkey\" \"Mole\"        \n\n# or short\nspecies[brain_body_ratio &gt; brain_body_ratio[species == \"Human\"]]\n\n[1] \"RhesusMonkey\" \"Mole\""
-  },
-  {
-    "objectID": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio-1",
-    "href": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio-1",
-    "title": "Introduction to RStudio",
-    "section": "A quick tour around RStudio",
-    "text": "A quick tour around RStudio"
-  },
-  {
-    "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
-    "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
-    "title": "Introduction to RStudio",
-    "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nProject\n|\n|- data\n|\n|- documents\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- analysis\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- *.RProj\nExample RStudio project structure"
-  },
-  {
-    "objectID": "sessions/slides/intro-rstudio.html",
-    "href": "sessions/slides/intro-rstudio.html",
-    "title": "Introduction to RStudio",
-    "section": "",
-    "text": "R is the programming language and the program that does the actual work\n\nCan be used with many different programming environments\n\n\n\n\nRStudio is the integrated development environment (IDE)\n\nProvides an interface to R\nSpecifically built around R code\nExecute code\nSyntax highlighting\nFile and project management\n…"
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#vectors",
-    "href": "sessions/slides/intro-r.html#vectors",
-    "title": "Introduction to R",
-    "section": "Vectors",
-    "text": "Vectors\nVectors are data structures that are built on top of atomic data types.\nImagine a vector as a collection of values that are all of the same data type.  \n\n\n\nImage from Advanced R book"
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#creating-vectors",
-    "href": "sessions/slides/intro-r.html#creating-vectors",
-    "title": "Introduction to R",
-    "section": "Creating vectors",
-    "text": "Creating vectors\nUse the function c() to combine values into a vector\n\nlgl_var &lt;- c(TRUE, TRUE, FALSE)\ndbl_var &lt;- c(2.5, 3.4, 4.3)\nint_var &lt;- c(1L, 45L, 234L)\nchr_var &lt;- c(\"These are\", \"just\", \"some strings\")\n\n\nThe : operator creates a sequence between two numbers with an increment of (-)1\n\n1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)\n#&gt;  [1]  1  2  3  4  5  6  7  8  9 10\n\n\n\nThere are many more options to create vectors\n\nseq() to create a sequence of numbers\nrep() ro repeat values\n…"
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#working-with-vectors-3",
-    "href": "sessions/slides/intro-r.html#working-with-vectors-3",
-    "title": "Introduction to R",
-    "section": "Working with vectors",
-    "text": "Working with vectors\nWe can also work with relational and logical operators\n\npopulation &gt; mean_population\n#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\nThe result is a vector containing TRUE and FALSE, depending on whether the city’s population is larger than the mean population or not.\n\n\n Logical and relational operators can be combined\n\n# population larger than mean population OR population larger than 3 million\npopulation &gt; mean_population | population &gt; 3e6\n#&gt;  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE"
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#working-with-vectors-4",
-    "href": "sessions/slides/intro-r.html#working-with-vectors-4",
-    "title": "Introduction to R",
-    "section": "Working with vectors",
-    "text": "Working with vectors\nCheck whether elements occur in a vector:\n\ncities == \"Istanbul\"\n#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\n\nThe %in% operator checks whether multiple elements occur in a vector.\n\n# for each element of cities, checks whether that element is contained in to_check \nto_check &lt;- c(\"Istanbul\", \"Berlin\", \"Madrid\")\ncities %in% to_check # same as cities %in% c(\"Istanbul\", \"Berlin\", \"Madrid\")\n#&gt;  [1]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE\n\n\n\n\n%in% always returns a vector of the same length as the vector on the left side\n\n\n\n# for each element of to_check, check whether that element is contained in cities \nto_check %in% cities\n#&gt; [1] TRUE TRUE TRUE"
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html",
-    "href": "sessions/slides/intro-r.html",
-    "title": "Introduction to R",
-    "section": "",
-    "text": "Addition\n\n\n+\n\n\n\n\nSubtraction\n\n\n-\n\n\n\n\nMultiplication\n\n\n*\n\n\n\n\nDivision\n\n\n/\n\n\n\n\nModulo\n\n\n%%\n\n\n\n\nPower\n\n\n^\n\n\n\n\n\n\n# Addition\n2 + 2\n# Subtraction\n5.432 - 34234\n# Multiplication\n33 * 42\n# Division\n3 / 42\n# Modulo (Remainder)\n2 %% 2\n# Power\n2^2\n# Combine operations\n((2 + 2) * 5)^(10 %% 10)"
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#creating-vectors-and-seq",
-    "href": "sessions/slides/intro-r.html#creating-vectors-and-seq",
-    "title": "Introduction to R",
-    "section": "1.7 Creating vectors: : and seq()",
-    "text": "1.7 Creating vectors: : and seq()\nThe : operator creates a sequence between two numbers with an increment of (-)1\n\n1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)\n#&gt;  [1]  1  2  3  4  5  6  7  8  9 10\n\n. . .\nThe seq() function creates a sequence of values\n\nseq(from = 1, to = 10, by = 1) # specify increment of sequence with by\n#&gt;  [1]  1  2  3  4  5  6  7  8  9 10\nseq(from = 1, to = 10, length.out = 20) # specify desired length with length.out\n#&gt;  [1]  1.000000  1.473684  1.947368  2.421053  2.894737  3.368421  3.842105\n#&gt;  [8]  4.315789  4.789474  5.263158  5.736842  6.210526  6.684211  7.157895\n#&gt; [15]  7.631579  8.105263  8.578947  9.052632  9.526316 10.000000"
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#creating-vectors-rep",
-    "href": "sessions/slides/intro-r.html#creating-vectors-rep",
-    "title": "Introduction to R",
-    "section": "1.8 Creating vectors: rep()",
-    "text": "1.8 Creating vectors: rep()\nRepeat values multiple times with rep()\n\n\nrep(\"hello\", times = 5)\n#&gt; [1] \"hello\" \"hello\" \"hello\" \"hello\" \"hello\""
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#indexing-vectors-3",
-    "href": "sessions/slides/intro-r.html#indexing-vectors-3",
-    "title": "Introduction to R",
-    "section": "2.8 Indexing vectors",
-    "text": "2.8 Indexing vectors\nWe also use %in%for logical indexing.\n\npopulation[ cities %in% c(\"Berlin\", \"Paris\", \"Stockholm\", \"Madrid\")]\n#&gt; [1] 3800000 3200000 2100000\n\n\nReturns only 3 values for population, because Stockholm is not a city in our vector\n\nNo city in cities returns TRUE for the comparison with \"Stockholm\"\n\n\n. . .\n\ncities %in% c(\"Berlin\", \"Paris\", \"Stockholm\", \"Madrid\")\n#&gt;  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE"
-  },
-  {
-    "objectID": "sessions/slides/common-errors.html#error-object-not-found",
-    "href": "sessions/slides/common-errors.html#error-object-not-found",
-    "title": "Common errors and how to fix them",
-    "section": "Error: object not found",
-    "text": "Error: object not found\nExample\n\nvariable_A\n#&gt; Error in eval(expr, envir, enclos): object 'variable_A' not found\n\n\n\n\nHow to fix\n\nyou are trying to access an object that does not exist\n\ntypos in variable name (variable name is variableA but you try to access variable_A)\nforgot to put quotes around string: print(hello)  looks for a variable named hello but instead you wanted to print the string print(\"hello\")"
-  },
-  {
-    "objectID": "sessions/slides/00_organization.html#who-are-you-1",
-    "href": "sessions/slides/00_organization.html#who-are-you-1",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Who are you?",
-    "text": "Who are you?"
-  },
-  {
-    "objectID": "sessions/slides/00_organization.html#who-are-you-2",
-    "href": "sessions/slides/00_organization.html#who-are-you-2",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Who are you?",
-    "text": "Who are you?"
-  },
-  {
-    "objectID": "sessions/slides/00_organization.html#who-are-you-3",
-    "href": "sessions/slides/00_organization.html#who-are-you-3",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Who are you?",
-    "text": "Who are you?"
-  },
-  {
-    "objectID": "sessions/slides/ggplot.html#geom_point-1",
-    "href": "sessions/slides/ggplot.html#geom_point-1",
-    "title": "Data visualization with ggplot2",
-    "section": "geom_point",
-    "text": "geom_point\n\n\n\nggplot() +\n  geom_point(\n    data = and_vertebrates,\n    aes(\n      x = length_1_mm,\n      y = weight_g\n    )\n  )\n\n\ndata and aes can also be local to a layer:\n\n\nHere, it does not make a difference in the result.\n\n\n\n#&gt; Warning: Removed 13270 rows containing missing values (`geom_point()`)."
-  },
-  {
-    "objectID": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title-output",
-    "href": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title-output",
-    "title": "Data visualization with ggplot2",
-    "section": "labs: Change axis and legend titles and add plot title",
-    "text": "labs: Change axis and legend titles and add plot title"
-  },
-  {
-    "objectID": "sessions/slides/00_organization.html",
-    "href": "sessions/slides/00_organization.html",
-    "title": "Introduction to Data Analysis with R",
-    "section": "",
-    "text": "💻 Scientific programmer @theoretical ecology group 🎓 PhD in dryland ecology 👩‍🏫 Teaching R, Git, good scientific practice, …\n\n\n\n\n… data analysis\n… ecological modelling\n… writing documents\n…. workflow automation\n…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science\n\n\n. . .\nDay1 Introduction to R and RStudio and data import\n. . .\nDay2 Data transformation and visualization with the tidyverse\n. . .\nDay3 Cleaning data and statistical tests\n. . .\nDay 4 Bring your own data\n\n\n\n📅 16.10.2023 - 17.10.2023 from 🕘 9 a.m. - 4 p.m.  📅 30.10.2023 - 31.10.2023 from 🕘 9 a.m. - 4 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ in between  📌 We will meet in the General meeting on Webex\n\n\n\n\n\nPresentation and demonstration of a topic\nSome examples\n\n\n\n\n\n\n\nSolve them in small groups\n\n\n\n\n\n\n\n\n\n\n\n\nAll material can be found on the workshop’s website\n\nPresentations, Tasks, Solutions, Additional resources\n\nYou can download slides and R Scripts from there\nWebsite will stay online after the workshop\n\n\n\n\nOn the last workshop day, you can work with your own research data. I will also provide some real life data sets from different topics.\n. . .\n\n\n\nGet started using R for your own analyses\nUse any of the methods from the course or try new things, …\nPresent/discuss your results, questions and problems at the end of the day\n\n\n\n\n\n\nKeep the last workshop day in mind during the next days\n\nTake a mental note if you learn something that is applicable to your data\nThink of questions that you would like to answer for your data set\n\nAdd your name and some details on what you plan to do in this joint table\n\n\n\n\n\nHelp each other if possible\n\nHave an eye on the chat\n\nAll questions and comments are welcome\nFeedback is welcome\n\nEvaluation at the end of the workshop\n\n\n\n\n\nHow to use Webex teams\n\nGeneral channel for our joint meetings and chat\nGroups 1-4 for group work\n\nGroup spaces have their own chat and meetings\nUse the chat in the groups for questions\nMeet in your groups and solve the tasks jointly\n\nPlease always have a look at the general chat during the tasks"
-  },
-  {
-    "objectID": "sessions/slides/dplyr.html#summary-v",
-    "href": "sessions/slides/dplyr.html#summary-v",
-    "title": "Data transformation with dplyr",
-    "section": "Summary V",
-    "text": "Summary V\n\nbind_rows()\n\ncombine rows of multiple tibbles into one\n\nthe tibbles need to have the same columns\nadd an id column with the argument .id = \"id\"\nfunction bind_cols() works similarly just for columns\n\n\nleft_join()\n\ncombine tables based on common columns"
-  },
-  {
-    "objectID": "sessions/slides/tidyr.html#pivot_longer-2",
-    "href": "sessions/slides/tidyr.html#pivot_longer-2",
-    "title": "Tidy data with tidyr",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\nOne variable split into multiple columns can be solved with pivot_longer\n\nstep1 &lt;- pivot_longer(\n    cities_untidy,                         # the tibble\n    cols = Turkey_Istanbul:France_Paris,   # the columns to pivot from:to\n    names_to = \"location\",                 # name of the new column\n    values_to = \"value\")                   # name of the value column\n\nAnother way to select the columns to pivot:\n\nstep1 &lt;- pivot_longer(\n    cities_untidy,           # the tibble\n    cols = !type,            # All columns except type#&lt;&lt;        \n    names_to = \"location\",   # name of the new column\n    values_to = \"value\")     # name of the value column"
-  },
-  {
-    "objectID": "sessions/slides/tests.html#test-for-equal-variance-1",
-    "href": "sessions/slides/tests.html#test-for-equal-variance-1",
-    "title": "Statistical tests",
-    "section": "Test for equal variance",
-    "text": "Test for equal variance\nFirst, test for normal distribution\n\nshapiro.test(TreatA)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatA\n#&gt; W = 0.95757, p-value = 0.7487\nshapiro.test(TreatB)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatB\n#&gt; W = 0.95031, p-value = 0.6415\nshapiro.test(TreatC)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatC\n#&gt; W = 0.92128, p-value = 0.2967\n\nResult: All 3 treatments are normally distributed."
-  },
-  {
-    "objectID": "sessions/slides/tests.html#t-test-1",
-    "href": "sessions/slides/tests.html#t-test-1",
-    "title": "Statistical tests",
-    "section": "t-test",
-    "text": "t-test\n\\(H_0\\): The samples do not differ in their mean\nTreatment A and B: normally distributed and equal variance\n\nt.test(TreatA, TreatB, var.equal = TRUE)\n#&gt; \n#&gt;  Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; t = -0.45352, df = 22, p-value = 0.6546\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -4.643994  2.977327\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;  14.50000  15.33333\n\nResult: The means of spray A and B don’t differ significantly (t = -0.45, df = 22, p = 0.66)"
   }
 ]
