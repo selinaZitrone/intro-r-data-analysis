@@ -183,7 +183,38 @@ ggplot(
 - Map variable `length_1_mm` to x-axis and `weight_g` to y-axis
 - Default scales are automatically adapted to range of data
 
-:::{.fragment}
+:::
+
+:::{.column width="50%"}
+
+```{r echo=FALSE}
+ggplot(
+  data = and_vertebrates,
+  aes(x = length_1_mm, y = weight_g)
+)
+```
+
+:::
+
+:::
+
+## `aes(x, y)`
+
+The **aes**thetics define how data variables are mapped plot properties.
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r eval=FALSE}
+ggplot(
+  data = and_vertebrates,
+  mapping = aes(
+    x = length_1_mm,
+    y = weight_g
+  )
+)
+```
 
 This is the same but shorter:
 
@@ -191,15 +222,12 @@ This is the same but shorter:
 ggplot(
   and_vertebrates,
   aes(
-    x = length_1_mm,
-    y = weight_g
-  )
+    x = length_1_mm, 
+    y = weight_g)
 )
 ```
 
 Remember argument matching by position?
-
-:::
 
 :::
 
@@ -229,7 +257,6 @@ ggplot(
 :::{.column width="50%"}
 
 ```{r eval=FALSE}
-#| code-line-numbers: "4"
 ggplot(
   data = and_vertebrates,
   aes(
@@ -320,7 +347,6 @@ Looks like there are two groups of data: **Map color of points to a variable** b
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "4"
 ggplot(
   data = and_vertebrates,
   aes(
@@ -364,7 +390,6 @@ We can do the same with size:
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "4"
 ggplot(
   data = and_vertebrates,
   aes(
@@ -406,7 +431,6 @@ We can do the same with shape:
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "4"
 ggplot(
   data = and_vertebrates,
   aes(
@@ -448,7 +472,6 @@ We can also combine these aesthetics and map different variables
 
 ```{r eval = FALSE}
 #| eval: false
-#| code-line-numbers: "4-6"
 ggplot(
   data = and_vertebrates,
   aes(
@@ -539,7 +562,6 @@ The scales onto which the aesthetic elements are mapped can be changed.
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "6-7"
 ggplot(
   data = and_vertebrates,
   aes(
@@ -553,8 +575,7 @@ ggplot(
   scale_y_log10()
 ```
 
-- Scales can be changed for all elements of `aes`
-- The general format of scale functions are:
+- Scales can be changed for all elements of `aes`:
 
 :::{.fragment}
 
@@ -598,7 +619,6 @@ Add a smoothing line that helps see patterns in the data
 
 ```{r eval =FALSE}
 #| eval: false
-#| code-line-numbers: "6"
 ggplot(
   data = and_vertebrates,
   aes(
@@ -614,8 +634,8 @@ ggplot(
 ```
 
 - With `method = "lm"`, a linear regression line is added
-- All geoms are done separately for the species because color is defined globally
-- Alpha makes the points transparent (0-1 with 0 being invisible)
+- All geoms done separately for species because color is defined globally
+- Alpha makes points transparent (0-1)
 
 :::
 
@@ -691,7 +711,6 @@ Compare groups using a boxplot
 
 ```{r eval =FALSE}
 #| eval: false
-#| code-line-numbers: "4"
 ggplot(
   and_vertebrates,
   aes(
@@ -735,7 +754,6 @@ Map the `unittype` to the **color** aesthetic of the boxplot
 
 ```{r eval =FALSE}
 #| eval: false
-#| code-line-numbers: "4"
 ggplot(
   and_vertebrates,
   aes(
@@ -779,7 +797,6 @@ Map the `unittype` to the **fill** aesthetic of the box
 
 ```{r eval =FALSE}
 #| eval: false
-#| code-line-numbers: "4"
 ggplot(
   and_vertebrates,
   aes(
@@ -857,7 +874,6 @@ ggplot(
 
 ```{r eval =FALSE}
 #| eval: false
-#| code-line-numbers: "5-6"
 ggplot(
   and_vertebrates,
   aes(
@@ -953,7 +969,6 @@ Split your plots along one variable with `facet_wrap`
 
 ```{r eval=FALSE}
 #| eval: false
-#| code-line-numbers: "6"
 ggplot(
   data = and_vertebrates,
   aes(
@@ -997,7 +1012,6 @@ Split your plots along one variable with `facet_wrap`
 
 ```{r eval=FALSE}
 #| eval: false
-#| code-line-numbers: "7-8"
 ggplot(
   data = and_vertebrates,
   aes(
@@ -1014,11 +1028,7 @@ ggplot(
 ```
 
 - Specify number of rows and columns with `nrow`/`ncol`
-
-- Set separate scales for x and y with `scales`
-  - `"free"`: x and y axis are free
-  - `"free_y"`: only y-axis is free
-  - `"free_x"`: only x-axis is free
+- Set separate scales for x and y with `scales` (one of `"free"`, `"free_y"`, `"free_x"`)
 
 ::: 
 
@@ -1056,7 +1066,6 @@ Split your plots along two variables with `facet_grid`
 
 ```{r eval=FALSE}
 #| eval: false
-#| code-line-numbers: "6"
 ggplot(
   data = and_vertebrates,
   aes(
@@ -1117,7 +1126,6 @@ ggplot(
 
 ```{r eval=FALSE}
 #| eval: false
-#| code-line-numbers: "6-9"
 ggplot(and_vertebrates, aes(
   x = length_1_mm,
   y = weight_g
@@ -1263,7 +1271,6 @@ We can also manually specify colors:
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "2-7"
 g +
   scale_color_manual(
     values = c(
@@ -1348,15 +1355,12 @@ g
 :::{.column width="50%"}
 
 ```{r fig.height=4}
-#| code-line-numbers: "6,8-10"
 ggplot(
   and_vertebrates,
   aes(
     x = section,
     y = length_1_mm,
-    color = unittype
-  )
-) +
+    color = unittype)) +
   geom_boxplot() +
   paletteer::scale_color_paletteer_d(
     palette = "ggsci::default_uchicago"
@@ -1368,15 +1372,12 @@ ggplot(
 :::{.column width="50%"}
 
 ```{r fig.height=4}
-#| code-line-numbers: "6,8-10"
 ggplot(
   and_vertebrates,
   aes(
     x = section,
     y = length_1_mm,
-    fill = unittype
-  )
-) +
+    fill = unittype)) +
   geom_boxplot() +
   paletteer::scale_fill_paletteer_d(
     palette = "ggsci::default_uchicago"
@@ -1391,7 +1392,6 @@ ggplot(
 
 
 ```{r}
-#| code-line-numbers: "2-9"
 #| output-location: slide
 #| fig-width: 8
 #| fig-height: 6
@@ -1419,7 +1419,6 @@ g
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "2"
 g +
   theme_classic()
 ```
@@ -1435,7 +1434,6 @@ g +
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "2"
 g +
   theme_bw()
 ```
@@ -1460,7 +1458,6 @@ g +
 
 ```{r eval=FALSE}
 #| eval: false
-#| code-line-numbers: "2"
 g +
   theme_minimal()
 ```
@@ -1476,7 +1473,6 @@ g +
 
 ```{r eval=FALSE}
 #| eval: false
-#| code-line-numbers: "2"
 g +
   theme_dark()
 ```
@@ -1530,7 +1526,6 @@ To edit a theme, just add another `theme()` layer to your plot.
 
 ```{r eval=FALSE}
 #| eval: false
-#| code-line-numbers: "3-10"
 g +
   theme_minimal() +
   theme(

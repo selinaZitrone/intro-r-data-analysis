@@ -494,6 +494,12 @@ Use the keyboard shortcut ` Ctrl/Cmd + Shift + M ` to insert ` |> `
 Piping also works well together with `ggplot`
 
 ```{r}
+#| echo: false
+theme_set(theme_bw(base_size = 16))
+```
+
+
+```{r}
 #| output-location: column
 soybean_use |>
   filter(!is.na(code)) |>

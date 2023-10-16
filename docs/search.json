@@ -1733,14 +1733,14 @@
     "href": "sessions/slides/dplyr.html#join-tibbles-with-left_join",
     "title": "Data transformation with dplyr",
     "section": "Join tibbles with left_join()",
-    "text": "Join tibbles with left_join()\nSituation: Two tables that share some but not all columns.\n\n\nsoybean_use\n\n\n#&gt; # A tibble: 9,897 × 6\n#&gt;   entity code   year human_food animal_feed processed\n#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 Africa &lt;NA&gt;   1961      33000        6000     14000\n#&gt; 2 Africa &lt;NA&gt;   1962      43000        7000     17000\n#&gt; # ℹ 9,895 more rows\n\n\n\n# table with the gdp of the country/continent for each year\ngdp\n\n\n#&gt; # A tibble: 9,897 × 3\n#&gt;   entity  year   gdp\n#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1 Africa  1961  4.73\n#&gt; 2 Africa  1962  4.73\n#&gt; # ℹ 9,895 more rows"
+    "text": "Join tibbles with left_join()\nSituation: Two tables that share some but not all columns.\n\n\nsoybean_use\n\n\n#&gt; # A tibble: 9,897 × 6\n#&gt;   entity code   year human_food animal_feed processed\n#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 Africa &lt;NA&gt;   1961      33000        6000     14000\n#&gt; 2 Africa &lt;NA&gt;   1962      43000        7000     17000\n#&gt; # ℹ 9,895 more rows\n\n\n\n# table with the gdp of the country/continent for each year\ngdp\n\n\n#&gt; # A tibble: 9,897 × 3\n#&gt;   entity  year   gdp\n#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1 Africa  1961  4.02\n#&gt; 2 Africa  1962  4.02\n#&gt; # ℹ 9,895 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#join-tibbles-with-left_join-1",
     "href": "sessions/slides/dplyr.html#join-tibbles-with-left_join-1",
     "title": "Data transformation with dplyr",
     "section": "Join tibbles with left_join()",
-    "text": "Join tibbles with left_join()\nJoin the two tables by the two common columns entity and year\n\nleft_join(soybean_use, gdp, by = c(\"entity\", \"year\"))\n#&gt; # A tibble: 9,897 × 7\n#&gt;    entity code   year human_food animal_feed processed   gdp\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Africa &lt;NA&gt;   1961      33000        6000     14000  4.73\n#&gt;  2 Africa &lt;NA&gt;   1962      43000        7000     17000  4.73\n#&gt;  3 Africa &lt;NA&gt;   1963      31000        7000      5000  4.73\n#&gt;  4 Africa &lt;NA&gt;   1964      43000        6000     14000  4.73\n#&gt;  5 Africa &lt;NA&gt;   1965      34000        6000     12000  4.73\n#&gt;  6 Africa &lt;NA&gt;   1966      41000        6000      2000  4.73\n#&gt;  7 Africa &lt;NA&gt;   1967      47000        6000      4000  4.73\n#&gt;  8 Africa &lt;NA&gt;   1968      50000        7000      3000  4.73\n#&gt;  9 Africa &lt;NA&gt;   1969      52000        6000      6000  4.73\n#&gt; 10 Africa &lt;NA&gt;   1970      52000        6000      8000  4.73\n#&gt; # ℹ 9,887 more rows\n\n\nleft_join() means that the resulting tibble will contain all rows of soybean_use, but not necessarily all rows of gdp"
+    "text": "Join tibbles with left_join()\nJoin the two tables by the two common columns entity and year\n\nleft_join(soybean_use, gdp, by = c(\"entity\", \"year\"))\n#&gt; # A tibble: 9,897 × 7\n#&gt;    entity code   year human_food animal_feed processed   gdp\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Africa &lt;NA&gt;   1961      33000        6000     14000  4.02\n#&gt;  2 Africa &lt;NA&gt;   1962      43000        7000     17000  4.02\n#&gt;  3 Africa &lt;NA&gt;   1963      31000        7000      5000  4.02\n#&gt;  4 Africa &lt;NA&gt;   1964      43000        6000     14000  4.02\n#&gt;  5 Africa &lt;NA&gt;   1965      34000        6000     12000  4.02\n#&gt;  6 Africa &lt;NA&gt;   1966      41000        6000      2000  4.02\n#&gt;  7 Africa &lt;NA&gt;   1967      47000        6000      4000  4.02\n#&gt;  8 Africa &lt;NA&gt;   1968      50000        7000      3000  4.02\n#&gt;  9 Africa &lt;NA&gt;   1969      52000        6000      6000  4.02\n#&gt; 10 Africa &lt;NA&gt;   1970      52000        6000      8000  4.02\n#&gt; # ℹ 9,887 more rows\n\n\nleft_join() means that the resulting tibble will contain all rows of soybean_use, but not necessarily all rows of gdp"
   },
   {
     "objectID": "sessions/slides/dplyr.html#different-_join-functions",
@@ -1838,7 +1838,7 @@
     "href": "sessions/slides/ggplot.html#aesx-y",
     "title": "Data visualization with ggplot2",
     "section": "aes(x, y)",
-    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\n\nggplot(\n  data = and_vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\n\nMap variable length_1_mm to x-axis and weight_g to y-axis\nDefault scales are automatically adapted to range of data\n\n\nThis is the same but shorter:\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\nRemember argument matching by position?"
+    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\n\nggplot(\n  data = and_vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\n\nMap variable length_1_mm to x-axis and weight_g to y-axis\nDefault scales are automatically adapted to range of data"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_",
@@ -1901,14 +1901,14 @@
     "href": "sessions/slides/ggplot.html#scale_x_log10",
     "title": "Data visualization with ggplot2",
     "section": "scale_x_log10",
-    "text": "scale_x_log10\nThe scales onto which the aesthetic elements are mapped can be changed.\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  scale_x_log10() +\n  scale_y_log10()\n\n\nScales can be changed for all elements of aes\nThe general format of scale functions are:\n\n\nscale_aes-name_scale-type\nIn this example we scale the x and the y aesthetic to log10."
+    "text": "scale_x_log10\nThe scales onto which the aesthetic elements are mapped can be changed.\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  scale_x_log10() +\n  scale_y_log10()\n\n\nScales can be changed for all elements of aes:\n\n\nscale_aes-name_scale-type\nIn this example we scale the x and the y aesthetic to log10."
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_smooth",
     "href": "sessions/slides/ggplot.html#geom_smooth",
     "title": "Data visualization with ggplot2",
     "section": "geom_smooth",
-    "text": "geom_smooth\nAdd a smoothing line that helps see patterns in the data\n\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point(alpha = 0.3) +\n  geom_smooth(method = \"lm\") +\n  scale_x_log10() +\n  scale_y_log10()\n\n\nWith method = \"lm\", a linear regression line is added\nAll geoms are done separately for the species because color is defined globally\nAlpha makes the points transparent (0-1 with 0 being invisible)"
+    "text": "geom_smooth\nAdd a smoothing line that helps see patterns in the data\n\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point(alpha = 0.3) +\n  geom_smooth(method = \"lm\") +\n  scale_x_log10() +\n  scale_y_log10()\n\n\nWith method = \"lm\", a linear regression line is added\nAll geoms done separately for species because color is defined globally\nAlpha makes points transparent (0-1)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_boxplot",
@@ -1971,7 +1971,7 @@
     "href": "sessions/slides/ggplot.html#small-multiples-with-facet_wrap-1",
     "title": "Data visualization with ggplot2",
     "section": "Small multiples with facet_wrap",
-    "text": "Small multiples with facet_wrap\nSplit your plots along one variable with facet_wrap\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  facet_wrap(~section,\n    nrow = 2,\n    scales = \"free\"\n  )\n\n\nSpecify number of rows and columns with nrow/ncol\nSet separate scales for x and y with scales\n\n\"free\": x and y axis are free\n\"free_y\": only y-axis is free\n\"free_x\": only x-axis is free"
+    "text": "Small multiples with facet_wrap\nSplit your plots along one variable with facet_wrap\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  facet_wrap(~section,\n    nrow = 2,\n    scales = \"free\"\n  )\n\n\nSpecify number of rows and columns with nrow/ncol\nSet separate scales for x and y with scales (one of \"free\", \"free_y\", \"free_x\")"
   },
   {
     "objectID": "sessions/slides/ggplot.html#small-multiples-with-facet_grid",
@@ -2020,7 +2020,7 @@
     "href": "sessions/slides/ggplot.html#scale_fill_-vs.-scale_color_",
     "title": "Data visualization with ggplot2",
     "section": "scale_fill_* vs. scale_color_*",
-    "text": "scale_fill_* vs. scale_color_*\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    color = unittype\n  )\n) +\n  geom_boxplot() +\n  paletteer::scale_color_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\n\n\n\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    fill = unittype\n  )\n) +\n  geom_boxplot() +\n  paletteer::scale_fill_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )"
+    "text": "scale_fill_* vs. scale_color_*\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    color = unittype)) +\n  geom_boxplot() +\n  paletteer::scale_color_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\n\n\n\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    fill = unittype)) +\n  geom_boxplot() +\n  paletteer::scale_fill_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )"
   },
   {
     "objectID": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title",
@@ -2742,5 +2742,12 @@
     "title": "",
     "section": "3 Extra",
     "text": "3 Extra\nCreate a plot to show the results of your tests. Choose one of the following:\n\nCreate a boxplot with notches to visually compare differences in flipper length between species\nMake a plot showing the mean and standard error of the mean as pointrange or point with errorbars\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
+  },
+  {
+    "objectID": "sessions/slides/ggplot.html#aesx-y-1",
+    "href": "sessions/slides/ggplot.html#aesx-y-1",
+    "title": "Data visualization with ggplot2",
+    "section": "aes(x, y)",
+    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\nggplot(\n  data = and_vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\nThis is the same but shorter:\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = length_1_mm, \n    y = weight_g)\n)\n\nRemember argument matching by position?"
   }
 ]
