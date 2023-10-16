@@ -1,5 +1,4 @@
 # 1. Rstudio project ------------------------------------------------------
-
 # Look at the first lines of the iris dataset
 head(iris)
 # What is the iris dataset -> Call the help

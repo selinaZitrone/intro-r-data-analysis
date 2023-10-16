@@ -1269,42 +1269,42 @@
   {
     "objectID": "sessions/04_data-tibbles.html",
     "href": "sessions/04_data-tibbles.html",
-    "title": "Tabels in R - Data frames and tibbles",
+    "title": "Tables in R - Data frames and tibbles",
     "section": "",
     "text": "Slides in full screen     Download PDF slides"
   },
   {
     "objectID": "sessions/04_data-tibbles.html#get-started-with-tibbles",
     "href": "sessions/04_data-tibbles.html#get-started-with-tibbles",
-    "title": "Tabels in R - Data frames and tibbles",
+    "title": "Tables in R - Data frames and tibbles",
     "section": "1.1 Get started with tibbles",
     "text": "1.1 Get started with tibbles\nBefore you start the task:\n\nInstall the tibble package by calling install.packages(\"tibble\") in the console.\n\nYou don’t need to put this command in your script as you only need to call it once to install the package\n\nOpen your script for the task and put library(tibble) on top\nExecute this line and the tibble package is loaded into your R session"
   },
   {
     "objectID": "sessions/04_data-tibbles.html#create-a-tibble",
     "href": "sessions/04_data-tibbles.html#create-a-tibble",
-    "title": "Tabels in R - Data frames and tibbles",
+    "title": "Tables in R - Data frames and tibbles",
     "section": "1.2 Create a tibble",
     "text": "1.2 Create a tibble\nUse the vectors species, brainwt_kg, bodywt_kg from before and combine them in a tibble."
   },
   {
     "objectID": "sessions/04_data-tibbles.html#explore-the-tibble",
     "href": "sessions/04_data-tibbles.html#explore-the-tibble",
-    "title": "Tabels in R - Data frames and tibbles",
+    "title": "Tables in R - Data frames and tibbles",
     "section": "1.3 Explore the tibble",
     "text": "1.3 Explore the tibble\nExplore the tibble you created with the different functions that you learned in the presentation. You can for example try\n\nview() and explore what you can do in the view window that opens: searching, filtering, sorting columns\nsummary()\n…"
   },
   {
     "objectID": "sessions/04_data-tibbles.html#index-filter-and-select",
     "href": "sessions/04_data-tibbles.html#index-filter-and-select",
-    "title": "Tabels in R - Data frames and tibbles",
+    "title": "Tables in R - Data frames and tibbles",
     "section": "1.4 Index, filter and select",
     "text": "1.4 Index, filter and select\nNow let’s try some indexing on the data.\n\nRows 1, 5, and 7 and the columns species and bodywt_kg\nFilter rows 1 to 10, all columns\nSelect the column bodywt_kg as a vector"
   },
   {
     "objectID": "sessions/04_data-tibbles.html#extra",
     "href": "sessions/04_data-tibbles.html#extra",
-    "title": "Tabels in R - Data frames and tibbles",
+    "title": "Tables in R - Data frames and tibbles",
     "section": "1.5 Extra",
     "text": "1.5 Extra\n\nSelect the last column of the last row without using the row and column index (so don’t use any numbers in this command)\nCalculate the mean of the bodywt_kg column and save it in a variable\nAdd a new column to the data called ratio_body_brain with the ratio of the columns bodywt_kg and brainwt_kg"
   },
