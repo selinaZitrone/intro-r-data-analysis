@@ -176,7 +176,6 @@ animals
 
 
 # 4. Readr ----------------------------------------------------------------
-
 # library(tidyverse)
 library(readr)
 
