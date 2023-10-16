@@ -13,7 +13,7 @@ code-line-numbers: false
 
 :::{.callout-note}
 
-## Find the solution [here](solutions/ggplot.qmd){target="_blank"}.
+## Find the solution [here](solutions/empty.qmd){target="_blank"}.
 
 :::
 
