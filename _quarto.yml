@@ -69,6 +69,7 @@ website:
       - text: "Downloads"
         menu:
           - text: "R Script Day 1"
+            href: R/Tasks/Day1.R
           - text: "R Script Day 2"
           - text: "R Script Day 3"
 
