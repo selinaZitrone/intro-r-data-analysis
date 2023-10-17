@@ -529,14 +529,14 @@
     "href": "sessions/slides/good-practice.html#standard-code-structure",
     "title": "Good practice R coding",
     "section": "Standard code structure",
-    "text": "Standard code structure\n\n\n\n\n\nGeneral comment with purpose of the script, author, …\nlibrary() calls on top\nSet default variables and global options\nSource additional code\nWrite the actual code, starting with loading all data files\n\n\n\n\n# This code replicates figure 2 from the\n# Baldauf et al. 2022 Journal of Ecology paper.\n# Authors: Selina Baldauf, Jane Doe, Jon Doe\n\nlibrary(tidyverse)\nlibrary(vegan)\n\n# set defaults\ninput_file &lt;- \"data/results.csv\"\n\n# source files\nsource(\"R/my_cool_function.R\")\n\n# read input\ninput_data &lt;- read_csv(input_file)"
+    "text": "Standard code structure\n\n\n\n\n\nGeneral comment with purpose of the script, author, …\nlibrary() calls on top\nSet default variables and global options\nSource additional code\nWrite the actual code, starting with loading all data files\n\n\n\n\n# This code replicates figure 2 from the\n# Baldauf et al. 2022 Journal of Ecology\n# paper.\n# Authors: Selina Baldauf and Jane Doe\n\nlibrary(tidyverse)\nlibrary(vegan)\n\n# set defaults\ninput_file &lt;- \"data/results.csv\"\n\n# source files\nsource(\"R/my_cool_function.R\")\n\n# read input\ninput_data &lt;- read_csv(input_file)"
   },
   {
     "objectID": "sessions/slides/good-practice.html#mark-sections",
     "href": "sessions/slides/good-practice.html#mark-sections",
     "title": "Good practice R coding",
     "section": "Mark sections",
-    "text": "Mark sections\n\n\nUse comments to break up your file into sections\n\n\n\n\n# Load data ---------------------------------------------------------------\n\ninput_data &lt;- read_csv(input_file)\n\n# Plot data ---------------------------------------------------------------\n\nggplot(input_data, aes(x = x, y = y)) +\n  geom_point()\n\n\nInsert a section label with Ctrl/Cmd + Shift\nNavigate sections in the file outline"
+    "text": "Mark sections\n\n\nUse comments to break up your file into sections\n\n\n\n\n# Load data ---------------------------------------------------------------\n\ninput_data &lt;- read_csv(input_file)\n\n# Plot data ---------------------------------------------------------------\n\nggplot(input_data, aes(x = x, y = y)) +\n  geom_point()\n\n\nInsert a section label with Ctrl/Cmd + Shift + R\nNavigate sections in the file outline"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---object-names",
