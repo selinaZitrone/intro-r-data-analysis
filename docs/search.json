@@ -1841,6 +1841,13 @@
     "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\n\nggplot(\n  data = and_vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\n\nMap variable length_1_mm to x-axis and weight_g to y-axis\nDefault scales are automatically adapted to range of data"
   },
   {
+    "objectID": "sessions/slides/ggplot.html#aesx-y-1",
+    "href": "sessions/slides/ggplot.html#aesx-y-1",
+    "title": "Data visualization with ggplot2",
+    "section": "aes(x, y)",
+    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\nggplot(\n  data = and_vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\nThis is the same but shorter:\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = length_1_mm, \n    y = weight_g)\n)\n\nRemember argument matching by position?"
+  },
+  {
     "objectID": "sessions/slides/ggplot.html#geom_",
     "href": "sessions/slides/ggplot.html#geom_",
     "title": "Data visualization with ggplot2",
@@ -2742,12 +2749,5 @@
     "title": "",
     "section": "3 Extra",
     "text": "3 Extra\nCreate a plot to show the results of your tests. Choose one of the following:\n\nCreate a boxplot with notches to visually compare differences in flipper length between species\nMake a plot showing the mean and standard error of the mean as pointrange or point with errorbars\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
-  },
-  {
-    "objectID": "sessions/slides/ggplot.html#aesx-y-1",
-    "href": "sessions/slides/ggplot.html#aesx-y-1",
-    "title": "Data visualization with ggplot2",
-    "section": "aes(x, y)",
-    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\nggplot(\n  data = and_vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\nThis is the same but shorter:\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = length_1_mm, \n    y = weight_g)\n)\n\nRemember argument matching by position?"
   }
 ]

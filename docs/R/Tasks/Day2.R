@@ -50,7 +50,7 @@ ggplot(penguins, aes(species, flipper_length_mm)) +
   geom_point()
 
 # Add jittered points
-ggplot(penguins, aes(species, flipper_length_mm)) +
+ggplot(penguins, aes(x = species, y = flipper_length_mm)) +
   geom_boxplot() +
   geom_point(position = position_jitter(seed = 123, width = 0.2))
 
@@ -121,6 +121,7 @@ ggplot(penguins, aes(
 ## 1.4.1 Beatuify plots from 1.3
 
 # Example one: Boxplot of flipper length and species
+library(paletteer)
 
 ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
   geom_boxplot(width = 0.3) +
@@ -128,7 +129,7 @@ ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
     alpha = 0.5,
     position = position_jitter(width = 0.2, seed = 123)
   ) +
-  ggsci::scale_color_uchicago() +
+  scale_color_paletteer_d("ggsci::default_uchicago") +
   labs(x = "Species", y = "Flipper length (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
@@ -188,7 +189,7 @@ ggsave(filename = "img/flipper_box.png",
       )
 
 # save as pdf in /img directory of the project
-ggsave(filename = "./img/flipper_box.pdf", flipper_box)
+ggsave(filename = "img/flipper_box.pdf", flipper_box)
 
 # heatmap example
 
@@ -264,7 +265,6 @@ ggsave("img/patchwork.png", final_plot)
 
 esquisse::esquisser(penguins)
 
-
 # 2 dplyr -------------------------------------------------------------------
 
 # library(tidyverse)
@@ -311,20 +311,6 @@ count(penguins, island)
 # number of penguins of each species on each island.
 
 count(penguins, island, species)
-
-# Sort tasks --------------------------------------------------------------
-
-# penguins with lowest body mass first
-
-arrange(penguins, body_mass_g)
-
-# penguins with highest body mass first
-
-arrange(penguins, desc(body_mass_g))
-
-# penguins by species and sex, with longest flippers first
-
-arrange(penguins, species, sex, desc(flipper_length_mm))
 
 # Select tasks --------------------------------------------------------------
 
@@ -422,3 +408,17 @@ another_tibble <- tibble(
 mutate(penguins,
   col_from_other_tibble = another_tibble$some_var
 )
+
+# Sort tasks --------------------------------------------------------------
+
+# penguins with lowest body mass first
+
+arrange(penguins, body_mass_g)
+
+# penguins with highest body mass first
+
+arrange(penguins, desc(body_mass_g))
+
+# penguins by species and sex, with longest flippers first
+
+arrange(penguins, species, sex, desc(flipper_length_mm))
