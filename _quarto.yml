@@ -71,7 +71,9 @@ website:
           - text: "R Script Day 1"
             href: R/Tasks/Day1.R
           - text: "R Script Day 2"
+            href: R/Tasks/Day2.R
           - text: "R Script Day 3"
+            href: R/Tasks/Day3.R
 
       - icon: github
         menu:

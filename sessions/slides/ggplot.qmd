@@ -1287,7 +1287,7 @@ g +
 :::{.fragment}
 
 - Specify colors 
-  - Via their [name](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+  - Via their [name](https://derekogle.com/NCGraphing/resources/colors)
   - Via their Hex color codes (use websites to generate your own color palettes, e.g. [here](https://coolors.co/))
 
 :::

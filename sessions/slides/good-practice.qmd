@@ -203,8 +203,9 @@ If you order your files by name, the ordering should make sense:
 
 ```{r example-structure-1}
 # This code replicates figure 2 from the
-# Baldauf et al. 2022 Journal of Ecology paper.
-# Authors: Selina Baldauf, Jane Doe, Jon Doe
+# Baldauf et al. 2022 Journal of Ecology
+# paper.
+# Authors: Selina Baldauf and Jane Doe
 
 library(tidyverse)
 library(vegan)
@@ -241,12 +242,12 @@ ggplot(input_data, aes(x = x, y = y)) +
   geom_point()
 ```
 
-- Insert a section label with `Ctrl/Cmd + Shift`
+- Insert a section label with `Ctrl/Cmd + Shift + R`
 - Navigate sections in the file outline
 
 . . .
 
-![](img/2023_04_20_what_they_forgot_to_teach_you/07_document_outline.png){width="80%"}
+![](img/2023_04_20_what_they_forgot_to_teach_you/07_document_outline.png){width="75%"}
 
 ## Coding style - Object names
 
