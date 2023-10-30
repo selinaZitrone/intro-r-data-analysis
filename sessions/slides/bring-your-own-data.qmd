@@ -43,77 +43,6 @@ from: markdown+emoji
   
 - **15-16**: Feedback, conclusion
 
-## New methods: Correlation plots
-
-```{r echo=FALSE, message=FALSE}
-library(tidyverse)
-library(corrplot)
-library(factoextra)
-library(patchwork)
-library(palmerpenguins)
-
-penguins %>%
-  select(where(is.numeric)) %>%
-  drop_na() %>%
-  as.matrix() %>%
-  cor() %>%
-  corrplot.mixed(order = "hclust", bg = NA,
-                 tl.pos = "lt")
-
-penguins %>%
-  select(where(is.numeric)) %>%
-  drop_na() %>%
-  as.matrix() %>%
-  cor() %>%
-  corrplot.mixed(order = "hclust")
-```
-
-## New methods: Correlation plots
-
-```{r echo=FALSE, message=FALSE}
-library(tidyverse)
-library(corrplot)
-library(factoextra)
-library(patchwork)
-library(palmerpenguins)
-
-penguins %>%
-  select(where(is.numeric)) %>%
-  drop_na() %>%
-  as.matrix() %>%
-  cor() %>%
-  corrplot(type = 'lower', order = 'hclust', tl.col = 'black',
-         cl.ratio = 0.2, tl.srt = 45, col = COL2('PuOr', 10))
-```
-
-## New methods: PCAS
-
-```{r echo=FALSE, message=FALSE}
-peng_no_na <- penguins %>% drop_na()
-peng_pca <- peng_no_na %>%
-  select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g)
-
-peng.pca <- prcomp(peng_pca, scale=TRUE)
-
-# Adding ellipses
-fviz_pca(peng.pca,
-                label = "var",
-                habillage = peng_no_na$species,
-                addEllipses = TRUE,
-                ellipse.level = 0.95,
-                palette = "Dark2")
-
-```
-
-
-## New methods: Correlation plots and PCAS
-
-- [`corrplot` package](https://taiyun.github.io/corrplot/) for correlation plots
-- [`factoextra` package](https://rpkgs.datanovia.com/factoextra/index.html) for PCA visualization
-- [Tutorial for PCAs in R](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/), [PCA tutorial for penguins](https://biodash.github.io/codeclub/s03e03_pca/)
-- Correlations and PCAs do not work with `NA` values: use `tidyr::drop_na()` to remove all `NA` values from the data first
-- These plots work for: penguins, wine, piecrab (?) dataset
-
 ## Data set 1: What makes a good wine?
 
 **Physicochemical properties of wine and quality judgements**
@@ -206,15 +135,13 @@ Get the data:
 athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-03/athletes.csv')
 ```
 
-<br>
-
 #### Ideas - know methods
 
-- Create summaries of medal counts for different groups with `dplyr`
+- Create **summaries** of medal counts for different groups with `dplyr`
 - Did the ratio of men/women winning medals change over time?
 - Which countries were the most successful ones? Does this differ between sports type?
   - Which types of sports accumulated the most medals?
-- Make plots such as:
+- **Make plots** such as:
   - Age distribution of athletes winning gold, silver and bronze
   - Compare the total number of medals over the years between winter and summer Olympics
 
@@ -363,10 +290,14 @@ head(ntl_airtemp)
 
 :::
 
+## Data set 4: Ice cover and temperature
+
 #### Hints
 
 - For some plots it might make sense to summarize annual means first
-- Use `left_join` to combined the tables with annual mean temperature and ice duration
+- Use `dplyr::left_join` to combined the tables with annual mean temperature and ice duration
+  - Have a look at the last slides of the `dplyr` session or look at the help
+  - Ask me if you need help with this
 
 ## Data set 5: RNAseq data
 
@@ -431,12 +362,81 @@ Data cleaning:
   - Use `select` to remove columns you don't need for analysis to get a better overview
   - Filter only significant genes ([tutorial](https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html)) defines them as `p_value < 0.01 & abs(logFC)` > 0.58)
   
+## Data set 5: RNAseq data
+
+#### Some tips:
+
 Data analysis:
 
-  - Heatmap with ggplot or with `pheatmap::pheatmap()`
-    - `pheatmap` takes a matrix as input (use `as_matrix` on tibble to transform)
-  - scale the counts -> have a look at the `scale` function
-    - `pheatmap` can scale but with ggplot you have to scale before plotting
+- Heatmap with ggplot or with `pheatmap::pheatmap()`
+  - `pheatmap` takes a matrix as input (use `as_matrix` on tibble to transform)
+- scale the counts -> have a look at the `scale` function
+  - `pheatmap` can scale but with ggplot you have to scale before plotting
+
+    
+## New methods: Correlation plots
+
+```{r echo=FALSE, message=FALSE}
+library(tidyverse)
+library(corrplot)
+library(factoextra)
+library(patchwork)
+library(palmerpenguins)
+
+penguins %>%
+  select(where(is.numeric)) %>%
+  drop_na() %>%
+  as.matrix() %>%
+  cor() %>%
+  corrplot.mixed(order = "hclust", bg = NA,
+                 tl.pos = "lt")
+```
+
+## New methods: Correlation plots
+
+```{r echo=FALSE, message=FALSE}
+library(tidyverse)
+library(corrplot)
+library(factoextra)
+library(patchwork)
+library(palmerpenguins)
+
+penguins %>%
+  select(where(is.numeric)) %>%
+  drop_na() %>%
+  as.matrix() %>%
+  cor() %>%
+  corrplot(type = 'lower', order = 'hclust', tl.col = 'black',
+         cl.ratio = 0.2, tl.srt = 45, col = COL2('PuOr', 10))
+```
+
+## New methods: PCAS
+
+```{r echo=FALSE, message=FALSE}
+peng_no_na <- penguins %>% drop_na()
+peng_pca <- peng_no_na %>%
+  select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g)
+
+peng.pca <- prcomp(peng_pca, scale=TRUE)
+
+# Adding ellipses
+fviz_pca(peng.pca,
+                label = "var",
+                habillage = peng_no_na$species,
+                addEllipses = TRUE,
+                ellipse.level = 0.95,
+                palette = "Dark2")
+
+```
+
+
+## New methods: Correlation plots and PCAS
+
+- [`corrplot` package](https://taiyun.github.io/corrplot/) for correlation plots
+- [`factoextra` package](https://rpkgs.datanovia.com/factoextra/index.html) for PCA visualization
+- [Tutorial for PCAs in R](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/), [PCA tutorial for penguins](https://biodash.github.io/codeclub/s03e03_pca/)
+- Correlations and PCAs do not work with `NA` values: use `tidyr::drop_na()` to remove all `NA` values from the data first
+- These plots work for: penguins, wine, piecrab dataset
 
 ## Some general tips
 
@@ -445,7 +445,8 @@ Data analysis:
 - First make a plan:
   - What do you want to achieve and what are the steps?
   - Try to think in technical terms
-- Start with something small, e.g. reading in the data and bringing it into the right format.
+  - Start with something small, e.g. reading in the data and bringing it into the right format.
+  - If you want, stop by in general to discuss your plan
 - Google
 - If you get stuck, ask in the chat or stop by in General
 - Have a look at the [package cheat sheets](https://posit.co/resources/cheatsheets/)

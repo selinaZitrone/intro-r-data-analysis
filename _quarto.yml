@@ -99,7 +99,6 @@ format:
 editor: source
 
 execute:
-  freeze: auto
   cache: true
   error: true
 

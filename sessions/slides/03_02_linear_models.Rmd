@@ -40,10 +40,6 @@ theme_set(theme_classic(base_size=16))
 options(scipen = 0)
 ```
 
-```{r child="title_slide.Rmd"}
-
-```
-
 ---
 class: inverse, middle, center
 
