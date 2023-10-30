@@ -13,6 +13,15 @@ tasks/*/*.html
 img/*
 additional_docs/*.pdf
 data/*
-R/byod/
+R/byod/2023_02_tips/pdb_files/
 
 /.quarto/
+R/byod/2023_02_tips/Hidago_bulkseq.xlsx
+R/byod/2023_02_tips/dnaseq/heatmap_genes
+R/byod/2023_02_tips/dnaseq/heatmap_genes.csv
+R/byod/2023_02_tips/dnaseq/limma-voom_luminalpregnant-luminallactate
+R/byod/2023_02_tips/dnaseq/limma-voom_normalised_counts
+R/byod/2023_02_tips/dnaseq/normalized_counts.csv
+R/byod/2023_02_tips/dnaseq/raw_counts
+R/byod/2023_02_tips/dnaseq/raw_counts.tsv
+R/byod/2023_02_tips/dnaseq/DE_results.csv
