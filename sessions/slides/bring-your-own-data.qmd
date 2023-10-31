@@ -446,7 +446,7 @@ fviz_pca(peng.pca,
   - What do you want to achieve and what are the steps?
   - Try to think in technical terms
   - Start with something small, e.g. reading in the data and bringing it into the right format.
-  - If you want, stop by in general to discuss your plan
+  - If you want, stop by in general to discuss your plan or write me in the chat
 - Google
 - If you get stuck, ask in the chat or stop by in General
 - Have a look at the [package cheat sheets](https://posit.co/resources/cheatsheets/)
