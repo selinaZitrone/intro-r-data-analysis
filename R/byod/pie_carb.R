@@ -1,11 +1,32 @@
+# Dataset 3: Atlantic marsh fiddler crab
+# Data set from Johnson 2019 provided in the lterdatasample package
+# See here for more info: https://lter.github.io/lterdatasampler/articles/pie_crab_vignette.html
+
+library(lterdatasampler)
 library(tidyverse)
 library(corrplot)
 library(factoextra)
 
-pie_crab <- read_csv(file = "data/pie_crab.csv", col_names = TRUE)
-
 # Remove all NAs
 pie_crab_no_na <- pie_crab %>% drop_na()
+
+
+# Exploratory plots -------------------------------------------------------
+
+# Bergman's rule: Organisms are larger in higher latitudes
+pie_crab %>%
+  ggplot(aes(y = latitude)) +
+  geom_boxplot(aes(size, group = latitude, color = -latitude), outlier.size = 0.8) +
+  scale_x_continuous(breaks = seq(from = 7, to = 23, by = 2), limits = c(6.5, 24)) +
+  scale_y_continuous(breaks = seq(from = 29, to = 43, by = 2), limits = c(29, 43.5)) +
+  theme(legend.position = "none")
+
+# Relationship between water temperature and latitude
+
+ggplot(data = pie_crab, aes(y = latitude, x = water_temp)) +
+  geom_point()
+
+# Correlation plots -------------------------------------------------------
 
 # Correlation plot
 pie_crab_no_na %>%
@@ -13,6 +34,9 @@ pie_crab_no_na %>%
   as.matrix() %>%
   cor() %>%
   corrplot.mixed(lower = "shade", upper = "pie", order = "hclust")
+
+
+# PCA analysis ------------------------------------------------------------
 
 # Run the PCA only on the numeric columns
 pie.pca <- pie_crab_no_na %>%

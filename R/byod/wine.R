@@ -1,34 +1,46 @@
+# Dataset 1: What makes a good wine
+# Dataset from Cortez et al. (2009) "Modeling wine preferences by data mining from physicochemical properties"
+# See slides for full reference
+
 library(tidyverse)
 library(corrplot)
 library(factoextra)
+
+
+# Prepare the data --------------------------------------------------------
+
 wine <- read_csv("data/wine.csv")
+# clean the names
 wine <- janitor::clean_names(wine)
 
 names(wine)
 
 # How many quality levels does the wine have?
 # Quality from 3-8
-wine %>%
-  pull(quality) %>%
+wine |>
+  pull(quality) |>
   unique()
 
 # Drop NA quality
-wine <- wine %>% filter(!is.na(quality))
+wine <- wine |> filter(!is.na(quality))
 
 # Turn quality into a factor
 wine <- mutate(wine, quality = as.factor(quality))
 
-# Look at the relationship between all variables and quality
-wine %>%
-  pivot_longer(!quality) %>%
+
+# Exploratory data analysis -----------------------------------------------
+
+# Relationship between all variables and quality
+wine |>
+  pivot_longer(!quality) |>
   ggplot(aes(x = quality, y = value)) +
   geom_boxplot(notch = TRUE) +
   facet_wrap(~name, scales = "free_y")
 
 # Looks like alcohol and acidity really make a difference
-wine %>%
-  select(alcohol, citric_acid, volatile_acidity, quality) %>%
-  pivot_longer(!quality) %>%
+wine |>
+  select(alcohol, citric_acid, volatile_acidity, quality) |>
+  pivot_longer(!quality) |>
   ggplot(aes(x = quality, y = value)) +
   geom_boxplot(notch = TRUE) +
   facet_wrap(~name, scales = "free_y")
@@ -39,22 +51,24 @@ wine %>%
 # How are the different characteristics correlated with each other?
 # https://taiyun.github.io/corrplot/
 
-M <- wine %>%
-  select(-quality) %>%
-  drop_na() %>%
+# Remove the quality column, drop all nas and make create a correlation matrix
+M <- wine |>
+  select(-quality) |>
+  drop_na() |>
   cor()
 
+# Create correlation plots
 corrplot(M)
 corrplot.mixed(M)
 corrplot.mixed(M, lower = "shade", upper = "pie", order = "hclust")
 
-# PCA ---------------------------------------------------------------------
+# PCA analysis ------------------------------------------------------------------
 # Tutorial: http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/
 # https://rpkgs.datanovia.com/factoextra/index.html
 
-res.pca <- wine %>%
-  drop_na() %>%
-  select(-quality) %>%
+res.pca <- wine |>
+  drop_na() |>
+  select(-quality) |>
   prcomp(scale = TRUE)
 
 # Visualize eigenvalues (how much variance is explained by the pcs)
@@ -68,24 +82,26 @@ fviz_pca_var(res.pca,
   repel = TRUE # Avoid text overlapping
 )
 
-# Plot individuals
+# Plot individual data points
 fviz_pca_ind(res.pca,
   col.ind = "cos2", geom = "point",
   gradient.cols = c("white", "#2E9FDF", "#FC4E07")
 )
 
-# Adding groups
-groups <- factor(wine %>% drop_na() %>% pull(quality))
+# Adding groups according to the quality judgement
+groups <- factor(wine |> drop_na() |> pull(quality))
+
 fviz_pca_ind(res.pca,
   label = "none",
-  habillage = wine %>% drop_na() %>% pull(quality) %>% factor(),
+  habillage = wine |> drop_na() |> pull(quality) |> factor(),
   addEllipses = TRUE,
   ellipse.level = 0.95, palette = "Dark2"
 )
 
+# Add arrows for the properties
 fviz_pca_biplot(res.pca,
   label = "var",
-  habillage = wine %>% drop_na() %>% pull(quality) %>% factor(),
+  habillage = wine |> drop_na() |> pull(quality) |> factor(),
   addEllipses = TRUE,
   ellipse.level = 0.95,
   palette = "Dark2"

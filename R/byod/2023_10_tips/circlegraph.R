@@ -40,3 +40,24 @@ p <- ggbio() + circle(mut.gr, geom = "rect", color = "steelblue") +
   circle(hg19sub, geom = "scale", size = 2) +
   circle(hg19sub, geom = "text", aes(label = seqnames), vjust = 0, size = 3)
 p
+
+
+# Some dummy data ---------------------------------------------------------
+# Some gene dummy data with 3 columns: Gene name, start and end position
+# with a total of 20 rows that correspond to 20 genes
+
+genes <- tibble(
+  name = letters[1:10],
+  start = c(1, 5, 10, 15, 20, 25, 30, 35, 40, 45),
+  end = c(4, 9, 14, 19, 24, 29, 34, 39, 44, 49)
+)
+
+# Plot circular grap with start and end positions of genes
+
+ggplot(genes, aes(x = start, xend = end, y = name, yend = name)) +
+  geom_segment() +
+  coord_polar() +
+  theme_void()
+
+
+
