@@ -8,7 +8,7 @@ library(performance)
 
 relig_income
 
-pivot_longer(relig_income,
+relig <- pivot_longer(relig_income,
              cols = !religion, # 2:11, `<$10k`:`Don't know/refused`
              names_to = "income",
              values_to = "count"
@@ -76,7 +76,7 @@ penguins |>
 
 # subset for 3 species flipper length
 adelie <- filter(penguins, species == "Adelie")$flipper_length_mm
-chinstrap <- filter(penguins, species == "Chinstrap")$flipper_length_mm
+chinstrap <- filter(penguins,species == "Chinstrap")$flipper_length_mm
 gentoo <- filter(penguins, species == "Gentoo")$flipper_length_mm
 
 adelie <- filter(penguins, species == "Adelie") |> pull(flipper_length_mm)
@@ -178,4 +178,3 @@ penguins |>
     map_signif_level = TRUE,
     tip_length = 0.01
   )
-

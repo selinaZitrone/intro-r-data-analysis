@@ -2,182 +2,182 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/tidyr.html</loc>
-    <lastmod>2023-10-17T14:26:32.115Z</lastmod>
+    <lastmod>2024-03-02T15:53:15.224Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/readr.html</loc>
-    <lastmod>2023-10-17T14:26:21.278Z</lastmod>
+    <lastmod>2024-03-02T15:53:04.236Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/intro-r.html</loc>
-    <lastmod>2023-10-17T14:26:11.693Z</lastmod>
+    <lastmod>2024-03-02T15:52:53.184Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/dplyr.html</loc>
-    <lastmod>2023-10-17T14:26:01.326Z</lastmod>
+    <lastmod>2024-03-02T15:52:41.628Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/tidyr.html</loc>
-    <lastmod>2023-10-17T14:25:52.549Z</lastmod>
+    <lastmod>2024-03-02T15:52:33.100Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/readr.html</loc>
-    <lastmod>2023-10-17T14:25:43.374Z</lastmod>
+    <lastmod>2024-03-02T15:52:21.242Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/ggplot.html</loc>
-    <lastmod>2023-10-17T14:25:34.819Z</lastmod>
+    <lastmod>2024-03-02T15:52:09.405Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/dplyr.html</loc>
-    <lastmod>2023-10-17T14:25:25.165Z</lastmod>
+    <lastmod>2024-03-02T15:51:59.287Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/tidyr.html</loc>
-    <lastmod>2023-10-17T14:25:14.147Z</lastmod>
+    <lastmod>2024-03-02T15:51:46.734Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/template.html</loc>
-    <lastmod>2023-10-17T14:24:49.648Z</lastmod>
+    <lastmod>2024-03-02T15:51:26.247Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/intro-rstudio.html</loc>
-    <lastmod>2023-10-17T14:24:28.639Z</lastmod>
+    <lastmod>2024-03-02T15:51:06.432Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/good-practice.html</loc>
-    <lastmod>2023-10-17T14:24:07.195Z</lastmod>
+    <lastmod>2024-03-02T15:50:45.257Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/functions.html</loc>
-    <lastmod>2023-10-17T14:23:39.799Z</lastmod>
+    <lastmod>2024-03-02T15:50:16.359Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/data-tibbles.html</loc>
-    <lastmod>2023-10-17T14:23:17.116Z</lastmod>
+    <lastmod>2024-03-02T15:49:54.036Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/bring-your-own-data.html</loc>
-    <lastmod>2023-10-17T14:22:54.576Z</lastmod>
+    <lastmod>2024-03-02T15:49:33.920Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/11_good-practice.html</loc>
-    <lastmod>2023-10-17T14:22:34.866Z</lastmod>
+    <lastmod>2024-03-02T15:49:14.559Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/09_tidyr.html</loc>
-    <lastmod>2023-10-17T14:22:21.613Z</lastmod>
+    <lastmod>2024-03-02T15:49:03.015Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/07_ggplot.html</loc>
-    <lastmod>2023-10-17T14:22:08.315Z</lastmod>
+    <lastmod>2024-03-02T15:48:51.601Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/05_readr.html</loc>
-    <lastmod>2023-10-17T14:21:59.118Z</lastmod>
+    <lastmod>2024-03-02T15:48:42.559Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/03_functions.html</loc>
-    <lastmod>2023-10-17T14:21:50.400Z</lastmod>
+    <lastmod>2024-03-02T15:48:33.841Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/01_intro-rstudio.html</loc>
-    <lastmod>2023-10-17T14:21:41.768Z</lastmod>
+    <lastmod>2024-03-02T15:48:25.062Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/packages.html</loc>
-    <lastmod>2023-10-17T14:21:33.312Z</lastmod>
+    <lastmod>2024-03-02T15:48:16.137Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/index.html</loc>
-    <lastmod>2023-10-17T14:21:25.058Z</lastmod>
+    <lastmod>2024-03-02T15:48:07.546Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/online_resources.html</loc>
-    <lastmod>2023-10-17T14:21:29.144Z</lastmod>
+    <lastmod>2024-03-02T15:48:10.699Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/preparations.html</loc>
-    <lastmod>2023-10-17T14:21:37.328Z</lastmod>
+    <lastmod>2024-03-02T15:48:19.340Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/02_intro-r.html</loc>
-    <lastmod>2023-10-17T14:21:46.219Z</lastmod>
+    <lastmod>2024-03-02T15:48:30.935Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/04_data-tibbles.html</loc>
-    <lastmod>2023-10-17T14:21:54.626Z</lastmod>
+    <lastmod>2024-03-02T15:48:37.059Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/06_common-errors.html</loc>
-    <lastmod>2023-10-17T14:22:03.298Z</lastmod>
+    <lastmod>2024-03-02T15:48:45.437Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/08_dplyr.html</loc>
-    <lastmod>2023-10-17T14:22:12.854Z</lastmod>
+    <lastmod>2024-03-02T15:48:57.391Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/10_tests.html</loc>
-    <lastmod>2023-10-17T14:22:30.386Z</lastmod>
+    <lastmod>2024-03-02T15:49:08.645Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/00_organization.html</loc>
-    <lastmod>2023-10-17T14:22:44.411Z</lastmod>
+    <lastmod>2024-03-02T15:49:23.574Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/common-errors.html</loc>
-    <lastmod>2023-10-17T14:23:05.378Z</lastmod>
+    <lastmod>2024-03-02T15:49:43.666Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/dplyr.html</loc>
-    <lastmod>2023-10-17T14:23:29.742Z</lastmod>
+    <lastmod>2024-03-02T15:50:06.067Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/ggplot.html</loc>
-    <lastmod>2023-10-17T14:23:56.618Z</lastmod>
+    <lastmod>2024-03-02T15:50:34.644Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/intro-r.html</loc>
-    <lastmod>2023-10-17T14:24:17.727Z</lastmod>
+    <lastmod>2024-03-02T15:50:56.696Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/readr.html</loc>
-    <lastmod>2023-10-17T14:24:39.126Z</lastmod>
+    <lastmod>2024-03-02T15:51:16.861Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/tests.html</loc>
-    <lastmod>2023-10-17T14:25:01.524Z</lastmod>
+    <lastmod>2024-03-02T15:51:36.799Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/data-tibbles.html</loc>
-    <lastmod>2023-10-17T14:25:20.333Z</lastmod>
+    <lastmod>2024-03-02T15:51:53.001Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/empty.html</loc>
-    <lastmod>2023-10-17T14:25:29.533Z</lastmod>
+    <lastmod>2024-03-02T15:52:02.417Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/intro-r.html</loc>
-    <lastmod>2023-10-17T14:25:39.113Z</lastmod>
+    <lastmod>2024-03-02T15:52:15.437Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/tests.html</loc>
-    <lastmod>2023-10-17T14:25:47.957Z</lastmod>
+    <lastmod>2024-03-02T15:52:27.140Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/data-tibbles.html</loc>
-    <lastmod>2023-10-17T14:25:56.631Z</lastmod>
+    <lastmod>2024-03-02T15:52:36.090Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/ggplot.html</loc>
-    <lastmod>2023-10-17T14:26:06.834Z</lastmod>
+    <lastmod>2024-03-02T15:52:47.547Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/intro-rstudio.html</loc>
-    <lastmod>2023-10-17T14:26:16.333Z</lastmod>
+    <lastmod>2024-03-02T15:52:58.784Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/tests.html</loc>
-    <lastmod>2023-10-17T14:26:26.913Z</lastmod>
+    <lastmod>2024-03-02T15:53:09.743Z</lastmod>
   </url>
 </urlset>
