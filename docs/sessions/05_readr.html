@@ -4627,12 +4627,12 @@ vertical-align: -.125em;
   <ul>
   <li><a href="#task" id="toc-task" class="nav-link active" data-scroll-target="#task"><span class="header-section-number">1</span> Task</a>
   <ul class="collapse">
-  <li><a href="#get-started-with-readr-and-the-tidyverse" id="toc-get-started-with-readr-and-the-tidyverse" class="nav-link" data-scroll-target="#get-started-with-readr-and-the-tidyverse"><span class="header-section-number">1.2</span> Get started with readr and the tidyverse</a>
+  <li><a href="#get-started-with-readr-and-the-tidyverse" id="toc-get-started-with-readr-and-the-tidyverse" class="nav-link" data-scroll-target="#get-started-with-readr-and-the-tidyverse"><span class="header-section-number">1.1</span> Get started with readr and the tidyverse</a>
   <ul class="collapse">
-  <li><a href="#write-a-tibble-to-disk" id="toc-write-a-tibble-to-disk" class="nav-link" data-scroll-target="#write-a-tibble-to-disk"><span class="header-section-number">1.2.1</span> Write a tibble to disk</a></li>
+  <li><a href="#write-a-tibble-to-disk" id="toc-write-a-tibble-to-disk" class="nav-link" data-scroll-target="#write-a-tibble-to-disk"><span class="header-section-number">1.1.1</span> Write a tibble to disk</a></li>
   </ul></li>
-  <li><a href="#read-data-into-r" id="toc-read-data-into-r" class="nav-link" data-scroll-target="#read-data-into-r"><span class="header-section-number">1.3</span> Read data into R</a></li>
-  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra"><span class="header-section-number">1.4</span> Extra</a></li>
+  <li><a href="#read-data-into-r" id="toc-read-data-into-r" class="nav-link" data-scroll-target="#read-data-into-r"><span class="header-section-number">1.2</span> Read data into R</a></li>
+  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra"><span class="header-section-number">1.3</span> Extra</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/selinaZitrone/intro-r-data-analysis/edit/master/sessions/05_readr.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/selinaZitrone/intro-r-data-analysis/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -4672,21 +4672,19 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <!-- ## Find the solution [here](solutions/readr.qmd){target="_blank"}. -->
-<section id="find-the-solution-here-later." class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="find-the-solution-here-later."><span class="header-section-number">1.1</span> Find the solution here later.</h2>
-</section>
+<p>Find the solution here later.</p>
 </div>
 </div>
-<section id="get-started-with-readr-and-the-tidyverse" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="get-started-with-readr-and-the-tidyverse"><span class="header-section-number">1.2</span> Get started with readr and the tidyverse</h2>
+<section id="get-started-with-readr-and-the-tidyverse" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="get-started-with-readr-and-the-tidyverse"><span class="header-section-number">1.1</span> Get started with readr and the tidyverse</h2>
 <p>Before you start, make sure to install the <code>tidyverse</code> packages by calling</p>
 <div class="cell" data-hash="05_readr_cache/html/unnamed-chunk-1_c40617826e4277b939bf9d269456bbc3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This will install readr along with other tidyverse packages.</p>
 <p>Remember to put <code>library(tidyverse)</code> (or <code>library(readr)</code>) on top of your script to access the readr functions.</p>
-<section id="write-a-tibble-to-disk" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="write-a-tibble-to-disk"><span class="header-section-number">1.2.1</span> Write a tibble to disk</h3>
+<section id="write-a-tibble-to-disk" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="write-a-tibble-to-disk"><span class="header-section-number">1.1.1</span> Write a tibble to disk</h3>
 <p>Let’s use the <code>animals</code> tibble from the previous task and write it into the data folder in our project.</p>
 <p>Before writing the tibble</p>
 <ul>
@@ -4699,8 +4697,8 @@ Note
 <p>Check if the file was written into the correct folder.</p>
 </section>
 </section>
-<section id="read-data-into-r" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="read-data-into-r"><span class="header-section-number">1.3</span> Read data into R</h2>
+<section id="read-data-into-r" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="read-data-into-r"><span class="header-section-number">1.2</span> Read data into R</h2>
 <p>Now, try to read the data set back into R using the appropriate <code>read_*</code> function.</p>
 <p>Make sure that you save the table you read in in a new variable to have it available for later use.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -4717,8 +4715,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="extra" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="extra"><span class="header-section-number">1.4</span> Extra</h2>
+<section id="extra" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="extra"><span class="header-section-number">1.3</span> Extra</h2>
 <ul>
 <li><p>Navigate to your <code>data/</code> folder using the <strong>Files pane</strong> of RStudio. Click on the <code>.csv</code> file that you just saved there. What can you do? Try the <strong>Import Dataset</strong> button and see what you can do there.</p></li>
 <li><p>Try reading some <code>xlsx</code> or <code>csv</code> tables that you have on your machine into R</p>
