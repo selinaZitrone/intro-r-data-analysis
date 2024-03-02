@@ -32,6 +32,6 @@ Open RStudio and click on "Help -> Check for Updates". RStudio will tell you, if
 
 If you want to check the current installed version of R, open RStudio and type *version* in the console. This will print some information about your R version, among them, the version number.
 
-I will be using R version 4.3.1 (Beagle Scouts). You don't need the newest version of R, but if you are still at a version below 4.2, you should update you version.
+You don't need the newest version of R, but if you are still at a version below 4.2, you should update your version.
 
 If you want to update R, just download and install the newest version of R (see Step 1 for instructions).
