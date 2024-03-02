@@ -12,7 +12,8 @@ title: "Tables in R - Data frames and tibbles"
 
 :::{.callout-note}
 
-## Find the solution [here](solutions/data-tibbles.qmd){target="_blank"}.
+<!-- ## Find the solution [here](solutions/data-tibbles.qmd){target="_blank"}. -->
+## Find the solution here later.
 
 :::
 
