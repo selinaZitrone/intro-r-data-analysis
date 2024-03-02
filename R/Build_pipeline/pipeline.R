@@ -1,14 +1,19 @@
-# Render slides -----------------------------------------------------------
+# render the website
+quarto::quarto_render()
 
-source("./R/Build_pipeline/render_slides.R")
+# render slides as pdf
+slides_html <- list.files(here::here("docs/sessions/slides/"),
+  pattern = "*.html", full.names = TRUE
+)
 
-# Render site -------------------------------------------------------------
+lapply(slides_html, function(x) {
+  pagedown::chrome_print(x,
+    format = "pdf"
+  )
+  print(paste0("Printed ", x))
+})
 
-rmarkdown::render_site(encoding = "UTF-8")
-
-# Commit ------------------------------------------------------------------
-
+# commit and push
 git2r::add(path = here::here("docs"))
 git2r::commit(message = "re-render site")
-git2r::push(credentials = git2r::cred_token())
-
+git2r::push(credentials = git2r::ssh_path())

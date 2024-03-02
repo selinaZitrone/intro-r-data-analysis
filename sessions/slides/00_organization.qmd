@@ -64,15 +64,15 @@ library(fontawesome)
 
 ## Who are you?
 
+![](img/day1/time_data_analysis.png)
+
+## Who are you?
+
 ![](img/day1/tools.png)
 
 ## Who are you?
 
 ![](img/day1/methods.png)
-
-## Who are you?
-
-![](img/day1/plots.png)
 
 ## Workshop topics
 
