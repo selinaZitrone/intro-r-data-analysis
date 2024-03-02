@@ -1,11 +1,20 @@
 names <- c(
-  "Thao", "Neele",
-  "Felix", "Susnato",
-  "Filip", "Reena", "Svenja",
-  "Annika", "Varsha", "Siye",
-  "Simon", "Paula",
-  "Stefanie", "Rajas", "Abolfazl",
-  "Emina"
+  "Muhammad-Ali",
+  "Marco",
+  "Yves",
+  "Amina",
+  "Sofia",
+  "Antreas",
+  "Xuemei",
+  "Philipp",
+  "Elif",
+  "Caro",
+  "Max",
+  "Jin",
+  "Matteo",
+  "Guang",
+  "Vera",
+  "Orlando"
 )
 ngroups <- 4
 groupsize <- 4
