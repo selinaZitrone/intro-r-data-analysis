@@ -6,8 +6,8 @@ number-sections: false
 
 <hr>
 **Workshop sessions**<br>
-📅 09.10.2023 - 10.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
-📅 16.10.2023 - 17.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
+📅 04.03.2024 - 05.03.2024 from 🕘 9 a.m. - 4 p.m. <br>
+📅 11.03.2024 - 12.03.2024 from 🕘 9 a.m. - 4 p.m. <br>
 📍 Online on Webex <br>
 <hr>
 
@@ -20,8 +20,8 @@ The workshop's main goal is to equip you with essential R skills for analyzing y
 In 4 Workshop days we will cover the following topics:
 
 - **Day 1**: Introduction to R and R Studio, Good programming practice, Reading data into R
-- **Day 2**: Data visualization with the ggplot package
-- **Day 3**: Data wrangling with dplyr, data cleaning with tidyr
+- **Day 2**: Data visualization with the ggplot package, data wrangling with dplyr
+- **Day 3**: Data cleaning with tidyr, statistical tests
 - **Day 4**: Bring your own research data (or get some real-life data from me)
 
 ### Concept
