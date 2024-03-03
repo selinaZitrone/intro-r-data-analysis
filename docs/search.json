@@ -1218,13 +1218,6 @@
     "text": "Linear models\n\nanova with R: explanation why an anova is also a linear model"
   },
   {
-    "objectID": "online_resources.html#twitter-accounts-to-follow",
-    "href": "online_resources.html#twitter-accounts-to-follow",
-    "title": "Additional online resources",
-    "section": "Twitter accounts to follow",
-    "text": "Twitter accounts to follow\nI personally learn a lot of tricks and find a lot of inspiration and resources by following some R people and accounts on twitter. Often people post helpful tutorials or blogpost that you would not find otherwise. If you are a twitter user, you can try that as well. Some suggestions that are in no way complete are:\n\nCédric Scherer mainly data visualization and ggplot content\nAllison Horst\nRStudio official RStudio account\nHadley Wickham data visualisation, tidyverse\nJenny Bryan\nrOpenSci develop R tools for open science\nOne R Tip a Day one helpful R tip every day\nR posts you might have missed repost R blog posts from different topics"
-  },
-  {
     "objectID": "preparations.html",
     "href": "preparations.html",
     "title": "Course preparations",
