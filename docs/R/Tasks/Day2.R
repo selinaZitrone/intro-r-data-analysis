@@ -23,6 +23,7 @@ ggplot(
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 
+
 # or short
 ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) +
   geom_point() +
@@ -53,7 +54,6 @@ ggplot(penguins, aes(species, flipper_length_mm)) +
 ggplot(penguins, aes(x = species, y = flipper_length_mm)) +
   geom_boxplot() +
   geom_point(position = position_jitter(seed = 123, width = 0.2))
-
 
 ## 1.3.3 Differences between body mass of male and female penguins (boxplot)
 
@@ -89,7 +89,7 @@ ggplot(penguins, aes(x = sex, y = body_mass_g)) +
 # Overlapping
 ggplot(penguins, aes(
   x = flipper_length_mm,
-  fill = species
+  color = species
 )) +
   geom_histogram(alpha = 0.5, position = "identity")
 
@@ -115,6 +115,24 @@ ggplot(penguins, aes(
   fill = flipper_length_mm
 )) +
   geom_tile()
+
+ggplot(
+  data = penguins,
+  aes(
+    x = sex,
+    y = body_mass_g,
+    fill = species,
+    color = species
+  )
+) +
+  geom_boxplot(position = position_dodge(width = 0.9), notch = TRUE) +
+  geom_point(
+    alpha = 0.5,
+    position = position_jitterdodge(
+      seed = 123, jitter.width = 0.2,
+      dodge.width = 0.9
+    )
+  )
 
 # 1.4 Beautify the plots --------------------------------------------------
 
