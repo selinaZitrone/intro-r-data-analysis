@@ -13,8 +13,8 @@ code-line-numbers: false
 
 :::{.callout-note}
 
-<!-- ## Find the solution [here](solutions/tests.qmd){target="_blank"}. -->
-Find the solution here later.
+Find the solution [here](solutions/tests.qmd){target="_blank"}.
+<!-- Find the solution here later. -->
 
 :::
 
