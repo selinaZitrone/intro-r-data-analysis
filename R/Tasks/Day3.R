@@ -1,6 +1,5 @@
 library(tidyverse)
 library(palmerpenguins)
-library(performance)
 
 # 1. Tidyr ----------------------------------------------------------------
 
@@ -14,6 +13,7 @@ relig <- pivot_longer(relig_income,
              values_to = "count"
 )
 
+relig
 
 # 2. billboard
 
@@ -25,6 +25,7 @@ pivot_longer(billboard,
              values_to = "rank"
 )
 
+
 #### Extras
 charts <- pivot_longer(billboard,
                        cols = wk1:wk76,
@@ -34,36 +35,6 @@ charts <- pivot_longer(billboard,
                        values_drop_na = TRUE
 )
 charts
-separate(
-  charts,
-  date.entered, # column to separate
-  sep = "-",
-  into = c("year", "month", "day")
-)
-
-# 3. fish_encounters
-
-fish_encounters
-
-summary(fish_encounters)
-
-pivot_wider(fish_encounters,
-            names_from = station,
-            values_from = seen
-)
-#### Extra
-
-pivot_wider(fish_encounters,
-            names_from = station,
-            values_from = seen,
-            values_fill = 0
-)
-
-# Transpose a tibble with a combination of pivot_longer and pivot_wider
-
-relig_income |>
-  pivot_longer(-religion) |>
-  pivot_wider(names_from = religion, values_from = value)
 
 # Penguins boxplot
 penguins |>
@@ -104,17 +75,6 @@ ggplot(penguins, aes(sample = flipper_length_mm, color = species)) +
 shapiro.test(adelie) # normal
 shapiro.test(chinstrap) # normal
 shapiro.test(gentoo) # not normal
-
-# Test the same with the Kolmogorov Smirnov Test
-ks.test(adelie, "pnorm",
-  mean = mean(adelie, na.rm = TRUE), sd = sd(adelie, na.rm = TRUE)
-)
-ks.test(chinstrap, "pnorm",
-  mean = mean(chinstrap, na.rm = TRUE), sd = sd(chinstrap, na.rm = TRUE)
-)
-ks.test(gentoo, "pnorm",
-  mean = mean(gentoo, na.rm = TRUE), sd = sd(gentoo, na.rm = TRUE)
-)
 
 # Comparison Chinstrap vs. Adelie
 # both normal so test for equal variance
