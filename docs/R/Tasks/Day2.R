@@ -287,7 +287,7 @@ esquisse::esquisser(penguins)
 
 # library(tidyverse)
 # library(palmerpenguins)
-
+#… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).
 
 # Filter tasks -------------------------------------------------------------------
 
