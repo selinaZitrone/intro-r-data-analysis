@@ -14,6 +14,7 @@ img/*
 additional_docs/*.pdf
 data/*
 R/byod/2023_02_tips/pdb_files/
+R/byod/
 
 /.quarto/
 R/byod/2023_02_tips/Hidago_bulkseq.xlsx

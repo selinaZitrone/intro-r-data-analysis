@@ -115,21 +115,6 @@ You can use R without RStudio but RStudio without R would be of little use
 
 :::
 
-## Basic idea of writing code for data analysis
-
-::: {.incremental}
-
-1. Break down your process into small steps
-
-2. Write precise instructions in the R language for each step
-  - You do this in a document called an R script
-
-3. Tell R to execute these instructions
-
-4. R will give you the results (or an error message)
-
-:::
-
 # A quick tour around RStudio {.inverse}
   
 ## A quick tour around RStudio
@@ -304,13 +289,13 @@ MyProject
 |
 |- data
 |
-|- documents
+|- docs
 |   |
 |   |- notes
 |   |
 |   |- reports
 |
-|- analysis
+|- R
 |   |
 |   |- clean_data.R 
 |   |
@@ -345,13 +330,13 @@ Project
 |
 |- data
 |
-|- documents
+|- docs
 |   |
 |   |- notes
 |   |
 |   |- reports
 |
-|- analysis
+|- R
 |   |
 |   |- clean_data.R 
 |   |
@@ -392,13 +377,13 @@ Project
 |
 |- data
 |
-|- documents
+|- docs
 |   |
 |   |- notes
 |   |
 |   |- reports
 |
-|- analysis
+|- R
 |   |
 |   |- clean_data.R 
 |   |
