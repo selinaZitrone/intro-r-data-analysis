@@ -1,0 +1,35 @@
+---
+title: "AI tools for R programming"
+code-line-numbers: false
+execute:
+  eval: false
+---
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="slides/AI-tools.html"></iframe>
+```
+
+[Slides in full screen](slides/AI-tools.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/AI-tools.pdf" download>Download PDF slides</a>
+
+
+Below you find a few links to further resources on AI tools for R programming. 
+This is only a selection from the vast amount of tools available.
+
+## Links
+
+### Browser-based AI-Tools
+
+- [Rtutor](https://rtutor.ai/): Browser-based tool where you can ask questions about R and data analysis. You can also upload a dataset and ask the AI to analyse it. You can then download the corresponding R script or Rmardown report.
+    - There is also a [corresponding R package](https://github.com/gexijin/RTutor) that you can install to use locally. But for this you need to have your own OpenAI API key, so it is a bit more work to set up.
+- [Julius AI](https://julius.ai): Browser-based tool where you can ask questions about your data. You can upload a dataset and ask questions about it. The AI will then give you answers and visualizations. You can also download the corresponding R script.
+  - Works great but costs ~20€ per month, but you can get a 50% discount if you are a student or academic
+    
+### Integrated AI-Tools
+
+- [GitHub Copilot](https://selinazitrone.github.io/tools_and_tips/sessions/07_ai_tools.html): One of the most widespread integrated tool. Gives you inline code suggestions. Great to code faster, write better code, debug, etc.
+  - [Step-by-step guide on how to get Copilot](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html) for free for Visual Studio Code or RStudio.
+  - [GitHub Copilot Docs](https://docs.github.com/en/copilot): Useful information and guides on how to use Copilot
+  - [Privacy FAQ of GitHub Copilot](https://github.com/features/copilot/#faq)
+  - [Prompt engineering with GH Copilot](https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp) to get better results
+- [`chattr` package](https://blogs.rstudio.com/ai/posts/2024-04-04-chat-with-llms-using-chattr/) to chat with different LLMs (e.g. GitHub Copilot, GPT-4, ...) from
+inside R Studio

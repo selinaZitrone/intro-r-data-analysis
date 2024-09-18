@@ -1,0 +1,225 @@
+---
+title: "AI Tools for R"
+subtitle: "Day 1 - Introduction to Data Analysis with R"
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: today
+date-format: long
+format: 
+  revealjs:
+    footer: "Selina Baldauf // AI Tools for R"
+    highlight-style: breeze
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    auto-stretch: false
+    scrollable: true
+    fig-align: center
+    theme: slides.scss
+execute: 
+  eval: false
+  echo: true
+  warning: false
+  message: false
+from: markdown+emoji
+---
+
+## Motivation
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+- AI tools assist programmers with
+  - Coding
+  - Debugging
+  - Learning
+  - ...
+- Higher productivity and efficiency
+- More motivation
+- But careful: You still need to understand what's going on!
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/dalle_motivation.png)
+
+:::
+
+:::
+
+## Overview of tools
+
+:::{.nonincremental}
+
+- **Browser-based chat bots** ([ChatGPT](https://chat.openai.com), [Bard](https://bard.google.com), ...)
+  - General-purpose<br>
+
+:::
+
+. . .
+
+:::{.nonincremental}
+- **Data-analysis tools** ([Julius AI](https://julius.ai/), [RTutor](https://rtutor.ai/), ...)
+  - Upload data and ask questions about it
+  - Can also execute code
+  - Chat with your data
+
+:::
+
+. . .
+
+:::{.nonincremental}
+- **Integrated AI tools** ([GitHub Copilot](https://github.com/features/copilot), [Codium AI](https://codium.ai/), ...)
+  - Integrated directly in programming environment
+  - Real-time suggestions, chat, debugging, ...<br>
+
+:::
+
+. . .
+
+Find the tools that best fit your workflow!
+
+## R Tutor
+
+:::{.columns}
+
+:::{.column width="30%"}
+
+:::{.nonincremental}
+
+- [https://rtutor.ai/](https://rtutor.ai/)
+- Free browser tool
+- Upload data and ask questions about it
+- Use the demo data
+
+:::
+
+:::
+
+:::{.column width="70%"}
+
+![](img/day1/rtutor.png)
+
+:::
+
+:::
+
+## Julius AI
+
+:::{.columns}
+
+:::{.column width="30%"}
+
+:::{.nonincremental}
+- [https://julius.ai/](https://julius.ai/)
+- Try for free
+- Basic plan ~20€ per months (-50% academic discount)
+- Upload data and ask questions about it
+
+:::
+
+:::
+
+:::{.column width="70%"}
+
+![](img/day1/juliusai.png)
+
+:::
+
+:::
+
+## Github Copilot
+
+- [https://github.com/features/copilot](https://github.com/features/copilot)
+- Model based on GPT-4 and OpenAI's Codex
+  - Specifically trained on source code
+- Basic idea: Integrate directly into R Studio (or other IDEs)
+- Works best for well-represented languages (Python, JS, ...)
+  
+## How to get GitHub Copilot
+
+See [this website](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html) for step-by-step guide and more information.
+
+It's really easy, but you need:
+
+- GitHub Account
+- Active GH Copilot subscription (10$ per month)
+  - Get it for free as an academic with an educational account
+- IDE that supports Copilot
+  - Full support: Visual Studio (Code), Vim, Neovim, JetBrains IDEs (e.g. PyCharm)
+  - Limited support: RStudio, ?
+
+## GH Copilot: Inline code suggestions
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+-  Copilot tries to predict what you want to do next
+-  Suggestions are based on the context
+   -  Previous code
+   -  Comments
+   -  Variable and function names
+   -  ...
+
+:::
+
+:::{.column width="50%"}
+
+![](img/day1/01_fibonacci_demo.gif)
+
+:::
+
+:::
+  
+## Get better suggestions
+
+- **Provide context**
+  - Open other files
+  - Add top level comments explaining the purpose of the script
+  - Name variables and functions properly
+  - Copy-paste sample code and delete it later
+
+- **Be consistent**
+  - "Garbage in, garbage out"
+  - Have a nice and consistent coding style
+  
+. . .
+
+Nice side effect of using Copilot: More good-practice coding
+
+## Chat with GH copilot in R Studio
+
+- Available through the [`chattr` package](https://blogs.rstudio.com/ai/posts/2024-04-04-chat-with-llms-using-chattr/)
+- Chat with Copilot in the sidebar
+- Also supports other LLMs (e.g. GPT4o, ...)
+
+## Concerns to consider
+
+- **Privacy**
+  - Chose whether your prompts and suggestions will be used by Github (`Github -> Seetings -> Copilot -> Policies`)
+  - Check privacy guidelines before you upload data
+- **Plagiarism**
+  - Block suggestions matching public code (`Github -> Seetings -> Copilot -> Policies`)
+- **Ethical concerns**
+  - For-profit tool trained on open-source
+- **Environmental concerns**
+  - Water and energy usage
+
+## Usage guidelines
+
+- No definite guidelines, but see examples [listed here](https://selinazitrone.github.io/tools_and_tips/sessions/07_ai_tools.html#concerns-and-guidelines)
+- **Responsibility**
+  - You are responsible for your scientific output
+  - Stay critical, double-check
+- **Transparency**
+  - Make clear for which tasks you used which AI
+- **Know relevant guidelines**
+  - Journals
+  - Your university
+- **Still understand what is happening!**
