@@ -350,13 +350,6 @@
     "text": "Difference between R and RStudio\n\n\n\n\n\n\n\n\n\n\nAnalogy and image from ModernDive Book\n\n\n\n\n\n\n\n\n\nSummary\n\n\nYou can use R without RStudio but RStudio without R would be of little use"
   },
   {
-    "objectID": "sessions/slides/intro-rstudio.html#basic-idea-of-writing-code-for-data-analysis",
-    "href": "sessions/slides/intro-rstudio.html#basic-idea-of-writing-code-for-data-analysis",
-    "title": "Introduction to RStudio",
-    "section": "Basic idea of writing code for data analysis",
-    "text": "Basic idea of writing code for data analysis\n\n\nBreak down your process into small steps\nWrite precise instructions in the R language for each step\n\n\nYou do this in a document called an R script\n\n\nTell R to execute these instructions\nR will give you the results (or an error message)"
-  },
-  {
     "objectID": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio-1",
     "href": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio-1",
     "title": "Introduction to RStudio",
@@ -410,21 +403,21 @@
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-1",
     "title": "Introduction to RStudio",
     "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\n\n\nMyProject\n|\n|- data\n|\n|- documents\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- analysis\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|\nExample project structure"
+    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|\nExample project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-2",
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-2",
     "title": "Introduction to RStudio",
     "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nAn RStudio project is just a normal directory with an .Rproj file\n\n\nProject\n|\n|- data\n|\n|- documents\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- analysis\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
+    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nAn RStudio project is just a normal directory with an .Rproj file\n\n\nProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
     "title": "Introduction to RStudio",
     "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nProject\n|\n|- data\n|\n|- documents\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- analysis\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- *.RProj\nExample RStudio project structure"
+    "text": "Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- *.RProj\nExample RStudio project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#create-an-rstudio-project",
@@ -1029,6 +1022,97 @@
     "text": "Conclusion\nHow to continue from here?\n\n\n\nLearning by doing!\nHave a look at some online ressoures, I recommend the R for Data Science book by Hadley Wickham\nIf you like plotting: Consider participating in the tidytuesday\nFU statistical consulting for questions regarding statistical methods\nR Consulting by me\nTools and Tips lecture\n\n\n\n\n\nArtwork by Allison Horst"
   },
   {
+    "objectID": "sessions/slides/00_organization.html#im-using-a-lot-for",
+    "href": "sessions/slides/00_organization.html#im-using-a-lot-for",
+    "title": "Introduction to Data Analysis with R",
+    "section": "I’m using  a lot for …",
+    "text": "I’m using  a lot for …\n… data analysis\n… ecological modelling\n… writing documents\n…. workflow automation\n…"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#who-are-you",
+    "href": "sessions/slides/00_organization.html#who-are-you",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Who are you?",
+    "text": "Who are you?"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#who-are-you-1",
+    "href": "sessions/slides/00_organization.html#who-are-you-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Who are you?",
+    "text": "Who are you?"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#who-are-you-2",
+    "href": "sessions/slides/00_organization.html#who-are-you-2",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Who are you?",
+    "text": "Who are you?"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#who-are-you-3",
+    "href": "sessions/slides/00_organization.html#who-are-you-3",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Who are you?",
+    "text": "Who are you?"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#workshop-topics",
+    "href": "sessions/slides/00_organization.html#workshop-topics",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Workshop topics",
+    "text": "Workshop topics\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science\n\n\n\nDay1 Introduction to R and RStudio and data import\n\n\nDay2 Data transformation and visualization with the tidyverse\n\n\nDay3 Cleaning data and statistical tests\n\n\nDay 4 Bring your own data"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#schedule-and-organization",
+    "href": "sessions/slides/00_organization.html#schedule-and-organization",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Schedule and Organization",
+    "text": "Schedule and Organization\n📅 16.10.2023 - 17.10.2023 from 🕘 9 a.m. - 4 p.m.  📅 30.10.2023 - 31.10.2023 from 🕘 9 a.m. - 4 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ in between  📌 We will meet in the General meeting on Webex\n\n\n\nInput sessions\n\nPresentation and demonstration of a topic\nSome examples\n\n\n\n\nTasks\n\nSolve them in small groups\n\n\n\n\nJoint discussion of tasks & questions"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#material",
+    "href": "sessions/slides/00_organization.html#material",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Material",
+    "text": "Material\n\nAll material can be found on the workshop’s website\n\nPresentations, Tasks, Solutions, Additional resources\n\nYou can download slides and R Scripts from there\nWebsite will stay online after the workshop"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#bring-your-own-data",
+    "href": "sessions/slides/00_organization.html#bring-your-own-data",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Bring your own data",
+    "text": "Bring your own data\nOn the last workshop day, you can work with your own research data. I will also provide some real life data sets from different topics.\n\nLearning by doing\n\nGet started using R for your own analyses\nUse any of the methods from the course or try new things, …\nPresent/discuss your results, questions and problems at the end of the day"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#bring-your-own-data-1",
+    "href": "sessions/slides/00_organization.html#bring-your-own-data-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Bring your own data",
+    "text": "Bring your own data\n\nKeep the last workshop day in mind during the next days\n\nTake a mental note if you learn something that is applicable to your data\nThink of questions that you would like to answer for your data set\n\nAdd your name and some details on what you plan to do in this joint table"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#before-we-get-started-i",
+    "href": "sessions/slides/00_organization.html#before-we-get-started-i",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Before we get started I",
+    "text": "Before we get started I\n\nHelp each other if possible\n\nHave an eye on the chat\n\nAll questions and comments are welcome\nFeedback is welcome\n\nEvaluation at the end of the workshop"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#before-we-get-started-ii",
+    "href": "sessions/slides/00_organization.html#before-we-get-started-ii",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Before we get started II",
+    "text": "Before we get started II\nHow to use Webex teams\n\nGeneral channel for our joint meetings and chat\nGroups 1-4 for group work\n\nGroup spaces have their own chat and meetings\nUse the chat in the groups for questions\nMeet in your groups and solve the tasks jointly\n\nPlease always have a look at the general chat during the tasks"
+  },
+  {
+    "objectID": "sessions/slides/00_organization.html#before-we-get-started-iii",
+    "href": "sessions/slides/00_organization.html#before-we-get-started-iii",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Before we get started III",
+    "text": "Before we get started III\nDid anyone have problems installing R and RStudio?\n\n Download and install R from https://cran.r-project.org\n Download and install RStudio from https://www.posit.co\n\n\nSelina Baldauf // Welcome to the workshop"
+  },
+  {
     "objectID": "sessions/11_good-practice.html",
     "href": "sessions/11_good-practice.html",
     "title": "Good coding practice",
@@ -1379,95 +1463,95 @@
     "text": "1.3 Extra\nCreate a plot to show the results of your tests. Choose one of the following:\n\nCreate a boxplot with notches to visually compare differences in flipper length between species\nMake a plot showing the mean and standard error of the mean as pointrange or point with errorbars\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#im-using-a-lot-for",
-    "href": "sessions/slides/00_organization.html#im-using-a-lot-for",
-    "title": "Introduction to Data Analysis with R",
-    "section": "I’m using  a lot for …",
-    "text": "I’m using  a lot for …\n… data analysis\n… ecological modelling\n… writing documents\n…. workflow automation\n…"
+    "objectID": "sessions/12_AI-tools.html",
+    "href": "sessions/12_AI-tools.html",
+    "title": "AI tools for R programming",
+    "section": "",
+    "text": "Slides in full screen     Download PDF slides\nBelow you find a few links to further resources on AI tools for R programming. This is only a selection from the vast amount of tools available."
   },
   {
-    "objectID": "sessions/slides/00_organization.html#who-are-you",
-    "href": "sessions/slides/00_organization.html#who-are-you",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Who are you?",
-    "text": "Who are you?"
+    "objectID": "sessions/12_AI-tools.html#links",
+    "href": "sessions/12_AI-tools.html#links",
+    "title": "AI tools for R programming",
+    "section": "1 Links",
+    "text": "1 Links\n\n1.1 Browser-based AI-Tools\n\nRtutor: Browser-based tool where you can ask questions about R and data analysis. You can also upload a dataset and ask the AI to analyse it. You can then download the corresponding R script or Rmardown report.\n\nThere is also a corresponding R package that you can install to use locally. But for this you need to have your own OpenAI API key, so it is a bit more work to set up.\n\nJulius AI: Browser-based tool where you can ask questions about your data. You can upload a dataset and ask questions about it. The AI will then give you answers and visualizations. You can also download the corresponding R script.\n\nWorks great but costs ~20€ per month, but you can get a 50% discount if you are a student or academic\n\n\n\n\n1.2 Integrated AI-Tools\n\nGitHub Copilot: One of the most widespread integrated tool. Gives you inline code suggestions. Great to code faster, write better code, debug, etc.\n\nStep-by-step guide on how to get Copilot for free for Visual Studio Code or RStudio.\nGitHub Copilot Docs: Useful information and guides on how to use Copilot\nPrivacy FAQ of GitHub Copilot\nPrompt engineering with GH Copilot to get better results\n\nchattr package to chat with different LLMs (e.g. GitHub Copilot, GPT-4, …) from inside R Studio"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#who-are-you-1",
-    "href": "sessions/slides/00_organization.html#who-are-you-1",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Who are you?",
-    "text": "Who are you?"
+    "objectID": "sessions/slides/AI-tools.html#motivation",
+    "href": "sessions/slides/AI-tools.html#motivation",
+    "title": "AI Tools for R",
+    "section": "Motivation",
+    "text": "Motivation\n\n\n\nAI tools assist programmers with\n\nCoding\nDebugging\nLearning\n…\n\nHigher productivity and efficiency\nMore motivation\nBut careful: You still need to understand what’s going on!"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#who-are-you-2",
-    "href": "sessions/slides/00_organization.html#who-are-you-2",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Who are you?",
-    "text": "Who are you?"
+    "objectID": "sessions/slides/AI-tools.html#overview-of-tools",
+    "href": "sessions/slides/AI-tools.html#overview-of-tools",
+    "title": "AI Tools for R",
+    "section": "Overview of tools",
+    "text": "Overview of tools\n\n\nBrowser-based chat bots (ChatGPT, Bard, …)\n\nGeneral-purpose\n\n\n\n\n\n\nData-analysis tools (Julius AI, RTutor, …)\n\nUpload data and ask questions about it\nCan also execute code\nChat with your data\n\n\n\n\n\n\n\nIntegrated AI tools (GitHub Copilot, Codium AI, …)\n\nIntegrated directly in programming environment\nReal-time suggestions, chat, debugging, …\n\n\n\n\n\nFind the tools that best fit your workflow!"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#who-are-you-3",
-    "href": "sessions/slides/00_organization.html#who-are-you-3",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Who are you?",
-    "text": "Who are you?"
+    "objectID": "sessions/slides/AI-tools.html#r-tutor",
+    "href": "sessions/slides/AI-tools.html#r-tutor",
+    "title": "AI Tools for R",
+    "section": "R Tutor",
+    "text": "R Tutor\n\n\n\n\nhttps://rtutor.ai/\nFree browser tool\nUpload data and ask questions about it\nUse the demo data"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#workshop-topics",
-    "href": "sessions/slides/00_organization.html#workshop-topics",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Workshop topics",
-    "text": "Workshop topics\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science\n\n\n\nDay1 Introduction to R and RStudio and data import\n\n\nDay2 Data transformation and visualization with the tidyverse\n\n\nDay3 Cleaning data and statistical tests\n\n\nDay 4 Bring your own data"
+    "objectID": "sessions/slides/AI-tools.html#julius-ai",
+    "href": "sessions/slides/AI-tools.html#julius-ai",
+    "title": "AI Tools for R",
+    "section": "Julius AI",
+    "text": "Julius AI\n\n\n\n\nhttps://julius.ai/\nTry for free\nBasic plan ~20€ per months (-50% academic discount)\nUpload data and ask questions about it"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#schedule-and-organization",
-    "href": "sessions/slides/00_organization.html#schedule-and-organization",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Schedule and Organization",
-    "text": "Schedule and Organization\n📅 16.10.2023 - 17.10.2023 from 🕘 9 a.m. - 4 p.m.  📅 30.10.2023 - 31.10.2023 from 🕘 9 a.m. - 4 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ in between  📌 We will meet in the General meeting on Webex\n\n\n\nInput sessions\n\nPresentation and demonstration of a topic\nSome examples\n\n\n\n\nTasks\n\nSolve them in small groups\n\n\n\n\nJoint discussion of tasks & questions"
+    "objectID": "sessions/slides/AI-tools.html#github-copilot",
+    "href": "sessions/slides/AI-tools.html#github-copilot",
+    "title": "AI Tools for R",
+    "section": "Github Copilot",
+    "text": "Github Copilot\n\nhttps://github.com/features/copilot\nModel based on GPT-4 and OpenAI’s Codex\n\nSpecifically trained on source code\n\nBasic idea: Integrate directly into R Studio (or other IDEs)\nWorks best for well-represented languages (Python, JS, …)"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#material",
-    "href": "sessions/slides/00_organization.html#material",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Material",
-    "text": "Material\n\nAll material can be found on the workshop’s website\n\nPresentations, Tasks, Solutions, Additional resources\n\nYou can download slides and R Scripts from there\nWebsite will stay online after the workshop"
+    "objectID": "sessions/slides/AI-tools.html#how-to-get-github-copilot",
+    "href": "sessions/slides/AI-tools.html#how-to-get-github-copilot",
+    "title": "AI Tools for R",
+    "section": "How to get GitHub Copilot",
+    "text": "How to get GitHub Copilot\nSee this website for step-by-step guide and more information.\nIt’s really easy, but you need:\n\nGitHub Account\nActive GH Copilot subscription (10$ per month)\n\nGet it for free as an academic with an educational account\n\nIDE that supports Copilot\n\nFull support: Visual Studio (Code), Vim, Neovim, JetBrains IDEs (e.g. PyCharm)\nLimited support: RStudio, ?"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#bring-your-own-data",
-    "href": "sessions/slides/00_organization.html#bring-your-own-data",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Bring your own data",
-    "text": "Bring your own data\nOn the last workshop day, you can work with your own research data. I will also provide some real life data sets from different topics.\n\nLearning by doing\n\nGet started using R for your own analyses\nUse any of the methods from the course or try new things, …\nPresent/discuss your results, questions and problems at the end of the day"
+    "objectID": "sessions/slides/AI-tools.html#gh-copilot-inline-code-suggestions",
+    "href": "sessions/slides/AI-tools.html#gh-copilot-inline-code-suggestions",
+    "title": "AI Tools for R",
+    "section": "GH Copilot: Inline code suggestions",
+    "text": "GH Copilot: Inline code suggestions\n\n\n\nCopilot tries to predict what you want to do next\nSuggestions are based on the context\n\nPrevious code\nComments\nVariable and function names\n…"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#bring-your-own-data-1",
-    "href": "sessions/slides/00_organization.html#bring-your-own-data-1",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Bring your own data",
-    "text": "Bring your own data\n\nKeep the last workshop day in mind during the next days\n\nTake a mental note if you learn something that is applicable to your data\nThink of questions that you would like to answer for your data set\n\nAdd your name and some details on what you plan to do in this joint table"
+    "objectID": "sessions/slides/AI-tools.html#get-better-suggestions",
+    "href": "sessions/slides/AI-tools.html#get-better-suggestions",
+    "title": "AI Tools for R",
+    "section": "Get better suggestions",
+    "text": "Get better suggestions\n\nProvide context\n\nOpen other files\nAdd top level comments explaining the purpose of the script\nName variables and functions properly\nCopy-paste sample code and delete it later\n\nBe consistent\n\n“Garbage in, garbage out”\nHave a nice and consistent coding style\n\n\n\nNice side effect of using Copilot: More good-practice coding"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#before-we-get-started-i",
-    "href": "sessions/slides/00_organization.html#before-we-get-started-i",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Before we get started I",
-    "text": "Before we get started I\n\nHelp each other if possible\n\nHave an eye on the chat\n\nAll questions and comments are welcome\nFeedback is welcome\n\nEvaluation at the end of the workshop"
+    "objectID": "sessions/slides/AI-tools.html#chat-with-gh-copilot-in-r-studio",
+    "href": "sessions/slides/AI-tools.html#chat-with-gh-copilot-in-r-studio",
+    "title": "AI Tools for R",
+    "section": "Chat with GH copilot in R Studio",
+    "text": "Chat with GH copilot in R Studio\n\nAvailable through the chattr package\nChat with Copilot in the sidebar\nAlso supports other LLMs (e.g. GPT4o, …)"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#before-we-get-started-ii",
-    "href": "sessions/slides/00_organization.html#before-we-get-started-ii",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Before we get started II",
-    "text": "Before we get started II\nHow to use Webex teams\n\nGeneral channel for our joint meetings and chat\nGroups 1-4 for group work\n\nGroup spaces have their own chat and meetings\nUse the chat in the groups for questions\nMeet in your groups and solve the tasks jointly\n\nPlease always have a look at the general chat during the tasks"
+    "objectID": "sessions/slides/AI-tools.html#concerns-to-consider",
+    "href": "sessions/slides/AI-tools.html#concerns-to-consider",
+    "title": "AI Tools for R",
+    "section": "Concerns to consider",
+    "text": "Concerns to consider\n\nPrivacy\n\nChose whether your prompts and suggestions will be used by Github (Github -&gt; Seetings -&gt; Copilot -&gt; Policies)\nCheck privacy guidelines before you upload data\n\nPlagiarism\n\nBlock suggestions matching public code (Github -&gt; Seetings -&gt; Copilot -&gt; Policies)\n\nEthical concerns\n\nFor-profit tool trained on open-source\n\nEnvironmental concerns\n\nWater and energy usage"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#before-we-get-started-iii",
-    "href": "sessions/slides/00_organization.html#before-we-get-started-iii",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Before we get started III",
-    "text": "Before we get started III\nDid anyone have problems installing R and RStudio?\n\n Download and install R from https://cran.r-project.org\n Download and install RStudio from https://www.posit.co\n\n\nSelina Baldauf // Welcome to the workshop"
+    "objectID": "sessions/slides/AI-tools.html#usage-guidelines",
+    "href": "sessions/slides/AI-tools.html#usage-guidelines",
+    "title": "AI Tools for R",
+    "section": "Usage guidelines",
+    "text": "Usage guidelines\n\nNo definite guidelines, but see examples listed here\nResponsibility\n\nYou are responsible for your scientific output\nStay critical, double-check\n\nTransparency\n\nMake clear for which tasks you used which AI\n\nKnow relevant guidelines\n\nJournals\nYour university\n\nStill understand what is happening!\n\n\n\nSelina Baldauf // AI Tools for R"
   },
   {
     "objectID": "sessions/slides/common-errors.html#debugging",
@@ -2293,7 +2377,7 @@
     "href": "sessions/slides/readr.html#read-files-with-read_",
     "title": "Import and Export Data with readr",
     "section": "Read files with read_*()",
-    "text": "Read files with read_*()\nAll read_* functions take a path to the data file as a first argument:\n\nread_*(file = “path/to/your/file”, …)\n\n\n\nImport files with a readr function fitting the delimiter of your file:\n\ndat &lt;- read_csv(\"data/your_data.csv\") # comma delimiter\n\ndat &lt;- read_tsv(\"data/your_data.txt\") # tab delimiter\n\n\n\n\nUse read_delim for a generic type of delimiter:\n\ndat &lt;- read_delim(\"data/your_data.txt\", delim = \"\\t\") # tab delimiter\n\ndat &lt;- read_delim(\"data/your_data.txt\", delim = \"..xyz..\") # ..xyz.. delimiter\n\n\n\nAll read_* functions return a tibble"
+    "text": "Read files with read_*()\nAll read_* functions take a path to the data file as a first argument:\n\nread_*(file = “path/to/your/file”, …)\n\n\n\nImport files with a readr function fitting the delimiter of your file:\n\ndat &lt;- read_csv(\"data/your_data.csv\") # comma delimiter\n\ndat &lt;- read_tsv(\"data/your_data.txt\") # tab delimiter\n\n\n\n\nUse read_delim for a generic type of delimiter:\n\ndat &lt;- read_delim(\"data/your_data.csv\", delim = \";\") # semicolon delimiter\n\ndat &lt;- read_delim(\"data/your_data.txt\", delim = \"----\") # ---- delimiter\n\n\n\nAll read_* functions return a tibble"
   },
   {
     "objectID": "sessions/slides/readr.html#read-files-with-read_-1",
@@ -2335,14 +2419,14 @@
     "href": "sessions/slides/readr.html#write-files-with-write_-1",
     "title": "Import and Export Data with readr",
     "section": "Write files with write_*()",
-    "text": "Write files with write_*()\nAll write_* functions take the data to write as the first and the file to write to as the second argument:\n\nwrite_*(x = dat, file = “path/to/save/file.*”, …)\n\n\n\n\nwrite_csv(dat, file = \"data-clean/your_data.csv\") # comma delimiter\n\nwrite_tsv(dat, file = \"data-clean/your_data.txt\") # tab delimiter\n\n\n\n\nUse write_delim for a generic type of delimiter:\n\nwrite_delim(dat, file = \"data-clean/your_data.txt\", delim = \"\\t\") # tab delimiter\n\nwrite_delim(dat, file = \"data-clean/your_data.txt\", delim = \"..xyz..\") # ..xyz.. delimiter"
+    "text": "Write files with write_*()\nAll write_* functions take the data to write as the first and the file to write to as the second argument:\n\nwrite_*(x = dat, file = “path/to/save/file.*”, …)\n\n\n\n\nwrite_csv(dat, file = \"data-clean/your_data.csv\") # comma delimiter\n\nwrite_tsv(dat, file = \"data-clean/your_data.txt\") # tab delimiter\n\n\n\n\nUse write_delim for a generic type of delimiter:\n\nwrite_delim(dat, file = \"data-clean/your_data.csv\", delim = \";\") # semicolon delimiter\n\nwrite_delim(dat, file = \"data-clean/your_data.txt\", delim = \"----\") # ---- delimiter"
   },
   {
     "objectID": "sessions/slides/readr.html#readxl",
     "href": "sessions/slides/readr.html#readxl",
     "title": "Import and Export Data with readr",
     "section": "Readxl",
-    "text": "Readxl\nThe readxl package is part of the tidyverse, but you need to load it explicitly\n\nlibrary(readxl)\n\n\nUse the read_excel function to read an excel file:\n\ndat &lt;- read_excel(path = \"data/your_data.xlsx\")\n\n\n\nBy default, this reads the first sheet. You can read other sheets with\n\ndat &lt;- read_excel(path = \"data/your_data.xlsx\", sheet = \"sheetName\") # via sheet name\ndat &lt;- read_excel(path = \"data/your_data.xlsx\", sheet = 2) # via sheet number\n\n\n\n\nread_excel also has other functionality, like skipping rows etc.\nCheck out the package documentation for more functionality"
+    "text": "Readxl\nThe readxl package is part of the tidyverse, but you need to load it explicitly\n\nlibrary(readxl)\n\n\nUse the read_excel function to read an excel file:\n\ndat &lt;- read_excel(path = \"data/your_data.xlsx\")\n\n\n\nBy default, this reads the first sheet. You can read other sheets with\n\ndat &lt;- read_excel(path = \"data/your_data.xlsx\", sheet = \"sheetName\") # via sheet name\ndat &lt;- read_excel(path = \"data/your_data.xlsx\", sheet = 2) # via sheet number\n\n\n\n\nread_excel also has other functionality, like skipping rows etc.\nCheck out ?read_excel and the package documentation for more functionality"
   },
   {
     "objectID": "sessions/slides/readr.html#readxl-1",
@@ -2756,124 +2840,5 @@
     "title": "",
     "section": "3 Extra",
     "text": "3 Extra\nCreate a plot to show the results of your tests. Choose one of the following:\n\nCreate a boxplot with notches to visually compare differences in flipper length between species\nMake a plot showing the mean and standard error of the mean as pointrange or point with errorbars\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html",
-    "href": "R/byod/2024_03_tips/lm_anova.html",
-    "title": "Linear models with R",
-    "section": "",
-    "text": "Packages needed for linear model analysis and examples:\nlibrary(palmerpenguins) # Example data\nlibrary(tidyverse) # Data manipulation\nlibrary(performance) # Model diagnostics\nlibrary(rstatix) # More friendly version of Tukey test"
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html#one-way-anova-one-explanatory-variable",
-    "href": "R/byod/2024_03_tips/lm_anova.html#one-way-anova-one-explanatory-variable",
-    "title": "Linear models with R",
-    "section": "3.1 One-way ANOVA (one explanatory variable)",
-    "text": "3.1 One-way ANOVA (one explanatory variable)\nResearch question: How does the penguin species and sex affect penguin body mass? Hyphothesis: The body mass of penguins is higher for male penguins and differs between species.\n\n3.1.1 Step 1: Explore the data\n\nggplot(penguins, aes(x = species, y = body_mass_g, fill = sex)) +\n  geom_boxplot() +\n  labs(title = \"Penguin body mass by species\",\n       x = \"Species\",\n       y = \"Body mass (g)\")\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`).\n\n\n\n\n\n\n\n3.1.2 Step 2: Fit the linear model\nI want to fit a linear model to test my hypothesis. But before, I remove data points with missing values for the sex variable.\n\n# 2. Fit the linear model\npenguins_no_na &lt;- penguins |&gt; drop_na()\npenguin_lm &lt;- lm(\n  body_mass_g  ~ species + sex, # Model formula to test your hypothesis\n  data = penguins_no_na  # Tibble containing the variables (penguins without NAs)\n  )\n\n\n\n3.1.3 Step 3: Get a summary of the model\nWith the summary function, we can get model coefficients and effect sizes:\n\n# 3. Get a summary of the model\nsummary(penguin_lm)\n\n\nCall:\nlm(formula = body_mass_g ~ species + sex, data = penguins_no_na)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-816.87 -217.80  -16.87  227.61  882.20 \n\nCoefficients:\n                 Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)       3372.39      31.43 107.308   &lt;2e-16 ***\nspeciesChinstrap    26.92      46.48   0.579    0.563    \nspeciesGentoo     1377.86      39.10  35.236   &lt;2e-16 ***\nsexmale            667.56      34.70  19.236   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 316.6 on 329 degrees of freedom\nMultiple R-squared:  0.8468,    Adjusted R-squared:  0.8454 \nF-statistic: 606.1 on 3 and 329 DF,  p-value: &lt; 2.2e-16\n\n\nThe model estimates can be found in the Coefficients table (column Estimat Std). In case of an ANOVA, the Estimate column contains the mean body mass for each species. The first value is the mean body mass of the Adelie penguin (3700 g), the second value is the difference in body mass between Adelie and Chinstrap penguin (Chinstrap = 3700 g + 32 g), and the third value is the difference in body mass between Adelie and Gentoo penguin (Gentoo = 3700 g + 1375 g).\n\n\n3.1.4 Step 4: Check whether the explanatory variable is significant\nTo check whether the explanatory variable species is significant, we can use the drop1 function. We perform an F-test to check whether our model would become significantly worse if we remove the explanatory variable species:\n\n# 4. Check whether the explanatory variable is significant\ndrop1(penguin_lm, test = \"F\")\n\nSingle term deletions\n\nModel:\nbody_mass_g ~ species + sex\n        Df Sum of Sq       RSS    AIC F value    Pr(&gt;F)    \n&lt;none&gt;                32979185 3838.6                      \nspecies  2 143401584 176380769 4392.9  715.29 &lt; 2.2e-16 ***\nsex      1  37090262  70069447 4087.5  370.01 &lt; 2.2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nThe p-value in the species and the sex column of the result is &lt; 0.05, which means that both species and sex are significant predictors of body mass.\n\n\n3.1.5 Step 5: Check model assumptions\nLinear models have 3 assumptions that need to be fulfilled:\n\nnormality of model residuals\nconstant variance of model residuals\nno strong outliers\n\nFinally, we can check the model assumptions using diagnostic plots:\n\nperformance::check_model(penguin_lm)\n\n\n\n\nOn top of each of the plots is written what you should look for. The data are never perfect, so small deviations are totally ok.\nYou can also perform the most important checks manually and the results are printed in the console for you:\n\n# Check for constant variance\ncheck_heteroscedasticity(penguin_lm)\n\nError in check_heteroscedasticity(penguin_lm): could not find function \"check_heteroscedasticity\"\n\n# Check for influential observations (outliers)\ncheck_outliers(penguin_lm)\n\nError in check_outliers(penguin_lm): could not find function \"check_outliers\"\n\n# check normality of residuals\ncheck_normality(penguin_lm)\n\nError in check_normality(penguin_lm): could not find function \"check_normality\"\n\n\nIf all these tests are ok, you can be confident that your model is valid.\n\n\n3.1.6 Step 6: Posthoc test to compare groups\nIf the ANOVA is significant, we can perform a posthoc test to compare the groups. For this, we can use the TukeyHSD function. This function performs pairwise comparisons between the groups and corrects for multiple testing. You need to give the an object of class aov to the TukeyHSD function, so we just wrap our linear model in the aov function.\n\n# Posthoc test to compare groups\nTukeyHSD(aov(penguin_lm))\n\n  Tukey multiple comparisons of means\n    95% family-wise confidence level\n\nFit: aov(formula = penguin_lm)\n\n$species\n                       diff        lwr      upr     p adj\nChinstrap-Adelie   26.92385  -82.51532  136.363 0.8313289\nGentoo-Adelie    1386.27259 1294.21284 1478.332 0.0000000\nGentoo-Chinstrap 1359.34874 1246.03315 1472.664 0.0000000\n\n$sex\n                diff     lwr      upr p adj\nmale-female 667.4577 599.193 735.7224     0"
-  },
-  {
-    "objectID": "R/quarto_example.html",
-    "href": "R/quarto_example.html",
-    "title": "The penguins of Antarctica",
-    "section": "",
-    "text": "There are three main penguin species in Antarctica (Chinstrap, Gentoo, Adelie). You can see them in ?@fig-illustration:\n\n\nError in knitr::include_graphics(\"images/lter_penguins.png\"): Cannot find the file(s): \"images/lter_penguins.png\"\n\n\nIn this paper we want to answer the following questions\n\nHow bill depth depends on bill length?\nWhich penguin species has the highest body mass?"
-  },
-  {
-    "objectID": "R/quarto_example.html#the-data",
-    "href": "R/quarto_example.html#the-data",
-    "title": "The penguins of Antarctica",
-    "section": "2.1 The data",
-    "text": "2.1 The data\nThe data was collected on islands in Antarctica and published by @gorman2014. You can find the original paper with the title “Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis)” [@gorman2014] in PLoS ONE1\nThe data is published via the palmerpenguins R package [@horst2020] which you can find on this website.\nThe data contains (among others) the following measurements:\n\nbill length\nbill depth\nbody mass\nsex\n\nmale\nfemale"
-  },
-  {
-    "objectID": "R/quarto_example.html#the-analysis",
-    "href": "R/quarto_example.html#the-analysis",
-    "title": "The penguins of Antarctica",
-    "section": "2.2 The analysis",
-    "text": "2.2 The analysis\nWe did some plots, calculated some summary statistics and a linear model of the form \\(y = ax + b + \\epsilon\\)"
-  },
-  {
-    "objectID": "R/quarto_example.html#footnotes",
-    "href": "R/quarto_example.html#footnotes",
-    "title": "The penguins of Antarctica",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\npaper available here.↩︎"
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html#step-1-explore-the-data",
-    "href": "R/byod/2024_03_tips/lm_anova.html#step-1-explore-the-data",
-    "title": "Linear models with R",
-    "section": "3.1 Step 1: Explore the data",
-    "text": "3.1 Step 1: Explore the data\n\nggplot(penguins, aes(x = species, y = body_mass_g, fill = sex)) +\n  geom_boxplot() +\n  labs(title = \"Penguin body mass by species\",\n       x = \"Species\",\n       y = \"Body mass (g)\")\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`)."
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html#step-2-fit-the-linear-model",
-    "href": "R/byod/2024_03_tips/lm_anova.html#step-2-fit-the-linear-model",
-    "title": "Linear models with R",
-    "section": "3.2 Step 2: Fit the linear model",
-    "text": "3.2 Step 2: Fit the linear model\nI want to fit a linear model to test my hypothesis. But before, I remove data points with missing values for the sex variable.\n\n# 2. Fit the linear model\npenguins_no_na &lt;- penguins |&gt; drop_na()\npenguin_lm &lt;- lm(\n  body_mass_g  ~ species + sex, # Model formula to test your hypothesis\n  data = penguins_no_na  # Tibble containing the variables (penguins without NAs)\n  )\n\nIf we also want to test the interaction between species and sex, we have to add the interaction term to the model formula: body_mass_g ~ species + sex + species:sex."
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html#step-3-get-a-summary-of-the-model",
-    "href": "R/byod/2024_03_tips/lm_anova.html#step-3-get-a-summary-of-the-model",
-    "title": "Linear models with R",
-    "section": "3.3 Step 3: Get a summary of the model",
-    "text": "3.3 Step 3: Get a summary of the model\nWith the summary function, we can get model coefficients and effect sizes:\n\n# 3. Get a summary of the model\nsummary(penguin_lm)\n\n\nCall:\nlm(formula = body_mass_g ~ species + sex, data = penguins_no_na)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-816.87 -217.80  -16.87  227.61  882.20 \n\nCoefficients:\n                 Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)       3372.39      31.43 107.308   &lt;2e-16 ***\nspeciesChinstrap    26.92      46.48   0.579    0.563    \nspeciesGentoo     1377.86      39.10  35.236   &lt;2e-16 ***\nsexmale            667.56      34.70  19.236   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 316.6 on 329 degrees of freedom\nMultiple R-squared:  0.8468,    Adjusted R-squared:  0.8454 \nF-statistic: 606.1 on 3 and 329 DF,  p-value: &lt; 2.2e-16\n\n\nThe model estimates can be found in the Coefficients table (column Estimat Std). In case of an ANOVA, the Estimate column contains the mean body mass for each species. It is a bit complex to disentangle, but the values in the rows mean:\n\n(Intercept): The mean body mass of the female penguins of the first species (Adelie penguin)\nspeciesChinstrap: The difference in body mass between female Adelie and Chinstrap penguins (Chinstrap = 3372 g + 27 g)\nspeciesGentoo: The difference in body mass between female Adelie and Gentoo penguins (Gentoo = 3372 g + 1377 g)\nsexMALE: The difference in body mass between female and male penguins"
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html#step-4-check-whether-the-explanatory-variable-is-significant",
-    "href": "R/byod/2024_03_tips/lm_anova.html#step-4-check-whether-the-explanatory-variable-is-significant",
-    "title": "Linear models with R",
-    "section": "3.4 Step 4: Check whether the explanatory variable is significant",
-    "text": "3.4 Step 4: Check whether the explanatory variable is significant\nTo check whether both species and sex have a significant effect on body mass, we can use the drop1 function with an F-test. With this test, we check whether the model would become significantly worse if we remove the predictors.\n\n# 4. Check whether the explanatory variable is significant\ndrop1(penguin_lm, test = \"F\")\n\nSingle term deletions\n\nModel:\nbody_mass_g ~ species + sex\n        Df Sum of Sq       RSS    AIC F value    Pr(&gt;F)    \n&lt;none&gt;                32979185 3838.6                      \nspecies  2 143401584 176380769 4392.9  715.29 &lt; 2.2e-16 ***\nsex      1  37090262  70069447 4087.5  370.01 &lt; 2.2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nThe p-value in both the species and the sex column of the result is &lt; 0.05, which means that both species and sex are significant predictors of body mass. If we would remove these terms from the model, then the model would become significantly worse."
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html#step-5-check-model-assumptions",
-    "href": "R/byod/2024_03_tips/lm_anova.html#step-5-check-model-assumptions",
-    "title": "Linear models with R",
-    "section": "3.5 Step 5: Check model assumptions",
-    "text": "3.5 Step 5: Check model assumptions\nLinear models have 3 main assumptions that need to be fulfilled:\n\nnormality of model residuals\nconstant variance of model residuals\nno strong outliers\n\nWe need to check them for every model. If they are violated, then we have to use other types of models\n\n3.5.1 Visual checks\nWe can the model assumptions using diagnostic plots:\n\nperformance::check_model(penguin_lm)\n\n\n\n\nOn top of each of the plots is written what you should look for. The data are never perfect, so small deviations are totally ok.\n\n\n3.5.2 Other tests\nYou can also perform the most important checks manually and the results are printed in the console for you:\n\n# Check for constant variance\ncheck_heteroscedasticity(penguin_lm)\n\nError in check_heteroscedasticity(penguin_lm): could not find function \"check_heteroscedasticity\"\n\n# Check for influential observations (outliers)\ncheck_outliers(penguin_lm)\n\nError in check_outliers(penguin_lm): could not find function \"check_outliers\"\n\n# check normality of residuals\ncheck_normality(penguin_lm)\n\nError in check_normality(penguin_lm): could not find function \"check_normality\"\n\n\nIf all these tests are ok, you can be confident that your model is valid.\n\n\n3.5.3 Step 6: Posthoc test to compare groups\nIf the ANOVA is significant, we can perform a posthoc test to compare the groups. For this, we can use the tukey_hsd function from the rstatix package. It is a wrapper around the TukeyHSD function from base R that makes the output more friendly. This function performs pairwise comparisons between the groups and corrects for multiple testing.\n\n# Posthoc test to compare groups\ntukey_hsd(penguin_lm)\n\n# A tibble: 4 × 9\n  term    group1    group2    null.value estimate conf.low conf.high    p.adj\n* &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 species Adelie    Chinstrap          0     26.9    -82.5      136. 8.31e- 1\n2 species Adelie    Gentoo             0   1386.    1294.      1478. 5.09e-13\n3 species Chinstrap Gentoo             0   1359.    1246.      1473. 5.09e-13\n4 sex     female    male               0    667.     599.       736. 5.09e-13\n# ℹ 1 more variable: p.adj.signif &lt;chr&gt;"
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html#explore-the-data",
-    "href": "R/byod/2024_03_tips/lm_anova.html#explore-the-data",
-    "title": "Linear models with R",
-    "section": "3.1 Explore the data",
-    "text": "3.1 Explore the data\n\nggplot(penguins, aes(x = species, y = body_mass_g, fill = sex)) +\n  geom_boxplot() +\n  labs(title = \"Penguin body mass by species\",\n       x = \"Species\",\n       y = \"Body mass (g)\")\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`)."
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html#fit-the-linear-model",
-    "href": "R/byod/2024_03_tips/lm_anova.html#fit-the-linear-model",
-    "title": "Linear models with R",
-    "section": "3.2 Fit the linear model",
-    "text": "3.2 Fit the linear model\nI want to fit a linear model to test my hypothesis.\n\n# 2. Fit the linear model\npenguin_lm &lt;- lm(\n  body_mass_g  ~ species + sex, # Model formula to test your hypothesis\n  data = penguins  # Tibble containing the variables\n  )\n\nIf we also wanted to test the interaction between species and sex, we have to add the interaction term to the model formula: body_mass_g ~ species + sex + species:sex."
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html#get-a-summary-of-the-model",
-    "href": "R/byod/2024_03_tips/lm_anova.html#get-a-summary-of-the-model",
-    "title": "Linear models with R",
-    "section": "3.3 Get a summary of the model",
-    "text": "3.3 Get a summary of the model\nWith the summary function, we can get model coefficients and effect sizes:\n\n# 3. Get a summary of the model\nsummary(penguin_lm)\n\n\nCall:\nlm(formula = body_mass_g ~ species + sex, data = penguins_no_na)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-816.87 -217.80  -16.87  227.61  882.20 \n\nCoefficients:\n                 Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)       3372.39      31.43 107.308   &lt;2e-16 ***\nspeciesChinstrap    26.92      46.48   0.579    0.563    \nspeciesGentoo     1377.86      39.10  35.236   &lt;2e-16 ***\nsexmale            667.56      34.70  19.236   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 316.6 on 329 degrees of freedom\nMultiple R-squared:  0.8468,    Adjusted R-squared:  0.8454 \nF-statistic: 606.1 on 3 and 329 DF,  p-value: &lt; 2.2e-16\n\n\nThe model estimates can be found in the Coefficients table (column Estimat Std). In case of an ANOVA, the Estimate column contains the mean body mass for each species. It is a bit complex to disentangle, but the values in the rows mean:\n\n(Intercept): The mean body mass of the female penguins of the first species (Adelie penguin)\nspeciesChinstrap: The difference in body mass between female Adelie and Chinstrap penguins (Chinstrap = 3372 g + 27 g)\nspeciesGentoo: The difference in body mass between female Adelie and Gentoo penguins (Gentoo = 3372 g + 1377 g)\nsexmale: The difference in body mass between female and male penguins"
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html#check-whether-the-explanatory-variable-is-significant",
-    "href": "R/byod/2024_03_tips/lm_anova.html#check-whether-the-explanatory-variable-is-significant",
-    "title": "Linear models with R",
-    "section": "3.4 Check whether the explanatory variable is significant",
-    "text": "3.4 Check whether the explanatory variable is significant\nTo check whether both species and sex have a significant effect on body mass, we can use the drop1 function with an F-test. With this test, we check whether the model would become significantly worse if we remove the predictors.\n\n# 4. Check whether the explanatory variable is significant\ndrop1(penguin_lm, test = \"F\")\n\nSingle term deletions\n\nModel:\nbody_mass_g ~ species + sex\n        Df Sum of Sq       RSS    AIC F value    Pr(&gt;F)    \n&lt;none&gt;                32979185 3838.6                      \nspecies  2 143401584 176380769 4392.9  715.29 &lt; 2.2e-16 ***\nsex      1  37090262  70069447 4087.5  370.01 &lt; 2.2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nThe p-value in both the species and the sex column of the result is &lt; 0.05, which means that both species and sex are significant predictors of body mass. If we would remove these terms from the model, then the model would become significantly worse."
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html#check-model-assumptions",
-    "href": "R/byod/2024_03_tips/lm_anova.html#check-model-assumptions",
-    "title": "Linear models with R",
-    "section": "3.5 Check model assumptions",
-    "text": "3.5 Check model assumptions\nLinear models have 3 main assumptions that need to be fulfilled:\n\nnormality of model residuals\nconstant variance of model residuals\nno strong outliers\n\nWe need to check them for every model. If they are violated, then we have to use other types of models\n\n3.5.1 Visual checks\nWe can the model assumptions using diagnostic plots:\n\nperformance::check_model(penguin_lm)\n\n\n\n\nOn top of each of the plots is written what you should look for. The data are never perfect, so small deviations are totally ok.\n\n\n3.5.2 Other tests\nYou can also perform the most important checks manually and the results are printed in the console for you. They are also provided by the `performance` package:\n\n# Check for constant variance\nperformance::check_heteroscedasticity(penguin_lm)\n\nOK: Error variance appears to be homoscedastic (p = 0.614).\n\n# Check for influential observations (outliers)\nperformance::check_outliers(penguin_lm)\n\nOK: No outliers detected.\n- Based on the following method and threshold: cook (0.5).\n- For variable: (Whole model)\n\n# check normality of residuals\nperformance::check_normality(penguin_lm)\n\nOK: residuals appear as normally distributed (p = 0.875).\n\n\nIf all these tests are ok, you can be confident that your model is valid."
-  },
-  {
-    "objectID": "R/byod/2024_03_tips/lm_anova.html#posthoc-test-to-compare-groups",
-    "href": "R/byod/2024_03_tips/lm_anova.html#posthoc-test-to-compare-groups",
-    "title": "Linear models with R",
-    "section": "3.6 Posthoc test to compare groups",
-    "text": "3.6 Posthoc test to compare groups\nIf the ANOVA is significant, we can perform a posthoc test to compare the groups. For this, we can use the tukey_hsd function from the rstatix package. It is a wrapper around the TukeyHSD function from base R that makes the output more friendly. This function performs pairwise comparisons between the groups and corrects for multiple testing.\n\n# Posthoc test to compare groups\ntukey_hsd(penguin_lm)\n\n# A tibble: 4 × 9\n  term    group1    group2    null.value estimate conf.low conf.high    p.adj\n* &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 species Adelie    Chinstrap          0     26.9    -82.5      136. 8.31e- 1\n2 species Adelie    Gentoo             0   1386.    1294.      1478. 5.09e-13\n3 species Chinstrap Gentoo             0   1359.    1246.      1473. 5.09e-13\n4 sex     female    male               0    667.     599.       736. 5.09e-13\n# ℹ 1 more variable: p.adj.signif &lt;chr&gt;"
   }
 ]
