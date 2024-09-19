@@ -1271,7 +1271,7 @@
     "href": "index.html",
     "title": "Introduction to R for Data Analysis",
     "section": "",
-    "text": "Workshop sessions 📅 04.03.2024 - 05.03.2024 from 🕘 9 a.m. - 4 p.m.  📅 11.03.2024 - 12.03.2024 from 🕘 9 a.m. - 4 p.m.  📍 Online on Webex \n\n\nWorkshop description\nThe workshop’s main goal is to equip you with essential R skills for analyzing your own research data, covering data processing and visualization. After the workshop you are equipped to confidently advance your R skills for your specific research needs.\n\nOutline\nIn 4 Workshop days we will cover the following topics:\n\nDay 1: Introduction to R and R Studio, Good programming practice, Reading data into R\nDay 2: Data visualization with the ggplot package, data wrangling with dplyr\nDay 3: Data cleaning with tidyr, statistical tests\nDay 4: Bring your own research data (or get some real-life data from me)\n\n\n\nConcept\nTo learn programming, it is essential to practice writing code yourself. Therefore, every input session will be followed by practical exercises. On day 4, you can apply the methods you learned to your own research data or a provided real-life data set.\nThe course will be in English and will be in an online format.\n\n\n\nFor whom is this workshop?\nThis workshop is for beginners without prior experience in R or any other programming language. You can still participate if you already know other programming languages though.\n\n\nThe instructor\nI’m a scientific programmer at Freie Universität specializing in theoretical ecology. R is integral to my daily work, and I enjoy sharing my expertise. I’ve previously taught R statistics courses for biology master’s and PhD students.\nFeel free to reach out with any course-related questions via selina.baldauf@fu-berlin.de."
+    "text": "Workshop sessions 📅 07.10.2024 - 08.10.2024 from 🕘 9 a.m. - 4 p.m.  📅 14.10.2024 - 15.10.2024 from 🕘 9 a.m. - 4 p.m.  📍 Online on Webex \n\n\nWorkshop description\nThe workshop’s main goal is to equip you with essential R skills for analyzing your own research data, covering data processing and visualization. After the workshop you are equipped to confidently advance your R skills for your specific research needs.\n\nOutline\nIn 4 Workshop days we will cover the following topics:\n\nDay 1: Introduction to R and R Studio, Good programming practice, Reading data into R\nDay 2: Data visualization with the ggplot package, data wrangling with dplyr\nDay 3: Data cleaning with tidyr, statistical tests, AI Tools\nDay 4: Bring your own research data (or get some real-life data from me)\n\n\n\nConcept\nTo learn programming, it is essential to practice writing code yourself. Therefore, every input session will be followed by practical exercises. On day 4, you can apply the methods you learned to your own research data or a provided real-life data set.\nThe course will be in English and will be in an online format.\n\n\n\nFor whom is this workshop?\nThis workshop is for beginners without prior experience in R or any other programming language. You can still participate if you already know other programming languages though.\n\n\nThe instructor\nI’m a scientific programmer at Freie Universität specializing in theoretical ecology. R is integral to my daily work, and I enjoy sharing my expertise. I’ve previously taught R statistics courses for biology master’s and PhD students.\nFeel free to reach out with any course-related questions via selina.baldauf@fu-berlin.de."
   },
   {
     "objectID": "online_resources.html",
@@ -1292,7 +1292,7 @@
     "href": "online_resources.html#tidyverse",
     "title": "Additional online resources",
     "section": "Tidyverse",
-    "text": "Tidyverse\n\nThe tidyverse website has links to all tidyverse packages which all have very good examples and use cases. These websites are an excelent point to get started with a package.\n\n\nreadr\n\ndata import cheatsheet\n\n\n\nggplot\n\nggplot cheatsheet offers an overview of all possibilities of ggplot\nCurated list of ggplot resources: Really great list with links to ggplot tutorials (sorted by topic and difficulty), books, additional packages to make your plots look nicer, …\nIn the R graph gallery you can browse through hundreds of different types of plots and find code to reproduce them.\nA great workshop on ggplot by Cédric Scherer with everything from basics of ggplot, over using colors, graphic design and plot composition.\n\n\n\ndplyr\n\ndplyr cheatsheet\n\n\n\ntidyr\n\ndata import cheatsheet"
+    "text": "Tidyverse\n\nThe tidyverse website has links to all tidyverse packages which all have very good examples and use cases. These websites are an excelent point to get started with a package.\n\n\nreadr\n\ndata import cheatsheet\n\n\n\nggplot\n\nggplot cheatsheet offers an overview of all possibilities of ggplot\nCurated list of ggplot resources: Really great list with links to ggplot tutorials (sorted by topic and difficulty), books, additional packages to make your plots look nicer, …\nIn the R graph gallery you can browse through hundreds of different types of plots and find code to reproduce them.\nA great ggplot tutorial by Cédric Scherer with many different plot types\nA collection of ggplot extension packages for all kinds of different plots\n\n\n\ndplyr\n\ndplyr cheatsheet\n\n\n\ntidyr\n\ndata import cheatsheet"
   },
   {
     "objectID": "online_resources.html#linear-models",
@@ -1313,35 +1313,35 @@
     "href": "preparations.html#download-and-install-r-and-r-studio-for-your-operating-system",
     "title": "Course preparations",
     "section": "1.1 Download and install R and R Studio for your operating system",
-    "text": "1.1 Download and install R and R Studio for your operating system\nOn the posit website click on the button “Download and install R”. You will get to the a website where on top you can find a download link for Windows, MacOs and Linux. Chose the appropriate operating system. Click on the file that you downloaded and install R following the instructions (leave the suggested defaults during the process)."
+    "text": "1.1 Download and install R and R Studio for your operating system\nOn the posit website click on the button “Download and install R”. You will get to the official R website where on top you can find download links for Windows, MacOs and Linux. Choose the appropriate operating system and then follow the instructions to download R for the first time. Click on the file that you downloaded and install R following the instructions (leave the suggested defaults during the process)."
   },
   {
     "objectID": "preparations.html#download-and-install-rstudio-for-your-operating-system",
     "href": "preparations.html#download-and-install-rstudio-for-your-operating-system",
     "title": "Course preparations",
     "section": "1.2 Download and install RStudio for your operating system",
-    "text": "1.2 Download and install RStudio for your operating system\nDownload the free RStudio Desktop version for your operating system from by clicking on the “Download Rstudio Desktop” button on the posit website. The button should already specify your operating system. If not, you can scroll down on the website and select the installer for your respective system. Install the program following the instructions from the installer."
+    "text": "1.2 Download and install RStudio for your operating system\nDownload the free RStudio Desktop version for your operating system from by clicking on the “Download R Studio Desktop” button on the posit website. The button should already specify your operating system. If not, you can scroll down on the website and select the installer for your respective system. Install the program following the instructions from the installer."
   },
   {
     "objectID": "preparations.html#test-if-everything-worked",
     "href": "preparations.html#test-if-everything-worked",
     "title": "Course preparations",
     "section": "1.3 Test if everything worked",
-    "text": "1.3 Test if everything worked\nIf both R and RStudio are installed, open RStudio. In the Console (the window on the bottom left where your cursor is and where you can see a &gt; sign), try to type a calculation (e.g. 2 + 2) and hit Enter to execute it. If R is installed correctly, you should see the result of your calculation printed to the console."
+    "text": "1.3 Test if everything worked\nIf both R and RStudio are installed, open RStudio. When you open up RStudio for the first time, it will prompt you to select your installation of R. By default, this should be the newest version of R that you just installed. After RStudio is opened, check the console (the window on the bottom left where your cursor is and where you can see a &gt; sign) and try to type a calculation (e.g. 2 + 2) and hit Enter to execute it. If R is installed correctly, you should see the result of your calculation printed to the console."
   },
   {
     "objectID": "preparations.html#update-rstudio",
     "href": "preparations.html#update-rstudio",
     "title": "Course preparations",
     "section": "2.1 Update RStudio",
-    "text": "2.1 Update RStudio\nOpen RStudio and click on “Help -&gt; Check for Updates”. RStudio will tell you, if there is a newer version available or not. If you already use the most current one, you are all set for the workshop. If not, follow the instructions that RStudio gives you and update your version of RStudio."
+    "text": "2.1 Update RStudio\nOpen RStudio and go to “Help -&gt; Check for Updates” on top. RStudio will tell you, if there is a newer version available or not. If you already use the most current version, you are all set for the workshop. If not, follow the instructions that RStudio gives you and update your version of RStudio."
   },
   {
     "objectID": "preparations.html#update-r",
     "href": "preparations.html#update-r",
     "title": "Course preparations",
     "section": "2.2 Update R",
-    "text": "2.2 Update R\nIf you want to check the current installed version of R, open RStudio and type version in the console. This will print some information about your R version, among them, the version number.\nYou don’t need the newest version of R, but if you are still at a version below 4.2, you should update your version.\nIf you want to update R, just download and install the newest version of R (see Step 1 for instructions)."
+    "text": "2.2 Update R\nIf you want to check the current installed version of R, open RStudio and check the version number that is written in the bottom left, right below the Console pane and also printed in the console:\n\nI will be using R version 4.4.1. You don’t need the newest version of R, but if you are still at a version below 4.3.3, you should update you version. If you need to update R, just download and install the newest version of R (see Step 1 for instructions). To tell RStudio to use the newest version of R, go to “Tools -&gt; Global options -&gt; General” and click on “Change R version”. Here you can now select the newest installed version of R:\n\nNow restart RStudio and double-check in the console that your version of R now updated."
   },
   {
     "objectID": "sessions/02_intro-r.html",
@@ -1638,13 +1638,6 @@
     "text": "Data transformation\nWith dplyr we can (among other things)\n\n\nFilter data to analyse only a part of it\nCreate new variables\nSummarize data\nCombine multiple tables\nRename variables\nReorder observations or variables\n\n\n\nTo get started load the package dplyr:\n\nlibrary(dplyr)\n# or\nlibrary(tidyverse)"
   },
   {
-    "objectID": "sessions/slides/dplyr.html#dplyr-basic-vocuabulary-for-data-manipulation",
-    "href": "sessions/slides/dplyr.html#dplyr-basic-vocuabulary-for-data-manipulation",
-    "title": "Data transformation with dplyr",
-    "section": "Dplyr basic vocuabulary for data manipulation",
-    "text": "Dplyr basic vocuabulary for data manipulation\n\nfilter() picks observations (rows) based on their values\nselect() picks variables (columns) based on their names\nmutate() adds new variables based on existing ones\nsummarize() combines multiple values into a single summary value\n\nPerform any of these operations by group\n\n\nfrom dplyr package description"
-  },
-  {
     "objectID": "sessions/slides/dplyr.html#dplyr-basic-vocabulary",
     "href": "sessions/slides/dplyr.html#dplyr-basic-vocabulary",
     "title": "Data transformation with dplyr",
@@ -1652,11 +1645,53 @@
     "text": "Dplyr basic vocabulary\nAll of the dplyr functions work similarly: \n\nFirst argument is the data (a tibble)\nOther arguments specify what to do exactly\nReturn a tibble"
   },
   {
-    "objectID": "sessions/slides/dplyr.html#example-data",
-    "href": "sessions/slides/dplyr.html#example-data",
+    "objectID": "sessions/slides/dplyr.html#the-data",
+    "href": "sessions/slides/dplyr.html#the-data",
     "title": "Data transformation with dplyr",
-    "section": "Example data",
-    "text": "Example data\nSoybean production for different use by year and country.\n\nsoybean_use &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-04-06/soybean_use.csv')\nsoybean_use\n#&gt; # A tibble: 9,897 × 6\n#&gt;    entity code   year human_food animal_feed processed\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt;  1 Africa &lt;NA&gt;   1961      33000        6000     14000\n#&gt;  2 Africa &lt;NA&gt;   1962      43000        7000     17000\n#&gt;  3 Africa &lt;NA&gt;   1963      31000        7000      5000\n#&gt;  4 Africa &lt;NA&gt;   1964      43000        6000     14000\n#&gt;  5 Africa &lt;NA&gt;   1965      34000        6000     12000\n#&gt;  6 Africa &lt;NA&gt;   1966      41000        6000      2000\n#&gt;  7 Africa &lt;NA&gt;   1967      47000        6000      4000\n#&gt;  8 Africa &lt;NA&gt;   1968      50000        7000      3000\n#&gt;  9 Africa &lt;NA&gt;   1969      52000        6000      6000\n#&gt; 10 Africa &lt;NA&gt;   1970      52000        6000      8000\n#&gt; # ℹ 9,887 more rows\n\n\n\nData from Our World in Data provided by tidytuesday"
+    "section": "The data",
+    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\n\n\n\n\nyear: observation year\nsection: CC (clear cut forest) or OG (old growth forest)\nunittype: channel classification (C = Cascade, P = Pool, …)\nspecies: Species measured\nlength_1_mm: body length [mm]\nweight_g: body weight [g]\n\n\n\n\n\n\n\n\nCoastal giant salamander (terrestrial form)Andrews Forest Program by Lina DiGregorio via CC-BY from https://andrewsforest.oregonstate.edu\n\n\n\n\n\nReferences: Kaylor, M.J. and D.R. Warren. (2017) andGregory, S.V. and I. Arismendi. (2020) as provided in the lterdatasampler package."
+  },
+  {
+    "objectID": "sessions/slides/dplyr.html#the-data-1",
+    "href": "sessions/slides/dplyr.html#the-data-1",
+    "title": "Data transformation with dplyr",
+    "section": "The data",
+    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\nlibrary(lterdatasampler)\nand_vertebrates\n#&gt; # A tibble: 32,191 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 32,181 more rows"
+  },
+  {
+    "objectID": "sessions/slides/dplyr.html#filter-1",
+    "href": "sessions/slides/dplyr.html#filter-1",
+    "title": "Data transformation with dplyr",
+    "section": "filter()",
+    "text": "filter()\nFilter only the trout species:\n\nfilter(and_vertebrates, species == \"Cutthroat trout\")\n#&gt; # A tibble: 20,433 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 20,423 more rows\n\n\nfilter() goes through each row of the data and return only those rows where the value for species is \"Cutthroat trout\""
+  },
+  {
+    "objectID": "sessions/slides/dplyr.html#filter-2",
+    "href": "sessions/slides/dplyr.html#filter-2",
+    "title": "Data transformation with dplyr",
+    "section": "filter()",
+    "text": "filter()\nYou can also combine filters using logical operators (&, |, !):\n\nfilter(and_vertebrates, species == \"Cutthroat trout\" & year == 1987)\n#&gt; # A tibble: 603 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 593 more rows"
+  },
+  {
+    "objectID": "sessions/slides/dplyr.html#filter-in",
+    "href": "sessions/slides/dplyr.html#filter-in",
+    "title": "Data transformation with dplyr",
+    "section": "filter() + %in%",
+    "text": "filter() + %in%\nUse the %in% operator to filter rows based on multiple values, e.g. unittypes\n\n\nunittype_select &lt;- c(\"R\", \"C\", \"S\")\nfilter(and_vertebrates, unittype %in% unittype_select)\n#&gt; # A tibble: 19,619 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 19,609 more rows"
+  },
+  {
+    "objectID": "sessions/slides/dplyr.html#filter-is.na",
+    "href": "sessions/slides/dplyr.html#filter-is.na",
+    "title": "Data transformation with dplyr",
+    "section": "filter() + is.na()",
+    "text": "filter() + is.na()\nFilter only rows that don’t have a value for the weight\n\nfilter(and_vertebrates, is.na(weight_g))\n#&gt; # A tibble: 13,259 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1993 CC      P        Cutthroat trout          93       NA\n#&gt;  2  1993 CC      P        Cutthroat trout         175       NA\n#&gt;  3  1993 CC      P        Cutthroat trout         104       NA\n#&gt;  4  1993 CC      P        Cutthroat trout          98       NA\n#&gt;  5  1993 CC      P        Cutthroat trout          97       NA\n#&gt;  6  1993 CC      P        Cutthroat trout         123       NA\n#&gt;  7  1993 CC      P        Cutthroat trout         149       NA\n#&gt;  8  1993 CC      P        Cutthroat trout         100       NA\n#&gt;  9  1993 CC      P        Cutthroat trout         118       NA\n#&gt; 10  1993 CC      P        Cutthroat trout         163       NA\n#&gt; # ℹ 13,249 more rows\n\n\nOr the opposite: filter only the rows that have a value for the weight\n\nfilter(and_vertebrates, !is.na(weight_g))"
+  },
+  {
+    "objectID": "sessions/slides/dplyr.html#filter-between",
+    "href": "sessions/slides/dplyr.html#filter-between",
+    "title": "Data transformation with dplyr",
+    "section": "filter() + between()",
+    "text": "filter() + between()\nCombine different filters:\nFilter rows where the value for year is between 2000 and 2005\n\n\nfilter(and_vertebrates, between(year, 2000, 2005))\n#&gt; # A tibble: 6,662 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  2000 CC      C        Cutthroat trout          84       NA\n#&gt;  2  2000 CC      C        Cutthroat trout         132       NA\n#&gt;  3  2000 CC      C        Cutthroat trout         105       NA\n#&gt;  4  2000 CC      C        Cutthroat trout          41       NA\n#&gt;  5  2000 CC      C        Cutthroat trout          42       NA\n#&gt;  6  2000 CC      C        Cutthroat trout          42       NA\n#&gt;  7  2000 CC      C        Cutthroat trout          41       NA\n#&gt;  8  2000 CC      C        Cutthroat trout          51       NA\n#&gt;  9  2000 CC      C        Cutthroat trout          45       NA\n#&gt; 10  2000 CC      C        Cutthroat trout          44       NA\n#&gt; # ℹ 6,652 more rows\n\n\n\nOr you could also do it like this:\n\nfilter(and_vertebrates, year &gt;= 2000 & year &lt;= 2005)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#useful-filter-helpers",
@@ -1666,32 +1701,25 @@
     "text": "Useful filter() helpers\nThese functions and operators help you filter your observations:\n\n\nrelational operators &lt;, &gt;, ==, …\nlogical operators &, |, !\n%in% to filter multiple values\nis.na() to filter missing values\nbetween() to filter values that are between an upper and lower boundary\nnear() to compare floating points (use instead of == for doubles)"
   },
   {
-    "objectID": "sessions/slides/dplyr.html#filter-1",
-    "href": "sessions/slides/dplyr.html#filter-1",
+    "objectID": "sessions/slides/dplyr.html#select-1",
+    "href": "sessions/slides/dplyr.html#select-1",
     "title": "Data transformation with dplyr",
-    "section": "filter()",
-    "text": "filter()\nFilter rows that contain the values for Germany\n\nfilter(soybean_use, entity == \"Germany\")\n#&gt; # A tibble: 53 × 6\n#&gt;    entity  code   year human_food animal_feed processed\n#&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt;  1 Germany DEU    1961          0        3000   1042000\n#&gt;  2 Germany DEU    1962          0        3000    935000\n#&gt;  3 Germany DEU    1963          0        3000   1092000\n#&gt;  4 Germany DEU    1964          0        3000   1096000\n#&gt;  5 Germany DEU    1965          0        3000   1435000\n#&gt;  6 Germany DEU    1966          0        3000   1588000\n#&gt;  7 Germany DEU    1967          0        3000   1646000\n#&gt;  8 Germany DEU    1968          0        3000   1480000\n#&gt;  9 Germany DEU    1969          0        3000   1423000\n#&gt; 10 Germany DEU    1970          0        3000   2118000\n#&gt; # ℹ 43 more rows\n\n\nfilter() goes through each row of the data and return only those rows where the value for entity is \"Germany\""
+    "section": "select()",
+    "text": "select()\nSelect the columns species, length_1_mm, and year\n\nselect(and_vertebrates, species, length_1_mm, year)\n#&gt; # A tibble: 32,191 × 3\n#&gt;    species         length_1_mm  year\n#&gt;    &lt;chr&gt;                 &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Cutthroat trout          58  1987\n#&gt;  2 Cutthroat trout          61  1987\n#&gt;  3 Cutthroat trout          89  1987\n#&gt;  4 Cutthroat trout          58  1987\n#&gt;  5 Cutthroat trout          93  1987\n#&gt;  6 Cutthroat trout          86  1987\n#&gt;  7 Cutthroat trout         107  1987\n#&gt;  8 Cutthroat trout         131  1987\n#&gt;  9 Cutthroat trout         103  1987\n#&gt; 10 Cutthroat trout         117  1987\n#&gt; # ℹ 32,181 more rows\n\n\nRemove variables using -\n\nselect(and_vertebrates, -species, -length_1_mm, -year)"
   },
   {
-    "objectID": "sessions/slides/dplyr.html#filter-in",
-    "href": "sessions/slides/dplyr.html#filter-in",
+    "objectID": "sessions/slides/dplyr.html#select-ends_with",
+    "href": "sessions/slides/dplyr.html#select-ends_with",
     "title": "Data transformation with dplyr",
-    "section": "filter() + %in%",
-    "text": "filter() + %in%\nUse the %in% operator to filter rows based on multiple values, e.g. countries\n\n\ncountries_select &lt;- c(\"Germany\", \"Austria\", \"Switzerland\")\nfilter(soybean_use, entity %in% countries_select)\n#&gt; # A tibble: 159 × 6\n#&gt;    entity  code   year human_food animal_feed processed\n#&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt;  1 Austria AUT    1961          0           0         0\n#&gt;  2 Austria AUT    1962          0           0         0\n#&gt;  3 Austria AUT    1963          0           0         0\n#&gt;  4 Austria AUT    1964          0           0         0\n#&gt;  5 Austria AUT    1965          0           0         0\n#&gt;  6 Austria AUT    1966          0           0         0\n#&gt;  7 Austria AUT    1967          0           0         0\n#&gt;  8 Austria AUT    1968          0           0         0\n#&gt;  9 Austria AUT    1969          0           0         0\n#&gt; 10 Austria AUT    1970          0           0         0\n#&gt; # ℹ 149 more rows"
+    "section": "select() + ends_with()",
+    "text": "select() + ends_with()\nSelect all columns that start with \"s\"\n\nselect(and_vertebrates, starts_with(\"s\"))\n\n\n#&gt; # A tibble: 32,191 × 2\n#&gt;   section species        \n#&gt;   &lt;chr&gt;   &lt;chr&gt;          \n#&gt; 1 CC      Cutthroat trout\n#&gt; 2 CC      Cutthroat trout\n#&gt; 3 CC      Cutthroat trout\n#&gt; # ℹ 32,188 more rows\n\n\nYou can use the same structure for starts_with() and contains().\n\n# this does not make sense for the example data\n# but combinations like this are helpful for research data\nselect(and_vertebrates, starts_with(\"sample_\"))\n\nselect(and_vertebrates, contains(\"_id_\"))"
   },
   {
-    "objectID": "sessions/slides/dplyr.html#filter-is.na",
-    "href": "sessions/slides/dplyr.html#filter-is.na",
+    "objectID": "sessions/slides/dplyr.html#select-fromto",
+    "href": "sessions/slides/dplyr.html#select-fromto",
     "title": "Data transformation with dplyr",
-    "section": "filter() + is.na()",
-    "text": "filter() + is.na()\nFilter only rows that don’t have a country code (i.e. the continents etc.)\n\nfilter(soybean_use, is.na(code))\n#&gt; # A tibble: 1,734 × 6\n#&gt;    entity code   year human_food animal_feed processed\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt;  1 Africa &lt;NA&gt;   1961      33000        6000     14000\n#&gt;  2 Africa &lt;NA&gt;   1962      43000        7000     17000\n#&gt;  3 Africa &lt;NA&gt;   1963      31000        7000      5000\n#&gt;  4 Africa &lt;NA&gt;   1964      43000        6000     14000\n#&gt;  5 Africa &lt;NA&gt;   1965      34000        6000     12000\n#&gt;  6 Africa &lt;NA&gt;   1966      41000        6000      2000\n#&gt;  7 Africa &lt;NA&gt;   1967      47000        6000      4000\n#&gt;  8 Africa &lt;NA&gt;   1968      50000        7000      3000\n#&gt;  9 Africa &lt;NA&gt;   1969      52000        6000      6000\n#&gt; 10 Africa &lt;NA&gt;   1970      52000        6000      8000\n#&gt; # ℹ 1,724 more rows\n\n\nOr the opposite: filter only the rows that have a country code with\n\nfilter(soybean_use, !is.na(code))"
-  },
-  {
-    "objectID": "sessions/slides/dplyr.html#filter-between",
-    "href": "sessions/slides/dplyr.html#filter-between",
-    "title": "Data transformation with dplyr",
-    "section": "filter() + between()",
-    "text": "filter() + between()\nCombine different filters:\nSelect rows where\n\nthe value for years is between 1970 and 1980\nthe value for entity is Germany\n\n\n\nfilter(soybean_use, between(year, 1970, 1980) & entity == \"Germany\")\n#&gt; # A tibble: 11 × 6\n#&gt;    entity  code   year human_food animal_feed processed\n#&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt;  1 Germany DEU    1970          0        3000   2118000\n#&gt;  2 Germany DEU    1971          0        3000   2119000\n#&gt;  3 Germany DEU    1972          0        5000   2271000\n#&gt;  4 Germany DEU    1973          0        3000   2820000\n#&gt;  5 Germany DEU    1974          0        3000   3704000\n#&gt;  6 Germany DEU    1975          0        3000   3480000\n#&gt;  7 Germany DEU    1976          0        1000   3453000\n#&gt;  8 Germany DEU    1977          0        3000   3388000\n#&gt;  9 Germany DEU    1978          0        3000   3647000\n#&gt; 10 Germany DEU    1979          0        2000   3700000\n#&gt; 11 Germany DEU    1980          0        3000   3887000"
+    "section": "select() + from:to",
+    "text": "select() + from:to\nMultiple consecutive columns can be selected using the from:to structure with either column id or name:\n\nselect(and_vertebrates, 1:3)\nselect(and_vertebrates, year:unittype)\n\n\n#&gt; # A tibble: 32,191 × 3\n#&gt;    year section unittype\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   \n#&gt; 1  1987 CC      R       \n#&gt; 2  1987 CC      R       \n#&gt; 3  1987 CC      R       \n#&gt; # ℹ 32,188 more rows\n\n\nBe a bit careful with these commands: They are not robust if you e.g. change the order of your columns at some point."
   },
   {
     "objectID": "sessions/slides/dplyr.html#useful-select-helpers",
@@ -1701,67 +1729,39 @@
     "text": "Useful select() helpers\n\n\nstarts_with() and ends_with(): variable names that start/end with a specific string\ncontains(): variable names that contain a specific string\nmatches(): variable names that match a regular expression\nany_of() and all_of(): variables that are contained in a character vector"
   },
   {
-    "objectID": "sessions/slides/dplyr.html#select-1",
-    "href": "sessions/slides/dplyr.html#select-1",
-    "title": "Data transformation with dplyr",
-    "section": "select()",
-    "text": "select()\nSelect the variables entity, year and human food\n\nselect(soybean_use, entity, year, human_food)\n#&gt; # A tibble: 9,897 × 3\n#&gt;    entity  year human_food\n#&gt;    &lt;chr&gt;  &lt;dbl&gt;      &lt;dbl&gt;\n#&gt;  1 Africa  1961      33000\n#&gt;  2 Africa  1962      43000\n#&gt;  3 Africa  1963      31000\n#&gt;  4 Africa  1964      43000\n#&gt;  5 Africa  1965      34000\n#&gt;  6 Africa  1966      41000\n#&gt;  7 Africa  1967      47000\n#&gt;  8 Africa  1968      50000\n#&gt;  9 Africa  1969      52000\n#&gt; 10 Africa  1970      52000\n#&gt; # ℹ 9,887 more rows\n\n\nRemove variables using -\n\nselect(soybean_use, -entity, -year, -human_food)"
-  },
-  {
-    "objectID": "sessions/slides/dplyr.html#select-ends_with",
-    "href": "sessions/slides/dplyr.html#select-ends_with",
-    "title": "Data transformation with dplyr",
-    "section": "select() + ends_with()",
-    "text": "select() + ends_with()\nSelect all columns that end with \"d\"\n\nselect(soybean_use, ends_with(\"d\"))\n\n\n#&gt; # A tibble: 9,897 × 3\n#&gt;   human_food animal_feed processed\n#&gt;        &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1      33000        6000     14000\n#&gt; 2      43000        7000     17000\n#&gt; 3      31000        7000      5000\n#&gt; # ℹ 9,894 more rows\n\n\nYou can use the same structure for starts_with() and contains().\n\n# this does not match any rows in the soy bean data set\n# but combinations like this are helpful for research data\nselect(soybean_use, starts_with(\"sample_\"))\n\nselect(soybean_use, contains(\"_id_\"))"
-  },
-  {
-    "objectID": "sessions/slides/dplyr.html#select-any_ofall_of",
-    "href": "sessions/slides/dplyr.html#select-any_ofall_of",
-    "title": "Data transformation with dplyr",
-    "section": "select() + any_of()/all_of()",
-    "text": "select() + any_of()/all_of()\nUse a character vector in conjunction with column selection\n\ncols &lt;- c(\"sample_\", \"year\", \"processed\", \"entity\")\n\n\nany_of() returns any columns that match an element in cols\n\nselect(soybean_use, any_of(cols))\n\n\n#&gt; # A tibble: 9,897 × 3\n#&gt;    year processed entity\n#&gt;   &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt; \n#&gt; 1  1961     14000 Africa\n#&gt; # ℹ 9,896 more rows\n\n\n\nall_of() tries to match all elements in cols and returns an error if an element does not exist\n\nselect(soybean_use, all_of(cols))\n\n\n#&gt; Error in `all_of()`:\n#&gt; ! Can't subset columns that don't exist.\n#&gt; ✖ Column `sample_` doesn't exist."
-  },
-  {
-    "objectID": "sessions/slides/dplyr.html#select-fromto",
-    "href": "sessions/slides/dplyr.html#select-fromto",
-    "title": "Data transformation with dplyr",
-    "section": "select() + from:to",
-    "text": "select() + from:to\nMultiple consecutive columns can be selected using the from:to structure with either column id or variable name:\n\nselect(soybean_use, 1:3)\nselect(soybean_use, code:animal_feed)\n\n\n#&gt; # A tibble: 9,897 × 4\n#&gt;   code   year human_food animal_feed\n#&gt;   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;\n#&gt; 1 &lt;NA&gt;   1961      33000        6000\n#&gt; 2 &lt;NA&gt;   1962      43000        7000\n#&gt; 3 &lt;NA&gt;   1963      31000        7000\n#&gt; # ℹ 9,894 more rows\n\n\nBe a bit careful with these commands: They are not robust if you e.g. change the order of your columns at some point."
-  },
-  {
     "objectID": "sessions/slides/dplyr.html#mutate-1",
     "href": "sessions/slides/dplyr.html#mutate-1",
     "title": "Data transformation with dplyr",
     "section": "mutate()",
-    "text": "mutate()\nNew columns can be added based on values from other columns\n\nmutate(soybean_use,\n  sum_human_animal = human_food + animal_feed\n)\n\n\n#&gt; # A tibble: 9,897 × 7\n#&gt;   entity code   year human_food animal_feed processed sum_human_animal\n#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt;\n#&gt; 1 Africa &lt;NA&gt;   1961      33000        6000     14000            39000\n#&gt; 2 Africa &lt;NA&gt;   1962      43000        7000     17000            50000\n#&gt; 3 Africa &lt;NA&gt;   1963      31000        7000      5000            38000\n#&gt; # ℹ 9,894 more rows\n\n\nAdd multiple new columns at once:\n\nmutate(soybean_use,\n  sum_human_animal = human_food + animal_feed,\n  total = human_food + animal_feed + processed\n)"
+    "text": "mutate()\nNew columns can be added based on values from other columns\n\nmutate(and_vertebrates, weight_kg = weight_g/1000)\n\n\n#&gt; # A tibble: 32,191 × 7\n#&gt;    year section unittype species         length_1_mm weight_g weight_kg\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75   0.00175\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95   0.00195\n#&gt; 3  1987 CC      R        Cutthroat trout          89     5.6    0.0056 \n#&gt; # ℹ 32,188 more rows\n\n\nAdd multiple new columns at once:\n\nmutate(and_vertebrates,\n       weight_kg = weight_g/1000,\n       length_m = length_1_mm/1000)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#mutate-case_when",
     "href": "sessions/slides/dplyr.html#mutate-case_when",
     "title": "Data transformation with dplyr",
     "section": "mutate() + case_when()",
-    "text": "mutate() + case_when()\nUse case_when to add column values conditional on other columns.\ncase_when() can combine many cases into one.\n\nmutate(soybean_use,\n  legislation = case_when(\n    between(year, 1980, 2000) ~ \"legislation_1\",  # case 1\n    year &gt;= 2000 ~ \"legislation_2\",               # case 2\n    .default = \"no_legislation\"                   # all other cases\n  )\n)\n#&gt; # A tibble: 9,897 × 7\n#&gt;    entity code   year human_food animal_feed processed legislation   \n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;         \n#&gt;  1 Africa &lt;NA&gt;   1961      33000        6000     14000 no_legislation\n#&gt;  2 Africa &lt;NA&gt;   1962      43000        7000     17000 no_legislation\n#&gt;  3 Africa &lt;NA&gt;   1963      31000        7000      5000 no_legislation\n#&gt;  4 Africa &lt;NA&gt;   1964      43000        6000     14000 no_legislation\n#&gt;  5 Africa &lt;NA&gt;   1965      34000        6000     12000 no_legislation\n#&gt;  6 Africa &lt;NA&gt;   1966      41000        6000      2000 no_legislation\n#&gt;  7 Africa &lt;NA&gt;   1967      47000        6000      4000 no_legislation\n#&gt;  8 Africa &lt;NA&gt;   1968      50000        7000      3000 no_legislation\n#&gt;  9 Africa &lt;NA&gt;   1969      52000        6000      6000 no_legislation\n#&gt; 10 Africa &lt;NA&gt;   1970      52000        6000      8000 no_legislation\n#&gt; # ℹ 9,887 more rows"
+    "text": "mutate() + case_when()\nUse case_when to add column values conditional on other columns.\ncase_when() can combine many cases into one.\n\nmutate(and_vertebrates,\n       type = case_when(\n         species == \"Cutthroat trout\" ~ \"Fish\",               # case 1\n         species == \"Coastal giant salamander\" ~ \"Amphibian\", # case 2\n         .default = NA                                        # all other\n))\n#&gt; # A tibble: 32,191 × 7\n#&gt;     year section unittype species         length_1_mm weight_g type \n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75 Fish \n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95 Fish \n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6  Fish \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15 Fish \n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9  Fish \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9  Fish \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5  Fish \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6  Fish \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55 Fish \n#&gt; 10  1987 CC      R        Cutthroat trout         117    13    Fish \n#&gt; # ℹ 32,181 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#summarize-1",
     "href": "sessions/slides/dplyr.html#summarize-1",
     "title": "Data transformation with dplyr",
     "section": "summarize()",
-    "text": "summarize()\nsummarize will collapse the data to a single row\n\n\nsummarize(soybean_use,\n  total_animal = sum(animal_feed, na.rm = TRUE),\n  total_human = sum(human_food, na.rm = TRUE)\n)\n#&gt; # A tibble: 1 × 2\n#&gt;   total_animal total_human\n#&gt;          &lt;dbl&gt;       &lt;dbl&gt;\n#&gt; 1    942503000  1589729000"
+    "text": "summarize()\nsummarize will collapse the data to a single row\n\n\nsummarize(and_vertebrates,\n          mean_length = mean(length_1_mm, na.rm = TRUE),\n          mean_weight = mean(weight_g, na.rm = TRUE))\n#&gt; # A tibble: 1 × 2\n#&gt;   mean_length mean_weight\n#&gt;         &lt;dbl&gt;       &lt;dbl&gt;\n#&gt; 1        73.8        8.91"
   },
   {
     "objectID": "sessions/slides/dplyr.html#summarize-by-group",
     "href": "sessions/slides/dplyr.html#summarize-by-group",
     "title": "Data transformation with dplyr",
     "section": "summarize() by group",
-    "text": "summarize() by group\nsummarize is much more useful in combination with the grouping argument .by\n\nsummary will be calculated separately for each group\n\n\n\n# summarize the grouped data\nsummarize(soybean_use,\n  total_animal = sum(animal_feed, na.rm = TRUE),\n  total_human = sum(human_food, na.rm = TRUE),\n  .by = year\n)\n#&gt; # A tibble: 53 × 3\n#&gt;     year total_animal total_human\n#&gt;    &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;\n#&gt;  1  1961      1503000    16994000\n#&gt;  2  1962      1800000    17326000\n#&gt;  3  1963      2060000    18667000\n#&gt;  4  1964      2002000    19639000\n#&gt;  5  1965      2162000    17796000\n#&gt;  6  1966      3096000    22179000\n#&gt;  7  1967      2818000    23282000\n#&gt;  8  1968      3361000    22747000\n#&gt;  9  1969      3084000    22212000\n#&gt; 10  1970      2496000    24119000\n#&gt; # ℹ 43 more rows"
+    "text": "summarize() by group\nsummarize is much more useful in combination with the grouping argument .by\n\nsummary will be calculated separately for each group\n\n\n\n# summarize the grouped data\nsummarize(and_vertebrates,\n    mean_length = mean(length_1_mm, na.rm = TRUE),\n    mean_weight = mean(weight_g, na.rm = TRUE),\n    .by = species\n  )\n#&gt; # A tibble: 2 × 3\n#&gt;   species                  mean_length mean_weight\n#&gt;   &lt;chr&gt;                          &lt;dbl&gt;       &lt;dbl&gt;\n#&gt; 1 Cutthroat trout                 83.5        8.84\n#&gt; 2 Coastal giant salamander        57.0        9.03"
   },
   {
     "objectID": "sessions/slides/dplyr.html#count",
     "href": "sessions/slides/dplyr.html#count",
     "title": "Data transformation with dplyr",
     "section": "count()",
-    "text": "count()\nCounts observations by group\n\n# count rows grouped by year\ncount(soybean_use, year)\n#&gt; # A tibble: 53 × 2\n#&gt;     year     n\n#&gt;    &lt;dbl&gt; &lt;int&gt;\n#&gt;  1  1961   178\n#&gt;  2  1962   178\n#&gt;  3  1963   178\n#&gt;  4  1964   178\n#&gt;  5  1965   178\n#&gt;  6  1966   178\n#&gt;  7  1967   178\n#&gt;  8  1968   178\n#&gt;  9  1969   178\n#&gt; 10  1970   178\n#&gt; # ℹ 43 more rows"
+    "text": "count()\nCounts observations by group\n\n# count rows grouped by year\ncount(and_vertebrates, year)\n#&gt; # A tibble: 33 × 2\n#&gt;     year     n\n#&gt;    &lt;dbl&gt; &lt;int&gt;\n#&gt;  1  1987   603\n#&gt;  2  1988   302\n#&gt;  3  1989   308\n#&gt;  4  1990   513\n#&gt;  5  1991   626\n#&gt;  6  1992   616\n#&gt;  7  1993   870\n#&gt;  8  1994   948\n#&gt;  9  1995   583\n#&gt; 10  1996   928\n#&gt; # ℹ 23 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#the-pipe-1",
@@ -1775,63 +1775,56 @@
     "href": "sessions/slides/dplyr.html#the-pipe-2",
     "title": "Data transformation with dplyr",
     "section": "The pipe |>",
-    "text": "The pipe |&gt;\nLet’s look at an example without pipe:\n\n# 1: filter rows that actually represent a country\nsoybean_new &lt;- filter(soybean_use, !is.na(code))\n\n# 2: summarize mean values by year\nsoybean_new &lt;- summarize(soybean_new,\n  mean_processed = mean(processed, na.rm = TRUE),\n  sd_processed = sd(processed, na.rm = TRUE),\n  .by = year\n)\n\n\nHow could we make this more efficient?"
+    "text": "The pipe |&gt;\nLet’s look at an example without pipe:\n\n# 1: filter rows that have don't have NA in the unittype column\nand_vertebrates_new &lt;- filter(and_vertebrates, !is.na(unittype))\n\n# 2: summarize mean values by year\nand_vertebrates_new &lt;- count(and_vertebrates_new, year, species, section)\n\n\nHow could we make this more efficient?\n\n\nUse one nested function without intermediate results:\n\nand_vertebrates_new &lt;- count(\n  filter(and_vertebrates, !is.na(unittype)),\n  year, species, section\n)\n\n\n\nBut this gets complicated and error prone very quickly"
   },
   {
     "objectID": "sessions/slides/dplyr.html#the-pipe-3",
     "href": "sessions/slides/dplyr.html#the-pipe-3",
     "title": "Data transformation with dplyr",
     "section": "The pipe |>",
-    "text": "The pipe |&gt;\nWe could do everything in one step without intermediate results by using use one nested function\n\nsoybean_new &lt;- summarize(\n  filter(soybean_use, !is.na(code)),\n  mean_processed = mean(processed, na.rm = TRUE),\n  sd_processed = sd(processed, na.rm = TRUE),\n  .by = year\n)\n\n\nBut this gets complicated and error prone very quickly"
+    "text": "The pipe |&gt;\nThe pipe operator makes it very easy to combine multiple operations:\n\nand_vertebrates_new &lt;- and_vertebrates |&gt;\n  filter(!is.na(unittype)) |&gt;\n  count(year, species, section)\n\nand_vertebrates_new\n\n\nYou can read from top to bottom and interpret the |&gt; as an “and then do”."
   },
   {
     "objectID": "sessions/slides/dplyr.html#the-pipe-4",
     "href": "sessions/slides/dplyr.html#the-pipe-4",
     "title": "Data transformation with dplyr",
     "section": "The pipe |>",
-    "text": "The pipe |&gt;\nThe pipe operator makes it very easy to combine multiple operations:\n\nsoybean_new &lt;- soybean_use |&gt;\n  filter(!is.na(code)) |&gt;\n  summarize(\n    mean_processed = mean(processed, na.rm = TRUE),\n    sd_processed = sd(processed, na.rm = TRUE),\n    .by = year\n  )\n\n\nYou can read from top to bottom and interpret the |&gt; as an “and then do”."
+    "text": "The pipe |&gt;\nBut what is happening?\nThe pipe is “pushing” the result of one line into the first argument of the function from the next line.\n\n\nand_vertebrates |&gt; \n  count(year)\n\n# instead of \ncount(and_vertebrates, year)\n\n\n\nPiping works perfectly with the tidyverse functions because they are designed to return a tibble and take a tibble as first argument.\n\n\n\n\n\n\n\n\nTip\n\n\nUse the keyboard shortcut Ctrl/Cmd + Shift + M to insert |&gt;"
   },
   {
     "objectID": "sessions/slides/dplyr.html#the-pipe-5",
     "href": "sessions/slides/dplyr.html#the-pipe-5",
     "title": "Data transformation with dplyr",
     "section": "The pipe |>",
-    "text": "The pipe |&gt;\nBut what is happening?\nThe pipe is “pushing” the result of one line into the first argument of the function from the next line.\n\n\nsoybean_use |&gt; \n  count(year)\n\n# instead of \ncount(soybean_use, year)\n\n\n\nPiping works perfectly with the tidyverse functions because they are designed to return a tibble and take a tibble as first argument.\n\n\n\n\n\n\n\n\nTip\n\n\nUse the keyboard shortcut Ctrl/Cmd + Shift + M to insert |&gt;"
-  },
-  {
-    "objectID": "sessions/slides/dplyr.html#the-pipe-6",
-    "href": "sessions/slides/dplyr.html#the-pipe-6",
-    "title": "Data transformation with dplyr",
-    "section": "The pipe |>",
-    "text": "The pipe |&gt;\nPiping also works well together with ggplot\n\n\nsoybean_use |&gt;\n  filter(!is.na(code)) |&gt;\n  select(year, processed) |&gt;\n  summarize(\n    processed = sum(processed,\n      na.rm = TRUE\n    ),\n    .by = year\n  ) |&gt;\n  ggplot(aes(\n    x = year,\n    y = processed\n  )) +\n  geom_line()"
+    "text": "The pipe |&gt;\nPiping also works well together with ggplot\n\nand_vertebrates |&gt;\n  filter(!is.na(unittype)) |&gt;\n  count(year, species, section) |&gt;\n  ggplot(aes(x = year, y = n, color = species)) +\n  geom_line() +\n  facet_wrap(~section)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows",
     "href": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows",
     "title": "Data transformation with dplyr",
     "section": "Combine two tibbles by row bind_rows",
-    "text": "Combine two tibbles by row bind_rows\nSituation: Two (or more) tibbles with the same variables (column names)\n\ntbl_a &lt;- soybean_use[1:2, ] # first two rows\ntbl_b &lt;- soybean_use[2:nrow(soybean_use), ] # the rest\n\n\n\ntbl_a\n\n\n#&gt; # A tibble: 2 × 6\n#&gt;   entity code   year human_food animal_feed processed\n#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 Africa &lt;NA&gt;   1961      33000        6000     14000\n#&gt; 2 Africa &lt;NA&gt;   1962      43000        7000     17000\n\n\n\ntbl_b\n\n\n#&gt; # A tibble: 9,896 × 6\n#&gt;   entity code   year human_food animal_feed processed\n#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 Africa &lt;NA&gt;   1962      43000        7000     17000\n#&gt; 2 Africa &lt;NA&gt;   1963      31000        7000      5000\n#&gt; # ℹ 9,894 more rows"
+    "text": "Combine two tibbles by row bind_rows\nSituation: Two (or more) tibbles with the same variables (column names)\n\ntbl_a &lt;- and_vertebrates[1:2, ] # first two rows\ntbl_b &lt;- and_vertebrates[2:nrow(and_vertebrates), ] # the rest\n\n\n\ntbl_a\n\n\n#&gt; # A tibble: 2 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n\n\n\ntbl_b\n\n\n#&gt; # A tibble: 32,190 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; 2  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt; # ℹ 32,188 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows-1",
     "href": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows-1",
     "title": "Data transformation with dplyr",
     "section": "Combine two tibbles by row bind_rows",
-    "text": "Combine two tibbles by row bind_rows\nBind the rows together with bind_rows():\n\nbind_rows(tbl_a, tbl_b)\n\n\n#&gt; # A tibble: 9,898 × 6\n#&gt;   entity code   year human_food animal_feed processed\n#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 Africa &lt;NA&gt;   1961      33000        6000     14000\n#&gt; 2 Africa &lt;NA&gt;   1962      43000        7000     17000\n#&gt; # ℹ 9,896 more rows\n\n\nYou can also add an ID-column to indicate which line belonged to which table:\n\nbind_rows(a = tbl_a, b = tbl_b, .id = \"id\")\n\n\n#&gt; # A tibble: 9,898 × 7\n#&gt;   id    entity code   year human_food animal_feed processed\n#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 a     Africa &lt;NA&gt;   1961      33000        6000     14000\n#&gt; 2 a     Africa &lt;NA&gt;   1962      43000        7000     17000\n#&gt; 3 b     Africa &lt;NA&gt;   1962      43000        7000     17000\n#&gt; # ℹ 9,895 more rows\n\n\n\nYou can use bind_rows() to bind as many tables as you want:\n\nbind_rows(a = tbl_a, b= tbl_b, c = tbl_c, ..., .id = \"id\")"
+    "text": "Combine two tibbles by row bind_rows\nBind the rows together with bind_rows():\n\nbind_rows(tbl_a, tbl_b)\n\n\n#&gt; # A tibble: 32,192 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; # ℹ 32,190 more rows\n\n\nYou can also add an ID-column to indicate which line belonged to which table:\n\nbind_rows(a = tbl_a, b = tbl_b, .id = \"id\")\n\n\n#&gt; # A tibble: 32,192 × 7\n#&gt;   id     year section unittype species         length_1_mm weight_g\n#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1 a      1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2 a      1987 CC      R        Cutthroat trout          61     1.95\n#&gt; 3 b      1987 CC      R        Cutthroat trout          61     1.95\n#&gt; # ℹ 32,189 more rows\n\n\n\nYou can use bind_rows() to bind as many tables as you want:\n\nbind_rows(a = tbl_a, b= tbl_b, c = tbl_c, ..., .id = \"id\")"
   },
   {
     "objectID": "sessions/slides/dplyr.html#join-tibbles-with-left_join",
     "href": "sessions/slides/dplyr.html#join-tibbles-with-left_join",
     "title": "Data transformation with dplyr",
     "section": "Join tibbles with left_join()",
-    "text": "Join tibbles with left_join()\nSituation: Two tables that share some but not all columns.\n\n\nsoybean_use\n\n\n#&gt; # A tibble: 9,897 × 6\n#&gt;   entity code   year human_food animal_feed processed\n#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 Africa &lt;NA&gt;   1961      33000        6000     14000\n#&gt; 2 Africa &lt;NA&gt;   1962      43000        7000     17000\n#&gt; # ℹ 9,895 more rows\n\n\n\n# table with the gdp of the country/continent for each year\ngdp\n\n\n#&gt; # A tibble: 9,897 × 3\n#&gt;   entity  year   gdp\n#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1 Africa  1961  4.02\n#&gt; 2 Africa  1962  4.02\n#&gt; # ℹ 9,895 more rows"
+    "text": "Join tibbles with left_join()\nSituation: Two tables that share some but not all columns.\n\n\nand_vertebrates\n\n\n#&gt; # A tibble: 32,191 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; # ℹ 32,189 more rows\n\n\n\n# table with more information on the species\nspecies\n#&gt; # A tibble: 2 × 2\n#&gt;   species                  type     \n#&gt;   &lt;chr&gt;                    &lt;chr&gt;    \n#&gt; 1 Cutthroat trout          Fish     \n#&gt; 2 Coastal giant salamander Amphibian"
   },
   {
     "objectID": "sessions/slides/dplyr.html#join-tibbles-with-left_join-1",
     "href": "sessions/slides/dplyr.html#join-tibbles-with-left_join-1",
     "title": "Data transformation with dplyr",
     "section": "Join tibbles with left_join()",
-    "text": "Join tibbles with left_join()\nJoin the two tables by the two common columns entity and year\n\nleft_join(soybean_use, gdp, by = c(\"entity\", \"year\"))\n#&gt; # A tibble: 9,897 × 7\n#&gt;    entity code   year human_food animal_feed processed   gdp\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Africa &lt;NA&gt;   1961      33000        6000     14000  4.02\n#&gt;  2 Africa &lt;NA&gt;   1962      43000        7000     17000  4.02\n#&gt;  3 Africa &lt;NA&gt;   1963      31000        7000      5000  4.02\n#&gt;  4 Africa &lt;NA&gt;   1964      43000        6000     14000  4.02\n#&gt;  5 Africa &lt;NA&gt;   1965      34000        6000     12000  4.02\n#&gt;  6 Africa &lt;NA&gt;   1966      41000        6000      2000  4.02\n#&gt;  7 Africa &lt;NA&gt;   1967      47000        6000      4000  4.02\n#&gt;  8 Africa &lt;NA&gt;   1968      50000        7000      3000  4.02\n#&gt;  9 Africa &lt;NA&gt;   1969      52000        6000      6000  4.02\n#&gt; 10 Africa &lt;NA&gt;   1970      52000        6000      8000  4.02\n#&gt; # ℹ 9,887 more rows\n\n\nleft_join() means that the resulting tibble will contain all rows of soybean_use, but not necessarily all rows of gdp"
+    "text": "Join tibbles with left_join()\nJoin the two tables by the common column species\n\nleft_join(and_vertebrates, species, by = \"species\")\n#&gt; # A tibble: 32,191 × 7\n#&gt;     year section unittype species         length_1_mm weight_g type \n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75 Fish \n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95 Fish \n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6  Fish \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15 Fish \n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9  Fish \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9  Fish \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5  Fish \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6  Fish \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55 Fish \n#&gt; 10  1987 CC      R        Cutthroat trout         117    13    Fish \n#&gt; # ℹ 32,181 more rows\n\n\nleft_join() means that the resulting tibble will contain all rows of and_vertebrates, but not necessarily all rows of species (in this case it does though)."
   },
   {
     "objectID": "sessions/slides/dplyr.html#different-_join-functions",
@@ -1901,7 +1894,7 @@
     "href": "sessions/slides/ggplot.html#advantages-of-ggplot",
     "title": "Data visualization with ggplot2",
     "section": "Advantages of ggplot",
-    "text": "Advantages of ggplot\n\nConsistent grammar/structure\nFlexible structure allows you to produce any type of plots\nHighly customizable appearance (themes)\nMany extension packages that provide additional plot types, themes, colors, animation, …\nActive community that provides help and inspiration\nPerfect package for exploratory data analysis and beautiful plots"
+    "text": "Advantages of ggplot\n\nConsistent grammar/structure\nFlexible structure allows you to produce any type of plots\nHighly customizable appearance (themes)\nMany extension packages that provide additional plot types, themes, colors, animation, …\n\nSee here for a list of ggplot extensions\n\nActive community that provides help and inspiration\nPerfect package for exploratory data analysis and beautiful plots"
   },
   {
     "objectID": "sessions/slides/ggplot.html#the-data",
@@ -2065,13 +2058,6 @@
     "text": "Small multiples with facet_wrap\nSplit your plots along one variable with facet_wrap\n\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  facet_wrap(~section)"
   },
   {
-    "objectID": "sessions/slides/ggplot.html#small-multiples-with-facet_wrap-1",
-    "href": "sessions/slides/ggplot.html#small-multiples-with-facet_wrap-1",
-    "title": "Data visualization with ggplot2",
-    "section": "Small multiples with facet_wrap",
-    "text": "Small multiples with facet_wrap\nSplit your plots along one variable with facet_wrap\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  facet_wrap(~section,\n    nrow = 2,\n    scales = \"free\"\n  )\n\n\nSpecify number of rows and columns with nrow/ncol\nSet separate scales for x and y with scales (one of \"free\", \"free_y\", \"free_x\")"
-  },
-  {
     "objectID": "sessions/slides/ggplot.html#small-multiples-with-facet_grid",
     "href": "sessions/slides/ggplot.html#small-multiples-with-facet_grid",
     "title": "Data visualization with ggplot2",
@@ -2118,7 +2104,7 @@
     "href": "sessions/slides/ggplot.html#scale_fill_-vs.-scale_color_",
     "title": "Data visualization with ggplot2",
     "section": "scale_fill_* vs. scale_color_*",
-    "text": "scale_fill_* vs. scale_color_*\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    color = unittype)) +\n  geom_boxplot() +\n  paletteer::scale_color_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\n\n\n\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    fill = unittype)) +\n  geom_boxplot() +\n  paletteer::scale_fill_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )"
+    "text": "scale_fill_* vs. scale_color_*\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    color = unittype)) +\n  geom_boxplot() +\n  scale_color_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\n\n\n\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    fill = unittype)) +\n  geom_boxplot() +\n  scale_fill_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )"
   },
   {
     "objectID": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title",
