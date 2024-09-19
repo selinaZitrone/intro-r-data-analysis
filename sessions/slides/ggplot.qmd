@@ -65,6 +65,7 @@ theme_set(theme_grey(base_size = 16))
 - **Flexible** structure allows you to produce any type of plots
 - Highly **customizable appearance** (themes)
 - Many **extension packages** that provide additional plot types, themes, colors, animation, ...
+  - See [here](https://strengejacke.github.io/sjPlot/index.html) for a list of ggplot extensions
 - Active community that provides help and inspiration
 - Perfect package for **exploratory data analysis** and **beautiful plots**
 
@@ -1002,58 +1003,6 @@ ggplot(
 
 :::
 
-## Small multiples with `facet_wrap`
-
-Split your plots along one variable with `facet_wrap`
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r eval=FALSE}
-#| eval: false
-ggplot(
-  data = and_vertebrates,
-  aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
-  )
-) +
-  geom_point() +
-  facet_wrap(~section,
-    nrow = 2,
-    scales = "free"
-  )
-```
-
-- Specify number of rows and columns with `nrow`/`ncol`
-- Set separate scales for x and y with `scales` (one of `"free"`, `"free_y"`, `"free_x"`)
-
-::: 
-
-:::{.column width="50%"}
-
-```{r echo=FALSE}
-ggplot(
-  data = and_vertebrates,
-  aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
-  )
-) +
-  geom_point() +
-  facet_wrap(~section,
-    scales = "free", #<<
-    nrow = 2
-  ) #<<
-```
-
-:::
-
-:::
-
 ## Small multiples with `facet_grid`
 
 Split your plots along two variables with `facet_grid`
@@ -1337,6 +1286,7 @@ continuous color scales
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
+library(paletteer)
 g <- g +
   paletteer::scale_color_paletteer_d(
     palette = "ggsci::default_uchicago"
@@ -1362,7 +1312,7 @@ ggplot(
     y = length_1_mm,
     color = unittype)) +
   geom_boxplot() +
-  paletteer::scale_color_paletteer_d(
+  scale_color_paletteer_d(
     palette = "ggsci::default_uchicago"
   )
 ```
@@ -1379,7 +1329,7 @@ ggplot(
     y = length_1_mm,
     fill = unittype)) +
   geom_boxplot() +
-  paletteer::scale_fill_paletteer_d(
+  scale_fill_paletteer_d(
     palette = "ggsci::default_uchicago"
   )
 ```
