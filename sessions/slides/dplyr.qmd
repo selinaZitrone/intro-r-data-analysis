@@ -14,7 +14,7 @@ format:
     show-slide-number: all
     incremental: true
     self-contained: true
-    code-line-numbers: true
+    code-line-numbers: false
     auto-stretch: false
     scrollable: false
     theme: slides.scss
@@ -73,21 +73,6 @@ library(dplyr)
 library(tidyverse)
 ```
 
-## Dplyr basic vocuabulary for data manipulation
-
-- `filter()` picks observations (rows) based on their values
-- `select()` picks variables (columns) based on their names
-- `mutate()` adds new variables based on existing ones
-- `summarize()` combines multiple values into a single summary value
-
-[Perform any of these operations by group]{.fragment}
-
-:::{.aside}
-
-from [dplyr package description](https://dplyr.tidyverse.org/)
-
-:::
-
 ## Dplyr basic vocabulary
 
 All of the `dplyr` functions work similarly: <br> 
@@ -96,26 +81,136 @@ All of the `dplyr` functions work similarly: <br>
 - **Other arguments** specify what to do exactly
 - **Return** a tibble
 
-## Example data
+## The data
 
-Soybean production for different use by year and country.
+Data set `and_vertebrates` with measurements of a trout and 2 salamander species in different forest sections.
 
-```{r}
-soybean_use <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-04-06/soybean_use.csv')
-soybean_use
-```
+:::{.columns}
 
-:::{.aside}
+:::{.column width="60%"}
 
-Data from [Our World in Data](https://ourworldindata.org/forests-and-deforestation) provided by [tidytuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-04-06/readme.md)
+::: {.nonincremental}
+
+::: {.small}
+
+- `year`: observation year
+- `section`: CC (clear cut forest) or OG (old growth forest)
+- `unittype`: channel classification (C = Cascade, P = Pool, ...)
+- `species`: Species measured
+- `length_1_mm`: body length [mm]
+- `weight_g`: body weight [g]
 
 :::
 
+:::
+
+:::{.aside}
+References: [Kaylor, M.J. and D.R. Warren. (2017)](https://doi.org/10.1002/ecs2.1845) and<br>[Gregory, S.V. and I. Arismendi. (2020)](https://doi.org/10.6073/pasta/7c78d662e847cdbe33584add8f809165) as provided in the <br>[lterdatasampler package](https://lter.github.io/lterdatasampler/).
+
+:::
+
+:::
+
+:::{.column width="40%"}
+
+![Coastal giant salamander (terrestrial form)<br>Andrews Forest Program by Lina DiGregorio via CC-BY from [https://andrewsforest.oregonstate.edu](https://andrewsforest.oregonstate.edu)](https://andrewsforest.oregonstate.edu/sites/default/files/gallery/afb_037.jpg){width=60%}
+
+:::
+
+:::
+
+```{r echo=FALSE}
+library(lterdatasampler)
+and_vertebrates <- and_vertebrates %>%
+  select(year, section, unittype, species, length_1_mm, weight_g) %>%
+  filter(species != "Cascade torrent salamander")
+```
+
+## The data
+
+Data set `and_vertebrates` with measurements of a trout and 2 salamander species in different forest sections.
+
+```{r}
+library(lterdatasampler)
+and_vertebrates
+```
+
 # `filter()` {.inverse}
 
-> picks observations (rows) based on their value
+> picks rows based on their value
 
-![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/dplyr_filter.jpg){width=70%}
+
+
+## `filter()`
+
+Filter only the trout species:
+
+```{r}
+filter(and_vertebrates, species == "Cutthroat trout")
+```
+
+. . .
+
+`filter()` goes through each row of the data and return only those rows where the value for `species` is `"Cutthroat trout"`
+
+## `filter()`
+
+You can also combine filters using logical operators (`&`, `|`, `!`):
+
+```{r}
+filter(and_vertebrates, species == "Cutthroat trout" & year == 1987)
+```
+
+## `filter()` + `%in%`
+
+Use the `%in%` operator to filter rows based on multiple values, e.g. unittypes
+
+. . .
+
+```{r}
+unittype_select <- c("R", "C", "S")
+filter(and_vertebrates, unittype %in% unittype_select)
+```
+
+## `filter()` + `is.na()`
+
+Filter only rows that don't have a value for the weight
+
+```{r}
+filter(and_vertebrates, is.na(weight_g))
+```
+
+. . .
+
+Or the opposite: filter only the rows that have a value for the weight
+
+```{r eval=FALSE}
+filter(and_vertebrates, !is.na(weight_g))
+```
+
+## `filter()` + `between()`
+
+#### Combine different filters:
+
+Filter rows where the value for `year` is between 2000 and 2005
+
+:::{.fragment}
+
+```{r}
+filter(and_vertebrates, between(year, 2000, 2005))
+```
+
+:::
+
+:::{.fragment}
+
+Or you could also do it like this: 
+
+```{r eval=FALSE}
+filter(and_vertebrates, year >= 2000 & year <= 2005)
+```
+
+:::
 
 ## Useful `filter()` helpers
 
@@ -132,65 +227,66 @@ These functions and operators help you filter your observations:
 
 :::
 
-## `filter()`
-
-Filter rows that contain the values for Germany
-
-```{r}
-filter(soybean_use, entity == "Germany")
-```
-
-. . .
-
-`filter()` goes through each row of the data and return only those rows where the value for `entity` is `"Germany"` 
-
-## `filter()` + `%in%`
-
-Use the `%in%` operator to filter rows based on multiple values, e.g. countries
-
-. . .
-
-```{r}
-countries_select <- c("Germany", "Austria", "Switzerland")
-filter(soybean_use, entity %in% countries_select)
-```
-
-## `filter()` + `is.na()`
-
-Filter only rows that don't have a country code (i.e. the continents etc.)
-
-```{r}
-filter(soybean_use, is.na(code))
-```
-
-. . .
-
-Or the opposite: filter only the rows that have a country code with
-
-```{r eval=FALSE}
-filter(soybean_use, !is.na(code))
-```
-
-## `filter()` + `between()`
-
-#### Combine different filters:
-
-Select rows where
-
-- the value for `years` is between 1970 and 1980
-- the value for `entity` is Germany
-
-:::{.fragment}
-
-```{r}
-filter(soybean_use, between(year, 1970, 1980) & entity == "Germany")
-```
-
-:::
-
 # `select()` {.inverse}
 
-> picks variables (columns) based on their names
+> picks columns based on their names
+
+## `select()`
+
+Select the columns `species`, `length_1_mm`, and `year`
+
+```{r}
+select(and_vertebrates, species, length_1_mm, year)
+```
+
+. . .
+
+Remove variables using `-`
+
+```{r eval=FALSE}
+select(and_vertebrates, -species, -length_1_mm, -year)
+```
+
+## `select()` + `ends_with()`
+
+Select all columns that start with `"s"`
+
+```{r eval=FALSE}
+select(and_vertebrates, starts_with("s"))
+```
+
+```{r echo=FALSE}
+print(select(and_vertebrates, starts_with("s")),n=3)
+```
+
+. . .
+
+You can use the same structure for `starts_with()` and `contains()`.
+
+```{r eval=FALSE}
+# this does not make sense for the example data
+# but combinations like this are helpful for research data
+select(and_vertebrates, starts_with("sample_"))
+
+select(and_vertebrates, contains("_id_"))
+```
+
+## `select()` + `from:to`
+
+Multiple consecutive columns can be selected using the `from:to` structure with either column id or name:
+
+```{r eval = FALSE}
+select(and_vertebrates, 1:3)
+select(and_vertebrates, year:unittype)
+```
+
+```{r echo=FALSE}
+print(select(and_vertebrates, year:unittype), n=3)
+```
+
+. . .
+
+Be a bit careful with these commands: They are not robust if you e.g. change the order of your columns at some point. <br>
 
 ## Useful `select()` helpers
 
@@ -203,112 +299,20 @@ filter(soybean_use, between(year, 1970, 1980) & entity == "Germany")
 
 :::
 
-## `select()`
-
-Select the variables entity, year and human food
-
-```{r}
-select(soybean_use, entity, year, human_food)
-```
-
-. . .
-
-Remove variables using `-`
-
-```{r eval=FALSE}
-select(soybean_use, -entity, -year, -human_food)
-```
-
-## `select()` + `ends_with()`
-
-Select all columns that end with `"d"`
-
-```{r eval=FALSE}
-select(soybean_use, ends_with("d"))
-```
-
-```{r echo=FALSE}
-print(select(soybean_use, ends_with("d")),n=3)
-```
-
-. . .
-
-You can use the same structure for `starts_with()` and `contains()`.
-
-```{r eval=FALSE}
-# this does not match any rows in the soy bean data set
-# but combinations like this are helpful for research data
-select(soybean_use, starts_with("sample_"))
-
-select(soybean_use, contains("_id_"))
-```
-
-## `select()` + `any_of()`/`all_of()`
-
-Use a character vector in conjunction with column selection
-
-```{r}
-cols <- c("sample_", "year", "processed", "entity")
-```
-
-. . .
-
-`any_of()` returns any columns that match an element in `cols`
-
-```{r eval=FALSE}
-select(soybean_use, any_of(cols))
-```
-
-```{r echo=FALSE}
-print(select(soybean_use, any_of(cols)),n=1)
-```
-
-. . .
-
-`all_of()` tries to match all elements in `cols` and returns an error if an element does not exist
-
-```{r eval=FALSE}
-select(soybean_use, all_of(cols))
-```
-
-```{r echo=FALSE,error=TRUE}
-select(soybean_use, all_of(cols))
-```
-
-## `select()` + `from:to`
-
-Multiple consecutive columns can be selected using the `from:to` structure with either column id or variable name:
-
-```{r eval = FALSE}
-select(soybean_use, 1:3)
-select(soybean_use, code:animal_feed)
-```
-
-```{r echo=FALSE}
-print(select(soybean_use, code:animal_feed), n=3)
-```
-
-. . .
-
-Be a bit careful with these commands: They are not robust if you e.g. change the order of your columns at some point. <br>
-
 # `mutate()` {.inverse}
-> Adds new variables
 
-![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/dplyr_mutate.png){width=45%}
+> Adds new columns to your data
 
 ## `mutate()`
 
 New columns can be added based on values from other columns
 
 ```{r eval=FALSE}
-mutate(soybean_use,
-  sum_human_animal = human_food + animal_feed
-)
+mutate(and_vertebrates, weight_kg = weight_g/1000)
 ```
 
 ```{r echo=FALSE}
-print(mutate(soybean_use,sum_human_animal = human_food + animal_feed), n= 3)
+print(mutate(and_vertebrates, weight_kg = weight_g/1000), n= 3)
 ```
 
 . . .
@@ -316,10 +320,10 @@ print(mutate(soybean_use,sum_human_animal = human_food + animal_feed), n= 3)
 Add multiple new columns at once:
 
 ```{r eval=FALSE}
-mutate(soybean_use,
-  sum_human_animal = human_food + animal_feed,
-  total = human_food + animal_feed + processed
-)
+mutate(and_vertebrates,
+       weight_kg = weight_g/1000,
+       length_m = length_1_mm/1000)
+
 ```
 
 ## `mutate()` + `case_when()`
@@ -329,13 +333,12 @@ Use `case_when` to add column values conditional on other columns.
 `case_when()` can combine many cases into one.
 
 ```{r}
-mutate(soybean_use,
-  legislation = case_when(
-    between(year, 1980, 2000) ~ "legislation_1",  # case 1
-    year >= 2000 ~ "legislation_2",               # case 2
-    .default = "no_legislation"                   # all other cases
-  )
-)
+mutate(and_vertebrates,
+       type = case_when(
+         species == "Cutthroat trout" ~ "Fish",               # case 1
+         species == "Coastal giant salamander" ~ "Amphibian", # case 2
+         .default = NA                                        # all other
+))
 ```
 
 # `summarize()` {.inverse}
@@ -349,10 +352,9 @@ mutate(soybean_use,
 . . .
 
 ```{r}
-summarize(soybean_use,
-  total_animal = sum(animal_feed, na.rm = TRUE),
-  total_human = sum(human_food, na.rm = TRUE)
-)
+summarize(and_vertebrates,
+          mean_length = mean(length_1_mm, na.rm = TRUE),
+          mean_weight = mean(weight_g, na.rm = TRUE))
 ```
 
 ## `summarize()` by group
@@ -365,11 +367,11 @@ summarize(soybean_use,
 
 ```{r}
 # summarize the grouped data
-summarize(soybean_use,
-  total_animal = sum(animal_feed, na.rm = TRUE),
-  total_human = sum(human_food, na.rm = TRUE),
-  .by = year
-)
+summarize(and_vertebrates,
+    mean_length = mean(length_1_mm, na.rm = TRUE),
+    mean_weight = mean(weight_g, na.rm = TRUE),
+    .by = species
+  )
 ```
 
 ## `count()`
@@ -378,7 +380,7 @@ Counts observations by group
 
 ```{r}
 # count rows grouped by year
-count(soybean_use, year)
+count(and_vertebrates, year)
 ```
 
 # The pipe ` |> ` {.inverse}
@@ -412,31 +414,25 @@ between the two pipe versions
 Let's look at an example without pipe:
 
 ```{r eval=FALSE}
-# 1: filter rows that actually represent a country
-soybean_new <- filter(soybean_use, !is.na(code))
+# 1: filter rows that have don't have NA in the unittype column
+and_vertebrates_new <- filter(and_vertebrates, !is.na(unittype))
 
 # 2: summarize mean values by year
-soybean_new <- summarize(soybean_new,
-  mean_processed = mean(processed, na.rm = TRUE),
-  sd_processed = sd(processed, na.rm = TRUE),
-  .by = year
-)
+and_vertebrates_new <- count(and_vertebrates_new, year, species, section)
 ```
 
 . . .
 
 **How could we make this more efficient?**
 
-## The pipe `|>` 
+. . .
 
-We could do everything in one step without intermediate results by using use one **nested function**
+Use one **nested function** without intermediate results:
 
 ```{r eval=FALSE}
-soybean_new <- summarize(
-  filter(soybean_use, !is.na(code)),
-  mean_processed = mean(processed, na.rm = TRUE),
-  sd_processed = sd(processed, na.rm = TRUE),
-  .by = year
+and_vertebrates_new <- count(
+  filter(and_vertebrates, !is.na(unittype)),
+  year, species, section
 )
 ```
 
@@ -449,13 +445,11 @@ But this gets complicated and error prone very quickly
 The pipe operator makes it very easy to combine multiple operations:
 
 ```{r eval=FALSE}
-soybean_new <- soybean_use |>
-  filter(!is.na(code)) |>
-  summarize(
-    mean_processed = mean(processed, na.rm = TRUE),
-    sd_processed = sd(processed, na.rm = TRUE),
-    .by = year
-  )
+and_vertebrates_new <- and_vertebrates |>
+  filter(!is.na(unittype)) |>
+  count(year, species, section)
+
+and_vertebrates_new
 ```
 
 . . .
@@ -471,11 +465,11 @@ The pipe is "pushing" the result of one line into the first argument of the func
 . . .
 
 ```{r eval=FALSE}
-soybean_use |> 
+and_vertebrates |> 
   count(year)
 
 # instead of 
-count(soybean_use, year)
+count(and_vertebrates, year)
 ```
 
 . . .
@@ -500,21 +494,12 @@ theme_set(theme_bw(base_size = 16))
 
 
 ```{r}
-#| output-location: column
-soybean_use |>
-  filter(!is.na(code)) |>
-  select(year, processed) |>
-  summarize(
-    processed = sum(processed,
-      na.rm = TRUE
-    ),
-    .by = year
-  ) |>
-  ggplot(aes(
-    x = year,
-    y = processed
-  )) +
-  geom_line()
+and_vertebrates |>
+  filter(!is.na(unittype)) |>
+  count(year, species, section) |>
+  ggplot(aes(x = year, y = n, color = species)) +
+  geom_line() +
+  facet_wrap(~section)
 ```
 
 # Combining mulitiple tables{.inverse}
@@ -524,8 +509,8 @@ soybean_use |>
 Situation: Two (or more) `tibbles` with the same variables (column names)
 
 ```{r}
-tbl_a <- soybean_use[1:2, ] # first two rows
-tbl_b <- soybean_use[2:nrow(soybean_use), ] # the rest
+tbl_a <- and_vertebrates[1:2, ] # first two rows
+tbl_b <- and_vertebrates[2:nrow(and_vertebrates), ] # the rest
 ```
 <br>
 ```{r eval=FALSE}
@@ -583,38 +568,38 @@ Situation: Two tables that share some but not all columns.
 . . .
 
 ```{r echo=FALSE}
-gdp <- select(soybean_use, entity,year) |> mutate(gdp = rnorm(1, mean = 5, sd = 0.5))
+species <- select(and_vertebrates, species) |> distinct() |> 
+  mutate(type = case_when(
+    species == "Cutthroat trout" ~ "Fish",
+    species == "Coastal giant salamander" ~ "Amphibian"
+  ))
 ```
 
 ```{r eval = FALSE}
-soybean_use
+and_vertebrates
 ```
 
 ```{r echo = FALSE}
-print(soybean_use, n=2)
+print(and_vertebrates, n=2)
 ```
 <br>
-```{r eval=FALSE}
-# table with the gdp of the country/continent for each year
-gdp
-```
-
-```{r echo = FALSE}
-print(gdp, n=2)
+```{r}
+# table with more information on the species
+species
 ```
 
 ## Join tibbles with `left_join()`
 
-Join the two tables by the two common columns `entity` and `year`
+Join the two tables by the common column `species`
 
 ```{r}
-left_join(soybean_use, gdp, by = c("entity", "year"))
+left_join(and_vertebrates, species, by = "species")
 ```
 
 . . .
 
-`left_join()` means that the resulting tibble will contain all rows of `soybean_use`,
-but not necessarily all rows of `gdp`
+`left_join()` means that the resulting tibble will contain all rows of `and_vertebrates`,
+but not necessarily all rows of `species` (in this case it does though).
 
 ## Different `*_join()` functions
 

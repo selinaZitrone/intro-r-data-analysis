@@ -270,61 +270,55 @@ theme_set(theme_minimal(base_size = 16))
 # transformation dplyr -----------------------------------------------------
 library(dplyr)
 
-soybean_use <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-04-06/soybean_use.csv')
-
+and_vertebrates
 
 # filter ------------------------------------------------------------------
 
-filter(soybean_use, entity == "Germany")
-countries_select <- c("Germany", "Austria", "Switzerland")
-filter(soybean_use, entity %in% countries_select)
-filter(soybean_use, is.na(code))
-filter(soybean_use, !is.na(code))
-filter(soybean_use, between(year, 1970, 1980) & entity == "Germany")
-
+filter(and_vertebrates, species == "Cutthroat trout")
+filter(and_vertebrates, species == "Cutthroat trout" & year == 1987)
+unittype_select <- c("R", "C", "S")
+filter(and_vertebrates, unittype %in% unittype_select)
+filter(and_vertebrates, is.na(weight_g))
+filter(and_vertebrates, !is.na(weight_g))
+filter(and_vertebrates, between(year, 2000, 2005))
 
 # select ------------------------------------------------------------------
 
-select(soybean_use, entity, year, human_food)
-select(soybean_use, -entity, -year, -human_food)
 select(soybean_use, ends_with("d"))
 
-# this does not match any rows in the soy bean data set
-# but combinations like this are helpful for research data
-select(soybean_use, starts_with("sample_"))
-select(soybean_use, contains("_id_"))
+select(and_vertebrates, species, length_1_mm, year)
+select(and_vertebrates, -species, -length_1_mm, -year)
+select(and_vertebrates, starts_with("s"))
 
-cols <- c("sample_", "year", "processed", "entity")
-select(soybean_use, any_of(cols))
-# error because sample_ does not exist
-select(soybean_use, all_of(cols))
+# this does not make sense for our data specifically
+# but combinations like this are helpful for research data
+select(and_vertebrates, starts_with("sample_"))
+select(and_vertebrates, contains("_id_"))
 
 select(soybean_use, 1:3)
 select(soybean_use, code:animal_feed)
 
+select(and_vertebrates, 1:3)
+select(and_vertebrates, year:unittype)
+
 # arrange -----------------------------------------------------------------
 
-arrange(soybean_use, processed)
-arrange(soybean_use, desc(processed))
-arrange(soybean_use, year, entity)
+arrange(and_vertebrates, length_1_mm)
+arrange(and_vertebrates, desc(length_1_mm))
 
 # mutate ------------------------------------------------------------------
 
-mutate(soybean_use, sum_human_animal = human_food + animal_feed)
-mutate(soybean_use,
-       sum_human_animal = human_food + animal_feed,
-       total = human_food + animal_feed + processed
-)
-mutate(soybean_use,
-       legislation = case_when(
-         year < 2000 & year >= 1980 ~ "legislation_1",
-         year >= 2000 ~ "legislation_2",
-         TRUE ~ "no_legislation"
-       )
-)
-transmute(soybean_use,
-          ratio_processed_animal = processed/animal_feed,
-          ratio_human_animal = human_food/animal_feed)
+mutate(and_vertebrates, weight_kg = weight_g/1000)
+mutate(and_vertebrates,
+       weight_kg = weight_g/1000,
+       length_m = length_1_mm/1000)
+
+mutate(and_vertebrates,
+       type = case_when(
+         species == "Cutthroat trout" ~ "Fish",
+         species == "Coastal giant salamander" ~ "Amphibian",
+         .default = NA # all other cases
+))
 
 # summarize ---------------------------------------------------------------
 
@@ -336,74 +330,50 @@ summarize(soybean_use_group,
           total_animal = sum(animal_feed, na.rm = TRUE),
           total_human = sum(human_food, na.rm = TRUE))
 
+summarize(and_vertebrates,
+          mean_length = mean(length_1_mm, na.rm = TRUE),
+          mean_weight = mean(weight_g, na.rm = TRUE))
+# by species
+summarize(and_vertebrates,
+    mean_length = mean(length_1_mm, na.rm = TRUE),
+    mean_weight = mean(weight_g, na.rm = TRUE),
+    .by = species
+  )
+
 # count -------------------------------------------------------------------
 
-# count rows grouped by year
-count(soybean_use, year)
-
-# or if the data is already grouped by year
-count(soybean_use_group)
-
+# count rows (observations) grouped by year
+count(and_vertebrates, year)
 
 # The pipe operator  ------------------------------------------------------
 
 # OPTION 1: step by step
 
-# 1: filter rows that actually represent a country
-soybean_new <- filter(soybean_use, !is.na(code))
-
-# 2: group the data by year
-soybean_new <- group_by(soybean_new, year)
+# 1: filter rows that have don't have NA in the unittype column
+and_vertebrates_new <- filter(and_vertebrates, !is.na(unittype))
 
 # 3: summarize mean values by year
-soybean_new <- summarize(soybean_new,
-  mean_processed = mean(processed, na.rm = TRUE),
-  sd_processed = sd(processed, na.rm = TRUE)
-)
-
-# 4: reorder the observation with newest first
-soybean_new <- arrange(soybean_new, desc(year))
+and_vertebrates_new <- count(and_vertebrates, year, species, section)
 
 # OPTION 2: nested function
 
-soybean_new <- arrange(
-  summarize(
-    group_by(
-      filter(soybean_use, !is.na(code)),
-      year
-    ),
-    mean_processed = mean(processed, na.rm = TRUE),
-    sd_processed = sd(processed, na.rm = TRUE)
-  ),
-  desc(year)
+and_vertebrates_new <- count(
+  filter(and_vertebrates, !is.na(unittype)),
+  year, species, section
 )
 
-# OPTION 3: pipe %>%
-
-soybean_new <- soybean_use %>%
-  filter(!is.na(code)) %>%
-  group_by(year) %>%
-  summarize(
-    mean_processed = mean(processed, na.rm = TRUE),
-    sd_processed = sd(processed, na.rm = TRUE)
-  ) %>%
-  arrange(desc(year))
+# OPTION 3: pipe |>
+and_vertebrates_new <- and_vertebrates |>
+  filter(!is.na(unittype)) |>
+  count(year, species, section)
 
 # pipe with ggplot2
-
-soybean_use %>%
-  filter(!is.na(code)) %>%
-  select(year, processed) %>%
-  group_by(year) %>%
-  summarize(
-    processed = sum(processed, na.rm = TRUE)
-  ) %>%
-  ggplot(aes(
-    x = year,
-    y = processed
-  )) +
-  geom_line()
-
+and_vertebrates |>
+  filter(!is.na(unittype)) |>
+  count(year, species, section) |>
+  ggplot(aes(x = year, y = n, color = species)) +
+  geom_line() +
+  facet_wrap(~section)
 
 # tidyr -------------------------------------------------------------------
 library(tidyr)
