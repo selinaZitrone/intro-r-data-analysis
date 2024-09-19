@@ -7,7 +7,8 @@
 slides/img/
 slides/*.html
 slides/*.pdf
-slides/*_files/
+sessions/slides/*_files/
+sessions/slides/*_cache/
 
 tasks/*/*.html
 img/*
