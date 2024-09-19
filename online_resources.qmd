@@ -40,7 +40,10 @@ Really great list with links to ggplot tutorials (sorted by topic and difficulty
 
 - In the [R graph gallery](https://www.r-graph-gallery.com/) you can browse through hundreds of different types of plots and find code to reproduce them.
 
-- A great [workshop on ggplot by Cédric Scherer](https://rstudio-conf-2022.github.io/ggplot2-graphic-design/) with everything from basics of ggplot, over using colors, graphic design and plot composition.
+- A great [ggplot tutorial by Cédric Scherer](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/) with many different plot types
+
+- A [collection of ggplot extension packages](https://strengejacke.github.io/sjPlot/index.html) for all kinds of different
+plots
 
  
 ### dplyr

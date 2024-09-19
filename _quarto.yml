@@ -5,6 +5,8 @@ project:
     - "*.qmd"
     - "!*.Rmd"
     - "!additional_docs/"
+    - "!R/byod/"
+    - "!R/quarto_example.qmd"
   resources:
     - "slides/*.pdf"
     - "slides/*.html"
