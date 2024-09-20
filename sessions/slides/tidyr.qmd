@@ -281,6 +281,24 @@ cities_tidy <- cities_untidy |>
   )
 ```
 
+## Remove missing values with `drop_na()`
+
+Drop rows with missing values:
+
+```{r}
+#| eval: false
+# drop rows with missing values in any column
+drop_na(and_vertebrates) 
+# drop rows with missing values in weight column
+drop_na(and_vertebrates, weight_g) 
+# drop rows with missing values in weight and species columns
+drop_na(and_vertebrates, weight_g, species) 
+```
+
+. . . 
+
+This is an easier and more intuitive alternative to `filter(!is.na(...))`.
+
 # Now you {.inverse}
 
 [Task (30 min)]{.highlight-blue}<br>
