@@ -75,24 +75,6 @@ There are **various tests** and the outcome might differ!
 
 ## The data
 
-:::{.columns}
-
-:::{.column width="50%"}
-
-A tibble with two variables
-
-:::{.nonincremental}
-
-- `normal`: 200 normally distributed values with mean 50 and standard deviation 5
-- `non_normal`: 200 uniformly distributed values between 45 and 55
-
-:::
-
-:::
-
-:::{.column width="50%"}
-
-
 ```{r}
 #| echo: false
 set.seed(123)
@@ -109,6 +91,29 @@ mydata <- tibble(
   )
 )
 ```
+
+
+A tibble with two variables
+
+:::{.nonincremental}
+
+- `normal`: 200 normally distributed values with mean 50 and standard deviation 5
+- `non_normal`: 200 uniformly distributed values between 45 and 55
+
+:::
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+mydata
+```
+
+:::
+
+:::{.column width="50%"}
+
 
 ```{r echo=FALSE}
 #| fig-width: 6
@@ -204,8 +209,12 @@ Points should match the straight line. Small deviations are okay.
 :::{.column width="50%"}
 
 ```{r, fig.height=5.1}
-# ggplot(mydata, aes(sample = normal)) +
-#   stat_qq() + stat_qq_line()
+# ggplot(
+#   mydata,
+#   aes(sample = normal)
+# ) +
+#   stat_qq() +
+#   stat_qq_line()
 ggpubr::ggqqplot(mydata$normal)
 ```
 
@@ -214,8 +223,12 @@ ggpubr::ggqqplot(mydata$normal)
 :::{.column width="50%"}
 
 ```{r, fig.height=5.1}
-# ggplot(mydata,aes(sample = non_normal))+
-#   stat_qq() + stat_qq_line()
+# ggplot(
+#   mydata,
+#   aes(sample = non_normal)
+# ) +
+#   stat_qq() +
+#   stat_qq_line()
 ggpubr::ggqqplot(mydata$non_normal)
 ```
 
@@ -485,7 +498,11 @@ ggplot(
   )
 ```
 
+::: {.nonincremental}
+
 - By default, a Wilcoxon test is performed
+
+:::
 
 ## Plot test results with `geom_signif()`
 
@@ -516,10 +533,6 @@ ggplot(
   )
 ```
 
-- `test`: run specific test
-- `test.args`: pass additional arguments in a list
-- `?geom_signif` for more options
-
 :::
 
 :::{.column width="50%"}
@@ -548,6 +561,14 @@ ggplot(
 ```
 
 :::
+
+:::
+
+::: {.nonincremental}
+
+- `test`: run specific test
+- `test.args`: pass additional arguments in a list
+- `?geom_signif` for more options
 
 :::
 
