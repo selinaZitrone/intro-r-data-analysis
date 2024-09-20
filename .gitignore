@@ -26,3 +26,8 @@ R/byod/2023_02_tips/dnaseq/normalized_counts.csv
 R/byod/2023_02_tips/dnaseq/raw_counts
 R/byod/2023_02_tips/dnaseq/raw_counts.tsv
 R/byod/2023_02_tips/dnaseq/DE_results.csv
+/R/quarto_example_files
+/R/quarto_example_cache
+/sessions/slides/dplyr_cache
+/sessions/slides/ggplot_files
+/R/byod/2024_03_tips
