@@ -284,8 +284,6 @@ filter(and_vertebrates, between(year, 2000, 2005))
 
 # select ------------------------------------------------------------------
 
-select(soybean_use, ends_with("d"))
-
 select(and_vertebrates, species, length_1_mm, year)
 select(and_vertebrates, -species, -length_1_mm, -year)
 select(and_vertebrates, starts_with("s"))
@@ -294,9 +292,6 @@ select(and_vertebrates, starts_with("s"))
 # but combinations like this are helpful for research data
 select(and_vertebrates, starts_with("sample_"))
 select(and_vertebrates, contains("_id_"))
-
-select(soybean_use, 1:3)
-select(soybean_use, code:animal_feed)
 
 select(and_vertebrates, 1:3)
 select(and_vertebrates, year:unittype)
@@ -322,14 +317,6 @@ mutate(and_vertebrates,
 
 # summarize ---------------------------------------------------------------
 
-summarize(soybean_use,
-          total_animal = sum(animal_feed, na.rm = TRUE),
-          total_human = sum(human_food, na.rm = TRUE))
-soybean_use_group <- group_by(soybean_use, year)
-summarize(soybean_use_group,
-          total_animal = sum(animal_feed, na.rm = TRUE),
-          total_human = sum(human_food, na.rm = TRUE))
-
 summarize(and_vertebrates,
           mean_length = mean(length_1_mm, na.rm = TRUE),
           mean_weight = mean(weight_g, na.rm = TRUE))
@@ -352,7 +339,7 @@ count(and_vertebrates, year)
 # 1: filter rows that have don't have NA in the unittype column
 and_vertebrates_new <- filter(and_vertebrates, !is.na(unittype))
 
-# 3: summarize mean values by year
+# 2: summarize mean values by year
 and_vertebrates_new <- count(and_vertebrates, year, species, section)
 
 # OPTION 2: nested function
