@@ -50,16 +50,13 @@ adelie <- filter(penguins, species == "Adelie")$flipper_length_mm
 chinstrap <- filter(penguins,species == "Chinstrap")$flipper_length_mm
 gentoo <- filter(penguins, species == "Gentoo")$flipper_length_mm
 
-adelie <- filter(penguins, species == "Adelie") |> pull(flipper_length_mm)
-chinstrap <- filter(penguins, species == "Chinstrap") |> pull(flipper_length_mm)
-gentoo <- filter(penguins, species == "Gentoo") |> pull(flipper_length_mm)
-
 # Step 1: test for normality
 
 # Visual test using QQ-Plots
 
 # use patchwork package to combine the three plots into one
 library(patchwork)
+
 a <- ggpubr::ggqqplot(adelie) + labs(title = "adelie")
 c <- ggpubr::ggqqplot(chinstrap) + labs(title = "chinstrap")
 g <- ggpubr::ggqqplot(gentoo) + labs(title = "gentoo")
@@ -115,8 +112,7 @@ penguins |>
   )
 
 # Plot with mean and errorbars:
-penguins |>
-  ggplot(aes(x = species, y = flipper_length_mm)) +
+ggplot(penguins, aes(x = species, y = flipper_length_mm)) +
   stat_summary() +
   geom_signif(
     comparisons = list(
@@ -137,4 +133,26 @@ penguins |>
     y_position = c(216,217),
     map_signif_level = TRUE,
     tip_length = 0.01
+  )
+
+
+#plot
+ggplot(
+  data = penguins,
+  aes(
+    x = species,
+    y = flipper_length_mm
+  )
+)+
+  geom_boxplot(notch = TRUE) +
+  geom_signif(
+    comparisons = list(
+      c("Adelie", "Chinstrap"),
+      c("Gentoo", "Chinstrap"),
+      c("Adelie", "Gentoo")
+    ),
+    test = "t.test",
+    test.args = list (var.equal = TRUE),
+    map_signif_level = TRUE,
+    y_position = c(230, 231, 232)
   )
