@@ -9,6 +9,7 @@ that I missed, let me know and I can add it to the list.
 
 
 ```{r echo=FALSE}
+#| label: read-pkg
 pkg <- readxl::read_xlsx("data/packages.xlsx")
 knitr::kable(pkg)
 ```
