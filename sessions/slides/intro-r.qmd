@@ -418,17 +418,10 @@ chr_var <- c("These are", "just", "some strings")
 
 . . .
 
-The `:` operator creates a sequence between two numbers with an increment of (-)1
-
-```{r}
-1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-```
-
-. . .
-
 There are many more options to create vectors
 
 - `seq()` to create a sequence of numbers
+- `:` creates a sequence of numbers with an increment of 1 (e.g. `1:10`)
 - `rep()` ro repeat values
 - ...
 

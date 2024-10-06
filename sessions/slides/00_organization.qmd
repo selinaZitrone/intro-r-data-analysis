@@ -64,10 +64,6 @@ library(fontawesome)
 
 ## Who are you?
 
-![](img/day1/time_data_analysis.png)
-
-## Who are you?
-
 ![](img/day1/tools.png)
 
 ## Who are you?
@@ -97,9 +93,13 @@ Cleaning data and statistical tests
 
 **Day 4 Bring your own data**
 
+. . .
+
++ good practice (project organization, code structure, ...) + AI Tools
+
 ## Schedule and Organization {.nonincremental}
-📅 16.10.2023 - 17.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
-📅 30.10.2023 - 31.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
+📅 07.10.2023 - 08.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
+📅 14.10.2023 - 15.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
 :ramen: ~ 12 a.m. - 1 p.m.,  :coffee: in between <br>
 :pushpin: We will meet in the `General` meeting on Webex
 
@@ -146,22 +146,15 @@ I will also provide some **real life data sets** from different topics.
 
 #### Learning by doing
 
+:::{.nonincremental}
 - Get started using R for your own analyses
 
 - Use any of the methods from the course or try new things, ...
 
 - Present/discuss your results, questions and problems at the end of the day
+:::
 
-## Bring your own data
-
-- Keep the last workshop day in mind during the next days
-
-  - Take a mental note if you learn something that is applicable to your data
-  
-  - Think of questions that you would like to answer for your data set
-  
 - Add your name and some details on what you plan to do in this [joint table](https://docs.google.com/spreadsheets/d/1MuINiPjVvZrMRUYboDXdoPwj8daKj88k6K1hnfcoWxQ/edit?usp=sharing)
-
 
 ## Before we get started I
 
@@ -170,8 +163,9 @@ I will also provide some **real life data sets** from different topics.
  
 - All questions and comments are welcome
 
-- Feedback is welcome
-  - Evaluation at the end of the workshop
+- If possible, please turn on your camera
+
+- Feedback is welcome (Evaluation at the end of the workshop)
   
 ## Before we get started II
 

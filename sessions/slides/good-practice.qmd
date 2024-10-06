@@ -409,9 +409,7 @@ Luckily, no! R and R Studio provide some nice helpers
 
 R Studio has style diagnostics that tell you where something is wrong
 
-. . .
-
-- **Tools -> Gloabl Options -> Code -> Diagnostics**
+**Tools -> Gloabl Options -> Code -> Diagnostics**
 
 ::: {.columns}
 
@@ -439,18 +437,18 @@ according to the tidyverse style guide.
 install.packages("styler")
 ```
 
-- Use the R Studio **Addins** for styler:
-
 . . .
+
+Use the R Studio **Addins** for styler:
 
 ![](img/2023_04_20_what_they_forgot_to_teach_you/12_styler_options.png)
 
 ## Coding style helpers - `{styler}`
 
-- Pro-Tip: Add a custom keyboard short cut to style your files
-  - **Tools -> Modify Keyboard Shortcuts**
-  
-. . .
+Pro-Tip: Add a custom keyboard short cut to style your files
+
+
+**Tools -> Modify Keyboard Shortcuts**
   
 ![](img/2023_04_20_what_they_forgot_to_teach_you/13_styler_shortcut.png)
 
