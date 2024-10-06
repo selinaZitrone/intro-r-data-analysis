@@ -599,21 +599,21 @@
     "href": "sessions/slides/good-practice.html#coding-style-helpers---r-studio",
     "title": "Good practice R coding",
     "section": "Coding style helpers - R Studio",
-    "text": "Coding style helpers - R Studio\nR Studio has style diagnostics that tell you where something is wrong\n\n\nTools -&gt; Gloabl Options -&gt; Code -&gt; Diagnostics"
+    "text": "Coding style helpers - R Studio\nR Studio has style diagnostics that tell you where something is wrong\nTools -&gt; Gloabl Options -&gt; Code -&gt; Diagnostics"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style-helpers---styler",
     "href": "sessions/slides/good-practice.html#coding-style-helpers---styler",
     "title": "Good practice R coding",
     "section": "Coding style helpers - {styler}",
-    "text": "Coding style helpers - {styler}\nThe styler package package automatically styles your files and projects according to the tidyverse style guide.\n\n\n# install from CRAN\ninstall.packages(\"styler\")\n\n\nUse the R Studio Addins for styler:"
+    "text": "Coding style helpers - {styler}\nThe styler package package automatically styles your files and projects according to the tidyverse style guide.\n\n\n# install from CRAN\ninstall.packages(\"styler\")\n\n\n\nUse the R Studio Addins for styler:"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style-helpers---styler-1",
     "href": "sessions/slides/good-practice.html#coding-style-helpers---styler-1",
     "title": "Good practice R coding",
     "section": "Coding style helpers - {styler}",
-    "text": "Coding style helpers - {styler}\n\nPro-Tip: Add a custom keyboard short cut to style your files\n\nTools -&gt; Modify Keyboard Shortcuts"
+    "text": "Coding style helpers - {styler}\nPro-Tip: Add a custom keyboard short cut to style your files\nTools -&gt; Modify Keyboard Shortcuts"
   },
   {
     "objectID": "sessions/slides/good-practice.html#clean-projects-and-workflows",
@@ -1057,25 +1057,18 @@
     "text": "Who are you?"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#who-are-you-3",
-    "href": "sessions/slides/00_organization.html#who-are-you-3",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Who are you?",
-    "text": "Who are you?"
-  },
-  {
     "objectID": "sessions/slides/00_organization.html#workshop-topics",
     "href": "sessions/slides/00_organization.html#workshop-topics",
     "title": "Introduction to Data Analysis with R",
     "section": "Workshop topics",
-    "text": "Workshop topics\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science\n\n\n\nDay1 Introduction to R and RStudio and data import\n\n\nDay2 Data transformation and visualization with the tidyverse\n\n\nDay3 Cleaning data and statistical tests\n\n\nDay 4 Bring your own data"
+    "text": "Workshop topics\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science\n\n\n\nDay1 Introduction to R and RStudio and data import\n\n\nDay2 Data transformation and visualization with the tidyverse\n\n\nDay3 Cleaning data and statistical tests\n\n\nDay 4 Bring your own data\n\n\n\ngood practice (project organization, code structure, …) + AI Tools"
   },
   {
     "objectID": "sessions/slides/00_organization.html#schedule-and-organization",
     "href": "sessions/slides/00_organization.html#schedule-and-organization",
     "title": "Introduction to Data Analysis with R",
     "section": "Schedule and Organization",
-    "text": "Schedule and Organization\n📅 16.10.2023 - 17.10.2023 from 🕘 9 a.m. - 4 p.m.  📅 30.10.2023 - 31.10.2023 from 🕘 9 a.m. - 4 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ in between  📌 We will meet in the General meeting on Webex\n\n\n\nInput sessions\n\nPresentation and demonstration of a topic\nSome examples\n\n\n\n\nTasks\n\nSolve them in small groups\n\n\n\n\nJoint discussion of tasks & questions"
+    "text": "Schedule and Organization\n📅 07.10.2023 - 08.10.2023 from 🕘 9 a.m. - 4 p.m.  📅 14.10.2023 - 15.10.2023 from 🕘 9 a.m. - 4 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ in between  📌 We will meet in the General meeting on Webex\n\n\n\nInput sessions\n\nPresentation and demonstration of a topic\nSome examples\n\n\n\n\nTasks\n\nSolve them in small groups\n\n\n\n\nJoint discussion of tasks & questions"
   },
   {
     "objectID": "sessions/slides/00_organization.html#material",
@@ -1089,21 +1082,14 @@
     "href": "sessions/slides/00_organization.html#bring-your-own-data",
     "title": "Introduction to Data Analysis with R",
     "section": "Bring your own data",
-    "text": "Bring your own data\nOn the last workshop day, you can work with your own research data. I will also provide some real life data sets from different topics.\n\nLearning by doing\n\nGet started using R for your own analyses\nUse any of the methods from the course or try new things, …\nPresent/discuss your results, questions and problems at the end of the day"
-  },
-  {
-    "objectID": "sessions/slides/00_organization.html#bring-your-own-data-1",
-    "href": "sessions/slides/00_organization.html#bring-your-own-data-1",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Bring your own data",
-    "text": "Bring your own data\n\nKeep the last workshop day in mind during the next days\n\nTake a mental note if you learn something that is applicable to your data\nThink of questions that you would like to answer for your data set\n\nAdd your name and some details on what you plan to do in this joint table"
+    "text": "Bring your own data\nOn the last workshop day, you can work with your own research data. I will also provide some real life data sets from different topics.\n\nLearning by doing\n\n\nGet started using R for your own analyses\nUse any of the methods from the course or try new things, …\nPresent/discuss your results, questions and problems at the end of the day\n\n\n\nAdd your name and some details on what you plan to do in this joint table"
   },
   {
     "objectID": "sessions/slides/00_organization.html#before-we-get-started-i",
     "href": "sessions/slides/00_organization.html#before-we-get-started-i",
     "title": "Introduction to Data Analysis with R",
     "section": "Before we get started I",
-    "text": "Before we get started I\n\nHelp each other if possible\n\nHave an eye on the chat\n\nAll questions and comments are welcome\nFeedback is welcome\n\nEvaluation at the end of the workshop"
+    "text": "Before we get started I\n\nHelp each other if possible\n\nHave an eye on the chat\n\nAll questions and comments are welcome\nIf possible, please turn on your camera\nFeedback is welcome (Evaluation at the end of the workshop)"
   },
   {
     "objectID": "sessions/slides/00_organization.html#before-we-get-started-ii",
@@ -1470,15 +1456,15 @@
     "text": "1.3 Extra\nCreate a plot to show the results of your tests. Choose one of the following:\n\nCreate a boxplot with notches to visually compare differences in flipper length between species\nMake a plot showing the mean and standard error of the mean as pointrange or point with errorbars\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
   },
   {
-    "objectID": "sessions/12_AI-tools.html",
-    "href": "sessions/12_AI-tools.html",
+    "objectID": "sessions/12_ai-tools.html",
+    "href": "sessions/12_ai-tools.html",
     "title": "AI tools for R programming",
     "section": "",
     "text": "Slides in full screen     Download PDF slides\nBelow you find a few links to further resources on AI tools for R programming. This is only a selection from the vast amount of tools available."
   },
   {
-    "objectID": "sessions/12_AI-tools.html#links",
-    "href": "sessions/12_AI-tools.html#links",
+    "objectID": "sessions/12_ai-tools.html#links",
+    "href": "sessions/12_ai-tools.html#links",
     "title": "AI tools for R programming",
     "section": "1 Links",
     "text": "1 Links\n\n1.1 Browser-based AI-Tools\n\nRtutor: Browser-based tool where you can ask questions about R and data analysis. You can also upload a dataset and ask the AI to analyse it. You can then download the corresponding R script or Rmardown report.\n\nThere is also a corresponding R package that you can install to use locally. But for this you need to have your own OpenAI API key, so it is a bit more work to set up.\n\nJulius AI: Browser-based tool where you can ask questions about your data. You can upload a dataset and ask questions about it. The AI will then give you answers and visualizations. You can also download the corresponding R script.\n\nWorks great but costs ~20€ per month, but you can get a 50% discount if you are a student or academic\n\n\n\n\n1.2 Integrated AI-Tools\n\nGitHub Copilot: One of the most widespread integrated tool. Gives you inline code suggestions. Great to code faster, write better code, debug, etc.\n\nStep-by-step guide on how to get Copilot for free for Visual Studio Code or RStudio.\nGitHub Copilot Docs: Useful information and guides on how to use Copilot\nPrivacy FAQ of GitHub Copilot\nPrompt engineering with GH Copilot to get better results\n\nchattr package to chat with different LLMs (e.g. GitHub Copilot, GPT-4, …) from inside R Studio"
@@ -2251,7 +2237,7 @@
     "href": "sessions/slides/intro-r.html#creating-vectors",
     "title": "Introduction to R",
     "section": "Creating vectors",
-    "text": "Creating vectors\nUse the function c() to combine values into a vector\n\nlgl_var &lt;- c(TRUE, TRUE, FALSE)\ndbl_var &lt;- c(2.5, 3.4, 4.3)\nint_var &lt;- c(1L, 45L, 234L)\nchr_var &lt;- c(\"These are\", \"just\", \"some strings\")\n\n\nThe : operator creates a sequence between two numbers with an increment of (-)1\n\n1:10 # instead of c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)\n#&gt;  [1]  1  2  3  4  5  6  7  8  9 10\n\n\n\nThere are many more options to create vectors\n\nseq() to create a sequence of numbers\nrep() ro repeat values\n…"
+    "text": "Creating vectors\nUse the function c() to combine values into a vector\n\nlgl_var &lt;- c(TRUE, TRUE, FALSE)\ndbl_var &lt;- c(2.5, 3.4, 4.3)\nint_var &lt;- c(1L, 45L, 234L)\nchr_var &lt;- c(\"These are\", \"just\", \"some strings\")\n\n\nThere are many more options to create vectors\n\nseq() to create a sequence of numbers\n: creates a sequence of numbers with an increment of 1 (e.g. 1:10)\nrep() ro repeat values\n…"
   },
   {
     "objectID": "sessions/slides/intro-r.html#creating-vectors-c",
