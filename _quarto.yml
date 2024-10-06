@@ -69,7 +69,7 @@ website:
           - text: "Good practice coding"
             href: sessions/11_good-practice.qmd
           - text: "AI Tools"
-            href: sessions/12_ai-tools.qmd
+            href: sessions/12_AI-tools.qmd
       - text: "Downloads"
         menu:
           - text: "R Script Day 1"
