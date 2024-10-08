@@ -35,20 +35,25 @@ ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
   geom_smooth(method = "lm", se = FALSE)
 
 # Option B: Define color aesthetic once globally
-ggplot(penguins, aes(
-  x = bill_length_mm,
-  y = bill_depth_mm,
-  color = species
-)) +
+ggplot(
+  data = penguins,
+  mapping = aes(
+    x = bill_length_mm,
+    y = bill_depth_mm,
+    color = species,
+    shape = species
+  )
+) +
   geom_point() +
-  geom_smooth(method = "lm", se = FALSE)
+  geom_smooth(
+    method = "lm", se = FALSE
+  )
 
 # 1.3.2 Difference in flipper length between species (boxplot)
 
 # Basic boxplot of flipper length with notches
 ggplot(penguins, aes(species, flipper_length_mm)) +
-  geom_boxplot(notch = TRUE) +
-  geom_point()
+  geom_boxplot(notch = TRUE)
 
 # Add jittered points
 ggplot(penguins, aes(x = species, y = flipper_length_mm)) +
@@ -81,15 +86,21 @@ ggplot(penguins, aes(x = sex, y = body_mass_g)) +
 # With geom_violin
 ggplot(penguins, aes(x = sex, y = body_mass_g)) +
   geom_violin() +
-  geom_boxplot(width = 0.4) +
+  geom_boxplot() +
   facet_wrap(~species)
+
+# With geom_violin
+ggplot(penguins, aes(x = sex, y = body_mass_g, color = species)) +
+  geom_violin(position = position_dodge(width = 0.9)) +
+  geom_boxplot(position = position_dodge(width = 0.9)) +
+   facet_wrap(~species)
 
 ## 1.3.4 Distribution of flipper length between species (histogram)
 
 # Overlapping
 ggplot(penguins, aes(
   x = flipper_length_mm,
-  color = species
+  fill = species
 )) +
   geom_histogram(alpha = 0.5, position = "identity")
 
@@ -109,30 +120,25 @@ ggplot(penguins, aes(
 
 #### 1.3.5 Penguin flipper length by species and sex (heatmap)
 
-ggplot(penguins, aes(
+heatmap <- ggplot(penguins, aes(
   x = species,
   y = sex,
   fill = flipper_length_mm
 )) +
   geom_tile()
 
-ggplot(
-  data = penguins,
-  aes(
-    x = sex,
-    y = body_mass_g,
-    fill = species,
-    color = species
-  )
-) +
-  geom_boxplot(position = position_dodge(width = 0.9), notch = TRUE) +
-  geom_point(
-    alpha = 0.5,
-    position = position_jitterdodge(
-      seed = 123, jitter.width = 0.2,
-      dodge.width = 0.9
-    )
-  )
+# Coloring only specific points
+
+# E.g. depending on values
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm,
+                     color = (bill_length_mm > 50))) +
+  geom_point()
+
+# Or adding a new column
+penguins$new_color <- sample(c("A", "B"), nrow(penguins), replace = TRUE)
+
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = new_color)) +
+  geom_point()
 
 # 1.4 Beautify the plots --------------------------------------------------
 
@@ -154,7 +160,7 @@ ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
 
 # Example two: Reproducing the plot from the presentation
 
-# The following code is adapted from the palmerpengins package website
+# The following code is adapted from the palmerpenguins package website
 # (https://allisonhorst.github.io/palmerpenguins/articles/examples.html).
 
 penguin_scatter <- ggplot(
@@ -180,7 +186,8 @@ penguin_scatter <- ggplot(
   ) +
   theme_minimal() +
   theme(
-    legend.position = c(0.85, 0.15),
+    legend.position = "inside",
+    legend.position.inside = c(0.85, 0.15),
     legend.background = element_rect(fill = "white", color = "white"),
     axis.title = element_text(size = 12),
     plot.caption.position = "plot"
@@ -297,7 +304,6 @@ filter(penguins, between(bill_length_mm, 40, 45))
 filter(penguins, bill_length_mm < 45 & bill_length_mm > 40)
 
 # for which we know the sex.
-
 filter(penguins, !is.na(sex))
 
 # which are of the species Adelie or Gentoo and live either on Dream or Torgersen
