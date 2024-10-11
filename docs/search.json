@@ -263,21 +263,21 @@
     "href": "sessions/slides/tidyr.html#same-data-different-format",
     "title": "Tidy data with tidyr",
     "section": "Same data different format",
-    "text": "Same data different format\n\ncities_untidy\n\n\n#&gt; # A tibble: 2 × 11\n#&gt;   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Petersburg`\n#&gt;   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                     &lt;dbl&gt;\n#&gt; 1 population        15100000      12500000   9000000                   5400000\n#&gt; 2 area_km2              2576          2561      1572                      1439\n#&gt;   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest\n#&gt;            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;\n#&gt; 1        3800000      3200000      3000000    2800000           2200000\n#&gt; 2            891          604          839       1285               228\n#&gt; # ℹ 1 more variable: France_Paris &lt;dbl&gt;\n\nWhat’s not tidy here?\n\n\nEach row has multiple observation\nAt the same time, each observation is split across multiple rows\nCountry and city variable are split into multiple columns\nCountry and city variable values are united to one value\n\n\n\nLet’s tidy this data using functions from the tidyr package!"
+    "text": "Same data different format\n\ncities_untidy\n#&gt; # A tibble: 2 × 11\n#&gt;   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Petersburg`\n#&gt;   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                     &lt;dbl&gt;\n#&gt; 1 population        15100000      12500000   9000000                   5400000\n#&gt; 2 area_km2              2576          2561      1572                      1439\n#&gt; # ℹ 6 more variables: Germany_Berlin &lt;dbl&gt;, Spain_Madrid &lt;dbl&gt;,\n#&gt; #   Ukraine_Kyiv &lt;dbl&gt;, Italy_Rome &lt;dbl&gt;, Romania_Bucharest &lt;dbl&gt;,\n#&gt; #   France_Paris &lt;dbl&gt;\n\nWhat’s not tidy here?\n\n\nEach row has multiple observation\nAt the same time, each observation is split across multiple rows\nCountry and city variable are split into multiple columns\nCountry and city variable values are united to one value\n\n\n\nLet’s tidy this data using functions from the tidyr package!"
   },
   {
     "objectID": "sessions/slides/tidyr.html#pivot_longer",
     "href": "sessions/slides/tidyr.html#pivot_longer",
     "title": "Tidy data with tidyr",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\nOne variable split into multiple columns can be solved with pivot_longer\n\n#&gt; # A tibble: 2 × 11\n#&gt;   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Petersburg`\n#&gt;   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                     &lt;dbl&gt;\n#&gt; 1 population        15100000      12500000   9000000                   5400000\n#&gt; 2 area_km2              2576          2561      1572                      1439\n#&gt;   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest\n#&gt;            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;\n#&gt; 1        3800000      3200000      3000000    2800000           2200000\n#&gt; 2            891          604          839       1285               228\n#&gt; # ℹ 1 more variable: France_Paris &lt;dbl&gt;"
+    "text": "pivot_longer()\nOne variable split into multiple columns can be solved with pivot_longer\n\n#&gt; # A tibble: 2 × 11\n#&gt;   type       Turkey_Istanbul Russia_Moscow UK_London `Russia_Saint Petersburg`\n#&gt;   &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                     &lt;dbl&gt;\n#&gt; 1 population        15100000      12500000   9000000                   5400000\n#&gt; 2 area_km2              2576          2561      1572                      1439\n#&gt; # ℹ 6 more variables: Germany_Berlin &lt;dbl&gt;, Spain_Madrid &lt;dbl&gt;,\n#&gt; #   Ukraine_Kyiv &lt;dbl&gt;, Italy_Rome &lt;dbl&gt;, Romania_Bucharest &lt;dbl&gt;,\n#&gt; #   France_Paris &lt;dbl&gt;"
   },
   {
     "objectID": "sessions/slides/tidyr.html#pivot_longer-1",
     "href": "sessions/slides/tidyr.html#pivot_longer-1",
     "title": "Tidy data with tidyr",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\nOne variable split into multiple columns can be solved with pivot_longer\n\nstep1 &lt;- pivot_longer(\n    cities_untidy,                         # the tibble\n    cols = Turkey_Istanbul:France_Paris,   # the columns to pivot from:to\n    names_to = \"location\",                 # name of the new column\n    values_to = \"value\")                   # name of the value column\n\n\n\n#&gt; # A tibble: 20 × 3\n#&gt;   type       location                   value\n#&gt;   &lt;chr&gt;      &lt;chr&gt;                      &lt;dbl&gt;\n#&gt; 1 population Turkey_Istanbul         15100000\n#&gt; 2 population Russia_Moscow           12500000\n#&gt; 3 population UK_London                9000000\n#&gt; 4 population Russia_Saint Petersburg  5400000\n#&gt; # ℹ 16 more rows"
+    "text": "pivot_longer()\nOne variable split into multiple columns can be solved with pivot_longer\n\nstep1 &lt;- pivot_longer(\n    cities_untidy,                         # the tibble\n    cols = Turkey_Istanbul:France_Paris,   # the columns to pivot from:to\n    names_to = \"location\",                 # name of the new column\n    values_to = \"value\")                   # name of the value column\n\n\n\nstep1\n#&gt; # A tibble: 20 × 3\n#&gt;    type       location                   value\n#&gt;    &lt;chr&gt;      &lt;chr&gt;                      &lt;dbl&gt;\n#&gt;  1 population Turkey_Istanbul         15100000\n#&gt;  2 population Russia_Moscow           12500000\n#&gt;  3 population UK_London                9000000\n#&gt;  4 population Russia_Saint Petersburg  5400000\n#&gt;  5 population Germany_Berlin           3800000\n#&gt;  6 population Spain_Madrid             3200000\n#&gt;  7 population Ukraine_Kyiv             3000000\n#&gt;  8 population Italy_Rome               2800000\n#&gt;  9 population Romania_Bucharest        2200000\n#&gt; 10 population France_Paris             2100000\n#&gt; 11 area_km2   Turkey_Istanbul             2576\n#&gt; 12 area_km2   Russia_Moscow               2561\n#&gt; 13 area_km2   UK_London                   1572\n#&gt; 14 area_km2   Russia_Saint Petersburg     1439\n#&gt; 15 area_km2   Germany_Berlin               891\n#&gt; 16 area_km2   Spain_Madrid                 604\n#&gt; 17 area_km2   Ukraine_Kyiv                 839\n#&gt; 18 area_km2   Italy_Rome                  1285\n#&gt; 19 area_km2   Romania_Bucharest            228\n#&gt; 20 area_km2   France_Paris                 105"
   },
   {
     "objectID": "sessions/slides/tidyr.html#pivot_longer-2",
@@ -291,7 +291,7 @@
     "href": "sessions/slides/tidyr.html#separate_wider_delim",
     "title": "Tidy data with tidyr",
     "section": "separate_wider_delim()",
-    "text": "separate_wider_delim()\nMultiple variable values that are united into one can be separated using separate_wider_delim\n\n#&gt; # A tibble: 20 × 3\n#&gt;   type       location           value\n#&gt;   &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt;\n#&gt; 1 population Turkey_Istanbul 15100000\n#&gt; 2 population Russia_Moscow   12500000\n#&gt; # ℹ 18 more rows\n\n\n\nstep2 &lt;- separate_wider_delim(\n  step1,                        # the tibble\n  location,                     # the column to separate\n  delim = \"_\",                  # the separator\n  names = c(\"country\", \"city\")) # names of new columns\n\n\n\n\n#&gt; # A tibble: 20 × 4\n#&gt;   type       country city        value\n#&gt;   &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;\n#&gt; 1 population Turkey  Istanbul 15100000\n#&gt; 2 population Russia  Moscow   12500000\n#&gt; # ℹ 18 more rows\n\n\n\nThe opposite function exists as well and is called unite. Check out ?unite for details."
+    "text": "separate_wider_delim()\nMultiple variable values that are united into one can be separated\n\n#&gt; # A tibble: 20 × 3\n#&gt;   type       location           value\n#&gt;   &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt;\n#&gt; 1 population Turkey_Istanbul 15100000\n#&gt; 2 population Russia_Moscow   12500000\n#&gt; # ℹ 18 more rows\n\n\n\nstep2 &lt;- separate_wider_delim(\n  step1,                        # the tibble\n  location,                     # the column to separate\n  delim = \"_\",                  # the separator\n  names = c(\"country\", \"city\")) # names of new columns\n\n\n\n\n#&gt; # A tibble: 20 × 4\n#&gt;   type       country city                value\n#&gt;   &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;               &lt;dbl&gt;\n#&gt; 1 population Turkey  Istanbul         15100000\n#&gt; 2 population Russia  Moscow           12500000\n#&gt; 3 population UK      London            9000000\n#&gt; 4 population Russia  Saint Petersburg  5400000\n#&gt; 5 population Germany Berlin            3800000\n#&gt; # ℹ 15 more rows\n\n\n\nThe opposite function is called unite. Check out ?unite for details."
   },
   {
     "objectID": "sessions/slides/tidyr.html#pivot_wider",
@@ -935,7 +935,7 @@
     "href": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data-1",
     "title": "Bring your own data",
     "section": "Data set 5: RNAseq data",
-    "text": "Data set 5: RNAseq data\n\n\nIdeas:\n\nCreate a heatmap of the top 20 most significant genes (see plot in the tutorial)\nCreate a heatmap of the interesting genes (see Fig. 6 in the paper)\nCreate a volcano plot of the data similar to the one here"
+    "text": "Data set 5: RNAseq data\n\n\nIdeas:\n\nCreate a heatmap of the top 20 most significant genes (see plot in the tutorial)\nCreate a heatmap of the interesting genes (see Fig. 6 in the paper)\nCreate a volcano plot of the data similar to the one from this tutorial"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data-2",
@@ -949,7 +949,7 @@
     "href": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data-3",
     "title": "Bring your own data",
     "section": "Data set 5: RNAseq data",
-    "text": "Data set 5: RNAseq data\nSome tips:\nData cleaning:\n\nRead in the data and then use the janitor::clean_names function to make the column headers nicer\nJoin DE_results and normalized_counts by their shared columns\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (tutorial) defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)"
+    "text": "Data set 5: RNAseq data\nSome tips:\nData cleaning:\n\nRead in the data and then use the janitor::clean_names function to make the column headers nicer\nJoin DE_results and normalized_counts by their shared columns (dplyr::left_join())\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (this tutorial defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data-4",
@@ -991,7 +991,7 @@
     "href": "sessions/slides/bring-your-own-data.html#some-general-tips",
     "title": "Bring your own data",
     "section": "Some general tips",
-    "text": "Some general tips\n\n\nFirst make a plan:\n\nWhat do you want to achieve and what are the steps?\nTry to think in technical terms\nStart with something small, e.g. reading in the data and bringing it into the right format.\nIf you want, stop by in general to discuss your plan or write me in the chat\n\nGoogle\nIf you get stuck, ask in the chat or stop by in General\nHave a look at the package cheat sheets"
+    "text": "Some general tips\n\n\nFirst make a plan:\n\nWhat do you want to achieve and what are the steps?\nStart with something small, e.g. reading in the data and bringing it into the right format.\nIf you want, stop by in general to discuss your plan or write me in the chat\n\nGoogle, use ChatGPT, have a look at the package cheat sheets, …\nIf you get stuck, ask in the chat or stop by in General\n\nDon’t get frustrated"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#sharing",
@@ -2454,6 +2454,13 @@
     "href": "sessions/slides/tests.html#overview-of-tests",
     "title": "Statistical tests",
     "section": "Overview of tests",
+    "text": "Overview of tests"
+  },
+  {
+    "objectID": "sessions/slides/tests.html#overview-of-tests-1",
+    "href": "sessions/slides/tests.html#overview-of-tests-1",
+    "title": "Statistical tests",
+    "section": "Overview of tests",
     "text": "Overview of tests\n\n\n\nPlease note the discussion going on about p-values as a basis for binary decisions. See e.g. here or here as a starting point"
   },
   {
@@ -2580,7 +2587,7 @@
     "href": "sessions/slides/tests.html#plot-test-results-with-geom_signif-1",
     "title": "Statistical tests",
     "section": "Plot test results with geom_signif()",
-    "text": "Plot test results with geom_signif()\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\", \n    test.args = list( \n      var.equal = TRUE \n    ), \n    map_signif_level = TRUE,\n    y_position = c(23, 24, 25)\n  )\n\n\n\n\n\n\n\n\n\n\n\ntest: run specific test\ntest.args: pass additional arguments in a list\n?geom_signif for more options"
+    "text": "Plot test results with geom_signif()\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\", \n    test.args = list( \n      var.equal = TRUE \n    ), \n    map_signif_level = TRUE,\n    y_position = c(23, 24, 25)\n  )\n\n\n\n\n\n\n\n\n\n\n\ntest: run specific test, test.args: pass additional arguments in a list\n?geom_signif for more options"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary",
@@ -2608,7 +2615,7 @@
     "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-3",
     "title": "Statistical tests",
     "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nJust like before, you can also add a geom_signif to a barplot:\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.3\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"bar\"\n  ) +\n  ggsignif::geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\",\n    map_signif_level = TRUE,\n    y_position = c(17, 18, 19)\n  )"
+    "text": "Plot mean +- se using stat_summary\nJust like before, you can also add a geom_signif to a barplot:\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.3\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"bar\"\n  ) +\n  ggsignif::geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\",\n    map_signif_level = TRUE,\n    \n    y_position = c(17, 18, 19)\n  )"
   },
   {
     "objectID": "sessions/solutions/data-tibbles.html",
