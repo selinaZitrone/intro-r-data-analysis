@@ -32,6 +32,7 @@ charts <- pivot_longer(billboard,
                        names_to = "week",
                        values_to = "rank",
                        names_prefix = "wk",
+                       names_transform = list(week = as.integer),
                        values_drop_na = TRUE
 )
 charts
@@ -135,24 +136,27 @@ ggplot(penguins, aes(x = species, y = flipper_length_mm)) +
     tip_length = 0.01
   )
 
-
-#plot
-ggplot(
-  data = penguins,
-  aes(
-    x = species,
-    y = flipper_length_mm
-  )
-)+
-  geom_boxplot(notch = TRUE) +
+# barplot
+ggplot(penguins, aes(x = species, y = flipper_length_mm)) +
+  stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.2) +
+  stat_summary(fun.y = mean, geom = "bar") +
   geom_signif(
     comparisons = list(
-      c("Adelie", "Chinstrap"),
-      c("Gentoo", "Chinstrap"),
-      c("Adelie", "Gentoo")
+      c("Chinstrap", "Adelie")
     ),
     test = "t.test",
-    test.args = list (var.equal = TRUE),
+    test.args = list(var.equal = TRUE),
     map_signif_level = TRUE,
-    y_position = c(230, 231, 232)
+    y_position = 200,
+    tip_length = 0.01
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Gentoo"),
+      c("Gentoo", "Adelie")
+    ),
+    test = "wilcox.test",
+    y_position = c(216,217),
+    map_signif_level = TRUE,
+    tip_length = 0.01
   )
