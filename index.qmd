@@ -6,8 +6,9 @@ number-sections: false
 
 <hr>
 **Workshop sessions**<br>
-📅 07.10.2024 - 08.10.2024 from 🕘 9 a.m. - 4 p.m. <br>
-📅 14.10.2024 - 15.10.2024 from 🕘 9 a.m. - 4 p.m. <br>
+📅 03.03.2025 - 04.03.2025 🕘 9 a.m. - 4 p.m. <br>
+📅 10.03.2025 - 11.03.2025 🕘 9 a.m. - 4 p.m. <br>
+📅 17.03.2025 from 🕘 9 a.m. - 12 a.m. <br>
 📍 Online on Webex <br>
 <hr>
 
@@ -22,7 +23,7 @@ In 4 Workshop days we will cover the following topics:
 - **Day 1**: Introduction to R and R Studio, Good programming practice, Reading data into R
 - **Day 2**: Data visualization with the ggplot package, data wrangling with dplyr
 - **Day 3**: Data cleaning with tidyr, statistical tests, AI Tools
-- **Day 4**: Bring your own research data (or get some real-life data from me)
+- **Day 4 & 5**: Bring your own research data (or get some real-life data from me)
 
 ### Concept
 
