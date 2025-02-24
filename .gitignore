@@ -27,8 +27,10 @@ R/byod/2023_02_tips/dnaseq/raw_counts
 R/byod/2023_02_tips/dnaseq/raw_counts.tsv
 R/byod/2023_02_tips/dnaseq/DE_results.csv
 /R/quarto_example_files
-/R/quarto_example_cache
-/sessions/slides/*_cache
 /sessions/slides/*_files
 /R/byod/2024_03_tips
 R/random_groups.R
+
+# Ignore all folders with _cache in their names
+*_cache/
+*_files
