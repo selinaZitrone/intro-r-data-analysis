@@ -3,23 +3,26 @@ title: "Course preparations"
 ---
 
 In order to have a smooth workshop start, you need to prepare a few technical things
-so we can jump right into practicing.
+so we can jump right into coding.
 
-If you don't have R and RStudio installed yet, follow @sec-install. If you just need to update R and RStudio, follow @sec-update.
+If you don't have R and RStudio installed, follow @sec-install. If you need to update R and RStudio, follow @sec-update.
 
 # Install R and R Studio {#sec-install}
 
-## Download and install R and R Studio for your operating system
+## Download and install R
 
-On the [posit website](https://posit.co/download/rstudio-desktop/) click on the button "Download and install R". You will get to the official R website where on top you can find download links for Windows, MacOs and Linux. Choose the appropriate operating system and then follow the instructions to download R *for the first time*.
-Click on the file that you downloaded and install R following the instructions (leave the suggested defaults during the process).
+1. Visit the [CRAN website](https://cran.rstudio.com/).
+2. Click on the link for your operating system in the top section "Download and Install R".
+3. Follow the link to "install R for the first time".
+4. Download the installer and run it, leaving the default options selected during the installation process.
 
 ## Download and install RStudio for your operating system
 
-Download the free RStudio Desktop version for your operating system from by clicking on the "Download R
-Studio Desktop" button on the [posit website](https://posit.co/download/rstudio-desktop/). The button should already specify your operating system. If not, you can scroll down on the website and select the installer for your respective system. Install the program following the instructions from the installer.
+1. Visit the [Posit website](https://posit.co/download/rstudio-desktop/).
+2. Click the "Download RStudio Desktop" button. The button should already specify your operating system (If not, you can scroll down on the website and select the installer for your respective system).
+3. Download the installer and run it, following the instructions.
 
-## Test if everything worked
+## Test the installation
 
 If both R and RStudio are installed, open RStudio. When you open up RStudio for the first time, it will prompt you to select your installation of R. By default, this should be the newest version of R that you just installed. After RStudio is opened, check the console (the window on the bottom left where your cursor is and where you can see a > sign) and try to type a calculation (e.g. 2 + 2) and hit Enter to execute it. If R is installed correctly, you should see the result of your calculation printed to the console.
 
@@ -33,14 +36,18 @@ Open RStudio and go to "Help -> Check for Updates" on top. RStudio will tell you
 
 ## Update R
 
-If you want to check the current installed version of R, open RStudio and check the version number that is written in the bottom left, right below the *Console* pane and also printed in the console:
+1. Open RStudio and check the version number in the console pane (bottom left, see pink highlights in the screen shot).
 
 ![](img/install_r_version.png)
 
-I will be using R version 4.4.1. You don't need the newest version of R, but if you are still at a version below 4.3.3, you should update you version.
-If you need to update R, just download and install the newest version of R (see Step 1 for instructions).
-To tell RStudio to use the newest version of R, go to "Tools -> Global options -> General" and click on "Change R version". Here you can now select the newest installed version of R:
+I will be using R version 4.4.2. If your version is below 4.3.3, you should update
+but in general it's always a good idea to stay up to date to get newest features and improvements.
+
+2. Download and install the latest version of R (see Step 1 for instructions).
+3. In RStudio, go to "Tools -> Global Options -> General" and click "Change R version".
+4. Select the newest installed version of R.
+
 
 ![](img/install_r_change_version.png)
 
-Now restart RStudio and double-check in the console that your version of R now updated.
+5. Restart RStudio and verify the updated version in the console.
