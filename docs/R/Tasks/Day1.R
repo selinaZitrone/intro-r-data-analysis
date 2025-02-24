@@ -58,7 +58,6 @@ brainwt_kg <- c(
   0.0019, 0.1545, 0.003, 0.18
 )
 
-# Q: Which of the following animals are contained in the species vector?
 # Goes through every element in species and returns TRUE if it appears in animals_to_check
 animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
 # Goes through every element in animals_to_check and returns TRUE if it appears in species
@@ -69,18 +68,18 @@ animals_to_check[animals_to_check %in% species]
 species %in% animals_to_check
 species[species %in% animals_to_check]
 
-# Q: Calculate some descriptive statistics
+# Calculate some descriptive statistics
 mean(brainwt_kg) # mean
 sd(brainwt_kg) # standard deviation
 median(brainwt_kg) # median
 
-# Q: species with brain weight larger than mean
+# species with brain weight larger than mean
 species[brainwt_kg > mean(brainwt_kg)]
 
-# Q: ratio brain / body weight (%)
+# ratio brain / body weight (%)
 brain_body_ratio <- brainwt_kg / bodywt_kg * 100
 
-# Q: Animals with larger brain to body ratio than humans
+# Animals with larger brain to body ratio than humans
 # New variable for human brain to body ratio
 bbr_human <- brain_body_ratio[species == "Human"]
 # Are there animals that have a larger brain to body ratio than humans?
