@@ -68,3 +68,9 @@ legend("bottomright", c("setosa", "virginica", "versicolor"),
 )
 
 ```
+
+## Extras
+
+- Go back to the **Global options** and check out the **Appearance** section. If you want
+you can change the look of RStudio there
+
