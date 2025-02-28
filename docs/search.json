@@ -53,7 +53,7 @@
     "href": "sessions/tasks/readr.html#extra",
     "title": "",
     "section": "3 Extra",
-    "text": "3 Extra\n\nNavigate to your data/ folder using the Files pane of RStudio. Click on the .csv file that you just saved there. What can you do? Try the Import Dataset button and see what you can do there.\nTry reading some xlsx or csv tables that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropiate function to read in the data"
+    "text": "3 Extra\n\nTry reading some tables (xlsx, csv, txt, …) that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropiate function to read in the data\nIdeally, you use some of your research data, so you can see what are the difficulties there. Alternatively, you can use any kind of table even if not related to research.\n\nDownload this excel file or this csv file with metadata and a messy header. Try reading it into R correctly and clean the column names using the janitor::clean_names function"
   },
   {
     "objectID": "sessions/tasks/intro-r.html",
@@ -704,7 +704,7 @@
     "href": "sessions/slides/data-tibbles.html#data-frames-2",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Data frames",
-    "text": "Data frames\nData frames are created with the function data.frame():\n\n\n\ncities &lt;- c(\n  \"Istanbul\", \"Moscow\", \"London\", \n  \"Saint Petersburg\", \"Berlin\",\"Madrid\",\n  \"Kyiv\", \"Rome\", \"Bucharest\",\"Paris\")\n\npopulation &lt;- c(\n  15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6,\n  3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)\n\narea_km2 &lt;- c(2576, 2561, 1572, 1439, \n  891, 604, 839, 1285, 228, 105)\n\ndata.frame(\n  cities = cities,\n  population = population,\n  area_km2 = area_km2\n  )\n\n\n\n\n#&gt;              cities population area_km2\n#&gt; 1          Istanbul   15100000     2576\n#&gt; 2            Moscow   12500000     2561\n#&gt; 3            London    9000000     1572\n#&gt; 4  Saint Petersburg    5400000     1439\n#&gt; 5            Berlin    3800000      891\n#&gt; 6            Madrid    3200000      604\n#&gt; 7              Kyiv    3000000      839\n#&gt; 8              Rome    2800000     1285\n#&gt; 9         Bucharest    2200000      228\n#&gt; 10            Paris    2100000      105"
+    "text": "Data frames\nData frames are created with the function data.frame():\n\n\n\ncities &lt;- c(\n  \"Istanbul\", \"Moscow\", \"London\", \n  \"Saint Petersburg\", \"Berlin\",\"Madrid\",\n  \"Kyiv\", \"Rome\", \"Bucharest\",\"Paris\")\n\npopulation &lt;- c(\n  15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6,\n  3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)\n\narea_km2 &lt;- c(2576, 2561, 1572, 1439, \n  891, 604, 839, 1285, 228, 105)\n\ncities_dataframe &lt;- data.frame(\n  cities = cities,\n  population = population,\n  area_km2 = area_km2\n  )\n\n\n\n\n#&gt;              cities population area_km2\n#&gt; 1          Istanbul   15100000     2576\n#&gt; 2            Moscow   12500000     2561\n#&gt; 3            London    9000000     1572\n#&gt; 4  Saint Petersburg    5400000     1439\n#&gt; 5            Berlin    3800000      891\n#&gt; 6            Madrid    3200000      604\n#&gt; 7              Kyiv    3000000      839\n#&gt; 8              Rome    2800000     1285\n#&gt; 9         Bucharest    2200000      228\n#&gt; 10            Paris    2100000      105"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#tibbles",
@@ -725,7 +725,7 @@
     "href": "sessions/slides/data-tibbles.html#tibbles-2",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Tibbles",
-    "text": "Tibbles\nCreate a tibble using the tibble() function:\n\n\n\n\nlibrary(tibble) \n\ntibble(\n  cities = cities,\n  population = population,\n  area_km2 = area_km2\n)\n\n\n\n#&gt; # A tibble: 10 × 3\n#&gt;    cities           population area_km2\n#&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1 Istanbul           15100000     2576\n#&gt;  2 Moscow             12500000     2561\n#&gt;  3 London              9000000     1572\n#&gt;  4 Saint Petersburg    5400000     1439\n#&gt;  5 Berlin              3800000      891\n#&gt;  6 Madrid              3200000      604\n#&gt;  7 Kyiv                3000000      839\n#&gt;  8 Rome                2800000     1285\n#&gt;  9 Bucharest           2200000      228\n#&gt; 10 Paris               2100000      105"
+    "text": "Tibbles\nCreate a tibble using the tibble() function:\n\n\n\n\nlibrary(tibble) \n\ncities_tbly &lt;- tibble(\n  cities = cities,\n  population = population,\n  area_km2 = area_km2\n)\n\n\n\n#&gt; # A tibble: 10 × 3\n#&gt;    cities           population area_km2\n#&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1 Istanbul           15100000     2576\n#&gt;  2 Moscow             12500000     2561\n#&gt;  3 London              9000000     1572\n#&gt;  4 Saint Petersburg    5400000     1439\n#&gt;  5 Berlin              3800000      891\n#&gt;  6 Madrid              3200000      604\n#&gt;  7 Kyiv                3000000      839\n#&gt;  8 Rome                2800000     1285\n#&gt;  9 Bucharest           2200000      228\n#&gt; 10 Paris               2100000      105"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#exploring-tibbles-1",
@@ -746,7 +746,7 @@
     "href": "sessions/slides/data-tibbles.html#exploring-tibbles-3",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Exploring tibbles",
-    "text": "Exploring tibbles\nGet a quick summary of all columns:\n\nsummary(cities_tbl)\n#&gt;     cities            population          area_km2     \n#&gt;  Length:10          Min.   : 2100000   Min.   : 105.0  \n#&gt;  Class :character   1st Qu.: 2850000   1st Qu.: 662.8  \n#&gt;  Mode  :character   Median : 3500000   Median :1088.0  \n#&gt;                     Mean   : 5910000   Mean   :1210.0  \n#&gt;                     3rd Qu.: 8100000   3rd Qu.:1538.8  \n#&gt;                     Max.   :15100000   Max.   :2576.0"
+    "text": "Exploring tibbles\nGet a quick summary of all columns:\n\nsummary(cities_tbl)\n#&gt;     cities            population          area_km2     \n#&gt;  Length:10          Min.   : 2100000   Min.   : 105.0  \n#&gt;  Class :character   1st Qu.: 2850000   1st Qu.: 662.8  \n#&gt;  Mode  :character   Median : 3500000   Median :1088.0  \n#&gt;                     Mean   : 5910000   Mean   :1210.0  \n#&gt;                     3rd Qu.: 8100000   3rd Qu.:1538.8  \n#&gt;                     Max.   :15100000   Max.   :2576.0\n\n\nVery useful for checking if everything is ok with your research data"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles",
@@ -1033,7 +1033,7 @@
     "href": "sessions/slides/00_organization.html#im-using-a-lot-for",
     "title": "Introduction to Data Analysis with R",
     "section": "I’m using  a lot for …",
-    "text": "I’m using  a lot for …\n… data analysis\n… ecological modelling\n… writing documents\n…. workflow automation\n…"
+    "text": "I’m using  a lot for …\n… data analysis\n… ecological modelling\n… writing documents/websites/presentations\n…. workflow automation\n…"
   },
   {
     "objectID": "sessions/slides/00_organization.html#who-are-you",
@@ -1061,14 +1061,14 @@
     "href": "sessions/slides/00_organization.html#workshop-topics",
     "title": "Introduction to Data Analysis with R",
     "section": "Workshop topics",
-    "text": "Workshop topics\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science\n\n\n\nDay1 Introduction to R and RStudio and data import\n\n\nDay2 Data transformation and visualization with the tidyverse\n\n\nDay3 Cleaning data and statistical tests\n\n\nDay 4 Bring your own data\n\n\n\ngood practice (project organization, code structure, …) + AI Tools"
+    "text": "Workshop topics\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science\n\n\n\nDay1 Introduction to R and RStudio and data import\n\n\nDay2 Data transformation and visualization with the tidyverse\n\n\nDay3 Cleaning data, statistical tests, good practice and AI tools\n\n\nDay 4 Bring your own data\n\n\nDay 5 Bring your own data + Q&A (optional)"
   },
   {
     "objectID": "sessions/slides/00_organization.html#schedule-and-organization",
     "href": "sessions/slides/00_organization.html#schedule-and-organization",
     "title": "Introduction to Data Analysis with R",
     "section": "Schedule and Organization",
-    "text": "Schedule and Organization\n📅 07.10.2023 - 08.10.2023 from 🕘 9 a.m. - 4 p.m.  📅 14.10.2023 - 15.10.2023 from 🕘 9 a.m. - 4 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ in between  📌 We will meet in the General meeting on Webex\n\n\nInput sessions\n\nPresentation and demonstration of a topic\nSome examples\n\n\n\nTasks\n\nSolve them in small groups\n\n\n\nJoint discussion of tasks & questions"
+    "text": "Schedule and Organization\n📅 03.03.2025 - 04.03.2025 from 🕘 9 a.m. - 4 p.m.  📅 10.03.2025 - 11.03.2025 from 🕘 9 a.m. - 4 p.m.  📅 17.03.2025 🕘 9 a.m. - 12 a.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ in between  📌 We will meet in the General meeting on Webex\n\n\n1. Input sessions\n\nPresentation and demonstration of a topic + examples\n\n\n\n2. Tasks\n\nSolve them in small groups\n\n\n\n3. Joint discussion of tasks & questions"
   },
   {
     "objectID": "sessions/slides/00_organization.html#material",
@@ -1089,21 +1089,21 @@
     "href": "sessions/slides/00_organization.html#before-we-get-started-i",
     "title": "Introduction to Data Analysis with R",
     "section": "Before we get started I",
-    "text": "Before we get started I\n\nHelp each other if possible\n\nHave an eye on the chat\n\nAll questions and comments are welcome\nIf possible, please turn on your camera\nFeedback is welcome (Evaluation at the end of the workshop)"
+    "text": "Before we get started I\n\nHelp each other if possible\nHave an eye on the chat and on the time\nAll questions and comments are welcome\nIf possible, please turn on your camera\nFeedback is welcome (Evaluation at the end of the workshop)"
   },
   {
     "objectID": "sessions/slides/00_organization.html#before-we-get-started-ii",
     "href": "sessions/slides/00_organization.html#before-we-get-started-ii",
     "title": "Introduction to Data Analysis with R",
     "section": "Before we get started II",
-    "text": "Before we get started II\nHow to use Webex teams\n\nGeneral channel for our joint meetings and chat\nGroups 1-4 for group work\n\nGroup spaces have their own chat and meetings\nUse the chat in the groups for questions\nMeet in your groups and solve the tasks jointly\n\nPlease always have a look at the general chat during the tasks"
+    "text": "Before we get started II\nDid anyone have problems installing R and RStudio?\n\n Download and install R from https://cran.r-project.org\n Download and install RStudio from https://www.posit.co"
   },
   {
     "objectID": "sessions/slides/00_organization.html#before-we-get-started-iii",
     "href": "sessions/slides/00_organization.html#before-we-get-started-iii",
     "title": "Introduction to Data Analysis with R",
     "section": "Before we get started III",
-    "text": "Before we get started III\nDid anyone have problems installing R and RStudio?\n\n Download and install R from https://cran.r-project.org\n Download and install RStudio from https://www.posit.co"
+    "text": "Before we get started III\nHow to use Webex teams\n\nGeneral channel for our joint meetings and chat\nGroups 1-4 for solving tasks jointly\n\nGroup spaces have their own chat and meetings\nAsk questions in the chat, share screenshots, share your screen and talk"
   },
   {
     "objectID": "sessions/11_good-practice.html",
@@ -1215,7 +1215,7 @@
     "href": "sessions/05_readr.html#extra",
     "title": "Import and Export Data with readr",
     "section": "1.3 Extra",
-    "text": "1.3 Extra\n\nNavigate to your data/ folder using the Files pane of RStudio. Click on the .csv file that you just saved there. What can you do? Try the Import Dataset button and see what you can do there.\nTry reading some xlsx or csv tables that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropiate function to read in the data"
+    "text": "1.3 Extra\n\nTry reading some tables (xlsx, csv, txt, …) that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropiate function to read in the data\nIdeally, you use some of your research data, so you can see what are the difficulties there. Alternatively, you can use any kind of table even if not related to research.\n\nDownload this excel file or this csv file with metadata and a messy header. Try reading it into R correctly and clean the column names using the janitor::clean_names function"
   },
   {
     "objectID": "sessions/03_functions.html",
@@ -1251,6 +1251,13 @@
     "title": "Introduction to RStudio",
     "section": "1.3 Add an R script to the project",
     "text": "1.3 Add an R script to the project\n\nCreate a new R script and save it in the R/ folder of your project\nCopy and paste the code from below into your script\n\nDon’t worry if you don’t understand the code yet, we will learn all this later\n\nRun the code in the script line by line. Try both, running code using the Run button (in the top right corner of your script pane) and the keyboard shortcut Ctrl/Cmd + Enter\n\nFor each line that you run, observe what is happening to the different panes (console, environment, …) in RStudio. Can you explain what is happening?\n\n\n\n# Look at the first lines of the iris dataset\nhead(iris)\n# What is the iris dataset -&gt; Call the help\n?iris\n# How many rows and columns does the data set have?\nrownum &lt;- nrow(iris)\ncolnum &lt;- ncol(iris)\nprint(paste0(\"The iris dataset has \", rownum, \" rows and \", colnum, \" columns.\"))\n# Some summary statistics on the iris data set\nsummary(iris)\n\n# create a plot\nplot(iris$Petal.Length, iris$Petal.Width,\n  xlab = \"Petal Length\",\n  ylab = \"Petal Width\",\n  main = \"Petal Width vs Petal Length\",\n  pch = 20,\n  col = ifelse(iris$Species == \"setosa\", \"coral1\",\n    ifelse(iris$Species == \"virginica\", \"cyan4\",\n      ifelse(iris$Species == \"versicolor\",\n        \"darkgoldenrod2\", \"grey\"\n      )\n    )\n  )\n)\n# add a legend\nlegend(\"bottomright\", c(\"setosa\", \"virginica\", \"versicolor\"),\n  col = c(\"coral1\", \"cyan4\", \"darkgoldenrod2\"), pch = 20\n)"
+  },
+  {
+    "objectID": "sessions/01_intro-rstudio.html#extras",
+    "href": "sessions/01_intro-rstudio.html#extras",
+    "title": "Introduction to RStudio",
+    "section": "1.4 Extras",
+    "text": "1.4 Extras\n\nGo back to the Global options and check out the Appearance section. If you want you can change the look of RStudio there"
   },
   {
     "objectID": "packages.html",
@@ -2216,7 +2223,7 @@
     "href": "sessions/slides/intro-r.html#variables-1",
     "title": "Introduction to R",
     "section": "Variables",
-    "text": "Variables\n\n# create a variable\nradius &lt;- 5\n# use it in a calculation and save the result\n# pi is a built-in variable that comes with R\ncircumference &lt;- 2 * pi * radius\n# change value of variable radius\nradius &lt;- radius + 1\n\n\n\n\n# just use the name to print the value to the console\nradius"
+    "text": "Variables\n\n# create a variable\nradius &lt;- 5\n# use it in a calculation and save the result\n# pi is a built-in variable that comes with R\ncircumference &lt;- 2 * pi * radius\n# change value of variable radius\nradius &lt;- radius + 1\n\n\n\nIf you want to know which value stands behind a variable:\n\n# just use the name to print the value to the console\nradius \n\nor have a look at the “Environment” pane."
   },
   {
     "objectID": "sessions/slides/intro-r.html#atomic-data-types",
@@ -2238,13 +2245,6 @@
     "title": "Introduction to R",
     "section": "Creating vectors",
     "text": "Creating vectors\nUse the function c() to combine values into a vector\n\nlgl_var &lt;- c(TRUE, TRUE, FALSE)\ndbl_var &lt;- c(2.5, 3.4, 4.3)\nint_var &lt;- c(1L, 45L, 234L)\nchr_var &lt;- c(\"These are\", \"just\", \"some strings\")\n\n\nThere are many more options to create vectors\n\nseq() to create a sequence of numbers\n: creates a sequence of numbers with an increment of 1 (e.g. 1:10)\nrep() ro repeat values\n…"
-  },
-  {
-    "objectID": "sessions/slides/intro-r.html#creating-vectors-c",
-    "href": "sessions/slides/intro-r.html#creating-vectors-c",
-    "title": "Introduction to R",
-    "section": "Creating vectors: c()",
-    "text": "Creating vectors: c()\nBe aware of implicit type conversion when combining vectors of different types\n\n\n# integer + logical -&gt; integer (same with double + logical)\nc(int_var, lgl_var)\n#&gt; [1]   1  45 234   1   1   0\n\n# integer + character -&gt; character (same with double + character)\nc(int_var, chr_var)\n#&gt; [1] \"1\"            \"45\"           \"234\"          \"These are\"    \"just\"        \n#&gt; [6] \"some strings\"\n\n# logical + character -&gt; character\nc(lgl_var, chr_var)\n#&gt; [1] \"TRUE\"         \"TRUE\"         \"FALSE\"        \"These are\"    \"just\"        \n#&gt; [6] \"some strings\""
   },
   {
     "objectID": "sessions/slides/intro-r.html#working-with-vectors-1",
@@ -2664,7 +2664,7 @@
     "href": "sessions/solutions/intro-r.html#extras",
     "title": "Solution to working with vectors",
     "section": "1 Extras",
-    "text": "1 Extras\n\nRound the vector to 4 decimal places:\n\n\nbrain_body_ratio &lt;- round(brain_body_ratio, digits = 4)\nbrain_body_ratio\n\n [1] 0.5786 0.0910 0.3292 0.4152 0.5500 0.0004 0.1807 0.2239 0.1257 1.1500\n[11] 0.7758 0.1285 0.1961 2.1290 0.0858 0.0007 2.6324 0.1600 1.0000 2.0000\n[21] 0.4840 0.3153 0.1570 0.8429 0.6333 0.0002 3.0000 0.0938\n\n\n\nWhich animal has the smallest brain to body ratio?\n\n\nspecies[brain_body_ratio == min(brain_body_ratio)]\n\n[1] \"Brachiosaurus\"\n\n\nThe Brachiosaurus has a really small brain with a weight of just 0.1545 kg at a body weight of 87000 kg!\n\nAdd elements to the vector\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nspecies &lt;- c(species, species_new)\nbrainwt_kg &lt;- c(brainwt_kg, brainwt_kg_new)\nbodywt_kg &lt;- c(bodywt_kg, bodywt_kg_new)\n\n\nWhat is the mean brain weight now?\n\n\nmean(brainwt_kg)\n\n[1] NA\n\n# na.rm = TRUE removes missing values before calculating the mean\nmean(brainwt_kg, na.rm = TRUE)\n\n[1] 0.5529"
+    "text": "1 Extras\n\nRound the vector to 4 decimal places:\n\n\nbrain_body_ratio &lt;- round(brain_body_ratio, digits = 4)\nbrain_body_ratio\n\n [1] 0.5786 0.0910 0.3292 0.4152 0.5500 0.0004 0.1807 0.2239 0.1257 1.1500\n[11] 0.7758 0.1285 0.1961 2.1290 0.0858 0.0007 2.6324 0.1600 1.0000 2.0000\n[21] 0.4840 0.3153 0.1570 0.8429 0.6333 0.0002 3.0000 0.0938\n\n\n\nWhich animal has the smallest brain to body ratio?\n\n\nspecies[brain_body_ratio == min(brain_body_ratio)]\n\n[1] \"Brachiosaurus\"\n\n\nThe Brachiosaurus has a really small brain with a weight of just 0.1545 kg at a body weight of 8.7^{4} kg!\n\nAdd elements to the vector\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nspecies &lt;- c(species, species_new)\nbrainwt_kg &lt;- c(brainwt_kg, brainwt_kg_new)\nbodywt_kg &lt;- c(bodywt_kg, bodywt_kg_new)\n\n\nWhat is the mean brain weight now?\n\n\nmean(brainwt_kg)\n\n[1] NA\n\n# na.rm = TRUE removes missing values before calculating the mean\nmean(brainwt_kg, na.rm = TRUE)\n\n[1] 0.5529"
   },
   {
     "objectID": "sessions/solutions/tests.html",
@@ -2791,6 +2791,13 @@
     "title": "",
     "section": "3 Add an R script to the project",
     "text": "3 Add an R script to the project\n\nCreate a new R script and save it in the R/ folder of your project\nCopy and paste the code from below into your script\n\nDon’t worry if you don’t understand the code yet, we will learn all this later\n\nRun the code in the script line by line. Try both, running code using the Run button (in the top right corner of your script pane) and the keyboard shortcut Ctrl/Cmd + Enter\n\nFor each line that you run, observe what is happening to the different panes (console, environment, …) in RStudio. Can you explain what is happening?\n\n\n\n# Look at the first lines of the iris dataset\nhead(iris)\n# What is the iris dataset -&gt; Call the help\n?iris\n# How many rows and columns does the data set have?\nrownum &lt;- nrow(iris)\ncolnum &lt;- ncol(iris)\nprint(paste0(\"The iris dataset has \", rownum, \" rows and \", colnum, \" columns.\"))\n# Some summary statistics on the iris data set\nsummary(iris)\n\n# create a plot\nplot(iris$Petal.Length, iris$Petal.Width,\n  xlab = \"Petal Length\",\n  ylab = \"Petal Width\",\n  main = \"Petal Width vs Petal Length\",\n  pch = 20,\n  col = ifelse(iris$Species == \"setosa\", \"coral1\",\n    ifelse(iris$Species == \"virginica\", \"cyan4\",\n      ifelse(iris$Species == \"versicolor\",\n        \"darkgoldenrod2\", \"grey\"\n      )\n    )\n  )\n)\n# add a legend\nlegend(\"bottomright\", c(\"setosa\", \"virginica\", \"versicolor\"),\n  col = c(\"coral1\", \"cyan4\", \"darkgoldenrod2\"), pch = 20\n)"
+  },
+  {
+    "objectID": "sessions/tasks/intro-rstudio.html#extras",
+    "href": "sessions/tasks/intro-rstudio.html#extras",
+    "title": "",
+    "section": "4 Extras",
+    "text": "4 Extras\n\nGo back to the Global options and check out the Appearance section. If you want you can change the look of RStudio there"
   },
   {
     "objectID": "sessions/tasks/tests.html",
