@@ -34,8 +34,6 @@ from: markdown+emoji
 ```{r setup, include=FALSE, cache = TRUE}
 library(dplyr)
 library(ggplot2)
-vertebrates <- readr::read_csv(here::here("data/vertebrates_short.csv"))
-vertebrates
 options(dplyr.print_max = 5,
         pillar.print_max = 5)
 ```
@@ -125,15 +123,11 @@ References: [Kaylor, M.J. and D.R. Warren. (2017)](https://doi.org/10.1002/ecs2.
 
 Data set `and_vertebrates` with measurements of a trout and 2 salamander species in different forest sections.
 
-```{r eval=FALSE}
+```{r}
 library(lterdatasampler)
 vertebrates <- and_vertebrates |>
   select(year, section, unittype, species, length_1_mm, weight_g) |>
   filter(species != "Cascade torrent salamander")
-vertebrates
-```
-
-```{r echo=FALSE}
 vertebrates
 ```
 

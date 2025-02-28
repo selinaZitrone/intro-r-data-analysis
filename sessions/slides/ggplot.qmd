@@ -107,20 +107,16 @@ References: [Kaylor, M.J. and D.R. Warren. (2017)](https://doi.org/10.1002/ecs2.
 
 :::
 
-```{r echo=FALSE}
-library(lterdatasampler)
-and_vertebrates <- and_vertebrates %>%
-  select(year, section, unittype, species, length_1_mm, weight_g) %>%
-  filter(species != "Cascade torrent salamander")
-```
-
 ## The data
 
 Data set `and_vertebrates` with measurements of a trout and 2 salamander species in different forest sections.
 
 ```{r}
 library(lterdatasampler)
-and_vertebrates
+vertebrates <- and_vertebrates |>
+  select(year, section, unittype, species, length_1_mm, weight_g) |>
+  filter(species != "Cascade torrent salamander")
+vertebrates
 ```
 
 # {.background-no-title .inverse}
@@ -143,7 +139,7 @@ The `ggplot()` function initializes a ggplot object. Every ggplot needs this fun
 library(ggplot2)
 # or library(tidyverse)
 
-ggplot(data = and_vertebrates)
+ggplot(data = vertebrates)
 ```
 
 - Empty plot because we did not specify the mapping of data variables
@@ -154,7 +150,7 @@ ggplot(data = and_vertebrates)
 
 ```{r}
 #| echo: false
-ggplot(data = and_vertebrates)
+ggplot(data = vertebrates)
 ```
 
 :::
@@ -173,7 +169,7 @@ The **aes**thetics define how data variables are mapped plot properties.
 
 ```{r eval=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   mapping = aes(
     x = length_1_mm,
     y = weight_g
@@ -190,7 +186,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(x = length_1_mm, y = weight_g)
 )
 ```
@@ -209,7 +205,7 @@ The **aes**thetics define how data variables are mapped plot properties.
 
 ```{r eval=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   mapping = aes(
     x = length_1_mm,
     y = weight_g
@@ -221,7 +217,7 @@ This is the same but shorter:
 
 ```{r eval=FALSE}
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = length_1_mm, 
     y = weight_g)
@@ -236,7 +232,7 @@ Remember argument matching by position?
 
 ```{r echo=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(x = length_1_mm, y = weight_g)
 )
 ```
@@ -259,7 +255,7 @@ ggplot(
 
 ```{r eval=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g
@@ -278,7 +274,7 @@ ggplot(
 
 ```{r echo=FALSE, warning=TRUE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g
@@ -301,7 +297,7 @@ ggplot(
 ```{r eval=FALSE}
 ggplot() +
   geom_point(
-    data = and_vertebrates,
+    data = vertebrates,
     aes(
       x = length_1_mm,
       y = weight_g
@@ -323,7 +319,7 @@ Here, it does not make a difference in the result.
 
 ```{r echo=FALSE, warning=TRUE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g
@@ -349,7 +345,7 @@ Looks like there are two groups of data: **Map color of points to a variable** b
 ```{r}
 #| eval: false
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -367,7 +363,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -392,7 +388,7 @@ We can do the same with size:
 ```{r}
 #| eval: false
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -408,7 +404,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -433,7 +429,7 @@ We can do the same with shape:
 ```{r}
 #| eval: false
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -449,7 +445,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -474,7 +470,7 @@ We can also combine these aesthetics and map different variables
 ```{r eval = FALSE}
 #| eval: false
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -494,7 +490,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -520,7 +516,7 @@ The scales onto which the aesthetic elements are mapped can be changed.
 
 ```{r eval=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -539,7 +535,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -564,7 +560,7 @@ The scales onto which the aesthetic elements are mapped can be changed.
 ```{r}
 #| eval: false
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -592,7 +588,7 @@ In this example we scale the <b>[x]{.highlight-ylw}</b> and the  <b>[y]{.highlig
 
 ```{r echo=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -621,7 +617,7 @@ Add a smoothing line that helps see patterns in the data
 ```{r eval =FALSE}
 #| eval: false
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -644,7 +640,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -674,7 +670,7 @@ Compare groups using a boxplot
 ```{r eval =FALSE}
 #| eval: false
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = species,
     y = length_1_mm
@@ -689,7 +685,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = species,
     y = length_1_mm
@@ -713,7 +709,7 @@ Compare groups using a boxplot
 ```{r eval =FALSE}
 #| eval: false
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = species,
     y = length_1_mm
@@ -730,7 +726,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = species,
     y = length_1_mm
@@ -756,7 +752,7 @@ Map the `unittype` to the **color** aesthetic of the boxplot
 ```{r eval =FALSE}
 #| eval: false
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = species,
     y = length_1_mm,
@@ -772,7 +768,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = species,
     y = length_1_mm,
@@ -799,7 +795,7 @@ Map the `unittype` to the **fill** aesthetic of the box
 ```{r eval =FALSE}
 #| eval: false
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = species,
     y = length_1_mm,
@@ -815,7 +811,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = species,
     y = length_1_mm,
@@ -837,7 +833,7 @@ ggplot(
 
 ```{r eval =FALSE}
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = length_1_mm,
     fill = section
@@ -854,7 +850,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = length_1_mm,
     fill = section
@@ -876,7 +872,7 @@ ggplot(
 ```{r eval =FALSE}
 #| eval: false
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = length_1_mm,
     fill = section
@@ -898,7 +894,7 @@ don't want it stacked
 
 ```{r echo=FALSE}
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = length_1_mm,
     fill = section
@@ -926,7 +922,7 @@ You can create a simple heatmap with `geom_tile`
 
 ```{r eval =FALSE}
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = section,
     y = species,
@@ -944,7 +940,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = section,
     y = species,
@@ -971,7 +967,7 @@ Split your plots along one variable with `facet_wrap`
 ```{r eval=FALSE}
 #| eval: false
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -988,7 +984,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -1016,7 +1012,7 @@ Split your plots along two variables with `facet_grid`
 ```{r eval=FALSE}
 #| eval: false
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -1035,7 +1031,7 @@ ggplot(
 
 ```{r echo=FALSE}
 ggplot(
-  data = and_vertebrates,
+  data = vertebrates,
   aes(
     x = length_1_mm,
     y = weight_g,
@@ -1075,7 +1071,7 @@ ggplot(
 
 ```{r eval=FALSE}
 #| eval: false
-ggplot(and_vertebrates, aes(
+ggplot(vertebrates, aes(
   x = length_1_mm,
   y = weight_g
 )) +
@@ -1116,7 +1112,7 @@ ggplot(shapes, aes(x, y)) +
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(and_vertebrates, aes(
+ggplot(vertebrates, aes(
   x = length_1_mm,
   y = weight_g
 )) +
@@ -1141,7 +1137,7 @@ We can also save a plot in a variable
 :::{.column width="50%"}
 
 ```{r eval=FALSE}
-g <- ggplot(and_vertebrates, aes(
+g <- ggplot(vertebrates, aes(
   x = length_1_mm,
   y = weight_g,
   color = species
@@ -1160,7 +1156,7 @@ g
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-g <- ggplot(and_vertebrates, aes(
+g <- ggplot(vertebrates, aes(
   x = length_1_mm,
   y = weight_g,
   color = species
@@ -1306,7 +1302,7 @@ g
 
 ```{r fig.height=4}
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = section,
     y = length_1_mm,
@@ -1323,7 +1319,7 @@ ggplot(
 
 ```{r fig.height=4}
 ggplot(
-  and_vertebrates,
+  vertebrates,
   aes(
     x = section,
     y = length_1_mm,
