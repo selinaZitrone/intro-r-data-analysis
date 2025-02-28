@@ -24,10 +24,6 @@ execute:
   warning: false
   message: false
 from: markdown+emoji
-title-slide-attributes: 
-  data-background-image: img/AllisonHorst/rainbowr.gif
-  data-background-position: 90% 85%
-  data-background-size: "20%"
 ---
 
 
@@ -52,7 +48,7 @@ library(fontawesome)
 
 ... ecological modelling
 
-... writing documents
+... writing documents/websites/presentations
 
 .... workflow automation
 
@@ -87,19 +83,20 @@ Data transformation and visualization with the tidyverse
 . . .
 
 <b><span style="color:#FFD166;">Day3</span></b>
-Cleaning data and statistical tests
+Cleaning data, statistical tests, good practice and AI tools
 
 . . .
 
-**Day 4 Bring your own data**
+**Day 4** Bring your own data
 
 . . .
 
-+ good practice (project organization, code structure, ...) + AI Tools
+**Day 5** Bring your own data + Q&A (optional)
 
 ## Schedule and Organization {.nonincremental}
-📅 07.10.2023 - 08.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
-📅 14.10.2023 - 15.10.2023 from 🕘 9 a.m. - 4 p.m. <br>
+📅 03.03.2025 - 04.03.2025 from 🕘 9 a.m. - 4 p.m. <br>
+📅 10.03.2025 - 11.03.2025 from 🕘 9 a.m. - 4 p.m. <br>
+📅 17.03.2025 🕘 9 a.m. - 12 a.m. <br>
 :ramen: ~ 12 a.m. - 1 p.m.,  :coffee: in between <br>
 :pushpin: We will meet in the `General` meeting on Webex
 
@@ -107,23 +104,22 @@ Cleaning data and statistical tests
 
 :::{.fragment .nonincremental}
 
-#### Input sessions
+#### 1. Input sessions
 
-- Presentation and demonstration of a topic
-- Some examples
+- Presentation and demonstration of a topic + examples
 
 :::
 
 :::{.fragment .nonincremental}
   
-#### Tasks
+#### 2. Tasks
 - Solve them in small groups
 
 :::
 
 :::{.fragment}
   
-#### Joint discussion of tasks & questions
+#### 3. Joint discussion of tasks & questions
 
 :::
 
@@ -159,38 +155,16 @@ I will also provide some **real life data sets** from different topics.
 ## Before we get started I
 
 - **Help each other** if possible
-  - Have an eye on the chat
+
+- Have an eye on the chat and on the time
  
 - All questions and comments are welcome
 
 - If possible, please turn on your camera
 
 - Feedback is welcome (Evaluation at the end of the workshop)
-  
+
 ## Before we get started II
-
-**How to use Webex teams**
-
-- `General` channel for our joint meetings and chat
-- `Groups 1-4` for group work
-  - Group spaces have their own chat and meetings
-  - Use the chat in the groups for questions 
-  - Meet in your groups and solve the tasks jointly
-- Please always have a look at the general chat during the tasks
-
-# Now you (5 min){.inverse}
-> Let's try the Webex groups
-
-:::{.nonincremental}
-
-- **Go into your groups** and **start a meeting** there
-- **Say hello** to your team briefly
-  - What do you study and what types of data analysis do you do? 
-- **Come back to the general meeting** when I write in the general chat
-
-:::
-
-## Before we get started III
 
 Did anyone have problems installing R and RStudio?
 
@@ -200,4 +174,27 @@ Did anyone have problems installing R and RStudio?
 
 ![](img/Rstudio_logo.png){width=10%} Download and install RStudio from             [https://www.posit.co](https://posit.co/download/rstudio-desktop/)
 
+## Before we get started III
+
+**How to use Webex teams**
+
+- `General` channel for our joint meetings and chat
+- `Groups 1-4` for solving tasks jointly
+  - Group spaces have their own chat and meetings
+  - Ask questions in the chat, share screenshots, share your screen and talk
+
+# Now you (15 min){.inverse}
+
+> Get to know your team
+
+:::{.nonincremental}
+
+- **Go into your groups** and **start a meeting** there
+- **Introduce yourself** to your team (3 minutes for everyone)
+  - What is your PhD about?
+  - Which tools did you use so far for data analysis?
+  - Which types of data analysis do you need?
+- **Come back to the general meeting** after 15 mins
+
+:::
 
