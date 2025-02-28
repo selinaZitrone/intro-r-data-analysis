@@ -319,7 +319,7 @@
     "href": "sessions/slides/template.html#ggplotdata",
     "title": "Introduction to version control with Git",
     "section": "ggplot(data)",
-    "text": "ggplot(data)\nThe ggplot() function initializes a ggplot object. Every ggplot needs this function.\n\n\n\nlibrary(ggplot2) # or library(tidyverse)\nlibrary(lterdatasampler)\n\n\nError in library(lterdatasampler): there is no package called 'lterdatasampler'\n\nggplot(data = and_vertebrates)\n\nError: object 'and_vertebrates' not found\n\n\n\nEmpty plot because we did not specify the mapping of data variables"
+    "text": "ggplot(data)\nThe ggplot() function initializes a ggplot object. Every ggplot needs this function.\n\n\n\nlibrary(ggplot2) # or library(tidyverse)\nlibrary(lterdatasampler)\n\nggplot(data = and_vertebrates)\n\n\n\n\n\n\n\n\n\n\nEmpty plot because we did not specify the mapping of data variables"
   },
   {
     "objectID": "sessions/slides/template.html#heading-2",
@@ -886,7 +886,7 @@
     "href": "sessions/slides/bring-your-own-data.html#data-set-3-crab-data-set-1",
     "title": "Bring your own data",
     "section": "Data set 3: Crab data set",
-    "text": "Data set 3: Crab data set\n\n\nError in library(lterdatasampler): there is no package called 'lterdatasampler'\n\n\nError: object 'pie_crab' not found\n\n\n\n\nSource: Johnson, D. 2019. Fiddler crab body size in salt marshes from Florida to Massachusetts, USA at PIE and VCR LTER and NOAA NERR sites during summer 2016. ver 1. Environmental Data Initiative."
+    "text": "Data set 3: Crab data set\n\n\n        date latitude site  size air_temp air_temp_sd water_temp water_temp_sd\n1 2016-07-24       30  GTM 12.43   21.792       6.391     24.502         6.121\n2 2016-07-24       30  GTM 14.18   21.792       6.391     24.502         6.121\n3 2016-07-24       30  GTM 14.52   21.792       6.391     24.502         6.121\n4 2016-07-24       30  GTM 12.94   21.792       6.391     24.502         6.121\n5 2016-07-24       30  GTM 12.45   21.792       6.391     24.502         6.121\n6 2016-07-24       30  GTM 12.99   21.792       6.391     24.502         6.121\n                          name\n1 Guana Tolomoto Matanzas NERR\n2 Guana Tolomoto Matanzas NERR\n3 Guana Tolomoto Matanzas NERR\n4 Guana Tolomoto Matanzas NERR\n5 Guana Tolomoto Matanzas NERR\n6 Guana Tolomoto Matanzas NERR\n\n\n\n\nSource: Johnson, D. 2019. Fiddler crab body size in salt marshes from Florida to Massachusetts, USA at PIE and VCR LTER and NOAA NERR sites during summer 2016. ver 1. Environmental Data Initiative."
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#data-set-3-crab-data-set-2",
@@ -907,7 +907,7 @@
     "href": "sessions/slides/bring-your-own-data.html#data-set-4-ice-cover-and-temperature-1",
     "title": "Bring your own data",
     "section": "Data set 4: Ice cover and temperature",
-    "text": "Data set 4: Ice cover and temperature\nIce data:\n\n\nError: object 'ntl_icecover' not found\n\n\nTemperature data:\n\n\nError: object 'ntl_airtemp' not found"
+    "text": "Data set 4: Ice cover and temperature\nIce data:\n\n\n        lakeid     ice_on    ice_off ice_duration year\n1 Lake Mendota       &lt;NA&gt; 1853-04-05           NA 1852\n2 Lake Mendota 1853-12-27       &lt;NA&gt;           NA 1853\n3 Lake Mendota 1855-12-18 1856-04-14          118 1855\n4 Lake Mendota 1856-12-06 1857-05-06          151 1856\n5 Lake Mendota 1857-11-25 1858-03-26          121 1857\n6 Lake Mendota 1858-12-08 1859-03-14           96 1858\n\n\nTemperature data:\n\n\n  sampledate year ave_air_temp_adjusted\n1 1870-06-05 1870                  20.0\n2 1870-06-06 1870                  18.3\n3 1870-06-07 1870                  17.5\n4 1870-06-09 1870                  13.3\n5 1870-06-10 1870                  13.9\n6 1870-06-11 1870                  15.0"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#data-set-4-ice-cover-and-temperature-2",
@@ -1649,49 +1649,49 @@
     "href": "sessions/slides/dplyr.html#the-data",
     "title": "Data transformation with dplyr",
     "section": "The data",
-    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\n\n\n\n\nyear: observation year\nsection: CC (clear cut forest) or OG (old growth forest)\nunittype: channel classification (C = Cascade, P = Pool, …)\nspecies: Species measured\nlength_1_mm: body length [mm]\nweight_g: body weight [g]\n\n\n\n\n\n\n\n\nCoastal giant salamander (terrestrial form)Andrews Forest Program by Lina DiGregorio via CC-BY from https://andrewsforest.oregonstate.edu\n\n\n\n\n#&gt; Error in library(lterdatasampler): there is no package called 'lterdatasampler'\n#&gt; Error: object 'and_vertebrates' not found\n\n\nReferences: Kaylor, M.J. and D.R. Warren. (2017) andGregory, S.V. and I. Arismendi. (2020) as provided in the lterdatasampler package."
+    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\n\n\n\n\nyear: observation year\nsection: CC (clear cut forest) or OG (old growth forest)\nunittype: channel classification (C = Cascade, P = Pool, …)\nspecies: Species measured\nlength_1_mm: body length [mm]\nweight_g: body weight [g]\n\n\n\n\n\n\n\n\nCoastal giant salamander (terrestrial form)Andrews Forest Program by Lina DiGregorio via CC-BY from https://andrewsforest.oregonstate.edu\n\n\n\n\nReferences: Kaylor, M.J. and D.R. Warren. (2017) andGregory, S.V. and I. Arismendi. (2020) as provided in the lterdatasampler package."
   },
   {
     "objectID": "sessions/slides/dplyr.html#the-data-1",
     "href": "sessions/slides/dplyr.html#the-data-1",
     "title": "Data transformation with dplyr",
     "section": "The data",
-    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\nlibrary(lterdatasampler)\n#&gt; Error in library(lterdatasampler): there is no package called 'lterdatasampler'\nand_vertebrates\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\nlibrary(lterdatasampler)\nvertebrates &lt;- and_vertebrates |&gt;\n  select(year, section, unittype, species, length_1_mm, weight_g) |&gt;\n  filter(species != \"Cascade torrent salamander\")\nvertebrates\n\n\n#&gt; # A tibble: 32,191 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 32,181 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#filter-1",
     "href": "sessions/slides/dplyr.html#filter-1",
     "title": "Data transformation with dplyr",
     "section": "filter()",
-    "text": "filter()\nFilter only the trout species:\n\nfilter(and_vertebrates, species == \"Cutthroat trout\")\n#&gt; Error: object 'and_vertebrates' not found\n\n\nfilter() goes through each row of the data and return only those rows where the value for species is \"Cutthroat trout\""
+    "text": "filter()\nFilter only the trout species:\n\nfilter(vertebrates, species == \"Cutthroat trout\")\n#&gt; # A tibble: 20,433 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 20,423 more rows\n\n\nfilter() goes through each row of the data and return only those rows where the value for species is \"Cutthroat trout\""
   },
   {
     "objectID": "sessions/slides/dplyr.html#filter-2",
     "href": "sessions/slides/dplyr.html#filter-2",
     "title": "Data transformation with dplyr",
     "section": "filter()",
-    "text": "filter()\nYou can also combine filters using logical operators (&, |, !):\n\nfilter(and_vertebrates, species == \"Cutthroat trout\" & year == 1987)\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "filter()\nYou can also combine filters using logical operators (&, |, !):\n\nfilter(vertebrates, species == \"Cutthroat trout\" & year == 1987)\n#&gt; # A tibble: 603 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 593 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#filter-in",
     "href": "sessions/slides/dplyr.html#filter-in",
     "title": "Data transformation with dplyr",
     "section": "filter() + %in%",
-    "text": "filter() + %in%\nUse the %in% operator to filter rows based on multiple values, e.g. unittypes\n\n\nunittype_select &lt;- c(\"R\", \"C\", \"S\")\nfilter(and_vertebrates, unittype %in% unittype_select)\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "filter() + %in%\nUse the %in% operator to filter rows based on multiple values, e.g. unittypes\n\n\nunittype_select &lt;- c(\"R\", \"C\", \"S\")\nfilter(vertebrates, unittype %in% unittype_select)\n#&gt; # A tibble: 19,619 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 19,609 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#filter-is.na",
     "href": "sessions/slides/dplyr.html#filter-is.na",
     "title": "Data transformation with dplyr",
     "section": "filter() + is.na()",
-    "text": "filter() + is.na()\nFilter only rows that don’t have a value for the weight\n\nfilter(and_vertebrates, is.na(weight_g))\n#&gt; Error: object 'and_vertebrates' not found\n\n\nOr the opposite: filter only the rows that have a value for the weight\n\nfilter(and_vertebrates, !is.na(weight_g))"
+    "text": "filter() + is.na()\nFilter only rows that don’t have a value for the weight\n\nfilter(vertebrates, is.na(weight_g))\n#&gt; # A tibble: 13,259 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1993 CC      P        Cutthroat trout          93       NA\n#&gt;  2  1993 CC      P        Cutthroat trout         175       NA\n#&gt;  3  1993 CC      P        Cutthroat trout         104       NA\n#&gt;  4  1993 CC      P        Cutthroat trout          98       NA\n#&gt;  5  1993 CC      P        Cutthroat trout          97       NA\n#&gt;  6  1993 CC      P        Cutthroat trout         123       NA\n#&gt;  7  1993 CC      P        Cutthroat trout         149       NA\n#&gt;  8  1993 CC      P        Cutthroat trout         100       NA\n#&gt;  9  1993 CC      P        Cutthroat trout         118       NA\n#&gt; 10  1993 CC      P        Cutthroat trout         163       NA\n#&gt; # ℹ 13,249 more rows\n\n\nOr the opposite: filter only the rows that have a value for the weight\n\nfilter(vertebrates, !is.na(weight_g))"
   },
   {
     "objectID": "sessions/slides/dplyr.html#filter-between",
     "href": "sessions/slides/dplyr.html#filter-between",
     "title": "Data transformation with dplyr",
     "section": "filter() + between()",
-    "text": "filter() + between()\nCombine different filters:\nFilter rows where the value for year is between 2000 and 2005\n\n\nfilter(and_vertebrates, between(year, 2000, 2005))\n#&gt; Error: object 'and_vertebrates' not found\n\n\n\nOr you could also do it like this:\n\nfilter(and_vertebrates, year &gt;= 2000 & year &lt;= 2005)"
+    "text": "filter() + between()\nCombine different filters:\nFilter rows where the value for year is between 2000 and 2005\n\n\nfilter(vertebrates, between(year, 2000, 2005))\n#&gt; # A tibble: 6,662 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  2000 CC      C        Cutthroat trout          84       NA\n#&gt;  2  2000 CC      C        Cutthroat trout         132       NA\n#&gt;  3  2000 CC      C        Cutthroat trout         105       NA\n#&gt;  4  2000 CC      C        Cutthroat trout          41       NA\n#&gt;  5  2000 CC      C        Cutthroat trout          42       NA\n#&gt;  6  2000 CC      C        Cutthroat trout          42       NA\n#&gt;  7  2000 CC      C        Cutthroat trout          41       NA\n#&gt;  8  2000 CC      C        Cutthroat trout          51       NA\n#&gt;  9  2000 CC      C        Cutthroat trout          45       NA\n#&gt; 10  2000 CC      C        Cutthroat trout          44       NA\n#&gt; # ℹ 6,652 more rows\n\n\n\nOr you could also do it like this:\n\nfilter(vertebrates, year &gt;= 2000 & year &lt;= 2005)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#useful-filter-helpers",
@@ -1705,21 +1705,21 @@
     "href": "sessions/slides/dplyr.html#select-1",
     "title": "Data transformation with dplyr",
     "section": "select()",
-    "text": "select()\nSelect the columns species, length_1_mm, and year\n\nselect(and_vertebrates, species, length_1_mm, year)\n#&gt; Error: object 'and_vertebrates' not found\n\n\nRemove variables using -\n\nselect(and_vertebrates, -species, -length_1_mm, -year)"
+    "text": "select()\nSelect the columns species, length_1_mm, and year\n\nselect(vertebrates, species, length_1_mm, year)\n#&gt; # A tibble: 32,191 × 3\n#&gt;    species         length_1_mm  year\n#&gt;    &lt;chr&gt;                 &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Cutthroat trout          58  1987\n#&gt;  2 Cutthroat trout          61  1987\n#&gt;  3 Cutthroat trout          89  1987\n#&gt;  4 Cutthroat trout          58  1987\n#&gt;  5 Cutthroat trout          93  1987\n#&gt;  6 Cutthroat trout          86  1987\n#&gt;  7 Cutthroat trout         107  1987\n#&gt;  8 Cutthroat trout         131  1987\n#&gt;  9 Cutthroat trout         103  1987\n#&gt; 10 Cutthroat trout         117  1987\n#&gt; # ℹ 32,181 more rows\n\n\nRemove variables using -\n\nselect(vertebrates, -species, -length_1_mm, -year)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#select-ends_with",
     "href": "sessions/slides/dplyr.html#select-ends_with",
     "title": "Data transformation with dplyr",
     "section": "select() + ends_with()",
-    "text": "select() + ends_with()\nSelect all columns that start with \"s\"\n\nselect(and_vertebrates, starts_with(\"s\"))\n\n\n#&gt; Error: object 'and_vertebrates' not found\n\n\nYou can use the same structure for starts_with() and contains().\n\n# this does not make sense for the example data\n# but combinations like this are helpful for research data\nselect(and_vertebrates, starts_with(\"sample_\"))\n\nselect(and_vertebrates, contains(\"_id_\"))"
+    "text": "select() + ends_with()\nSelect all columns that start with \"s\"\n\nselect(vertebrates, starts_with(\"s\"))\n\n\n#&gt; # A tibble: 32,191 × 2\n#&gt;   section species        \n#&gt;   &lt;chr&gt;   &lt;chr&gt;          \n#&gt; 1 CC      Cutthroat trout\n#&gt; 2 CC      Cutthroat trout\n#&gt; 3 CC      Cutthroat trout\n#&gt; # ℹ 32,188 more rows\n\n\nYou can use the same structure for starts_with() and contains().\n\n# this does not make sense for the example data\n# but combinations like this are helpful for research data\nselect(vertebrates, starts_with(\"sample_\"))\n\nselect(vertebrates, contains(\"_id_\"))"
   },
   {
     "objectID": "sessions/slides/dplyr.html#select-fromto",
     "href": "sessions/slides/dplyr.html#select-fromto",
     "title": "Data transformation with dplyr",
     "section": "select() + from:to",
-    "text": "select() + from:to\nMultiple consecutive columns can be selected using the from:to structure with either column id or name:\n\nselect(and_vertebrates, 1:3)\nselect(and_vertebrates, year:unittype)\n\n\n#&gt; Error: object 'and_vertebrates' not found\n\n\nBe a bit careful with these commands: They are not robust if you e.g. change the order of your columns at some point."
+    "text": "select() + from:to\nMultiple consecutive columns can be selected using the from:to structure with either column id or name:\n\nselect(vertebrates, 1:3)\nselect(vertebrates, year:unittype)\n\n\n#&gt; # A tibble: 32,191 × 3\n#&gt;    year section unittype\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   \n#&gt; 1  1987 CC      R       \n#&gt; 2  1987 CC      R       \n#&gt; 3  1987 CC      R       \n#&gt; # ℹ 32,188 more rows\n\n\nBe a bit careful with these commands: They are not robust if you e.g. change the order of your columns at some point."
   },
   {
     "objectID": "sessions/slides/dplyr.html#useful-select-helpers",
@@ -1733,35 +1733,35 @@
     "href": "sessions/slides/dplyr.html#mutate-1",
     "title": "Data transformation with dplyr",
     "section": "mutate()",
-    "text": "mutate()\nNew columns can be added based on values from other columns\n\nmutate(and_vertebrates, weight_kg = weight_g/1000)\n\n\n#&gt; Error: object 'and_vertebrates' not found\n\n\nAdd multiple new columns at once:\n\nmutate(and_vertebrates,\n       weight_kg = weight_g/1000,\n       length_m = length_1_mm/1000)"
+    "text": "mutate()\nNew columns can be added based on values from other columns\n\nmutate(vertebrates, weight_kg = weight_g/1000)\n\n\n#&gt; # A tibble: 32,191 × 7\n#&gt;    year section unittype species         length_1_mm weight_g weight_kg\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75   0.00175\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95   0.00195\n#&gt; 3  1987 CC      R        Cutthroat trout          89     5.6    0.0056 \n#&gt; # ℹ 32,188 more rows\n\n\nAdd multiple new columns at once:\n\nmutate(vertebrates,\n       weight_kg = weight_g/1000,\n       length_m = length_1_mm/1000)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#mutate-case_when",
     "href": "sessions/slides/dplyr.html#mutate-case_when",
     "title": "Data transformation with dplyr",
     "section": "mutate() + case_when()",
-    "text": "mutate() + case_when()\nUse case_when to add column values conditional on other columns.\ncase_when() can combine many cases into one.\n\nmutate(and_vertebrates,\n       type = case_when(\n         species == \"Cutthroat trout\" ~ \"Fish\",               # case 1\n         species == \"Coastal giant salamander\" ~ \"Amphibian\", # case 2\n         .default = NA                                        # all other\n))\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "mutate() + case_when()\nUse case_when to add column values conditional on other columns.\ncase_when() can combine many cases into one.\n\nmutate(vertebrates,\n       type = case_when(\n         species == \"Cutthroat trout\" ~ \"Fish\",               # case 1\n         species == \"Coastal giant salamander\" ~ \"Amphibian\", # case 2\n         .default = NA                                        # all other\n))\n#&gt; # A tibble: 32,191 × 7\n#&gt;     year section unittype species         length_1_mm weight_g type \n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75 Fish \n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95 Fish \n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6  Fish \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15 Fish \n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9  Fish \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9  Fish \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5  Fish \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6  Fish \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55 Fish \n#&gt; 10  1987 CC      R        Cutthroat trout         117    13    Fish \n#&gt; # ℹ 32,181 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#summarize-1",
     "href": "sessions/slides/dplyr.html#summarize-1",
     "title": "Data transformation with dplyr",
     "section": "summarize()",
-    "text": "summarize()\nsummarize will collapse the data to a single row\n\n\nsummarize(and_vertebrates,\n          mean_length = mean(length_1_mm, na.rm = TRUE),\n          mean_weight = mean(weight_g, na.rm = TRUE))\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "summarize()\nsummarize will collapse the data to a single row\n\n\nsummarize(vertebrates,\n          mean_length = mean(length_1_mm, na.rm = TRUE),\n          mean_weight = mean(weight_g, na.rm = TRUE))\n#&gt; # A tibble: 1 × 2\n#&gt;   mean_length mean_weight\n#&gt;         &lt;dbl&gt;       &lt;dbl&gt;\n#&gt; 1        73.8        8.91"
   },
   {
     "objectID": "sessions/slides/dplyr.html#summarize-by-group",
     "href": "sessions/slides/dplyr.html#summarize-by-group",
     "title": "Data transformation with dplyr",
     "section": "summarize() by group",
-    "text": "summarize() by group\nsummarize is much more useful in combination with the grouping argument .by\n\nsummary will be calculated separately for each group\n\n\n\n# summarize the grouped data\nsummarize(and_vertebrates,\n    mean_length = mean(length_1_mm, na.rm = TRUE),\n    mean_weight = mean(weight_g, na.rm = TRUE),\n    .by = species\n  )\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "summarize() by group\nsummarize is much more useful in combination with the grouping argument .by\n\nsummary will be calculated separately for each group\n\n\n\n# summarize the grouped data\nsummarize(vertebrates,\n    mean_length = mean(length_1_mm, na.rm = TRUE),\n    mean_weight = mean(weight_g, na.rm = TRUE),\n    .by = species\n  )\n#&gt; # A tibble: 2 × 3\n#&gt;   species                  mean_length mean_weight\n#&gt;   &lt;chr&gt;                          &lt;dbl&gt;       &lt;dbl&gt;\n#&gt; 1 Cutthroat trout                 83.5        8.84\n#&gt; 2 Coastal giant salamander        57.0        9.03"
   },
   {
     "objectID": "sessions/slides/dplyr.html#count",
     "href": "sessions/slides/dplyr.html#count",
     "title": "Data transformation with dplyr",
     "section": "count()",
-    "text": "count()\nCounts observations by group\n\n# count rows grouped by year\ncount(and_vertebrates, year)\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "count()\nCounts observations by group\n\n# count rows grouped by year\ncount(vertebrates, year)\n#&gt; # A tibble: 33 × 2\n#&gt;     year     n\n#&gt;    &lt;dbl&gt; &lt;int&gt;\n#&gt;  1  1987   603\n#&gt;  2  1988   302\n#&gt;  3  1989   308\n#&gt;  4  1990   513\n#&gt;  5  1991   626\n#&gt;  6  1992   616\n#&gt;  7  1993   870\n#&gt;  8  1994   948\n#&gt;  9  1995   583\n#&gt; 10  1996   928\n#&gt; # ℹ 23 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#the-pipe-1",
@@ -1775,56 +1775,56 @@
     "href": "sessions/slides/dplyr.html#the-pipe-2",
     "title": "Data transformation with dplyr",
     "section": "The pipe |>",
-    "text": "The pipe |&gt;\nLet’s look at an example without pipe:\n\n# 1: filter rows that have don't have NA in the unittype column\nand_vertebrates_new &lt;- filter(and_vertebrates, !is.na(unittype))\n\n# 2: summarize mean values by year\nand_vertebrates_new &lt;- count(and_vertebrates_new, year, species, section)\n\n\nHow could we make this more efficient?\n\n\nUse one nested function without intermediate results:\n\nand_vertebrates_new &lt;- count(\n  filter(and_vertebrates, !is.na(unittype)),\n  year, species, section\n)\n\n\n\nBut this gets complicated and error prone very quickly"
+    "text": "The pipe |&gt;\nLet’s look at an example without pipe:\n\n# 1: filter rows that have don't have NA in the unittype column\nvertebrates_new &lt;- filter(vertebrates, !is.na(unittype))\n\n# 2: summarize mean values by year\nvertebrates_new &lt;- count(vertebrates_new, year, species, section)\n\n\nHow could we make this more efficient?\n\n\nUse one nested function without intermediate results:\n\nvertebrates_new &lt;- count(\n  filter(vertebrates, !is.na(unittype)),\n  year, species, section\n)\n\n\n\nBut this gets complicated and error prone very quickly"
   },
   {
     "objectID": "sessions/slides/dplyr.html#the-pipe-3",
     "href": "sessions/slides/dplyr.html#the-pipe-3",
     "title": "Data transformation with dplyr",
     "section": "The pipe |>",
-    "text": "The pipe |&gt;\nThe pipe operator makes it very easy to combine multiple operations:\n\nand_vertebrates_new &lt;- and_vertebrates |&gt;\n  filter(!is.na(unittype)) |&gt;\n  count(year, species, section)\n\nand_vertebrates_new\n\n\nYou can read from top to bottom and interpret the |&gt; as an “and then do”."
+    "text": "The pipe |&gt;\nThe pipe operator makes it very easy to combine multiple operations:\n\nvertebrates_new &lt;- vertebrates |&gt;\n  filter(!is.na(unittype)) |&gt;\n  count(year, species, section)\n\nvertebrates_new\n\n\nYou can read from top to bottom and interpret the |&gt; as an “and then do”."
   },
   {
     "objectID": "sessions/slides/dplyr.html#the-pipe-4",
     "href": "sessions/slides/dplyr.html#the-pipe-4",
     "title": "Data transformation with dplyr",
     "section": "The pipe |>",
-    "text": "The pipe |&gt;\nBut what is happening?\nThe pipe is “pushing” the result of one line into the first argument of the function from the next line.\n\n\nand_vertebrates |&gt; \n  count(year)\n\n# instead of \ncount(and_vertebrates, year)\n\n\n\nPiping works perfectly with the tidyverse functions because they are designed to return a tibble and take a tibble as first argument.\n\n\n\n\n\n\n\n\nTip\n\n\nUse the keyboard shortcut Ctrl/Cmd + Shift + M to insert |&gt;"
+    "text": "The pipe |&gt;\nBut what is happening?\nThe pipe is “pushing” the result of one line into the first argument of the function from the next line.\n\n\nvertebrates |&gt; \n  count(year)\n\n# instead of \ncount(vertebrates, year)\n\n\n\nPiping works perfectly with the tidyverse functions because they are designed to return a tibble and take a tibble as first argument.\n\n\n\n\n\n\n\n\nTip\n\n\nUse the keyboard shortcut Ctrl/Cmd + Shift + M to insert |&gt;"
   },
   {
     "objectID": "sessions/slides/dplyr.html#the-pipe-5",
     "href": "sessions/slides/dplyr.html#the-pipe-5",
     "title": "Data transformation with dplyr",
     "section": "The pipe |>",
-    "text": "The pipe |&gt;\nPiping also works well together with ggplot\n\nand_vertebrates |&gt;\n  filter(!is.na(unittype)) |&gt;\n  count(year, species, section) |&gt;\n  ggplot(aes(x = year, y = n, color = species)) +\n  geom_line() +\n  facet_wrap(~section)\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "The pipe |&gt;\nPiping also works well together with ggplot\n\nvertebrates |&gt;\n  filter(!is.na(unittype)) |&gt;\n  count(year, species, section) |&gt;\n  ggplot(aes(x = year, y = n, color = species)) +\n  geom_line() +\n  facet_wrap(~section)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows",
     "href": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows",
     "title": "Data transformation with dplyr",
     "section": "Combine two tibbles by row bind_rows",
-    "text": "Combine two tibbles by row bind_rows\nSituation: Two (or more) tibbles with the same variables (column names)\n\ntbl_a &lt;- and_vertebrates[1:2, ] # first two rows\n#&gt; Error: object 'and_vertebrates' not found\ntbl_b &lt;- and_vertebrates[2:nrow(and_vertebrates), ] # the rest\n#&gt; Error: object 'and_vertebrates' not found\n\n\n\ntbl_a\n\n\n#&gt; Error: object 'tbl_a' not found\n\n\n\ntbl_b\n\n\n#&gt; Error: object 'tbl_b' not found"
+    "text": "Combine two tibbles by row bind_rows\nSituation: Two (or more) tibbles with the same variables (column names)\n\ntbl_a &lt;- vertebrates[1:2, ] # first two rows\ntbl_b &lt;- vertebrates[2:nrow(vertebrates), ] # the rest\n\n\n\ntbl_a\n\n\n#&gt; # A tibble: 2 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n\n\n\ntbl_b\n\n\n#&gt; # A tibble: 32,190 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; 2  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt; # ℹ 32,188 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows-1",
     "href": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows-1",
     "title": "Data transformation with dplyr",
     "section": "Combine two tibbles by row bind_rows",
-    "text": "Combine two tibbles by row bind_rows\nBind the rows together with bind_rows():\n\nbind_rows(tbl_a, tbl_b)\n\n\n#&gt; Error: object 'tbl_a' not found\n\n\nYou can also add an ID-column to indicate which line belonged to which table:\n\nbind_rows(a = tbl_a, b = tbl_b, .id = \"id\")\n\n\n#&gt; Error: object 'tbl_a' not found\n\n\n\nYou can use bind_rows() to bind as many tables as you want:\n\nbind_rows(a = tbl_a, b= tbl_b, c = tbl_c, ..., .id = \"id\")"
+    "text": "Combine two tibbles by row bind_rows\nBind the rows together with bind_rows():\n\nbind_rows(tbl_a, tbl_b)\n\n\n#&gt; # A tibble: 32,192 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; # ℹ 32,190 more rows\n\n\nYou can also add an ID-column to indicate which line belonged to which table:\n\nbind_rows(a = tbl_a, b = tbl_b, .id = \"id\")\n\n\n#&gt; # A tibble: 32,192 × 7\n#&gt;   id     year section unittype species         length_1_mm weight_g\n#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1 a      1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2 a      1987 CC      R        Cutthroat trout          61     1.95\n#&gt; 3 b      1987 CC      R        Cutthroat trout          61     1.95\n#&gt; # ℹ 32,189 more rows\n\n\n\nYou can use bind_rows() to bind as many tables as you want:\n\nbind_rows(a = tbl_a, b= tbl_b, c = tbl_c, ..., .id = \"id\")"
   },
   {
     "objectID": "sessions/slides/dplyr.html#join-tibbles-with-left_join",
     "href": "sessions/slides/dplyr.html#join-tibbles-with-left_join",
     "title": "Data transformation with dplyr",
     "section": "Join tibbles with left_join()",
-    "text": "Join tibbles with left_join()\nSituation: Two tables that share some but not all columns.\n\n\n#&gt; Error: object 'and_vertebrates' not found\n\n\nand_vertebrates\n\n\n#&gt; Error: object 'and_vertebrates' not found\n\n\n\n# table with more information on the species\nspecies\n#&gt; Error: object 'species' not found"
+    "text": "Join tibbles with left_join()\nSituation: Two tables that share some but not all columns.\n\n\nvertebrates\n\n\n#&gt; # A tibble: 32,191 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; # ℹ 32,189 more rows\n\n\n\n# table with more information on the species\nspecies\n#&gt; # A tibble: 2 × 2\n#&gt;   species                  type     \n#&gt;   &lt;chr&gt;                    &lt;chr&gt;    \n#&gt; 1 Cutthroat trout          Fish     \n#&gt; 2 Coastal giant salamander Amphibian"
   },
   {
     "objectID": "sessions/slides/dplyr.html#join-tibbles-with-left_join-1",
     "href": "sessions/slides/dplyr.html#join-tibbles-with-left_join-1",
     "title": "Data transformation with dplyr",
     "section": "Join tibbles with left_join()",
-    "text": "Join tibbles with left_join()\nJoin the two tables by the common column species\n\nleft_join(and_vertebrates, species, by = \"species\")\n#&gt; Error: object 'and_vertebrates' not found\n\n\nleft_join() means that the resulting tibble will contain all rows of and_vertebrates, but not necessarily all rows of species (in this case it does though)."
+    "text": "Join tibbles with left_join()\nJoin the two tables by the common column species\n\nleft_join(vertebrates, species, by = \"species\")\n#&gt; # A tibble: 32,191 × 7\n#&gt;     year section unittype species         length_1_mm weight_g type \n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75 Fish \n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95 Fish \n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6  Fish \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15 Fish \n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9  Fish \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9  Fish \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5  Fish \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6  Fish \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55 Fish \n#&gt; 10  1987 CC      R        Cutthroat trout         117    13    Fish \n#&gt; # ℹ 32,181 more rows\n\n\nleft_join() means that the resulting tibble will contain all rows of vertebrates, but not necessarily all rows of species (in this case it does though)."
   },
   {
     "objectID": "sessions/slides/dplyr.html#different-_join-functions",
@@ -1901,35 +1901,35 @@
     "href": "sessions/slides/ggplot.html#the-data",
     "title": "Data visualization with ggplot2",
     "section": "The data",
-    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\n\n\n\n\nyear: observation year\nsection: CC (clear cut forest) or OG (old growth forest)\nunittype: channel classification (C = Cascade, P = Pool, …)\nspecies: Species measured\nlength_1_mm: body length [mm]\nweight_g: body weight [g]\n\n\n\n\n\n\n\n\nCoastal giant salamander (terrestrial form)Andrews Forest Program by Lina DiGregorio via CC-BY from https://andrewsforest.oregonstate.edu\n\n\n\n\n#&gt; Error in library(lterdatasampler): there is no package called 'lterdatasampler'\n#&gt; Error: object 'and_vertebrates' not found\n\n\nReferences: Kaylor, M.J. and D.R. Warren. (2017) andGregory, S.V. and I. Arismendi. (2020) as provided in the lterdatasampler package."
+    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\n\n\n\n\nyear: observation year\nsection: CC (clear cut forest) or OG (old growth forest)\nunittype: channel classification (C = Cascade, P = Pool, …)\nspecies: Species measured\nlength_1_mm: body length [mm]\nweight_g: body weight [g]\n\n\n\n\n\n\n\n\nCoastal giant salamander (terrestrial form)Andrews Forest Program by Lina DiGregorio via CC-BY from https://andrewsforest.oregonstate.edu\n\n\n\n\nReferences: Kaylor, M.J. and D.R. Warren. (2017) andGregory, S.V. and I. Arismendi. (2020) as provided in the lterdatasampler package."
   },
   {
     "objectID": "sessions/slides/ggplot.html#the-data-1",
     "href": "sessions/slides/ggplot.html#the-data-1",
     "title": "Data visualization with ggplot2",
     "section": "The data",
-    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\nlibrary(lterdatasampler)\n#&gt; Error in library(lterdatasampler): there is no package called 'lterdatasampler'\nand_vertebrates\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\nlibrary(lterdatasampler)\nvertebrates &lt;- and_vertebrates |&gt;\n  select(year, section, unittype, species, length_1_mm, weight_g) |&gt;\n  filter(species != \"Cascade torrent salamander\")\nvertebrates\n\n\n#&gt; # A tibble: 32,191 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 32,181 more rows"
   },
   {
     "objectID": "sessions/slides/ggplot.html#ggplotdata",
     "href": "sessions/slides/ggplot.html#ggplotdata",
     "title": "Data visualization with ggplot2",
     "section": "ggplot(data)",
-    "text": "ggplot(data)\nThe ggplot() function initializes a ggplot object. Every ggplot needs this function.\n\n\n\n\nlibrary(ggplot2)\n# or library(tidyverse)\n\nggplot(data = and_vertebrates)\n\n\nEmpty plot because we did not specify the mapping of data variables\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "ggplot(data)\nThe ggplot() function initializes a ggplot object. Every ggplot needs this function.\n\n\n\n\nlibrary(ggplot2)\n# or library(tidyverse)\n\nggplot(data = vertebrates)\n\n\nEmpty plot because we did not specify the mapping of data variables"
   },
   {
     "objectID": "sessions/slides/ggplot.html#aesx-y",
     "href": "sessions/slides/ggplot.html#aesx-y",
     "title": "Data visualization with ggplot2",
     "section": "aes(x, y)",
-    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\n\nggplot(\n  data = and_vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\n\nMap variable length_1_mm to x-axis and weight_g to y-axis\nDefault scales are automatically adapted to range of data\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\n\nggplot(\n  data = vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\n\nMap variable length_1_mm to x-axis and weight_g to y-axis\nDefault scales are automatically adapted to range of data"
   },
   {
     "objectID": "sessions/slides/ggplot.html#aesx-y-1",
     "href": "sessions/slides/ggplot.html#aesx-y-1",
     "title": "Data visualization with ggplot2",
     "section": "aes(x, y)",
-    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\nggplot(\n  data = and_vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\nThis is the same but shorter:\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = length_1_mm, \n    y = weight_g)\n)\n\nRemember argument matching by position?\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\nggplot(\n  data = vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\nThis is the same but shorter:\n\nggplot(\n  vertebrates,\n  aes(\n    x = length_1_mm, \n    y = weight_g)\n)\n\nRemember argument matching by position?"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_",
@@ -1943,175 +1943,175 @@
     "href": "sessions/slides/ggplot.html#geom_point",
     "title": "Data visualization with ggplot2",
     "section": "geom_point",
-    "text": "geom_point\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n) +\n  geom_point()\n\n\nNew plot layers added with +\nWarning that points could not be plotted due to missing values\ndata and aes defined in ggplot call are inherited to all plot layers\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "geom_point\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n) +\n  geom_point()\n\n\nNew plot layers added with +\nWarning that points could not be plotted due to missing values\ndata and aes defined in ggplot call are inherited to all plot layers\n\n\n\n#&gt; Warning: Removed 13270 rows containing missing values or values outside the scale range\n#&gt; (`geom_point()`)."
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_point-1",
     "href": "sessions/slides/ggplot.html#geom_point-1",
     "title": "Data visualization with ggplot2",
     "section": "geom_point",
-    "text": "geom_point\n\n\n\nggplot() +\n  geom_point(\n    data = and_vertebrates,\n    aes(\n      x = length_1_mm,\n      y = weight_g\n    )\n  )\n\n\ndata and aes can also be local to a layer:\n\n\nHere, it does not make a difference in the result.\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "geom_point\n\n\n\nggplot() +\n  geom_point(\n    data = vertebrates,\n    aes(\n      x = length_1_mm,\n      y = weight_g\n    )\n  )\n\n\ndata and aes can also be local to a layer:\n\n\nHere, it does not make a difference in the result.\n\n\n\n#&gt; Warning: Removed 13270 rows containing missing values or values outside the scale range\n#&gt; (`geom_point()`)."
   },
   {
     "objectID": "sessions/slides/ggplot.html#aescolor-mapping-color-to-a-variable",
     "href": "sessions/slides/ggplot.html#aescolor-mapping-color-to-a-variable",
     "title": "Data visualization with ggplot2",
     "section": "aes(color): mapping color to a variable",
-    "text": "aes(color): mapping color to a variable\nLooks like there are two groups of data: Map color of points to a variable by adding it to aesthetics:\n\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point()\n\n\nMap the species variable to the color aesthetic of the plot\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "aes(color): mapping color to a variable\nLooks like there are two groups of data: Map color of points to a variable by adding it to aesthetics:\n\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point()\n\n\nMap the species variable to the color aesthetic of the plot"
   },
   {
     "objectID": "sessions/slides/ggplot.html#aessize-mapping-size-to-a-variable",
     "href": "sessions/slides/ggplot.html#aessize-mapping-size-to-a-variable",
     "title": "Data visualization with ggplot2",
     "section": "aes(size): mapping size to a variable",
-    "text": "aes(size): mapping size to a variable\nWe can do the same with size:\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    size = species\n  )\n) +\n  geom_point()\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "aes(size): mapping size to a variable\nWe can do the same with size:\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    size = species\n  )\n) +\n  geom_point()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#aesshape-mapping-shape-to-a-variable",
     "href": "sessions/slides/ggplot.html#aesshape-mapping-shape-to-a-variable",
     "title": "Data visualization with ggplot2",
     "section": "aes(shape): mapping shape to a variable",
-    "text": "aes(shape): mapping shape to a variable\nWe can do the same with shape:\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    shape = species\n  )\n) +\n  geom_point()\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "aes(shape): mapping shape to a variable\nWe can do the same with shape:\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    shape = species\n  )\n) +\n  geom_point()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#combine-color-size-and-shape",
     "href": "sessions/slides/ggplot.html#combine-color-size-and-shape",
     "title": "Data visualization with ggplot2",
     "section": "Combine color, size and shape",
-    "text": "Combine color, size and shape\nWe can also combine these aesthetics and map different variables\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = unittype,\n    shape = species,\n    size = year\n  )\n) +\n  geom_point()\n\n\nThis is a bit too much for this plot, but sometimes can be useful\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "Combine color, size and shape\nWe can also combine these aesthetics and map different variables\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = unittype,\n    shape = species,\n    size = year\n  )\n) +\n  geom_point()\n\n\nThis is a bit too much for this plot, but sometimes can be useful"
   },
   {
     "objectID": "sessions/slides/ggplot.html#changing-the-scales-of-the-aesthetics",
     "href": "sessions/slides/ggplot.html#changing-the-scales-of-the-aesthetics",
     "title": "Data visualization with ggplot2",
     "section": "Changing the scales of the aesthetics",
-    "text": "Changing the scales of the aesthetics\nThe scales onto which the aesthetic elements are mapped can be changed.\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point()\n\n\nExponential relationship?\nHow does it look like on the log scale?\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "Changing the scales of the aesthetics\nThe scales onto which the aesthetic elements are mapped can be changed.\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point()\n\n\nExponential relationship?\nHow does it look like on the log scale?"
   },
   {
     "objectID": "sessions/slides/ggplot.html#scale_x_log10",
     "href": "sessions/slides/ggplot.html#scale_x_log10",
     "title": "Data visualization with ggplot2",
     "section": "scale_x_log10",
-    "text": "scale_x_log10\nThe scales onto which the aesthetic elements are mapped can be changed.\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  scale_x_log10() +\n  scale_y_log10()\n\n\nScales can be changed for all elements of aes:\n\n\nscale_aes-name_scale-type\nIn this example we scale the x and the y aesthetic to log10.\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "scale_x_log10\nThe scales onto which the aesthetic elements are mapped can be changed.\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  scale_x_log10() +\n  scale_y_log10()\n\n\nScales can be changed for all elements of aes:\n\n\nscale_aes-name_scale-type\nIn this example we scale the x and the y aesthetic to log10."
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_smooth",
     "href": "sessions/slides/ggplot.html#geom_smooth",
     "title": "Data visualization with ggplot2",
     "section": "geom_smooth",
-    "text": "geom_smooth\nAdd a smoothing line that helps see patterns in the data\n\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point(alpha = 0.3) +\n  geom_smooth(method = \"lm\") +\n  scale_x_log10() +\n  scale_y_log10()\n\n\nWith method = \"lm\", a linear regression line is added\nAll geoms done separately for species because color is defined globally\nAlpha makes points transparent (0-1)\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "geom_smooth\nAdd a smoothing line that helps see patterns in the data\n\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point(alpha = 0.3) +\n  geom_smooth(method = \"lm\") +\n  scale_x_log10() +\n  scale_y_log10()\n\n\nWith method = \"lm\", a linear regression line is added\nAll geoms done separately for species because color is defined globally\nAlpha makes points transparent (0-1)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_boxplot",
     "href": "sessions/slides/ggplot.html#geom_boxplot",
     "title": "Data visualization with ggplot2",
     "section": "geom_boxplot",
-    "text": "geom_boxplot\nCompare groups using a boxplot\n\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm\n  )\n) +\n  geom_boxplot()\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "geom_boxplot\nCompare groups using a boxplot\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm\n  )\n) +\n  geom_boxplot()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_boxplot-1",
     "href": "sessions/slides/ggplot.html#geom_boxplot-1",
     "title": "Data visualization with ggplot2",
     "section": "geom_boxplot",
-    "text": "geom_boxplot\nCompare groups using a boxplot\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm\n  )\n) +\n  geom_boxplot(notch = TRUE)\n\n\nIf notches don’t overlap, the medians of the groups are likely different\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "geom_boxplot\nCompare groups using a boxplot\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm\n  )\n) +\n  geom_boxplot(notch = TRUE)\n\n\nIf notches don’t overlap, the medians of the groups are likely different"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_boxplot-2",
     "href": "sessions/slides/ggplot.html#geom_boxplot-2",
     "title": "Data visualization with ggplot2",
     "section": "geom_boxplot",
-    "text": "geom_boxplot\nMap the unittype to the color aesthetic of the boxplot\n\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm,\n    color = unittype\n  )\n) +\n  geom_boxplot()\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "geom_boxplot\nMap the unittype to the color aesthetic of the boxplot\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm,\n    color = unittype\n  )\n) +\n  geom_boxplot()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_boxplot-3",
     "href": "sessions/slides/ggplot.html#geom_boxplot-3",
     "title": "Data visualization with ggplot2",
     "section": "geom_boxplot",
-    "text": "geom_boxplot\nMap the unittype to the fill aesthetic of the box\n\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm,\n    fill = unittype\n  )\n) +\n  geom_boxplot(notch = TRUE)\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "geom_boxplot\nMap the unittype to the fill aesthetic of the box\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm,\n    fill = unittype\n  )\n) +\n  geom_boxplot(notch = TRUE)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_histogram",
     "href": "sessions/slides/ggplot.html#geom_histogram",
     "title": "Data visualization with ggplot2",
     "section": "geom_histogram",
-    "text": "geom_histogram\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = length_1_mm,\n    fill = section\n  )\n) +\n  geom_histogram()\n\n\nCareful: By default the histogram is stacked for the different groups!\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "geom_histogram\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = length_1_mm,\n    fill = section\n  )\n) +\n  geom_histogram()\n\n\nCareful: By default the histogram is stacked for the different groups!"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_histogram-1",
     "href": "sessions/slides/ggplot.html#geom_histogram-1",
     "title": "Data visualization with ggplot2",
     "section": "geom_histogram",
-    "text": "geom_histogram\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = length_1_mm,\n    fill = section\n  )\n) +\n  geom_histogram(\n    position = \"identity\",\n    alpha = 0.5\n  )\n\n\nChange the position of the histogram to \"identity\", if you don’t want it stacked\nalpha makes sure that you see overlapping areas\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "geom_histogram\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = length_1_mm,\n    fill = section\n  )\n) +\n  geom_histogram(\n    position = \"identity\",\n    alpha = 0.5\n  )\n\n\nChange the position of the histogram to \"identity\", if you don’t want it stacked\nalpha makes sure that you see overlapping areas"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_tile",
     "href": "sessions/slides/ggplot.html#geom_tile",
     "title": "Data visualization with ggplot2",
     "section": "geom_tile",
-    "text": "geom_tile\nYou can create a simple heatmap with geom_tile\n\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = section,\n    y = species,\n    fill = weight_g\n  )\n) +\n  geom_tile()\n\n\nHere we would have to choose a different color scheme to see differences\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "geom_tile\nYou can create a simple heatmap with geom_tile\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = section,\n    y = species,\n    fill = weight_g\n  )\n) +\n  geom_tile()\n\n\nHere we would have to choose a different color scheme to see differences"
   },
   {
     "objectID": "sessions/slides/ggplot.html#small-multiples-with-facet_wrap",
     "href": "sessions/slides/ggplot.html#small-multiples-with-facet_wrap",
     "title": "Data visualization with ggplot2",
     "section": "Small multiples with facet_wrap",
-    "text": "Small multiples with facet_wrap\nSplit your plots along one variable with facet_wrap\n\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  facet_wrap(~section)\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "Small multiples with facet_wrap\nSplit your plots along one variable with facet_wrap\n\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  facet_wrap(~section)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#small-multiples-with-facet_grid",
     "href": "sessions/slides/ggplot.html#small-multiples-with-facet_grid",
     "title": "Data visualization with ggplot2",
     "section": "Small multiples with facet_grid",
-    "text": "Small multiples with facet_grid\nSplit your plots along two variables with facet_grid\n\n\n\n\nggplot(\n  data = and_vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = unittype\n  )\n) +\n  geom_point() +\n  facet_grid(section ~ species)\n\n\nfacet_grid(rows ~ columns)\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "Small multiples with facet_grid\nSplit your plots along two variables with facet_grid\n\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = unittype\n  )\n) +\n  geom_point() +\n  facet_grid(section ~ species)\n\n\nfacet_grid(rows ~ columns)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#change-appearance-of-points",
     "href": "sessions/slides/ggplot.html#change-appearance-of-points",
     "title": "Data visualization with ggplot2",
     "section": "Change appearance of points",
-    "text": "Change appearance of points\n\n\n\n\nggplot(and_vertebrates, aes(\n  x = length_1_mm,\n  y = weight_g\n)) +\n  geom_point(\n    size = 4,\n    shape = 17,\n    color = \"blue\",\n    alpha = 0.5\n  )\n\n\n\n\n\n\n\n\n\n\n\nShape and color codes\n\n\n\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "Change appearance of points\n\n\n\n\nggplot(vertebrates, aes(\n  x = length_1_mm,\n  y = weight_g\n)) +\n  geom_point(\n    size = 4,\n    shape = 17,\n    color = \"blue\",\n    alpha = 0.5\n  )\n\n\n\n\n\n\n\n\n\n\n\nShape and color codes"
   },
   {
     "objectID": "sessions/slides/ggplot.html#change-color-scale",
     "href": "sessions/slides/ggplot.html#change-color-scale",
     "title": "Data visualization with ggplot2",
     "section": "Change color scale",
-    "text": "Change color scale\nWe can also save a plot in a variable\n\n\n\ng &lt;- ggplot(and_vertebrates, aes(\n  x = length_1_mm,\n  y = weight_g,\n  color = species\n)) +\n  geom_point()\n\ng\n\n\n\nOther plot layers can still be added to g\n\n\n\n#&gt; Error: object 'and_vertebrates' not found\n#&gt; Error: object 'g' not found"
+    "text": "Change color scale\nWe can also save a plot in a variable\n\n\n\ng &lt;- ggplot(vertebrates, aes(\n  x = length_1_mm,\n  y = weight_g,\n  color = species\n)) +\n  geom_point()\n\ng\n\n\n\nOther plot layers can still be added to g"
   },
   {
     "objectID": "sessions/slides/ggplot.html#scale_color_viridis_d",
     "href": "sessions/slides/ggplot.html#scale_color_viridis_d",
     "title": "Data visualization with ggplot2",
     "section": "scale_color_viridis_d",
-    "text": "scale_color_viridis_d\nChange the colors of the color aesthetic:\n\n\n\n\ng +\n  scale_color_viridis_d(\n    option = \"cividis\"\n  )\n\n\n\nThe viridis color palette is designed for viewers with common forms of color blindness\nDifferent options of viridis color palettes: \"magma\", \"inferno\", \"plasma\", \"viridis\", \"cividis\"\n\n\n\n#&gt; Error: object 'g' not found"
+    "text": "scale_color_viridis_d\nChange the colors of the color aesthetic:\n\n\n\n\ng +\n  scale_color_viridis_d(\n    option = \"cividis\"\n  )\n\n\n\nThe viridis color palette is designed for viewers with common forms of color blindness\nDifferent options of viridis color palettes: \"magma\", \"inferno\", \"plasma\", \"viridis\", \"cividis\""
   },
   {
     "objectID": "sessions/slides/ggplot.html#scale_color_manual",
     "href": "sessions/slides/ggplot.html#scale_color_manual",
     "title": "Data visualization with ggplot2",
     "section": "scale_color_manual",
-    "text": "scale_color_manual\nWe can also manually specify colors:\n\n\n\ng +\n  scale_color_manual(\n    values = c(\n      \"darkolivegreen4\",\n      \"darkorchid3\"\n    )\n  )\n\n\nLength of color vector has to match number of levels in your aesthetic\n\n\n\n\nSpecify colors\n\nVia their name\nVia their Hex color codes (use websites to generate your own color palettes, e.g. here)\n\n\n\n\n\n\n#&gt; Error: object 'g' not found"
+    "text": "scale_color_manual\nWe can also manually specify colors:\n\n\n\ng +\n  scale_color_manual(\n    values = c(\n      \"darkolivegreen4\",\n      \"darkorchid3\"\n    )\n  )\n\n\nLength of color vector has to match number of levels in your aesthetic\n\n\n\n\nSpecify colors\n\nVia their name\nVia their Hex color codes (use websites to generate your own color palettes, e.g. here)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#other-color-scales",
     "href": "sessions/slides/ggplot.html#other-color-scales",
     "title": "Data visualization with ggplot2",
     "section": "Other color scales",
-    "text": "Other color scales\nYou can use the paletteer package to access color scales from many packages.\n\n\n\n# install.packages(\"paletteer\")\nlibrary(paletteer)\ng &lt;- g +\n  scale_color_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\ng\n\n\nUse scale_color_paletteer_d for discrete and scale_color_paletteer_c for continuous color scales\nCheck out all palettes available here\n\n\n\n#&gt; Error in library(paletteer): there is no package called 'paletteer'\n#&gt; Error: object 'g' not found\n#&gt; Error: object 'g' not found"
+    "text": "Other color scales\nYou can use the paletteer package to access color scales from many packages.\n\n\n\n# install.packages(\"paletteer\")\nlibrary(paletteer)\ng &lt;- g +\n  scale_color_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\ng\n\n\nUse scale_color_paletteer_d for discrete and scale_color_paletteer_c for continuous color scales\nCheck out all palettes available here"
   },
   {
     "objectID": "sessions/slides/ggplot.html#scale_fill_-vs.-scale_color_",
     "href": "sessions/slides/ggplot.html#scale_fill_-vs.-scale_color_",
     "title": "Data visualization with ggplot2",
     "section": "scale_fill_* vs. scale_color_*",
-    "text": "scale_fill_* vs. scale_color_*\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    color = unittype)) +\n  geom_boxplot() +\n  scale_color_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\n#&gt; Error: object 'and_vertebrates' not found\n\n\n\nggplot(\n  and_vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    fill = unittype)) +\n  geom_boxplot() +\n  scale_fill_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\n#&gt; Error: object 'and_vertebrates' not found"
+    "text": "scale_fill_* vs. scale_color_*\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    color = unittype)) +\n  geom_boxplot() +\n  scale_color_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\n\n\n\n\n\n\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    fill = unittype)) +\n  geom_boxplot() +\n  scale_fill_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )"
   },
   {
     "objectID": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title",
     "href": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title",
     "title": "Data visualization with ggplot2",
     "section": "labs: Change axis and legend titles and add plot title",
-    "text": "labs: Change axis and legend titles and add plot title\n\ng &lt;- g +\n  labs(\n    x = \"Length [mm]\",\n    y = \"Weight [g]\",\n    color = \"Species\",\n    title = \"Length-Weight relationship\",\n    subtitle = \"There seems to be an exponential relationship\",\n    caption = \"Data from the `lterdatasampler` package\"\n  )\n#&gt; Error: object 'g' not found\ng\n#&gt; Error: object 'g' not found"
+    "text": "labs: Change axis and legend titles and add plot title\n\ng &lt;- g +\n  labs(\n    x = \"Length [mm]\",\n    y = \"Weight [g]\",\n    color = \"Species\",\n    title = \"Length-Weight relationship\",\n    subtitle = \"There seems to be an exponential relationship\",\n    caption = \"Data from the `lterdatasampler` package\"\n  )\ng"
   },
   {
     "objectID": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title-output",
@@ -2125,14 +2125,14 @@
     "href": "sessions/slides/ggplot.html#theme_-change-appearance",
     "title": "Data visualization with ggplot2",
     "section": "theme_*: change appearance",
-    "text": "theme_*: change appearance\nggplot2 offers many pre-defined themes that we can apply to change the appearance of a plot.\n\n\n\n\ng +\n  theme_classic()\n\n\n#&gt; Error: object 'g' not found\n\n\n\ng +\n  theme_bw()\n\n\n#&gt; Error: object 'g' not found"
+    "text": "theme_*: change appearance\nggplot2 offers many pre-defined themes that we can apply to change the appearance of a plot.\n\n\n\n\ng +\n  theme_classic()\n\n\n\n\n\n\n\n\n\n\n\n\ng +\n  theme_bw()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#theme_-change-appearance-1",
     "href": "sessions/slides/ggplot.html#theme_-change-appearance-1",
     "title": "Data visualization with ggplot2",
     "section": "theme_*: change appearance",
-    "text": "theme_*: change appearance\nggplot2 offers many pre-defined themes that we can apply to change the appearance of a plot.\n\n\n\ng +\n  theme_minimal()\n\n\n#&gt; Error: object 'g' not found\n\n\n\ng +\n  theme_dark()\n\n\n#&gt; Error: object 'g' not found"
+    "text": "theme_*: change appearance\nggplot2 offers many pre-defined themes that we can apply to change the appearance of a plot.\n\n\n\ng +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\ng +\n  theme_dark()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#theme-customize-theme",
@@ -2146,7 +2146,7 @@
     "href": "sessions/slides/ggplot.html#theme-customize-theme-1",
     "title": "Data visualization with ggplot2",
     "section": "theme(): customize theme",
-    "text": "theme(): customize theme\nTo edit a theme, just add another theme() layer to your plot.\n\n\n\n\ng +\n  theme_minimal() +\n  theme(\n    legend.position = \"bottom\",\n    axis.text = element_text(\n      face = \"bold\"\n    ),\n    plot.background = element_rect(\n      fill = \"lightgrey\",\n      color = \"darkred\"\n    )\n  )\n\n\nThe basic functioning of theme elements is:\n\ntheme(\n  element_name = element_function()\n)\n\n\n\n\n#&gt; Error: object 'g' not found"
+    "text": "theme(): customize theme\nTo edit a theme, just add another theme() layer to your plot.\n\n\n\n\ng +\n  theme_minimal() +\n  theme(\n    legend.position = \"bottom\",\n    axis.text = element_text(\n      face = \"bold\"\n    ),\n    plot.background = element_rect(\n      fill = \"lightgrey\",\n      color = \"darkred\"\n    )\n  )\n\n\nThe basic functioning of theme elements is:\n\ntheme(\n  element_name = element_function()\n)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#theme_set-set-global-theme",
@@ -2664,7 +2664,7 @@
     "href": "sessions/solutions/intro-r.html#extras",
     "title": "Solution to working with vectors",
     "section": "1 Extras",
-    "text": "1 Extras\n\nRound the vector to 4 decimal places:\n\n\nbrain_body_ratio &lt;- round(brain_body_ratio, digits = 4)\nbrain_body_ratio\n\n [1] 0.5786 0.0910 0.3292 0.4152 0.5500 0.0004 0.1807 0.2239 0.1257 1.1500\n[11] 0.7758 0.1285 0.1961 2.1290 0.0858 0.0007 2.6324 0.1600 1.0000 2.0000\n[21] 0.4840 0.3153 0.1570 0.8429 0.6333 0.0002 3.0000 0.0938\n\n\n\nWhich animal has the smallest brain to body ratio?\n\n\nspecies[brain_body_ratio == min(brain_body_ratio)]\n\n[1] \"Brachiosaurus\"\n\n\nThe Brachiosaurus has a really small brain with a weight of just 0.1545 kg at a body weight of 8.7^{4} kg!\n\nAdd elements to the vector\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nspecies &lt;- c(species, species_new)\nbrainwt_kg &lt;- c(brainwt_kg, brainwt_kg_new)\nbodywt_kg &lt;- c(bodywt_kg, bodywt_kg_new)\n\n\nWhat is the mean brain weight now?\n\n\nmean(brainwt_kg)\n\n[1] NA\n\n# na.rm = TRUE removes missing values before calculating the mean\nmean(brainwt_kg, na.rm = TRUE)\n\n[1] 0.5529"
+    "text": "1 Extras\n\nRound the vector to 4 decimal places:\n\n\nbrain_body_ratio &lt;- round(brain_body_ratio, digits = 4)\nbrain_body_ratio\n\n [1] 0.5786 0.0910 0.3292 0.4152 0.5500 0.0004 0.1807 0.2239 0.1257 1.1500\n[11] 0.7758 0.1285 0.1961 2.1290 0.0858 0.0007 2.6324 0.1600 1.0000 2.0000\n[21] 0.4840 0.3153 0.1570 0.8429 0.6333 0.0002 3.0000 0.0938\n\n\n\nWhich animal has the smallest brain to body ratio?\n\n\nspecies[brain_body_ratio == min(brain_body_ratio)]\n\n[1] \"Brachiosaurus\"\n\n\nThe Brachiosaurus has a really small brain with a weight of just 0.1545 kg at a body weight of 87000 kg!\n\nAdd elements to the vector\n\n\nspecies_new &lt;- c(\"Eagle\", \"Snail\", \"Lion\")\nbrainwt_kg_new &lt;- c(0.0004, NA, 0.5)\nbodywt_kg_new &lt;- c(18, 0.01, 550)\n\nspecies &lt;- c(species, species_new)\nbrainwt_kg &lt;- c(brainwt_kg, brainwt_kg_new)\nbodywt_kg &lt;- c(bodywt_kg, bodywt_kg_new)\n\n\nWhat is the mean brain weight now?\n\n\nmean(brainwt_kg)\n\n[1] NA\n\n# na.rm = TRUE removes missing values before calculating the mean\nmean(brainwt_kg, na.rm = TRUE)\n\n[1] 0.5529"
   },
   {
     "objectID": "sessions/solutions/tests.html",
