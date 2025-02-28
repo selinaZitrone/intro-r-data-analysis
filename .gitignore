@@ -34,3 +34,6 @@ R/random_groups.R
 # Ignore all folders with _cache in their names
 *_cache/
 *_files
+
+# Ignore the _freeze folder
+_freeze/
