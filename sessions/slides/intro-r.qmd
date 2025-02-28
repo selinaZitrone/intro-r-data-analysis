@@ -330,7 +330,7 @@ data <- janitor::clean_names(data)
 
 :::
 
-# Objects and data types in `r fontawesome::fa("r-project")`{.inverse}
+# Variables and data types in `r fontawesome::fa("r-project")`{.inverse}
 
 
 ## Variables
@@ -368,12 +368,19 @@ radius <- radius + 1
 
 <br>
 
-. . .
+:::{.fragment}
+
+
+If you want to know which value stands behind a variable:
 
 ```{r eval=FALSE}
 # just use the name to print the value to the console
 radius 
 ```
+
+or have a look at the "Environment" pane.
+
+:::
 
 ## Atomic data types
 
@@ -425,7 +432,7 @@ There are many more options to create vectors
 - `rep()` ro repeat values
 - ...
 
-## Creating vectors: `c()` {.hidden}
+## Creating vectors: `c()` {visibility="hidden"}
 
 Be aware of implicit **type conversion** when combining vectors of different types
 
