@@ -116,7 +116,7 @@ population <- c(
 area_km2 <- c(2576, 2561, 1572, 1439, 
   891, 604, 839, 1285, 228, 105)
 
-data.frame(
+cities_dataframe <- data.frame(
   cities = cities,
   population = population,
   area_km2 = area_km2
@@ -227,7 +227,7 @@ Create a tibble using the `tibble()` function:
 #| eval: false
 library(tibble) 
 
-tibble(
+cities_tbly <- tibble(
   cities = cities,
   population = population,
   area_km2 = area_km2
@@ -239,7 +239,7 @@ tibble(
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-cities_tbl<- tibble(
+cities_tbl <- tibble(
   cities = cities,
   population = population,
   area_km2 = area_km2
@@ -314,6 +314,8 @@ Get a quick summary of all columns:
 ```{r}
 summary(cities_tbl)
 ```
+
+- Very useful for checking if everything is ok with your research data
 
 ## Indexing tibbles
 
