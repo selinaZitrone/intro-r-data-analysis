@@ -42,11 +42,11 @@ Don't type the input path of the table to read. Instead, make the "" to start wr
 ## Extra
 
 - Try reading some tables (`xlsx`, `csv`, `txt`, ...) that you have on your machine into R
-  - First copy the table into the `data/` folder in your project, then use the appropiate function to read in the data
+  - First copy the table into the `data/` folder in your project, then use the appropriate function to read in the data
   - Ideally, you use some of your research data, so you can see what are 
   the difficulties there. Alternatively, you can use any kind of table even if not related to research.
-- Download <a href="../../data/read_challenge/metadata_and_messy_header.xlsx" download>this excel file</a> or 
-<a href="../../data/read_challenge/metadata_and_messy_header.csv" download>this csv file</a>
+- Download <a href="https://github.com/selinaZitrone/intro-r-data-analysis/blob/master/data/read_challenge/metadata_and_messy_header.xlsx" download>this excel file</a> or 
+<a href="https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/refs/heads/master/data/read_challenge/metadata_and_messy_header.csv" download>this csv file</a>
 with metadata and a messy header. Try reading it into R correctly and
   clean the column names using the `janitor::clean_names` function
 
