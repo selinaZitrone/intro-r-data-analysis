@@ -11,6 +11,7 @@ project:
     - "slides/*.pdf"
     - "slides/*.html"
     - "R/Tasks/"
+    - "data/read_challenge/*"
 
 website:
   page-navigation: true

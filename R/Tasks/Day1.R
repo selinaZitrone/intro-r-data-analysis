@@ -188,3 +188,29 @@ write_tsv(x = animals, file = "data/animals.txt") # write as txt
 # Read the same data back into R:
 animals_csv <- read_csv("data/animals.csv") # read the csv
 animals_tsv <- read_tsv("data/animals.txt") # read the txts
+
+# Readr challanging datasets
+
+# in my case, the datasets are in data/read_challenge. Adjust the path if for
+# you, this is different
+
+# dataset 1: Dataset 1 with Metadata on top and messy headers
+insect_counts <- read_csv("data/read_challenge/metadata_and_messy_header.csv",
+                          skip = 3, # skip the metadata on top
+                          )
+# check out the dataset
+insect_counts
+# Fix the column headers with clean_names
+insect_counts <- janitor::clean_names(insect_counts)
+# check out the dataset
+insect_counts
+
+# dataset 2: Same dataset but as excel
+insect_counts_excel <- readxl::read_excel("data/read_challenge/metadata_and_messy_header.xlsx",
+                                  skip = 3, # skip the metadata on top
+                                  sheet = "Data" # read the second sheet, not the first
+                                  )
+# Fix the column headers with clean_names
+insect_counts_excel <- janitor::clean_names(insect_counts_excel)
+# check out the dataset
+insect_counts_excel
