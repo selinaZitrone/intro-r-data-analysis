@@ -45,8 +45,9 @@ Don't type the input path of the table to read. Instead, make the "" to start wr
   - First copy the table into the `data/` folder in your project, then use the appropriate function to read in the data
   - Ideally, you use some of your research data, so you can see what are 
   the difficulties there. Alternatively, you can use any kind of table even if not related to research.
-- Download the csv or excel file from below that have a metadata on top and a messy header.
-  Try reading it into R correctly and clean the column names using the `janitor::clean_names` function
+- Download the csv or excel file using the buttons below. The files have metadata on top and a messy header. The excel file has the added difficulty, that the actual data is not in the first
+  sheet but in the second one. Try reading it into R correctly and clean the column names using the `janitor::clean_names` function. It might help to look at the data first to decide 
+  how to read it correctly.
 
 :::{.columns}
 
