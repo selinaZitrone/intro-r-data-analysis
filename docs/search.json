@@ -53,7 +53,7 @@
     "href": "sessions/tasks/readr.html#extra",
     "title": "",
     "section": "3 Extra",
-    "text": "3 Extra\n\nTry reading some tables (xlsx, csv, txt, …) that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropiate function to read in the data\nIdeally, you use some of your research data, so you can see what are the difficulties there. Alternatively, you can use any kind of table even if not related to research.\n\nDownload this excel file or this csv file with metadata and a messy header. Try reading it into R correctly and clean the column names using the janitor::clean_names function"
+    "text": "3 Extra\n\nTry reading some tables (xlsx, csv, txt, …) that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropriate function to read in the data\nIdeally, you use some of your research data, so you can see what are the difficulties there. Alternatively, you can use any kind of table even if not related to research.\n\nDownload the csv or excel file using the buttons below. The files have metadata on top and a messy header. The excel file has the added difficulty, that the actual data is not in the first sheet but in the second one. Try reading it into R correctly and clean the column names using the janitor::clean_names function. It might help to look at the data first to decide how to read it correctly.\n\n\n\n\n\n Download csv\n\n\n\n\n\n Download xlsx\n\n\n:::"
   },
   {
     "objectID": "sessions/tasks/intro-r.html",
@@ -1215,7 +1215,7 @@
     "href": "sessions/05_readr.html#extra",
     "title": "Import and Export Data with readr",
     "section": "1.3 Extra",
-    "text": "1.3 Extra\n\nTry reading some tables (xlsx, csv, txt, …) that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropiate function to read in the data\nIdeally, you use some of your research data, so you can see what are the difficulties there. Alternatively, you can use any kind of table even if not related to research.\n\nDownload this excel file or this csv file with metadata and a messy header. Try reading it into R correctly and clean the column names using the janitor::clean_names function"
+    "text": "1.3 Extra\n\nTry reading some tables (xlsx, csv, txt, …) that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropriate function to read in the data\nIdeally, you use some of your research data, so you can see what are the difficulties there. Alternatively, you can use any kind of table even if not related to research.\n\nDownload the csv or excel file using the buttons below. The files have metadata on top and a messy header. The excel file has the added difficulty, that the actual data is not in the first sheet but in the second one. Try reading it into R correctly and clean the column names using the janitor::clean_names function. It might help to look at the data first to decide how to read it correctly.\n\n\n\n\n\n Download csv\n\n\n\n\n\n Download xlsx\n\n\n:::"
   },
   {
     "objectID": "sessions/03_functions.html",
