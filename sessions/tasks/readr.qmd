@@ -45,9 +45,45 @@ Don't type the input path of the table to read. Instead, make the "" to start wr
   - First copy the table into the `data/` folder in your project, then use the appropriate function to read in the data
   - Ideally, you use some of your research data, so you can see what are 
   the difficulties there. Alternatively, you can use any kind of table even if not related to research.
-- Download <a href="https://github.com/selinaZitrone/intro-r-data-analysis/blob/master/data/read_challenge/metadata_and_messy_header.xlsx" download>this excel file</a> or 
-<a href="https://raw.githubusercontent.com/selinaZitrone/intro-r-data-analysis/refs/heads/master/data/read_challenge/metadata_and_messy_header.csv" download>this csv file</a>
-with metadata and a messy header. Try reading it into R correctly and
-  clean the column names using the `janitor::clean_names` function
+- Download the csv or excel file from below that have a metadata on top and a messy header.
+  Try reading it into R correctly and clean the column names using the `janitor::clean_names` function
+
+:::{.columns}
+
+::: {.column}
+
+```{r echo = FALSE}
+path_files <- list.files(path = here::here("data/read_challenge/"), full.names = TRUE)
+
+downloadthis::download_file(
+  path = path_files[[1]],
+  output_name = "Readr challenge files",
+  button_label = "Download csv",
+  button_type = "default",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
+:::
+::: {.column}
+
+```{r echo = FALSE}
+downloadthis::download_file(
+  path = path_files[[2]],
+  output_name = "Readr challenge files",
+  button_label = "Download xlsx",
+  button_type = "default",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
+:::
+
+::: <!-- end columns -->
+
 
 
