@@ -19,6 +19,7 @@ website:
   site-url: "https://selinazitrone.github.io/intro-r-data-analysis/"
   repo-actions: [edit, issue]
   repo-branch: master
+  page-footer: "Copyright 2025, Selina Baldauf"
   title: ""
   navbar:
     background: "#91BCE6"
