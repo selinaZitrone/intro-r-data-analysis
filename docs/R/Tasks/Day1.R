@@ -91,8 +91,11 @@ species[brain_body_ratio > bbr_human]
 species[brain_body_ratio > brain_body_ratio[species == "Human"]]
 
 ### Extras
-
 brain_body_ratio <- round(brain_body_ratio, digits = 4)
+
+species[brain_body_ratio]
+
+
 
 # Animal with smallest ratio
 species[brain_body_ratio == min(brain_body_ratio)]
