@@ -91,11 +91,8 @@ species[brain_body_ratio > bbr_human]
 species[brain_body_ratio > brain_body_ratio[species == "Human"]]
 
 ### Extras
+
 brain_body_ratio <- round(brain_body_ratio, digits = 4)
-
-species[brain_body_ratio]
-
-
 
 # Animal with smallest ratio
 species[brain_body_ratio == min(brain_body_ratio)]
@@ -199,7 +196,7 @@ animals_tsv <- read_tsv("data/animals.txt") # read the txts
 
 # dataset 1: Dataset 1 with Metadata on top and messy headers
 insect_counts <- read_csv("data/read_challenge/metadata_and_messy_header.csv",
-                          skip = 3, # skip the metadata on top
+                          skip = 3 # skip the metadata on top
                           )
 # check out the dataset
 insect_counts
