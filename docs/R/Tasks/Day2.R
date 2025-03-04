@@ -10,12 +10,6 @@ library(palmerpenguins)
 penguins
 
 # 1.3 Exploratory plotting ---------------------------------
-ggplot(penguins,
-       aes(sex,
-           body_mass_g,
-           fill = species)) +
-  geom_boxplot(notch = FALSE) +
-  geom_point(position = position_jitterdodge(seed = 00, jitter.width = 0.1))
 
 # 1.3.1 Relationship between bill length and bill depth (scatterplot)
 
@@ -28,6 +22,7 @@ ggplot(
 ) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
+
 
 # or short
 ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) +
@@ -51,14 +46,14 @@ ggplot(penguins, aes(
 # 1.3.2 Difference in flipper length between species (boxplot)
 
 # Basic boxplot of flipper length with notches
-ggplot(penguins, aes(x = species, y = flipper_length_mm)) +
-  geom_boxplot() +
+ggplot(penguins, aes(species, flipper_length_mm)) +
+  geom_boxplot(notch = TRUE) +
   geom_point()
 
 # Add jittered points
 ggplot(penguins, aes(x = species, y = flipper_length_mm)) +
   geom_boxplot() +
-  geom_point(position = position_jitter(seed = 1000, width = 0.1))
+  geom_point(position = position_jitter(seed = 123, width = 0.2))
 
 ## 1.3.3 Differences between body mass of male and female penguins (boxplot)
 
