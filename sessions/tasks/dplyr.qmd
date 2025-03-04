@@ -17,9 +17,9 @@ In the following, you find a lot of different data transformation tasks. First, 
 
 1. ... have a bill length between 40 and 45 mm.
 
-2. ... for which we know the sex.
+2. ... for which we know the sex (sex is not `NA`).
 
-3. ... which are of the species Adelie or Gentoo and live either on Dream or on Torgersen
+3. ... which are of the species Adelie or Gentoo.
 
 4. ... lived on the island Dream in the year 2007. How many of them were from each of the 3 species?
 
@@ -33,13 +33,7 @@ In the following, you find a lot of different data transformation tasks. First, 
 
 1. ... only the variables species, sex and year
 
-2. ... variables based on the following vector
-
-```{r echo=TRUE, eval=FALSE}
-cols <- c("species", "bill_length_mm", "flipper_length_mm", "body_mass_kg")
-```
-
-3. ... only columns that contain measurements in mm
+2. ... only columns that contain measurements in mm
 
 **Add a column ...**
 

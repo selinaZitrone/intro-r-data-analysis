@@ -300,15 +300,13 @@ filter(penguins, bill_length_mm < 45 & bill_length_mm > 40)
 
 filter(penguins, !is.na(sex))
 
-# which are of the species Adelie or Gentoo and live either on Dream or Torgersen
+# which are of the species Adelie or Gentoo
 filter(
   penguins,
-  species %in% c("Adelie", "Gentoo") &
-    island %in% c("Dream", "Torgersen")
+  species %in% c("Adelie", "Gentoo")
 )
 
-filter(penguins, (species == "Adelie" | species == "Gentoo") &
-  (island == "Dream" | island == "Torgersen"))
+filter(penguins, (species == "Adelie" | species == "Gentoo"))
 
 # lived on Dream in 2007
 # How many of them were from each of the 3 species?
@@ -333,15 +331,7 @@ count(penguins, island, species)
 # Select tasks --------------------------------------------------------------
 
 # only the variables species, sex and year
-
 select(penguins, species, sex, year)
-
-# variables based on the following vector
-cols <- c("species", "bill_length_mm", "flipper_length_mm", "body_mass_kg")
-
-select(penguins, any_of(cols))
-# this would return  an error
-select(penguins, all_of(cols))
 
 # only columns that contain measurements in mm
 select(penguins, ends_with("mm"))

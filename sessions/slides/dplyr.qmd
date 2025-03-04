@@ -243,7 +243,7 @@ Remove variables using `-`
 select(vertebrates, -species, -length_1_mm, -year)
 ```
 
-## `select()` + `ends_with()`
+## `select()` + `starts_with()`
 
 Select all columns that start with `"s"`
 
@@ -257,17 +257,17 @@ print(select(vertebrates, starts_with("s")),n=3)
 
 . . .
 
-You can use the same structure for `starts_with()` and `contains()`.
+You can use the same structure for `ends_with()` and `contains()`.
 
 ```{r eval=FALSE}
 # this does not make sense for the example data
 # but combinations like this are helpful for research data
-select(vertebrates, starts_with("sample_"))
+select(vertebrates, starts_with("_location1"))
 
 select(vertebrates, contains("_id_"))
 ```
 
-## `select()` + `from:to`
+## `select()` + `from:to` {visibility="hidden"}
 
 Multiple consecutive columns can be selected using the `from:to` structure with either column id or name:
 
@@ -688,7 +688,7 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
 
 # Now you {.inverse}
 
-[Task (60 min)]{.highlight-blue}<br>
+[Task (45 min)]{.highlight-blue}<br>
 
 [Transform the penguin data set]{.big-text}
 
