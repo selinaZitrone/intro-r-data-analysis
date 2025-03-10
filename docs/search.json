@@ -1302,6 +1302,153 @@
     "text": "Workshop sessions 📅 03.03.2025 - 04.03.2025 🕘 9 a.m. - 4 p.m.  📅 10.03.2025 - 11.03.2025 🕘 9 a.m. - 4 p.m.  📅 17.03.2025 from 🕘 9 a.m. - 12 a.m.  📍 Online on Webex \n\n\nWorkshop description\nThe workshop’s main goal is to equip you with essential R skills for analyzing your own research data, covering data processing and visualization. After the workshop you are equipped to confidently advance your R skills for your specific research needs.\n\nOutline\nIn 4 Workshop days we will cover the following topics:\n\nDay 1: Introduction to R and R Studio, Good programming practice, Reading data into R\nDay 2: Data visualization with the ggplot package, data wrangling with dplyr\nDay 3: Data cleaning with tidyr, statistical tests, AI Tools\nDay 4 & 5: Bring your own research data (or get some real-life data from me)\n\n\n\nConcept\nTo learn programming, it is essential to practice writing code yourself. Therefore, every input session will be followed by practical exercises. On day 4, you can apply the methods you learned to your own research data or a provided real-life data set.\nThe course will be in English and will be in an online format.\n\n\n\nFor whom is this workshop?\nThis workshop is for beginners without prior experience in R or any other programming language. You can still participate if you already know other programming languages though.\n\n\nThe instructor\nI’m a scientific programmer at Freie Universität specializing in theoretical ecology. R is integral to my daily work, and I enjoy sharing my expertise. I’ve previously taught R statistics courses for biology master’s and PhD students.\nFeel free to reach out with any course-related questions via selina.baldauf@fu-berlin.de."
   },
   {
+    "objectID": "byod/olympics.html",
+    "href": "byod/olympics.html",
+    "title": "Paralympic Games Data Analysis",
+    "section": "",
+    "text": "The dataset contains information about Paralympic Games from 1980 to 2016. It can be obtained from the TidyTuesday GitHub repository. You can find more info about the data set on the GitHub repository\nIn this data set you can use a lot of dplyr and ggplot2 functions to summarize and visualize the data.\nInteresting variables to analyse are:\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ngender\ncharacter\nBinary gender\n\n\nevent\ncharacter\nEvent name\n\n\nmedal\ncharacter\nMedal type\n\n\nathlete\ncharacter\nAthlete name (LAST NAME first name\n\n\nabb\ncharacter\nCountry abbreviation\n\n\ncountry\ncharacter\nCountry name\n\n\ntype\ncharacter\nType of sport\n\n\nyear\ndouble\nyear of games\n\n\n\n\n\nGet the data here:\n\nolympics &lt;- readr::read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-27/olympics.csv\")\n\nFor most analysis, you can simplify the dataset by filtering to include only medal winners (rows with non-missing medal information).\n\nolympics_medal &lt;- olympics |&gt; \n  filter(!is.na(medal))"
+  },
+  {
+    "objectID": "byod/olympics.html#the-data",
+    "href": "byod/olympics.html#the-data",
+    "title": "Paralympic Games Data Analysis",
+    "section": "",
+    "text": "The dataset contains information about Paralympic Games from 1980 to 2016. It can be obtained from the TidyTuesday GitHub repository. You can find more info about the data set on the GitHub repository\nIn this data set you can use a lot of dplyr and ggplot2 functions to summarize and visualize the data.\nInteresting variables to analyse are:\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ngender\ncharacter\nBinary gender\n\n\nevent\ncharacter\nEvent name\n\n\nmedal\ncharacter\nMedal type\n\n\nathlete\ncharacter\nAthlete name (LAST NAME first name\n\n\nabb\ncharacter\nCountry abbreviation\n\n\ncountry\ncharacter\nCountry name\n\n\ntype\ncharacter\nType of sport\n\n\nyear\ndouble\nyear of games\n\n\n\n\n\nGet the data here:\n\nolympics &lt;- readr::read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-27/olympics.csv\")\n\nFor most analysis, you can simplify the dataset by filtering to include only medal winners (rows with non-missing medal information).\n\nolympics_medal &lt;- olympics |&gt; \n  filter(!is.na(medal))"
+  },
+  {
+    "objectID": "byod/olympics.html#questions-to-explore",
+    "href": "byod/olympics.html#questions-to-explore",
+    "title": "Paralympic Games Data Analysis",
+    "section": "2 Questions to Explore",
+    "text": "2 Questions to Explore\n\nAnalyze the age distribution of Paralympic athletes.\n\nTip: Consider overall distribution and how it varies by different factors (e.g., sex, medal type).\n\n\n\nDid the ratio of male and female medal winners change with time?\n\nCount overall medals and plot the ratio over time\n\n\n\nIdentify and analyze the top-performing teams in Paralympic history.\n\nE.g. select only the top 10 teams with the most medals overall\nSee below for an example plot\n\n\n\nInvestigate the number of medals for different sports\n\nWhich sports have a lot of medals, which have only few?\nDid this change over time?\n\n\n\nWhich athletes have competed in the most Paralympic Games?\n\nHow many medals did they win?"
+  },
+  {
+    "objectID": "byod/olympics.html#useful-functions",
+    "href": "byod/olympics.html#useful-functions",
+    "title": "Paralympic Games Data Analysis",
+    "section": "3 Useful Functions",
+    "text": "3 Useful Functions\nIn this analysis, the dplyr functions count() and summarize() by group are very useful to summarize the data and look at the summary tables, but also to summarize the data before plotting."
+  },
+  {
+    "objectID": "byod/olympics.html#example-analysis",
+    "href": "byod/olympics.html#example-analysis",
+    "title": "Paralympic Games Data Analysis",
+    "section": "4 Example analysis",
+    "text": "4 Example analysis\nHere is an example of a plot you can try to create (from question 3):"
+  },
+  {
+    "objectID": "byod/dnaseq.html",
+    "href": "byod/dnaseq.html",
+    "title": "RNA-seq Data Analysis",
+    "section": "",
+    "text": "This exercise uses RNA-seq data from FU et al. 2015, Nature Cell Biology. The data compares gene expression in luminal cells of pregnant versus lactating mice. You can download the data from this Zenodo repository and you can have a look at this Galaxy tutorial for some ideas on how to get started.\nThe dataset consists of three CSV files:\n\nheatmap_genes.csv: A list of interesting genes to analyze (used in Figure 6b of the paper)\nDE_results.csv: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes\nnormalized_counts.csv: Normalized counts for genes across different samples\n\nTo simplify the analysis you can consider the following:\n\nRead the CSV files using read_csv()\nClean column names with janitor::clean_names() to make them easier to work with\nCombining relevant data frames using left_join() (DE_results and normalized_counts share a common column)\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (this tutorial defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)"
+  },
+  {
+    "objectID": "byod/dnaseq.html#the-data",
+    "href": "byod/dnaseq.html#the-data",
+    "title": "RNA-seq Data Analysis",
+    "section": "",
+    "text": "This exercise uses RNA-seq data from FU et al. 2015, Nature Cell Biology. The data compares gene expression in luminal cells of pregnant versus lactating mice. You can download the data from this Zenodo repository and you can have a look at this Galaxy tutorial for some ideas on how to get started.\nThe dataset consists of three CSV files:\n\nheatmap_genes.csv: A list of interesting genes to analyze (used in Figure 6b of the paper)\nDE_results.csv: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes\nnormalized_counts.csv: Normalized counts for genes across different samples\n\nTo simplify the analysis you can consider the following:\n\nRead the CSV files using read_csv()\nClean column names with janitor::clean_names() to make them easier to work with\nCombining relevant data frames using left_join() (DE_results and normalized_counts share a common column)\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (this tutorial defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)"
+  },
+  {
+    "objectID": "byod/dnaseq.html#questions",
+    "href": "byod/dnaseq.html#questions",
+    "title": "RNA-seq Data Analysis",
+    "section": "2 Questions",
+    "text": "2 Questions\n\nWhat are the top 20 most significantly differentially expressed genes?\n\nTip: Filter the genes based on p-value and log fold change, then order by p-value.\n\n\n\nCreate a heatmap of the top 20 most significant genes. How do the expression patterns differ between pregnant and lactating samples?\n\nCheckout the pheatmap package for creating heatmaps.\n\n\n\nCreate a volcano plot to visualize the differential expression results. How many genes are significantly up-regulated or down-regulated?\n\nFirst create a simple volcano plot\nThen you can try to label the 10 most significant genes in the volcano plot\nCheck my R script and/or this tutorial on how to create a volcano plot with ggplot\n\n\n\nPerform a Principal Component Analysis (PCA) on the top 20 significant genes. What can you conclude about the separation of pregnant and lactating samples?\n\nTip: Use prcomp() for PCA and factoextra::fviz_pca_ind() for visualization."
+  },
+  {
+    "objectID": "byod/dnaseq.html#useful-functions",
+    "href": "byod/dnaseq.html#useful-functions",
+    "title": "RNA-seq Data Analysis",
+    "section": "3 Useful Functions",
+    "text": "3 Useful Functions\nTo complete these tasks, you may find the following R functions and packages helpful:\n\nData manipulation:\n\njanitor::clean_names(): Clean column names\nleft_join(): Combine data frames\n\nStatistical analysis:\n\nscale(): Scale numeric variables\nprcomp(): Perform Principal Component Analysis\n\nVisualization:\n\npheatmap::pheatmap(): Create heatmaps (needs a matrix, so you need to reshape your data first into a matrix)\nggrepel::geom_text_repel(): Add non-overlapping labels to plots\nfactoextra::fviz_pca_ind(): Visualize PCA results\n\nOther useful functions:\n\nas.matrix(): Convert data frames to matrices\ndrop_na(): Drop rows with missing values (maybe needed for PCA because it doesn’t handle missing values)"
+  },
+  {
+    "objectID": "byod/dnaseq.html#example-analysis",
+    "href": "byod/dnaseq.html#example-analysis",
+    "title": "RNA-seq Data Analysis",
+    "section": "4 Example analysis",
+    "text": "4 Example analysis"
+  },
+  {
+    "objectID": "byod/ice_cover.html",
+    "href": "byod/ice_cover.html",
+    "title": "Climate Change Effects on Ice Cover and Temperature in North American Lakes",
+    "section": "",
+    "text": "There are two time series data sets from North American lakes since the 19th century:\n\nice cover data: ice start, end and duration\ntemperature data: daily air temperature since 1870\n\nThis is how the data looks like:\nIce data:\n\n\n        lakeid     ice_on    ice_off ice_duration year\n1 Lake Mendota       &lt;NA&gt; 1853-04-05           NA 1852\n2 Lake Mendota 1853-12-27       &lt;NA&gt;           NA 1853\n3 Lake Mendota 1855-12-18 1856-04-14          118 1855\n4 Lake Mendota 1856-12-06 1857-05-06          151 1856\n5 Lake Mendota 1857-11-25 1858-03-26          121 1857\n6 Lake Mendota 1858-12-08 1859-03-14           96 1858\n\n\nTemperature data:\n\n\n  sampledate year ave_air_temp_adjusted\n1 1870-06-05 1870                  20.0\n2 1870-06-06 1870                  18.3\n3 1870-06-07 1870                  17.5\n4 1870-06-09 1870                  13.3\n5 1870-06-10 1870                  13.9\n6 1870-06-11 1870                  15.0\n\n\nYou can analyse the data separately or together to explore the effects of climate change on ice cover and temperature in North American lakes.\n\n\nThe data are part of the lterdatasampler package. You can obtain them by installing the package, loading it in your script, and then using the datasets ntl_icecover and ntl_airtemp:\n\ninstall.packages(\"lterdatasampler\")\nlibrary(lterdatasampler)\nntl_icecover\nntl_airtemp\n\nIf you want to know more about the variables in the datasets, you can use the help function:\n\n?ntl_icecover\n?ntl_airtemp"
+  },
+  {
+    "objectID": "byod/ice_cover.html#data-description",
+    "href": "byod/ice_cover.html#data-description",
+    "title": "Climate Change Effects on Ice Cover and Temperature in North American Lakes",
+    "section": "",
+    "text": "There are two time series data sets from North American lakes since the 19th century:\n\nice cover data: ice start, end and duration\ntemperature data: daily air temperature since 1870\n\nThis is how the data looks like:\nIce data:\n\n\n        lakeid     ice_on    ice_off ice_duration year\n1 Lake Mendota       &lt;NA&gt; 1853-04-05           NA 1852\n2 Lake Mendota 1853-12-27       &lt;NA&gt;           NA 1853\n3 Lake Mendota 1855-12-18 1856-04-14          118 1855\n4 Lake Mendota 1856-12-06 1857-05-06          151 1856\n5 Lake Mendota 1857-11-25 1858-03-26          121 1857\n6 Lake Mendota 1858-12-08 1859-03-14           96 1858\n\n\nTemperature data:\n\n\n  sampledate year ave_air_temp_adjusted\n1 1870-06-05 1870                  20.0\n2 1870-06-06 1870                  18.3\n3 1870-06-07 1870                  17.5\n4 1870-06-09 1870                  13.3\n5 1870-06-10 1870                  13.9\n6 1870-06-11 1870                  15.0\n\n\nYou can analyse the data separately or together to explore the effects of climate change on ice cover and temperature in North American lakes.\n\n\nThe data are part of the lterdatasampler package. You can obtain them by installing the package, loading it in your script, and then using the datasets ntl_icecover and ntl_airtemp:\n\ninstall.packages(\"lterdatasampler\")\nlibrary(lterdatasampler)\nntl_icecover\nntl_airtemp\n\nIf you want to know more about the variables in the datasets, you can use the help function:\n\n?ntl_icecover\n?ntl_airtemp"
+  },
+  {
+    "objectID": "byod/ice_cover.html#questions-to-explore",
+    "href": "byod/ice_cover.html#questions-to-explore",
+    "title": "Climate Change Effects on Ice Cover and Temperature in North American Lakes",
+    "section": "2 Questions to Explore",
+    "text": "2 Questions to Explore\nHere are some questions you can try to answer using the datasets:\n\n1. How did the ice cover duration change over the years? Is there a difference between the lakes?\n\n\n2. How has the average air temperature changed over the years? Can you identify any trends or patterns?\n\nTip: Calculate average yearly temperature first.\n\n\n\n3. Are there any significant temperature anomalies in the dataset? If so, when did they occur?\n\nTip: You can define an anomaly relative to a reference period (1870-1900). The standardized anomalies are calculated like this: anomaly_std = (temperature - mean(reference period)) / sd(reference period)\nFirst, calculate the mean and standard deviation of the reference period and add them as a new column to the data (use bind_cols to combine the two tables). Then you can easily calculate the anomalies.\nSee below for an example plot\n\n\n\n4. How does the temperature curve over one year change with time?\n\nTip: Calculate mean monthly temperature and plot it over each year.\n\n\n\n5. Is there a correlations between ice cover duration and temperature?\n\nTip: This is a bit tricky because you need to combine the two datasets. It makes sense to correlate temperature and ice duration in one winter season (fall season of the year + spring season of the next year) with the mean temperature in that winter. Since a winter spans two years, you need to consider how to calculate average temperature in one winter. First, filter only the winter months (November to April) and change the year of the spring months to the previous year. Then calculate the mean temperature for each winter season."
+  },
+  {
+    "objectID": "byod/ice_cover.html#useful-functions",
+    "href": "byod/ice_cover.html#useful-functions",
+    "title": "Climate Change Effects on Ice Cover and Temperature in North American Lakes",
+    "section": "3 Useful functions",
+    "text": "3 Useful functions\n\nfunctions from the Lubridate package: to work with dates (also part of the tidyverse):\n\nyear(): extract the year from a date\nmonth(): extract the month from a date\n\ndplyr to summarize data and to combine tables:\n\nleft_join(): to combine two tables by a common column\nbind_cols(): to combine two tables by columns (just glue them together)"
+  },
+  {
+    "objectID": "byod/ice_cover.html#example-analysis",
+    "href": "byod/ice_cover.html#example-analysis",
+    "title": "Climate Change Effects on Ice Cover and Temperature in North American Lakes",
+    "section": "4 Example analysis",
+    "text": "4 Example analysis\nHere is an example of a plot you can try to create (from question 3):"
+  },
+  {
+    "objectID": "byod/wine.html",
+    "href": "byod/wine.html",
+    "title": "Wine Quality Analysis",
+    "section": "",
+    "text": "The dataset used in this analysis is from Cortez et al. (2009), which models wine preferences based on physicochemical properties. You can read the data directly from the ecodata R package on Github:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n# Define the raw URL for the .rda file\nurl &lt;- \"https://raw.githubusercontent.com/TheoreticalEcology/ecodata/master/data/wine.rda\"\n\n# Load the .rda file directly from the URL\nload(url(url))\n\n# Convert the data to a tibble\nwine &lt;- tibble(wine)\n\n# Checkout the data\nwine\n\n# A tibble: 1,599 × 12\n   fixed.acidity volatile.acidity citric.acid residual.sugar chlorides\n           &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;\n 1          12.7            0.6          0.49            2.8     0.075\n 2           9.8            0.66         0.39            3.2     0.083\n 3           6.5            0.88         0.03           NA       0.079\n 4           8.6            0.52         0.38            1.5     0.096\n 5           7.5            0.58         0.14            2.2     0.077\n 6           7.6            0.5          0.29            2.3    NA    \n 7          10.1            0.935        0.22            3.4     0.105\n 8           6.4            0.4         NA               1.6     0.066\n 9           6.1            0.58         0.23            2.5     0.044\n10           6.7            0.46         0.24            1.7     0.077\n# ℹ 1,589 more rows\n# ℹ 7 more variables: free.sulfur.dioxide &lt;dbl&gt;, total.sulfur.dioxide &lt;dbl&gt;,\n#   density &lt;dbl&gt;, pH &lt;dbl&gt;, sulphates &lt;dbl&gt;, alcohol &lt;dbl&gt;, quality &lt;int&gt;\n\n\nBefore analyzing, clean the variable names and ensure the quality variable is treated as a factor.\nTo prepare the data:\n\nTransform the quality column to a factor before plotting: use dplyr::mutate and as.factor() to tranform the column\nTry the janitor::clean_names() function"
+  },
+  {
+    "objectID": "byod/wine.html#the-data",
+    "href": "byod/wine.html#the-data",
+    "title": "Wine Quality Analysis",
+    "section": "",
+    "text": "The dataset used in this analysis is from Cortez et al. (2009), which models wine preferences based on physicochemical properties. You can read the data directly from the ecodata R package on Github:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n# Define the raw URL for the .rda file\nurl &lt;- \"https://raw.githubusercontent.com/TheoreticalEcology/ecodata/master/data/wine.rda\"\n\n# Load the .rda file directly from the URL\nload(url(url))\n\n# Convert the data to a tibble\nwine &lt;- tibble(wine)\n\n# Checkout the data\nwine\n\n# A tibble: 1,599 × 12\n   fixed.acidity volatile.acidity citric.acid residual.sugar chlorides\n           &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;\n 1          12.7            0.6          0.49            2.8     0.075\n 2           9.8            0.66         0.39            3.2     0.083\n 3           6.5            0.88         0.03           NA       0.079\n 4           8.6            0.52         0.38            1.5     0.096\n 5           7.5            0.58         0.14            2.2     0.077\n 6           7.6            0.5          0.29            2.3    NA    \n 7          10.1            0.935        0.22            3.4     0.105\n 8           6.4            0.4         NA               1.6     0.066\n 9           6.1            0.58         0.23            2.5     0.044\n10           6.7            0.46         0.24            1.7     0.077\n# ℹ 1,589 more rows\n# ℹ 7 more variables: free.sulfur.dioxide &lt;dbl&gt;, total.sulfur.dioxide &lt;dbl&gt;,\n#   density &lt;dbl&gt;, pH &lt;dbl&gt;, sulphates &lt;dbl&gt;, alcohol &lt;dbl&gt;, quality &lt;int&gt;\n\n\nBefore analyzing, clean the variable names and ensure the quality variable is treated as a factor.\nTo prepare the data:\n\nTransform the quality column to a factor before plotting: use dplyr::mutate and as.factor() to tranform the column\nTry the janitor::clean_names() function"
+  },
+  {
+    "objectID": "byod/wine.html#questions",
+    "href": "byod/wine.html#questions",
+    "title": "Wine Quality Analysis",
+    "section": "2 Questions",
+    "text": "2 Questions\n\n1. How do physicochemical properties relate to wine quality?\n\nTry different visualizations of all the variables\n\n\n\n2. What is the correlation between the physicochemical properties?\n\nFor this you first need to calculate the correlation matrix and then visualize it\nTip: Use corrplot() to visualize the correlation matrix\n\n\n\n3. How can Principal Component Analysis (PCA) be used to understand the data?\n\nTip: Use prcomp() for PCA and visualize with fviz_pca_var()."
+  },
+  {
+    "objectID": "byod/wine.html#useful-functions",
+    "href": "byod/wine.html#useful-functions",
+    "title": "Wine Quality Analysis",
+    "section": "3 Useful Functions",
+    "text": "3 Useful Functions\n\njanitor::clean_names(): To clean variable names.\ncor(): To calculate correlation matrices.\ndrop_na(): To drop missing values before doing the correlation/PCA\ncorrplot() from the corrplot package: To visualize correlation matrices.\n\nFind the package documentation here\n\nggcorrplot from the ggcorrplot pacakge: Alternative visualization for correlation matrices\n\nFind the package documentation here\n\nprcomp(): To perform PCA.\nfviz_pca_var(), fviz_pca_ind(), fviz_pca_biplot() from the factoextra package: For PCA visualization.\n\nFind the package documentation here"
+  },
+  {
+    "objectID": "byod/wine.html#example-analysis",
+    "href": "byod/wine.html#example-analysis",
+    "title": "Wine Quality Analysis",
+    "section": "4 Example analysis",
+    "text": "4 Example analysis\nHere is an example of a correlation plot:\n\nHere is an example of a PCA result:"
+  },
+  {
+    "objectID": "byod/wine.html#reference",
+    "href": "byod/wine.html#reference",
+    "title": "Wine Quality Analysis",
+    "section": "5 Reference",
+    "text": "5 Reference\nP. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009."
+  },
+  {
     "objectID": "online_resources.html",
     "href": "online_resources.html",
     "title": "Additional online resources",
