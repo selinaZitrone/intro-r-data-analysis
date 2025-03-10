@@ -18,7 +18,7 @@
     "href": "sessions/tasks/tidyr.html#lets-tidy-some-data-sets",
     "title": "",
     "section": "2 Let’s tidy some data sets",
-    "text": "2 Let’s tidy some data sets\nFirst, complete both tasks before you move to the extras.\n1. relig_incom\nHave a look at the relig_income data set that is included in tidyverse package. The data set contains the results of a survey asking people about their religion and income category.\nWhat is not tidy about this data set? Can you fix it?\n2. billboard\nHave a look at the billboard data set that is included in the tidyverse package. The data set contains information about the chart rank of songs in the year 2000.\nWhat is not tidy about this data set? Can you fix it?"
+    "text": "2 Let’s tidy some data sets\nFirst, complete both tasks before you move to the extras.\n1. relig_income\nHave a look at the relig_income data set that is included in tidyverse package. The data set contains the results of a survey asking people about their religion and income category.\nWhat is not tidy about this data set? Can you fix it?\n2. billboard\nHave a look at the billboard data set that is included in the tidyverse package. The data set contains information about the chart rank of songs in the year 2000.\nWhat is not tidy about this data set? Can you fix it?"
   },
   {
     "objectID": "sessions/tasks/tidyr.html#extras",
@@ -1166,7 +1166,7 @@
     "href": "sessions/09_tidyr.html#lets-tidy-some-data-sets",
     "title": "Tidy data with tidyr",
     "section": "1.2 Let’s tidy some data sets",
-    "text": "1.2 Let’s tidy some data sets\nFirst, complete both tasks before you move to the extras.\n1. relig_incom\nHave a look at the relig_income data set that is included in tidyverse package. The data set contains the results of a survey asking people about their religion and income category.\nWhat is not tidy about this data set? Can you fix it?\n2. billboard\nHave a look at the billboard data set that is included in the tidyverse package. The data set contains information about the chart rank of songs in the year 2000.\nWhat is not tidy about this data set? Can you fix it?"
+    "text": "1.2 Let’s tidy some data sets\nFirst, complete both tasks before you move to the extras.\n1. relig_income\nHave a look at the relig_income data set that is included in tidyverse package. The data set contains the results of a survey asking people about their religion and income category.\nWhat is not tidy about this data set? Can you fix it?\n2. billboard\nHave a look at the billboard data set that is included in the tidyverse package. The data set contains information about the chart rank of songs in the year 2000.\nWhat is not tidy about this data set? Can you fix it?"
   },
   {
     "objectID": "sessions/09_tidyr.html#extras",
