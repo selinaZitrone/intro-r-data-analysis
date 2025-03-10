@@ -12,6 +12,7 @@ project:
     - "slides/*.html"
     - "R/Tasks/"
     - "data/read_challenge/*"
+    - "R/byod/general_tips/*"
 
 website:
   page-navigation: true
