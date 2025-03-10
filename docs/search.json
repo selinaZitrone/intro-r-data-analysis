@@ -417,14 +417,14 @@
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-2",
     "title": "Introduction to RStudio",
     "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nAn RStudio project is just a normal directory with an .Rproj file\n\n\nProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
+    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nAn RStudio project is just a normal directory with an .Rproj file\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
     "title": "Introduction to RStudio",
     "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- *.RProj\nExample RStudio project structure"
+    "text": "Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- *.RProj\nExample RStudio project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#create-an-rstudio-project",
@@ -473,14 +473,21 @@
     "href": "sessions/slides/good-practice.html#background",
     "title": "Good practice R coding",
     "section": "Background",
-    "text": "Background\n\nReproducibility 🔄\n\nCan someone else reproduce my results?\n\nReliability 🏋\n\nWill my code work in the future?\n\nReusability ⚙️\n\nCan someone else actually use my code?"
+    "text": "Background\nOften, we want to share and publish our projects.\n\nReproducibility 🔄\n\nCan someone else reproduce my results?\n\nReliability 🏋\n\nWill my code work in the future?\n\nReusability ⚙️\n\nCan someone else actually use my code?"
   },
   {
-    "objectID": "sessions/slides/good-practice.html#use-r-studio-projects",
-    "href": "sessions/slides/good-practice.html#use-r-studio-projects",
+    "objectID": "sessions/slides/good-practice.html#have-a-clear-project-structure",
+    "href": "sessions/slides/good-practice.html#have-a-clear-project-structure",
     "title": "Good practice R coding",
-    "section": "Use R Studio projects",
-    "text": "Use R Studio projects\nAlways make your project an R Studio Project (if possible)!\n\n✅ You already did that."
+    "section": "Have a clear project structure",
+    "text": "Have a clear project structure\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nChoose a meaningful project structure 1\nAdd a readme file (usually README.md) in which you document the project structure\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\n|\n|- README.md\nExample RStudio project structure\n\nyou can orient yourself at the R package structure"
+  },
+  {
+    "objectID": "sessions/slides/good-practice.html#use-rstudio-projects",
+    "href": "sessions/slides/good-practice.html#use-rstudio-projects",
+    "title": "Good practice R coding",
+    "section": "Use RStudio projects",
+    "text": "Use RStudio projects\nAlways make your project an RStudio Project (if possible)!\n\n✅ You already did that."
   },
   {
     "objectID": "sessions/slides/good-practice.html#set-up-your-project",
@@ -529,7 +536,7 @@
     "href": "sessions/slides/good-practice.html#standard-code-structure",
     "title": "Good practice R coding",
     "section": "Standard code structure",
-    "text": "Standard code structure\n\n\n\n\n\nGeneral comment with purpose of the script, author, …\nlibrary() calls on top\nSet default variables and global options\nSource additional code\nWrite the actual code, starting with loading all data files\n\n\n\n\n# This code replicates figure 2 from the\n# Baldauf et al. 2022 Journal of Ecology\n# paper.\n# Authors: Selina Baldauf and Jane Doe\n\nlibrary(tidyverse)\nlibrary(vegan)\n\n# set defaults\ninput_file &lt;- \"data/results.csv\"\n\n# source files\nsource(\"R/my_cool_function.R\")\n\n# read input\ninput_data &lt;- read_csv(input_file)"
+    "text": "Standard code structure\n\n\n\n\n\nGeneral comment with purpose of the script, author, …\nlibrary() calls on top\nSet default variables and global options\nSource additional code\nWrite the actual code, starting with loading all data files\n\n\n\n\n# This code replicates figure 2 from the\n# Baldauf et al. 2022 Journal of Ecology\n# paper.\n# Authors: Selina Baldauf and Jane Doe\n# Copyright Selina Baldauf (2024)\n\nlibrary(tidyverse)\nlibrary(vegan)\n\n# set defaults\ninput_file &lt;- \"data/results.csv\"\n\n# source files\nsource(\"R/my_cool_function.R\")\n\n# read input\ninput_data &lt;- read_csv(input_file)"
   },
   {
     "objectID": "sessions/slides/good-practice.html#mark-sections",
@@ -537,6 +544,13 @@
     "title": "Good practice R coding",
     "section": "Mark sections",
     "text": "Mark sections\n\n\nUse comments to break up your file into sections\n\n\n\n\n# Load data ---------------------------------------------------------------\n\ninput_data &lt;- read_csv(input_file)\n\n# Plot data ---------------------------------------------------------------\n\nggplot(input_data, aes(x = x, y = y)) +\n  geom_point()\n\n\nInsert a section label with Ctrl/Cmd + Shift + R\nNavigate sections in the file outline"
+  },
+  {
+    "objectID": "sessions/slides/good-practice.html#break-down-large-scripts",
+    "href": "sessions/slides/good-practice.html#break-down-large-scripts",
+    "title": "Good practice R coding",
+    "section": "Break down large scripts",
+    "text": "Break down large scripts\n\nIf your scripts become too big, split them\nYou can use source() in R to load the content of another script\n\nYou can source the same script into multiple other scripts\n\n\n\n\n\nR/analyse_species.R:\n\n# This code ....\n# Authors: Selina Baldauf and Jane Doe\n# Copyright Selina Baldauf (2024)\n\nlibrary(tidyverse)\nlibrary(vegan)\n\n# source file for data reading and cleaning\n# reads in the species data and cleans it for\n# further analysis\n# output is the tibble species_clean\nsource(\"R/prepare_data/read_and_clean_data.R\")\n\n# Analyse species data ----------------------\n\n# code for the analysis\n\n\nR/prepare_data/read_and_clean_data.R:\n\n# Script to read in the raw species data and clean it\n\npath_to_species &lt;- \"data/species.csv\"\n\nspecies_raw &lt;- read_csv(path_to_species)\n\n# further code for cleaning the data"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---object-names",
@@ -578,7 +592,7 @@
     "href": "sessions/slides/good-practice.html#coding-style---spacing-4",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipes (|&gt;, |&gt;) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipe (|&gt;) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---line-width",
@@ -595,32 +609,46 @@
     "text": "Coding style\nDo I really have to remember all of this?\n\nLuckily, no! R and R Studio provide some nice helpers"
   },
   {
-    "objectID": "sessions/slides/good-practice.html#coding-style-helpers---r-studio",
-    "href": "sessions/slides/good-practice.html#coding-style-helpers---r-studio",
+    "objectID": "sessions/slides/good-practice.html#coding-style-helpers---rstudio",
+    "href": "sessions/slides/good-practice.html#coding-style-helpers---rstudio",
     "title": "Good practice R coding",
-    "section": "Coding style helpers - R Studio",
-    "text": "Coding style helpers - R Studio\nR Studio has style diagnostics that tell you where something is wrong\nTools -&gt; Gloabl Options -&gt; Code -&gt; Diagnostics"
+    "section": "Coding style helpers - RStudio",
+    "text": "Coding style helpers - RStudio\nRStudio has style diagnostics that tell you where something is wrong\nTools -&gt; Gloabl Options -&gt; Code -&gt; Diagnostics"
   },
   {
-    "objectID": "sessions/slides/good-practice.html#coding-style-helpers---styler",
-    "href": "sessions/slides/good-practice.html#coding-style-helpers---styler",
+    "objectID": "sessions/slides/good-practice.html#coding-style-helpers---auto-formatting",
+    "href": "sessions/slides/good-practice.html#coding-style-helpers---auto-formatting",
     "title": "Good practice R coding",
-    "section": "Coding style helpers - {styler}",
-    "text": "Coding style helpers - {styler}\nThe styler package package automatically styles your files and projects according to the tidyverse style guide.\n\n\n# install from CRAN\ninstall.packages(\"styler\")\n\n\n\nUse the R Studio Addins for styler:"
+    "section": "Coding style helpers - Auto-formatting",
+    "text": "Coding style helpers - Auto-formatting\nRStudio can automatically format your code!\n\n\nOpen the command palette with Ctrl/Cmd + Shift + P\nSearch for “format” to see all formatting options\n\n“Reformat Current Document” to format the open script\nYou can toggle “Reformat documents on save” to format automatically on save\nBy default the “Code formatter” is the tidyverse style guide (Styler)"
   },
   {
-    "objectID": "sessions/slides/good-practice.html#coding-style-helpers---styler-1",
-    "href": "sessions/slides/good-practice.html#coding-style-helpers---styler-1",
+    "objectID": "sessions/slides/good-practice.html#coding-style-helpers---linting",
+    "href": "sessions/slides/good-practice.html#coding-style-helpers---linting",
     "title": "Good practice R coding",
-    "section": "Coding style helpers - {styler}",
-    "text": "Coding style helpers - {styler}\nPro-Tip: Add a custom keyboard short cut to style your files\nTools -&gt; Modify Keyboard Shortcuts"
+    "section": "Coding style helpers - Linting",
+    "text": "Coding style helpers - Linting\n\nLinters are tools that analyze your code for potential errors\nThe R package lintr is a linter for R code\n\nInstall it with install.packages(\"lintr\")\n\nOpen the command palette with Ctrl/Cmd + Shift + P and search for “lint”\n\n“Lint current file” to lint the open script\nThis will print a list of potential improvements in the console area"
+  },
+  {
+    "objectID": "sessions/slides/good-practice.html#make-your-code-sharable",
+    "href": "sessions/slides/good-practice.html#make-your-code-sharable",
+    "title": "Good practice R coding",
+    "section": "Make your code sharable",
+    "text": "Make your code sharable\n\nUse relative paths!\nMake sure you include all necessary files\nInclude a readme with instructions on how to run the code and an explanation of the project structure\nComment your code to make it understandable\n\n\n\n\n\n\n\n\nSend your code to a colleague\n\n\nIf you are unsure if your code is understandable and can run on another machine, send it to a colleague and ask them to run it and give you feedback"
+  },
+  {
+    "objectID": "sessions/slides/good-practice.html#publishing-your-code",
+    "href": "sessions/slides/good-practice.html#publishing-your-code",
+    "title": "Good practice R coding",
+    "section": "Publishing your code",
+    "text": "Publishing your code\n\nInclude a licence\n\nChoose a licence (common for open source projects: MIT, GPL-3.0)\nUse the usethis package to add a licence to your project\n\ninstall.packages(\"usethis\")\nusethis::use_mit_license(\"Your Name\") adds a licence file to your project\n\n\nShow which packages and which versions you used\n\nthis is important for reproducibility as packages change over time\ndevtools::session_info() prints a list of all packages and their versions (add this to your readme file)\nrenv is a package that helps you manage package versions\n\nConsider learning Git and publish on GitHub/Gitlab etc."
   },
   {
     "objectID": "sessions/slides/good-practice.html#clean-projects-and-workflows",
     "href": "sessions/slides/good-practice.html#clean-projects-and-workflows",
     "title": "Good practice R coding",
     "section": "Clean projects and workflows …",
-    "text": "Clean projects and workflows …\n… allow you and others to work productively.\n\n\n\nArtwork by Allison Horst, CC BY 4.0"
+    "text": "Clean projects and workflows …\n… allow you and others to work productively.\nBut don’t get overwhelmed by all the advice. Just start with one thing.\n\n\n\nArtwork by Allison Horst, CC BY 4.0"
   },
   {
     "objectID": "sessions/slides/functions.html#functions-in-r",
@@ -690,7 +718,7 @@
     "href": "sessions/slides/data-tibbles.html#data-frames",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Data frames",
-    "text": "Data frames\nThe built-in data structure for tables in R is a data frame.\n\n\n\nVectors in R can’t represent data table where values are connected via rows\n\nData frames are one of the biggest and most important ideas in R, and one of the things that make R different from other programming languages.(H. Wickham, Advanced R)\n\n\n\n\n\n\n\ncities\npopulation\narea_km2\n\n\n\n\nIstanbul\n15100000\n2576\n\n\nMoscow\n12500000\n2561\n\n\nLondon\n9000000\n1572\n\n\nSaint Petersburg\n5400000\n1439\n\n\nBerlin\n3800000\n891\n\n\nMadrid\n3200000\n604\n\n\nKyiv\n3000000\n839\n\n\nRome\n2800000\n1285\n\n\nBucharest\n2200000\n228\n\n\nParis\n2100000\n105"
+    "text": "Data frames\nThe built-in data structure for tables in R is a data frame.\n\n\n\nVectors in R can’t represent data table where values are connected via rows\n\nData frames are one of the biggest and most important ideas in R, and one of the things that make R different from other programming languages.(H. Wickham, Advanced R)\n\n\n\n\n\n\n\ncity_name\npopulation_size\ncity_area\n\n\n\n\nIstanbul\n15100000\n2576\n\n\nMoscow\n12500000\n2561\n\n\nLondon\n9000000\n1572\n\n\nSaint Petersburg\n5400000\n1439\n\n\nBerlin\n3800000\n891\n\n\nMadrid\n3200000\n604\n\n\nKyiv\n3000000\n839\n\n\nRome\n2800000\n1285\n\n\nBucharest\n2200000\n228\n\n\nParis\n2100000\n105"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#data-frames-1",
@@ -704,7 +732,7 @@
     "href": "sessions/slides/data-tibbles.html#data-frames-2",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Data frames",
-    "text": "Data frames\nData frames are created with the function data.frame():\n\n\n\ncities &lt;- c(\n  \"Istanbul\", \"Moscow\", \"London\", \n  \"Saint Petersburg\", \"Berlin\",\"Madrid\",\n  \"Kyiv\", \"Rome\", \"Bucharest\",\"Paris\")\n\npopulation &lt;- c(\n  15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6,\n  3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)\n\narea_km2 &lt;- c(2576, 2561, 1572, 1439, \n  891, 604, 839, 1285, 228, 105)\n\ncities_dataframe &lt;- data.frame(\n  cities = cities,\n  population = population,\n  area_km2 = area_km2\n  )\n\n\n\n\n#&gt;              cities population area_km2\n#&gt; 1          Istanbul   15100000     2576\n#&gt; 2            Moscow   12500000     2561\n#&gt; 3            London    9000000     1572\n#&gt; 4  Saint Petersburg    5400000     1439\n#&gt; 5            Berlin    3800000      891\n#&gt; 6            Madrid    3200000      604\n#&gt; 7              Kyiv    3000000      839\n#&gt; 8              Rome    2800000     1285\n#&gt; 9         Bucharest    2200000      228\n#&gt; 10            Paris    2100000      105"
+    "text": "Data frames\nData frames are created with the function data.frame():\n\n\n\ncities &lt;- c(\n  \"Istanbul\", \"Moscow\", \"London\", \n  \"Saint Petersburg\", \"Berlin\",\"Madrid\",\n  \"Kyiv\", \"Rome\", \"Bucharest\",\"Paris\")\n\npopulation &lt;- c(\n  15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6,\n  3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)\n\narea_km2 &lt;- c(2576, 2561, 1572, 1439, \n  891, 604, 839, 1285, 228, 105)\n\ncities_dataframe &lt;- data.frame(\n  city_name = cities,\n  population_size = population,\n  city_area = area_km2\n  )\n\n\n\n\n#&gt;           city_name population_size city_area\n#&gt; 1          Istanbul        15100000      2576\n#&gt; 2            Moscow        12500000      2561\n#&gt; 3            London         9000000      1572\n#&gt; 4  Saint Petersburg         5400000      1439\n#&gt; 5            Berlin         3800000       891\n#&gt; 6            Madrid         3200000       604\n#&gt; 7              Kyiv         3000000       839\n#&gt; 8              Rome         2800000      1285\n#&gt; 9         Bucharest         2200000       228\n#&gt; 10            Paris         2100000       105"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#tibbles",
@@ -725,28 +753,28 @@
     "href": "sessions/slides/data-tibbles.html#tibbles-2",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Tibbles",
-    "text": "Tibbles\nCreate a tibble using the tibble() function:\n\n\n\n\nlibrary(tibble) \n\ncities_tbly &lt;- tibble(\n  cities = cities,\n  population = population,\n  area_km2 = area_km2\n)\n\n\n\n#&gt; # A tibble: 10 × 3\n#&gt;    cities           population area_km2\n#&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1 Istanbul           15100000     2576\n#&gt;  2 Moscow             12500000     2561\n#&gt;  3 London              9000000     1572\n#&gt;  4 Saint Petersburg    5400000     1439\n#&gt;  5 Berlin              3800000      891\n#&gt;  6 Madrid              3200000      604\n#&gt;  7 Kyiv                3000000      839\n#&gt;  8 Rome                2800000     1285\n#&gt;  9 Bucharest           2200000      228\n#&gt; 10 Paris               2100000      105"
+    "text": "Tibbles\nCreate a tibble using the tibble() function:\n\n\n\n\nlibrary(tibble) \n\ncities_tbl &lt;- tibble(\n  city_name = cities,\n  population_size = population,\n  city_area = area_km2\n)\n\n\n\n#&gt; # A tibble: 10 × 3\n#&gt;    city_name        population_size city_area\n#&gt;    &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;\n#&gt;  1 Istanbul                15100000      2576\n#&gt;  2 Moscow                  12500000      2561\n#&gt;  3 London                   9000000      1572\n#&gt;  4 Saint Petersburg         5400000      1439\n#&gt;  5 Berlin                   3800000       891\n#&gt;  6 Madrid                   3200000       604\n#&gt;  7 Kyiv                     3000000       839\n#&gt;  8 Rome                     2800000      1285\n#&gt;  9 Bucharest                2200000       228\n#&gt; 10 Paris                    2100000       105"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#exploring-tibbles-1",
     "href": "sessions/slides/data-tibbles.html#exploring-tibbles-1",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Exploring tibbles",
-    "text": "Exploring tibbles\nHow many rows?\n\nnrow(cities_tbl)\n#&gt; [1] 10\n\n\nHow many columns?\n\nncol(cities_tbl)\n#&gt; [1] 3\n\n\n\nWhat are the column headers?\n\nnames(cities_tbl)\n#&gt; [1] \"cities\"     \"population\" \"area_km2\""
+    "text": "Exploring tibbles\nHow many rows?\n\nnrow(cities_tbl)\n#&gt; [1] 10\n\n\nHow many columns?\n\nncol(cities_tbl)\n#&gt; [1] 3\n\n\n\nWhat are the column headers?\n\nnames(cities_tbl)\n#&gt; [1] \"city_name\"       \"population_size\" \"city_area\""
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#exploring-tibbles-2",
     "href": "sessions/slides/data-tibbles.html#exploring-tibbles-2",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Exploring tibbles",
-    "text": "Exploring tibbles\nLook at the entire table in a separate window with view():\n\nview(cities_tbl)\n\n\nOr click on the little table sign in the Environment pane:"
+    "text": "Exploring tibbles\nLook at the entire table in a separate window with view():\n\nview(cities_tbl)"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#exploring-tibbles-3",
     "href": "sessions/slides/data-tibbles.html#exploring-tibbles-3",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Exploring tibbles",
-    "text": "Exploring tibbles\nGet a quick summary of all columns:\n\nsummary(cities_tbl)\n#&gt;     cities            population          area_km2     \n#&gt;  Length:10          Min.   : 2100000   Min.   : 105.0  \n#&gt;  Class :character   1st Qu.: 2850000   1st Qu.: 662.8  \n#&gt;  Mode  :character   Median : 3500000   Median :1088.0  \n#&gt;                     Mean   : 5910000   Mean   :1210.0  \n#&gt;                     3rd Qu.: 8100000   3rd Qu.:1538.8  \n#&gt;                     Max.   :15100000   Max.   :2576.0\n\n\nVery useful for checking if everything is ok with your research data"
+    "text": "Exploring tibbles\nGet a quick summary of all columns:\n\nsummary(cities_tbl)\n#&gt;   city_name         population_size      city_area     \n#&gt;  Length:10          Min.   : 2100000   Min.   : 105.0  \n#&gt;  Class :character   1st Qu.: 2850000   1st Qu.: 662.8  \n#&gt;  Mode  :character   Median : 3500000   Median :1088.0  \n#&gt;                     Mean   : 5910000   Mean   :1210.0  \n#&gt;                     3rd Qu.: 8100000   3rd Qu.:1538.8  \n#&gt;                     Max.   :15100000   Max.   :2576.0\n\n\nVery useful for checking if everything is ok with your research data"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles",
@@ -760,42 +788,42 @@
     "href": "sessions/slides/data-tibbles.html#indexing-tibbles-1",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Indexing tibbles",
-    "text": "Indexing tibbles\n\n# First row and first column\ncities_tbl[1, 1]\n#&gt; # A tibble: 1 × 1\n#&gt;   cities  \n#&gt;   &lt;chr&gt;   \n#&gt; 1 Istanbul\n\n\nThis is the same as\n\ncities_tbl[1, \"cities\"]"
+    "text": "Indexing tibbles\n\n# First row and first column\ncities_tbl[1, 1]\n#&gt; # A tibble: 1 × 1\n#&gt;   city_name\n#&gt;   &lt;chr&gt;    \n#&gt; 1 Istanbul\n\n\nThis is the same as\n\ncities_tbl[1, \"city_name\"]"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles-rows",
     "href": "sessions/slides/data-tibbles.html#indexing-tibbles-rows",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Indexing tibbles: rows",
-    "text": "Indexing tibbles: rows\n\n# rows 1 & 5, all columns:\ncities_tbl[c(1, 5), ]\n#&gt; # A tibble: 2 × 3\n#&gt;   cities   population area_km2\n#&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1 Istanbul   15100000     2576\n#&gt; 2 Berlin      3800000      891"
+    "text": "Indexing tibbles: rows\n\n# rows 1 & 5, all columns:\ncities_tbl[c(1, 5), ]\n#&gt; # A tibble: 2 × 3\n#&gt;   city_name population_size city_area\n#&gt;   &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 Istanbul         15100000      2576\n#&gt; 2 Berlin            3800000       891"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles-columns",
     "href": "sessions/slides/data-tibbles.html#indexing-tibbles-columns",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Indexing tibbles: columns",
-    "text": "Indexing tibbles: columns\n\n# All rows, first 2 columns\ncities_tbl[ ,1:2] # same as cities_tbl[ , c(1, 2)]\n# same as\ncities_tbl[ ,c(\"cities\", \"population\")]\n\n\n#&gt; # A tibble: 10 × 2\n#&gt;   cities   population\n#&gt;   &lt;chr&gt;         &lt;dbl&gt;\n#&gt; 1 Istanbul   15100000\n#&gt; 2 Moscow     12500000\n#&gt; 3 London      9000000\n#&gt; # ℹ 7 more rows"
+    "text": "Indexing tibbles: columns\n\n# All rows, first 2 columns\ncities_tbl[ ,1:2] # same as cities_tbl[ , c(1, 2)]\n# same as\ncities_tbl[ ,c(\"city_name\", \"population_size\")]\n\n\n#&gt; # A tibble: 10 × 2\n#&gt;   city_name population_size\n#&gt;   &lt;chr&gt;               &lt;dbl&gt;\n#&gt; 1 Istanbul         15100000\n#&gt; 2 Moscow           12500000\n#&gt; 3 London            9000000\n#&gt; # ℹ 7 more rows"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles-columns-1",
     "href": "sessions/slides/data-tibbles.html#indexing-tibbles-columns-1",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Indexing tibbles: columns",
-    "text": "Indexing tibbles: columns\nIndexing columns by name is usually preferred to indexing by position\n\ncities_tbl[ ,1:2] # okay\ncities_tbl[ ,c(\"cities\", \"population\")] # better\n\n\nWhy?\n\nCode is much easier to read\nCode is more robust against\n\nchanges in column order\nmistakes in the code (e.g. typos)\n\n\n\n\ncities_tbl[ ,c(1,3)] # 3 instead of 2 -&gt; wrong but no error\ncities_tbl[ ,c(\"cities\", \"popluation\")] # typo -&gt; wrong and error\n\n\n\n\n\n\n\n\n\nGeneral rule\n\n\nGood code produces errors when something unintended or wrong happens"
+    "text": "Indexing tibbles: columns\nIndexing columns by name is usually preferred to indexing by position\n\ncities_tbl[ ,1:2] # okay\ncities_tbl[ ,c(\"city_name\", \"population_size\")] # better\n\n\nWhy?\n\nCode is much easier to read\nCode is more robust against\n\nchanges in column order\nmistakes in the code (e.g. typos)\n\n\n\n\ncities_tbl[ ,c(1,3)] # 3 instead of 2 -&gt; wrong but no error\ncities_tbl[ ,c(\"city_name\", \"popluation_size\")] # typo -&gt; wrong and error\n\n\n\n\n\n\n\n\n\nGeneral rule\n\n\nGood code produces errors when something unintended or wrong happens"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#tibbles-select-columns-with",
     "href": "sessions/slides/data-tibbles.html#tibbles-select-columns-with",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Tibbles: Select columns with $",
-    "text": "Tibbles: Select columns with $\nSelect an entire column from a tibble using $ (this returns a vector instead of a tibble):\n\ncities_tbl$cities\n#&gt;  [1] \"Istanbul\"         \"Moscow\"           \"London\"           \"Saint Petersburg\"\n#&gt;  [5] \"Berlin\"           \"Madrid\"           \"Kyiv\"             \"Rome\"            \n#&gt;  [9] \"Bucharest\"        \"Paris\""
+    "text": "Tibbles: Select columns with $\nSelect an entire column from a tibble using $ (this returns a vector instead of a tibble):\n\ncities_tbl$city_name\n#&gt;  [1] \"Istanbul\"         \"Moscow\"           \"London\"           \"Saint Petersburg\"\n#&gt;  [5] \"Berlin\"           \"Madrid\"           \"Kyiv\"             \"Rome\"            \n#&gt;  [9] \"Bucharest\"        \"Paris\""
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#adding-new-columns",
     "href": "sessions/slides/data-tibbles.html#adding-new-columns",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Adding new columns",
-    "text": "Adding new columns\nNew columns can be added as vectors using the $ operator. The vectors need to have the same length as the tibble has rows.\n\n\n# add a country column\ncities_tbl$country &lt;- c(\n  \"Turkey\", \"Russia\", \"UK\", \"Russia\", \"Germany\", \"Spain\",\n  \"Ukraine\", \"Italy\", \"Romania\", \"France\"\n)\n\n\n#&gt; # A tibble: 10 × 4\n#&gt;    cities           population area_km2 country\n#&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  \n#&gt;  1 Istanbul           15100000     2576 Turkey \n#&gt;  2 Moscow             12500000     2561 Russia \n#&gt;  3 London              9000000     1572 UK     \n#&gt;  4 Saint Petersburg    5400000     1439 Russia \n#&gt;  5 Berlin              3800000      891 Germany\n#&gt;  6 Madrid              3200000      604 Spain  \n#&gt;  7 Kyiv                3000000      839 Ukraine\n#&gt;  8 Rome                2800000     1285 Italy  \n#&gt;  9 Bucharest           2200000      228 Romania\n#&gt; 10 Paris               2100000      105 France"
+    "text": "Adding new columns\nNew columns can be added as vectors using the $ operator. The vectors need to have the same length as the tibble has rows.\n\n\n# add a country column\ncities_tbl$country &lt;- c(\n  \"Turkey\", \"Russia\", \"UK\", \"Russia\", \"Germany\", \"Spain\",\n  \"Ukraine\", \"Italy\", \"Romania\", \"France\"\n)\n\n\n#&gt; # A tibble: 10 × 4\n#&gt;    city_name        population_size city_area country\n#&gt;    &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;  \n#&gt;  1 Istanbul                15100000      2576 Turkey \n#&gt;  2 Moscow                  12500000      2561 Russia \n#&gt;  3 London                   9000000      1572 UK     \n#&gt;  4 Saint Petersburg         5400000      1439 Russia \n#&gt;  5 Berlin                   3800000       891 Germany\n#&gt;  6 Madrid                   3200000       604 Spain  \n#&gt;  7 Kyiv                     3000000       839 Ukraine\n#&gt;  8 Rome                     2800000      1285 Italy  \n#&gt;  9 Bucharest                2200000       228 Romania\n#&gt; 10 Paris                    2100000       105 France"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#summary-i",
@@ -1537,7 +1565,7 @@
     "href": "sessions/slides/AI-tools.html#chat-with-gh-copilot-in-r-studio",
     "title": "AI Tools for R",
     "section": "Chat with GH copilot in R Studio",
-    "text": "Chat with GH copilot in R Studio\n\nAvailable through the chattr package\nChat with Copilot in the sidebar\nAlso supports other LLMs (e.g. GPT4o, …)"
+    "text": "Chat with GH copilot in R Studio\n\nAvailable through the https://ellmer.tidyverse.org/ package\nChat with LLMs in the sidebar\nNeeds an API and some setting up"
   },
   {
     "objectID": "sessions/slides/AI-tools.html#concerns-to-consider",
@@ -1747,7 +1775,7 @@
     "href": "sessions/slides/dplyr.html#summarize-by-group",
     "title": "Data transformation with dplyr",
     "section": "summarize() by group",
-    "text": "summarize() by group\nsummarize is much more useful in combination with the grouping argument .by\n\nsummary will be calculated separately for each group\n\n\n\n# summarize the grouped data\nsummarize(vertebrates,\n    mean_length = mean(length_1_mm, na.rm = TRUE),\n    mean_weight = mean(weight_g, na.rm = TRUE),\n    .by = species\n  )\n#&gt; # A tibble: 2 × 3\n#&gt;   species                  mean_length mean_weight\n#&gt;   &lt;chr&gt;                          &lt;dbl&gt;       &lt;dbl&gt;\n#&gt; 1 Cutthroat trout                 83.5        8.84\n#&gt; 2 Coastal giant salamander        57.0        9.03"
+    "text": "summarize() by group\nsummarize is much more useful in combination with the grouping argument .by\n\nsummary will be calculated separately for each group\n\n\n\n# summarize the grouped data\nsummarize(vertebrates,\n    mean_length = mean(length_1_mm, na.rm = TRUE),\n    mean_weight = mean(weight_g, na.rm = TRUE),\n    .by = species\n  )\n#&gt; # A tibble: 2 × 3\n#&gt;   species                  mean_length mean_weight\n#&gt;   &lt;chr&gt;                          &lt;dbl&gt;       &lt;dbl&gt;\n#&gt; 1 Cutthroat trout                 83.5        8.84\n#&gt; 2 Coastal giant salamander        57.0        9.03\n\n\n\n\nCombine variables if you want to summarize by more than one group (e.g. .by = c(species, unittype))"
   },
   {
     "objectID": "sessions/slides/dplyr.html#count",
@@ -1761,7 +1789,7 @@
     "href": "sessions/slides/dplyr.html#the-pipe-1",
     "title": "Data transformation with dplyr",
     "section": "The pipe |>",
-    "text": "The pipe |&gt;\nData transformation often requires multiple operations in sequence.\nThe pipe operator |&gt; helps to keep these operations clear and readable.\n\nYou may also see %&gt;% from the magrittr package\nTurn on the native R pipe |&gt; in Tools -&gt; Global Options -&gt; Code\n\n\n\n\n\n\nSee here for differences between the two pipe versions"
+    "text": "The pipe |&gt;\nData transformation often requires multiple operations in sequence.\nThe pipe operator |&gt; helps to keep these operations clear and readable.\n\nYou may also see %&gt;% from the magrittr package\n\n\nTurn on the native R pipe |&gt; in Tools -&gt; Global Options -&gt; Code\n\n\n\n\nSee here for differences between the two pipe versions"
   },
   {
     "objectID": "sessions/slides/dplyr.html#the-pipe-2",
