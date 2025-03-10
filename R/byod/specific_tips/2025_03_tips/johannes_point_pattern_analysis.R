@@ -219,3 +219,29 @@ all_pcf |>
     y = "g(r)",
     color = "Legend"
   )
+
+# Read your own data and convert to ppp object-------------------------------
+
+# Step 1: Read in the CSV
+your_data <- read_csv("R/byod/specific_tips/2025_03_tips/data/SpatialAnalysis_TrainingCoordinates.csv")
+
+# remove the first column which is just a rownumber
+your_data <- your_data |> select(-1)
+
+# Step 2: Define the study window using the range of XM and YM columns
+# Optionally, you might want to add some buffer if needed.
+win <- owin(xrange = range(your_data$XM), yrange = range(your_data$YM))
+
+# Step 3: Create the ppp object.
+# Here we use XM as x coords, YM as y coords, and assign 'Label' as marks.
+# If you want Area as well, you can include it in the data later.
+pp_object <- ppp(
+  x = your_data$XM,
+  y = your_data$YM,
+  window = win,
+  marks = your_data$Label
+)
+
+# Print the resulting ppp object
+print(pp_object)
+plot(pp_object)
