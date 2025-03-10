@@ -35,20 +35,68 @@ from: markdown+emoji
 
 ## Background
 
+Often, we want to **share** and **publish** our projects. 
+
 - **Reproducibility** :arrows_counterclockwise: 
   - Can someone else reproduce my results?
 - **Reliability** 🏋 
   - Will my code work in the future?
 - **Reusability** :gear: 
   - Can someone else actually use my code?
-  
-# First things first {.inverse}
 
-Project setup and structure
+# Set up your project properly {.inverse}
 
-## Use R Studio projects
+Consistent structure and filenames
 
-**Always** make your project an R Studio Project (if possible)!
+## Have a clear project structure
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+- One directory with all files relevant for project
+  - Scripts, data, plots, documents, ...
+- Choose a meaningful project structure [^1]
+- Add a readme file (usually `README.md`) in which you document the project structure
+
+:::
+
+:::{.column width="50%"}
+
+```md
+MyProject
+|
+|- data
+|
+|- docs
+|   |
+|   |- notes
+|   |
+|   |- reports
+|
+|- R
+|   |
+|   |- clean_data.R 
+|   |
+|   |- statistics.R
+|
+|- MyProject.RProj
+|
+|- README.md
+```
+
+[Example RStudio project structure]{.text-small}
+
+:::
+
+:::
+
+[^1]: you can orient yourself at the [R package structure](https://doi.org/10.1080/00031305.2017.1375986)
+
+
+## Use RStudio projects
+
+Always make your project an RStudio Project (if possible)!
 
 . . .
 
@@ -71,7 +119,7 @@ Your collaborators and your future self will love you for this.
 
 . . .
 
-### Principles [^1]
+### Principles [^2]
 
 File names should be
 
@@ -83,7 +131,7 @@ File names should be
 
 :::
 
-[^1]: From [this talk](https://speakerdeck.com/jennybc/how-to-name-files) by J. Bryan
+[^2]: From [this talk](https://speakerdeck.com/jennybc/how-to-name-files) by J. Bryan
 
 ## 1. Machine readable file names
 
@@ -206,6 +254,7 @@ If you order your files by name, the ordering should make sense:
 # Baldauf et al. 2022 Journal of Ecology
 # paper.
 # Authors: Selina Baldauf and Jane Doe
+# Copyright Selina Baldauf (2024)
 
 library(tidyverse)
 library(vegan)
@@ -248,6 +297,61 @@ ggplot(input_data, aes(x = x, y = y)) +
 . . .
 
 ![](img/2023_04_20_what_they_forgot_to_teach_you/07_document_outline.png){width="75%"}
+
+## Break down large scripts
+
+- If your scripts become too big, split them
+- You can use `source()` in R to load the content of another script
+  - You can source the same script into multiple other scripts
+  
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+`R/analyse_species.R`:
+
+```{r eval=FALSE}
+# This code ....
+# Authors: Selina Baldauf and Jane Doe
+# Copyright Selina Baldauf (2024)
+
+library(tidyverse)
+library(vegan)
+
+# source file for data reading and cleaning
+# reads in the species data and cleans it for
+# further analysis
+# output is the tibble species_clean
+source("R/prepare_data/read_and_clean_data.R")
+
+# Analyse species data ----------------------
+
+# code for the analysis
+
+```
+
+:::
+
+:::{.column width="50%"}
+
+`R/prepare_data/read_and_clean_data.R`:
+
+```{r eval=FALSE}
+# Script to read in the raw species data and clean it
+
+path_to_species <- "data/species.csv"
+
+species_raw <- read_csv(path_to_species)
+
+# further code for cleaning the data
+
+```
+
+:::
+
+:::
 
 ## Coding style - Object names
 
@@ -358,7 +462,7 @@ iris|>summarize_if(is.numeric, mean, .by = Species)|>arrange(desc(Sepal.Length))
 - Always put spaces after a comma
 - No spaces around parentheses for normal function calls
 - Spaces around most operators (`<-`, `==`, `+`, etc.)
-- Spaces before pipes (`|>`, `|>`) followed by new line
+- Spaces before pipe (`|>`) followed by new line
 - Spaces before `+` in ggplot followed by new line
 
 :::
@@ -405,9 +509,9 @@ Do I really have to remember all of this?
 
 Luckily, no! R and R Studio provide some nice helpers
 
-## Coding style helpers - R Studio
+## Coding style helpers - RStudio
 
-R Studio has style diagnostics that tell you where something is wrong
+RStudio has style diagnostics that tell you where something is wrong
 
 **Tools -> Gloabl Options -> Code -> Diagnostics**
 
@@ -425,35 +529,70 @@ R Studio has style diagnostics that tell you where something is wrong
 
 :::
 
-## Coding style helpers - `{styler}`
+## Coding style helpers - Auto-formatting
 
-The [styler package](http://styler.r-lib.org/) package automatically styles your files and projects
-according to the tidyverse style guide.
+RStudio can automatically format your code!
 
-. . .
+![](img/day3/format_code.png){width="40%"}
 
-```{r}
-# install from CRAN
-install.packages("styler")
-```
-
-. . .
-
-Use the R Studio **Addins** for styler:
-
-![](img/2023_04_20_what_they_forgot_to_teach_you/12_styler_options.png)
-
-## Coding style helpers - `{styler}`
-
-Pro-Tip: Add a custom keyboard short cut to style your files
-
-
-**Tools -> Modify Keyboard Shortcuts**
+- Open the command palette with `Ctrl/Cmd + Shift + P`
+- Search for "format" to see all formatting options
+  - "Reformat Current Document" to format the open script
+  - You can toggle "Reformat documents on save" to format automatically on save
+  - By default the "Code formatter" is the tidyverse style guide (Styler)
   
-![](img/2023_04_20_what_they_forgot_to_teach_you/13_styler_shortcut.png)
+## Coding style helpers - Linting
+
+- Linters are tools that analyze your code for potential errors
+- The R package `lintr` is a linter for R code
+  - Install it with `install.packages("lintr")`
+- Open the command palette with `Ctrl/Cmd + Shift + P` and search for "lint"
+  - "Lint current file" to lint the open script
+  - This will print a list of potential improvements in the console area
+  
+![](img/day3/lint_options.png){width="40%"}
+
+# Let's share {.inverse}
+
+> Publish or share your analysis
+
+## Make your code sharable
+
+- Use relative paths!
+- Make sure you include all necessary files
+- Include a readme with instructions on how to run the code and an explanation of 
+  the project structure
+- Comment your code to make it understandable
+
+. . .
+
+:::{.callout-tip}
+
+## Send your code to a colleague
+
+If you are unsure if your code is understandable and can run on another machine,
+send it to a colleague and ask them to run it and give you feedback
+
+:::
+
+## Publishing your code
+
+- Include a licence
+  - [Choose a licence](https://choosealicense.com/) (common for open source projects: MIT, GPL-3.0)
+  - Use the `usethis` package to add a licence to your project
+    - `install.packages("usethis")`
+    - `usethis::use_mit_license("Your Name")` adds a licence file to your project
+- Show which packages and which versions you used
+  - this is important for reproducibility as packages change over time
+  - `devtools::session_info()` prints a list of all packages and their versions (add this to your readme file)
+  - [`renv`](https://rstudio.github.io/renv/articles/renv.html) is a package that helps you manage package versions
+- Consider learning Git and publish on GitHub/Gitlab etc.
 
 ## Clean projects and workflows ...
 
-... allow you and others to work productively.
+... allow you and others to work productively. 
+
+But don't get overwhelmed by all the
+advice. Just start with one thing.
 
 ![Artwork by [Allison Horst](https://allisonhorst.com), CC BY 4.0](img/2023_04_20_what_they_forgot_to_teach_you/03_kitchen_clean.png){fig-alt="An organized kitchen with sections labeled \"tools\", \"report\" and \"files\", while a monster in a chef's hat stirs in a bowl labeled \"code.\"" width=80%}
