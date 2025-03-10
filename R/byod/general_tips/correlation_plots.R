@@ -2,6 +2,10 @@
 # Many options. To see an article showing correlation plots with different packages,
 # see this website: https://r-coder.com/correlation-plot-r/
 
+# load general packages needed
+library(tidyverse)
+library(palmerpenguins)
+
 # Some cool packages and options are shown below
 
 # 1. Using corrplot package ---------------------------------------------

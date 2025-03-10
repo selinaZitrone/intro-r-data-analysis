@@ -1,0 +1,192 @@
+---
+title: Linear models with R
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+Packages needed for linear model analysis and examples:
+
+```{r}
+#| message: false
+#| warning: false
+library(palmerpenguins) # Example data
+library(tidyverse) # Data manipulation
+library(performance) # Model diagnostics
+library(rstatix) # More friendly version of Tukey test
+```
+
+# Intro
+
+When you fit a linear model (an Anova is a type of linear model), you
+need to give the `lm` function a formula that describes the relationship
+between the response variable and the predictor variables in your data.
+This formula should reflect your hypothesis.
+
+The formula is written as `y ~ x1 + x2 + ... + xn`, where `y` is the
+response variable and `x1`, `x2`, ..., `xn` are the predictor variables.
+
+Depending on the type of response variable, you can use `lm` to perform
+different linear model types:
+
+-   Regression model: `lm(y ~ x1)` with `x1` as a continuous variable
+-   ANOVA: `lm(y ~ x1)` with `x1` as categorical variables
+-   ANCOVA: `lm(y ~ x1 + x2)` with `x1` as a categorical variable and
+    `x2` as a continuous variable
+
+All these formulas can also contain interactions between the predictor
+variables. Interactions between predictor variables are written as
+`x1:x2`.
+
+# General workflow
+
+To do a linear model analysis in R, you can follow these steps (see
+below for an example):
+
+1.  Explore the data and your hypothesis using a quick visualization
+2.  Fit the linear model according to your hypothesis using `lm`
+3.  Get a summary of the model using `summary`: Check out model
+    coefficients and effect sizes
+4.  Check whether your explanatory variables are significant using
+    `drop1`
+5.  Check model assumptions using diagnostic plots and checking
+    functions
+6.  Take the plot from step 1, make it look nice and add the model fit.
+
+# Example 1: ANOVA
+
+This example uses the `penguins` dataset from the `palmerpenguins`
+package.
+
+-   **Research question:** How does the penguin species and sex affect
+    penguin body mass?
+-   **Hyphothesis:** The body mass of penguins is higher for male
+    penguins and differs between species.
+
+## Explore the data
+
+```{r}
+ggplot(penguins, aes(x = species, y = body_mass_g, fill = sex)) +
+  geom_boxplot() +
+  labs(title = "Penguin body mass by species",
+       x = "Species",
+       y = "Body mass (g)")
+```
+
+## Fit the linear model
+
+I want to fit a linear model to test my hypothesis.
+
+```{r}
+# 2. Fit the linear model
+penguin_lm <- lm(
+  body_mass_g  ~ species + sex, # Model formula to test your hypothesis
+  data = penguins  # Tibble containing the variables
+  )
+```
+
+If we also wanted to test the interaction between `species` and `sex`,
+we have to add the interaction term to the model formula:
+`body_mass_g ~ species + sex + species:sex`.
+
+## Get a summary of the model
+
+With the `summary` function, we can get model coefficients and effect
+sizes:
+
+```{r}
+# 3. Get a summary of the model
+summary(penguin_lm)
+```
+
+The model estimates can be found in the `Coefficients` table (column
+`Estimat Std`). In case of an ANOVA, the `Estimate` column contains the
+mean body mass for each species. It is a bit complex to disentangle, but
+the values in the rows mean:
+
+-   `(Intercept)`: The mean body mass of the female penguins of the
+    first species (Adelie penguin)
+-   `speciesChinstrap`: The difference in body mass between female
+    Adelie and Chinstrap penguins (Chinstrap = 3372 g + 27 g)
+-   `speciesGentoo`: The difference in body mass between female Adelie
+    and Gentoo penguins (Gentoo = 3372 g + 1377 g)
+-   `sexmale`: The difference in body mass between female and male
+    penguins
+
+## Check whether the explanatory variable is significant
+
+To check whether both `species` and sex have a significant effect on
+body mass, we can use the `drop1` function with an F-test. With this
+test, we check whether the model would become significantly worse if we
+remove the predictors.
+
+```{r}
+# 4. Check whether the explanatory variable is significant
+drop1(penguin_lm, test = "F")
+```
+
+The p-value in both the species and the sex column of the result is \<
+0.05, which means that both species and sex are significant predictors
+of body mass. If we would remove these terms from the model, then the
+model would become significantly worse.
+
+## Check model assumptions
+
+Linear models have 3 main assumptions that need to be fulfilled:
+
+-   normality of model residuals
+-   constant variance of model residuals
+-   no strong outliers
+
+We need to check them for every model. If they are violated, then we
+have to use other types of models
+
+### Visual checks
+
+We can the model assumptions using diagnostic plots:
+
+```{r}
+#| fig-width: 10
+#| fig-height: 10
+performance::check_model(penguin_lm)
+```
+
+On top of each of the plots is written what you should look for. The
+data are never perfect, so small deviations are totally ok.
+
+### Other tests
+
+You can also perform the most important checks manually and the results
+are printed in the console for you. They are also provided by the
+\`performance\` package:
+
+```{r}
+# Check for constant variance
+performance::check_heteroscedasticity(penguin_lm)
+# Check for influential observations (outliers)
+performance::check_outliers(penguin_lm)
+# check normality of residuals
+performance::check_normality(penguin_lm)
+```
+
+If all these tests are ok, you can be confident that your model is
+valid.
+
+## Posthoc test to compare groups
+
+If the ANOVA is significant, we can perform a posthoc test to compare
+the groups. For this, we can use the `tukey_hsd` function from the
+`rstatix` package. It is a wrapper around the `TukeyHSD` function from
+base R that makes the output more friendly. This function performs
+pairwise comparisons between the groups and corrects for multiple
+testing.
+
+```{r}
+# Posthoc test to compare groups
+tukey_hsd(penguin_lm)
+```
+
+# Further reading
+
+-   [Book chapter on linear
+    modelling](https://intro2r.com/simple_lm.html)

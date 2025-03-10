@@ -3,8 +3,8 @@
 # See slides for full reference
 
 library(tidyverse)
-library(corrplot)
-library(factoextra)
+library(corrplot) # Correlation plots
+library(factoextra) # PCA analysis visualizations
 
 
 # Prepare the data --------------------------------------------------------
@@ -62,6 +62,15 @@ corrplot(M)
 corrplot.mixed(M)
 corrplot.mixed(M, lower = "shade", upper = "pie", order = "hclust")
 
+# Or with the ggcorrplot package
+library(ggcorrplot)
+correlation_plot <- ggcorrplot(M,
+  hc.order = TRUE,
+  type = "lower",
+  lab = TRUE
+)
+ggsave("R/byod/img/correlation_plot.png", correlation_plot, width = 8, height = 6)
+
 # PCA analysis ------------------------------------------------------------------
 # Tutorial: http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/
 # https://rpkgs.datanovia.com/factoextra/index.html
@@ -90,6 +99,20 @@ fviz_pca_ind(res.pca,
 
 # Adding groups according to the quality judgement
 groups <- factor(wine |> drop_na() |> pull(quality))
+
+pca_results <- fviz_pca_biplot(
+  res.pca,
+  geom.ind = "point", # Show points only (not "text")
+  col.ind = wine |> drop_na() |> pull(quality) |> factor(), # Color by quality
+  palette = "jco", # Color palette
+  # addEllipses = TRUE, # Add concentration ellipses
+  label = "var", # Label variables
+  col.var = "black", # Color of variables
+  repel = TRUE
+) + # Avoid text overlapping
+  labs(color = "Quality", shape = "Quality")
+
+# ggsave("R/byod/img/pca_results.png", pca_results, width = 8, height = 6)
 
 fviz_pca_ind(res.pca,
   label = "none",

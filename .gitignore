@@ -12,8 +12,6 @@ sessions/slides/*_cache/
 
 tasks/*/*.html
 additional_docs/*.pdf
-R/byod/2023_02_tips/pdb_files/
-R/byod/
 
 /.quarto/
 R/byod/2023_02_tips/Hidago_bulkseq.xlsx
@@ -27,7 +25,6 @@ R/byod/2023_02_tips/dnaseq/raw_counts.tsv
 R/byod/2023_02_tips/dnaseq/DE_results.csv
 /R/quarto_example_files
 /sessions/slides/*_files
-/R/byod/2024_03_tips
 R/random_groups.R
 
 # Ignore all folders with _cache in their names
