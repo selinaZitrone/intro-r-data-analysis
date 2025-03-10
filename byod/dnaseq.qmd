@@ -1,0 +1,77 @@
+---
+title: "RNA-seq Data Analysis"
+format: html
+eval: false
+---
+
+## The Data
+
+This exercise uses RNA-seq data from [FU et al. 2015, *Nature Cell Biology*](https://www.nature.com/articles/ncb3117). The data compares gene expression in luminal cells of pregnant versus lactating mice. You can download the data from [this Zenodo repository](https://zenodo.org/records/2529926) and you can have a look at [this Galaxy tutorial](https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-heatmap2/tutorial.html) for some ideas on how to get started.
+
+The dataset consists of three CSV files:
+
+1.  `heatmap_genes.csv`: A list of interesting genes to analyze (used in Figure 6b of the paper)
+2.  `DE_results.csv`: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes
+3.  `normalized_counts.csv`: Normalized counts for genes across different samples
+
+To simplify the analysis you can consider the following:
+
+- Read the CSV files using `read_csv()`
+- Clean column names with `janitor::clean_names()` to make them easier to work with
+- Combining relevant data frames using `left_join()` (`DE_results` and `normalized_counts` share a common column)
+- Use `select` to remove columns you don’t need for analysis to get a better overview
+- Filter only significant genes ([this tutorial]() defines them as p_value < 0.01 & abs(logFC) > 0.58)
+
+## Questions
+
+#### What are the top 20 most significantly differentially expressed genes?
+-   Tip: Filter the genes based on p-value and log fold change, then order by p-value.
+
+#### Create a heatmap of the top 20 most significant genes. How do the expression patterns differ between pregnant and lactating samples?
+-   Checkout the `pheatmap` package for creating heatmaps.
+
+#### Create a volcano plot to visualize the differential expression results. How many genes are significantly up-regulated or down-regulated?
+
+- First create a simple volcano plot
+- Then you can try to label the 10 most significant genes in the volcano plot
+- Check my R script and/or [this tutorial](https://erikaduan.github.io/posts/2021-01-02-volcano-plots-with-ggplot2/) on how
+to create a volcano plot with ggplot
+
+#### Perform a Principal Component Analysis (PCA) on the top 20 significant genes. What can you conclude about the separation of pregnant and lactating samples?
+-   Tip: Use `prcomp()` for PCA and `factoextra::fviz_pca_ind()` for visualization.
+
+
+## Useful Functions
+
+To complete these tasks, you may find the following R functions and packages helpful:
+
+1.  Data manipulation:
+    - `janitor::clean_names()`: Clean column names
+    - `left_join()`: Combine data frames
+2.  Statistical analysis:
+    - `scale()`: Scale numeric variables
+    - `prcomp()`: Perform Principal Component Analysis
+3.  Visualization:
+    - `pheatmap::pheatmap()`: Create heatmaps (needs a matrix, so you need to reshape your data first into a matrix)
+    - `ggrepel::geom_text_repel()`: Add non-overlapping labels to plots
+    - `factoextra::fviz_pca_ind()`: Visualize PCA results
+4.  Other useful functions:
+    - `as.matrix()`: Convert data frames to matrices
+    - `drop_na()`: Drop rows with missing values (maybe needed for PCA because it doesn't handle missing values)
+    
+## Example analysis
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+![](img/day4/volcano.png)
+:::
+
+:::{.column width="50%"}
+
+
+![](img/day4/heat_top20_2.png)
+:::
+
+:::

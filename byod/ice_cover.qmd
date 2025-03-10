@@ -1,0 +1,91 @@
+---
+title: "Climate Change Effects on Ice Cover and Temperature in North American Lakes"
+format: html
+---
+
+## Data Description
+
+There are two time series data sets from North American lakes since the 19th century:
+
+- ice cover data: ice start, end and duration
+- temperature data: daily air temperature since 1870
+
+This is how the data looks like:
+
+Ice data:
+
+```{r echo=FALSE}
+# install.packages("lterdatasampler")
+library(lterdatasampler)
+head(ntl_icecover)
+```
+
+Temperature data:
+
+```{r echo=FALSE}
+head(ntl_airtemp)
+```
+
+You can analyse the data separately or together to explore the effects of climate change on ice cover and temperature in North American lakes.
+
+### How to get the data
+
+The data are part of the [lterdatasampler package](https://lter.github.io/lterdatasampler/index.html). You can obtain them by installing the package, loading it in your script, and then using the datasets `ntl_icecover` and `ntl_airtemp`:
+
+```{r}
+#| eval: false
+install.packages("lterdatasampler")
+library(lterdatasampler)
+ntl_icecover
+ntl_airtemp
+```
+
+If you want to know more about the variables in the datasets, you can use the `help` function:
+
+```{r}
+#| eval: false
+?ntl_icecover
+?ntl_airtemp
+```
+
+## Questions to Explore
+
+Here are some questions you can try to answer using the datasets:
+
+#### 1. How did the ice cover duration change over the years? Is there a difference between the lakes?
+
+#### 2. How has the average air temperature changed over the years? Can you identify any trends or patterns?
+
+- Tip: Calculate average yearly temperature first.
+
+#### 3. Are there any significant temperature anomalies in the dataset? If so, when did they occur?
+
+  - Tip: You can define an anomaly relative to a reference period (1870-1900). The standardized anomalies are calculated like this: `anomaly_std = (temperature - mean(reference period)) / sd(reference period)`
+  - First, calculate the mean and standard deviation of the reference period and add them as a new column to the data (use `bind_cols` to combine the two tables). Then you can easily calculate the anomalies.
+  - See below for an example plot
+  
+#### 4. How does the temperature curve over one year change with time?
+  - Tip: Calculate mean monthly temperature and plot it over each year.
+  
+#### 5. Is there a correlations between ice cover duration and temperature?
+  - Tip: This is a bit tricky because you need to combine the two datasets. 
+  It makes sense to correlate temperature and ice duration in one winter season (fall season of the year + spring season of the next year) with the mean temperature in that winter.
+  Since a winter spans two years, you need to consider how to calculate average temperature in one winter.
+  First, filter only the winter months (November to April) and change the year of the spring months to the previous year. Then calculate the mean temperature for each winter season.
+  
+## Useful functions
+
+- functions from the [`Lubridate` package](https://lubridate.tidyverse.org/): to work with dates (also part of the tidyverse):
+  - `year()`: extract the year from a date
+  - `month()`: extract the month from a date
+
+- `dplyr` to summarize data and to combine tables:
+  - `left_join()`: to combine two tables by a common column
+  - `bind_cols()`: to combine two tables by columns (just glue them together)
+
+## Example analysis
+
+Here is an example of a plot you can try to create (from question 3):
+
+![](img/temp_anomalies.png)
+

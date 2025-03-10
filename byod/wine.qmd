@@ -1,0 +1,71 @@
+---
+title: "Wine Quality Analysis"
+format: html
+---
+
+## The Data
+
+The dataset used in this analysis is from Cortez et al. (2009), which models wine preferences based on physicochemical properties.
+You can read the data directly from the [ecodata R package](https://github.com/TheoreticalEcology/ecodata) on Github:
+
+```{r}
+library(tidyverse)
+# Define the raw URL for the .rda file
+url <- "https://raw.githubusercontent.com/TheoreticalEcology/ecodata/master/data/wine.rda"
+
+# Load the .rda file directly from the URL
+load(url(url))
+
+# Convert the data to a tibble
+wine <- tibble(wine)
+
+# Checkout the data
+wine
+```
+
+Before analyzing, clean the variable names and ensure the quality variable is treated as a factor.
+
+To prepare the data:
+
+- Transform the quality column to a factor before plotting: use `dplyr::mutate` and `as.factor()` to tranform the column
+- Try the `janitor::clean_names()` function
+
+## Questions
+
+#### 1. How do physicochemical properties relate to wine quality?
+   - Try different visualizations of all the variables
+
+#### 2. What is the correlation between the physicochemical properties?
+   - For this you first need to calculate the correlation matrix and then visualize it
+   - Tip: Use `corrplot()` to visualize the correlation matrix
+
+#### 3. How can Principal Component Analysis (PCA) be used to understand the data?
+   - Tip: Use `prcomp()` for PCA and visualize with `fviz_pca_var()`.
+
+## Useful Functions
+
+- `janitor::clean_names()`: To clean variable names.
+- `cor()`: To calculate correlation matrices.
+- `drop_na()`: To drop missing values before doing the correlation/PCA
+- `corrplot()` from the `corrplot` package: To visualize correlation matrices.
+  - Find the [package documentation](https://taiyun.github.io/corrplot/) here
+- `ggcorrplot` from the `ggcorrplot` pacakge: Alternative visualization for correlation matrices
+  - Find the [package documentation](https://rpkgs.datanovia.com/ggcorrplot/index.html) here
+- `prcomp()`: To perform PCA.
+- `fviz_pca_var()`, `fviz_pca_ind()`, `fviz_pca_biplot()` from the `factoextra` package: For PCA visualization.
+  - Find the [package documentation](https://rpkgs.datanovia.com/factoextra/) here
+  
+## Example analysis
+
+Here is an example of a correlation plot:
+
+![](img/correlation_plot.png)
+
+Here is an example of a PCA result:
+
+![](img/pca_results.png)
+
+## Reference
+
+P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis.
+Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
