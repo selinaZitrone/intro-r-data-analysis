@@ -197,14 +197,15 @@ flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)
   theme(legend.position = "none")
 
 # save as png in /img directory of the project
-ggsave(filename = "img/flipper_box.png",
-       flipper_box,
-       width = 8,
-       height = 8,
-       units = "cm",
-       dpi = 600,
-       scale = 1.3
-      )
+ggsave(
+  filename = "img/flipper_box.png",
+  flipper_box,
+  width = 8,
+  height = 8,
+  units = "cm",
+  dpi = 600,
+  scale = 1.3
+)
 
 # save as pdf in /img directory of the project
 ggsave(filename = "img/flipper_box.pdf", flipper_box)
@@ -287,7 +288,7 @@ esquisse::esquisser(penguins)
 
 # library(tidyverse)
 # library(palmerpenguins)
-#… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).
+# … with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).
 
 # Filter tasks -------------------------------------------------------------------
 
@@ -406,16 +407,6 @@ penguins |>
     y = "Ratio bill length / bill depth (-)"
   ) +
   theme_minimal()
-
-
-# Adding a new column from another tibble:
-another_tibble <- tibble(
-  some_var = rnorm(n = nrow(penguins), mean = 4, sd = 3)
-)
-
-mutate(penguins,
-  col_from_other_tibble = another_tibble$some_var
-)
 
 # Sort tasks --------------------------------------------------------------
 
