@@ -195,9 +195,9 @@ Nice side effect of using Copilot: More good-practice coding
 
 ## Chat with GH copilot in R Studio
 
-- Available through the [`chattr` package](https://blogs.rstudio.com/ai/posts/2024-04-04-chat-with-llms-using-chattr/)
-- Chat with Copilot in the sidebar
-- Also supports other LLMs (e.g. GPT4o, ...)
+- Available through the [`https://ellmer.tidyverse.org/` package](https://blogs.rstudio.com/ai/posts/2024-04-04-chat-with-llms-using-chattr/)
+- Chat with LLMs in the sidebar
+- Needs an API and some setting up
 
 ## Concerns to consider
 

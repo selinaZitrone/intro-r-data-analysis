@@ -370,6 +370,10 @@ summarize(vertebrates,
   )
 ```
 
+. . .
+
+- Combine variables if you want to summarize by more than one group (e.g. `.by = c(species, unittype)`)
+
 ## `count()`
 
 Counts observations by group
@@ -390,9 +394,11 @@ Data transformation often requires **multiple operations** in sequence.
 The pipe operator `|>` helps to keep these operations clear and readable.
 
 - You may also see `%>%` from the `magrittr` package
-- Turn on the native R pipe ` |> ` in **Tools -> Global Options -> Code**
 
 :::{.fragment}
+
+Turn on the native R pipe ` |> ` in **Tools -> Global Options -> Code**
+
 
 ![](img/day2/native-pipe.png){width=50%}
 
@@ -489,7 +495,7 @@ theme_set(theme_bw(base_size = 16))
 ```
 
 
-```{r}
+```{r fig.height=4}
 vertebrates |>
   filter(!is.na(unittype)) |>
   count(year, species, section) |>

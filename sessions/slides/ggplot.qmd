@@ -65,7 +65,7 @@ theme_set(theme_grey(base_size = 16))
 - **Flexible** structure allows you to produce any type of plots
 - Highly **customizable appearance** (themes)
 - Many **extension packages** that provide additional plot types, themes, colors, animation, ...
-  - See [here](https://strengejacke.github.io/sjPlot/index.html) for a list of ggplot extensions
+  - See [here](https://exts.ggplot2.tidyverse.org/gallery/) for a list of ggplot extensions
 - Active community that provides help and inspiration
 - Perfect package for **exploratory data analysis** and **beautiful plots**
 
@@ -1103,7 +1103,7 @@ ggplot(shapes, aes(x, y)) +
   theme_void()
 ```
 
-[Shape](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) and [color](https://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) codes
+[Shape](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) and [color](https://derekogle.com/NCGraphing/resources/colors) codes
 
 :::
 

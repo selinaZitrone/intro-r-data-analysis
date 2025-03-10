@@ -183,14 +183,14 @@ Did anyone have problems installing R and RStudio?
   - Group spaces have their own chat and meetings
   - Ask questions in the chat, share screenshots, share your screen and talk
 
-# Now you (15 min){.inverse}
+# Now you (10 min){.inverse}
 
 > Get to know your team
 
 :::{.nonincremental}
 
 - **Go into your groups** and **start a meeting** there
-- **Introduce yourself** to your team (3 minutes for everyone)
+- **Introduce yourself** to your team (2 minutes for everyone)
   - What is your PhD about?
   - Which tools did you use so far for data analysis?
   - Which types of data analysis do you need?

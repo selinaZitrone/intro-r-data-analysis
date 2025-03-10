@@ -11,7 +11,7 @@ library(tidyverse)
 
 First, complete both tasks before you move to the extras.
 
-**1. `relig_incom`**
+**1. `relig_income`**
 
 Have a look at the `relig_income` data set that is included in tidyverse package.
 The data set contains the results of a survey asking people about their religion and income category.

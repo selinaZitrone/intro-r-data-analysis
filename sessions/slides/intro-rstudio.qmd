@@ -326,7 +326,7 @@ MyProject
 :::{.column width="50%"}
 
 ```md
-Project
+MyProject
 |
 |- data
 |
@@ -373,7 +373,7 @@ Project
 :::{.column width="50%"}
 
 ```md
-Project
+MyProject
 |
 |- data
 |
