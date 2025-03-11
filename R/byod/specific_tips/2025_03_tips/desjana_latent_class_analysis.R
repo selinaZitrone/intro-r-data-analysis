@@ -110,13 +110,55 @@ election <- dplyr::select(
 lca_formula <- cbind(moralg, caresg, knowg, leadg) ~ age + educ + gender_f + party_simple
 
 # na.rm = TRUE because now we have NAs
-lca_model <- poLCA(lca_formula, data = election, nclass = 2, maxiter = 3000, na.rm = TRUE)
+lca_model <- poLCA(lca_formula,
+  data = election, nclass = 2, maxiter = 3000,
+  na.rm = TRUE
+)
 
 # Interpretation of the results:
+str(lca_model)
+
+# Extract results and put in nice table ----------------------------------------
+
+# Extract probabilites as tibble for each item in the list
+step_1 <- map_dfr(
+  lca_model$probs,
+  as.data.frame
+)
+
+# Convert to tibble, convert rownames to a column
+step_2 <- as_tibble(step_1, rownames = "class")
+
+# turn class into a single number
+step_2 <- mutate(
+  step_2,
+  class = case_when(
+    str_detect(class, "class 1") ~ "class_1",
+    str_detect(class, "class 2") ~ "class_2"
+  )
+)
 
 
+# Add motiviation as a column from the names of the probability list
+motivation <- rep(names(lca_model$probs), each = 2) # in your case 3
 
-# Plot the results
+step_3 <- mutate(step_2, motivation = motivation)
+
+# clean up the column names
+step_4 <- janitor::clean_names(step_3)
+
+# Reformat the table:
+step_5 <- pivot_longer(step_4,
+  cols = !c(class, motivation),
+  names_to = "likert_scale",
+  values_to = "probs"
+)
+step_6 <- pivot_wider(step_5,
+  names_from = class,
+  values_from = probs
+)
+
+# Plot the results -----------------------------------------------------------
 
 # First we can extract the model coefficients (i.e. the effect size)
 lca_model$coeff
@@ -171,3 +213,31 @@ ggplot(probs_df, aes(x = response, y = probability, fill = class)) +
   ) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+library(haven)
+
+master_data <- read_sav("R/byod/specific_tips/2025_03_tips/data/Master data.sav")
+
+# Step 1: Simplify and pivot the master data
+master_data_simple <- master_data %>%
+  select(ID, RM1:RM8) |>
+  # Convert haven_labelled to regular R types before pivoting
+  mutate(across(RM1:RM8, ~ as.numeric(zap_labels(.)))) %>%
+  # Now pivot the data
+  pivot_longer(cols = RM1:RM8, names_to = "Motivation", values_to = "likert_scale")
+
+# Step 2: Calculate how many answers in each Motivation cat
+
+master_data %>%
+  select(ID, RM1:RM8) |>
+  # Convert haven_labelled to regular R types before pivoting
+  mutate(across(RM1:RM8, ~ as.numeric(zap_labels(.)))) %>%
+  # Now pivot the data
+  pivot_longer(cols = RM1:RM8, names_to = "Motivation", values_to = "likert_scale") %>%
+  group_by(Motivation, likert_scale) %>%
+  summarise(
+    count_answers = n(),
+    percentage_answers = n() / nrow(master_data) * 100,
+    .groups = "drop"
+  )
