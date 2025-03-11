@@ -858,168 +858,63 @@
     "href": "sessions/slides/bring-your-own-data.html#organization",
     "title": "Bring your own data",
     "section": "Organization",
-    "text": "Organization\nSchedule of today\n\nNow - 14 (or 14.30 if you are enthusiastic still): Work on the data set(s)\n\nTake break(s) as best fits your needs\n\n14 (14.30) - 15: Short feedback round\n\nWhat did you find out about your data set? Plots, summaries, …\nWhich methods did you use?\nDid you learn something new?\nWas there something you struggled with?\n…\n\n15-16: Feedback, conclusion"
+    "text": "Organization\nSchedule of today\n\nNow - 14.30: Work on the data set(s)\n\nTake break(s) as best fits your needs\n\n14.30 - 15: Short feedback round\n\nWhat did you find out about your data set? Plots, summaries, …\nWhich methods did you use?\nDid you learn something new?\nWas there something you struggled with?\n…\n\n15-16: Feedback, conclusion"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#data-set-1-what-makes-a-good-wine",
     "href": "sessions/slides/bring-your-own-data.html#data-set-1-what-makes-a-good-wine",
     "title": "Bring your own data",
     "section": "Data set 1: What makes a good wine?",
-    "text": "Data set 1: What makes a good wine?\nPhysicochemical properties of wine and quality judgements\n\n\nError in loadNamespace(x): there is no package called 'EcoData'\n\n\n\n\nReference: P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009."
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-1-what-makes-a-good-wine-1",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-1-what-makes-a-good-wine-1",
-    "title": "Bring your own data",
-    "section": "Data set 1: What makes a good wine?",
-    "text": "Data set 1: What makes a good wine?\n\n\nIdeas - know methods\n\nPlot of wine quality against chemical properties\nPlot of distribution of chemical properties\nSummary tables using dplyr\n\nIdeas - new methods\n\nCorrelation plots: How are the different wine properties correlated with each other?\nPCA: How are the wine properties related to each other?\n\n\n\n\n\nFrederik Vandaele - originally posted to Flickr as Château Pétrus, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=5145286"
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-1-what-makes-a-good-wine-2",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-1-what-makes-a-good-wine-2",
-    "title": "Bring your own data",
-    "section": "Data set 1: What makes a good wine?",
-    "text": "Data set 1: What makes a good wine?\n\n\nHints\n\nTransform the quality column to a factor before plotting: use dplyr::mutate and as.factor() to tranform the column\nTry the janitor::clean_names() function\n\n\n\n\n\nFrederik Vandaele - originally posted to Flickr as Château Pétrus, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=5145286"
+    "text": "Data set 1: What makes a good wine?\n\n\nsee here\n\n\n\n\nFrederik Vandaele - originally posted to Flickr as Château Pétrus, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=5145286"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#data-set-2-paralympic-games-from-1980-2016",
     "href": "sessions/slides/bring-your-own-data.html#data-set-2-paralympic-games-from-1980-2016",
     "title": "Bring your own data",
     "section": "Data set 2: Paralympic games from 1980-2016",
-    "text": "Data set 2: Paralympic games from 1980-2016\nMost important variables:\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ngender\ncharacter\nBinary gender\n\n\nevent\ncharacter\nEvent name\n\n\nmedal\ncharacter\nMedal type\n\n\nathlete\ncharacter\nAthlete name (LAST NAME first name\n\n\nabb\ncharacter\nCountry abbreviation\n\n\ncountry\ncharacter\nCountry name\n\n\ntype\ncharacter\nType of sport\n\n\nyear\ndouble\nyear of games\n\n\n\n\n\nSource: International Paralympic Committee (provided by tidytuesday)"
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-2-paralympic-games-from-1980-2016-1",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-2-paralympic-games-from-1980-2016-1",
-    "title": "Bring your own data",
-    "section": "Data set 2: Paralympic games from 1980-2016",
-    "text": "Data set 2: Paralympic games from 1980-2016\nGet the data:\n\nathletes &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-03/athletes.csv')\n\nIdeas - know methods\n\nCreate summaries of medal counts for different groups with dplyr\nDid the ratio of men/women winning medals change over time?\nWhich countries were the most successful ones? Does this differ between sports type?\n\nWhich types of sports accumulated the most medals?\n\nMake plots such as:\n\nAge distribution of athletes winning gold, silver and bronze\nCompare the total number of medals over the years between winter and summer Olympics"
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-2-paralympic-games-from-1980-2016-2",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-2-paralympic-games-from-1980-2016-2",
-    "title": "Bring your own data",
-    "section": "Data set 2: Paralympic games from 1980-2016",
-    "text": "Data set 2: Paralympic games from 1980-2016\nHints\n\nTo reduce complexity of the data, first filter only the athletes that won a medal (!is.na(medal))"
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-3-crab-data-set",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-3-crab-data-set",
-    "title": "Bring your own data",
-    "section": "Data set 3: Crab data set",
-    "text": "Data set 3: Crab data set\n\n\nAtlantic marsh fiddler crab (Minuca pugnax)\n\nCrab from Florida is expanding northward due to ocean warming\nData on 13 marshes across a range of latitude in the USA\nRecording of the size of of the crab\nRather small and good to handle\n\n\n\n\n\nImage by LTER under CC BY-SA 4.0\n\n\n\n\n\nSource: Johnson, D. 2019. Fiddler crab body size in salt marshes from Florida to Massachusetts, USA at PIE and VCR LTER and NOAA NERR sites during summer 2016. ver 1. Environmental Data Initiative."
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-3-crab-data-set-1",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-3-crab-data-set-1",
-    "title": "Bring your own data",
-    "section": "Data set 3: Crab data set",
-    "text": "Data set 3: Crab data set\n\n\n        date latitude site  size air_temp air_temp_sd water_temp water_temp_sd\n1 2016-07-24       30  GTM 12.43   21.792       6.391     24.502         6.121\n2 2016-07-24       30  GTM 14.18   21.792       6.391     24.502         6.121\n3 2016-07-24       30  GTM 14.52   21.792       6.391     24.502         6.121\n4 2016-07-24       30  GTM 12.94   21.792       6.391     24.502         6.121\n5 2016-07-24       30  GTM 12.45   21.792       6.391     24.502         6.121\n6 2016-07-24       30  GTM 12.99   21.792       6.391     24.502         6.121\n                          name\n1 Guana Tolomoto Matanzas NERR\n2 Guana Tolomoto Matanzas NERR\n3 Guana Tolomoto Matanzas NERR\n4 Guana Tolomoto Matanzas NERR\n5 Guana Tolomoto Matanzas NERR\n6 Guana Tolomoto Matanzas NERR\n\n\n\n\nSource: Johnson, D. 2019. Fiddler crab body size in salt marshes from Florida to Massachusetts, USA at PIE and VCR LTER and NOAA NERR sites during summer 2016. ver 1. Environmental Data Initiative."
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-3-crab-data-set-2",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-3-crab-data-set-2",
-    "title": "Bring your own data",
-    "section": "Data set 3: Crab data set",
-    "text": "Data set 3: Crab data set\n\n\nIdeas - known methods\n\nExplore Bergmann’s rule (organisms are large in higher latitudes)\nt-tests to compare size between locations\nPlot relationship between latitude and size\nPlot distributions of variables\n\n\n\n\n\nImage by LTER under CC BY-SA 4.0\n\n\n\n\n\nSource: Johnson, D. 2019. Fiddler crab body size in salt marshes from Florida to Massachusetts, USA at PIE and VCR LTER and NOAA NERR sites during summer 2016. ver 1. Environmental Data Initiative."
+    "text": "Data set 2: Paralympic games from 1980-2016\nsee here"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#data-set-4-ice-cover-and-temperature",
     "href": "sessions/slides/bring-your-own-data.html#data-set-4-ice-cover-and-temperature",
     "title": "Bring your own data",
     "section": "Data set 4: Ice cover and temperature",
-    "text": "Data set 4: Ice cover and temperature\n\n\nTemperature and ice duration on lakes since 19th century\n\n2 data sets with measurements of\n\nice start, end and duration on 2 lakes in Wisconsin\ndaily air temperature since 1870\n\nExplore the effect of climate change on ice cover\n\n\n\n\n\nImage by LTER under CC BY-SA 4.0\n\n\n\n\n\nSource ice data: Magnuson, J.J., S.R. Carpenter, and E.H. Stanley. 2021. North Temperate Lakes LTER: Ice Duration - Madison Lakes Area 1853 - current ver 35. Environmental Data Initiative.\nSource temperature data: Anderson, L. and D. Robertson. 2020. Madison Wisconsin Daily Meteorological Data 1869 - current ver 32. Environmental Data Initiative."
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-4-ice-cover-and-temperature-1",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-4-ice-cover-and-temperature-1",
-    "title": "Bring your own data",
-    "section": "Data set 4: Ice cover and temperature",
-    "text": "Data set 4: Ice cover and temperature\nIce data:\n\n\n        lakeid     ice_on    ice_off ice_duration year\n1 Lake Mendota       &lt;NA&gt; 1853-04-05           NA 1852\n2 Lake Mendota 1853-12-27       &lt;NA&gt;           NA 1853\n3 Lake Mendota 1855-12-18 1856-04-14          118 1855\n4 Lake Mendota 1856-12-06 1857-05-06          151 1856\n5 Lake Mendota 1857-11-25 1858-03-26          121 1857\n6 Lake Mendota 1858-12-08 1859-03-14           96 1858\n\n\nTemperature data:\n\n\n  sampledate year ave_air_temp_adjusted\n1 1870-06-05 1870                  20.0\n2 1870-06-06 1870                  18.3\n3 1870-06-07 1870                  17.5\n4 1870-06-09 1870                  13.3\n5 1870-06-10 1870                  13.9\n6 1870-06-11 1870                  15.0"
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-4-ice-cover-and-temperature-2",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-4-ice-cover-and-temperature-2",
-    "title": "Bring your own data",
-    "section": "Data set 4: Ice cover and temperature",
-    "text": "Data set 4: Ice cover and temperature\n\n\nIdeas - known methods\n\nHow did ice cover duration change over the years?\nHow did air temperature change over the years?\n\nSummarize mean annual temperature or mean temperature in winter\n\nHow do ice duration on the lakes correlate with temperature (e.g. with mean winter temperature)\n\n\n\n\n\nImage by LTER under CC BY-SA 4.0"
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-4-ice-cover-and-temperature-3",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-4-ice-cover-and-temperature-3",
-    "title": "Bring your own data",
-    "section": "Data set 4: Ice cover and temperature",
-    "text": "Data set 4: Ice cover and temperature\nHints\n\nFor some plots it might make sense to summarize annual means first\nUse dplyr::left_join to combined the tables with annual mean temperature and ice duration\n\nHave a look at the last slides of the dplyr session or look at the help\nAsk me if you need help with this"
+    "text": "Data set 4: Ice cover and temperature\n\n\nsee here\n\n\n\n\nImage by LTER under CC BY-SA 4.0\n\n\n\n\n\nSource ice data: Magnuson, J.J., S.R. Carpenter, and E.H. Stanley. 2021. North Temperate Lakes LTER: Ice Duration - Madison Lakes Area 1853 - current ver 35. Environmental Data Initiative.\nSource temperature data: Anderson, L. and D. Robertson. 2020. Madison Wisconsin Daily Meteorological Data 1869 - current ver 32. Environmental Data Initiative."
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data",
     "href": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data",
     "title": "Bring your own data",
     "section": "Data set 5: RNAseq data",
-    "text": "Data set 5: RNAseq data\n\nData from FU et al. 2015, Nature Cell Biology\nData found via Tutorial on heat maps using this data\n3 csv files:\n\nheatmap_genes.csv: A list of the names of interesting genes to look at (Genes used in Figure 6b in paper)\nDE_results.csv: Gene expression in luminal cells in pregnant versus lactating mice\n\nlogFC, AveExpr, t, p-value\nAlso contains non-significantly expressed genes\n\nnormalized_counts: Normalized counts for genes for the different samples"
+    "text": "Data set 5: RNAseq data\nsee here\n\n\n Download example script"
   },
   {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data-1",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data-1",
+    "objectID": "sessions/slides/bring-your-own-data.html#new-methods-read-multiple-files-at-once",
+    "href": "sessions/slides/bring-your-own-data.html#new-methods-read-multiple-files-at-once",
     "title": "Bring your own data",
-    "section": "Data set 5: RNAseq data",
-    "text": "Data set 5: RNAseq data\n\n\nIdeas:\n\nCreate a heatmap of the top 20 most significant genes (see plot in the tutorial)\nCreate a heatmap of the interesting genes (see Fig. 6 in the paper)\nCreate a volcano plot of the data similar to the one here"
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data-2",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data-2",
-    "title": "Bring your own data",
-    "section": "Data set 5: RNAseq data",
-    "text": "Data set 5: RNAseq data"
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data-3",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data-3",
-    "title": "Bring your own data",
-    "section": "Data set 5: RNAseq data",
-    "text": "Data set 5: RNAseq data\nSome tips:\nData cleaning:\n\nRead in the data and then use the janitor::clean_names function to make the column headers nicer\nJoin DE_results and normalized_counts by their shared columns\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (tutorial) defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)"
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data-4",
-    "href": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data-4",
-    "title": "Bring your own data",
-    "section": "Data set 5: RNAseq data",
-    "text": "Data set 5: RNAseq data\nSome tips:\nData analysis:\n\nHeatmap with ggplot or with pheatmap::pheatmap()\n\npheatmap takes a matrix as input (use as_matrix on tibble to transform)\n\nscale the counts -&gt; have a look at the scale function\n\npheatmap can scale but with ggplot you have to scale before plotting"
+    "section": "New methods: Read multiple files at once",
+    "text": "New methods: Read multiple files at once\n\nIf you have multiple files with data you can\n\nRead them all in at the same time\nCombine them into one tibble\n\n\n\n\n Download example script"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#new-methods-correlation-plots",
     "href": "sessions/slides/bring-your-own-data.html#new-methods-correlation-plots",
     "title": "Bring your own data",
     "section": "New methods: Correlation plots",
-    "text": "New methods: Correlation plots"
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#new-methods-correlation-plots-1",
-    "href": "sessions/slides/bring-your-own-data.html#new-methods-correlation-plots-1",
-    "title": "Bring your own data",
-    "section": "New methods: Correlation plots",
-    "text": "New methods: Correlation plots"
+    "text": "New methods: Correlation plots\n\n\n Download example script"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#new-methods-pcas",
     "href": "sessions/slides/bring-your-own-data.html#new-methods-pcas",
     "title": "Bring your own data",
     "section": "New methods: PCAS",
-    "text": "New methods: PCAS"
-  },
-  {
-    "objectID": "sessions/slides/bring-your-own-data.html#new-methods-correlation-plots-and-pcas",
-    "href": "sessions/slides/bring-your-own-data.html#new-methods-correlation-plots-and-pcas",
-    "title": "Bring your own data",
-    "section": "New methods: Correlation plots and PCAS",
-    "text": "New methods: Correlation plots and PCAS\n\ncorrplot package for correlation plots\nfactoextra package for PCA visualization\nTutorial for PCAs in R, PCA tutorial for penguins\nCorrelations and PCAs do not work with NA values: use tidyr::drop_na() to remove all NA values from the data first\nThese plots work for: penguins, wine, piecrab dataset"
+    "text": "New methods: PCAS\n\n\n Download example script"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#some-general-tips",
     "href": "sessions/slides/bring-your-own-data.html#some-general-tips",
     "title": "Bring your own data",
     "section": "Some general tips",
-    "text": "Some general tips\n\n\nFirst make a plan:\n\nWhat do you want to achieve and what are the steps?\nTry to think in technical terms\nStart with something small, e.g. reading in the data and bringing it into the right format.\nIf you want, stop by in general to discuss your plan or write me in the chat\n\nGoogle\nIf you get stuck, ask in the chat or stop by in General\nHave a look at the package cheat sheets"
+    "text": "Some general tips\n\n\nFirst make a plan:\n\nWhat do you want to achieve and what are the steps?\nStart with something small, e.g. reading in the data and bringing it into the right format.\nIf you want, stop by in general to discuss your plan or write me in the chat\n\nGoogle, ask AI tools if you want, look at the function help (?)\n\nHint: Set your RStudio error messages to English: Sys.setenv(LANGUAGE='en') in the console\n\nIf you get stuck, ask in the chat or stop by in General"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#sharing",
@@ -1054,7 +949,7 @@
     "href": "sessions/slides/bring-your-own-data.html#conclusion-1",
     "title": "Bring your own data",
     "section": "Conclusion",
-    "text": "Conclusion\nHow to continue from here?\n\n\n\nLearning by doing!\nHave a look at some online ressoures, I recommend the R for Data Science book by Hadley Wickham\nIf you like plotting: Consider participating in the tidytuesday\nFU statistical consulting for questions regarding statistical methods\nR Consulting by me\nTools and Tips lecture\n\n\n\n\n\nArtwork by Allison Horst"
+    "text": "Conclusion\nHow to continue from here?\n\n\n\nLearning by doing!\nHave a look at some online ressoures\nFU statistical consulting for questions regarding statistical methods\nR Consulting by me\nTools and Tips lecture\n\n\n\n\n\nArtwork by Allison Horst"
   },
   {
     "objectID": "sessions/slides/00_organization.html#im-using-a-lot-for",
