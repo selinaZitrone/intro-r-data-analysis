@@ -9,6 +9,8 @@ The dataset used in this analysis is from Cortez et al. (2009), which models win
 You can read the data directly from the [ecodata R package](https://github.com/TheoreticalEcology/ecodata) on Github:
 
 ```{r}
+#| message: false
+
 library(tidyverse)
 # Define the raw URL for the .rda file
 url <- "https://raw.githubusercontent.com/TheoreticalEcology/ecodata/master/data/wine.rda"
@@ -64,6 +66,18 @@ Here is an example of a correlation plot:
 Here is an example of a PCA result:
 
 ![](img/pca_results.png)
+
+```{r echo=FALSE, message=FALSE}
+downloadthis::download_file(
+  path = here::here("R/byod/solutions_for_my_datasets/wine.R"),
+  output_name = "solution_wine",
+  button_label = "Download solution script",
+  button_type = "default",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 ## Reference
 

@@ -9,8 +9,18 @@ library(factoextra) # PCA analysis visualizations
 
 # Prepare the data --------------------------------------------------------
 
-wine <- read_csv("data/wine.csv")
-# clean the names
+# Define the raw URL for the .rda file
+url <- "https://raw.githubusercontent.com/TheoreticalEcology/ecodata/master/data/wine.rda"
+
+# Load the .rda file directly from the URL
+load(url(url))
+
+# Convert the data to a tibble
+wine <- tibble(wine)
+
+# Checkout the data
+wine
+
 wine <- janitor::clean_names(wine)
 
 names(wine)
@@ -57,8 +67,16 @@ M <- wine |>
   drop_na() |>
   cor()
 
+# Or do a correlation plot with the quality column (but first convert the
+# factor back to a numeric column)
+M_with_quality <- wine |>
+  mutate(quality = as.numeric(quality)) |>
+  drop_na() |>
+  cor()
+
 # Create correlation plots
 corrplot(M)
+corrplot(M_with_quality)
 corrplot.mixed(M)
 corrplot.mixed(M, lower = "shade", upper = "pie", order = "hclust")
 

@@ -36,7 +36,7 @@ olympics <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/t
 For most analysis, you can simplify the dataset by filtering to include only medal winners (rows with non-missing medal information).
 
 ```{r}
-olympics_medal <- olympics |> 
+olympics_medal <- olympics |>
   filter(!is.na(medal))
 ```
 
@@ -70,3 +70,15 @@ the data before plotting.
 Here is an example of a plot you can try to create (from question 3):
 
 ![](img/top_medals.png)
+
+```{r echo=FALSE, message=FALSE}
+downloadthis::download_file(
+  path = here::here("R/byod/solutions_for_my_datasets/olympics.R"),
+  output_name = "solution_paralympics",
+  button_label = "Download solution script",
+  button_type = "default",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```

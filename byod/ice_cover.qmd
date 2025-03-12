@@ -89,3 +89,13 @@ Here is an example of a plot you can try to create (from question 3):
 
 ![](img/temp_anomalies.png)
 
+```{r echo=FALSE, message=FALSE}
+downloadthis::download_file(
+  path = here::here("R/byod/solutions_for_my_datasets/ice_cover.R"),
+  output_name = "solution_for_rna_data",
+  button_label = "Download solution script",
+  button_type = "default",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)

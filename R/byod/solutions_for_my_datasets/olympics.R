@@ -30,7 +30,7 @@ olympics_medal |>
 
 # make the plot nice
 olympics_medal |>
-  mutate(medal = factor(medal, levels = c("Gold","Silver", "Bronze"))) |>
+  mutate(medal = factor(medal, levels = c("Gold", "Silver", "Bronze"))) |>
   ggplot(aes(x = age, fill = medal)) +
   geom_histogram() +
   facet_grid(sex ~ medal, scales = "free_y") +
@@ -41,7 +41,7 @@ olympics_medal |>
 # Looks like age distribution is the same for the medals
 # Make the same plot but this time layer the medals on top of each other
 olympics_medal |>
-  mutate(medal = factor(medal, levels = c("Gold","Silver", "Bronze"))) |>
+  mutate(medal = factor(medal, levels = c("Gold", "Silver", "Bronze"))) |>
   ggplot(aes(x = age, fill = medal)) +
   geom_histogram(alpha = 0.5, position = "identity") +
   facet_wrap(~sex, scales = "free_y") +
@@ -52,11 +52,11 @@ olympics_medal |>
 # Look at the count of medals and compare male and female athletes
 # Looks like male athletes win much more medals than female athletes
 olympics_medal |>
-  mutate(medal = factor(medal, levels = c("Gold","Silver", "Bronze"))) |>
+  mutate(medal = factor(medal, levels = c("Gold", "Silver", "Bronze"))) |>
   ggplot(aes(x = age, fill = sex)) +
   geom_histogram(alpha = 0.5, position = "identity") +
   facet_wrap(~medal, scales = "free_y") +
-  scale_fill_manual(values = c("darkorange","cyan4")) +
+  scale_fill_manual(values = c("darkorange", "cyan4")) +
   theme_minimal()
 
 # Compare medals for male and female athletes -----------------------------
@@ -78,7 +78,7 @@ olympics_medal |>
 
 # Plot the actual ratio (should be 1 in a perfect world)
 olympics_medal |>
-  count(sex,year) |>
+  count(sex, year) |>
   pivot_wider(names_from = sex, values_from = n) |>
   mutate(ratio_m_f = F / M) |>
   ggplot(aes(x = year, y = ratio_m_f)) +
@@ -146,6 +146,8 @@ top_medals <- year_count |>
     panel.grid = element_blank()
   )
 
+top_medals
+
 ggsave("R/byod/img/top_medals.png", top_medals, width = 12, height = 8)
 
 # Compare medal counts in winter and summer -------------------------------
@@ -180,5 +182,7 @@ top_participants <- olympics |>
 ggplot(top_participants, aes(x = reorder(name, games_count), y = games_count)) +
   geom_col() +
   coord_flip() +
-  labs(title = "Top 20 Athletes by Number of Olympic Games Participated",
-       x = "Athlete Name", y = "Number of Olympic Games")
+  labs(
+    title = "Top 20 Athletes by Number of Olympic Games Participated",
+    x = "Athlete Name", y = "Number of Olympic Games"
+  )

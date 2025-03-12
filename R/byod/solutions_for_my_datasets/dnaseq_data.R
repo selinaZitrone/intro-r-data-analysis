@@ -1,28 +1,11 @@
 library(tidyverse)
 
-
-# This was just for me to prepare -----------------------------------------
-
-# https://galaxyproject.github.io/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-heatmap2/tutorial.html
-# https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html#Fu2015
-# heatmap_genes <- read_tsv("R/byod/2023_02_tips/dnaseq/heatmap_genes")
-# write_csv(heatmap_genes, "R/byod/2023_02_tips/dnaseq/heatmap_genes.csv")
-# # Comparing gene expression in luminal cells in pregnant vs. lactating mice
-# # includes genes that are not significantly differentially expressed
-# # significantly expressed means p<0.01 and abs(log2FC) > 0.58
-# DE_results <- read_tsv("R/byod/2023_02_tips/dnaseq/limma-voom_luminalpregnant-luminallactate")
-# write_csv(DE_results, "R/byod/2023_02_tips/dnaseq/DE_results.csv")
-# Normalized counts for different samples (in columns)
-# normalized_counts <- read_tsv("R/byod/2023_02_tips/dnaseq/limma-voom_normalised_counts")
-# write_csv(normalized_counts, "R/byod/2023_02_tips/dnaseq/normalized_counts.csv")
-
-
 # Start analysis ----------------------------------------------------------
 
-heatmap_genes <- read_csv("R/byod/2023_02_tips/dnaseq/heatmap_genes.csv")
-DE_results <- read_csv("R/byod/2023_02_tips/dnaseq/DE_results.csv")
+heatmap_genes <- read_tsv("R/byod/solutions_for_my_datasets/data/heatmap_genes")
+DE_results <- read_tsv("R/byod/solutions_for_my_datasets/data/limma-voom_luminalpregnant-luminallactate")
 DE_results <- janitor::clean_names(DE_results)
-normalized_counts <- read_csv("R/byod/2023_02_tips/dnaseq/normalized_counts.csv")
+normalized_counts <- read_tsv("R/byod/solutions_for_my_datasets/data/limma-voom_normalised_counts")
 normalized_counts <- janitor::clean_names(normalized_counts)
 
 # combine tables
@@ -98,7 +81,7 @@ heat2 <- top_20_genes_matrix %>%
     show_rownames = TRUE
   )
 
-#ggsave("img/heat_top20_2.png", heat2)
+# ggsave("img/heat_top20_2.png", heat2)
 
 # PCA to see clustering ---------------------------------------------------
 pcres <- top_20_genes %>%
@@ -189,4 +172,4 @@ volc <- DE_results %>%
     legend.position = "bottom",
     legend.title = element_blank()
   )
-#ggsave("img/volcano.png", volc)
+# ggsave("img/volcano.png", volc)

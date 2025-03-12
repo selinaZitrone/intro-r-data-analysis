@@ -13,6 +13,7 @@ project:
     - "R/Tasks/"
     - "data/read_challenge/*"
     - "R/byod/general_tips/*"
+    - "R/byod/solutions_for_my_datasets/*.R"
 
 website:
   page-navigation: true

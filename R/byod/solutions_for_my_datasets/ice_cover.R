@@ -6,6 +6,7 @@
 # Load required libraries
 library(tidyverse)
 library(lterdatasampler)
+library(performance)
 
 # Display the datasets
 ntl_icecover
@@ -138,6 +139,9 @@ temp_anomalies <- ggplot(
   ) +
   scale_y_continuous(breaks = seq(-3, 3, 1))
 
+temp_anomalies
+
+# Adjust the path to something that exists in your project
 ggsave("img/temp_anomalies.png", temp_anomalies)
 
 # Temperature anomalies for each month -----------------------------------------
@@ -177,8 +181,10 @@ anomalies_polar <- ggplot(ntl_airtemp_month, aes(
     color = "Year"
   )
 
+anomalies_polar
+
 # Animate the plot with gganimate
-library(gganimate)
+library(gganimate) # install.packages("gganimate")
 anomalies_animation <- animate(
   anomalies_polar +
     transition_reveal(year),

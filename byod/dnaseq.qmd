@@ -8,19 +8,40 @@ eval: false
 
 This exercise uses RNA-seq data from [FU et al. 2015, *Nature Cell Biology*](https://www.nature.com/articles/ncb3117). The data compares gene expression in luminal cells of pregnant versus lactating mice. You can download the data from [this Zenodo repository](https://zenodo.org/records/2529926) and you can have a look at [this Galaxy tutorial](https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-heatmap2/tutorial.html) for some ideas on how to get started.
 
-The dataset consists of three CSV files:
+The dataset consists of three files (no file extension, but tab separated):
 
-1.  `heatmap_genes.csv`: A list of interesting genes to analyze (used in Figure 6b of the paper)
-2.  `DE_results.csv`: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes
-3.  `normalized_counts.csv`: Normalized counts for genes across different samples
+1.  `heatmap_genes` A list of interesting genes to analyze (used in Figure 6b of the paper)
+2.  `limma-voom_luminalpregnant-luminallactate`: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes
+3.  `limma-voom_normalised_counts`: Normalized counts for genes across different samples
 
 To simplify the analysis you can consider the following:
 
-- Read the CSV files using `read_csv()`
+- Read the files using `read_tsv()`
 - Clean column names with `janitor::clean_names()` to make them easier to work with
-- Combining relevant data frames using `left_join()` (`DE_results` and `normalized_counts` share a common column)
+- Combining relevant data frames using `left_join()` (`limma-voom_luminalpregnant-luminallactate` and `limma-voom_normalised_counts` share a common column)
 - Use `select` to remove columns you don’t need for analysis to get a better overview
-- Filter only significant genes ([this tutorial]() defines them as p_value < 0.01 & abs(logFC) > 0.58)
+- Filter only significant genes ([this tutorial](https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-heatmap2/tutorial.html) defines them as p_value < 0.01 & abs(logFC) > 0.58)
+
+It is a bit tricky to read in the data correctly, so if you need a hint, you can 
+unfold the code below
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Expand to see how to read the data"
+
+# Read all the files and clean the column names
+heatmap_genes <- read_tsv("R/byod/solutions_for_my_datasets/data/heatmap_genes")
+DE_results <- read_tsv("R/byod/solutions_for_my_datasets/data/limma-voom_luminalpregnant-luminallactate")
+DE_results <- janitor::clean_names(DE_results)
+normalized_counts <- read_tsv("R/byod/solutions_for_my_datasets/data/limma-voom_normalised_counts")
+normalized_counts <- janitor::clean_names(normalized_counts)
+
+# combine tables
+genes <- left_join(DE_results, normalized_counts, by = c("entrezid", "symbol", "genename")) %>%
+  select(-entrezid, genename)
+```
+
 
 ## Questions
 
@@ -75,3 +96,15 @@ To complete these tasks, you may find the following R functions and packages hel
 :::
 
 :::
+
+```{r echo=FALSE, message=FALSE}
+downloadthis::download_file(
+  path = here::here("R/byod/solutions_for_my_datasets/dnaseq_data.R"),
+  output_name = "solution_for_rna_data",
+  button_label = "Download solution script",
+  button_type = "default",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
