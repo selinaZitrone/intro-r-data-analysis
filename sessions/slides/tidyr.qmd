@@ -52,9 +52,11 @@ Let's look at some examples
 
 **Tidy**
 ```{r echo=FALSE}
-data.frame(id = 1:6,
-           name = c("floof", "max", "cat", "donut", "merlin", "panda"),
-           color = c("gray", "black", "orange", "gray", "black", "calico")) |> 
+data.frame(
+  id = 1:6,
+  name = c("floof", "max", "cat", "donut", "merlin", "panda"),
+  color = c("gray", "black", "orange", "gray", "black", "calico")
+) |>
   knitr::kable()
 ```
 
@@ -66,21 +68,25 @@ data.frame(id = 1:6,
 
 **Non-tidy**
 ```{r echo=FALSE}
-data.frame(floof = "gray",
-           max = "black",
-           cat = "orange",
-           donut = "gray",
-           merlin = "black",
-           panda = "calico") |> 
+data.frame(
+  floof = "gray",
+  max = "black",
+  cat = "orange",
+  donut = "gray",
+  merlin = "black",
+  panda = "calico"
+) |>
   knitr::kable()
 ```  
 
 <br>
 ```{r echo=FALSE}
-data.frame(gray = c("floof", "donut"),
-           black = c("max", "merlin"),
-           orange = c("cat", ""),
-           calico = c("panda", "")) |> 
+data.frame(
+  gray = c("floof", "donut"),
+  black = c("max", "merlin"),
+  orange = c("cat", ""),
+  calico = c("panda", "")
+) |>
   knitr::kable()
 ```  
 
@@ -108,18 +114,26 @@ The main advantages of **tidy** data is that the `tidyverse` packages are built 
 Let's go back to the city data set from earlier:
 
 
-```{r echo=FALSE}
-cities_v <- c("Istanbul", "Moscow", "London", "Saint Petersburg", "Berlin", "Madrid", "Kyiv", "Rome", "Bucharest", "Paris")
-population <- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)
-area_km2 <- c(2576, 2561, 1572, 1439,891,604, 839, 1285, 228, 105 )
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Expand to reproduce the data"
 
-country <- c("Turkey", "Russia", "UK", "Russia", "Germany", "Spain",
-                        "Ukraine", "Italy", "Romania", "France")
+cities <- c("Istanbul", "Moscow", "London", "Saint Petersburg", "Berlin", "Madrid", "Kyiv", "Rome", "Bucharest", "Paris")
+population <- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)
+area_km2 <- c(2576, 2561, 1572, 1439, 891, 604, 839, 1285, 228, 105)
+
+country <- c(
+  "Turkey", "Russia", "UK", "Russia", "Germany", "Spain",
+  "Ukraine", "Italy", "Romania", "France"
+)
 # tidy
-cities_tbl <- tibble(city = cities_v,
-           population = population,
-           area_km2 = area_km2,
-           country = country)
+cities_tbl <- tibble(
+  city_name = cities,
+  population_size = population,
+  city_area = area_km2,
+  country = country
+)
 ```
 
 ```{r}
@@ -132,15 +146,21 @@ This already looks pretty tidy.
 
 ## Same data different format
 
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Expand to reproduce the data"
+cities_untidy <- unite(cities_tbl, col = "location", c(country, city_name)) |>
+  pivot_longer(c(population_size, city_area), names_to = "type") |>
+  pivot_wider(names_from = "location", values_from = "value")
+```
+
 ```{r eval=FALSE}
 cities_untidy
 ```
 
-
-```{r echo=FALSE}
-cities_untidy <- unite(cities_tbl, col = "location", c("country", "city")) %>%
-  pivot_longer(c("population", "area_km2"), names_to = "type") %>%
-  pivot_wider(names_from = "location", values_from = "value")
+```{r}
+#| echo: false
 print(cities_untidy, width = 90)
 ```
 
@@ -153,9 +173,24 @@ print(cities_untidy, width = 90)
 - Country and city variable are split into multiple columns
 - Country and city variable values are united to one value
 
-. . .
+## The `tidyr` pacakge
 
 Let's tidy this data using functions from the `tidyr` package!
+
+. . .
+
+First load the package with either 
+
+```{r eval=FALSE}
+library(tidyr)
+```
+
+or
+
+```{r eval=FALSE}
+library(tidyverse)
+```
+
 
 ## `pivot_longer()`
 
@@ -171,16 +206,17 @@ print(cities_untidy, width = 90)
 
 ```{r}
 step1 <- pivot_longer(
-    cities_untidy,                         # the tibble
-    cols = Turkey_Istanbul:France_Paris,   # the columns to pivot from:to
-    names_to = "location",                 # name of the new column
-    values_to = "value")                   # name of the value column
+  cities_untidy, # the tibble
+  cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to
+  names_to = "location", # name of the new column
+  values_to = "value"
+) # name of the value column
 ```
 
 . . .
 
 ```{r echo=FALSE}
-print(step1, n=4)
+print(step1, n = 4)
 ```
 
 ## `pivot_longer()`
@@ -190,10 +226,11 @@ print(step1, n=4)
 ```{r}
 #| eval: false
 step1 <- pivot_longer(
-    cities_untidy,                         # the tibble
-    cols = Turkey_Istanbul:France_Paris,   # the columns to pivot from:to
-    names_to = "location",                 # name of the new column
-    values_to = "value")                   # name of the value column
+  cities_untidy, # the tibble
+  cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to
+  names_to = "location", # name of the new column
+  values_to = "value"
+) # name of the value column
 ```
 
 Another way to select the columns to pivot:
@@ -202,10 +239,11 @@ Another way to select the columns to pivot:
 #| eval: false
 #| code-line-numbers: "3"
 step1 <- pivot_longer(
-    cities_untidy,           # the tibble
-    cols = !type,            # All columns except type#<<        
-    names_to = "location",   # name of the new column
-    values_to = "value")     # name of the value column
+  cities_untidy, # the tibble
+  cols = !type, # All columns except type#<<
+  names_to = "location", # name of the new column
+  values_to = "value"
+) # name of the value column
 ```
 
 ## `separate_wider_delim()`
@@ -213,23 +251,24 @@ step1 <- pivot_longer(
 **Multiple variable values that are united into one** can be separated using `separate_wider_delim`
 
 ```{r echo=FALSE}
-print(step1,n=2)
+print(step1, n = 2)
 ```
 
 . . .
 
 ```{r}
 step2 <- separate_wider_delim(
-  step1,                        # the tibble
-  location,                     # the column to separate
-  delim = "_",                  # the separator
-  names = c("country", "city")) # names of new columns
+  step1, # the tibble
+  location, # the column to separate
+  delim = "_", # the separator
+  names = c("country", "city_name")
+) # names of new columns
 ```
 
 . . .
 
 ```{r echo=FALSE}
-print(step2, n=2)
+print(step2, n = 2)
 ```
 
 . . .
@@ -241,22 +280,23 @@ The opposite function exists as well and is called `unite`. Check out `?unite` f
 **One observation split into multiple rows** can solved with `pivot_wider`
 
 ```{r echo=FALSE}
-print(step2,n=2)
+print(step2, n = 2)
 ```
 
 . . .
 
 ```{r}
 step3 <- pivot_wider(
-  step2,                      # the tibble
-  names_from = type,          # the variables
-  values_from = value)        # the values
+  step2, # the tibble
+  names_from = type, # the variables
+  values_from = value
+) # the values
 ```
 
 . . .
 
 ```{r echo=FALSE}
-print(step3, n=5)
+print(step3, n = 5)
 ```
 
 ## All steps in 1
@@ -273,7 +313,7 @@ cities_tidy <- cities_untidy |>
   separate_wider_delim(
     location,
     delim = "_",
-    names = c("country", "city")
+    names = c("country", "city_name")
   ) |>
   pivot_wider(
     names_from = type,
@@ -288,11 +328,11 @@ Drop rows with missing values:
 ```{r}
 #| eval: false
 # drop rows with missing values in any column
-drop_na(and_vertebrates) 
+drop_na(and_vertebrates)
 # drop rows with missing values in weight column
-drop_na(and_vertebrates, weight_g) 
+drop_na(and_vertebrates, weight_g)
 # drop rows with missing values in weight and species columns
-drop_na(and_vertebrates, weight_g, species) 
+drop_na(and_vertebrates, weight_g, species)
 ```
 
 . . . 
