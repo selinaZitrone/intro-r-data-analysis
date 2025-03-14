@@ -8,9 +8,9 @@ library(palmerpenguins)
 relig_income
 
 relig <- pivot_longer(relig_income,
-             cols = !religion, # 2:11, `<$10k`:`Don't know/refused`
-             names_to = "income",
-             values_to = "count"
+  cols = !religion, # 2:11, `<$10k`:`Don't know/refused`
+  names_to = "income",
+  values_to = "count"
 )
 
 relig
@@ -20,19 +20,19 @@ relig
 billboard
 
 pivot_longer(billboard,
-             cols = wk1:wk76,
-             names_to = "week",
-             values_to = "rank"
+  cols = wk1:wk76,
+  names_to = "week",
+  values_to = "rank"
 )
 
 
 #### Extras
 charts <- pivot_longer(billboard,
-                       cols = wk1:wk76,
-                       names_to = "week",
-                       values_to = "rank",
-                       names_prefix = "wk",
-                       values_drop_na = TRUE
+  cols = wk1:wk76,
+  names_to = "week",
+  values_to = "rank",
+  names_prefix = "wk",
+  values_drop_na = TRUE
 )
 charts
 
@@ -47,7 +47,7 @@ penguins |>
 
 # subset for 3 species flipper length
 adelie <- filter(penguins, species == "Adelie")$flipper_length_mm
-chinstrap <- filter(penguins,species == "Chinstrap")$flipper_length_mm
+chinstrap <- filter(penguins, species == "Chinstrap")$flipper_length_mm
 gentoo <- filter(penguins, species == "Gentoo")$flipper_length_mm
 
 # Step 1: test for normality
@@ -107,7 +107,7 @@ penguins |>
       c("Gentoo", "Adelie")
     ),
     test = "wilcox.test",
-    y_position = c(235,240),
+    y_position = c(235, 240),
     map_signif_level = TRUE
   )
 
@@ -117,42 +117,16 @@ ggplot(penguins, aes(x = species, y = flipper_length_mm)) +
   geom_signif(
     comparisons = list(
       c("Chinstrap", "Adelie")
-    ),
-    test = "t.test",
+    ), test = "t.test",
     test.args = list(var.equal = TRUE),
-    map_signif_level = TRUE,
-    y_position = 200,
+    map_signif_level = TRUE, y_position = 200,
     tip_length = 0.01
   ) +
   geom_signif(
     comparisons = list(
       c("Chinstrap", "Gentoo"),
       c("Gentoo", "Adelie")
-    ),
-    test = "wilcox.test",
-    y_position = c(216,217),
-    map_signif_level = TRUE,
+    ), test = "wilcox.test",
+    y_position = c(216, 217), map_signif_level = TRUE,
     tip_length = 0.01
-  )
-
-
-#plot
-ggplot(
-  data = penguins,
-  aes(
-    x = species,
-    y = flipper_length_mm
-  )
-)+
-  geom_boxplot(notch = TRUE) +
-  geom_signif(
-    comparisons = list(
-      c("Adelie", "Chinstrap"),
-      c("Gentoo", "Chinstrap"),
-      c("Adelie", "Gentoo")
-    ),
-    test = "t.test",
-    test.args = list (var.equal = TRUE),
-    map_signif_level = TRUE,
-    y_position = c(230, 231, 232)
   )
