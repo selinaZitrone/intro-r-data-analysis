@@ -1,7 +1,6 @@
 ---
 title: "RNA-seq Data Analysis"
 format: html
-eval: false
 ---
 
 ## The Data
@@ -27,6 +26,7 @@ unfold the code below
 
 ```{r}
 #| echo: true
+#| eval: false
 #| code-fold: true
 #| code-summary: "Expand to see how to read the data"
 
@@ -38,7 +38,9 @@ normalized_counts <- read_tsv("R/byod/solutions_for_my_datasets/data/limma-voom_
 normalized_counts <- janitor::clean_names(normalized_counts)
 
 # combine tables
-genes <- left_join(DE_results, normalized_counts, by = c("entrezid", "symbol", "genename")) %>%
+genes <- left_join(DE_results, normalized_counts,
+  by = c("entrezid", "symbol", "genename")
+) |>
   select(-entrezid, genename)
 ```
 
@@ -97,7 +99,8 @@ To complete these tasks, you may find the following R functions and packages hel
 
 :::
 
-```{r echo=FALSE, message=FALSE}
+
+```{r echo=FALSE}
 downloadthis::download_file(
   path = here::here("R/byod/solutions_for_my_datasets/dnaseq_data.R"),
   output_name = "solution_for_rna_data",
@@ -105,6 +108,6 @@ downloadthis::download_file(
   button_type = "default",
   has_icon = TRUE,
   icon = "fa fa-save",
-  self_contained = FALSE
+  self_contained = FALS
 )
 ```

@@ -1,7 +1,6 @@
 ---
 title: "Paralympic Games Data Analysis"
 format: html
-eval: false
 ---
 
 ## The Data
@@ -30,12 +29,16 @@ Interesting variables to analyse are:
 Get the data here:
 
 ```{r}
+#| eval: false
+
 olympics <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-27/olympics.csv")
 ```
 
 For most analysis, you can simplify the dataset by filtering to include only medal winners (rows with non-missing medal information).
 
 ```{r}
+#| eval: false
+
 olympics_medal <- olympics |>
   filter(!is.na(medal))
 ```
@@ -71,7 +74,7 @@ Here is an example of a plot you can try to create (from question 3):
 
 ![](img/top_medals.png)
 
-```{r echo=FALSE, message=FALSE}
+```{r echo=FALSE}
 downloadthis::download_file(
   path = here::here("R/byod/solutions_for_my_datasets/olympics.R"),
   output_name = "solution_paralympics",

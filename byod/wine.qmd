@@ -67,7 +67,7 @@ Here is an example of a PCA result:
 
 ![](img/pca_results.png)
 
-```{r echo=FALSE, message=FALSE}
+```{r echo=FALSE}
 downloadthis::download_file(
   path = here::here("R/byod/solutions_for_my_datasets/wine.R"),
   output_name = "solution_wine",
