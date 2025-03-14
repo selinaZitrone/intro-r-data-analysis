@@ -41,16 +41,22 @@ theme_set(theme_grey(base_size = 16))
 options(scipen = 0)
 ```
 
+## General approach
+
+![](img/day3/statistics_approach.png){width="70%"}
+
+:::{.aside}
+
+Please note the discussion about p-values as a basis for binary decisions.
+  See e.g. [here](https://www.nature.com/articles/s41592-019-0470-3) or [here](https://www.nature.com/articles/d41586-019-00857-9) as a starting point
+  
+:::
+
+
 ## Overview of tests
 
 ![](img/day3/tests_overview.png)
 
-:::{.aside}
-
-Please note the discussion going on about p-values as a basis for binary decisions.
-  See e.g. [here](https://www.nature.com/articles/s41592-019-0470-3) or [here](https://www.nature.com/articles/d41586-019-00857-9) as a starting point
-  
-:::
 
 # Tests for normal distribution{.inverse}
 
@@ -75,8 +81,16 @@ There are **various tests** and the outcome might differ!
 
 ## The data
 
+A tibble with two variables: `normal` and `non_normal`
+
+:::{.columns}
+
+:::{.column width="50%"}
+
 ```{r}
-#| echo: false
+#| echo: true
+#| code-fold: true
+#| code-summary: "Expand to reproduce the data"
 set.seed(123)
 mydata <- tibble(
   normal = rnorm(
@@ -91,20 +105,6 @@ mydata <- tibble(
   )
 )
 ```
-
-
-A tibble with two variables
-
-:::{.nonincremental}
-
-- `normal`: 200 normally distributed values with mean 50 and standard deviation 5
-- `non_normal`: 200 uniformly distributed values between 45 and 55
-
-:::
-
-:::{.columns}
-
-:::{.column width="50%"}
 
 ```{r}
 mydata
@@ -166,7 +166,8 @@ shapiro.test(mydata$normal)
 :::{.nonincremental}
 
 - W: test statistic
-- p-value: probability to observe the data if $H_0$ was true
+- p: probability to observe data with this level of deviation from normality (or more) if $H_0$ was true
+  - probability is high -> no reason to doubt normality assumption
 
 :::
 
@@ -174,7 +175,7 @@ shapiro.test(mydata$normal)
 
 :::{.fragment}
 
-The data does not deviate significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.991, p = 0.23).
+The data does **not deviate significantly** from a normal distribution (Shapiro-Wilk-Test, W = 0.991, p = 0.23).
 
 :::
 
@@ -192,7 +193,7 @@ shapiro.test(mydata$non_normal)
 
 :::{.fragment}
 
-The data deviates significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.95, p < 0.001).
+The data **deviates significantly** from a normal distribution (Shapiro-Wilk-Test, W = 0.95, p < 0.001).
 
 :::
 
@@ -259,13 +260,16 @@ Create subsets before: count variable for each treatment as a vector
 ```{r}
 TreatA <- filter(
   InsectSprays,
-  spray == "A")$count
+  spray == "A"
+)$count
 TreatB <- filter(
   InsectSprays,
-  spray == "B")$count
+  spray == "B"
+)$count
 TreatC <- filter(
   InsectSprays,
-  spray == "C")$count
+  spray == "C"
+)$count
 ```
 
 :::
@@ -290,7 +294,7 @@ First, test for normal distribution!
 
 - **Normal distribution** of groups
 - Calculates ratio of variances (if equal, ratio = 1)
-- p: How likely is ratio if variances were equal?
+- p: How likely is this (or a more extreme) ratio of variances if the variances were truly equal?
 
 **Levene test**
 
@@ -326,11 +330,11 @@ var.test(TreatA, TreatB)
 
 - F: test statistics, ratio of variances (if F = 1, variances are equal)
 - df: degrees of freedom of both groups
-- p-value: how likely is it to observe the data if $H_0$ was true?
+- p-value: probability to observe this (or more extreme) F if $H_0$ was true
 
 :::
 
-Variances of sprays A & B don't differ significantly (F-Test, $F_{11,11}$ = 1.22, p = 0.75)
+Variances of sprays A & B **don't differ significantly** (F-Test, $F_{11,11}$ = 1.22, p = 0.75)
 
 ## F-Test
 
@@ -342,7 +346,7 @@ $H_0$: Variances do not differ between groups
 var.test(TreatA, TreatC)
 ```
 
-Variances of sprays A & C differ significantly (F-Test, $F_{11,11}$ = 7.42, p = 0.002)
+Variances of sprays A & C **differ significantly** (F-Test, $F_{11,11}$ = 7.42, p = 0.002)
 
 # Test for equal means{.inverse}
 
@@ -352,14 +356,13 @@ Variances of sprays A & C differ significantly (F-Test, $F_{11,11}$ = 7.42, p = 
 
 - **Normal distribution** AND **equal variance**
 - Compares if mean values are within range of standard error of each other
-- p: how likely is the difference if the means were equal
+- p: How likely is this (or more extreme) difference between means if the population means were truly equal?
 
 . . .
 
-**Welch-Test**
+**Welch-Test** (corrected t-test)
 
 - **Normal distribution** but **unequal variance**
-- Corrected t-test
 
 . . .
 
@@ -385,21 +388,13 @@ t.test(TreatA, TreatB, var.equal = TRUE)
 
 - t: test statistics (t = 0 means equal means)
 - df: degrees of freedom of t-statistics
-- p-value: how likely is it to observe the data if $H_0$ was true?
+- p-value: how likely is this extreme of a difference if $H_0$ was true?
 
 :::
 
-## t-test
+. . .
 
-$H_0$: The samples do not differ in their mean
-
-Treatment A and B: **normally distributed** and **equal variance**
-
-```{r}
-t.test(TreatA, TreatB, var.equal = TRUE)
-```
-
-**Result:** The means of spray A and B don't differ significantly (t = -0.45, df = 22, p = 0.66)
+The means of spray A and B **don't differ significantly** (t = -0.45, df = 22, p = 0.66)
 
 ## Welch-Test
 
@@ -415,7 +410,7 @@ t.test(TreatA, TreatC, var.equal = FALSE)
 
 . . .
 
-**Result:** The means of spray A and C do differ significantly (t = 7.58, df = 13.9, p < 0.001)
+The means of spray A and C do **differ significantly** (t = 7.58, df = 13.9, p < 0.001)
 
 ## Wilcoxon-rank-sum Test
 
@@ -431,7 +426,7 @@ wilcox.test(TreatA, TreatB)
 
 . . .
 
-**Result:** The means of spray A and B do not differ significantly (W = 62, p = 0.58)
+The means of spray A and B do **not differ significantly** (W = 62, p = 0.58)
 
 ## Paired values
 
@@ -487,14 +482,14 @@ ggplot(
   aes(x = spray, y = count)
 ) +
   geom_boxplot(notch = TRUE) +
-  geom_signif( 
+  geom_signif(
     comparisons = list(
-      c("A", "B"), 
-      c("B", "C"), 
-      c("A", "C") 
-    ), 
-    map_signif_level = TRUE, 
-    y_position = c(23, 24, 25) 
+      c("A", "B"),
+      c("B", "C"),
+      c("A", "C")
+    ),
+    map_signif_level = TRUE,
+    y_position = c(23, 24, 25)
   )
 ```
 
@@ -524,10 +519,10 @@ ggplot(
       c("B", "C"),
       c("A", "C")
     ),
-    test = "t.test", 
-    test.args = list( 
-      var.equal = TRUE 
-    ), 
+    test = "t.test",
+    test.args = list(
+      var.equal = TRUE
+    ),
     map_signif_level = TRUE,
     y_position = c(23, 24, 25)
   )
@@ -551,10 +546,10 @@ ggplot(
       c("B", "C"),
       c("A", "C")
     ),
-    test = "t.test", 
-    test.args = list( 
-      var.equal = TRUE 
-    ), 
+    test = "t.test",
+    test.args = list(
+      var.equal = TRUE
+    ),
     map_signif_level = TRUE,
     y_position = c(23, 24, 25)
   )
