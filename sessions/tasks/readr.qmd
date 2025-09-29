@@ -68,6 +68,7 @@ downloadthis::download_file(
 ```
 
 :::
+
 ::: {.column}
 
 ```{r echo = FALSE}
@@ -84,7 +85,7 @@ downloadthis::download_file(
 
 :::
 
-::: <!-- end columns -->
+:::
 
 
 

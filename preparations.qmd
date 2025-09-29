@@ -40,8 +40,8 @@ Open RStudio and go to "Help -> Check for Updates" on top. RStudio will tell you
 
 ![](img/install_r_version.png)
 
-I will be using R version 4.4.2. If your version is below 4.3.3, you should update
-but in general it's always a good idea to stay up to date to get newest features and improvements.
+Check if your version number is up to date (at least 4.5.1, note that the screenshot still shows an older version). If your R version is lower,
+please update the version.
 
 2. Download and install the latest version of R (see Step 1 for instructions).
 3. In RStudio, go to "Tools -> Global Options -> General" and click "Change R version".
