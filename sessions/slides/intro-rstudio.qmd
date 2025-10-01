@@ -389,7 +389,7 @@ MyProject
 |   |
 |   |- statistics.R
 |
-|- *.RProj
+|- MyProject.RProj
 ```
 
 [Example RStudio project structure]{.text-small}
@@ -464,7 +464,7 @@ Find all shortcuts under **Tools -> Keyboard Shortcuts Help**
 
 # Now you {.inverse}
 
-[Task 1 (20 min)]{.highlight-blue}<br>
+[Task 1 (15 min)]{.highlight-blue}<br>
 
 [Set up your own RStudio project for this workshop]{.big-text}
 
