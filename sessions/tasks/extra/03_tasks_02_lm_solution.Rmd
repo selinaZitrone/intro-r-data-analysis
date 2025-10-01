@@ -3,7 +3,7 @@
 
 ```{r echo=TRUE, eval=TRUE, message=FALSE}
 #install.packages("performance")
-library(palmerpenguins)
+
 library(tidyverse)
 library(performance)
 ```
@@ -13,7 +13,7 @@ library(performance)
 It looks like the bill depth increases with increasing bill length. 
 
 ```{r, echo=TRUE}
-g <- ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+g <- ggplot(penguins, aes(x = bill_len, y = bill_dep)) +
   geom_point()
 g
 ```
@@ -24,7 +24,7 @@ g
 The result of `drop1` shows that if we remove the bill length from the model, we significantly increase the RSS. The model with bill length is the better model and we can assume a significant relationship between bill lenght and bill depth.
 
 ```{r, echo=TRUE}
-lm1 <- lm(bill_depth_mm ~ bill_length_mm, data = penguins)
+lm1 <- lm(bill_dep ~ bill_len, data = penguins)
 drop1(lm1, test = "F")
 ```
 
@@ -56,13 +56,13 @@ g +
 # Option 3: using predict (this is a bit overkill for this simple example)
 # Create data to predict from
 pred_dat <- tibble(
-  bill_length_mm = seq(
-    from = min(penguins$bill_length_mm, na.rm = TRUE),
-    to = max(penguins$bill_length_mm, na.rm = TRUE)
+  bill_len = seq(
+    from = min(penguins$bill_len, na.rm = TRUE),
+    to = max(penguins$bill_len, na.rm = TRUE)
   )
 )
 # Predict the response and add it to pred_data
-pred_dat$bill_depth_mm <- predict(lm1, newdata = pred_dat)
+pred_dat$bill_dep <- predict(lm1, newdata = pred_dat)
 # Add a line with the new predicted data
 g +
   geom_line(data = pred_dat, color = "cyan4")
@@ -74,8 +74,8 @@ g +
 Does the relationship between bill length and bill depth differ between penguin species?
 
 ```{r, echo=TRUE}
-g2 <- ggplot(penguins, aes(x = bill_length_mm, 
-                     y = bill_depth_mm,
+g2 <- ggplot(penguins, aes(x = bill_len, 
+                     y = bill_dep,
                      color = species)) +
   geom_point()
 g2
@@ -85,9 +85,9 @@ Now fit the linear model again, this time including species as explanatory varia
 
 ```{r, echo=TRUE}
 # Without interaction
-lm2a <- lm(bill_depth_mm ~ bill_length_mm + species, data = penguins)
+lm2a <- lm(bill_dep ~ bill_len + species, data = penguins)
 # Without interaction
-lm2b <- lm(bill_depth_mm ~ bill_length_mm * species, data = penguins)
+lm2b <- lm(bill_dep ~ bill_len * species, data = penguins)
 ```
 
 - Test model assumptions for both models.
@@ -141,10 +141,10 @@ It is easier to use the `predict` function in this case:
 
 ```{r, echo=TRUE}
 pred_dat <- expand_grid(
-  bill_length_mm = min(penguins$bill_length_mm, na.rm = TRUE):max(penguins$bill_length_mm, na.rm = TRUE),
+  bill_len = min(penguins$bill_len, na.rm = TRUE):max(penguins$bill_len, na.rm = TRUE),
   species = c("Adelie", "Chinstrap", "Gentoo")
 )
-pred_dat$bill_depth_mm <- predict(lm2a, newdata = pred_dat)
+pred_dat$bill_dep <- predict(lm2a, newdata = pred_dat)
 
 g2 +
   geom_line(data = pred_dat) +
@@ -164,7 +164,7 @@ penguins_sex <- filter(penguins, !is.na(sex))
 The question can be represented for example with a boxplot
 
 ```{r, echo=TRUE}
-ggplot(penguins_sex, aes(x = species, y = body_mass_g, fill = sex)) +
+ggplot(penguins_sex, aes(x = species, y = body_mass, fill = sex)) +
   geom_boxplot(notch = TRUE)
 ```
 
@@ -172,9 +172,9 @@ ggplot(penguins_sex, aes(x = species, y = body_mass_g, fill = sex)) +
 
 ```{r, echo=TRUE}
 # Without interaction
-lm3a <- lm(body_mass_g ~ sex + species, data = penguins_sex)
+lm3a <- lm(body_mass ~ sex + species, data = penguins_sex)
 # Without interaction
-lm3b <- lm(body_mass_g ~ sex + species + sex:species, data = penguins_sex)
+lm3b <- lm(body_mass ~ sex + species + sex:species, data = penguins_sex)
 ```
 
 - Test for significant predictors
@@ -200,7 +200,7 @@ Some other plots with which we can represent the results of the Anova.
 penguins_sex %>%
   ggplot(aes(
     x = species,
-    y = body_mass_g,
+    y = body_mass,
     color = sex
   )) +
   geom_boxplot() +
@@ -220,7 +220,7 @@ penguins_sex %>%
 
 
 ```{r echo=TRUE}
-ggplot(penguins_sex, aes(x = species, y = body_mass_g, color = sex)) +
+ggplot(penguins_sex, aes(x = species, y = body_mass, color = sex)) +
   stat_summary(
     position = position_dodge(width = 0.5)
   ) +
@@ -232,7 +232,7 @@ In the next plot, you need to make sure that the `width` of the `position_dodge`
 the same for both the bar and the errorbar.
 
 ```{r echo=TRUE}
-ggplot(penguins_sex, aes(x = species, y = body_mass_g, fill = sex)) +
+ggplot(penguins_sex, aes(x = species, y = body_mass, fill = sex)) +
   stat_summary(
     fun.y = mean,
     geom = "bar",

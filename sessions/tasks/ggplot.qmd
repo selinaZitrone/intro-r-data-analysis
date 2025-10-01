@@ -13,7 +13,7 @@ knitr::include_graphics(here::here("sessions/tasks/img/lter_penguins.png"))
 The data is available from the [palmerpenguins package](https://allisonhorst.github.io/palmerpenguins/). To get it, you have to:
 
 - Install the package with `install.packages("palmerpenguins")`
-- Load the package at the beginning of your script with `library(palmerpenguins)`
+- Load the package at the beginning of your script with ``
 
 The data set is called `penguins`:
 

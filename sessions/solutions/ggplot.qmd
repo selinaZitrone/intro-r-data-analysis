@@ -12,7 +12,7 @@ First we need to load the packages needed to complete this task:
 # install.packages("tidyverse")
 # install.packages("palmerpenguins")
 library(tidyverse)
-library(palmerpenguins)
+
 ```
 
 - Have a look at the penguin data set
@@ -39,8 +39,8 @@ It looks like bill length is decreasing with increasing bill depth.
 ggplot(
   data = penguins,
   aes(
-    x = bill_length_mm,
-    y = bill_depth_mm
+    x = bill_len,
+    y = bill_dep
   )
 ) +
   geom_point() +
@@ -48,7 +48,7 @@ ggplot(
 ```
 ```{r echo = TRUE, eval=FALSE}
 # or short
-ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) +
+ggplot(penguins, aes(bill_len, bill_dep)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 ```
@@ -60,7 +60,7 @@ If we add the color aesthetic locally to the point layer, only this layer will b
 #| warning: false
 # Bill length vs. bill depth scatterplot with regression line
 # color as aesthetic local to the point layer
-ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) +
+ggplot(penguins, aes(bill_len, bill_dep)) +
   geom_point(aes(color = species)) +
   geom_smooth(method = "lm", se = FALSE)
 ```
@@ -74,8 +74,8 @@ To draw separate regression lines for the species, we need to either add the col
 #| warning: false
 # Define color aesthetic once globally
 ggplot(penguins, aes(
-  x = bill_length_mm,
-  y = bill_depth_mm,
+  x = bill_len,
+  y = bill_dep,
   color = species
 )) +
   geom_point() +
@@ -90,7 +90,7 @@ First I created a simple boxplot with notches:
 
 ```{r echo = TRUE}
 # Basic boxplot of flipper length with notches
-ggplot(penguins, aes(species, flipper_length_mm)) +
+ggplot(penguins, aes(species, flipper_len)) +
   geom_boxplot(notch = TRUE)
 ```
 
@@ -99,7 +99,7 @@ I added `width = 0.5` to make the jittering a bit narrower:
 
 ```{r}
 #| warning: false
-ggplot(penguins, aes(species, flipper_length_mm)) +
+ggplot(penguins, aes(species, flipper_len)) +
   geom_boxplot() +
   geom_point(position = position_jitter(
     seed = 123,
@@ -117,7 +117,7 @@ First, a basic boxplot of the body mass by sex:
 ```{r}
 #|warning: false
 # Basic boxplot of body mass for penguins of different sex
-ggplot(penguins, aes(x = sex, y = body_mass_g)) +
+ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot()
 ```
 
@@ -126,7 +126,7 @@ I added species as color aesthetic:
 ```{r}
 #|warning: false
 ggplot(penguins, aes(x = sex, 
-                     y = body_mass_g)) +
+                     y = body_mass)) +
   geom_boxplot(aes(color = species))
 ```
 
@@ -134,14 +134,14 @@ Alternatively, I could also specify the fill aesthetic:
 
 ```{r}
 #|warning: false
-ggplot(penguins, aes(x = sex, y = body_mass_g)) +
+ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot(aes(fill = species))
 ```
 
 Species as facets:
 
 ```{r}
-ggplot(penguins, aes(x = sex, y = body_mass_g)) +
+ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot() +
   facet_wrap(~species)
 ```
@@ -152,7 +152,7 @@ to 0.4:
 
 ```{r}
 #| warning: false
-ggplot(penguins, aes(x = sex, y = body_mass_g)) +
+ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_violin() +
   geom_boxplot(width = .04) +
   facet_wrap(~species)
@@ -166,7 +166,7 @@ The default histogram is a histogram where the different groups are stacked:
 
 ```{r}
 ggplot(penguins, aes(
-  x = flipper_length_mm,
+  x = flipper_len,
   fill = species
 )) +
   geom_histogram()
@@ -179,7 +179,7 @@ areas.
 ```{r}
 #| warning: false
 ggplot(penguins, aes(
-  x = flipper_length_mm,
+  x = flipper_len,
   fill = species
 )) +
   geom_histogram(
@@ -193,7 +193,7 @@ Separated by facets (no need to specify the position here, because there is only
 ```{r}
 #| warning: false
 ggplot(penguins, aes(
-  x = flipper_length_mm,
+  x = flipper_len,
   fill = species
 )) +
   geom_histogram() +
@@ -208,7 +208,7 @@ For this data it does not make too much sense, but a heat map would look like th
 ggplot(penguins, aes(
   x = species,
   y = sex,
-  fill = flipper_length_mm
+  fill = flipper_len
 )) +
   geom_tile()
 ```
@@ -223,7 +223,7 @@ Here are just some examples of how to make the plots from before prettier. Of co
 
 ```{r}
 #| warning: false
-ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
+ggplot(penguins, aes(species, flipper_len, color = species)) +
   geom_boxplot(width = 0.3) +
   geom_point(
     alpha = 0.5,
@@ -256,8 +256,8 @@ The following code is adapted from the [palmerpengins package website](https://a
 ggplot(
   data = penguins,
   aes(
-    x = bill_length_mm,
-    y = bill_depth_mm,
+    x = bill_len,
+    y = bill_dep,
     color = species,
     shape = species
   )
@@ -299,7 +299,7 @@ Example with one of the plots from above:
 
 ```{r echo = TRUE}
 # First save the plot in a variable
-flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
+flipper_box <- ggplot(penguins, aes(species, flipper_len, color = species)) +
   geom_boxplot(width = 0.3) +
   geom_jitter(alpha = 0.5, position = position_jitter(width = 0.2, seed = 123)) +
   ggsci::scale_color_uchicago() +
@@ -321,7 +321,7 @@ ggsave(filename = "img/flipper_box.pdf", plot = flipper_box)
 **Histogram**
 
 ```{r echo = TRUE}
-ggplot(penguins, aes(x = flipper_length_mm, fill = species)) +
+ggplot(penguins, aes(x = flipper_len, fill = species)) +
   geom_histogram(alpha = 0.6) +
   ggsci::scale_fill_d3() +
   labs(
@@ -340,7 +340,7 @@ For the penguin data set a heat map does not make that much sense. But an exampl
 ggplot(penguins, aes(
   x = species,
   y = sex,
-  fill = flipper_length_mm
+  fill = flipper_len
 )) +
   geom_tile() +
   scale_fill_viridis_c() +
@@ -358,13 +358,13 @@ Below you find a simple example of two different penugin scatterplots. For more 
 library(patchwork)
 # Collecting legends and defining a common theme
 plot_1 <- ggplot(penguins, aes(
-  x = bill_length_mm, y = bill_depth_mm,
+  x = bill_len, y = bill_dep,
   color = species
 )) +
   geom_point()
 
 plot_2 <- ggplot(penguins, aes(
-  x = bill_length_mm, y = body_mass_g,
+  x = bill_len, y = body_mass,
   color = species
 )) +
   geom_point()

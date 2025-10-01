@@ -18,7 +18,6 @@ execute:
 #| label: setup
 #| include: false
 library(tidyverse)
-library(palmerpenguins)
 ```
 
 # Introduction
@@ -70,12 +69,21 @@ We did some plots, calculated some summary statistics and a linear model of the 
 #| include: false
 
 # calculate the mean body mass of the penguin species
-adelie_mean <- penguins %>% filter(species == "Adelie") %>% pull(body_mass_g) %>% mean(na.rm = TRUE) 
-chinstrap_mean <- penguins %>% filter(species == "Chinstrap") %>% pull(body_mass_g) %>% mean(na.rm = TRUE) 
-gentoo_mean <- penguins %>% filter(species == "Gentoo") %>% pull(body_mass_g) %>% mean(na.rm = TRUE) 
+adelie_mean <- penguins %>%
+  filter(species == "Adelie") %>%
+  pull(body_mass) %>%
+  mean(na.rm = TRUE)
+chinstrap_mean <- penguins %>%
+  filter(species == "Chinstrap") %>%
+  pull(body_mass) %>%
+  mean(na.rm = TRUE)
+gentoo_mean <- penguins %>%
+  filter(species == "Gentoo") %>%
+  pull(body_mass) %>%
+  mean(na.rm = TRUE)
 ```
 
-The mean weight of all penguin species is `r mean(penguins$body_mass_g, na.rm = TRUE)` g. *Gentoo* penguins have an average weight of `r round(gentoo_mean,0)` g, *Adelie* penguins of `r round(adelie_mean, 0)` g and *Chinstrap* penguins of `r round(chinstrap_mean, 0)` g.
+The mean weight of all penguin species is `r mean(penguins$body_mass, na.rm = TRUE)` g. *Gentoo* penguins have an average weight of `r round(gentoo_mean,0)` g, *Adelie* penguins of `r round(adelie_mean, 0)` g and *Chinstrap* penguins of `r round(chinstrap_mean, 0)` g.
 
 @fig-hist below shows that *Gentoo* penguins have the highest body mass.
 
@@ -86,9 +94,9 @@ The mean weight of all penguin species is `r mean(penguins$body_mass_g, na.rm = 
 #| fig-width: 4
 #| fig-height: 3
 
-ggplot(penguins, aes(x = body_mass_g, fill = species)) +
+ggplot(penguins, aes(x = body_mass, fill = species)) +
   geom_histogram(alpha = 0.6) +
-   scale_fill_manual(values = c("darkorange", "purple", "cyan4")) +
+  scale_fill_manual(values = c("darkorange", "purple", "cyan4")) +
   theme_minimal() +
   labs(
     x = "Body mass (g)",
@@ -106,8 +114,8 @@ There is a positive relationship between bill length and bill depth for all 3 sp
 ggplot(
   data = penguins,
   aes(
-    x = bill_length_mm,
-    y = bill_depth_mm,
+    x = bill_len,
+    y = bill_dep,
     color = species,
     shape = species
   )
@@ -129,14 +137,14 @@ In general, it looks like the body characteristics differ between the sexes but 
 ```{r}
 #| label: tbl-summary
 #| tbl-cap: A summary of the penguin data
-penguins %>% 
-  filter(!(is.na(sex))) %>% 
-  group_by(species, sex) %>% 
+penguins %>%
+  filter(!(is.na(sex))) %>%
+  group_by(species, sex) %>%
   summarize(
-    bill_length = mean(bill_length_mm, na.rm = TRUE),
-    bill_depth = mean(bill_depth_mm, na.rm = TRUE),
-    flipper_length = mean(flipper_length_mm, na.rm = TRUE),
-    body_mass = mean(body_mass_g, na.rm = TRUE)
+    bill_length = mean(bill_len, na.rm = TRUE),
+    bill_depth = mean(bill_dep, na.rm = TRUE),
+    flipper_length = mean(flipper_len, na.rm = TRUE),
+    body_mass = mean(body_mass, na.rm = TRUE)
   )
 ```
 

@@ -6,7 +6,7 @@ Before you start, make sure to load the `tidyverse` package and the `palmerpengu
 
 ```{r eval=FALSE, echo=TRUE}
 library(tidyverse)
-library(palmerpenguins)
+
 ```
 
 ## Data transformation with dplyr

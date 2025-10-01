@@ -33,9 +33,9 @@ What is not tidy about this data set? Can you fix it?
 wanted to make such a plot:
 
 ```{r echo=FALSE, warning=FALSE}
-library(palmerpenguins)
+
 penguins %>%
-  select(species, bill_length_mm, bill_depth_mm) %>%
+  select(species, bill_len, bill_dep) %>%
   pivot_longer(!species, names_to = "variable") %>%
   ggplot(aes(x = species, y = value, fill = variable)) +
   geom_boxplot()

@@ -1,5 +1,5 @@
 library(tidyverse)
-library(palmerpenguins)
+
 
 # 1. Tidyr ----------------------------------------------------------------
 
@@ -7,7 +7,8 @@ library(palmerpenguins)
 
 relig_income
 
-relig <- pivot_longer(relig_income,
+relig <- pivot_longer(
+  relig_income,
   cols = !religion, # 2:11, `<$10k`:`Don't know/refused`
   names_to = "income",
   values_to = "count"
@@ -19,15 +20,12 @@ relig
 
 billboard
 
-pivot_longer(billboard,
-  cols = wk1:wk76,
-  names_to = "week",
-  values_to = "rank"
-)
+pivot_longer(billboard, cols = wk1:wk76, names_to = "week", values_to = "rank")
 
 
 #### Extras
-charts <- pivot_longer(billboard,
+charts <- pivot_longer(
+  billboard,
   cols = wk1:wk76,
   names_to = "week",
   values_to = "rank",
@@ -38,7 +36,7 @@ charts
 
 # Penguins boxplot
 penguins |>
-  select(species, bill_length_mm, bill_depth_mm) |>
+  select(species, bill_len, bill_dep) |>
   pivot_longer(!species, names_to = "variable") |>
   ggplot(aes(x = species, y = value, fill = variable)) +
   geom_boxplot()
@@ -46,9 +44,9 @@ penguins |>
 # 2. Statistical tests -------------------------------------------------------
 
 # subset for 3 species flipper length
-adelie <- filter(penguins, species == "Adelie")$flipper_length_mm
-chinstrap <- filter(penguins, species == "Chinstrap")$flipper_length_mm
-gentoo <- filter(penguins, species == "Gentoo")$flipper_length_mm
+adelie <- filter(penguins, species == "Adelie")$flipper_len
+chinstrap <- filter(penguins, species == "Chinstrap")$flipper_len
+gentoo <- filter(penguins, species == "Gentoo")$flipper_len
 
 # Step 1: test for normality
 
@@ -64,7 +62,7 @@ g <- ggpubr::ggqqplot(gentoo) + labs(title = "gentoo")
 a + c + g
 
 # Other option
-ggplot(penguins, aes(sample = flipper_length_mm, color = species)) +
+ggplot(penguins, aes(sample = flipper_len, color = species)) +
   stat_qq() +
   stat_qq_line()
 
@@ -91,7 +89,7 @@ wilcox.test(gentoo, adelie) # means differ
 # Add the p-values of the comparisons with the test into the plot
 library(ggsignif)
 penguins |>
-  ggplot(aes(x = species, y = flipper_length_mm)) +
+  ggplot(aes(x = species, y = flipper_len)) +
   geom_boxplot(notch = TRUE) +
   geom_signif(
     comparisons = list(
@@ -112,21 +110,25 @@ penguins |>
   )
 
 # Plot with mean and errorbars:
-ggplot(penguins, aes(x = species, y = flipper_length_mm)) +
+ggplot(penguins, aes(x = species, y = flipper_len)) +
   stat_summary() +
   geom_signif(
     comparisons = list(
       c("Chinstrap", "Adelie")
-    ), test = "t.test",
+    ),
+    test = "t.test",
     test.args = list(var.equal = TRUE),
-    map_signif_level = TRUE, y_position = 200,
+    map_signif_level = TRUE,
+    y_position = 200,
     tip_length = 0.01
   ) +
   geom_signif(
     comparisons = list(
       c("Chinstrap", "Gentoo"),
       c("Gentoo", "Adelie")
-    ), test = "wilcox.test",
-    y_position = c(216, 217), map_signif_level = TRUE,
+    ),
+    test = "wilcox.test",
+    y_position = c(216, 217),
+    map_signif_level = TRUE,
     tip_length = 0.01
   )

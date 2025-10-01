@@ -5,7 +5,7 @@
 # install.packages("tidyverse")
 # install.packages("palmerpenguins")
 library(tidyverse)
-library(palmerpenguins)
+
 
 penguins
 
@@ -16,8 +16,8 @@ penguins
 ggplot(
   penguins,
   aes(
-    x = bill_length_mm,
-    y = bill_depth_mm
+    x = bill_len,
+    y = bill_dep
   )
 ) +
   geom_point() +
@@ -25,61 +25,67 @@ ggplot(
 
 
 # or short
-ggplot(penguins, aes(bill_length_mm, bill_depth_mm)) +
+ggplot(penguins, aes(bill_len, bill_dep)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 
 # color as aesthetic local to the point layer
-ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+ggplot(penguins, aes(x = bill_len, y = bill_dep)) +
   geom_point(aes(color = species)) +
   geom_smooth(method = "lm", se = FALSE)
 
 # Option B: Define color aesthetic once globally
-ggplot(penguins, aes(
-  x = bill_length_mm,
-  y = bill_depth_mm,
-  color = species
-)) +
+ggplot(
+  penguins,
+  aes(
+    x = bill_len,
+    y = bill_dep,
+    color = species
+  )
+) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 
 # 1.3.2 Difference in flipper length between species (boxplot)
 
 # Basic boxplot of flipper length with notches
-ggplot(penguins, aes(species, flipper_length_mm)) +
+ggplot(penguins, aes(species, flipper_len)) +
   geom_boxplot(notch = TRUE) +
   geom_point()
 
 # Add jittered points
-ggplot(penguins, aes(x = species, y = flipper_length_mm)) +
+ggplot(penguins, aes(x = species, y = flipper_len)) +
   geom_boxplot() +
   geom_point(position = position_jitter(seed = 123, width = 0.2))
 
 ## 1.3.3 Differences between body mass of male and female penguins (boxplot)
 
 # Basic boxplot of body mass for penguins of different sex
-ggplot(penguins, aes(x = sex, y = body_mass_g)) +
+ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot()
 
 # Species as color aesthetic:
 
-ggplot(penguins, aes(
-  x = sex,
-  y = body_mass_g
-)) +
+ggplot(
+  penguins,
+  aes(
+    x = sex,
+    y = body_mass
+  )
+) +
   geom_boxplot(aes(color = species))
 
 # Species as fill aesthetic
-ggplot(penguins, aes(x = sex, y = body_mass_g)) +
+ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot(aes(fill = species))
 
 # Species as facets:
-ggplot(penguins, aes(x = sex, y = body_mass_g)) +
+ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot() +
   facet_wrap(~species)
 
 # With geom_violin
-ggplot(penguins, aes(x = sex, y = body_mass_g)) +
+ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_violin() +
   geom_boxplot(width = 0.4) +
   facet_wrap(~species)
@@ -87,40 +93,52 @@ ggplot(penguins, aes(x = sex, y = body_mass_g)) +
 ## 1.3.4 Distribution of flipper length between species (histogram)
 
 # Overlapping
-ggplot(penguins, aes(
-  x = flipper_length_mm,
-  color = species
-)) +
+ggplot(
+  penguins,
+  aes(
+    x = flipper_len,
+    color = species
+  )
+) +
   geom_histogram(alpha = 0.5, position = "identity")
 
 # Stacked
-ggplot(penguins, aes(
-  x = flipper_length_mm,
-  fill = species
-)) +
+ggplot(
+  penguins,
+  aes(
+    x = flipper_len,
+    fill = species
+  )
+) +
   geom_histogram()
 
-ggplot(penguins, aes(
-  x = flipper_length_mm,
-  fill = species
-)) +
+ggplot(
+  penguins,
+  aes(
+    x = flipper_len,
+    fill = species
+  )
+) +
   geom_histogram() +
   facet_wrap(~species, scales = "free_x", ncol = 1)
 
 #### 1.3.5 Penguin flipper length by species and sex (heatmap)
 
-ggplot(penguins, aes(
-  x = species,
-  y = sex,
-  fill = flipper_length_mm
-)) +
+ggplot(
+  penguins,
+  aes(
+    x = species,
+    y = sex,
+    fill = flipper_len
+  )
+) +
   geom_tile()
 
 ggplot(
   data = penguins,
   aes(
     x = sex,
-    y = body_mass_g,
+    y = body_mass,
     fill = species,
     color = species
   )
@@ -129,7 +147,8 @@ ggplot(
   geom_point(
     alpha = 0.5,
     position = position_jitterdodge(
-      seed = 123, jitter.width = 0.2,
+      seed = 123,
+      jitter.width = 0.2,
       dodge.width = 0.9
     )
   )
@@ -141,7 +160,7 @@ ggplot(
 # Example one: Boxplot of flipper length and species
 library(paletteer)
 
-ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
+ggplot(penguins, aes(species, flipper_len, color = species)) +
   geom_boxplot(width = 0.3) +
   geom_point(
     alpha = 0.5,
@@ -160,8 +179,8 @@ ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
 penguin_scatter <- ggplot(
   data = penguins,
   aes(
-    x = bill_length_mm,
-    y = bill_depth_mm,
+    x = bill_len,
+    y = bill_dep,
     color = species,
     shape = species
   )
@@ -188,9 +207,15 @@ penguin_scatter <- ggplot(
 penguin_scatter
 
 ### 1.5 Save one of the plots on your machine
-flipper_box <- ggplot(penguins, aes(species, flipper_length_mm, color = species)) +
+flipper_box <- ggplot(
+  penguins,
+  aes(species, flipper_len, color = species)
+) +
   geom_boxplot(width = 0.3) +
-  geom_jitter(alpha = 0.5, position = position_jitter(width = 0.2, seed = 123)) +
+  geom_jitter(
+    alpha = 0.5,
+    position = position_jitter(width = 0.2, seed = 123)
+  ) +
   ggsci::scale_color_uchicago() +
   labs(x = "Species", y = "Flipper length (mm)") +
   theme_minimal() +
@@ -212,18 +237,24 @@ ggsave(filename = "img/flipper_box.pdf", flipper_box)
 
 # heatmap example
 
-heatmap <- ggplot(penguins, aes(
-  x = species,
-  y = sex,
-  fill = flipper_length_mm
-)) +
+heatmap <- ggplot(
+  penguins,
+  aes(
+    x = species,
+    y = sex,
+    fill = flipper_len
+  )
+) +
   geom_tile() +
   scale_fill_viridis_c()
 heatmap
 
 # or with another color scale
 
-heatmap <- ggplot(penguins, aes(x = species, y = sex, fill = flipper_length_mm)) +
+heatmap <- ggplot(
+  penguins,
+  aes(x = species, y = sex, fill = flipper_len)
+) +
   geom_tile() +
   scale_fill_gradient(low = "white", high = "steelblue")
 
@@ -244,23 +275,32 @@ flipper_box / penguin_scatter
 flipper_box | penguin_scatter
 
 # Collecting legends and defining a common theme
-plot_1 <- ggplot(penguins, aes(
-  x = bill_length_mm, y = bill_depth_mm,
-  color = species
-)) +
+plot_1 <- ggplot(
+  penguins,
+  aes(
+    x = bill_len,
+    y = bill_dep,
+    color = species
+  )
+) +
   geom_point()
 
-plot_2 <- ggplot(penguins, aes(
-  x = bill_length_mm, y = body_mass_g,
-  color = species
-)) +
+plot_2 <- ggplot(
+  penguins,
+  aes(
+    x = bill_len,
+    y = body_mass,
+    color = species
+  )
+) +
   geom_point()
 
 # Simple combination of 2 plots in patchwork
 plot_1 + plot_2
 
 # more complex combination with annotation and definition of shared layers
-final_plot <- plot_1 + plot_2 +
+final_plot <- plot_1 +
+  plot_2 +
   plot_layout(guides = "collect") +
   plot_annotation(tag_levels = "a", tag_prefix = "(", tag_suffix = ")") &
   theme_minimal() &
@@ -287,15 +327,15 @@ esquisse::esquisser(penguins)
 # 2 dplyr -------------------------------------------------------------------
 
 # library(tidyverse)
-# library(palmerpenguins)
+#
 # … with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).
 
 # Filter tasks -------------------------------------------------------------------
 
 # bill length between 40 and 45 mm.
-filter(penguins, between(bill_length_mm, 40, 45))
+filter(penguins, between(bill_len, 40, 45))
 # same as
-filter(penguins, bill_length_mm < 45 & bill_length_mm > 40)
+filter(penguins, bill_len < 45 & bill_len > 40)
 
 # for which we know the sex.
 
@@ -342,12 +382,11 @@ select(penguins, contains("_mm"))
 # Mutate tasks ------------------------------------------------------------
 
 # with the ratio of bill length to bill depth
-mutate(penguins,
-  ratio = bill_length_mm / bill_depth_mm
-)
+mutate(penguins, ratio = bill_len / bill_dep)
 
 # abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C)
-mutate(penguins,
+mutate(
+  penguins,
   species_short = case_when(
     species == "Adelie" ~ "A",
     species == "Gentoo" ~ "G",
@@ -362,8 +401,8 @@ mutate(penguins,
 
 penguins |>
   summarize(
-    mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
-    mean_body = mean(body_mass_g, na.rm = TRUE),
+    mean_flipper = mean(flipper_len, na.rm = TRUE),
+    mean_body = mean(body_mass, na.rm = TRUE),
     .by = c(species, sex)
   )
 
@@ -372,8 +411,8 @@ penguins |>
 penguins |>
   filter(!is.na(sex)) |>
   summarize(
-    mean_flipper = mean(flipper_length_mm, na.rm = TRUE),
-    mean_body = mean(body_mass_g, na.rm = TRUE),
+    mean_flipper = mean(flipper_len, na.rm = TRUE),
+    mean_body = mean(body_mass, na.rm = TRUE),
     .by = c(species, sex)
   )
 
@@ -385,7 +424,7 @@ penguins |>
 
 penguins |>
   filter(!is.na(sex)) |>
-  ggplot(aes(x = sex, y = body_mass_g)) +
+  ggplot(aes(x = sex, y = body_mass)) +
   geom_boxplot() +
   facet_wrap(~species) +
   labs(caption = "Some caption") +
@@ -397,9 +436,9 @@ penguins |>
 # remove penguins with unknown sex before making the plot
 
 penguins |>
-  mutate(ratio = bill_length_mm / bill_depth_mm) |>
+  mutate(ratio = bill_len / bill_dep) |>
   filter(!is.na(sex)) |>
-  ggplot(aes(x = flipper_length_mm, y = ratio, color = sex)) +
+  ggplot(aes(x = flipper_len, y = ratio, color = sex)) +
   geom_point() +
   scale_color_manual(values = c("cyan4", "darkorange")) +
   labs(
@@ -412,12 +451,12 @@ penguins |>
 
 # penguins with lowest body mass first
 
-arrange(penguins, body_mass_g)
+arrange(penguins, body_mass)
 
 # penguins with highest body mass first
 
-arrange(penguins, desc(body_mass_g))
+arrange(penguins, desc(body_mass))
 
 # penguins by species and sex, with longest flippers first
 
-arrange(penguins, species, sex, desc(flipper_length_mm))
+arrange(penguins, species, sex, desc(flipper_len))

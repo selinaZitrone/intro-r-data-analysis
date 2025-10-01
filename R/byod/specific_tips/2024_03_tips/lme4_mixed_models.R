@@ -1,11 +1,12 @@
 library(tidyverse)
-library(palmerpenguins)
+
 library(lme4)
 
 # year as a random effect
 penguins_model <- lmer(
-  body_mass_g ~ species * sex + (1 | year),
-  data = penguins)
+  body_mass ~ species * sex + (1 | year),
+  data = penguins
+)
 
 # Are effects significant?
 car::Anova(mod_light_cover)

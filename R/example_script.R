@@ -1,9 +1,8 @@
 library(tidyverse)
-library(palmerpenguins)
 
 head(penguins)
 
-g <- ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
+g <- ggplot(penguins, aes(x = flipper_len, y = body_mass, color = species)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   scale_color_manual(values = c("darkorange", "purple", "cyan4")) +

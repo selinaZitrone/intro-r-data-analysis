@@ -102,7 +102,7 @@ mean(c(1,2,3)na.rm=TRUE)
 
 
 ```{r, error = TRUE}
-select(penguins, bill_length_mm)
+select(penguins, bill_len)
 lenght(1:10)
 ```
 

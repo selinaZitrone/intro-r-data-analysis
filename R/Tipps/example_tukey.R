@@ -1,11 +1,11 @@
 library(tidyverse)
-library(palmerpenguins)
+
 
 # remove missing sex
 penguins_sex <- filter(penguins, !is.na(sex))
 
 # Fit ANOVA lm with interaction
-lm3 <- lm(body_mass_g ~ sex + species + sex:species, data = penguins_sex)
+lm3 <- lm(body_mass ~ sex + species + sex:species, data = penguins_sex)
 
 # Post-hoc TukeyHSD
 tk_result <- TukeyHSD(aov(lm3))
@@ -50,10 +50,7 @@ write_csv(all_comp, file = "data/Tukey_results.csv")
 # Plot the results --------------------------------------------------------
 
 # Option 1: plot with base plot (easy but not so nice)
-plot(TukeyHSD(aov(lm3)),
-  las = 1,
-  col = "brown"
-)
+plot(TukeyHSD(aov(lm3)), las = 1, col = "brown")
 
 # Option2: plot with ggplot using the all_comp table
 # simplest form of the plot
@@ -70,4 +67,3 @@ ggplot(all_comp, aes(y = comparison)) +
   facet_grid(id ~ ., scales = "free_y", space = "free_y") +
   labs(x = "Difference in body mass (g)", y = "Compared groups") +
   theme_bw()
-

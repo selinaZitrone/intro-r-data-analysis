@@ -10,7 +10,7 @@ Packages needed for linear model analysis and examples:
 ```{r}
 #| message: false
 #| warning: false
-library(palmerpenguins) # Example data
+ # Example data
 library(tidyverse) # Data manipulation
 library(performance) # Model diagnostics
 library(rstatix) # More friendly version of Tukey test
@@ -66,7 +66,7 @@ package.
 ## Explore the data
 
 ```{r}
-ggplot(penguins, aes(x = species, y = body_mass_g, fill = sex)) +
+ggplot(penguins, aes(x = species, y = body_mass, fill = sex)) +
   geom_boxplot() +
   labs(title = "Penguin body mass by species",
        x = "Species",
@@ -80,14 +80,14 @@ I want to fit a linear model to test my hypothesis.
 ```{r}
 # 2. Fit the linear model
 penguin_lm <- lm(
-  body_mass_g  ~ species + sex, # Model formula to test your hypothesis
+  body_mass  ~ species + sex, # Model formula to test your hypothesis
   data = penguins  # Tibble containing the variables
   )
 ```
 
 If we also wanted to test the interaction between `species` and `sex`,
 we have to add the interaction term to the model formula:
-`body_mass_g ~ species + sex + species:sex`.
+`body_mass ~ species + sex + species:sex`.
 
 ## Get a summary of the model
 

@@ -5,7 +5,7 @@ We will again use the `penguins` tibble from the `palmerpenguins` package for th
 So before you get started with the exercise, make sure that you load the `palmerpenguins` package and the `tidyverse`
 
 ```{r echo=TRUE, eval=FALSE}
-library(palmerpenguins)
+
 library(tidyverse)
 ```
 
@@ -24,9 +24,9 @@ Before you start, create a subset of each species as a vector.
 For this, you can use the `$` operator:
 
 ```{r eval=FALSE, echo = TRUE}
-adelie <- filter(penguins, species == "Adelie")$flipper_length_mm
-chinstrap <- filter(penguins, species == "Chinstrap")$flipper_length_mm
-gentoo <- filter(penguins, species == "Gentoo")$flipper_length_mm
+adelie <- filter(penguins, species == "Adelie")$flipper_len
+chinstrap <- filter(penguins, species == "Chinstrap")$flipper_len
+gentoo <- filter(penguins, species == "Gentoo")$flipper_len
 ```
 
 Follow the decision tree for statistical tests:

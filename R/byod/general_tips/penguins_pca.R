@@ -1,6 +1,6 @@
 # Load necessary libraries  ---------------------------------------------------
 library(tidyverse) # For data manipulation and visualization
-library(palmerpenguins) # Contains Palmer penguins dataset for demonstration
+# Contains Palmer penguins dataset for demonstration
 library(corrplot) # For creating correlation plots
 library(factoextra) # For visualizing PCA and extracting PCA results
 
@@ -14,7 +14,7 @@ peng_no_na <- penguins %>% drop_na()
 # Select the numeric variables relevant for PCA.
 # Here, we use bill_length, bill_depth, flipper_length, and body_mass.
 peng_pca <- peng_no_na %>%
-  select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g)
+  select(bill_len, bill_dep, flipper_len, body_mass)
 
 # Perform PCA using the prcomp() function.
 # We set 'scale = TRUE' to standardize the variables,
@@ -31,7 +31,8 @@ fviz_eig(peng.pca)
 #    Visualize the correlations between the original variables and the principal components.
 #    Variables with longer arrows have a stronger contribution to the PC.
 #    The color gradient (from dark blue to red) indicates the magnitude of the contribution.
-fviz_pca_var(peng.pca,
+fviz_pca_var(
+  peng.pca,
   col.var = "contrib", # Color the arrows by their contribution
   gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
   repel = TRUE # Avoid overlapping text labels
@@ -41,7 +42,8 @@ fviz_pca_var(peng.pca,
 #    Visualize the scores of each observation (penguin) in the PCA space.
 #    Here, we color the points by their species (using 'habillage'),
 #    and add ellipses representing the 95% confidence level.
-fviz_pca_ind(peng.pca,
+fviz_pca_ind(
+  peng.pca,
   label = "none", # Do not label individual points for clarity
   habillage = peng_no_na$species, # Color points by penguin species
   addEllipses = TRUE, # Add confidence ellipses over groups
@@ -52,7 +54,8 @@ fviz_pca_ind(peng.pca,
 # 4. Combined PCA Plot:
 #    This plot overlays the PCA biplot with both individuals (colored by species) and variable vectors.
 #    It also includes ellipses for the groups and labels the variables.
-fviz_pca(peng.pca,
+fviz_pca(
+  peng.pca,
   label = "var", # Label the variable vectors
   habillage = peng_no_na$species, # Color individuals by species
   addEllipses = TRUE, # Add confidence ellipses around groups

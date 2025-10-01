@@ -150,7 +150,7 @@ library(tidyverse)
 library(corrplot)
 library(factoextra)
 library(patchwork)
-library(palmerpenguins)
+
 
 penguins %>%
   select(where(is.numeric)) %>%
@@ -200,7 +200,7 @@ downloadthis::download_file(
 ```{r echo=FALSE, message=FALSE}
 peng_no_na <- penguins %>% drop_na()
 peng_pca <- peng_no_na %>%
-  select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g)
+  select(bill_len, bill_dep, flipper_len, body_mass)
 
 peng.pca <- prcomp(peng_pca, scale = TRUE)
 
