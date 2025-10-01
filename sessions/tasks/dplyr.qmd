@@ -2,11 +2,10 @@
 
 A helpful resource for to consult for this task can be the [dplyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf).
 
-Before you start, make sure to load the `tidyverse` package and the `palmerpenguins` package.
+Before you start, make sure to load the `tidyverse` package.
 
 ```{r eval=FALSE, echo=TRUE}
 library(tidyverse)
-
 ```
 
 ## Data transformation with dplyr

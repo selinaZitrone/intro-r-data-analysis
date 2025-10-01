@@ -1,11 +1,9 @@
 # 1. Data visualization in ggplot2 -------------------------------------------
 
-# 1.1 and 1.2 Getting started with ggplot and palmerpenguins------------
+# 1.1 and 1.2 Getting started with ggplot and the penguins -------------------
 
 # install.packages("tidyverse")
-# install.packages("palmerpenguins")
 library(tidyverse)
-
 
 penguins
 

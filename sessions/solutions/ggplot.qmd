@@ -5,21 +5,20 @@ code-line-numbers: false
 
 ## Get started
 
-First we need to load the packages needed to complete this task:
+First we need to load the `tidyverse` packages:
 
 ```{r eval=TRUE, echo=TRUE}
 #| message: false
 # install.packages("tidyverse")
-# install.packages("palmerpenguins")
 library(tidyverse)
-
 ```
 
-- Have a look at the penguin data set
+- Have a look at the penguin data set that is included in R
 
 ```{r echo=TRUE, eval=FALSE}
 penguins
 ```
+
 ```{r echo=FALSE, eval=TRUE}
 theme_set(theme_gray())
 print(penguins, n=6)

@@ -10,7 +10,7 @@ Packages needed for linear model analysis and examples:
 ```{r}
 #| message: false
 #| warning: false
- # Example data
+# Example data
 library(tidyverse) # Data manipulation
 library(performance) # Model diagnostics
 library(rstatix) # More friendly version of Tukey test
@@ -55,8 +55,7 @@ below for an example):
 
 # Example 1: ANOVA
 
-This example uses the `penguins` dataset from the `palmerpenguins`
-package.
+This example uses the `penguins` dataset that is included in R
 
 -   **Research question:** How does the penguin species and sex affect
     penguin body mass?
@@ -68,9 +67,11 @@ package.
 ```{r}
 ggplot(penguins, aes(x = species, y = body_mass, fill = sex)) +
   geom_boxplot() +
-  labs(title = "Penguin body mass by species",
-       x = "Species",
-       y = "Body mass (g)")
+  labs(
+    title = "Penguin body mass by species",
+    x = "Species",
+    y = "Body mass (g)"
+  )
 ```
 
 ## Fit the linear model
@@ -80,9 +81,9 @@ I want to fit a linear model to test my hypothesis.
 ```{r}
 # 2. Fit the linear model
 penguin_lm <- lm(
-  body_mass  ~ species + sex, # Model formula to test your hypothesis
-  data = penguins  # Tibble containing the variables
-  )
+  body_mass ~ species + sex, # Model formula to test your hypothesis
+  data = penguins # Tibble containing the variables
+)
 ```
 
 If we also wanted to test the interaction between `species` and `sex`,

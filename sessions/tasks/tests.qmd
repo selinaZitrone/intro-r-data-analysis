@@ -1,11 +1,10 @@
 ## Get started
 
-We will again use the `penguins` tibble from the `palmerpenguins` package for this task.
+We will again use the `penguins` data included in R.
 
-So before you get started with the exercise, make sure that you load the `palmerpenguins` package and the `tidyverse`
+As always, before you get started with the exercise, make sure that you load the `tidyverse`
 
 ```{r echo=TRUE, eval=FALSE}
-
 library(tidyverse)
 ```
 
@@ -32,7 +31,9 @@ gentoo <- filter(penguins, species == "Gentoo")$flipper_len
 Follow the decision tree for statistical tests:
 
 ```{r echo = FALSE}
-knitr::include_graphics(here::here("sessions/slides/img/day3/tests_overview.png"))
+knitr::include_graphics(here::here(
+  "sessions/slides/img/day3/tests_overview.png"
+))
 ```
 
 ## Extra

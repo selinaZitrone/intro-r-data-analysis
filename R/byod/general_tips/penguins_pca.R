@@ -1,6 +1,5 @@
 # Load necessary libraries  ---------------------------------------------------
 library(tidyverse) # For data manipulation and visualization
-# Contains Palmer penguins dataset for demonstration
 library(corrplot) # For creating correlation plots
 library(factoextra) # For visualizing PCA and extracting PCA results
 
