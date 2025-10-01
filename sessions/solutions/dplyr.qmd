@@ -8,7 +8,6 @@ code-line-numbers: false
 ```{r echo=TRUE}
 #| message: false
 library(tidyverse)
-
 ```
 ```{r echo=FALSE}
 theme_set(theme_grey())
