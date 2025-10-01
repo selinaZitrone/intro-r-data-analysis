@@ -53,7 +53,7 @@
     "href": "sessions/tasks/readr.html#extra",
     "title": "",
     "section": "3 Extra",
-    "text": "3 Extra\n\nTry reading some tables (xlsx, csv, txt, …) that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropriate function to read in the data\nIdeally, you use some of your research data, so you can see what are the difficulties there. Alternatively, you can use any kind of table even if not related to research.\n\nDownload the csv or excel file using the buttons below. The files have metadata on top and a messy header. The excel file has the added difficulty, that the actual data is not in the first sheet but in the second one. Try reading it into R correctly and clean the column names using the janitor::clean_names function. It might help to look at the data first to decide how to read it correctly.\n\n\n\n\n\n Download csv\n\n\n\n\n\n Download xlsx"
+    "text": "3 Extra\n\nTry reading some tables (xlsx, csv, txt, …) that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropriate function to read in the data\nIdeally, you use some of your research data, so you can see what are the difficulties there. Alternatively, you can use any kind of table even if not related to research.\n\nDownload the csv or excel file using the buttons below. The files have metadata on top and a messy header. The excel file has the added difficulty, that the actual data is not in the first sheet but in the second one. Try reading it into R correctly and clean the column names using the janitor::clean_names function. It might help to look at the data first to decide how to read it correctly.\n\n\n\n\n\nError in loadNamespace(x): there is no package called 'downloadthis'\n\n\n\n\n\nError in loadNamespace(x): there is no package called 'downloadthis'"
   },
   {
     "objectID": "sessions/tasks/intro-r.html",
@@ -242,7 +242,7 @@
     "href": "sessions/slides/tidyr.html#what-is-tidy-data-2",
     "title": "Tidy data with tidyr",
     "section": "What is tidy data?",
-    "text": "What is tidy data?\nLet’s look at some examples\n\n\nTidy\n\n\n\n\n\nid\nname\ncolor\n\n\n\n\n1\nfloof\ngray\n\n\n2\nmax\nblack\n\n\n3\ncat\norange\n\n\n4\ndonut\ngray\n\n\n5\nmerlin\nblack\n\n\n6\npanda\ncalico\n\n\n\n\n\n\n\nNon-tidy\n\n\n\n\n\nfloof\nmax\ncat\ndonut\nmerlin\npanda\n\n\n\n\ngray\nblack\norange\ngray\nblack\ncalico\n\n\n\n\n\n\n\n\n\n\n\ngray\nblack\norange\ncalico\n\n\n\n\nfloof\nmax\ncat\npanda\n\n\ndonut\nmerlin\n\n\n\n\n\n\n\n\n\n\n\nSometimes raw data is non-tidy because its structure is optimized for data entry or viewing rather than analysis."
+    "text": "What is tidy data?\nLet’s look at some examples\n\n\nTidy ::: {.cell} ::: {.cell-output-display}\n\n\n\nid\nname\ncolor\n\n\n\n\n1\nfloof\ngray\n\n\n2\nmax\nblack\n\n\n3\ncat\norange\n\n\n4\ndonut\ngray\n\n\n5\nmerlin\nblack\n\n\n6\npanda\ncalico\n\n\n\n\n:::\n\n\nNon-tidy ::: {.cell} ::: {.cell-output-display}\n\n\n\nfloof\nmax\ncat\ndonut\nmerlin\npanda\n\n\n\n\ngray\nblack\norange\ngray\nblack\ncalico\n\n\n\n\n ::: {.cell} ::: {.cell-output-display}\n\n\n\ngray\nblack\norange\ncalico\n\n\n\n\nfloof\nmax\ncat\npanda\n\n\ndonut\nmerlin\n\n\n\n\n\n::: :::\n:::\n:::\n:::\n\n\nSometimes raw data is non-tidy because its structure is optimized for data entry or viewing rather than analysis."
   },
   {
     "objectID": "sessions/slides/tidyr.html#why-tidy-data",
@@ -431,7 +431,7 @@
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
     "title": "Introduction to RStudio",
     "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- *.RProj\nExample RStudio project structure"
+    "text": "Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- *.RProj\nExample RStudio project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#create-an-rstudio-project",
@@ -466,7 +466,7 @@
     "href": "sessions/slides/intro-rstudio.html#a-tip-before-we-get-started",
     "title": "Introduction to RStudio",
     "section": "A tip before we get started",
-    "text": "A tip before we get started\nLearn the most important keyboard shortcuts of R Studio.\n\nFind all shortcuts under Tools -&gt; Keyboard Shortcuts Help\n\n\nSave active file: Ctrl/Cmd + S\nRun current line: Ctrl/Cmd + Enter\nCreate new R Script: Ctrl/Cmd + N\nUndo: Ctrl/Cmd + Z\nRedo: Ctrl/Cmd + Y\nCopy/Paste: Ctrl/Cmd + C/V"
+    "text": "A tip before we get started\nLearn the most important keyboard shortcuts of R Studio.\n\nFind all shortcuts under Tools -&gt; Keyboard Shortcuts Help\n\nSave active file: Ctrl/Cmd + S\nRun current line: Ctrl/Cmd + Enter\nCreate new R Script: Ctrl/Cmd + N\nUndo: Ctrl/Cmd + Z\nRedo: Ctrl/Cmd + Y\nCopy/Paste: Ctrl/Cmd + C/V"
   },
   {
     "objectID": "sessions/slides/good-practice.html#chaotic-projects-and-workflows",
@@ -508,7 +508,7 @@
     "href": "sessions/slides/good-practice.html#name-your-files-properly",
     "title": "Good practice R coding",
     "section": "Name your files properly",
-    "text": "Name your files properly\nYour collaborators and your future self will love you for this.\n\nPrinciples 1\nFile names should be\n\n\nMachine readable\nHuman readable\nWorking with default file ordering\n\n\n\nFrom this talk by J. Bryan"
+    "text": "Name your files properly\nYour collaborators and your future self will love you for this.\n\nPrinciples 1\nFile names should be\n\nMachine readable\nHuman readable\nWorking with default file ordering\n\n\nFrom this talk by J. Bryan"
   },
   {
     "objectID": "sessions/slides/good-practice.html#machine-readable-file-names",
@@ -543,14 +543,14 @@
     "href": "sessions/slides/good-practice.html#standard-code-structure",
     "title": "Good practice R coding",
     "section": "Standard code structure",
-    "text": "Standard code structure\n\n\n\n\n\nGeneral comment with purpose of the script, author, …\nlibrary() calls on top\nSet default variables and global options\nSource additional code\nWrite the actual code, starting with loading all data files\n\n\n\n\n# This code replicates figure 2 from the\n# Baldauf et al. 2022 Journal of Ecology\n# paper.\n# Authors: Selina Baldauf and Jane Doe\n# Copyright Selina Baldauf (2024)\n\nlibrary(tidyverse)\nlibrary(vegan)\n\n# set defaults\ninput_file &lt;- \"data/results.csv\"\n\n# source files\nsource(\"R/my_cool_function.R\")\n\n# read input\ninput_data &lt;- read_csv(input_file)"
+    "text": "Standard code structure\n\n\n\n\nGeneral comment with purpose of the script, author, …\nlibrary() calls on top\nSet default variables and global options\nSource additional code\nWrite the actual code, starting with loading all data files\n\n\n\n# This code replicates figure 2 from the\n# Baldauf et al. 2022 Journal of Ecology\n# paper.\n# Authors: Selina Baldauf and Jane Doe\n# Copyright Selina Baldauf (2024)\n\nlibrary(tidyverse)\nlibrary(vegan)\n\n# set defaults\ninput_file &lt;- \"data/results.csv\"\n\n# source files\nsource(\"R/my_cool_function.R\")\n\n# read input\ninput_data &lt;- read_csv(input_file)"
   },
   {
     "objectID": "sessions/slides/good-practice.html#mark-sections",
     "href": "sessions/slides/good-practice.html#mark-sections",
     "title": "Good practice R coding",
     "section": "Mark sections",
-    "text": "Mark sections\n\n\nUse comments to break up your file into sections\n\n\n\n\n# Load data ---------------------------------------------------------------\n\ninput_data &lt;- read_csv(input_file)\n\n# Plot data ---------------------------------------------------------------\n\nggplot(input_data, aes(x = x, y = y)) +\n  geom_point()\n\n\nInsert a section label with Ctrl/Cmd + Shift + R\nNavigate sections in the file outline"
+    "text": "Mark sections\n\nUse comments to break up your file into sections\n\n\n\n# Load data ---------------------------------------------------------------\n\ninput_data &lt;- read_csv(input_file)\n\n# Plot data ---------------------------------------------------------------\n\nggplot(input_data, aes(x = x, y = y)) +\n  geom_point()\n\n\nInsert a section label with Ctrl/Cmd + Shift + R\nNavigate sections in the file outline"
   },
   {
     "objectID": "sessions/slides/good-practice.html#break-down-large-scripts",
@@ -571,35 +571,35 @@
     "href": "sessions/slides/good-practice.html#coding-style---spacing",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\n\nAlways put spaces after a comma\n\n\n\n# Good\nx[, 1]\n\n# Bad\nx[ , 1]\nx[,1]\nx[ ,1]"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\n\n\n# Good\nx[, 1]\n\n# Bad\nx[ , 1]\nx[,1]\nx[ ,1]"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---spacing-1",
     "href": "sessions/slides/good-practice.html#coding-style---spacing-1",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\n\n\n\n# Good\nmean(x, na.rm = TRUE)\n\n# Bad\nmean (x, na.rm = TRUE)\nmean ( x, na.rm = TRUE )"
+    "text": "Coding style - Spacing\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\n\n\n# Good\nmean(x, na.rm = TRUE)\n\n# Bad\nmean (x, na.rm = TRUE)\nmean ( x, na.rm = TRUE )"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---spacing-2",
     "href": "sessions/slides/good-practice.html#coding-style---spacing-2",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\n\n\n\n# Good\nheight &lt;- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight&lt;-feet*12+inches\nmean(x, na.rm=TRUE)"
+    "text": "Coding style - Spacing\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\n\n\n# Good\nheight &lt;- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight&lt;-feet*12+inches\nmean(x, na.rm=TRUE)"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---spacing-3",
     "href": "sessions/slides/good-practice.html#coding-style---spacing-3",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipe (|&gt;) followed by new line\n\n\n\n# Good\niris |&gt; \n  summarize_if(is.numeric, mean, .by = Species)  |&gt; \n  arrange(desc(Sepal.Length))\n\n# Bad\niris|&gt;summarize_if(is.numeric, mean, .by = Species)|&gt;arrange(desc(Sepal.Length))"
+    "text": "Coding style - Spacing\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipe (|&gt;) followed by new line\n\n\n# Good\niris |&gt; \n  summarize_if(is.numeric, mean, .by = Species)  |&gt; \n  arrange(desc(Sepal.Length))\n\n# Bad\niris|&gt;summarize_if(is.numeric, mean, .by = Species)|&gt;arrange(desc(Sepal.Length))"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---spacing-4",
     "href": "sessions/slides/good-practice.html#coding-style---spacing-4",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipe (|&gt;) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
+    "text": "Coding style - Spacing\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipe (|&gt;) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---line-width",
@@ -669,7 +669,7 @@
     "href": "sessions/slides/functions.html#the-mean-function",
     "title": "Functions in R",
     "section": "The mean function",
-    "text": "The mean function\nfunction_name ( argument = value )\n\nmean ( x = c(1,5,6) )\n\nmean(x = c(1,5,6)) # or short: mean(c(1,5,6))\n#&gt; [1] 4\n\n\n\n\nArguments can also be variables\nThe output of a function can be stored in a variable\n\n\n\nvalues &lt;- c(1,5,6)\nresult &lt;- mean(x = values)\nresult\n#&gt; [1] 4"
+    "text": "The mean function\nfunction_name ( argument = value )\n\nmean ( x = c(1,5,6) )\n\nmean(x = c(1,5,6)) # or short: mean(c(1,5,6))\n#&gt; [1] 4\n\n\n\nArguments can also be variables\nThe output of a function can be stored in a variable\n\n\nvalues &lt;- c(1,5,6)\nresult &lt;- mean(x = values)\nresult\n#&gt; [1] 4"
   },
   {
     "objectID": "sessions/slides/functions.html#the-mean-function-1",
@@ -690,7 +690,7 @@
     "href": "sessions/slides/functions.html#function-arguments-1",
     "title": "Functions in R",
     "section": "Function arguments",
-    "text": "Function arguments\nWhat happened here?   \n\n# NA is a missing value\nvalues &lt;- c(1, 5, 6, NA)\nmean(x = values)\n#&gt; [1] NA\n\n\n  na.rm argument is FALSE by default.\n\n\nSet it to TRUE if you want to calculate the mean despite missing values:\n\nmean(x = values, na.rm = TRUE)\n#&gt; [1] 4\n\n\n\n Arguments with default values are optional, arguments without default values are not! \n\nmean()\n#&gt; Error in mean.default(): argument \"x\" is missing, with no default"
+    "text": "Function arguments\nWhat happened here?    ::: {.cell}\n# NA is a missing value\nvalues &lt;- c(1, 5, 6, NA)\nmean(x = values)\n#&gt; [1] NA\n:::\n\n  na.rm argument is FALSE by default.\n\n\nSet it to TRUE if you want to calculate the mean despite missing values:\n\nmean(x = values, na.rm = TRUE)\n#&gt; [1] 4\n\n\n\n Arguments with default values are optional, arguments without default values are not!  ::: {.cell}\nmean()\n#&gt; Error in mean.default(): argument \"x\" is missing, with no default\n:::"
   },
   {
     "objectID": "sessions/slides/functions.html#function-arguments-2",
@@ -704,21 +704,21 @@
     "href": "sessions/slides/functions.html#function-arguments-3",
     "title": "Functions in R",
     "section": "Function arguments",
-    "text": "Function arguments\nArgument matching can be achieved by position or by name\n\n\nNamed arguments are (generally) preferred\n\nEasier to remember\nEasier to read\nSome functions have a lot of arguments\n\n\n\nmean(x = values, na.rm = TRUE) # by name\n\n\n\nHowever, it is common to match the first argument by position (especially when the first argument is the data)\n\nmean(values, na.rm = TRUE) # a mix of both"
+    "text": "Function arguments\nArgument matching can be achieved by position or by name\n\nNamed arguments are (generally) preferred\n\nEasier to remember\nEasier to read\nSome functions have a lot of arguments\n\n\nmean(x = values, na.rm = TRUE) # by name\n\n\n\nHowever, it is common to match the first argument by position (especially when the first argument is the data)\n\nmean(values, na.rm = TRUE) # a mix of both"
   },
   {
     "objectID": "sessions/slides/functions.html#where-do-functions-come-from",
     "href": "sessions/slides/functions.html#where-do-functions-come-from",
     "title": "Functions in R",
     "section": "Where do functions come from?",
-    "text": "Where do functions come from?\n\n\nBase R functions: built into R\n\n\nmean() # calculate mean\nseq()  # generate a sequence of values\n\n\n\n\n\nFrom additional packages\n\n\nPackages must be installed first\nCall a function from a package using packageName::functionName()\nLoad the package with library(packageName) and then use the function\n\n\n\n\n\n# use read_csv function from readr package\nreadr::read_csv()\n\n# or use library()\nlibrary(readr)\nread_csv()\n\n\n\n\n\n\nCustom functions:\n\nWrite your own functions and then use them in the code\n\n\n\n# custom function that prints input in a sentence\nmy_function &lt;- function(x) {\n  return(x + 5)\n}\nmy_function(5)"
+    "text": "Where do functions come from?\n\n\nBase R functions: built into R\n\n\nmean() # calculate mean\nseq()  # generate a sequence of values\n\n\n\n\n\nFrom additional packages\n\nPackages must be installed first\nCall a function from a package using packageName::functionName()\nLoad the package with library(packageName) and then use the function\n\n\n\n\n# use read_csv function from readr package\nreadr::read_csv()\n\n# or use library()\nlibrary(readr)\nread_csv()\n\n\n\n\n\n\nCustom functions:\nWrite your own functions and then use them in the code\n\n\n# custom function that prints input in a sentence\nmy_function &lt;- function(x) {\n  return(x + 5)\n}\nmy_function(5)"
   },
   {
     "objectID": "sessions/slides/functions.html#summary-1",
     "href": "sessions/slides/functions.html#summary-1",
     "title": "Functions in R",
     "section": "Summary",
-    "text": "Summary\n\n\nFunctions take input in the form of (named) arguments, calculate something and return a result\nFunctions are called by their name, followed by parentheses: functionName(argument1 = value, argument2 = value, ...)\nFunctions from additional packages can be called in two ways:\n\npackageName::functionName()\nfirst load the package with library(packageName) then call the function anywhere in the script with functionName()\n\nCall ?functionName to open the help of a function"
+    "text": "Summary\n\nFunctions take input in the form of (named) arguments, calculate something and return a result\nFunctions are called by their name, followed by parentheses: functionName(argument1 = value, argument2 = value, ...)\nFunctions from additional packages can be called in two ways:\n\npackageName::functionName()\nfirst load the package with library(packageName) then call the function anywhere in the script with functionName()\n\nCall ?functionName to open the help of a function"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#data-frames",
@@ -746,7 +746,7 @@
     "href": "sessions/slides/data-tibbles.html#tibbles",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Tibbles",
-    "text": "Tibbles\nTibbles are\n\na modern reimagining of the data frame. Tibbles are designed to be (as much as possible) drop-in replacements for data frames. (Wickham, Advanced R)\n\n\nHave a look at this book chapter for a full list of the differences between data frames and tibbles and the advantages of using tibbles.\n\n\n\n\n\n\nTibbles have the same basic properties as data frames (named list of vectors)\nEverything that you can do with data frames, you can do with tibbles"
+    "text": "Tibbles\nTibbles are\n\na modern reimagining of the data frame. Tibbles are designed to be (as much as possible) drop-in replacements for data frames. (Wickham, Advanced R)\n\n\nHave a look at this book chapter for a full list of the differences between data frames and tibbles and the advantages of using tibbles.\n\n\n\n\n\nTibbles have the same basic properties as data frames (named list of vectors)\nEverything that you can do with data frames, you can do with tibbles"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#tibbles-1",
@@ -837,7 +837,7 @@
     "href": "sessions/slides/data-tibbles.html#summary-i",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Summary I",
-    "text": "Summary I\ndata frames and tibbles\n\n\ncan be used to represent tables in R\nare pretty similar, however tibbles are slightly conventient and modern\nare named lists of vectors of the same length\n\nevery column is a vector\ncolumns have a header which is the name of the vector in the list\nwithin one column, values are of same data type\nevery column has the same length\n\n\ntibbles\n\nto use tibbles, install the package once with install.packages(\"tibble\")\nput library(tibble) at the beginning of your script to load package"
+    "text": "Summary I\ndata frames and tibbles\n\ncan be used to represent tables in R\nare pretty similar, however tibbles are slightly conventient and modern\nare named lists of vectors of the same length\n\nevery column is a vector\ncolumns have a header which is the name of the vector in the list\nwithin one column, values are of same data type\nevery column has the same length\n\n\ntibbles\n\nto use tibbles, install the package once with install.packages(\"tibble\")\nput library(tibble) at the beginning of your script to load package"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#summary-ii",
@@ -893,35 +893,35 @@
     "href": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data",
     "title": "Bring your own data",
     "section": "Data set 5: RNAseq data",
-    "text": "Data set 5: RNAseq data\nsee here\n\n\n Download example script"
+    "text": "Data set 5: RNAseq data\nsee here\n\n\nError in loadNamespace(x): there is no package called 'downloadthis'"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#new-methods-read-multiple-files-at-once",
     "href": "sessions/slides/bring-your-own-data.html#new-methods-read-multiple-files-at-once",
     "title": "Bring your own data",
     "section": "New methods: Read multiple files at once",
-    "text": "New methods: Read multiple files at once\n\nIf you have multiple files with data you can\n\nRead them all in at the same time\nCombine them into one tibble\n\n\n\n\n Download example script"
+    "text": "New methods: Read multiple files at once\n\nIf you have multiple files with data you can\n\nRead them all in at the same time\nCombine them into one tibble\n\n\n\n\nError in loadNamespace(x): there is no package called 'downloadthis'"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#new-methods-correlation-plots",
     "href": "sessions/slides/bring-your-own-data.html#new-methods-correlation-plots",
     "title": "Bring your own data",
     "section": "New methods: Correlation plots",
-    "text": "New methods: Correlation plots\n\n\n Download example script"
+    "text": "New methods: Correlation plots\n\n\nError in loadNamespace(x): there is no package called 'downloadthis'"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#new-methods-pcas",
     "href": "sessions/slides/bring-your-own-data.html#new-methods-pcas",
     "title": "Bring your own data",
     "section": "New methods: PCAS",
-    "text": "New methods: PCAS\n\n\n Download example script"
+    "text": "New methods: PCAS\n\n\nError in loadNamespace(x): there is no package called 'downloadthis'"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#some-general-tips",
     "href": "sessions/slides/bring-your-own-data.html#some-general-tips",
     "title": "Bring your own data",
     "section": "Some general tips",
-    "text": "Some general tips\n\n\nFirst make a plan:\n\nWhat do you want to achieve and what are the steps?\nStart with something small, e.g. reading in the data and bringing it into the right format.\nIf you want, stop by in general to discuss your plan or write me in the chat\n\nGoogle, ask AI tools if you want, look at the function help (?)\n\nHint: Set your RStudio error messages to English: Sys.setenv(LANGUAGE='en') in the console\n\nIf you get stuck, ask in the chat or stop by in General"
+    "text": "Some general tips\n\nFirst make a plan:\n\nWhat do you want to achieve and what are the steps?\nStart with something small, e.g. reading in the data and bringing it into the right format.\nIf you want, stop by in general to discuss your plan or write me in the chat\n\nGoogle, ask AI tools if you want, look at the function help (?)\n\nHint: Set your RStudio error messages to English: Sys.setenv(LANGUAGE='en') in the console\n\nIf you get stuck, ask in the chat or stop by in General"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#sharing",
@@ -1012,7 +1012,7 @@
     "href": "sessions/slides/00_organization.html#bring-your-own-data",
     "title": "Introduction to Data Analysis with R",
     "section": "Bring your own data",
-    "text": "Bring your own data\nOn the last workshop day, you can work with your own research data. I will also provide some real life data sets from different topics.\n\nLearning by doing\n\n\nGet started using R for your own analyses\nUse any of the methods from the course or try new things, …\nPresent/discuss your results, questions and problems at the end of the day\n\n\n\nAdd your name and some details on what you plan to do in this joint table"
+    "text": "Bring your own data\nOn the last workshop day, you can work with your own research data. I will also provide some real life data sets from different topics.\n\nLearning by doing\n\nGet started using R for your own analyses\nUse any of the methods from the course or try new things, …\nPresent/discuss your results, questions and problems at the end of the day\n\n\nAdd your name and some details on what you plan to do in this joint table"
   },
   {
     "objectID": "sessions/slides/00_organization.html#before-we-get-started-i",
@@ -1145,7 +1145,7 @@
     "href": "sessions/05_readr.html#extra",
     "title": "Import and Export Data with readr",
     "section": "1.3 Extra",
-    "text": "1.3 Extra\n\nTry reading some tables (xlsx, csv, txt, …) that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropriate function to read in the data\nIdeally, you use some of your research data, so you can see what are the difficulties there. Alternatively, you can use any kind of table even if not related to research.\n\nDownload the csv or excel file using the buttons below. The files have metadata on top and a messy header. The excel file has the added difficulty, that the actual data is not in the first sheet but in the second one. Try reading it into R correctly and clean the column names using the janitor::clean_names function. It might help to look at the data first to decide how to read it correctly.\n\n\n\n\n\n Download csv\n\n\n\n\n\n Download xlsx"
+    "text": "1.3 Extra\n\nTry reading some tables (xlsx, csv, txt, …) that you have on your machine into R\n\nFirst copy the table into the data/ folder in your project, then use the appropriate function to read in the data\nIdeally, you use some of your research data, so you can see what are the difficulties there. Alternatively, you can use any kind of table even if not related to research.\n\nDownload the csv or excel file using the buttons below. The files have metadata on top and a messy header. The excel file has the added difficulty, that the actual data is not in the first sheet but in the second one. Try reading it into R correctly and clean the column names using the janitor::clean_names function. It might help to look at the data first to decide how to read it correctly.\n\n\n\n\n\nError in loadNamespace(x): there is no package called 'downloadthis'\n\n\n\n\n\nError in loadNamespace(x): there is no package called 'downloadthis'"
   },
   {
     "objectID": "sessions/03_functions.html",
@@ -1201,21 +1201,21 @@
     "href": "index.html",
     "title": "Introduction to R for Data Analysis",
     "section": "",
-    "text": "Workshop sessions 📅 03.03.2025 - 04.03.2025 🕘 9 a.m. - 4 p.m.  📅 10.03.2025 - 11.03.2025 🕘 9 a.m. - 4 p.m.  📅 17.03.2025 from 🕘 9 a.m. - 12 a.m.  📍 Online on Webex \n\n\nWorkshop description\nThe workshop’s main goal is to equip you with essential R skills for analyzing your own research data, covering data processing and visualization. After the workshop you are equipped to confidently advance your R skills for your specific research needs.\n\nOutline\nIn 4 Workshop days we will cover the following topics:\n\nDay 1: Introduction to R and R Studio, Good programming practice, Reading data into R\nDay 2: Data visualization with the ggplot package, data wrangling with dplyr\nDay 3: Data cleaning with tidyr, statistical tests, AI Tools\nDay 4 & 5: Bring your own research data (or get some real-life data from me)\n\n\n\nConcept\nTo learn programming, it is essential to practice writing code yourself. Therefore, every input session will be followed by practical exercises. On day 4, you can apply the methods you learned to your own research data or a provided real-life data set.\nThe course will be in English and will be in an online format.\n\n\n\nFor whom is this workshop?\nThis workshop is for beginners without prior experience in R or any other programming language. You can still participate if you already know other programming languages though.\n\n\nThe instructor\nI’m a scientific programmer at Freie Universität specializing in theoretical ecology. R is integral to my daily work, and I enjoy sharing my expertise. I’ve previously taught R statistics courses for biology master’s and PhD students.\nFeel free to reach out with any course-related questions via selina.baldauf@fu-berlin.de."
+    "text": "Workshop sessions 📅 06.10.2025 - 07.10.2025 🕘 9 a.m. - 4 p.m.  📅 13.10.2025 - 14.10.2025 🕘 9 a.m. - 4 p.m.  📍 Online on Webex \n\n\nWorkshop description\nThe workshop’s main goal is to equip you with essential R skills for analyzing your own research data, covering data processing and visualization. After the workshop you are equipped to confidently advance your R skills for your specific research needs.\n\nOutline\nIn 4 Workshop days we will cover the following topics:\n\nDay 1: Introduction to R and R Studio, Good programming practice, Reading data into R\nDay 2: Data visualization with the ggplot package, data wrangling with dplyr\nDay 3: Data cleaning with tidyr, statistical tests, AI Tools\nDay 4 & 5: Bring your own research data (or get some real-life data from me)\n\n\n\nConcept\nTo learn programming, it is essential to practice writing code yourself. Therefore, every input session will be followed by practical exercises. On day 4, you can apply the methods you learned to your own research data or a provided real-life data set.\nThe course will be in English and will be in an online format.\n\n\n\nFor whom is this workshop?\nThis workshop is for beginners without prior experience in R or any other programming language. You can still participate if you already know other programming languages though.\n\n\nThe instructor\nI’m a scientific programmer at Freie Universität specializing in theoretical ecology. R is integral to my daily work, and I enjoy sharing my expertise. I’ve previously taught R statistics courses for biology master’s and PhD students.\nFeel free to reach out with any course-related questions via selina.baldauf@fu-berlin.de."
   },
   {
     "objectID": "byod/olympics.html",
     "href": "byod/olympics.html",
     "title": "Paralympic Games Data Analysis",
     "section": "",
-    "text": "The dataset contains information about Paralympic Games from 1980 to 2016. It can be obtained from the TidyTuesday GitHub repository. You can find more info about the data set on the GitHub repository\nIn this data set you can use a lot of dplyr and ggplot2 functions to summarize and visualize the data.\nInteresting variables to analyse are:\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ngender\ncharacter\nBinary gender\n\n\nevent\ncharacter\nEvent name\n\n\nmedal\ncharacter\nMedal type\n\n\nathlete\ncharacter\nAthlete name (LAST NAME first name\n\n\nabb\ncharacter\nCountry abbreviation\n\n\ncountry\ncharacter\nCountry name\n\n\ntype\ncharacter\nType of sport\n\n\nyear\ndouble\nyear of games\n\n\n\n\n\nGet the data here:\n\nolympics &lt;- readr::read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-27/olympics.csv\")\n\nFor most analysis, you can simplify the dataset by filtering to include only medal winners (rows with non-missing medal information).\n\nolympics_medal &lt;- olympics |&gt;\n  filter(!is.na(medal))"
+    "text": "The dataset contains information about Paralympic Games from 1980 to 2016. It can be obtained from the TidyTuesday GitHub repository. You can find more info about the data set on the GitHub repository\nIn this data set you can use a lot of dplyr and ggplot2 functions to summarize and visualize the data.\nInteresting variables to analyse are:\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ngender\ncharacter\nBinary gender\n\n\nevent\ncharacter\nEvent name\n\n\nmedal\ncharacter\nMedal type\n\n\nathlete\ncharacter\nAthlete name (LAST NAME first name\n\n\nabb\ncharacter\nCountry abbreviation\n\n\ncountry\ncharacter\nCountry name\n\n\ntype\ncharacter\nType of sport\n\n\nyear\ndouble\nyear of games\n\n\n\n\n\nGet the data here:\n\nolympics &lt;- readr::read_csv(\n  \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-27/olympics.csv\"\n)\n\nFor most analysis, you can simplify the dataset by filtering to include only medal winners (rows with non-missing medal information).\n\nolympics_medal &lt;- olympics |&gt;\n  filter(!is.na(medal))"
   },
   {
     "objectID": "byod/olympics.html#the-data",
     "href": "byod/olympics.html#the-data",
     "title": "Paralympic Games Data Analysis",
     "section": "",
-    "text": "The dataset contains information about Paralympic Games from 1980 to 2016. It can be obtained from the TidyTuesday GitHub repository. You can find more info about the data set on the GitHub repository\nIn this data set you can use a lot of dplyr and ggplot2 functions to summarize and visualize the data.\nInteresting variables to analyse are:\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ngender\ncharacter\nBinary gender\n\n\nevent\ncharacter\nEvent name\n\n\nmedal\ncharacter\nMedal type\n\n\nathlete\ncharacter\nAthlete name (LAST NAME first name\n\n\nabb\ncharacter\nCountry abbreviation\n\n\ncountry\ncharacter\nCountry name\n\n\ntype\ncharacter\nType of sport\n\n\nyear\ndouble\nyear of games\n\n\n\n\n\nGet the data here:\n\nolympics &lt;- readr::read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-27/olympics.csv\")\n\nFor most analysis, you can simplify the dataset by filtering to include only medal winners (rows with non-missing medal information).\n\nolympics_medal &lt;- olympics |&gt;\n  filter(!is.na(medal))"
+    "text": "The dataset contains information about Paralympic Games from 1980 to 2016. It can be obtained from the TidyTuesday GitHub repository. You can find more info about the data set on the GitHub repository\nIn this data set you can use a lot of dplyr and ggplot2 functions to summarize and visualize the data.\nInteresting variables to analyse are:\n\n\n\nvariable\nclass\ndescription\n\n\n\n\ngender\ncharacter\nBinary gender\n\n\nevent\ncharacter\nEvent name\n\n\nmedal\ncharacter\nMedal type\n\n\nathlete\ncharacter\nAthlete name (LAST NAME first name\n\n\nabb\ncharacter\nCountry abbreviation\n\n\ncountry\ncharacter\nCountry name\n\n\ntype\ncharacter\nType of sport\n\n\nyear\ndouble\nyear of games\n\n\n\n\n\nGet the data here:\n\nolympics &lt;- readr::read_csv(\n  \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-27/olympics.csv\"\n)\n\nFor most analysis, you can simplify the dataset by filtering to include only medal winners (rows with non-missing medal information).\n\nolympics_medal &lt;- olympics |&gt;\n  filter(!is.na(medal))"
   },
   {
     "objectID": "byod/olympics.html#questions-to-explore",
@@ -1236,21 +1236,21 @@
     "href": "byod/olympics.html#example-analysis",
     "title": "Paralympic Games Data Analysis",
     "section": "4 Example analysis",
-    "text": "4 Example analysis\nHere is an example of a plot you can try to create (from question 3):\n\n\n\n Download solution script"
+    "text": "4 Example analysis\nHere is an example of a plot you can try to create (from question 3):\n\n\n\nError in loadNamespace(x): there is no package called 'downloadthis'"
   },
   {
     "objectID": "byod/dnaseq.html",
     "href": "byod/dnaseq.html",
     "title": "RNA-seq Data Analysis",
     "section": "",
-    "text": "This exercise uses RNA-seq data from FU et al. 2015, Nature Cell Biology. The data compares gene expression in luminal cells of pregnant versus lactating mice. You can download the data from this Zenodo repository and you can have a look at this Galaxy tutorial for some ideas on how to get started.\nThe dataset consists of three files (no file extension, but tab separated):\n\nheatmap_genes A list of interesting genes to analyze (used in Figure 6b of the paper)\nlimma-voom_luminalpregnant-luminallactate: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes\nlimma-voom_normalised_counts: Normalized counts for genes across different samples\n\nTo simplify the analysis you can consider the following:\n\nRead the files using read_tsv()\nClean column names with janitor::clean_names() to make them easier to work with\nCombining relevant data frames using left_join() (limma-voom_luminalpregnant-luminallactate and limma-voom_normalised_counts share a common column)\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (this tutorial defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)\n\nIt is a bit tricky to read in the data correctly, so if you need a hint, you can unfold the code below\n\n\nExpand to see how to read the data\n# Read all the files and clean the column names\nheatmap_genes &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/heatmap_genes\")\nDE_results &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/limma-voom_luminalpregnant-luminallactate\")\nDE_results &lt;- janitor::clean_names(DE_results)\nnormalized_counts &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/limma-voom_normalised_counts\")\nnormalized_counts &lt;- janitor::clean_names(normalized_counts)\n\n# combine tables\ngenes &lt;- left_join(DE_results, normalized_counts,\n  by = c(\"entrezid\", \"symbol\", \"genename\")\n) |&gt;\n  select(-entrezid, genename)"
+    "text": "This exercise uses RNA-seq data from FU et al. 2015, Nature Cell Biology. The data compares gene expression in luminal cells of pregnant versus lactating mice. You can download the data from this Zenodo repository and you can have a look at this Galaxy tutorial for some ideas on how to get started.\nThe dataset consists of three files (no file extension, but tab separated):\n\nheatmap_genes A list of interesting genes to analyze (used in Figure 6b of the paper)\nlimma-voom_luminalpregnant-luminallactate: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes\nlimma-voom_normalised_counts: Normalized counts for genes across different samples\n\nTo simplify the analysis you can consider the following:\n\nRead the files using read_tsv()\nClean column names with janitor::clean_names() to make them easier to work with\nCombining relevant data frames using left_join() (limma-voom_luminalpregnant-luminallactate and limma-voom_normalised_counts share a common column)\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (this tutorial defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)\n\nIt is a bit tricky to read in the data correctly, so if you need a hint, you can unfold the code below\n\n\nExpand to see how to read the data\n# Read all the files and clean the column names\nheatmap_genes &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/heatmap_genes\")\nDE_results &lt;- read_tsv(\n  \"R/byod/solutions_for_my_datasets/data/limma-voom_luminalpregnant-luminallactate\"\n)\nDE_results &lt;- janitor::clean_names(DE_results)\nnormalized_counts &lt;- read_tsv(\n  \"R/byod/solutions_for_my_datasets/data/limma-voom_normalised_counts\"\n)\nnormalized_counts &lt;- janitor::clean_names(normalized_counts)\n\n# combine tables\ngenes &lt;- left_join(\n  DE_results,\n  normalized_counts,\n  by = c(\"entrezid\", \"symbol\", \"genename\")\n) |&gt;\n  select(-entrezid, genename)"
   },
   {
     "objectID": "byod/dnaseq.html#the-data",
     "href": "byod/dnaseq.html#the-data",
     "title": "RNA-seq Data Analysis",
     "section": "",
-    "text": "This exercise uses RNA-seq data from FU et al. 2015, Nature Cell Biology. The data compares gene expression in luminal cells of pregnant versus lactating mice. You can download the data from this Zenodo repository and you can have a look at this Galaxy tutorial for some ideas on how to get started.\nThe dataset consists of three files (no file extension, but tab separated):\n\nheatmap_genes A list of interesting genes to analyze (used in Figure 6b of the paper)\nlimma-voom_luminalpregnant-luminallactate: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes\nlimma-voom_normalised_counts: Normalized counts for genes across different samples\n\nTo simplify the analysis you can consider the following:\n\nRead the files using read_tsv()\nClean column names with janitor::clean_names() to make them easier to work with\nCombining relevant data frames using left_join() (limma-voom_luminalpregnant-luminallactate and limma-voom_normalised_counts share a common column)\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (this tutorial defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)\n\nIt is a bit tricky to read in the data correctly, so if you need a hint, you can unfold the code below\n\n\nExpand to see how to read the data\n# Read all the files and clean the column names\nheatmap_genes &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/heatmap_genes\")\nDE_results &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/limma-voom_luminalpregnant-luminallactate\")\nDE_results &lt;- janitor::clean_names(DE_results)\nnormalized_counts &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/limma-voom_normalised_counts\")\nnormalized_counts &lt;- janitor::clean_names(normalized_counts)\n\n# combine tables\ngenes &lt;- left_join(DE_results, normalized_counts,\n  by = c(\"entrezid\", \"symbol\", \"genename\")\n) |&gt;\n  select(-entrezid, genename)"
+    "text": "This exercise uses RNA-seq data from FU et al. 2015, Nature Cell Biology. The data compares gene expression in luminal cells of pregnant versus lactating mice. You can download the data from this Zenodo repository and you can have a look at this Galaxy tutorial for some ideas on how to get started.\nThe dataset consists of three files (no file extension, but tab separated):\n\nheatmap_genes A list of interesting genes to analyze (used in Figure 6b of the paper)\nlimma-voom_luminalpregnant-luminallactate: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes\nlimma-voom_normalised_counts: Normalized counts for genes across different samples\n\nTo simplify the analysis you can consider the following:\n\nRead the files using read_tsv()\nClean column names with janitor::clean_names() to make them easier to work with\nCombining relevant data frames using left_join() (limma-voom_luminalpregnant-luminallactate and limma-voom_normalised_counts share a common column)\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (this tutorial defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)\n\nIt is a bit tricky to read in the data correctly, so if you need a hint, you can unfold the code below\n\n\nExpand to see how to read the data\n# Read all the files and clean the column names\nheatmap_genes &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/heatmap_genes\")\nDE_results &lt;- read_tsv(\n  \"R/byod/solutions_for_my_datasets/data/limma-voom_luminalpregnant-luminallactate\"\n)\nDE_results &lt;- janitor::clean_names(DE_results)\nnormalized_counts &lt;- read_tsv(\n  \"R/byod/solutions_for_my_datasets/data/limma-voom_normalised_counts\"\n)\nnormalized_counts &lt;- janitor::clean_names(normalized_counts)\n\n# combine tables\ngenes &lt;- left_join(\n  DE_results,\n  normalized_counts,\n  by = c(\"entrezid\", \"symbol\", \"genename\")\n) |&gt;\n  select(-entrezid, genename)"
   },
   {
     "objectID": "byod/dnaseq.html#questions",
@@ -1271,7 +1271,7 @@
     "href": "byod/dnaseq.html#example-analysis",
     "title": "RNA-seq Data Analysis",
     "section": "4 Example analysis",
-    "text": "4 Example analysis\n\n\n\n\n\n\n\n\n\nError: object 'FALS' not found"
+    "text": "4 Example analysis\n\n\n\n\n\n\n\n\n\nError in loadNamespace(x): there is no package called 'downloadthis'"
   },
   {
     "objectID": "byod/ice_cover.html",
@@ -1306,7 +1306,7 @@
     "href": "byod/ice_cover.html#example-analysis",
     "title": "Climate Change Effects on Ice Cover and Temperature in North American Lakes",
     "section": "4 Example analysis",
-    "text": "4 Example analysis\nHere is an example of a plot you can try to create (from question 3):\n\n\n\n Download solution script"
+    "text": "4 Example analysis\nHere is an example of a plot you can try to create (from question 3):\n\n\n\nError in loadNamespace(x): there is no package called 'downloadthis'"
   },
   {
     "objectID": "byod/wine.html",
@@ -1341,7 +1341,7 @@
     "href": "byod/wine.html#example-analysis",
     "title": "Wine Quality Analysis",
     "section": "4 Example analysis",
-    "text": "4 Example analysis\nHere is an example of a correlation plot:\n\nHere is an example of a PCA result:\n\n\n\n Download solution script"
+    "text": "4 Example analysis\nHere is an example of a correlation plot:\n\nHere is an example of a PCA result:\n\n\n\nError in loadNamespace(x): there is no package called 'downloadthis'"
   },
   {
     "objectID": "byod/wine.html#reference",
@@ -1418,7 +1418,7 @@
     "href": "preparations.html#update-r",
     "title": "Course preparations",
     "section": "2.2 Update R",
-    "text": "2.2 Update R\n\nOpen RStudio and check the version number in the console pane (bottom left, see pink highlights in the screen shot).\n\n\nI will be using R version 4.4.2. If your version is below 4.3.3, you should update but in general it’s always a good idea to stay up to date to get newest features and improvements.\n\nDownload and install the latest version of R (see Step 1 for instructions).\nIn RStudio, go to “Tools -&gt; Global Options -&gt; General” and click “Change R version”.\nSelect the newest installed version of R.\n\n\n\nRestart RStudio and verify the updated version in the console."
+    "text": "2.2 Update R\n\nOpen RStudio and check the version number in the console pane (bottom left, see pink highlights in the screen shot).\n\n\nCheck if your version number is up to date (at least 4.5.1, note that the screenshot still shows an older version). If your R version is lower, please update the version.\n\nDownload and install the latest version of R (see Step 1 for instructions).\nIn RStudio, go to “Tools -&gt; Global Options -&gt; General” and click “Change R version”.\nSelect the newest installed version of R.\n\n\n\nRestart RStudio and verify the updated version in the console."
   },
   {
     "objectID": "sessions/02_intro-r.html",
@@ -1565,21 +1565,21 @@
     "href": "sessions/slides/AI-tools.html#overview-of-tools",
     "title": "AI Tools for R",
     "section": "Overview of tools",
-    "text": "Overview of tools\n\n\nBrowser-based chat bots (ChatGPT, Bard, …)\n\nGeneral-purpose\n\n\n\n\n\n\nData-analysis tools (Julius AI, RTutor, …)\n\nUpload data and ask questions about it\nCan also execute code\nChat with your data\n\n\n\n\n\n\n\nIntegrated AI tools (GitHub Copilot, Codium AI, …)\n\nIntegrated directly in programming environment\nReal-time suggestions, chat, debugging, …\n\n\n\n\n\nFind the tools that best fit your workflow!"
+    "text": "Overview of tools\n\nBrowser-based chat bots (ChatGPT, Bard, …)\n\nGeneral-purpose\n\n\n\n\nData-analysis tools (Julius AI, RTutor, …)\n\nUpload data and ask questions about it\nCan also execute code\nChat with your data\n\n\n\n\n\nIntegrated AI tools (GitHub Copilot, Codium AI, …)\n\nIntegrated directly in programming environment\nReal-time suggestions, chat, debugging, …\n\n\n\n\nFind the tools that best fit your workflow!"
   },
   {
     "objectID": "sessions/slides/AI-tools.html#r-tutor",
     "href": "sessions/slides/AI-tools.html#r-tutor",
     "title": "AI Tools for R",
     "section": "R Tutor",
-    "text": "R Tutor\n\n\n\n\nhttps://rtutor.ai/\nFree browser tool\nUpload data and ask questions about it\nUse the demo data"
+    "text": "R Tutor\n\n\n\nhttps://rtutor.ai/\nFree browser tool\nUpload data and ask questions about it\nUse the demo data"
   },
   {
     "objectID": "sessions/slides/AI-tools.html#julius-ai",
     "href": "sessions/slides/AI-tools.html#julius-ai",
     "title": "AI Tools for R",
     "section": "Julius AI",
-    "text": "Julius AI\n\n\n\n\nhttps://julius.ai/\nTry for free\nBasic plan ~20€ per months (-50% academic discount)\nUpload data and ask questions about it"
+    "text": "Julius AI\n\n\n\nhttps://julius.ai/\nTry for free\nBasic plan ~20€ per months (-50% academic discount)\nUpload data and ask questions about it"
   },
   {
     "objectID": "sessions/slides/AI-tools.html#github-copilot",
@@ -1712,7 +1712,7 @@
     "href": "sessions/slides/dplyr.html#data-transformation-1",
     "title": "Data transformation with dplyr",
     "section": "Data transformation",
-    "text": "Data transformation\nWith dplyr we can (among other things)\n\n\nFilter data to analyse only a part of it\nCreate new variables\nSummarize data\nCombine multiple tables\nRename variables\nReorder observations or variables\n\n\n\nTo get started load the package dplyr:\n\nlibrary(dplyr)\n# or\nlibrary(tidyverse)"
+    "text": "Data transformation\nWith dplyr we can (among other things)\n\nFilter data to analyse only a part of it\nCreate new variables\nSummarize data\nCombine multiple tables\nRename variables\nReorder observations or variables\n\n\nTo get started load the package dplyr:\n\nlibrary(dplyr)\n# or\nlibrary(tidyverse)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#dplyr-basic-vocabulary",
@@ -1726,7 +1726,7 @@
     "href": "sessions/slides/dplyr.html#the-data",
     "title": "Data transformation with dplyr",
     "section": "The data",
-    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\n\n\n\n\nyear: observation year\nsection: CC (clear cut forest) or OG (old growth forest)\nunittype: channel classification (C = Cascade, P = Pool, …)\nspecies: Species measured\nlength_1_mm: body length [mm]\nweight_g: body weight [g]\n\n\n\n\n\n\n\n\nCoastal giant salamander (terrestrial form)Andrews Forest Program by Lina DiGregorio via CC-BY from https://andrewsforest.oregonstate.edu\n\n\n\n\nReferences: Kaylor, M.J. and D.R. Warren. (2017) andGregory, S.V. and I. Arismendi. (2020) as provided in the lterdatasampler package."
+    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\n\n\n\nyear: observation year\nsection: CC (clear cut forest) or OG (old growth forest)\nunittype: channel classification (C = Cascade, P = Pool, …)\nspecies: Species measured\nlength_1_mm: body length [mm]\nweight_g: body weight [g]\n\n\n\n\n\n\n\nCoastal giant salamander (terrestrial form)Andrews Forest Program by Lina DiGregorio via CC-BY from https://andrewsforest.oregonstate.edu\n\n\n\n\nReferences: Kaylor, M.J. and D.R. Warren. (2017) andGregory, S.V. and I. Arismendi. (2020) as provided in the lterdatasampler package."
   },
   {
     "objectID": "sessions/slides/dplyr.html#the-data-1",
@@ -1775,7 +1775,7 @@
     "href": "sessions/slides/dplyr.html#useful-filter-helpers",
     "title": "Data transformation with dplyr",
     "section": "Useful filter() helpers",
-    "text": "Useful filter() helpers\nThese functions and operators help you filter your observations:\n\n\nrelational operators &lt;, &gt;, ==, …\nlogical operators &, |, !\n%in% to filter multiple values\nis.na() to filter missing values\nbetween() to filter values that are between an upper and lower boundary\nnear() to compare floating points (use instead of == for doubles)"
+    "text": "Useful filter() helpers\nThese functions and operators help you filter your observations:\n\nrelational operators &lt;, &gt;, ==, …\nlogical operators &, |, !\n%in% to filter multiple values\nis.na() to filter missing values\nbetween() to filter values that are between an upper and lower boundary\nnear() to compare floating points (use instead of == for doubles)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#select-1",
@@ -1796,7 +1796,7 @@
     "href": "sessions/slides/dplyr.html#useful-select-helpers",
     "title": "Data transformation with dplyr",
     "section": "Useful select() helpers",
-    "text": "Useful select() helpers\n\n\nstarts_with() and ends_with(): variable names that start/end with a specific string\ncontains(): variable names that contain a specific string\nmatches(): variable names that match a regular expression\nany_of() and all_of(): variables that are contained in a character vector"
+    "text": "Useful select() helpers\n\nstarts_with() and ends_with(): variable names that start/end with a specific string\ncontains(): variable names that contain a specific string\nmatches(): variable names that match a regular expression\nany_of() and all_of(): variables that are contained in a character vector"
   },
   {
     "objectID": "sessions/slides/dplyr.html#mutate-1",
@@ -1873,7 +1873,7 @@
     "href": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows",
     "title": "Data transformation with dplyr",
     "section": "Combine two tibbles by row bind_rows",
-    "text": "Combine two tibbles by row bind_rows\nSituation: Two (or more) tibbles with the same variables (column names)\n\ntbl_a &lt;- vertebrates[1:2, ] # first two rows\ntbl_b &lt;- vertebrates[2:nrow(vertebrates), ] # the rest\n\n\n\ntbl_a\n\n\n#&gt; # A tibble: 2 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n\n\n\ntbl_b\n\n\n#&gt; # A tibble: 32,190 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; 2  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt; # ℹ 32,188 more rows"
+    "text": "Combine two tibbles by row bind_rows\nSituation: Two (or more) tibbles with the same variables (column names)\n\ntbl_a &lt;- vertebrates[1:2, ] # first two rows\ntbl_b &lt;- vertebrates[2:nrow(vertebrates), ] # the rest\n\n ::: {.cell}\ntbl_a\n:::\n\n#&gt; # A tibble: 2 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n\n ::: {.cell}\ntbl_b\n:::\n\n#&gt; # A tibble: 32,190 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; 2  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt; # ℹ 32,188 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows-1",
@@ -1887,7 +1887,7 @@
     "href": "sessions/slides/dplyr.html#join-tibbles-with-left_join",
     "title": "Data transformation with dplyr",
     "section": "Join tibbles with left_join()",
-    "text": "Join tibbles with left_join()\nSituation: Two tables that share some but not all columns.\n\n\nvertebrates\n\n\n#&gt; # A tibble: 32,191 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; # ℹ 32,189 more rows\n\n\n\n# table with more information on the species\nspecies\n#&gt; # A tibble: 2 × 2\n#&gt;   species                  type     \n#&gt;   &lt;chr&gt;                    &lt;chr&gt;    \n#&gt; 1 Cutthroat trout          Fish     \n#&gt; 2 Coastal giant salamander Amphibian"
+    "text": "Join tibbles with left_join()\nSituation: Two tables that share some but not all columns.\n\n\nvertebrates\n\n\n#&gt; # A tibble: 32,191 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; # ℹ 32,189 more rows\n\n ::: {.cell}\n# table with more information on the species\nspecies\n#&gt; # A tibble: 2 × 2\n#&gt;   species                  type     \n#&gt;   &lt;chr&gt;                    &lt;chr&gt;    \n#&gt; 1 Cutthroat trout          Fish     \n#&gt; 2 Coastal giant salamander Amphibian\n:::"
   },
   {
     "objectID": "sessions/slides/dplyr.html#join-tibbles-with-left_join-1",
@@ -1908,35 +1908,35 @@
     "href": "sessions/slides/dplyr.html#summary-i",
     "title": "Data transformation with dplyr",
     "section": "Summary I",
-    "text": "Summary I\nAll dplyr functions take a tibble as first argument and return a tibble.\nfilter()\n\n\npick rows with helpers\n\nrelational and logical operators\n%in%\nis.na()\nbetween()\nnear()"
+    "text": "Summary I\nAll dplyr functions take a tibble as first argument and return a tibble.\nfilter()\n\npick rows with helpers\n\nrelational and logical operators\n%in%\nis.na()\nbetween()\nnear()"
   },
   {
     "objectID": "sessions/slides/dplyr.html#summary-ii",
     "href": "sessions/slides/dplyr.html#summary-ii",
     "title": "Data transformation with dplyr",
     "section": "Summary II",
-    "text": "Summary II\n\nAll dplyr functions take a tibble as first argument and return a tibble.\nselect()\n\npick columns with helpers\n\nstarts_with(), ends_with()\ncontains()\nmatches()\nany_of(), all_of()"
+    "text": "Summary II\nAll dplyr functions take a tibble as first argument and return a tibble.\nselect()\n\npick columns with helpers\n\nstarts_with(), ends_with()\ncontains()\nmatches()\nany_of(), all_of()"
   },
   {
     "objectID": "sessions/slides/dplyr.html#summary-iii",
     "href": "sessions/slides/dplyr.html#summary-iii",
     "title": "Data transformation with dplyr",
     "section": "Summary III",
-    "text": "Summary III\narrange()\n\n\nchange order of rows (adscending)\n\nor descending with desc()\n\n\nmutate()\n\nadd columns but keep all columns\n\ncase_when() for conditional values"
+    "text": "Summary III\narrange()\n\nchange order of rows (adscending)\n\nor descending with desc()\n\n\nmutate()\n\nadd columns but keep all columns\n\ncase_when() for conditional values"
   },
   {
     "objectID": "sessions/slides/dplyr.html#summary-iv",
     "href": "sessions/slides/dplyr.html#summary-iv",
     "title": "Data transformation with dplyr",
     "section": "Summary IV",
-    "text": "Summary IV\n\nsummarize()\n\ncollapse rows into one row by some summary\n\nuse .by argument to summarize by group\n\n\ncount\n\ncount rows based on a group"
+    "text": "Summary IV\nsummarize()\n\ncollapse rows into one row by some summary\n\nuse .by argument to summarize by group\n\n\ncount\n\ncount rows based on a group"
   },
   {
     "objectID": "sessions/slides/dplyr.html#summary-v",
     "href": "sessions/slides/dplyr.html#summary-v",
     "title": "Data transformation with dplyr",
     "section": "Summary V",
-    "text": "Summary V\n\nbind_rows()\n\ncombine rows of multiple tibbles into one\n\nthe tibbles need to have the same columns\nadd an id column with the argument .id = \"id\"\nfunction bind_cols() works similarly just for columns\n\n\nleft_join()\n\ncombine tables based on common columns"
+    "text": "Summary V\nbind_rows()\n\ncombine rows of multiple tibbles into one\n\nthe tibbles need to have the same columns\nadd an id column with the argument .id = \"id\"\nfunction bind_cols() works similarly just for columns\n\n\nleft_join()\n\ncombine tables based on common columns"
   },
   {
     "objectID": "sessions/slides/ggplot.html#a-ggplot-showcase-1",
@@ -1971,7 +1971,7 @@
     "href": "sessions/slides/ggplot.html#the-data",
     "title": "Data visualization with ggplot2",
     "section": "The data",
-    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\n\n\n\n\nyear: observation year\nsection: CC (clear cut forest) or OG (old growth forest)\nunittype: channel classification (C = Cascade, P = Pool, …)\nspecies: Species measured\nlength_1_mm: body length [mm]\nweight_g: body weight [g]\n\n\n\n\n\n\n\n\nCoastal giant salamander (terrestrial form)Andrews Forest Program by Lina DiGregorio via CC-BY from https://andrewsforest.oregonstate.edu\n\n\n\n\nReferences: Kaylor, M.J. and D.R. Warren. (2017) andGregory, S.V. and I. Arismendi. (2020) as provided in the lterdatasampler package."
+    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\n\n\n\nyear: observation year\nsection: CC (clear cut forest) or OG (old growth forest)\nunittype: channel classification (C = Cascade, P = Pool, …)\nspecies: Species measured\nlength_1_mm: body length [mm]\nweight_g: body weight [g]\n\n\n\n\n\n\n\nCoastal giant salamander (terrestrial form)Andrews Forest Program by Lina DiGregorio via CC-BY from https://andrewsforest.oregonstate.edu\n\n\n\n\nReferences: Kaylor, M.J. and D.R. Warren. (2017) andGregory, S.V. and I. Arismendi. (2020) as provided in the lterdatasampler package."
   },
   {
     "objectID": "sessions/slides/ggplot.html#the-data-1",
@@ -2160,7 +2160,7 @@
     "href": "sessions/slides/ggplot.html#scale_color_manual",
     "title": "Data visualization with ggplot2",
     "section": "scale_color_manual",
-    "text": "scale_color_manual\nWe can also manually specify colors:\n\n\n\ng +\n  scale_color_manual(\n    values = c(\n      \"darkolivegreen4\",\n      \"darkorchid3\"\n    )\n  )\n\n\nLength of color vector has to match number of levels in your aesthetic\n\n\n\n\nSpecify colors\n\nVia their name\nVia their Hex color codes (use websites to generate your own color palettes, e.g. here)"
+    "text": "scale_color_manual\nWe can also manually specify colors:\n\n\n\ng +\n  scale_color_manual(\n    values = c(\n      \"darkolivegreen4\",\n      \"darkorchid3\"\n    )\n  )\n\n\nLength of color vector has to match number of levels in your aesthetic\n\n\n\nSpecify colors\n\nVia their name\nVia their Hex color codes (use websites to generate your own color palettes, e.g. here)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#other-color-scales",
@@ -2181,7 +2181,7 @@
     "href": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title",
     "title": "Data visualization with ggplot2",
     "section": "labs: Change axis and legend titles and add plot title",
-    "text": "labs: Change axis and legend titles and add plot title\n\ng &lt;- g +\n  labs(\n    x = \"Length [mm]\",\n    y = \"Weight [g]\",\n    color = \"Species\",\n    title = \"Length-Weight relationship\",\n    subtitle = \"There seems to be an exponential relationship\",\n    caption = \"Data from the `lterdatasampler` package\"\n  )\ng"
+    "text": "labs: Change axis and legend titles and add plot title\n\ng &lt;- g +\n  labs(\n    x = \"Length [mm]\",\n    y = \"Weight [g]\",\n    color = \"Species\",\n    title = \"Length-Weight relationship\",\n    subtitle = \"There seems to be an exponential relationship\",\n    caption = \"Data from the `lterdatasampler` package\"\n  )\ng\n#&gt; NULL"
   },
   {
     "objectID": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title-output",
@@ -2209,7 +2209,7 @@
     "href": "sessions/slides/ggplot.html#theme-customize-theme",
     "title": "Data visualization with ggplot2",
     "section": "theme(): customize theme",
-    "text": "theme(): customize theme\nYou can manually change a theme or even create an entire theme yourself. The elements you can control in the theme are:\n\n\ntitles (plot, axis, legend, …)\nlabels\nbackground\nborders\ngrid lines\nlegends\n\n\n\nIf you want a full list of what you can customize, have a look at\n\n?theme\n\n\nLook here for an overview of the elements that you can change and the corresponding functions"
+    "text": "theme(): customize theme\nYou can manually change a theme or even create an entire theme yourself. The elements you can control in the theme are:\n\ntitles (plot, axis, legend, …)\nlabels\nbackground\nborders\ngrid lines\nlegends\n\n\nIf you want a full list of what you can customize, have a look at\n\n?theme\n\n\nLook here for an overview of the elements that you can change and the corresponding functions"
   },
   {
     "objectID": "sessions/slides/ggplot.html#theme-customize-theme-1",
@@ -2279,7 +2279,7 @@
     "href": "sessions/slides/intro-r.html#comments-in-r",
     "title": "Introduction to R",
     "section": "Comments in R",
-    "text": "Comments in R\n\n# Reading and cleaning the data -----------------\n\ndata &lt;- read_csv(\"data/my-data.csv\")\n# clean all column headers \n# (found on https://stackoverflow.com/questions/68177507/)\ndata &lt;- janitor::clean_names(data)\n\n# Analysis --------------------------------------\n\n\nEverything that follows a # is a comment\nComments are not evaluated\nNotes that make code more readable or add information\n\n\n\n\nComments can be used for\n\nExplanation of code (if necessary)\nInclude links, names of authors, …\nMark different sections of your code ( try Ctrl/Cmd + Shift + R)"
+    "text": "Comments in R\n\n# Reading and cleaning the data -----------------\n\ndata &lt;- read_csv(\"data/my-data.csv\")\n# clean all column headers \n# (found on https://stackoverflow.com/questions/68177507/)\ndata &lt;- janitor::clean_names(data)\n\n# Analysis --------------------------------------\n\n\nEverything that follows a # is a comment\nComments are not evaluated\nNotes that make code more readable or add information\n\n\n\nComments can be used for\n\nExplanation of code (if necessary)\nInclude links, names of authors, …\nMark different sections of your code ( try Ctrl/Cmd + Shift + R)"
   },
   {
     "objectID": "sessions/slides/intro-r.html#variables",
@@ -2328,7 +2328,7 @@
     "href": "sessions/slides/intro-r.html#working-with-vectors-2",
     "title": "Introduction to R",
     "section": "Working with vectors",
-    "text": "Working with vectors\nDivide population and area vector to calculate population density in each city: \n\npopulation / area_km2\n#&gt;  [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685\n#&gt;  [8]  2178.988  9649.123 20000.000\n\n\nThe operation is performed separately for each element of the two vectors and the result is a vector.\n\n\nSame, if a vector is divided by vector of length 1 (i.e. a single number). Result is always a vector.\n\nmean_population &lt;- mean(population) # calculate the mean of population vector\nmean_population\n#&gt; [1] 5910000\npopulation / mean_population # divide population vector by the mean\n#&gt;  [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142\n#&gt;  [8] 0.4737733 0.3722504 0.3553299"
+    "text": "Working with vectors\nDivide population and area vector to calculate population density in each city:  ::: {.cell}\npopulation / area_km2\n#&gt;  [1]  5861.801  4880.906  5725.191  3752.606  4264.871  5298.013  3575.685\n#&gt;  [8]  2178.988  9649.123 20000.000\n:::\n\nThe operation is performed separately for each element of the two vectors and the result is a vector.\n\n\nSame, if a vector is divided by vector of length 1 (i.e. a single number). Result is always a vector.\n\nmean_population &lt;- mean(population) # calculate the mean of population vector\nmean_population\n#&gt; [1] 5910000\npopulation / mean_population # divide population vector by the mean\n#&gt;  [1] 2.5549915 2.1150592 1.5228426 0.9137056 0.6429780 0.5414552 0.5076142\n#&gt;  [8] 0.4737733 0.3722504 0.3553299"
   },
   {
     "objectID": "sessions/slides/intro-r.html#working-with-vectors-3",
@@ -2356,7 +2356,7 @@
     "href": "sessions/slides/intro-r.html#indexing-vectors-1",
     "title": "Introduction to R",
     "section": "Indexing vectors",
-    "text": "Indexing vectors\nChange the values of a vector at specified indexes using the assignment operator &lt;-\n\nImagine for example, that the population of\n\n\nIstanbul (index 1) increased to 20 Million\nRome (index 8) changed but is unknown\nParis (index 10) decreased by 200,000\n\n\n\n\n\n# Update Istanbul (1) and Rome(8)\npopulation[c(1, 8)] &lt;- c(20e6, NA) # NA means missing value\n# Update Paris (10)\npopulation[10] &lt;- population[10] - 200000 \n\n# Look at the result\npopulation\n#&gt;  [1] 20000000 12500000  9000000  5400000  3800000  3200000  3000000       NA\n#&gt;  [9]  2200000  1900000"
+    "text": "Indexing vectors\nChange the values of a vector at specified indexes using the assignment operator &lt;-\n\nImagine for example, that the population of\n\nIstanbul (index 1) increased to 20 Million\nRome (index 8) changed but is unknown\nParis (index 10) decreased by 200,000\n\n\n\n\n# Update Istanbul (1) and Rome(8)\npopulation[c(1, 8)] &lt;- c(20e6, NA) # NA means missing value\n# Update Paris (10)\npopulation[10] &lt;- population[10] - 200000 \n\n# Look at the result\npopulation\n#&gt;  [1] 20000000 12500000  9000000  5400000  3800000  3200000  3000000       NA\n#&gt;  [9]  2200000  1900000"
   },
   {
     "objectID": "sessions/slides/intro-r.html#indexing-vectors-2",
@@ -2370,7 +2370,7 @@
     "href": "sessions/slides/intro-r.html#summary-i",
     "title": "Introduction to R",
     "section": "Summary I",
-    "text": "Summary I\n\n\nVariables have a name and a value and are created using the assignment operator &lt;-, e.g.\n\n\nradius &lt;- 5\n\n\nVectors are a collection of values of the same data type:\n\ncharacter (\"hello\")\nnumeric: integer (23L) and double (2.23)\nlogical (TRUE and FALSE)"
+    "text": "Summary I\n\nVariables have a name and a value and are created using the assignment operator &lt;-, e.g. ::: {.cell}\n\nradius &lt;- 5\n\nVectors are a collection of values of the same data type:\n\ncharacter (\"hello\")\nnumeric: integer (23L) and double (2.23)\nlogical (TRUE and FALSE)\n\n\n:::"
   },
   {
     "objectID": "sessions/slides/intro-r.html#summary-ii",
@@ -2440,21 +2440,21 @@
     "href": "sessions/slides/readr.html#read-files-with-read_-2",
     "title": "Import and Export Data with readr",
     "section": "Read files with read_*()",
-    "text": "Read files with read_*()\n\n\nSpecify number of lines to skip reading with skip\n\n\nUseful if you have metadata on top of the file\n\n\n\n\n\n\n\n\n\n# without skipping first lines\nread_csv(file = \"data/meta_data_top.csv\")\n\n\n#&gt; # A tibble: 6 × 1\n#&gt;   Metadata              \n#&gt;   &lt;chr&gt;                 \n#&gt; 1 Date: June, 12, 1989  \n#&gt; 2 Author: Selina Baldauf\n#&gt; 3 Temperature, Rainfall \n#&gt; 4 1.5, 2                \n#&gt; 5 1, 0                  \n#&gt; 6 0.5, 0.6\n\n\n\n\n# skip meta data lines\nread_csv(\n  file = \"data/meta_data_top.csv\",\n  skip = 4\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;   Temperature Rainfall\n#&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1         1.5      2  \n#&gt; 2         1        0  \n#&gt; 3         0.5      0.6"
+    "text": "Read files with read_*()\n\n\nSpecify number of lines to skip reading with skip\n\nUseful if you have metadata on top of the file\n\n\n\n\n\n\n\n\n# without skipping first lines\nread_csv(file = \"data/meta_data_top.csv\")\n\n\n#&gt; # A tibble: 6 × 1\n#&gt;   Metadata              \n#&gt;   &lt;chr&gt;                 \n#&gt; 1 Date: June, 12, 1989  \n#&gt; 2 Author: Selina Baldauf\n#&gt; 3 Temperature, Rainfall \n#&gt; 4 1.5, 2                \n#&gt; 5 1, 0                  \n#&gt; 6 0.5, 0.6\n\n\n\n\n# skip meta data lines\nread_csv(\n  file = \"data/meta_data_top.csv\",\n  skip = 4\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;   Temperature Rainfall\n#&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1         1.5      2  \n#&gt; 2         1        0  \n#&gt; 3         0.5      0.6"
   },
   {
     "objectID": "sessions/slides/readr.html#read-files-with-read_-3",
     "href": "sessions/slides/readr.html#read-files-with-read_-3",
     "title": "Import and Export Data with readr",
     "section": "Read files with read_*()",
-    "text": "Read files with read_*()\n\n\nSpecify whether the data has a header column or not with col_names\n\n\nUseful if you don’t have column names or you want to change them\n\n\n\n\n\n\n\n\n\n# First line expected to be column names\nread_csv(file = \"data/no_col_names.csv\")\n\n\n#&gt; # A tibble: 2 × 2\n#&gt;   `1.5`   `2`\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1     0  \n#&gt; 2   0.5   0.6\n\n\n\n\n# Default column names are given\nread_csv(\n  file = \"data/no_col_names.csv\",\n  col_names = FALSE\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;      X1    X2\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1.5   2  \n#&gt; 2   1     0  \n#&gt; 3   0.5   0.6"
+    "text": "Read files with read_*()\n\n\nSpecify whether the data has a header column or not with col_names\n\nUseful if you don’t have column names or you want to change them\n\n\n\n\n\n\n\n\n# First line expected to be column names\nread_csv(file = \"data/no_col_names.csv\")\n\n\n#&gt; # A tibble: 2 × 2\n#&gt;   `1.5`   `2`\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1     0  \n#&gt; 2   0.5   0.6\n\n\n\n\n# Default column names are given\nread_csv(\n  file = \"data/no_col_names.csv\",\n  col_names = FALSE\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;      X1    X2\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1.5   2  \n#&gt; 2   1     0  \n#&gt; 3   0.5   0.6"
   },
   {
     "objectID": "sessions/slides/readr.html#read-files-with-read_-4",
     "href": "sessions/slides/readr.html#read-files-with-read_-4",
     "title": "Import and Export Data with readr",
     "section": "Read files with read_*()",
-    "text": "Read files with read_*()\n\n\nSpecify whether the data has a header column or not with col_names\n\n\nUseful if you don’t have column names or you want to change them\n\n\n\n\n\n\n\n\n# First line expected to be column names\nread_csv(file = \"data/no_col_names.csv\")\n\n\n#&gt; # A tibble: 2 × 2\n#&gt;   `1.5`   `2`\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1     0  \n#&gt; 2   0.5   0.6\n\n\n\n# Specify custom column names\nread_csv(\n  file = \"data/no_col_names.csv\",\n  col_names = c(\"Temperature\", \"Rainfall\")\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;   Temperature Rainfall\n#&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1         1.5      2  \n#&gt; 2         1        0  \n#&gt; 3         0.5      0.6"
+    "text": "Read files with read_*()\n\n\nSpecify whether the data has a header column or not with col_names\n\nUseful if you don’t have column names or you want to change them\n\n\n\n\n\n\n\n# First line expected to be column names\nread_csv(file = \"data/no_col_names.csv\")\n\n\n#&gt; # A tibble: 2 × 2\n#&gt;   `1.5`   `2`\n#&gt;   &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1   1     0  \n#&gt; 2   0.5   0.6\n\n\n\n# Specify custom column names\nread_csv(\n  file = \"data/no_col_names.csv\",\n  col_names = c(\"Temperature\", \"Rainfall\")\n)\n\n\n#&gt; # A tibble: 3 × 2\n#&gt;   Temperature Rainfall\n#&gt;         &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1         1.5      2  \n#&gt; 2         1        0  \n#&gt; 3         0.5      0.6"
   },
   {
     "objectID": "sessions/slides/readr.html#write-files-with-write_",
@@ -2510,7 +2510,7 @@
     "href": "sessions/slides/readr.html#data-format-1",
     "title": "Import and Export Data with readr",
     "section": "Data format",
-    "text": "Data format\nFollow these guidelines to make data import to R easier and less frustrating\n\n\nIn general: prefer machine-readable file formats (.csv, .txt instead of .xlsx)\n\n\n\nNo white space in column headers\n\nUse a character as separator, e.g. species_name instead of species name\nIf this is unpractical, have a look at the function janitor::clean_names() from the janitor package\n\nNo special characters in column headers (ä,, ß, é, ê, %, °C, µ …)\nUse . as a decimal separator (not ,)"
+    "text": "Data format\nFollow these guidelines to make data import to R easier and less frustrating\n\nIn general: prefer machine-readable file formats (.csv, .txt instead of .xlsx)\n\n\nNo white space in column headers\n\nUse a character as separator, e.g. species_name instead of species name\nIf this is unpractical, have a look at the function janitor::clean_names() from the janitor package\n\nNo special characters in column headers (ä,, ß, é, ê, %, °C, µ …)\nUse . as a decimal separator (not ,)"
   },
   {
     "objectID": "sessions/slides/readr.html#paths-and-file-names",
@@ -2552,7 +2552,7 @@
     "href": "sessions/slides/tests.html#shapiro-wilk-test",
     "title": "Statistical tests",
     "section": "Shapiro-Wilk-Test",
-    "text": "Shapiro-Wilk-Test\n\\(H_0\\): Data does not differ from a normal distribution\n\n\n\n\nshapiro.test(mydata$normal)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  mydata$normal\n#&gt; W = 0.99076, p-value = 0.2298\n\n\n\n\nW: test statistic\np: probability to observe data with this level of deviation from normality (or more) if \\(H_0\\) was true\n\nprobability is high -&gt; no reason to doubt normality assumption\n\n\n\n\n\nThe data does not deviate significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.991, p = 0.23).\n\n\n\n\nshapiro.test(mydata$non_normal)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  mydata$non_normal\n#&gt; W = 0.95114, p-value = 2.435e-06\n\n\n\nThe data deviates significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.95, p &lt; 0.001)."
+    "text": "Shapiro-Wilk-Test\n\\(H_0\\): Data does not differ from a normal distribution\n\n\n\n\nshapiro.test(mydata$normal)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  mydata$normal\n#&gt; W = 0.99076, p-value = 0.2298\n\n\n\nW: test statistic\np: probability to observe data with this level of deviation from normality (or more) if \\(H_0\\) was true\n\nprobability is high -&gt; no reason to doubt normality assumption\n\n\n\n\nThe data does not deviate significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.991, p = 0.23).\n\n\n\n\nshapiro.test(mydata$non_normal)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  mydata$non_normal\n#&gt; W = 0.95114, p-value = 2.435e-06\n\n\n\nThe data deviates significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.95, p &lt; 0.001)."
   },
   {
     "objectID": "sessions/slides/tests.html#visual-test-with-qq-plot",
@@ -2587,7 +2587,7 @@
     "href": "sessions/slides/tests.html#f-test",
     "title": "Statistical tests",
     "section": "F-Test",
-    "text": "F-Test\n\\(H_0\\): Variances do not differ between groups\n\n\nvar.test(TreatA, TreatB)\n#&gt; \n#&gt;  F test to compare two variances\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; F = 1.2209, num df = 11, denom df = 11, p-value = 0.7464\n#&gt; alternative hypothesis: true ratio of variances is not equal to 1\n#&gt; 95 percent confidence interval:\n#&gt;  0.3514784 4.2411442\n#&gt; sample estimates:\n#&gt; ratio of variances \n#&gt;            1.22093\n\n\n\n\n\nF: test statistics, ratio of variances (if F = 1, variances are equal)\ndf: degrees of freedom of both groups\np-value: probability to observe this (or more extreme) F if \\(H_0\\) was true\n\n\nVariances of sprays A & B don’t differ significantly (F-Test, \\(F_{11,11}\\) = 1.22, p = 0.75)"
+    "text": "F-Test\n\\(H_0\\): Variances do not differ between groups\n\n\nvar.test(TreatA, TreatB)\n#&gt; \n#&gt;  F test to compare two variances\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; F = 1.2209, num df = 11, denom df = 11, p-value = 0.7464\n#&gt; alternative hypothesis: true ratio of variances is not equal to 1\n#&gt; 95 percent confidence interval:\n#&gt;  0.3514784 4.2411442\n#&gt; sample estimates:\n#&gt; ratio of variances \n#&gt;            1.22093\n\n\n\n\nF: test statistics, ratio of variances (if F = 1, variances are equal)\ndf: degrees of freedom of both groups\np-value: probability to observe this (or more extreme) F if \\(H_0\\) was true\n\nVariances of sprays A & B don’t differ significantly (F-Test, \\(F_{11,11}\\) = 1.22, p = 0.75)"
   },
   {
     "objectID": "sessions/slides/tests.html#f-test-1",
@@ -2608,7 +2608,7 @@
     "href": "sessions/slides/tests.html#t-test",
     "title": "Statistical tests",
     "section": "t-test",
-    "text": "t-test\n\\(H_0\\): The samples do not differ in their mean\n\nTreatment A and B: normally distributed and equal variance\n\nt.test(TreatA, TreatB, var.equal = TRUE)\n#&gt; \n#&gt;  Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; t = -0.45352, df = 22, p-value = 0.6546\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -4.643994  2.977327\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;  14.50000  15.33333\n\n\n\nt: test statistics (t = 0 means equal means)\ndf: degrees of freedom of t-statistics\np-value: how likely is this extreme of a difference if \\(H_0\\) was true?\n\n\n\n\nThe means of spray A and B don’t differ significantly (t = -0.45, df = 22, p = 0.66)"
+    "text": "t-test\n\\(H_0\\): The samples do not differ in their mean\n\nTreatment A and B: normally distributed and equal variance\n\nt.test(TreatA, TreatB, var.equal = TRUE)\n#&gt; \n#&gt;  Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; t = -0.45352, df = 22, p-value = 0.6546\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -4.643994  2.977327\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;  14.50000  15.33333\n\n\nt: test statistics (t = 0 means equal means)\ndf: degrees of freedom of t-statistics\np-value: how likely is this extreme of a difference if \\(H_0\\) was true?\n\n\n\nThe means of spray A and B don’t differ significantly (t = -0.45, df = 22, p = 0.66)"
   },
   {
     "objectID": "sessions/slides/tests.html#welch-test",
@@ -2629,7 +2629,7 @@
     "href": "sessions/slides/tests.html#paired-values",
     "title": "Statistical tests",
     "section": "Paired values",
-    "text": "Paired values\nAre there pairs of data points?\nExample: samples of invertebrates across various rivers before and after sewage plants.\n\n\n\nFor each plant, there is a pair of data points (before and after the plant)\nQuestion: Is the change (before-after) significant\n\n\n\n\nUse paired = TRUE in the test.\n\nt.test(TreatA, TreatB, var.equal = TRUE, paired = TRUE)\nt.test(TreatA, TreatB, var.equal = FALSE, paired = TRUE)\nwilcox.test(TreatA, TreatB, paired = TRUE)\n\nCareful: your treatment vector both have to have the same order"
+    "text": "Paired values\nAre there pairs of data points?\nExample: samples of invertebrates across various rivers before and after sewage plants.\n\n\nFor each plant, there is a pair of data points (before and after the plant)\nQuestion: Is the change (before-after) significant\n\n\n\nUse paired = TRUE in the test.\n\nt.test(TreatA, TreatB, var.equal = TRUE, paired = TRUE)\nt.test(TreatA, TreatB, var.equal = FALSE, paired = TRUE)\nwilcox.test(TreatA, TreatB, paired = TRUE)\n\nCareful: your treatment vector both have to have the same order"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-test-results-with-ggsignif",
@@ -2643,14 +2643,14 @@
     "href": "sessions/slides/tests.html#plot-test-results-with-geom_signif",
     "title": "Statistical tests",
     "section": "Plot test results with geom_signif()",
-    "text": "Plot test results with geom_signif()\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    map_signif_level = TRUE,\n    y_position = c(23, 24, 25)\n  )\n\n\n\n\n\n\n\n\n\n\n\nBy default, a Wilcoxon test is performed"
+    "text": "Plot test results with geom_signif()\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    map_signif_level = TRUE,\n    y_position = c(23, 24, 25)\n  )\n\n\n\n\n\n\n\n\n\n\nBy default, a Wilcoxon test is performed"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-test-results-with-geom_signif-1",
     "href": "sessions/slides/tests.html#plot-test-results-with-geom_signif-1",
     "title": "Statistical tests",
     "section": "Plot test results with geom_signif()",
-    "text": "Plot test results with geom_signif()\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\",\n    test.args = list(\n      var.equal = TRUE\n    ),\n    map_signif_level = TRUE,\n    y_position = c(23, 24, 25)\n  )\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntest: run specific test\ntest.args: pass additional arguments in a list\n?geom_signif for more options"
+    "text": "Plot test results with geom_signif()\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\",\n    test.args = list(\n      var.equal = TRUE\n    ),\n    map_signif_level = TRUE,\n    y_position = c(23, 24, 25)\n  )\n\n\n\n\n\n\n\n\n\n\n\n\n\ntest: run specific test\ntest.args: pass additional arguments in a list\n?geom_signif for more options"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary",
@@ -2664,7 +2664,7 @@
     "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-1",
     "title": "Statistical tests",
     "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\"\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"point\",\n    color = \"#28a87d\",\n    size = 4\n  )\n\n\n\nInside stat_summary, define summary function\n\nfun.data for errorbars, fun.y for points (e.g. mean)"
+    "text": "Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\"\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"point\",\n    color = \"#28a87d\",\n    size = 4\n  )\n\n\nInside stat_summary, define summary function\n\nfun.data for errorbars, fun.y for points (e.g. mean)"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-2",
