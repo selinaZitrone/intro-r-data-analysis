@@ -4,7 +4,7 @@
 
 # load general packages needed
 library(tidyverse)
-library(palmerpenguins)
+
 
 # Some cool packages and options are shown below
 
@@ -17,7 +17,7 @@ library(corrplot)
 # drop all rows containing NAs (correlation coefficients cannot be calculated if
 # vectors contain NA)
 # calculate pearson correlation matrix
-M <- cor(penguins %>% dplyr::select(bill_length_mm:body_mass_g) %>% drop_na())
+M <- cor(penguins %>% dplyr::select(bill_len:body_mass) %>% drop_na())
 # Two different options of correlation plots
 corrplot::corrplot(M)
 corrplot::corrplot.mixed(M)
