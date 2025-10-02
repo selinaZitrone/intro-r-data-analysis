@@ -35,26 +35,25 @@ Make sure that you save the table you read in in a new variable to have it avail
 
 :::{.callout-tip}
 
-Don't type the input path of the table to read. Instead, make the "" to start writing the path and then us the tab key on your keyboard to auto-complete.
+Don't type the path of the table to read. Instead, type only the "", then us the tab key on your keyboard to auto-complete the path. This way you avoid typing mistakes.
 
 :::
 
-## Extra
+## For the fast ones
 
-- Try reading some tables (`xlsx`, `csv`, `txt`, ...) that you have on your machine into R
-  - First copy the table into the `data/` folder in your project, then use the appropriate function to read in the data
-  - Ideally, you use some of your research data, so you can see what are 
-  the difficulties there. Alternatively, you can use any kind of table even if not related to research.
-- Download the csv or excel file using the buttons below. The files have metadata on top and a messy header. The excel file has the added difficulty, that the actual data is not in the first
-  sheet but in the second one. Try reading it into R correctly and clean the column names using the `janitor::clean_names` function. It might help to look at the data first to decide 
-  how to read it correctly.
+- Download the csv or excel file below. The files are a bit messy. Find out what is messy 
+about the data sets (try reading them in R and see what happens, open the files in Excel or a text editor and check out the structure).
+Then read them into R correctly. Try the `janitor::clean_names` function on the data after you read it in.
 
 :::{.columns}
 
 ::: {.column}
 
 ```{r echo = FALSE}
-path_files <- list.files(path = here::here("data/read_challenge/"), full.names = TRUE)
+path_files <- list.files(
+  path = here::here("data/read_challenge/"),
+  full.names = TRUE
+)
 
 downloadthis::download_file(
   path = path_files[[1]],
@@ -86,6 +85,11 @@ downloadthis::download_file(
 :::
 
 :::
+
+<br>
+
+- Try reading in some of your own research data. First, add them to the `/data` folder of your project. 
+Then read them into R using the appropriate `read_*` function. Can you manage to read the data in a clean format? What are the challenges you face?
 
 
 
