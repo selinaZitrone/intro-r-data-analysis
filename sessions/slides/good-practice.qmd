@@ -320,15 +320,14 @@ ggplot(input_data, aes(x = x, y = y)) +
 library(tidyverse)
 library(vegan)
 
-# source file for data reading and cleaning
-# reads in the species data and cleans it for
-# further analysis
+# source file for data reading
+# and cleaning
 # output is the tibble species_clean
 source("R/prepare_data/read_and_clean_data.R")
 
-# Analyse species data ----------------------
+# Analyse species data --------------
 
-# code for the analysis
+# Here code for the analysis
 
 ```
 
@@ -339,7 +338,8 @@ source("R/prepare_data/read_and_clean_data.R")
 `R/prepare_data/read_and_clean_data.R`:
 
 ```{r eval=FALSE}
-# Script to read in the raw species data and clean it
+# Script to read and prepare
+# species data and clean it
 
 path_to_species <- "data/species.csv"
 
@@ -390,9 +390,9 @@ dm1
 x[, 1]
 
 # Bad
-x[ , 1]
-x[,1]
-x[ ,1]
+x[, 1]
+x[, 1]
+x[, 1]
 ```
 
 ## Coding style - Spacing
@@ -409,8 +409,8 @@ x[ ,1]
 mean(x, na.rm = TRUE)
 
 # Bad
-mean (x, na.rm = TRUE)
-mean ( x, na.rm = TRUE )
+mean(x, na.rm = TRUE)
+mean(x, na.rm = TRUE)
 ```
 
 ## Coding style - Spacing
@@ -429,8 +429,8 @@ height <- (feet * 12) + inches
 mean(x, na.rm = TRUE)
 
 # Bad
-height<-feet*12+inches
-mean(x, na.rm=TRUE)
+height <- feet * 12 + inches
+mean(x, na.rm = TRUE)
 ```
 
 
@@ -447,12 +447,14 @@ mean(x, na.rm=TRUE)
 
 ```{r spaces-pipes}
 # Good
-iris |> 
-  summarize_if(is.numeric, mean, .by = Species)  |> 
+iris |>
+  summarize_if(is.numeric, mean, .by = Species) |>
   arrange(desc(Sepal.Length))
 
 # Bad
-iris|>summarize_if(is.numeric, mean, .by = Species)|>arrange(desc(Sepal.Length))
+iris |>
+  summarize_if(is.numeric, mean, .by = Species) |>
+  arrange(desc(Sepal.Length))
 ```
 
 ## Coding style - Spacing
@@ -473,7 +475,7 @@ ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
   geom_point()
 
 # Bad
-ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()
+ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) + geom_point()
 ```
 
 ## Coding style - Line width
@@ -489,7 +491,13 @@ Try to limit your line width to 80 characters.
 
 ```{r linewidth-ggplot}
 # Bad
-iris |> summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species), .by = Species)
+iris |>
+  summarise(
+    Sepal.Length = mean(Sepal.Length),
+    Sepal.Width = mean(Sepal.Width),
+    Species = n_distinct(Species),
+    .by = Species
+  )
 
 # Good
 iris |>
@@ -535,12 +543,6 @@ RStudio can automatically format your code!
 
 ![](img/day3/format_code.png){width="40%"}
 
-- Open the command palette with `Ctrl/Cmd + Shift + P`
-- Search for "format" to see all formatting options
-  - "Reformat Current Document" to format the open script
-  - You can toggle "Reformat documents on save" to format automatically on save
-  - By default the "Code formatter" is the tidyverse style guide (Styler)
-  
 ## Coding style helpers - Linting
 
 - Linters are tools that analyze your code for potential errors

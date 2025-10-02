@@ -28,13 +28,13 @@ Use whitespace around operators, `=`, `<-`, ...
 
 ```{r}
 # works but not so nice
-a<-3
-mean(x=c(1,2,3))
-2==2
+a <- 3
+mean(x = c(1, 2, 3))
+2 == 2
 
 # better
 a <- 3
-mean(x = c(1,2,3))
+mean(x = c(1, 2, 3))
 2 == 2
 ```
 
@@ -71,7 +71,7 @@ A ggplot example:
 ggplot(iris, aes(x = species, y = Petal.Width)) + geom_boxplot()
 
 # Do this
-ggplot(iris, aes(x = species, y = Petal.Width)) + 
+ggplot(iris, aes(x = species, y = Petal.Width)) +
   geom_boxplot()
 
 # Or even this (depending on how long your lines are - here it's a bit
@@ -83,30 +83,13 @@ ggplot(
   geom_boxplot()
 ```
 
-### Use the `styler` package
+### Automatically format your
 
-Find the webpage with documentation of the package [here](https://styler.r-lib.org/).
+You can let RStudio format your code automatically according to the tidyverse style guide. This is done with the `styler` package.
 
-The styler package lets you style sections of your code automatically according to the tidyverse styleguide.
+Just go to Tools -> Global Options -> Code -> Formatting and select "Format document on save":
 
-To use the package, you need to install it:
+![](slides/img/day3/format_code.png){width="40%"}
 
-```{r}
-install.packages("styler")
-```
-
-After you did that you have some new styling options available. You might have to restart RStudio first.
-
-Now on top of RStudio, look for `Addins`, there should now be a section for `Styler` that looks like this:
-
-![](img/styler_options.png){width="368"}
-
-The two interesting options that you have are:
-
-- **Style selection**: If you highlighted a piece of code (it always has to be an entire section of code, not just a small part of it) and you click on this, the section will be automatically styled for you.
-
-- **Style active file**: If you click this, the R file that you have currently open will be styled automatically for you.
-
-I you want, you can also add a keyboard shortcut to RStudio, so you don't have to click on the Addin buttons but you can style your code with a keyboard shortcut. To to this, go to **Tools -> Modify Keyboard Shortcuts**. Then on top filter for `style` and and you can select the styler add in that you want to assign a keyboard shortcut to. Just type in the shortcut you want to use and you can start using the shortcut. My keyboard shortcuts e.g. look like this:
-
-![](img/styler_shortcut.png){width="463"}
+You may have to install the `styler` package first using `install.packages("styler")`.
+If this is the case, you will see an error message the first time you try to save a file after turning on this option.
