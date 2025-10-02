@@ -353,120 +353,120 @@
     "objectID": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio",
     "href": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio",
     "title": "Introduction to RStudio",
-    "section": "",
-    "text": "R is the programming language and the program that does the actual work\n\nCan be used with many different programming environments\n\n\n\n\nRStudio is the integrated development environment (IDE)\n\nProvides an interface to R\nSpecifically built around R code\nExecute code\nSyntax highlighting\nFile and project management\n…"
+    "section": "Difference between R and RStudio",
+    "text": "Difference between R and RStudio\n\n\n\n\n\n\n\n\n\nR is the programming language and the program that does the actual work\n\nCan be used with many different programming environments\n\n\n\n\nRStudio is the integrated development environment (IDE)\n\nProvides an interface to R\nSpecifically built around R code\nExecute code\nSyntax highlighting\nFile and project management\n…"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio-1",
     "href": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio-1",
     "title": "Introduction to RStudio",
-    "section": "0.2 Difference between R and RStudio",
-    "text": "0.2 Difference between R and RStudio\n\n\n\n\n\n\n\n\n\n\nAnalogy and image from ModernDive Book\n\n\n. . .\n\n\n\n\n\n\nSummary\n\n\n\nYou can use R without RStudio but RStudio without R would be of little use"
+    "section": "Difference between R and RStudio",
+    "text": "Difference between R and RStudio\n\n\n\n\n\n\n\n\n\nAnalogy and image from ModernDive Book\n\n\n\n\n\n\n\n\n\nSummary\n\n\nYou can use R without RStudio but RStudio without R would be of little use"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio-1",
     "href": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio-1",
     "title": "Introduction to RStudio",
-    "section": "1.1 A quick tour around RStudio",
-    "text": "1.1 A quick tour around RStudio"
+    "section": "A quick tour around RStudio",
+    "text": "A quick tour around RStudio"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#console-pane",
     "href": "sessions/slides/intro-rstudio.html#console-pane",
     "title": "Introduction to RStudio",
-    "section": "1.2 Console pane",
-    "text": "1.2 Console pane\n\n\n\nExecute R code\nOutput from R code in scripts is printed there\nType a command into the console and execute with Enter/Return\n\n\n\n\n\n\n\nTip\n\n\n\nUse arrow keys to bring back last commands"
+    "section": "Console pane",
+    "text": "Console pane\n\n\n\nExecute R code\nOutput from R code in scripts is printed there\nType a command into the console and execute with Enter/Return\n\n\n\n\n\n\n\nTip\n\n\nUse arrow keys to bring back last commands"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#script-pane",
     "href": "sessions/slides/intro-rstudio.html#script-pane",
     "title": "Introduction to RStudio",
-    "section": "1.3 Script pane",
-    "text": "1.3 Script pane\n\n\n\nWrite scripts with R code\n\nScripts are text files with R commands (file ending .R)\nUse scripts to save commands for reuse"
+    "section": "Script pane",
+    "text": "Script pane\n\n\n\nWrite scripts with R code\n\nScripts are text files with R commands (file ending .R)\nUse scripts to save commands for reuse"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#script-pane-1",
     "href": "sessions/slides/intro-rstudio.html#script-pane-1",
     "title": "Introduction to RStudio",
-    "section": "1.4 Script pane",
-    "text": "1.4 Script pane\n\n\n\nCreate a new R script:  File -&gt; New File -&gt; R Script\nSave an R script: File-&gt;Save (Ctrl/Cmd + S)\nRun code line by line with Run button (Ctrl+Enter/Cmd+Return)\nYou can open multiple scripts\n\n\n\n\n\n\n\n\n\n\n\nSummary\n\n\n\nUse scripts for all your analysis and for commands that you want to save. Use console for temporary commands, e.g. to test something."
+    "section": "Script pane",
+    "text": "Script pane\n\n\n\nCreate a new R script:  File -&gt; New File -&gt; R Script\nSave an R script: File-&gt;Save (Ctrl/Cmd + S)\nRun code line by line with Run button (Ctrl+Enter/Cmd+Return)\nYou can open multiple scripts\n\n\n\n\n\n\n\n\n\n\nSummary\n\n\nUse scripts for all your analysis and for commands that you want to save. Use console for temporary commands, e.g. to test something."
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#environment-pane",
     "href": "sessions/slides/intro-rstudio.html#environment-pane",
     "title": "Introduction to RStudio",
-    "section": "1.5 Environment pane",
-    "text": "1.5 Environment pane\n\n\n\nShows objects currently present in the R session\nIs empty if you start R"
+    "section": "Environment pane",
+    "text": "Environment pane\n\n\n\nShows objects currently present in the R session\nIs empty if you start R"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#files-pane",
     "href": "sessions/slides/intro-rstudio.html#files-pane",
     "title": "Introduction to RStudio",
-    "section": "1.6 Files pane",
-    "text": "1.6 Files pane\n\n\n\nSimilar to Explorer/Finder\nBrowse project structure and files\n\nFind and open files\nCreate new folders\nDelete files\nRename files\n…\n\nPractical if you don’t want to switch between File Explorer and RStudio all the time"
+    "section": "Files pane",
+    "text": "Files pane\n\n\n\nSimilar to Explorer/Finder\nBrowse project structure and files\n\nFind and open files\nCreate new folders\nDelete files\nRename files\n…\n\nPractical if you don’t want to switch between File Explorer and RStudio all the time"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#plot-pane",
     "href": "sessions/slides/intro-rstudio.html#plot-pane",
     "title": "Introduction to RStudio",
-    "section": "1.7 Plot pane",
-    "text": "1.7 Plot pane\n\n\n\nPlots that are created with R will be shown here"
+    "section": "Plot pane",
+    "text": "Plot pane\n\n\n\nPlots that are created with R will be shown here"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-1",
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-1",
     "title": "Introduction to RStudio",
-    "section": "2.1 Project oriented workflow",
-    "text": "2.1 Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|\nExample project structure"
+    "section": "Project oriented workflow",
+    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|\nExample project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-2",
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-2",
     "title": "Introduction to RStudio",
-    "section": "2.2 Project oriented workflow",
-    "text": "2.2 Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nAn RStudio project is just a normal directory with an .Rproj file\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
+    "section": "Project oriented workflow",
+    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nAn RStudio project is just a normal directory with an .Rproj file\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
     "title": "Introduction to RStudio",
-    "section": "2.3 Project oriented workflow",
-    "text": "2.3 Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
+    "section": "Project oriented workflow",
+    "text": "Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#create-an-rstudio-project",
     "href": "sessions/slides/intro-rstudio.html#create-an-rstudio-project",
     "title": "Introduction to RStudio",
-    "section": "2.4 Create an RStudio project",
-    "text": "2.4 Create an RStudio project\n\n\nCreate a project from scratch:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nEnter a directory name (this will be the name of your project)\nChoose the Directory where the project should be initiated\nCreate Project\n\n\n\n\n\nExample RStudio project structure in the Files pane\n\n\n\n\nRStudio will now create and open the project for you."
+    "section": "Create an RStudio project",
+    "text": "Create an RStudio project\n\n\nCreate a project from scratch:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nEnter a directory name (this will be the name of your project)\nChoose the Directory where the project should be initiated\nCreate Project\n\n\n\n\n\nExample RStudio project structure in the Files pane\n\n\n\nRStudio will now create and open the project for you."
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#navigate-an-rstudio-project",
     "href": "sessions/slides/intro-rstudio.html#navigate-an-rstudio-project",
     "title": "Introduction to RStudio",
-    "section": "2.5 Navigate an RStudio project",
-    "text": "2.5 Navigate an RStudio project"
+    "section": "Navigate an RStudio project",
+    "text": "Navigate an RStudio project"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#open-a-project-from-outside-rstudio",
     "href": "sessions/slides/intro-rstudio.html#open-a-project-from-outside-rstudio",
     "title": "Introduction to RStudio",
-    "section": "2.6 Open a project from outside RStudio",
-    "text": "2.6 Open a project from outside RStudio\nTo open an RStudio project from your file explorer/finder, just double click on the .Rproj file"
+    "section": "Open a project from outside RStudio",
+    "text": "Open a project from outside RStudio\nTo open an RStudio project from your file explorer/finder, just double click on the .Rproj file"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#open-a-project-inside-rstudio",
     "href": "sessions/slides/intro-rstudio.html#open-a-project-inside-rstudio",
     "title": "Introduction to RStudio",
-    "section": "2.7 Open a project inside RStudio",
-    "text": "2.7 Open a project inside RStudio\nTo open an RStudio project from RStudio, click on the project symbol on the top right of R Studio and select the project from the list."
+    "section": "Open a project inside RStudio",
+    "text": "Open a project inside RStudio\nTo open an RStudio project from RStudio, click on the project symbol on the top right of R Studio and select the project from the list."
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#a-tip-before-we-get-started",
     "href": "sessions/slides/intro-rstudio.html#a-tip-before-we-get-started",
     "title": "Introduction to RStudio",
-    "section": "2.8 A tip before we get started",
-    "text": "2.8 A tip before we get started\nLearn the most important keyboard shortcuts of R Studio.\n. . .\nFind all shortcuts under Tools -&gt; Keyboard Shortcuts Help\n\n\nSave active file: Ctrl/Cmd + S\nRun current line: Ctrl/Cmd + Enter\nCreate new R Script: Ctrl/Cmd + N\nUndo: Ctrl/Cmd + Z\nRedo: Ctrl/Cmd + Y\nCopy/Paste: Ctrl/Cmd + C/V"
+    "section": "A tip before we get started",
+    "text": "A tip before we get started\nLearn the most important keyboard shortcuts of R Studio.\n\nFind all shortcuts under Tools -&gt; Keyboard Shortcuts Help\n\n\nSave active file: Ctrl/Cmd + S\nRun current line: Ctrl/Cmd + Enter\nCreate new R Script: Ctrl/Cmd + N\nUndo: Ctrl/Cmd + Z\nRedo: Ctrl/Cmd + Y\nCopy/Paste: Ctrl/Cmd + C/V"
   },
   {
     "objectID": "sessions/slides/good-practice.html#chaotic-projects-and-workflows",
