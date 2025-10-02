@@ -694,7 +694,7 @@ All `dplyr` functions take a tibble as first argument and return a tibble.
 
 # Now you {.inverse}
 
-[Task (45 min)]{.highlight-blue}<br>
+[Task (30 min)]{.highlight-blue}<br>
 
 [Transform the penguin data set]{.big-text}
 
