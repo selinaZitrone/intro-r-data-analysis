@@ -19,15 +19,13 @@ Take a moment to get familiar with the data set and its variables.
 
 ## Exploratory plots
 
-Explore the data set and it's variables with ggplot. 
-Below, you find some suggestions for plots. 
-You can start with the plot type your are most interested in and then continue from there.
-You don't have to finish all the plots
-If you have your own ideas for interesting plots with the penguin data set, 
-feel free to deviate from the tasks. 
+Explore the data set and it's variables using ggplot. 
+Below, you find some suggestions for plots. You don't have to do all of them, just pick the ones you find most interesting. 
+If you have your own plot ideas, feel free to deviate from the tasks. 
 
-In this exploratory section, don't worry about the beauty of your plots. 
-This task is about exploring the data and testing different visualization options. 
+Don't worry about the beauty of your plots, yet. 
+This task is about exploring the data and testing different visualization options.
+Making them look pretty will be the task in the next section. 
 
 ### Relationship between bill length and bill depth (scatterplot)
 
@@ -45,7 +43,7 @@ Is there a difference in flipper length between the species?
 
 - Create a boxplot of the flipper length (y-axis) for the different species (x-axis)
 - Try adding notches to the boxplots
-- **Extra:** Add a layer with `geom_point()`. 
+- **Extra:** Add a layer with `geom_point()`.
 Try setting `position = position_jitter()` as argument in the point layer. What does it do?
 
 ### Differences between body mass of male and female penguins (boxplot)
@@ -76,7 +74,7 @@ Create a heat map that shows:
 
 ## Beautify the plots
 
-First, choose one of the tasks 1.3.1 or 1.3.2, then do task 1.4 on saving plots. If you still have time, you can come back to the task you didn’t do.
+First, choose one of the the tasks 1.3.1 or 1.3.2, then do task 1.4 on saving plots. If you still have time, you can come back to the task you didn’t do.
 
 But also here, if you have other ideas, feel free to deviate from the tasks.
 
@@ -120,10 +118,10 @@ penguin_cols <- c("darkorange", "purple", "cyan4")
 
 ## Save one of the plots on your machine
 
-Save one of the plots you produced in a variable and then use `ggsave` to save the plot on your machine.
-Save the plot in a dedicated plot directory in your RStudio project. 
+Save one of the plots to a dedicated plot folder in your RStudio project. You try 
+different formats, e.g. `.png` or `.pdf`.
 
-Note: Make sure the path where you save the image exists. If you e.g. want to save in
+Note: Make sure the path where you save the plot exists. If you e.g. want to save in
 `img/`, then you first have to create the `img` folder in your project directory.
 For this you can use the Files pane of RStudio.
 

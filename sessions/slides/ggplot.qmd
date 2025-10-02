@@ -59,6 +59,10 @@ theme_set(theme_grey(base_size = 16))
 
 ![Visualization by [Cédric Scherer](https://twitter.com/CedScherer), code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_31_PalmerPenguins.Rmd)](https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_31/2020_31_PalmerPenguins.png){width=35%}
 
+## A ggplot showcase
+
+![Overview of different plot possibilites created by Cédric Scherer. Check out [his tutorial](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/#toc) to learn how to make all these plots with ggplot](img/day2/ggplot_showcase_cedric.png)
+
 ## Advantages of ggplot
 
 - **Consistent** grammar/structure
@@ -219,8 +223,9 @@ This is the same but shorter:
 ggplot(
   vertebrates,
   aes(
-    x = length_1_mm, 
-    y = weight_g)
+    x = length_1_mm,
+    y = weight_g
+  )
 )
 ```
 
@@ -975,7 +980,7 @@ ggplot(
   )
 ) +
   geom_point() +
-  facet_wrap(~section)
+  facet_wrap(vars(section))
 ```
 
 :::
@@ -992,7 +997,7 @@ ggplot(
   )
 ) +
   geom_point() +
-  facet_wrap(~section)
+  facet_wrap(vars(section))
 ```
 
 :::
@@ -1071,10 +1076,13 @@ ggplot(
 
 ```{r eval=FALSE}
 #| eval: false
-ggplot(vertebrates, aes(
-  x = length_1_mm,
-  y = weight_g
-)) +
+ggplot(
+  vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g
+  )
+) +
   geom_point(
     size = 4,
     shape = 17,
@@ -1112,10 +1120,13 @@ ggplot(shapes, aes(x, y)) +
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-ggplot(vertebrates, aes(
-  x = length_1_mm,
-  y = weight_g
-)) +
+ggplot(
+  vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g
+  )
+) +
   geom_point(
     size = 4, #<<
     shape = 17, #<<
@@ -1137,11 +1148,14 @@ We can also save a plot in a variable
 :::{.column width="50%"}
 
 ```{r eval=FALSE}
-g <- ggplot(vertebrates, aes(
-  x = length_1_mm,
-  y = weight_g,
-  color = species
-)) +
+g <- ggplot(
+  vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point()
 
 g
@@ -1156,11 +1170,14 @@ g
 :::{.column width="50%"}
 
 ```{r echo=FALSE}
-g <- ggplot(vertebrates, aes(
-  x = length_1_mm,
-  y = weight_g,
-  color = species
-)) +
+g <- ggplot(
+  vertebrates,
+  aes(
+    x = length_1_mm,
+    y = weight_g,
+    color = species
+  )
+) +
   geom_point()
 g
 ```
@@ -1245,10 +1262,12 @@ g +
 
 ```{r echo=FALSE}
 g +
-  scale_color_manual(values = c(
-    "darkolivegreen4",
-    "darkorchid3"
-  ))
+  scale_color_manual(
+    values = c(
+      "darkolivegreen4",
+      "darkorchid3"
+    )
+  )
 ```
 
 :::
@@ -1306,7 +1325,9 @@ ggplot(
   aes(
     x = section,
     y = length_1_mm,
-    color = unittype)) +
+    color = unittype
+  )
+) +
   geom_boxplot() +
   scale_color_paletteer_d(
     palette = "ggsci::default_uchicago"
@@ -1323,7 +1344,9 @@ ggplot(
   aes(
     x = section,
     y = length_1_mm,
-    fill = unittype)) +
+    fill = unittype
+  )
+) +
   geom_boxplot() +
   scale_fill_paletteer_d(
     palette = "ggsci::default_uchicago"
@@ -1425,12 +1448,94 @@ g +
 
 ```{r echo=FALSE, fig.height= 5}
 g +
-  theme_dark(base_size = 16) #<<
+  theme_dark(base_size = 16, ) #<<
 ```
 
 :::
 
 :::
+
+## `theme_*`: change appearance
+
+Since `ggplot2` v. 4.0.0, you can change overall color choices of a pre-defined theme.
+
+:::{.columns}  
+
+:::{.column width="50%"}
+
+- `paper`: affects background elements
+- `ink`: affects foreground elements (text, lines, points, ...)
+- `accent`: affects elements that are used to highlight information (like `geom_smooth()` lines)
+
+```{r eval=FALSE}
+#| eval: false
+g +
+  theme_bw(
+    ink = "#BBBBBB",
+    paper = "#333333"
+  )
+```
+
+:::  
+
+:::{.column width="50%"}
+
+```{r echo=FALSE, fig.height= 5}
+g +
+  theme_bw(
+    base_size = 16,
+    ink = "#BBBBBB",
+    paper = "#333333"
+  ) #<<
+```
+
+:::
+
+:::
+
+## `theme_*`: change appearance
+
+Since `ggplot2` v. 4.0.0, you can change overall color choices of a pre-defined theme.
+
+:::{.columns}  
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+- `paper`: affects background elements
+- `ink`: affects foreground elements (text, lines, points, ...)
+- `accent`: affects elements that are used to highlight information (like `geom_smooth()` lines)
+
+:::
+
+```{r eval=FALSE}
+#| eval: false
+g +
+  theme_minimal(
+    paper = "cornsilk",
+    ink = "navy"
+  )
+```
+
+:::  
+
+:::{.column width="50%"}
+
+
+
+```{r echo=FALSE, fig.height= 5}
+g +
+  theme_minimal(
+    base_size = 16,
+    paper = "cornsilk",
+    ink = "navy"
+  ) #<<
+```
+
+:::
+
+:::
+
 
 ## `theme()`: customize theme
 
@@ -1456,7 +1561,7 @@ If you want a full list of what you can customize, have a look at
 ?theme
 ```
 
-- Look [here](https://github.com/claragranell/ggplot2/blob/main/ggplot_theme_system_cheatsheet.pdf) for an overview of the elements that you can change and the corresponding functions
+- Look [here](https://www.tidyverse.org/blog/2025/10/ggplot2-styling/) for an overview of the elements that you can change
 
 :::
 
@@ -1473,16 +1578,14 @@ To edit a theme, just add another `theme()` layer to your plot.
 ```{r eval=FALSE}
 #| eval: false
 g +
-  theme_minimal() +
+  theme_minimal(
+    ink = "navy",
+    paper = "cornsilk"
+  ) +
   theme(
     legend.position = "bottom",
-    axis.text = element_text(
-      face = "bold"
-    ),
-    plot.background = element_rect(
-      fill = "lightgrey",
-      color = "darkred"
-    )
+    axis.text = element_text(face = "bold"),
+    plot.title = element_text(color = "#c06a38ff")
   )
 ```
 
@@ -1504,14 +1607,15 @@ theme(
 
 ```{r echo=FALSE}
 g +
-  theme_minimal() +
+  theme_minimal(
+    base_size = 16,
+    ink = "navy",
+    paper = "cornsilk"
+  ) +
   theme(
     legend.position = "bottom",
     axis.text = element_text(face = "bold"),
-    plot.background = element_rect(
-      fill = "lightgrey",
-      color = "darkgrey"
-    )
+    plot.title = element_text(color = "#c06a38ff")
   )
 ```
 
@@ -1535,7 +1639,13 @@ Add this to the beginning of your script.
 You can also specify some defaults, e.g. the text size:
 
 ```{r eval=FALSE}
-theme_set(theme_minimal(base_size = 16))
+theme_set(
+  theme_minimal(
+    base_size = 16,
+    paper = "cornsilk",
+    ink = "navy"
+  )
+)
 ```
 
 This is very practical if you want to achieve a consistent look, e.g. for a scientific journal.
