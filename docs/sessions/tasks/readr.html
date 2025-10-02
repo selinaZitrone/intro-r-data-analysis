@@ -4743,6 +4743,14 @@ vertical-align: -.125em;
     "search-label": "Search"
   }
 }</script>
+<script>const link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css';
+link.type = 'text/css';
+const head = document.getElementsByTagName('head')[0];
+head.appendChild(link);
+</script>
+
 
 
 </head>
@@ -4940,7 +4948,7 @@ vertical-align: -.125em;
   <li><a href="#write-a-tibble-to-disk" id="toc-write-a-tibble-to-disk" class="nav-link" data-scroll-target="#write-a-tibble-to-disk"><span class="header-section-number">1.1</span> Write a tibble to disk</a></li>
   </ul></li>
   <li><a href="#read-data-into-r" id="toc-read-data-into-r" class="nav-link" data-scroll-target="#read-data-into-r"><span class="header-section-number">2</span> Read data into R</a></li>
-  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra"><span class="header-section-number">3</span> Extra</a></li>
+  <li><a href="#for-the-fast-ones" id="toc-for-the-fast-ones" class="nav-link" data-scroll-target="#for-the-fast-ones"><span class="header-section-number">3</span> For the fast ones</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/edit/master/sessions/tasks/readr.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -4986,35 +4994,84 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Don’t type the input path of the table to read. Instead, make the “” to start writing the path and then us the tab key on your keyboard to auto-complete.</p>
+<p>Don’t type the path of the table to read. Instead, type only the ““, then us the tab key on your keyboard to auto-complete the path. This way you avoid typing mistakes.</p>
 </div>
 </div>
 </section>
-<section id="extra" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="extra"><span class="header-section-number">3</span> Extra</h2>
+<section id="for-the-fast-ones" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="for-the-fast-ones"><span class="header-section-number">3</span> For the fast ones</h2>
 <ul>
-<li>Try reading some tables (<code>xlsx</code>, <code>csv</code>, <code>txt</code>, …) that you have on your machine into R
-<ul>
-<li>First copy the table into the <code>data/</code> folder in your project, then use the appropriate function to read in the data</li>
-<li>Ideally, you use some of your research data, so you can see what are the difficulties there. Alternatively, you can use any kind of table even if not related to research.</li>
-</ul></li>
-<li>Download the csv or excel file using the buttons below. The files have metadata on top and a messy header. The excel file has the added difficulty, that the actual data is not in the first sheet but in the second one. Try reading it into R correctly and clean the column names using the <code>janitor::clean_names</code> function. It might help to look at the data first to decide how to read it correctly.</li>
+<li>Download the csv or excel file below. The files are a bit messy. Find out what is messy about the data sets (try reading them in R and see what happens, open the files in Excel or a text editor and check out the structure). Then read them into R correctly. Try the <code>janitor::clean_names</code> function on the data after you read it in.</li>
 </ul>
 <div class="columns">
 <div class="column">
 <div class="cell">
-<div class="cell-output cell-output-error">
-<pre><code>Error in loadNamespace(x): there is no package called &#39;downloadthis&#39;</code></pre>
+<div class="cell-output-display">
+<button class="btn btn-default" onclick="
+    async function downloadFile(event) {
+      event.preventDefault();
+      try {
+        const response = await fetch(&#39;data:text/csv;base64,IyBTdHVkeTogSW5zZWN0IEJpb2RpdmVyc2l0eSBpbiBVcmJhbiBQYXJrcw0KIyBMb2NhdGlvbjogU2V2ZXJhbCBtZXRyb3BvbGl0YW4gYXJlYXMNCiMgRGF0ZTogMjAyNS0wMi0yMA0KU3BlY2llcyBOYW1lICwgQ291bnRALCAgIEF2ZXJhZ2UgV2VpZ2h0IChtZykNCkJvbWJ1cyBpbXBhdGllbnMsIDE1LCAgODcuNQ0KQXBpcyBtZWxsaWZlcmEsIDIyLCAgNzUuMg0KVmVzcHVsYSB2dWxnYXJpcywgIDgsICA2MC4xDQo=&#39;);
+        if (!response.ok) throw new Error(&#39;Network response failed&#39;);
+        const blob = await response.blob();
+        const blobUrl = window.URL.createObjectURL(blob);
+        const a = document.createElement(&#39;a&#39;);
+        a.href = blobUrl;
+        a.download = &#39;Readr challenge files.csv&#39;;
+        a.style.display = &#39;none&#39;;
+        document.body.appendChild(a);
+        a.dispatchEvent(new MouseEvent(&#39;click&#39;));
+        document.body.removeChild(a);
+        setTimeout(() =&gt; {
+          window.URL.revokeObjectURL(blobUrl);
+        }, 100);
+        return false;
+      } catch (error) {
+        console.error(&#39;Download failed:&#39;, error);
+        alert(&#39;Download failed. Please try again.&#39;);
+      }
+    }
+    downloadFile(event);
+  "><i class="fa fa-save"></i> Download csv</button>
 </div>
 </div>
 </div><div class="column">
 <div class="cell">
-<div class="cell-output cell-output-error">
-<pre><code>Error in loadNamespace(x): there is no package called &#39;downloadthis&#39;</code></pre>
+<div class="cell-output-display">
+<button class="btn btn-default" onclick="
+    async function downloadFile(event) {
+      event.preventDefault();
+      try {
+        const response = await fetch(&#39;data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,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&#39;);
+        if (!response.ok) throw new Error(&#39;Network response failed&#39;);
+        const blob = await response.blob();
+        const blobUrl = window.URL.createObjectURL(blob);
+        const a = document.createElement(&#39;a&#39;);
+        a.href = blobUrl;
+        a.download = &#39;Readr challenge files.xlsx&#39;;
+        a.style.display = &#39;none&#39;;
+        document.body.appendChild(a);
+        a.dispatchEvent(new MouseEvent(&#39;click&#39;));
+        document.body.removeChild(a);
+        setTimeout(() =&gt; {
+          window.URL.revokeObjectURL(blobUrl);
+        }, 100);
+        return false;
+      } catch (error) {
+        console.error(&#39;Download failed:&#39;, error);
+        alert(&#39;Download failed. Please try again.&#39;);
+      }
+    }
+    downloadFile(event);
+  "><i class="fa fa-save"></i> Download xlsx</button>
 </div>
 </div>
 </div>
 </div>
+<p><br></p>
+<ul>
+<li>Try reading in some of your own research data. First, add them to the <code>/data</code> folder of your project. Then read them into R using the appropriate <code>read_*</code> function. Can you manage to read the data in a clean format? What are the challenges you face?</li>
+</ul>
 
 
 </section>

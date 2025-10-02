@@ -46,7 +46,7 @@
     "href": "sessions/tasks/readr.html#read-data-into-r",
     "title": "",
     "section": "2 Read data into R",
-    "text": "2 Read data into R\nNow, try to read the data set back into R using the appropriate read_* function.\nMake sure that you save the table you read in in a new variable to have it available for later use.\n\n\n\n\n\n\nTip\n\n\n\nDon’t type the input path of the table to read. Instead, make the “” to start writing the path and then us the tab key on your keyboard to auto-complete."
+    "text": "2 Read data into R\nNow, try to read the data set back into R using the appropriate read_* function.\nMake sure that you save the table you read in in a new variable to have it available for later use.\n\n\n\n\n\n\nTip\n\n\n\nDon’t type the path of the table to read. Instead, type only the ““, then us the tab key on your keyboard to auto-complete the path. This way you avoid typing mistakes."
   },
   {
     "objectID": "sessions/tasks/readr.html#extra",
@@ -234,92 +234,92 @@
     "objectID": "sessions/slides/tidyr.html#what-is-tidy-data-1",
     "href": "sessions/slides/tidyr.html#what-is-tidy-data-1",
     "title": "Tidy data with tidyr",
-    "section": "What is tidy data?",
-    "text": "What is tidy data?\n\n\n\nIllustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst"
+    "section": "",
+    "text": "Illustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst"
   },
   {
     "objectID": "sessions/slides/tidyr.html#what-is-tidy-data-2",
     "href": "sessions/slides/tidyr.html#what-is-tidy-data-2",
     "title": "Tidy data with tidyr",
-    "section": "What is tidy data?",
-    "text": "What is tidy data?\nLet’s look at some examples\n\n\nTidy\n\n\n\n\n\nid\nname\ncolor\n\n\n\n\n1\nfloof\ngray\n\n\n2\nmax\nblack\n\n\n3\ncat\norange\n\n\n4\ndonut\ngray\n\n\n5\nmerlin\nblack\n\n\n6\npanda\ncalico\n\n\n\n\n\n\n\nNon-tidy\n\n\n\n\n\nfloof\nmax\ncat\ndonut\nmerlin\npanda\n\n\n\n\ngray\nblack\norange\ngray\nblack\ncalico\n\n\n\n\n\n\n\n\n\n\n\ngray\nblack\norange\ncalico\n\n\n\n\nfloof\nmax\ncat\npanda\n\n\ndonut\nmerlin\n\n\n\n\n\n\n\n\n\n\n\nSometimes raw data is non-tidy because its structure is optimized for data entry or viewing rather than analysis."
+    "section": "",
+    "text": "Let’s look at some examples\n\n\nTidy\n\n\n\n\n\nid\nname\ncolor\n\n\n\n\n1\nfloof\ngray\n\n\n2\nmax\nblack\n\n\n3\ncat\norange\n\n\n4\ndonut\ngray\n\n\n5\nmerlin\nblack\n\n\n6\npanda\ncalico\n\n\n\n\n\n\n\nNon-tidy\n\n\n\n\n\nfloof\nmax\ncat\ndonut\nmerlin\npanda\n\n\n\n\ngray\nblack\norange\ngray\nblack\ncalico\n\n\n\n\n\n\n\n\n\n\n\ngray\nblack\norange\ncalico\n\n\n\n\nfloof\nmax\ncat\npanda\n\n\ndonut\nmerlin\n\n\n\n\n\n\n\n\n\n\n. . .\n\nSometimes raw data is non-tidy because its structure is optimized for data entry or viewing rather than analysis."
   },
   {
     "objectID": "sessions/slides/tidyr.html#why-tidy-data",
     "href": "sessions/slides/tidyr.html#why-tidy-data",
     "title": "Tidy data with tidyr",
-    "section": "Why tidy data?",
-    "text": "Why tidy data?\nThe main advantages of tidy data is that the tidyverse packages are built to work with it.\n\n\n\nIllustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst"
+    "section": "",
+    "text": "The main advantages of tidy data is that the tidyverse packages are built to work with it.\n\n\n\nIllustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst"
   },
   {
     "objectID": "sessions/slides/tidyr.html#example",
     "href": "sessions/slides/tidyr.html#example",
     "title": "Tidy data with tidyr",
-    "section": "Example",
-    "text": "Example\nLet’s go back to the city data set from earlier:\n\n\nExpand to reproduce the data\ncities &lt;- c(\n  \"Istanbul\",\n  \"Moscow\",\n  \"London\",\n  \"Saint Petersburg\",\n  \"Berlin\",\n  \"Madrid\",\n  \"Kyiv\",\n  \"Rome\",\n  \"Bucharest\",\n  \"Paris\"\n)\npopulation &lt;- c(\n  15.1e6,\n  12.5e6,\n  9e6,\n  5.4e6,\n  3.8e6,\n  3.2e6,\n  3e6,\n  2.8e6,\n  2.2e6,\n  2.1e6\n)\narea_km2 &lt;- c(2576, 2561, 1572, 1439, 891, 604, 839, 1285, 228, 105)\n\ncountry &lt;- c(\n  \"Turkey\",\n  \"Russia\",\n  \"UK\",\n  \"Russia\",\n  \"Germany\",\n  \"Spain\",\n  \"Ukraine\",\n  \"Italy\",\n  \"Romania\",\n  \"France\"\n)\n# tidy\ncities_tbl &lt;- tibble(\n  city_name = cities,\n  population_size = population,\n  city_area = area_km2,\n  country = country\n)\n\n\n\ncities_tbl\n#&gt; # A tibble: 10 × 4\n#&gt;    city_name        population_size city_area country\n#&gt;    &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;  \n#&gt;  1 Istanbul                15100000      2576 Turkey \n#&gt;  2 Moscow                  12500000      2561 Russia \n#&gt;  3 London                   9000000      1572 UK     \n#&gt;  4 Saint Petersburg         5400000      1439 Russia \n#&gt;  5 Berlin                   3800000       891 Germany\n#&gt;  6 Madrid                   3200000       604 Spain  \n#&gt;  7 Kyiv                     3000000       839 Ukraine\n#&gt;  8 Rome                     2800000      1285 Italy  \n#&gt;  9 Bucharest                2200000       228 Romania\n#&gt; 10 Paris                    2100000       105 France\n\n\nThis already looks pretty tidy."
+    "section": "",
+    "text": "Let’s go back to the city data set from earlier:\n\n\nExpand to reproduce the data\ncities &lt;- c(\"Istanbul\", \"Moscow\", \"London\", \"Saint Petersburg\", \"Berlin\", \"Madrid\", \"Kyiv\", \"Rome\", \"Bucharest\", \"Paris\")\npopulation &lt;- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)\narea_km2 &lt;- c(2576, 2561, 1572, 1439, 891, 604, 839, 1285, 228, 105)\n\ncountry &lt;- c(\n  \"Turkey\", \"Russia\", \"UK\", \"Russia\", \"Germany\", \"Spain\",\n  \"Ukraine\", \"Italy\", \"Romania\", \"France\"\n)\n# tidy\ncities_tbl &lt;- tibble(\n  city_name = cities,\n  population_size = population,\n  city_area = area_km2,\n  country = country\n)\n\n\n\ncities_tbl\n#&gt; # A tibble: 10 × 4\n#&gt;    city_name        population_size city_area country\n#&gt;    &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;  \n#&gt;  1 Istanbul                15100000      2576 Turkey \n#&gt;  2 Moscow                  12500000      2561 Russia \n#&gt;  3 London                   9000000      1572 UK     \n#&gt;  4 Saint Petersburg         5400000      1439 Russia \n#&gt;  5 Berlin                   3800000       891 Germany\n#&gt;  6 Madrid                   3200000       604 Spain  \n#&gt;  7 Kyiv                     3000000       839 Ukraine\n#&gt;  8 Rome                     2800000      1285 Italy  \n#&gt;  9 Bucharest                2200000       228 Romania\n#&gt; 10 Paris                    2100000       105 France\n\n. . .\nThis already looks pretty tidy."
   },
   {
     "objectID": "sessions/slides/tidyr.html#same-data-different-format",
     "href": "sessions/slides/tidyr.html#same-data-different-format",
     "title": "Tidy data with tidyr",
-    "section": "Same data different format",
-    "text": "Same data different format\n\n\nExpand to reproduce the data\ncities_untidy &lt;- unite(cities_tbl, col = \"location\", c(country, city_name)) |&gt;\n  pivot_longer(c(population_size, city_area), names_to = \"type\") |&gt;\n  pivot_wider(names_from = \"location\", values_from = \"value\")\n\n\n\ncities_untidy\n\n\n#&gt; # A tibble: 2 × 11\n#&gt;   type            Turkey_Istanbul Russia_Moscow UK_London Russia_Saint Petersb…¹\n#&gt;   &lt;chr&gt;                     &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                  &lt;dbl&gt;\n#&gt; 1 population_size        15100000      12500000   9000000                5400000\n#&gt; 2 city_area                  2576          2561      1572                   1439\n#&gt;   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest\n#&gt;            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;\n#&gt; 1        3800000      3200000      3000000    2800000           2200000\n#&gt; 2            891          604          839       1285               228\n#&gt; # ℹ abbreviated name: ¹​`Russia_Saint Petersburg`\n#&gt; # ℹ 1 more variable: France_Paris &lt;dbl&gt;\n\nWhat’s not tidy here?\n\n\nEach row has multiple observation\nAt the same time, each observation is split across multiple rows\nCountry and city variable are split into multiple columns\nCountry and city variable values are united to one value"
+    "section": "",
+    "text": "Expand to reproduce the data\ncities_untidy &lt;- unite(cities_tbl, col = \"location\", c(country, city_name)) |&gt;\n  pivot_longer(c(population_size, city_area), names_to = \"type\") |&gt;\n  pivot_wider(names_from = \"location\", values_from = \"value\")\n\n\n\ncities_untidy\n\n\n#&gt; # A tibble: 2 × 11\n#&gt;   type            Turkey_Istanbul Russia_Moscow UK_London Russia_Saint Petersb…¹\n#&gt;   &lt;chr&gt;                     &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                  &lt;dbl&gt;\n#&gt; 1 population_size        15100000      12500000   9000000                5400000\n#&gt; 2 city_area                  2576          2561      1572                   1439\n#&gt;   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest\n#&gt;            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;\n#&gt; 1        3800000      3200000      3000000    2800000           2200000\n#&gt; 2            891          604          839       1285               228\n#&gt; # ℹ abbreviated name: ¹​`Russia_Saint Petersburg`\n#&gt; # ℹ 1 more variable: France_Paris &lt;dbl&gt;\n\nWhat’s not tidy here?\n. . .\n\nEach row has multiple observation\nAt the same time, each observation is split across multiple rows\nCountry and city variable are split into multiple columns\nCountry and city variable values are united to one value"
   },
   {
     "objectID": "sessions/slides/tidyr.html#the-tidyr-pacakge",
     "href": "sessions/slides/tidyr.html#the-tidyr-pacakge",
     "title": "Tidy data with tidyr",
-    "section": "The tidyr pacakge",
-    "text": "The tidyr pacakge\nLet’s tidy this data using functions from the tidyr package!\n\nFirst load the package with either\n\nlibrary(tidyr)\n\nor\n\nlibrary(tidyverse)"
+    "section": "",
+    "text": "Let’s tidy this data using functions from the tidyr package!\n. . .\nFirst load the package with either\n\nlibrary(tidyr)\n\nor\n\nlibrary(tidyverse)"
   },
   {
     "objectID": "sessions/slides/tidyr.html#pivot_longer",
     "href": "sessions/slides/tidyr.html#pivot_longer",
     "title": "Tidy data with tidyr",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\nOne variable split into multiple columns can be solved with pivot_longer\n\n#&gt; # A tibble: 2 × 11\n#&gt;   type            Turkey_Istanbul Russia_Moscow UK_London Russia_Saint Petersb…¹\n#&gt;   &lt;chr&gt;                     &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                  &lt;dbl&gt;\n#&gt; 1 population_size        15100000      12500000   9000000                5400000\n#&gt; 2 city_area                  2576          2561      1572                   1439\n#&gt;   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest\n#&gt;            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;\n#&gt; 1        3800000      3200000      3000000    2800000           2200000\n#&gt; 2            891          604          839       1285               228\n#&gt; # ℹ abbreviated name: ¹​`Russia_Saint Petersburg`\n#&gt; # ℹ 1 more variable: France_Paris &lt;dbl&gt;"
+    "section": "",
+    "text": "One variable split into multiple columns can be solved with pivot_longer\n\n#&gt; # A tibble: 2 × 11\n#&gt;   type            Turkey_Istanbul Russia_Moscow UK_London Russia_Saint Petersb…¹\n#&gt;   &lt;chr&gt;                     &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                  &lt;dbl&gt;\n#&gt; 1 population_size        15100000      12500000   9000000                5400000\n#&gt; 2 city_area                  2576          2561      1572                   1439\n#&gt;   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest\n#&gt;            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;\n#&gt; 1        3800000      3200000      3000000    2800000           2200000\n#&gt; 2            891          604          839       1285               228\n#&gt; # ℹ abbreviated name: ¹​`Russia_Saint Petersburg`\n#&gt; # ℹ 1 more variable: France_Paris &lt;dbl&gt;"
   },
   {
     "objectID": "sessions/slides/tidyr.html#pivot_longer-1",
     "href": "sessions/slides/tidyr.html#pivot_longer-1",
     "title": "Tidy data with tidyr",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\nOne variable split into multiple columns can be solved with pivot_longer\n\nstep1 &lt;- pivot_longer(\n  cities_untidy, # the tibble\n  cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to\n  names_to = \"location\", # name of the new column\n  values_to = \"value\"\n) # name of the value column\n\n\n\n#&gt; # A tibble: 20 × 3\n#&gt;   type            location                   value\n#&gt;   &lt;chr&gt;           &lt;chr&gt;                      &lt;dbl&gt;\n#&gt; 1 population_size Turkey_Istanbul         15100000\n#&gt; 2 population_size Russia_Moscow           12500000\n#&gt; 3 population_size UK_London                9000000\n#&gt; 4 population_size Russia_Saint Petersburg  5400000\n#&gt; # ℹ 16 more rows"
+    "section": "",
+    "text": "One variable split into multiple columns can be solved with pivot_longer\n\nstep1 &lt;- pivot_longer(\n  cities_untidy, # the tibble\n  cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to\n  names_to = \"location\", # name of the new column\n  values_to = \"value\"\n) # name of the value column\n\n. . .\n\n#&gt; # A tibble: 20 × 3\n#&gt;   type            location                   value\n#&gt;   &lt;chr&gt;           &lt;chr&gt;                      &lt;dbl&gt;\n#&gt; 1 population_size Turkey_Istanbul         15100000\n#&gt; 2 population_size Russia_Moscow           12500000\n#&gt; 3 population_size UK_London                9000000\n#&gt; 4 population_size Russia_Saint Petersburg  5400000\n#&gt; # ℹ 16 more rows"
   },
   {
     "objectID": "sessions/slides/tidyr.html#pivot_longer-2",
     "href": "sessions/slides/tidyr.html#pivot_longer-2",
     "title": "Tidy data with tidyr",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\nOne variable split into multiple columns can be solved with pivot_longer\n\nstep1 &lt;- pivot_longer(\n  cities_untidy, # the tibble\n  cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to\n  names_to = \"location\", # name of the new column\n  values_to = \"value\"\n) # name of the value column\n\nAnother way to select the columns to pivot:\n\nstep1 &lt;- pivot_longer(\n  cities_untidy, # the tibble\n  cols = !type, # All columns except type#&lt;&lt;\n  names_to = \"location\", # name of the new column\n  values_to = \"value\"\n) # name of the value column"
+    "section": "",
+    "text": "One variable split into multiple columns can be solved with pivot_longer\n\nstep1 &lt;- pivot_longer(\n  cities_untidy, # the tibble\n  cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to\n  names_to = \"location\", # name of the new column\n  values_to = \"value\"\n) # name of the value column\n\nAnother way to select the columns to pivot:\n\nstep1 &lt;- pivot_longer(\n  cities_untidy, # the tibble\n  cols = !type, # All columns except type#&lt;&lt;\n  names_to = \"location\", # name of the new column\n  values_to = \"value\"\n) # name of the value column"
   },
   {
     "objectID": "sessions/slides/tidyr.html#separate_wider_delim",
     "href": "sessions/slides/tidyr.html#separate_wider_delim",
     "title": "Tidy data with tidyr",
-    "section": "separate_wider_delim()",
-    "text": "separate_wider_delim()\nMultiple variable values that are united into one can be separated using separate_wider_delim\n\n#&gt; # A tibble: 20 × 3\n#&gt;   type            location           value\n#&gt;   &lt;chr&gt;           &lt;chr&gt;              &lt;dbl&gt;\n#&gt; 1 population_size Turkey_Istanbul 15100000\n#&gt; 2 population_size Russia_Moscow   12500000\n#&gt; # ℹ 18 more rows\n\n\n\nstep2 &lt;- separate_wider_delim(\n  step1, # the tibble\n  location, # the column to separate\n  delim = \"_\", # the separator\n  names = c(\"country\", \"city_name\")\n) # names of new columns\n\n\n\n\n#&gt; # A tibble: 20 × 4\n#&gt;   type            country city_name    value\n#&gt;   &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n#&gt; 1 population_size Turkey  Istanbul  15100000\n#&gt; 2 population_size Russia  Moscow    12500000\n#&gt; # ℹ 18 more rows\n\n\n\nThe opposite function exists as well and is called unite. Check out ?unite for details."
+    "section": "",
+    "text": "Multiple variable values that are united into one can be separated using separate_wider_delim\n\n#&gt; # A tibble: 20 × 3\n#&gt;   type            location           value\n#&gt;   &lt;chr&gt;           &lt;chr&gt;              &lt;dbl&gt;\n#&gt; 1 population_size Turkey_Istanbul 15100000\n#&gt; 2 population_size Russia_Moscow   12500000\n#&gt; # ℹ 18 more rows\n\n. . .\n\nstep2 &lt;- separate_wider_delim(\n  step1, # the tibble\n  location, # the column to separate\n  delim = \"_\", # the separator\n  names = c(\"country\", \"city_name\")\n) # names of new columns\n\n. . .\n\n#&gt; # A tibble: 20 × 4\n#&gt;   type            country city_name    value\n#&gt;   &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n#&gt; 1 population_size Turkey  Istanbul  15100000\n#&gt; 2 population_size Russia  Moscow    12500000\n#&gt; # ℹ 18 more rows\n\n. . .\nThe opposite function exists as well and is called unite. Check out ?unite for details."
   },
   {
     "objectID": "sessions/slides/tidyr.html#pivot_wider",
     "href": "sessions/slides/tidyr.html#pivot_wider",
     "title": "Tidy data with tidyr",
-    "section": "pivot_wider()",
-    "text": "pivot_wider()\nOne observation split into multiple rows can solved with pivot_wider\n\n#&gt; # A tibble: 20 × 4\n#&gt;   type            country city_name    value\n#&gt;   &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n#&gt; 1 population_size Turkey  Istanbul  15100000\n#&gt; 2 population_size Russia  Moscow    12500000\n#&gt; # ℹ 18 more rows\n\n\n\nstep3 &lt;- pivot_wider(\n  step2, # the tibble\n  names_from = type, # the variables\n  values_from = value\n) # the values\n\n\n\n\n#&gt; # A tibble: 10 × 4\n#&gt;   country city_name        population_size city_area\n#&gt;   &lt;chr&gt;   &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 Turkey  Istanbul                15100000      2576\n#&gt; 2 Russia  Moscow                  12500000      2561\n#&gt; 3 UK      London                   9000000      1572\n#&gt; 4 Russia  Saint Petersburg         5400000      1439\n#&gt; 5 Germany Berlin                   3800000       891\n#&gt; # ℹ 5 more rows"
+    "section": "",
+    "text": "One observation split into multiple rows can solved with pivot_wider\n\n#&gt; # A tibble: 20 × 4\n#&gt;   type            country city_name    value\n#&gt;   &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n#&gt; 1 population_size Turkey  Istanbul  15100000\n#&gt; 2 population_size Russia  Moscow    12500000\n#&gt; # ℹ 18 more rows\n\n. . .\n\nstep3 &lt;- pivot_wider(\n  step2, # the tibble\n  names_from = type, # the variables\n  values_from = value\n) # the values\n\n. . .\n\n#&gt; # A tibble: 10 × 4\n#&gt;   country city_name        population_size city_area\n#&gt;   &lt;chr&gt;   &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 Turkey  Istanbul                15100000      2576\n#&gt; 2 Russia  Moscow                  12500000      2561\n#&gt; 3 UK      London                   9000000      1572\n#&gt; 4 Russia  Saint Petersburg         5400000      1439\n#&gt; 5 Germany Berlin                   3800000       891\n#&gt; # ℹ 5 more rows"
   },
   {
     "objectID": "sessions/slides/tidyr.html#all-steps-in-1",
     "href": "sessions/slides/tidyr.html#all-steps-in-1",
     "title": "Tidy data with tidyr",
-    "section": "All steps in 1",
-    "text": "All steps in 1\nWe can also use a pipe to do all these steps in one:\n\ncities_tidy &lt;- cities_untidy |&gt;\n  pivot_longer(\n    Turkey_Istanbul:France_Paris,\n    names_to = \"location\",\n    values_to = \"values\"\n  ) |&gt;\n  separate_wider_delim(\n    location,\n    delim = \"_\",\n    names = c(\"country\", \"city_name\")\n  ) |&gt;\n  pivot_wider(\n    names_from = type,\n    values_from = values\n  )"
+    "section": "",
+    "text": "We can also use a pipe to do all these steps in one:\n\ncities_tidy &lt;- cities_untidy |&gt;\n  pivot_longer(\n    Turkey_Istanbul:France_Paris,\n    names_to = \"location\",\n    values_to = \"values\"\n  ) |&gt;\n  separate_wider_delim(\n    location,\n    delim = \"_\",\n    names = c(\"country\", \"city_name\")\n  ) |&gt;\n  pivot_wider(\n    names_from = type,\n    values_from = values\n  )"
   },
   {
     "objectID": "sessions/slides/tidyr.html#remove-missing-values-with-drop_na",
     "href": "sessions/slides/tidyr.html#remove-missing-values-with-drop_na",
     "title": "Tidy data with tidyr",
-    "section": "Remove missing values with drop_na()",
-    "text": "Remove missing values with drop_na()\nDrop rows with missing values:\n\n# drop rows with missing values in any column\ndrop_na(and_vertebrates)\n# drop rows with missing values in weight column\ndrop_na(and_vertebrates, weight_g)\n# drop rows with missing values in weight and species columns\ndrop_na(and_vertebrates, weight_g, species)\n\n\nThis is an easier and more intuitive alternative to filter(!is.na(...))."
+    "section": "",
+    "text": "Drop rows with missing values:\n\n# drop rows with missing values in any column\ndrop_na(and_vertebrates)\n# drop rows with missing values in weight column\ndrop_na(and_vertebrates, weight_g)\n# drop rows with missing values in weight and species columns\ndrop_na(and_vertebrates, weight_g, species)\n\n. . .\nThis is an easier and more intuitive alternative to filter(!is.na(...))."
   },
   {
     "objectID": "sessions/slides/template.html#ggplotdata",
@@ -353,120 +353,120 @@
     "objectID": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio",
     "href": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio",
     "title": "Introduction to RStudio",
-    "section": "Difference between R and RStudio",
-    "text": "Difference between R and RStudio\n\n\n\n\n\n\n\n\n\nR is the programming language and the program that does the actual work\n\nCan be used with many different programming environments\n\n\n\n\nRStudio is the integrated development environment (IDE)\n\nProvides an interface to R\nSpecifically built around R code\nExecute code\nSyntax highlighting\nFile and project management\n…"
+    "section": "",
+    "text": "R is the programming language and the program that does the actual work\n\nCan be used with many different programming environments\n\n\n\n\nRStudio is the integrated development environment (IDE)\n\nProvides an interface to R\nSpecifically built around R code\nExecute code\nSyntax highlighting\nFile and project management\n…"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio-1",
     "href": "sessions/slides/intro-rstudio.html#difference-between-r-and-rstudio-1",
     "title": "Introduction to RStudio",
-    "section": "Difference between R and RStudio",
-    "text": "Difference between R and RStudio\n\n\n\n\n\n\n\n\n\nAnalogy and image from ModernDive Book\n\n\n\n\n\n\n\n\n\nSummary\n\n\nYou can use R without RStudio but RStudio without R would be of little use"
+    "section": "0.2 Difference between R and RStudio",
+    "text": "0.2 Difference between R and RStudio\n\n\n\n\n\n\n\n\n\n\nAnalogy and image from ModernDive Book\n\n\n. . .\n\n\n\n\n\n\nSummary\n\n\n\nYou can use R without RStudio but RStudio without R would be of little use"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio-1",
     "href": "sessions/slides/intro-rstudio.html#a-quick-tour-around-rstudio-1",
     "title": "Introduction to RStudio",
-    "section": "A quick tour around RStudio",
-    "text": "A quick tour around RStudio"
+    "section": "1.1 A quick tour around RStudio",
+    "text": "1.1 A quick tour around RStudio"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#console-pane",
     "href": "sessions/slides/intro-rstudio.html#console-pane",
     "title": "Introduction to RStudio",
-    "section": "Console pane",
-    "text": "Console pane\n\n\n\nExecute R code\nOutput from R code in scripts is printed there\nType a command into the console and execute with Enter/Return\n\n\n\n\n\n\n\nTip\n\n\nUse arrow keys to bring back last commands"
+    "section": "1.2 Console pane",
+    "text": "1.2 Console pane\n\n\n\nExecute R code\nOutput from R code in scripts is printed there\nType a command into the console and execute with Enter/Return\n\n\n\n\n\n\n\nTip\n\n\n\nUse arrow keys to bring back last commands"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#script-pane",
     "href": "sessions/slides/intro-rstudio.html#script-pane",
     "title": "Introduction to RStudio",
-    "section": "Script pane",
-    "text": "Script pane\n\n\n\nWrite scripts with R code\n\nScripts are text files with R commands (file ending .R)\nUse scripts to save commands for reuse"
+    "section": "1.3 Script pane",
+    "text": "1.3 Script pane\n\n\n\nWrite scripts with R code\n\nScripts are text files with R commands (file ending .R)\nUse scripts to save commands for reuse"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#script-pane-1",
     "href": "sessions/slides/intro-rstudio.html#script-pane-1",
     "title": "Introduction to RStudio",
-    "section": "Script pane",
-    "text": "Script pane\n\n\n\nCreate a new R script:  File -&gt; New File -&gt; R Script\nSave an R script: File-&gt;Save (Ctrl/Cmd + S)\nRun code line by line with Run button (Ctrl+Enter/Cmd+Return)\nYou can open multiple scripts\n\n\n\n\n\n\n\n\n\n\nSummary\n\n\nUse scripts for all your analysis and for commands that you want to save. Use console for temporary commands, e.g. to test something."
+    "section": "1.4 Script pane",
+    "text": "1.4 Script pane\n\n\n\nCreate a new R script:  File -&gt; New File -&gt; R Script\nSave an R script: File-&gt;Save (Ctrl/Cmd + S)\nRun code line by line with Run button (Ctrl+Enter/Cmd+Return)\nYou can open multiple scripts\n\n\n\n\n\n\n\n\n\n\n\nSummary\n\n\n\nUse scripts for all your analysis and for commands that you want to save. Use console for temporary commands, e.g. to test something."
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#environment-pane",
     "href": "sessions/slides/intro-rstudio.html#environment-pane",
     "title": "Introduction to RStudio",
-    "section": "Environment pane",
-    "text": "Environment pane\n\n\n\nShows objects currently present in the R session\nIs empty if you start R"
+    "section": "1.5 Environment pane",
+    "text": "1.5 Environment pane\n\n\n\nShows objects currently present in the R session\nIs empty if you start R"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#files-pane",
     "href": "sessions/slides/intro-rstudio.html#files-pane",
     "title": "Introduction to RStudio",
-    "section": "Files pane",
-    "text": "Files pane\n\n\n\nSimilar to Explorer/Finder\nBrowse project structure and files\n\nFind and open files\nCreate new folders\nDelete files\nRename files\n…\n\nPractical if you don’t want to switch between File Explorer and RStudio all the time"
+    "section": "1.6 Files pane",
+    "text": "1.6 Files pane\n\n\n\nSimilar to Explorer/Finder\nBrowse project structure and files\n\nFind and open files\nCreate new folders\nDelete files\nRename files\n…\n\nPractical if you don’t want to switch between File Explorer and RStudio all the time"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#plot-pane",
     "href": "sessions/slides/intro-rstudio.html#plot-pane",
     "title": "Introduction to RStudio",
-    "section": "Plot pane",
-    "text": "Plot pane\n\n\n\nPlots that are created with R will be shown here"
+    "section": "1.7 Plot pane",
+    "text": "1.7 Plot pane\n\n\n\nPlots that are created with R will be shown here"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-1",
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-1",
     "title": "Introduction to RStudio",
-    "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|\nExample project structure"
+    "section": "2.1 Project oriented workflow",
+    "text": "2.1 Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|\nExample project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-2",
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-2",
     "title": "Introduction to RStudio",
-    "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nAn RStudio project is just a normal directory with an .Rproj file\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
+    "section": "2.2 Project oriented workflow",
+    "text": "2.2 Project oriented workflow\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nAn RStudio project is just a normal directory with an .Rproj file\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
     "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow-3",
     "title": "Introduction to RStudio",
-    "section": "Project oriented workflow",
-    "text": "Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- *.RProj\nExample RStudio project structure"
+    "section": "2.3 Project oriented workflow",
+    "text": "2.3 Project oriented workflow\n\n\nAdvantages of using RStudio projects\n\n\nEasy to navigate in R Studio (File pane)\nEasy to find and access scripts and data in RStudio\nProject root is working directory\nOpen multiple projects simultaneously in separate RStudio instances\n\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\nExample RStudio project structure"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#create-an-rstudio-project",
     "href": "sessions/slides/intro-rstudio.html#create-an-rstudio-project",
     "title": "Introduction to RStudio",
-    "section": "Create an RStudio project",
-    "text": "Create an RStudio project\n\n\nCreate a project from scratch:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nEnter a directory name (this will be the name of your project)\nChoose the Directory where the project should be initiated\nCreate Project\n\n\n\n\n\nExample RStudio project structure in the Files pane\n\n\n\nRStudio will now create and open the project for you."
+    "section": "2.4 Create an RStudio project",
+    "text": "2.4 Create an RStudio project\n\n\nCreate a project from scratch:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nEnter a directory name (this will be the name of your project)\nChoose the Directory where the project should be initiated\nCreate Project\n\n\n\n\n\nExample RStudio project structure in the Files pane\n\n\n\n\nRStudio will now create and open the project for you."
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#navigate-an-rstudio-project",
     "href": "sessions/slides/intro-rstudio.html#navigate-an-rstudio-project",
     "title": "Introduction to RStudio",
-    "section": "Navigate an RStudio project",
-    "text": "Navigate an RStudio project"
+    "section": "2.5 Navigate an RStudio project",
+    "text": "2.5 Navigate an RStudio project"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#open-a-project-from-outside-rstudio",
     "href": "sessions/slides/intro-rstudio.html#open-a-project-from-outside-rstudio",
     "title": "Introduction to RStudio",
-    "section": "Open a project from outside RStudio",
-    "text": "Open a project from outside RStudio\nTo open an RStudio project from your file explorer/finder, just double click on the .Rproj file"
+    "section": "2.6 Open a project from outside RStudio",
+    "text": "2.6 Open a project from outside RStudio\nTo open an RStudio project from your file explorer/finder, just double click on the .Rproj file"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#open-a-project-inside-rstudio",
     "href": "sessions/slides/intro-rstudio.html#open-a-project-inside-rstudio",
     "title": "Introduction to RStudio",
-    "section": "Open a project inside RStudio",
-    "text": "Open a project inside RStudio\nTo open an RStudio project from RStudio, click on the project symbol on the top right of R Studio and select the project from the list."
+    "section": "2.7 Open a project inside RStudio",
+    "text": "2.7 Open a project inside RStudio\nTo open an RStudio project from RStudio, click on the project symbol on the top right of R Studio and select the project from the list."
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#a-tip-before-we-get-started",
     "href": "sessions/slides/intro-rstudio.html#a-tip-before-we-get-started",
     "title": "Introduction to RStudio",
-    "section": "A tip before we get started",
-    "text": "A tip before we get started\nLearn the most important keyboard shortcuts of R Studio.\n\nFind all shortcuts under Tools -&gt; Keyboard Shortcuts Help\n\n\nSave active file: Ctrl/Cmd + S\nRun current line: Ctrl/Cmd + Enter\nCreate new R Script: Ctrl/Cmd + N\nUndo: Ctrl/Cmd + Z\nRedo: Ctrl/Cmd + Y\nCopy/Paste: Ctrl/Cmd + C/V"
+    "section": "2.8 A tip before we get started",
+    "text": "2.8 A tip before we get started\nLearn the most important keyboard shortcuts of R Studio.\n. . .\nFind all shortcuts under Tools -&gt; Keyboard Shortcuts Help\n\n\nSave active file: Ctrl/Cmd + S\nRun current line: Ctrl/Cmd + Enter\nCreate new R Script: Ctrl/Cmd + N\nUndo: Ctrl/Cmd + Z\nRedo: Ctrl/Cmd + Y\nCopy/Paste: Ctrl/Cmd + C/V"
   },
   {
     "objectID": "sessions/slides/good-practice.html#chaotic-projects-and-workflows",
@@ -2523,162 +2523,162 @@
     "objectID": "sessions/slides/tests.html#general-approach",
     "href": "sessions/slides/tests.html#general-approach",
     "title": "Statistical tests",
-    "section": "General approach",
-    "text": "General approach\n\n\n\nPlease note the discussion about p-values as a basis for binary decisions. See e.g. here or here as a starting point"
+    "section": "",
+    "text": "Please note the discussion about p-values as a basis for binary decisions. See e.g. here or here as a starting point"
   },
   {
     "objectID": "sessions/slides/tests.html#overview-of-tests",
     "href": "sessions/slides/tests.html#overview-of-tests",
     "title": "Statistical tests",
-    "section": "Overview of tests",
-    "text": "Overview of tests"
+    "section": "0.2 Overview of tests",
+    "text": "0.2 Overview of tests"
   },
   {
     "objectID": "sessions/slides/tests.html#test-for-normal-distribution",
     "href": "sessions/slides/tests.html#test-for-normal-distribution",
     "title": "Statistical tests",
-    "section": "Test for normal distribution",
-    "text": "Test for normal distribution\nThere are various tests and the outcome might differ!\n\nShapiro-Wilk-Test\n\nHow much does variance of observed data differ from normal distribution\nSpecific test only for normal distribution\nHigh power, also for few data points\n\n\n\nVisual tests: QQ-Plot\n\nQuantiles of observed data plotted against quantiles of normal distribution\nScientist has to decide if normal or not"
+    "section": "1.1 Test for normal distribution",
+    "text": "1.1 Test for normal distribution\nThere are various tests and the outcome might differ!\n. . .\nShapiro-Wilk-Test\n\nHow much does variance of observed data differ from normal distribution\nSpecific test only for normal distribution\nHigh power, also for few data points\n\n. . .\nVisual tests: QQ-Plot\n\nQuantiles of observed data plotted against quantiles of normal distribution\nScientist has to decide if normal or not"
   },
   {
     "objectID": "sessions/slides/tests.html#the-data",
     "href": "sessions/slides/tests.html#the-data",
     "title": "Statistical tests",
-    "section": "The data",
-    "text": "The data\nA tibble with two variables: normal and non_normal\n\n\n\n\nExpand to reproduce the data\nset.seed(123)\nmydata &lt;- tibble(\n  normal = rnorm(\n    n = 200,\n    mean = 50,\n    sd = 5\n  ),\n  non_normal = runif(\n    n = 200,\n    min = 45,\n    max = 55\n  )\n)\n\n\n\nmydata\n#&gt; # A tibble: 200 × 2\n#&gt;    normal non_normal\n#&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n#&gt;  1   47.2       54.9\n#&gt;  2   48.8       46.4\n#&gt;  3   57.8       54.1\n#&gt;  4   50.4       50.8\n#&gt;  5   50.6       49.0\n#&gt;  6   58.6       49.5\n#&gt;  7   52.3       52.1\n#&gt;  8   43.7       45.8\n#&gt;  9   46.6       48.4\n#&gt; 10   47.8       51.8\n#&gt; # ℹ 190 more rows"
+    "section": "1.2 The data",
+    "text": "1.2 The data\nA tibble with two variables: normal and non_normal\n\n\n\n\nExpand to reproduce the data\nset.seed(123)\nmydata &lt;- tibble(\n  normal = rnorm(\n    n = 200,\n    mean = 50,\n    sd = 5\n  ),\n  non_normal = runif(\n    n = 200,\n    min = 45,\n    max = 55\n  )\n)\n\n\n\nmydata\n#&gt; # A tibble: 200 × 2\n#&gt;    normal non_normal\n#&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n#&gt;  1   47.2       54.9\n#&gt;  2   48.8       46.4\n#&gt;  3   57.8       54.1\n#&gt;  4   50.4       50.8\n#&gt;  5   50.6       49.0\n#&gt;  6   58.6       49.5\n#&gt;  7   52.3       52.1\n#&gt;  8   43.7       45.8\n#&gt;  9   46.6       48.4\n#&gt; 10   47.8       51.8\n#&gt; # ℹ 190 more rows"
   },
   {
     "objectID": "sessions/slides/tests.html#shapiro-wilk-test",
     "href": "sessions/slides/tests.html#shapiro-wilk-test",
     "title": "Statistical tests",
-    "section": "Shapiro-Wilk-Test",
-    "text": "Shapiro-Wilk-Test\n\\(H_0\\): Data does not differ from a normal distribution\n\n\n\n\nshapiro.test(mydata$normal)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  mydata$normal\n#&gt; W = 0.99076, p-value = 0.2298\n\n\n\n\nW: test statistic\np: probability to observe data with this level of deviation from normality (or more) if \\(H_0\\) was true\n\nprobability is high -&gt; no reason to doubt normality assumption\n\n\n\n\n\nThe data does not deviate significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.991, p = 0.23).\n\n\n\n\nshapiro.test(mydata$non_normal)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  mydata$non_normal\n#&gt; W = 0.95114, p-value = 2.435e-06\n\n\n\nThe data deviates significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.95, p &lt; 0.001)."
+    "section": "1.3 Shapiro-Wilk-Test",
+    "text": "1.3 Shapiro-Wilk-Test\n\\(H_0\\): Data does not differ from a normal distribution\n. . .\n\n\n\nshapiro.test(mydata$normal)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  mydata$normal\n#&gt; W = 0.99076, p-value = 0.2298\n\n\n\n\nW: test statistic\np: probability to observe data with this level of deviation from normality (or more) if \\(H_0\\) was true\n\nprobability is high -&gt; no reason to doubt normality assumption\n\n\n\n\n\nThe data does not deviate significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.991, p = 0.23).\n\n\n\n\nshapiro.test(mydata$non_normal)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  mydata$non_normal\n#&gt; W = 0.95114, p-value = 2.435e-06\n\n\n\nThe data deviates significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.95, p &lt; 0.001)."
   },
   {
     "objectID": "sessions/slides/tests.html#visual-test-with-qq-plot",
     "href": "sessions/slides/tests.html#visual-test-with-qq-plot",
     "title": "Statistical tests",
-    "section": "Visual test with QQ-Plot",
-    "text": "Visual test with QQ-Plot\nPoints should match the straight line. Small deviations are okay.\n\n\n\n# ggplot(\n#   mydata,\n#   aes(sample = normal)\n# ) +\n#   stat_qq() +\n#   stat_qq_line()\nggpubr::ggqqplot(mydata$normal)\n#&gt; Error in loadNamespace(x): there is no package called 'ggpubr'\n\n\n\n# ggplot(\n#   mydata,\n#   aes(sample = non_normal)\n# ) +\n#   stat_qq() +\n#   stat_qq_line()\nggpubr::ggqqplot(mydata$non_normal)\n#&gt; Error in loadNamespace(x): there is no package called 'ggpubr'"
+    "section": "1.4 Visual test with QQ-Plot",
+    "text": "1.4 Visual test with QQ-Plot\nPoints should match the straight line. Small deviations are okay.\n\n\n\n# ggplot(\n#   mydata,\n#   aes(sample = normal)\n# ) +\n#   stat_qq() +\n#   stat_qq_line()\nggpubr::ggqqplot(mydata$normal)\n#&gt; Error in loadNamespace(x): there is no package called 'ggpubr'\n\n\n\n# ggplot(\n#   mydata,\n#   aes(sample = non_normal)\n# ) +\n#   stat_qq() +\n#   stat_qq_line()\nggpubr::ggqqplot(mydata$non_normal)\n#&gt; Error in loadNamespace(x): there is no package called 'ggpubr'"
   },
   {
     "objectID": "sessions/slides/tests.html#the-data-1",
     "href": "sessions/slides/tests.html#the-data-1",
     "title": "Statistical tests",
-    "section": "The data",
-    "text": "The data\nCounts of insects in agricultural units treated with different insecticides.\n\n\nCompare treatments A, B and C:\nCreate subsets before: count variable for each treatment as a vector\n\nTreatA &lt;- filter(\n  InsectSprays,\n  spray == \"A\"\n)$count\nTreatB &lt;- filter(\n  InsectSprays,\n  spray == \"B\"\n)$count\nTreatC &lt;- filter(\n  InsectSprays,\n  spray == \"C\"\n)$count"
+    "section": "2.1 The data",
+    "text": "2.1 The data\nCounts of insects in agricultural units treated with different insecticides.\n\n\nCompare treatments A, B and C:\nCreate subsets before: count variable for each treatment as a vector\n\nTreatA &lt;- filter(\n  InsectSprays,\n  spray == \"A\"\n)$count\nTreatB &lt;- filter(\n  InsectSprays,\n  spray == \"B\"\n)$count\nTreatC &lt;- filter(\n  InsectSprays,\n  spray == \"C\"\n)$count"
   },
   {
     "objectID": "sessions/slides/tests.html#test-for-equal-variance",
     "href": "sessions/slides/tests.html#test-for-equal-variance",
     "title": "Statistical tests",
-    "section": "Test for equal variance",
-    "text": "Test for equal variance\nFirst, test for normal distribution!\nF-Test\n\nNormal distribution of groups\nCalculates ratio of variances (if equal, ratio = 1)\np: How likely is this (or a more extreme) ratio of variances if the variances were truly equal?\n\nLevene test\n\nNon-normal distribution of groups\nCompare difference between data sets with difference within data sets"
+    "section": "2.2 Test for equal variance",
+    "text": "2.2 Test for equal variance\nFirst, test for normal distribution!\nF-Test\n\nNormal distribution of groups\nCalculates ratio of variances (if equal, ratio = 1)\np: How likely is this (or a more extreme) ratio of variances if the variances were truly equal?\n\nLevene test\n\nNon-normal distribution of groups\nCompare difference between data sets with difference within data sets"
   },
   {
     "objectID": "sessions/slides/tests.html#test-for-equal-variance-1",
     "href": "sessions/slides/tests.html#test-for-equal-variance-1",
     "title": "Statistical tests",
-    "section": "Test for equal variance",
-    "text": "Test for equal variance\nFirst, test for normal distribution\n\nshapiro.test(TreatA)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatA\n#&gt; W = 0.95757, p-value = 0.7487\nshapiro.test(TreatB)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatB\n#&gt; W = 0.95031, p-value = 0.6415\nshapiro.test(TreatC)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatC\n#&gt; W = 0.92128, p-value = 0.2967\n\nResult: All 3 treatments are normally distributed."
+    "section": "2.3 Test for equal variance",
+    "text": "2.3 Test for equal variance\nFirst, test for normal distribution\n\nshapiro.test(TreatA)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatA\n#&gt; W = 0.95757, p-value = 0.7487\nshapiro.test(TreatB)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatB\n#&gt; W = 0.95031, p-value = 0.6415\nshapiro.test(TreatC)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatC\n#&gt; W = 0.92128, p-value = 0.2967\n\nResult: All 3 treatments are normally distributed."
   },
   {
     "objectID": "sessions/slides/tests.html#f-test",
     "href": "sessions/slides/tests.html#f-test",
     "title": "Statistical tests",
-    "section": "F-Test",
-    "text": "F-Test\n\\(H_0\\): Variances do not differ between groups\n\n\nvar.test(TreatA, TreatB)\n#&gt; \n#&gt;  F test to compare two variances\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; F = 1.2209, num df = 11, denom df = 11, p-value = 0.7464\n#&gt; alternative hypothesis: true ratio of variances is not equal to 1\n#&gt; 95 percent confidence interval:\n#&gt;  0.3514784 4.2411442\n#&gt; sample estimates:\n#&gt; ratio of variances \n#&gt;            1.22093\n\n\n\n\n\nF: test statistics, ratio of variances (if F = 1, variances are equal)\ndf: degrees of freedom of both groups\np-value: probability to observe this (or more extreme) F if \\(H_0\\) was true\n\n\nVariances of sprays A & B don’t differ significantly (F-Test, \\(F_{11,11}\\) = 1.22, p = 0.75)"
+    "section": "2.4 F-Test",
+    "text": "2.4 F-Test\n\\(H_0\\): Variances do not differ between groups\n. . .\n\nvar.test(TreatA, TreatB)\n#&gt; \n#&gt;  F test to compare two variances\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; F = 1.2209, num df = 11, denom df = 11, p-value = 0.7464\n#&gt; alternative hypothesis: true ratio of variances is not equal to 1\n#&gt; 95 percent confidence interval:\n#&gt;  0.3514784 4.2411442\n#&gt; sample estimates:\n#&gt; ratio of variances \n#&gt;            1.22093\n\n. . .\n\n\nF: test statistics, ratio of variances (if F = 1, variances are equal)\ndf: degrees of freedom of both groups\np-value: probability to observe this (or more extreme) F if \\(H_0\\) was true\n\n\nVariances of sprays A & B don’t differ significantly (F-Test, \\(F_{11,11}\\) = 1.22, p = 0.75)"
   },
   {
     "objectID": "sessions/slides/tests.html#f-test-1",
     "href": "sessions/slides/tests.html#f-test-1",
     "title": "Statistical tests",
-    "section": "F-Test",
-    "text": "F-Test\n\\(H_0\\): Variances do not differ between groups\n\n\nvar.test(TreatA, TreatC)\n#&gt; \n#&gt;  F test to compare two variances\n#&gt; \n#&gt; data:  TreatA and TreatC\n#&gt; F = 7.4242, num df = 11, denom df = 11, p-value = 0.002435\n#&gt; alternative hypothesis: true ratio of variances is not equal to 1\n#&gt; 95 percent confidence interval:\n#&gt;   2.137273 25.789584\n#&gt; sample estimates:\n#&gt; ratio of variances \n#&gt;           7.424242\n\nVariances of sprays A & C differ significantly (F-Test, \\(F_{11,11}\\) = 7.42, p = 0.002)"
+    "section": "2.5 F-Test",
+    "text": "2.5 F-Test\n\\(H_0\\): Variances do not differ between groups\n. . .\n\nvar.test(TreatA, TreatC)\n#&gt; \n#&gt;  F test to compare two variances\n#&gt; \n#&gt; data:  TreatA and TreatC\n#&gt; F = 7.4242, num df = 11, denom df = 11, p-value = 0.002435\n#&gt; alternative hypothesis: true ratio of variances is not equal to 1\n#&gt; 95 percent confidence interval:\n#&gt;   2.137273 25.789584\n#&gt; sample estimates:\n#&gt; ratio of variances \n#&gt;           7.424242\n\nVariances of sprays A & C differ significantly (F-Test, \\(F_{11,11}\\) = 7.42, p = 0.002)"
   },
   {
     "objectID": "sessions/slides/tests.html#test-for-equal-means-1",
     "href": "sessions/slides/tests.html#test-for-equal-means-1",
     "title": "Statistical tests",
-    "section": "Test for equal means",
-    "text": "Test for equal means\nt-test\n\nNormal distribution AND equal variance\nCompares if mean values are within range of standard error of each other\np: How likely is this (or more extreme) difference between means if the population means were truly equal?\n\n\nWelch-Test (corrected t-test)\n\nNormal distribution but unequal variance\n\n\n\nWilcoxon rank sum test\n\nNon-normal distribution and unequal variance\nCompares rank sums of the data\nNon-parametric"
+    "section": "3.1 Test for equal means",
+    "text": "3.1 Test for equal means\nt-test\n\nNormal distribution AND equal variance\nCompares if mean values are within range of standard error of each other\np: How likely is this (or more extreme) difference between means if the population means were truly equal?\n\n. . .\nWelch-Test (corrected t-test)\n\nNormal distribution but unequal variance\n\n. . .\nWilcoxon rank sum test\n\nNon-normal distribution and unequal variance\nCompares rank sums of the data\nNon-parametric"
   },
   {
     "objectID": "sessions/slides/tests.html#t-test",
     "href": "sessions/slides/tests.html#t-test",
     "title": "Statistical tests",
-    "section": "t-test",
-    "text": "t-test\n\\(H_0\\): The samples do not differ in their mean\n\nTreatment A and B: normally distributed and equal variance\n\nt.test(TreatA, TreatB, var.equal = TRUE)\n#&gt; \n#&gt;  Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; t = -0.45352, df = 22, p-value = 0.6546\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -4.643994  2.977327\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;  14.50000  15.33333\n\n\n\nt: test statistics (t = 0 means equal means)\ndf: degrees of freedom of t-statistics\np-value: how likely is this extreme of a difference if \\(H_0\\) was true?\n\n\n\n\nThe means of spray A and B don’t differ significantly (t = -0.45, df = 22, p = 0.66)"
+    "section": "3.2 t-test",
+    "text": "3.2 t-test\n\\(H_0\\): The samples do not differ in their mean\n. . .\nTreatment A and B: normally distributed and equal variance\n\nt.test(TreatA, TreatB, var.equal = TRUE)\n#&gt; \n#&gt;  Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; t = -0.45352, df = 22, p-value = 0.6546\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -4.643994  2.977327\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;  14.50000  15.33333\n\n\n\nt: test statistics (t = 0 means equal means)\ndf: degrees of freedom of t-statistics\np-value: how likely is this extreme of a difference if \\(H_0\\) was true?\n\n\n. . .\nThe means of spray A and B don’t differ significantly (t = -0.45, df = 22, p = 0.66)"
   },
   {
     "objectID": "sessions/slides/tests.html#welch-test",
     "href": "sessions/slides/tests.html#welch-test",
     "title": "Statistical tests",
-    "section": "Welch-Test",
-    "text": "Welch-Test\n\\(H_0\\): The samples do not differ in their mean\n\nTreatment A and C: normally distributed and non-equal variance\n\nt.test(TreatA, TreatC, var.equal = FALSE)\n#&gt; \n#&gt;  Welch Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatC\n#&gt; t = 7.5798, df = 13.91, p-value = 2.655e-06\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;   7.885546 14.114454\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;      14.5       3.5\n\n\n\nThe means of spray A and C do differ significantly (t = 7.58, df = 13.9, p &lt; 0.001)"
+    "section": "3.3 Welch-Test",
+    "text": "3.3 Welch-Test\n\\(H_0\\): The samples do not differ in their mean\n. . .\nTreatment A and C: normally distributed and non-equal variance\n\nt.test(TreatA, TreatC, var.equal = FALSE)\n#&gt; \n#&gt;  Welch Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatC\n#&gt; t = 7.5798, df = 13.91, p-value = 2.655e-06\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;   7.885546 14.114454\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;      14.5       3.5\n\n. . .\nThe means of spray A and C do differ significantly (t = 7.58, df = 13.9, p &lt; 0.001)"
   },
   {
     "objectID": "sessions/slides/tests.html#wilcoxon-rank-sum-test",
     "href": "sessions/slides/tests.html#wilcoxon-rank-sum-test",
     "title": "Statistical tests",
-    "section": "Wilcoxon-rank-sum Test",
-    "text": "Wilcoxon-rank-sum Test\n\\(H_0\\): The samples do not differ in their mean\n\nWe don’t need the Wilcoxon test to compare treatment A and B, but for the sake of an example:\n\nwilcox.test(TreatA, TreatB)\n#&gt; \n#&gt;  Wilcoxon rank sum test with continuity correction\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; W = 62, p-value = 0.5812\n#&gt; alternative hypothesis: true location shift is not equal to 0\n\n\n\nThe means of spray A and B do not differ significantly (W = 62, p = 0.58)"
+    "section": "3.4 Wilcoxon-rank-sum Test",
+    "text": "3.4 Wilcoxon-rank-sum Test\n\\(H_0\\): The samples do not differ in their mean\n. . .\nWe don’t need the Wilcoxon test to compare treatment A and B, but for the sake of an example:\n\nwilcox.test(TreatA, TreatB)\n#&gt; \n#&gt;  Wilcoxon rank sum test with continuity correction\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; W = 62, p-value = 0.5812\n#&gt; alternative hypothesis: true location shift is not equal to 0\n\n. . .\nThe means of spray A and B do not differ significantly (W = 62, p = 0.58)"
   },
   {
     "objectID": "sessions/slides/tests.html#paired-values",
     "href": "sessions/slides/tests.html#paired-values",
     "title": "Statistical tests",
-    "section": "Paired values",
-    "text": "Paired values\nAre there pairs of data points?\nExample: samples of invertebrates across various rivers before and after sewage plants.\n\n\n\nFor each plant, there is a pair of data points (before and after the plant)\nQuestion: Is the change (before-after) significant\n\n\n\n\nUse paired = TRUE in the test.\n\nt.test(TreatA, TreatB, var.equal = TRUE, paired = TRUE)\nt.test(TreatA, TreatB, var.equal = FALSE, paired = TRUE)\nwilcox.test(TreatA, TreatB, paired = TRUE)\n\nCareful: your treatment vector both have to have the same order"
+    "section": "3.5 Paired values",
+    "text": "3.5 Paired values\nAre there pairs of data points?\nExample: samples of invertebrates across various rivers before and after sewage plants.\n\n\n\nFor each plant, there is a pair of data points (before and after the plant)\nQuestion: Is the change (before-after) significant\n\n\n\n. . .\nUse paired = TRUE in the test.\n\nt.test(TreatA, TreatB, var.equal = TRUE, paired = TRUE)\nt.test(TreatA, TreatB, var.equal = FALSE, paired = TRUE)\nwilcox.test(TreatA, TreatB, paired = TRUE)\n\nCareful: your treatment vector both have to have the same order"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-test-results-with-ggsignif",
     "href": "sessions/slides/tests.html#plot-test-results-with-ggsignif",
     "title": "Statistical tests",
-    "section": "Plot test results with ggsignif",
-    "text": "Plot test results with ggsignif\nThe ggsignif package offers a geom_signif() layer that can be added to a ggplot to annotate significance levels\n\n# install.packages(\"ggsignif\")\nlibrary(ggsignif)\n#&gt; Error in library(ggsignif): there is no package called 'ggsignif'"
+    "section": "3.6 Plot test results with ggsignif",
+    "text": "3.6 Plot test results with ggsignif\nThe ggsignif package offers a geom_signif() layer that can be added to a ggplot to annotate significance levels\n\n# install.packages(\"ggsignif\")\nlibrary(ggsignif)\n#&gt; Error in library(ggsignif): there is no package called 'ggsignif'"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-test-results-with-geom_signif",
     "href": "sessions/slides/tests.html#plot-test-results-with-geom_signif",
     "title": "Statistical tests",
-    "section": "Plot test results with geom_signif()",
-    "text": "Plot test results with geom_signif()\n\n#&gt; Error in library(ggsignif): there is no package called 'ggsignif'\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    map_signif_level = TRUE,\n    y_position = c(23, 24, 25)\n  )\n#&gt; Error in geom_signif(comparisons = list(c(\"A\", \"B\"), c(\"B\", \"C\"), c(\"A\", : could not find function \"geom_signif\"\n\n\n\n\n\nBy default, a Wilcoxon test is performed"
+    "section": "3.7 Plot test results with geom_signif()",
+    "text": "3.7 Plot test results with geom_signif()\n\n#&gt; Error in library(ggsignif): there is no package called 'ggsignif'\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    map_signif_level = TRUE,\n    y_position = c(23, 24, 25)\n  )\n#&gt; Error in geom_signif(comparisons = list(c(\"A\", \"B\"), c(\"B\", \"C\"), c(\"A\", : could not find function \"geom_signif\"\n\n\n\nBy default, a Wilcoxon test is performed"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-test-results-with-geom_signif-1",
     "href": "sessions/slides/tests.html#plot-test-results-with-geom_signif-1",
     "title": "Statistical tests",
-    "section": "Plot test results with geom_signif()",
-    "text": "Plot test results with geom_signif()\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\",\n    test.args = list(\n      var.equal = TRUE\n    ),\n    map_signif_level = TRUE,\n    y_position = c(23, 24, 25)\n  )\n\n\n\n#&gt; Error in geom_signif(comparisons = list(c(\"A\", \"B\"), c(\"B\", \"C\"), c(\"A\", : could not find function \"geom_signif\"\n\n\n\n\ntest: run specific test\ntest.args: pass additional arguments in a list\n?geom_signif for more options"
+    "section": "3.8 Plot test results with geom_signif()",
+    "text": "3.8 Plot test results with geom_signif()\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\",\n    test.args = list(\n      var.equal = TRUE\n    ),\n    map_signif_level = TRUE,\n    y_position = c(23, 24, 25)\n  )\n\n\n\n#&gt; Error in geom_signif(comparisons = list(c(\"A\", \"B\"), c(\"B\", \"C\"), c(\"A\", : could not find function \"geom_signif\"\n\n\n\n\n\ntest: run specific test\ntest.args: pass additional arguments in a list\n?geom_signif for more options"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary",
     "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary",
     "title": "Statistical tests",
-    "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary()\n\n\nBy default stat_summary adds mean and standard error of the mean as pointrange"
+    "section": "3.9 Plot mean +- se using stat_summary",
+    "text": "3.9 Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary()\n\n\nBy default stat_summary adds mean and standard error of the mean as pointrange"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-1",
     "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-1",
     "title": "Statistical tests",
-    "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\"\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"point\",\n    color = \"#28a87d\",\n    size = 4\n  )\n\n\n\nInside stat_summary, define summary function\n\nfun.data for errorbars, fun.y for points (e.g. mean)"
+    "section": "3.10 Plot mean +- se using stat_summary",
+    "text": "3.10 Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\"\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"point\",\n    color = \"#28a87d\",\n    size = 4\n  )\n\n\n\nInside stat_summary, define summary function\n\nfun.data for errorbars, fun.y for points (e.g. mean)"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-2",
     "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-2",
     "title": "Statistical tests",
-    "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.3\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"bar\",\n    size = 4\n  )"
+    "section": "3.11 Plot mean +- se using stat_summary",
+    "text": "3.11 Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.3\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"bar\",\n    size = 4\n  )"
   },
   {
     "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-3",
     "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-3",
     "title": "Statistical tests",
-    "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nJust like before, you can also add a geom_signif to a barplot:\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.3\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"bar\"\n  ) +\n  ggsignif::geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\",\n    map_signif_level = TRUE,\n    y_position = c(17, 18, 19)\n  )\n#&gt; Error in loadNamespace(x): there is no package called 'ggsignif'"
+    "section": "3.12 Plot mean +- se using stat_summary",
+    "text": "3.12 Plot mean +- se using stat_summary\nJust like before, you can also add a geom_signif to a barplot:\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.3\n  ) +\n  stat_summary(\n    fun.y = mean,\n    geom = \"bar\"\n  ) +\n  ggsignif::geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\",\n    map_signif_level = TRUE,\n    y_position = c(17, 18, 19)\n  )\n#&gt; Error in loadNamespace(x): there is no package called 'ggsignif'"
   },
   {
     "objectID": "sessions/solutions/data-tibbles.html",
@@ -2896,5 +2896,33 @@
     "title": "",
     "section": "3 Extra",
     "text": "3 Extra\nCreate a plot to show the results of your tests. Choose one of the following:\n\nCreate a boxplot with notches to visually compare differences in flipper length between species\nMake a plot showing the mean and standard error of the mean as pointrange or point with errorbars\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
+  },
+  {
+    "objectID": "sessions/tasks/readr.html#for-the-fast-ones",
+    "href": "sessions/tasks/readr.html#for-the-fast-ones",
+    "title": "",
+    "section": "3 For the fast ones",
+    "text": "3 For the fast ones\n\nDownload the csv or excel file below. The files are a bit messy. Find out what is messy about the data sets (try reading them in R and see what happens, open the files in Excel or a text editor and check out the structure). Then read them into R correctly. Try the janitor::clean_names function on the data after you read it in.\n\n\n\n\n\n Download csv\n\n\n\n\n\n Download xlsx\n\n\n\n\n\n\nTry reading in some of your own research data. First, add them to the /data folder of your project. Then read them into R using the appropriate read_* function. Can you manage to read the data in a clean format? What are the challenges you face?"
+  },
+  {
+    "objectID": "sessions/slides/tidyr.html",
+    "href": "sessions/slides/tidyr.html",
+    "title": "Tidy data with tidyr",
+    "section": "",
+    "text": "Illustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst\n\n\n\n\n\nLet’s look at some examples\n\n\nTidy\n\n\n\n\n\nid\nname\ncolor\n\n\n\n\n1\nfloof\ngray\n\n\n2\nmax\nblack\n\n\n3\ncat\norange\n\n\n4\ndonut\ngray\n\n\n5\nmerlin\nblack\n\n\n6\npanda\ncalico\n\n\n\n\n\n\n\nNon-tidy\n\n\n\n\n\nfloof\nmax\ncat\ndonut\nmerlin\npanda\n\n\n\n\ngray\nblack\norange\ngray\nblack\ncalico\n\n\n\n\n\n\n\n\n\n\n\ngray\nblack\norange\ncalico\n\n\n\n\nfloof\nmax\ncat\npanda\n\n\ndonut\nmerlin\n\n\n\n\n\n\n\n\n\n\n. . .\n\nSometimes raw data is non-tidy because its structure is optimized for data entry or viewing rather than analysis.\n\n\n\nThe main advantages of tidy data is that the tidyverse packages are built to work with it.\n\n\n\nIllustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst\n\n\n\n\n\nLet’s go back to the city data set from earlier:\n\n\nExpand to reproduce the data\ncities &lt;- c(\"Istanbul\", \"Moscow\", \"London\", \"Saint Petersburg\", \"Berlin\", \"Madrid\", \"Kyiv\", \"Rome\", \"Bucharest\", \"Paris\")\npopulation &lt;- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)\narea_km2 &lt;- c(2576, 2561, 1572, 1439, 891, 604, 839, 1285, 228, 105)\n\ncountry &lt;- c(\n  \"Turkey\", \"Russia\", \"UK\", \"Russia\", \"Germany\", \"Spain\",\n  \"Ukraine\", \"Italy\", \"Romania\", \"France\"\n)\n# tidy\ncities_tbl &lt;- tibble(\n  city_name = cities,\n  population_size = population,\n  city_area = area_km2,\n  country = country\n)\n\n\n\ncities_tbl\n#&gt; # A tibble: 10 × 4\n#&gt;    city_name        population_size city_area country\n#&gt;    &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;  \n#&gt;  1 Istanbul                15100000      2576 Turkey \n#&gt;  2 Moscow                  12500000      2561 Russia \n#&gt;  3 London                   9000000      1572 UK     \n#&gt;  4 Saint Petersburg         5400000      1439 Russia \n#&gt;  5 Berlin                   3800000       891 Germany\n#&gt;  6 Madrid                   3200000       604 Spain  \n#&gt;  7 Kyiv                     3000000       839 Ukraine\n#&gt;  8 Rome                     2800000      1285 Italy  \n#&gt;  9 Bucharest                2200000       228 Romania\n#&gt; 10 Paris                    2100000       105 France\n\n. . .\nThis already looks pretty tidy.\n\n\n\n\n\nExpand to reproduce the data\ncities_untidy &lt;- unite(cities_tbl, col = \"location\", c(country, city_name)) |&gt;\n  pivot_longer(c(population_size, city_area), names_to = \"type\") |&gt;\n  pivot_wider(names_from = \"location\", values_from = \"value\")\n\n\n\ncities_untidy\n\n\n#&gt; # A tibble: 2 × 11\n#&gt;   type            Turkey_Istanbul Russia_Moscow UK_London Russia_Saint Petersb…¹\n#&gt;   &lt;chr&gt;                     &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                  &lt;dbl&gt;\n#&gt; 1 population_size        15100000      12500000   9000000                5400000\n#&gt; 2 city_area                  2576          2561      1572                   1439\n#&gt;   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest\n#&gt;            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;\n#&gt; 1        3800000      3200000      3000000    2800000           2200000\n#&gt; 2            891          604          839       1285               228\n#&gt; # ℹ abbreviated name: ¹​`Russia_Saint Petersburg`\n#&gt; # ℹ 1 more variable: France_Paris &lt;dbl&gt;\n\nWhat’s not tidy here?\n. . .\n\nEach row has multiple observation\nAt the same time, each observation is split across multiple rows\nCountry and city variable are split into multiple columns\nCountry and city variable values are united to one value\n\n\n\n\nLet’s tidy this data using functions from the tidyr package!\n. . .\nFirst load the package with either\n\nlibrary(tidyr)\n\nor\n\nlibrary(tidyverse)\n\n\n\n\nOne variable split into multiple columns can be solved with pivot_longer\n\n#&gt; # A tibble: 2 × 11\n#&gt;   type            Turkey_Istanbul Russia_Moscow UK_London Russia_Saint Petersb…¹\n#&gt;   &lt;chr&gt;                     &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                  &lt;dbl&gt;\n#&gt; 1 population_size        15100000      12500000   9000000                5400000\n#&gt; 2 city_area                  2576          2561      1572                   1439\n#&gt;   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest\n#&gt;            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;\n#&gt; 1        3800000      3200000      3000000    2800000           2200000\n#&gt; 2            891          604          839       1285               228\n#&gt; # ℹ abbreviated name: ¹​`Russia_Saint Petersburg`\n#&gt; # ℹ 1 more variable: France_Paris &lt;dbl&gt;\n\n\n\n\nOne variable split into multiple columns can be solved with pivot_longer\n\nstep1 &lt;- pivot_longer(\n  cities_untidy, # the tibble\n  cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to\n  names_to = \"location\", # name of the new column\n  values_to = \"value\"\n) # name of the value column\n\n. . .\n\n#&gt; # A tibble: 20 × 3\n#&gt;   type            location                   value\n#&gt;   &lt;chr&gt;           &lt;chr&gt;                      &lt;dbl&gt;\n#&gt; 1 population_size Turkey_Istanbul         15100000\n#&gt; 2 population_size Russia_Moscow           12500000\n#&gt; 3 population_size UK_London                9000000\n#&gt; 4 population_size Russia_Saint Petersburg  5400000\n#&gt; # ℹ 16 more rows\n\n\n\n\nOne variable split into multiple columns can be solved with pivot_longer\n\nstep1 &lt;- pivot_longer(\n  cities_untidy, # the tibble\n  cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to\n  names_to = \"location\", # name of the new column\n  values_to = \"value\"\n) # name of the value column\n\nAnother way to select the columns to pivot:\n\nstep1 &lt;- pivot_longer(\n  cities_untidy, # the tibble\n  cols = !type, # All columns except type#&lt;&lt;\n  names_to = \"location\", # name of the new column\n  values_to = \"value\"\n) # name of the value column\n\n\n\n\nMultiple variable values that are united into one can be separated using separate_wider_delim\n\n#&gt; # A tibble: 20 × 3\n#&gt;   type            location           value\n#&gt;   &lt;chr&gt;           &lt;chr&gt;              &lt;dbl&gt;\n#&gt; 1 population_size Turkey_Istanbul 15100000\n#&gt; 2 population_size Russia_Moscow   12500000\n#&gt; # ℹ 18 more rows\n\n. . .\n\nstep2 &lt;- separate_wider_delim(\n  step1, # the tibble\n  location, # the column to separate\n  delim = \"_\", # the separator\n  names = c(\"country\", \"city_name\")\n) # names of new columns\n\n. . .\n\n#&gt; # A tibble: 20 × 4\n#&gt;   type            country city_name    value\n#&gt;   &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n#&gt; 1 population_size Turkey  Istanbul  15100000\n#&gt; 2 population_size Russia  Moscow    12500000\n#&gt; # ℹ 18 more rows\n\n. . .\nThe opposite function exists as well and is called unite. Check out ?unite for details.\n\n\n\nOne observation split into multiple rows can solved with pivot_wider\n\n#&gt; # A tibble: 20 × 4\n#&gt;   type            country city_name    value\n#&gt;   &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n#&gt; 1 population_size Turkey  Istanbul  15100000\n#&gt; 2 population_size Russia  Moscow    12500000\n#&gt; # ℹ 18 more rows\n\n. . .\n\nstep3 &lt;- pivot_wider(\n  step2, # the tibble\n  names_from = type, # the variables\n  values_from = value\n) # the values\n\n. . .\n\n#&gt; # A tibble: 10 × 4\n#&gt;   country city_name        population_size city_area\n#&gt;   &lt;chr&gt;   &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 Turkey  Istanbul                15100000      2576\n#&gt; 2 Russia  Moscow                  12500000      2561\n#&gt; 3 UK      London                   9000000      1572\n#&gt; 4 Russia  Saint Petersburg         5400000      1439\n#&gt; 5 Germany Berlin                   3800000       891\n#&gt; # ℹ 5 more rows\n\n\n\n\nWe can also use a pipe to do all these steps in one:\n\ncities_tidy &lt;- cities_untidy |&gt;\n  pivot_longer(\n    Turkey_Istanbul:France_Paris,\n    names_to = \"location\",\n    values_to = \"values\"\n  ) |&gt;\n  separate_wider_delim(\n    location,\n    delim = \"_\",\n    names = c(\"country\", \"city_name\")\n  ) |&gt;\n  pivot_wider(\n    names_from = type,\n    values_from = values\n  )\n\n\n\n\nDrop rows with missing values:\n\n# drop rows with missing values in any column\ndrop_na(and_vertebrates)\n# drop rows with missing values in weight column\ndrop_na(and_vertebrates, weight_g)\n# drop rows with missing values in weight and species columns\ndrop_na(and_vertebrates, weight_g, species)\n\n. . .\nThis is an easier and more intuitive alternative to filter(!is.na(...))."
+  },
+  {
+    "objectID": "sessions/slides/intro-rstudio.html",
+    "href": "sessions/slides/intro-rstudio.html",
+    "title": "Introduction to RStudio",
+    "section": "",
+    "text": "R is the programming language and the program that does the actual work\n\nCan be used with many different programming environments\n\n\n\n\nRStudio is the integrated development environment (IDE)\n\nProvides an interface to R\nSpecifically built around R code\nExecute code\nSyntax highlighting\nFile and project management\n…"
+  },
+  {
+    "objectID": "sessions/slides/tests.html",
+    "href": "sessions/slides/tests.html",
+    "title": "Statistical tests",
+    "section": "",
+    "text": "Please note the discussion about p-values as a basis for binary decisions. See e.g. here or here as a starting point"
   }
 ]
