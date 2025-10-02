@@ -1733,42 +1733,42 @@
     "href": "sessions/slides/dplyr.html#the-data-1",
     "title": "Data transformation with dplyr",
     "section": "The data",
-    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\nlibrary(lterdatasampler)\n#&gt; Error in library(lterdatasampler): there is no package called 'lterdatasampler'\nvertebrates &lt;- and_vertebrates |&gt;\n  select(year, section, unittype, species, length_1_mm, weight_g) |&gt;\n  filter(species != \"Cascade torrent salamander\")\n#&gt; Error: object 'and_vertebrates' not found\nvertebrates\n#&gt; Error: object 'vertebrates' not found"
+    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\nlibrary(lterdatasampler)\nvertebrates &lt;- and_vertebrates |&gt;\n  select(year, section, unittype, species, length_1_mm, weight_g) |&gt;\n  filter(species != \"Cascade torrent salamander\")\nvertebrates\n#&gt; # A tibble: 32,191 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 32,181 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#filter-1",
     "href": "sessions/slides/dplyr.html#filter-1",
     "title": "Data transformation with dplyr",
     "section": "filter()",
-    "text": "filter()\nFilter only the trout species:\n\nfilter(vertebrates, species == \"Cutthroat trout\")\n#&gt; Error: object 'vertebrates' not found\n\n\nfilter() goes through each row of the data and return only those rows where the value for species is \"Cutthroat trout\""
+    "text": "filter()\nFilter only the trout species:\n\nfilter(vertebrates, species == \"Cutthroat trout\")\n#&gt; # A tibble: 20,433 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 20,423 more rows\n\n\nfilter() goes through each row of the data and return only those rows where the value for species is \"Cutthroat trout\""
   },
   {
     "objectID": "sessions/slides/dplyr.html#filter-2",
     "href": "sessions/slides/dplyr.html#filter-2",
     "title": "Data transformation with dplyr",
     "section": "filter()",
-    "text": "filter()\nYou can also combine filters using logical operators (&, |, !):\n\nfilter(vertebrates, species == \"Cutthroat trout\" & year == 1987)\n#&gt; Error: object 'vertebrates' not found"
+    "text": "filter()\nYou can also combine filters using logical operators (&, |, !):\n\nfilter(vertebrates, species == \"Cutthroat trout\" & year == 1987)\n#&gt; # A tibble: 603 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 593 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#filter-in",
     "href": "sessions/slides/dplyr.html#filter-in",
     "title": "Data transformation with dplyr",
     "section": "filter() + %in%",
-    "text": "filter() + %in%\nUse the %in% operator to filter rows based on multiple values, e.g. unittypes\n\n\nunittype_select &lt;- c(\"R\", \"C\", \"S\")\nfilter(vertebrates, unittype %in% unittype_select)\n#&gt; Error: object 'vertebrates' not found"
+    "text": "filter() + %in%\nUse the %in% operator to filter rows based on multiple values, e.g. unittypes\n\n\nunittype_select &lt;- c(\"R\", \"C\", \"S\")\nfilter(vertebrates, unittype %in% unittype_select)\n#&gt; # A tibble: 19,619 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 19,609 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#filter-is.na",
     "href": "sessions/slides/dplyr.html#filter-is.na",
     "title": "Data transformation with dplyr",
     "section": "filter() + is.na()",
-    "text": "filter() + is.na()\nFilter only rows that don’t have a value for the weight\n\nfilter(vertebrates, is.na(weight_g))\n#&gt; Error: object 'vertebrates' not found\n\n\nOr the opposite: filter only the rows that have a value for the weight\n\nfilter(vertebrates, !is.na(weight_g))"
+    "text": "filter() + is.na()\nFilter only rows that don’t have a value for the weight\n\nfilter(vertebrates, is.na(weight_g))\n#&gt; # A tibble: 13,259 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1993 CC      P        Cutthroat trout          93       NA\n#&gt;  2  1993 CC      P        Cutthroat trout         175       NA\n#&gt;  3  1993 CC      P        Cutthroat trout         104       NA\n#&gt;  4  1993 CC      P        Cutthroat trout          98       NA\n#&gt;  5  1993 CC      P        Cutthroat trout          97       NA\n#&gt;  6  1993 CC      P        Cutthroat trout         123       NA\n#&gt;  7  1993 CC      P        Cutthroat trout         149       NA\n#&gt;  8  1993 CC      P        Cutthroat trout         100       NA\n#&gt;  9  1993 CC      P        Cutthroat trout         118       NA\n#&gt; 10  1993 CC      P        Cutthroat trout         163       NA\n#&gt; # ℹ 13,249 more rows\n\n\nOr the opposite: filter only the rows that have a value for the weight\n\nfilter(vertebrates, !is.na(weight_g))"
   },
   {
     "objectID": "sessions/slides/dplyr.html#filter-between",
     "href": "sessions/slides/dplyr.html#filter-between",
     "title": "Data transformation with dplyr",
     "section": "filter() + between()",
-    "text": "filter() + between()\nCombine different filters:\nFilter rows where the value for year is between 2000 and 2005\n\n\nfilter(vertebrates, between(year, 2000, 2005))\n#&gt; Error: object 'vertebrates' not found\n\n\n\nOr you could also do it like this:\n\nfilter(vertebrates, year &gt;= 2000 & year &lt;= 2005)"
+    "text": "filter() + between()\nCombine different filters:\nFilter rows where the value for year is between 2000 and 2005\n\n\nfilter(vertebrates, between(year, 2000, 2005))\n#&gt; # A tibble: 6,662 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  2000 CC      C        Cutthroat trout          84       NA\n#&gt;  2  2000 CC      C        Cutthroat trout         132       NA\n#&gt;  3  2000 CC      C        Cutthroat trout         105       NA\n#&gt;  4  2000 CC      C        Cutthroat trout          41       NA\n#&gt;  5  2000 CC      C        Cutthroat trout          42       NA\n#&gt;  6  2000 CC      C        Cutthroat trout          42       NA\n#&gt;  7  2000 CC      C        Cutthroat trout          41       NA\n#&gt;  8  2000 CC      C        Cutthroat trout          51       NA\n#&gt;  9  2000 CC      C        Cutthroat trout          45       NA\n#&gt; 10  2000 CC      C        Cutthroat trout          44       NA\n#&gt; # ℹ 6,652 more rows\n\n\n\nOr you could also do it like this:\n\nfilter(vertebrates, year &gt;= 2000 & year &lt;= 2005)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#useful-filter-helpers",
@@ -1782,14 +1782,14 @@
     "href": "sessions/slides/dplyr.html#select-1",
     "title": "Data transformation with dplyr",
     "section": "select()",
-    "text": "select()\nSelect the columns species, length_1_mm, and year\n\nselect(vertebrates, species, length_1_mm, year)\n#&gt; Error: object 'vertebrates' not found\n\n\nRemove variables using -\n\nselect(vertebrates, -species, -length_1_mm, -year)"
+    "text": "select()\nSelect the columns species, length_1_mm, and year\n\nselect(vertebrates, species, length_1_mm, year)\n#&gt; # A tibble: 32,191 × 3\n#&gt;    species         length_1_mm  year\n#&gt;    &lt;chr&gt;                 &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Cutthroat trout          58  1987\n#&gt;  2 Cutthroat trout          61  1987\n#&gt;  3 Cutthroat trout          89  1987\n#&gt;  4 Cutthroat trout          58  1987\n#&gt;  5 Cutthroat trout          93  1987\n#&gt;  6 Cutthroat trout          86  1987\n#&gt;  7 Cutthroat trout         107  1987\n#&gt;  8 Cutthroat trout         131  1987\n#&gt;  9 Cutthroat trout         103  1987\n#&gt; 10 Cutthroat trout         117  1987\n#&gt; # ℹ 32,181 more rows\n\n\nRemove variables using -\n\nselect(vertebrates, -species, -length_1_mm, -year)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#select-starts_with",
     "href": "sessions/slides/dplyr.html#select-starts_with",
     "title": "Data transformation with dplyr",
     "section": "select() + starts_with()",
-    "text": "select() + starts_with()\nSelect all columns that start with \"s\"\n\nselect(vertebrates, starts_with(\"s\"))\n\n\n#&gt; Error: object 'vertebrates' not found\n\n\nYou can use the same structure for ends_with() and contains().\n\n# this does not make sense for the example data\n# but combinations like this are helpful for research data\nselect(vertebrates, starts_with(\"_location1\"))\n\nselect(vertebrates, contains(\"_id_\"))"
+    "text": "select() + starts_with()\nSelect all columns that start with \"s\"\n\nselect(vertebrates, starts_with(\"s\"))\n\n\n#&gt; # A tibble: 32,191 × 2\n#&gt;   section species        \n#&gt;   &lt;chr&gt;   &lt;chr&gt;          \n#&gt; 1 CC      Cutthroat trout\n#&gt; 2 CC      Cutthroat trout\n#&gt; 3 CC      Cutthroat trout\n#&gt; # ℹ 32,188 more rows\n\n\nYou can use the same structure for ends_with() and contains().\n\n# this does not make sense for the example data\n# but combinations like this are helpful for research data\nselect(vertebrates, starts_with(\"_location1\"))\n\nselect(vertebrates, contains(\"_id_\"))"
   },
   {
     "objectID": "sessions/slides/dplyr.html#useful-select-helpers",
@@ -1803,35 +1803,35 @@
     "href": "sessions/slides/dplyr.html#mutate-1",
     "title": "Data transformation with dplyr",
     "section": "mutate()",
-    "text": "mutate()\nNew columns can be added based on values from other columns\n\nmutate(vertebrates, weight_kg = weight_g/1000)\n\n\n#&gt; Error: object 'vertebrates' not found\n\n\nAdd multiple new columns at once:\n\nmutate(vertebrates,\n       weight_kg = weight_g/1000,\n       length_m = length_1_mm/1000)"
+    "text": "mutate()\nNew columns can be added based on values from other columns\n\nmutate(vertebrates, weight_kg = weight_g/1000)\n\n\n#&gt; # A tibble: 32,191 × 7\n#&gt;    year section unittype species         length_1_mm weight_g weight_kg\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75   0.00175\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95   0.00195\n#&gt; 3  1987 CC      R        Cutthroat trout          89     5.6    0.0056 \n#&gt; # ℹ 32,188 more rows\n\n\nAdd multiple new columns at once:\n\nmutate(vertebrates,\n       weight_kg = weight_g/1000,\n       length_m = length_1_mm/1000)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#mutate-case_when",
     "href": "sessions/slides/dplyr.html#mutate-case_when",
     "title": "Data transformation with dplyr",
     "section": "mutate() + case_when()",
-    "text": "mutate() + case_when()\nUse case_when to add column values conditional on other columns.\ncase_when() can combine many cases into one.\n\nmutate(vertebrates,\n       type = case_when(\n         species == \"Cutthroat trout\" ~ \"Fish\",               # case 1\n         species == \"Coastal giant salamander\" ~ \"Amphibian\", # case 2\n         .default = NA                                        # all other\n))\n#&gt; Error: object 'vertebrates' not found"
+    "text": "mutate() + case_when()\nUse case_when to add column values conditional on other columns.\ncase_when() can combine many cases into one.\n\nmutate(vertebrates,\n       type = case_when(\n         species == \"Cutthroat trout\" ~ \"Fish\",               # case 1\n         species == \"Coastal giant salamander\" ~ \"Amphibian\", # case 2\n         .default = NA                                        # all other\n))\n#&gt; # A tibble: 32,191 × 7\n#&gt;     year section unittype species         length_1_mm weight_g type \n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75 Fish \n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95 Fish \n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6  Fish \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15 Fish \n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9  Fish \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9  Fish \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5  Fish \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6  Fish \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55 Fish \n#&gt; 10  1987 CC      R        Cutthroat trout         117    13    Fish \n#&gt; # ℹ 32,181 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#summarize-1",
     "href": "sessions/slides/dplyr.html#summarize-1",
     "title": "Data transformation with dplyr",
     "section": "summarize()",
-    "text": "summarize()\nsummarize will collapse the data to a single row\n\n\nsummarize(vertebrates,\n          mean_length = mean(length_1_mm, na.rm = TRUE),\n          mean_weight = mean(weight_g, na.rm = TRUE))\n#&gt; Error: object 'vertebrates' not found"
+    "text": "summarize()\nsummarize will collapse the data to a single row\n\n\nsummarize(vertebrates,\n          mean_length = mean(length_1_mm, na.rm = TRUE),\n          mean_weight = mean(weight_g, na.rm = TRUE))\n#&gt; # A tibble: 1 × 2\n#&gt;   mean_length mean_weight\n#&gt;         &lt;dbl&gt;       &lt;dbl&gt;\n#&gt; 1        73.8        8.91"
   },
   {
     "objectID": "sessions/slides/dplyr.html#summarize-by-group",
     "href": "sessions/slides/dplyr.html#summarize-by-group",
     "title": "Data transformation with dplyr",
     "section": "summarize() by group",
-    "text": "summarize() by group\nsummarize is much more useful in combination with the grouping argument .by\n\nsummary will be calculated separately for each group\n\n\n\n# summarize the grouped data\nsummarize(vertebrates,\n    mean_length = mean(length_1_mm, na.rm = TRUE),\n    mean_weight = mean(weight_g, na.rm = TRUE),\n    .by = species\n  )\n#&gt; Error: object 'vertebrates' not found\n\n\n\n\nCombine variables if you want to summarize by more than one group (e.g. .by = c(species, unittype))"
+    "text": "summarize() by group\nsummarize is much more useful in combination with the grouping argument .by\n\nsummary will be calculated separately for each group\n\n\n\n# summarize the grouped data\nsummarize(vertebrates,\n    mean_length = mean(length_1_mm, na.rm = TRUE),\n    mean_weight = mean(weight_g, na.rm = TRUE),\n    .by = species\n  )\n#&gt; # A tibble: 2 × 3\n#&gt;   species                  mean_length mean_weight\n#&gt;   &lt;chr&gt;                          &lt;dbl&gt;       &lt;dbl&gt;\n#&gt; 1 Cutthroat trout                 83.5        8.84\n#&gt; 2 Coastal giant salamander        57.0        9.03\n\n\n\n\nCombine variables if you want to summarize by more than one group (e.g. .by = c(species, unittype))"
   },
   {
     "objectID": "sessions/slides/dplyr.html#count",
     "href": "sessions/slides/dplyr.html#count",
     "title": "Data transformation with dplyr",
     "section": "count()",
-    "text": "count()\nCounts observations by group\n\n# count rows grouped by year\ncount(vertebrates, year)\n#&gt; Error: object 'vertebrates' not found"
+    "text": "count()\nCounts observations by group\n\n# count rows grouped by year\ncount(vertebrates, year)\n#&gt; # A tibble: 33 × 2\n#&gt;     year     n\n#&gt;    &lt;dbl&gt; &lt;int&gt;\n#&gt;  1  1987   603\n#&gt;  2  1988   302\n#&gt;  3  1989   308\n#&gt;  4  1990   513\n#&gt;  5  1991   626\n#&gt;  6  1992   616\n#&gt;  7  1993   870\n#&gt;  8  1994   948\n#&gt;  9  1995   583\n#&gt; 10  1996   928\n#&gt; # ℹ 23 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#the-pipe-1",
@@ -1866,35 +1866,35 @@
     "href": "sessions/slides/dplyr.html#the-pipe-5",
     "title": "Data transformation with dplyr",
     "section": "The pipe |>",
-    "text": "The pipe |&gt;\nPiping also works well together with ggplot\n\nvertebrates |&gt;\n  filter(!is.na(unittype)) |&gt;\n  count(year, species, section) |&gt;\n  ggplot(aes(x = year, y = n, color = species)) +\n  geom_line() +\n  facet_wrap(~section)\n#&gt; Error: object 'vertebrates' not found"
+    "text": "The pipe |&gt;\nPiping also works well together with ggplot\n\nvertebrates |&gt;\n  filter(!is.na(unittype)) |&gt;\n  count(year, species, section) |&gt;\n  ggplot(aes(x = year, y = n, color = species)) +\n  geom_line() +\n  facet_wrap(~section)"
   },
   {
     "objectID": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows",
     "href": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows",
     "title": "Data transformation with dplyr",
     "section": "Combine two tibbles by row bind_rows",
-    "text": "Combine two tibbles by row bind_rows\nSituation: Two (or more) tibbles with the same variables (column names)\n\ntbl_a &lt;- vertebrates[1:2, ] # first two rows\n#&gt; Error: object 'vertebrates' not found\ntbl_b &lt;- vertebrates[2:nrow(vertebrates), ] # the rest\n#&gt; Error: object 'vertebrates' not found\n\n\n\ntbl_a\n\n\n#&gt; Error: object 'tbl_a' not found\n\n\n\ntbl_b\n\n\n#&gt; Error: object 'tbl_b' not found"
+    "text": "Combine two tibbles by row bind_rows\nSituation: Two (or more) tibbles with the same variables (column names)\n\ntbl_a &lt;- vertebrates[1:2, ] # first two rows\ntbl_b &lt;- vertebrates[2:nrow(vertebrates), ] # the rest\n\n\n\ntbl_a\n\n\n#&gt; # A tibble: 2 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n\n\n\ntbl_b\n\n\n#&gt; # A tibble: 32,190 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; 2  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt; # ℹ 32,188 more rows"
   },
   {
     "objectID": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows-1",
     "href": "sessions/slides/dplyr.html#combine-two-tibbles-by-row-bind_rows-1",
     "title": "Data transformation with dplyr",
     "section": "Combine two tibbles by row bind_rows",
-    "text": "Combine two tibbles by row bind_rows\nBind the rows together with bind_rows():\n\nbind_rows(tbl_a, tbl_b)\n\n\n#&gt; Error: object 'tbl_a' not found\n\n\nYou can also add an ID-column to indicate which line belonged to which table:\n\nbind_rows(a = tbl_a, b = tbl_b, .id = \"id\")\n\n\n#&gt; Error: object 'tbl_a' not found\n\n\n\nYou can use bind_rows() to bind as many tables as you want:\n\nbind_rows(a = tbl_a, b= tbl_b, c = tbl_c, ..., .id = \"id\")"
+    "text": "Combine two tibbles by row bind_rows\nBind the rows together with bind_rows():\n\nbind_rows(tbl_a, tbl_b)\n\n\n#&gt; # A tibble: 32,192 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; # ℹ 32,190 more rows\n\n\nYou can also add an ID-column to indicate which line belonged to which table:\n\nbind_rows(a = tbl_a, b = tbl_b, .id = \"id\")\n\n\n#&gt; # A tibble: 32,192 × 7\n#&gt;   id     year section unittype species         length_1_mm weight_g\n#&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1 a      1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2 a      1987 CC      R        Cutthroat trout          61     1.95\n#&gt; 3 b      1987 CC      R        Cutthroat trout          61     1.95\n#&gt; # ℹ 32,189 more rows\n\n\n\nYou can use bind_rows() to bind as many tables as you want:\n\nbind_rows(a = tbl_a, b= tbl_b, c = tbl_c, ..., .id = \"id\")"
   },
   {
     "objectID": "sessions/slides/dplyr.html#join-tibbles-with-left_join",
     "href": "sessions/slides/dplyr.html#join-tibbles-with-left_join",
     "title": "Data transformation with dplyr",
     "section": "Join tibbles with left_join()",
-    "text": "Join tibbles with left_join()\nSituation: Two tables that share some but not all columns.\n\n\n#&gt; Error: object 'vertebrates' not found\n\n\nvertebrates\n\n\n#&gt; Error: object 'vertebrates' not found\n\n\n\n# table with more information on the species\nspecies\n#&gt; Error: object 'species' not found"
+    "text": "Join tibbles with left_join()\nSituation: Two tables that share some but not all columns.\n\n\nvertebrates\n\n\n#&gt; # A tibble: 32,191 × 6\n#&gt;    year section unittype species         length_1_mm weight_g\n#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt; 2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt; # ℹ 32,189 more rows\n\n\n\n# table with more information on the species\nspecies\n#&gt; # A tibble: 2 × 2\n#&gt;   species                  type     \n#&gt;   &lt;chr&gt;                    &lt;chr&gt;    \n#&gt; 1 Cutthroat trout          Fish     \n#&gt; 2 Coastal giant salamander Amphibian"
   },
   {
     "objectID": "sessions/slides/dplyr.html#join-tibbles-with-left_join-1",
     "href": "sessions/slides/dplyr.html#join-tibbles-with-left_join-1",
     "title": "Data transformation with dplyr",
     "section": "Join tibbles with left_join()",
-    "text": "Join tibbles with left_join()\nJoin the two tables by the common column species\n\nleft_join(vertebrates, species, by = \"species\")\n#&gt; Error: object 'vertebrates' not found\n\n\nleft_join() means that the resulting tibble will contain all rows of vertebrates, but not necessarily all rows of species (in this case it does though)."
+    "text": "Join tibbles with left_join()\nJoin the two tables by the common column species\n\nleft_join(vertebrates, species, by = \"species\")\n#&gt; # A tibble: 32,191 × 7\n#&gt;     year section unittype species         length_1_mm weight_g type \n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75 Fish \n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95 Fish \n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6  Fish \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15 Fish \n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9  Fish \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9  Fish \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5  Fish \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6  Fish \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55 Fish \n#&gt; 10  1987 CC      R        Cutthroat trout         117    13    Fish \n#&gt; # ℹ 32,181 more rows\n\n\nleft_join() means that the resulting tibble will contain all rows of vertebrates, but not necessarily all rows of species (in this case it does though)."
   },
   {
     "objectID": "sessions/slides/dplyr.html#different-_join-functions",
