@@ -1978,28 +1978,28 @@
     "href": "sessions/slides/ggplot.html#the-data-1",
     "title": "Data visualization with ggplot2",
     "section": "The data",
-    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\nlibrary(lterdatasampler)\n#&gt; Error in library(lterdatasampler): there is no package called 'lterdatasampler'\nvertebrates &lt;- and_vertebrates |&gt;\n  select(year, section, unittype, species, length_1_mm, weight_g) |&gt;\n  filter(species != \"Cascade torrent salamander\")\n#&gt; Error: object 'and_vertebrates' not found\nvertebrates\n#&gt; Error: object 'vertebrates' not found"
+    "text": "The data\nData set and_vertebrates with measurements of a trout and 2 salamander species in different forest sections.\n\nlibrary(lterdatasampler)\nvertebrates &lt;- and_vertebrates |&gt;\n  select(year, section, unittype, species, length_1_mm, weight_g) |&gt;\n  filter(species != \"Cascade torrent salamander\")\nvertebrates\n#&gt; # A tibble: 32,191 × 6\n#&gt;     year section unittype species         length_1_mm weight_g\n#&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;\n#&gt;  1  1987 CC      R        Cutthroat trout          58     1.75\n#&gt;  2  1987 CC      R        Cutthroat trout          61     1.95\n#&gt;  3  1987 CC      R        Cutthroat trout          89     5.6 \n#&gt;  4  1987 CC      R        Cutthroat trout          58     2.15\n#&gt;  5  1987 CC      R        Cutthroat trout          93     6.9 \n#&gt;  6  1987 CC      R        Cutthroat trout          86     5.9 \n#&gt;  7  1987 CC      R        Cutthroat trout         107    10.5 \n#&gt;  8  1987 CC      R        Cutthroat trout         131    20.6 \n#&gt;  9  1987 CC      R        Cutthroat trout         103     9.55\n#&gt; 10  1987 CC      R        Cutthroat trout         117    13   \n#&gt; # ℹ 32,181 more rows"
   },
   {
     "objectID": "sessions/slides/ggplot.html#ggplotdata",
     "href": "sessions/slides/ggplot.html#ggplotdata",
     "title": "Data visualization with ggplot2",
     "section": "ggplot(data)",
-    "text": "ggplot(data)\nThe ggplot() function initializes a ggplot object. Every ggplot needs this function.\n\n\n\n\nlibrary(ggplot2)\n# or library(tidyverse)\n\nggplot(data = vertebrates)\n\n\nEmpty plot because we did not specify the mapping of data variables\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "ggplot(data)\nThe ggplot() function initializes a ggplot object. Every ggplot needs this function.\n\n\n\n\nlibrary(ggplot2)\n# or library(tidyverse)\n\nggplot(data = vertebrates)\n\n\nEmpty plot because we did not specify the mapping of data variables"
   },
   {
     "objectID": "sessions/slides/ggplot.html#aesx-y",
     "href": "sessions/slides/ggplot.html#aesx-y",
     "title": "Data visualization with ggplot2",
     "section": "aes(x, y)",
-    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\n\nggplot(\n  data = vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\n\nMap variable length_1_mm to x-axis and weight_g to y-axis\nDefault scales are automatically adapted to range of data\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\n\nggplot(\n  data = vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\n\nMap variable length_1_mm to x-axis and weight_g to y-axis\nDefault scales are automatically adapted to range of data"
   },
   {
     "objectID": "sessions/slides/ggplot.html#aesx-y-1",
     "href": "sessions/slides/ggplot.html#aesx-y-1",
     "title": "Data visualization with ggplot2",
     "section": "aes(x, y)",
-    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\nggplot(\n  data = vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\nThis is the same but shorter:\n\nggplot(\n  vertebrates,\n  aes(\n    x = length_1_mm, \n    y = weight_g)\n)\n\nRemember argument matching by position?\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\nggplot(\n  data = vertebrates,\n  mapping = aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\nThis is the same but shorter:\n\nggplot(\n  vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n)\n\nRemember argument matching by position?"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_",
@@ -2013,175 +2013,175 @@
     "href": "sessions/slides/ggplot.html#geom_point",
     "title": "Data visualization with ggplot2",
     "section": "geom_point",
-    "text": "geom_point\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n) +\n  geom_point()\n\n\nNew plot layers added with +\nWarning that points could not be plotted due to missing values\ndata and aes defined in ggplot call are inherited to all plot layers\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "geom_point\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n) +\n  geom_point()\n\n\nNew plot layers added with +\nWarning that points could not be plotted due to missing values\ndata and aes defined in ggplot call are inherited to all plot layers\n\n\n\n#&gt; Warning: Removed 13270 rows containing missing values or values outside the scale range\n#&gt; (`geom_point()`)."
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_point-1",
     "href": "sessions/slides/ggplot.html#geom_point-1",
     "title": "Data visualization with ggplot2",
     "section": "geom_point",
-    "text": "geom_point\n\n\n\nggplot() +\n  geom_point(\n    data = vertebrates,\n    aes(\n      x = length_1_mm,\n      y = weight_g\n    )\n  )\n\n\ndata and aes can also be local to a layer:\n\n\nHere, it does not make a difference in the result.\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "geom_point\n\n\n\nggplot() +\n  geom_point(\n    data = vertebrates,\n    aes(\n      x = length_1_mm,\n      y = weight_g\n    )\n  )\n\n\ndata and aes can also be local to a layer:\n\n\nHere, it does not make a difference in the result.\n\n\n\n#&gt; Warning: Removed 13270 rows containing missing values or values outside the scale range\n#&gt; (`geom_point()`)."
   },
   {
     "objectID": "sessions/slides/ggplot.html#aescolor-mapping-color-to-a-variable",
     "href": "sessions/slides/ggplot.html#aescolor-mapping-color-to-a-variable",
     "title": "Data visualization with ggplot2",
     "section": "aes(color): mapping color to a variable",
-    "text": "aes(color): mapping color to a variable\nLooks like there are two groups of data: Map color of points to a variable by adding it to aesthetics:\n\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point()\n\n\nMap the species variable to the color aesthetic of the plot\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "aes(color): mapping color to a variable\nLooks like there are two groups of data: Map color of points to a variable by adding it to aesthetics:\n\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point()\n\n\nMap the species variable to the color aesthetic of the plot"
   },
   {
     "objectID": "sessions/slides/ggplot.html#aessize-mapping-size-to-a-variable",
     "href": "sessions/slides/ggplot.html#aessize-mapping-size-to-a-variable",
     "title": "Data visualization with ggplot2",
     "section": "aes(size): mapping size to a variable",
-    "text": "aes(size): mapping size to a variable\nWe can do the same with size:\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    size = species\n  )\n) +\n  geom_point()\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "aes(size): mapping size to a variable\nWe can do the same with size:\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    size = species\n  )\n) +\n  geom_point()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#aesshape-mapping-shape-to-a-variable",
     "href": "sessions/slides/ggplot.html#aesshape-mapping-shape-to-a-variable",
     "title": "Data visualization with ggplot2",
     "section": "aes(shape): mapping shape to a variable",
-    "text": "aes(shape): mapping shape to a variable\nWe can do the same with shape:\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    shape = species\n  )\n) +\n  geom_point()\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "aes(shape): mapping shape to a variable\nWe can do the same with shape:\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    shape = species\n  )\n) +\n  geom_point()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#combine-color-size-and-shape",
     "href": "sessions/slides/ggplot.html#combine-color-size-and-shape",
     "title": "Data visualization with ggplot2",
     "section": "Combine color, size and shape",
-    "text": "Combine color, size and shape\nWe can also combine these aesthetics and map different variables\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = unittype,\n    shape = species,\n    size = year\n  )\n) +\n  geom_point()\n\n\nThis is a bit too much for this plot, but sometimes can be useful\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "Combine color, size and shape\nWe can also combine these aesthetics and map different variables\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = unittype,\n    shape = species,\n    size = year\n  )\n) +\n  geom_point()\n\n\nThis is a bit too much for this plot, but sometimes can be useful"
   },
   {
     "objectID": "sessions/slides/ggplot.html#changing-the-scales-of-the-aesthetics",
     "href": "sessions/slides/ggplot.html#changing-the-scales-of-the-aesthetics",
     "title": "Data visualization with ggplot2",
     "section": "Changing the scales of the aesthetics",
-    "text": "Changing the scales of the aesthetics\nThe scales onto which the aesthetic elements are mapped can be changed.\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point()\n\n\nExponential relationship?\nHow does it look like on the log scale?\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "Changing the scales of the aesthetics\nThe scales onto which the aesthetic elements are mapped can be changed.\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point()\n\n\nExponential relationship?\nHow does it look like on the log scale?"
   },
   {
     "objectID": "sessions/slides/ggplot.html#scale_x_log10",
     "href": "sessions/slides/ggplot.html#scale_x_log10",
     "title": "Data visualization with ggplot2",
     "section": "scale_x_log10",
-    "text": "scale_x_log10\nThe scales onto which the aesthetic elements are mapped can be changed.\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  scale_x_log10() +\n  scale_y_log10()\n\n\nScales can be changed for all elements of aes:\n\n\nscale_aes-name_scale-type\nIn this example we scale the x and the y aesthetic to log10.\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "scale_x_log10\nThe scales onto which the aesthetic elements are mapped can be changed.\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  scale_x_log10() +\n  scale_y_log10()\n\n\nScales can be changed for all elements of aes:\n\n\nscale_aes-name_scale-type\nIn this example we scale the x and the y aesthetic to log10."
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_smooth",
     "href": "sessions/slides/ggplot.html#geom_smooth",
     "title": "Data visualization with ggplot2",
     "section": "geom_smooth",
-    "text": "geom_smooth\nAdd a smoothing line that helps see patterns in the data\n\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point(alpha = 0.3) +\n  geom_smooth(method = \"lm\") +\n  scale_x_log10() +\n  scale_y_log10()\n\n\nWith method = \"lm\", a linear regression line is added\nAll geoms done separately for species because color is defined globally\nAlpha makes points transparent (0-1)\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "geom_smooth\nAdd a smoothing line that helps see patterns in the data\n\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point(alpha = 0.3) +\n  geom_smooth(method = \"lm\") +\n  scale_x_log10() +\n  scale_y_log10()\n\n\nWith method = \"lm\", a linear regression line is added\nAll geoms done separately for species because color is defined globally\nAlpha makes points transparent (0-1)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_boxplot",
     "href": "sessions/slides/ggplot.html#geom_boxplot",
     "title": "Data visualization with ggplot2",
     "section": "geom_boxplot",
-    "text": "geom_boxplot\nCompare groups using a boxplot\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm\n  )\n) +\n  geom_boxplot()\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "geom_boxplot\nCompare groups using a boxplot\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm\n  )\n) +\n  geom_boxplot()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_boxplot-1",
     "href": "sessions/slides/ggplot.html#geom_boxplot-1",
     "title": "Data visualization with ggplot2",
     "section": "geom_boxplot",
-    "text": "geom_boxplot\nCompare groups using a boxplot\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm\n  )\n) +\n  geom_boxplot(notch = TRUE)\n\n\nIf notches don’t overlap, the medians of the groups are likely different\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "geom_boxplot\nCompare groups using a boxplot\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm\n  )\n) +\n  geom_boxplot(notch = TRUE)\n\n\nIf notches don’t overlap, the medians of the groups are likely different"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_boxplot-2",
     "href": "sessions/slides/ggplot.html#geom_boxplot-2",
     "title": "Data visualization with ggplot2",
     "section": "geom_boxplot",
-    "text": "geom_boxplot\nMap the unittype to the color aesthetic of the boxplot\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm,\n    color = unittype\n  )\n) +\n  geom_boxplot()\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "geom_boxplot\nMap the unittype to the color aesthetic of the boxplot\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm,\n    color = unittype\n  )\n) +\n  geom_boxplot()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_boxplot-3",
     "href": "sessions/slides/ggplot.html#geom_boxplot-3",
     "title": "Data visualization with ggplot2",
     "section": "geom_boxplot",
-    "text": "geom_boxplot\nMap the unittype to the fill aesthetic of the box\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm,\n    fill = unittype\n  )\n) +\n  geom_boxplot(notch = TRUE)\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "geom_boxplot\nMap the unittype to the fill aesthetic of the box\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = species,\n    y = length_1_mm,\n    fill = unittype\n  )\n) +\n  geom_boxplot(notch = TRUE)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_histogram",
     "href": "sessions/slides/ggplot.html#geom_histogram",
     "title": "Data visualization with ggplot2",
     "section": "geom_histogram",
-    "text": "geom_histogram\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = length_1_mm,\n    fill = section\n  )\n) +\n  geom_histogram()\n\n\nCareful: By default the histogram is stacked for the different groups!\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "geom_histogram\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = length_1_mm,\n    fill = section\n  )\n) +\n  geom_histogram()\n\n\nCareful: By default the histogram is stacked for the different groups!"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_histogram-1",
     "href": "sessions/slides/ggplot.html#geom_histogram-1",
     "title": "Data visualization with ggplot2",
     "section": "geom_histogram",
-    "text": "geom_histogram\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = length_1_mm,\n    fill = section\n  )\n) +\n  geom_histogram(\n    position = \"identity\",\n    alpha = 0.5\n  )\n\n\nChange the position of the histogram to \"identity\", if you don’t want it stacked\nalpha makes sure that you see overlapping areas\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "geom_histogram\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = length_1_mm,\n    fill = section\n  )\n) +\n  geom_histogram(\n    position = \"identity\",\n    alpha = 0.5\n  )\n\n\nChange the position of the histogram to \"identity\", if you don’t want it stacked\nalpha makes sure that you see overlapping areas"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_tile",
     "href": "sessions/slides/ggplot.html#geom_tile",
     "title": "Data visualization with ggplot2",
     "section": "geom_tile",
-    "text": "geom_tile\nYou can create a simple heatmap with geom_tile\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = section,\n    y = species,\n    fill = weight_g\n  )\n) +\n  geom_tile()\n\n\nHere we would have to choose a different color scheme to see differences\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "geom_tile\nYou can create a simple heatmap with geom_tile\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = section,\n    y = species,\n    fill = weight_g\n  )\n) +\n  geom_tile()\n\n\nHere we would have to choose a different color scheme to see differences"
   },
   {
     "objectID": "sessions/slides/ggplot.html#small-multiples-with-facet_wrap",
     "href": "sessions/slides/ggplot.html#small-multiples-with-facet_wrap",
     "title": "Data visualization with ggplot2",
     "section": "Small multiples with facet_wrap",
-    "text": "Small multiples with facet_wrap\nSplit your plots along one variable with facet_wrap\n\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  facet_wrap(~section)\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "Small multiples with facet_wrap\nSplit your plots along one variable with facet_wrap\n\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point() +\n  facet_wrap(vars(section))"
   },
   {
     "objectID": "sessions/slides/ggplot.html#small-multiples-with-facet_grid",
     "href": "sessions/slides/ggplot.html#small-multiples-with-facet_grid",
     "title": "Data visualization with ggplot2",
     "section": "Small multiples with facet_grid",
-    "text": "Small multiples with facet_grid\nSplit your plots along two variables with facet_grid\n\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = unittype\n  )\n) +\n  geom_point() +\n  facet_grid(section ~ species)\n\n\nfacet_grid(rows ~ columns)\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "Small multiples with facet_grid\nSplit your plots along two variables with facet_grid\n\n\n\n\nggplot(\n  data = vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = unittype\n  )\n) +\n  geom_point() +\n  facet_grid(section ~ species)\n\n\nfacet_grid(rows ~ columns)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#change-appearance-of-points",
     "href": "sessions/slides/ggplot.html#change-appearance-of-points",
     "title": "Data visualization with ggplot2",
     "section": "Change appearance of points",
-    "text": "Change appearance of points\n\n\n\n\nggplot(vertebrates, aes(\n  x = length_1_mm,\n  y = weight_g\n)) +\n  geom_point(\n    size = 4,\n    shape = 17,\n    color = \"blue\",\n    alpha = 0.5\n  )\n\n\n\n\n\n\n\n\n\n\n\nShape and color codes\n\n\n\n#&gt; Error: object 'vertebrates' not found"
+    "text": "Change appearance of points\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g\n  )\n) +\n  geom_point(\n    size = 4,\n    shape = 17,\n    color = \"blue\",\n    alpha = 0.5\n  )\n\n\n\n\n\n\n\n\n\n\n\nShape and color codes"
   },
   {
     "objectID": "sessions/slides/ggplot.html#change-color-scale",
     "href": "sessions/slides/ggplot.html#change-color-scale",
     "title": "Data visualization with ggplot2",
     "section": "Change color scale",
-    "text": "Change color scale\nWe can also save a plot in a variable\n\n\n\ng &lt;- ggplot(vertebrates, aes(\n  x = length_1_mm,\n  y = weight_g,\n  color = species\n)) +\n  geom_point()\n\ng\n\n\n\nOther plot layers can still be added to g\n\n\n\n#&gt; Error: object 'vertebrates' not found\n#&gt; Error: object 'g' not found"
+    "text": "Change color scale\nWe can also save a plot in a variable\n\n\n\ng &lt;- ggplot(\n  vertebrates,\n  aes(\n    x = length_1_mm,\n    y = weight_g,\n    color = species\n  )\n) +\n  geom_point()\n\ng\n\n\n\nOther plot layers can still be added to g"
   },
   {
     "objectID": "sessions/slides/ggplot.html#scale_color_viridis_d",
     "href": "sessions/slides/ggplot.html#scale_color_viridis_d",
     "title": "Data visualization with ggplot2",
     "section": "scale_color_viridis_d",
-    "text": "scale_color_viridis_d\nChange the colors of the color aesthetic:\n\n\n\n\ng +\n  scale_color_viridis_d(\n    option = \"cividis\"\n  )\n\n\n\nThe viridis color palette is designed for viewers with common forms of color blindness\nDifferent options of viridis color palettes: \"magma\", \"inferno\", \"plasma\", \"viridis\", \"cividis\"\n\n\n\n#&gt; Error: object 'g' not found"
+    "text": "scale_color_viridis_d\nChange the colors of the color aesthetic:\n\n\n\n\ng +\n  scale_color_viridis_d(\n    option = \"cividis\"\n  )\n\n\n\nThe viridis color palette is designed for viewers with common forms of color blindness\nDifferent options of viridis color palettes: \"magma\", \"inferno\", \"plasma\", \"viridis\", \"cividis\""
   },
   {
     "objectID": "sessions/slides/ggplot.html#scale_color_manual",
     "href": "sessions/slides/ggplot.html#scale_color_manual",
     "title": "Data visualization with ggplot2",
     "section": "scale_color_manual",
-    "text": "scale_color_manual\nWe can also manually specify colors:\n\n\n\ng +\n  scale_color_manual(\n    values = c(\n      \"darkolivegreen4\",\n      \"darkorchid3\"\n    )\n  )\n\n\nLength of color vector has to match number of levels in your aesthetic\n\n\n\n\nSpecify colors\n\nVia their name\nVia their Hex color codes (use websites to generate your own color palettes, e.g. here)\n\n\n\n\n\n\n#&gt; Error: object 'g' not found"
+    "text": "scale_color_manual\nWe can also manually specify colors:\n\n\n\ng +\n  scale_color_manual(\n    values = c(\n      \"darkolivegreen4\",\n      \"darkorchid3\"\n    )\n  )\n\n\nLength of color vector has to match number of levels in your aesthetic\n\n\n\n\nSpecify colors\n\nVia their name\nVia their Hex color codes (use websites to generate your own color palettes, e.g. here)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#other-color-scales",
     "href": "sessions/slides/ggplot.html#other-color-scales",
     "title": "Data visualization with ggplot2",
     "section": "Other color scales",
-    "text": "Other color scales\nYou can use the paletteer package to access color scales from many packages.\n\n\n\n# install.packages(\"paletteer\")\nlibrary(paletteer)\ng &lt;- g +\n  scale_color_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\ng\n\n\nUse scale_color_paletteer_d for discrete and scale_color_paletteer_c for continuous color scales\nCheck out all palettes available here\n\n\n\n#&gt; Error in library(paletteer): there is no package called 'paletteer'\n#&gt; Error: object 'g' not found\n#&gt; Error: object 'g' not found"
+    "text": "Other color scales\nYou can use the paletteer package to access color scales from many packages.\n\n\n\n# install.packages(\"paletteer\")\nlibrary(paletteer)\ng &lt;- g +\n  scale_color_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\ng\n\n\nUse scale_color_paletteer_d for discrete and scale_color_paletteer_c for continuous color scales\nCheck out all palettes available here"
   },
   {
     "objectID": "sessions/slides/ggplot.html#scale_fill_-vs.-scale_color_",
     "href": "sessions/slides/ggplot.html#scale_fill_-vs.-scale_color_",
     "title": "Data visualization with ggplot2",
     "section": "scale_fill_* vs. scale_color_*",
-    "text": "scale_fill_* vs. scale_color_*\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    color = unittype)) +\n  geom_boxplot() +\n  scale_color_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\n#&gt; Error: object 'vertebrates' not found\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    fill = unittype)) +\n  geom_boxplot() +\n  scale_fill_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\n#&gt; Error: object 'vertebrates' not found"
+    "text": "scale_fill_* vs. scale_color_*\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    color = unittype\n  )\n) +\n  geom_boxplot() +\n  scale_color_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )\n\n\n\n\n\n\n\n\n\n\nggplot(\n  vertebrates,\n  aes(\n    x = section,\n    y = length_1_mm,\n    fill = unittype\n  )\n) +\n  geom_boxplot() +\n  scale_fill_paletteer_d(\n    palette = \"ggsci::default_uchicago\"\n  )"
   },
   {
     "objectID": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title",
     "href": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title",
     "title": "Data visualization with ggplot2",
     "section": "labs: Change axis and legend titles and add plot title",
-    "text": "labs: Change axis and legend titles and add plot title\n\ng &lt;- g +\n  labs(\n    x = \"Length [mm]\",\n    y = \"Weight [g]\",\n    color = \"Species\",\n    title = \"Length-Weight relationship\",\n    subtitle = \"There seems to be an exponential relationship\",\n    caption = \"Data from the `lterdatasampler` package\"\n  )\n#&gt; Error: object 'g' not found\ng\n#&gt; Error: object 'g' not found"
+    "text": "labs: Change axis and legend titles and add plot title\n\ng &lt;- g +\n  labs(\n    x = \"Length [mm]\",\n    y = \"Weight [g]\",\n    color = \"Species\",\n    title = \"Length-Weight relationship\",\n    subtitle = \"There seems to be an exponential relationship\",\n    caption = \"Data from the `lterdatasampler` package\"\n  )\ng"
   },
   {
     "objectID": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title-output",
@@ -2195,35 +2195,35 @@
     "href": "sessions/slides/ggplot.html#theme_-change-appearance",
     "title": "Data visualization with ggplot2",
     "section": "theme_*: change appearance",
-    "text": "theme_*: change appearance\nggplot2 offers many pre-defined themes that we can apply to change the appearance of a plot.\n\n\n\n\ng +\n  theme_classic()\n\n\n#&gt; Error: object 'g' not found\n\n\n\ng +\n  theme_bw()\n\n\n#&gt; Error: object 'g' not found"
+    "text": "theme_*: change appearance\nggplot2 offers many pre-defined themes that we can apply to change the appearance of a plot.\n\n\n\n\ng +\n  theme_classic()\n\n\n\n\n\n\n\n\n\n\n\n\ng +\n  theme_bw()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#theme_-change-appearance-1",
     "href": "sessions/slides/ggplot.html#theme_-change-appearance-1",
     "title": "Data visualization with ggplot2",
     "section": "theme_*: change appearance",
-    "text": "theme_*: change appearance\nggplot2 offers many pre-defined themes that we can apply to change the appearance of a plot.\n\n\n\ng +\n  theme_minimal()\n\n\n#&gt; Error: object 'g' not found\n\n\n\ng +\n  theme_dark()\n\n\n#&gt; Error: object 'g' not found"
+    "text": "theme_*: change appearance\nggplot2 offers many pre-defined themes that we can apply to change the appearance of a plot.\n\n\n\ng +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\ng +\n  theme_dark()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#theme-customize-theme",
     "href": "sessions/slides/ggplot.html#theme-customize-theme",
     "title": "Data visualization with ggplot2",
     "section": "theme(): customize theme",
-    "text": "theme(): customize theme\nYou can manually change a theme or even create an entire theme yourself. The elements you can control in the theme are:\n\n\ntitles (plot, axis, legend, …)\nlabels\nbackground\nborders\ngrid lines\nlegends\n\n\n\nIf you want a full list of what you can customize, have a look at\n\n?theme\n\n\nLook here for an overview of the elements that you can change and the corresponding functions"
+    "text": "theme(): customize theme\nYou can manually change a theme or even create an entire theme yourself. The elements you can control in the theme are:\n\n\ntitles (plot, axis, legend, …)\nlabels\nbackground\nborders\ngrid lines\nlegends\n\n\n\nIf you want a full list of what you can customize, have a look at\n\n?theme\n\n\nLook here for an overview of the elements that you can change"
   },
   {
     "objectID": "sessions/slides/ggplot.html#theme-customize-theme-1",
     "href": "sessions/slides/ggplot.html#theme-customize-theme-1",
     "title": "Data visualization with ggplot2",
     "section": "theme(): customize theme",
-    "text": "theme(): customize theme\nTo edit a theme, just add another theme() layer to your plot.\n\n\n\n\ng +\n  theme_minimal() +\n  theme(\n    legend.position = \"bottom\",\n    axis.text = element_text(\n      face = \"bold\"\n    ),\n    plot.background = element_rect(\n      fill = \"lightgrey\",\n      color = \"darkred\"\n    )\n  )\n\n\nThe basic functioning of theme elements is:\n\ntheme(\n  element_name = element_function()\n)\n\n\n\n\n#&gt; Error: object 'g' not found"
+    "text": "theme(): customize theme\nTo edit a theme, just add another theme() layer to your plot.\n\n\n\n\ng +\n  theme_minimal(\n    ink = \"navy\",\n    paper = \"cornsilk\"\n  ) +\n  theme(\n    legend.position = \"bottom\",\n    axis.text = element_text(face = \"bold\"),\n    plot.title = element_text(color = \"#c06a38ff\")\n  )\n\n\nThe basic functioning of theme elements is:\n\ntheme(\n  element_name = element_function()\n)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#theme_set-set-global-theme",
     "href": "sessions/slides/ggplot.html#theme_set-set-global-theme",
     "title": "Data visualization with ggplot2",
     "section": "theme_set(): set global theme",
-    "text": "theme_set(): set global theme\nYou can set a global theme that will be applied to all ggplot objects in the current R session.\n\n# Globally set theme_minimal as the default theme\ntheme_set(theme_minimal())\n\nAdd this to the beginning of your script.\n\nYou can also specify some defaults, e.g. the text size:\n\ntheme_set(theme_minimal(base_size = 16))\n\nThis is very practical if you want to achieve a consistent look, e.g. for a scientific journal."
+    "text": "theme_set(): set global theme\nYou can set a global theme that will be applied to all ggplot objects in the current R session.\n\n# Globally set theme_minimal as the default theme\ntheme_set(theme_minimal())\n\nAdd this to the beginning of your script.\n\nYou can also specify some defaults, e.g. the text size:\n\ntheme_set(\n  theme_minimal(\n    base_size = 16,\n    paper = \"cornsilk\",\n    ink = \"navy\"\n  )\n)\n\nThis is very practical if you want to achieve a consistent look, e.g. for a scientific journal."
   },
   {
     "objectID": "sessions/slides/ggplot.html#ggsave",
@@ -2924,5 +2924,26 @@
     "title": "Statistical tests",
     "section": "",
     "text": "Please note the discussion about p-values as a basis for binary decisions. See e.g. here or here as a starting point"
+  },
+  {
+    "objectID": "sessions/slides/ggplot.html#a-ggplot-showcase-4",
+    "href": "sessions/slides/ggplot.html#a-ggplot-showcase-4",
+    "title": "Data visualization with ggplot2",
+    "section": "A ggplot showcase",
+    "text": "A ggplot showcase\n\n\n\nOverview of different plot possibilites created by Cédric Scherer. Check out his tutorial to learn how to make all these plots with ggplot"
+  },
+  {
+    "objectID": "sessions/slides/ggplot.html#theme_-change-appearance-2",
+    "href": "sessions/slides/ggplot.html#theme_-change-appearance-2",
+    "title": "Data visualization with ggplot2",
+    "section": "theme_*: change appearance",
+    "text": "theme_*: change appearance\nSince ggplot2 v. 4.0.0, you can change overall color choices of a pre-defined theme.\n\n\n\npaper: affects background elements\nink: affects foreground elements (text, lines, points, …)\naccent: affects elements that are used to highlight information (like geom_smooth() lines)\n\n\ng +\n  theme_bw(\n    ink = \"#BBBBBB\",\n    paper = \"#333333\"\n  )"
+  },
+  {
+    "objectID": "sessions/slides/ggplot.html#theme_-change-appearance-3",
+    "href": "sessions/slides/ggplot.html#theme_-change-appearance-3",
+    "title": "Data visualization with ggplot2",
+    "section": "theme_*: change appearance",
+    "text": "theme_*: change appearance\nSince ggplot2 v. 4.0.0, you can change overall color choices of a pre-defined theme.\n\n\n\n\npaper: affects background elements\nink: affects foreground elements (text, lines, points, …)\naccent: affects elements that are used to highlight information (like geom_smooth() lines)\n\n\n\ng +\n  theme_minimal(\n    paper = \"cornsilk\",\n    ink = \"navy\"\n  )"
   }
 ]
