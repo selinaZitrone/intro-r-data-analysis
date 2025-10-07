@@ -47,14 +47,13 @@ ggplot(
 # 1.3.2 Difference in flipper length between species (boxplot)
 
 # Basic boxplot of flipper length with notches
-ggplot(penguins, aes(species, flipper_len)) +
-  geom_boxplot(notch = TRUE) +
-  geom_point()
+ggplot(penguins, aes(x = species, y = flipper_len)) +
+  geom_boxplot(notch = TRUE)
 
 # Add jittered points
 ggplot(penguins, aes(x = species, y = flipper_len)) +
   geom_boxplot() +
-  geom_point(position = position_jitter(seed = 123, width = 0.2))
+  geom_point(position = position_jitter(seed = 123, width = 0.2, height = 0))
 
 ## 1.3.3 Differences between body mass of male and female penguins (boxplot)
 
@@ -80,7 +79,7 @@ ggplot(penguins, aes(x = sex, y = body_mass)) +
 # Species as facets:
 ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot() +
-  facet_wrap(~species)
+  facet_wrap(vars(species))
 
 # With geom_violin
 ggplot(penguins, aes(x = sex, y = body_mass)) +
@@ -90,17 +89,17 @@ ggplot(penguins, aes(x = sex, y = body_mass)) +
 
 ## 1.3.4 Distribution of flipper length between species (histogram)
 
-# Overlapping
+# Overlapping distributions
 ggplot(
   penguins,
   aes(
     x = flipper_len,
-    color = species
+    fill = species
   )
 ) +
   geom_histogram(alpha = 0.5, position = "identity")
 
-# Stacked
+# Stacked distributions
 ggplot(
   penguins,
   aes(
@@ -132,28 +131,9 @@ ggplot(
 ) +
   geom_tile()
 
-ggplot(
-  data = penguins,
-  aes(
-    x = sex,
-    y = body_mass,
-    fill = species,
-    color = species
-  )
-) +
-  geom_boxplot(position = position_dodge(width = 0.9), notch = TRUE) +
-  geom_point(
-    alpha = 0.5,
-    position = position_jitterdodge(
-      seed = 123,
-      jitter.width = 0.2,
-      dodge.width = 0.9
-    )
-  )
-
 # 1.4 Beautify the plots --------------------------------------------------
 
-## 1.4.1 Beatuify plots from 1.3
+## 1.4.1 Beautify plots from 1.3
 
 # Example one: Boxplot of flipper length and species
 library(paletteer)
@@ -162,7 +142,7 @@ ggplot(penguins, aes(species, flipper_len, color = species)) +
   geom_boxplot(width = 0.3) +
   geom_point(
     alpha = 0.5,
-    position = position_jitter(width = 0.2, seed = 123)
+    position = position_jitter(width = 0.2, height = 0, seed = 123)
   ) +
   scale_color_paletteer_d("ggsci::default_uchicago") +
   labs(x = "Species", y = "Flipper length (mm)") +
@@ -193,11 +173,12 @@ penguin_scatter <- ggplot(
     y = "Bill depth (mm)",
     color = "Penguin species",
     shape = "Penguin species",
-    caption = "Some caption"
+    caption = "Data from Gorman et al. (2014)"
   ) +
   theme_minimal() +
   theme(
-    legend.position = c(0.85, 0.15),
+    legend.position = "inside",
+    legend.position.inside = c(0.85, 0.15),
     legend.background = element_rect(fill = "white", color = "white"),
     axis.title = element_text(size = 12),
     plot.caption.position = "plot"
@@ -232,29 +213,6 @@ ggsave(
 
 # save as pdf in /img directory of the project
 ggsave(filename = "img/flipper_box.pdf", flipper_box)
-
-# heatmap example
-
-heatmap <- ggplot(
-  penguins,
-  aes(
-    x = species,
-    y = sex,
-    fill = flipper_len
-  )
-) +
-  geom_tile() +
-  scale_fill_viridis_c()
-heatmap
-
-# or with another color scale
-
-heatmap <- ggplot(
-  penguins,
-  aes(x = species, y = sex, fill = flipper_len)
-) +
-  geom_tile() +
-  scale_fill_gradient(low = "white", high = "steelblue")
 
 # If you want to have an interactive plot
 # install.packages("plotly")
