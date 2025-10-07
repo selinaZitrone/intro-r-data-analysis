@@ -61,7 +61,7 @@ theme_set(theme_grey(base_size = 16))
 
 ## A ggplot showcase
 
-![Overview of different plot possibilites created by Cédric Scherer. Check out [his tutorial](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/#toc) to learn how to make all these plots with ggplot](img/day2/ggplot_showcase_cedric.png)
+![Overview of different plot possibilites created by Cédric Scherer. Check out [his tutorial](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/#toc) to learn how to make all these plots with ggplot](img/day2/ggplot_showcase_cedric.png){width=70%}
 
 ## Advantages of ggplot
 
