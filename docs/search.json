@@ -2188,7 +2188,7 @@
     "href": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title",
     "title": "Data visualization with ggplot2",
     "section": "labs: Change axis and legend titles and add plot title",
-    "text": "labs: Change axis and legend titles and add plot title\n\ng &lt;- g +\n  labs(\n    x = \"Length [mm]\",\n    y = \"Weight [g]\",\n    color = \"Species\",\n    title = \"Length-Weight relationship\",\n    subtitle = \"There seems to be an exponential relationship\",\n    caption = \"Data from the `lterdatasampler` package\"\n  )\ng\n#&gt; NULL"
+    "text": "labs: Change axis and legend titles and add plot title\n\ng &lt;- g +\n  labs(\n    x = \"Length [mm]\",\n    y = \"Weight [g]\",\n    color = \"Species\",\n    title = \"Length-Weight relationship\",\n    subtitle = \"There seems to be an exponential relationship\",\n    caption = \"Data from the `lterdatasampler` package\"\n  )\ng"
   },
   {
     "objectID": "sessions/slides/ggplot.html#labs-change-axis-and-legend-titles-and-add-plot-title-output",
@@ -2209,21 +2209,21 @@
     "href": "sessions/slides/ggplot.html#theme_-change-appearance-1",
     "title": "Data visualization with ggplot2",
     "section": "theme_*: change appearance",
-    "text": "theme_*: change appearance\nggplot2 offers many pre-defined themes that we can apply to change the appearance of a plot.\n\n\n\ng +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\ng +\n  theme_dark()\n\n\n#&gt; NULL"
+    "text": "theme_*: change appearance\nggplot2 offers many pre-defined themes that we can apply to change the appearance of a plot.\n\n\n\ng +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\ng +\n  theme_dark()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#theme_-change-appearance-2",
     "href": "sessions/slides/ggplot.html#theme_-change-appearance-2",
     "title": "Data visualization with ggplot2",
     "section": "theme_*: change appearance",
-    "text": "theme_*: change appearance\nSince ggplot2 v. 4.0.0, you can change overall color choices of a pre-defined theme.\n\n\n\npaper: affects background elements\nink: affects foreground elements (text, lines, points, …)\naccent: affects elements that are used to highlight information (like geom_smooth() lines)\n\n\ng +\n  theme_bw(\n    ink = \"#BBBBBB\",\n    paper = \"#333333\"\n  )\n\n\n\n#&gt; NULL"
+    "text": "theme_*: change appearance\nSince ggplot2 v. 4.0.0, you can change overall color choices of a pre-defined theme.\n\n\n\npaper: affects background elements\nink: affects foreground elements (text, lines, points, …)\naccent: affects elements that are used to highlight information (like geom_smooth() lines)\n\n\ng +\n  theme_bw(\n    ink = \"#BBBBBB\",\n    paper = \"#333333\"\n  )"
   },
   {
     "objectID": "sessions/slides/ggplot.html#theme_-change-appearance-3",
     "href": "sessions/slides/ggplot.html#theme_-change-appearance-3",
     "title": "Data visualization with ggplot2",
     "section": "theme_*: change appearance",
-    "text": "theme_*: change appearance\nSince ggplot2 v. 4.0.0, you can change overall color choices of a pre-defined theme.\n\n\n\npaper: affects background elements\nink: affects foreground elements (text, lines, points, …)\naccent: affects elements that are used to highlight information (like geom_smooth() lines)\n\n\ng +\n  theme_minimal(\n    paper = \"cornsilk\",\n    ink = \"navy\"\n  )\n\n\n\n#&gt; NULL"
+    "text": "theme_*: change appearance\nSince ggplot2 v. 4.0.0, you can change overall color choices of a pre-defined theme.\n\n\n\npaper: affects background elements\nink: affects foreground elements (text, lines, points, …)\naccent: affects elements that are used to highlight information (like geom_smooth() lines)\n\n\ng +\n  theme_minimal(\n    paper = \"cornsilk\",\n    ink = \"navy\"\n  )"
   },
   {
     "objectID": "sessions/slides/ggplot.html#theme-customize-theme",
@@ -2237,7 +2237,7 @@
     "href": "sessions/slides/ggplot.html#theme-customize-theme-1",
     "title": "Data visualization with ggplot2",
     "section": "theme(): customize theme",
-    "text": "theme(): customize theme\nTo edit a theme, just add another theme() layer to your plot.\n\n\n\n\ng +\n  theme_minimal(\n    ink = \"navy\",\n    paper = \"cornsilk\"\n  ) +\n  theme(\n    legend.position = \"bottom\",\n    axis.text = element_text(face = \"bold\"),\n    plot.title = element_text(color = \"#c06a38ff\")\n  )\n\n\nThe basic functioning of theme elements is:\n\ntheme(\n  element_name = element_function()\n)\n\n\n\n\n#&gt; NULL"
+    "text": "theme(): customize theme\nTo edit a theme, just add another theme() layer to your plot.\n\n\n\n\ng +\n  theme_minimal(\n    ink = \"navy\",\n    paper = \"cornsilk\"\n  ) +\n  theme(\n    legend.position = \"bottom\",\n    axis.text = element_text(face = \"bold\"),\n    plot.title = element_text(color = \"#c06a38ff\")\n  )\n\n\nThe basic functioning of theme elements is:\n\ntheme(\n  element_name = element_function()\n)"
   },
   {
     "objectID": "sessions/slides/ggplot.html#theme_set-set-global-theme",
