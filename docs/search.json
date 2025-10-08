@@ -571,42 +571,42 @@
     "href": "sessions/slides/good-practice.html#coding-style---spacing",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\n\n\n# Good\nx[, 1]\n\n# Bad\nx[, 1]\nx[, 1]\nx[, 1]"
+    "text": "Coding style - Spacing\n\n\nAlways put spaces after a comma\n\n\n# Good\nx[, 1]\n\n# Bad\nx[,1]\nx[ , 1]\nx [, 1]"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---spacing-1",
     "href": "sessions/slides/good-practice.html#coding-style---spacing-1",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\n\n\n# Good\nmean(x, na.rm = TRUE)\n\n# Bad\nmean(x, na.rm = TRUE)\nmean(x, na.rm = TRUE)"
+    "text": "Coding style - Spacing\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\n\n\n# Good\nmean(x, na.rm = TRUE)\n\n# Bad\nmean(x,na.rm=TRUE)\nmean (x , na.rm = TRUE)"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---spacing-2",
     "href": "sessions/slides/good-practice.html#coding-style---spacing-2",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\n\n\n# Good\nheight &lt;- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight &lt;- feet * 12 + inches\nmean(x, na.rm = TRUE)"
+    "text": "Coding style - Spacing\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\n\n\n# Good\nheight &lt;- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nheight&lt;-feet*12+inches\nmean(x, na.rm=TRUE)"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---spacing-3",
     "href": "sessions/slides/good-practice.html#coding-style---spacing-3",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipe (|&gt;) followed by new line\n\n\n# Good\niris |&gt;\n  summarize_if(is.numeric, mean, .by = Species) |&gt;\n  arrange(desc(Sepal.Length))\n\n# Bad\niris |&gt;\n  summarize_if(is.numeric, mean, .by = Species) |&gt;\n  arrange(desc(Sepal.Length))"
+    "text": "Coding style - Spacing\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipe (|&gt;) followed by new line\n\n\n# Good\niris |&gt;\n  summarize_if(is.numeric, mean, .by = Species) |&gt;\n  arrange(desc(Sepal.Length))\n\n# Bad\niris|&gt;summarize_if(is.numeric, mean, .by = Species)|&gt;\n  arrange(desc(Sepal.Length))"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---spacing-4",
     "href": "sessions/slides/good-practice.html#coding-style---spacing-4",
     "title": "Good practice R coding",
     "section": "Coding style - Spacing",
-    "text": "Coding style - Spacing\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipe (|&gt;) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) + geom_point()"
+    "text": "Coding style - Spacing\n\nAlways put spaces after a comma\nNo spaces around parentheses for normal function calls\nSpaces around most operators (&lt;-, ==, +, etc.)\nSpaces before pipe (|&gt;) followed by new line\nSpaces before + in ggplot followed by new line\n\n\n# Good\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +\n  geom_point()\n\n# Bad\nggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style---line-width",
     "href": "sessions/slides/good-practice.html#coding-style---line-width",
     "title": "Good practice R coding",
     "section": "Coding style - Line width",
-    "text": "Coding style - Line width\nTry to limit your line width to 80 characters.\n\nYou don’t want to scroll to the right to read all code\n80 characters can be displayed on most displays and programs\nSplit your code into multiple lines if it is too long\n\nSee this grey vertical line in R Studio?\n\n\n\n\n# Bad\niris |&gt;\n  summarise(\n    Sepal.Length = mean(Sepal.Length),\n    Sepal.Width = mean(Sepal.Width),\n    Species = n_distinct(Species),\n    .by = Species\n  )\n\n# Good\niris |&gt;\n  summarise(\n    Sepal.Length = mean(Sepal.Length),\n    Sepal.Width = mean(Sepal.Width),\n    Species = n_distinct(Species),\n    .by = Species\n  )"
+    "text": "Coding style - Line width\nTry to limit your line width to 80 characters.\n\nYou don’t want to scroll to the right to read all code\n80 characters can be displayed on most displays and programs\nSplit your code into multiple lines if it is too long\n\nSee this grey vertical line in R Studio?\n\n\n\n\n# Good\niris |&gt;\n  summarise(\n    Sepal.Length = mean(Sepal.Length),\n    Sepal.Width = mean(Sepal.Width),\n    Species = n_distinct(Species),\n    .by = Species\n  )\n\n# Bad\niris |&gt; summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species), .by = Species)"
   },
   {
     "objectID": "sessions/slides/good-practice.html#coding-style",

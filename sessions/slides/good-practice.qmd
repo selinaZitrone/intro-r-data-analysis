@@ -27,6 +27,11 @@ execute:
 from: markdown+emoji
 ---
 
+```{r setup}
+#| include: false
+# fmt: skip file
+```
+
 ## Chaotic projects and workflows ...
 
 ... can make even small changes frustrating and difficult.
@@ -390,9 +395,9 @@ dm1
 x[, 1]
 
 # Bad
-x[, 1]
-x[, 1]
-x[, 1]
+x[,1]
+x[ , 1]
+x [, 1]
 ```
 
 ## Coding style - Spacing
@@ -409,8 +414,8 @@ x[, 1]
 mean(x, na.rm = TRUE)
 
 # Bad
-mean(x, na.rm = TRUE)
-mean(x, na.rm = TRUE)
+mean(x,na.rm=TRUE)
+mean (x , na.rm = TRUE)
 ```
 
 ## Coding style - Spacing
@@ -429,8 +434,8 @@ height <- (feet * 12) + inches
 mean(x, na.rm = TRUE)
 
 # Bad
-height <- feet * 12 + inches
-mean(x, na.rm = TRUE)
+height<-feet*12+inches
+mean(x, na.rm=TRUE)
 ```
 
 
@@ -452,8 +457,7 @@ iris |>
   arrange(desc(Sepal.Length))
 
 # Bad
-iris |>
-  summarize_if(is.numeric, mean, .by = Species) |>
+iris|>summarize_if(is.numeric, mean, .by = Species)|>
   arrange(desc(Sepal.Length))
 ```
 
@@ -475,7 +479,7 @@ ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
   geom_point()
 
 # Bad
-ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) + geom_point()
+ggplot(aes(x = Sepal.Width, y = Sepal.Length, color = Species))+geom_point()
 ```
 
 ## Coding style - Line width
@@ -490,15 +494,6 @@ Try to limit your line width to 80 characters.
 . . .
 
 ```{r linewidth-ggplot}
-# Bad
-iris |>
-  summarise(
-    Sepal.Length = mean(Sepal.Length),
-    Sepal.Width = mean(Sepal.Width),
-    Species = n_distinct(Species),
-    .by = Species
-  )
-
 # Good
 iris |>
   summarise(
@@ -507,6 +502,9 @@ iris |>
     Species = n_distinct(Species),
     .by = Species
   )
+
+# Bad
+iris |> summarise(Sepal.Length = mean(Sepal.Length), Sepal.Width = mean(Sepal.Width), Species = n_distinct(Species), .by = Species)
 ```
 
 ## Coding style
