@@ -27,9 +27,14 @@ R/byod/2023_02_tips/dnaseq/DE_results.csv
 /sessions/slides/*_files
 R/random_groups.R
 
+# Ignore data files
+data/animals*
+
 # Ignore all folders with _cache in their names
 *_cache/
 *_files
 
 # Ignore the _freeze folder
 _freeze/
+_quarto.yml
+R/random_groups.R

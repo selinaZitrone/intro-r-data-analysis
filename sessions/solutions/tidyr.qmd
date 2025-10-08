@@ -26,11 +26,12 @@ What is not tidy about this data set?
 `r fontawesome::fa("arrow-right")` The variable income is spread across multiple columns, so we have to use `pivot_longer` to pivot the columns containing the income information:
 
 ```{r, echo=TRUE}
-pivot_longer(relig_income,
-             cols = !religion,
-             names_to = "income",
-             values_to = "count"
-             )
+pivot_longer(
+  relig_income,
+  cols = !religion,
+  names_to = "income",
+  values_to = "count"
+)
 ```
 
 
@@ -48,13 +49,10 @@ What is not tidy about this data set?
 `r fontawesome::fa("arrow-right")` The variable week is spread across multiple columns. We have to use pivot longer to pivot the week columns:
 
 ```{r, echo=TRUE}
-pivot_longer(billboard,
-             cols = wk1:wk76,
-             names_to = "week",
-             values_to = "rank")
+pivot_longer(billboard, cols = wk1:wk76, names_to = "week", values_to = "rank")
 ```
 
-## Extras
+## For the fast ones
 
 **`values_drop_na` argument**
 
@@ -63,12 +61,14 @@ The argument `values_drop_na` drops rows with missing values in the rank column.
 With the `names_prefix` argument we can remove the `wk` before the values of the week variable. This makes it easier to work with later.
 
 ```{r, echo=TRUE}
-pivot_longer(billboard,
-             cols = wk1:wk76,
-             names_to = "week",
-             names_prefix = "wk",
-             values_to = "rank",
-             values_drop_na = TRUE)
+pivot_longer(
+  billboard,
+  cols = wk1:wk76,
+  names_to = "week",
+  names_prefix = "wk",
+  values_to = "rank",
+  values_drop_na = TRUE
+)
 ```
 
 **Recreating the penguin plot**
@@ -87,9 +87,9 @@ Use the pipe operator to do the calculations one after the other:
 
 ```{r echo=TRUE, warning=FALSE}
 
-penguins |> 
-  select(species, bill_len, bill_dep) |> 
-  pivot_longer(!species, names_to = "variable") |> 
+penguins |>
+  select(species, bill_len, bill_dep) |>
+  pivot_longer(!species, names_to = "variable") |>
   ggplot(aes(x = species, y = value, fill = variable)) +
   geom_boxplot()
 ```

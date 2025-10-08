@@ -11,6 +11,7 @@ library(tidyverse)
 ```
 ```{r echo=FALSE}
 theme_set(theme_grey())
+penguins <- as_tibble(penguins)
 ```
 
 ## Data transformation with dplyr
@@ -34,7 +35,7 @@ filter(penguins, !is.na(sex))
 3. ... which are of the species Adelie or Gentoo
 
 ```{r echo=TRUE}
-filter(penguins, species %in% c("Adelie", "Gentoo")
+filter(penguins, species %in% c("Adelie", "Gentoo"))
 # or
 # filter(penguins, (species == "Adelie" | species == "Gentoo"))
 ```
@@ -121,7 +122,7 @@ penguins |>
   )
 ```
 
-## Extras
+## For the fast ones
 
 1. Make a boxplot of penguin body mass with sex on the y-axis and facets for the different species. Can you remove the penguins with missing values for sex first?
 
