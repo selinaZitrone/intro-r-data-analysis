@@ -914,7 +914,7 @@
     "href": "sessions/slides/bring-your-own-data.html#new-methods-pcas",
     "title": "Bring your own data",
     "section": "New methods: PCAS",
-    "text": "New methods: PCAS\n\n\n Download example script\n\n\n\n\nError in `select()`:\n! Can't select columns that don't exist.\n✖ Column `bill_len` doesn't exist.\n\n\nError: object 'peng_pca' not found\n\n\nError: object 'peng.pca' not found"
+    "text": "New methods: PCAS\n\n\n Download example script"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#some-general-tips",
