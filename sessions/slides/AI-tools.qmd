@@ -56,7 +56,7 @@ from: markdown+emoji
 
 :::{.nonincremental}
 
-- **Browser-based chat bots** ([ChatGPT](https://chat.openai.com), [Bard](https://bard.google.com), ...)
+- **Browser-based chat bots** ([ChatGPT](https://chat.openai.com), [Claude](https://claude.ai), ...)
   - General-purpose<br>
 
 :::
@@ -64,6 +64,7 @@ from: markdown+emoji
 . . .
 
 :::{.nonincremental}
+
 - **Data-analysis tools** ([Julius AI](https://julius.ai/), [RTutor](https://rtutor.ai/), ...)
   - Upload data and ask questions about it
   - Can also execute code
@@ -74,40 +75,16 @@ from: markdown+emoji
 . . .
 
 :::{.nonincremental}
-- **Integrated AI tools** ([GitHub Copilot](https://github.com/features/copilot), [Codium AI](https://codium.ai/), ...)
+
+- **Integrated AI tools** ([GitHub Copilot](https://github.com/features/copilot), ...)
   - Integrated directly in programming environment
-  - Real-time suggestions, chat, debugging, ...<br>
+  - Real-time suggestions, chat, debugging, ...
 
 :::
 
 . . .
 
 Find the tools that best fit your workflow!
-
-## R Tutor
-
-:::{.columns}
-
-:::{.column width="30%"}
-
-:::{.nonincremental}
-
-- [https://rtutor.ai/](https://rtutor.ai/)
-- Free browser tool
-- Upload data and ask questions about it
-- Use the demo data
-
-:::
-
-:::
-
-:::{.column width="70%"}
-
-![](img/day1/rtutor.png)
-
-:::
-
-:::
 
 ## Julius AI
 
@@ -116,6 +93,7 @@ Find the tools that best fit your workflow!
 :::{.column width="30%"}
 
 :::{.nonincremental}
+
 - [https://julius.ai/](https://julius.ai/)
 - Try for free
 - Basic plan ~20€ per months (-50% academic discount)
@@ -136,25 +114,15 @@ Find the tools that best fit your workflow!
 ## Github Copilot
 
 - [https://github.com/features/copilot](https://github.com/features/copilot)
-- Model based on GPT-4 and OpenAI's Codex
-  - Specifically trained on source code
-- Basic idea: Integrate directly into R Studio (or other IDEs)
-- Works best for well-represented languages (Python, JS, ...)
-  
-## How to get GitHub Copilot
+- Based on models specifically trained on source code
+- Basic idea: Integrate directly into your IDE
+  - Real-time code suggestions (inline as you type)
+  - Chat with the AI
+- Works best for well-represented languages (Python, JS, ...), but R is also pretty good
 
-See [this website](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html) for step-by-step guide and more information.
+## Inline code suggestions
 
-It's really easy, but you need:
-
-- GitHub Account
-- Active GH Copilot subscription (10$ per month)
-  - Get it for free as an academic with an educational account
-- IDE that supports Copilot
-  - Full support: Visual Studio (Code), Vim, Neovim, JetBrains IDEs (e.g. PyCharm)
-  - Limited support: RStudio, ?
-
-## GH Copilot: Inline code suggestions
+Available for RStudio and Positron
 
 :::{.columns}
 
@@ -193,27 +161,39 @@ It's really easy, but you need:
 
 Nice side effect of using Copilot: More good-practice coding
 
-## Chat with GH copilot in R Studio
+## Chat with GH Copilot about your
 
-- Available through the [`https://ellmer.tidyverse.org/` package](https://blogs.rstudio.com/ai/posts/2024-04-04-chat-with-llms-using-chattr/)
-- Chat with LLMs in the sidebar
-- Needs an API and some setting up
+Only available in Positron or VS Code
 
-## Concerns to consider
+- Open a chat window
+- The AI can access you files and projects
+- The AI can make taylored suggestions based on your project
+- Great for
+  - Debugging
+  - Getting explanations
+  - Getting good-practice suggestions
+  - ...
+  
+## How to get GitHub Copilot
+
+See [this website](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html) for step-by-step guide and more information.
+
+It's really easy, but you need:
+
+- GitHub Account
+- Active GH Copilot subscription (10$ per month)
+  - Get it for free as an academic with an educational account
+- IDE that supports Copilot
+
+## Things to consider I
 
 - **Privacy**
-  - Chose whether your prompts and suggestions will be used by Github (`Github -> Seetings -> Copilot -> Policies`)
-  - Check privacy guidelines before you upload data
+  - Check privacy guidelines before you use tools (e.g. `Github -> Seetings -> Copilot -> Policies`)
 - **Plagiarism**
   - Block suggestions matching public code (`Github -> Seetings -> Copilot -> Policies`)
-- **Ethical concerns**
-  - For-profit tool trained on open-source
-- **Environmental concerns**
-  - Water and energy usage
 
-## Usage guidelines
+## Things to consider II
 
-- No definite guidelines, but see examples [listed here](https://selinazitrone.github.io/tools_and_tips/sessions/07_ai_tools.html#concerns-and-guidelines)
 - **Responsibility**
   - You are responsible for your scientific output
   - Stay critical, double-check
