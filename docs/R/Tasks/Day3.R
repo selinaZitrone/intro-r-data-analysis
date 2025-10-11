@@ -22,6 +22,15 @@ billboard
 
 pivot_longer(billboard, cols = wk1:wk76, names_to = "week", values_to = "rank")
 
+# 3. fish_encounters
+
+fish_encounters |>
+  pivot_wider(
+    names_from = station,
+    values_from = seen,
+    values_fill = 0
+  )
+
 
 #### Extras
 charts <- pivot_longer(

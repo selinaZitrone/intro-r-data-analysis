@@ -47,7 +47,7 @@ ggplot(
 # 1.3.2 Difference in flipper length between species (boxplot)
 
 # Basic boxplot of flipper length with notches
-ggplot(penguins, aes(x = species, y = flipper_len)) +
+ggplot(penguins, aes(species, flipper_len)) +
   geom_boxplot(notch = TRUE)
 
 # Add jittered points
@@ -214,6 +214,29 @@ ggsave(
 # save as pdf in /img directory of the project
 ggsave(filename = "img/flipper_box.pdf", flipper_box)
 
+# heatmap example
+
+heatmap <- ggplot(
+  penguins,
+  aes(
+    x = species,
+    y = sex,
+    fill = flipper_len
+  )
+) +
+  geom_tile() +
+  scale_fill_viridis_c()
+heatmap
+
+# or with another color scale
+
+heatmap <- ggplot(
+  penguins,
+  aes(x = species, y = sex, fill = flipper_len)
+) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = "steelblue")
+
 # If you want to have an interactive plot
 # install.packages("plotly")
 plotly::ggplotly(heatmap)
@@ -330,10 +353,6 @@ count(penguins, island, species)
 # only the variables species, sex and year
 select(penguins, species, sex, year)
 
-# only columns that contain measurements in mm
-select(penguins, ends_with("mm"))
-# or
-select(penguins, contains("_mm"))
 
 # Mutate tasks ------------------------------------------------------------
 
@@ -346,7 +365,8 @@ mutate(
   species_short = case_when(
     species == "Adelie" ~ "A",
     species == "Gentoo" ~ "G",
-    species == "Chinstrap" ~ "C"
+    species == "Chinstrap" ~ "C",
+    .default = NA
   )
 )
 
