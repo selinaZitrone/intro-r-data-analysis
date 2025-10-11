@@ -6,28 +6,96 @@ You have the following three vectors:
 
 ```{r echo=TRUE, eval=FALSE}
 species <- c(
-  "MountainBeaver", "Cow", "GreyWolf", "Goat",
-  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
-  "Horse", "PotarMonkey", "Cat", "Giraffe",
-  "Gorilla", "Human", "AfricanElephant", "Triceratops",
-  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
-  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
-  "Rat", "Brachiosaurus", "Mole", "Pig"
+  "MountainBeaver",
+  "Cow",
+  "GreyWolf",
+  "Goat",
+  "GuineaPig",
+  "Diplodocus",
+  "AsianElephant",
+  "Donkey",
+  "Horse",
+  "PotarMonkey",
+  "Cat",
+  "Giraffe",
+  "Gorilla",
+  "Human",
+  "AfricanElephant",
+  "Triceratops",
+  "RhesusMonkey",
+  "Kangaroo",
+  "GoldenHamster",
+  "Mouse",
+  "Rabbit",
+  "Sheep",
+  "Jaguar",
+  "Chimpanzee",
+  "Rat",
+  "Brachiosaurus",
+  "Mole",
+  "Pig"
 )
 
 bodywt_kg <- c(
-  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
-  521, 10, 3.3, 529, 207, 62, 6654, 9400,
-  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
-  0.3, 87000, 0.1, 192
+  1.4,
+  465,
+  36.3,
+  27.7,
+  1.,
+  11700,
+  2547,
+  187.1,
+  521,
+  10,
+  3.3,
+  529,
+  207,
+  62,
+  6654,
+  9400,
+  6.8,
+  35,
+  0.1,
+  0.02,
+  2.5,
+  55.5,
+  100,
+  52.2,
+  0.3,
+  87000,
+  0.1,
+  192
 )
 
 brainwt_kg <- c(
-  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, 
-  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, 
-  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
-  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,
-  0.0019, 0.1545, 0.003, 0.18
+  0.0081,
+  0.423,
+  0.1195,
+  0.115,
+  0.0055,
+  0.05,
+  4.603,
+  0.419,
+  0.655,
+  0.115,
+  0.0256,
+  0.68,
+  0.406,
+  1.32,
+  5.712,
+  0.07,
+  0.179,
+  0.056,
+  0.001,
+  0.0004,
+  0.0121,
+  0.175,
+  0.157,
+  0.44,
+  0.0019,
+  0.1545,
+  0.003,
+  0.18
 )
 ```
 
@@ -46,7 +114,7 @@ animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
 - A bit more tricky: Are there any animals with a larger brain to body weight ratio than humans? If yes, which ones?
   - Hint: calculate the ratio for humans and save it in a separate variable first
 
-## Extras
+## For the fast ones
 
 - Round the ratio vector to 4 decimal places with the `round` function
   - Type `?round` into the console to open the help of the `round` function
