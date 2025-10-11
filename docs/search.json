@@ -1551,7 +1551,7 @@
     "href": "sessions/12_AI-tools.html#links",
     "title": "AI tools for R programming",
     "section": "1 Links",
-    "text": "1 Links\n\n1.1 Browser-based AI-Tools\n\nRtutor: Browser-based tool where you can ask questions about R and data analysis. You can also upload a dataset and ask the AI to analyse it. You can then download the corresponding R script or Rmardown report.\n\nThere is also a corresponding R package that you can install to use locally. But for this you need to have your own OpenAI API key, so it is a bit more work to set up.\n\nJulius AI: Browser-based tool where you can ask questions about your data. You can upload a dataset and ask questions about it. The AI will then give you answers and visualizations. You can also download the corresponding R script.\n\nWorks great but costs ~20€ per month, but you can get a 50% discount if you are a student or academic\n\n\n\n\n1.2 Integrated AI-Tools\n\nGitHub Copilot: One of the most widespread integrated tool. Gives you inline code suggestions. Great to code faster, write better code, debug, etc.\n\nStep-by-step guide on how to get Copilot for free for Visual Studio Code or RStudio.\nGitHub Copilot Docs: Useful information and guides on how to use Copilot\nPrivacy FAQ of GitHub Copilot\nPrompt engineering with GH Copilot to get better results\n\nchattr package to chat with different LLMs (e.g. GitHub Copilot, GPT-4, …) from inside R Studio"
+    "text": "1 Links\n\n1.1 Browser-based AI-Tools\n\nJulius AI: Browser-based tool where you can ask questions about your data. You can upload a dataset and ask questions about it. The AI will then give you answers and visualizations. You can also download the corresponding R script.\n\nWorks great but costs ~20€ per month, but you can get a 50% discount if you are a student or academic\n\n\n\n\n1.2 Integrated AI tools\nGitHub Copilot is one of the most widespread integrated tool. It gives you inline code suggestions and Chat options. Great to code faster, write better code, debug, etc.\nIf you are using RStudio, you can use it for inline code suggestions. In Positron or VS Code you can also use the chat option. Here are all the links that you need to get started:\n\nStep-by-step guide on how to get Copilot for free with an educational account.\nGitHub Copilot in RStudio: Guide on how to set up and use RStudio with GitHub Copilot\nAI in Positron: Guide on how to set up and use the Positron Assistant.\n\nPositron can be set up to work with GitHub Copilot (inline suggestions and chat) as well as with other LLMs (e.g. GPT-4, Claude, etc.).\n\nGitHub Copilot Docs: Useful information and guides on how to use Copilot\nPrivacy FAQ of GitHub Copilot\nPrompt engineering with GH Copilot: Some tips to get better results with GitHub Copilot"
   },
   {
     "objectID": "sessions/slides/AI-tools.html#motivation",
@@ -1565,7 +1565,7 @@
     "href": "sessions/slides/AI-tools.html#overview-of-tools",
     "title": "AI Tools for R",
     "section": "Overview of tools",
-    "text": "Overview of tools\n\nBrowser-based chat bots (ChatGPT, Bard, …)\n\nGeneral-purpose\n\n\n\n\nData-analysis tools (Julius AI, RTutor, …)\n\nUpload data and ask questions about it\nCan also execute code\nChat with your data\n\n\n\n\n\nIntegrated AI tools (GitHub Copilot, Codium AI, …)\n\nIntegrated directly in programming environment\nReal-time suggestions, chat, debugging, …\n\n\n\n\nFind the tools that best fit your workflow!"
+    "text": "Overview of tools\n\nBrowser-based chat bots (ChatGPT, Claude, …)\n\nGeneral-purpose\n\n\n\n\nData-analysis tools (Julius AI, RTutor, …)\n\nUpload data and ask questions about it\nCan also execute code\nChat with your data\n\n\n\n\n\nIntegrated AI tools (GitHub Copilot, …)\n\nIntegrated directly in programming environment\nReal-time suggestions, chat, debugging, …\n\n\n\n\nFind the tools that best fit your workflow!"
   },
   {
     "objectID": "sessions/slides/AI-tools.html#r-tutor",
@@ -1586,14 +1586,14 @@
     "href": "sessions/slides/AI-tools.html#github-copilot",
     "title": "AI Tools for R",
     "section": "Github Copilot",
-    "text": "Github Copilot\n\nhttps://github.com/features/copilot\nModel based on GPT-4 and OpenAI’s Codex\n\nSpecifically trained on source code\n\nBasic idea: Integrate directly into R Studio (or other IDEs)\nWorks best for well-represented languages (Python, JS, …)"
+    "text": "Github Copilot\n\nhttps://github.com/features/copilot\nBased on models specifically trained on source code\nBasic idea: Integrate directly into your IDE\n\nReal-time code suggestions (inline as you type)\nChat with the AI\n\nWorks best for well-represented languages (Python, JS, …), but R is also pretty good"
   },
   {
     "objectID": "sessions/slides/AI-tools.html#how-to-get-github-copilot",
     "href": "sessions/slides/AI-tools.html#how-to-get-github-copilot",
     "title": "AI Tools for R",
     "section": "How to get GitHub Copilot",
-    "text": "How to get GitHub Copilot\nSee this website for step-by-step guide and more information.\nIt’s really easy, but you need:\n\nGitHub Account\nActive GH Copilot subscription (10$ per month)\n\nGet it for free as an academic with an educational account\n\nIDE that supports Copilot\n\nFull support: Visual Studio (Code), Vim, Neovim, JetBrains IDEs (e.g. PyCharm)\nLimited support: RStudio, ?"
+    "text": "How to get GitHub Copilot\nSee this website for step-by-step guide and more information.\nIt’s really easy, but you need:\n\nGitHub Account\nActive GH Copilot subscription (10$ per month)\n\nGet it for free as an academic with an educational account\n\nIDE that supports Copilot"
   },
   {
     "objectID": "sessions/slides/AI-tools.html#gh-copilot-inline-code-suggestions",
@@ -2917,5 +2917,47 @@
     "title": "",
     "section": "3 Extra",
     "text": "3 Extra\nCreate a plot to show the results of your tests. Choose one of the following:\n\nCreate a boxplot with notches to visually compare differences in flipper length between species\nMake a plot showing the mean and standard error of the mean as pointrange or point with errorbars\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
+  },
+  {
+    "objectID": "sessions/slides/AI-tools.html#inline-code-suggestions",
+    "href": "sessions/slides/AI-tools.html#inline-code-suggestions",
+    "title": "AI Tools for R",
+    "section": "Inline code suggestions",
+    "text": "Inline code suggestions\nAvailable for RStudio and Positron\n\n\n\nCopilot tries to predict what you want to do next\nSuggestions are based on the context\n\nPrevious code\nComments\nVariable and function names\n…"
+  },
+  {
+    "objectID": "sessions/slides/AI-tools.html#chat-with-gh-copilot-about-your",
+    "href": "sessions/slides/AI-tools.html#chat-with-gh-copilot-about-your",
+    "title": "AI Tools for R",
+    "section": "Chat with GH Copilot about your",
+    "text": "Chat with GH Copilot about your\nOnly available in Positron or VS Code\n\nOpen a chat window\nThe AI can access you files and projects\nThe AI can make taylored suggestions based on your project\nGreat for\n\nDebugging\nGetting explanations\nGetting good-practice suggestions\n…"
+  },
+  {
+    "objectID": "sessions/slides/AI-tools.html#things-to-consider",
+    "href": "sessions/slides/AI-tools.html#things-to-consider",
+    "title": "AI Tools for R",
+    "section": "Things to consider",
+    "text": "Things to consider\n\nPrivacy\n\nCheck privacy guidelines before you use tools (e.g. Github -&gt; Seetings -&gt; Copilot -&gt; Policies)\n\nPlagiarism\n\nBlock suggestions matching public code (Github -&gt; Seetings -&gt; Copilot -&gt; Policies)\n\nResponsibility\n\nYou are responsible for your scientific output\nStay critical, double-check\n\nTransparency\n\nMake clear for which tasks you used which AI\n\nKnow relevant guidelines\n\nJournals\nYour university\n\nStill understand what is happening!"
+  },
+  {
+    "objectID": "sessions/slides/AI-tools.html",
+    "href": "sessions/slides/AI-tools.html",
+    "title": "AI Tools for R",
+    "section": "",
+    "text": "AI tools assist programmers with\n\nCoding\nDebugging\nLearning\n…\n\nHigher productivity and efficiency\nMore motivation\nBut careful: You still need to understand what’s going on!"
+  },
+  {
+    "objectID": "sessions/slides/AI-tools.html#things-to-consider-i",
+    "href": "sessions/slides/AI-tools.html#things-to-consider-i",
+    "title": "AI Tools for R",
+    "section": "Things to consider I",
+    "text": "Things to consider I\n\nPrivacy\n\nCheck privacy guidelines before you use tools (e.g. Github -&gt; Seetings -&gt; Copilot -&gt; Policies)\n\nPlagiarism\n\nBlock suggestions matching public code (Github -&gt; Seetings -&gt; Copilot -&gt; Policies)"
+  },
+  {
+    "objectID": "sessions/slides/AI-tools.html#things-to-consider-ii",
+    "href": "sessions/slides/AI-tools.html#things-to-consider-ii",
+    "title": "AI Tools for R",
+    "section": "Things to consider II",
+    "text": "Things to consider II\n\nResponsibility\n\nYou are responsible for your scientific output\nStay critical, double-check\n\nTransparency\n\nMake clear for which tasks you used which AI\n\nKnow relevant guidelines\n\nJournals\nYour university\n\nStill understand what is happening!"
   }
 ]
