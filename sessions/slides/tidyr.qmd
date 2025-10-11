@@ -16,7 +16,7 @@ format:
     self-contained: true
     code-line-numbers: false
     auto-stretch: false
-    scrollable: true
+    scrollable: false
     theme: slides.scss
     fig-align: center
 execute: 
@@ -51,6 +51,7 @@ Let's look at some examples
 :::{.column width="40%"}
 
 **Tidy**
+
 ```{r echo=FALSE}
 data.frame(
   id = 1:6,
@@ -67,6 +68,7 @@ data.frame(
 :::{.fragment}
 
 **Non-tidy**
+
 ```{r echo=FALSE}
 data.frame(
   floof = "gray",
@@ -80,6 +82,7 @@ data.frame(
 ```  
 
 <br>
+
 ```{r echo=FALSE}
 data.frame(
   gray = c("floof", "donut"),
@@ -119,13 +122,43 @@ Let's go back to the city data set from earlier:
 #| code-fold: true
 #| code-summary: "Expand to reproduce the data"
 
-cities <- c("Istanbul", "Moscow", "London", "Saint Petersburg", "Berlin", "Madrid", "Kyiv", "Rome", "Bucharest", "Paris")
-population <- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6, 3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)
+cities <- c(
+  "Istanbul",
+  "Moscow",
+  "London",
+  "Saint Petersburg",
+  "Berlin",
+  "Madrid",
+  "Kyiv",
+  "Rome",
+  "Bucharest",
+  "Paris"
+)
+population <- c(
+  15.1e6,
+  12.5e6,
+  9e6,
+  5.4e6,
+  3.8e6,
+  3.2e6,
+  3e6,
+  2.8e6,
+  2.2e6,
+  2.1e6
+)
 area_km2 <- c(2576, 2561, 1572, 1439, 891, 604, 839, 1285, 228, 105)
 
 country <- c(
-  "Turkey", "Russia", "UK", "Russia", "Germany", "Spain",
-  "Ukraine", "Italy", "Romania", "France"
+  "Turkey",
+  "Russia",
+  "UK",
+  "Russia",
+  "Germany",
+  "Spain",
+  "Ukraine",
+  "Italy",
+  "Romania",
+  "France"
 )
 # tidy
 cities_tbl <- tibble(
@@ -209,8 +242,8 @@ step1 <- pivot_longer(
   cities_untidy, # the tibble
   cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to
   names_to = "location", # name of the new column
-  values_to = "value"
-) # name of the value column
+  values_to = "value" # name of the value column
+)
 ```
 
 . . .
@@ -229,8 +262,8 @@ step1 <- pivot_longer(
   cities_untidy, # the tibble
   cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to
   names_to = "location", # name of the new column
-  values_to = "value"
-) # name of the value column
+  values_to = "value" # name of the value column
+)
 ```
 
 Another way to select the columns to pivot:
@@ -242,8 +275,8 @@ step1 <- pivot_longer(
   cities_untidy, # the tibble
   cols = !type, # All columns except type#<<
   names_to = "location", # name of the new column
-  values_to = "value"
-) # name of the value column
+  values_to = "value" # name of the value column
+)
 ```
 
 ## `separate_wider_delim()`
@@ -261,8 +294,8 @@ step2 <- separate_wider_delim(
   step1, # the tibble
   location, # the column to separate
   delim = "_", # the separator
-  names = c("country", "city_name")
-) # names of new columns
+  names = c("country", "city_name") # names of new columns
+)
 ```
 
 . . .
@@ -289,8 +322,8 @@ print(step2, n = 2)
 step3 <- pivot_wider(
   step2, # the tibble
   names_from = type, # the variables
-  values_from = value
-) # the values
+  values_from = value # the values
+)
 ```
 
 . . .

@@ -49,7 +49,26 @@ What is not tidy about this data set?
 `r fontawesome::fa("arrow-right")` The variable week is spread across multiple columns. We have to use pivot longer to pivot the week columns:
 
 ```{r, echo=TRUE}
-pivot_longer(billboard, cols = wk1:wk76, names_to = "week", values_to = "rank")
+pivot_longer(
+  billboard,
+  cols = wk1:wk76,
+  names_to = "week",
+  values_to = "rank"
+)
+```
+
+**3. `fish_encounters`**
+
+Which format might be more convenient if you wanted to compare fish across stations at a glance?
+
+`r fontawesome::fa("arrow-right")` Each fish is spread across multiple rows. We can use `pivot_wider` to have one row per fish:
+
+```{r, echo=TRUE}
+pivot_wider(
+  fish_encounters,
+  names_from = station,
+  values_from = seen
+)
 ```
 
 ## For the fast ones
@@ -68,6 +87,19 @@ pivot_longer(
   names_prefix = "wk",
   values_to = "rank",
   values_drop_na = TRUE
+)
+```
+
+**`values_fill` argument**
+
+With the `values_fill` argument we can replace the missing values that are created when pivoting wider. Here it makes sense to replace the missing values with 0, indicating that the fish was not seen at the respective station.
+
+```{r, echo=TRUE}
+pivot_wider(
+  fish_encounters,
+  names_from = station,
+  values_from = seen,
+  values_fill = list(seen = 0)
 )
 ```
 
