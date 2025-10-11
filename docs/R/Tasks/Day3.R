@@ -97,7 +97,7 @@ wilcox.test(gentoo, adelie) # means differ
 # Compare flipper lengths of penguins visually using a boxplot
 # Add the p-values of the comparisons with the test into the plot
 library(ggsignif)
-penguins |>
+boxplot <- penguins |>
   ggplot(aes(x = species, y = flipper_len)) +
   geom_boxplot(notch = TRUE) +
   geom_signif(
@@ -140,4 +140,52 @@ ggplot(penguins, aes(x = species, y = flipper_len)) +
     y_position = c(216, 217),
     map_signif_level = TRUE,
     tip_length = 0.01
+  )
+
+# Barplot
+barplot <- ggplot(penguins, aes(x = species, y = flipper_len)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.2
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "bar",
+    fill = "grey70"
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Adelie")
+    ),
+    test = "t.test",
+    test.args = list(var.equal = TRUE),
+    map_signif_level = TRUE,
+    y_position = 205,
+    tip_length = 0.01
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Gentoo"),
+      c("Gentoo", "Adelie")
+    ),
+    test = "wilcox.test",
+    y_position = c(221, 230),
+    map_signif_level = TRUE,
+    tip_length = 0.01
+  )
+
+## For the fast ones
+## Improve on the plots appearance
+boxplot +
+  labs(
+    title = "Significant differences in flipper length between all 3 species",
+    x = "Species",
+    y = "Flipper length (mm)"
+  ) +
+  theme_classic() +
+  theme(
+    text = element_text(size = 16),
+    axis.title.x = element_blank(),
+    panel.grid.major.y = element_line(color = "grey90")
   )
