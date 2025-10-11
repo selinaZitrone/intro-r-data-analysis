@@ -36,12 +36,16 @@ knitr::include_graphics(here::here(
 ))
 ```
 
-## Extra
+After you have the test results, visualize the differences in flipper length between species.
 
-Create a plot to show the results of your tests. Choose one of the following:
+You can e.g. choose one of the following plots:
 
-- Create a boxplot with notches to visually compare differences in flipper length between species
-- Make a plot showing the mean and standard error of the mean as pointrange or point with 
-errorbars
+- Boxplot with notches
+- Mean and standard error of the mean (as mean with errorbar, as barplot, ...)
 
 Add a `geom_signif()` layer to the plot you just created to indicate your test results
+
+### For the fast ones
+
+- Use a different visualization method than before to show the differences in flipper length between species
+- Change the appearance of the plot (colors, themes, ...) from the task

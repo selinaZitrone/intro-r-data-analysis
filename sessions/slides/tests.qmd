@@ -115,20 +115,35 @@ mydata
 :::{.column width="50%"}
 
 
-```{r echo=FALSE}
+```{r}
 #| fig-width: 6
 #| fig-height: 6
-mydata %>%
-  pivot_longer(cols = 1:2, names_to = "type", values_to = "value") %>%
+#| code-fold: true
+#| code-summary: "Code to generate histogram"
+mydata |>
+  pivot_longer(
+    cols = 1:2,
+    names_to = "type",
+    values_to = "value"
+  ) |>
   ggplot() +
-  geom_histogram(alpha = 0.5, aes(x = value, fill = type, y = ..density..)) + # plot probability instead of count on y axis
+  geom_histogram(
+    alpha = 0.5,
+    aes(
+      x = value,
+      fill = type,
+      # plot probability instead of count on y axis
+      y = ..density..
+    )
+  ) +
   stat_function(
     fun = dnorm,
     args = list(
       mean = 50,
       sd = 5
     ),
-    color = "darkorange", size = 1
+    color = "darkorange",
+    size = 1
   ) +
   stat_function(
     fun = dnorm,
@@ -136,10 +151,14 @@ mydata %>%
       mean = mean(mydata$non_normal),
       sd = sd(mydata$non_normal)
     ),
-    color = "cyan4", size = 1
+    color = "cyan4",
+    size = 1
   ) +
   scale_fill_manual(values = c("cyan4", "darkorange")) +
-  theme(legend.position = c(0.85, 0.85))
+  theme(
+    legend.position = "inside",
+    legend.position.inside = c(0.85, 0.85)
+  )
 ```
 
 :::
@@ -241,42 +260,38 @@ ggpubr::ggqqplot(mydata$non_normal)
 
 ## The data
 
-```{r echo=FALSE}
-InsectSprays <- InsectSprays %>%
-  filter(spray %in% c("A", "B", "E")) %>%
-  mutate(spray = recode(spray, "E" = "C"))
-```
-
 Counts of insects in agricultural units treated with different insecticides.
+
 
 :::{.columns}
 
 :::{.column width="50%"}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Expand to reproduce the data"
+InsectSprays <- InsectSprays |>
+  filter(spray %in% c("A", "B", "E")) |>
+  mutate(spray = recode(spray, "E" = "C"))
+```
 
 Compare treatments A, B and C:
 
 Create subsets before: count variable for each treatment as a vector
 
 ```{r}
-TreatA <- filter(
-  InsectSprays,
-  spray == "A"
-)$count
-TreatB <- filter(
-  InsectSprays,
-  spray == "B"
-)$count
-TreatC <- filter(
-  InsectSprays,
-  spray == "C"
-)$count
+TreatA <- filter(InsectSprays, spray == "A")$count
+TreatB <- filter(InsectSprays, spray == "B")$count
+TreatC <- filter(InsectSprays, spray == "C")$count
 ```
 
 :::
 
 :::{.column width="50%"}
 
-```{r echo=FALSE, fig.height = 6.0}
+```{r, fig.height = 6.0}
+#| code-fold: true
+#| code-summary: "Code to generate boxplot"
 ggplot(InsectSprays, aes(x = spray, y = count, fill = spray)) +
   geom_boxplot(notch = TRUE) +
   theme(legend.position = "none")
@@ -471,6 +486,7 @@ library(ggsignif)
 
 ```{r echo=FALSE}
 library(ggsignif)
+theme_set(theme_grey(base_size = 16))
 ```
 
 
@@ -623,7 +639,7 @@ ggplot(
     geom = "errorbar"
   ) +
   stat_summary(
-    fun.y = mean,
+    fun = mean,
     geom = "point",
     color = "#28a87d",
     size = 4
@@ -654,7 +670,7 @@ ggplot(
     geom = "errorbar"
   ) +
   stat_summary(
-    fun.y = mean,
+    fun = mean,
     geom = "point",
     color = "#28a87d",
     size = 4
@@ -682,7 +698,7 @@ ggplot(
     width = 0.3
   ) +
   stat_summary(
-    fun.y = mean,
+    fun = mean,
     geom = "bar",
     size = 4
   )
@@ -705,7 +721,7 @@ ggplot(
     width = 0.3
   ) +
   stat_summary(
-    fun.y = mean,
+    fun = mean,
     geom = "bar"
   ) +
   ggsignif::geom_signif(
@@ -723,7 +739,7 @@ ggplot(
 
 # Now you {.inverse}
 
-[Task 1 (45) min)]{.highlight-blue}<br>
+[Task 1 (45 min)]{.highlight-blue}<br>
 
 [Statistical tests]{.big-text}
 

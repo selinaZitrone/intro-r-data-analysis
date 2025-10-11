@@ -80,14 +80,13 @@ wilcox.test(adelie, gentoo)
 
 The Wilcoxon tests suggests that the flipper lengths differ between Adelie and Gentoo penguins.
 
-
 ### Visual comparison
 
 The boxplot supports the findings of the statistical tests. Notches do not overlap.
 
 ```{r, echo=TRUE}
 #| warning: false
-penguins |> 
+penguins |>
   ggplot(aes(x = species, y = flipper_len)) +
   geom_boxplot(notch = TRUE)
 ```
@@ -98,7 +97,7 @@ Similarly the standard errors of the means do not overlap between the species.
 #| warning: false
 penguins |>
   ggplot(aes(x = species, y = flipper_len)) +
-  stat_summary() 
+  stat_summary()
 ```
 
 To add the significance levels of the tests performed, I used
@@ -113,7 +112,7 @@ For the boxplot:
 ```{r echo = TRUE}
 #| warning: false
 library(ggsignif)
-penguins |> 
+penguins_boxplot <- penguins |>
   ggplot(aes(x = species, y = flipper_len)) +
   geom_boxplot(notch = TRUE) +
   geom_signif(
@@ -133,13 +132,16 @@ penguins |>
     y_position = c(235, 240),
     map_signif_level = TRUE
   )
+
+# To print the plot, just type its name:
+penguins_boxplot
 ```
 
 For a plot with mean and errorbar:
 
 ```{r echo =TRUE}
 #| warning: false
-penguins |> 
+penguins |>
   ggplot(aes(x = species, y = flipper_len)) +
   stat_summary() +
   geom_signif(
@@ -164,3 +166,60 @@ penguins |>
   )
 ```
 
+You can also do a barplot with error bars. In this case, the error bars are barely
+visible, because the standard error of the mean is quite small compared to the mean.
+
+```{r echo = TRUE}
+#| warning: false
+ggplot(penguins, aes(x = species, y = flipper_len)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.2
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "bar",
+    fill = "grey70"
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Adelie")
+    ),
+    test = "t.test",
+    test.args = list(var.equal = TRUE),
+    map_signif_level = TRUE,
+    y_position = 205,
+    tip_length = 0.01
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("Chinstrap", "Gentoo"),
+      c("Gentoo", "Adelie")
+    ),
+    test = "wilcox.test",
+    y_position = c(221, 230),
+    map_signif_level = TRUE,
+    tip_length = 0.01
+  )
+```
+
+### For the fast ones
+
+Of course you can further improve the appearance of you plots. Here is an example
+of a simple, yet elegant version of the boxplot from above:
+
+```{r}
+#| warning: false
+penguins_boxplot +
+  labs(
+    y = "Flipper length (mm)"
+  ) +
+  theme_classic() +
+  theme(
+    text = element_text(size = 16),
+    axis.title.x = element_blank(),
+    panel.grid.major.y = element_line(color = "grey90")
+  )
+
+```
