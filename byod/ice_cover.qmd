@@ -64,10 +64,11 @@ Here are some questions you can try to answer using the datasets:
   - First, calculate the mean and standard deviation of the reference period and add them as a new column to the data (use `bind_cols` to combine the two tables). Then you can easily calculate the anomalies.
   - See below for an example plot
   
-#### 4. How does the temperature curve over one year change with time?
-  - Tip: Calculate mean monthly temperature and plot it over each year.
+#### 4. How does the annual temperature curve change with time?
+  - Tip: Calculate mean monthly temperature and plot it for each year.
   
-#### 5. Is there a correlations between ice cover duration and temperature?
+#### 5. Is there a correlation between ice cover duration and temperature?
+
   - Tip: This is a bit tricky because you need to combine the two datasets. 
   It makes sense to correlate temperature and ice duration in one winter season (fall season of the year + spring season of the next year) with the mean temperature in that winter.
   Since a winter spans two years, you need to consider how to calculate average temperature in one winter.
@@ -75,7 +76,7 @@ Here are some questions you can try to answer using the datasets:
   
 ## Useful functions
 
-- functions from the [`Lubridate` package](https://lubridate.tidyverse.org/): to work with dates (also part of the tidyverse):
+- functions from the [`lubridate` package](https://lubridate.tidyverse.org/): to work with dates (also part of the tidyverse):
   - `year()`: extract the year from a date
   - `month()`: extract the month from a date
 

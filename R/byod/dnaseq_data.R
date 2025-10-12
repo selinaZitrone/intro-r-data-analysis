@@ -16,17 +16,22 @@ library(tidyverse)
 # normalized_counts <- read_tsv("R/byod/2023_02_tips/dnaseq/limma-voom_normalised_counts")
 # write_csv(normalized_counts, "R/byod/2023_02_tips/dnaseq/normalized_counts.csv")
 
-
 # Start analysis ----------------------------------------------------------
 
-heatmap_genes <- read_csv("R/byod/2023_02_tips/dnaseq/heatmap_genes.csv")
-DE_results <- read_csv("R/byod/2023_02_tips/dnaseq/DE_results.csv")
+heatmap_genes <- read_tsv("data/byod/heatmap_genes")
+DE_results <- read_tsv("data/byod/limma-voom_luminalpregnant-luminallactate")
 DE_results <- janitor::clean_names(DE_results)
-normalized_counts <- read_csv("R/byod/2023_02_tips/dnaseq/normalized_counts.csv")
+normalized_counts <- read_tsv(
+  "data/byod/limma-voom_normalised_counts"
+)
 normalized_counts <- janitor::clean_names(normalized_counts)
 
 # combine tables
-genes <- left_join(DE_results, normalized_counts, by = c("entrezid", "symbol", "genename")) %>%
+genes <- left_join(
+  DE_results,
+  normalized_counts,
+  by = c("entrezid", "symbol", "genename")
+) %>%
   select(-entrezid, genename)
 
 # only significant genes
@@ -47,7 +52,11 @@ heat_top_20 <- top_20_genes %>%
   pivot_longer(starts_with("mcl"), names_to = "sample") %>%
   pivot_wider(names_from = symbol, values_from = value) %>%
   mutate(across(where(is.double), ~ scale(.) %>% as.vector())) %>% # normalize the data
-  pivot_longer(where(is.double), names_to = "gene", values_to = "expr_scaled") %>%
+  pivot_longer(
+    where(is.double),
+    names_to = "gene",
+    values_to = "expr_scaled"
+  ) %>%
   ggplot(aes(x = sample, y = gene, fill = expr_scaled)) +
   geom_tile(color = "lightgrey") +
   scale_fill_gradient2(low = "blue", high = "red", mid = "white") +
@@ -66,7 +75,11 @@ genes %>%
   select(symbol, sample, value) %>%
   pivot_wider(names_from = symbol, values_from = value) %>%
   mutate(across(where(is.double), ~ scale(.) %>% as.vector())) %>% # normalize the data
-  pivot_longer(where(is.double), names_to = "gene", values_to = "expr_scaled") %>%
+  pivot_longer(
+    where(is.double),
+    names_to = "gene",
+    values_to = "expr_scaled"
+  ) %>%
   ggplot(aes(x = gene, y = sample, fill = expr_scaled)) +
   geom_tile() +
   scale_fill_gradient2(low = "blue", high = "red", mid = "white") +
@@ -105,8 +118,10 @@ pcres <- top_20_genes %>%
   select(starts_with("mcl1")) %>%
   prcomp()
 
-factoextra::fviz_pca_ind(pcres,
-  col.ind = "cos2", geom = "point",
+factoextra::fviz_pca_ind(
+  pcres,
+  col.ind = "cos2",
+  geom = "point",
   gradient.cols = c("white", "#2E9FDF", "#FC4E07")
 )
 # Volcano plot ----------------------------------------------------------------
@@ -126,7 +141,9 @@ genes %>%
     )
   ) %>%
   ggplot(aes(
-    x = log_fc, y = p_log10, color = category
+    x = log_fc,
+    y = p_log10,
+    color = category
   )) +
   geom_point()
 
@@ -145,7 +162,9 @@ DE_results %>%
     )
   ) %>%
   ggplot(aes(
-    x = log_fc, y = p_log10, color = category,
+    x = log_fc,
+    y = p_log10,
+    color = category,
     label = ifelse(symbol %in% labels, symbol, "")
   )) +
   geom_point() +
@@ -168,7 +187,9 @@ volc <- DE_results %>%
     )
   ) %>%
   ggplot(aes(
-    x = log_fc, y = p_log10, color = category,
+    x = log_fc,
+    y = p_log10,
+    color = category,
     label = ifelse(symbol %in% labels, symbol, "")
   )) +
   geom_point(alpha = 0.3) +
