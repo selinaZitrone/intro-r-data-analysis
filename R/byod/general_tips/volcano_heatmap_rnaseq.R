@@ -12,42 +12,46 @@ library(tidyverse)
 # Prepare the data ------------------------------------------------------------
 
 # Load the airway dataset
-#  This dataset contains RNA-seq data from airway smooth muscle cells treated with dexamethasone.
+# This dataset contains raw counts per genes from airway smooth muscle cells treated with dexamethasone.
+# Normally, you would load your own count data here (can also be a matrix or data.frame)
 data(airway)
 airway
 ?airway # check what the dataset is about
 
 # Set up the DESeq2 object
+# design: how do the counts for each gene depend on the variables in colData
+# in this case cell type and treatment (dexamethasone or not)
 dds <- DESeqDataSet(airway, design = ~ cell + dex)
 
 # Run the differential expression analysis
+# to calculate log2 fold changes, p-values, and adjusted p-values
 dds <- DESeq(dds)
 
-# Extract normalized counts from the DESeq2 object
-dds <- estimateSizeFactors(dds)
+# Extract normalized counts from the DESeq2 object for later use
 normalized_counts <- counts(dds, normalized = TRUE)
 
-# Get the results
+# Extract the results of the differential expression analysis
 res <- results(dds, contrast = c("dex", "trt", "untrt"))
 
-# Convert to a tibble (genes are the rownames of the table so we convert them
+# Convert to a tibble for easier handling (genes are the rownames of the table so we convert them
 # explicitly to a column)
-res_tbl <- as.data.frame(res) |> as_tibble(rownames = "gene")
+normalized_counts <- as_tibble(normalized_counts, rownames = "gene")
+res <- as_tibble(res, rownames = "gene")
 
 # Heatmap --------------------------------------------------------------------
 
 # Lets do a heatmap of the top 20 differentially expressed genes
-top20_genes <- res_tbl |>
+top20_genes <- res |>
   filter(padj < 0.05) |>
   arrange(desc(abs(log2FoldChange))) |>
   head(20) |>
   pull(gene)
 
-# Extract normalized counts for the top 20 genes
-normalized_counts_top20 <- normalized_counts[top20_genes, ]
+# Look at the top 20 genes
+top20_genes
 
-# Convert to a tibble for easier handling
-normalized_counts_top20 <- as.data.frame(normalized_counts_top20) |> as_tibble(rownames = "gene")
+normalized_counts_top20 <- normalized_counts |>
+  filter(gene %in% top20_genes)
 
 # Example with ggplot ---------------------------------------------------------
 normalized_counts_top20 |>
@@ -57,7 +61,11 @@ normalized_counts_top20 |>
   # Now we need to manually scale the data to plot it
   mutate(across(where(is.double), ~ scale(.) |> as.vector())) |>
   # then we shape it back to a long format
-  pivot_longer(where(is.double), names_to = "gene", values_to = "expr_scaled") |>
+  pivot_longer(
+    where(is.double),
+    names_to = "gene",
+    values_to = "expr_scaled"
+  ) |>
   ggplot(aes(x = sample, y = gene, fill = expr_scaled)) +
   geom_tile(color = "lightgrey") +
   scale_fill_gradient2(low = "blue", high = "red", mid = "white") +
@@ -71,9 +79,10 @@ normalized_counts_top20 |>
 # install.packages("pheatmap")
 library(pheatmap)
 # pheatmap takes a matrix as input so we need to convert the tibble to a matrix
-top_20_genes_matrix <- normalized_counts_top20 %>%
+top_20_genes_matrix <- normalized_counts_top20 |>
   # select only the columns with the samples
-  select(starts_with("SRR")) %>%
+  select(starts_with("SRR")) |>
+  # convert to matrix
   as.matrix()
 
 # add rownames to the matrix with the gene names
@@ -87,7 +96,7 @@ heat2 <- top_20_genes_matrix %>%
   )
 
 # or with more options (example from Shaoyi from previous course)
-top_20_genes_matrix %>%
+top_20_genes_matrix |>
   pheatmap(
     scale = "row",
     border = "#8B0A50",
@@ -124,7 +133,7 @@ top_20_genes_matrix %>%
 # Down: p-value < 0.01 & logFC < 0
 
 # Basic volcano plot ----------------------------------------------------------
-res_tbl |>
+res |>
   # create a column for the log10 p-value
   mutate(p_log10 = -log10(pvalue)) |>
   # define categories of up- and downregulated genes based on p-value and log2FoldChange
@@ -136,7 +145,9 @@ res_tbl |>
     )
   ) |>
   ggplot(aes(
-    x = log2FoldChange, y = p_log10, color = category
+    x = log2FoldChange,
+    y = p_log10,
+    color = category
   )) +
   geom_point()
 
@@ -146,14 +157,14 @@ res_tbl |>
 library(ggrepel)
 
 # Add labels for some top differentially expressed genes
-label_genes <- res_tbl |>
+label_genes <- res |>
   filter(padj < 0.05) |>
   arrange(desc(abs(log2FoldChange))) |>
   head(10) |>
   pull(gene)
 
 # extract the name of the gene
-res_tbl |>
+res |>
   # create a column for the log10 p-value
   mutate(p_log10 = -log10(pvalue)) |>
   # define categories of up- and downregulated genes based on p-value and log2FoldChange
@@ -165,10 +176,12 @@ res_tbl |>
     )
   ) |>
   ggplot(aes(
-    x = log2FoldChange, y = p_log10, color = category,
+    x = log2FoldChange,
+    y = p_log10,
+    color = category,
     label = ifelse(gene %in% label_genes, gene, "")
   )) +
-  geom_point() +
+  geom_point(alpha = 0.4) +
   geom_label_repel(
     max.overlaps = Inf,
     max.iter = Inf,
@@ -213,7 +226,8 @@ pca_res_filtered <- prcomp(vsd_filtered_for_pca, scale. = TRUE)
 
 # Visualize the PCA using factoextra using different options from the
 # factoextra package
-fviz_pca_ind(pca_res_filtered,
+fviz_pca_ind(
+  pca_res_filtered,
   geom.ind = "point", # Show points only (not "text")
   col.ind = colData(dds)$dex, # Color by treatment
   palette = "jco", # Color palette
@@ -223,20 +237,11 @@ fviz_pca_ind(pca_res_filtered,
 )
 
 # Scree plot: Shows the percentage of variance explained by each principal component
-fviz_eig(pca_res_filtered,
-         addlabels = TRUE,
-         ylim = c(0, 50),
-         title = "Scree Plot of PCA"
-)
-
-# Biplot: Shows both individuals and variables on the PCA plot
-fviz_pca_biplot(pca_res_filtered,
-  geom.ind = "point", # Show points only for individuals
-  col.ind = colData(dds)$dex, # Color by treatment
-  palette = "jco",
-  addEllipses = TRUE, # Concentration ellipses
-  legend.title = "Treatment",
-  title = "PCA Biplot of Airway Data"
+fviz_eig(
+  pca_res_filtered,
+  addlabels = TRUE,
+  ylim = c(0, 50),
+  title = "Scree Plot of PCA"
 )
 
 # Save the PCA plot as a PNG file
@@ -250,30 +255,57 @@ library(clusterProfiler)
 # This package provides mappings between different gene identifiers for human genes.
 library(org.Hs.eg.db)
 
-# Extract the top differentially expressed genes
-# Here, we use the top 100 genes for demonstration
-sig_genes <- res_tbl %>%
-  filter(padj < 0.05) %>%
-  arrange(padj) %>%
-  head(100) %>%
+# Define universe = all tested genes with non-NA padj (mapped to Entrez)
+universe_map <- bitr(
+  res$gene,
+  fromType = "ENSEMBL",
+  toType = "ENTREZID",
+  OrgDb = org.Hs.eg.db
+)
+
+universe_entrez <- unique(universe_map$ENTREZID)
+
+# Define significant gene set
+sig_genes <- res |>
+  filter(padj < 0.05) |>
   pull(gene)
 
 # Convert gene symbols to Entrez IDs
-entrez_ids <- bitr(sig_genes, fromType = "ENSEMBL", toType = "ENTREZID", OrgDb = org.Hs.eg.db)
+significant_map <- bitr(
+  sig_genes,
+  fromType = "ENSEMBL",
+  toType = "ENTREZID",
+  OrgDb = org.Hs.eg.db
+)
+
+sig_entrez <- unique(significant_map$ENTREZID)
 
 # Perform GO enrichment analysis
 #identify biological processes that are overrepresented in the list of differentially expressed genes.
-go_enrichment <- enrichGO(gene = entrez_ids$ENTREZID,
-                          OrgDb = org.Hs.eg.db,
-                          ont = "BP", # Biological Process
-                          pAdjustMethod = "BH",
-                          pvalueCutoff = 0.05,
-                          qvalueCutoff = 0.2,
-                          readable = TRUE)
+# takes a little while to run
+go_enrichment <- enrichGO(
+  gene = sig_entrez,
+  universe = universe_entrez,
+  OrgDb = org.Hs.eg.db,
+  keyType = "ENTREZID",
+  ont = "BP", # Biological Process
+  pAdjustMethod = "BH",
+  pvalueCutoff = 0.05,
+  qvalueCutoff = 0.2,
+  readable = TRUE
+)
 
 # Visualize the GO enrichment results with a bar plot
 # it's a ggplot so you can add more layers to it if you want
-barplot_go <- barplot(go_enrichment, showCategory = 10, title = "GO Enrichment Analysis: Biological Process")
+barplot_go <- barplot(
+  go_enrichment,
+  showCategory = 10,
+  title = "GO Enrichment Analysis: Biological Process"
+)
 
 # Visualize the GO enrichment results with a dot plot
-dotplot_go <- dotplot(go_enrichment, showCategory = 10, title = "GO Enrichment Analysis: Biological Process")
+dotplot_go <- dotplot(
+  go_enrichment,
+  showCategory = 10,
+  title = "GO Enrichment Analysis: Biological Process"
+)
