@@ -1243,14 +1243,14 @@
     "href": "byod/dnaseq.html",
     "title": "RNA-seq Data Analysis",
     "section": "",
-    "text": "This exercise uses RNA-seq data from FU et al. 2015, Nature Cell Biology. The data compares gene expression in luminal cells of pregnant versus lactating mice. You can download the data from this Zenodo repository and you can have a look at this Galaxy tutorial for some ideas on how to get started.\nThe dataset consists of three files (no file extension, but tab separated):\n\nheatmap_genes A list of interesting genes to analyze (used in Figure 6b of the paper)\nlimma-voom_luminalpregnant-luminallactate: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes\nlimma-voom_normalised_counts: Normalized counts for genes across different samples\n\nTo simplify the analysis you can consider the following:\n\nRead the files using read_tsv()\nClean column names with janitor::clean_names() to make them easier to work with\nCombining relevant data frames using left_join() (limma-voom_luminalpregnant-luminallactate and limma-voom_normalised_counts share a common column)\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (this tutorial defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)\n\nIt is a bit tricky to read in the data correctly, so if you need a hint, you can unfold the code below\n\n\nExpand to see how to read the data\n# Read all the files and clean the column names\nheatmap_genes &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/heatmap_genes\")\nDE_results &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/limma-voom_luminalpregnant-luminallactate\")\nDE_results &lt;- janitor::clean_names(DE_results)\nnormalized_counts &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/limma-voom_normalised_counts\")\nnormalized_counts &lt;- janitor::clean_names(normalized_counts)\n\n# combine tables\ngenes &lt;- left_join(DE_results, normalized_counts,\n  by = c(\"entrezid\", \"symbol\", \"genename\")\n) |&gt;\n  select(-entrezid, genename)"
+    "text": "This exercise uses RNA-seq data from FU et al. 2015, Nature Cell Biology. The data compares gene expression in luminal cells of pregnant versus lactating mice. You can download the data from this Zenodo repository and you can have a look at this Galaxy tutorial for some ideas on how to get started.\nThe dataset consists of three files (no file extension, but tab separated):\n\nheatmap_genes A list of interesting genes to analyze (used in Figure 6b of the paper)\nlimma-voom_luminalpregnant-luminallactate: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes\nlimma-voom_normalised_counts: Normalized counts for genes across different samples\n\nTo simplify the analysis you can consider the following:\n\nRead the files using read_tsv()\nClean column names with janitor::clean_names() to make them easier to work with\nCombining relevant data frames using left_join() (limma-voom_luminalpregnant-luminallactate and limma-voom_normalised_counts share a common column)\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (this tutorial defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)\n\nIt is a bit tricky to read in the data correctly, so if you need a hint, you can unfold the code below\n\n\nExpand to see how to read the data\n# Read all the files and clean the column names\nheatmap_genes &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/heatmap_genes\")\nDE_results &lt;- read_tsv(\n  \"R/byod/solutions_for_my_datasets/data/limma-voom_luminalpregnant-luminallactate\"\n)\nDE_results &lt;- janitor::clean_names(DE_results)\nnormalized_counts &lt;- read_tsv(\n  \"R/byod/solutions_for_my_datasets/data/limma-voom_normalised_counts\"\n)\nnormalized_counts &lt;- janitor::clean_names(normalized_counts)\n\n# combine tables\ngenes &lt;- left_join(\n  DE_results,\n  normalized_counts,\n  by = c(\"entrezid\", \"symbol\", \"genename\")\n) |&gt;\n  select(-entrezid, genename)"
   },
   {
     "objectID": "byod/dnaseq.html#the-data",
     "href": "byod/dnaseq.html#the-data",
     "title": "RNA-seq Data Analysis",
     "section": "",
-    "text": "This exercise uses RNA-seq data from FU et al. 2015, Nature Cell Biology. The data compares gene expression in luminal cells of pregnant versus lactating mice. You can download the data from this Zenodo repository and you can have a look at this Galaxy tutorial for some ideas on how to get started.\nThe dataset consists of three files (no file extension, but tab separated):\n\nheatmap_genes A list of interesting genes to analyze (used in Figure 6b of the paper)\nlimma-voom_luminalpregnant-luminallactate: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes\nlimma-voom_normalised_counts: Normalized counts for genes across different samples\n\nTo simplify the analysis you can consider the following:\n\nRead the files using read_tsv()\nClean column names with janitor::clean_names() to make them easier to work with\nCombining relevant data frames using left_join() (limma-voom_luminalpregnant-luminallactate and limma-voom_normalised_counts share a common column)\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (this tutorial defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)\n\nIt is a bit tricky to read in the data correctly, so if you need a hint, you can unfold the code below\n\n\nExpand to see how to read the data\n# Read all the files and clean the column names\nheatmap_genes &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/heatmap_genes\")\nDE_results &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/limma-voom_luminalpregnant-luminallactate\")\nDE_results &lt;- janitor::clean_names(DE_results)\nnormalized_counts &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/limma-voom_normalised_counts\")\nnormalized_counts &lt;- janitor::clean_names(normalized_counts)\n\n# combine tables\ngenes &lt;- left_join(DE_results, normalized_counts,\n  by = c(\"entrezid\", \"symbol\", \"genename\")\n) |&gt;\n  select(-entrezid, genename)"
+    "text": "This exercise uses RNA-seq data from FU et al. 2015, Nature Cell Biology. The data compares gene expression in luminal cells of pregnant versus lactating mice. You can download the data from this Zenodo repository and you can have a look at this Galaxy tutorial for some ideas on how to get started.\nThe dataset consists of three files (no file extension, but tab separated):\n\nheatmap_genes A list of interesting genes to analyze (used in Figure 6b of the paper)\nlimma-voom_luminalpregnant-luminallactate: Differential expression results, including logFC, AveExpr, t-statistic, and p-value for all genes\nlimma-voom_normalised_counts: Normalized counts for genes across different samples\n\nTo simplify the analysis you can consider the following:\n\nRead the files using read_tsv()\nClean column names with janitor::clean_names() to make them easier to work with\nCombining relevant data frames using left_join() (limma-voom_luminalpregnant-luminallactate and limma-voom_normalised_counts share a common column)\nUse select to remove columns you don’t need for analysis to get a better overview\nFilter only significant genes (this tutorial defines them as p_value &lt; 0.01 & abs(logFC) &gt; 0.58)\n\nIt is a bit tricky to read in the data correctly, so if you need a hint, you can unfold the code below\n\n\nExpand to see how to read the data\n# Read all the files and clean the column names\nheatmap_genes &lt;- read_tsv(\"R/byod/solutions_for_my_datasets/data/heatmap_genes\")\nDE_results &lt;- read_tsv(\n  \"R/byod/solutions_for_my_datasets/data/limma-voom_luminalpregnant-luminallactate\"\n)\nDE_results &lt;- janitor::clean_names(DE_results)\nnormalized_counts &lt;- read_tsv(\n  \"R/byod/solutions_for_my_datasets/data/limma-voom_normalised_counts\"\n)\nnormalized_counts &lt;- janitor::clean_names(normalized_counts)\n\n# combine tables\ngenes &lt;- left_join(\n  DE_results,\n  normalized_counts,\n  by = c(\"entrezid\", \"symbol\", \"genename\")\n) |&gt;\n  select(-entrezid, genename)"
   },
   {
     "objectID": "byod/dnaseq.html#questions",
@@ -1271,7 +1271,7 @@
     "href": "byod/dnaseq.html#example-analysis",
     "title": "RNA-seq Data Analysis",
     "section": "4 Example analysis",
-    "text": "4 Example analysis\n\n\n\n\n\n\n\n\n\nError: object 'FALS' not found"
+    "text": "4 Example analysis\n\n\n\n\n\n\n\n\n\n Download solution script"
   },
   {
     "objectID": "byod/ice_cover.html",
@@ -1292,14 +1292,14 @@
     "href": "byod/ice_cover.html#questions-to-explore",
     "title": "Climate Change Effects on Ice Cover and Temperature in North American Lakes",
     "section": "2 Questions to Explore",
-    "text": "2 Questions to Explore\nHere are some questions you can try to answer using the datasets:\n\n1. How did the ice cover duration change over the years? Is there a difference between the lakes?\n\n\n2. How has the average air temperature changed over the years? Can you identify any trends or patterns?\n\nTip: Calculate average yearly temperature first.\n\n\n\n3. Are there any significant temperature anomalies in the dataset? If so, when did they occur?\n\nTip: You can define an anomaly relative to a reference period (1870-1900). The standardized anomalies are calculated like this: anomaly_std = (temperature - mean(reference period)) / sd(reference period)\nFirst, calculate the mean and standard deviation of the reference period and add them as a new column to the data (use bind_cols to combine the two tables). Then you can easily calculate the anomalies.\nSee below for an example plot\n\n\n\n4. How does the temperature curve over one year change with time?\n\nTip: Calculate mean monthly temperature and plot it over each year.\n\n\n\n5. Is there a correlations between ice cover duration and temperature?\n\nTip: This is a bit tricky because you need to combine the two datasets. It makes sense to correlate temperature and ice duration in one winter season (fall season of the year + spring season of the next year) with the mean temperature in that winter. Since a winter spans two years, you need to consider how to calculate average temperature in one winter. First, filter only the winter months (November to April) and change the year of the spring months to the previous year. Then calculate the mean temperature for each winter season."
+    "text": "2 Questions to Explore\nHere are some questions you can try to answer using the datasets:\n\n1. How did the ice cover duration change over the years? Is there a difference between the lakes?\n\n\n2. How has the average air temperature changed over the years? Can you identify any trends or patterns?\n\nTip: Calculate average yearly temperature first.\n\n\n\n3. Are there any significant temperature anomalies in the dataset? If so, when did they occur?\n\nTip: You can define an anomaly relative to a reference period (1870-1900). The standardized anomalies are calculated like this: anomaly_std = (temperature - mean(reference period)) / sd(reference period)\nFirst, calculate the mean and standard deviation of the reference period and add them as a new column to the data (use bind_cols to combine the two tables). Then you can easily calculate the anomalies.\nSee below for an example plot\n\n\n\n4. How does the annual temperature curve change with time?\n\nTip: Calculate mean monthly temperature and plot it for each year.\n\n\n\n5. Is there a correlation between ice cover duration and temperature?\n\nTip: This is a bit tricky because you need to combine the two datasets. It makes sense to correlate temperature and ice duration in one winter season (fall season of the year + spring season of the next year) with the mean temperature in that winter. Since a winter spans two years, you need to consider how to calculate average temperature in one winter. First, filter only the winter months (November to April) and change the year of the spring months to the previous year. Then calculate the mean temperature for each winter season."
   },
   {
     "objectID": "byod/ice_cover.html#useful-functions",
     "href": "byod/ice_cover.html#useful-functions",
     "title": "Climate Change Effects on Ice Cover and Temperature in North American Lakes",
     "section": "3 Useful functions",
-    "text": "3 Useful functions\n\nfunctions from the Lubridate package: to work with dates (also part of the tidyverse):\n\nyear(): extract the year from a date\nmonth(): extract the month from a date\n\ndplyr to summarize data and to combine tables:\n\nleft_join(): to combine two tables by a common column\nbind_cols(): to combine two tables by columns (just glue them together)"
+    "text": "3 Useful functions\n\nfunctions from the lubridate package: to work with dates (also part of the tidyverse):\n\nyear(): extract the year from a date\nmonth(): extract the month from a date\n\ndplyr to summarize data and to combine tables:\n\nleft_join(): to combine two tables by a common column\nbind_cols(): to combine two tables by columns (just glue them together)"
   },
   {
     "objectID": "byod/ice_cover.html#example-analysis",
@@ -1533,13 +1533,6 @@
     "text": "1.2 Compare the flipper length of penguins using statistical tests\nQuestion: Does the mean flipper length differ between the 3 penguin species?\nDo separate comparisons for\n\nGentoo vs. Adelie\nGentoo vs. Chinstrap\nAdelie vs. Chinstrap\n\nBefore you start, create a subset of each species as a vector.\nFor this, you can use the $ operator:\n\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\n\nFollow the decision tree for statistical tests:\n\n\n\n\n\n\n\n\n\nAfter you have the test results, visualize the differences in flipper length between species.\nYou can e.g. choose one of the following plots:\n\nBoxplot with notches\nMean and standard error of the mean (as mean with errorbar, as barplot, …)\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results\n\n1.2.1 For the fast ones\n\nUse a different visualization method than before to show the differences in flipper length between species\nChange the appearance of the plot (colors, themes, …) from the task"
   },
   {
-    "objectID": "sessions/10_tests.html#extra",
-    "href": "sessions/10_tests.html#extra",
-    "title": "Statistical tests",
-    "section": "1.3 Extra",
-    "text": "1.3 Extra\nCreate a plot to show the results of your tests. Choose one of the following:\n\nCreate a boxplot with notches to visually compare differences in flipper length between species\nMake a plot showing the mean and standard error of the mean as pointrange or point with errorbars\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
-  },
-  {
     "objectID": "sessions/12_AI-tools.html",
     "href": "sessions/12_AI-tools.html",
     "title": "AI tools for R programming",
@@ -1551,7 +1544,7 @@
     "href": "sessions/12_AI-tools.html#links",
     "title": "AI tools for R programming",
     "section": "1 Links",
-    "text": "1 Links\n\n1.1 Browser-based AI-Tools\n\nJulius AI: Browser-based tool where you can ask questions about your data. You can upload a dataset and ask questions about it. The AI will then give you answers and visualizations. You can also download the corresponding R script.\n\nWorks great but costs ~20€ per month, but you can get a 50% discount if you are a student or academic\n\n\n\n\n1.2 Integrated AI tools\nGitHub Copilot is one of the most widespread integrated tool. It gives you inline code suggestions and Chat options. Great to code faster, write better code, debug, etc.\nIf you are using RStudio, you can use it for inline code suggestions. In Positron or VS Code you can also use the chat option. Here are all the links that you need to get started:\n\nStep-by-step guide on how to get Copilot for free with an educational account.\nGitHub Copilot in RStudio: Guide on how to set up and use RStudio with GitHub Copilot\nAI in Positron: Guide on how to set up and use the Positron Assistant.\n\nPositron can be set up to work with GitHub Copilot (inline suggestions and chat) as well as with other LLMs (e.g. GPT-4, Claude, etc.).\n\nGitHub Copilot Docs: Useful information and guides on how to use Copilot\nPrivacy FAQ of GitHub Copilot\nPrompt engineering with GH Copilot: Some tips to get better results with GitHub Copilot"
+    "text": "1 Links\n\n1.1 Browser-based AI-Tools\n\nJulius AI: Browser-based tool where you can ask questions about your data. You can upload a dataset and ask questions about it. The AI will then give you answers and visualizations. You can also download the corresponding R script.\n\nWorks great but costs ~20€ per month, but you can get a 50% discount if you are a student or academic\n\nThe usual ones: ChatGPT, Claude, Gemini, …\n\n\n\n1.2 Integrated AI tools\nGitHub Copilot is one of the most widespread integrated tool. It gives you inline code suggestions and Chat options. Great to code faster, write better code, debug, etc.\nIf you are using RStudio, you can use it for inline code suggestions. In Positron or VS Code you can also use the chat option. Here are all the links that you need to get started:\n\nStep-by-step guide on how to get Copilot for free with an educational account.\nGitHub Copilot in RStudio: Guide on how to set up and use RStudio with GitHub Copilot\nAI in Positron: Guide on how to set up and use the Positron Assistant.\n\nPositron can be set up to work with GitHub Copilot (inline suggestions and chat) as well as with other LLMs (e.g. GPT-4, Claude, etc.).\n\nGitHub Copilot Docs: Useful information and guides on how to use Copilot\nPrivacy FAQ of GitHub Copilot\nPrompt engineering with GH Copilot: Some tips to get better results with GitHub Copilot"
   },
   {
     "objectID": "sessions/slides/AI-tools.html#motivation",
@@ -1568,13 +1561,6 @@
     "text": "Overview of tools\n\nBrowser-based chat bots (ChatGPT, Claude, …)\n\nGeneral-purpose\n\n\n\n\nData-analysis tools (Julius AI, RTutor, …)\n\nUpload data and ask questions about it\nCan also execute code\nChat with your data\n\n\n\n\n\nIntegrated AI tools (GitHub Copilot, …)\n\nIntegrated directly in programming environment\nReal-time suggestions, chat, debugging, …\n\n\n\n\nFind the tools that best fit your workflow!"
   },
   {
-    "objectID": "sessions/slides/AI-tools.html#r-tutor",
-    "href": "sessions/slides/AI-tools.html#r-tutor",
-    "title": "AI Tools for R",
-    "section": "R Tutor",
-    "text": "R Tutor\n\n\n\nhttps://rtutor.ai/\nFree browser tool\nUpload data and ask questions about it\nUse the demo data"
-  },
-  {
     "objectID": "sessions/slides/AI-tools.html#julius-ai",
     "href": "sessions/slides/AI-tools.html#julius-ai",
     "title": "AI Tools for R",
@@ -1589,18 +1575,11 @@
     "text": "Github Copilot\n\nhttps://github.com/features/copilot\nBased on models specifically trained on source code\nBasic idea: Integrate directly into your IDE\n\nReal-time code suggestions (inline as you type)\nChat with the AI\n\nWorks best for well-represented languages (Python, JS, …), but R is also pretty good"
   },
   {
-    "objectID": "sessions/slides/AI-tools.html#how-to-get-github-copilot",
-    "href": "sessions/slides/AI-tools.html#how-to-get-github-copilot",
+    "objectID": "sessions/slides/AI-tools.html#inline-code-suggestions",
+    "href": "sessions/slides/AI-tools.html#inline-code-suggestions",
     "title": "AI Tools for R",
-    "section": "How to get GitHub Copilot",
-    "text": "How to get GitHub Copilot\nSee this website for step-by-step guide and more information.\nIt’s really easy, but you need:\n\nGitHub Account\nActive GH Copilot subscription (10$ per month)\n\nGet it for free as an academic with an educational account\n\nIDE that supports Copilot"
-  },
-  {
-    "objectID": "sessions/slides/AI-tools.html#gh-copilot-inline-code-suggestions",
-    "href": "sessions/slides/AI-tools.html#gh-copilot-inline-code-suggestions",
-    "title": "AI Tools for R",
-    "section": "GH Copilot: Inline code suggestions",
-    "text": "GH Copilot: Inline code suggestions\n\n\n\nCopilot tries to predict what you want to do next\nSuggestions are based on the context\n\nPrevious code\nComments\nVariable and function names\n…"
+    "section": "Inline code suggestions",
+    "text": "Inline code suggestions\nAvailable for RStudio and Positron\n\n\n\nCopilot tries to predict what you want to do next\nSuggestions are based on the context\n\nPrevious code\nComments\nVariable and function names\n…"
   },
   {
     "objectID": "sessions/slides/AI-tools.html#get-better-suggestions",
@@ -1610,25 +1589,32 @@
     "text": "Get better suggestions\n\nProvide context\n\nOpen other files\nAdd top level comments explaining the purpose of the script\nName variables and functions properly\nCopy-paste sample code and delete it later\n\nBe consistent\n\n“Garbage in, garbage out”\nHave a nice and consistent coding style\n\n\n\nNice side effect of using Copilot: More good-practice coding"
   },
   {
-    "objectID": "sessions/slides/AI-tools.html#chat-with-gh-copilot-in-r-studio",
-    "href": "sessions/slides/AI-tools.html#chat-with-gh-copilot-in-r-studio",
+    "objectID": "sessions/slides/AI-tools.html#chat-with-gh-copilot-about-your",
+    "href": "sessions/slides/AI-tools.html#chat-with-gh-copilot-about-your",
     "title": "AI Tools for R",
-    "section": "Chat with GH copilot in R Studio",
-    "text": "Chat with GH copilot in R Studio\n\nAvailable through the https://ellmer.tidyverse.org/ package\nChat with LLMs in the sidebar\nNeeds an API and some setting up"
+    "section": "Chat with GH Copilot about your",
+    "text": "Chat with GH Copilot about your\nOnly available in Positron or VS Code\n\nOpen a chat window\nThe AI can access you files and projects\nThe AI can make taylored suggestions based on your project\nGreat for\n\nDebugging\nGetting explanations\nGetting good-practice suggestions\n…"
   },
   {
-    "objectID": "sessions/slides/AI-tools.html#concerns-to-consider",
-    "href": "sessions/slides/AI-tools.html#concerns-to-consider",
+    "objectID": "sessions/slides/AI-tools.html#how-to-get-github-copilot",
+    "href": "sessions/slides/AI-tools.html#how-to-get-github-copilot",
     "title": "AI Tools for R",
-    "section": "Concerns to consider",
-    "text": "Concerns to consider\n\nPrivacy\n\nChose whether your prompts and suggestions will be used by Github (Github -&gt; Seetings -&gt; Copilot -&gt; Policies)\nCheck privacy guidelines before you upload data\n\nPlagiarism\n\nBlock suggestions matching public code (Github -&gt; Seetings -&gt; Copilot -&gt; Policies)\n\nEthical concerns\n\nFor-profit tool trained on open-source\n\nEnvironmental concerns\n\nWater and energy usage"
+    "section": "How to get GitHub Copilot",
+    "text": "How to get GitHub Copilot\nSee this website for step-by-step guide and more information.\nIt’s really easy, but you need:\n\nGitHub Account\nActive GH Copilot subscription (10$ per month)\n\nGet it for free as an academic with an educational account\n\nIDE that supports Copilot"
   },
   {
-    "objectID": "sessions/slides/AI-tools.html#usage-guidelines",
-    "href": "sessions/slides/AI-tools.html#usage-guidelines",
+    "objectID": "sessions/slides/AI-tools.html#things-to-consider-i",
+    "href": "sessions/slides/AI-tools.html#things-to-consider-i",
     "title": "AI Tools for R",
-    "section": "Usage guidelines",
-    "text": "Usage guidelines\n\nNo definite guidelines, but see examples listed here\nResponsibility\n\nYou are responsible for your scientific output\nStay critical, double-check\n\nTransparency\n\nMake clear for which tasks you used which AI\n\nKnow relevant guidelines\n\nJournals\nYour university\n\nStill understand what is happening!"
+    "section": "Things to consider I",
+    "text": "Things to consider I\n\nPrivacy\n\nCheck privacy guidelines before you use tools (e.g. Github -&gt; Seetings -&gt; Copilot -&gt; Policies)\n\nPlagiarism\n\nBlock suggestions matching public code (Github -&gt; Seetings -&gt; Copilot -&gt; Policies)"
+  },
+  {
+    "objectID": "sessions/slides/AI-tools.html#things-to-consider-ii",
+    "href": "sessions/slides/AI-tools.html#things-to-consider-ii",
+    "title": "AI Tools for R",
+    "section": "Things to consider II",
+    "text": "Things to consider II\n\nResponsibility\n\nYou are responsible for your scientific output\nStay critical, double-check\n\nTransparency\n\nMake clear for which tasks you used which AI\n\nKnow relevant guidelines\n\nJournals\nYour university\n\nStill understand what is happening!"
   },
   {
     "objectID": "sessions/slides/common-errors.html#debugging",
@@ -2910,54 +2896,5 @@
     "title": "",
     "section": "2 Compare the flipper length of penguins using statistical tests",
     "text": "2 Compare the flipper length of penguins using statistical tests\nQuestion: Does the mean flipper length differ between the 3 penguin species?\nDo separate comparisons for\n\nGentoo vs. Adelie\nGentoo vs. Chinstrap\nAdelie vs. Chinstrap\n\nBefore you start, create a subset of each species as a vector.\nFor this, you can use the $ operator:\n\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\n\nFollow the decision tree for statistical tests:\n\n\n\n\n\n\n\n\n\nAfter you have the test results, visualize the differences in flipper length between species.\nYou can e.g. choose one of the following plots:\n\nBoxplot with notches\nMean and standard error of the mean (as mean with errorbar, as barplot, …)\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results\n\n2.1 For the fast ones\n\nUse a different visualization method than before to show the differences in flipper length between species\nChange the appearance of the plot (colors, themes, …) from the task"
-  },
-  {
-    "objectID": "sessions/tasks/tests.html#extra",
-    "href": "sessions/tasks/tests.html#extra",
-    "title": "",
-    "section": "3 Extra",
-    "text": "3 Extra\nCreate a plot to show the results of your tests. Choose one of the following:\n\nCreate a boxplot with notches to visually compare differences in flipper length between species\nMake a plot showing the mean and standard error of the mean as pointrange or point with errorbars\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
-  },
-  {
-    "objectID": "sessions/slides/AI-tools.html#inline-code-suggestions",
-    "href": "sessions/slides/AI-tools.html#inline-code-suggestions",
-    "title": "AI Tools for R",
-    "section": "Inline code suggestions",
-    "text": "Inline code suggestions\nAvailable for RStudio and Positron\n\n\n\nCopilot tries to predict what you want to do next\nSuggestions are based on the context\n\nPrevious code\nComments\nVariable and function names\n…"
-  },
-  {
-    "objectID": "sessions/slides/AI-tools.html#chat-with-gh-copilot-about-your",
-    "href": "sessions/slides/AI-tools.html#chat-with-gh-copilot-about-your",
-    "title": "AI Tools for R",
-    "section": "Chat with GH Copilot about your",
-    "text": "Chat with GH Copilot about your\nOnly available in Positron or VS Code\n\nOpen a chat window\nThe AI can access you files and projects\nThe AI can make taylored suggestions based on your project\nGreat for\n\nDebugging\nGetting explanations\nGetting good-practice suggestions\n…"
-  },
-  {
-    "objectID": "sessions/slides/AI-tools.html#things-to-consider",
-    "href": "sessions/slides/AI-tools.html#things-to-consider",
-    "title": "AI Tools for R",
-    "section": "Things to consider",
-    "text": "Things to consider\n\nPrivacy\n\nCheck privacy guidelines before you use tools (e.g. Github -&gt; Seetings -&gt; Copilot -&gt; Policies)\n\nPlagiarism\n\nBlock suggestions matching public code (Github -&gt; Seetings -&gt; Copilot -&gt; Policies)\n\nResponsibility\n\nYou are responsible for your scientific output\nStay critical, double-check\n\nTransparency\n\nMake clear for which tasks you used which AI\n\nKnow relevant guidelines\n\nJournals\nYour university\n\nStill understand what is happening!"
-  },
-  {
-    "objectID": "sessions/slides/AI-tools.html",
-    "href": "sessions/slides/AI-tools.html",
-    "title": "AI Tools for R",
-    "section": "",
-    "text": "AI tools assist programmers with\n\nCoding\nDebugging\nLearning\n…\n\nHigher productivity and efficiency\nMore motivation\nBut careful: You still need to understand what’s going on!"
-  },
-  {
-    "objectID": "sessions/slides/AI-tools.html#things-to-consider-i",
-    "href": "sessions/slides/AI-tools.html#things-to-consider-i",
-    "title": "AI Tools for R",
-    "section": "Things to consider I",
-    "text": "Things to consider I\n\nPrivacy\n\nCheck privacy guidelines before you use tools (e.g. Github -&gt; Seetings -&gt; Copilot -&gt; Policies)\n\nPlagiarism\n\nBlock suggestions matching public code (Github -&gt; Seetings -&gt; Copilot -&gt; Policies)"
-  },
-  {
-    "objectID": "sessions/slides/AI-tools.html#things-to-consider-ii",
-    "href": "sessions/slides/AI-tools.html#things-to-consider-ii",
-    "title": "AI Tools for R",
-    "section": "Things to consider II",
-    "text": "Things to consider II\n\nResponsibility\n\nYou are responsible for your scientific output\nStay critical, double-check\n\nTransparency\n\nMake clear for which tasks you used which AI\n\nKnow relevant guidelines\n\nJournals\nYour university\n\nStill understand what is happening!"
   }
 ]
