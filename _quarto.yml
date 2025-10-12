@@ -77,9 +77,9 @@ website:
       - text: "Downloads"
         menu:
           - text: "R Script Day 1"
-            #href: R/Tasks/Day1.R
+            href: R/Tasks/Day1.R
           - text: "R Script Day 2"
-            #href: R/Tasks/Day2.R
+            href: R/Tasks/Day2.R
           - text: "R Script Day 3"
             #href: R/Tasks/Day3.R
       - text: "BYOD datasets"
@@ -92,16 +92,18 @@ website:
             href: byod/olympics.qmd
           - text: "Wine quality"
             href: byod/wine.qmd
-      - text: "BYOD example scripts"
+      - text: "Example scripts"
         menu:
           - text: "RNAseq volcano, heatmap, PCA"
             href: R/byod/general_tips/volcano_heatmap_rnaseq.R
-          - text: "Read and combine tables"
+          - text: "Read and combine multiple tables"
             href: R/byod/general_tips/read_and_combine_tables.R
           - text: "Correlation plots"
             href: R/byod/general_tips/correlation_plots.R
-          - text: "Perform PCA"
+          - text: "PCA"
             href: R/byod/general_tips/penguins_pca.R
+          - text: "k-means clustering"
+            href: R/byod/general_tips/kmeans.R
       - icon: github
         menu:
           - text: Source Code

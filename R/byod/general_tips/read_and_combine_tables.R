@@ -1,12 +1,12 @@
 library(tidyverse)
 
-# where you see ADJUST in a commen,t you have to adjust the code to your own
+# where you see ADJUST in a comment you have to adjust the code to your own
 # project setup (paths and filenames)
 
 # Step 1: List all files that you want to read in
 file_list <- list.files(
   path = "R/byod/2024_03_tips/data", # ADJUST: list all files in the data folder
-  pattern = "dummy", # ADUST: only files with "dummy" in the name
+  pattern = "dummy", # ADJUST: only files with "dummy" in the name
   full.names = TRUE # return the full path
 )
 
