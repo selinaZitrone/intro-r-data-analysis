@@ -5,8 +5,8 @@ library(tidyverse)
 
 # Step 1: List all files that you want to read in
 file_list <- list.files(
-  path = "R/byod/2024_03_tips/data", # ADJUST: list all files in the data folder
-  pattern = "dummy", # ADJUST: only files with "dummy" in the name
+  path = "data/dummy", # ADJUST: list all files in the data folder
+  pattern = "my_data", # ADJUST: only files with "dummy" in the name
   full.names = TRUE # return the full path
 )
 
