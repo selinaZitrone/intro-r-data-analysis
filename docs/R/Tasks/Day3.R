@@ -31,7 +31,6 @@ fish_encounters |>
     values_fill = 0
   )
 
-
 #### Extras
 charts <- pivot_longer(
   billboard,
@@ -183,9 +182,57 @@ boxplot +
     x = "Species",
     y = "Flipper length (mm)"
   ) +
-  theme_classic() +
+  theme_classic(paper = "cornsilk") +
   theme(
-    text = element_text(size = 16),
+    text = element_text(size = 14),
     axis.title.x = element_blank(),
-    panel.grid.major.y = element_line(color = "grey90")
+    panel.grid.major.y = element_line(color = "grey70")
   )
+
+# Histogram with mean to show differences
+
+# First calculate means to plot as lines
+flipper_mean <- penguins |>
+  group_by(species) |>
+  summarize(mean_flipper = mean(flipper_len, na.rm = TRUE))
+
+# Option A: Histogram with counts
+
+# histogram of flipper lengths with lines for the mean
+# add also the density plot
+penguins |>
+  ggplot(aes(x = flipper_len, fill = species)) +
+  geom_histogram(
+    position = "identity",
+    alpha = 0.5
+  ) +
+  geom_vline(
+    data = flipper_mean,
+    aes(xintercept = mean_flipper, color = species),
+    linewidth = 1
+  ) +
+  labs(
+    title = "Distribution of flipper lengths in three penguin species",
+    x = "Flipper length (mm)",
+    y = "Density",
+    fill = "Species",
+    color = "Species"
+  ) +
+  theme_classic()
+
+
+penguins |>
+  ggplot(aes(x = flipper_len, fill = species)) +
+  geom_density(alpha = 0.2, aes(color = species), linewidth = 1) +
+  geom_vline(
+    data = flipper_mean,
+    aes(xintercept = mean_flipper, color = species),
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  labs(
+    title = "Distribution of flipper lengths in three penguin species",
+    x = "Flipper length (mm)",
+    y = "Density"
+  ) +
+  theme_classic()
