@@ -2896,5 +2896,12 @@
     "title": "",
     "section": "2 Compare the flipper length of penguins using statistical tests",
     "text": "2 Compare the flipper length of penguins using statistical tests\nQuestion: Does the mean flipper length differ between the 3 penguin species?\nDo separate comparisons for\n\nGentoo vs. Adelie\nGentoo vs. Chinstrap\nAdelie vs. Chinstrap\n\nBefore you start, create a subset of each species as a vector.\nFor this, you can use the $ operator:\n\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\n\nFollow the decision tree for statistical tests:\n\n\n\n\n\n\n\n\n\nAfter you have the test results, visualize the differences in flipper length between species.\nYou can e.g. choose one of the following plots:\n\nBoxplot with notches\nMean and standard error of the mean (as mean with errorbar, as barplot, …)\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results\n\n2.1 For the fast ones\n\nUse a different visualization method than before to show the differences in flipper length between species\nChange the appearance of the plot (colors, themes, …) from the task"
+  },
+  {
+    "objectID": "sessions/slides/bring-your-own-data.html#how-it-works",
+    "href": "sessions/slides/bring-your-own-data.html#how-it-works",
+    "title": "Bring your own data",
+    "section": "How it works",
+    "text": "How it works\n\nStart working on your data set or select one of mine\nYou can also do other things like\n\nLook at the example scripts to learn new techniques\nTry AI tools\nTry Positron\nTry Quarto\n…\n\nIf you are stuck\n\nDon’t forget the function help (?)\nCome to the General meeting or write me in the chat\nAsk Google or AI tools\n\nHint: Set your RStudio error messages to English: Sys.setenv(LANGUAGE='en') in the console"
   }
 ]
