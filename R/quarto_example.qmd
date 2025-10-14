@@ -9,6 +9,7 @@ format:
     toc-location: left
     code-fold: true
     df-print: kable
+  pdf: default
 execute: 
   echo: false
   warning: false
@@ -29,7 +30,7 @@ There are three main penguin species in Antarctica (*Chinstrap*, *Gentoo*, *Adel
 #| fig-cap: Illustration of the three penguin species by Allison Horst
 #| fig-align: center
 #| out-width: "60%"
-knitr::include_graphics("images/lter_penguins.png")
+knitr::include_graphics("lter_penguins.png")
 ```
 
 In this paper we want to answer the following questions
