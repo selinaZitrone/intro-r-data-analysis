@@ -30,14 +30,14 @@ tibble(mutants = demerec.data) |>
   labs(
     title = "Mutant counts per culture (Demerec dataset)",
     x = "Mutants per culture",
-    y = "Number of cultures"
+    y = "Count"
   ) +
   theme_minimal()
 
 # Fit Luria–Delbrück MSS-ML (full plating assumed)
 # For partial plating, see newton.LD.plating()
 m_single <- newton.LD(data = demerec.data)
-ci_m_single <- confint.LD(data = demerec.data)
+ci_m_single <- confint.LD(data = demerec.data, show.iter = TRUE)
 
 # Convert m to mutation rate μ = m / Nt.
 # ADJUST: For demo, assume Nt (final viable cells per culture). Replace with your measured Nt.
@@ -102,9 +102,9 @@ ld_two |>
   geom_histogram(position = "identity") +
   facet_wrap(vars(condition)) +
   labs(
-    title = "Mutant counts per culture (example datasets)",
+    title = "Mutant counts per culture (Demerec dataset)",
     x = "Mutants per culture",
-    y = "Number of cultures"
+    y = "Count"
   ) +
   theme_bw()
 

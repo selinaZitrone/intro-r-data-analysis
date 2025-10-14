@@ -164,12 +164,10 @@ mvad <- mvad |>
 table(mvad$cluster)
 
 # Visualize clusters -----------------------------------------------
-# - We want to see "typical sequences" and state distributions per cluster.
-# - Tools:
-#   - seqdplot by cluster: how state usage changes over time within each cluster.
+# We want to see "typical sequences" and state distributions per cluster.
 
 # State distribution plot by cluster (stacked proportions over time)
-# - Shows how each cluster’s composition changes across months.
+# Shows how each cluster’s composition changes across months.
 seqdplot(
   mvad_seq,
   group = mvad$cluster,

@@ -21,7 +21,7 @@ library(vpc)
 # set a seed for reproducibility
 set.seed(42)
 
-# ADJUST: folder where to save the data
+# ADJUST: folder where to save the data and then read it
 data_folder <- "R/byod/specific_tips/2025_10_tips/data"
 
 # ----------------------------------------------------------------------------#
@@ -30,8 +30,9 @@ data_folder <- "R/byod/specific_tips/2025_10_tips/data"
 
 # In reality, this data comes from your patient data and NONMEM model.
 # Here I create some dummy data and save it to the data folder. This data has to
-# be replaced with your own data. Run step 0 to create and save the dummy data.
-# Then start the workflow at step 1.
+# be replaced with your own data.
+# To follow this script, you also need to run step 0 to create and save the dummy data.
+# The actual workflow then starts at step 1.
 # What you need for the workflow are the following things:
 # - NONMEM estimates:
 #   - Fixed effects (THETA)
