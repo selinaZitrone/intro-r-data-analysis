@@ -34,8 +34,7 @@ from: markdown+emoji
 ```{r setup, include=FALSE, cache = TRUE}
 library(dplyr)
 library(ggplot2)
-options(dplyr.print_max = 5,
-        pillar.print_max = 5)
+options(dplyr.print_max = 5, pillar.print_max = 5)
 ```
 
 ## Data transformation
@@ -252,7 +251,7 @@ select(vertebrates, starts_with("s"))
 ```
 
 ```{r echo=FALSE}
-print(select(vertebrates, starts_with("s")),n=3)
+print(select(vertebrates, starts_with("s")), n = 3)
 ```
 
 . . .
@@ -277,7 +276,7 @@ select(vertebrates, year:unittype)
 ```
 
 ```{r echo=FALSE}
-print(select(vertebrates, year:unittype), n=3)
+print(select(vertebrates, year:unittype), n = 3)
 ```
 
 . . .
@@ -304,11 +303,11 @@ Be a bit careful with these commands: They are not robust if you e.g. change the
 New columns can be added based on values from other columns
 
 ```{r eval=FALSE}
-mutate(vertebrates, weight_kg = weight_g/1000)
+mutate(vertebrates, weight_kg = weight_g / 1000)
 ```
 
 ```{r echo=FALSE}
-print(mutate(vertebrates, weight_kg = weight_g/1000), n= 3)
+print(mutate(vertebrates, weight_kg = weight_g / 1000), n = 3)
 ```
 
 . . .
@@ -316,9 +315,7 @@ print(mutate(vertebrates, weight_kg = weight_g/1000), n= 3)
 Add multiple new columns at once:
 
 ```{r eval=FALSE}
-mutate(vertebrates,
-       weight_kg = weight_g/1000,
-       length_m = length_1_mm/1000)
+mutate(vertebrates, weight_kg = weight_g / 1000, length_m = length_1_mm / 1000)
 
 ```
 
@@ -329,12 +326,14 @@ Use `case_when` to add column values conditional on other columns.
 `case_when()` can combine many cases into one.
 
 ```{r}
-mutate(vertebrates,
-       type = case_when(
-         species == "Cutthroat trout" ~ "Fish",               # case 1
-         species == "Coastal giant salamander" ~ "Amphibian", # case 2
-         .default = NA                                        # all other
-))
+mutate(
+  vertebrates,
+  type = case_when(
+    species == "Cutthroat trout" ~ "Fish", # case 1
+    species == "Coastal giant salamander" ~ "Amphibian", # case 2
+    .default = NA # all other
+  )
+)
 ```
 
 # `summarize()` {.inverse}
@@ -348,9 +347,11 @@ mutate(vertebrates,
 . . .
 
 ```{r}
-summarize(vertebrates,
-          mean_length = mean(length_1_mm, na.rm = TRUE),
-          mean_weight = mean(weight_g, na.rm = TRUE))
+summarize(
+  vertebrates,
+  mean_length = mean(length_1_mm, na.rm = TRUE),
+  mean_weight = mean(weight_g, na.rm = TRUE)
+)
 ```
 
 ## `summarize()` by group
@@ -363,11 +364,12 @@ summarize(vertebrates,
 
 ```{r}
 # summarize the grouped data
-summarize(vertebrates,
-    mean_length = mean(length_1_mm, na.rm = TRUE),
-    mean_weight = mean(weight_g, na.rm = TRUE),
-    .by = species
-  )
+summarize(
+  vertebrates,
+  mean_length = mean(length_1_mm, na.rm = TRUE),
+  mean_weight = mean(weight_g, na.rm = TRUE),
+  .by = species
+)
 ```
 
 . . .
@@ -434,7 +436,9 @@ Use one **nested function** without intermediate results:
 ```{r eval=FALSE}
 vertebrates_new <- count(
   filter(vertebrates, !is.na(unittype)),
-  year, species, section
+  year,
+  species,
+  section
 )
 ```
 
@@ -467,10 +471,10 @@ The pipe is "pushing" the result of one line into the first argument of the func
 . . .
 
 ```{r eval=FALSE}
-vertebrates |> 
+vertebrates |>
   count(year)
 
-# instead of 
+# instead of
 count(vertebrates, year)
 ```
 
@@ -514,7 +518,9 @@ Situation: Two (or more) `tibbles` with the same variables (column names)
 tbl_a <- vertebrates[1:2, ] # first two rows
 tbl_b <- vertebrates[2:nrow(vertebrates), ] # the rest
 ```
+
 <br>
+
 ```{r eval=FALSE}
 tbl_a
 ```
@@ -522,7 +528,9 @@ tbl_a
 ```{r echo=FALSE}
 print(tbl_a, n = 2)
 ```
+
 <br>
+
 ```{r eval=FALSE}
 tbl_b
 ```
@@ -560,7 +568,7 @@ print(bind_rows(a = tbl_a, b = tbl_b, .id = "id"), n = 3)
 You can use `bind_rows()` to bind as many tables as you want:
 
 ```{r eval=FALSE}
-bind_rows(a = tbl_a, b= tbl_b, c = tbl_c, ..., .id = "id")
+bind_rows(a = tbl_a, b = tbl_b, c = tbl_c, ..., .id = "id")
 ```
 
 ## Join tibbles with `left_join()`
@@ -570,11 +578,14 @@ Situation: Two tables that share some but not all columns.
 . . .
 
 ```{r echo=FALSE}
-species <- select(vertebrates, species) |> distinct() |> 
-  mutate(type = case_when(
-    species == "Cutthroat trout" ~ "Fish",
-    species == "Coastal giant salamander" ~ "Amphibian"
-  ))
+species <- select(vertebrates, species) |>
+  distinct() |>
+  mutate(
+    type = case_when(
+      species == "Cutthroat trout" ~ "Fish",
+      species == "Coastal giant salamander" ~ "Amphibian"
+    )
+  )
 ```
 
 ```{r eval = FALSE}
@@ -582,9 +593,11 @@ vertebrates
 ```
 
 ```{r echo = FALSE}
-print(vertebrates, n=2)
+print(vertebrates, n = 2)
 ```
+
 <br>
+
 ```{r}
 # table with more information on the species
 species

@@ -158,7 +158,8 @@ penguins %>%
   as.matrix() %>%
   cor() %>%
   corrplot.mixed(
-    order = "hclust", bg = NA,
+    order = "hclust",
+    bg = NA,
     tl.pos = "lt"
   )
 ```
@@ -174,8 +175,12 @@ penguins %>%
   as.matrix() %>%
   cor() %>%
   corrplot(
-    type = "lower", order = "hclust", tl.col = "black",
-    cl.ratio = 0.2, tl.srt = 45, col = COL2("PuOr", 10)
+    type = "lower",
+    order = "hclust",
+    tl.col = "black",
+    cl.ratio = 0.2,
+    tl.srt = 45,
+    col = COL2("PuOr", 10)
   )
 ```
 
@@ -205,7 +210,8 @@ peng_pca <- peng_no_na %>%
 peng.pca <- prcomp(peng_pca, scale = TRUE)
 
 # Adding ellipses
-fviz_pca(peng.pca,
+fviz_pca(
+  peng.pca,
   label = "var",
   habillage = peng_no_na$species,
   addEllipses = TRUE,
@@ -214,19 +220,24 @@ fviz_pca(peng.pca,
 )
 ```
 
-## Some general tips
+## How it works
 
 :::{.incremental}
 
-- First make a plan:
-  - What do you want to achieve and what are the steps?
-  - Start with something small, e.g. reading in the data and bringing it into the right format.
-  - If you want, stop by in general to discuss your plan or write me in the chat
-- Google, ask AI tools if you want, look at the function help (`?`)
-  - Hint: Set your RStudio error messages to English:
-    `Sys.setenv(LANGUAGE='en')` in the console
-- If you get stuck, ask in the chat or stop by in General
 
+- Start working on your data set or select one of mine
+- You can also do other things like
+  - Look at the example scripts to learn new techniques
+  - Try AI tools
+  - Try Positron
+  - Try Quarto
+  - ...
+- If you are stuck
+  - Don't forget the function help (`?`)
+  - Come to the General meeting or write me in the chat
+  - Ask Google or AI tools
+    - Hint: Set your RStudio error messages to English:
+    `Sys.setenv(LANGUAGE='en')` in the console
 :::
 
 # Now you {.inverse}

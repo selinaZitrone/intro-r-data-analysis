@@ -91,12 +91,9 @@ Cleaning data, statistical tests, good practice and AI tools
 
 . . .
 
-**Day 5** Bring your own data + Q&A (optional)
-
 ## Schedule and Organization {.nonincremental}
-📅 03.03.2025 - 04.03.2025 from 🕘 9 a.m. - 4 p.m. <br>
-📅 10.03.2025 - 11.03.2025 from 🕘 9 a.m. - 4 p.m. <br>
-📅 17.03.2025 🕘 9 a.m. - 12 a.m. <br>
+📅 06.10.2025 - 07.10.2025 from 🕘 9 a.m. - 4 p.m. <br>
+📅 13.10.2025 - 14.10.2025 from 🕘 9 a.m. - 4 p.m. <br>
 :ramen: ~ 12 a.m. - 1 p.m.,  :coffee: in between <br>
 :pushpin: We will meet in the `General` meeting on Webex
 
@@ -190,11 +187,11 @@ Did anyone have problems installing R and RStudio?
 :::{.nonincremental}
 
 - **Go into your groups** and **start a meeting** there
-- **Introduce yourself** to your team (2 minutes for everyone)
+- **Introduce yourself** to your team (~2 minutes for everyone)
   - What is your PhD about?
   - Which tools did you use so far for data analysis?
-  - Which types of data analysis do you need?
-- **Come back to the general meeting** after 15 mins
+  - Which types of data analysis do you do/want to do?
+- **Come back to the general meeting** after 10 mins
 
 :::
 
