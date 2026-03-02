@@ -115,8 +115,7 @@ format:
       light: [flatly, theme.scss]
       dark: [darkly]
     toc: true
-    number-sections: true
-    number-depth: 3
+    number-sections: false
     code-copy: true
     code-overflow: wrap
     code-line-numbers: false
