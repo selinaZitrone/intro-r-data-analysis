@@ -1,0 +1,15 @@
+{
+  "hash": "71149c439cf9ba3e99097b3d11c96db6",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ncode-line-numbers: false\n---\n\n## Get started with readr and the tidyverse\n\nBefore you start, make sure to install the `tidyverse` packages by calling\n\n\n::: {.cell}\n\n```{.r .cell-code}\ninstall.packages(\"tidyverse\")\n```\n:::\n\n\nThis will install readr along with other tidyverse packages.\n\nRemember to put `library(tidyverse)` (or `library(readr)`) on top of your script to access the readr functions.\n\n### Write a tibble to disk\n\nLet's use the `animals` tibble from the previous task and write it into the data folder in our project.\n\nBefore writing the tibble\n\n- Create a `data` sub-folder in your RStudio project (if you don't have one yet)\n  - Hint: You can do that from within RStudio by using the `New Folder` button in the *Files pane* \n\nNow write the `animals` tibble into that `/data` sub-directory as `animals.csv` using a comma separator.\n\nCheck if the file was written into the correct folder.\n\n## Read data into R\n\nNow, try to read the data set back into R using the appropriate `read_*` function.\n\nMake sure that you save the table you read in in a new variable to have it available for later use.\n\n:::{.callout-tip}\n\nDon't type the path of the table to read. Instead, type only the \"\", then us the tab key on your keyboard to auto-complete the path. This way you avoid typing mistakes.\n\n:::\n\n## For the fast ones\n\n- Download the csv or excel file below. The files are a bit messy. Find out what is messy \nabout the data sets (try reading them in R and see what happens, open the files in Excel or a text editor and check out the structure).\nThen read them into R correctly. Try the `janitor::clean_names` function on the data after you read it in.\n\n:::{.columns}\n\n::: {.column}\n\n\n::: {.cell}\n::: {.cell-output .cell-output-error}\n\n```\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'\n```\n\n\n:::\n:::\n\n\n:::\n\n::: {.column}\n\n\n::: {.cell}\n::: {.cell-output .cell-output-error}\n\n```\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'\n```\n\n\n:::\n:::\n\n\n:::\n\n:::\n\n<br>\n\n- Try reading in some of your own research data. First, add them to the `/data` folder of your project. \nThen read them into R using the appropriate `read_*` function. Can you manage to read the data in a clean format? What are the challenges you face?\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

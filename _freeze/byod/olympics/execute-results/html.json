@@ -1,0 +1,15 @@
+{
+  "hash": "19637c9f63f083938697fb7708c5a9cb",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Paralympic Games Data Analysis\"\nformat: html\n---\n\n## The Data\n\nThe dataset contains information about Paralympic Games from 1980 to 2016. It can be obtained from the TidyTuesday GitHub repository. You can find more info about the data set \n[on the GitHub repository](https://github.com/rfordatascience/tidytuesday/edit/master/data/2021/2021-08-03/readme.md)\n\nIn this data set you can use a lot of `dplyr` and `ggplot2` functions to summarize and\nvisualize the data.\n\nInteresting variables to analyse are:\n\n|variable |class     |description |\n|:--------|:---------|:-----------|\n|gender   |character | Binary gender |\n|event    |character | Event name |\n|medal    |character | Medal type |\n|athlete  |character | Athlete name (LAST NAME first name|\n|abb      |character | Country abbreviation |\n|country  |character | Country name |\n|type     |character | Type of sport |\n|year     |double    | year of games |\n\n### How to get the data\n\nGet the data here:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nolympics <- readr::read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-27/olympics.csv\")\n```\n:::\n\n\nFor most analysis, you can simplify the dataset by filtering to include only medal winners (rows with non-missing medal information).\n\n\n::: {.cell}\n\n```{.r .cell-code}\nolympics_medal <- olympics |>\n  filter(!is.na(medal))\n```\n:::\n\n\n## Questions to Explore\n\n#### Analyze the age distribution of Paralympic athletes.\n   - Tip: Consider overall distribution and how it varies by different factors (e.g., sex, medal type).\n\n#### Did the ratio of male and female medal winners change with time?\n  - Count overall medals and plot the ratio over time\n\n#### Identify and analyze the top-performing teams in Paralympic history.\n   - E.g. select only the top 10 teams with the most medals overall\n   - See below for an example plot\n\n#### Investigate the number of medals for different sports\n   - Which sports have a lot of medals, which have only few?\n   - Did this change over time?\n  \n#### Which athletes have competed in the most Paralympic Games?\n   - How many medals did they win?\n\n## Useful Functions\n\nIn this analysis, the `dplyr` functions `count()` and `summarize()` by group are very\nuseful to summarize the data and look at the summary tables, but also to summarize \nthe data before plotting.\n\n## Example analysis\n\nHere is an example of a plot you can try to create (from question 3):\n\n![](img/top_medals.png)\n\n\n::: {.cell}\n::: {.cell-output .cell-output-error}\n\n```\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'\n```\n\n\n:::\n:::\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

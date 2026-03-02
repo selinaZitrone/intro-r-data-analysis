@@ -1,0 +1,15 @@
+{
+  "hash": "5efecac2f596f0d3820c5e4c4b92c675",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Statistical tests\"\ncode-line-numbers: false\n---\n\n```{=html}\n<iframe class=\"slide-deck\" width=\"780\" height=\"500\" src=\"slides/tests.html\"></iframe>\n```\n\n[Slides in full screen](slides/tests.html){target=\"_blank\"} &nbsp;&nbsp;&nbsp; <a href=\"slides/tests.pdf\" download>Download PDF slides</a>\n\n# Task\n\n:::{.callout-note}\n\n<!-- Find the solution [here](solutions/tests.qmd){target=\"_blank\"}. -->\nFind the solution here later.\n\n:::\n\n## Get started\n\nWe will again use the `penguins` data included in R.\n\nAs always, before you get started with the exercise, make sure that you load the `tidyverse`\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n```\n:::\n\n\n## Compare the flipper length of penguins using statistical tests\n\nQuestion: Does the mean flipper length differ between the 3 penguin species?\n\nDo separate comparisons for\n\n- Gentoo vs. Adelie\n- Gentoo vs. Chinstrap\n- Adelie vs. Chinstrap\n\nBefore you start, create a subset of each species as a vector.\n\nFor this, you can use the `$` operator:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nadelie <- filter(penguins, species == \"Adelie\")$flipper_len\nchinstrap <- filter(penguins, species == \"Chinstrap\")$flipper_len\ngentoo <- filter(penguins, species == \"Gentoo\")$flipper_len\n```\n:::\n\n\nFollow the decision tree for statistical tests:\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](slides/img/day3/tests_overview.png){width=678}\n:::\n:::\n\n\nAfter you have the test results, visualize the differences in flipper length between species.\n\nYou can e.g. choose one of the following plots:\n\n- Boxplot with notches\n- Mean and standard error of the mean (as mean with errorbar, as barplot, ...)\n\nAdd a `geom_signif()` layer to the plot you just created to indicate your test results\n\n### For the fast ones\n\n- Use a different visualization method than before to show the differences in flipper length between species\n- Change the appearance of the plot (colors, themes, ...) from the task\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

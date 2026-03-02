@@ -35,7 +35,6 @@ data/animals*
 *_files
 
 # Ignore the _freeze folder
-_freeze/
 _quarto.yml
 R/random_groups.R
 R/byod/specific_tips/2025_10_tips/data/nm_to_mrg_pk.cpp
@@ -43,3 +42,5 @@ data/byod/heatmap_genes
 data/byod/limma-voom_luminalpregnant-luminallactate
 .gitignore
 data/byod/limma-voom_normalised_counts
+
+**/*.quarto_ipynb
