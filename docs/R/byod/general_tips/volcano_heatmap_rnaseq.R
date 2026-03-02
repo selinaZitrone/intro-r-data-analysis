@@ -128,7 +128,7 @@ top_20_genes_matrix |>
 # Volcano plot ----------------------------------------------------------------
 # https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html#Fu2015
 # Categories for coloring:
-# Not sign.: pvalue < 0.01
+# Not sign.: pvalue >0.01
 # Up: p-value < 0.01 & logFC >0
 # Down: p-value < 0.01 & logFC < 0
 
@@ -141,7 +141,7 @@ res |>
     category = case_when(
       pvalue < 0.01 & log2FoldChange > 0 ~ "Up",
       pvalue < 0.01 & log2FoldChange < 0 ~ "Down",
-      TRUE ~ "ns"
+      .default = "ns"
     )
   ) |>
   ggplot(aes(
@@ -172,7 +172,7 @@ res |>
     category = case_when(
       pvalue < 0.01 & log2FoldChange > 0 ~ "Up",
       pvalue < 0.01 & log2FoldChange < 0 ~ "Down",
-      TRUE ~ "ns"
+      .default = "ns"
     )
   ) |>
   ggplot(aes(
