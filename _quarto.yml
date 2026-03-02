@@ -74,14 +74,11 @@ website:
             href: sessions/11_good-practice.qmd
           - text: "AI Tools"
             href: sessions/12_AI-tools.qmd
-      - text: "Downloads"
+      - text: "Solutions"
         menu:
-          - text: "R Script Day 1"
-            href: R/Tasks/Day1.R
-          - text: "R Script Day 2"
-            href: R/Tasks/Day2.R
-          - text: "R Script Day 3"
-            href: R/Tasks/Day3.R
+          - text: "Day 1"
+          - text: "Day 2"
+          - text: "Day 3"
       - text: "BYOD datasets"
         menu:
           - text: "RNAseq data"
@@ -130,4 +127,5 @@ editor: source
 execute:
   cache: true
   error: true
+  freeze: auto
 
