@@ -12,10 +12,15 @@ code-line-numbers: false
 # Task
 
 :::{.callout-note}
+Find the solution here after the session ends.
 
-<!-- Find the solution [here](solutions/tidyr.qmd){target="_blank"}. -->
-Find the solution here later.
-
+```{=html}
+<script>const course_day = 3;</script>
+<script src="../timer_solution.js"></script>
+<p class="r_class_solution" style="display:none">
+  <a href="solutions/tidyr.html" target="_blank">Click here for the solution.</a>
+</p>
+```
 :::
 
 {{< include tasks/tidyr.qmd >}}

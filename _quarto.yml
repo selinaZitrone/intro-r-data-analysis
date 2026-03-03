@@ -14,6 +14,7 @@ project:
     - "data/read_challenge/*"
     - "R/byod/general_tips/*"
     - "R/byod/solutions_for_my_datasets/*.R"
+    - "timer_solution.js"
 
 website:
   page-navigation: true
@@ -110,7 +111,6 @@ website:
 
 format:
   html:
-    embed-resources: true
     theme:
       light: [flatly, theme.scss]
       dark: [darkly]
