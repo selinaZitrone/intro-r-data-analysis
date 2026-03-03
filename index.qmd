@@ -4,39 +4,72 @@ subtitle: "Workshop by Selina Baldauf"
 number-sections: false
 ---
 
-<hr>
-**Workshop sessions**<br>
-📅 06.10.2025 - 07.10.2025 🕘 9 a.m. - 4 p.m. <br>
-📅 13.10.2025 - 14.10.2025 🕘 9 a.m. - 4 p.m. <br>
-📍 Online on Webex <br>
-<hr>
+# Schedule
 
-# Workshop description
+```{=html}
+<script src="timer_solution.js"></script>
+<script>
+window.addEventListener("load", function () {
+  const date_now = new Date();
+  const day_classes = ["r_day1_content", "r_day2_content", "r_day3_content"];
+  for (let i = 0; i < session_end_times.length; i++) {
+    if (date_now >= session_end_times[i]) {
+      var els = document.getElementsByClassName(day_classes[i]);
+      for (let j = 0; j < els.length; j++) {
+        els[j].style.display = "block";
+      }
+    }
+  }
+});
+</script>
+```
 
-The workshop's main goal is to equip you with essential R skills for analyzing your own research data, covering data processing and visualization. After the workshop you are equipped to confidently advance your R skills for your specific research needs.
+## Day 1 — R and RStudio Basics
 
-### Outline
+::: {.r_day1_content}
+[Download Day 1 R script](R/Tasks/Day1.R){download="Day1.R"}
+:::
 
-In 4 Workshop days we will cover the following topics:
+- [Introduction to RStudio](sessions/01_intro-rstudio.qmd)
+- [Introduction to R](sessions/02_intro-r.qmd)
+- [Functions in R](sessions/03_functions.qmd)
+- [Data frames & tibbles](sessions/04_data-tibbles.qmd)
+- [Tidyverse and readr](sessions/05_readr.qmd)
 
-- **Day 1**: Introduction to R and R Studio, Good programming practice, Reading data into R
-- **Day 2**: Data visualization with the ggplot package, data wrangling with dplyr
-- **Day 3**: Data cleaning with tidyr, statistical tests, AI Tools
-- **Day 4 & 5**: Bring your own research data (or get some real-life data from me)
+## Day 2 — Data Visualization and Transformation
 
-### Concept
+::: {.r_day2_content}
+[Download Day 2 R script](R/Tasks/Day2.R){download="Day2.R"}
+:::
 
-To learn programming, it is essential to practice writing code yourself. Therefore, every input session will be followed by practical exercises. On day 4, you can apply the methods you learned to your own research data or a provided real-life data set.
+- [Data visualization with ggplot2](sessions/07_ggplot.qmd)
+- [Data transformation with dplyr](sessions/08_dplyr.qmd)
 
-The course will be in English and will be in an online format.
+## Day 3 — Tidy Data and Statistics
 
-# For whom is this workshop?
+::: {.r_day3_content}
+[Download Day 3 R script](R/Tasks/Day3.R){download="Day3.R"}
+:::
 
-This workshop is for beginners without prior experience in R or any other programming language. You can still participate if you already know other programming languages though.
+- [Tidy data with tidyr](sessions/09_tidyr.qmd)
+- [Statistical tests](sessions/10_tests.qmd)
 
-# The instructor
+## Day 4 — Bring Your Own Data
 
-I'm a scientific programmer at Freie Universität specializing in theoretical ecology. R is integral to my daily work, and I enjoy sharing my expertise. I've previously taught R statistics courses for biology master's and PhD students.
+- [Bring Your Own Data session](sessions/byod.qmd)
 
-Feel free to reach out with any course-related questions via [selina.baldauf@fu-berlin.de](mailto:selina.baldauf@fu-berlin.de).
+## Extras
 
+Optional sessions — covered when time allows.
+
+- [Common R errors](sessions/06_common-errors.qmd)
+- [Good practice coding](sessions/11_good-practice.qmd)
+- [AI Tools](sessions/12_AI-tools.qmd)
+
+# About
+
+This workshop equips beginners with essential R skills for data processing and visualization. Every session is followed by hands-on exercises, and Day 4 is dedicated to applying what you've learned to your own research data.
+
+No prior experience in R or programming is required.
+
+I'm a scientific programmer at Freie Universität specializing in theoretical ecology. Feel free to reach out with any questions via [selina.baldauf@fu-berlin.de](mailto:selina.baldauf@fu-berlin.de).
