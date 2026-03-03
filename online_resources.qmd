@@ -27,36 +27,5 @@ number-sections: false
 
 - The [tidyverse website](https://tidyverse.org/) has links to all tidyverse packages which all have very good examples and use cases. These websites are an excelent point to get started with a package.
 
-### readr
-
-- [data import cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf)
-
-### ggplot
-
-- [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf) offers an overview of all possibilities of ggplot
-
-- [Curated list of ggplot resources](https://github.com/erikgahner/awesome-ggplot2):
-Really great list with links to ggplot tutorials (sorted by topic and difficulty), books, additional packages to make your plots look nicer, ...
-
-- In the [R graph gallery](https://www.r-graph-gallery.com/) you can browse through hundreds of different types of plots and find code to reproduce them.
-
-- A great [ggplot tutorial by Cédric Scherer](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/) with many different plot types
-
-- A [collection of ggplot extension packages](https://strengejacke.github.io/sjPlot/index.html) for all kinds of different
-plots
-
- 
-### dplyr
-
-- [dplyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf)
-
-### tidyr
-
-- [data import cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf)
-
-## Linear models
-
-- [anova with R](https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Learning_Statistics_with_R_-_A_tutorial_for_Psychology_Students_and_other_Beginners_(Navarro)/16%3A_Factorial_ANOVA/16.06%3A_ANOVA_As_a_Linear_Model): explanation why an anova is also a linear model
-
 
 
