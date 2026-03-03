@@ -3,15 +3,16 @@ title: "Import and Export Data with readr"
 ---
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/readr.html"></iframe>
+<iframe class="slide-deck" src="slides/readr.html"></iframe>
 ```
 
-[Slides in full screen](slides/readr.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/readr.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/readr.html){target="_blank"} | [Download PDF slides](slides_pdf/readr.pdf){download="readr.pdf"}
 
-# Task
-
+::: {.callout-tip}
+## Exercises
 Go to the [task page](tasks/readr.qmd) for the exercises.
+:::
 
-## Further reading
+## Resources
 
-- [Data import cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf)
+- [Data import cheatsheet](https://rstudio.github.io/cheatsheets/data-import.pdf)

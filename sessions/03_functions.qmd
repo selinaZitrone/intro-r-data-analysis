@@ -3,7 +3,9 @@ title: "Functions in R"
 ---
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/functions.html"></iframe>
+<iframe class="slide-deck" src="slides/functions.html"></iframe>
 ```
 
-[Slides in full screen](slides/functions.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/functions.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/functions.html){target="_blank"} | [Download PDF slides](slides_pdf/functions.pdf){download="functions.pdf"}
+
+## Resources

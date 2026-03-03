@@ -3,23 +3,24 @@ title: "Data visualization with ggplot2"
 ---
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/ggplot.html"></iframe>
+<iframe class="slide-deck" src="slides/ggplot.html"></iframe>
 ```
 
-[Slides in full screen](slides/ggplot.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/ggplot.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/ggplot.html){target="_blank"} | [Download PDF slides](slides_pdf/ggplot.pdf){download="ggplot.pdf"}
 
-# Task
-
+::: {.callout-tip}
+## Exercises
 Go to the [task page](tasks/ggplot.qmd) for the exercises.
+:::
 
-## Further reading
+## Resources
 
-- [ggplot2 cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf): overview of all ggplot2 possibilities
+- [ggplot2 cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf): overview of all ggplot2 possibilities
 
 - [Curated list of ggplot2 resources](https://github.com/erikgahner/awesome-ggplot2): tutorials (sorted by topic and difficulty), books, additional packages, ...
 
 - [R graph gallery](https://www.r-graph-gallery.com/): browse hundreds of plot types with reproducible code
 
-- [ggplot2 tutorial by Cédric Scherer](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/): in-depth tutorial covering many plot types
+- [ggplot2 tutorial by Cedric Scherer](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/): in-depth tutorial covering many plot types
 
 - [ggplot2 extension packages](https://exts.ggplot2.tidyverse.org/gallery/): gallery of packages that extend ggplot2

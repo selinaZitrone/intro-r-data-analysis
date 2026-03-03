@@ -3,15 +3,16 @@ title: "Tidy data with tidyr"
 ---
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/tidyr.html"></iframe>
+<iframe class="slide-deck" src="slides/tidyr.html"></iframe>
 ```
 
-[Slides in full screen](slides/tidyr.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/tidyr.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/tidyr.html){target="_blank"} | [Download PDF slides](slides_pdf/tidyr.pdf){download="tidyr.pdf"}
 
-# Task
-
+::: {.callout-tip}
+## Exercises
 Go to the [task page](tasks/tidyr.qmd) for the exercises.
+:::
 
-## Further reading
+## Resources
 
-- [Tidyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/tidyr.pdf)
+- [Tidyr cheatsheet](https://rstudio.github.io/cheatsheets/tidyr.pdf)

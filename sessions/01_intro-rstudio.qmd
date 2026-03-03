@@ -3,11 +3,12 @@ title: "Introduction to RStudio"
 ---
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/intro-rstudio.html"></iframe>
+<iframe class="slide-deck" src="slides/intro-rstudio.html"></iframe>
 ```
 
-[Slides in full screen](slides/intro-rstudio.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/intro-rstudio.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/intro-rstudio.html){target="_blank"} | [Download PDF slides](slides_pdf/intro-rstudio.pdf){download="intro-rstudio.pdf"}
 
-# Task
-
+::: {.callout-tip}
+## Exercises
 Go to the [task page](tasks/intro-rstudio.qmd) for the exercises.
+:::

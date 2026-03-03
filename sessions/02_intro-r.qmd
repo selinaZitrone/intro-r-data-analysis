@@ -3,11 +3,14 @@ title: "Introduction to R"
 ---
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/intro-r.html"></iframe>
+<iframe class="slide-deck" src="slides/intro-r.html"></iframe>
 ```
 
-[Slides in full screen](slides/intro-r.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/intro-r.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/intro-r.html){target="_blank"} | [Download PDF slides](slides_pdf/intro-r.pdf){download="intro-r.pdf"}
 
-# Task
-
+::: {.callout-tip}
+## Exercises
 Go to the [task page](tasks/intro-r.qmd) for the exercises.
+:::
+
+## Resources

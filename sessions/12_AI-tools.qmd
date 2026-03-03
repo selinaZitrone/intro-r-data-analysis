@@ -5,23 +5,22 @@ execute:
 ---
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/AI-tools.html"></iframe>
+<iframe class="slide-deck" src="slides/AI-tools.html"></iframe>
 ```
 
-[Slides in full screen](slides/AI-tools.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/AI-tools.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/AI-tools.html){target="_blank"} | [Download PDF slides](slides_pdf/AI-tools.pdf){download="AI-tools.pdf"}
 
+## Resources
 
-Below you find a few links to further resources on AI tools for R programming. 
+Below you find a few links to further resources on AI tools for R programming.
 This is only a selection from the vast amount of tools available.
-
-## Links
 
 ### Browser-based AI-Tools
 
 - [Julius AI](https://julius.ai): Browser-based tool where you can ask questions about your data. You can upload a dataset and ask questions about it. The AI will then give you answers and visualizations. You can also download the corresponding R script.
   - Works great but costs ~20€ per month, but you can get a 50% discount if you are a student or academic
 - The usual ones: [ChatGPT](https://chat.openai.com), [Claude](https://claude.ai), [Gemini](https://gemini.google.com/), ...
-    
+
 ### Integrated AI tools
 
 [GitHub Copilot](https://github.com/features/copilot) is one of the most widespread integrated tool. It gives you inline code suggestions and Chat options. Great to code faster, write better code, debug, etc.
@@ -31,7 +30,7 @@ Here are all the links that you need to get started:
 
 - [Step-by-step guide on how to get Copilot](https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html) for free with an educational account.
 - [GitHub Copilot in RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html): Guide on how to set up and use RStudio with GitHub Copilot
-- [AI in Positron](https://positron.posit.co/assistant.html): Guide on how to set up and use the Positron Assistant. 
+- [AI in Positron](https://positron.posit.co/assistant.html): Guide on how to set up and use the Positron Assistant.
   - Positron can be set up to work with GitHub Copilot (inline suggestions and chat) as well as with other LLMs (e.g. GPT-4, Claude, etc.).
 - [GitHub Copilot Docs](https://docs.github.com/en/copilot): Useful information and guides on how to use Copilot
 - [Privacy FAQ of GitHub Copilot](https://github.com/features/copilot/#faq)

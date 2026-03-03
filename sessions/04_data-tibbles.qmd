@@ -3,11 +3,14 @@ title: "Tables in R - Data frames and tibbles"
 ---
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/data-tibbles.html"></iframe>
+<iframe class="slide-deck" src="slides/data-tibbles.html"></iframe>
 ```
 
-[Slides in full screen](slides/data-tibbles.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/data-tibbles.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/data-tibbles.html){target="_blank"} | [Download PDF slides](slides_pdf/data-tibbles.pdf){download="data-tibbles.pdf"}
 
-# Task
-
+::: {.callout-tip}
+## Exercises
 Go to the [task page](tasks/data-tibbles.qmd) for the exercises.
+:::
+
+## Resources

@@ -3,15 +3,16 @@ title: "Statistical tests"
 ---
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/tests.html"></iframe>
+<iframe class="slide-deck" src="slides/tests.html"></iframe>
 ```
 
-[Slides in full screen](slides/tests.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/tests.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/tests.html){target="_blank"} | [Download PDF slides](slides_pdf/tests.pdf){download="tests.pdf"}
 
-# Task
-
+::: {.callout-tip}
+## Exercises
 Go to the [task page](tasks/tests.qmd) for the exercises.
+:::
 
-## Further reading
+## Resources
 
 - [ANOVA as a linear model](https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Learning_Statistics_with_R_-_A_tutorial_for_Psychology_Students_and_other_Beginners_(Navarro)/16%3A_Factorial_ANOVA/16.06%3A_ANOVA_As_a_Linear_Model): explanation of why an ANOVA is also a linear model

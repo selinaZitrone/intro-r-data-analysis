@@ -3,12 +3,12 @@ title: "Bring Your Own Data"
 ---
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/bring-your-own-data.html"></iframe>
+<iframe class="slide-deck" src="slides/bring-your-own-data.html"></iframe>
 ```
 
-[Slides in full screen](slides/bring-your-own-data.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/bring-your-own-data.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/bring-your-own-data.html){target="_blank"} | [Download PDF slides](slides_pdf/bring-your-own-data.pdf){download="bring-your-own-data.pdf"}
 
-# Datasets
+## Datasets
 
 Choose one of the datasets below to work with, or bring your own research data.
 
@@ -19,7 +19,7 @@ Choose one of the datasets below to work with, or bring your own research data.
 | [Paralympics](../byod/olympics.qmd) | Paralympic Games data 1980–2016 |
 | [Wine quality](../byod/wine.qmd) | Wine quality from physicochemical properties |
 
-# Example scripts
+## Example scripts
 
 Worked examples for common analysis techniques:
 

@@ -5,11 +5,10 @@ execute:
 ---
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/good-practice.html"></iframe>
+<iframe class="slide-deck" src="slides/good-practice.html"></iframe>
 ```
 
-[Slides in full screen](slides/good-practice.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/good-practice.pdf" download>Download PDF slides</a>
-
+[Slides in full screen](slides/good-practice.html){target="_blank"} | [Download PDF slides](slides_pdf/good-practice.pdf){download="good-practice.pdf"}
 
 ## Good practice summary
 
@@ -92,3 +91,5 @@ Just go to Tools -> Global Options -> Code -> Formatting and select "Format docu
 
 You may have to install the `styler` package first using `install.packages("styler")`.
 If this is the case, you will see an error message the first time you try to save a file after turning on this option.
+
+## Resources

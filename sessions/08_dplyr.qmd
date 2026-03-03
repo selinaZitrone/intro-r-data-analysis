@@ -3,15 +3,16 @@ title: "Data transformation with dplyr"
 ---
 
 ```{=html}
-<iframe class="slide-deck" width="780" height="500" src="slides/dplyr.html"></iframe>
+<iframe class="slide-deck" src="slides/dplyr.html"></iframe>
 ```
 
-[Slides in full screen](slides/dplyr.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/dplyr.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/dplyr.html){target="_blank"} | [Download PDF slides](slides_pdf/dplyr.pdf){download="dplyr.pdf"}
 
-# Task
-
+::: {.callout-tip}
+## Exercises
 Go to the [task page](tasks/dplyr.qmd) for the exercises.
+:::
 
-## Further reading
+## Resources
 
-- [dplyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf)
+- [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
