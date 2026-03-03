@@ -37,59 +37,8 @@ website:
         href: packages.qmd
 
     right:
-      - text: "Sessions"
-        menu:
-          - text: "<b>Day 1</b>"
-          - text: "Introduction RStudio"
-            href: sessions/01_intro-rstudio.qmd
-          - text: "Introduction R"
-            href: sessions/02_intro-r.qmd
-          - text: "Functions"
-            href: sessions/03_functions.qmd
-          - text: "Data frames & tibbles"
-            href: sessions/04_data-tibbles.qmd
-          - text: "Tidyverse and readr"
-            href: sessions/05_readr.qmd
-          - text: "---"
-          - text: "<b>Day 2</b>"
-          - text: "Ggplot2"
-            href: sessions/07_ggplot.qmd
-          - text: "Dplyr"
-            href: sessions/08_dplyr.qmd
-          - text: "---"
-          - text: "<b>Day 3</b>"
-          - text: "Tidyr"
-            href: sessions/09_tidyr.qmd
-          - text: "Statistical tests"
-            href: sessions/10_tests.qmd
-          - text: "---"
-          - text: "<b>Day 4</b>"
-          - text: "Bring your own data"
-            href: sessions/slides/bring-your-own-data.qmd
-            target: _blank
-          - text: "---"
-          - text: "<b>Extras</b>"
-          - text: "Common R errors"
-            href: sessions/06_common-errors.qmd
-          - text: "Good practice coding"
-            href: sessions/11_good-practice.qmd
-          - text: "AI Tools"
-            href: sessions/12_AI-tools.qmd
-      - text: "Solutions"
-        menu:
-          - text: "Day 1"
-          - text: "Day 2"
-          - text: "Day 3"
-      - text: "BYOD datasets"
-        menu:
-          - text: "RNAseq data"
-            href: byod/dnaseq.qmd
-          - text: "Ice cover data"
-            href: byod/ice_cover.qmd
-          - text: "Paralympics"
-            href: byod/olympics.qmd
-          - text: "Wine quality"
-            href: byod/wine.qmd
+      - text: "BYOD"
+        href: sessions/byod.qmd
       - text: "Example scripts"
         menu:
           - text: "RNAseq volcano, heatmap, PCA"
