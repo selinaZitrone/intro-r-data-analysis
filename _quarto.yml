@@ -28,6 +28,43 @@ website:
     left:
       - text: "<b>Home</b>"
         href: index.qmd
+      - text: "Sessions"
+        menu:
+          - text: "<b>Day 1</b>"
+          - text: "Introduction to RStudio"
+            href: sessions/01_intro-rstudio.qmd
+          - text: "Introduction to R"
+            href: sessions/02_intro-r.qmd
+          - text: "Functions in R"
+            href: sessions/03_functions.qmd
+          - text: "Data frames & tibbles"
+            href: sessions/04_data-tibbles.qmd
+          - text: "Tidyverse and readr"
+            href: sessions/05_readr.qmd
+          - text: "---"
+          - text: "<b>Day 2</b>"
+          - text: "Data visualization with ggplot2"
+            href: sessions/07_ggplot.qmd
+          - text: "Data transformation with dplyr"
+            href: sessions/08_dplyr.qmd
+          - text: "---"
+          - text: "<b>Day 3</b>"
+          - text: "Tidy data with tidyr"
+            href: sessions/09_tidyr.qmd
+          - text: "Statistical tests"
+            href: sessions/10_tests.qmd
+          - text: "---"
+          - text: "<b>Day 4</b>"
+          - text: "Bring Your Own Data"
+            href: sessions/byod.qmd
+          - text: "---"
+          - text: "<b>Extras</b>"
+          - text: "Common R errors"
+            href: sessions/06_common-errors.qmd
+          - text: "Good practice coding"
+            href: sessions/11_good-practice.qmd
+          - text: "AI Tools"
+            href: sessions/12_AI-tools.qmd
       - text: "Preparations"
         href: preparations.qmd
       - text: "Resources"
