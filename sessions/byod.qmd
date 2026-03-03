@@ -1,0 +1,30 @@
+---
+title: "Bring Your Own Data"
+---
+
+```{=html}
+<iframe class="slide-deck" width="780" height="500" src="slides/bring-your-own-data.html"></iframe>
+```
+
+[Slides in full screen](slides/bring-your-own-data.qmd){target="_blank"}
+
+# Datasets
+
+Choose one of the datasets below to work with, or bring your own research data.
+
+| Dataset | Description |
+|---------|-------------|
+| [RNAseq data](../byod/dnaseq.qmd) | Gene expression analysis (volcano plots, heatmaps, PCA) |
+| [Ice cover data](../byod/ice_cover.qmd) | Climate data from North American lakes |
+| [Paralympics](../byod/olympics.qmd) | Paralympic Games data 1980–2016 |
+| [Wine quality](../byod/wine.qmd) | Wine quality from physicochemical properties |
+
+# Example scripts
+
+Worked examples for common analysis techniques:
+
+- [RNAseq volcano, heatmap, PCA](../R/byod/general_tips/volcano_heatmap_rnaseq.R)
+- [Read and combine multiple tables](../R/byod/general_tips/read_and_combine_tables.R)
+- [Correlation plots](../R/byod/general_tips/correlation_plots.R)
+- [PCA](../R/byod/general_tips/penguins_pca.R)
+- [k-means clustering](../R/byod/general_tips/kmeans.R)
