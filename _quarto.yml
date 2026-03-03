@@ -31,9 +31,7 @@ website:
       - text: "Preparations"
         href: preparations.qmd
       - text: "Resources"
-        href: online_resources.qmd
-      - text: "Packages"
-        href: packages.qmd
+        href: resources.qmd
 
     right:
       - icon: github

@@ -1,0 +1,67 @@
+---
+title: "Resources"
+number-sections: false
+---
+
+A collection of helpful resources for learning R and data analysis.
+
+## Books
+
+- [R for Data Science](https://r4ds.hadley.nz/) (2nd edition) by Hadley Wickham: The go-to book for data analysis with the tidyverse.
+
+- [ModernDive: Statistical Inference via Data Science](https://moderndive.com/v2/): Beginner-friendly introduction to R and data analysis with the tidyverse.
+
+- [What They Forgot to Teach You About R](https://rstats.wtf/) by J. Bryan and J. Hester: Good practice tips for R code and R projects.
+
+- [Big Book of R](https://www.bigbookofr.com/): Directory of free R books sorted by topic.
+
+
+## Other
+
+- [Tidyverse style guide](https://style.tidyverse.org/): How to style your R code according to good practice.
+- [Curated collection of R learning resources](https://github.com/iamericfletcher/awesome-r-learning-resources): Books, websites, tutorials, help channels and more.
+
+### Cheatsheets
+
+[Posit cheatsheets overview](https://posit.co/resources/cheatsheets/): Full collection of all available cheatsheets.
+
+Individual cheatsheets relevant to this workshop:
+
+- [RStudio IDE](https://rstudio.github.io/cheatsheets/rstudio-ide.pdf): Buttons, options, keyboard shortcuts
+- [Data import with readr](https://rstudio.github.io/cheatsheets/data-import.pdf)
+- [Data visualization with ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf)
+- [Data transformation with dplyr](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+- [Tidy data with tidyr](https://rstudio.github.io/cheatsheets/tidyr.pdf)
+- [String manipulation with stringr](https://rstudio.github.io/cheatsheets/strings.pdf)
+- [Factors with forcats](https://rstudio.github.io/cheatsheets/factors.pdf)
+- [Dates and times with lubridate](https://rstudio.github.io/cheatsheets/lubridate.pdf)
+
+## Packages
+
+The [tidyverse website](https://tidyverse.org/) links to all tidyverse packages with examples and documentation.
+
+### Packages used in this workshop
+
+| Package | Description | 
+|---------|-------------|
+| [tidyverse](https://www.tidyverse.org/) | Collection of packages designed for data analysis, all working smoothly together |
+| [dplyr](https://dplyr.tidyverse.org/) | Data manipulation: filtering, selecting, arranging, summarizing data |
+| [ggplot2](https://ggplot2.tidyverse.org/) | Data visualization |
+| [tidyr](https://tidyr.tidyverse.org/) | Transforming tables into tidy format for analysis |
+| [readr](https://readr.tidyverse.org/) | Import and export CSV, TXT and other delimited files |
+| [readxl](https://readxl.tidyverse.org/) | Import Excel files from multiple sheets as tibbles |
+| [haven](https://haven.tidyverse.org/) | Import SPSS, Stata and SAS files |
+| [stringr](https://stringr.tidyverse.org/) | String manipulation: extracting, finding and replacing patterns |
+| [forcats](https://forcats.tidyverse.org/) | Working with factors (categorical data): renaming, reordering categories |
+| [lubridate](https://lubridate.tidyverse.org/) | Working with dates and times: parsing, calculating intervals, plotting time series |
+
+### Other useful packages
+
+| Package | Description | 
+|---------|-------------|
+| [patchwork](https://patchwork.data-imaginist.com/) | Combine multiple plots into one with easy layout control |
+| [here](https://here.r-lib.org/) | Simple and robust file path handling in R projects |
+| [usethis](https://usethis.r-lib.org/) | Utility functions for project setup, Git, GitHub and package development |
+| [styler](https://styler.r-lib.org/) | Automatically format your code according to the tidyverse style guide |
+
+
