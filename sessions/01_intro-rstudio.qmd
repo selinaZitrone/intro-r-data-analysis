@@ -11,4 +11,4 @@ code-line-numbers: false
 
 # Task
 
-{{< include tasks/intro-rstudio.qmd >}}
+Go to the [task page](tasks/intro-rstudio.qmd) for the exercises.

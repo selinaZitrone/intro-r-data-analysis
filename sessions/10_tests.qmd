@@ -11,16 +11,8 @@ code-line-numbers: false
 
 # Task
 
-:::{.callout-note}
-Find the solution here after the session ends.
+Go to the [task page](tasks/tests.qmd) for the exercises.
 
-```{=html}
-<script>const course_day = 3;</script>
-<script src="../timer_solution.js"></script>
-<p class="r_class_solution" style="display:none">
-  <a href="solutions/tests.html" target="_blank">Click here for the solution.</a>
-</p>
-```
-:::
+## Further reading
 
-{{< include tasks/tests.qmd >}}
+- [ANOVA as a linear model](https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Learning_Statistics_with_R_-_A_tutorial_for_Psychology_Students_and_other_Beginners_(Navarro)/16%3A_Factorial_ANOVA/16.06%3A_ANOVA_As_a_Linear_Model): explanation of why an ANOVA is also a linear model

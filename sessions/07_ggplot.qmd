@@ -11,16 +11,16 @@ code-line-numbers: false
 
 # Task
 
-:::{.callout-note}
-Find the solution here after the session ends.
+Go to the [task page](tasks/ggplot.qmd) for the exercises.
 
-```{=html}
-<script>const course_day = 2;</script>
-<script src="../timer_solution.js"></script>
-<p class="r_class_solution" style="display:none">
-  <a href="solutions/ggplot.html" target="_blank">Click here for the solution.</a>
-</p>
-```
-:::
+## Further reading
 
-{{< include tasks/ggplot.qmd >}}
+- [ggplot2 cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf): overview of all ggplot2 possibilities
+
+- [Curated list of ggplot2 resources](https://github.com/erikgahner/awesome-ggplot2): tutorials (sorted by topic and difficulty), books, additional packages, ...
+
+- [R graph gallery](https://www.r-graph-gallery.com/): browse hundreds of plot types with reproducible code
+
+- [ggplot2 tutorial by Cédric Scherer](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/): in-depth tutorial covering many plot types
+
+- [ggplot2 extension packages](https://exts.ggplot2.tidyverse.org/gallery/): gallery of packages that extend ggplot2

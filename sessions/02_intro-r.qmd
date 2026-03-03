@@ -11,16 +11,4 @@ code-line-numbers: false
 
 # Task
 
-:::{.callout-note}
-Find the solution here after the session ends.
-
-```{=html}
-<script>const course_day = 1;</script>
-<script src="../timer_solution.js"></script>
-<p class="r_class_solution" style="display:none">
-  <a href="solutions/intro-r.html" target="_blank">Click here for the solution.</a>
-</p>
-```
-:::
-
-{{< include tasks/intro-r.qmd >}}
+Go to the [task page](tasks/intro-r.qmd) for the exercises.

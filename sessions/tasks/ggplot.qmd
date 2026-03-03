@@ -1,3 +1,22 @@
+---
+title: "Task: Data visualization with ggplot2"
+number-sections: false
+---
+
+[← Back to session page](../07_ggplot.qmd)
+
+:::{.callout-note}
+Find the solution here after the session ends.
+
+```{=html}
+<script>const course_day = 2;</script>
+<script src="../../timer_solution.js"></script>
+<p class="r_class_solution" style="display:none">
+  <a href="../solutions/ggplot.html" target="_blank">Click here for the solution.</a>
+</p>
+```
+:::
+
 ## Get started
 
 A helpful resource to consult for this task can be the [ggplot2 cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf).

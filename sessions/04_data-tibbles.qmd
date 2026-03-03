@@ -10,16 +10,4 @@ title: "Tables in R - Data frames and tibbles"
 
 # Task
 
-:::{.callout-note}
-Find the solution here after the session ends.
-
-```{=html}
-<script>const course_day = 1;</script>
-<script src="../timer_solution.js"></script>
-<p class="r_class_solution" style="display:none">
-  <a href="solutions/data-tibbles.html" target="_blank">Click here for the solution.</a>
-</p>
-```
-:::
-
-{{< include tasks/data-tibbles.qmd >}}
+Go to the [task page](tasks/data-tibbles.qmd) for the exercises.

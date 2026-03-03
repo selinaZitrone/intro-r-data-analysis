@@ -1,6 +1,22 @@
 ---
+title: "Task: Import and Export Data with readr"
+number-sections: false
 code-line-numbers: false
 ---
+
+[← Back to session page](../05_readr.qmd)
+
+:::{.callout-note}
+Find the solution here after the session ends.
+
+```{=html}
+<script>const course_day = 1;</script>
+<script src="../../timer_solution.js"></script>
+<p class="r_class_solution" style="display:none">
+  <a href="../solutions/readr.html" target="_blank">Click here for the solution.</a>
+</p>
+```
+:::
 
 ## Get started with readr and the tidyverse
 

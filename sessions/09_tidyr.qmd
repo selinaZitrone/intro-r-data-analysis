@@ -11,16 +11,8 @@ code-line-numbers: false
 
 # Task
 
-:::{.callout-note}
-Find the solution here after the session ends.
+Go to the [task page](tasks/tidyr.qmd) for the exercises.
 
-```{=html}
-<script>const course_day = 3;</script>
-<script src="../timer_solution.js"></script>
-<p class="r_class_solution" style="display:none">
-  <a href="solutions/tidyr.html" target="_blank">Click here for the solution.</a>
-</p>
-```
-:::
+## Further reading
 
-{{< include tasks/tidyr.qmd >}}
+- [Data import cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf)

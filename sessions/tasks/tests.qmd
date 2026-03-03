@@ -1,3 +1,22 @@
+---
+title: "Task: Statistical tests"
+number-sections: false
+---
+
+[← Back to session page](../10_tests.qmd)
+
+:::{.callout-note}
+Find the solution here after the session ends.
+
+```{=html}
+<script>const course_day = 3;</script>
+<script src="../../timer_solution.js"></script>
+<p class="r_class_solution" style="display:none">
+  <a href="../solutions/tests.html" target="_blank">Click here for the solution.</a>
+</p>
+```
+:::
+
 ## Get started
 
 We will again use the `penguins` data included in R.

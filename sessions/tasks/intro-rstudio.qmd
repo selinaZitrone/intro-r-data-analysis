@@ -1,3 +1,10 @@
+---
+title: "Task: Introduction to RStudio"
+number-sections: false
+---
+
+[← Back to session page](../01_intro-rstudio.qmd)
+
 ## Change settings
 
 Before you get started, there is an important setting that you should change in RStudio.

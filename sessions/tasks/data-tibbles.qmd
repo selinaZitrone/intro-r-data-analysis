@@ -1,3 +1,22 @@
+---
+title: "Task: Data frames and tibbles"
+number-sections: false
+---
+
+[← Back to session page](../04_data-tibbles.qmd)
+
+:::{.callout-note}
+Find the solution here after the session ends.
+
+```{=html}
+<script>const course_day = 1;</script>
+<script src="../../timer_solution.js"></script>
+<p class="r_class_solution" style="display:none">
+  <a href="../solutions/data-tibbles.html" target="_blank">Click here for the solution.</a>
+</p>
+```
+:::
+
 ## Get started with tibbles
 
 Before you start the task:
