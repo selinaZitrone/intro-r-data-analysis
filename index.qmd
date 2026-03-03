@@ -4,7 +4,22 @@ subtitle: "Workshop by Selina Baldauf"
 number-sections: false
 ---
 
-# Schedule
+This workshop equips beginners with essential R skills for data processing and visualization. Every session is followed by hands-on exercises, and Day 4 is dedicated to applying what you've learned to your own research data. No prior programming experience required.
+
+::: {.callout-note}
+## Before you start
+Please complete the [preparations](preparations.qmd) before Day 1 to ensure a smooth workshop start.
+:::
+
+## Schedule
+
+| | Date | Time |
+|---|---|---|
+| 📅 Day 1 | Monday, 9 March 2026 | 9:00 – 16:00 |
+| 📅 Day 2 | Tuesday, 10 March 2026 | 9:00 – 16:00 |
+| 📅 Day 3 | Monday, 16 March 2026 | 9:00 – 16:00 |
+| 📅 Day 4 | Tuesday, 17 March 2026 | 9:00 – 16:00 |
+
 
 ```{=html}
 <script src="timer_solution.js"></script>
@@ -24,7 +39,9 @@ window.addEventListener("load", function () {
 </script>
 ```
 
-## Day 1 — R and RStudio Basics
+### Day 1 — R and RStudio Basics, Reading Data
+
+*The task solution script will be available for download here after the session.*
 
 ::: {.r_day1_content}
 [Download Day 1 R script](R/Tasks/Day1.R){download="Day1.R"}
@@ -36,7 +53,9 @@ window.addEventListener("load", function () {
 - [Data frames & tibbles](sessions/04_data-tibbles.qmd)
 - [Tidyverse and readr](sessions/05_readr.qmd)
 
-## Day 2 — Data Visualization and Transformation
+### Day 2 — Data Visualization and Transformation
+
+*The task solution script will be available for download here after the session.*
 
 ::: {.r_day2_content}
 [Download Day 2 R script](R/Tasks/Day2.R){download="Day2.R"}
@@ -45,7 +64,9 @@ window.addEventListener("load", function () {
 - [Data visualization with ggplot2](sessions/07_ggplot.qmd)
 - [Data transformation with dplyr](sessions/08_dplyr.qmd)
 
-## Day 3 — Tidy Data and Statistics
+### Day 3 — Tidy Data and Statistics
+
+*The task solution script will be available for download here after the session.*
 
 ::: {.r_day3_content}
 [Download Day 3 R script](R/Tasks/Day3.R){download="Day3.R"}
@@ -54,22 +75,16 @@ window.addEventListener("load", function () {
 - [Tidy data with tidyr](sessions/09_tidyr.qmd)
 - [Statistical tests](sessions/10_tests.qmd)
 
-## Day 4 — Bring Your Own Data
+### Day 4 — Bring Your Own Data
 
-- [Bring Your Own Data session](sessions/byod.qmd)
+Apply what you've learned to your own research data, with instructor support throughout the day.
 
-## Extras
+- [Bring Your Own Data](sessions/byod.qmd)
+
+### Extras
 
 Optional sessions — covered when time allows.
 
 - [Common R errors](sessions/06_common-errors.qmd)
 - [Good practice coding](sessions/11_good-practice.qmd)
 - [AI Tools](sessions/12_AI-tools.qmd)
-
-# About
-
-This workshop equips beginners with essential R skills for data processing and visualization. Every session is followed by hands-on exercises, and Day 4 is dedicated to applying what you've learned to your own research data.
-
-No prior experience in R or programming is required.
-
-I'm a scientific programmer at Freie Universität specializing in theoretical ecology. Feel free to reach out with any questions via [selina.baldauf@fu-berlin.de](mailto:selina.baldauf@fu-berlin.de).
