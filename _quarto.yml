@@ -8,8 +8,7 @@ project:
     - "!R/byod/"
     - "!R/quarto_example.qmd"
   resources:
-    - "slides/*.pdf"
-    - "slides/*.html"
+    - "sessions/slides_pdf/*.pdf"
     - "R/Tasks/"
     - "data/read_challenge/*"
     - "R/byod/general_tips/*"
@@ -37,8 +36,6 @@ website:
         href: packages.qmd
 
     right:
-      - text: "BYOD"
-        href: sessions/byod.qmd
       - icon: github
         menu:
           - text: Source Code

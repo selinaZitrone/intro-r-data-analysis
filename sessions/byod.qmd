@@ -6,7 +6,7 @@ title: "Bring Your Own Data"
 <iframe class="slide-deck" width="780" height="500" src="slides/bring-your-own-data.html"></iframe>
 ```
 
-[Slides in full screen](slides/bring-your-own-data.qmd){target="_blank"}
+[Slides in full screen](slides/bring-your-own-data.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/bring-your-own-data.pdf" download>Download PDF slides</a>
 
 # Datasets
 

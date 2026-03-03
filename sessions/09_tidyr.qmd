@@ -15,4 +15,4 @@ Go to the [task page](tasks/tidyr.qmd) for the exercises.
 
 ## Further reading
 
-- [Data import cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf)
+- [Tidyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/tidyr.pdf)

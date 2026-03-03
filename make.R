@@ -11,7 +11,7 @@ slides_qmd <- list.files(
 )
 
 # Skip non-slide files that don't produce a standalone rendered page
-skip <- c("template.qmd", "00_organization.qmd")
+skip <- c("00_organization.qmd")
 
 lapply(slides_qmd, function(qmd) {
   if (basename(qmd) %in% skip) return(invisible(NULL))

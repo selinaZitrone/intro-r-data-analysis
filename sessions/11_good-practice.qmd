@@ -83,7 +83,7 @@ ggplot(
   geom_boxplot()
 ```
 
-### Automatically format your
+### Automatically format your code
 
 You can let RStudio format your code automatically according to the tidyverse style guide. This is done with the `styler` package.
 
