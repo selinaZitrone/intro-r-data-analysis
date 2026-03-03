@@ -1,6 +1,5 @@
 ---
 title: "Tidy data with tidyr"
-code-line-numbers: false
 ---
 
 ```{=html}

@@ -1,6 +1,5 @@
 ---
 title: "Data transformation with dplyr"
-code-line-numbers: false
 ---
 
 ```{=html}

@@ -25,7 +25,7 @@ number-sections: false
 
 ## Tidyverse
 
-- The [tidyverse website](https://tidyverse.org/) has links to all tidyverse packages which all have very good examples and use cases. These websites are an excelent point to get started with a package.
+- The [tidyverse website](https://tidyverse.org/) has links to all tidyverse packages which all have very good examples and use cases. These websites are an excellent point to get started with a package.
 
 
 

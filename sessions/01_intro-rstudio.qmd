@@ -1,6 +1,5 @@
 ---
 title: "Introduction to RStudio"
-code-line-numbers: false
 ---
 
 ```{=html}

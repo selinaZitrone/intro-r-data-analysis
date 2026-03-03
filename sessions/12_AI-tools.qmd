@@ -1,6 +1,5 @@
 ---
 title: "AI tools for R programming"
-code-line-numbers: false
 execute:
   eval: false
 ---

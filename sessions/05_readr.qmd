@@ -1,6 +1,5 @@
 ---
 title: "Import and Export Data with readr"
-code-line-numbers: false
 ---
 
 ```{=html}
