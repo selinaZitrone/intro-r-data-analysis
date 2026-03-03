@@ -39,18 +39,6 @@ website:
     right:
       - text: "BYOD"
         href: sessions/byod.qmd
-      - text: "Example scripts"
-        menu:
-          - text: "RNAseq volcano, heatmap, PCA"
-            href: R/byod/general_tips/volcano_heatmap_rnaseq.R
-          - text: "Read and combine multiple tables"
-            href: R/byod/general_tips/read_and_combine_tables.R
-          - text: "Correlation plots"
-            href: R/byod/general_tips/correlation_plots.R
-          - text: "PCA"
-            href: R/byod/general_tips/penguins_pca.R
-          - text: "k-means clustering"
-            href: R/byod/general_tips/kmeans.R
       - icon: github
         menu:
           - text: Source Code
