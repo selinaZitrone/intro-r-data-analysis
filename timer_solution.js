@@ -7,6 +7,7 @@ const session_end_times = [
 ];
 
 window.addEventListener("load", function () {
+  if (typeof course_day === 'undefined') return;
   const date_now = new Date();
   const show_solution = date_now >= session_end_times[course_day - 1];
 
