@@ -24,7 +24,7 @@ website:
   page-footer: "Copyright 2026, Selina Baldauf"
   title: ""
   navbar:
-    background: "#91BCE6"
+    background: primary
     left:
       - text: "<b>Home</b>"
         href: index.qmd
@@ -47,7 +47,7 @@ format:
   html:
     theme:
       light: [flatly, theme.scss]
-      dark: [darkly]
+      dark: [darkly, theme.scss]
     toc: true
     number-sections: false
     code-copy: true
