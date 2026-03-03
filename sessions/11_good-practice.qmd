@@ -9,7 +9,7 @@ execute:
 <iframe class="slide-deck" width="780" height="500" src="slides/good-practice.html"></iframe>
 ```
 
-[Slides in full screen](slides/good-practice.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/good-practice.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/good-practice.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/good-practice.pdf" download>Download PDF slides</a>
 
 
 ## Good practice summary

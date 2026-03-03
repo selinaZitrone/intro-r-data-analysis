@@ -6,4 +6,4 @@ title: "Common errors"
 <iframe class="slide-deck" width="780" height="500" src="slides/common-errors.html"></iframe>
 ```
 
-[Slides in full screen](slides/common-errors.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/common-errors.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/common-errors.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/common-errors.pdf" download>Download PDF slides</a>

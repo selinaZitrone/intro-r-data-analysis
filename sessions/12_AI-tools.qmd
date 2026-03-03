@@ -9,7 +9,7 @@ execute:
 <iframe class="slide-deck" width="780" height="500" src="slides/AI-tools.html"></iframe>
 ```
 
-[Slides in full screen](slides/AI-tools.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/AI-tools.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/AI-tools.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/AI-tools.pdf" download>Download PDF slides</a>
 
 
 Below you find a few links to further resources on AI tools for R programming. 

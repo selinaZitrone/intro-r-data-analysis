@@ -7,7 +7,7 @@ code-line-numbers: false
 <iframe class="slide-deck" width="780" height="500" src="slides/tidyr.html"></iframe>
 ```
 
-[Slides in full screen](slides/tidyr.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides/tidyr.pdf" download>Download PDF slides</a>
+[Slides in full screen](slides/tidyr.html){target="_blank"} &nbsp;&nbsp;&nbsp; <a href="slides_pdf/tidyr.pdf" download>Download PDF slides</a>
 
 # Task
 
