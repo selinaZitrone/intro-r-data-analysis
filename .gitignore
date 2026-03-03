@@ -3,6 +3,8 @@
 .Rdata
 .httr-oauth
 .DS_Store
+docs/*
+_freeze/*
 
 slides/img/
 slides/*.html
@@ -25,8 +27,6 @@ R/byod/2023_02_tips/dnaseq/raw_counts.tsv
 R/byod/2023_02_tips/dnaseq/DE_results.csv
 /R/quarto_example_files
 /sessions/slides/*_files
-R/random_groups.R
-
 # Ignore data files
 data/animals*
 
@@ -35,12 +35,10 @@ data/animals*
 *_files
 
 # Ignore the _freeze folder
-_quarto.yml
 R/random_groups.R
 R/byod/specific_tips/2025_10_tips/data/nm_to_mrg_pk.cpp
 data/byod/heatmap_genes
 data/byod/limma-voom_luminalpregnant-luminallactate
-.gitignore
 data/byod/limma-voom_normalised_counts
 
 **/*.quarto_ipynb
