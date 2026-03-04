@@ -8,14 +8,12 @@ number-sections: false
 ## Change settings
 
 Before you get started, there is an important setting that you should change in RStudio.
-By default, RStudio will save the workspace of your current session in an `.Rdata` file. This would allow you to start the next session exactly where you left it by loading the `.Rdata` file.
+By default, RStudio saves your workspace when you quit. This means the next session starts with old data still loaded — which can cause confusing errors.
 
-This is not a good default. We always want to start R from a clean slate to ensure reproducibility and minimize error potential.
-
-In RStudio go to **Tools -> Global Options -> General** and 
+In RStudio go to **Tools -> Global Options -> General** and
 
 - Remove the check mark for "Restore .RData into workspace at startup"
-- **Never** "Save workspace to .RData on exit"
+- Set "Save workspace to .RData on exit" to **Never**
 
 ```{r fig.height=20}
 #| echo: false
@@ -24,73 +22,86 @@ knitr::include_graphics(here::here("sessions/tasks/img/setting_workspace.png"))
 
 ## Create an RStudio project
 
-Create an RStudio project for all the scripts, notes, data, etc. from this workshop:
+Create an RStudio project for this workshop:
 
-1. Create a project in a directory of your choice following the instructions from the slides
-2. Use the **Files pane** in RStudio to create a basic folder structure in your project which will be filled with files in the next days:
-  - Folder `data/` for all data files 
-  - Folder `R/` for all R scripts
-  - Folder `docs/` for other documents (e.g. lecture notes or slides)
-  - You can always change the structure of your project later
+1. **File -> New Project -> New Directory -> New Project**
+2. Give it a name (e.g. `r-workshop`)
+3. Choose where to save it
+4. Click **Create Project**
 
-You can add files to your project either directly in RStudio, or in the file explorer of your operating system.
+Now have a look at the **Files pane** in RStudio (bottom right). You should see a
+folder that has only the `.Rproj` file in it.
 
-## Add an R script to the project
+Use the **Files pane** to create a basic folder structure in your project:
 
-- Create a new R script and save it in the `R/` folder of your project
-- Copy and paste the code from below into your script
-  - Don't worry if you don't understand the code yet, we will learn all this later
-- Run the code in the script line by line. Try both, running code using the **Run button** (in the top right corner of your script pane) and the keyboard shortcut `Ctrl/Cmd + Enter`
-  - For each line that you run, observe what is happening to the different panes (console, environment, ...) in RStudio. Can you explain what is happening?
+- `data/` for data files
+- `R/` for R scripts
+
+:::{.callout-tip}
+
+## I don't see my new folders
+
+Sometimes you need to click the "Refresh" button in the Files pane (top right of that pane) to see the new folders you just created.
+
+:::
+
+## Create and run an R script
+
+1. Navigate into the `R/` folder in the Files pane
+2. Create a new R script: **File -> New File -> R Script**
+3. Copy the code below into your script and save it (`Ctrl/Cmd + S`)
+4. Run the code **line by line** using `Ctrl+Enter` (Windows/Linux) or `Cmd+Return` (Mac)
+
+Don't worry if you don't understand the code yet — we will learn all of this during the workshop. For now, just observe what happens in the different panes (console, environment, plot) as you run each line.
 
 ```{r eval=FALSE, echo=TRUE}
-# Look at the first lines of the iris dataset
-head(iris)
-# What is the iris dataset -> Call the help
-?iris
-# How many rows and columns does the data set have?
-rownum <- nrow(iris)
-colnum <- ncol(iris)
-print(paste0(
-  "The iris dataset has ",
-  rownum,
-  " rows and ",
-  colnum,
-  " columns."
-))
-# Some summary statistics on the iris data set
-summary(iris)
+# Look at the first rows of the built-in penguins dataset
+head(penguins)
 
-# create a plot
+# How many rows and columns does it have?
+nrow(penguins)
+ncol(penguins)
+
+# Summary statistics
+summary(penguins)
+
+# Create a variable
+my_variable <- "Hello, RStudio!"
+
+# Create a simple plot
 plot(
-  iris$Petal.Length,
-  iris$Petal.Width,
-  xlab = "Petal Length",
-  ylab = "Petal Width",
-  main = "Petal Width vs Petal Length",
+  penguins$flipper_len,
+  penguins$body_mass,
+  xlab = "Flipper Length (mm)",
+  ylab = "Body Mass (g)",
+  main = "Penguin Body Mass vs Flipper Length",
   pch = 20,
-  col = ifelse(
-    iris$Species == "setosa",
-    "coral1",
-    ifelse(
-      iris$Species == "virginica",
-      "cyan4",
-      ifelse(iris$Species == "versicolor", "darkgoldenrod2", "grey")
-    )
-  )
+  col = "steelblue"
 )
-# add a legend
-legend(
-  "bottomright",
-  c("setosa", "virginica", "versicolor"),
-  col = c("coral1", "cyan4", "darkgoldenrod2"),
-  pch = 20
-)
-
 ```
 
-## For the fast ones
+## Optional tasks (if you finish early)
 
-- Go back to the **Global options** and check out the **Appearance** section. If you want
-you can change the look of RStudio there
+You can do these in any order — or skip them and just take a break.
+
+### Add your own data to the project
+
+- Find one of your own datasets (e.g. a spreadsheet, csv file, or something similar) on your computer
+- Copy it into the `data/` folder of your project (hint: the Files pane shows you where your project lives)
+  - Note: You have to open your project in your file explorer (Finder on Mac, File Explorer on Windows) to copy the file into the `data/` folder. You cannot copy files into that folder from RStudio.
+- In RStudio, check if you see the file in the `data/` folder
+
+Later, you can try to read this file into R.
+
+### Change the RStudio theme
+
+- Go to **Tools -> Global Options -> Appearance**
+- Browse through the different themes and choose one you like
+- Click **Apply** to see how it looks (you can change it as many times as you like)
+
+### Close and reopen your project
+
+- Close RStudio completely
+- Find your project folder in your file explorer (Finder on Mac, File Explorer on Windows)
+- Double-click the `.Rproj` file to open the project in RStudio again
 
