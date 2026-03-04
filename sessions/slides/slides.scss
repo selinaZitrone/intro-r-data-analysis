@@ -191,18 +191,18 @@ p.subtitle {
 // Inverse background slides -----------------------------------------------
 
 .inverse {
-    color: $theme-white;
+    color: $theme-black;
     h1, h2, h3, h4 {
-      color: $theme-blue-light;
+      color: $theme-blue-dark;
     }
     .slide-background-content {
-      background-color: $theme-black;
+      background-color: $gray-400;
     }
     blockquote {
-      color: $gray-200
+      color: $gray-800
     }
     a {
-      color: $theme-blue
+      color: $theme-blue-dark;
     }
     code {
       color: $theme-green;
@@ -212,6 +212,7 @@ p.subtitle {
 section.has-dark-background {
   color: $theme-white;
 }
+
 
 // blue slide
 
@@ -228,6 +229,18 @@ section.has-dark-background {
     }
 }
 // extra stuff -----------------------------------------------------------
+
+.img-caption-small {
+  font-size: 0.5em;
+  color: #666;
+}
+
+.highlight-blue-inverse {
+ background-color: $theme-blue-dark;
+ color: $theme-white;
+ padding: 0.1em 0.2em;
+ font-weight: bold;
+}
 
 .highlight-blue {
  background-color: $theme-blue-light;
