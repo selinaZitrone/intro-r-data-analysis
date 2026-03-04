@@ -17,11 +17,13 @@ Find the solution here after the session ends.
 ```
 :::
 
-You have the following three vectors:
+## Getting started
+
+Copy and paste the following three vectors into your R script:
 
 - `species`: name of the species
-- `bodywt_kg`: body weight of the species in kg
-- `brainwt_g`: brain weight of the species in g
+- `bodywt_kg`: body weight in kg
+- `brainwt_kg`: brain weight in kg
 
 ```{r echo=TRUE, eval=FALSE}
 species <- c(
@@ -60,7 +62,7 @@ bodywt_kg <- c(
   465,
   36.3,
   27.7,
-  1.,
+  1.0,
   11700,
   2547,
   187.1,
@@ -109,44 +111,37 @@ brainwt_kg <- c(
   0.0004,
   0.0121,
   0.175,
-  0.157,
+  NA,
   0.44,
   0.0019,
   0.1545,
-  0.003,
+  NA,
   0.18
 )
 ```
 
-Copy and paste the vectors into your R script and solve the following tasks.
+## Variables and vectors
 
-- Check which of the following animals are contained in the `species` vector:
+1. How many species are in the dataset? Save the number in a variable called `n_species`.
+    - Hint: try the function `length()`
+2. What is the 13th species in the vector?
+3. Get the species at positions 6, 13, and 14.
 
-```{r echo=TRUE, eval=FALSE}
-animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
-```
+## Vector arithmetic
 
-- Calculate mean and standard deviation of the brain weight
-  - Hint: have a look at the summary slides to find the functions
-- Which species have a brain weight larger than the mean brain weight of all species?
-- Calculate the ratio of brain weight to body weight in percent for all animals and save the result in a new vector
-- A bit more tricky: Are there any animals with a larger brain to body weight ratio than humans? If yes, which ones?
-  - Hint: calculate the ratio for humans and save it in a separate variable first
+4. Calculate the brain-to-body weight ratio for all species and save it in a new variable called `ratio`.
+5. Convert the body weight from kg to grams and save it in a variable called `bodywt_g`.
+
+## Functions and missing values
+
+6. Calculate the mean body weight and the mean brain weight. What happens for brain weight and how do you fix it?
+    - Hint: check `?mean`
+7. Also try `sum()` and `min()` on brain weight.
 
 ## For the fast ones
 
-- Round the ratio vector to 4 decimal places with the `round` function
-  - Type `?round` into the console to open the help of the `round` function
-- Which animal has the smallest brain to body weight ratio?
-  - Hint: have a look at the `min` function
-- Add the following three animals to the data vectors
-
-```{r echo=TRUE, eval=FALSE}
-species_new <- c("Eagle", "Snail", "Lion")
-brainwt_kg_new <- c(0.0004, NA, 0.5)
-bodywt_kg_new <- c(18, 0.01, 550)
-```
-
- Now calculate the mean brain weight again. Can you explain what happens? Can you fix it?
- 
- - Hint: have a look at `?mean`
+- Use the `round()` function to round the `ratio` vector to 4 decimal places.
+  - Use `?round` to find out which argument controls the number of decimal places.
+- Try `max()`, `median()`, and `sd()` on `brainwt_kg` — do they all need the same fix for missing values?
+- Use `length()` and `sum()` together with `is.na()` to find out how many missing values are in `brainwt_kg`.
+  - Hint: `is.na()` returns `TRUE` for each `NA` value. What happens if you `sum()` a logical vector?
