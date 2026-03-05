@@ -31,67 +31,6 @@ knitr:
 from: markdown+emoji
 ---
 
-```{r}
-#| include: false
-library(tidyverse)
-```
-
-# Packages {.inverse}
-
-## Packages
-
-**Base R** functions and data types: built into R
-
-```{r}
-#| eval: false
-mean()         # calculate mean
-summary()      # show summary of a table
-data.frame()   # create a data frame
-```
-
-. . .
-
-**Additional packages** extend R with new functions
-
-```{r}
-#| eval: false
-# install once (in the console, not in the script)
-install.packages("packageName")
-
-# load every time R restarts (at the top of your script)
-library(packageName)
-```
-
-## The tidyverse
-
-A **collection of R packages** for data science, designed to work together.
-
-These are the main packages from the tidyverse that we will use:<br><br>
-
-:::{.r-stack}
-
-![](img/hex-stickers/tibble.png){width=15%}![](img/hex-stickers/readr.png){width=15%}![](img/hex-stickers/readxl.png){width=15%}![](img/hex-stickers/tidyr.png){width=15%}![](img/hex-stickers/ggplot2.png){width=15%}![](img/hex-stickers/dplyr.png){width=15%}
-
-:::
-
-. . .
-
-Install the tidyverse once with:
-
-```{r}
-#| eval: false
-install.packages("tidyverse")
-```
-
-Then load the packages at the beginning of your script:
-
-```{r}
-#| eval: false
-library(tidyverse)
-```
-
-# Tables in R {.inverse}
-
 ## Data frames
 
 The built-in data structure for tables in R is a **data frame**.
@@ -240,7 +179,7 @@ Have a look at [this book chapter](https://adv-r.hadley.nz/vectors-chap.html#tib
 
 - Everything that you can do with data frames, you can do with tibbles
 
-- Tibbles are part of the `tibble` package (included in the tidyverse)
+- Tibbles are part of the `tibble` package
 
 :::
 
@@ -254,6 +193,31 @@ Have a look at [this book chapter](https://adv-r.hadley.nz/vectors-chap.html#tib
 
 :::
 
+## Packages
+
+**Base R** functions and data types: built into R
+
+```{r}
+#| eval: false
+mean()         # calculate mean
+summary()      # show summary of a table
+data.frame()   # create a data frame
+```
+
+. . .
+
+**Additional packages** extend R with new functions
+
+```{r}
+#| eval: false
+# install once (in the console, not in the script)
+install.packages("packageName")
+
+# load every time R restarts (at the top of your script)
+library(packageName)
+```
+
+
 ## Tibbles
 
 Create a tibble using the `tibble()` function:
@@ -266,8 +230,8 @@ Create a tibble using the `tibble()` function:
 
 ```{r}
 #| eval: false
-library(tidyverse)
-# library(tibble) # also works if you only need tibbles
+# install.packages("tibble") # install the tibble package once
+library(tibble)
 
 cities_tbl <- tibble(
   city_name = cities,
@@ -477,8 +441,7 @@ cities_tbl
 #### packages and tibbles
 
 - additional packages extend R with new functions
-- install once with `install.packages("tidyverse")`, load with `library(tidyverse)`
-- tibbles are part of the tidyverse (or load individually with `library(tibble)`)
+- install once with `install.packages("tibble")`, load with `library(tibble)`
 
 :::
 

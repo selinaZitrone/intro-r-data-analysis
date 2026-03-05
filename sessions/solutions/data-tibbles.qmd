@@ -8,9 +8,8 @@ code-line-numbers: false
 Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and put them in a tibble.
 
 ```{r}
-# install.packages("tidyverse")
-library(tidyverse)
-# library(tibble) # also works if you only need tibbles
+# install.packages("tibble")
+library(tibble)
 
 species <- c(
   "MountainBeaver", "Cow", "GreyWolf", "Goat",

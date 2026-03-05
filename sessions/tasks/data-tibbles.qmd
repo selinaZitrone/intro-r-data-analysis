@@ -21,10 +21,10 @@ Find the solution here after the session ends.
 
 Before you start the task:
 
-- If you haven't already, install the tidyverse by calling `install.packages("tidyverse")` in the console.
+- If you haven't already, install the tibble package by calling `install.packages("tibble")` in the console.
   - You don't need to put this command in your script as you only need to call it once to install the packages
-- Open your script for the task and put `library(tidyverse)` on top
-- Execute this line and the tidyverse packages (including tibble) are loaded into your R session
+- Open your script for the task and put `library(tibble)` on top
+- Execute this line and the tibble package is loaded into your R session
 
 ## Create a tibble
 
