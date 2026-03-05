@@ -18,63 +18,39 @@ Find the solution here after the session ends.
 ```
 :::
 
-## Get started with readr and the tidyverse
+## Get started
 
-Before you start, make sure to install the `tidyverse` packages by calling
+If you haven't already, install the tidyverse (do this in the console, not in your script):
 
-```{r eval=FALSE, echo=TRUE}
+```{r}
+#| eval: false
+#| echo: true
 install.packages("tidyverse")
 ```
 
-This will install readr along with other tidyverse packages.
+Make sure you have the tidyverse loaded at the top of your script:
 
-Remember to put `library(tidyverse)` (or `library(readr)`) on top of your script to access the readr functions.
+```{r}
+#| eval: false
+#| echo: true
+library(tidyverse)
+```
 
-### Write a tibble to disk
+## Read a CSV file
 
-Let's use the `animals` tibble from the previous task and write it into the data folder in our project.
+1. Download the file below and save it in the `data/` folder of your project.
+2. Use `read_csv()` to read the file into R and save it in a variable called `trees`.
+3. Explore the data:
+    - Use `summary(trees)` — how many tree species are there? What is the tallest tree?
+    - Use `View(trees)` to look at the full table
+    - Use `$` to access the `height_m` column and calculate the mean height
 
-Before writing the tibble
-
-- Create a `data` sub-folder in your RStudio project (if you don't have one yet)
-  - Hint: You can do that from within RStudio by using the `New Folder` button in the *Files pane* 
-
-Now write the `animals` tibble into that `/data` sub-directory as `animals.csv` using a comma separator.
-
-Check if the file was written into the correct folder.
-
-## Read data into R
-
-Now, try to read the data set back into R using the appropriate `read_*` function.
-
-Make sure that you save the table you read in in a new variable to have it available for later use.
-
-:::{.callout-tip}
-
-Don't type the path of the table to read. Instead, type only the "", then us the tab key on your keyboard to auto-complete the path. This way you avoid typing mistakes.
-
-:::
-
-## For the fast ones
-
-- Download the csv or excel file below. The files are a bit messy. Find out what is messy 
-about the data sets (try reading them in R and see what happens, open the files in Excel or a text editor and check out the structure).
-Then read them into R correctly. Try the `janitor::clean_names` function on the data after you read it in.
-
-:::{.columns}
-
-::: {.column}
-
-```{r echo = FALSE}
-path_files <- list.files(
-  path = here::here("data/read_challenge/"),
-  full.names = TRUE
-)
-
+```{r}
+#| echo: false
 downloadthis::download_file(
-  path = path_files[[1]],
-  output_name = "Readr challenge files",
-  button_label = "Download csv",
+  path = here::here("data/read_challenge/tree_growth.csv"),
+  output_name = "tree_growth",
+  button_label = "Download tree_growth.csv",
   button_type = "default",
   has_icon = TRUE,
   icon = "fa fa-save",
@@ -82,15 +58,19 @@ downloadthis::download_file(
 )
 ```
 
-:::
+## Read an Excel file
 
-::: {.column}
+1. Download the Excel file below and save it in the `data/` folder of your project.
+2. Load the `readxl` package with `library(readxl)`.
+3. Use `read_excel()` to read the file into R and save it in a variable.
+4. Explore the data with `summary()`.
 
-```{r echo = FALSE}
+```{r}
+#| echo: false
 downloadthis::download_file(
-  path = path_files[[2]],
-  output_name = "Readr challenge files",
-  button_label = "Download xlsx",
+  path = here::here("data/read_challenge/bird_observations.xlsx"),
+  output_name = "bird_observations",
+  button_label = "Download bird_observations.xlsx",
   button_type = "default",
   has_icon = TRUE,
   icon = "fa fa-save",
@@ -98,14 +78,72 @@ downloadthis::download_file(
 )
 ```
 
-:::
+## Write data to a file
+
+Take the `trees` tibble you just read in and write it to a new file:
+
+1. Use `write_csv()` to save it as `trees_copy.csv` in your `data/` folder.
+2. Check in the Files pane that the file was created.
+
+## Challenge: a slightly messy file
+
+1. Download the file below and save it in the `data/` folder.
+2. Try reading it with `read_csv()`. Something is wrong — can you figure out what?
+    - Hint: open the file in a text editor or in RStudio (File → Open File) to see its structure.
+3. Use the appropriate argument of `read_csv()` to fix the problem. Check `?read_csv` for an argument that lets you skip lines at the top of a file.
+
+```{r}
+#| echo: false
+downloadthis::download_file(
+  path = here::here("data/read_challenge/water_quality.csv"),
+  output_name = "water_quality",
+  button_label = "Download water_quality.csv",
+  button_type = "default",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
+## Optional tasks (if you finish early)
+
+You can do these in any order — or skip them and just take a break.
+
+### Challenge: an even messier file
+
+Download the file below and try to read it into R. This file has multiple problems — you'll need more than one argument to fix them.
+
+:::{.callout-tip collapse="true"}
+
+## Hint
+
+The file has metadata lines on top **and** uses a different delimiter (not a comma).
 
 :::
 
-<br>
+```{r}
+#| echo: false
+downloadthis::download_file(
+  path = here::here("data/read_challenge/soil_nutrients_messy.csv"),
+  output_name = "soil_nutrients_messy",
+  button_label = "Download soil_nutrients_messy.csv",
+  button_type = "default",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
-- Try reading in some of your own research data. First, add them to the `/data` folder of your project. 
-Then read them into R using the appropriate `read_*` function. Can you manage to read the data in a clean format? What are the challenges you face?
+### Clean messy column headers
 
+After reading the messy soil data, try using `janitor::clean_names()` on it. What does it do to the column names?
 
+You may need to install the janitor package first: `install.packages("janitor")`.
 
+### Read your own data
+
+If you have your own research data, try reading it into R:
+
+1. Copy a data file into the `data/` folder of your project
+2. Use the appropriate `read_*()` function to read it in
+3. Did it work? If not, check `?read_csv` or `?read_excel` for arguments that might help

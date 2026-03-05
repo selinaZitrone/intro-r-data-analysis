@@ -1,111 +1,118 @@
 ---
-title: "Solution to readr task"
+title: "Solution: Import and Export Data"
 code-line-numbers: false
 ---
 
-## Write a tibble to disk
-
-First, I load the `tidyverse` package to have all readr functions available. Then I will write the tibble that I called `animals` from the [previous task](02_data-tibbles.qmd).
-
 ```{r}
 #| include: false
-library(tibble)
-library(readr)
-species <- c(
-  "MountainBeaver", "Cow", "GreyWolf", "Goat",
-  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
-  "Horse", "PotarMonkey", "Cat", "Giraffe",
-  "Gorilla", "Human", "AfricanElephant", "Triceratops",
-  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
-  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
-  "Rat", "Brachiosaurus", "Mole", "Pig"
-)
-
-bodywt_kg <- c(
-  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
-  521, 10, 3.3, 529, 207, 62, 6654, 9400,
-  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
-  0.3, 87000, 0.1, 192
-)
-
-brainwt_kg <- c(
-  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, 
-  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, 
-  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
-  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,
-  0.0019, 0.1545, 0.003, 0.18
-)
-
-# Creating the tibble 
-animals <- tibble(
-  species = species,
-  bodywt_kg = bodywt_kg,
-  brainwt_kg = brainwt_kg
-)
+library(tidyverse)
+library(readxl)
 ```
 
-```{r eval=FALSE}
+## Read a CSV file
+
+```{r}
+#| eval: false
 library(tidyverse)
 ```
 
+Read the tree data:
+
 ```{r}
-# The variable animals with the tibble from the previous task
-animals
+trees <- read_csv("data/tree_growth.csv")
+trees
 ```
 
-Now I write the `animals` table into my project's `data/` folder:
+Explore the data:
 
+```{r}
+summary(trees)
+```
 
-```{r eval=FALSE}
-write_csv(x = animals, file = "data/animals.csv") # write as csv
-write_tsv(x = animals, file = "data/animals.txt") # write as txt
+There are 4 tree species (Beech, Birch, Oak, Pine). The tallest tree is 20.1 m.
+
+Calculate the mean height:
+
+```{r}
+mean(trees$height_m)
+```
+
+## Read an Excel file
+
+```{r}
+#| eval: false
+library(readxl)
+```
+
+```{r}
+birds <- read_excel("data/bird_observations.xlsx")
+birds
+```
+
+```{r}
+summary(birds)
+```
+
+## Write data to a file
+
+```{r}
+#| eval: false
+write_csv(trees, file = "data/trees_copy.csv")
 ```
 
 :::{.callout-note}
 
-In order for this command to work, the `/data` directory must already be present in your working directory. Otherwise the path cannot be found
-and you will get an error message.
+For this to work, the `data/` directory must already exist in your project. Otherwise you will get an error.
 
 :::
 
+## Challenge: a slightly messy file
 
-## Read data into R
+If you try to read the file directly, the metadata lines on top are treated as data:
 
-Now I take the same data that I just wrote and read it back into R:
-
-```{r echo=TRUE, eval=FALSE}
-animals_csv <- read_csv("data/animals.csv") # read the csv
-animals_tsv <- read_tsv("data/animals.txt") # read the txt
+```{r}
+#| eval: false
+read_csv("data/water_quality.csv")
 ```
 
-:::{.callout-note}
+Open the file in a text editor — you can see 4 lines of metadata before the actual data starts. Use `skip` to skip them:
 
-I saved the data that I read in in two new variables: `animals_csv` and `animals_tsv`. You always need to do this, otherwise you don't have the data available for the following analysis.
-
-:::
-
-## Extra
-
-You can use the **Files pane** to import csv files. Just click on the csv file and then click on the **Import Dataset** button:
-
-```{r echo=FALSE}
-knitr::include_graphics(here::here("sessions/tasks/img/readr_import_button.png"))
+```{r}
+water <- read_csv("data/water_quality.csv", skip = 4)
+water
 ```
 
-Now have the possibility to import a data set via a graphical user interface. 
+## Optional tasks
 
-```{r echo=FALSE}
-knitr::include_graphics(here::here("sessions/tasks/img/readr_import_options.png"))
+### Challenge: an even messier file
+
+This file has two problems:
+
+1. Metadata lines on top (4 lines to skip)
+2. The delimiter is `;` instead of `,`
+
+So `read_csv()` won't work even with `skip`. Use `read_delim()` instead:
+
+```{r}
+soil <- read_delim(
+  "data/soil_nutrients_messy.csv",
+  delim = ";",
+  skip = 4
+)
+soil
 ```
 
-This is quite useful because you can preview your data and make sure that all the options are set correctly for importing. You can do this if you are not sure about the correct `read_*()` function arguments. 
+### Clean messy column headers
 
-Just play with these different options of reading data into R and find one that fits you best.
+The column `Organic Matter (%)` has spaces and special characters. Use `janitor::clean_names()` to fix this:
 
-:::{callout-warning}
+```{r}
+#| eval: false
+# install.packages("janitor")
+```
 
-This workflow is not reproducible. If you use this option to import data, you have to click the button every time you want to import the data set.
+```{r}
+soil |> janitor::clean_names()
+```
 
-Importing the data set directly in your script using R code is the much better option. But check out the **Code Preview** window in the bottom right. You can just copy the code from there, paste it in your script and next time use the code instead of the graphical user interface.
-
-:::
+The column name is now `organic_matter_percent` — no spaces, no special characters, all lowercase.
