@@ -1,5 +1,5 @@
 ---
-title: "Solution to working with vectors"
+title: "Solution: Introduction to R"
 code-line-numbers: false
 ---
 
@@ -11,7 +11,7 @@ options(scipen = 999)
 
 You have the following three vectors:
 
-```{r echo=TRUE}
+```{r}
 species <- c(
   "MountainBeaver", "Cow", "GreyWolf", "Goat",
   "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
@@ -30,123 +30,111 @@ bodywt_kg <- c(
 )
 
 brainwt_kg <- c(
-  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05, 
-  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68, 
+  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,
+  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,
   0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
-  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,
-  0.0019, 0.1545, 0.003, 0.18
+  0.001, 0.0004, 0.0121, 0.175, NA, 0.44,
+  0.0019, 0.1545, NA, 0.18
 )
 ```
 
-- **Check which of the following animals are contained in the `species` vector**
+## Variables and vectors
 
-```{r echo=TRUE}
-animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
-
-# Goes through every element in animals_to_check and returns TRUE
-# if it appears in species
-animals_to_check %in% species
-```
-
-You can see that Goat, Chimpanzee and Rat are contained in `species`.
-
-To see the actual species name instead of just `TRUE` and `FALSE`, you have to index the vector:
-
+**1. What is the 13th species in the vector?**
 
 ```{r}
-animals_to_check[animals_to_check %in% species]
+species[13]
 ```
 
-
-:::{.callout-note}
-
-If you use `%in%` to check if elements are contained in a vector, the result vector is of the same length as the vector that is **before** the `%in%`. 
-
-Compare the result from above with the following:
+**2. Get the species at positions 6, 13, and 14.**
 
 ```{r}
-# Goes through every element in species and returns TRUE
-# if it appears in animals_to_check
-species %in% animals_to_check
+species[c(6, 13, 14)]
 ```
 
-:::
+**3. How many species are in the dataset? Save the number in a variable called `n_species`.**
 
-- **Calculate mean and standard deviation of brain weight**
+```{r}
+n_species <- length(species)
+n_species
+```
 
-```{r echo=TRUE}
+## Vector arithmetic
+
+**4. Calculate the brain-to-body weight ratio for all species and save it in a new variable called `ratio`.**
+
+```{r}
+ratio <- brainwt_kg / bodywt_kg
+ratio
+```
+
+**5. Convert the body weight from kg to grams and save it in a variable called `bodywt_g`.**
+
+```{r}
+bodywt_g <- bodywt_kg * 1000
+bodywt_g
+```
+
+## Functions and missing values
+
+**6. Calculate the mean body weight and the mean brain weight. What happens for brain weight and how do you fix it?**
+
+```{r}
+mean(bodywt_kg)
+```
+
+```{r}
 mean(brainwt_kg)
-sd(brainwt_kg)
 ```
 
-- Which species have a brain weight larger than the mean brain weight of all species?
+The result is `NA` because `brainwt_kg` contains missing values. To fix this, use the `na.rm` argument to remove missing values before calculating the mean:
 
-```{r echo=TRUE}
-species[brainwt_kg > mean(brainwt_kg)]
-```
-
-- **Calculate the ratio brain weight / body weight in percent and save it in a vector**
-
-```{r echo=TRUE}
-brain_body_ratio <- brainwt_kg / bodywt_kg * 100
-```
-
-- **Are there any animals with a larger brain to body weight ratio than humans? If yes, which ones?**
-
-**Step 1:** Look at the brain to body ratio of humans
-
-```{r echo=TRUE}
-brain_body_ratio[species == "Human"]
-```
-
-**Step 2**: Compare it with the other animals
-
-```{r echo=TRUE}
-# New variable for human brain to body ratio
-bbr_human <- brain_body_ratio[species == "Human"]
-# Are there animals that have a larger brain to body ratio than humans?
-brain_body_ratio > bbr_human
-# Which are these animals
-species[brain_body_ratio > bbr_human]
-
-# or short
-species[brain_body_ratio > brain_body_ratio[species == "Human"]]
-```
-
-## Extras
-
-- **Round the vector to 4 decimal places:**
-
-```{r echo=TRUE}
-brain_body_ratio <- round(brain_body_ratio, digits = 4)
-brain_body_ratio
-```
-
-
-- **Which animal has the smallest brain to body ratio?**
-
-```{r echo=TRUE}
-species[brain_body_ratio == min(brain_body_ratio)]
-```
-
-The `r species[brain_body_ratio == min(brain_body_ratio)]` has a really small brain with a weight of just `r brainwt_kg[species == species[brain_body_ratio == min(brain_body_ratio)]]` kg at a body weight of `r bodywt_kg[species == species[brain_body_ratio == min(brain_body_ratio)]]` kg!
-
-- **Add elements to the vector**
-
-```{r echo=TRUE}
-species_new <- c("Eagle", "Snail", "Lion")
-brainwt_kg_new <- c(0.0004, NA, 0.5)
-bodywt_kg_new <- c(18, 0.01, 550)
-
-species <- c(species, species_new)
-brainwt_kg <- c(brainwt_kg, brainwt_kg_new)
-bodywt_kg <- c(bodywt_kg, bodywt_kg_new)
-```
-
-- **What is the mean brain weight now?**
-
-```{r echo=TRUE}
-mean(brainwt_kg)
-# na.rm = TRUE removes missing values before calculating the mean
+```{r}
 mean(brainwt_kg, na.rm = TRUE)
+```
+
+**7. Also try `sum()` and `median()` on brain weight.**
+
+```{r}
+sum(brainwt_kg, na.rm = TRUE)
+median(brainwt_kg, na.rm = TRUE)
+```
+
+Without `na.rm = TRUE`, both functions return `NA`:
+
+```{r}
+sum(brainwt_kg)
+median(brainwt_kg)
+```
+
+## Optional tasks
+
+- **Round the `ratio` vector to 2 decimal places:**
+
+```{r}
+round(ratio, digits = 2)
+```
+
+- **Try `min()`, `max()`, `sum()`, and `sd()` on `brainwt_kg`. Do they all need the same fix for missing values?**
+
+```{r}
+min(brainwt_kg, na.rm = TRUE)
+max(brainwt_kg, na.rm = TRUE)
+sum(brainwt_kg, na.rm = TRUE)
+sd(brainwt_kg, na.rm = TRUE)
+```
+
+Yes, they all need `na.rm = TRUE` to handle the missing values.
+
+- **Use `length()` and `sum()` together with `is.na()` to find out how many missing values are in `brainwt_kg`.**
+
+```{r}
+# is.na() returns TRUE for each NA value
+is.na(brainwt_kg)
+```
+
+`TRUE` is treated as `1` and `FALSE` as `0` when you use `sum()` on a logical vector. So summing the result gives the number of missing values:
+
+```{r}
+sum(is.na(brainwt_kg))
 ```
