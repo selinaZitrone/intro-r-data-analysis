@@ -31,6 +31,67 @@ knitr:
 from: markdown+emoji
 ---
 
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+# Packages {.inverse}
+
+## Packages
+
+**Base R** functions and data types: built into R
+
+```{r}
+#| eval: false
+mean()         # calculate mean
+summary()      # show summary of a table
+data.frame()   # create a data frame
+```
+
+. . .
+
+**Additional packages** extend R with new functions
+
+```{r}
+#| eval: false
+# install once (in the console, not in the script)
+install.packages("packageName")
+
+# load every time R restarts (at the top of your script)
+library(packageName)
+```
+
+## The tidyverse
+
+A **collection of R packages** for data science, designed to work together.
+
+These are the main packages from the tidyverse that we will use:<br><br>
+
+:::{.r-stack}
+
+![](img/hex-stickers/tibble.png){width=15%}![](img/hex-stickers/readr.png){width=15%}![](img/hex-stickers/readxl.png){width=15%}![](img/hex-stickers/tidyr.png){width=15%}![](img/hex-stickers/ggplot2.png){width=15%}![](img/hex-stickers/dplyr.png){width=15%}
+
+:::
+
+. . .
+
+Install the tidyverse once with:
+
+```{r}
+#| eval: false
+install.packages("tidyverse")
+```
+
+Then load the packages at the beginning of your script:
+
+```{r}
+#| eval: false
+library(tidyverse)
+```
+
+# Tables in R {.inverse}
+
 ## Data frames
 
 The built-in data structure for tables in R is a **data frame**.
@@ -41,7 +102,7 @@ The built-in data structure for tables in R is a **data frame**.
 
 :::{.column width="40%"}
 
-Vectors in R can't represent data table where values are connected via rows
+Vectors in R can't represent a data table where values are connected via rows
 
 > Data frames are one of the **biggest and most important ideas** in R, and one of the things that make R different from other programming languages.<br>[(H. Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble))]{.text-small}
 
@@ -49,7 +110,8 @@ Vectors in R can't represent data table where values are connected via rows
 
 :::{.column width="60%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 # list of 10 biggest cities in Europe
 cities <- c("Istanbul", "Moscow", "London", "Saint Petersburg", "Berlin", 
             "Madrid", "Kyiv", "Rome", "Bucharest", "Paris")
@@ -103,7 +165,8 @@ Data frames are created with the function `data.frame()`:
 
 :::{.column width="50%"}
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 cities <- c(
   "Istanbul", "Moscow", "London", 
   "Saint Petersburg", "Berlin","Madrid",
@@ -130,7 +193,8 @@ cities_dataframe <- data.frame(
 
 :::{.fragment}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 # list of 10 biggest cities in Europe
 cities <- c("Istanbul", "Moscow", "London", "Saint Petersburg", "Berlin", 
             "Madrid", "Kyiv", "Rome", "Bucharest", "Paris")
@@ -151,11 +215,13 @@ cities_dataframe
 
 :::
 
+
+
 ## Tibbles
 
-Tibbles are 
+Tibbles are
 
-> a **modern reimagining of the data frame**. Tibbles are designed to be (as much as possible) **drop-in replacements** for data frames. 
+> a **modern reimagining of the data frame**. Tibbles are designed to be (as much as possible) **drop-in replacements** for data frames.
 <br>[(Wickham, [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble))]{.text-small}
 
 . . .
@@ -174,6 +240,8 @@ Have a look at [this book chapter](https://adv-r.hadley.nz/vectors-chap.html#tib
 
 - Everything that you can do with data frames, you can do with tibbles
 
+- Tibbles are part of the `tibble` package (included in the tidyverse)
+
 :::
 
 :::
@@ -188,34 +256,6 @@ Have a look at [this book chapter](https://adv-r.hadley.nz/vectors-chap.html#tib
 
 ## Tibbles
 
-![](img/hex-stickers/tibble.png){style="float:right;padding: 0 0 0 10px;" fig-alt="Tibble Hex Logo" width="185"}
-<br><br>
-Tibbles are a available from the `tibble` package.
-
-. . .
-
-<br><br>
-
-Before we use tibbles, we need to install the package once using the function `install.packages`:
-
-```{r eval=FALSE}
-# This has do be done only once (in the console, not in the script)
-install.packages("tibble")
-```
-<br>
-
-Then, we need to load the package into our current R session using `library`:
-
-```{r}
-# This has to be done every time R restarts
-# Put it at the top of your script
-library(tibble)
-```
-
-
-
-## Tibbles
-
 Create a tibble using the `tibble()` function:
 
 . . .
@@ -226,7 +266,8 @@ Create a tibble using the `tibble()` function:
 
 ```{r}
 #| eval: false
-library(tibble) 
+library(tidyverse)
+# library(tibble) # also works if you only need tibbles
 
 cities_tbl <- tibble(
   city_name = cities,
@@ -239,7 +280,8 @@ cities_tbl <- tibble(
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 cities_tbl <- tibble(
   city_name = cities,
   population_size = population,
@@ -251,24 +293,6 @@ cities_tbl
 :::
 
 :::
-
-## Exploring tibbles {visibility="hidden"}
-
-Look at the structure of an object using `str()`:
-
-```{r}
-str(cities_tbl)
-```
-
-. . .
-
-Or do it in the environment pane of RStudio (click little blue arrow next to the object):
-
-![](img/day1/str_RStudio.png)
-
-. . .
-
-`str()` works for every R object and is very useful if code doesn't work and you don't know why
 
 ## Exploring tibbles
 
@@ -298,7 +322,8 @@ names(cities_tbl)
 
 Look at the entire table in a separate window with `view()`:
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 view(cities_tbl)
 ```
 
@@ -336,7 +361,8 @@ cities_tbl[1, 1]
 
 This is the same as 
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 cities_tbl[1, "city_name"]
 ```
 
@@ -349,14 +375,16 @@ cities_tbl[c(1, 5), ]
 
 ## Indexing tibbles: columns 
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 # All rows, first 2 columns
 cities_tbl[ ,1:2] # same as cities_tbl[ , c(1, 2)]
 # same as
 cities_tbl[ ,c("city_name", "population_size")]
 ```
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 print(cities_tbl[ ,c("city_name", "population_size")], n=3)
 ```
 
@@ -364,7 +392,8 @@ print(cities_tbl[ ,c("city_name", "population_size")], n=3)
 
 Indexing columns by name is usually preferred to indexing by position
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 cities_tbl[ ,1:2] # okay
 cities_tbl[ ,c("city_name", "population_size")] # better
 ```
@@ -381,7 +410,8 @@ cities_tbl[ ,c("city_name", "population_size")] # better
 
 :::{.fragment}
   
-```{r eval=FALSE}
+```{r}
+#| eval: false
 cities_tbl[ ,c(1,3)] # 3 instead of 2 -> wrong but no error
 cities_tbl[ ,c("city_name", "popluation_size")] # typo -> wrong and error
 ```
@@ -421,7 +451,8 @@ cities_tbl$country <- c(
   "Ukraine", "Italy", "Romania", "France"
 )
 ```
-```{r echo=FALSE}
+```{r}
+#| echo: false
 cities_tbl
 ```
 
@@ -436,17 +467,18 @@ cities_tbl
 :::{.nonincremental}
 
 - can be used to represent tables in R
-- are pretty similar, however tibbles are slightly conventient and modern
+- are pretty similar, however tibbles are slightly more convenient and modern
 - are **named lists of vectors of the same length**
   - every column is a vector
   - columns have a header which is the name of the vector in the list
   - within one column, values are of same data type
   - every column has the same length
   
-#### tibbles
+#### packages and tibbles
 
-- to use tibbles, install the package once with `install.packages("tibble")`
-- put `library(tibble)` at the beginning of your script to load package
+- additional packages extend R with new functions
+- install once with `install.packages("tidyverse")`, load with `library(tidyverse)`
+- tibbles are part of the tidyverse (or load individually with `library(tibble)`)
 
 :::
 
@@ -454,7 +486,8 @@ cities_tbl
 
 #### Creating tibbles and data frames
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 # data frame
 data.frame(
   a = 1:3,
@@ -475,7 +508,8 @@ as_tibble(df)
 
 #### Looking at tibble structure
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 # structure of tibble and data types of columns
 str(tbl)
 # number of rows
@@ -496,7 +530,8 @@ summary(tbl)
 
 Return result as tibble:
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 # rows and columns by position
 tbl[1:3, c(1, 3)]
 tbl[1:3, ] # all columns
@@ -510,7 +545,8 @@ tbl[c("colA", "colB")]
 
 Return result as vector:
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 tbl$colA # select colA  
 ```
 
