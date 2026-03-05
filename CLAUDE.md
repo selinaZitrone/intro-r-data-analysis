@@ -95,6 +95,8 @@ Session files are numbered (e.g., `01_intro-rstudio.qmd`). Slide, task, and solu
 - Prefer **tidyverse** packages over base R equivalents
 - Use the **native pipe `|>`** (not `%>%`)
 - Follow tidyverse style: snake_case names, spaces around operators
+- Use **Quarto-style chunk options** (`#|` comments inside the chunk), not knitr/Rmd-style options in the chunk header (e.g., `{r echo=TRUE}`)
+- `echo: true` is the default — do not add it explicitly unless overriding a different setting
 
 ## Solution Timer Workflow
 
