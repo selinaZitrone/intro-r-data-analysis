@@ -15,8 +15,9 @@ In RStudio go to **Tools -> Global Options -> General** and
 - Remove the check mark for "Restore .RData into workspace at startup"
 - Set "Save workspace to .RData on exit" to **Never**
 
-```{r fig.height=20}
+```{r}
 #| echo: false
+#| fig-height: 20
 knitr::include_graphics(here::here("sessions/tasks/img/setting_workspace.png"))
 ```
 
@@ -54,7 +55,8 @@ Sometimes you need to click the "Refresh" button in the Files pane (top right of
 
 Don't worry if you don't understand the code yet — we will learn all of this during the workshop. For now, just observe what happens in the different panes (console, environment, plot) as you run each line.
 
-```{r eval=FALSE, echo=TRUE}
+```{r}
+#| eval: false
 # Look at the first rows of the built-in penguins dataset
 head(penguins)
 

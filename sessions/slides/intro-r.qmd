@@ -30,7 +30,8 @@ knitr:
 from: markdown+emoji
 ---
 
-```{r setup, include=FALSE}
+```{r}
+#| include: false
 library(fontawesome)
 ```
 
@@ -71,7 +72,8 @@ library(fontawesome)
 
 :::{.column width="50%"}
 
-```{r arithmetic operators, eval=FALSE}
+```{r}
+#| eval: false
 # Addition
 2 + 2
 # Subtraction
@@ -119,7 +121,8 @@ head(
 
 Everything that follows a `#` is a comment
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 # Look at the first rows of the built-in airquality dataset
 head(airquality)
 
@@ -316,7 +319,8 @@ Access the help file of each function with `?functionName`
 :::{.column width="50%"}
 
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 ?mean
 ```
 

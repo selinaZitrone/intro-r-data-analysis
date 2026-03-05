@@ -25,7 +25,8 @@ Copy and paste the following three vectors into your R script:
 - `bodywt_kg`: body weight in kg
 - `brainwt_kg`: brain weight in kg
 
-```{r echo=TRUE, eval=FALSE}
+```{r}
+#| eval: false
 species <- c(
   "MountainBeaver",
   "Cow",
@@ -140,7 +141,7 @@ brainwt_kg <- c(
 
 ## Optional tasks (if you finish early)
 
-You can do these in any — or skip them and just take a break.s
+You can do these in any order — or skip them and just take a break.
 
 - Use the `round()` function to round the `ratio` vector to 2 decimal places.
   - Use `?round` to find out which argument controls the number of decimal places.

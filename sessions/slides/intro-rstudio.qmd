@@ -26,8 +26,8 @@ execute:
 from: markdown+emoji
 ---
 
-```{r setup, include=FALSE}
-
+```{r}
+#| include: false
 library(fontawesome)
 ```
 
