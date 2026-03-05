@@ -1,0 +1,17 @@
+Dataset: Lake water quality monitoring
+Source: Environmental Research Station Brandenburg
+Sampling period: March 2024
+Exported: 2024-04-01
+sample_id,lake,depth_m,temperature_c,dissolved_oxygen_mg_l,ph
+WQ001,Wannsee,1.0,8.2,10.5,7.8
+WQ002,Wannsee,5.0,6.8,8.3,7.5
+WQ003,Wannsee,10.0,5.1,6.1,7.2
+WQ004,Mueggelsee,1.0,9.0,11.2,8.1
+WQ005,Mueggelsee,5.0,7.3,9.0,7.7
+WQ006,Mueggelsee,10.0,5.5,5.8,7.3
+WQ007,Tegeler See,1.0,8.8,10.8,7.9
+WQ008,Tegeler See,5.0,7.0,8.7,7.6
+WQ009,Tegeler See,10.0,5.3,6.5,7.4
+WQ010,Wannsee,1.0,9.5,10.1,7.7
+WQ011,Mueggelsee,1.0,10.2,11.5,8.0
+WQ012,Tegeler See,1.0,9.1,10.3,7.8
