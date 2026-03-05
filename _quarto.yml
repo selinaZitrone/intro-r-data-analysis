@@ -35,8 +35,6 @@ website:
             href: sessions/01_intro-rstudio.qmd
           - text: "Introduction to R"
             href: sessions/02_intro-r.qmd
-          - text: "Functions in R"
-            href: sessions/03_functions.qmd
           - text: "Data frames & tibbles"
             href: sessions/04_data-tibbles.qmd
           - text: "Tidyverse and readr"
