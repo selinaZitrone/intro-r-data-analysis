@@ -1,37 +1,30 @@
-# 1. Rstudio project ------------------------------------------------------
+# 1. RStudio project -------------------------------------------------------
 
-# Look at the first lines of the iris dataset
-head(iris)
-# What is the iris dataset -> Call the help
-?iris
-# How many rows and columns does the data set have?
-rownum <- nrow(iris)
-colnum <- ncol(iris)
-print(paste0("The iris dataset has ", rownum, " rows and ", colnum, " columns."))
-# Some summary statistics on the iris data set
-summary(iris)
+# Look at the first rows of the built-in penguins dataset
+head(penguins)
 
-# create a plot
-plot(iris$Petal.Length, iris$Petal.Width,
-  xlab = "Petal Length",
-  ylab = "Petal Width",
-  main = "Petal Width vs Petal Length",
+# How many rows and columns does it have?
+nrow(penguins)
+ncol(penguins)
+
+# Summary statistics
+summary(penguins)
+
+# Create a variable
+my_variable <- "Hello, RStudio!"
+
+# Create a simple plot
+plot(
+  penguins$flipper_len,
+  penguins$body_mass,
+  xlab = "Flipper Length (mm)",
+  ylab = "Body Mass (g)",
+  main = "Penguin Body Mass vs Flipper Length",
   pch = 20,
-  col = ifelse(iris$Species == "setosa", "coral1",
-    ifelse(iris$Species == "virginica", "cyan4",
-      ifelse(iris$Species == "versicolor",
-        "darkgoldenrod2", "grey"
-      )
-    )
-  )
-)
-# add a legend
-legend("bottomright", c("setosa", "virginica", "versicolor"),
-  col = c("coral1", "cyan4", "darkgoldenrod2"), pch = 20
+  col = "steelblue"
 )
 
-
-# 2. Working with Vectors -----------------------------------------------
+# 2. Introduction to R ----------------------------------------------------
 
 species <- c(
   "MountainBeaver", "Cow", "GreyWolf", "Goat",
@@ -54,64 +47,60 @@ brainwt_kg <- c(
   0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,
   4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,
   0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
-  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,
-  0.0019, 0.1545, 0.003, 0.18
+  0.001, 0.0004, 0.0121, 0.175, NA, 0.44,
+  0.0019, 0.1545, NA, 0.18
 )
 
-# Goes through every element in species and returns TRUE if it appears in animals_to_check
-animals_to_check <- c("Snail", "Goat", "Chimpanzee", "Rat", "Dragon", "Eagle")
-# Goes through every element in animals_to_check and returns TRUE if it appears in species
-animals_to_check %in% species
-animals_to_check[animals_to_check %in% species]
+## Variables and vectors
 
-# Or using the species vector instead
-species %in% animals_to_check
-species[species %in% animals_to_check]
+# 1. What is the 13th species?
+species[13]
 
-# Calculate some descriptive statistics
-mean(brainwt_kg) # mean
-sd(brainwt_kg) # standard deviation
-median(brainwt_kg) # median
+# 2. Species at positions 6, 13, and 14
+species[c(6, 13, 14)]
 
-# species with brain weight larger than mean
-species[brainwt_kg > mean(brainwt_kg)]
+# 3. How many species? Save in n_species
+n_species <- length(species)
+n_species
 
-# ratio brain / body weight (%)
-brain_body_ratio <- brainwt_kg / bodywt_kg * 100
+## Vector arithmetic
 
-# Animals with larger brain to body ratio than humans
-# New variable for human brain to body ratio
-bbr_human <- brain_body_ratio[species == "Human"]
-# Are there animals that have a larger brain to body ratio than humans?
-brain_body_ratio > bbr_human
-# Which are these animals
-species[brain_body_ratio > bbr_human]
+# 4. Brain-to-body weight ratio
+ratio <- brainwt_kg / bodywt_kg
+ratio
 
-# or short
-species[brain_body_ratio > brain_body_ratio[species == "Human"]]
+# 5. Convert body weight to grams
+bodywt_g <- bodywt_kg * 1000
+bodywt_g
 
-### Extras
+## Functions and missing values
 
-brain_body_ratio <- round(brain_body_ratio, digits = 4)
+# 6. Mean body weight and brain weight
+mean(bodywt_kg)
+mean(brainwt_kg) # returns NA because of missing values
+mean(brainwt_kg, na.rm = TRUE) # fix: remove NAs before calculating
 
-# Animal with smallest ratio
-species[brain_body_ratio == min(brain_body_ratio)]
+# 7. sum() and median() on brain weight
+sum(brainwt_kg, na.rm = TRUE)
+median(brainwt_kg, na.rm = TRUE)
 
-# Adding new species
-species_new <- c("Eagle", "Snail", "Lion")
-brainwt_kg_new <- c(0.0004, NA, 0.5)
-bodywt_kg_new <- c(18, 0.01, 550)
+## Optional tasks
 
-species <- c(species, species_new)
-brainwt_kg <- c(brainwt_kg, brainwt_kg_new)
-bodywt_kg <- c(bodywt_kg, bodywt_kg_new)
+# Round ratio to 2 decimal places
+round(ratio, digits = 2)
 
-# na.rm = FALSE
-mean(brainwt_kg)
-# na.rm = TRUE
-mean(brainwt_kg, na.rm = TRUE)
+# Other functions on brainwt_kg — all need na.rm = TRUE
+min(brainwt_kg, na.rm = TRUE)
+max(brainwt_kg, na.rm = TRUE)
+sum(brainwt_kg, na.rm = TRUE)
+sd(brainwt_kg, na.rm = TRUE)
 
-# 3. Tibbles -----------------------------------------------------------------
+# Count missing values with is.na() and sum()
+is.na(brainwt_kg)
+sum(is.na(brainwt_kg))
+
+# 3. Tibbles ---------------------------------------------------------------
+
 # install.packages("tibble")
 library(tibble)
 
@@ -136,82 +125,82 @@ brainwt_kg <- c(
   0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,
   4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,
   0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
-  0.001, 0.0004, 0.0121, 0.175, 0.157, 0.44,
-  0.0019, 0.1545, 0.003, 0.18
+  0.001, 0.0004, 0.0121, 0.175, NA, 0.44,
+  0.0019, 0.1545, NA, 0.18
 )
-# Creating the tibble
+
+# Create the tibble
 animals <- tibble(
   species = species,
   bodywt_kg = bodywt_kg,
   brainwt_kg = brainwt_kg
 )
 
+# Explore the tibble
 view(animals)
-
 summary(animals)
 str(animals)
 nrow(animals)
 ncol(animals)
 names(animals)
 
-# rows 1, 5, and 7 and the columns `species` and `bodywt_kg`
+# Rows 1, 5, and 7 and the columns species and bodywt_kg
 animals[c(1, 5, 7), c("species", "bodywt_kg")]
 
-# select rows 1 to 10, all columns
+# Rows 1 to 10, all columns
 animals[1:10, ]
 
-# select the column `bodywt_kg` as a vector using `$`
+# Select the column bodywt_kg as a vector
 animals$bodywt_kg
 
 ## Extras
-# last row and column
+
+# Last row and column without using numbers
 animals[nrow(animals), ncol(animals)]
 
-# mean body weight
+# Mean body weight
 mean_wt <- mean(animals$bodywt_kg)
 mean_wt
 
-# add new column
+# Add new column with body/brain ratio
 animals$ratio_body_brain <- animals$bodywt_kg / animals$brainwt_kg
 animals
 
+# 4. Readr -----------------------------------------------------------------
 
-# 4. Readr ----------------------------------------------------------------
+library(tidyverse)
 
-# library(tidyverse)
-library(readr)
+## Read a CSV file
+trees <- read_csv("data/tree_growth.csv")
+trees
+summary(trees)
+mean(trees$height_m)
 
-# write (Note: Make sure that the /data folder exists in your working directory
-write_csv(x = animals, file = "data/animals.csv") # write as csv
-write_tsv(x = animals, file = "data/animals.txt") # write as txt
+## Read an Excel file
+library(readxl)
+birds <- read_excel("data/bird_observations.xlsx")
+birds
+summary(birds)
 
-# Read the same data back into R:
-animals_csv <- read_csv(file = "data/animals.csv") # read the csv
-animals_tsv <- read_tsv("data/animals.txt") # read the txts
+## Write data to a file
+write_csv(trees, file = "data/trees_copy.csv")
 
-# Readr challenging datasets
+## Challenge: slightly messy file (metadata lines on top)
+# This doesn't work correctly:
+# read_csv("data/water_quality.csv")
 
-# in my case, the datasets are in data/read_challenge. Adjust the path if for
-# you, this is different
+# Skip the 4 metadata lines at the top:
+water <- read_csv("data/water_quality.csv", skip = 4)
+water
 
-# dataset 1: Dataset 1 with Metadata on top and messy headers
-insect_counts <- read_csv("data/read_challenge/metadata_and_messy_header.csv",
-  skip = 3 # skip the metadata on top
+## Challenge: even messier file (metadata + semicolon delimiter)
+soil <- read_delim(
+  "data/soil_nutrients_messy.csv",
+  delim = ";",
+  skip = 4
 )
-# check out the dataset
-insect_counts
-# Fix the column headers with clean_names
-insect_counts <- janitor::clean_names(insect_counts)
-# check out the dataset
-insect_counts
+soil
 
-# dataset 2: Same dataset but as excel
-insect_counts_excel <- readxl::read_excel(
-  "data/read_challenge/metadata_and_messy_header.xlsx",
-  skip = 3, # skip the metadata on top
-  sheet = "Data" # read the second sheet, not the first
-)
-# Fix the column headers with clean_names
-insect_counts_excel <- janitor::clean_names(insect_counts_excel)
-# check out the dataset
-insect_counts_excel
+# Clean messy column headers with janitor
+# install.packages("janitor")
+soil |> janitor::clean_names()
