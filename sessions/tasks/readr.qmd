@@ -115,7 +115,7 @@ Download the file below and try to read it into R. This file has multiple proble
 
 :::{.callout-tip collapse="true"}
 
-## Hint
+## Hint (unfold to see)
 
 The file has metadata lines on top **and** uses a different delimiter (not a comma).
 
