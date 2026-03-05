@@ -49,7 +49,6 @@ window.addEventListener("load", function () {
 
 - [Introduction to RStudio](sessions/01_intro-rstudio.qmd)
 - [Introduction to R](sessions/02_intro-r.qmd)
-- [Functions in R](sessions/03_functions.qmd)
 - [Data frames & tibbles](sessions/04_data-tibbles.qmd)
 - [Tidyverse and readr](sessions/05_readr.qmd)
 
