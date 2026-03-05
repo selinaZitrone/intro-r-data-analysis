@@ -232,6 +232,7 @@ cities[3]
 ```
 
 <br>
+
 . . .
 
 ```{r}
@@ -320,7 +321,7 @@ Access the help file of each function with `?functionName`
 
 :::{.column width="50%"}
 
-![](img/day1/mean_help_default_arguments.png)
+![](img/day1/mean_help_blank.png)
 
 :::
 
@@ -345,7 +346,7 @@ mean(values, na.rm = TRUE)
   - Single element: `v[3]`
   - Multiple elements: `v[1:4]`, `v[c(1, 5)]`
 - **Functions**: `function_name(input1, input2, ...)`
-- **NA** = missing value → use `na.rm = TRUE` in functions like `mean()`
+- **NA** are missing value → use `na.rm = TRUE` in functions like `mean()`
 - **Function help**: `?function_name`
 
 :::

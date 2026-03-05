@@ -122,10 +122,10 @@ brainwt_kg <- c(
 
 ## Variables and vectors
 
-1. How many species are in the dataset? Save the number in a variable called `n_species`.
+1. What is the 13th species in the vector?
+2. Get the species at positions 6, 13, and 14.
+3. How many species are in the dataset? Save the number in a variable called `n_species`.
     - Hint: try the function `length()`
-2. What is the 13th species in the vector?
-3. Get the species at positions 6, 13, and 14.
 
 ## Vector arithmetic
 
@@ -136,12 +136,14 @@ brainwt_kg <- c(
 
 6. Calculate the mean body weight and the mean brain weight. What happens for brain weight and how do you fix it?
     - Hint: check `?mean`
-7. Also try `sum()` and `min()` on brain weight.
+7. Also try `sum()` and `median()` on brain weight.
 
-## For the fast ones
+## Optional tasks (if you finish early)
 
-- Use the `round()` function to round the `ratio` vector to 4 decimal places.
+You can do these in any — or skip them and just take a break.s
+
+- Use the `round()` function to round the `ratio` vector to 2 decimal places.
   - Use `?round` to find out which argument controls the number of decimal places.
-- Try `max()`, `median()`, and `sd()` on `brainwt_kg` — do they all need the same fix for missing values?
+- Try `min()`, `max()`, `sum()`, and `sd()` on `brainwt_kg`. Do they all need the same fix for missing values?
 - Use `length()` and `sum()` together with `is.na()` to find out how many missing values are in `brainwt_kg`.
   - Hint: `is.na()` returns `TRUE` for each `NA` value. What happens if you `sum()` a logical vector?
