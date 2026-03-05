@@ -189,12 +189,15 @@ chr_vector <- c("These are", "just", "some strings")
 ## Working with vectors
 
 ```{r}
-# 5 biggest cities in Europe
-cities <- c("Istanbul", "Moscow", "London", "Saint Petersburg", "Berlin")
+# 10 biggest cities in Europe
+cities <- c("Istanbul", "Moscow", "London", "Saint Petersburg", "Berlin",
+            "Madrid", "Kyiv", "Rome", "Bucharest", "Paris")
 
-population <- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6)
+population <- c(15.1e6, 12.5e6, 9e6, 5.4e6, 3.8e6,
+                3.2e6, 3e6, 2.8e6, 2.2e6, 2.1e6)
 
-area_km2 <- c(2576, 2561, 1572, 1439, 891)
+area_km2 <- c(2576, 2561, 1572, 1439, 891,
+              604, 839, 1285, 228, 105)
 ```
 
 ::: {.aside}
