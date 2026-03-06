@@ -41,8 +41,6 @@ These are the main packages from the tidyverse that we will use:<br><br>
 
 ![Image adapted from Wickham & Grolemund: [R for Data Science](https://r4ds.had.co.nz/introduction.html)](img/day1/datascience_workflow_tidyverse.png){fig-align="center"}
 
-:::
-
 ## The tidyverse
 
 Install the tidyverse once with:
