@@ -240,8 +240,11 @@ soil <- read_delim(
   delim = ";",
   skip = 4
 )
+# Or read_csv2() which uses semicolon as default delimiter:
+# soil <- read_csv2("data/soil_nutrients_messy.csv", skip = 4)
 soil
 
 # Clean messy column headers with janitor
 # install.packages("janitor")
-soil |> janitor::clean_names()
+soil <- janitor::clean_names(soil)
+soil

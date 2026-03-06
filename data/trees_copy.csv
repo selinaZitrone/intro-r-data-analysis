@@ -1,0 +1,16 @@
+tree_id,species,height_m,diameter_cm,age_years,site
+T001,Oak,12.3,35.2,45,Forest_A
+T002,Beech,15.1,28.7,38,Forest_A
+T003,Pine,18.5,22.1,30,Forest_B
+T004,Oak,9.8,25.4,32,Forest_A
+T005,Birch,11.2,18.9,25,Forest_B
+T006,Pine,20.1,26.3,35,Forest_B
+T007,Beech,13.7,31.5,42,Forest_A
+T008,Oak,14.5,38.1,50,Forest_B
+T009,Birch,8.9,15.2,20,Forest_A
+T010,Pine,16.8,24.7,28,Forest_B
+T011,Oak,11.1,29.8,36,Forest_A
+T012,Beech,17.3,33.6,48,Forest_B
+T013,Birch,10.5,17.4,22,Forest_A
+T014,Pine,19.2,25.8,33,Forest_B
+T015,Oak,13.9,36.5,47,Forest_A

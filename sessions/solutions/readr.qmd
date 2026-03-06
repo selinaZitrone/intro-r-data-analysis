@@ -19,6 +19,7 @@ library(tidyverse)
 Read the tree data:
 
 ```{r}
+#| message: false
 trees <- read_csv("data/tree_growth.csv")
 trees
 ```
@@ -104,15 +105,14 @@ soil
 
 ### Clean messy column headers
 
-The column `Organic Matter (%)` has spaces and special characters. Use `janitor::clean_names()` to fix this:
+Some column names have spaces and special characters. Use `janitor::clean_names()` to fix this:
 
 ```{r}
 #| eval: false
 # install.packages("janitor")
+library(janitor)
+soil <- clean_names(soil)
+soil
 ```
 
-```{r}
-soil |> janitor::clean_names()
-```
-
-The column name is now `organic_matter_percent` — no spaces, no special characters, all lowercase.
+The column names are now clean without spaces and special characters, all lowercase.

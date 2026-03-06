@@ -10,7 +10,7 @@ project:
   resources:
     - "sessions/slides_pdf/*.pdf"
     - "R/Tasks/"
-    - "data/read_challenge/*"
+    - "data/*"
     - "R/byod/general_tips/*"
     - "R/byod/solutions_for_my_datasets/*.R"
     - "timer_solution.js"
@@ -37,7 +37,7 @@ website:
             href: sessions/02_intro-r.qmd
           - text: "Data frames & tibbles"
             href: sessions/04_data-tibbles.qmd
-          - text: "Tidyverse and readr"
+          - text: "Import and Export Data"
             href: sessions/05_readr.qmd
           - text: "---"
           - text: "<b>Day 2</b>"

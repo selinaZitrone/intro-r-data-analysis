@@ -1,5 +1,5 @@
 ---
-title: "Task: Import and Export Data with readr"
+title: "Task: Import and Export Data"
 number-sections: false
 code-line-numbers: false
 ---
@@ -25,7 +25,6 @@ If you haven't already, install the tidyverse (do this in the console, not in yo
 
 ```{r}
 #| eval: false
-#| echo: true
 install.packages("tidyverse")
 ```
 
@@ -33,7 +32,6 @@ Make sure you have the tidyverse loaded at the top of your script:
 
 ```{r}
 #| eval: false
-#| echo: true
 library(tidyverse)
 ```
 
@@ -43,13 +41,13 @@ library(tidyverse)
 2. Use `read_csv()` to read the file into R and save it in a variable called `trees`.
 3. Explore the data:
     - Use `summary(trees)` — how many tree species are there? What is the tallest tree?
-    - Use `View(trees)` to look at the full table
+    - Use `view(trees)` to look at the full table
     - Use `$` to access the `height_m` column and calculate the mean height
 
 ```{r}
 #| echo: false
 downloadthis::download_file(
-  path = here::here("data/read_challenge/tree_growth.csv"),
+  path = here::here("data/tree_growth.csv"),
   output_name = "tree_growth",
   button_label = "Download tree_growth.csv",
   button_type = "default",
@@ -69,7 +67,7 @@ downloadthis::download_file(
 ```{r}
 #| echo: false
 downloadthis::download_file(
-  path = here::here("data/read_challenge/bird_observations.xlsx"),
+  path = here::here("data/bird_observations.xlsx"),
   output_name = "bird_observations",
   button_label = "Download bird_observations.xlsx",
   button_type = "default",
@@ -96,7 +94,7 @@ Take the `trees` tibble you just read in and write it to a new file:
 ```{r}
 #| echo: false
 downloadthis::download_file(
-  path = here::here("data/read_challenge/water_quality.csv"),
+  path = here::here("data/water_quality.csv"),
   output_name = "water_quality",
   button_label = "Download water_quality.csv",
   button_type = "default",
@@ -125,7 +123,7 @@ The file has metadata lines on top **and** uses a different delimiter (not a com
 ```{r}
 #| echo: false
 downloadthis::download_file(
-  path = here::here("data/read_challenge/soil_nutrients_messy.csv"),
+  path = here::here("data/soil_nutrients_messy.csv"),
   output_name = "soil_nutrients_messy",
   button_label = "Download soil_nutrients_messy.csv",
   button_type = "default",
