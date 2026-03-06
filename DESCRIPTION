@@ -1,0 +1,20 @@
+Package: intro-r-short
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("Selina", "Baldauf", , "selina.baldauf@fu-berlin.de", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Imports: 
+    downloadthis,
+    fontawesome,
+    git2r,
+    here,
+    knitr,
+    pagedown
+URL: https://github.com/selinaZitrone/intro-r-short
+BugReports: https://github.com/selinaZitrone/intro-r-short/issues
+Type: Workshop
