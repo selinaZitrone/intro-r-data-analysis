@@ -1,6 +1,5 @@
 ---
 title: "Task: Introduction to R"
-number-sections: false
 ---
 
 [← Back to session page](../02_intro-r.qmd)
@@ -25,99 +24,30 @@ Copy and paste the following three vectors into your R script:
 - `bodywt_kg`: body weight in kg
 - `brainwt_kg`: brain weight in kg
 
-```{r}
-#| eval: false
+```r
 species <- c(
-  "MountainBeaver",
-  "Cow",
-  "GreyWolf",
-  "Goat",
-  "GuineaPig",
-  "Diplodocus",
-  "AsianElephant",
-  "Donkey",
-  "Horse",
-  "PotarMonkey",
-  "Cat",
-  "Giraffe",
-  "Gorilla",
-  "Human",
-  "AfricanElephant",
-  "Triceratops",
-  "RhesusMonkey",
-  "Kangaroo",
-  "GoldenHamster",
-  "Mouse",
-  "Rabbit",
-  "Sheep",
-  "Jaguar",
-  "Chimpanzee",
-  "Rat",
-  "Brachiosaurus",
-  "Mole",
-  "Pig"
+  "MountainBeaver", "Cow", "GreyWolf", "Goat",
+  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
+  "Horse", "PotarMonkey", "Cat", "Giraffe",
+  "Gorilla", "Human", "AfricanElephant", "Triceratops",
+  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
+  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
+  "Rat", "Brachiosaurus", "Mole", "Pig"
 )
 
 bodywt_kg <- c(
-  1.4,
-  465,
-  36.3,
-  27.7,
-  1.0,
-  11700,
-  2547,
-  187.1,
-  521,
-  10,
-  3.3,
-  529,
-  207,
-  62,
-  6654,
-  9400,
-  6.8,
-  35,
-  0.1,
-  0.02,
-  2.5,
-  55.5,
-  100,
-  52.2,
-  0.3,
-  87000,
-  0.1,
-  192
+  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
+  521, 10, 3.3, 529, 207, 62, 6654, 9400,
+  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
+  0.3, 87000, 0.1, 192
 )
 
 brainwt_kg <- c(
-  0.0081,
-  0.423,
-  0.1195,
-  0.115,
-  0.0055,
-  0.05,
-  4.603,
-  0.419,
-  0.655,
-  0.115,
-  0.0256,
-  0.68,
-  0.406,
-  1.32,
-  5.712,
-  0.07,
-  0.179,
-  0.056,
-  0.001,
-  0.0004,
-  0.0121,
-  0.175,
-  NA,
-  0.44,
-  0.0019,
-  0.1545,
-  NA,
-  0.18
+  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,
+  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,
+  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
+  0.001, 0.0004, 0.0121, 0.175, NA, 0.44,
+  0.0019, 0.1545, NA, 0.18
 )
 ```
 
@@ -146,5 +76,5 @@ You can do these in any order — or skip them and just take a break.
 - Use the `round()` function to round the `ratio` vector to 2 decimal places.
   - Use `?round` to find out which argument controls the number of decimal places.
 - Try `min()`, `max()`, `sum()`, and `sd()` on `brainwt_kg`. Do they all need the same fix for missing values?
-- Use `length()` and `sum()` together with `is.na()` to find out how many missing values are in `brainwt_kg`.
+- A bit more tricky: Use `length()` and `sum()` together with `is.na()` to find out how many missing values are in `brainwt_kg`.
   - Hint: `is.na()` returns `TRUE` for each `NA` value. What happens if you `sum()` a logical vector?
