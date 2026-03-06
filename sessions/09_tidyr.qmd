@@ -15,4 +15,4 @@ Go to the [task page](tasks/tidyr.qmd) for the exercises.
 
 ## Resources
 
-- [Tidyr cheatsheet](https://rstudio.github.io/cheatsheets/tidyr.pdf)
+- [Tidyr cheatsheet](https://rstudio.github.io/cheatsheets/tidyr.pdf){target="_blank"}

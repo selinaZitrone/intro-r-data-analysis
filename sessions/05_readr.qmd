@@ -15,7 +15,7 @@ Go to the [task page](tasks/readr.qmd) for the exercises.
 
 ## Resources
 
-- [Data import cheatsheet](https://rstudio.github.io/cheatsheets/data-import.pdf): A handy reference for importing data from text files, Excel files or Google Sheets into R.
-- [readr package](https://readr.tidyverse.org/): Documentation for the readr package, with lots of 
+- [Data import cheatsheet](https://rstudio.github.io/cheatsheets/data-import.pdf){target="_blank"}: A handy reference for importing data from text files, Excel files or Google Sheets into R.
+- [readr package](https://readr.tidyverse.org/){target="_blank"}: Documentation for the readr package, with lots of
 examples and a cheat sheet
-- [readxl package](https://readxl.tidyverse.org/): Documentation for the readxl package, with examples and a cheat sheet
+- [readxl package](https://readxl.tidyverse.org/){target="_blank"}: Documentation for the readxl package, with examples and a cheat sheet

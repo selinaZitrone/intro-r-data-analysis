@@ -15,4 +15,4 @@ Go to the [task page](tasks/dplyr.qmd) for the exercises.
 
 ## Resources
 
-- [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+- [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf){target="_blank"}

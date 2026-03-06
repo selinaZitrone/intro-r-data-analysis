@@ -15,6 +15,6 @@ Go to the [task page](tasks/intro-rstudio.qmd) for the exercises.
 
 ## Resources
 
-- [R Studio user guide](https://docs.posit.co/ide/user/): A comprehensive guide to using RStudio, including tips and troubleshooting.
-- [Create an RStudio project](https://docs.posit.co/ide/user/ide/guide/code/projects.html): R Studio user guide on how to create and manage projects.
-- [RStudio cheat sheet](https://rstudio.github.io/cheatsheets/rstudio-ide.pdf): A reference for RStudio features, buttons, etc..
+- [R Studio user guide](https://docs.posit.co/ide/user/){target="_blank"}: A comprehensive guide to using RStudio, including tips and troubleshooting.
+- [Create an RStudio project](https://docs.posit.co/ide/user/ide/guide/code/projects.html){target="_blank"}: R Studio user guide on how to create and manage projects.
+- [RStudio cheat sheet](https://rstudio.github.io/cheatsheets/rstudio-ide.pdf){target="_blank"}: A reference for RStudio features, buttons, etc..
