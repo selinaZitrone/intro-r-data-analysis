@@ -14,3 +14,6 @@ Go to the [task page](tasks/data-tibbles.qmd) for the exercises.
 :::
 
 ## Resources
+
+- [Tibble package documentation](https://tibble.tidyverse.org/){target="_blank"}: Reference for tibble functions and differences to data frames.
+- [Tibbles in Advanced R](https://adv-r.hadley.nz/vectors-chap.html#tibble){target="_blank"}: Detailed explanation of how tibbles differ from data frames.
