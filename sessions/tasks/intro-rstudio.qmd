@@ -89,8 +89,16 @@ You can do these in any order — or skip them and just take a break.
 ### Add your own data to the project
 
 - Find one of your own datasets (e.g. a spreadsheet, csv file, or something similar) on your computer
-- Copy it into the `data/` folder of your project (hint: the Files pane shows you where your project lives)
-  - Note: You have to open your project in your file explorer (Finder on Mac, File Explorer on Windows) to copy the file into the `data/` folder. You cannot copy files into that folder from RStudio.
+- Copy it into the `data/` folder of your project 
+
+:::{.callout-note}
+
+## Open your project in the file explorer
+
+You have to open your project in your file explorer (Finder on Mac, File Explorer on Windows) to copy the file into the `data/` folder. You cannot copy files into that folder from RStudio. The path in the Files pane shows you where your project lives.
+
+:::
+
 - In RStudio, check if you see the file in the `data/` folder
 
 Later, you can try to read this file into R.
