@@ -215,7 +215,7 @@ Create a tibble using the `tibble()` function:
 
 ```{r}
 #| eval: false
-#| install the tibble package once
+# install the tibble package once
 # install.packages("tibble") 
 library(tibble)
 

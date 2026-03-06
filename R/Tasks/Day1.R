@@ -194,7 +194,7 @@ animals[1:10, ]
 # Select the column bodywt_kg as a vector
 animals$bodywt_kg
 
-## Extras
+## Optional tasks
 
 # Last row and column without using numbers
 animals[nrow(animals), ncol(animals)]

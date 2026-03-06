@@ -11,6 +11,7 @@ Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the last task and put 
 # install.packages("tibble")
 library(tibble)
 
+# fmt: skip
 species <- c(
   "MountainBeaver", "Cow", "GreyWolf", "Goat",
   "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
@@ -20,14 +21,14 @@ species <- c(
   "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
   "Rat", "Brachiosaurus", "Mole", "Pig"
 )
-
+# fmt: skip
 bodywt_kg <- c(
   1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
   521, 10, 3.3, 529, 207, 62, 6654, 9400,
   6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
   0.3, 87000, 0.1, 192
 )
-
+# fmt: skip
 brainwt_kg <- c(
   0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,
   4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,
@@ -59,6 +60,8 @@ Print a summary of the table:
 ```{r}
 summary(animals)
 ```
+
+This summary table is super usefule to check if everything is ok with your data. For example, you can check if there are any missing values (NA) in the columns, or if the values in the columns look reasonable (e.g. no negative body weights).
 
 Here a couple of other function you could use on a tibble:
 
@@ -93,7 +96,7 @@ animals[1:10, ]
 animals$bodywt_kg
 ```
 
-## Extra
+## Optional tasks
 
 - Select the last column of the last row without using the row and column index (so don't use any numbers in this command)
 
