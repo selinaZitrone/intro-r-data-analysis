@@ -23,7 +23,15 @@ number-sections: false
 Before you start the task:
 
 - If you haven't already, install the tibble package by calling `install.packages("tibble")` in the console.
-  - You don't need to put this command in your script as you only need to call it once to install the packages
+
+:::{.callout-tip}
+
+## Don't put `install.packages()` in your script
+
+You don't need to put `install.packages("tibble")` in your script. You only need to install a package once on your computer, not every time you run the script. So you can just run this line once in the console.
+
+:::
+
 - Open your script for the task and put `library(tibble)` on top
 - Execute this line and the tibble package is loaded into your R session
 
@@ -48,8 +56,9 @@ Now let's try some indexing on the data.
 - Filter rows 1 to 10, all columns
 - Select the column `bodywt_kg` as a vector
 
+## Optional tasks (if you finish early)
 
-## Extra
+You can do these in any order — or skip them and just take a break.
 
 - Select the last column of the last row without using the row and column index (so don't use any numbers in this command)
 - Calculate the mean of the `bodywt_kg` column and save it in a variable
