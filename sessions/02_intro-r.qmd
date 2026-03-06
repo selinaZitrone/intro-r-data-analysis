@@ -15,5 +15,4 @@ Go to the [task page](tasks/intro-r.qmd) for the exercises.
 
 ## Resources
 
-  - [Base R cheat sheet](https://rstudio.github.io/cheatsheets/base-r.pdf){target="_blank"}: A quick reference for basic R syntax, data types, and common functions. It covers more that what we cover in this session, but can be a handy reference as you code.
-  
+- [Base R cheat sheet](https://rstudio.github.io/cheatsheets/base-r.pdf){target="_blank"}: A quick reference for basic R syntax, data types, and common functions. It covers more that what we cover in this session, but can be a handy reference as you code.
