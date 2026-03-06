@@ -67,7 +67,7 @@ data.frame(city_name = cities,
 
 :::
 
-## Data frames
+## Properties of a data frame
 
 A data frame is a **named list of vectors** of the same length.<br>
 
@@ -78,11 +78,8 @@ A data frame is a **named list of vectors** of the same length.<br>
 :::{.column width="50%"}
 <br>
 
-#### Basic properties of a data frame
-
 - every [column is a vector]{.highlight-grn}
 - columns have a [header]{.highlight-ylw}
-  - this is the name of the vector in the list
 - within one column, all values are of the [same data type]{.highlight-pink}
 - every column has the same length
 
@@ -96,7 +93,7 @@ A data frame is a **named list of vectors** of the same length.<br>
 
 :::
 
-## Data frames
+## Creating data frames
 
 Data frames are created with the function `data.frame()`:
 
@@ -169,27 +166,15 @@ Have a look at [this book chapter](https://adv-r.hadley.nz/vectors-chap.html#tib
 
 . . .
 
-:::{.columns}
 
-:::{.column width="70%"}
 
 :::{.nonincremental}
 
-- Tibbles have the same basic properties as data frames (named list of vectors)
+- Tibbles have the same basic properties as data frames
 
 - Everything that you can do with data frames, you can do with tibbles
 
 - Tibbles are part of the `tibble` package
-
-:::
-
-:::
-
-:::{.column width="30%"}
-
-![](img/day1/data_frame_tibble.png)
-
-:::
 
 :::
 
@@ -206,7 +191,7 @@ data.frame()   # create a data frame
 
 . . .
 
-**Additional packages** extend R with new functions
+**Additional packages** extend R with new functions and data types
 
 ```{r}
 #| eval: false
@@ -230,7 +215,8 @@ Create a tibble using the `tibble()` function:
 
 ```{r}
 #| eval: false
-# install.packages("tibble") # install the tibble package once
+#| install the tibble package once
+# install.packages("tibble") 
 library(tibble)
 
 cities_tbl <- tibble(
@@ -420,32 +406,16 @@ cities_tbl$country <- c(
 cities_tbl
 ```
 
-# Summary{.inverse}
-
-> Tables in R: Data frames and tibbles
-
 ## Summary I
 
-#### data frames and tibbles
+- Install and load a package before using it:
 
-:::{.nonincremental}
-
-- can be used to represent tables in R
-- are pretty similar, however tibbles are slightly more convenient and modern
-- are **named lists of vectors of the same length**
-  - every column is a vector
-  - columns have a header which is the name of the vector in the list
-  - within one column, values are of same data type
-  - every column has the same length
-  
-#### packages and tibbles
-
-- additional packages extend R with new functions
-- install once with `install.packages("tibble")`, load with `library(tibble)`
-
-:::
-
-## Summary II
+```{r}
+#| eval: false
+# install the tibble package once
+# install.packages("tibble") 
+library(tibble)
+```
 
 #### Creating tibbles and data frames
 
@@ -467,7 +437,7 @@ tibble(
 as_tibble(df)
 ```
 
-## Summary III
+## Summary II
 
 #### Looking at tibble structure
 
@@ -482,12 +452,12 @@ ncol(tbl)
 # column headers
 names(tbl)
 # look at the data in a new window
-tibble::view(tbl)
+view(tbl)
 # summary of values from each column
 summary(tbl)
 ```
 
-## Summary IV
+## Summary III
 
 #### Indexing tibbles and selecting columns
 
