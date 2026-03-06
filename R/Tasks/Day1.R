@@ -27,28 +27,96 @@ plot(
 # 2. Introduction to R ----------------------------------------------------
 
 species <- c(
-  "MountainBeaver", "Cow", "GreyWolf", "Goat",
-  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
-  "Horse", "PotarMonkey", "Cat", "Giraffe",
-  "Gorilla", "Human", "AfricanElephant", "Triceratops",
-  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
-  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
-  "Rat", "Brachiosaurus", "Mole", "Pig"
+  "MountainBeaver",
+  "Cow",
+  "GreyWolf",
+  "Goat",
+  "GuineaPig",
+  "Diplodocus",
+  "AsianElephant",
+  "Donkey",
+  "Horse",
+  "PotarMonkey",
+  "Cat",
+  "Giraffe",
+  "Gorilla",
+  "Human",
+  "AfricanElephant",
+  "Triceratops",
+  "RhesusMonkey",
+  "Kangaroo",
+  "GoldenHamster",
+  "Mouse",
+  "Rabbit",
+  "Sheep",
+  "Jaguar",
+  "Chimpanzee",
+  "Rat",
+  "Brachiosaurus",
+  "Mole",
+  "Pig"
 )
 
 bodywt_kg <- c(
-  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
-  521, 10, 3.3, 529, 207, 62, 6654, 9400,
-  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
-  0.3, 87000, 0.1, 192
+  1.4,
+  465,
+  36.3,
+  27.7,
+  1.,
+  11700,
+  2547,
+  187.1,
+  521,
+  10,
+  3.3,
+  529,
+  207,
+  62,
+  6654,
+  9400,
+  6.8,
+  35,
+  0.1,
+  0.02,
+  2.5,
+  55.5,
+  100,
+  52.2,
+  0.3,
+  87000,
+  0.1,
+  192
 )
 
 brainwt_kg <- c(
-  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,
-  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,
-  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
-  0.001, 0.0004, 0.0121, 0.175, NA, 0.44,
-  0.0019, 0.1545, NA, 0.18
+  0.0081,
+  0.423,
+  0.1195,
+  0.115,
+  0.0055,
+  0.05,
+  4.603,
+  0.419,
+  0.655,
+  0.115,
+  0.0256,
+  0.68,
+  0.406,
+  1.32,
+  5.712,
+  0.07,
+  0.179,
+  0.056,
+  0.001,
+  0.0004,
+  0.0121,
+  0.175,
+  NA,
+  0.44,
+  0.0019,
+  0.1545,
+  NA,
+  0.18
 )
 
 ## Variables and vectors
@@ -76,11 +144,10 @@ bodywt_g
 ## Functions and missing values
 
 # 6. Mean body weight and brain weight
-mean(bodywt_kg)
 mean(brainwt_kg) # returns NA because of missing values
-mean(brainwt_kg, na.rm = TRUE) # fix: remove NAs before calculating
+mean(brainwt_kg, na.rm = TRUE) # remove NAs before calculating
 
-# 7. sum() and median() on brain weight
+# 7. sum and median brain weight
 sum(brainwt_kg, na.rm = TRUE)
 median(brainwt_kg, na.rm = TRUE)
 
@@ -89,45 +156,19 @@ median(brainwt_kg, na.rm = TRUE)
 # Round ratio to 2 decimal places
 round(ratio, digits = 2)
 
-# Other functions on brainwt_kg — all need na.rm = TRUE
+# Other functions
 min(brainwt_kg, na.rm = TRUE)
 max(brainwt_kg, na.rm = TRUE)
 sum(brainwt_kg, na.rm = TRUE)
 sd(brainwt_kg, na.rm = TRUE)
 
-# Count missing values with is.na() and sum()
-is.na(brainwt_kg)
+# Count missing values
 sum(is.na(brainwt_kg))
 
 # 3. Tibbles ---------------------------------------------------------------
 
 # install.packages("tibble")
 library(tibble)
-
-species <- c(
-  "MountainBeaver", "Cow", "GreyWolf", "Goat",
-  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
-  "Horse", "PotarMonkey", "Cat", "Giraffe",
-  "Gorilla", "Human", "AfricanElephant", "Triceratops",
-  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
-  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
-  "Rat", "Brachiosaurus", "Mole", "Pig"
-)
-
-bodywt_kg <- c(
-  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
-  521, 10, 3.3, 529, 207, 62, 6654, 9400,
-  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
-  0.3, 87000, 0.1, 192
-)
-
-brainwt_kg <- c(
-  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,
-  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,
-  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
-  0.001, 0.0004, 0.0121, 0.175, NA, 0.44,
-  0.0019, 0.1545, NA, 0.18
-)
 
 # Create the tibble
 animals <- tibble(

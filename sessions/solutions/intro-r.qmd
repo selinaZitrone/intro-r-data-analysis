@@ -13,28 +13,96 @@ You have the following three vectors:
 
 ```{r}
 species <- c(
-  "MountainBeaver", "Cow", "GreyWolf", "Goat",
-  "GuineaPig", "Diplodocus", "AsianElephant", "Donkey",
-  "Horse", "PotarMonkey", "Cat", "Giraffe",
-  "Gorilla", "Human", "AfricanElephant", "Triceratops",
-  "RhesusMonkey", "Kangaroo", "GoldenHamster", "Mouse",
-  "Rabbit", "Sheep", "Jaguar", "Chimpanzee",
-  "Rat", "Brachiosaurus", "Mole", "Pig"
+  "MountainBeaver",
+  "Cow",
+  "GreyWolf",
+  "Goat",
+  "GuineaPig",
+  "Diplodocus",
+  "AsianElephant",
+  "Donkey",
+  "Horse",
+  "PotarMonkey",
+  "Cat",
+  "Giraffe",
+  "Gorilla",
+  "Human",
+  "AfricanElephant",
+  "Triceratops",
+  "RhesusMonkey",
+  "Kangaroo",
+  "GoldenHamster",
+  "Mouse",
+  "Rabbit",
+  "Sheep",
+  "Jaguar",
+  "Chimpanzee",
+  "Rat",
+  "Brachiosaurus",
+  "Mole",
+  "Pig"
 )
 
 bodywt_kg <- c(
-  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,
-  521, 10, 3.3, 529, 207, 62, 6654, 9400,
-  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,
-  0.3, 87000, 0.1, 192
+  1.4,
+  465,
+  36.3,
+  27.7,
+  1.,
+  11700,
+  2547,
+  187.1,
+  521,
+  10,
+  3.3,
+  529,
+  207,
+  62,
+  6654,
+  9400,
+  6.8,
+  35,
+  0.1,
+  0.02,
+  2.5,
+  55.5,
+  100,
+  52.2,
+  0.3,
+  87000,
+  0.1,
+  192
 )
 
 brainwt_kg <- c(
-  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,
-  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,
-  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,
-  0.001, 0.0004, 0.0121, 0.175, NA, 0.44,
-  0.0019, 0.1545, NA, 0.18
+  0.0081,
+  0.423,
+  0.1195,
+  0.115,
+  0.0055,
+  0.05,
+  4.603,
+  0.419,
+  0.655,
+  0.115,
+  0.0256,
+  0.68,
+  0.406,
+  1.32,
+  5.712,
+  0.07,
+  0.179,
+  0.056,
+  0.001,
+  0.0004,
+  0.0121,
+  0.175,
+  NA,
+  0.44,
+  0.0019,
+  0.1545,
+  NA,
+  0.18
 )
 ```
 
@@ -53,6 +121,14 @@ species[c(6, 13, 14)]
 ```
 
 **3. How many species are in the dataset? Save the number in a variable called `n_species`.**
+
+:::{.callout-note}
+
+## Print variable to the console
+
+Note that if you save the result of a command in a variable, it won't be printed to the console. You need to explicitly print it by typing the variable name .
+
+:::
 
 ```{r}
 n_species <- length(species)
@@ -115,7 +191,9 @@ median(brainwt_kg)
 round(ratio, digits = 2)
 ```
 
-- **Try `min()`, `max()`, `sum()`, and `sd()` on `brainwt_kg`. Do they all need the same fix for missing values?**
+- **Try `min()`, `max()`, `sum()`, and `sd()` on `brainwt_kg`.**
+
+These functions all have the same fix for missing values.
 
 ```{r}
 min(brainwt_kg, na.rm = TRUE)
@@ -124,9 +202,7 @@ sum(brainwt_kg, na.rm = TRUE)
 sd(brainwt_kg, na.rm = TRUE)
 ```
 
-Yes, they all need `na.rm = TRUE` to handle the missing values.
-
-- **Use `length()` and `sum()` together with `is.na()` to find out how many missing values are in `brainwt_kg`.**
+- **Use `sum()` together with `is.na()` to find out how many missing values are in `brainwt_kg`.**
 
 ```{r}
 # is.na() returns TRUE for each NA value

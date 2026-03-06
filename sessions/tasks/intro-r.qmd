@@ -78,5 +78,5 @@ You can do these in any order — or skip them and just take a break.
 - Use the `round()` function to round the `ratio` vector to 2 decimal places.
   - Use `?round` to find out which argument controls the number of decimal places.
 - Try `min()`, `max()`, `sum()`, and `sd()` on `brainwt_kg`. Do they all need the same fix for missing values?
-- A bit more tricky: Use `length()` and `sum()` together with `is.na()` to find out how many missing values are in `brainwt_kg`.
+- Use `sum()` together with `is.na()` to find out how many missing values are in `brainwt_kg`.
   - Hint: `is.na()` returns `TRUE` for each `NA` value. What happens if you `sum()` a logical vector?
