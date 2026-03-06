@@ -1,301 +1,301 @@
 [
   {
-    "objectID": "sessions/tasks/tidyr.html",
-    "href": "sessions/tasks/tidyr.html",
+    "objectID": "sessions/tasks/tidyr-task.html",
+    "href": "sessions/tasks/tidyr-task.html",
     "title": "Task: Tidy data with tidyr",
     "section": "",
     "text": "← Back to session page"
   },
   {
-    "objectID": "sessions/tasks/tidyr.html#get-started",
-    "href": "sessions/tasks/tidyr.html#get-started",
+    "objectID": "sessions/tasks/tidyr-task.html#get-started",
+    "href": "sessions/tasks/tidyr-task.html#get-started",
     "title": "Task: Tidy data with tidyr",
     "section": "Get started",
     "text": "Get started\nBefore you start, make sure to load the tidyverse package.\n\nlibrary(tidyverse)"
   },
   {
-    "objectID": "sessions/tasks/tidyr.html#lets-tidy-some-data-sets",
-    "href": "sessions/tasks/tidyr.html#lets-tidy-some-data-sets",
+    "objectID": "sessions/tasks/tidyr-task.html#lets-tidy-some-data-sets",
+    "href": "sessions/tasks/tidyr-task.html#lets-tidy-some-data-sets",
     "title": "Task: Tidy data with tidyr",
     "section": "Let’s tidy some data sets",
     "text": "Let’s tidy some data sets\nFirst, complete both tasks before you move to the extras.\n1. relig_income\nHave a look at the relig_income data set that is included in tidyverse package. The data set contains the results of a survey asking people about their religion and income category.\nWhat is not tidy about this data set? Can you fix it?\n2. billboard\nHave a look at the billboard data set that is included in the tidyverse package. The data set contains information about the chart rank of songs in the year 2000.\nWhat is not tidy about this data set? Can you fix it?\n3. fish_encounters\nHave a look at the fish_encounters data set that is included in the tidyverse package. Each row indicates that a fish was detected (seen = 1) at a particular station.\nWhich format might be more convenient if you wanted to compare fish across stations at a glance?"
   },
   {
-    "objectID": "sessions/tasks/tidyr.html#for-the-fast-ones",
-    "href": "sessions/tasks/tidyr.html#for-the-fast-ones",
+    "objectID": "sessions/tasks/tidyr-task.html#for-the-fast-ones",
+    "href": "sessions/tasks/tidyr-task.html#for-the-fast-ones",
     "title": "Task: Tidy data with tidyr",
     "section": "For the fast ones",
     "text": "For the fast ones\n\nCheck out the values_drop_na and names_prefix argument of pivot_longer. What does it do and how can you use it with the billboard data?\nCheck out the values_fill argument of pivot_wider. How could you use it in the fish_encounters case to replace the missing values that are created?\nThis is a bit tricky: How would you have to change the penguins table if you wanted to make such a plot:\n\n\n\n\n\n\n\n\n\n\nHint: First use dplyr and only select the columns that you need for the plot. Then think about how to use tidyr to transform the data so it’s ready for ggplot"
   },
   {
-    "objectID": "sessions/tasks/readr.html",
-    "href": "sessions/tasks/readr.html",
+    "objectID": "sessions/tasks/readr-task.html",
+    "href": "sessions/tasks/readr-task.html",
     "title": "Task: Import and Export Data",
     "section": "",
     "text": "← Back to session page"
   },
   {
-    "objectID": "sessions/tasks/readr.html#get-started",
-    "href": "sessions/tasks/readr.html#get-started",
+    "objectID": "sessions/tasks/readr-task.html#get-started",
+    "href": "sessions/tasks/readr-task.html#get-started",
     "title": "Task: Import and Export Data",
     "section": "Get started",
     "text": "Get started\nIf you haven’t already, install the tidyverse (do this in the console, not in your script):\n\ninstall.packages(\"tidyverse\")\n\nMake sure you have the tidyverse loaded at the top of your script:\n\nlibrary(tidyverse)"
   },
   {
-    "objectID": "sessions/tasks/readr.html#read-a-csv-file",
-    "href": "sessions/tasks/readr.html#read-a-csv-file",
+    "objectID": "sessions/tasks/readr-task.html#read-a-csv-file",
+    "href": "sessions/tasks/readr-task.html#read-a-csv-file",
     "title": "Task: Import and Export Data",
     "section": "Read a CSV file",
     "text": "Read a CSV file\n\nDownload the file below and save it in the data/ folder of your project.\nUse read_csv() to read the file into R and save it in a variable called trees.\nExplore the data:\n\nUse summary(trees) — how many tree species are there? What is the tallest tree?\nUse view(trees) to look at the full table\nUse $ to access the height_m column and calculate the mean height\n\n\n\n\n Download tree_growth.csv"
   },
   {
-    "objectID": "sessions/tasks/readr.html#read-an-excel-file",
-    "href": "sessions/tasks/readr.html#read-an-excel-file",
+    "objectID": "sessions/tasks/readr-task.html#read-an-excel-file",
+    "href": "sessions/tasks/readr-task.html#read-an-excel-file",
     "title": "Task: Import and Export Data",
     "section": "Read an Excel file",
     "text": "Read an Excel file\n\nDownload the Excel file below and save it in the data/ folder of your project.\nLoad the readxl package with library(readxl).\nUse read_excel() to read the file into R and save it in a variable.\nExplore the data with summary().\n\n\n\n Download bird_observations.xlsx"
   },
   {
-    "objectID": "sessions/tasks/readr.html#write-data-to-a-file",
-    "href": "sessions/tasks/readr.html#write-data-to-a-file",
+    "objectID": "sessions/tasks/readr-task.html#write-data-to-a-file",
+    "href": "sessions/tasks/readr-task.html#write-data-to-a-file",
     "title": "Task: Import and Export Data",
     "section": "Write data to a file",
     "text": "Write data to a file\nTake the trees tibble you just read in and write it to a new file:\n\nUse write_csv() to save it as trees_copy.csv in your data/ folder.\nCheck in the Files pane that the file was created."
   },
   {
-    "objectID": "sessions/tasks/readr.html#challenge-a-slightly-messy-file",
-    "href": "sessions/tasks/readr.html#challenge-a-slightly-messy-file",
+    "objectID": "sessions/tasks/readr-task.html#challenge-a-slightly-messy-file",
+    "href": "sessions/tasks/readr-task.html#challenge-a-slightly-messy-file",
     "title": "Task: Import and Export Data",
     "section": "Challenge: a slightly messy file",
     "text": "Challenge: a slightly messy file\n\nDownload the file below and save it in the data/ folder.\nTry reading it with read_csv(). Something is wrong — can you figure out what?\n\nHint: open the file in a text editor or in RStudio (File → Open File) to see its structure.\n\nUse the appropriate argument of read_csv() to fix the problem. Check ?read_csv for an argument that lets you skip lines at the top of a file.\n\n\n\n Download water_quality.csv"
   },
   {
-    "objectID": "sessions/tasks/readr.html#optional-tasks-if-you-finish-early",
-    "href": "sessions/tasks/readr.html#optional-tasks-if-you-finish-early",
+    "objectID": "sessions/tasks/readr-task.html#optional-tasks-if-you-finish-early",
+    "href": "sessions/tasks/readr-task.html#optional-tasks-if-you-finish-early",
     "title": "Task: Import and Export Data",
     "section": "Optional tasks (if you finish early)",
     "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nChallenge: an even messier file\nDownload the file below and try to read it into R. This file has multiple problems — you’ll need more than one argument to fix them.\n\n\n\n\n\n\nTipHint (unfold to see)\n\n\n\n\n\nThe file has metadata lines on top and uses a different delimiter (not a comma).\n\n\n\n\n\n Download soil_nutrients_messy.csv\n\n\n\n\nClean messy column headers\nAfter reading the messy soil data, try using janitor::clean_names() on it. What does it do to the column names?\nYou may need to install the janitor package first: install.packages(\"janitor\").\n\n\nRead your own data\nIf you have your own research data, try reading it into R:\n\nCopy a data file into the data/ folder of your project\nUse the appropriate read_*() function to read it in\nDid it work? If not, check ?read_csv or ?read_excel for arguments that might help"
   },
   {
-    "objectID": "sessions/tasks/intro-r.html",
-    "href": "sessions/tasks/intro-r.html",
+    "objectID": "sessions/tasks/intro-r-task.html",
+    "href": "sessions/tasks/intro-r-task.html",
     "title": "Task: Introduction to R",
     "section": "",
     "text": "← Back to session page"
   },
   {
-    "objectID": "sessions/tasks/intro-r.html#getting-started",
-    "href": "sessions/tasks/intro-r.html#getting-started",
+    "objectID": "sessions/tasks/intro-r-task.html#getting-started",
+    "href": "sessions/tasks/intro-r-task.html#getting-started",
     "title": "Task: Introduction to R",
     "section": "Getting started",
     "text": "Getting started\nCopy and paste the following three vectors into your R script:\n\nspecies: name of the species\nbodywt_kg: body weight in kg\nbrainwt_kg: brain weight in kg\n\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,\n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,\n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, NA, 0.44,\n  0.0019, 0.1545, NA, 0.18\n)"
   },
   {
-    "objectID": "sessions/tasks/intro-r.html#variables-and-vectors",
-    "href": "sessions/tasks/intro-r.html#variables-and-vectors",
+    "objectID": "sessions/tasks/intro-r-task.html#variables-and-vectors",
+    "href": "sessions/tasks/intro-r-task.html#variables-and-vectors",
     "title": "Task: Introduction to R",
     "section": "Variables and vectors",
     "text": "Variables and vectors\n\nWhat is the 13th species in the vector?\nGet the species at positions 6, 13, and 14.\nHow many species are in the dataset? Save the number in a variable called n_species.\n\nHint: try the function length()"
   },
   {
-    "objectID": "sessions/tasks/intro-r.html#vector-arithmetic",
-    "href": "sessions/tasks/intro-r.html#vector-arithmetic",
+    "objectID": "sessions/tasks/intro-r-task.html#vector-arithmetic",
+    "href": "sessions/tasks/intro-r-task.html#vector-arithmetic",
     "title": "Task: Introduction to R",
     "section": "Vector arithmetic",
     "text": "Vector arithmetic\n\nCalculate the brain-to-body weight ratio for all species and save it in a new variable called ratio.\nConvert the body weight from kg to grams and save it in a variable called bodywt_g."
   },
   {
-    "objectID": "sessions/tasks/intro-r.html#functions-and-missing-values",
-    "href": "sessions/tasks/intro-r.html#functions-and-missing-values",
+    "objectID": "sessions/tasks/intro-r-task.html#functions-and-missing-values",
+    "href": "sessions/tasks/intro-r-task.html#functions-and-missing-values",
     "title": "Task: Introduction to R",
     "section": "Functions and missing values",
     "text": "Functions and missing values\n\nCalculate the mean body weight and the mean brain weight. What happens for brain weight and how do you fix it?\n\nHint: check ?mean\n\nAlso try sum() and median() on brain weight."
   },
   {
-    "objectID": "sessions/tasks/intro-r.html#optional-tasks-if-you-finish-early",
-    "href": "sessions/tasks/intro-r.html#optional-tasks-if-you-finish-early",
+    "objectID": "sessions/tasks/intro-r-task.html#optional-tasks-if-you-finish-early",
+    "href": "sessions/tasks/intro-r-task.html#optional-tasks-if-you-finish-early",
     "title": "Task: Introduction to R",
     "section": "Optional tasks (if you finish early)",
     "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nUse the round() function to round the ratio vector to 2 decimal places.\n\nUse ?round to find out which argument controls the number of decimal places.\n\nTry min(), max(), sum(), and sd() on brainwt_kg. Do they all need the same fix for missing values?\nUse sum() together with is.na() to find out how many missing values are in brainwt_kg.\n\nHint: is.na() returns TRUE for each NA value. What happens if you sum() a logical vector?"
   },
   {
-    "objectID": "sessions/tasks/dplyr.html",
-    "href": "sessions/tasks/dplyr.html",
+    "objectID": "sessions/tasks/dplyr-task.html",
+    "href": "sessions/tasks/dplyr-task.html",
     "title": "Task: Data transformation with dplyr",
     "section": "",
     "text": "← Back to session page"
   },
   {
-    "objectID": "sessions/tasks/dplyr.html#get-started",
-    "href": "sessions/tasks/dplyr.html#get-started",
+    "objectID": "sessions/tasks/dplyr-task.html#get-started",
+    "href": "sessions/tasks/dplyr-task.html#get-started",
     "title": "Task: Data transformation with dplyr",
     "section": "Get started",
     "text": "Get started\nA helpful resource for to consult for this task can be the dplyr cheatsheet.\nBefore you start, make sure to load the tidyverse package.\n\nlibrary(tidyverse)"
   },
   {
-    "objectID": "sessions/tasks/dplyr.html#data-transformation-with-dplyr",
-    "href": "sessions/tasks/dplyr.html#data-transformation-with-dplyr",
+    "objectID": "sessions/tasks/dplyr-task.html#data-transformation-with-dplyr",
+    "href": "sessions/tasks/dplyr-task.html#data-transformation-with-dplyr",
     "title": "Task: Data transformation with dplyr",
     "section": "Data transformation with dplyr",
     "text": "Data transformation with dplyr\nIn the following, you find a lot of different data transformation tasks. First, do 1-2 from each category before you do the remaining ones. You don’t have to finish all the tasks but make sure you covered each category. Generally, the first tasks from a category are easier than the last tasks of a category.\nFind all penguins that …\n\n… have a bill length between 40 and 45 mm.\n… for which we know the sex (sex is not NA).\n… which are of the species Adelie or Gentoo.\n… lived on the island Dream in the year 2007. How many of them were from each of the 3 species?\n\nCount …\n\n… the number of penguins on each island.\n… the number of penguins of each species on each island.\n\nSelect …\n\n… only the variables species, sex and year\n… only columns that contain measurements in mm\n\nAdd a column …\n\n… with the ratio of bill length to bill depth\n… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).\n\nCalculate …\n\n… mean flipper length and body mass for the 3 species and male and female penguins separately\n… Can you do the same but remove the penguins for which we don’t know the sex first?"
   },
   {
-    "objectID": "sessions/tasks/dplyr.html#extras",
-    "href": "sessions/tasks/dplyr.html#extras",
+    "objectID": "sessions/tasks/dplyr-task.html#extras",
+    "href": "sessions/tasks/dplyr-task.html#extras",
     "title": "Task: Data transformation with dplyr",
     "section": "Extras",
     "text": "Extras\n\nMake a boxplot of penguin body mass with sex on the x-axis and facets for the different species. Can you remove the penguins with missing values for sex first?\nMake a scatterplot with the ratio of bill length to bill depth on the y axis and flipper length on the x axis? Can you distinguish the point between male and female penguins and remove penguins with unknown sex before making the plot?"
   },
   {
-    "objectID": "sessions/solutions/tidyr.html",
-    "href": "sessions/solutions/tidyr.html",
+    "objectID": "sessions/solutions/tidyr-solution.html",
+    "href": "sessions/solutions/tidyr-solution.html",
     "title": "Solution to tidyr task",
     "section": "",
     "text": "library(tidyverse)"
   },
   {
-    "objectID": "sessions/solutions/tidyr.html#get-started",
-    "href": "sessions/solutions/tidyr.html#get-started",
+    "objectID": "sessions/solutions/tidyr-solution.html#get-started",
+    "href": "sessions/solutions/tidyr-solution.html#get-started",
     "title": "Solution to tidyr task",
     "section": "",
     "text": "library(tidyverse)"
   },
   {
-    "objectID": "sessions/solutions/tidyr.html#lets-tidy-some-data-sets",
-    "href": "sessions/solutions/tidyr.html#lets-tidy-some-data-sets",
+    "objectID": "sessions/solutions/tidyr-solution.html#lets-tidy-some-data-sets",
+    "href": "sessions/solutions/tidyr-solution.html#lets-tidy-some-data-sets",
     "title": "Solution to tidyr task",
     "section": "Let’s tidy some data sets",
     "text": "Let’s tidy some data sets\n1. relig_income\nHave a look at the relig_income data set that is included in tidyverse package. The data set contains the results of a survey asking people about their religion and income category.\n\nrelig_income\n\n# A tibble: 18 × 11\n   religion `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`\n   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n 1 Agnostic      27        34        60        81        76       137        122\n 2 Atheist       12        27        37        52        35        70         73\n 3 Buddhist      27        21        30        34        33        58         62\n 4 Catholic     418       617       732       670       638      1116        949\n 5 Don’t k…      15        14        15        11        10        35         21\n 6 Evangel…     575       869      1064       982       881      1486        949\n 7 Hindu          1         9         7         9        11        34         47\n 8 Histori…     228       244       236       238       197       223        131\n 9 Jehovah…      20        27        24        24        21        30         15\n10 Jewish        19        19        25        25        30        95         69\n11 Mainlin…     289       495       619       655       651      1107        939\n12 Mormon        29        40        48        51        56       112         85\n13 Muslim         6         7         9        10         9        23         16\n14 Orthodox      13        17        23        32        32        47         38\n15 Other C…       9         7        11        13        13        14         18\n16 Other F…      20        33        40        46        49        63         46\n17 Other W…       5         2         3         4         2         7          3\n18 Unaffil…     217       299       374       365       341       528        407\n# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,\n#   `Don't know/refused` &lt;dbl&gt;\n\n\nWhat is not tidy about this data set?\n The variable income is spread across multiple columns, so we have to use pivot_longer to pivot the columns containing the income information:\n\npivot_longer(\n  relig_income,\n  cols = !religion,\n  names_to = \"income\",\n  values_to = \"count\"\n)\n\n# A tibble: 180 × 3\n   religion income             count\n   &lt;chr&gt;    &lt;chr&gt;              &lt;dbl&gt;\n 1 Agnostic &lt;$10k                 27\n 2 Agnostic $10-20k               34\n 3 Agnostic $20-30k               60\n 4 Agnostic $30-40k               81\n 5 Agnostic $40-50k               76\n 6 Agnostic $50-75k              137\n 7 Agnostic $75-100k             122\n 8 Agnostic $100-150k            109\n 9 Agnostic &gt;150k                 84\n10 Agnostic Don't know/refused    96\n# ℹ 170 more rows\n\n\n2. billboard\nHave a look at the billboard data set that is included in the tidyverse package. The data set contains information about the chart rank of songs in the year 2000.\n\nbillboard\n\n# A tibble: 317 × 79\n   artist     track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8\n   &lt;chr&gt;      &lt;chr&gt; &lt;date&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 2 Pac      Baby… 2000-02-26      87    82    72    77    87    94    99    NA\n 2 2Ge+her    The … 2000-09-02      91    87    92    NA    NA    NA    NA    NA\n 3 3 Doors D… Kryp… 2000-04-08      81    70    68    67    66    57    54    53\n 4 3 Doors D… Loser 2000-10-21      76    76    72    69    67    65    55    59\n 5 504 Boyz   Wobb… 2000-04-15      57    34    25    17    17    31    36    49\n 6 98^0       Give… 2000-08-19      51    39    34    26    26    19     2     2\n 7 A*Teens    Danc… 2000-07-08      97    97    96    95   100    NA    NA    NA\n 8 Aaliyah    I Do… 2000-01-29      84    62    51    41    38    35    35    38\n 9 Aaliyah    Try … 2000-03-18      59    53    38    28    21    18    16    14\n10 Adams, Yo… Open… 2000-08-26      76    76    74    69    68    67    61    58\n# ℹ 307 more rows\n# ℹ 68 more variables: wk9 &lt;dbl&gt;, wk10 &lt;dbl&gt;, wk11 &lt;dbl&gt;, wk12 &lt;dbl&gt;,\n#   wk13 &lt;dbl&gt;, wk14 &lt;dbl&gt;, wk15 &lt;dbl&gt;, wk16 &lt;dbl&gt;, wk17 &lt;dbl&gt;, wk18 &lt;dbl&gt;,\n#   wk19 &lt;dbl&gt;, wk20 &lt;dbl&gt;, wk21 &lt;dbl&gt;, wk22 &lt;dbl&gt;, wk23 &lt;dbl&gt;, wk24 &lt;dbl&gt;,\n#   wk25 &lt;dbl&gt;, wk26 &lt;dbl&gt;, wk27 &lt;dbl&gt;, wk28 &lt;dbl&gt;, wk29 &lt;dbl&gt;, wk30 &lt;dbl&gt;,\n#   wk31 &lt;dbl&gt;, wk32 &lt;dbl&gt;, wk33 &lt;dbl&gt;, wk34 &lt;dbl&gt;, wk35 &lt;dbl&gt;, wk36 &lt;dbl&gt;,\n#   wk37 &lt;dbl&gt;, wk38 &lt;dbl&gt;, wk39 &lt;dbl&gt;, wk40 &lt;dbl&gt;, wk41 &lt;dbl&gt;, wk42 &lt;dbl&gt;, …\n\n\nWhat is not tidy about this data set?\n The variable week is spread across multiple columns. We have to use pivot longer to pivot the week columns:\n\npivot_longer(\n  billboard,\n  cols = wk1:wk76,\n  names_to = \"week\",\n  values_to = \"rank\"\n)\n\n# A tibble: 24,092 × 5\n   artist track                   date.entered week   rank\n   &lt;chr&gt;  &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;\n 1 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk1      87\n 2 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk2      82\n 3 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk3      72\n 4 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk4      77\n 5 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk5      87\n 6 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk6      94\n 7 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk7      99\n 8 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk8      NA\n 9 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk9      NA\n10 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk10     NA\n# ℹ 24,082 more rows\n\n\n3. fish_encounters\nWhich format might be more convenient if you wanted to compare fish across stations at a glance?\n Each fish is spread across multiple rows. We can use pivot_wider to have one row per fish:\n\npivot_wider(\n  fish_encounters,\n  names_from = station,\n  values_from = seen\n)\n\n# A tibble: 19 × 12\n   fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n   &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 4842        1     1      1     1       1     1     1     1     1     1     1\n 2 4843        1     1      1     1       1     1     1     1     1     1     1\n 3 4844        1     1      1     1       1     1     1     1     1     1     1\n 4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n 5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA\n 6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA\n 7 4849        1     1     NA    NA      NA    NA    NA    NA    NA    NA    NA\n 8 4850        1     1     NA     1       1     1     1    NA    NA    NA    NA\n 9 4851        1     1     NA    NA      NA    NA    NA    NA    NA    NA    NA\n10 4854        1     1     NA    NA      NA    NA    NA    NA    NA    NA    NA\n11 4855        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n12 4857        1     1      1     1       1     1     1     1     1    NA    NA\n13 4858        1     1      1     1       1     1     1     1     1     1     1\n14 4859        1     1      1     1       1    NA    NA    NA    NA    NA    NA\n15 4861        1     1      1     1       1     1     1     1     1     1     1\n16 4862        1     1      1     1       1     1     1     1     1    NA    NA\n17 4863        1     1     NA    NA      NA    NA    NA    NA    NA    NA    NA\n18 4864        1     1     NA    NA      NA    NA    NA    NA    NA    NA    NA\n19 4865        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA"
   },
   {
-    "objectID": "sessions/solutions/tidyr.html#for-the-fast-ones",
-    "href": "sessions/solutions/tidyr.html#for-the-fast-ones",
+    "objectID": "sessions/solutions/tidyr-solution.html#for-the-fast-ones",
+    "href": "sessions/solutions/tidyr-solution.html#for-the-fast-ones",
     "title": "Solution to tidyr task",
     "section": "For the fast ones",
     "text": "For the fast ones\nvalues_drop_na argument\nThe argument values_drop_na drops rows with missing values in the rank column. Here it makes sense because not every song is in the charts for all 76 weeks.\nWith the names_prefix argument we can remove the wk before the values of the week variable. This makes it easier to work with later.\n\npivot_longer(\n  billboard,\n  cols = wk1:wk76,\n  names_to = \"week\",\n  names_prefix = \"wk\",\n  values_to = \"rank\",\n  values_drop_na = TRUE\n)\n\n# A tibble: 5,307 × 5\n   artist  track                   date.entered week   rank\n   &lt;chr&gt;   &lt;chr&gt;                   &lt;date&gt;       &lt;chr&gt; &lt;dbl&gt;\n 1 2 Pac   Baby Don't Cry (Keep... 2000-02-26   1        87\n 2 2 Pac   Baby Don't Cry (Keep... 2000-02-26   2        82\n 3 2 Pac   Baby Don't Cry (Keep... 2000-02-26   3        72\n 4 2 Pac   Baby Don't Cry (Keep... 2000-02-26   4        77\n 5 2 Pac   Baby Don't Cry (Keep... 2000-02-26   5        87\n 6 2 Pac   Baby Don't Cry (Keep... 2000-02-26   6        94\n 7 2 Pac   Baby Don't Cry (Keep... 2000-02-26   7        99\n 8 2Ge+her The Hardest Part Of ... 2000-09-02   1        91\n 9 2Ge+her The Hardest Part Of ... 2000-09-02   2        87\n10 2Ge+her The Hardest Part Of ... 2000-09-02   3        92\n# ℹ 5,297 more rows\n\n\nvalues_fill argument\nWith the values_fill argument we can replace the missing values that are created when pivoting wider. Here it makes sense to replace the missing values with 0, indicating that the fish was not seen at the respective station.\n\npivot_wider(\n  fish_encounters,\n  names_from = station,\n  values_from = seen,\n  values_fill = list(seen = 0)\n)\n\n# A tibble: 19 × 12\n   fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW\n   &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 4842        1     1      1     1       1     1     1     1     1     1     1\n 2 4843        1     1      1     1       1     1     1     1     1     1     1\n 3 4844        1     1      1     1       1     1     1     1     1     1     1\n 4 4845        1     1      1     1       1     0     0     0     0     0     0\n 5 4847        1     1      1     0       0     0     0     0     0     0     0\n 6 4848        1     1      1     1       0     0     0     0     0     0     0\n 7 4849        1     1      0     0       0     0     0     0     0     0     0\n 8 4850        1     1      0     1       1     1     1     0     0     0     0\n 9 4851        1     1      0     0       0     0     0     0     0     0     0\n10 4854        1     1      0     0       0     0     0     0     0     0     0\n11 4855        1     1      1     1       1     0     0     0     0     0     0\n12 4857        1     1      1     1       1     1     1     1     1     0     0\n13 4858        1     1      1     1       1     1     1     1     1     1     1\n14 4859        1     1      1     1       1     0     0     0     0     0     0\n15 4861        1     1      1     1       1     1     1     1     1     1     1\n16 4862        1     1      1     1       1     1     1     1     1     0     0\n17 4863        1     1      0     0       0     0     0     0     0     0     0\n18 4864        1     1      0     0       0     0     0     0     0     0     0\n19 4865        1     1      1     0       0     0     0     0     0     0     0\n\n\nRecreating the penguin plot\nTo recreate the penguin plot from the task, the following observations help:\n\nInformation needed: Species, bill depth and bill length\n\nIn a first step, you can therefore use select from dplyr to select only these three columns\n\nAesthetics are: Species on x-axis, value of bill depth and length on y-axis, fill aesthetic is category bill depth or bill length.\n\nThis needs some reformatting. You need one value column with the measurements, and one name column with the category. You can use pivot longer for this\n\n\nUse the pipe operator to do the calculations one after the other:\n\npenguins |&gt;\n  select(species, bill_len, bill_dep) |&gt;\n  pivot_longer(!species, names_to = \"variable\") |&gt;\n  ggplot(aes(x = species, y = value, fill = variable)) +\n  geom_boxplot()"
   },
   {
-    "objectID": "sessions/solutions/readr.html",
-    "href": "sessions/solutions/readr.html",
+    "objectID": "sessions/solutions/readr-solution.html",
+    "href": "sessions/solutions/readr-solution.html",
     "title": "Solution: Import and Export Data",
     "section": "",
-    "text": "library(tidyverse)\n\nRead the tree data:\n\ntrees &lt;- read_csv(\"data/tree_growth.csv\")\n\nError:\n! 'data/tree_growth.csv' does not exist in current working directory ('C:/Users/Selina/Repos/Teaching/intro-r-data-analysis/sessions/solutions').\n\ntrees\n\n   Girth Height Volume\n1    8.3     70   10.3\n2    8.6     65   10.3\n3    8.8     63   10.2\n4   10.5     72   16.4\n5   10.7     81   18.8\n6   10.8     83   19.7\n7   11.0     66   15.6\n8   11.0     75   18.2\n9   11.1     80   22.6\n10  11.2     75   19.9\n11  11.3     79   24.2\n12  11.4     76   21.0\n13  11.4     76   21.4\n14  11.7     69   21.3\n15  12.0     75   19.1\n16  12.9     74   22.2\n17  12.9     85   33.8\n18  13.3     86   27.4\n19  13.7     71   25.7\n20  13.8     64   24.9\n21  14.0     78   34.5\n22  14.2     80   31.7\n23  14.5     74   36.3\n24  16.0     72   38.3\n25  16.3     77   42.6\n26  17.3     81   55.4\n27  17.5     82   55.7\n28  17.9     80   58.3\n29  18.0     80   51.5\n30  18.0     80   51.0\n31  20.6     87   77.0\n\n\nExplore the data:\n\nsummary(trees)\n\n     Girth           Height       Volume     \n Min.   : 8.30   Min.   :63   Min.   :10.20  \n 1st Qu.:11.05   1st Qu.:72   1st Qu.:19.40  \n Median :12.90   Median :76   Median :24.20  \n Mean   :13.25   Mean   :76   Mean   :30.17  \n 3rd Qu.:15.25   3rd Qu.:80   3rd Qu.:37.30  \n Max.   :20.60   Max.   :87   Max.   :77.00  \n\n\nThere are 4 tree species (Beech, Birch, Oak, Pine). The tallest tree is 20.1 m.\nCalculate the mean height:\n\nmean(trees$height_m)\n\nWarning in mean.default(trees$height_m): argument is not numeric or logical:\nreturning NA\n\n\n[1] NA"
+    "text": "library(tidyverse)\n\nRead the tree data:\n\ntrees &lt;- read_csv(\"data/tree_growth.csv\")\ntrees\n\n# A tibble: 15 × 6\n   tree_id species height_m diameter_cm age_years site    \n   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   \n 1 T001    Oak         12.3        35.2        45 Forest_A\n 2 T002    Beech       15.1        28.7        38 Forest_A\n 3 T003    Pine        18.5        22.1        30 Forest_B\n 4 T004    Oak          9.8        25.4        32 Forest_A\n 5 T005    Birch       11.2        18.9        25 Forest_B\n 6 T006    Pine        20.1        26.3        35 Forest_B\n 7 T007    Beech       13.7        31.5        42 Forest_A\n 8 T008    Oak         14.5        38.1        50 Forest_B\n 9 T009    Birch        8.9        15.2        20 Forest_A\n10 T010    Pine        16.8        24.7        28 Forest_B\n11 T011    Oak         11.1        29.8        36 Forest_A\n12 T012    Beech       17.3        33.6        48 Forest_B\n13 T013    Birch       10.5        17.4        22 Forest_A\n14 T014    Pine        19.2        25.8        33 Forest_B\n15 T015    Oak         13.9        36.5        47 Forest_A\n\n\nExplore the data:\n\nsummary(trees)\n\n   tree_id            species             height_m      diameter_cm   \n Length:15          Length:15          Min.   : 8.90   Min.   :15.20  \n Class :character   Class :character   1st Qu.:11.15   1st Qu.:23.40  \n Mode  :character   Mode  :character   Median :13.90   Median :26.30  \n                                       Mean   :14.19   Mean   :27.28  \n                                       3rd Qu.:17.05   3rd Qu.:32.55  \n                                       Max.   :20.10   Max.   :38.10  \n   age_years        site          \n Min.   :20.0   Length:15         \n 1st Qu.:29.0   Class :character  \n Median :35.0   Mode  :character  \n Mean   :35.4                     \n 3rd Qu.:43.5                     \n Max.   :50.0                     \n\n\nThere are 4 tree species (Beech, Birch, Oak, Pine). The tallest tree is 20.1 m.\nCalculate the mean height:\n\nmean(trees$height_m)\n\n[1] 14.19333"
   },
   {
-    "objectID": "sessions/solutions/readr.html#read-a-csv-file",
-    "href": "sessions/solutions/readr.html#read-a-csv-file",
+    "objectID": "sessions/solutions/readr-solution.html#read-a-csv-file",
+    "href": "sessions/solutions/readr-solution.html#read-a-csv-file",
     "title": "Solution: Import and Export Data",
     "section": "",
-    "text": "library(tidyverse)\n\nRead the tree data:\n\ntrees &lt;- read_csv(\"data/tree_growth.csv\")\n\nError:\n! 'data/tree_growth.csv' does not exist in current working directory ('C:/Users/Selina/Repos/Teaching/intro-r-data-analysis/sessions/solutions').\n\ntrees\n\n   Girth Height Volume\n1    8.3     70   10.3\n2    8.6     65   10.3\n3    8.8     63   10.2\n4   10.5     72   16.4\n5   10.7     81   18.8\n6   10.8     83   19.7\n7   11.0     66   15.6\n8   11.0     75   18.2\n9   11.1     80   22.6\n10  11.2     75   19.9\n11  11.3     79   24.2\n12  11.4     76   21.0\n13  11.4     76   21.4\n14  11.7     69   21.3\n15  12.0     75   19.1\n16  12.9     74   22.2\n17  12.9     85   33.8\n18  13.3     86   27.4\n19  13.7     71   25.7\n20  13.8     64   24.9\n21  14.0     78   34.5\n22  14.2     80   31.7\n23  14.5     74   36.3\n24  16.0     72   38.3\n25  16.3     77   42.6\n26  17.3     81   55.4\n27  17.5     82   55.7\n28  17.9     80   58.3\n29  18.0     80   51.5\n30  18.0     80   51.0\n31  20.6     87   77.0\n\n\nExplore the data:\n\nsummary(trees)\n\n     Girth           Height       Volume     \n Min.   : 8.30   Min.   :63   Min.   :10.20  \n 1st Qu.:11.05   1st Qu.:72   1st Qu.:19.40  \n Median :12.90   Median :76   Median :24.20  \n Mean   :13.25   Mean   :76   Mean   :30.17  \n 3rd Qu.:15.25   3rd Qu.:80   3rd Qu.:37.30  \n Max.   :20.60   Max.   :87   Max.   :77.00  \n\n\nThere are 4 tree species (Beech, Birch, Oak, Pine). The tallest tree is 20.1 m.\nCalculate the mean height:\n\nmean(trees$height_m)\n\nWarning in mean.default(trees$height_m): argument is not numeric or logical:\nreturning NA\n\n\n[1] NA"
+    "text": "library(tidyverse)\n\nRead the tree data:\n\ntrees &lt;- read_csv(\"data/tree_growth.csv\")\ntrees\n\n# A tibble: 15 × 6\n   tree_id species height_m diameter_cm age_years site    \n   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   \n 1 T001    Oak         12.3        35.2        45 Forest_A\n 2 T002    Beech       15.1        28.7        38 Forest_A\n 3 T003    Pine        18.5        22.1        30 Forest_B\n 4 T004    Oak          9.8        25.4        32 Forest_A\n 5 T005    Birch       11.2        18.9        25 Forest_B\n 6 T006    Pine        20.1        26.3        35 Forest_B\n 7 T007    Beech       13.7        31.5        42 Forest_A\n 8 T008    Oak         14.5        38.1        50 Forest_B\n 9 T009    Birch        8.9        15.2        20 Forest_A\n10 T010    Pine        16.8        24.7        28 Forest_B\n11 T011    Oak         11.1        29.8        36 Forest_A\n12 T012    Beech       17.3        33.6        48 Forest_B\n13 T013    Birch       10.5        17.4        22 Forest_A\n14 T014    Pine        19.2        25.8        33 Forest_B\n15 T015    Oak         13.9        36.5        47 Forest_A\n\n\nExplore the data:\n\nsummary(trees)\n\n   tree_id            species             height_m      diameter_cm   \n Length:15          Length:15          Min.   : 8.90   Min.   :15.20  \n Class :character   Class :character   1st Qu.:11.15   1st Qu.:23.40  \n Mode  :character   Mode  :character   Median :13.90   Median :26.30  \n                                       Mean   :14.19   Mean   :27.28  \n                                       3rd Qu.:17.05   3rd Qu.:32.55  \n                                       Max.   :20.10   Max.   :38.10  \n   age_years        site          \n Min.   :20.0   Length:15         \n 1st Qu.:29.0   Class :character  \n Median :35.0   Mode  :character  \n Mean   :35.4                     \n 3rd Qu.:43.5                     \n Max.   :50.0                     \n\n\nThere are 4 tree species (Beech, Birch, Oak, Pine). The tallest tree is 20.1 m.\nCalculate the mean height:\n\nmean(trees$height_m)\n\n[1] 14.19333"
   },
   {
-    "objectID": "sessions/solutions/readr.html#read-an-excel-file",
-    "href": "sessions/solutions/readr.html#read-an-excel-file",
+    "objectID": "sessions/solutions/readr-solution.html#read-an-excel-file",
+    "href": "sessions/solutions/readr-solution.html#read-an-excel-file",
     "title": "Solution: Import and Export Data",
     "section": "Read an Excel file",
-    "text": "Read an Excel file\n\nlibrary(readxl)\n\n\nbirds &lt;- read_excel(\"data/bird_observations.xlsx\")\n\nError:\n! `path` does not exist: 'data/bird_observations.xlsx'\n\nbirds\n\nError:\n! object 'birds' not found\n\n\n\nsummary(birds)\n\nError:\n! object 'birds' not found"
+    "text": "Read an Excel file\n\nlibrary(readxl)\n\n\nbirds &lt;- read_excel(\"data/bird_observations.xlsx\")\nbirds\n\n# A tibble: 12 × 6\n   observation_id species   count habitat date       temperature_c\n   &lt;chr&gt;          &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;              &lt;dbl&gt;\n 1 OBS001         Robin         5 Garden  2024-03-15          12.3\n 2 OBS002         Blackbird     3 Forest  2024-03-15          11.8\n 3 OBS003         Blue Tit      8 Garden  2024-03-16          13.1\n 4 OBS004         Great Tit     4 Forest  2024-03-16          12.5\n 5 OBS005         Robin         6 Meadow  2024-03-17          14.2\n 6 OBS006         Sparrow      12 Garden  2024-03-17          13.8\n 7 OBS007         Blackbird     2 Forest  2024-03-18          11  \n 8 OBS008         Blue Tit      7 Garden  2024-03-18          12.9\n 9 OBS009         Sparrow       9 Meadow  2024-03-19          15.1\n10 OBS010         Great Tit     3 Forest  2024-03-19          13.4\n11 OBS011         Robin         4 Garden  2024-03-20          14.7\n12 OBS012         Blackbird     5 Meadow  2024-03-20          15.3\n\n\n\nsummary(birds)\n\n observation_id       species              count          habitat         \n Length:12          Length:12          Min.   : 2.000   Length:12         \n Class :character   Class :character   1st Qu.: 3.750   Class :character  \n Mode  :character   Mode  :character   Median : 5.000   Mode  :character  \n                                       Mean   : 5.667                     \n                                       3rd Qu.: 7.250                     \n                                       Max.   :12.000                     \n     date           temperature_c  \n Length:12          Min.   :11.00  \n Class :character   1st Qu.:12.45  \n Mode  :character   Median :13.25  \n                    Mean   :13.34  \n                    3rd Qu.:14.32  \n                    Max.   :15.30"
   },
   {
-    "objectID": "sessions/solutions/readr.html#write-data-to-a-file",
-    "href": "sessions/solutions/readr.html#write-data-to-a-file",
+    "objectID": "sessions/solutions/readr-solution.html#write-data-to-a-file",
+    "href": "sessions/solutions/readr-solution.html#write-data-to-a-file",
     "title": "Solution: Import and Export Data",
     "section": "Write data to a file",
     "text": "Write data to a file\n\nwrite_csv(trees, file = \"data/trees_copy.csv\")\n\n\n\n\n\n\n\nNote\n\n\n\nFor this to work, the data/ directory must already exist in your project. Otherwise you will get an error."
   },
   {
-    "objectID": "sessions/solutions/readr.html#challenge-a-slightly-messy-file",
-    "href": "sessions/solutions/readr.html#challenge-a-slightly-messy-file",
+    "objectID": "sessions/solutions/readr-solution.html#challenge-a-slightly-messy-file",
+    "href": "sessions/solutions/readr-solution.html#challenge-a-slightly-messy-file",
     "title": "Solution: Import and Export Data",
     "section": "Challenge: a slightly messy file",
-    "text": "Challenge: a slightly messy file\nIf you try to read the file directly, the metadata lines on top are treated as data:\n\nread_csv(\"data/water_quality.csv\")\n\nOpen the file in a text editor — you can see 4 lines of metadata before the actual data starts. Use skip to skip them:\n\nwater &lt;- read_csv(\"data/water_quality.csv\", skip = 4)\n\nError:\n! 'data/water_quality.csv' does not exist in current working directory ('C:/Users/Selina/Repos/Teaching/intro-r-data-analysis/sessions/solutions').\n\nwater\n\nError:\n! object 'water' not found"
+    "text": "Challenge: a slightly messy file\nIf you try to read the file directly, the metadata lines on top are treated as data:\n\nread_csv(\"data/water_quality.csv\")\n\nOpen the file in a text editor — you can see 4 lines of metadata before the actual data starts. Use skip to skip them:\n\nwater &lt;- read_csv(\"data/water_quality.csv\", skip = 4)\n\nRows: 12 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (2): sample_id, lake\ndbl (4): depth_m, temperature_c, dissolved_oxygen_mg_l, ph\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nwater\n\n# A tibble: 12 × 6\n   sample_id lake        depth_m temperature_c dissolved_oxygen_mg_l    ph\n   &lt;chr&gt;     &lt;chr&gt;         &lt;dbl&gt;         &lt;dbl&gt;                 &lt;dbl&gt; &lt;dbl&gt;\n 1 WQ001     Wannsee           1           8.2                  10.5   7.8\n 2 WQ002     Wannsee           5           6.8                   8.3   7.5\n 3 WQ003     Wannsee          10           5.1                   6.1   7.2\n 4 WQ004     Mueggelsee        1           9                    11.2   8.1\n 5 WQ005     Mueggelsee        5           7.3                   9     7.7\n 6 WQ006     Mueggelsee       10           5.5                   5.8   7.3\n 7 WQ007     Tegeler See       1           8.8                  10.8   7.9\n 8 WQ008     Tegeler See       5           7                     8.7   7.6\n 9 WQ009     Tegeler See      10           5.3                   6.5   7.4\n10 WQ010     Wannsee           1           9.5                  10.1   7.7\n11 WQ011     Mueggelsee        1          10.2                  11.5   8  \n12 WQ012     Tegeler See       1           9.1                  10.3   7.8"
   },
   {
-    "objectID": "sessions/solutions/readr.html#optional-tasks",
-    "href": "sessions/solutions/readr.html#optional-tasks",
+    "objectID": "sessions/solutions/readr-solution.html#optional-tasks",
+    "href": "sessions/solutions/readr-solution.html#optional-tasks",
     "title": "Solution: Import and Export Data",
     "section": "Optional tasks",
-    "text": "Optional tasks\n\nChallenge: an even messier file\nThis file has two problems:\n\nMetadata lines on top (4 lines to skip)\nThe delimiter is ; instead of ,\n\nSo read_csv() won’t work even with skip. Use read_delim() instead:\n\nsoil &lt;- read_delim(\n  \"data/soil_nutrients_messy.csv\",\n  delim = \";\",\n  skip = 4\n)\n\nError:\n! 'data/soil_nutrients_messy.csv' does not exist in current working directory ('C:/Users/Selina/Repos/Teaching/intro-r-data-analysis/sessions/solutions').\n\nsoil\n\nError:\n! object 'soil' not found\n\n\n\n\nClean messy column headers\nSome column names have spaces and special characters. Use janitor::clean_names() to fix this:\n\n# install.packages(\"janitor\")\nlibrary(janitor)\nsoil &lt;- clean_names(soil)\nsoil\n\nThe column names are now clean without spaces and special characters, all lowercase."
+    "text": "Optional tasks\n\nChallenge: an even messier file\nThis file has two problems:\n\nMetadata lines on top (4 lines to skip)\nThe delimiter is ; instead of ,\n\nSo read_csv() won’t work even with skip. Use read_delim() instead:\n\nsoil &lt;- read_delim(\n  \"data/soil_nutrients_messy.csv\",\n  delim = \";\",\n  skip = 4\n)\n\nRows: 10 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \";\"\nchr (2): Plot ID, Soil Type\ndbl (4): Nitrogen (mg/kg), Phosphorus (mg/kg), pH, Organic Matter (%)\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nsoil\n\n# A tibble: 10 × 6\n   `Plot ID` `Soil Type` `Nitrogen (mg/kg)` `Phosphorus (mg/kg)`    pH\n   &lt;chr&gt;     &lt;chr&gt;                    &lt;dbl&gt;                &lt;dbl&gt; &lt;dbl&gt;\n 1 P01       Sandy                     12.3                  4.5   6.2\n 2 P02       Clay                      18.7                  7.2   5.8\n 3 P03       Sandy                     10.1                  3.8  NA  \n 4 P04       Loam                      15.9                  6.1   6.5\n 5 P05       Clay                      20.3                 NA     5.5\n 6 P06       Sandy                     11.8                  4.1   6  \n 7 P07       Loam                      16.2                  5.9   6.3\n 8 P08       Clay                      19.5                  7.8   5.7\n 9 P09       Sandy                      9.4                  3.2   6.4\n10 P10       Loam                      14.7                  5.5   6.1\n# ℹ 1 more variable: `Organic Matter (%)` &lt;dbl&gt;\n\n\n\n\nClean messy column headers\nSome column names have spaces and special characters. Use janitor::clean_names() to fix this:\n\n# install.packages(\"janitor\")\nlibrary(janitor)\nsoil &lt;- clean_names(soil)\nsoil\n\nThe column names are now clean without spaces and special characters, all lowercase."
   },
   {
-    "objectID": "sessions/solutions/ggplot.html",
-    "href": "sessions/solutions/ggplot.html",
+    "objectID": "sessions/solutions/ggplot-solution.html",
+    "href": "sessions/solutions/ggplot-solution.html",
     "title": "Solution to ggplot tasks",
     "section": "",
     "text": "First we need to load the tidyverse packages:\n\n# install.packages(\"tidyverse\")\nlibrary(tidyverse)\n\n\nHave a look at the penguin data set that is included in R\n\n\npenguins\n\n\n\nError in `print.default()`:\n! invalid 'na.print' specification"
   },
   {
-    "objectID": "sessions/solutions/ggplot.html#get-started",
-    "href": "sessions/solutions/ggplot.html#get-started",
+    "objectID": "sessions/solutions/ggplot-solution.html#get-started",
+    "href": "sessions/solutions/ggplot-solution.html#get-started",
     "title": "Solution to ggplot tasks",
     "section": "",
     "text": "First we need to load the tidyverse packages:\n\n# install.packages(\"tidyverse\")\nlibrary(tidyverse)\n\n\nHave a look at the penguin data set that is included in R\n\n\npenguins\n\n\n\nError in `print.default()`:\n! invalid 'na.print' specification"
   },
   {
-    "objectID": "sessions/solutions/ggplot.html#exploratory-plotting",
-    "href": "sessions/solutions/ggplot.html#exploratory-plotting",
+    "objectID": "sessions/solutions/ggplot-solution.html#exploratory-plotting",
+    "href": "sessions/solutions/ggplot-solution.html#exploratory-plotting",
     "title": "Solution to ggplot tasks",
     "section": "Exploratory plotting",
     "text": "Exploratory plotting\n\nRelationship between bill length and bill depth (scatterplot)\nWhat is the relationship between bill length and bill depth?\nFirst, I created a scatter plot and added a linear regression line. From the plot, It looks like bill length is decreasing with increasing bill depth.\n\n# Bill length vs. bill depth scatterplot with regression line\nggplot(\n  data = penguins,\n  aes(\n    x = bill_len,\n    y = bill_dep\n  )\n) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE)\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`).\n\n\n\n\n\n\n\n\n\n\n# or short\nggplot(penguins, aes(bill_len, bill_dep)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE)\n\nIf we add the color aesthetic locally to the point layer, only this layer will be affected by it. The regression line is not separated by species but still calculated and plotted for all data points together:\n\n# Bill length vs. bill depth scatterplot with regression line\n# color as aesthetic local to the point layer\nggplot(penguins, aes(bill_len, bill_dep)) +\n  geom_point(aes(color = species)) +\n  geom_smooth(method = \"lm\", se = FALSE)\n\n\n\n\n\n\n\n\nWe can see an example of the Simpson’s paradox here. If you don’t consider species, it looks like the bill depth decreases with bill length. But after separating the data by species, we see that the effect is actually the opposite.\nTo draw separate regression lines for the species, we need to either add the color aesthetic to the smooth layer as well, or define the color aesthetic globally in the top layer ggplot call:\n\n# Define color aesthetic once globally\nggplot(penguins, aes(\n  x = bill_len,\n  y = bill_dep,\n  color = species\n)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE)\n\n\n\n\n\n\n\n\n\n\nDifference in flipper length between species (boxplot)\nIs there a difference in flipper length between the species?\nFirst I created a simple boxplot with notches:\n\n# Basic boxplot of flipper length with notches\nggplot(penguins, aes(species, flipper_len)) +\n  geom_boxplot(notch = TRUE)\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`).\n\n\n\n\n\n\n\n\n\nA geom_point with position = position_jitter() will add the individual data points to the plot. It’s important to set a seed here to get the same result for the point position on the x-axis every time. Otherwise your plot is not reproducible. I added width = 0.5 to make the jittering a bit narrower:\n\nggplot(penguins, aes(species, flipper_len)) +\n  geom_boxplot() +\n  geom_point(position = position_jitter(\n    seed = 123,\n    width = 0.5\n  ))\n\n\n\n\n\n\n\n\n\n\nDifferences between body mass of male and female penguins (boxplot)\nAre male penguins heavier than female penguins? And is this different between the 3 species?\nFirst, a basic boxplot of the body mass by sex:\n\n#|warning: false\n# Basic boxplot of body mass for penguins of different sex\nggplot(penguins, aes(x = sex, y = body_mass)) +\n  geom_boxplot()\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`).\n\n\n\n\n\n\n\n\n\nI added species as color aesthetic:\n\n#|warning: false\nggplot(penguins, aes(x = sex, \n                     y = body_mass)) +\n  geom_boxplot(aes(color = species))\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`).\n\n\n\n\n\n\n\n\n\nAlternatively, I could also specify the fill aesthetic:\n\n#|warning: false\nggplot(penguins, aes(x = sex, y = body_mass)) +\n  geom_boxplot(aes(fill = species))\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`).\n\n\n\n\n\n\n\n\n\nSpecies as facets:\n\nggplot(penguins, aes(x = sex, y = body_mass)) +\n  geom_boxplot() +\n  facet_wrap(~species)\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_boxplot()`).\n\n\n\n\n\n\n\n\n\nI added a violin plot in the background to show the distribution of the datapoints. To make the violins visible, I changed the width of the boxplot to 0.4:\n\nggplot(penguins, aes(x = sex, y = body_mass)) +\n  geom_violin() +\n  geom_boxplot(width = .04) +\n  facet_wrap(~species)\n\n\n\n\n\n\n\n\n\n\nDistribution of flipper length between species (histogram)\nMake a histogram of the the flipper length separated by species.\nThe default histogram is a histogram where the different groups are stacked:\n\nggplot(penguins, aes(\n  x = flipper_len,\n  fill = species\n)) +\n  geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_bin()`).\n\n\n\n\n\n\n\n\n\nTo unstack the groups, you have to use position = \"identity\". Also, it’s a good idea to make the histogram slightly transparent (alpha = 0.4) to see the overlapping areas.\n\nggplot(penguins, aes(\n  x = flipper_len,\n  fill = species\n)) +\n  geom_histogram(\n    alpha = 0.5,\n    position = \"identity\"\n  )\n\n\n\n\n\n\n\n\nSeparated by facets (no need to specify the position here, because there is only one group per plot).\n\nggplot(penguins, aes(\n  x = flipper_len,\n  fill = species\n)) +\n  geom_histogram() +\n  facet_wrap(~species, ncol = 1)\n\n\n\n\n\n\n\n\n\n\nPenguin flipper length by species and sex (heatmap)\nFor this data it does not make too much sense, but a heat map would look like this:\n\nggplot(penguins, aes(\n  x = species,\n  y = sex,\n  fill = flipper_len\n)) +\n  geom_tile()"
   },
   {
-    "objectID": "sessions/solutions/ggplot.html#beautify-the-plots",
-    "href": "sessions/solutions/ggplot.html#beautify-the-plots",
+    "objectID": "sessions/solutions/ggplot-solution.html#beautify-the-plots",
+    "href": "sessions/solutions/ggplot-solution.html#beautify-the-plots",
     "title": "Solution to ggplot tasks",
     "section": "Beautify the plots",
     "text": "Beautify the plots\n\nBeautify plots from Task 1\nHere are just some examples of how to make the plots from before prettier. Of course there a many other options as well.\nExample one: Boxplot of flipper length and species\n\nggplot(penguins, aes(species, flipper_len, color = species)) +\n  geom_boxplot(width = 0.3) +\n  geom_point(\n    alpha = 0.5,\n    position = position_jitter(width = 0.1, seed = 123)\n  ) +\n  ggsci::scale_color_uchicago() +\n  labs(x = \"Species\", y = \"Flipper length (mm)\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggsci'\n\n\nWhat was changed compared to the basic plot?\n\nAdd color for each species by setting a global color aesthetic\nMake boxes and jitter points less wide by setting width for both layers\nMake jitter points slightly transparent by specifying alpha = 0.5 for the jitter layer\nChange the color to nicer colors from the ggsci package\nChange from default theme to theme_minimal()\nRemove the legend with legend.position = \"none\"\nChange the axis labels with labs()\n\nExample two: Reproducing the plot from the presentation\nThe following code is adapted from the palmerpengins package website.\n\nggplot(\n  data = penguins,\n  aes(\n    x = bill_len,\n    y = bill_dep,\n    color = species,\n    shape = species\n  )\n) +\n  geom_point(size = 3, alpha = 0.8) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  scale_color_manual(values = c(\"darkorange\", \"purple\", \"cyan4\")) +\n  labs(\n    title = \"Penguin bill dimensions\",\n    subtitle = \"Bill length and depth for Adelie, Chinstrap and \n    Gentoo Penguins at Palmer Station LTER\",\n    x = \"Bill length (mm)\",\n    y = \"Bill depth (mm)\",\n    color = \"Penguin species\",\n    shape = \"Penguin species\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position = c(0.85, 0.15),\n    legend.background = element_rect(fill = \"white\", color = NA)\n  )\n\n\n\n\n\n\n\n\nWhat was changed compared to the basic plot?\n\nMake points larger and slightly transparent by setting size and alpha for the point layer\nChange to custom color scale\nAdd title and subtitle with labs\nChange title of x-axis, y-axis and legend for color and shape aesthetic with labs\nUse theme_minimal() instead of default theme\nChange legend position to bottom right corner within the plot\n\nPositions are relative to the bottom left corner of the plot\n0.85 (85% of plot width) to the right\n0.15 (15% of plot height) towards the top"
   },
   {
-    "objectID": "sessions/solutions/ggplot.html#save-one-of-the-plots-on-your-machine",
-    "href": "sessions/solutions/ggplot.html#save-one-of-the-plots-on-your-machine",
+    "objectID": "sessions/solutions/ggplot-solution.html#save-one-of-the-plots-on-your-machine",
+    "href": "sessions/solutions/ggplot-solution.html#save-one-of-the-plots-on-your-machine",
     "title": "Solution to ggplot tasks",
     "section": "Save one of the plots on your machine",
     "text": "Save one of the plots on your machine\nExample with one of the plots from above:\n\n# First save the plot in a variable\nflipper_box &lt;- ggplot(penguins, aes(species, flipper_len, color = species)) +\n  geom_boxplot(width = 0.3) +\n  geom_jitter(alpha = 0.5, position = position_jitter(width = 0.2, seed = 123)) +\n  ggsci::scale_color_uchicago() +\n  labs(x = \"Species\", y = \"Flipper length (mm)\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggsci'\n\n\n\n# save as png in /img directory of the project\nggsave(filename = \"img/flipper_box.png\", plot = flipper_box)\n# save as pdf in /img directory of the project\nggsave(filename = \"img/flipper_box.pdf\", plot = flipper_box)"
   },
   {
-    "objectID": "sessions/solutions/ggplot.html#some-more-examples",
-    "href": "sessions/solutions/ggplot.html#some-more-examples",
+    "objectID": "sessions/solutions/ggplot-solution.html#some-more-examples",
+    "href": "sessions/solutions/ggplot-solution.html#some-more-examples",
     "title": "Solution to ggplot tasks",
     "section": "Some more examples",
     "text": "Some more examples\nHistogram\n\nggplot(penguins, aes(x = flipper_len, fill = species)) +\n  geom_histogram(alpha = 0.6) +\n  ggsci::scale_fill_d3() +\n  labs(\n    y = \"Frequency\",\n    x = \"Flipper length [mm]\",\n    fill = \"Penguin species\"\n  ) +\n  theme_minimal()\n\nError in `loadNamespace()`:\n! there is no package called 'ggsci'\n\n\nHeat map\nFor the penguin data set a heat map does not make that much sense. But an example would be:\n\nggplot(penguins, aes(\n  x = species,\n  y = sex,\n  fill = flipper_len\n)) +\n  geom_tile() +\n  scale_fill_viridis_c() +\n  theme_classic()\n\n\n\n\n\n\n\n\n\nThe patchwork package\nWith the patchwork package, you can combine multiple ggplots into one plot. The package allows you to add annotations to the plot and to control the layout and appearance.\nBelow you find a simple example of two different penugin scatterplots. For more explanation and an overview of what is possible with the package, please have a look at the package documentation\n\nlibrary(patchwork)\n# Collecting legends and defining a common theme\nplot_1 &lt;- ggplot(penguins, aes(\n  x = bill_len, y = bill_dep,\n  color = species\n)) +\n  geom_point()\n\nplot_2 &lt;- ggplot(penguins, aes(\n  x = bill_len, y = body_mass,\n  color = species\n)) +\n  geom_point()\n\n# Simple combination of 2 plots in patchwork\nplot_1 + plot_2\n\n\n\n\n\n\n\n\nAnd a more complex example where shared layers are defined for both plots:\n\n# more complex combination with annotation and definition of shared layers\nfinal_plot &lt;- plot_1 + plot_2 +\n  plot_layout(guides = \"collect\") +\n  plot_annotation(tag_levels = \"a\", tag_prefix = \"(\", tag_suffix = \")\") &\n  theme_minimal() &\n  scale_color_manual(values = c(\"darkorange\", \"purple\", \"cyan4\")) &\n  labs(\n    color = \"Penguin species\"\n  ) &\n  theme(\n    plot.tag.position = c(0.1, 0.95),\n    plot.tag = element_text(face = \"bold\")\n  )\n\nfinal_plot"
   },
   {
-    "objectID": "sessions/solutions/ggplot.html#references",
-    "href": "sessions/solutions/ggplot.html#references",
+    "objectID": "sessions/solutions/ggplot-solution.html#references",
+    "href": "sessions/solutions/ggplot-solution.html#references",
     "title": "Solution to ggplot tasks",
     "section": "References",
     "text": "References\nCheck out the package website of the palmerpenguin package. They have more nice examples of data visualizations that you can do with ggplot.\nHorst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218."
   },
   {
-    "objectID": "sessions/solutions/data-tibbles.html",
-    "href": "sessions/solutions/data-tibbles.html",
+    "objectID": "sessions/solutions/data-tibbles-solution.html",
+    "href": "sessions/solutions/data-tibbles-solution.html",
     "title": "Solution to tibble tasks",
     "section": "",
     "text": "Use the vectors species, brainwt_kg, bodywt_kg from the last task and put them in a tibble.\n\n# install.packages(\"tibble\")\nlibrary(tibble)\n\n# fmt: skip\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n# fmt: skip\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n# fmt: skip\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,\n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,\n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, NA, 0.44,\n  0.0019, 0.1545, NA, 0.18\n)\n\n# Create the tibble\nanimals &lt;- tibble(\n  species = species,\n  bodywt_kg = bodywt_kg,\n  brainwt_kg = brainwt_kg\n)"
   },
   {
-    "objectID": "sessions/solutions/data-tibbles.html#create-a-tibble",
-    "href": "sessions/solutions/data-tibbles.html#create-a-tibble",
+    "objectID": "sessions/solutions/data-tibbles-solution.html#create-a-tibble",
+    "href": "sessions/solutions/data-tibbles-solution.html#create-a-tibble",
     "title": "Solution to tibble tasks",
     "section": "",
     "text": "Use the vectors species, brainwt_kg, bodywt_kg from the last task and put them in a tibble.\n\n# install.packages(\"tibble\")\nlibrary(tibble)\n\n# fmt: skip\nspecies &lt;- c(\n  \"MountainBeaver\", \"Cow\", \"GreyWolf\", \"Goat\",\n  \"GuineaPig\", \"Diplodocus\", \"AsianElephant\", \"Donkey\",\n  \"Horse\", \"PotarMonkey\", \"Cat\", \"Giraffe\",\n  \"Gorilla\", \"Human\", \"AfricanElephant\", \"Triceratops\",\n  \"RhesusMonkey\", \"Kangaroo\", \"GoldenHamster\", \"Mouse\",\n  \"Rabbit\", \"Sheep\", \"Jaguar\", \"Chimpanzee\",\n  \"Rat\", \"Brachiosaurus\", \"Mole\", \"Pig\"\n)\n# fmt: skip\nbodywt_kg &lt;- c(\n  1.4, 465, 36.3, 27.7, 1., 11700, 2547, 187.1,\n  521, 10, 3.3, 529, 207, 62, 6654, 9400,\n  6.8, 35, 0.1, 0.02, 2.5, 55.5, 100, 52.2,\n  0.3, 87000, 0.1, 192\n)\n# fmt: skip\nbrainwt_kg &lt;- c(\n  0.0081, 0.423, 0.1195, 0.115, 0.0055, 0.05,\n  4.603, 0.419, 0.655, 0.115, 0.0256, 0.68,\n  0.406, 1.32, 5.712, 0.07, 0.179, 0.056,\n  0.001, 0.0004, 0.0121, 0.175, NA, 0.44,\n  0.0019, 0.1545, NA, 0.18\n)\n\n# Create the tibble\nanimals &lt;- tibble(\n  species = species,\n  bodywt_kg = bodywt_kg,\n  brainwt_kg = brainwt_kg\n)"
   },
   {
-    "objectID": "sessions/solutions/data-tibbles.html#explore-the-tibble",
-    "href": "sessions/solutions/data-tibbles.html#explore-the-tibble",
+    "objectID": "sessions/solutions/data-tibbles-solution.html#explore-the-tibble",
+    "href": "sessions/solutions/data-tibbles-solution.html#explore-the-tibble",
     "title": "Solution to tibble tasks",
     "section": "Explore the tibble",
-    "text": "Explore the tibble\nWhen you use the view function, the tibble will open in a new window. In this window, you also have some options to filter the data and sort rows. Check out these options as well.\n\nview(animals)\n\nPrint a summary of the table:\n\nsummary(animals)\n\n   species            bodywt_kg          brainwt_kg     \n Length:28          Min.   :    0.02   Min.   :0.00040  \n Class :character   1st Qu.:    3.10   1st Qu.:0.02223  \n Mode  :character   Median :   53.85   Median :0.13700  \n                    Mean   : 4278.44   Mean   :0.57452  \n                    3rd Qu.:  479.00   3rd Qu.:0.42000  \n                    Max.   :87000.00   Max.   :5.71200  \n\n\nThis summary table is super usefule to check if everything is ok with your data. For example, you can check if there are any missing values (NA) in the columns, or if the values in the columns look reasonable (e.g. no negative body weights).\nHere a couple of other function you could use on a tibble:\n\n# Look at the structure of the tibble\nstr(animals)\n\ntibble [28 × 3] (S3: tbl_df/tbl/data.frame)\n $ species   : chr [1:28] \"MountainBeaver\" \"Cow\" \"GreyWolf\" \"Goat\" ...\n $ bodywt_kg : num [1:28] 1.4 465 36.3 27.7 1 ...\n $ brainwt_kg: num [1:28] 0.0081 0.423 0.1195 0.115 0.0055 ...\n\n# Number of rows\nnrow(animals)\n\n[1] 28\n\n# Number of columns\nncol(animals)\n\n[1] 3\n\n# Column names\nnames(animals)\n\n[1] \"species\"    \"bodywt_kg\"  \"brainwt_kg\""
+    "text": "Explore the tibble\nWhen you use the view function, the tibble will open in a new window. In this window, you also have some options to filter the data and sort rows. Check out these options as well.\n\nview(animals)\n\nPrint a summary of the table:\n\nsummary(animals)\n\n   species            bodywt_kg          brainwt_kg    \n Length:28          Min.   :    0.02   Min.   :0.0004  \n Class :character   1st Qu.:    3.10   1st Qu.:0.0317  \n Mode  :character   Median :   53.85   Median :0.1370  \n                    Mean   : 4278.44   Mean   :0.6126  \n                    3rd Qu.:  479.00   3rd Qu.:0.4220  \n                    Max.   :87000.00   Max.   :5.7120  \n                                       NA's   :2       \n\n\nThis summary table is super usefule to check if everything is ok with your data. For example, you can check if there are any missing values (NA) in the columns, or if the values in the columns look reasonable (e.g. no negative body weights).\nHere a couple of other function you could use on a tibble:\n\n# Look at the structure of the tibble\nstr(animals)\n\ntibble [28 × 3] (S3: tbl_df/tbl/data.frame)\n $ species   : chr [1:28] \"MountainBeaver\" \"Cow\" \"GreyWolf\" \"Goat\" ...\n $ bodywt_kg : num [1:28] 1.4 465 36.3 27.7 1 ...\n $ brainwt_kg: num [1:28] 0.0081 0.423 0.1195 0.115 0.0055 ...\n\n# Number of rows\nnrow(animals)\n\n[1] 28\n\n# Number of columns\nncol(animals)\n\n[1] 3\n\n# Column names\nnames(animals)\n\n[1] \"species\"    \"bodywt_kg\"  \"brainwt_kg\""
   },
   {
-    "objectID": "sessions/solutions/data-tibbles.html#index-filter-and-select",
-    "href": "sessions/solutions/data-tibbles.html#index-filter-and-select",
+    "objectID": "sessions/solutions/data-tibbles-solution.html#index-filter-and-select",
+    "href": "sessions/solutions/data-tibbles-solution.html#index-filter-and-select",
     "title": "Solution to tibble tasks",
     "section": "Index, filter and select",
     "text": "Index, filter and select\n\nRows 1, 5, and 7 and the columns species and bodywt_kg\n\n\nanimals[c(1, 5, 7), c(\"species\", \"bodywt_kg\")]\n\n# A tibble: 3 × 2\n  species        bodywt_kg\n  &lt;chr&gt;              &lt;dbl&gt;\n1 MountainBeaver       1.4\n2 GuineaPig            1  \n3 AsianElephant     2547  \n\n\n\nFilter rows 1 to 10, all columns\n\n\nanimals[1:10, ]\n\n# A tibble: 10 × 3\n   species        bodywt_kg brainwt_kg\n   &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;\n 1 MountainBeaver       1.4     0.0081\n 2 Cow                465       0.423 \n 3 GreyWolf            36.3     0.120 \n 4 Goat                27.7     0.115 \n 5 GuineaPig            1       0.0055\n 6 Diplodocus       11700       0.05  \n 7 AsianElephant     2547       4.60  \n 8 Donkey             187.      0.419 \n 9 Horse              521       0.655 \n10 PotarMonkey         10       0.115 \n\n\n\nSelect the column bodywt_kg as a vector using $\n\n\nanimals$bodywt_kg\n\n [1]     1.40   465.00    36.30    27.70     1.00 11700.00  2547.00   187.10\n [9]   521.00    10.00     3.30   529.00   207.00    62.00  6654.00  9400.00\n[17]     6.80    35.00     0.10     0.02     2.50    55.50   100.00    52.20\n[25]     0.30 87000.00     0.10   192.00"
   },
   {
-    "objectID": "sessions/solutions/data-tibbles.html#optional-tasks",
-    "href": "sessions/solutions/data-tibbles.html#optional-tasks",
+    "objectID": "sessions/solutions/data-tibbles-solution.html#optional-tasks",
+    "href": "sessions/solutions/data-tibbles-solution.html#optional-tasks",
     "title": "Solution to tibble tasks",
     "section": "Optional tasks",
     "text": "Optional tasks\n\nSelect the last column of the last row without using the row and column index (so don’t use any numbers in this command)\n\n\nanimals[nrow(animals), ncol(animals)]\n\n# A tibble: 1 × 1\n  brainwt_kg\n       &lt;dbl&gt;\n1       0.18\n\n\n\nCalculate the mean of the bodywt_kg column and save it in a variable\n\n\nmean_wt &lt;- mean(animals$bodywt_kg)\nmean_wt\n\n[1] 4278.44\n\n\n\nAdd a new column to the data called ratio_body_brain with the ratio of the columns bodywt_kg and brainwt_kg\n\n\nanimals$ratio_body_brain &lt;- animals$bodywt_kg / animals$brainwt_kg\nanimals\n\n# A tibble: 28 × 4\n   species        bodywt_kg brainwt_kg ratio_body_brain\n   &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;\n 1 MountainBeaver       1.4     0.0081            173. \n 2 Cow                465       0.423            1099. \n 3 GreyWolf            36.3     0.120             304. \n 4 Goat                27.7     0.115             241. \n 5 GuineaPig            1       0.0055            182. \n 6 Diplodocus       11700       0.05           234000  \n 7 AsianElephant     2547       4.60              553. \n 8 Donkey             187.      0.419             447. \n 9 Horse              521       0.655             795. \n10 PotarMonkey         10       0.115              87.0\n# ℹ 18 more rows"
@@ -2513,218 +2513,218 @@
     "text": "Remove missing values with drop_na()\nDrop rows with missing values:\n\n# drop rows with missing values in any column\ndrop_na(and_vertebrates)\n# drop rows with missing values in weight column\ndrop_na(and_vertebrates, weight_g)\n# drop rows with missing values in weight and species columns\ndrop_na(and_vertebrates, weight_g, species)\n\n\nThis is an easier and more intuitive alternative to filter(!is.na(...))."
   },
   {
-    "objectID": "sessions/solutions/dplyr.html",
-    "href": "sessions/solutions/dplyr.html",
+    "objectID": "sessions/solutions/dplyr-solution.html",
+    "href": "sessions/solutions/dplyr-solution.html",
     "title": "Solution to dplyr tasks",
     "section": "",
     "text": "library(tidyverse)"
   },
   {
-    "objectID": "sessions/solutions/dplyr.html#get-started",
-    "href": "sessions/solutions/dplyr.html#get-started",
+    "objectID": "sessions/solutions/dplyr-solution.html#get-started",
+    "href": "sessions/solutions/dplyr-solution.html#get-started",
     "title": "Solution to dplyr tasks",
     "section": "",
     "text": "library(tidyverse)"
   },
   {
-    "objectID": "sessions/solutions/dplyr.html#data-transformation-with-dplyr",
-    "href": "sessions/solutions/dplyr.html#data-transformation-with-dplyr",
+    "objectID": "sessions/solutions/dplyr-solution.html#data-transformation-with-dplyr",
+    "href": "sessions/solutions/dplyr-solution.html#data-transformation-with-dplyr",
     "title": "Solution to dplyr tasks",
     "section": "Data transformation with dplyr",
     "text": "Data transformation with dplyr\nFind all penguins that …\n\n… have a bill length between 40 and 45 mm.\n\n\nfilter(penguins, between(bill_len, 40, 45))\n\n# A tibble: 77 × 8\n   species island    bill_len bill_dep flipper_len body_mass sex     year\n   &lt;fct&gt;   &lt;fct&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt;     &lt;int&gt; &lt;fct&gt;  &lt;int&gt;\n 1 Adelie  Torgersen     40.3     18           195      3250 female  2007\n 2 Adelie  Torgersen     42       20.2         190      4250 &lt;NA&gt;    2007\n 3 Adelie  Torgersen     41.1     17.6         182      3200 female  2007\n 4 Adelie  Torgersen     42.5     20.7         197      4500 male    2007\n 5 Adelie  Biscoe        40.6     18.6         183      3550 male    2007\n 6 Adelie  Biscoe        40.5     17.9         187      3200 female  2007\n 7 Adelie  Biscoe        40.5     18.9         180      3950 male    2007\n 8 Adelie  Dream         40.9     18.9         184      3900 male    2007\n 9 Adelie  Dream         42.2     18.5         180      3550 female  2007\n10 Adelie  Dream         40.8     18.4         195      3900 male    2007\n# ℹ 67 more rows\n\n# same as \n# filter(penguins, bill_len &lt; 45 & bill_len &gt; 40)\n\n\n… for which we know the sex.\n\n\nfilter(penguins, !is.na(sex))\n\n# A tibble: 333 × 8\n   species island    bill_len bill_dep flipper_len body_mass sex     year\n   &lt;fct&gt;   &lt;fct&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt;     &lt;int&gt; &lt;fct&gt;  &lt;int&gt;\n 1 Adelie  Torgersen     39.1     18.7         181      3750 male    2007\n 2 Adelie  Torgersen     39.5     17.4         186      3800 female  2007\n 3 Adelie  Torgersen     40.3     18           195      3250 female  2007\n 4 Adelie  Torgersen     36.7     19.3         193      3450 female  2007\n 5 Adelie  Torgersen     39.3     20.6         190      3650 male    2007\n 6 Adelie  Torgersen     38.9     17.8         181      3625 female  2007\n 7 Adelie  Torgersen     39.2     19.6         195      4675 male    2007\n 8 Adelie  Torgersen     41.1     17.6         182      3200 female  2007\n 9 Adelie  Torgersen     38.6     21.2         191      3800 male    2007\n10 Adelie  Torgersen     34.6     21.1         198      4400 male    2007\n# ℹ 323 more rows\n\n\n\n… which are of the species Adelie or Gentoo\n\n\nfilter(penguins, species %in% c(\"Adelie\", \"Gentoo\"))\n\n# A tibble: 276 × 8\n   species island    bill_len bill_dep flipper_len body_mass sex     year\n   &lt;fct&gt;   &lt;fct&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt;     &lt;int&gt; &lt;fct&gt;  &lt;int&gt;\n 1 Adelie  Torgersen     39.1     18.7         181      3750 male    2007\n 2 Adelie  Torgersen     39.5     17.4         186      3800 female  2007\n 3 Adelie  Torgersen     40.3     18           195      3250 female  2007\n 4 Adelie  Torgersen     NA       NA            NA        NA &lt;NA&gt;    2007\n 5 Adelie  Torgersen     36.7     19.3         193      3450 female  2007\n 6 Adelie  Torgersen     39.3     20.6         190      3650 male    2007\n 7 Adelie  Torgersen     38.9     17.8         181      3625 female  2007\n 8 Adelie  Torgersen     39.2     19.6         195      4675 male    2007\n 9 Adelie  Torgersen     34.1     18.1         193      3475 &lt;NA&gt;    2007\n10 Adelie  Torgersen     42       20.2         190      4250 &lt;NA&gt;    2007\n# ℹ 266 more rows\n\n# or\n# filter(penguins, (species == \"Adelie\" | species == \"Gentoo\"))\n\n\n… lived on the island Dream in the year 2007. How many of them were from each of the 3 species?\n\n\nfilter(penguins, island == \"Dream\" & year == 2007) |&gt; \n  count(species)\n\n# A tibble: 2 × 2\n  species       n\n  &lt;fct&gt;     &lt;int&gt;\n1 Adelie       20\n2 Chinstrap    26\n\n\nCount …\n\n… the number of penguins on each island.\n\n\ncount(penguins, island)\n\n# A tibble: 3 × 2\n  island        n\n  &lt;fct&gt;     &lt;int&gt;\n1 Biscoe      168\n2 Dream       124\n3 Torgersen    52\n\n\n\n… the number of penguins of each species on each island.\n\n\ncount(penguins, island, species)\n\n# A tibble: 5 × 3\n  island    species       n\n  &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;\n1 Biscoe    Adelie       44\n2 Biscoe    Gentoo      124\n3 Dream     Adelie       56\n4 Dream     Chinstrap    68\n5 Torgersen Adelie       52\n\n\nSelect …\n\n… only the variables species, sex and year\n\n\nselect(penguins, species, sex, year)\n\n# A tibble: 344 × 3\n   species sex     year\n   &lt;fct&gt;   &lt;fct&gt;  &lt;int&gt;\n 1 Adelie  male    2007\n 2 Adelie  female  2007\n 3 Adelie  female  2007\n 4 Adelie  &lt;NA&gt;    2007\n 5 Adelie  female  2007\n 6 Adelie  male    2007\n 7 Adelie  female  2007\n 8 Adelie  male    2007\n 9 Adelie  &lt;NA&gt;    2007\n10 Adelie  &lt;NA&gt;    2007\n# ℹ 334 more rows\n\n\n\n… only columns that contain measurements in mm\n\n\nselect(penguins, ends_with(\"mm\"))\n\n# A tibble: 344 × 0\n\n# or\n#select(penguins, contains(\"_mm\"))\n\nAdd a column …\n\n… with the ratio of bill length to bill depth\n\n\nmutate(penguins,\n       ratio = bill_len / bill_dep)\n\n# A tibble: 344 × 9\n   species island    bill_len bill_dep flipper_len body_mass sex     year ratio\n   &lt;fct&gt;   &lt;fct&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt;     &lt;int&gt; &lt;fct&gt;  &lt;int&gt; &lt;dbl&gt;\n 1 Adelie  Torgersen     39.1     18.7         181      3750 male    2007  2.09\n 2 Adelie  Torgersen     39.5     17.4         186      3800 female  2007  2.27\n 3 Adelie  Torgersen     40.3     18           195      3250 female  2007  2.24\n 4 Adelie  Torgersen     NA       NA            NA        NA &lt;NA&gt;    2007 NA   \n 5 Adelie  Torgersen     36.7     19.3         193      3450 female  2007  1.90\n 6 Adelie  Torgersen     39.3     20.6         190      3650 male    2007  1.91\n 7 Adelie  Torgersen     38.9     17.8         181      3625 female  2007  2.19\n 8 Adelie  Torgersen     39.2     19.6         195      4675 male    2007  2   \n 9 Adelie  Torgersen     34.1     18.1         193      3475 &lt;NA&gt;    2007  1.88\n10 Adelie  Torgersen     42       20.2         190      4250 &lt;NA&gt;    2007  2.08\n# ℹ 334 more rows\n\n\n\n… with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).\n\n\nmutate(penguins,\n       species_short = case_when(\n         species == \"Adelie\" ~ \"A\",\n         species == \"Gentoo\" ~ \"G\",\n         species == \"Chinstrap\" ~ \"C\"\n       ))\n\n# A tibble: 344 × 9\n   species island    bill_len bill_dep flipper_len body_mass sex     year\n   &lt;fct&gt;   &lt;fct&gt;        &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt;     &lt;int&gt; &lt;fct&gt;  &lt;int&gt;\n 1 Adelie  Torgersen     39.1     18.7         181      3750 male    2007\n 2 Adelie  Torgersen     39.5     17.4         186      3800 female  2007\n 3 Adelie  Torgersen     40.3     18           195      3250 female  2007\n 4 Adelie  Torgersen     NA       NA            NA        NA &lt;NA&gt;    2007\n 5 Adelie  Torgersen     36.7     19.3         193      3450 female  2007\n 6 Adelie  Torgersen     39.3     20.6         190      3650 male    2007\n 7 Adelie  Torgersen     38.9     17.8         181      3625 female  2007\n 8 Adelie  Torgersen     39.2     19.6         195      4675 male    2007\n 9 Adelie  Torgersen     34.1     18.1         193      3475 &lt;NA&gt;    2007\n10 Adelie  Torgersen     42       20.2         190      4250 &lt;NA&gt;    2007\n# ℹ 334 more rows\n# ℹ 1 more variable: species_short &lt;chr&gt;\n\n\nCalculate …\n\n… mean flipper length and body mass for the 3 species and male and female penguins separately\n\n\npenguins |&gt;\n  summarize(\n    mean_flipper = mean(flipper_len, na.rm = TRUE),\n    mean_body = mean(body_mass, na.rm = TRUE),\n    .by = c(species, sex)\n  )  \n\n# A tibble: 8 × 4\n  species   sex    mean_flipper mean_body\n  &lt;fct&gt;     &lt;fct&gt;         &lt;dbl&gt;     &lt;dbl&gt;\n1 Adelie    male           192.     4043.\n2 Adelie    female         188.     3369.\n3 Adelie    &lt;NA&gt;           186.     3540 \n4 Gentoo    female         213.     4680.\n5 Gentoo    male           222.     5485.\n6 Gentoo    &lt;NA&gt;           216.     4588.\n7 Chinstrap female         192.     3527.\n8 Chinstrap male           200.     3939.\n\n\n\nCan you do the same but remove the penguins for which we don’t know the sex first?\n\n\npenguins |&gt; \n  filter(!is.na(sex)) |&gt; \n  summarize(\n    mean_flipper = mean(flipper_len, na.rm = TRUE),\n    mean_body = mean(body_mass, na.rm = TRUE),\n    .by = c(species, sex)\n  )\n\n# A tibble: 6 × 4\n  species   sex    mean_flipper mean_body\n  &lt;fct&gt;     &lt;fct&gt;         &lt;dbl&gt;     &lt;dbl&gt;\n1 Adelie    male           192.     4043.\n2 Adelie    female         188.     3369.\n3 Gentoo    female         213.     4680.\n4 Gentoo    male           222.     5485.\n5 Chinstrap female         192.     3527.\n6 Chinstrap male           200.     3939."
   },
   {
-    "objectID": "sessions/solutions/dplyr.html#for-the-fast-ones",
-    "href": "sessions/solutions/dplyr.html#for-the-fast-ones",
+    "objectID": "sessions/solutions/dplyr-solution.html#for-the-fast-ones",
+    "href": "sessions/solutions/dplyr-solution.html#for-the-fast-ones",
     "title": "Solution to dplyr tasks",
     "section": "For the fast ones",
     "text": "For the fast ones\n\nMake a boxplot of penguin body mass with sex on the y-axis and facets for the different species. Can you remove the penguins with missing values for sex first?\n\n\npenguins |&gt;\n  filter(!is.na(sex)) |&gt;\n  ggplot(aes(x = sex, y = body_mass)) +\n  geom_boxplot() +\n  facet_wrap(~species)\n\n\n\n\n\n\n\n\n\nMake a scatterplot with the ratio of bill length to bill depth on the y axis and flipper length on the x axis? Can you distinguish the point between male and female penguins and remove penguins with unknown sex before making the plot?\n\n\npenguins |&gt;\n  mutate(ratio = bill_len / bill_dep) |&gt;\n  filter(!is.na(sex)) |&gt;\n  ggplot(aes(x = flipper_len, y = ratio, color = sex)) +\n  geom_point() +\n  scale_color_manual(values = c(\"cyan4\", \"darkorange\")) +\n  labs(\n    x = \"Flipper lenght (mm)\",\n    y = \"Ratio bill length / bill depth (-)\"\n  ) +\n  theme_minimal()"
   },
   {
-    "objectID": "sessions/solutions/intro-r.html",
-    "href": "sessions/solutions/intro-r.html",
+    "objectID": "sessions/solutions/intro-r-solution.html",
+    "href": "sessions/solutions/intro-r-solution.html",
     "title": "Solution: Introduction to R",
     "section": "",
     "text": "You have the following three vectors:\nspecies &lt;- c(\n  \"MountainBeaver\",\n  \"Cow\",\n  \"GreyWolf\",\n  \"Goat\",\n  \"GuineaPig\",\n  \"Diplodocus\",\n  \"AsianElephant\",\n  \"Donkey\",\n  \"Horse\",\n  \"PotarMonkey\",\n  \"Cat\",\n  \"Giraffe\",\n  \"Gorilla\",\n  \"Human\",\n  \"AfricanElephant\",\n  \"Triceratops\",\n  \"RhesusMonkey\",\n  \"Kangaroo\",\n  \"GoldenHamster\",\n  \"Mouse\",\n  \"Rabbit\",\n  \"Sheep\",\n  \"Jaguar\",\n  \"Chimpanzee\",\n  \"Rat\",\n  \"Brachiosaurus\",\n  \"Mole\",\n  \"Pig\"\n)\n\nbodywt_kg &lt;- c(\n  1.4,\n  465,\n  36.3,\n  27.7,\n  1.,\n  11700,\n  2547,\n  187.1,\n  521,\n  10,\n  3.3,\n  529,\n  207,\n  62,\n  6654,\n  9400,\n  6.8,\n  35,\n  0.1,\n  0.02,\n  2.5,\n  55.5,\n  100,\n  52.2,\n  0.3,\n  87000,\n  0.1,\n  192\n)\n\nbrainwt_kg &lt;- c(\n  0.0081,\n  0.423,\n  0.1195,\n  0.115,\n  0.0055,\n  0.05,\n  4.603,\n  0.419,\n  0.655,\n  0.115,\n  0.0256,\n  0.68,\n  0.406,\n  1.32,\n  5.712,\n  0.07,\n  0.179,\n  0.056,\n  0.001,\n  0.0004,\n  0.0121,\n  0.175,\n  NA,\n  0.44,\n  0.0019,\n  0.1545,\n  NA,\n  0.18\n)"
   },
   {
-    "objectID": "sessions/solutions/intro-r.html#variables-and-vectors",
-    "href": "sessions/solutions/intro-r.html#variables-and-vectors",
+    "objectID": "sessions/solutions/intro-r-solution.html#variables-and-vectors",
+    "href": "sessions/solutions/intro-r-solution.html#variables-and-vectors",
     "title": "Solution: Introduction to R",
     "section": "Variables and vectors",
     "text": "Variables and vectors\n1. What is the 13th species in the vector?\n\nspecies[13]\n\n[1] \"Gorilla\"\n\n\n2. Get the species at positions 6, 13, and 14.\n\nspecies[c(6, 13, 14)]\n\n[1] \"Diplodocus\" \"Gorilla\"    \"Human\"     \n\n\n3. How many species are in the dataset? Save the number in a variable called n_species.\n\n\n\n\n\n\nNotePrint variable to the console\n\n\n\nNote that if you save the result of a command in a variable, it won’t be printed to the console. You need to explicitly print it by typing the variable name .\n\n\n\nn_species &lt;- length(species)\nn_species\n\n[1] 28"
   },
   {
-    "objectID": "sessions/solutions/intro-r.html#vector-arithmetic",
-    "href": "sessions/solutions/intro-r.html#vector-arithmetic",
+    "objectID": "sessions/solutions/intro-r-solution.html#vector-arithmetic",
+    "href": "sessions/solutions/intro-r-solution.html#vector-arithmetic",
     "title": "Solution: Introduction to R",
     "section": "Vector arithmetic",
-    "text": "Vector arithmetic\n4. Calculate the brain-to-body weight ratio for all species and save it in a new variable called ratio.\n\nratio &lt;- brainwt_kg / bodywt_kg\nratio\n\n [1] 5.785714e-03 9.096774e-04 3.292011e-03 4.151625e-03 5.500000e-03\n [6] 4.273504e-06 1.807224e-03 2.239444e-03 1.257198e-03 1.150000e-02\n[11] 7.757576e-03 1.285444e-03 1.961353e-03 2.129032e-02 8.584310e-04\n[16] 7.446809e-06 2.632353e-02 1.600000e-03 1.000000e-02 2.000000e-02\n[21] 4.840000e-03 3.153153e-03           NA 8.429119e-03 6.333333e-03\n[26] 1.775862e-06           NA 9.375000e-04\n\n\n5. Convert the body weight from kg to grams and save it in a variable called bodywt_g.\n\nbodywt_g &lt;- bodywt_kg * 1000\nbodywt_g\n\n [1]     1400   465000    36300    27700     1000 11700000  2547000   187100\n [9]   521000    10000     3300   529000   207000    62000  6654000  9400000\n[17]     6800    35000      100       20     2500    55500   100000    52200\n[25]      300 87000000      100   192000"
+    "text": "Vector arithmetic\n4. Calculate the brain-to-body weight ratio for all species and save it in a new variable called ratio.\n\nratio &lt;- brainwt_kg / bodywt_kg\nratio\n\n [1] 0.005785714286 0.000909677419 0.003292011019 0.004151624549 0.005500000000\n [6] 0.000004273504 0.001807224185 0.002239444148 0.001257197697 0.011500000000\n[11] 0.007757575758 0.001285444234 0.001961352657 0.021290322581 0.000858431019\n[16] 0.000007446809 0.026323529412 0.001600000000 0.010000000000 0.020000000000\n[21] 0.004840000000 0.003153153153             NA 0.008429118774 0.006333333333\n[26] 0.000001775862             NA 0.000937500000\n\n\n5. Convert the body weight from kg to grams and save it in a variable called bodywt_g.\n\nbodywt_g &lt;- bodywt_kg * 1000\nbodywt_g\n\n [1]     1400   465000    36300    27700     1000 11700000  2547000   187100\n [9]   521000    10000     3300   529000   207000    62000  6654000  9400000\n[17]     6800    35000      100       20     2500    55500   100000    52200\n[25]      300 87000000      100   192000"
   },
   {
-    "objectID": "sessions/solutions/intro-r.html#functions-and-missing-values",
-    "href": "sessions/solutions/intro-r.html#functions-and-missing-values",
+    "objectID": "sessions/solutions/intro-r-solution.html#functions-and-missing-values",
+    "href": "sessions/solutions/intro-r-solution.html#functions-and-missing-values",
     "title": "Solution: Introduction to R",
     "section": "Functions and missing values",
     "text": "Functions and missing values\n6. Calculate the mean body weight and the mean brain weight. What happens for brain weight and how do you fix it?\n\nmean(bodywt_kg)\n\n[1] 4278.44\n\n\n\nmean(brainwt_kg)\n\n[1] NA\n\n\nThe result is NA because brainwt_kg contains missing values. To fix this, use the na.rm argument to remove missing values before calculating the mean:\n\nmean(brainwt_kg, na.rm = TRUE)\n\n[1] 0.6125615\n\n\n7. Also try sum() and median() on brain weight.\n\nsum(brainwt_kg, na.rm = TRUE)\n\n[1] 15.9266\n\nmedian(brainwt_kg, na.rm = TRUE)\n\n[1] 0.137\n\n\nWithout na.rm = TRUE, both functions return NA:\n\nsum(brainwt_kg)\n\n[1] NA\n\nmedian(brainwt_kg)\n\n[1] NA"
   },
   {
-    "objectID": "sessions/solutions/intro-r.html#optional-tasks",
-    "href": "sessions/solutions/intro-r.html#optional-tasks",
+    "objectID": "sessions/solutions/intro-r-solution.html#optional-tasks",
+    "href": "sessions/solutions/intro-r-solution.html#optional-tasks",
     "title": "Solution: Introduction to R",
     "section": "Optional tasks",
-    "text": "Optional tasks\n\nRound the ratio vector to 2 decimal places:\n\n\nround(ratio, digits = 2)\n\n [1] 0.01 0.00 0.00 0.00 0.01 0.00 0.00 0.00 0.00 0.01 0.01 0.00 0.00 0.02 0.00\n[16] 0.00 0.03 0.00 0.01 0.02 0.00 0.00   NA 0.01 0.01 0.00   NA 0.00\n\n\n\nTry min(), max(), sum(), and sd() on brainwt_kg.\n\nThese functions all have the same fix for missing values.\n\nmin(brainwt_kg, na.rm = TRUE)\n\n[1] 4e-04\n\nmax(brainwt_kg, na.rm = TRUE)\n\n[1] 5.712\n\nsum(brainwt_kg, na.rm = TRUE)\n\n[1] 15.9266\n\nsd(brainwt_kg, na.rm = TRUE)\n\n[1] 1.379513\n\n\n\nUse sum() together with is.na() to find out how many missing values are in brainwt_kg.\n\n\n# is.na() returns TRUE for each NA value\nis.na(brainwt_kg)\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE\n[25] FALSE FALSE  TRUE FALSE\n\n\nTRUE is treated as 1 and FALSE as 0 when you use sum() on a logical vector. So summing the result gives the number of missing values:\n\nsum(is.na(brainwt_kg))\n\n[1] 2"
+    "text": "Optional tasks\n\nRound the ratio vector to 2 decimal places:\n\n\nround(ratio, digits = 2)\n\n [1] 0.01 0.00 0.00 0.00 0.01 0.00 0.00 0.00 0.00 0.01 0.01 0.00 0.00 0.02 0.00\n[16] 0.00 0.03 0.00 0.01 0.02 0.00 0.00   NA 0.01 0.01 0.00   NA 0.00\n\n\n\nTry min(), max(), sum(), and sd() on brainwt_kg.\n\nThese functions all have the same fix for missing values.\n\nmin(brainwt_kg, na.rm = TRUE)\n\n[1] 0.0004\n\nmax(brainwt_kg, na.rm = TRUE)\n\n[1] 5.712\n\nsum(brainwt_kg, na.rm = TRUE)\n\n[1] 15.9266\n\nsd(brainwt_kg, na.rm = TRUE)\n\n[1] 1.379513\n\n\n\nUse sum() together with is.na() to find out how many missing values are in brainwt_kg.\n\n\n# is.na() returns TRUE for each NA value\nis.na(brainwt_kg)\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE\n[25] FALSE FALSE  TRUE FALSE\n\n\nTRUE is treated as 1 and FALSE as 0 when you use sum() on a logical vector. So summing the result gives the number of missing values:\n\nsum(is.na(brainwt_kg))\n\n[1] 2"
   },
   {
-    "objectID": "sessions/solutions/tests.html",
-    "href": "sessions/solutions/tests.html",
+    "objectID": "sessions/solutions/tests-solution.html",
+    "href": "sessions/solutions/tests-solution.html",
     "title": "Solution to statistical test task",
     "section": "",
     "text": "First, create subsets of the flipper length of all species as vectors:\n\nlibrary(tidyverse)\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\n\n\n\nWith Shapiro-Wilk\nThe Shapiro-Wilk test suggests that Adelie and Chinstrap are normally distributed, but Gentoo is not.\n\nshapiro.test(adelie)\n\n\n    Shapiro-Wilk normality test\n\ndata:  adelie\nW = 0.99339, p-value = 0.72\n\nshapiro.test(gentoo)\n\n\n    Shapiro-Wilk normality test\n\ndata:  gentoo\nW = 0.96219, p-value = 0.00162\n\nshapiro.test(chinstrap)\n\n\n    Shapiro-Wilk normality test\n\ndata:  chinstrap\nW = 0.98891, p-value = 0.8106\n\n\nWith QQ-plots\n\nlibrary(patchwork) # using patchwork to combine multiple plots into one\nch &lt;- ggpubr::ggqqplot(chinstrap) + labs(title = \"chinstrap\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggpubr'\n\nad &lt;- ggpubr::ggqqplot(adelie) + labs(title = \"adelie\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggpubr'\n\nge &lt;- ggpubr::ggqqplot(gentoo) + labs(title = \"gentoo\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggpubr'\n\nch + ge + ad\n\nError:\n! object 'ch' not found\n\n\n\n\n\nBoth are normally distributed, so we can compare variances for Chinstrap and Adelie penguins:\n\nvar.test(chinstrap, adelie)\n\n\n    F test to compare two variances\n\ndata:  chinstrap and adelie\nF = 1.1894, num df = 67, denom df = 150, p-value = 0.3854\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.8022092 1.8217141\nsample estimates:\nratio of variances \n          1.189396 \n\n\nThis indicates that the variances do not differ between Chinstrap and Adelie penguins. Therefore, we can use a t-test to compare mean flipper length:\n\nt.test(chinstrap, adelie)\n\n\n    Welch Two Sample t-test\n\ndata:  chinstrap and adelie\nt = 5.7804, df = 119.68, p-value = 6.049e-08\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 3.859244 7.880530\nsample estimates:\nmean of x mean of y \n 195.8235  189.9536 \n\n\nThe t-test suggests, that the mean flipper length differs between Chinstrap and Adelie penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(chinstrap, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  chinstrap and gentoo\nW = 92, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Chinstrap and Gentoo penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(adelie, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  adelie and gentoo\nW = 26, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Adelie and Gentoo penguins.\n\n\n\nThe boxplot supports the findings of the statistical tests. Notches do not overlap.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE)\n\n\n\n\n\n\n\n\nSimilarly the standard errors of the means do not overlap between the species.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary()\n\n\n\n\n\n\n\n\nTo add the significance levels of the tests performed, I used the geom_signif() layer provided by the ggsignif package.\nSince I performed two different tests (t-test for the comparison of Chinstrap and Adelie penguins, Wilcoxon test for the other two comparisons), I added two different significance layers that distinguish the two tests.\nFor the boxplot:\n\nlibrary(ggsignif)\n\nError in `library()`:\n! there is no package called 'ggsignif'\n\npenguins_boxplot &lt;- penguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(235, 240),\n    map_signif_level = TRUE\n  )\n\nError in `geom_signif()`:\n! could not find function \"geom_signif\"\n\n# To print the plot, just type its name:\npenguins_boxplot\n\nError:\n! object 'penguins_boxplot' not found\n\n\nFor a plot with mean and errorbar:\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary() +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 200,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(216, 218),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\nError in `geom_signif()`:\n! could not find function \"geom_signif\"\n\n\nYou can also do a barplot with error bars. In this case, the error bars are barely visible, because the standard error of the mean is quite small compared to the mean.\n\nggplot(penguins, aes(x = species, y = flipper_len)) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.2\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\",\n    fill = \"grey70\"\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 205,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(221, 230),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\nError in `geom_signif()`:\n! could not find function \"geom_signif\"\n\n\n\n\n\nOf course you can further improve the appearance of you plots. Here is an example of a simple, yet elegant version of the boxplot from above:\n\npenguins_boxplot +\n  labs(\n    y = \"Flipper length (mm)\"\n  ) +\n  theme_classic() +\n  theme(\n    text = element_text(size = 16),\n    axis.title.x = element_blank(),\n    panel.grid.major.y = element_line(color = \"grey90\")\n  )\n\nError:\n! object 'penguins_boxplot' not found"
   },
   {
-    "objectID": "sessions/solutions/tests.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
-    "href": "sessions/solutions/tests.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
+    "objectID": "sessions/solutions/tests-solution.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
+    "href": "sessions/solutions/tests-solution.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
     "title": "Solution to statistical test task",
     "section": "",
     "text": "First, create subsets of the flipper length of all species as vectors:\n\nlibrary(tidyverse)\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\n\n\n\nWith Shapiro-Wilk\nThe Shapiro-Wilk test suggests that Adelie and Chinstrap are normally distributed, but Gentoo is not.\n\nshapiro.test(adelie)\n\n\n    Shapiro-Wilk normality test\n\ndata:  adelie\nW = 0.99339, p-value = 0.72\n\nshapiro.test(gentoo)\n\n\n    Shapiro-Wilk normality test\n\ndata:  gentoo\nW = 0.96219, p-value = 0.00162\n\nshapiro.test(chinstrap)\n\n\n    Shapiro-Wilk normality test\n\ndata:  chinstrap\nW = 0.98891, p-value = 0.8106\n\n\nWith QQ-plots\n\nlibrary(patchwork) # using patchwork to combine multiple plots into one\nch &lt;- ggpubr::ggqqplot(chinstrap) + labs(title = \"chinstrap\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggpubr'\n\nad &lt;- ggpubr::ggqqplot(adelie) + labs(title = \"adelie\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggpubr'\n\nge &lt;- ggpubr::ggqqplot(gentoo) + labs(title = \"gentoo\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggpubr'\n\nch + ge + ad\n\nError:\n! object 'ch' not found\n\n\n\n\n\nBoth are normally distributed, so we can compare variances for Chinstrap and Adelie penguins:\n\nvar.test(chinstrap, adelie)\n\n\n    F test to compare two variances\n\ndata:  chinstrap and adelie\nF = 1.1894, num df = 67, denom df = 150, p-value = 0.3854\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.8022092 1.8217141\nsample estimates:\nratio of variances \n          1.189396 \n\n\nThis indicates that the variances do not differ between Chinstrap and Adelie penguins. Therefore, we can use a t-test to compare mean flipper length:\n\nt.test(chinstrap, adelie)\n\n\n    Welch Two Sample t-test\n\ndata:  chinstrap and adelie\nt = 5.7804, df = 119.68, p-value = 6.049e-08\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 3.859244 7.880530\nsample estimates:\nmean of x mean of y \n 195.8235  189.9536 \n\n\nThe t-test suggests, that the mean flipper length differs between Chinstrap and Adelie penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(chinstrap, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  chinstrap and gentoo\nW = 92, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Chinstrap and Gentoo penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(adelie, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  adelie and gentoo\nW = 26, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Adelie and Gentoo penguins.\n\n\n\nThe boxplot supports the findings of the statistical tests. Notches do not overlap.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE)\n\n\n\n\n\n\n\n\nSimilarly the standard errors of the means do not overlap between the species.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary()\n\n\n\n\n\n\n\n\nTo add the significance levels of the tests performed, I used the geom_signif() layer provided by the ggsignif package.\nSince I performed two different tests (t-test for the comparison of Chinstrap and Adelie penguins, Wilcoxon test for the other two comparisons), I added two different significance layers that distinguish the two tests.\nFor the boxplot:\n\nlibrary(ggsignif)\n\nError in `library()`:\n! there is no package called 'ggsignif'\n\npenguins_boxplot &lt;- penguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(235, 240),\n    map_signif_level = TRUE\n  )\n\nError in `geom_signif()`:\n! could not find function \"geom_signif\"\n\n# To print the plot, just type its name:\npenguins_boxplot\n\nError:\n! object 'penguins_boxplot' not found\n\n\nFor a plot with mean and errorbar:\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary() +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 200,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(216, 218),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\nError in `geom_signif()`:\n! could not find function \"geom_signif\"\n\n\nYou can also do a barplot with error bars. In this case, the error bars are barely visible, because the standard error of the mean is quite small compared to the mean.\n\nggplot(penguins, aes(x = species, y = flipper_len)) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.2\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\",\n    fill = \"grey70\"\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 205,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(221, 230),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\nError in `geom_signif()`:\n! could not find function \"geom_signif\"\n\n\n\n\n\nOf course you can further improve the appearance of you plots. Here is an example of a simple, yet elegant version of the boxplot from above:\n\npenguins_boxplot +\n  labs(\n    y = \"Flipper length (mm)\"\n  ) +\n  theme_classic() +\n  theme(\n    text = element_text(size = 16),\n    axis.title.x = element_blank(),\n    panel.grid.major.y = element_line(color = \"grey90\")\n  )\n\nError:\n! object 'penguins_boxplot' not found"
   },
   {
-    "objectID": "sessions/tasks/data-tibbles.html",
-    "href": "sessions/tasks/data-tibbles.html",
+    "objectID": "sessions/tasks/data-tibbles-task.html",
+    "href": "sessions/tasks/data-tibbles-task.html",
     "title": "Task: Data frames and tibbles",
     "section": "",
     "text": "← Back to session page"
   },
   {
-    "objectID": "sessions/tasks/data-tibbles.html#get-started-with-tibbles",
-    "href": "sessions/tasks/data-tibbles.html#get-started-with-tibbles",
+    "objectID": "sessions/tasks/data-tibbles-task.html#get-started-with-tibbles",
+    "href": "sessions/tasks/data-tibbles-task.html#get-started-with-tibbles",
     "title": "Task: Data frames and tibbles",
     "section": "Get started with tibbles",
     "text": "Get started with tibbles\nBefore you start the task:\n\nIf you haven’t already, install the tibble package by calling install.packages(\"tibble\") in the console.\n\n\n\n\n\n\n\nTipDon’t put install.packages() in your script\n\n\n\nYou don’t need to put install.packages(\"tibble\") in your script. You only need to install a package once on your computer, not every time you run the script. So you can just run this line once in the console.\n\n\n\nOpen your script for the task and put library(tibble) on top\nExecute this line and the tibble package is loaded into your R session"
   },
   {
-    "objectID": "sessions/tasks/data-tibbles.html#create-a-tibble",
-    "href": "sessions/tasks/data-tibbles.html#create-a-tibble",
+    "objectID": "sessions/tasks/data-tibbles-task.html#create-a-tibble",
+    "href": "sessions/tasks/data-tibbles-task.html#create-a-tibble",
     "title": "Task: Data frames and tibbles",
     "section": "Create a tibble",
     "text": "Create a tibble\nUse the vectors species, brainwt_kg, bodywt_kg from the previous task and combine them in a tibble."
   },
   {
-    "objectID": "sessions/tasks/data-tibbles.html#explore-the-tibble",
-    "href": "sessions/tasks/data-tibbles.html#explore-the-tibble",
+    "objectID": "sessions/tasks/data-tibbles-task.html#explore-the-tibble",
+    "href": "sessions/tasks/data-tibbles-task.html#explore-the-tibble",
     "title": "Task: Data frames and tibbles",
     "section": "Explore the tibble",
     "text": "Explore the tibble\nExplore the tibble you created with the different functions that you learned in the presentation. You can for example try\n\nview() and explore what you can do in the view window that opens: searching, filtering, sorting columns\nsummary()\n…"
   },
   {
-    "objectID": "sessions/tasks/data-tibbles.html#index-filter-and-select",
-    "href": "sessions/tasks/data-tibbles.html#index-filter-and-select",
+    "objectID": "sessions/tasks/data-tibbles-task.html#index-filter-and-select",
+    "href": "sessions/tasks/data-tibbles-task.html#index-filter-and-select",
     "title": "Task: Data frames and tibbles",
     "section": "Index, filter and select",
     "text": "Index, filter and select\nNow let’s try some indexing on the data.\n\nRows 1, 5, and 7 and the columns species and bodywt_kg\nFilter rows 1 to 10, all columns\nSelect the column bodywt_kg as a vector"
   },
   {
-    "objectID": "sessions/tasks/data-tibbles.html#optional-tasks-if-you-finish-early",
-    "href": "sessions/tasks/data-tibbles.html#optional-tasks-if-you-finish-early",
+    "objectID": "sessions/tasks/data-tibbles-task.html#optional-tasks-if-you-finish-early",
+    "href": "sessions/tasks/data-tibbles-task.html#optional-tasks-if-you-finish-early",
     "title": "Task: Data frames and tibbles",
     "section": "Optional tasks (if you finish early)",
     "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nSelect the last column of the last row without using the row and column index (so don’t use any numbers in this command)\nCalculate the mean of the bodywt_kg column and save it in a variable\nAdd a new column to the data called ratio_body_brain with the ratio of the columns bodywt_kg and brainwt_kg"
   },
   {
-    "objectID": "sessions/tasks/ggplot.html",
-    "href": "sessions/tasks/ggplot.html",
+    "objectID": "sessions/tasks/ggplot-task.html",
+    "href": "sessions/tasks/ggplot-task.html",
     "title": "Task: Data visualization with ggplot2",
     "section": "",
     "text": "← Back to session page"
   },
   {
-    "objectID": "sessions/tasks/ggplot.html#get-started",
-    "href": "sessions/tasks/ggplot.html#get-started",
+    "objectID": "sessions/tasks/ggplot-task.html#get-started",
+    "href": "sessions/tasks/ggplot-task.html#get-started",
     "title": "Task: Data visualization with ggplot2",
     "section": "Get started",
     "text": "Get started\nA helpful resource to consult for this task can be the ggplot2 cheatsheet.\nRemember to put library(tidyverse) (or library(ggplot2)) on top of your script to access the ggplot functions.\nTo practice plotting with the ggplot2 package, we will use a data set on 3 species of penguins on islands in Antarctica.\n\n\n\n\n\nArtwork by Allison Horst\n\n\n\n\nThe data is available in R and the data set is called penguins:\n\nJust type penguins in the console and you should see the penguins data printed in the console\nFind a description of the variables in the help page ?penguins\n\nTake a moment to get familiar with the data set and its variables."
   },
   {
-    "objectID": "sessions/tasks/ggplot.html#exploratory-plots",
-    "href": "sessions/tasks/ggplot.html#exploratory-plots",
+    "objectID": "sessions/tasks/ggplot-task.html#exploratory-plots",
+    "href": "sessions/tasks/ggplot-task.html#exploratory-plots",
     "title": "Task: Data visualization with ggplot2",
     "section": "Exploratory plots",
     "text": "Exploratory plots\nExplore the data set and it’s variables using ggplot. Below, you find some suggestions for plots. You don’t have to do all of them, just pick the ones you find most interesting. If you have your own plot ideas, feel free to deviate from the tasks.\nDon’t worry about the beauty of your plots, yet. This task is about exploring the data and testing different visualization options. Making them look pretty will be the task in the next section.\n\nRelationship between bill length and bill depth (scatterplot)\nWhat is the relationship between bill length and bill depth?\n\nCreate a scatterplot with bill length on the x-axis and bill depth on the y-axis\nCan you add a regression line?\nAdd species as color aesthetic. Does your interpretation of the data change?\n\nWhat is the difference between adding color as a global aesthetic or as a local aesthetic of the point layer?\n\nAdd species as shape aesthetic to distinguish the species\n\n\n\nDifference in flipper length between species (boxplot)\nIs there a difference in flipper length between the species?\n\nCreate a boxplot of the flipper length (y-axis) for the different species (x-axis)\nTry adding notches to the boxplots\nExtra: Add a layer with geom_point(). Try setting position = position_jitter() as argument in the point layer. What does it do?\n\n\n\nDifferences between body mass of male and female penguins (boxplot)\nAre male penguins heavier than female penguins? And is this different between the 3 species?\n\nCreate a boxplot with body mass on the y axis and sex on the x axis\nAdd the difference between penguin species to this plot. Try the different options ggplot offers\n\nSpecies as color aesthetic\nSpecies as fill aesthetic\nSpecies as facet using facet_wrap\n\nExtra: What happens if you use geom_violin instead of geom_boxplot? Can you combine both geoms in one plot?\n\n\n\nDistribution of flipper length between species (histogram)\nMake a histogram of the the flipper length separated by species.\nTry different methods of separating the species (color or facet).\nCompare stacked and overlapping histograms.\n\n\nPenguin flipper length by species and sex (heatmap)\nCreate a heat map that shows:\n\nThe categories sex and species on x- and y-axis\nThe flipper length as color"
   },
   {
-    "objectID": "sessions/tasks/ggplot.html#beautify-the-plots",
-    "href": "sessions/tasks/ggplot.html#beautify-the-plots",
+    "objectID": "sessions/tasks/ggplot-task.html#beautify-the-plots",
+    "href": "sessions/tasks/ggplot-task.html#beautify-the-plots",
     "title": "Task: Data visualization with ggplot2",
     "section": "Beautify the plots",
     "text": "Beautify the plots\nFirst, choose one of the the tasks 1.3.1 or 1.3.2, then do task 1.4 on saving plots. If you still have time, you can come back to the task you didn’t do.\nBut also here, if you have other ideas, feel free to deviate from the tasks.\n\nBeautify the plots from Task 1\nTake a plot you did in the previous task and make it look nicer.\nHere’s a list of ideas:\n\nAdd a theme layer\nCustomize the theme, e.g.\n\nChange the position of the legend\nMake the axis titles bold\n\nChange the color/fill scale of the plot\n\nUse scale_color_manual or scale_fill_manual\nTry scale_color_viridis_d() or scale_fill_viridis_d() with different options\nTry a color scale from the paletteer package\n\nFirst you have to install the package, then have a look at the available palettes\n\n\nChange the labels of the x- and y-axis and add a title to the plot\nMake the points transparent, give them a different shape, …\n\n\n\nCan you reproduce this plot?\nTake a look at this plot:\n\n\n\n\n\nVisualization from the palmerpenguins package\n\n\n\n\nIt is similar to the one from Task 1.3.1 but more beautiful. Can you reproduce this plot?\nThe colors that are used are:\n\npenguin_cols &lt;- c(\"darkorange\", \"purple\", \"cyan4\")"
   },
   {
-    "objectID": "sessions/tasks/ggplot.html#save-one-of-the-plots-on-your-machine",
-    "href": "sessions/tasks/ggplot.html#save-one-of-the-plots-on-your-machine",
+    "objectID": "sessions/tasks/ggplot-task.html#save-one-of-the-plots-on-your-machine",
+    "href": "sessions/tasks/ggplot-task.html#save-one-of-the-plots-on-your-machine",
     "title": "Task: Data visualization with ggplot2",
     "section": "Save one of the plots on your machine",
     "text": "Save one of the plots on your machine\nSave one of the plots to a dedicated plot folder in your RStudio project. You try different formats, e.g. .png or .pdf.\nNote: Make sure the path where you save the plot exists. If you e.g. want to save in img/, then you first have to create the img folder in your project directory. For this you can use the Files pane of RStudio."
   },
   {
-    "objectID": "sessions/tasks/ggplot.html#references",
-    "href": "sessions/tasks/ggplot.html#references",
+    "objectID": "sessions/tasks/ggplot-task.html#references",
+    "href": "sessions/tasks/ggplot-task.html#references",
     "title": "Task: Data visualization with ggplot2",
     "section": "References",
     "text": "References\nHorst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218."
   },
   {
-    "objectID": "sessions/tasks/intro-rstudio.html",
-    "href": "sessions/tasks/intro-rstudio.html",
+    "objectID": "sessions/tasks/intro-rstudio-task.html",
+    "href": "sessions/tasks/intro-rstudio-task.html",
     "title": "Task: Introduction to RStudio",
     "section": "",
     "text": "← Back to session page"
   },
   {
-    "objectID": "sessions/tasks/intro-rstudio.html#change-settings",
-    "href": "sessions/tasks/intro-rstudio.html#change-settings",
+    "objectID": "sessions/tasks/intro-rstudio-task.html#change-settings",
+    "href": "sessions/tasks/intro-rstudio-task.html#change-settings",
     "title": "Task: Introduction to RStudio",
     "section": "Change settings",
     "text": "Change settings\nBefore you get started, there is an important setting that you should change in RStudio. By default, RStudio saves your workspace when you quit. This means the next session starts with old data still loaded — which can cause confusing errors.\nIn RStudio go to Tools -&gt; Global Options -&gt; General and\n\nRemove the check mark for “Restore .RData into workspace at startup”\nSet “Save workspace to .RData on exit” to Never"
   },
   {
-    "objectID": "sessions/tasks/intro-rstudio.html#create-an-rstudio-project",
-    "href": "sessions/tasks/intro-rstudio.html#create-an-rstudio-project",
+    "objectID": "sessions/tasks/intro-rstudio-task.html#create-an-rstudio-project",
+    "href": "sessions/tasks/intro-rstudio-task.html#create-an-rstudio-project",
     "title": "Task: Introduction to RStudio",
     "section": "Create an RStudio project",
     "text": "Create an RStudio project\nCreate an RStudio project for this workshop:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nGive it a name (e.g. r-workshop)\nChoose where to save it\nClick Create Project\n\nNow have a look at the Files pane in RStudio (bottom right). You should see a folder that has only the .Rproj file in it.\nUse the Files pane to create a basic folder structure in your project:\n\ndata/ for data files\nR/ for R scripts\n\n\n\n\n\n\n\nTipI don’t see my new folders\n\n\n\nSometimes you need to click the “Refresh” button in the Files pane (top right of that pane) to see the new folders you just created."
   },
   {
-    "objectID": "sessions/tasks/intro-rstudio.html#create-and-run-an-r-script",
-    "href": "sessions/tasks/intro-rstudio.html#create-and-run-an-r-script",
+    "objectID": "sessions/tasks/intro-rstudio-task.html#create-and-run-an-r-script",
+    "href": "sessions/tasks/intro-rstudio-task.html#create-and-run-an-r-script",
     "title": "Task: Introduction to RStudio",
     "section": "Create and run an R script",
     "text": "Create and run an R script\n\nNavigate into the R/ folder in the Files pane\nCreate a new R script: File -&gt; New File -&gt; R Script\nCopy the code below into your script and save it (Ctrl/Cmd + S)\nRun the code line by line using Ctrl+Enter (Windows/Linux) or Cmd+Return (Mac)\n\nDon’t worry if you don’t understand the code yet — we will learn all of this during the workshop. For now, just observe what happens in the different panes (console, environment, plot) as you run each line.\n\n# Look at the first rows of the built-in penguins dataset\nhead(penguins)\n\n# How many rows and columns does it have?\nnrow(penguins)\nncol(penguins)\n\n# Summary statistics\nsummary(penguins)\n\n# Create a variable\nmy_variable &lt;- \"Hello, RStudio!\"\n\n# Create a simple plot\nplot(\n  penguins$flipper_len,\n  penguins$body_mass,\n  xlab = \"Flipper Length (mm)\",\n  ylab = \"Body Mass (g)\",\n  main = \"Penguin Body Mass vs Flipper Length\",\n  pch = 20,\n  col = \"steelblue\"\n)"
   },
   {
-    "objectID": "sessions/tasks/intro-rstudio.html#optional-tasks-if-you-finish-early",
-    "href": "sessions/tasks/intro-rstudio.html#optional-tasks-if-you-finish-early",
+    "objectID": "sessions/tasks/intro-rstudio-task.html#optional-tasks-if-you-finish-early",
+    "href": "sessions/tasks/intro-rstudio-task.html#optional-tasks-if-you-finish-early",
     "title": "Task: Introduction to RStudio",
     "section": "Optional tasks (if you finish early)",
     "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nAdd your own data to the project\n\nFind one of your own datasets (e.g. a spreadsheet, csv file, or something similar) on your computer\nCopy it into the data/ folder of your project\n\n\n\n\n\n\n\nNoteOpen your project in the file explorer\n\n\n\nYou have to open your project in your file explorer (Finder on Mac, File Explorer on Windows) to copy the file into the data/ folder. You cannot copy files into that folder from RStudio. The path in the Files pane shows you where your project lives.\n\n\n\nIn RStudio, check if you see the file in the data/ folder\n\nLater, you can try to read this file into R.\n\n\nChange the RStudio theme\n\nGo to Tools -&gt; Global Options -&gt; Appearance\nBrowse through the different themes and choose one you like\nClick Apply to see how it looks (you can change it as many times as you like)\n\n\n\nClose and reopen your project\n\nClose RStudio completely\nFind your project folder in your file explorer (Finder on Mac, File Explorer on Windows)\nDouble-click the .Rproj file to open the project in RStudio again"
   },
   {
-    "objectID": "sessions/tasks/tests.html",
-    "href": "sessions/tasks/tests.html",
+    "objectID": "sessions/tasks/tests-task.html",
+    "href": "sessions/tasks/tests-task.html",
     "title": "Task: Statistical tests",
     "section": "",
     "text": "← Back to session page"
   },
   {
-    "objectID": "sessions/tasks/tests.html#get-started",
-    "href": "sessions/tasks/tests.html#get-started",
+    "objectID": "sessions/tasks/tests-task.html#get-started",
+    "href": "sessions/tasks/tests-task.html#get-started",
     "title": "Task: Statistical tests",
     "section": "Get started",
     "text": "Get started\nWe will again use the penguins data included in R.\nAs always, before you get started with the exercise, make sure that you load the tidyverse\n\nlibrary(tidyverse)"
   },
   {
-    "objectID": "sessions/tasks/tests.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
-    "href": "sessions/tasks/tests.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
+    "objectID": "sessions/tasks/tests-task.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
+    "href": "sessions/tasks/tests-task.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
     "title": "Task: Statistical tests",
     "section": "Compare the flipper length of penguins using statistical tests",
     "text": "Compare the flipper length of penguins using statistical tests\nQuestion: Does the mean flipper length differ between the 3 penguin species?\nDo separate comparisons for\n\nGentoo vs. Adelie\nGentoo vs. Chinstrap\nAdelie vs. Chinstrap\n\nBefore you start, create a subset of each species as a vector.\nFor this, you can use the $ operator:\n\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\n\nFollow the decision tree for statistical tests:\n\n\n\n\n\n\n\n\n\nAfter you have the test results, visualize the differences in flipper length between species.\nYou can e.g. choose one of the following plots:\n\nBoxplot with notches\nMean and standard error of the mean (as mean with errorbar, as barplot, …)\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results\n\nFor the fast ones\n\nUse a different visualization method than before to show the differences in flipper length between species\nChange the appearance of the plot (colors, themes, …) from the task"
