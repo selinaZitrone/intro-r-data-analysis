@@ -6,7 +6,8 @@ number-sections: false
 [← Back to session page](../04_data-tibbles.qmd)
 
 :::{.callout-note}
-Find the solution here after the session ends.
+
+## Find the solution here after the session ends.
 
 ```{=html}
 <script>const course_day = 1;</script>

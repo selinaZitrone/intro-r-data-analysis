@@ -5,7 +5,9 @@ title: "Task: Introduction to R"
 [← Back to session page](../02_intro-r.qmd)
 
 :::{.callout-note}
-Find the solution here after the session ends.
+
+## Find the solution here after the session ends.
+
 
 ```{=html}
 <script>const course_day = 1;</script>

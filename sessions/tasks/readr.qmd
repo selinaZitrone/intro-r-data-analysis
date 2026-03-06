@@ -7,7 +7,8 @@ code-line-numbers: false
 [← Back to session page](../05_readr.qmd)
 
 :::{.callout-note}
-Find the solution here after the session ends.
+
+## Find the solution here after the session ends.
 
 ```{=html}
 <script>const course_day = 1;</script>
