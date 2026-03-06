@@ -60,12 +60,12 @@ index.qmd → sessions/byod.qmd  (BYOD hub: slides + dataset links + example scr
 ### Session pages (`sessions/NN_name.qmd`)
 Each session page contains:
 - A slide deck embedded via `<iframe>`
-- A link to the standalone task page: `Go to the [task page](tasks/name.qmd) for the exercises.`
+- A link to the standalone task page: `Go to the [task page](tasks/name-task.qmd) for the exercises.`
 - A `## Further reading` section with relevant links (for sessions that have resources)
 
 Session pages do **not** use `{{< include >}}` — task content lives entirely in the task page.
 
-### Task pages (`sessions/tasks/name.qmd`)
+### Task pages (`sessions/tasks/name-task.qmd`)
 Standalone pages with their own YAML header (`title`, `number-sections: false`). Each task page contains:
 - A back link to the parent session page
 - A callout-note with the timer-gated solution link
@@ -73,7 +73,7 @@ Standalone pages with their own YAML header (`title`, `number-sections: false`).
 
 Task pages must **not** be `{{< include >}}`'d — Quarto prohibits including files with YAML headers.
 
-### Solution pages (`sessions/solutions/name.qmd`)
+### Solution pages (`sessions/solutions/name-solution.qmd`)
 Linked from task pages after the session timer expires. Not linked from the navbar.
 
 ### Slides (`sessions/slides/name.qmd`)
@@ -83,7 +83,7 @@ Use revealjs format with `self-contained: true`. The `slides/template.qmd` is a 
 Dataset-specific exercises. Corresponding R scripts live in `R/byod/`. Linked from `sessions/byod.qmd`.
 
 ### File naming
-Session files are numbered (e.g., `01_intro-rstudio.qmd`). Slide, task, and solution files use the same base name without the number (e.g., `intro-rstudio.qmd`).
+Session files are numbered (e.g., `01_intro-rstudio.qmd`). Slide files use the same base name without the number (e.g., `intro-rstudio.qmd`). Task files add a `-task` suffix (e.g., `intro-rstudio-task.qmd`) and solution files add a `-solution` suffix (e.g., `intro-r-solution.qmd`).
 
 ### Internal links
 - Use `.qmd` extensions for links in markdown (Quarto rewrites to `.html` on render)
@@ -124,7 +124,7 @@ Solutions on task pages and R script downloads on the home page are revealed aut
 
 ### To add a new session with a solution
 
-Follow the pattern in any existing task page (e.g. `sessions/tasks/ggplot.qmd`).
+Follow the pattern in any existing task page (e.g. `sessions/tasks/ggplot-task.qmd`).
 
 ## Important Rules
 

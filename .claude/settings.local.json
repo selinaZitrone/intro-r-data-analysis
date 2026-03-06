@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:r4ds.had.co.nz)",
-      "WebFetch(domain:www.rstudio.com)"
+      "WebFetch(domain:www.rstudio.com)",
+      "Bash(ls:*)"
     ]
   }
 }

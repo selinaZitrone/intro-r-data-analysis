@@ -10,7 +10,7 @@ title: "Statistical tests"
 
 ::: {.callout-tip}
 ## Exercises
-Go to the [task page](tasks/tests.qmd) for the exercises.
+Go to the [task page](tasks/tests-task.qmd) for the exercises.
 :::
 
 ## Resources

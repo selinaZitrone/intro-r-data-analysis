@@ -13,7 +13,7 @@ title: "Task: Introduction to R"
 <script>const course_day = 1;</script>
 <script src="../../timer_solution.js"></script>
 <p class="r_class_solution" style="display:none">
-  <a href="../solutions/intro-r.html" target="_blank">Click here for the solution.</a>
+  <a href="../solutions/intro-r-solution.html" target="_blank">Click here for the solution.</a>
 </p>
 ```
 :::

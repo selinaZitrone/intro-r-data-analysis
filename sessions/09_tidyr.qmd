@@ -10,7 +10,7 @@ title: "Tidy data with tidyr"
 
 ::: {.callout-tip}
 ## Exercises
-Go to the [task page](tasks/tidyr.qmd) for the exercises.
+Go to the [task page](tasks/tidyr-task.qmd) for the exercises.
 :::
 
 ## Resources

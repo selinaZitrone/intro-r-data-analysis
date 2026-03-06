@@ -10,7 +10,7 @@ title: "Introduction to RStudio"
 
 ::: {.callout-tip}
 ## Exercises
-Go to the [task page](tasks/intro-rstudio.qmd) for the exercises.
+Go to the [task page](tasks/intro-rstudio-task.qmd) for the exercises.
 :::
 
 ## Resources

@@ -10,7 +10,7 @@ title: "Introduction to R"
 
 ::: {.callout-tip}
 ## Exercises
-Go to the [task page](tasks/intro-r.qmd) for the exercises.
+Go to the [task page](tasks/intro-r-task.qmd) for the exercises.
 :::
 
 ## Resources

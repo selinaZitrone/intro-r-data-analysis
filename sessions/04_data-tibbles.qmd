@@ -10,7 +10,7 @@ title: "Tables in R - Data frames and tibbles"
 
 ::: {.callout-tip}
 ## Exercises
-Go to the [task page](tasks/data-tibbles.qmd) for the exercises.
+Go to the [task page](tasks/data-tibbles-task.qmd) for the exercises.
 :::
 
 ## Resources

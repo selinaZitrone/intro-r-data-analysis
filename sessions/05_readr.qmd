@@ -10,7 +10,7 @@ title: "Import and Export Data"
 
 ::: {.callout-tip}
 ## Exercises
-Go to the [task page](tasks/readr.qmd) for the exercises.
+Go to the [task page](tasks/readr-task.qmd) for the exercises.
 :::
 
 ## Resources

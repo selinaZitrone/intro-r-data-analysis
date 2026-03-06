@@ -10,7 +10,7 @@ title: "Data transformation with dplyr"
 
 ::: {.callout-tip}
 ## Exercises
-Go to the [task page](tasks/dplyr.qmd) for the exercises.
+Go to the [task page](tasks/dplyr-task.qmd) for the exercises.
 :::
 
 ## Resources

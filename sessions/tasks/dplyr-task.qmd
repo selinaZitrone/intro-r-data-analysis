@@ -13,7 +13,7 @@ number-sections: false
 <script>const course_day = 2;</script>
 <script src="../../timer_solution.js"></script>
 <p class="r_class_solution" style="display:none">
-  <a href="../solutions/dplyr.html" target="_blank">Click here for the solution.</a>
+  <a href="../solutions/dplyr-solution.html" target="_blank">Click here for the solution.</a>
 </p>
 ```
 :::

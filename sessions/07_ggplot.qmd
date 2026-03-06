@@ -10,7 +10,7 @@ title: "Data visualization with ggplot2"
 
 ::: {.callout-tip}
 ## Exercises
-Go to the [task page](tasks/ggplot.qmd) for the exercises.
+Go to the [task page](tasks/ggplot-task.qmd) for the exercises.
 :::
 
 ## Resources
