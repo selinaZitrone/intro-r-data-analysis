@@ -299,7 +299,7 @@ trees <- read_csv("data/tree_data.csv")
 
 # Now you {.inverse}
 
-[Task (20 min)]{.highlight-blue}<br>
+[Task (25 min)]{.highlight-blue}<br>
 
 [Read and write data files]{.big-text}
 
