@@ -1,10 +1,12 @@
-library(tidyverse)
+1 + 1
 
-head(penguins)
+# Look at the air quality dataset
+head(airquality)
 
-g <- ggplot(penguins, aes(x = flipper_len, y = body_mass, color = species)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  scale_color_manual(values = c("darkorange", "purple", "cyan4")) +
-  theme_bw()
-g
+n_data_points <- nrow(airquality)
+
+# Summary statistics
+summary(airquality)
+
+# Make a simple plot
+plot(airquality$Wind, airquality$Temp, col = "steelblue")
