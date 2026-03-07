@@ -1,0 +1,6 @@
+rating	moph	showed_crab	rt	participant_id
+1	100	yes	1	3
+5	50	no	1	3
+rating	moph	showed_crab	rt	participant_id
+1	100	yes	4	4
+5	50	no	4	4

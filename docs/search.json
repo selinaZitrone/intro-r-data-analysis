@@ -74,7 +74,7 @@
     "href": "sessions/tasks/readr-task.html#optional-tasks-if-you-finish-early",
     "title": "Task: Import and Export Data",
     "section": "Optional tasks (if you finish early)",
-    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nChallenge: an even messier file\nDownload the file below and try to read it into R. This file has multiple problems — you’ll need more than one argument to fix them.\n\n\n\n\n\n\nTipHint (unfold to see)\n\n\n\n\n\nThe file has metadata lines on top and uses a different delimiter (not a comma).\n\n\n\n\n\n Download soil_nutrients_messy.csv\n\n\n\n\nClean messy column headers\nAfter reading the messy soil data, try using janitor::clean_names() on it. What does it do to the column names?\nYou may need to install the janitor package first: install.packages(\"janitor\").\n\n\nRead your own data\nIf you have your own research data, try reading it into R:\n\nCopy a data file into the data/ folder of your project\nUse the appropriate read_*() function to read it in\nDid it work? If not, check ?read_csv or ?read_excel for arguments that might help"
+    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nChallenge: an even messier file\nDownload the file below and try to read it into R. This file has multiple problems — you’ll need more than one argument to fix them.\n\n\n\n\n\n\nHint (unfold to see)\n\n\n\n\n\nThe file has metadata lines on top and uses a different delimiter (not a comma).\n\n\n\n\n\n Download soil_nutrients_messy.csv\n\n\n\n\nClean messy column headers\nAfter reading the messy soil data, try using janitor::clean_names() on it. What does it do to the column names?\nYou may need to install the janitor package first: install.packages(\"janitor\").\n\n\nRead your own data\nIf you have your own research data, try reading it into R:\n\nCopy a data file into the data/ folder of your project\nUse the appropriate read_*() function to read it in\nDid it work? If not, check ?read_csv or ?read_excel for arguments that might help"
   },
   {
     "objectID": "sessions/tasks/intro-r-task.html",
@@ -242,21 +242,21 @@
     "href": "sessions/solutions/ggplot-solution.html#beautify-the-plots",
     "title": "Solution to ggplot tasks",
     "section": "Beautify the plots",
-    "text": "Beautify the plots\n\nBeautify plots from Task 1\nHere are just some examples of how to make the plots from before prettier. Of course there a many other options as well.\nExample one: Boxplot of flipper length and species\n\nggplot(penguins, aes(species, flipper_len, color = species)) +\n  geom_boxplot(width = 0.3) +\n  geom_point(\n    alpha = 0.5,\n    position = position_jitter(width = 0.1, seed = 123)\n  ) +\n  ggsci::scale_color_uchicago() +\n  labs(x = \"Species\", y = \"Flipper length (mm)\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggsci'\n\n\nWhat was changed compared to the basic plot?\n\nAdd color for each species by setting a global color aesthetic\nMake boxes and jitter points less wide by setting width for both layers\nMake jitter points slightly transparent by specifying alpha = 0.5 for the jitter layer\nChange the color to nicer colors from the ggsci package\nChange from default theme to theme_minimal()\nRemove the legend with legend.position = \"none\"\nChange the axis labels with labs()\n\nExample two: Reproducing the plot from the presentation\nThe following code is adapted from the palmerpengins package website.\n\nggplot(\n  data = penguins,\n  aes(\n    x = bill_len,\n    y = bill_dep,\n    color = species,\n    shape = species\n  )\n) +\n  geom_point(size = 3, alpha = 0.8) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  scale_color_manual(values = c(\"darkorange\", \"purple\", \"cyan4\")) +\n  labs(\n    title = \"Penguin bill dimensions\",\n    subtitle = \"Bill length and depth for Adelie, Chinstrap and \n    Gentoo Penguins at Palmer Station LTER\",\n    x = \"Bill length (mm)\",\n    y = \"Bill depth (mm)\",\n    color = \"Penguin species\",\n    shape = \"Penguin species\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position = c(0.85, 0.15),\n    legend.background = element_rect(fill = \"white\", color = NA)\n  )\n\n\n\n\n\n\n\n\nWhat was changed compared to the basic plot?\n\nMake points larger and slightly transparent by setting size and alpha for the point layer\nChange to custom color scale\nAdd title and subtitle with labs\nChange title of x-axis, y-axis and legend for color and shape aesthetic with labs\nUse theme_minimal() instead of default theme\nChange legend position to bottom right corner within the plot\n\nPositions are relative to the bottom left corner of the plot\n0.85 (85% of plot width) to the right\n0.15 (15% of plot height) towards the top"
+    "text": "Beautify the plots\n\nBeautify plots from Task 1\nHere are just some examples of how to make the plots from before prettier. Of course there a many other options as well.\nExample one: Boxplot of flipper length and species\n\nggplot(penguins, aes(species, flipper_len, color = species)) +\n  geom_boxplot(width = 0.3) +\n  geom_point(\n    alpha = 0.5,\n    position = position_jitter(width = 0.1, seed = 123)\n  ) +\n  ggsci::scale_color_uchicago() +\n  labs(x = \"Species\", y = \"Flipper length (mm)\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\nWhat was changed compared to the basic plot?\n\nAdd color for each species by setting a global color aesthetic\nMake boxes and jitter points less wide by setting width for both layers\nMake jitter points slightly transparent by specifying alpha = 0.5 for the jitter layer\nChange the color to nicer colors from the ggsci package\nChange from default theme to theme_minimal()\nRemove the legend with legend.position = \"none\"\nChange the axis labels with labs()\n\nExample two: Reproducing the plot from the presentation\nThe following code is adapted from the palmerpengins package website.\n\nggplot(\n  data = penguins,\n  aes(\n    x = bill_len,\n    y = bill_dep,\n    color = species,\n    shape = species\n  )\n) +\n  geom_point(size = 3, alpha = 0.8) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  scale_color_manual(values = c(\"darkorange\", \"purple\", \"cyan4\")) +\n  labs(\n    title = \"Penguin bill dimensions\",\n    subtitle = \"Bill length and depth for Adelie, Chinstrap and \n    Gentoo Penguins at Palmer Station LTER\",\n    x = \"Bill length (mm)\",\n    y = \"Bill depth (mm)\",\n    color = \"Penguin species\",\n    shape = \"Penguin species\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position = c(0.85, 0.15),\n    legend.background = element_rect(fill = \"white\", color = NA)\n  )\n\n\n\n\n\n\n\n\nWhat was changed compared to the basic plot?\n\nMake points larger and slightly transparent by setting size and alpha for the point layer\nChange to custom color scale\nAdd title and subtitle with labs\nChange title of x-axis, y-axis and legend for color and shape aesthetic with labs\nUse theme_minimal() instead of default theme\nChange legend position to bottom right corner within the plot\n\nPositions are relative to the bottom left corner of the plot\n0.85 (85% of plot width) to the right\n0.15 (15% of plot height) towards the top"
   },
   {
     "objectID": "sessions/solutions/ggplot-solution.html#save-one-of-the-plots-on-your-machine",
     "href": "sessions/solutions/ggplot-solution.html#save-one-of-the-plots-on-your-machine",
     "title": "Solution to ggplot tasks",
     "section": "Save one of the plots on your machine",
-    "text": "Save one of the plots on your machine\nExample with one of the plots from above:\n\n# First save the plot in a variable\nflipper_box &lt;- ggplot(penguins, aes(species, flipper_len, color = species)) +\n  geom_boxplot(width = 0.3) +\n  geom_jitter(alpha = 0.5, position = position_jitter(width = 0.2, seed = 123)) +\n  ggsci::scale_color_uchicago() +\n  labs(x = \"Species\", y = \"Flipper length (mm)\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggsci'\n\n\n\n# save as png in /img directory of the project\nggsave(filename = \"img/flipper_box.png\", plot = flipper_box)\n# save as pdf in /img directory of the project\nggsave(filename = \"img/flipper_box.pdf\", plot = flipper_box)"
+    "text": "Save one of the plots on your machine\nExample with one of the plots from above:\n\n# First save the plot in a variable\nflipper_box &lt;- ggplot(penguins, aes(species, flipper_len, color = species)) +\n  geom_boxplot(width = 0.3) +\n  geom_jitter(alpha = 0.5, position = position_jitter(width = 0.2, seed = 123)) +\n  ggsci::scale_color_uchicago() +\n  labs(x = \"Species\", y = \"Flipper length (mm)\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\n\n# save as png in /img directory of the project\nggsave(filename = \"img/flipper_box.png\", plot = flipper_box)\n# save as pdf in /img directory of the project\nggsave(filename = \"img/flipper_box.pdf\", plot = flipper_box)"
   },
   {
     "objectID": "sessions/solutions/ggplot-solution.html#some-more-examples",
     "href": "sessions/solutions/ggplot-solution.html#some-more-examples",
     "title": "Solution to ggplot tasks",
     "section": "Some more examples",
-    "text": "Some more examples\nHistogram\n\nggplot(penguins, aes(x = flipper_len, fill = species)) +\n  geom_histogram(alpha = 0.6) +\n  ggsci::scale_fill_d3() +\n  labs(\n    y = \"Frequency\",\n    x = \"Flipper length [mm]\",\n    fill = \"Penguin species\"\n  ) +\n  theme_minimal()\n\nError in `loadNamespace()`:\n! there is no package called 'ggsci'\n\n\nHeat map\nFor the penguin data set a heat map does not make that much sense. But an example would be:\n\nggplot(penguins, aes(\n  x = species,\n  y = sex,\n  fill = flipper_len\n)) +\n  geom_tile() +\n  scale_fill_viridis_c() +\n  theme_classic()\n\n\n\n\n\n\n\n\n\nThe patchwork package\nWith the patchwork package, you can combine multiple ggplots into one plot. The package allows you to add annotations to the plot and to control the layout and appearance.\nBelow you find a simple example of two different penugin scatterplots. For more explanation and an overview of what is possible with the package, please have a look at the package documentation\n\nlibrary(patchwork)\n# Collecting legends and defining a common theme\nplot_1 &lt;- ggplot(penguins, aes(\n  x = bill_len, y = bill_dep,\n  color = species\n)) +\n  geom_point()\n\nplot_2 &lt;- ggplot(penguins, aes(\n  x = bill_len, y = body_mass,\n  color = species\n)) +\n  geom_point()\n\n# Simple combination of 2 plots in patchwork\nplot_1 + plot_2\n\n\n\n\n\n\n\n\nAnd a more complex example where shared layers are defined for both plots:\n\n# more complex combination with annotation and definition of shared layers\nfinal_plot &lt;- plot_1 + plot_2 +\n  plot_layout(guides = \"collect\") +\n  plot_annotation(tag_levels = \"a\", tag_prefix = \"(\", tag_suffix = \")\") &\n  theme_minimal() &\n  scale_color_manual(values = c(\"darkorange\", \"purple\", \"cyan4\")) &\n  labs(\n    color = \"Penguin species\"\n  ) &\n  theme(\n    plot.tag.position = c(0.1, 0.95),\n    plot.tag = element_text(face = \"bold\")\n  )\n\nfinal_plot"
+    "text": "Some more examples\nHistogram\n\nggplot(penguins, aes(x = flipper_len, fill = species)) +\n  geom_histogram(alpha = 0.6) +\n  ggsci::scale_fill_d3() +\n  labs(\n    y = \"Frequency\",\n    x = \"Flipper length [mm]\",\n    fill = \"Penguin species\"\n  ) +\n  theme_minimal()\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_bin()`).\n\n\n\n\n\n\n\n\n\nHeat map\nFor the penguin data set a heat map does not make that much sense. But an example would be:\n\nggplot(penguins, aes(\n  x = species,\n  y = sex,\n  fill = flipper_len\n)) +\n  geom_tile() +\n  scale_fill_viridis_c() +\n  theme_classic()\n\n\n\n\n\n\n\n\n\nThe patchwork package\nWith the patchwork package, you can combine multiple ggplots into one plot. The package allows you to add annotations to the plot and to control the layout and appearance.\nBelow you find a simple example of two different penugin scatterplots. For more explanation and an overview of what is possible with the package, please have a look at the package documentation\n\nlibrary(patchwork)\n# Collecting legends and defining a common theme\nplot_1 &lt;- ggplot(penguins, aes(\n  x = bill_len, y = bill_dep,\n  color = species\n)) +\n  geom_point()\n\nplot_2 &lt;- ggplot(penguins, aes(\n  x = bill_len, y = body_mass,\n  color = species\n)) +\n  geom_point()\n\n# Simple combination of 2 plots in patchwork\nplot_1 + plot_2\n\n\n\n\n\n\n\n\nAnd a more complex example where shared layers are defined for both plots:\n\n# more complex combination with annotation and definition of shared layers\nfinal_plot &lt;- plot_1 + plot_2 +\n  plot_layout(guides = \"collect\") +\n  plot_annotation(tag_levels = \"a\", tag_prefix = \"(\", tag_suffix = \")\") &\n  theme_minimal() &\n  scale_color_manual(values = c(\"darkorange\", \"purple\", \"cyan4\")) &\n  labs(\n    color = \"Penguin species\"\n  ) &\n  theme(\n    plot.tag.position = c(0.1, 0.95),\n    plot.tag = element_text(face = \"bold\")\n  )\n\nfinal_plot"
   },
   {
     "objectID": "sessions/solutions/ggplot-solution.html#references",
@@ -1271,7 +1271,7 @@
     "href": "prep/webex.html#log-in",
     "title": "Join the Webex space",
     "section": "Log in",
-    "text": "Log in\nOpen the Webex app or go to https://teams.webex.com/signin (Chrome/Firefox recommended).\nLog in with the email address you used to register for the workshop.\n\nIf your university email is connected to Webex, you are prompted to sign in via your university login.\nOtherwise, create a Webex account with that email.\n\n\n\n\n\n\n\nNoteChange my email address\n\n\n\nIf you registered with a private email and want to use your university email instead, email me and I will re-invite you with the new address."
+    "text": "Log in\nOpen the Webex app or go to https://teams.webex.com/signin (Chrome/Firefox recommended).\nLog in with the email address you used to register for the workshop.\n\nIf your university email is connected to Webex, you are prompted to sign in via your university login.\nOtherwise, create a Webex account with that email.\n\n\n\n\n\n\n\nChange my email address\n\n\n\nIf you registered with a private email and want to use your university email instead, email me and I will re-invite you with the new address."
   },
   {
     "objectID": "prep/webex.html#get-started-with-the-space",
@@ -1293,6 +1293,440 @@
     "title": "Join the Webex space",
     "section": "Joining the workshop sessions",
     "text": "Joining the workshop sessions\nYou can join each session from inside this Webex space. When a meeting starts, it will appear in the space (in the chat area / meeting banner).\nAlternatively, use the meeting link you receive by email."
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html",
+    "href": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html",
+    "title": "Exercise 2: Beautify and Save a Plot",
+    "section": "",
+    "text": "Take one of the plots you made in the previous exercises and improve it step by step.\nFirst, save the plot in a variable.\n\n\n\n\n\n\nI don’t have a plot from the previous exercises!\n\n\n\n\n\nCopy and paste this code to get a starting plot:\n\nlibrary(tidyverse)\n\nggplot(\n  penguins,\n  aes(x = bill_len, y = bill_dep, color = species, shape = species)\n) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n\nBuilding on a plot\n\n\n\nYou can save a plot in a variable and add layers to it later. This is useful when you want to try different things without rewriting the whole plot each time:\n\nmy_plot &lt;- ggplot(...) + geom_...()\nmy_plot\n\n# Add something new (just testing)\nmy_plot + ...\n\n# Add something new and add it to the variable (if you want to keep it)\nmy_plot &lt;- my_plot + ...\nmy_plot"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html#starting-point",
+    "href": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html#starting-point",
+    "title": "Exercise 2: Beautify and Save a Plot",
+    "section": "",
+    "text": "Take one of the plots you made in the previous exercises and improve it step by step.\nFirst, save the plot in a variable.\n\n\n\n\n\n\nI don’t have a plot from the previous exercises!\n\n\n\n\n\nCopy and paste this code to get a starting plot:\n\nlibrary(tidyverse)\n\nggplot(\n  penguins,\n  aes(x = bill_len, y = bill_dep, color = species, shape = species)\n) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n\nBuilding on a plot\n\n\n\nYou can save a plot in a variable and add layers to it later. This is useful when you want to try different things without rewriting the whole plot each time:\n\nmy_plot &lt;- ggplot(...) + geom_...()\nmy_plot\n\n# Add something new (just testing)\nmy_plot + ...\n\n# Add something new and add it to the variable (if you want to keep it)\nmy_plot &lt;- my_plot + ...\nmy_plot"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html#add-labels",
+    "href": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html#add-labels",
+    "title": "Exercise 2: Beautify and Save a Plot",
+    "section": "Add labels",
+    "text": "Add labels\nUse labs() to give your plot a title and proper axis labels. Also change the legend title so it doesn’t just show the variable name."
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html#change-the-colors",
+    "href": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html#change-the-colors",
+    "title": "Exercise 2: Beautify and Save a Plot",
+    "section": "Change the colors",
+    "text": "Change the colors\nChange the colors of your plot. You can either\n\nPick your own colors with scale_color_manual()\n\nRefer to the colors by their name (e.g. “red”, “blue”, “green”) or by their hex code (e.g. “#FF0000” for red). You can find hex codes for colors online, for example with this color picker and you can find all R color names here.\n\nUse the built-in palettes with scale_color_brewer(). Use ?scale_color_brewer to find out which palettes are available.\n\n\n\n\n\n\n\nColor vs. Fill\n\n\n\nIf your plot uses fill (e.g. boxplots), you need scale_fill_manual() or scale_fill_brewer() instead of the scale_color_* versions."
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html#apply-a-theme",
+    "href": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html#apply-a-theme",
+    "title": "Exercise 2: Beautify and Save a Plot",
+    "section": "Apply a theme",
+    "text": "Apply a theme\nTry a few different themes (e.g. theme_minimal(), theme_classic(), theme_bw()) and pick one you like."
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html#save-your-plot",
+    "href": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html#save-your-plot",
+    "title": "Exercise 2: Beautify and Save a Plot",
+    "section": "Save your plot",
+    "text": "Save your plot\n\nMake sure you have an img/ folder in your project (create it in the Files pane if needed)\nUse ggsave() to save your plot as a .png file in the img/ folder. Check ?ggsave or the slides if you’re not sure about the arguments.\nCheck the Files pane to find the png file."
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html#optional-tasks-if-you-finish-early",
+    "href": "other-workshop/sessions/tasks/task-05-ggplot-beautify.html#optional-tasks-if-you-finish-early",
+    "title": "Exercise 2: Beautify and Save a Plot",
+    "section": "Optional tasks (if you finish early)",
+    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nFine-tune the theme\nUse theme() to customize individual elements of your plot, for example the legend position or the font style of the title. To find out what you can customize:\n\nCheck ?theme\nSearch online “ggplot theme …” for specific ideas.\nHave a look at the theme reference sheet on the slides.\n\n\n\nChange point appearance\nTry setting fixed aesthetics inside geom_point() to change the look of all points — for example their size, transparency, or shape.\n\n\nSave in different formats and sizes\nTry saving your plot as a .pdf and with custom dimensions.\n\n\nMake a plot with your own data\nIf you have your own data loaded in R, try making a plot with it and beautifying it."
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-03-reading-data.html",
+    "href": "other-workshop/sessions/tasks/task-03-reading-data.html",
+    "title": "Exercise 3: Reading Data into R",
+    "section": "",
+    "text": "If you haven’t already, install the tidyverse (do this in the console, not in your script):\n\ninstall.packages(\"tidyverse\")\n\nMake sure you have the tidyverse loaded at the top of your script:\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-03-reading-data.html#getting-started",
+    "href": "other-workshop/sessions/tasks/task-03-reading-data.html#getting-started",
+    "title": "Exercise 3: Reading Data into R",
+    "section": "",
+    "text": "If you haven’t already, install the tidyverse (do this in the console, not in your script):\n\ninstall.packages(\"tidyverse\")\n\nMake sure you have the tidyverse loaded at the top of your script:\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-03-reading-data.html#read-a-csv-file",
+    "href": "other-workshop/sessions/tasks/task-03-reading-data.html#read-a-csv-file",
+    "title": "Exercise 3: Reading Data into R",
+    "section": "Read a CSV file",
+    "text": "Read a CSV file\n\nDownload the file below and save it in the data/ folder of your project.\nUse read_csv() to read the file into R and save it in a variable called trees\nExplore the data:\n\nUse summary(trees) — how many tree species are there? What is the tallest tree?\nUse View(trees) to look at the full table\nUse $ to access the height_m column and calculate the mean height\n\n\n\n\nWarning in file(what, \"rb\"): cannot open file\n'C:/Users/Selina/Repos/Teaching/intro-r-data-analysis/data/session1/tasks/tree_growth.csv':\nNo such file or directory\n\n\nError in `file()`:\n! cannot open the connection"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-03-reading-data.html#read-an-excel-file",
+    "href": "other-workshop/sessions/tasks/task-03-reading-data.html#read-an-excel-file",
+    "title": "Exercise 3: Reading Data into R",
+    "section": "Read an Excel file",
+    "text": "Read an Excel file\n\nDownload the Excel file below and save it in the data/ folder of your project\nLoad the readxl package with library(readxl)\nUse read_excel() to read the file into R\n\n\n\nWarning in file(what, \"rb\"): cannot open file\n'C:/Users/Selina/Repos/Teaching/intro-r-data-analysis/data/session1/tasks/bird_observations.xlsx':\nNo such file or directory\n\n\nError in `file()`:\n! cannot open the connection"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-03-reading-data.html#optional-tasks-if-you-finish-early",
+    "href": "other-workshop/sessions/tasks/task-03-reading-data.html#optional-tasks-if-you-finish-early",
+    "title": "Exercise 3: Reading Data into R",
+    "section": "Optional tasks (if you finish early)",
+    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nRead your own data file\nTry reading one of your own research datasets.\n\nIf you didn’t so so yet: Copy a data set into the the data/ folder of your project\nUse the appropriate read_*() function to read it in\n\nDid it work? If not, try to figure out what the problem is and how to fix it. Check the function documentation (e.g. ?read_csv) for arguments that can help you read the file correctly. If you get stuck, ask for help!\n\n\nRead a slightly messy CSV file\n\nDownload the file below and save it in the data/ folder of your project.\nTry reading it into R with read_csv(). Can you spot the problem? Hint: open the file in a text editor to see its structure.\nUse the appropriate argument of read_csv() to fix the problem and read the file correctly. Check ?read_csv for an argument that lets you skip lines at the top of a file.\n\n\n\nWarning in file(what, \"rb\"): cannot open file\n'C:/Users/Selina/Repos/Teaching/intro-r-data-analysis/data/session1/tasks/water_quality.csv':\nNo such file or directory\n\n\nError in `file()`:\n! cannot open the connection\n\n\n\n\nRead an even more messy file\n\nDownload the messy file below.\nCopy it into the /data folder of your project\nTry to find the right way to read it into R\n\n\n\n\n\n\n\nHint\n\n\n\nThe has multiple problems: the delimiter is not a comma, and there are metadata lines on top.\n\n\n\n\nWarning in file(what, \"rb\"): cannot open file\n'C:/Users/Selina/Repos/Teaching/intro-r-data-analysis/data/session1/tasks/soil_nutrients_messy.csv':\nNo such file or directory\n\n\nError in `file()`:\n! cannot open the connection"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-01-rstudio.html",
+    "href": "other-workshop/sessions/tasks/task-01-rstudio.html",
+    "title": "Exercise 1: RStudio Setup",
+    "section": "",
+    "text": "Before you get started, there is an important setting that you should change in RStudio. By default, RStudio saves your workspace when you quit. This means the next session starts with old data still loaded — which can cause confusing errors.\nIn RStudio go to Tools -&gt; Global Options -&gt; General and\n\nRemove the check mark for “Restore .RData into workspace at startup”\nSet “Save workspace to .RData on exit” to Never"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-01-rstudio.html#change-settings",
+    "href": "other-workshop/sessions/tasks/task-01-rstudio.html#change-settings",
+    "title": "Exercise 1: RStudio Setup",
+    "section": "",
+    "text": "Before you get started, there is an important setting that you should change in RStudio. By default, RStudio saves your workspace when you quit. This means the next session starts with old data still loaded — which can cause confusing errors.\nIn RStudio go to Tools -&gt; Global Options -&gt; General and\n\nRemove the check mark for “Restore .RData into workspace at startup”\nSet “Save workspace to .RData on exit” to Never"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-01-rstudio.html#create-an-rstudio-project",
+    "href": "other-workshop/sessions/tasks/task-01-rstudio.html#create-an-rstudio-project",
+    "title": "Exercise 1: RStudio Setup",
+    "section": "Create an RStudio project",
+    "text": "Create an RStudio project\nCreate an RStudio project for this workshop:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nGive it a name (e.g. r-workshop)\nChoose where to save it\nClick Create Project\n\nNow have a look at the Files pane in RStudio (bottom right). You should see a folder that has only the .Rproj file in it.\nUse the Files pane in RStudio to create a basic folder structure in your project:\n\ndata/ for data files\nR/ for R scripts\n\n\n\n\n\n\n\nI don’t see my new folders\n\n\n\nSometimes you need to click the “Refresh” button in the Files pane (top right of that pane) to see the new folders you just created."
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-01-rstudio.html#create-and-run-an-r-script",
+    "href": "other-workshop/sessions/tasks/task-01-rstudio.html#create-and-run-an-r-script",
+    "title": "Exercise 1: RStudio Setup",
+    "section": "Create and run an R script",
+    "text": "Create and run an R script\n\nNavigate into the R/ folder in the Files pane\nCreate a new R script : New File -&gt; R Script\nCopy the code below into your script\nRun the code line by line using Ctrl+Enter (Windows/Linux) or Cmd+Return (Mac)\n\nDon’t worry if you don’t understand the code yet — we will learn all of this during the workshop. For now, just observe what happens as you run each line.\n\n# Look at the first rows of the built-in penguins dataset\nhead(penguins)\n\n# How many rows and columns does it have?\nnrow(penguins)\nncol(penguins)\n\n# Create a simple plot\nplot(\n  penguins$flipper_len,\n  penguins$body_mass,\n  xlab = \"Flipper Length (mm)\",\n  ylab = \"Body Mass (g)\",\n  main = \"Penguin Body Mass vs Flipper Length\",\n  pch = 20,\n  col = \"steelblue\"\n)"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-01-rstudio.html#optional-tasks-if-you-finish-early",
+    "href": "other-workshop/sessions/tasks/task-01-rstudio.html#optional-tasks-if-you-finish-early",
+    "title": "Exercise 1: RStudio Setup",
+    "section": "Optional tasks (if you finish early)",
+    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nAdd your own data to the project\n\nFind one of your own datasets (e.g. a spreadsheet, csv file, or something similar) on your computer\nCopy it into the data/ folder of your project (hint: the Files pane shows you where your project lives)\nIn RStudio, check if you see the file in the data/ folder.\n\nLater, you can try to read this file into R.\n\n\nChange the RStudio theme\n\nGo to Tools -&gt; Global Options -&gt; Appearance\nYou can browse through the different themes and choose one you like.\nWhen you selected one, just click Apply to see how it looks. You can change it as many times as you like until you find one that suits you.\n\n\n\nClose and reopen your project\n\nClose RStudio completely\nFind your project folder in your file explorer (e.g. Finder on Mac, File Explorer on Windows)\nDouble-click the .Rproj file to open the project in RStudio again"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#recap-session-1",
+    "href": "other-workshop/sessions/slides/session_02.html#recap-session-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Recap: Session 1",
+    "text": "Recap: Session 1\n\nRStudio: Projects, scripts, console\nR Basics: Variables, data types, vectors, functions\nPackages: install.packages() once, library() every time\nReading data: read_csv(), read_excel()\n\n\nAny questions from last time?\n\n\nThe tidyverse packages have excellent documentation, e.g. readr, readxl"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#plan-for-today",
+    "href": "other-workshop/sessions/slides/session_02.html#plan-for-today",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Plan for today",
+    "text": "Plan for today\n\nggplot basics: Data exploration and different plot types\nPublication-ready plots: labels, colors, themes, saving plots"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#the-ggplot2-package",
+    "href": "other-workshop/sessions/slides/session_02.html#the-ggplot2-package",
+    "title": "Introduction to Data Analysis with R",
+    "section": "The ggplot2 package",
+    "text": "The ggplot2 package\n\nConsistent grammar/structure\nFlexible structure allows you to produce any type of plots\nHighly customizable appearance\nMany extension packages that provide additional plot types, themes, colors, animation, …\n\nSee here for a list of ggplot extensions\n\nActive community that provides help and inspiration\nPerfect package for exploratory data analysis and beautiful plots\n\n\nPart of the tidyverse\n\nlibrary(tidyverse)\n# Or load it individually:\n# library(ggplot2)"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#the-msleep-dataset",
+    "href": "other-workshop/sessions/slides/session_02.html#the-msleep-dataset",
+    "title": "Introduction to Data Analysis with R",
+    "section": "The msleep dataset",
+    "text": "The msleep dataset\nData on sleep patterns of 83 mammal species, built into ggplot2.\n\n\nKey variables:\n\nname: common name of the species\nvore: dietary category (herbi, carni, omni, insecti)\nsleep_total: total sleep time (hours)\nsleep_rem: REM sleep time (hours)\nbodywt: body weight (kg)\nbrainwt: brain weight (kg)\n\n\n\n\n\n\nSleeping Arctic Fox  Photo by Rama, Wikimedia Commons, CC-BY-SA-2.0-Fr"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#the-msleep-dataset-1",
+    "href": "other-workshop/sessions/slides/session_02.html#the-msleep-dataset-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "The msleep dataset",
+    "text": "The msleep dataset\nData on sleep patterns of 83 mammal species, built into ggplot2.\n\nmsleep\n#&gt; # A tibble: 83 × 11\n#&gt;    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Cheet… Acin… carni Carn… lc                  12.1      NA        NA      11.9\n#&gt;  2 Owl m… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  \n#&gt;  3 Mount… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6\n#&gt;  4 Great… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1\n#&gt;  5 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  \n#&gt;  6 Three… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6\n#&gt;  7 North… Call… carni Carn… vu                   8.7       1.4       0.383  15.3\n#&gt;  8 Vespe… Calo… &lt;NA&gt;  Rode… &lt;NA&gt;                 7        NA        NA      17  \n#&gt;  9 Dog    Canis carni Carn… domesticated        10.1       2.9       0.333  13.9\n#&gt; 10 Roe d… Capr… herbi Arti… lc                   3        NA        NA      21  \n#&gt; # ℹ 73 more rows\n#&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;\n\n\nHow are total sleep and REM sleep related?"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#step-1-ggplotdata",
+    "href": "other-workshop/sessions/slides/session_02.html#step-1-ggplotdata",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Step 1: ggplot(data)",
+    "text": "Step 1: ggplot(data)\nThe ggplot() function initializes a ggplot object. Every ggplot needs this function.\n\n\n\n\nggplot(msleep)\n\n\nEmpty plot because we haven’t told ggplot what to put on the axes yet"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#step-2-add-aesx-y",
+    "href": "other-workshop/sessions/slides/session_02.html#step-2-add-aesx-y",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Step 2: add aes(x, y)",
+    "text": "Step 2: add aes(x, y)\nThe aesthetics define how data variables are mapped plot properties.\n\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = sleep_total,\n    y = sleep_rem\n  )\n)\n\n\nAxes are set up, but no data points yet\nScales adapt automatically to the range of the data"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#step-3-add-a-geom",
+    "href": "other-workshop/sessions/slides/session_02.html#step-3-add-a-geom",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Step 3: add a geom",
+    "text": "Step 3: add a geom\ngeoms define how data points are represented. There are many different geoms to chose from\n\n\n\nfrom ggplot cheatsheet"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#step-3-add-a-geom-1",
+    "href": "other-workshop/sessions/slides/session_02.html#step-3-add-a-geom-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Step 3: add a geom",
+    "text": "Step 3: add a geom\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = sleep_total,\n    y = sleep_rem\n  )\n) +\n  geom_point()\n\n\nNew layers are added with +\nWarning that points could not be plotted due to missing values\n\n\nDoes this depend on the diet (vore) of the animals?\n\n\n\n#&gt; Warning: Removed 22 rows containing missing values or values outside the scale range\n#&gt; (`geom_point()`)."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#add-color-aescolor-...",
+    "href": "other-workshop/sessions/slides/session_02.html#add-color-aescolor-...",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Add color: aes(color = ...)",
+    "text": "Add color: aes(color = ...)\nMap a variable to the color aesthetic to distinguish groups:\n\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = sleep_total,\n    y = sleep_rem,\n    color = vore\n  )\n) +\n  geom_point()\n\n\ncolor = vore maps the dietary category to point color\nA legend is added automatically\nNA values are shown in grey"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#other-aesthetics-shape-size",
+    "href": "other-workshop/sessions/slides/session_02.html#other-aesthetics-shape-size",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Other aesthetics: shape, size",
+    "text": "Other aesthetics: shape, size\nBesides color, you can also map variables to shape and size:\n\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = sleep_total,\n    y = sleep_rem,\n    color = vore,\n    shape = vore,\n    size = brainwt\n  )\n) +\n  geom_point()\n\n\nThis is a bit too much for this plot, but sometimes can be useful"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#geom_boxplot",
+    "href": "other-workshop/sessions/slides/session_02.html#geom_boxplot",
+    "title": "Introduction to Data Analysis with R",
+    "section": "geom_boxplot()",
+    "text": "geom_boxplot()\nCompare a numeric variable across groups:\n\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = vore,\n    y = sleep_total\n  )\n) +\n  geom_boxplot()"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#geom_boxplot-1",
+    "href": "other-workshop/sessions/slides/session_02.html#geom_boxplot-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "geom_boxplot()",
+    "text": "geom_boxplot()\nCompare a numeric variable across groups:"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#geom_boxplot-with-color",
+    "href": "other-workshop/sessions/slides/session_02.html#geom_boxplot-with-color",
+    "title": "Introduction to Data Analysis with R",
+    "section": "geom_boxplot() with color",
+    "text": "geom_boxplot() with color\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = vore,\n    y = sleep_total,\n    color = vore\n  )\n) +\n  geom_boxplot()"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#geom_boxplot-with-fill",
+    "href": "other-workshop/sessions/slides/session_02.html#geom_boxplot-with-fill",
+    "title": "Introduction to Data Analysis with R",
+    "section": "geom_boxplot() with fill",
+    "text": "geom_boxplot() with fill\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = vore,\n    y = sleep_total,\n    fill = vore\n  )\n) +\n  geom_boxplot()"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#geom_histogram",
+    "href": "other-workshop/sessions/slides/session_02.html#geom_histogram",
+    "title": "Introduction to Data Analysis with R",
+    "section": "geom_histogram()",
+    "text": "geom_histogram()\nSee the distribution of a single numeric variable:\n\n\n\n\nggplot(\n  msleep,\n  aes(x = sleep_total)\n) +\n  geom_histogram()\n\n\nggplot counts the observations for you (y-axis)"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#so-many-other-geoms",
+    "href": "other-workshop/sessions/slides/session_02.html#so-many-other-geoms",
+    "title": "Introduction to Data Analysis with R",
+    "section": "So many other geoms",
+    "text": "So many other geoms\nCheck out:\n\nggplot2 cheatsheet\nggplot2 cookbook\nggplot2 tutorial"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#small-multiples-with-facet_wrap",
+    "href": "other-workshop/sessions/slides/session_02.html#small-multiples-with-facet_wrap",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Small multiples with facet_wrap()",
+    "text": "Small multiples with facet_wrap()\nSplit a plot into panels by a variable:\n\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = sleep_total,\n    y = sleep_rem\n  )\n) +\n  geom_point() +\n  facet_wrap(vars(vore))\n\n\nEspecially useful when color/shape gets crowded"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#small-multiples-with-facet_grid",
+    "href": "other-workshop/sessions/slides/session_02.html#small-multiples-with-facet_grid",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Small multiples with facet_grid()",
+    "text": "Small multiples with facet_grid()\nSplit a plot into panels by 2 variables (rows and columns):\n\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = sleep_total,\n    y = sleep_rem\n  )\n) +\n  geom_point() +\n  facet_grid(\n    rows = vars(vore),\n    cols = vars(conservation)\n  )"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#summary-the-ggplot-skeleton",
+    "href": "other-workshop/sessions/slides/session_02.html#summary-the-ggplot-skeleton",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Summary: The ggplot skeleton",
+    "text": "Summary: The ggplot skeleton\nEvery ggplot has the same basic structure:\n\nggplot(\n  data,\n  aes(x = ..., y = ..., color, ...)\n) +\n  geom_xxx()\n\n\nggplot(): initialize the plot with data and aesthetic mappings\naes(): map variables to visual properties (x-axis, y-axis, color, shape, size, …)\ngeom_xxx(): define how data points are drawn\nLayers are connected with +"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#mapping-vs.-setting-aesthetics",
+    "href": "other-workshop/sessions/slides/session_02.html#mapping-vs.-setting-aesthetics",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Mapping vs. setting aesthetics",
+    "text": "Mapping vs. setting aesthetics\n\n\n\nInside aes(): map a variable to color\n\nggplot(\n  msleep,\n  aes(\n    x = sleep_total,\n    y = sleep_rem,\n    color = vore\n  )\n) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n\n\n\nInside geom: set color of all points\n\nggplot(\n  msleep,\n  aes(\n    x = sleep_total,\n    y = sleep_rem\n  )\n) +\n  geom_point(\n    color = \"steelblue\"\n  )"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#mapping-vs.-setting-aesthetics-1",
+    "href": "other-workshop/sessions/slides/session_02.html#mapping-vs.-setting-aesthetics-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Mapping vs. setting aesthetics",
+    "text": "Mapping vs. setting aesthetics\nYou can change point shape, size, and transparency in the same way:\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = sleep_total,\n    y = sleep_rem\n  )\n) +\n  geom_point(\n    size = 3, # size\n    shape = 17, # shape\n    color = \"steelblue\", # color\n    alpha = 0.5 # transparency (0-1)\n  )\n\n\n\n\n\n\n\n\n\n\n\nShape and color codes"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#mapping-vs.-setting-aesthetics-2",
+    "href": "other-workshop/sessions/slides/session_02.html#mapping-vs.-setting-aesthetics-2",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Mapping vs. setting aesthetics",
+    "text": "Mapping vs. setting aesthetics\nMapping and setting aesthetics can also be combined:\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = sleep_total,\n    y = sleep_rem,\n    color = vore\n  )\n) +\n  geom_point(\n    size = 3,\n    shape = 17\n  )"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#starting-point",
+    "href": "other-workshop/sessions/slides/session_02.html#starting-point",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Starting point",
+    "text": "Starting point\nLet’s take this plot and make it look better step by step:\n\n\n\ng &lt;- ggplot(\n  msleep,\n  aes(\n    x = sleep_total,\n    y = sleep_rem,\n    color = vore\n  )\n) +\n  geom_point()\ng\n\n\nSaving the plot in a variable g so we can build on it\nOther plot layers can still be added to g"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#scale_color_manual-choose-your-own-colors",
+    "href": "other-workshop/sessions/slides/session_02.html#scale_color_manual-choose-your-own-colors",
+    "title": "Introduction to Data Analysis with R",
+    "section": "scale_color_manual(): choose your own colors",
+    "text": "scale_color_manual(): choose your own colors\nChange the colors of the color aesthetic:\n\n\n\ng &lt;- g +\n  scale_color_manual(\n    values = c(\n      \"darkorange\",\n      \"steelblue\",\n      \"forestgreen\",\n      \"orchid\",\n      \"grey50\"\n    )\n  )\ng\n\n\nOne color per group - must match the number of groups\nColors can be names or hex codes like \"#FF6B35\""
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#scale_color_manual-choose-your-own-colors-1",
+    "href": "other-workshop/sessions/slides/session_02.html#scale_color_manual-choose-your-own-colors-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "scale_color_manual(): choose your own colors",
+    "text": "scale_color_manual(): choose your own colors\nChange the colors of the color aesthetic:\n\n\n\n# Define custom colors once\nvore_colors &lt;- c(\n  \"darkorange\",\n  \"steelblue\",\n  \"forestgreen\",\n  \"orchid\",\n  \"grey50\"\n)\n# Use them in each plot\ng &lt;- g +\n  scale_color_manual(\n    values = vore_colors\n  )\ng\n\n\nIf you want to use the same colors in multiple plots, save them in a vector\nThen you only need to update colors in one place"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#scale_color_brewer-use-a-color-palette",
+    "href": "other-workshop/sessions/slides/session_02.html#scale_color_brewer-use-a-color-palette",
+    "title": "Introduction to Data Analysis with R",
+    "section": "scale_color_brewer(): use a color palette",
+    "text": "scale_color_brewer(): use a color palette\n\n\n\ng +\n  scale_color_brewer(\n    palette = \"Set2\"\n  )\n\n\nPre-defined palettes, many are colorblind-friendly\nOther options: \"Dark2\", \"Paired\", \"Pastel1\", …\nCheck ?scale_color_brewer for all options"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#scale_color_-vs.-scale_fill_",
+    "href": "other-workshop/sessions/slides/session_02.html#scale_color_-vs.-scale_fill_",
+    "title": "Introduction to Data Analysis with R",
+    "section": "scale_color_* vs. scale_fill_*",
+    "text": "scale_color_* vs. scale_fill_*\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = vore,\n    y = sleep_total,\n    color = vore\n  )\n) +\n  geom_boxplot() +\n  scale_color_brewer(\n    palette = \"Dark2\",\n    na.value = \"grey50\"\n  )\n\n\n\n\n\n\n\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = vore,\n    y = sleep_total,\n    fill = vore\n  )\n) +\n  geom_boxplot() +\n  scale_fill_brewer(\n    palette = \"Dark2\",\n    na.value = \"grey50\"\n  )"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#labs-add-labels",
+    "href": "other-workshop/sessions/slides/session_02.html#labs-add-labels",
+    "title": "Introduction to Data Analysis with R",
+    "section": "labs(): add labels",
+    "text": "labs(): add labels\nChange the default axis labels, legend title, and add a title and caption:\n\n\n\ng &lt;- g +\n  labs(\n    x = \"Total sleep (h)\",\n    y = \"REM phase (h)\",\n    color = \"Diet\",\n    title = \"Total sleep vs. REM phase\",\n    subtitle = \"More sleep - more variability\",\n    caption = \"Data from msleep dataset\"\n  )\ng"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#themes-change-the-overall-look",
+    "href": "other-workshop/sessions/slides/session_02.html#themes-change-the-overall-look",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Themes: change the overall look",
+    "text": "Themes: change the overall look\n\n\n\ng +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\ng +\n  theme_linedraw()"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#themes-change-the-overall-look-1",
+    "href": "other-workshop/sessions/slides/session_02.html#themes-change-the-overall-look-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Themes: change the overall look",
+    "text": "Themes: change the overall look\n\n\n\ng +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n\n\n\ng +\n  theme_classic()"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#theme-fine-tune-individual-elements",
+    "href": "other-workshop/sessions/slides/session_02.html#theme-fine-tune-individual-elements",
+    "title": "Introduction to Data Analysis with R",
+    "section": "theme(): fine-tune individual elements",
+    "text": "theme(): fine-tune individual elements\n\n\n\ng &lt;- g +\n  theme_classic() +\n  theme(\n    # Move legend to the bottom\n    legend.position = \"bottom\",\n    # Make the title bold\n    plot.title = element_text(face = \"bold\"),\n    # Add the major grid lines\n    panel.grid.major = element_line(color = \"grey80\")\n  )\ng\n\n\nThe basic functioning of theme elements is:\n\ntheme(\n  element_name = element_function()\n)"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#theme-fine-tune-individual-elements-1",
+    "href": "other-workshop/sessions/slides/session_02.html#theme-fine-tune-individual-elements-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "theme(): fine-tune individual elements",
+    "text": "theme(): fine-tune individual elements\n\nCheck ?theme for all theme elements and options\nSearch: “ggplot theme …” (e.g. “ggplot theme remove legend”)\n\n\n\n\n\nTheme reference sheet by Isabella Benabaye"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#ggsave-save-your-plot",
+    "href": "other-workshop/sessions/slides/session_02.html#ggsave-save-your-plot",
+    "title": "Introduction to Data Analysis with R",
+    "section": "ggsave(): save your plot",
+    "text": "ggsave(): save your plot\nWithout specifications:\n\n# save plot g in img as my_plot.pdf\nggsave(filename = \"img/my_plot.pdf\", plot = g)\n# save plot g in img as my_plot.png\nggsave(filename = \"img/my_plot.png\", plot = g)\n\n\nFirst argument: file path (the folder must exist)\nplot: which plot to save (default: last plot)\n\n\nOr with specifications:\n\n# save a plot named g in the img directory under the name my_plot.png\n# with width 16 cm and height 9 cm\nggsave(\n  filename = \"img/my_plot.png\",\n  plot = g,\n  width = 16,\n  heigth = 9,\n  units = \"cm\"\n)\n\nHave a look at ?ggsave to see all options."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#what-we-covered-today",
+    "href": "other-workshop/sessions/slides/session_02.html#what-we-covered-today",
+    "title": "Introduction to Data Analysis with R",
+    "section": "What we covered today",
+    "text": "What we covered today\n\n\nQuick data exploration\n\n\n\n\n\n\n\n\n\n\nPublication-ready plots\n\n\n\n\n\n\n\n\n\n\nCheck out the online resources for more examples and options."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#next-time",
+    "href": "other-workshop/sessions/slides/session_02.html#next-time",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Next time",
+    "text": "Next time\n\nData manipulation with dplyr and tidyr\n\nRemove missing values\nFilter your data\nCreate new columns\nSummarize your data\n…\n\nSome more plots"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#until-next-time",
+    "href": "other-workshop/sessions/slides/session_02.html#until-next-time",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Until next time",
+    "text": "Until next time\n\nTry making a plot with your own research data\nLet me know if there’s something specific you want to do"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#logarithmic-scales",
+    "href": "other-workshop/sessions/slides/session_02.html#logarithmic-scales",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Logarithmic scales",
+    "text": "Logarithmic scales\nWhen data spans several orders of magnitude, use a log scale:\n\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = bodywt,\n    y = sleep_total,\n    color = vore\n  )\n) +\n  geom_point()\n\n\nWe have some very large animals (e.g. elephants) and some very small ones (e.g. rats)"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#logarithmic-scales-1",
+    "href": "other-workshop/sessions/slides/session_02.html#logarithmic-scales-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Logarithmic scales",
+    "text": "Logarithmic scales\nWhen data spans several orders of magnitude, use a log scale:\n\n\n\n\nggplot(\n  msleep,\n  aes(\n    x = bodywt,\n    y = sleep_total,\n    color = vore\n  )\n) +\n  geom_point() +\n  scale_x_log10()\n\n\nThere is also scale_y_log10() for the y-axis"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#patchwork-to-combine-multiple-plots",
+    "href": "other-workshop/sessions/slides/session_02.html#patchwork-to-combine-multiple-plots",
+    "title": "Introduction to Data Analysis with R",
+    "section": "patchwork to combine multiple plots",
+    "text": "patchwork to combine multiple plots\nThe patchwork package allows you to combine multiple ggplots into one figure:\n\n# install.packages(\"patchwork\") # install once\nlibrary(patchwork)\n\np1 &lt;- ggplot(msleep, aes(x = sleep_total, y = sleep_rem, color = vore)) +\n  geom_point()\n\np2 &lt;- ggplot(msleep, aes(x = vore, y = sleep_rem, color = vore)) +\n  geom_boxplot()\n\n# Combine them into one figure\nplot_combined &lt;- p1 + p2"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#patchwork-to-combine-multiple-plots-1",
+    "href": "other-workshop/sessions/slides/session_02.html#patchwork-to-combine-multiple-plots-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "patchwork to combine multiple plots",
+    "text": "patchwork to combine multiple plots\nChange the plot layout with plot_layout():\n\n# Combine them into one figure\nplot_combined &lt;- plot_combined +\n  plot_layout(\n    guides = \"collect\", # collect legends on the right\n    axes = \"collect\" # combine shared axes into one\n  ) +\n  plot_annotation(\n    tag_levels = \"a\", # Add tags with small letters\n    tag_suffix = \")\" # Add \")\" after the tag letter\n  )\nplot_combined"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_02.html#patchwork-to-combine-multiple-plots-2",
+    "href": "other-workshop/sessions/slides/session_02.html#patchwork-to-combine-multiple-plots-2",
+    "title": "Introduction to Data Analysis with R",
+    "section": "patchwork to combine multiple plots",
+    "text": "patchwork to combine multiple plots\nAdd common layers to all plots with &:\n\n# Add common layers\nplot_combined &\n  scale_color_brewer(palette = \"Set2\", na.value = \"grey50\") &\n  theme_classic() &\n  labs(y = \"REM sleep (h)\", color = \"Diet\")\n\n\n\n\n\n\n\n\n\n\nCheck out the patchwork documentation for more options and examples."
+  },
+  {
+    "objectID": "other-workshop/sessions/index-session_02.html",
+    "href": "other-workshop/sessions/index-session_02.html",
+    "title": "Session 1",
+    "section": "",
+    "text": "In this session you will learn:\nSlides in full screen\nDownload PDF slides"
+  },
+  {
+    "objectID": "other-workshop/sessions/index-session_02.html#exercises",
+    "href": "other-workshop/sessions/index-session_02.html#exercises",
+    "title": "Session 1",
+    "section": "Exercises",
+    "text": "Exercises\n\nExercise 1: Exploring Data with ggplot2\nExercise 2: Beautify and Save a Plot"
+  },
+  {
+    "objectID": "other-workshop/sessions/index-session_02.html#resources",
+    "href": "other-workshop/sessions/index-session_02.html#resources",
+    "title": "Session 1",
+    "section": "Resources",
+    "text": "Resources\n\nBasic ggplot\n\nggplot2 documentation: The official documentation for ggplot2, with examples and tutorials.\nggplot2 cookbook: Practical guide for creating a wide variety of plots with ggplot2, with lots of examples and code snippets.\nGreat ggplot2 tutorial by Cédric Scherer: A comprehensive tutorial on ggplot2, covering all the basics and more advanced topics.\nA very comprehensive YouTube webinar on ggplot starting from the basics (by one of the package developpers)\n\nPart 1\nPart2\n\nA list of ggplot extension packages: These packages extend ggplot2 with new geoms, themes, and other features. You can find extensions for all kinds of things, from new types of plots to ways to make your plots interactive.\n\nMy personal favorite is the patchwork package: A package for combining multiple ggplot2 plots into one multi-panel figure. It’s very useful for publication-quality figures and it’s super easy to use.\n\nggplot2 cheat sheet: A reference for ggplot2 functions, geoms etc. Great to see all options you have in one place."
   },
   {
     "objectID": "index.html",
@@ -1454,6 +1888,650 @@
     "title": "Wine Quality Analysis",
     "section": "Reference",
     "text": "Reference\nP. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Modeling wine preferences by data mining from physicochemical properties. In Decision Support Systems, Elsevier, 47(4):547-553, 2009."
+  },
+  {
+    "objectID": "other-workshop/sessions/index-session_01.html",
+    "href": "other-workshop/sessions/index-session_01.html",
+    "title": "Session 1",
+    "section": "",
+    "text": "In this session you will learn:\nSlides in full screen\nDownload PDF slides"
+  },
+  {
+    "objectID": "other-workshop/sessions/index-session_01.html#exercises",
+    "href": "other-workshop/sessions/index-session_01.html#exercises",
+    "title": "Session 1",
+    "section": "Exercises",
+    "text": "Exercises\n\nExercise 1: RStudio\nExercise 2: R basics\nExercise 3: Reading data into R"
+  },
+  {
+    "objectID": "other-workshop/sessions/index-session_01.html#resources",
+    "href": "other-workshop/sessions/index-session_01.html#resources",
+    "title": "Session 1",
+    "section": "Resources",
+    "text": "Resources\n\nR Studio\n\nR Studio user guide: A comprehensive guide to using RStudio, including tips and troubleshooting.\nCreate an RStudio project: R Studio user guide on how to create and manage projects.\nRStudio cheat sheet: A reference for RStudio features, buttons, etc..\n\n\n\nReading data into R\n\nThe tidyverse: An overview of the tidyverse ecosystem.\nreadr package: Documentation for the readr package, with lots of examples and a cheat sheet\nreadxl package: Documentation for the readxl package, with examples and a cheat sheet\nData import cheatsheet: A handy reference for importing data from text files, Excel files or Google Sheets into R."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#welcome",
+    "href": "other-workshop/sessions/slides/session_01.html#welcome",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Welcome",
+    "text": "Welcome\n\n\n\n(Theoretical) Ecology\nScientific programmer at Freie Universität Berlin\nResearch + Coding + Teaching"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#workshop-topics",
+    "href": "other-workshop/sessions/slides/session_01.html#workshop-topics",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Workshop topics",
+    "text": "Workshop topics\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science\n\n\n\n📅 22.02.2026 Session 1 R, RStudio & Reading Data\n\n\n📅 01.03.2026 Session 2 Data Visualization\n\n\n📅 05.03.2026 Session 3 Data manipulation\n\n\n📅 08.03.2026 Session 4 AI Tools, Good coding practice & Full Pipeline Project"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#organization",
+    "href": "other-workshop/sessions/slides/session_01.html#organization",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Organization",
+    "text": "Organization\n\nInput sessions + Tasks + Discussion/Questions\nMaterials on the workshop’s website: Presentations, Tasks, Solutions, Additional resources\nWebsite will stay online after the workshop\nQuestions and feedback welcome\nContact me: selina.baldauf@fu-berlin.de"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#before-we-get-started",
+    "href": "other-workshop/sessions/slides/session_01.html#before-we-get-started",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Before we get started",
+    "text": "Before we get started\nDid anyone have problems with the course preparations?\n\nDownload and install R from https://cran.r-project.org\nDownload and install RStudio from https://www.posit.co"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#difference-between-r-and-rstudio",
+    "href": "other-workshop/sessions/slides/session_01.html#difference-between-r-and-rstudio",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Difference between R and RStudio",
+    "text": "Difference between R and RStudio\n\n\n\nAnalogy and image from ModernDive Book\n\n\n\n\n\nR is the programming language and the program that does the actual work\n\n\n\nRStudio is the integrated development environment (IDE).\nInterface to R, syntax highlighting, file management, …"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#a-quick-tour-around-rstudio",
+    "href": "other-workshop/sessions/slides/session_01.html#a-quick-tour-around-rstudio",
+    "title": "Introduction to Data Analysis with R",
+    "section": "A quick tour around RStudio",
+    "text": "A quick tour around RStudio"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#a-quick-tour-around-rstudio-1",
+    "href": "other-workshop/sessions/slides/session_01.html#a-quick-tour-around-rstudio-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "A quick tour around RStudio",
+    "text": "A quick tour around RStudio"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#console-pane",
+    "href": "other-workshop/sessions/slides/session_01.html#console-pane",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Console pane",
+    "text": "Console pane\n\n\n\nExecute R code\nOutput from R code in scripts is printed there\nType a command into the console and execute with Enter/Return\n\n\n\n\n\n\n\nTip\n\n\nUse arrow keys to bring back last commands"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#script-pane",
+    "href": "other-workshop/sessions/slides/session_01.html#script-pane",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Script pane",
+    "text": "Script pane\n\n\n\nWrite scripts with R code\n\nScripts are text files with R commands (file ending .R)\nUse scripts to save commands for reuse"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#script-pane-1",
+    "href": "other-workshop/sessions/slides/session_01.html#script-pane-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Script pane",
+    "text": "Script pane\n\n\n\nCreate a new R script:  File -&gt; New File -&gt; R Script\nSave an R script: File -&gt; Save (Ctrl/Cmd + S)\nRun code line by line with Run button (Ctrl+Enter/Cmd+Return)\nYou can open multiple scripts\n\n\n\n\n\n\n\n\n\n\nScript vs Console\n\n\nUse scripts for all your analysis and for commands that you want to save. Use console for temporary commands, e.g. to test something."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#environment-pane",
+    "href": "other-workshop/sessions/slides/session_01.html#environment-pane",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Environment pane",
+    "text": "Environment pane\n\n\n\nShows objects currently present in the R session\nIs empty if you start R"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#files-pane",
+    "href": "other-workshop/sessions/slides/session_01.html#files-pane",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Files pane",
+    "text": "Files pane\n\n\n\nSimilar to Explorer/Finder\nBrowse project structure and files\n\nFind and open files\nCreate new folders\nDelete files\nRename files\n…"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#plot-pane",
+    "href": "other-workshop/sessions/slides/session_01.html#plot-pane",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Plot pane",
+    "text": "Plot pane\n\n\n\nPlots that are created with R will be shown here"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#rstudio-projects",
+    "href": "other-workshop/sessions/slides/session_01.html#rstudio-projects",
+    "title": "Introduction to Data Analysis with R",
+    "section": "RStudio projects",
+    "text": "RStudio projects\n\n\nIdea: One directory (folder) with all files relevant for project (data, R scripts, figures, …)\n\nAn RStudio project is just a normal folder with an .Rproj file\nHelps R to find your project files\n\n\nMyProject\n|\n|- data\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- figures\n|\n|- MyProject.RProj\nExample RStudio project structure"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#create-an-rstudio-project",
+    "href": "other-workshop/sessions/slides/session_01.html#create-an-rstudio-project",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Create an RStudio project",
+    "text": "Create an RStudio project\n\n\nCreate a project from scratch:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nEnter a directory name (this will be the name of your project)\nChoose the Directory where the project should be initiated\nCreate Project\n\n\n\n\n\nExample RStudio project structure in the Files pane\n\n\n\nRStudio will now create and open the project for you."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#basic-r-syntax",
+    "href": "other-workshop/sessions/slides/session_01.html#basic-r-syntax",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Basic R Syntax",
+    "text": "Basic R Syntax\nWhitespace does not matter\n\n\n# this\nhead(airquality)\n\n# is the same as this\nhead(\n  airquality\n)"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#comments-vs.-code",
+    "href": "other-workshop/sessions/slides/session_01.html#comments-vs.-code",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Comments vs. Code",
+    "text": "Comments vs. Code\nEverything that follows a # is a comment\n\n# Look at the first rows of the built-in penguins dataset\nhead(airquality)\n\n# How many rows and columns does it have?\nnrow(airquality)\nncol(airquality)\n\n\nOnly code is executed, comments are ignored by R\nNotes that make code more readable or add information"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#variables",
+    "href": "other-workshop/sessions/slides/session_01.html#variables",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Variables",
+    "text": "Variables\nStore values under meaningful names to reuse them\n\n\n# Create a variable\nvalue1 &lt;- 5\nvalue2 &lt;- 10\nvalue1 + value2\n#&gt; [1] 15\n\n\nR is case sensitive: value != Value\n\nValue1\n#&gt; Error:\n#&gt; ! object 'Value1' not found"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#data-types",
+    "href": "other-workshop/sessions/slides/session_01.html#data-types",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Data types",
+    "text": "Data types\nThe most basic data types in R:\n\nNumeric: numbers like 1.243, -0.5, 42, 1e6\n\n\nLogical: only two possible values TRUE and FALSE\n\n\nCharacter: sequence of characters surrounded by quotes (\"hello\", \"sample_1\")\n\n\n\nVectors are a collections of values that are all of the same basic data type.\n\n\nUse the function c() to combine values into a vector\n\nnum_vector &lt;- c(1, 2, 3)\nlgl_vector &lt;- c(TRUE, TRUE, FALSE)\nchr_vector &lt;- c(\"These are\", \"just\", \"some strings\")"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#functions",
+    "href": "other-workshop/sessions/slides/session_01.html#functions",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Functions",
+    "text": "Functions\nFunctions make multiple operations available under one command.\n\n\n\n\nGeneral structure of a function call:\n\nfunction_name(input1, input2, ...)"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#the-mean-function",
+    "href": "other-workshop/sessions/slides/session_01.html#the-mean-function",
+    "title": "Introduction to Data Analysis with R",
+    "section": "The mean function",
+    "text": "The mean function\n\nmean(c(1, 5, 6))\n#&gt; [1] 4\n\n\n\n\n# Input and output can also be variables\nvalues &lt;- c(1, 5, 6)\nresult &lt;- mean(values)\nresult\n#&gt; [1] 4"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#the-function-help",
+    "href": "other-workshop/sessions/slides/session_01.html#the-function-help",
+    "title": "Introduction to Data Analysis with R",
+    "section": "The function help",
+    "text": "The function help\nAccess the help file of each function with ?functionName\n\n\n\n\n?mean"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#data-frames",
+    "href": "other-workshop/sessions/slides/session_01.html#data-frames",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Data frames",
+    "text": "Data frames\nThe built-in data structure for tables in R is a data frame.\n\nData frames are one of the biggest and most important ideas in R.(H. Wickham, Advanced R)\n\n\nThey can be\n\nCreated manually using data.frame()\nIncluded example datasets\nRead from files (more on that later)"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#data-frames-1",
+    "href": "other-workshop/sessions/slides/session_01.html#data-frames-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Data frames",
+    "text": "Data frames\nData set airquality, included in R\n\n# print only the first rows of the data set (inlcuded in R)\nhead(airquality)\n#&gt;   Ozone Solar.R Wind Temp Month Day\n#&gt; 1    41     190  7.4   67     5   1\n#&gt; 2    36     118  8.0   72     5   2\n#&gt; 3    12     149 12.6   74     5   3\n#&gt; 4    18     313 11.5   62     5   4\n#&gt; 5    NA      NA 14.3   56     5   5\n#&gt; 6    28      NA 14.9   66     5   6\n\n\n  NA represents a missing value in R."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#exploring-data",
+    "href": "other-workshop/sessions/slides/session_01.html#exploring-data",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Exploring data",
+    "text": "Exploring data\nGet a quick summary of all columns:\n\nsummary(airquality)\n#&gt;      Ozone           Solar.R           Wind             Temp      \n#&gt;  Min.   :  1.00   Min.   :  7.0   Min.   : 1.700   Min.   :56.00  \n#&gt;  1st Qu.: 18.00   1st Qu.:115.8   1st Qu.: 7.400   1st Qu.:72.00  \n#&gt;  Median : 31.50   Median :205.0   Median : 9.700   Median :79.00  \n#&gt;  Mean   : 42.13   Mean   :185.9   Mean   : 9.958   Mean   :77.88  \n#&gt;  3rd Qu.: 63.25   3rd Qu.:258.8   3rd Qu.:11.500   3rd Qu.:85.00  \n#&gt;  Max.   :168.00   Max.   :334.0   Max.   :20.700   Max.   :97.00  \n#&gt;  NA's   :37       NA's   :7                                       \n#&gt;      Month            Day      \n#&gt;  Min.   :5.000   Min.   : 1.0  \n#&gt;  1st Qu.:6.000   1st Qu.: 8.0  \n#&gt;  Median :7.000   Median :16.0  \n#&gt;  Mean   :6.993   Mean   :15.8  \n#&gt;  3rd Qu.:8.000   3rd Qu.:23.0  \n#&gt;  Max.   :9.000   Max.   :31.0  \n#&gt; \n\n\nLook at the entire table in a separate window:\n\nView(airquality)"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#extract-values-from-a-column",
+    "href": "other-workshop/sessions/slides/session_01.html#extract-values-from-a-column",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Extract values from a column",
+    "text": "Extract values from a column\nSelect a single column as a vector using $ and the column name:\n\nairquality$Temp\n#&gt;   [1] 67 72 74 62 56 66 65 59 61 69 74 69 66 68 58 64 66 57 68 62 59 73 61 61 57\n#&gt;  [26] 58 57 67 81 79 76 78 74 67 84 85 79 82 87 90 87 93 92 82 80 79 77 72 65 73\n#&gt;  [51] 76 77 76 76 76 75 78 73 80 77 83 84 85 81 84 83 83 88 92 92 89 82 73 81 91\n#&gt;  [76] 80 81 82 84 87 85 74 81 82 86 85 82 86 88 86 83 81 81 81 82 86 85 87 89 90\n#&gt; [101] 90 92 86 86 82 80 79 77 79 76 78 78 77 72 75 79 81 86 88 97 94 96 94 91 92\n#&gt; [126] 93 93 87 84 80 78 75 73 81 76 77 71 71 78 67 76 68 82 64 71 81 69 63 70 77\n#&gt; [151] 75 76 68"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#packages",
+    "href": "other-workshop/sessions/slides/session_01.html#packages",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Packages",
+    "text": "Packages\nBase R functions and data types: built into R\n\nmean() # calculate mean\nsummary() # show summary of a table\n\n\nAdditional packages extend R with new functions\n\n# install once (in the console)\ninstall.packages(\"packageName\")\n\n# load every time\nlibrary(packageName)"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#the-tidyverse",
+    "href": "other-workshop/sessions/slides/session_01.html#the-tidyverse",
+    "title": "Introduction to Data Analysis with R",
+    "section": "The tidyverse",
+    "text": "The tidyverse\nA collection of R packages for data science, designed to work together.\nThese are the main packages from the tidyverse that we will use:\n\n\n\n\nInstall the tidyverse once with:\n\ninstall.packages(\"tidyverse\")\n\nThen load the packages at the beginning of your script:\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#reading-csv-files-with-readr",
+    "href": "other-workshop/sessions/slides/session_01.html#reading-csv-files-with-readr",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Reading CSV files with readr",
+    "text": "Reading CSV files with readr\n\nlibrary(tidyverse)\ntrees &lt;- read_csv(\"data/tree_data.csv\")\n\n\nWhere does R look for the file?\n\n\n\n“data/tree_data.csv” is a relative path: it starts from your project folder\nR looks for files starting from the project folder\nYour data files need to be inside your project for R to find them easily"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#tibbles",
+    "href": "other-workshop/sessions/slides/session_01.html#tibbles",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Tibbles",
+    "text": "Tibbles\n\ntrees &lt;- read_csv(\"data/tree_data.csv\")\n\nAll readr functions return a tibble.\n\ntrees\n#&gt; # A tibble: 4 × 3\n#&gt;   tree_id   age circumference\n#&gt;     &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;\n#&gt; 1       1     5            30\n#&gt; 2       2    10            60\n#&gt; 3       3    15            90\n#&gt; 4       4    20           120\n\n\nTibbles are a modern version of the data frame — they work the same way but with nicer defaults."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#dealing-with-messy-files",
+    "href": "other-workshop/sessions/slides/session_01.html#dealing-with-messy-files",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Dealing with messy files",
+    "text": "Dealing with messy files\nThe read functions provide several options for non-perfect data.\nHave a look at ?read_csv all options."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#skipping-lines",
+    "href": "other-workshop/sessions/slides/session_01.html#skipping-lines",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Skipping lines",
+    "text": "Skipping lines\nUse skip to skip lines at the top of a file\n\n\n\n\n# skip 4 metadata lines\nread_csv(\n  \"data/tree_data_metadata_on_top.csv\",\n  skip = 4\n)\n#&gt; # A tibble: 4 × 3\n#&gt;   tree_id   age circumference\n#&gt;     &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;\n#&gt; 1       1     5            30\n#&gt; 2       2    10            60\n#&gt; 3       3    15            90\n#&gt; 4       4    20           120"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#missing-or-bad-headers",
+    "href": "other-workshop/sessions/slides/session_01.html#missing-or-bad-headers",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Missing or bad headers",
+    "text": "Missing or bad headers\nUse col_names if your file has no header row\n\n\n\n\n# assign default column names\nread_csv(\n  \"data/tree_data_no_header.csv\",\n  col_names = FALSE\n)\n#&gt; # A tibble: 4 × 3\n#&gt;      X1    X2    X3\n#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1     1     5    30\n#&gt; 2     2    10    60\n#&gt; 3     3    15    90\n#&gt; 4     4    20   120"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#missing-or-bad-headers-1",
+    "href": "other-workshop/sessions/slides/session_01.html#missing-or-bad-headers-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Missing or bad headers",
+    "text": "Missing or bad headers\nUse col_names if your file has no header row\n\n\n\n# specify custom column names\nread_csv(\n  \"data/tree_data_no_header.csv\",\n  col_names = c(\"tree_id\", \"age\", \"circumference\")\n)\n#&gt; # A tibble: 4 × 3\n#&gt;   tree_id   age circumference\n#&gt;     &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;\n#&gt; 1       1     5            30\n#&gt; 2       2    10            60\n#&gt; 3       3    15            90\n#&gt; 4       4    20           120"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#other-separators",
+    "href": "other-workshop/sessions/slides/session_01.html#other-separators",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Other separators",
+    "text": "Other separators\nreadr has different functions for different delimiters\n\n# semicolon separated file\ntrees &lt;- read_csv2(\"data/tree_data.csv\")\n\n# tab separated file\ntrees &lt;- read_tsv(\"data/tree_data.txt\")\n\n# Any other delimiter\ntrees &lt;- read_delim(\"data/tree_data.csv\", delim = \";\")"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#read-excel-files-into-r",
+    "href": "other-workshop/sessions/slides/session_01.html#read-excel-files-into-r",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Read Excel files into R",
+    "text": "Read Excel files into R\nThe readxl package needs to be loaded explicitly:\n\nlibrary(readxl)\n\n\nUse read_excel() to read an Excel file:\n\ntrees &lt;- read_excel(\"data/tree_data.xlsx\")\n\n\n\nBy default, this reads the first sheet. You can read other sheets with:\n\ntrees &lt;- read_excel(\"data/tree_data.xlsx\", sheet = \"sheetName\")\ntrees &lt;- read_excel(\"data/tree_data.xlsx\", sheet = 2)"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#important-for-all-read_-functions",
+    "href": "other-workshop/sessions/slides/session_01.html#important-for-all-read_-functions",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Important for all read_* functions",
+    "text": "Important for all read_* functions\n\ntrees &lt;- read_csv(\"data/tree_data.csv\")\n\n\nSave the result of read_*() in a variable (e.g. trees) to work with it later\nChoose a meaningful name for the variable (e.g. trees instead of data or my_data)\nUse the function help ? if in doubt\n\nShows you all available arguments and examples."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#what-we-covered-today",
+    "href": "other-workshop/sessions/slides/session_01.html#what-we-covered-today",
+    "title": "Introduction to Data Analysis with R",
+    "section": "What we covered today",
+    "text": "What we covered today\n\nRStudio: Creating a project with all files in one place\nR Basics: variables, data types, vectors, functions, packages\nThe tidyverse ecosystem for data science\nReading data\n\nText files with readr\nExcel files with readxl"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#next-time",
+    "href": "other-workshop/sessions/slides/session_01.html#next-time",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Next time",
+    "text": "Next time\nData visualization with ggplot2"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#until-next-time",
+    "href": "other-workshop/sessions/slides/session_01.html#until-next-time",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Until next time",
+    "text": "Until next time\n\nYou really learn R by working with your own data and questions\nDuring the workshop: try applying what you learn to your own data\n\nTry reading your own data into R and explore it with the functions we learned today.\n\nLet me know if there’s something specific you want to do"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#data-format",
+    "href": "other-workshop/sessions/slides/session_01.html#data-format",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Data format",
+    "text": "Data format\n\nReading from a text file (.txt or .csv) is more reliable\nBe careful with complicated excel sheets with formulas etc.\nAlways double check the data that you imported, e.g. by using the summary function and checking if the number of rows etc. is correct\n\n\nSave an Excel spreadsheet as csv\n\nFile -&gt; Save As and select comma separated from the drop down menu\nFile -&gt; Export"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#data-format-1",
+    "href": "other-workshop/sessions/slides/session_01.html#data-format-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Data format",
+    "text": "Data format\n\nNo white space in column headers\n\nUse a character as separator, e.g. species_name instead of species name\nIf this is unpractical, have a look at the function janitor::clean_names() from the janitor package\n\nNo special characters in column headers (ä,, ß, é, ê, %, °C, µ …)\nUse . as a decimal separator (not ,)"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#paths-and-file-names",
+    "href": "other-workshop/sessions/slides/session_01.html#paths-and-file-names",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Paths and file names",
+    "text": "Paths and file names\n\nAvoid white space in paths and file names\n\ndata-raw/my_data.csv instead of data raw/my data.csv\n\nAvoid special characters in paths"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#principles-of-good-file-names",
+    "href": "other-workshop/sessions/slides/session_01.html#principles-of-good-file-names",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Principles of good file names",
+    "text": "Principles of good file names\nFile names should be\n\nMachine readable\nHuman readable\nWorking with default file ordering"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#machine-readable-file-names",
+    "href": "other-workshop/sessions/slides/session_01.html#machine-readable-file-names",
+    "title": "Introduction to Data Analysis with R",
+    "section": "1. Machine readable file names",
+    "text": "1. Machine readable file names\nNames should allow for easy searching, grouping and extracting information from file names.\n\n\nNo space & special characters\n\n\n\nBad examples ❌\n📄 2023-04-20 temperature göttingen.csv  📄 2023-04-20 rainfall göttingen.csv \n\nGood examples ✔️\n📄 2023-04-20_temperature_goettingen.csv  📄 2023-04-20_rainfall_goettingen.csv"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#human-readable-file-names",
+    "href": "other-workshop/sessions/slides/session_01.html#human-readable-file-names",
+    "title": "Introduction to Data Analysis with R",
+    "section": "2. Human readable file names",
+    "text": "2. Human readable file names\nWhich file names would you still understand in 1 year?\n\nFile names should reveal the file content\nUse separators to make it readable\n\n\nBad examples ❌\n📄 01preparedata.R  📄 01firstscript.R \n\nGood examples ✔️\n📄 01_prepare-data.R  📄 01_temperature-trend-analysis.R"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#default-ordering",
+    "href": "other-workshop/sessions/slides/session_01.html#default-ordering",
+    "title": "Introduction to Data Analysis with R",
+    "section": "3. Default ordering",
+    "text": "3. Default ordering\nIf you order your files by name, the ordering should make sense:\n\n(Almost) always put something numeric first\n\nLeft-padded numbers (01, 02, …)\nDates in YYYY-MM-DD format\n\n\n\nChronological order\n📄 2023-04-20_temperature_goettingen.csv  📄 2023-04-21_temperature_goettingen.csv \n\nLogical order\n📄 01_prepare-data.R  📄 02_lm-temperature-trend.R"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#mark-sections",
+    "href": "other-workshop/sessions/slides/session_01.html#mark-sections",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Mark sections",
+    "text": "Mark sections\n\nUse comments to break up your file into sections\n\n\n\n# Load data ---------------------------------------------------------------\n\ninput_data &lt;- read_csv(input_file)\n\n# Plot data ---------------------------------------------------------------\n\nggplot(input_data, aes(x = x, y = y)) +\n  geom_point()\n\n\nInsert a section label with Ctrl/Cmd + Shift + R\nNavigate sections in the file outline"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#coding-style---object-names",
+    "href": "other-workshop/sessions/slides/session_01.html#coding-style---object-names",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Coding style - Object names",
+    "text": "Coding style - Object names\n\n\nVariables should only have lowercase letters, numbers, and *_*\nUse snake_case for longer variable names\nTry to use concise but meaningful names\n\n\n\n\n# Good\nday_one\nday_1\n\n# Bad\nDayOne\ndayone\nfirst_day_of_the_month\ndm1"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_01.html#coding-style-helpers---auto-formatting",
+    "href": "other-workshop/sessions/slides/session_01.html#coding-style-helpers---auto-formatting",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Coding style helpers - Auto-formatting",
+    "text": "Coding style helpers - Auto-formatting\nRStudio can automatically format your code!"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#recap-session-2",
+    "href": "other-workshop/sessions/slides/session_03.html#recap-session-2",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Recap: Session 2",
+    "text": "Recap: Session 2\n\nggplot skeleton:\n\n\nggplot(\n  data,\n  aes(x = ..., y = ..., color, ...)\n) +\n  geom_xxx()\n\n\nGeoms: geom_point(), geom_boxplot(), geom_histogram()\nBeautifying: labs(), scale_color_*(), themes\nSaving: ggsave()\n\n\nAny questions from last time?"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#plan-for-today",
+    "href": "other-workshop/sessions/slides/session_03.html#plan-for-today",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Plan for today",
+    "text": "Plan for today\nYour data is rarely in the exact shape you need for analysis or plotting.\n\nIt requires some data manipulation:\n\nKeep only certain rows or columns\nRemove missing values\nCreate new variables from existing ones\nCalculate summary statistics\n…\n\n\n\nThe package in the tidyverse for data manipulation is called dplyr.\n\nlibrary(tidyverse)\n# library(dplyr) # if you only want dplyr"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#the-msleep-dataset",
+    "href": "other-workshop/sessions/slides/session_03.html#the-msleep-dataset",
+    "title": "Introduction to Data Analysis with R",
+    "section": "The msleep dataset",
+    "text": "The msleep dataset\nRemember the mammal sleep data from last session:\n\nmsleep\n#&gt; # A tibble: 83 × 11\n#&gt;    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Cheet… Acin… carni Carn… lc                  12.1      NA        NA      11.9\n#&gt;  2 Owl m… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  \n#&gt;  3 Mount… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6\n#&gt;  4 Great… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1\n#&gt;  5 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  \n#&gt;  6 Three… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6\n#&gt;  7 North… Call… carni Carn… vu                   8.7       1.4       0.383  15.3\n#&gt;  8 Vespe… Calo… &lt;NA&gt;  Rode… &lt;NA&gt;                 7        NA        NA      17  \n#&gt;  9 Dog    Canis carni Carn… domesticated        10.1       2.9       0.333  13.9\n#&gt; 10 Roe d… Capr… herbi Arti… lc                   3        NA        NA      21  \n#&gt; # ℹ 73 more rows\n#&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#filter-pick-rows",
+    "href": "other-workshop/sessions/slides/session_03.html#filter-pick-rows",
+    "title": "Introduction to Data Analysis with R",
+    "section": "filter(): pick rows",
+    "text": "filter(): pick rows\nKeep only rows that match a condition:\n\n\nfilter(msleep, vore == \"carni\")\n#&gt; # A tibble: 19 × 11\n#&gt;    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Cheet… Acin… carni Carn… lc                  12.1      NA        NA      11.9\n#&gt;  2 North… Call… carni Carn… vu                   8.7       1.4       0.383  15.3\n#&gt;  3 Dog    Canis carni Carn… domesticated        10.1       2.9       0.333  13.9\n#&gt;  4 Long-… Dasy… carni Cing… lc                  17.4       3.1       0.383   6.6\n#&gt;  5 Domes… Felis carni Carn… domesticated        12.5       3.2       0.417  11.5\n#&gt;  6 Pilot… Glob… carni Ceta… cd                   2.7       0.1      NA      21.4\n#&gt;  7 Gray … Hali… carni Carn… lc                   6.2       1.5      NA      17.8\n#&gt;  8 Thick… Lutr… carni Dide… lc                  19.4       6.6      NA       4.6\n#&gt;  9 Slow … Nyct… carni Prim… &lt;NA&gt;                11        NA        NA      13  \n#&gt; 10 North… Onyc… carni Rode… lc                  14.5      NA        NA       9.5\n#&gt; # ℹ 9 more rows\n#&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;\n\n\n\n\n\n\n\n\n\nTo reuse, save result in a variable\n\n\n\ncarnivores &lt;- filter(msleep, vore == \"carni\")"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#filter-comparison-operators",
+    "href": "other-workshop/sessions/slides/session_03.html#filter-comparison-operators",
+    "title": "Introduction to Data Analysis with R",
+    "section": "filter(): comparison operators",
+    "text": "filter(): comparison operators\n\n== equal to\n!= not equal to\n&lt;, &gt; less than, greater than\n&lt;=, &gt;= less than or equal to, greater than or equal to\n%in% in a set of values\n\n\nOther examples\n\n# Filter for sleep time greater than 16 hours\nfilter(msleep, sleep_total &gt; 16)\n# All rows except carnivores\nfilter(msleep, vore != \"carni\")\n# All rows where vore is herbivore, carnivore or omnivore\nfilter(msleep, vore %in% c(\"herbi\", \"carni\", \"omni\"))"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#filter-combine-conditions",
+    "href": "other-workshop/sessions/slides/session_03.html#filter-combine-conditions",
+    "title": "Introduction to Data Analysis with R",
+    "section": "filter(): combine conditions",
+    "text": "filter(): combine conditions\nUse & (and) - both conditions must be true:\n\n\nfilter(msleep, vore == \"herbi\" & sleep_total &gt; 12)\n#&gt; # A tibble: 14 × 11\n#&gt;    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 \"Moun… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6\n#&gt;  2 \"Thre… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6\n#&gt;  3 \"Chin… Chin… herbi Rode… domesticated        12.5       1.5       0.117  11.5\n#&gt;  4 \"West… Euta… herbi Rode… &lt;NA&gt;                14.9      NA        NA       9.1\n#&gt;  5 \"Mong… Meri… herbi Rode… lc                  14.2       1.9      NA       9.8\n#&gt;  6 \"Gold… Meso… herbi Rode… en                  14.3       3.1       0.2     9.7\n#&gt;  7 \"Vole… Micr… herbi Rode… &lt;NA&gt;                12.8      NA        NA      11.2\n#&gt;  8 \"Hous… Mus   herbi Rode… nt                  12.5       1.4       0.183  11.5\n#&gt;  9 \"Roun… Neof… herbi Rode… nt                  14.6      NA        NA       9.4\n#&gt; 10 \"Labo… Ratt… herbi Rode… lc                  13         2.4       0.183  11  \n#&gt; # ℹ 4 more rows\n#&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#filter-combine-conditions-1",
+    "href": "other-workshop/sessions/slides/session_03.html#filter-combine-conditions-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "filter(): combine conditions",
+    "text": "filter(): combine conditions\nUse | (or) - one conditions must be true:\n\n# Either condition must be true\nfilter(msleep, vore == \"herbi\" | vore == \"omni\")\n#&gt; # A tibble: 52 × 11\n#&gt;    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Owl m… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  \n#&gt;  2 Mount… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6\n#&gt;  3 Great… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1\n#&gt;  4 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  \n#&gt;  5 Three… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6\n#&gt;  6 Roe d… Capr… herbi Arti… lc                   3        NA        NA      21  \n#&gt;  7 Goat   Capri herbi Arti… lc                   5.3       0.6      NA      18.7\n#&gt;  8 Guine… Cavis herbi Rode… domesticated         9.4       0.8       0.217  14.6\n#&gt;  9 Grivet Cerc… omni  Prim… lc                  10         0.7      NA      14  \n#&gt; 10 Chinc… Chin… herbi Rode… domesticated        12.5       1.5       0.117  11.5\n#&gt; # ℹ 42 more rows\n#&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#filter_out-opposite-of-filter",
+    "href": "other-workshop/sessions/slides/session_03.html#filter_out-opposite-of-filter",
+    "title": "Introduction to Data Analysis with R",
+    "section": "filter_out(): opposite of filter",
+    "text": "filter_out(): opposite of filter\nRelatively new function - keeps rows that don’t match the condition:\n\n# Keep rows that are NOT herbivores\nfilter_out(msleep, vore == \"herbi\")\n#&gt; # A tibble: 51 × 11\n#&gt;    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Cheet… Acin… carni Carn… lc                  12.1      NA        NA      11.9\n#&gt;  2 Owl m… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  \n#&gt;  3 Great… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1\n#&gt;  4 North… Call… carni Carn… vu                   8.7       1.4       0.383  15.3\n#&gt;  5 Vespe… Calo… &lt;NA&gt;  Rode… &lt;NA&gt;                 7        NA        NA      17  \n#&gt;  6 Dog    Canis carni Carn… domesticated        10.1       2.9       0.333  13.9\n#&gt;  7 Grivet Cerc… omni  Prim… lc                  10         0.7      NA      14  \n#&gt;  8 Star-… Cond… omni  Sori… lc                  10.3       2.2      NA      13.7\n#&gt;  9 Afric… Cric… omni  Rode… &lt;NA&gt;                 8.3       2        NA      15.7\n#&gt; 10 Lesse… Cryp… omni  Sori… lc                   9.1       1.4       0.15   14.9\n#&gt; # ℹ 41 more rows\n#&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;\n\n\n\n\n# equivalent to\nfilter(msleep, vore != \"herbi\")"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#select-pick-columns",
+    "href": "other-workshop/sessions/slides/session_03.html#select-pick-columns",
+    "title": "Introduction to Data Analysis with R",
+    "section": "select(): pick columns",
+    "text": "select(): pick columns\nKeep only the columns you need:\n\n\nselect(msleep, name, vore, sleep_total)\n#&gt; # A tibble: 83 × 3\n#&gt;    name                       vore  sleep_total\n#&gt;    &lt;chr&gt;                      &lt;chr&gt;       &lt;dbl&gt;\n#&gt;  1 Cheetah                    carni        12.1\n#&gt;  2 Owl monkey                 omni         17  \n#&gt;  3 Mountain beaver            herbi        14.4\n#&gt;  4 Greater short-tailed shrew omni         14.9\n#&gt;  5 Cow                        herbi         4  \n#&gt;  6 Three-toed sloth           herbi        14.4\n#&gt;  7 Northern fur seal          carni         8.7\n#&gt;  8 Vesper mouse               &lt;NA&gt;          7  \n#&gt;  9 Dog                        carni        10.1\n#&gt; 10 Roe deer                   herbi         3  \n#&gt; # ℹ 73 more rows"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#select-remove-columns",
+    "href": "other-workshop/sessions/slides/session_03.html#select-remove-columns",
+    "title": "Introduction to Data Analysis with R",
+    "section": "select(): remove columns",
+    "text": "select(): remove columns\nUse - to remove columns:\n\n\nselect(msleep, -name, -conservation)\n#&gt; # A tibble: 83 × 9\n#&gt;    genus    vore  order sleep_total sleep_rem sleep_cycle awake  brainwt  bodywt\n#&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;\n#&gt;  1 Acinonyx carni Carn…        12.1      NA        NA      11.9 NA        50    \n#&gt;  2 Aotus    omni  Prim…        17         1.8      NA       7    0.0155    0.48 \n#&gt;  3 Aplodon… herbi Rode…        14.4       2.4      NA       9.6 NA         1.35 \n#&gt;  4 Blarina  omni  Sori…        14.9       2.3       0.133   9.1  0.00029   0.019\n#&gt;  5 Bos      herbi Arti…         4         0.7       0.667  20    0.423   600    \n#&gt;  6 Bradypus herbi Pilo…        14.4       2.2       0.767   9.6 NA         3.85 \n#&gt;  7 Callorh… carni Carn…         8.7       1.4       0.383  15.3 NA        20.5  \n#&gt;  8 Calomys  &lt;NA&gt;  Rode…         7        NA        NA      17   NA         0.045\n#&gt;  9 Canis    carni Carn…        10.1       2.9       0.333  13.9  0.07     14    \n#&gt; 10 Capreol… herbi Arti…         3        NA        NA      21    0.0982   14.8  \n#&gt; # ℹ 73 more rows"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#select-patterns",
+    "href": "other-workshop/sessions/slides/session_03.html#select-patterns",
+    "title": "Introduction to Data Analysis with R",
+    "section": "select(): patterns",
+    "text": "select(): patterns\nSelect helpers for patterns in column names:\n\n# All columns that start with \"sleep\"\nselect(msleep, starts_with(\"sleep\"))\n#&gt; # A tibble: 83 × 3\n#&gt;    sleep_total sleep_rem sleep_cycle\n#&gt;          &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;\n#&gt;  1        12.1      NA        NA    \n#&gt;  2        17         1.8      NA    \n#&gt;  3        14.4       2.4      NA    \n#&gt;  4        14.9       2.3       0.133\n#&gt;  5         4         0.7       0.667\n#&gt;  6        14.4       2.2       0.767\n#&gt;  7         8.7       1.4       0.383\n#&gt;  8         7        NA        NA    \n#&gt;  9        10.1       2.9       0.333\n#&gt; 10         3        NA        NA    \n#&gt; # ℹ 73 more rows\n\n\nThere are also ends_with(), contains(), and more - see ?select for details."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#mutate-create-new-columns",
+    "href": "other-workshop/sessions/slides/session_03.html#mutate-create-new-columns",
+    "title": "Introduction to Data Analysis with R",
+    "section": "mutate(): create new columns",
+    "text": "mutate(): create new columns\nAdd new columns based on existing ones:\n\n\n# Create a dataset with fewer columns\nmsleep_small &lt;- select(msleep, name, sleep_total, awake)\nmutate(msleep_small, sleep_awake_ratio = sleep_total / awake)\n#&gt; # A tibble: 83 × 4\n#&gt;    name                       sleep_total awake sleep_awake_ratio\n#&gt;    &lt;chr&gt;                            &lt;dbl&gt; &lt;dbl&gt;             &lt;dbl&gt;\n#&gt;  1 Cheetah                           12.1  11.9             1.02 \n#&gt;  2 Owl monkey                        17     7               2.43 \n#&gt;  3 Mountain beaver                   14.4   9.6             1.5  \n#&gt;  4 Greater short-tailed shrew        14.9   9.1             1.64 \n#&gt;  5 Cow                                4    20               0.2  \n#&gt;  6 Three-toed sloth                  14.4   9.6             1.5  \n#&gt;  7 Northern fur seal                  8.7  15.3             0.569\n#&gt;  8 Vesper mouse                       7    17               0.412\n#&gt;  9 Dog                               10.1  13.9             0.727\n#&gt; 10 Roe deer                           3    21               0.143\n#&gt; # ℹ 73 more rows\n\n\n\nThe new columns are added at the end of the tibble. The original columns are kept."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#mutate-multiple-columns-at-once",
+    "href": "other-workshop/sessions/slides/session_03.html#mutate-multiple-columns-at-once",
+    "title": "Introduction to Data Analysis with R",
+    "section": "mutate(): multiple columns at once",
+    "text": "mutate(): multiple columns at once\n\nmutate(\n  msleep_small,\n  sleep_awake_ratio = sleep_total / awake,\n  sleep_minutes = sleep_total * 60\n)\n#&gt; # A tibble: 83 × 5\n#&gt;    name                       sleep_total awake sleep_awake_ratio sleep_minutes\n#&gt;    &lt;chr&gt;                            &lt;dbl&gt; &lt;dbl&gt;             &lt;dbl&gt;         &lt;dbl&gt;\n#&gt;  1 Cheetah                           12.1  11.9             1.02            726\n#&gt;  2 Owl monkey                        17     7               2.43           1020\n#&gt;  3 Mountain beaver                   14.4   9.6             1.5             864\n#&gt;  4 Greater short-tailed shrew        14.9   9.1             1.64            894\n#&gt;  5 Cow                                4    20               0.2             240\n#&gt;  6 Three-toed sloth                  14.4   9.6             1.5             864\n#&gt;  7 Northern fur seal                  8.7  15.3             0.569           522\n#&gt;  8 Vesper mouse                       7    17               0.412           420\n#&gt;  9 Dog                               10.1  13.9             0.727           606\n#&gt; 10 Roe deer                           3    21               0.143           180\n#&gt; # ℹ 73 more rows"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#drop_na-remove-missing-values",
+    "href": "other-workshop/sessions/slides/session_03.html#drop_na-remove-missing-values",
+    "title": "Introduction to Data Analysis with R",
+    "section": "drop_na(): remove missing values",
+    "text": "drop_na(): remove missing values\nRemove rows with NA values in any column:\n\n\n# Drop all rows with NAs in any column\ndrop_na(msleep)\n#&gt; # A tibble: 20 × 11\n#&gt;    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Great… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1\n#&gt;  2 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  \n#&gt;  3 Dog    Canis carni Carn… domesticated        10.1       2.9       0.333  13.9\n#&gt;  4 Guine… Cavis herbi Rode… domesticated         9.4       0.8       0.217  14.6\n#&gt;  5 Chinc… Chin… herbi Rode… domesticated        12.5       1.5       0.117  11.5\n#&gt;  6 Lesse… Cryp… omni  Sori… lc                   9.1       1.4       0.15   14.9\n#&gt;  7 Long-… Dasy… carni Cing… lc                  17.4       3.1       0.383   6.6\n#&gt;  8 North… Dide… omni  Dide… lc                  18         4.9       0.333   6  \n#&gt;  9 Big b… Epte… inse… Chir… lc                  19.7       3.9       0.117   4.3\n#&gt; 10 Horse  Equus herbi Peri… domesticated         2.9       0.6       1      21.1\n#&gt; # ℹ 10 more rows\n#&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#drop_na-remove-missing-values-1",
+    "href": "other-workshop/sessions/slides/session_03.html#drop_na-remove-missing-values-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "drop_na(): remove missing values",
+    "text": "drop_na(): remove missing values\nRemove rows with NA values in (a) specific column(s):\n\n\n# Drop rows with NAs in specific columns\ndrop_na(msleep, vore, sleep_rem)\n#&gt; # A tibble: 56 × 11\n#&gt;    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake\n#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n#&gt;  1 Owl m… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  \n#&gt;  2 Mount… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6\n#&gt;  3 Great… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1\n#&gt;  4 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  \n#&gt;  5 Three… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6\n#&gt;  6 North… Call… carni Carn… vu                   8.7       1.4       0.383  15.3\n#&gt;  7 Dog    Canis carni Carn… domesticated        10.1       2.9       0.333  13.9\n#&gt;  8 Goat   Capri herbi Arti… lc                   5.3       0.6      NA      18.7\n#&gt;  9 Guine… Cavis herbi Rode… domesticated         9.4       0.8       0.217  14.6\n#&gt; 10 Grivet Cerc… omni  Prim… lc                  10         0.7      NA      14  \n#&gt; # ℹ 46 more rows\n#&gt; # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;\n\n\n\ndrop_na() is part of the tidyr package which is loaded with library(tidyverse)."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#the-problem-multiple-steps",
+    "href": "other-workshop/sessions/slides/session_03.html#the-problem-multiple-steps",
+    "title": "Introduction to Data Analysis with R",
+    "section": "The problem: multiple steps",
+    "text": "The problem: multiple steps\nData cleaning and manipulation usually requires several steps in sequence.\n\n\n# Step 1: remove missing values\nmsleep_clean &lt;- drop_na(msleep, vore, sleep_rem)\n# Step 2: keep only herbivores\nmsleep_clean &lt;- filter(msleep_clean, vore == \"herbi\")\n# Step 3: add a new variable\nmsleep_clean &lt;- mutate(msleep_clean, rem_proportion = sleep_rem / sleep_total)\n\nThis works, but creates lots of intermediate steps."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#the-pipe",
+    "href": "other-workshop/sessions/slides/session_03.html#the-pipe",
+    "title": "Introduction to Data Analysis with R",
+    "section": "The pipe |>",
+    "text": "The pipe |&gt;\nThe pipe operator passes the result of one step as the first argument to the next step.\n\n# This\nfilter(msleep, vore == \"herbi\")\n\n# is the same as\nmsleep |&gt; filter(vore == \"herbi\")\n\n\nThis is perfect for dplyr because:\n\nFirst argument is the data (a tibble)\nOutput (return value) is also a tibble"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#the-pipe-1",
+    "href": "other-workshop/sessions/slides/session_03.html#the-pipe-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "The pipe |>",
+    "text": "The pipe |&gt;\nThe pipe operator passes the result of one step as the first argument to the next step.\n\n\n\nInstead of this:\n\n# Step 1: remove missing values\nmsleep_clean &lt;- drop_na(msleep, vore, sleep_rem)\n# Step 2: keep only herbivores\nmsleep_clean &lt;- filter(msleep_clean, vore == \"herbi\")\n# Step 3: add a new variable\nmsleep_clean &lt;- mutate(msleep_clean, rem_proportion = sleep_rem / sleep_total)\n\n\n\nWe can do this:\n\nmsleep_clean &lt;- msleep |&gt;\n  drop_na(vore, sleep_rem) |&gt;\n  filter(vore == \"herbi\") |&gt;\n  mutate(rem_proportion = sleep_rem / sleep_total)\n\n\n\n\n\n\nRead |&gt; as “and then”:\nTake msleep, and then drop NAs, and then filter, and then add a column."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#the-pipe-2",
+    "href": "other-workshop/sessions/slides/session_03.html#the-pipe-2",
+    "title": "Introduction to Data Analysis with R",
+    "section": "The pipe |>",
+    "text": "The pipe |&gt;\n\n2 different pipes in R (work similarly):\n\n|&gt;: base R pipe, available in R 4.1 and later\n%&gt;%: magrittr pipe, used in older versions and still common in tidyverse code\n\nI prefer |&gt; because it’s built into R\nTurn on the base R pipe in RStudio: Tools &gt; Global Options &gt; Code &gt; Editing &gt; Use native pipe operator (|&gt;)\n\n\n\n\n\n\n\n\nTip\n\n\nUse the keyboard shortcut Ctrl/Cmd + Shift + M to insert |&gt;"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#summarize-collapse-rows",
+    "href": "other-workshop/sessions/slides/session_03.html#summarize-collapse-rows",
+    "title": "Introduction to Data Analysis with R",
+    "section": "summarize(): collapse rows",
+    "text": "summarize(): collapse rows\nCalculate summary statistics across all rows:\n\n\n\nUse na.rm = TRUE to ignore NAs:\n\nmsleep |&gt;\n  summarize(\n    mean_sleep = mean(sleep_total, na.rm = TRUE),\n    mean_rem = mean(sleep_rem, na.rm = TRUE)\n  )\n#&gt; # A tibble: 1 × 2\n#&gt;   mean_sleep mean_rem\n#&gt;        &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1       10.4     1.88\n\n\nThe result is a tibble with one row — the data is collapsed to a single summary.\n\n\n\nOr remove the NAs first:\n\nmsleep |&gt;\n  drop_na(sleep_total, sleep_rem) |&gt;\n  summarize(\n    mean_sleep = mean(sleep_total),\n    mean_rem = mean(sleep_rem)\n  )\n#&gt; # A tibble: 1 × 2\n#&gt;   mean_sleep mean_rem\n#&gt;        &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1       10.4     1.88"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#summarize-with-.by-grouped-summaries",
+    "href": "other-workshop/sessions/slides/session_03.html#summarize-with-.by-grouped-summaries",
+    "title": "Introduction to Data Analysis with R",
+    "section": "summarize() with .by: grouped summaries",
+    "text": "summarize() with .by: grouped summaries\nCalculate summaries separately for each group:\n\n\nmsleep |&gt;\n  summarize(\n    mean_sleep = mean(sleep_total, na.rm = TRUE),\n    mean_rem = mean(sleep_rem, na.rm = TRUE),\n    .by = vore\n  )\n#&gt; # A tibble: 5 × 3\n#&gt;   vore    mean_sleep mean_rem\n#&gt;   &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;\n#&gt; 1 carni        10.4      2.29\n#&gt; 2 omni         10.9      1.96\n#&gt; 3 herbi         9.51     1.37\n#&gt; 4 &lt;NA&gt;         10.2      1.88\n#&gt; 5 insecti      14.9      3.52"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#summarize-with-.by-multiple-groups",
+    "href": "other-workshop/sessions/slides/session_03.html#summarize-with-.by-multiple-groups",
+    "title": "Introduction to Data Analysis with R",
+    "section": "summarize() with .by: multiple groups",
+    "text": "summarize() with .by: multiple groups\nGroup by more than one variable:\n\n\nmsleep |&gt;\n  summarize(\n    mean_sleep = mean(sleep_total, na.rm = TRUE),\n    .by = c(vore, conservation)\n  )\n#&gt; # A tibble: 22 × 3\n#&gt;    vore  conservation mean_sleep\n#&gt;    &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;\n#&gt;  1 carni lc                13.9 \n#&gt;  2 omni  &lt;NA&gt;              10.5 \n#&gt;  3 herbi nt                13.8 \n#&gt;  4 omni  lc                11.8 \n#&gt;  5 herbi domesticated       6.3 \n#&gt;  6 herbi &lt;NA&gt;              13.4 \n#&gt;  7 carni vu                 7.82\n#&gt;  8 &lt;NA&gt;  &lt;NA&gt;              11.1 \n#&gt;  9 carni domesticated      11.3 \n#&gt; 10 herbi lc                10.1 \n#&gt; # ℹ 12 more rows"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#count-count-rows-per-group",
+    "href": "other-workshop/sessions/slides/session_03.html#count-count-rows-per-group",
+    "title": "Introduction to Data Analysis with R",
+    "section": "count(): count rows per group",
+    "text": "count(): count rows per group\nA shortcut for counting observations:\n\n\nmsleep |&gt;\n  count(vore)\n#&gt; # A tibble: 5 × 2\n#&gt;   vore        n\n#&gt;   &lt;chr&gt;   &lt;int&gt;\n#&gt; 1 carni      19\n#&gt; 2 herbi      32\n#&gt; 3 insecti     5\n#&gt; 4 omni       20\n#&gt; 5 &lt;NA&gt;        7\n\n\n\n\n\nmsleep |&gt;\n  count(vore, conservation)\n#&gt; # A tibble: 22 × 3\n#&gt;    vore  conservation     n\n#&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;int&gt;\n#&gt;  1 carni cd               1\n#&gt;  2 carni domesticated     2\n#&gt;  3 carni en               1\n#&gt;  4 carni lc               5\n#&gt;  5 carni nt               1\n#&gt;  6 carni vu               4\n#&gt;  7 carni &lt;NA&gt;             5\n#&gt;  8 herbi cd               1\n#&gt;  9 herbi domesticated     7\n#&gt; 10 herbi en               2\n#&gt; # ℹ 12 more rows"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#pipe-into-ggplot",
+    "href": "other-workshop/sessions/slides/session_03.html#pipe-into-ggplot",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Pipe into ggplot",
+    "text": "Pipe into ggplot\nThe pipe works with ggplot too — manipulate your data and plot it in one go:\n\n\nmsleep |&gt;\n  drop_na(vore) |&gt;\n  summarize(mean_sleep = mean(sleep_total), .by = vore) |&gt;\n  ggplot(aes(x = vore, y = mean_sleep, fill = vore)) +\n  geom_col()"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#pipe-into-ggplot-1",
+    "href": "other-workshop/sessions/slides/session_03.html#pipe-into-ggplot-1",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Pipe into ggplot",
+    "text": "Pipe into ggplot\nYou can also filter before plotting:\n\n\n\n\nmsleep |&gt;\n  drop_na(vore, sleep_rem) |&gt;\n  filter(bodywt &lt; 50) |&gt;\n  ggplot(\n    aes(\n      x = sleep_total,\n      y = sleep_rem,\n      color = vore\n    )\n  ) +\n  geom_point(size = 3) +\n  theme_minimal()\n\n\nUse |&gt; between dplyr steps\nSwitch to + once you start the ggplot"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#what-we-covered-today",
+    "href": "other-workshop/sessions/slides/session_03.html#what-we-covered-today",
+    "title": "Introduction to Data Analysis with R",
+    "section": "What we covered today",
+    "text": "What we covered today\n\nfilter(): pick rows by condition\nselect(): pick columns by name\nmutate(): create new columns\ndrop_na(): remove rows with missing values\nsummarize() + .by: grouped summaries\ncount(): count observations per group\nThe pipe |&gt;: chain operations together, read top to bottom"
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#good-to-know",
+    "href": "other-workshop/sessions/slides/session_03.html#good-to-know",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Good to know",
+    "text": "Good to know\ndplyr has more useful functions that we didn’t cover today:\n\nbind_rows(): combine multiple tables with the same columns into one\nleft_join(): combine two tables by a shared column\narrange(): sort rows by column values\nrename(): rename columns\n…\n\n\nYou can find documentation, examples and a cheatsheet for all of these on the dplyr websites."
+  },
+  {
+    "objectID": "other-workshop/sessions/slides/session_03.html#next-time",
+    "href": "other-workshop/sessions/slides/session_03.html#next-time",
+    "title": "Introduction to Data Analysis with R",
+    "section": "Next time",
+    "text": "Next time\nPutting it all together — a full data analysis project from start to finish.\n\nRead data\nClean and transform\nSummarize\nVisualize"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-02-r-basics.html",
+    "href": "other-workshop/sessions/tasks/task-02-r-basics.html",
+    "title": "Exercise 2: R Basics & Working with Data",
+    "section": "",
+    "text": "The penguins dataset is built into R. You can use it directly by typing penguins.\n\nUse summary() on the penguins dataset. Look at the output:\n\nHow many species are there?\nWhat is the range of body mass values?\nAre there missing values (NAs)?\n\nUse View(penguins) to open the dataset in a viewer window.\n\nTry clicking on column headers to sort the data\nHow many rows does the dataset have?"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-02-r-basics.html#explore-the-penguins-dataset",
+    "href": "other-workshop/sessions/tasks/task-02-r-basics.html#explore-the-penguins-dataset",
+    "title": "Exercise 2: R Basics & Working with Data",
+    "section": "",
+    "text": "The penguins dataset is built into R. You can use it directly by typing penguins.\n\nUse summary() on the penguins dataset. Look at the output:\n\nHow many species are there?\nWhat is the range of body mass values?\nAre there missing values (NAs)?\n\nUse View(penguins) to open the dataset in a viewer window.\n\nTry clicking on column headers to sort the data\nHow many rows does the dataset have?"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-02-r-basics.html#access-columns-and-calculate-summaries",
+    "href": "other-workshop/sessions/tasks/task-02-r-basics.html#access-columns-and-calculate-summaries",
+    "title": "Exercise 2: R Basics & Working with Data",
+    "section": "Access columns and calculate summaries",
+    "text": "Access columns and calculate summaries\n\nUse $ to access the body_mass column of the penguins dataset. What does the output look like?\nCalculate the mean body mass of all penguins using mean(penguins$body_mass). The result is weird? Can you explain why?\nUse ?mean in the console to find an argument that fixes the problem.\nSave the result from step 3 in a variable"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-02-r-basics.html#optional-tasks-if-you-finish-early",
+    "href": "other-workshop/sessions/tasks/task-02-r-basics.html#optional-tasks-if-you-finish-early",
+    "title": "Exercise 2: R Basics & Working with Data",
+    "section": "Optional tasks (if you finish early)",
+    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nUse other summary functions\nR has other summary functions you can try:\n\nsd() for standard deviation\nmin() for minimum value\nmax() for maximum value\n\nThey work the same way as mean() and have the same NA problem and solution.\n\nCalculate the standard deviation of bill_len\nCheck the minimum and maximum values of body_mass\n\n\n\nAdd comments to your scripts\nAdd comments to your script explaining what each line does\n\n\nTurn on code auto-formatting\nIn RStudio, you can turn on automatic code formatting to make your code look nice and consistent.\n\nGo to Tools -&gt; Global Options -&gt; Code -&gt; Saving\n\n\n\nError in `knitr::include_graphics()`:\n! Cannot find the file(s): \"../../../sessions/tasks/img/styler.png\""
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-04-ggplot-basics.html",
+    "href": "other-workshop/sessions/tasks/task-04-ggplot-basics.html",
+    "title": "Exercise 1: Exploring Data with ggplot2",
+    "section": "",
+    "text": "If you didn’t so so yet, open your RStudio project from last session:\n\n\nFind the folder on your computer\nOpen the .Rproj file to open the project in RStudio\nDouble-check the project name in the top right corner of RStudio:\n\n\n\nCreate a new R script in your project for today’s session.\n\n\n\nMake sure you have the tidyverse loaded at the top of your script:\n\nlibrary(tidyverse)\n\nWe will use the penguins dataset that is built into R. Take a moment to remind yourself of the variables:\n\npenguins\n\nRemember the basic ggplot structure:\n\nggplot(data, aes(x = ..., y = ...)) +\n  geom_xxx()"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-04-ggplot-basics.html#get-started",
+    "href": "other-workshop/sessions/tasks/task-04-ggplot-basics.html#get-started",
+    "title": "Exercise 1: Exploring Data with ggplot2",
+    "section": "",
+    "text": "If you didn’t so so yet, open your RStudio project from last session:\n\n\nFind the folder on your computer\nOpen the .Rproj file to open the project in RStudio\nDouble-check the project name in the top right corner of RStudio:\n\n\n\nCreate a new R script in your project for today’s session.\n\n\n\nMake sure you have the tidyverse loaded at the top of your script:\n\nlibrary(tidyverse)\n\nWe will use the penguins dataset that is built into R. Take a moment to remind yourself of the variables:\n\npenguins\n\nRemember the basic ggplot structure:\n\nggplot(data, aes(x = ..., y = ...)) +\n  geom_xxx()"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-04-ggplot-basics.html#create-a-scatterplot",
+    "href": "other-workshop/sessions/tasks/task-04-ggplot-basics.html#create-a-scatterplot",
+    "title": "Exercise 1: Exploring Data with ggplot2",
+    "section": "Create a scatterplot",
+    "text": "Create a scatterplot\n\nCreate a scatterplot of bill_len (x-axis) vs. bill_dep (y-axis)\nMap species to the color aesthetic. What pattern do you see?\nTry also mapping species to the shape aesthetic."
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-04-ggplot-basics.html#boxplot",
+    "href": "other-workshop/sessions/tasks/task-04-ggplot-basics.html#boxplot",
+    "title": "Exercise 1: Exploring Data with ggplot2",
+    "section": "Boxplot",
+    "text": "Boxplot\nCreate a boxplot that shows the distribution of body_mass for each species. Try adding fill = species to the aes() to color the boxes."
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-04-ggplot-basics.html#histogram",
+    "href": "other-workshop/sessions/tasks/task-04-ggplot-basics.html#histogram",
+    "title": "Exercise 1: Exploring Data with ggplot2",
+    "section": "Histogram",
+    "text": "Histogram\nCreate a histogram of flipper_len."
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-04-ggplot-basics.html#add-facets",
+    "href": "other-workshop/sessions/tasks/task-04-ggplot-basics.html#add-facets",
+    "title": "Exercise 1: Exploring Data with ggplot2",
+    "section": "Add facets",
+    "text": "Add facets\nTake one of the plots you made above and split it into panels (e.g. by species or island) using facet_wrap(), e.g.:\n\nfacet_wrap(vars(species))"
+  },
+  {
+    "objectID": "other-workshop/sessions/tasks/task-04-ggplot-basics.html#optional-tasks-if-you-finish-early",
+    "href": "other-workshop/sessions/tasks/task-04-ggplot-basics.html#optional-tasks-if-you-finish-early",
+    "title": "Exercise 1: Exploring Data with ggplot2",
+    "section": "Optional tasks (if you finish early)",
+    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nTry with your own data\nIf you brought your own data into R last session, try making a plot with it.\n\n\nCombine points and boxplots\nAdd a geom_point() layer on top of your boxplot. What does this show you that the boxplot alone doesn’t?\n\n\n\n\n\n\nOverlapping points\n\n\n\nTry adding position = position_jitter(width = 0.2) inside geom_point() to spread the points out a bit so they don’t overlap.\n\n\n\n\nExplore other aesthetic options\nYou don’t have to do all of these — just pick one or two that look interesting to you. Or come up with your own ideas!\n\nMap island to color instead of species\nTry mapping sex to color in a boxplot of body_mass by species\nTry adding fill = species to your histogram — notice how the bars stack by default. Compare this to the faceted version.\nTry facet_grid(rows = vars(species), cols = vars(island)) instead of facet_wrap()"
   },
   {
     "objectID": "prep/r_rstudio.html",
@@ -2552,7 +3630,7 @@
     "href": "sessions/solutions/intro-r-solution.html#variables-and-vectors",
     "title": "Solution: Introduction to R",
     "section": "Variables and vectors",
-    "text": "Variables and vectors\n1. What is the 13th species in the vector?\n\nspecies[13]\n\n[1] \"Gorilla\"\n\n\n2. Get the species at positions 6, 13, and 14.\n\nspecies[c(6, 13, 14)]\n\n[1] \"Diplodocus\" \"Gorilla\"    \"Human\"     \n\n\n3. How many species are in the dataset? Save the number in a variable called n_species.\n\n\n\n\n\n\nNotePrint variable to the console\n\n\n\nNote that if you save the result of a command in a variable, it won’t be printed to the console. You need to explicitly print it by typing the variable name .\n\n\n\nn_species &lt;- length(species)\nn_species\n\n[1] 28"
+    "text": "Variables and vectors\n1. What is the 13th species in the vector?\n\nspecies[13]\n\n[1] \"Gorilla\"\n\n\n2. Get the species at positions 6, 13, and 14.\n\nspecies[c(6, 13, 14)]\n\n[1] \"Diplodocus\" \"Gorilla\"    \"Human\"     \n\n\n3. How many species are in the dataset? Save the number in a variable called n_species.\n\n\n\n\n\n\nPrint variable to the console\n\n\n\nNote that if you save the result of a command in a variable, it won’t be printed to the console. You need to explicitly print it by typing the variable name .\n\n\n\nn_species &lt;- length(species)\nn_species\n\n[1] 28"
   },
   {
     "objectID": "sessions/solutions/intro-r-solution.html#vector-arithmetic",
@@ -2580,14 +3658,14 @@
     "href": "sessions/solutions/tests-solution.html",
     "title": "Solution to statistical test task",
     "section": "",
-    "text": "First, create subsets of the flipper length of all species as vectors:\n\nlibrary(tidyverse)\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\n\n\n\nWith Shapiro-Wilk\nThe Shapiro-Wilk test suggests that Adelie and Chinstrap are normally distributed, but Gentoo is not.\n\nshapiro.test(adelie)\n\n\n    Shapiro-Wilk normality test\n\ndata:  adelie\nW = 0.99339, p-value = 0.72\n\nshapiro.test(gentoo)\n\n\n    Shapiro-Wilk normality test\n\ndata:  gentoo\nW = 0.96219, p-value = 0.00162\n\nshapiro.test(chinstrap)\n\n\n    Shapiro-Wilk normality test\n\ndata:  chinstrap\nW = 0.98891, p-value = 0.8106\n\n\nWith QQ-plots\n\nlibrary(patchwork) # using patchwork to combine multiple plots into one\nch &lt;- ggpubr::ggqqplot(chinstrap) + labs(title = \"chinstrap\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggpubr'\n\nad &lt;- ggpubr::ggqqplot(adelie) + labs(title = \"adelie\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggpubr'\n\nge &lt;- ggpubr::ggqqplot(gentoo) + labs(title = \"gentoo\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggpubr'\n\nch + ge + ad\n\nError:\n! object 'ch' not found\n\n\n\n\n\nBoth are normally distributed, so we can compare variances for Chinstrap and Adelie penguins:\n\nvar.test(chinstrap, adelie)\n\n\n    F test to compare two variances\n\ndata:  chinstrap and adelie\nF = 1.1894, num df = 67, denom df = 150, p-value = 0.3854\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.8022092 1.8217141\nsample estimates:\nratio of variances \n          1.189396 \n\n\nThis indicates that the variances do not differ between Chinstrap and Adelie penguins. Therefore, we can use a t-test to compare mean flipper length:\n\nt.test(chinstrap, adelie)\n\n\n    Welch Two Sample t-test\n\ndata:  chinstrap and adelie\nt = 5.7804, df = 119.68, p-value = 6.049e-08\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 3.859244 7.880530\nsample estimates:\nmean of x mean of y \n 195.8235  189.9536 \n\n\nThe t-test suggests, that the mean flipper length differs between Chinstrap and Adelie penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(chinstrap, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  chinstrap and gentoo\nW = 92, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Chinstrap and Gentoo penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(adelie, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  adelie and gentoo\nW = 26, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Adelie and Gentoo penguins.\n\n\n\nThe boxplot supports the findings of the statistical tests. Notches do not overlap.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE)\n\n\n\n\n\n\n\n\nSimilarly the standard errors of the means do not overlap between the species.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary()\n\n\n\n\n\n\n\n\nTo add the significance levels of the tests performed, I used the geom_signif() layer provided by the ggsignif package.\nSince I performed two different tests (t-test for the comparison of Chinstrap and Adelie penguins, Wilcoxon test for the other two comparisons), I added two different significance layers that distinguish the two tests.\nFor the boxplot:\n\nlibrary(ggsignif)\n\nError in `library()`:\n! there is no package called 'ggsignif'\n\npenguins_boxplot &lt;- penguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(235, 240),\n    map_signif_level = TRUE\n  )\n\nError in `geom_signif()`:\n! could not find function \"geom_signif\"\n\n# To print the plot, just type its name:\npenguins_boxplot\n\nError:\n! object 'penguins_boxplot' not found\n\n\nFor a plot with mean and errorbar:\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary() +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 200,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(216, 218),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\nError in `geom_signif()`:\n! could not find function \"geom_signif\"\n\n\nYou can also do a barplot with error bars. In this case, the error bars are barely visible, because the standard error of the mean is quite small compared to the mean.\n\nggplot(penguins, aes(x = species, y = flipper_len)) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.2\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\",\n    fill = \"grey70\"\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 205,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(221, 230),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\nError in `geom_signif()`:\n! could not find function \"geom_signif\"\n\n\n\n\n\nOf course you can further improve the appearance of you plots. Here is an example of a simple, yet elegant version of the boxplot from above:\n\npenguins_boxplot +\n  labs(\n    y = \"Flipper length (mm)\"\n  ) +\n  theme_classic() +\n  theme(\n    text = element_text(size = 16),\n    axis.title.x = element_blank(),\n    panel.grid.major.y = element_line(color = \"grey90\")\n  )\n\nError:\n! object 'penguins_boxplot' not found"
+    "text": "First, create subsets of the flipper length of all species as vectors:\n\nlibrary(tidyverse)\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\n\n\n\nWith Shapiro-Wilk\nThe Shapiro-Wilk test suggests that Adelie and Chinstrap are normally distributed, but Gentoo is not.\n\nshapiro.test(adelie)\n\n\n    Shapiro-Wilk normality test\n\ndata:  adelie\nW = 0.99339, p-value = 0.72\n\nshapiro.test(gentoo)\n\n\n    Shapiro-Wilk normality test\n\ndata:  gentoo\nW = 0.96219, p-value = 0.00162\n\nshapiro.test(chinstrap)\n\n\n    Shapiro-Wilk normality test\n\ndata:  chinstrap\nW = 0.98891, p-value = 0.8106\n\n\nWith QQ-plots\n\nlibrary(patchwork) # using patchwork to combine multiple plots into one\nch &lt;- ggpubr::ggqqplot(chinstrap) + labs(title = \"chinstrap\")\nad &lt;- ggpubr::ggqqplot(adelie) + labs(title = \"adelie\")\nge &lt;- ggpubr::ggqqplot(gentoo) + labs(title = \"gentoo\")\n\nch + ge + ad\n\n\n\n\n\n\n\n\n\n\n\nBoth are normally distributed, so we can compare variances for Chinstrap and Adelie penguins:\n\nvar.test(chinstrap, adelie)\n\n\n    F test to compare two variances\n\ndata:  chinstrap and adelie\nF = 1.1894, num df = 67, denom df = 150, p-value = 0.3854\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.8022092 1.8217141\nsample estimates:\nratio of variances \n          1.189396 \n\n\nThis indicates that the variances do not differ between Chinstrap and Adelie penguins. Therefore, we can use a t-test to compare mean flipper length:\n\nt.test(chinstrap, adelie)\n\n\n    Welch Two Sample t-test\n\ndata:  chinstrap and adelie\nt = 5.7804, df = 119.68, p-value = 6.049e-08\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 3.859244 7.880530\nsample estimates:\nmean of x mean of y \n 195.8235  189.9536 \n\n\nThe t-test suggests, that the mean flipper length differs between Chinstrap and Adelie penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(chinstrap, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  chinstrap and gentoo\nW = 92, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Chinstrap and Gentoo penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(adelie, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  adelie and gentoo\nW = 26, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Adelie and Gentoo penguins.\n\n\n\nThe boxplot supports the findings of the statistical tests. Notches do not overlap.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE)\n\n\n\n\n\n\n\n\nSimilarly the standard errors of the means do not overlap between the species.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary()\n\n\n\n\n\n\n\n\nTo add the significance levels of the tests performed, I used the geom_signif() layer provided by the ggsignif package.\nSince I performed two different tests (t-test for the comparison of Chinstrap and Adelie penguins, Wilcoxon test for the other two comparisons), I added two different significance layers that distinguish the two tests.\nFor the boxplot:\n\nlibrary(ggsignif)\npenguins_boxplot &lt;- penguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(235, 240),\n    map_signif_level = TRUE\n  )\n\n# To print the plot, just type its name:\npenguins_boxplot\n\n\n\n\n\n\n\n\nFor a plot with mean and errorbar:\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary() +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 200,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(216, 218),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\n\n\n\n\n\n\n\nYou can also do a barplot with error bars. In this case, the error bars are barely visible, because the standard error of the mean is quite small compared to the mean.\n\nggplot(penguins, aes(x = species, y = flipper_len)) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.2\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\",\n    fill = \"grey70\"\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 205,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(221, 230),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\n\n\n\n\n\n\n\n\n\n\nOf course you can further improve the appearance of you plots. Here is an example of a simple, yet elegant version of the boxplot from above:\n\npenguins_boxplot +\n  labs(\n    y = \"Flipper length (mm)\"\n  ) +\n  theme_classic() +\n  theme(\n    text = element_text(size = 16),\n    axis.title.x = element_blank(),\n    panel.grid.major.y = element_line(color = \"grey90\")\n  )"
   },
   {
     "objectID": "sessions/solutions/tests-solution.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
     "href": "sessions/solutions/tests-solution.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
     "title": "Solution to statistical test task",
     "section": "",
-    "text": "First, create subsets of the flipper length of all species as vectors:\n\nlibrary(tidyverse)\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\n\n\n\nWith Shapiro-Wilk\nThe Shapiro-Wilk test suggests that Adelie and Chinstrap are normally distributed, but Gentoo is not.\n\nshapiro.test(adelie)\n\n\n    Shapiro-Wilk normality test\n\ndata:  adelie\nW = 0.99339, p-value = 0.72\n\nshapiro.test(gentoo)\n\n\n    Shapiro-Wilk normality test\n\ndata:  gentoo\nW = 0.96219, p-value = 0.00162\n\nshapiro.test(chinstrap)\n\n\n    Shapiro-Wilk normality test\n\ndata:  chinstrap\nW = 0.98891, p-value = 0.8106\n\n\nWith QQ-plots\n\nlibrary(patchwork) # using patchwork to combine multiple plots into one\nch &lt;- ggpubr::ggqqplot(chinstrap) + labs(title = \"chinstrap\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggpubr'\n\nad &lt;- ggpubr::ggqqplot(adelie) + labs(title = \"adelie\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggpubr'\n\nge &lt;- ggpubr::ggqqplot(gentoo) + labs(title = \"gentoo\")\n\nError in `loadNamespace()`:\n! there is no package called 'ggpubr'\n\nch + ge + ad\n\nError:\n! object 'ch' not found\n\n\n\n\n\nBoth are normally distributed, so we can compare variances for Chinstrap and Adelie penguins:\n\nvar.test(chinstrap, adelie)\n\n\n    F test to compare two variances\n\ndata:  chinstrap and adelie\nF = 1.1894, num df = 67, denom df = 150, p-value = 0.3854\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.8022092 1.8217141\nsample estimates:\nratio of variances \n          1.189396 \n\n\nThis indicates that the variances do not differ between Chinstrap and Adelie penguins. Therefore, we can use a t-test to compare mean flipper length:\n\nt.test(chinstrap, adelie)\n\n\n    Welch Two Sample t-test\n\ndata:  chinstrap and adelie\nt = 5.7804, df = 119.68, p-value = 6.049e-08\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 3.859244 7.880530\nsample estimates:\nmean of x mean of y \n 195.8235  189.9536 \n\n\nThe t-test suggests, that the mean flipper length differs between Chinstrap and Adelie penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(chinstrap, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  chinstrap and gentoo\nW = 92, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Chinstrap and Gentoo penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(adelie, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  adelie and gentoo\nW = 26, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Adelie and Gentoo penguins.\n\n\n\nThe boxplot supports the findings of the statistical tests. Notches do not overlap.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE)\n\n\n\n\n\n\n\n\nSimilarly the standard errors of the means do not overlap between the species.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary()\n\n\n\n\n\n\n\n\nTo add the significance levels of the tests performed, I used the geom_signif() layer provided by the ggsignif package.\nSince I performed two different tests (t-test for the comparison of Chinstrap and Adelie penguins, Wilcoxon test for the other two comparisons), I added two different significance layers that distinguish the two tests.\nFor the boxplot:\n\nlibrary(ggsignif)\n\nError in `library()`:\n! there is no package called 'ggsignif'\n\npenguins_boxplot &lt;- penguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(235, 240),\n    map_signif_level = TRUE\n  )\n\nError in `geom_signif()`:\n! could not find function \"geom_signif\"\n\n# To print the plot, just type its name:\npenguins_boxplot\n\nError:\n! object 'penguins_boxplot' not found\n\n\nFor a plot with mean and errorbar:\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary() +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 200,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(216, 218),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\nError in `geom_signif()`:\n! could not find function \"geom_signif\"\n\n\nYou can also do a barplot with error bars. In this case, the error bars are barely visible, because the standard error of the mean is quite small compared to the mean.\n\nggplot(penguins, aes(x = species, y = flipper_len)) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.2\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\",\n    fill = \"grey70\"\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 205,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(221, 230),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\nError in `geom_signif()`:\n! could not find function \"geom_signif\"\n\n\n\n\n\nOf course you can further improve the appearance of you plots. Here is an example of a simple, yet elegant version of the boxplot from above:\n\npenguins_boxplot +\n  labs(\n    y = \"Flipper length (mm)\"\n  ) +\n  theme_classic() +\n  theme(\n    text = element_text(size = 16),\n    axis.title.x = element_blank(),\n    panel.grid.major.y = element_line(color = \"grey90\")\n  )\n\nError:\n! object 'penguins_boxplot' not found"
+    "text": "First, create subsets of the flipper length of all species as vectors:\n\nlibrary(tidyverse)\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\n\n\n\nWith Shapiro-Wilk\nThe Shapiro-Wilk test suggests that Adelie and Chinstrap are normally distributed, but Gentoo is not.\n\nshapiro.test(adelie)\n\n\n    Shapiro-Wilk normality test\n\ndata:  adelie\nW = 0.99339, p-value = 0.72\n\nshapiro.test(gentoo)\n\n\n    Shapiro-Wilk normality test\n\ndata:  gentoo\nW = 0.96219, p-value = 0.00162\n\nshapiro.test(chinstrap)\n\n\n    Shapiro-Wilk normality test\n\ndata:  chinstrap\nW = 0.98891, p-value = 0.8106\n\n\nWith QQ-plots\n\nlibrary(patchwork) # using patchwork to combine multiple plots into one\nch &lt;- ggpubr::ggqqplot(chinstrap) + labs(title = \"chinstrap\")\nad &lt;- ggpubr::ggqqplot(adelie) + labs(title = \"adelie\")\nge &lt;- ggpubr::ggqqplot(gentoo) + labs(title = \"gentoo\")\n\nch + ge + ad\n\n\n\n\n\n\n\n\n\n\n\nBoth are normally distributed, so we can compare variances for Chinstrap and Adelie penguins:\n\nvar.test(chinstrap, adelie)\n\n\n    F test to compare two variances\n\ndata:  chinstrap and adelie\nF = 1.1894, num df = 67, denom df = 150, p-value = 0.3854\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.8022092 1.8217141\nsample estimates:\nratio of variances \n          1.189396 \n\n\nThis indicates that the variances do not differ between Chinstrap and Adelie penguins. Therefore, we can use a t-test to compare mean flipper length:\n\nt.test(chinstrap, adelie)\n\n\n    Welch Two Sample t-test\n\ndata:  chinstrap and adelie\nt = 5.7804, df = 119.68, p-value = 6.049e-08\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 3.859244 7.880530\nsample estimates:\nmean of x mean of y \n 195.8235  189.9536 \n\n\nThe t-test suggests, that the mean flipper length differs between Chinstrap and Adelie penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(chinstrap, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  chinstrap and gentoo\nW = 92, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Chinstrap and Gentoo penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(adelie, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  adelie and gentoo\nW = 26, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Adelie and Gentoo penguins.\n\n\n\nThe boxplot supports the findings of the statistical tests. Notches do not overlap.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE)\n\n\n\n\n\n\n\n\nSimilarly the standard errors of the means do not overlap between the species.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary()\n\n\n\n\n\n\n\n\nTo add the significance levels of the tests performed, I used the geom_signif() layer provided by the ggsignif package.\nSince I performed two different tests (t-test for the comparison of Chinstrap and Adelie penguins, Wilcoxon test for the other two comparisons), I added two different significance layers that distinguish the two tests.\nFor the boxplot:\n\nlibrary(ggsignif)\npenguins_boxplot &lt;- penguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(235, 240),\n    map_signif_level = TRUE\n  )\n\n# To print the plot, just type its name:\npenguins_boxplot\n\n\n\n\n\n\n\n\nFor a plot with mean and errorbar:\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary() +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 200,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(216, 218),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\n\n\n\n\n\n\n\nYou can also do a barplot with error bars. In this case, the error bars are barely visible, because the standard error of the mean is quite small compared to the mean.\n\nggplot(penguins, aes(x = species, y = flipper_len)) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.2\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\",\n    fill = \"grey70\"\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 205,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(221, 230),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\n\n\n\n\n\n\n\n\n\n\nOf course you can further improve the appearance of you plots. Here is an example of a simple, yet elegant version of the boxplot from above:\n\npenguins_boxplot +\n  labs(\n    y = \"Flipper length (mm)\"\n  ) +\n  theme_classic() +\n  theme(\n    text = element_text(size = 16),\n    axis.title.x = element_blank(),\n    panel.grid.major.y = element_line(color = \"grey90\")\n  )"
   },
   {
     "objectID": "sessions/tasks/data-tibbles-task.html",
@@ -2601,7 +3679,7 @@
     "href": "sessions/tasks/data-tibbles-task.html#get-started-with-tibbles",
     "title": "Task: Data frames and tibbles",
     "section": "Get started with tibbles",
-    "text": "Get started with tibbles\nBefore you start the task:\n\nIf you haven’t already, install the tibble package by calling install.packages(\"tibble\") in the console.\n\n\n\n\n\n\n\nTipDon’t put install.packages() in your script\n\n\n\nYou don’t need to put install.packages(\"tibble\") in your script. You only need to install a package once on your computer, not every time you run the script. So you can just run this line once in the console.\n\n\n\nOpen your script for the task and put library(tibble) on top\nExecute this line and the tibble package is loaded into your R session"
+    "text": "Get started with tibbles\nBefore you start the task:\n\nIf you haven’t already, install the tibble package by calling install.packages(\"tibble\") in the console.\n\n\n\n\n\n\n\nDon’t put install.packages() in your script\n\n\n\nYou don’t need to put install.packages(\"tibble\") in your script. You only need to install a package once on your computer, not every time you run the script. So you can just run this line once in the console.\n\n\n\nOpen your script for the task and put library(tibble) on top\nExecute this line and the tibble package is loaded into your R session"
   },
   {
     "objectID": "sessions/tasks/data-tibbles-task.html#create-a-tibble",
@@ -2692,7 +3770,7 @@
     "href": "sessions/tasks/intro-rstudio-task.html#create-an-rstudio-project",
     "title": "Task: Introduction to RStudio",
     "section": "Create an RStudio project",
-    "text": "Create an RStudio project\nCreate an RStudio project for this workshop:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nGive it a name (e.g. r-workshop)\nChoose where to save it\nClick Create Project\n\nNow have a look at the Files pane in RStudio (bottom right). You should see a folder that has only the .Rproj file in it.\nUse the Files pane to create a basic folder structure in your project:\n\ndata/ for data files\nR/ for R scripts\n\n\n\n\n\n\n\nTipI don’t see my new folders\n\n\n\nSometimes you need to click the “Refresh” button in the Files pane (top right of that pane) to see the new folders you just created."
+    "text": "Create an RStudio project\nCreate an RStudio project for this workshop:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nGive it a name (e.g. r-workshop)\nChoose where to save it\nClick Create Project\n\nNow have a look at the Files pane in RStudio (bottom right). You should see a folder that has only the .Rproj file in it.\nUse the Files pane to create a basic folder structure in your project:\n\ndata/ for data files\nR/ for R scripts\n\n\n\n\n\n\n\nI don’t see my new folders\n\n\n\nSometimes you need to click the “Refresh” button in the Files pane (top right of that pane) to see the new folders you just created."
   },
   {
     "objectID": "sessions/tasks/intro-rstudio-task.html#create-and-run-an-r-script",
@@ -2706,7 +3784,7 @@
     "href": "sessions/tasks/intro-rstudio-task.html#optional-tasks-if-you-finish-early",
     "title": "Task: Introduction to RStudio",
     "section": "Optional tasks (if you finish early)",
-    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nAdd your own data to the project\n\nFind one of your own datasets (e.g. a spreadsheet, csv file, or something similar) on your computer\nCopy it into the data/ folder of your project\n\n\n\n\n\n\n\nNoteOpen your project in the file explorer\n\n\n\nYou have to open your project in your file explorer (Finder on Mac, File Explorer on Windows) to copy the file into the data/ folder. You cannot copy files into that folder from RStudio. The path in the Files pane shows you where your project lives.\n\n\n\nIn RStudio, check if you see the file in the data/ folder\n\nLater, you can try to read this file into R.\n\n\nChange the RStudio theme\n\nGo to Tools -&gt; Global Options -&gt; Appearance\nBrowse through the different themes and choose one you like\nClick Apply to see how it looks (you can change it as many times as you like)\n\n\n\nClose and reopen your project\n\nClose RStudio completely\nFind your project folder in your file explorer (Finder on Mac, File Explorer on Windows)\nDouble-click the .Rproj file to open the project in RStudio again"
+    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nAdd your own data to the project\n\nFind one of your own datasets (e.g. a spreadsheet, csv file, or something similar) on your computer\nCopy it into the data/ folder of your project\n\n\n\n\n\n\n\nOpen your project in the file explorer\n\n\n\nYou have to open your project in your file explorer (Finder on Mac, File Explorer on Windows) to copy the file into the data/ folder. You cannot copy files into that folder from RStudio. The path in the Files pane shows you where your project lives.\n\n\n\nIn RStudio, check if you see the file in the data/ folder\n\nLater, you can try to read this file into R.\n\n\nChange the RStudio theme\n\nGo to Tools -&gt; Global Options -&gt; Appearance\nBrowse through the different themes and choose one you like\nClick Apply to see how it looks (you can change it as many times as you like)\n\n\n\nClose and reopen your project\n\nClose RStudio completely\nFind your project folder in your file explorer (Finder on Mac, File Explorer on Windows)\nDouble-click the .Rproj file to open the project in RStudio again"
   },
   {
     "objectID": "sessions/tasks/tests-task.html",
