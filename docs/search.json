@@ -987,74 +987,88 @@
     "text": "Summary V\nbind_rows()\n\ncombine rows of multiple tibbles into one\n\nthe tibbles need to have the same columns\nadd an id column with the argument .id = \"id\"\nfunction bind_cols() works similarly just for columns\n\n\nleft_join()\n\ncombine tables based on common columns"
   },
   {
-    "objectID": "sessions/slides/common-errors.html#debugging",
-    "href": "sessions/slides/common-errors.html#debugging",
+    "objectID": "sessions/slides/common-errors.html#errors-are-how-you-learn",
+    "href": "sessions/slides/common-errors.html#errors-are-how-you-learn",
     "title": "Common errors and how to fix them",
-    "section": "Debugging",
-    "text": "Debugging\nDebugging can be annoying and we can’t avoid it, but …\n\n\n\n… it’s an effective learning experience (I actually learned the most from debugging my code)\n… it will get easier over time\n… there are some debugging techniques to decrease the time in stages 2-7\n… if nothing helps, there are great people all over the internet willing to help\n\n\n\n\n\nArtwork by Allison Horst"
+    "section": "Errors are how you learn",
+    "text": "Errors are how you learn\n\nReading and understanding error messages is one of the most important skills you will learn\nEvery error you fix teaches you something about how R works\nIt will get easier over time and you will start recognizing patterns\nEven experienced programmers spend a lot of time fixing errors"
   },
   {
-    "objectID": "sessions/slides/common-errors.html#syntax-errors",
-    "href": "sessions/slides/common-errors.html#syntax-errors",
+    "objectID": "sessions/slides/common-errors.html#first-things-first-set-r-to-english",
+    "href": "sessions/slides/common-errors.html#first-things-first-set-r-to-english",
     "title": "Common errors and how to fix them",
-    "section": "Syntax errors",
-    "text": "Syntax errors\nExample\nmean(c(1,2,3)na.rm=TRUE)\n\nHow to fix\n\nlook for missing commas, misspelled arguments, …\nread the error message\nthe RStudio syntax checker warns you before you run code with syntax errors\n\nlook for    next to line numbers in your script"
-  },
-  {
-    "objectID": "sessions/slides/common-errors.html#error-could-not-find-function",
-    "href": "sessions/slides/common-errors.html#error-could-not-find-function",
-    "title": "Common errors and how to fix them",
-    "section": "Error: could not find function",
-    "text": "Error: could not find function\nExamples\n\nselect(penguins, bill_len)\n#&gt; Error in `select()`:\n#&gt; ! could not find function \"select\"\nlenght(1:10)\n#&gt; Error in `lenght()`:\n#&gt; ! could not find function \"lenght\"\n\n\n\nHow to fix\n“Could not find function” errors have two main reasons:\n\nYou forgot to load the package that the function belongs to\n\n\nload the package using library() or call the function with packageName::functionName()\n\n\nYou have a typo in your function call (e.g. lenght() instead of length())"
-  },
-  {
-    "objectID": "sessions/slides/common-errors.html#error-object-not-found",
-    "href": "sessions/slides/common-errors.html#error-object-not-found",
-    "title": "Common errors and how to fix them",
-    "section": "Error: object not found",
-    "text": "Error: object not found\nExample\n\nvariable_A\n#&gt; Error:\n#&gt; ! object 'variable_A' not found\n\n\n\nHow to fix\n\nyou are trying to access an object that does not exist\n\ntypos in variable name (variable name is variableA but you try to access variable_A)\nforgot to put quotes around string: print(hello)  looks for a variable named hello but instead you wanted to print the string print(\"hello\")"
-  },
-  {
-    "objectID": "sessions/slides/common-errors.html#r-crashes",
-    "href": "sessions/slides/common-errors.html#r-crashes",
-    "title": "Common errors and how to fix them",
-    "section": "R crashes",
-    "text": "R crashes\nSometimes R crashes completely and you see this:\n\n\nHow to fix it\n\nThere is no fix but to start a new session\nMake sure to save your scripts regularly!"
+    "section": "First things first: Set R to English",
+    "text": "First things first: Set R to English\n\nThe R language setting follows your operating system language by default\nErrors might not be in English - hard to find help online\n\n\nFix: Change the R language setting to English\n# For the current session\nSys.setenv(LANGUAGE = \"en\")\n\n\n\n\n\n\n\nAdd it to your .Rprofile\n\n\nCommands in the .Rprofile file run automatically every time you start R.\nOpen the file with:\n\n# install the usethis package\n# install.packages(\"usethis\")\n# Open the .Rprofile file in RStudio\nusethis::edit_r_profile()\n\nand add the line Sys.setenv(LANGUAGE = \"en\") to the file, then save it."
   },
   {
     "objectID": "sessions/slides/common-errors.html#console-prints",
     "href": "sessions/slides/common-errors.html#console-prints",
     "title": "Common errors and how to fix them",
     "section": "Console prints +",
-    "text": "Console prints +\nR is not running code anymore and the console only prints + if you try to execute a command.\n\n\nHow to fix it\n\nFirst, go to the console and hit Escape. Then you should see the &gt; sign instead of + again.\nLikely you forgot to close a bracket somewhere. Go to your script and check where this happened (look for   ) next to line numers"
+    "text": "Console prints +\nR is not running code anymore and the console only prints +\n\n\nHow to fix it\n\nGo to the console and hit Escape. Then you should see the &gt; sign instead of + again.\nLikely you forgot to close a bracket or a quote somewhere. Go to your script and check where this happened (look for    next to line numbers)"
   },
   {
-    "objectID": "sessions/slides/common-errors.html#warnings",
-    "href": "sessions/slides/common-errors.html#warnings",
+    "objectID": "sessions/slides/common-errors.html#syntax-errors",
+    "href": "sessions/slides/common-errors.html#syntax-errors",
     "title": "Common errors and how to fix them",
-    "section": "Warnings",
-    "text": "Warnings\nR can give you warnings for many reasons, e.g.\n\nyou have NA values in your data and try to plot them\nthe function you are using is deprecated\nthe package you are using was built for another version of R\n\n\nWarnings are no errors and can sometimes be ignored but:\n\nmake sure to read and understand warnings\nonly ignore them if you know that that’s okay, otherwise fix the underlying issue"
+    "section": "Syntax errors",
+    "text": "Syntax errors\nExample\n\nmean(c(1, 2, 3)na.rm = TRUE)\n#&gt; Error in parse(text = input): &lt;text&gt;:1:16: unexpected symbol\n#&gt; 1: mean(c(1, 2, 3)na.rm\n#&gt;                    ^\n\n\nHow to fix\n\nLook for missing commas, misspelled arguments, unclosed brackets, …\nRead the error message, it often points you to where the problem is\nThe RStudio syntax checker warns you before you run code with syntax errors\n\nLook for    next to line numbers in your script"
   },
   {
-    "objectID": "sessions/slides/common-errors.html#troubleshoot-r-step-by-step",
-    "href": "sessions/slides/common-errors.html#troubleshoot-r-step-by-step",
+    "objectID": "sessions/slides/common-errors.html#error-object-not-found",
+    "href": "sessions/slides/common-errors.html#error-object-not-found",
     "title": "Common errors and how to fix them",
-    "section": "Troubleshoot R: Step by step",
-    "text": "Troubleshoot R: Step by step\nOften, you don’t need to do all the steps but a systemmatic approach to bug fixing is very helpful.\n\nCarefully read the error message and try to fix it\nIs it any of the errors you learned about just now?\nIf the error is about data or other variables: look at the structure using str()\nIf the error is about a function: Read the documentation using ?functionName: Did you use the function correctly? Did you forget an argument?\nLook for answers online\nAsk others for help"
+    "section": "Error: object not found",
+    "text": "Error: object not found\nExample\n\nvariable_A\n#&gt; Error:\n#&gt; ! object 'variable_A' not found\n\n\n\nHow to fix\n\nYou are trying to access an object that does not exist. Common reasons:\n\nTypo in the variable name (e.g. you created variableA but typed variable_A)\nYou forgot to run the line of code that creates the variable\nYou forgot to put quotes around a string: print(hello) looks for a variable named hello, but you wanted print(\"hello\")"
   },
   {
-    "objectID": "sessions/slides/common-errors.html#look-for-answers-online",
-    "href": "sessions/slides/common-errors.html#look-for-answers-online",
+    "objectID": "sessions/slides/common-errors.html#error-could-not-find-function",
+    "href": "sessions/slides/common-errors.html#error-could-not-find-function",
     "title": "Common errors and how to fix them",
-    "section": "Look for answers online",
-    "text": "Look for answers online\n\nSearch with keywords R + package name + Error message/Warning If you don’t know how do do something try searching R + package name + What you want to do, e.g.\n\n“R ggplot change axis title”\n“R sort vector”\n\nUsually you can pick any of the top search results, but I recommend results from Stack Overflow\nAlways search in English to get more results\n\n\n\n\n\n\n\n\nTip\n\n\nChange language of R messages to English with Sys.setenv(LANGUAGE='en')"
+    "section": "Error: could not find function",
+    "text": "Error: could not find function\nExample\n\nread_csv(\"data/penguins.csv\")\n#&gt; Error in `read_csv()`:\n#&gt; ! could not find function \"read_csv\"\n\n\n\nHow to fix\n“Could not find function” errors have two main reasons:\n\nYou forgot to load the package that the function belongs to\n\nLoad the package first: library(readr) or library(tidyverse)\nOr call the function with readr::read_csv()\n\nYou have a typo in the function name (e.g. lenght() instead of length())"
   },
   {
-    "objectID": "sessions/slides/common-errors.html#ask-others-for-help",
-    "href": "sessions/slides/common-errors.html#ask-others-for-help",
+    "objectID": "sessions/slides/common-errors.html#error-package-not-found",
+    "href": "sessions/slides/common-errors.html#error-package-not-found",
     "title": "Common errors and how to fix them",
-    "section": "Ask others for help",
-    "text": "Ask others for help\nThere are plenty of places where you can ask for help online. Some common and good options are:\n\nAsk a question on Stack Overflow\nAsk in the R Discord server\n\nusually fast answers\nbut: you need a Discord account\n\n\n\nBut: You have to make sure that before, you tried all the other 5 steps.\n\n\nTo ask questions online, you have to learn how to ask a clear question including a reproducible example\nLook here for more info on how to ask a good question about R"
+    "section": "Error: package not found",
+    "text": "Error: package not found\n\nlibrary(thispackagedoesntexist)\n#&gt; Error in `library()`:\n#&gt; ! there is no package called 'thispackagedoesntexist'\n\n\n\nThis means the package is not installed on your computer.\n\n\nHow to fix\n\nCheck for a typo in the package name\nInstall the package first, then load it:\n\ninstall.packages(\"thispackagedoesntexist\")\nlibrary(thispackagedoesntexist)\n\nRemember: you only need to install once, but you need to load with library() every time you start R"
+  },
+  {
+    "objectID": "sessions/slides/common-errors.html#file-not-found",
+    "href": "sessions/slides/common-errors.html#file-not-found",
+    "title": "Common errors and how to fix them",
+    "section": "File not found",
+    "text": "File not found\nWhen reading data, you might see errors like:\n\nreadr::read_csv(\"data/penguins.csv\")\n#&gt; Error:\n#&gt; ! 'data/penguins.csv' does not exist in current working directory:\n#&gt;   'C:/Users/Selina/Repos/Teaching/intro-r-data-analysis/sessions/slides'.\n\n\nor\nread_csv(\"data/penguins.csv\")\n#&gt; Error: cannot open the connection"
+  },
+  {
+    "objectID": "sessions/slides/common-errors.html#file-not-found-1",
+    "href": "sessions/slides/common-errors.html#file-not-found-1",
+    "title": "Common errors and how to fix them",
+    "section": "File not found",
+    "text": "File not found\nWhen reading data, you might see errors like:\n\nreadr::read_csv(\"data/penguins.csv\")\n#&gt; Error:\n#&gt; ! 'data/penguins.csv' does not exist in current working directory:\n#&gt;   'C:/Users/Selina/Repos/Teaching/intro-r-data-analysis/sessions/slides'.\n\nHow to fix\n\nCheck that you are in the correct RStudio project (look at the top right corner of RStudio)\nCheck the file name: is it spelled exactly right?\nCheck the folder path: is the file actually in the data/ folder?\n\n\n\n\n\n\n\n\nBuild your path with auto-completion\n\n\nWhen you start typing a path in RStudio, you can use auto-completion to avoid typos. Start with \"\" and then hit tab to see suggestions for files and folders in your project."
+  },
+  {
+    "objectID": "sessions/slides/common-errors.html#warnings-vs.-errors",
+    "href": "sessions/slides/common-errors.html#warnings-vs.-errors",
+    "title": "Common errors and how to fix them",
+    "section": "Warnings vs. errors",
+    "text": "Warnings vs. errors\nR can give you warnings for many reasons, e.g.\n\n\nyou have NA values in your data\nthe package you are using was built for another version of R\n\n\n\nWarnings are not errors, your code still ran. But:\n\nMake sure to read and understand warnings\nOnly ignore them if you know that’s okay, otherwise fix the underlying issue"
+  },
+  {
+    "objectID": "sessions/slides/common-errors.html#r-crashes",
+    "href": "sessions/slides/common-errors.html#r-crashes",
+    "title": "Common errors and how to fix them",
+    "section": "R crashes",
+    "text": "R crashes\nSometimes R crashes completely and you see this:\n\n\nHow to fix it\n\nThis happens sometimes\nThere is no fix but to start a new R session\nMake sure to save your scripts regularly so you don’t lose your work"
+  },
+  {
+    "objectID": "sessions/slides/common-errors.html#what-to-do-when-youre-stuck",
+    "href": "sessions/slides/common-errors.html#what-to-do-when-youre-stuck",
+    "title": "Common errors and how to fix them",
+    "section": "What to do when you’re stuck",
+    "text": "What to do when you’re stuck\n\nRead the error message\nCheck your data: use summary() or View() to see if your data looks the way you expect\nRead the function help with ?function_name\nRestart R and run your script from the top (Session &gt; Restart R in RStudio)\nSearch online: Google R + the error message (in English)\nAsk for help: Ask people or an AI chatbot"
   },
   {
     "objectID": "sessions/slides/AI-tools.html#motivation",
@@ -1740,7 +1754,7 @@
     "href": "index.html#schedule",
     "title": "Introduction to R for Data Analysis",
     "section": "Schedule",
-    "text": "Schedule\n\n\n\n\nDate\nTime\n\n\n\n\n📅 Day 1\nMonday, 9 March 2026\n9:00 – 16:00\n\n\n📅 Day 2\nTuesday, 10 March 2026\n9:00 – 16:00\n\n\n📅 Day 3\nMonday, 16 March 2026\n9:00 – 16:00\n\n\n📅 Day 4\nTuesday, 17 March 2026\n9:00 – 16:00\n\n\n\n\n\n\nDay 1 — R and RStudio Basics, Reading Data\nThe task solution script will be available for download here after the session.\n\nDownload Day 1 R script\n\n\nIntroduction to RStudio\nIntroduction to R\nData frames & tibbles\nTidyverse and readr\n\n\n\nDay 2 — Data Visualization and Transformation\nThe task solution script will be available for download here after the session.\n\nDownload Day 2 R script\n\n\nData visualization with ggplot2\nData transformation with dplyr\n\n\n\nDay 3 — Tidy Data and Statistics\nThe task solution script will be available for download here after the session.\n\nDownload Day 3 R script\n\n\nTidy data with tidyr\nStatistical tests\n\n\n\nDay 4 — Bring Your Own Data\nApply what you’ve learned to your own research data, with instructor support throughout the day.\n\nBring Your Own Data\n\n\n\nExtras\nOptional sessions — covered when time allows.\n\nCommon R errors\nGood practice coding\nAI Tools"
+    "text": "Schedule\n\n\n\n\nDate\nTime\n\n\n\n\n📅 Day 1\nMonday, 9 March 2026\n9:00 – 16:00\n\n\n📅 Day 2\nTuesday, 10 March 2026\n9:00 – 16:00\n\n\n📅 Day 3\nMonday, 16 March 2026\n9:00 – 16:00\n\n\n📅 Day 4\nTuesday, 17 March 2026\n9:00 – 16:00\n\n\n\n\n\n\nDay 1 — R and RStudio Basics, Reading Data\nThe task solution script will be available for download here after the session.\n\nDownload Day 1 R script\n\n\nOrganization\nIntroduction to RStudio\nIntroduction to R\nData frames & tibbles\nTidyverse and readr\nCommon R errors\n\n\n\nDay 2 — Data Visualization and Transformation\nThe task solution script will be available for download here after the session.\n\nDownload Day 2 R script\n\n\nData visualization with ggplot2\nData transformation with dplyr\nGood practice coding\n\n\n\nDay 3 — Tidy Data and Statistics\nThe task solution script will be available for download here after the session.\n\nDownload Day 3 R script\n\n\nTidy data with tidyr\nStatistical tests\nAI Tools\n\n\n\nDay 4 — Bring Your Own Data\nApply what you’ve learned to your own research data, with instructor support throughout the day.\n\nBring Your Own Data"
   },
   {
     "objectID": "byod/olympics.html",
@@ -2667,81 +2681,46 @@
     "text": "Resources\nBelow you find a few links to further resources on AI tools for R programming. This is only a selection from the vast amount of tools available.\n\nBrowser-based AI-Tools\n\nJulius AI: Browser-based tool where you can ask questions about your data. You can upload a dataset and ask questions about it. The AI will then give you answers and visualizations. You can also download the corresponding R script.\n\nWorks great but costs ~20€ per month, but you can get a 50% discount if you are a student or academic\n\nThe usual ones: ChatGPT, Claude, Gemini, …\n\n\n\nIntegrated AI tools\nGitHub Copilot is one of the most widespread integrated tool. It gives you inline code suggestions and Chat options. Great to code faster, write better code, debug, etc.\nIf you are using RStudio, you can use it for inline code suggestions. In Positron or VS Code you can also use the chat option. Here are all the links that you need to get started:\n\nStep-by-step guide on how to get Copilot for free with an educational account.\nGitHub Copilot in RStudio: Guide on how to set up and use RStudio with GitHub Copilot\nAI in Positron: Guide on how to set up and use the Positron Assistant.\n\nPositron can be set up to work with GitHub Copilot (inline suggestions and chat) as well as with other LLMs (e.g. GPT-4, Claude, etc.).\n\nGitHub Copilot Docs: Useful information and guides on how to use Copilot\nPrivacy FAQ of GitHub Copilot\nPrompt engineering with GH Copilot: Some tips to get better results with GitHub Copilot"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#im-using-a-lot-for",
-    "href": "sessions/slides/00_organization.html#im-using-a-lot-for",
+    "objectID": "sessions/slides/00_organization.html#welcome",
+    "href": "sessions/slides/00_organization.html#welcome",
     "title": "Introduction to Data Analysis with R",
-    "section": "I’m using  a lot for …",
-    "text": "I’m using  a lot for …\n… data analysis\n… ecological modelling\n… writing documents/websites/presentations\n…. workflow automation\n…"
-  },
-  {
-    "objectID": "sessions/slides/00_organization.html#who-are-you",
-    "href": "sessions/slides/00_organization.html#who-are-you",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Who are you?",
-    "text": "Who are you?"
-  },
-  {
-    "objectID": "sessions/slides/00_organization.html#who-are-you-1",
-    "href": "sessions/slides/00_organization.html#who-are-you-1",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Who are you?",
-    "text": "Who are you?"
-  },
-  {
-    "objectID": "sessions/slides/00_organization.html#who-are-you-2",
-    "href": "sessions/slides/00_organization.html#who-are-you-2",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Who are you?",
-    "text": "Who are you?"
+    "section": "Welcome",
+    "text": "Welcome\n\n\n\n(Theoretical) Ecology\nScientific programmer at Freie Universität Berlin\nResearch + Coding + Teaching"
   },
   {
     "objectID": "sessions/slides/00_organization.html#workshop-topics",
     "href": "sessions/slides/00_organization.html#workshop-topics",
     "title": "Introduction to Data Analysis with R",
     "section": "Workshop topics",
-    "text": "Workshop topics\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science\n\n\n\nDay1 Introduction to R and RStudio and data import\n\n\nDay2 Data transformation and visualization with the tidyverse\n\n\nDay3 Cleaning data, statistical tests, good practice and AI tools\n\n\nDay 4 Bring your own data"
+    "text": "Workshop topics\n\n\n\nImage adapted from Wickham & Grolemund: R for Data Science\n\n\n\nDay1 Introduction to R and RStudio and data import\n\n\nDay2 Data visualization and transformation with the tidyverse\n\n\nDay3 Cleaning data, statistical tests, and reproducible reports with Quarto\n\n\nDay 4 Bring your own data"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#schedule-and-organization",
-    "href": "sessions/slides/00_organization.html#schedule-and-organization",
+    "objectID": "sessions/slides/00_organization.html#schedule",
+    "href": "sessions/slides/00_organization.html#schedule",
     "title": "Introduction to Data Analysis with R",
-    "section": "Schedule and Organization",
-    "text": "Schedule and Organization\n📅 06.10.2025 - 07.10.2025 from 🕘 9 a.m. - 4 p.m.  📅 13.10.2025 - 14.10.2025 from 🕘 9 a.m. - 4 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ in between  📌 We will meet in the General meeting on Webex\n\n\n1. Input sessions\n\nPresentation and demonstration of a topic + examples\n\n\n\n2. Tasks\n\nSolve them in small groups\n\n\n\n3. Joint discussion of tasks & questions"
+    "section": "Schedule",
+    "text": "Schedule\n📅 09.03.2026 - 10.03.2026 from 🕘 9 a.m. - 4 p.m.  📅 16.03.2026 - 17.03.2026 from 🕘 9 a.m. - 4 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ short breaks in between 📌 Join from the Webex space or via the meeting link"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#material",
-    "href": "sessions/slides/00_organization.html#material",
+    "objectID": "sessions/slides/00_organization.html#organization",
+    "href": "sessions/slides/00_organization.html#organization",
     "title": "Introduction to Data Analysis with R",
-    "section": "Material",
-    "text": "Material\n\nAll material can be found on the workshop’s website\n\nPresentations, Tasks, Solutions, Additional resources\n\nYou can download slides and R Scripts from there\nWebsite will stay online after the workshop"
+    "section": "Organization",
+    "text": "Organization\n\nInput sessions + Tasks + Discussion/Questions\nMaterials on the workshop’s website: Presentations, Tasks, Solutions, Additional resources\nWebsite will stay online after the workshop\nQuestions and feedback welcome\nContact me: selina.baldauf@fu-berlin.de or on Webex"
   },
   {
     "objectID": "sessions/slides/00_organization.html#bring-your-own-data",
     "href": "sessions/slides/00_organization.html#bring-your-own-data",
     "title": "Introduction to Data Analysis with R",
     "section": "Bring your own data",
-    "text": "Bring your own data\nOn the last workshop day, you can work with your own research data. I will also provide some real life data sets from different topics.\n\nLearning by doing\n\nGet started using R for your own analyses\nUse any of the methods from the course or try new things, …\nPresent/discuss your results, questions and problems at the end of the day\n\n\nAdd your name and some details on what you plan to do in this joint table"
+    "text": "Bring your own data\nOn the last workshop day, you can work with your own research data. I will also provide some real life data sets from different topics.\n\n\nYou really learn R by working with your own data and questions\nUse the methods you learned in the workshop or try new things\nLet me know if there’s something specific you want to do\nAdd your name and some details on what you plan to do in this joint table"
   },
   {
-    "objectID": "sessions/slides/00_organization.html#before-we-get-started-i",
-    "href": "sessions/slides/00_organization.html#before-we-get-started-i",
+    "objectID": "sessions/slides/00_organization.html#before-we-get-started",
+    "href": "sessions/slides/00_organization.html#before-we-get-started",
     "title": "Introduction to Data Analysis with R",
-    "section": "Before we get started I",
-    "text": "Before we get started I\n\nHelp each other if possible\nHave an eye on the chat and on the time\nAll questions and comments are welcome\nIf possible, please turn on your camera\nFeedback is welcome (Evaluation at the end of the workshop)"
-  },
-  {
-    "objectID": "sessions/slides/00_organization.html#before-we-get-started-ii",
-    "href": "sessions/slides/00_organization.html#before-we-get-started-ii",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Before we get started II",
-    "text": "Before we get started II\nDid anyone have problems installing R and RStudio?\n\n Download and install R from https://cran.r-project.org\n Download and install RStudio from https://www.posit.co"
-  },
-  {
-    "objectID": "sessions/slides/00_organization.html#before-we-get-started-iii",
-    "href": "sessions/slides/00_organization.html#before-we-get-started-iii",
-    "title": "Introduction to Data Analysis with R",
-    "section": "Before we get started III",
-    "text": "Before we get started III\nHow to use Webex teams\n\nGeneral channel for our joint meetings and chat\nGroups 1-4 for solving tasks jointly\n\nGroup spaces have their own chat and meetings\nAsk questions in the chat, share screenshots, share your screen and talk"
+    "section": "Before we get started",
+    "text": "Before we get started\nDid anyone have problems with the course preparations?\n\nDownload and install R from https://cran.r-project.org\nDownload and install RStudio from https://www.posit.co"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#organization",
