@@ -39,30 +39,28 @@ website:
             href: sessions/04_data-tibbles.qmd
           - text: "Import and Export Data"
             href: sessions/05_readr.qmd
+          - text: "Common R errors"
+            href: sessions/06_common-errors.qmd
           - text: "---"
           - text: "<b>Day 2</b>"
           - text: "Data visualization with ggplot2"
             href: sessions/07_ggplot.qmd
           - text: "Data transformation with dplyr"
             href: sessions/08_dplyr.qmd
+          - text: "Good practice coding"
+            href: sessions/11_good-practice.qmd
           - text: "---"
           - text: "<b>Day 3</b>"
           - text: "Tidy data with tidyr"
             href: sessions/09_tidyr.qmd
           - text: "Statistical tests"
             href: sessions/10_tests.qmd
+          - text: "AI Tools"
+            href: sessions/12_AI-tools.qmd
           - text: "---"
           - text: "<b>Day 4</b>"
           - text: "Bring Your Own Data"
             href: sessions/byod.qmd
-          - text: "---"
-          - text: "<b>Extras</b>"
-          - text: "Common R errors"
-            href: sessions/06_common-errors.qmd
-          - text: "Good practice coding"
-            href: sessions/11_good-practice.qmd
-          - text: "AI Tools"
-            href: sessions/12_AI-tools.qmd
       - text: "Preparations"
         href: preparations.qmd
       - text: "Resources"

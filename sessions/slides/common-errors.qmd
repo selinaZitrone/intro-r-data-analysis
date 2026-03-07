@@ -33,9 +33,10 @@ from: markdown+emoji
 
 # {.background-no-title}
 
-When learning a programming language, you have to be prepared to spend a lot of 
-time fixing bugs. Don't worry: It's not you, it's just how programming works!
-![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/debugging.jpg){fig-align="center" width=90%}
+When learning a programming language, you will run into errors all the time.
+That's completely normal and it's how programming works!
+
+![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/debugging.jpg){fig-align="center" width=80%}
 
 :::{.aside}
 
@@ -43,27 +44,49 @@ time fixing bugs. Don't worry: It's not you, it's just how programming works!
 
 :::
 
-## Debugging
+## Errors are how you learn
 
-Debugging can be annoying and we can't avoid it, but ...
+- Reading and understanding error messages is one of the **most important skills** you will learn
 
-:::{.columns}
+- Every error you fix teaches you something about how R works
 
-:::{.column width="50%"}
+- It will get easier over time and you will start recognizing patterns
 
-- ... it's an **effective learning experience** (I actually learned the most from debugging my code)
+- Even experienced programmers spend a lot of time fixing errors
 
-- ... it will get easier over time
+## First things first: Set R to English
 
-- ... there are some **debugging techniques** to decrease the time in stages 2-7
+- The R language setting follows your operating system language by default
+- Errors might not be in English - hard to find help online
 
-- ... if nothing helps, there are great people all over the internet willing to help
+. . .
 
-:::
+#### Fix: Change the R language setting to English
 
-:::{.column width="50%"}
+```r
+# For the current session
+Sys.setenv(LANGUAGE = "en")
+```
 
-![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/debugging.jpg)
+:::{.fragment}
+
+:::{.callout-tip}
+
+## Add it to your .Rprofile
+
+Commands in the `.Rprofile` file run automatically every time you start R.
+
+Open the file with:
+
+```{r}
+#| eval: false
+# install the usethis package
+# install.packages("usethis")
+# Open the .Rprofile file in RStudio
+usethis::edit_r_profile()
+```
+
+and add the line `Sys.setenv(LANGUAGE = "en")` to the file, then save it.
 
 :::
 
@@ -73,22 +96,35 @@ Debugging can be annoying and we can't avoid it, but ...
 
 > and how to deal with them
 
+## Console prints `+`
+
+R is not running code anymore and the console only prints `+`
+
+![](img/day1/Console_plus.png)
+
+. . .
+
+#### How to fix it
+
+- Go to the console and hit `Escape`. Then you should see the `>` sign instead of `+` again.
+- Likely you forgot to close a bracket or a quote somewhere. Go to your script and check where this happened (look for &nbsp;![](img/day1/red_x.png)&nbsp; next to line numbers)
+
 ## Syntax errors
 
 #### Example
 
-```r
-mean(c(1,2,3)na.rm=TRUE)
+```{r}
+mean(c(1, 2, 3)na.rm = TRUE)
 ```
 
 <br>
 
 #### How to fix
 
-- look for missing commas, misspelled arguments, ...
-- read the error message
-- the RStudio syntax checker warns you before you run code with syntax errors
-  - look for &nbsp;![](img/day1/red_x.png)&nbsp; next to line numbers in your script
+- Look for missing commas, misspelled arguments, unclosed brackets, ...
+- Read the error message, it often points you to where the problem is
+- The RStudio syntax checker warns you **before** you run code with syntax errors
+  - Look for &nbsp;![](img/day1/red_x.png)&nbsp; next to line numbers in your script
   
 :::{.fragment}
 
@@ -96,14 +132,33 @@ mean(c(1,2,3)na.rm=TRUE)
 
 :::
 
+## Error: object not found
+
+#### Example
+
+```{r}
+variable_A
+```
+
+<br>
+
+:::{.fragment}
+
+#### How to fix
+
+- You are trying to access an object that does not exist. Common reasons:
+  - Typo in the variable name (e.g. you created `variableA` but typed `variable_A`)
+  - You forgot to run the line of code that creates the variable
+  - You forgot to put quotes around a string: `print(hello)` looks for a **variable** named `hello`, but you wanted `print("hello")`
+  
+:::
+
 ## Error: could not find function
 
-#### Examples
+#### Example
 
-
-```{r, error = TRUE}
-select(penguins, bill_len)
-lenght(1:10)
+```{r}
+read_csv("data/penguins.csv")
 ```
 
 <br>
@@ -114,50 +169,105 @@ lenght(1:10)
 
 "Could not find function" errors have two main reasons:
 
-1. You forgot to load the package that the function belongs to
-  - load the package using `library()` or call the function with `packageName::functionName()`
-2. You have a typo in your function call (e.g. `lenght()` instead of `length()`)
+1. You forgot to **load the package** that the function belongs to
+    - Load the package first: `library(readr)` or `library(tidyverse)`
+    - Or call the function with `readr::read_csv()`
+2. You have a **typo** in the function name (e.g. `lenght()` instead of `length()`)
 
 :::
 
-## Error: object not found
+## Error: package not found
 
-#### Example
 
-```{r error=TRUE}
-variable_A
+```{r}
+library(thispackagedoesntexist)
 ```
-
-<br>
-
-:::{.fragment}
-
-#### How to fix
-
-- you are trying to access an object that does not exist
-  - typos in variable name (variable name is `variableA` but you try to access `variable_A`)
-  - forgot to put quotes around string: `print(hello)`
-  `r fontawesome::fa("arrow-right")` looks for a variable named `hello` but instead you wanted to print the string `print("hello")`
-  
-:::
-
-## Wrong data format {visibility="hidden"}
-
-#### Example
-
-- does not necessarily trigger an error message
-
-- if there is an error message, it can also appear later in your code
 
 . . .
 
-#### How to fix it
+<br>
 
-- Look at `str()` of your data and check whether all columns are there and in correct format
-  - e.g. is a column of type `character` but should be of type `integer`?
-  
-- Do that at multiple locations in your script to find the line where the error actually happens
-  - everytime you change something in your data, check its structure
+This means the package is **not installed** on your computer.
+
+. . .
+
+#### How to fix
+
+- Check for a typo in the package name
+- Install the package first, then load it:
+
+```r
+install.packages("thispackagedoesntexist")
+library(thispackagedoesntexist)
+```
+
+- Remember: you only need to **install once**, but you need to **load with `library()` every time** you start R
+
+## File not found
+
+When reading data, you might see errors like:
+
+```{r}
+readr::read_csv("data/penguins.csv")
+```
+
+. . .
+
+or
+
+```r
+read_csv("data/penguins.csv")
+#> Error: cannot open the connection
+```
+
+## File not found
+
+When reading data, you might see errors like:
+
+```{r}
+readr::read_csv("data/penguins.csv")
+```
+
+
+#### How to fix
+
+- Check that you are in the **correct RStudio project** (look at the top right corner of RStudio)
+- Check the **file name**: is it spelled exactly right?
+- Check the **folder path**: is the file actually in the `data/` folder?
+
+:::{.fragment}
+
+:::{.callout-tip}
+
+## Build your path with auto-completion
+
+When you start typing a path in RStudio, you can use auto-completion to avoid typos. Start with `""` and then hit tab to see suggestions for files and folders in your project.
+
+:::
+
+:::
+
+## Warnings vs. errors
+
+R can give you **warnings** for many reasons, e.g.
+
+:::{.fragment}
+
+:::{.nonincremental}
+
+- you have `NA` values in your data
+- the package you are using was built for another version of R
+
+:::
+
+:::
+
+. . . 
+
+Warnings are **not errors**, your code still ran. But:
+
+- Make sure to **read and understand** warnings
+- Only ignore them if you know that's okay, otherwise fix the underlying issue
 
 ## R crashes
 
@@ -169,85 +279,23 @@ Sometimes R crashes completely and you see this:
 
 #### How to fix it
 
-- There is no fix but to start a new session
+- This happens sometimes
+- There is no fix but to **start a new R session**
+- Make sure to **save your scripts regularly** so you don't lose your work
 
-- Make sure to save your scripts regularly!
+# How to troubleshoot R code {.inverse}
 
-## Console prints `+`
+> A step by step approach
 
-R is not running code anymore and the console only prints `+` if you try to execute a command.
+## What to do when you're stuck
 
-![](img/day1/Console_plus.png)
+:::{.nonincremental}
 
-. . .
+- Read the error message
+- Check your data: use summary() or View() to see if your data looks the way you expect
+- Read the function help with ?function_name
+- Restart R and run your script from the top (Session > Restart R in RStudio)
+- Search online: Google R + the error message (in English)
+- Ask for help: Ask people or an AI chatbot
 
-#### How to fix it
-
-- First, go to the console and hit `Escape`. Then you should see the `>` sign instead of `+` again.
-- Likely you forgot to close a bracket somewhere. Go to your script and check where this happened (look for &nbsp;![](img/day1/red_x.png)&nbsp;) next to line numers
-
-## Warnings
-
-R can give you warnings for many reasons, e.g.
-
-- you have `NA` values in your data and try to plot them
-- the function you are using is deprecated
-- the package you are using was built for another version of R
-
-. . . 
-
-Warnings are no errors and can sometimes be ignored but:
-
-- make sure to read and understand warnings
-- only ignore them if you know that that's okay, otherwise fix the underlying issue
-
-# How to troubleshoot R code{.inverse}
-
-> A step by step guide
-
-## Troubleshoot R: Step by step
-
-Often, you don't need to do all the steps but a systemmatic approach to bug fixing is very helpful.
-
-1. Carefully read the error message and try to fix it
-2. Is it any of the errors you learned about just now?
-3. If the error is about data or other variables: look at the structure using `str()`
-4. If the error is about a function: Read the documentation using `?functionName`: Did you use the function correctly? Did you forget an argument?
-5. Look for answers online
-6. Ask others for help
-
-## Look for answers online
-
-- Search with keywords **R + package name + Error message/Warning**
- If you don't know how do do something try searching **R + package name + What you want to do**, e.g.
-  - "R ggplot change axis title"
-  - "R sort vector"
-- Usually you can pick any of the top search results, but I recommend results from [Stack Overflow](https://stackoverflow.com/)
-- Always search in English to get more results<br>
-
-. . .
-
-:::{.callout-tip}
-Change language of R messages to English with `Sys.setenv(LANGUAGE='en')`
 :::
-
-## Ask others for help
-
-There are plenty of places where you can ask for help online.
-Some common and good options are:
-
-- Ask a question on [Stack Overflow](https://stackoverflow.com/)
-
-- Ask in the [R Discord server](https://discord.gg/88uG5UVyE2)
-  - usually fast answers
-  - but: you need a Discord account
-  
-. . .
-
-**But**: You have to make sure that before, you tried all the other 5 steps.
-
-. . .
-
-To ask questions online, you have to learn how to ask a **clear question** including a **reproducible example**
-
-Look [here](https://github.com/selinaZitrone/R_AskQuestions) for more info on how to ask a good question about R

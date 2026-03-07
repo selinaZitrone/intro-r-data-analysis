@@ -47,10 +47,12 @@ window.addEventListener("load", function () {
 [Download Day 1 R script](R/Tasks/Day1.R){download="Day1.R"}
 :::
 
+- [Organization](sessions/slides/00_organization.qmd)
 - [Introduction to RStudio](sessions/01_intro-rstudio.qmd)
 - [Introduction to R](sessions/02_intro-r.qmd)
 - [Data frames & tibbles](sessions/04_data-tibbles.qmd)
 - [Tidyverse and readr](sessions/05_readr.qmd)
+- [Common R errors](sessions/06_common-errors.qmd)
 
 ### Day 2 — Data Visualization and Transformation
 
@@ -62,6 +64,7 @@ window.addEventListener("load", function () {
 
 - [Data visualization with ggplot2](sessions/07_ggplot.qmd)
 - [Data transformation with dplyr](sessions/08_dplyr.qmd)
+- [Good practice coding](sessions/11_good-practice.qmd)
 
 ### Day 3 — Tidy Data and Statistics
 
@@ -73,6 +76,7 @@ window.addEventListener("load", function () {
 
 - [Tidy data with tidyr](sessions/09_tidyr.qmd)
 - [Statistical tests](sessions/10_tests.qmd)
+- [AI Tools](sessions/12_AI-tools.qmd) 
 
 ### Day 4 — Bring Your Own Data
 
@@ -80,10 +84,4 @@ Apply what you've learned to your own research data, with instructor support thr
 
 - [Bring Your Own Data](sessions/byod.qmd)
 
-### Extras
 
-Optional sessions — covered when time allows.
-
-- [Common R errors](sessions/06_common-errors.qmd)
-- [Good practice coding](sessions/11_good-practice.qmd)
-- [AI Tools](sessions/12_AI-tools.qmd)
