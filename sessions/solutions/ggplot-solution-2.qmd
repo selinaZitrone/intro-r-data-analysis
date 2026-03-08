@@ -13,42 +13,76 @@ First we need to load the `tidyverse` packages:
 library(tidyverse)
 ```
 
-## Beautify the plots
+## Add labels
 
-### Beautify plots from Task 1
-
-Here are just some examples of how to make the plots from before prettier. Of course there a many other options as well.
-
-**Example one: Boxplot of flipper length and species**
+Here is an example of adding labels to the scatterplot from Task 1:
 
 ```{r}
+#| message: false
 #| warning: false
-ggplot(penguins, aes(species, flipper_len, color = species)) +
-  geom_boxplot(width = 0.3) +
-  geom_point(
-    alpha = 0.5,
-    position = position_jitter(width = 0.1, seed = 123)
-  ) +
-  ggsci::scale_color_uchicago() +
-  labs(x = "Species", y = "Flipper length (mm)") +
-  theme_minimal() +
-  theme(legend.position = "none")
+ggplot(penguins, aes(
+  x = bill_len,
+  y = bill_dep,
+  color = species
+)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Penguin bill dimensions",
+    x = "Bill length (mm)",
+    y = "Bill depth (mm)",
+    color = "Species"
+  )
 ```
 
-What was changed compared to the basic plot?
+## Change the colors
 
-- Add color for each species by setting a global `color` aesthetic
-- Make boxes and jitter points less wide by setting `width` for both layers
-- Make jitter points slightly transparent by specifying `alpha = 0.5` for the jitter layer
-- Change the color to nicer colors from the `ggsci` package
-- Change from default theme to `theme_minimal()`
-- Remove the legend with `legend.position = "none"`
-- Change the axis labels with `labs()`
+You can use `scale_color_manual()` to set custom colors:
 
+```{r}
+#| message: false
+#| warning: false
+ggplot(penguins, aes(
+  x = bill_len,
+  y = bill_dep,
+  color = species
+)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_color_manual(values = c("darkorange", "purple", "cyan4")) +
+  labs(
+    x = "Bill length (mm)",
+    y = "Bill depth (mm)",
+    color = "Species"
+  )
+```
 
-**Example two: Reproducing the plot from the presentation**
+## Apply a theme
 
-The following code is adapted from the [palmerpengins package website](https://allisonhorst.github.io/palmerpenguins/articles/examples.html).
+Try different themes to change the overall look of the plot:
+
+```{r}
+#| message: false
+#| warning: false
+ggplot(penguins, aes(
+  x = bill_len,
+  y = bill_dep,
+  color = species
+)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_color_manual(values = c("darkorange", "purple", "cyan4")) +
+  labs(
+    x = "Bill length (mm)",
+    y = "Bill depth (mm)",
+    color = "Species"
+  ) +
+  theme_minimal()
+```
+
+## Reproduce the plot
+
+The following code is adapted from the [palmerpenguins package website](https://allisonhorst.github.io/palmerpenguins/articles/examples.html).
 
 ```{r}
 #| warning: false
@@ -93,7 +127,7 @@ What was changed compared to the basic plot?
   - 0.85 (85% of plot width) to the right
   - 0.15 (15% of plot height) towards the top
 
-## Save one of the plots on your machine
+## Save your plot
 
 Example with one of the plots from above:
 
@@ -115,10 +149,9 @@ ggsave(filename = "img/flipper_box.png", plot = flipper_box)
 ggsave(filename = "img/flipper_box.pdf", plot = flipper_box)
 ```
 
+## For the fast ones
 
-## Some more examples
-
-**Histogram**
+### Beautified histogram
 
 ```{r echo = TRUE}
 ggplot(penguins, aes(x = flipper_len, fill = species)) +
@@ -132,9 +165,7 @@ ggplot(penguins, aes(x = flipper_len, fill = species)) +
   theme_minimal()
 ```
 
-**Heat map**
-
-For the penguin data set a heat map does not make that much sense. But an example would be:
+### Beautified heatmap
 
 ```{r echo=TRUE}
 ggplot(penguins, aes(
@@ -151,12 +182,11 @@ ggplot(penguins, aes(
 
 With the `patchwork` package, you can combine multiple ggplots into one plot. The package allows you to add annotations to the plot and to control the layout and appearance.
 
-Below you find a simple example of two different penugin scatterplots. For more explanation and an overview of what is possible with the package, please have a look at the [package documentation](https://patchwork.data-imaginist.com/)
+Below you find a simple example of two different penguin scatterplots. For more explanation and an overview of what is possible with the package, please have a look at the [package documentation](https://patchwork.data-imaginist.com/)
 
 ```{r echo=TRUE}
 #| warning: false
 library(patchwork)
-# Collecting legends and defining a common theme
 plot_1 <- ggplot(penguins, aes(
   x = bill_len, y = bill_dep,
   color = species
@@ -171,7 +201,6 @@ plot_2 <- ggplot(penguins, aes(
 
 # Simple combination of 2 plots in patchwork
 plot_1 + plot_2
-
 ```
 
 And a more complex example where shared layers are defined for both plots:
@@ -197,6 +226,6 @@ final_plot
 
 ## References
 
-Check out the [package website](https://allisonhorst.github.io/palmerpenguins/articles/examples.html) of the `palmerpenguin` package. They have more nice examples of data visualizations that you can do with ggplot.
+Check out the [package website](https://allisonhorst.github.io/palmerpenguins/articles/examples.html) of the `palmerpenguins` package. They have more nice examples of data visualizations that you can do with ggplot.
 
 Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218.

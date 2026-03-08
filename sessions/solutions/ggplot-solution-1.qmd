@@ -26,12 +26,10 @@ print(penguins, n=6)
 
 ## Exploratory plotting
 
-### Relationship between bill length and bill depth (scatterplot)
-
-What is the relationship between bill length and bill depth?
+### Bill length vs. bill depth (scatterplot)
 
 First, I created a scatter plot and added a linear regression line. From the plot,
-It looks like bill length is decreasing with increasing bill depth.
+it looks like bill length is decreasing with increasing bill depth.
 
 ```{r echo=TRUE, eval=TRUE}
 # Bill length vs. bill depth scatterplot with regression line
@@ -81,58 +79,40 @@ ggplot(penguins, aes(
   geom_smooth(method = "lm", se = FALSE)
 ```
 
-### Difference in flipper length between species (boxplot)
+### Flipper length by species (boxplot)
 
-Is there a difference in flipper length between the species?
-
-First I created a simple boxplot with notches:
+A simple boxplot of flipper length by species:
 
 ```{r echo = TRUE}
-# Basic boxplot of flipper length with notches
+# Basic boxplot of flipper length
 ggplot(penguins, aes(species, flipper_len)) +
-  geom_boxplot(notch = TRUE)
+  geom_boxplot()
 ```
 
-A `geom_point` with `position = position_jitter()` will add the individual data points to the plot. It's important to set a seed here to get the same result for the point position on the x-axis every time. Otherwise your plot is not reproducible.
-I added `width = 0.5` to make the jittering a bit narrower:
+### Body mass by sex and species (boxplot)
+
+A basic boxplot of the body mass by sex:
 
 ```{r}
 #| warning: false
-ggplot(penguins, aes(species, flipper_len)) +
-  geom_boxplot() +
-  geom_point(position = position_jitter(
-    seed = 123,
-    width = 0.5
-  ))
-```
-
-
-### Differences between body mass of male and female penguins (boxplot)
-
-Are male penguins heavier than female penguins? And is this different between the 3 species?
-
-First, a basic boxplot of the body mass by sex:
-
-```{r}
-#|warning: false
 # Basic boxplot of body mass for penguins of different sex
 ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot()
 ```
 
-I added species as color aesthetic:
+Species as color aesthetic:
 
 ```{r}
-#|warning: false
+#| warning: false
 ggplot(penguins, aes(x = sex,
                      y = body_mass)) +
   geom_boxplot(aes(color = species))
 ```
 
-Alternatively, I could also specify the fill aesthetic:
+Species as fill aesthetic:
 
 ```{r}
-#|warning: false
+#| warning: false
 ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot(aes(fill = species))
 ```
@@ -142,24 +122,10 @@ Species as facets:
 ```{r}
 ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot() +
-  facet_wrap(~species)
+  facet_wrap(vars(species))
 ```
 
-I added a violin plot in the background to show the distribution of the
-datapoints. To make the violins visible, I changed the width of the boxplot
-to 0.4:
-
-```{r}
-#| warning: false
-ggplot(penguins, aes(x = sex, y = body_mass)) +
-  geom_violin() +
-  geom_boxplot(width = .04) +
-  facet_wrap(~species)
-```
-
-### Distribution of flipper length between species (histogram)
-
-Make a histogram of the the flipper length separated by species.
+### Flipper length distribution by species (histogram)
 
 The default histogram is a histogram where the different groups are stacked:
 
@@ -172,7 +138,7 @@ ggplot(penguins, aes(
 ```
 
 To unstack the groups, you have to use `position = "identity"`. Also, it's a good idea
-to make the histogram slightly transparent (`alpha = 0.4`) to see the overlapping
+to make the histogram slightly transparent (`alpha = 0.5`) to see the overlapping
 areas.
 
 ```{r}
@@ -196,10 +162,38 @@ ggplot(penguins, aes(
   fill = species
 )) +
   geom_histogram() +
-  facet_wrap(~species, ncol = 1)
+  facet_wrap(vars(species), ncol = 1)
 ```
 
-### Penguin flipper length by species and sex (heatmap)
+## For the fast ones
+
+### Combine points and boxplots
+
+Adding `geom_point` with `position = position_jitter()` shows the individual data points on top of the boxplot. It's important to set a seed to get reproducible point positions.
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(species, flipper_len)) +
+  geom_boxplot() +
+  geom_point(position = position_jitter(
+    seed = 123,
+    width = 0.2
+  ))
+```
+
+### Violin plots
+
+A violin plot combined with a boxplot shows both the distribution shape and the summary statistics. To make the violins visible, I changed the width of the boxplot:
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(x = sex, y = body_mass)) +
+  geom_violin() +
+  geom_boxplot(width = .04) +
+  facet_wrap(vars(species))
+```
+
+### Heatmap
 
 For this data it does not make too much sense, but a heat map would look like this:
 
