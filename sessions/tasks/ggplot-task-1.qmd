@@ -37,6 +37,15 @@ The data is available in R and the data set is called `penguins`:
 
 Take a moment to get familiar with the data set.
 
+Remember the basic ggplot structure:
+
+```{r}
+#| eval: false
+#| echo: true
+ggplot(data, aes(x = ..., y = ...)) +
+  geom_xxx()
+```
+
 ## Exploratory plots
 
 Explore the data set and its variables using ggplot.
@@ -55,8 +64,6 @@ Don't worry about making the plots pretty yet. We'll do that in Task 2.
 ### Flipper length by species (boxplot)
 
 - Create a boxplot of flipper length (y-axis) for the different species (x-axis)
-- Try adding notches to the boxplots
-- **Extra:** Add a layer with `geom_point()` and try setting `position = position_jitter()`. What does it do?
 
 ### Body mass by sex and species (boxplot)
 
@@ -64,8 +71,7 @@ Don't worry about making the plots pretty yet. We'll do that in Task 2.
 - Add species to the plot. Try the different options ggplot offers:
   - Species as color aesthetic
   - Species as fill aesthetic
-  - Species as facet using `facet_wrap`
-- **Extra:** What happens if you use `geom_violin` instead of `geom_boxplot`? Can you combine both geoms in one plot?
+  - Species as facet using `facet_wrap(vars(species))`
 
 ### Flipper length distribution by species (histogram)
 
@@ -73,9 +79,45 @@ Don't worry about making the plots pretty yet. We'll do that in Task 2.
 - Try different methods of separating the species (color or facet)
 - Compare stacked and overlapping histograms
 
-### Flipper length by species and sex (heatmap)
+### Add facets
+
+Take one of the plots you made above and split it into panels using `facet_wrap()`, e.g.:
+
+```{r}
+#| eval: false
+#| echo: true
+facet_wrap(vars(species))
+```
+
+Try splitting by different variables like `species`, `island`, or `sex`.
+
+## For the fast ones
+
+You can do these in any order, or skip them and just take a break.
+
+### Combine points and boxplots
+
+Add a `geom_point()` layer on top of your boxplot. What does this show you that the boxplot alone doesn't?
+
+:::{.callout-tip}
+
+## Overlapping points
+
+Try adding `position = position_jitter(width = 0.2)` inside `geom_point()` to spread the points out so they don't overlap.
+
+:::
+
+### Try violin plots
+
+What happens if you use `geom_violin()` instead of `geom_boxplot()`? Can you combine both geoms in one plot?
+
+### Create a heatmap
 
 Create a heat map with sex and species on the axes and flipper length as the fill color.
+
+### Try with your own data
+
+If you loaded your own data into R last session, try making a plot with it.
 
 ## References
 
