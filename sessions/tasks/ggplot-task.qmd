@@ -18,9 +18,9 @@ number-sections: false
 ```
 :::
 
-## Get started
+## Getting started
 
-A helpful resource to consult for this task can be the [ggplot2 cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf).
+A helpful resource to consult for this task can be the [ggplot2 cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf){target="_blank"}.
 
 Remember to put `library(tidyverse)` (or `library(ggplot2)`) on top of your script to access the ggplot functions.
 
@@ -111,8 +111,6 @@ Here's a list of ideas:
 - Change the color/fill scale of the plot
   - Use `scale_color_manual` or `scale_fill_manual`
   - Try `scale_color_viridis_d()` or `scale_fill_viridis_d()` with different options
-  - Try a color scale from the `paletteer` package
-    - First you have to install the package, then have a look at the [available palettes](https://r-charts.com/color-palettes)
 - Change the labels of the x- and y-axis and add a title to the plot
 - Make the points transparent, give them a different shape, ...
 
@@ -136,14 +134,17 @@ The colors that are used are:
 penguin_cols <- c("darkorange", "purple", "cyan4")
 ```
 
-## Save one of the plots on your machine
+## Save your plot
 
-Save one of the plots to a dedicated plot folder in your RStudio project. You try 
-different formats, e.g. `.png` or `.pdf`.
+Take one of your plots and save it to your project as a `.png` file.
 
-Note: Make sure the path where you save the plot exists. If you e.g. want to save in
-`img/`, then you first have to create the `img` folder in your project directory.
-For this you can use the Files pane of RStudio.
+1. Make sure you have an `img/` folder in your project (create it in the Files pane if needed)
+2. Use `ggsave()` to save your plot as a `.png` file in the `img/` folder. Check `?ggsave` or the slides if you're not sure about the arguments.
+3. Check the Files pane to find the png file.
+
+## Optional tasks (if you finish early)
+
+You can do these in any order — or skip them and just take a break.
 
 ## References
 

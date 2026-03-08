@@ -31,6 +31,9 @@ knitr:
     collapse: true
     comment: "#>"
 from: markdown+emoji
+filters:
+  - roughnotation
+  - flourish
 ---
 
 
@@ -229,7 +232,7 @@ ggplot(
 
 :::
 
-## `geom_point`
+## Local vs. global aesthetics
 
 :::{.columns}
 
@@ -247,7 +250,8 @@ ggplot() +
   )
 ```
 
-- `data` and `aes` can also be local to a layer:
+- `data` and/or `aes` can also be local to a layer
+- You need to explicitly specify the data argument with `data = ...`
 
 :::{.fragment}
 
@@ -336,6 +340,8 @@ Besides `color`, you can also map variables to `size`:
 
 ```{r}
 #| eval: false
+#| flourish:
+#|  - target: "size = pop"
 ggplot(
   gapminder,
   aes(
@@ -374,14 +380,14 @@ ggplot(
 
 Besides `color`, you can also map variables to `shape`:
 
-. . .
-
 :::{.columns}
 
 :::{.column width="50%"}
 
 ```{r}
 #| eval: false
+#| flourish:
+#|  - target: "shape = continent"
 ggplot(
   gapminder,
   aes(
@@ -538,14 +544,13 @@ ggplot(
     color = continent
   )
 ) +
-  geom_point(alpha = 0.5) +
+  geom_point() +
   geom_smooth(method = "lm") +
   scale_x_log10()
 ```
 
 - With `method = "lm"`, a linear regression line is added
 - All geoms done separately for each continent because color is defined globally
-- `alpha` makes points transparent (0-1)
 
 :::
 
@@ -561,7 +566,7 @@ ggplot(
     color = continent
   )
 ) +
-  geom_point(alpha = 0.3) +
+  geom_point() +
   geom_smooth(method = "lm") +
   scale_x_log10()
 ```
@@ -1019,7 +1024,8 @@ ggplot(
   facet_grid(
     rows = vars(continent),
     cols = vars(year)
-  )
+  ) +
+  theme_gray(base_size = 14)
 ```
 
 :::
@@ -1071,12 +1077,6 @@ ggplot(
 **Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/07_ggplot.html)**
 
 (Don't do the "Beautify" task)
-
-
-# {.background-no-title .inverse}
-
-![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/ggplot2_masterpiece.png){width=60%}
-
 
 # Beautifying plots {.inverse}
 
@@ -1582,6 +1582,8 @@ g +
 
 ## `theme_*`: change appearance
 
+`ggplot2` offers many pre-defined themes that we can apply to change the appearance of a plot.
+
 :::{.columns}
 
 :::{.column width="50%"}
@@ -1624,10 +1626,6 @@ Since `ggplot2` v. 4.0.0, you can change overall color choices of a pre-defined 
 
 :::{.column width="50%"}
 
-- `paper`: affects background elements
-- `ink`: affects foreground elements (text, lines, points, ...)
-- `accent`: affects elements that are used to highlight information (like `geom_smooth()` lines)
-
 ```{r}
 #| eval: false
 g +
@@ -1636,6 +1634,11 @@ g +
     paper = "#333333"
   )
 ```
+
+- `paper`: affects background elements
+- `ink`: affects foreground elements (text, lines, points, ...)
+- `accent`: affects elements that are used to highlight information (like `geom_smooth()` lines)
+
 
 :::
 
@@ -1662,13 +1665,6 @@ Since `ggplot2` v. 4.0.0, you can change overall color choices of a pre-defined 
 
 :::{.column width="50%"}
 
-:::{.nonincremental}
-- `paper`: affects background elements
-- `ink`: affects foreground elements (text, lines, points, ...)
-- `accent`: affects elements that are used to highlight information (like `geom_smooth()` lines)
-
-:::
-
 ```{r}
 #| eval: false
 g +
@@ -1677,6 +1673,14 @@ g +
     ink = "navy"
   )
 ```
+
+:::{.nonincremental}
+- `paper`: affects background elements
+- `ink`: affects foreground elements (text, lines, points, ...)
+- `accent`: affects elements that are used to highlight information (like `geom_smooth()` lines)
+
+:::
+
 
 :::
 
