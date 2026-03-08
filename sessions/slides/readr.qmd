@@ -28,6 +28,9 @@ knitr:
     collapse: true
     comment: "#>" 
 from: markdown+emoji
+filters:
+  - roughnotation
+  - flourish
 ---
 
 # The tidyverse {.inverse background-image="img/hex-stickers/tidyverse.png" background-size="12vw" background-position="90% 75%" background-repeat="no-repeat"}
@@ -99,6 +102,8 @@ All `read_*` functions take a path to the data file as a first argument:
 <code><b>read_*("path/to/your/file", ...)</b></code>
 
 :::
+
+<br>
 
 ```{r}
 #| eval: false
@@ -220,6 +225,8 @@ read_csv(
 ## Write files with `write_*()`
 
 Every `read_*` has a corresponding `write_*` function to export data from R.
+
+<br>
 
 . . .
 
