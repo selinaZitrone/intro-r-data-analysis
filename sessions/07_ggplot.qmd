@@ -10,7 +10,7 @@ title: "Data visualization with ggplot2"
 
 ::: {.callout-tip}
 ## Exercises
-Go to the [task page](tasks/ggplot-task.qmd) for the exercises.
+Go to [Task 1: Exploratory plots](tasks/ggplot-task-1.qmd) and [Task 2: Beautify & save](tasks/ggplot-task-2.qmd) for the exercises.
 :::
 
 ## Resources

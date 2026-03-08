@@ -1,0 +1,83 @@
+---
+title: "Task 1: Exploratory plots with ggplot2"
+number-sections: false
+---
+
+[← Back to session page](../07_ggplot.qmd)
+
+:::{.callout-note}
+
+## Find the solution here after the session ends.
+
+```{=html}
+<script>const course_day = 2;</script>
+<script src="../../timer_solution.js"></script>
+<p class="r_class_solution" style="display:none">
+  <a href="../solutions/ggplot-solution-1.html" target="_blank">Click here for the solution.</a>
+</p>
+```
+:::
+
+## Getting started
+
+A helpful resource for this task is the [ggplot2 cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf){target="_blank"}.
+
+Remember to put `library(tidyverse)` (or `library(ggplot2)`) on top of your script.
+
+We will use a data set on 3 species of penguins on islands in Antarctica.
+
+```{r echo=FALSE, eval=TRUE, fig.cap="Artwork by [Allison Horst](https://twitter.com/allison_horst)"}
+knitr::include_graphics(here::here("sessions/tasks/img/lter_penguins.png"))
+```
+
+The data is available in R and the data set is called `penguins`:
+
+- Type `penguins` in the console to see the data
+- Check `?penguins` for a description of the variables
+
+Take a moment to get familiar with the data set.
+
+## Exploratory plots
+
+Explore the data set and its variables using ggplot.
+Below are some suggestions for plots. Pick the ones you find most interesting, and feel free to try your own ideas too.
+
+Don't worry about making the plots pretty yet. We'll do that in Task 2.
+
+### Bill length vs. bill depth (scatterplot)
+
+- Create a scatterplot with bill length on the x-axis and bill depth on the y-axis
+- Add a regression line
+- Add species as color aesthetic. Does your interpretation of the data change?
+  - What is the difference between adding color as a global aesthetic or as a local aesthetic of the point layer?
+- Add species as shape aesthetic to distinguish the species
+
+### Flipper length by species (boxplot)
+
+- Create a boxplot of flipper length (y-axis) for the different species (x-axis)
+- Try adding notches to the boxplots
+- **Extra:** Add a layer with `geom_point()` and try setting `position = position_jitter()`. What does it do?
+
+### Body mass by sex and species (boxplot)
+
+- Create a boxplot with body mass on the y-axis and sex on the x-axis
+- Add species to the plot. Try the different options ggplot offers:
+  - Species as color aesthetic
+  - Species as fill aesthetic
+  - Species as facet using `facet_wrap`
+- **Extra:** What happens if you use `geom_violin` instead of `geom_boxplot`? Can you combine both geoms in one plot?
+
+### Flipper length distribution by species (histogram)
+
+- Make a histogram of the flipper length separated by species
+- Try different methods of separating the species (color or facet)
+- Compare stacked and overlapping histograms
+
+### Flipper length by species and sex (heatmap)
+
+Create a heat map with sex and species on the axes and flipper length as the fill color.
+
+## References
+
+Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0.
+https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218.

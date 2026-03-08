@@ -1,0 +1,63 @@
+---
+title: "Task 2: Beautify and save plots"
+number-sections: false
+---
+
+[← Back to session page](../07_ggplot.qmd)
+
+:::{.callout-note}
+
+## Find the solution here after the session ends.
+
+```{=html}
+<script>const course_day = 2;</script>
+<script src="../../timer_solution.js"></script>
+<p class="r_class_solution" style="display:none">
+  <a href="../solutions/ggplot-solution-2.html" target="_blank">Click here for the solution.</a>
+</p>
+```
+:::
+
+## Beautify the plots
+
+Pick one of the tasks below first, then move on to saving your plot. Feel free to try your own ideas too.
+
+### Beautify a plot from Task 1
+
+Take a plot from Task 1 and make it look nicer. Here are some ideas:
+
+- Add a theme layer (e.g. `theme_minimal()`)
+- Customize the theme, e.g. change the legend position or make axis titles bold
+- Change the color/fill scale using `scale_color_manual` or `scale_color_viridis_d()`
+- Add proper axis labels and a title with `labs()`
+- Make points transparent, give them a different shape, ...
+
+### Reproduce this plot
+
+Try to reproduce the following plot. It builds on the scatterplot from Task 1:
+
+```{r fig.cap="Visualization from the [palmerpenguins package](https://allisonhorst.github.io/palmerpenguins/)"}
+#| echo: false
+knitr::include_graphics(here::here(
+  "sessions/slides/img/figs-penguin/README-flipper-bill-1.png"
+))
+```
+
+Hint: the colors used are:
+
+```{r echo=TRUE, eval=FALSE}
+penguin_cols <- c("darkorange", "purple", "cyan4")
+```
+
+## Save your plot
+
+Take one of your plots and save it to your project as a `.png` file.
+
+1. Make sure you have an `img/` folder in your project (create it in the Files pane if needed)
+2. Use `ggsave()` to save your plot as a `.png` file in the `img/` folder. Check `?ggsave` or the slides if you're not sure about the arguments.
+3. Check the Files pane to find the png file.
+
+## References
+
+Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0.
+https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218.
