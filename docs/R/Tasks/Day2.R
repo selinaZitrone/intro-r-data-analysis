@@ -1,15 +1,13 @@
-# 1. Data visualization in ggplot2 -------------------------------------------
+# Task 1: Exploratory plots with ggplot2 ------------------------------------
 
-# 1.1 and 1.2 Getting started with ggplot and the penguins -------------------
+## Getting started ---------------------------------------------------------
 
 # install.packages("tidyverse")
 library(tidyverse)
 
 penguins
 
-# 1.3 Exploratory plotting ---------------------------------
-
-# 1.3.1 Relationship between bill length and bill depth (scatterplot)
+## Bill length vs. bill depth (scatterplot) --------------------------------
 
 ggplot(
   penguins,
@@ -44,25 +42,19 @@ ggplot(
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 
-# 1.3.2 Difference in flipper length between species (boxplot)
+## Flipper length by species (boxplot) -------------------------------------
 
-# Basic boxplot of flipper length with notches
+# Basic boxplot of flipper length
 ggplot(penguins, aes(species, flipper_len)) +
-  geom_boxplot(notch = TRUE)
+  geom_boxplot()
 
-# Add jittered points
-ggplot(penguins, aes(x = species, y = flipper_len)) +
-  geom_boxplot() +
-  geom_point(position = position_jitter(seed = 123, width = 0.2, height = 0))
-
-## 1.3.3 Differences between body mass of male and female penguins (boxplot)
+## Body mass by sex and species (boxplot) ----------------------------------
 
 # Basic boxplot of body mass for penguins of different sex
 ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot()
 
 # Species as color aesthetic:
-
 ggplot(
   penguins,
   aes(
@@ -81,13 +73,7 @@ ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot() +
   facet_wrap(vars(species))
 
-# With geom_violin
-ggplot(penguins, aes(x = sex, y = body_mass)) +
-  geom_violin() +
-  geom_boxplot(width = 0.4) +
-  facet_wrap(~species)
-
-## 1.3.4 Distribution of flipper length between species (histogram)
+## Flipper length distribution by species (histogram) ----------------------
 
 # Overlapping distributions
 ggplot(
@@ -109,6 +95,7 @@ ggplot(
 ) +
   geom_histogram()
 
+# Separated by facets
 ggplot(
   penguins,
   aes(
@@ -117,10 +104,22 @@ ggplot(
   )
 ) +
   geom_histogram() +
-  facet_wrap(~species, scales = "free_x", ncol = 1)
+  facet_wrap(vars(species), ncol = 1)
 
-#### 1.3.5 Penguin flipper length by species and sex (heatmap)
+## For the fast ones -------------------------------------------------------
 
+# Combine points and boxplots (with jitter)
+ggplot(penguins, aes(x = species, y = flipper_len)) +
+  geom_boxplot() +
+  geom_point(position = position_jitter(seed = 123, width = 0.2, height = 0))
+
+# Violin + boxplot combined
+ggplot(penguins, aes(x = sex, y = body_mass)) +
+  geom_violin() +
+  geom_boxplot(width = 0.4) +
+  facet_wrap(vars(species))
+
+# Heatmap
 ggplot(
   penguins,
   aes(
@@ -131,12 +130,32 @@ ggplot(
 ) +
   geom_tile()
 
-# 1.4 Beautify the plots --------------------------------------------------
+# Task 2: Beautify and save plots -----------------------------------------
 
-## 1.4.1 Beautify plots from 1.3
+## Add labels --------------------------------------------------------------
 
-# Example one: Boxplot of flipper length and species
+ggplot(penguins, aes(species, flipper_len, color = species)) +
+  geom_boxplot(width = 0.3) +
+  geom_point(
+    alpha = 0.5,
+    position = position_jitter(width = 0.2, height = 0, seed = 123)
+  ) +
+  labs(x = "Species", y = "Flipper length (mm)")
+
+## Change the colors -------------------------------------------------------
+
 library(paletteer)
+
+ggplot(penguins, aes(species, flipper_len, color = species)) +
+  geom_boxplot(width = 0.3) +
+  geom_point(
+    alpha = 0.5,
+    position = position_jitter(width = 0.2, height = 0, seed = 123)
+  ) +
+  scale_color_paletteer_d("ggsci::default_uchicago") +
+  labs(x = "Species", y = "Flipper length (mm)")
+
+## Apply a theme -----------------------------------------------------------
 
 ggplot(penguins, aes(species, flipper_len, color = species)) +
   geom_boxplot(width = 0.3) +
@@ -149,7 +168,7 @@ ggplot(penguins, aes(species, flipper_len, color = species)) +
   theme_minimal() +
   theme(legend.position = "none")
 
-# Example two: Reproducing the plot from the presentation
+## Reproduce the plot from the presentation --------------------------------
 
 # The following code is adapted from the palmerpengins package website
 # (https://allisonhorst.github.io/palmerpenguins/articles/examples.html).
@@ -185,7 +204,8 @@ penguin_scatter <- ggplot(
   )
 penguin_scatter
 
-### 1.5 Save one of the plots on your machine
+## Save your plot ----------------------------------------------------------
+
 flipper_box <- ggplot(
   penguins,
   aes(species, flipper_len, color = species)
@@ -214,8 +234,9 @@ ggsave(
 # save as pdf in /img directory of the project
 ggsave(filename = "img/flipper_box.pdf", flipper_box)
 
-# heatmap example
+## For the fast ones -------------------------------------------------------
 
+# Beautified heatmap
 heatmap <- ggplot(
   penguins,
   aes(
@@ -229,7 +250,6 @@ heatmap <- ggplot(
 heatmap
 
 # or with another color scale
-
 heatmap <- ggplot(
   penguins,
   aes(x = species, y = sex, fill = flipper_len)
