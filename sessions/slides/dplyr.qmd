@@ -410,7 +410,7 @@ Use the keyboard shortcut `Ctrl/Cmd + Shift + M` to insert `|>`
 
 # Now you {.inverse}
 
-[Task 1 (15 min)]{.highlight-blue}<br>
+[Task 1 (25 min)]{.highlight-blue}<br>
 
 [Filter, select, and mutate the penguin data]{.big-text}
 
@@ -599,7 +599,7 @@ gapminder |>
 
 # Now you {.inverse}
 
-[Task 2 (15 min)]{.highlight-blue}<br>
+[Task 2 (30 min)]{.highlight-blue}<br>
 
 [Summarize data and combine dplyr with ggplot]{.big-text}
 

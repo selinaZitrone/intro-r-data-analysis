@@ -1026,7 +1026,7 @@ ggplot(
 
 # Now you {.inverse}
 
-[Task 1 (45 min)]{.highlight-blue}<br>
+[Task 1 (35 min)]{.highlight-blue}<br>
 
 [Exploratory data analysis with the penguin data set]{.big-text}
 
