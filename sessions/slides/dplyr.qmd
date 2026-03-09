@@ -581,7 +581,24 @@ gapminder |>
 
 **Find the task description [here](TODO)**
 
-# Combining multiple tables{.inverse}
+# Good to know {.inverse}
+
+## Good to know
+
+`dplyr` has more useful functions that we didn't cover today:
+
+:::{.nonincremental}
+
+- **`bind_rows()`**: combine multiple tables with the same columns into one
+- **`left_join()`**: combine two tables by a shared column
+- **`arrange()`**: sort rows by column values
+- **`rename()`**: rename columns
+
+:::
+
+. . .
+
+You can find documentation, examples and a cheatsheet for all of these on the [dplyr website](https://dplyr.tidyverse.org/).
 
 ## Combine two tibbles by row `bind_rows`
 
