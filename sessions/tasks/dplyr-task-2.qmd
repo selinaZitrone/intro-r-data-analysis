@@ -47,8 +47,7 @@ library(tidyverse)
 
 ## For the fast ones
 
-- **Tricky:** Summarize mean body mass by species, then pipe the result into a bar chart with `geom_col()`. You haven't seen `geom_col()` yet — it works like other geoms: map species to `x` and mean body mass to `y`.
+- **A bit tricky:** Summarize mean body mass by species, then pipe the result into a bar chart with `geom_col()`. You haven't seen `geom_col()` yet but it works like other geoms: map species to `x` and mean body mass to `y`.
 
 - Calculate the min, max, and mean flipper length per species.
-
-- Can you sort the result from the previous task by mean flipper length? Hint: you'll need `arrange()` — a function we haven't covered yet. Check `?arrange` to figure out how it works.
+  - **Extra**: Can you sort the result by mean flipper length? Hint: you'll need `arrange()` which we haven't covered yet. Check `?arrange` to figure out how it works.

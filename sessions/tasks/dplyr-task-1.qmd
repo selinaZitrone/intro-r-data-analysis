@@ -29,7 +29,7 @@ Before you start, make sure to load the `tidyverse` package.
 library(tidyverse)
 ```
 
-We will continue working with the `penguins` data set from the `palmerpenguins` package.
+We will continue working with the `penguins` data set.
 
 ## Filter penguins
 
@@ -59,10 +59,11 @@ We will continue working with the `penguins` data set from the `palmerpenguins` 
 
 ## Combine with the pipe
 
-9. Use the pipe to combine multiple steps: start with `penguins`, remove rows with missing `sex`, keep only Adelie penguins, and select only `species`, `sex`, and `body_mass_g`.
+9. Use the pipe to combine multiple steps: start with `penguins`, remove rows with missing `sex`, keep only Adelie penguins, and select only `species`, `sex`, and `body_mass`.
 
 ## For the fast ones
 
-- Use `filter_out()` to exclude penguins from Torgersen island, then select only `species`, `island`, and `flipper_length_mm`.
+- Use `filter_out()` to exclude penguins from Torgersen island, then select only `species`, `island`, and `flipper_len`.
 
-- Create a `size_category` column with `case_when` based on body mass (small < 3500, medium < 5000, large >= 5000). Do it in a pipe that also removes NAs and selects only `species`, `body_mass_g`, and `size_category`.
+- Create a `size_category` column with `case_when` based on body mass (small < 3500, medium < 5000, large >= 5000). 
+  - **Extra**: Do it in a pipe that also removes NAs and selects only `species`, `body_mass`, and `size_category`.

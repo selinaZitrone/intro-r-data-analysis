@@ -493,6 +493,15 @@ Counts observations by group
 count(gapminder, continent)
 ```
 
+. . .
+
+Count by multiple groups:
+
+```{r}
+# count rows grouped by continent and year
+count(gapminder, continent, year)
+```
+
 ## The pipe `|>` + ggplot
 
 Piping also works well together with `ggplot`

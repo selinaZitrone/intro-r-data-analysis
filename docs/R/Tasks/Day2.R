@@ -323,63 +323,40 @@ ggsave("img/patchwork.png", final_plot)
 
 esquisse::esquisser(penguins)
 
-# 2 dplyr -------------------------------------------------------------------
+# dplyr Task 1: Filter, select, and mutate ---------------------------------
 
-# library(tidyverse)
-#
-# … with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).
+## Filter penguins ---------------------------------------------------------
 
-# Filter tasks -------------------------------------------------------------------
+# 1. bill length between 40 and 45 mm
+filter(penguins, bill_len >= 40 & bill_len <= 45)
 
-# bill length between 40 and 45 mm.
-filter(penguins, between(bill_len, 40, 45))
-# same as
-filter(penguins, bill_len < 45 & bill_len > 40)
+# 2. species Adelie or Gentoo
+filter(penguins, species %in% c("Adelie", "Gentoo"))
+# or
+filter(penguins, species == "Adelie" | species == "Gentoo")
 
-# for which we know the sex.
+# 3. lived on Dream in 2007
+filter(penguins, island == "Dream" & year == 2007)
 
-filter(penguins, !is.na(sex))
+## Remove missing values ---------------------------------------------------
 
-# which are of the species Adelie or Gentoo
-filter(
-  penguins,
-  species %in% c("Adelie", "Gentoo")
-)
+# 4. remove penguins with missing sex
+drop_na(penguins, sex)
 
-filter(penguins, (species == "Adelie" | species == "Gentoo"))
+## Select columns ----------------------------------------------------------
 
-# lived on Dream in 2007
-# How many of them were from each of the 3 species?
-
-filter(penguins, island == "Dream" & year == 2007) |>
-  count(species)
-
-filter(penguins, island == "Dream") |>
-  filter(year == 2007) |>
-  count(species)
-
-# Count tasks -------------------------------------------------------------
-
-# number of penguins on each island
-
-count(penguins, island)
-
-# number of penguins of each species on each island.
-
-count(penguins, island, species)
-
-# Select tasks --------------------------------------------------------------
-
-# only the variables species, sex and year
+# 5. only species, sex, and year
 select(penguins, species, sex, year)
 
+# 6. columns that start with "bill"
+select(penguins, starts_with("bill"))
 
-# Mutate tasks ------------------------------------------------------------
+## Add new columns ---------------------------------------------------------
 
-# with the ratio of bill length to bill depth
+# 7. ratio of bill length to bill depth
 mutate(penguins, ratio = bill_len / bill_dep)
 
-# abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C)
+# 8. abbreviations for the species
 mutate(
   penguins,
   species_short = case_when(
@@ -390,69 +367,102 @@ mutate(
   )
 )
 
-# Summary tasks -----------------------------------------------------------
+## Combine with the pipe ---------------------------------------------------
 
-# mean flipper length and body mass for the 3 species and
-# male and female penguins separately
-
+# 9. remove NA sex, keep Adelie, select species/sex/body_mass
 penguins |>
+  drop_na(sex) |>
+  filter(species == "Adelie") |>
+  select(species, sex, body_mass)
+
+## For the fast ones -------------------------------------------------------
+
+# filter_out penguins from Torgersen, then select columns
+penguins |>
+  filter_out(island == "Torgersen") |>
+  select(species, island, flipper_len)
+
+# size_category with case_when in a pipe
+penguins |>
+  drop_na(body_mass) |>
+  mutate(
+    size_category = case_when(
+      body_mass < 3500 ~ "small",
+      body_mass < 5000 ~ "medium",
+      body_mass >= 5000 ~ "large"
+    )
+  ) |>
+  select(species, body_mass, size_category)
+
+# dplyr Task 2: Summarize and visualize -----------------------------------
+
+## Count -------------------------------------------------------------------
+
+# 1. number of penguins on each island
+count(penguins, island)
+
+# 2. number of penguins of each species on each island
+count(penguins, island, species)
+
+## Summarize ---------------------------------------------------------------
+
+# 3. mean flipper length and body mass by species
+penguins |>
+  summarize(
+    mean_flipper = mean(flipper_len, na.rm = TRUE),
+    mean_body = mean(body_mass, na.rm = TRUE),
+    .by = species
+  )
+
+# 4. mean flipper length and body mass by species and sex, remove unknown sex
+penguins |>
+  drop_na(sex) |>
   summarize(
     mean_flipper = mean(flipper_len, na.rm = TRUE),
     mean_body = mean(body_mass, na.rm = TRUE),
     .by = c(species, sex)
   )
 
-# same but remove the penguins with unknown sex
+## Combine dplyr and ggplot ------------------------------------------------
 
+# 5. remove missing sex, boxplot of body mass by sex
 penguins |>
-  filter(!is.na(sex)) |>
-  summarize(
-    mean_flipper = mean(flipper_len, na.rm = TRUE),
-    mean_body = mean(body_mass, na.rm = TRUE),
-    .by = c(species, sex)
-  )
-
-### Extras
-
-# boxplot of penguin body mass with sex on the x-axis
-# facets for the different species.
-# remove the penguins with missing values for sex first
-
-penguins |>
-  filter(!is.na(sex)) |>
+  drop_na(sex) |>
   ggplot(aes(x = sex, y = body_mass)) +
-  geom_boxplot() +
-  facet_wrap(~species) +
-  labs(caption = "Some caption") +
-  theme(plot.caption = element_text(face = "bold", hjust = 1))
+  geom_boxplot()
 
-# scatterplot with ratio of bill length to bill depth on the y axis
-# and flipper length on the x axis
-# distinguish between male and female penguins
-# remove penguins with unknown sex before making the plot
-
+# 6. remove missing sex, scatterplot bill length vs bill depth by species
 penguins |>
-  mutate(ratio = bill_len / bill_dep) |>
-  filter(!is.na(sex)) |>
-  ggplot(aes(x = flipper_len, y = ratio, color = sex)) +
-  geom_point() +
-  scale_color_manual(values = c("cyan4", "darkorange")) +
-  labs(
-    x = "Flipper lenght (mm)",
-    y = "Ratio bill length / bill depth (-)"
-  ) +
-  theme_minimal()
+  drop_na(sex) |>
+  ggplot(aes(x = bill_len, y = bill_dep, color = species)) +
+  geom_point()
 
-# Sort tasks --------------------------------------------------------------
+## For the fast ones -------------------------------------------------------
 
-# penguins with lowest body mass first
+# Tricky: summarize mean body mass by species, pipe into geom_col()
+penguins |>
+  summarize(
+    mean_body = mean(body_mass, na.rm = TRUE),
+    .by = species
+  ) |>
+  ggplot(aes(x = species, y = mean_body)) +
+  geom_col()
 
-arrange(penguins, body_mass)
+# min, max, and mean flipper length per species
+penguins |>
+  summarize(
+    min_flipper = min(flipper_len, na.rm = TRUE),
+    max_flipper = max(flipper_len, na.rm = TRUE),
+    mean_flipper = mean(flipper_len, na.rm = TRUE),
+    .by = species
+  )
 
-# penguins with highest body mass first
-
-arrange(penguins, desc(body_mass))
-
-# penguins by species and sex, with longest flippers first
-
-arrange(penguins, species, sex, desc(flipper_len))
+# sort by mean flipper length
+penguins |>
+  summarize(
+    min_flipper = min(flipper_len, na.rm = TRUE),
+    max_flipper = max(flipper_len, na.rm = TRUE),
+    mean_flipper = mean(flipper_len, na.rm = TRUE),
+    .by = species
+  ) |>
+  arrange(mean_flipper)
