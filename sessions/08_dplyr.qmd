@@ -15,4 +15,5 @@ Go to [Task 1: Filter, select, and mutate](tasks/dplyr-task-1.qmd) and [Task 2: 
 
 ## Resources
 
-- [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf){target="_blank"}
+- [dplyr cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf){target="_blank"}: A handy reference for dplyr functions and operations.
+- [dplyr documentation](https://dplyr.tidyverse.org/): The official documentation for dplyr, with examples and function references.
