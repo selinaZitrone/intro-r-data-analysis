@@ -171,7 +171,7 @@ Use `|` (or) - one conditions must be true:
 . . .
 
 ```{r}
-# Filter the years between 1970 and 2005
+# Filter years outside the range 1970–2005
 filter(gapminder, year >= 2005 | year <= 1970)
 ```
 
