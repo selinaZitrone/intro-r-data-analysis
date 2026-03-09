@@ -58,7 +58,6 @@ Don't worry about making the plots pretty yet. We'll do that in Task 2.
 - Create a scatterplot with bill length on the x-axis and bill depth on the y-axis
 - Add a regression line
 - Add species as color aesthetic. Does your interpretation of the data change?
-  - What is the difference between adding color as a global aesthetic or as a local aesthetic of the point layer?
 - Add species as shape aesthetic to distinguish the species
 
 ### Flipper length by species (boxplot)

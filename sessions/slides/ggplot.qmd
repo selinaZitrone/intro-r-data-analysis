@@ -65,7 +65,7 @@ theme_set(theme_grey(base_size = 16))
 
 ## A ggplot showcase
 
-![Overview of different plot possibilites created by Cédric Scherer. Check out [his tutorial](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/#toc) to learn how to make all these plots with ggplot](img/day2/ggplot_showcase_cedric.png){width=70%}
+![Overview of different plot possibilites created by Cédric Scherer. Check out [his tutorial](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/#toc) to learn how to make all these plots with ggplot](img/day2/ggplot_showcase_cedric.png){width=60%}
 
 ## The ggplot2 package
 
@@ -232,52 +232,6 @@ ggplot(
 
 :::
 
-## Local vs. global aesthetics
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-
-```{r eval=FALSE}
-ggplot() +
-  geom_point(
-    data = gapminder,
-    aes(
-      x = gdpPercap,
-      y = lifeExp
-    )
-  )
-```
-
-- `data` and/or `aes` can also be local to a layer
-- You need to explicitly specify the data argument with `data = ...`
-
-:::{.fragment}
-
-Here, it does not make a difference in the result.
-
-:::
-
-:::
-
-:::{.column width="50%"}
-
-```{r echo=FALSE, warning=TRUE}
-ggplot() +
-  geom_point(
-    data = gapminder,
-    aes(
-      x = gdpPercap,
-      y = lifeExp
-    )
-  )
-```
-
-:::
-
-:::
-
 ## Add color: `aes(color = ...)`
 
 Map a variable to the **color** aesthetic to distinguish groups:
@@ -361,7 +315,7 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(
-  gapminder |> filter(year == 2007),
+  gapminder,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -407,7 +361,7 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(
-  gapminder |> filter(year == 2007),
+  gapminder,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -1003,8 +957,6 @@ ggplot(
   )
 ```
 
-- `facet_grid(rows = vars(...), cols = vars(...))`
-
 :::
 
 :::{.column width="50%"}
@@ -1070,13 +1022,11 @@ ggplot(
 
 # Now you {.inverse}
 
-[Task 1.1 - 1.2 (45 min)]{.highlight-blue}<br>
+[Task 1 (45 min)]{.highlight-blue}<br>
 
 [Exploratory data analysis with the penguin data set]{.big-text}
 
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/07_ggplot.html)**
-
-(Don't do the "Beautify" task)
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/ggplot-task-1.html)**
 
 # Beautifying plots {.inverse}
 
@@ -1256,6 +1206,10 @@ Mapping and setting aesthetics can also be combined:
 
 ```{r}
 #| eval: false
+#| flourish:
+#|  - target: "color = continent"
+#|  - target: "size = 2"
+#|  - target: "alpha = 0.6"
 ggplot(
   gapminder,
   aes(
@@ -1307,7 +1261,7 @@ Let's take this plot and make it look better step by step:
 
 ```{r}
 #| eval: false
-g <- ggplot(
+my_plot <- ggplot(
   gapminder,
   aes(
     x = gdpPercap,
@@ -1317,11 +1271,11 @@ g <- ggplot(
 ) +
   geom_point() +
   scale_x_log10()
-g
+my_plot
 ```
 
-- Saving the plot in a variable `g` so we can build on it
-- Other plot layers can still be added to `g`
+- Saving the plot in a variable `my_plot` so we can build on it
+- Other plot layers can still be added to `my_plot`
 
 :::
 
@@ -1329,7 +1283,7 @@ g
 
 ```{r}
 #| echo: false
-g <- ggplot(
+my_plot <- ggplot(
   gapminder,
   aes(
     x = gdpPercap,
@@ -1339,7 +1293,7 @@ g <- ggplot(
 ) +
   geom_point() +
   scale_x_log10()
-g
+my_plot
 ```
 
 :::
@@ -1358,7 +1312,7 @@ Change the colors of the color aesthetic:
 
 ```{r}
 #| eval: false
-g <- g +
+my_plot <- my_plot +
   scale_color_manual(
     values = c(
       "darkorange",
@@ -1368,7 +1322,7 @@ g <- g +
       "grey70"
     )
   )
-g
+my_plot
 ```
 
 - One color per group: number of colors must match the number of groups
@@ -1380,7 +1334,7 @@ g
 
 ```{r}
 #| echo: false
-g <- g +
+my_plot <- my_plot +
   scale_color_manual(
     values = c(
       "darkorange",
@@ -1390,7 +1344,7 @@ g <- g +
       "grey50"
     )
   )
-g
+my_plot
 ```
 
 :::
@@ -1410,7 +1364,7 @@ Change the colors of the color aesthetic:
 
 ```{r}
 #| eval: false
-g +
+my_plot +
   scale_color_viridis_d(
     option = "magma"
   )
@@ -1427,7 +1381,7 @@ g +
 
 ```{r}
 #| echo: false
-g +
+my_plot +
   scale_color_viridis_d(option = "magma")
 ```
 
@@ -1444,7 +1398,7 @@ g +
 
 ```{r}
 #| eval: false
-g +
+my_plot +
   scale_color_brewer(
     palette = "Set2"
   )
@@ -1460,7 +1414,7 @@ g +
 
 ```{r}
 #| echo: false
-g +
+my_plot +
   scale_color_brewer(
     palette = "Set2"
   )
@@ -1527,7 +1481,7 @@ ggplot(
 #| output-location: slide
 #| fig-width: 8
 #| fig-height: 6
-g <- g +
+my_plot <- my_plot +
   labs(
     x = "GDP per capita [US$]",
     y = "Life expectancy [years]",
@@ -1536,7 +1490,7 @@ g <- g +
     subtitle = "Higher GDP per capita is associated with longer life expectancy",
     caption = "Data from the gapminder package"
   )
-g
+my_plot
 ```
 
 
@@ -1552,12 +1506,12 @@ g
 
 ```{r}
 #| eval: false
-g +
+my_plot +
   theme_classic()
 ```
 
 ```{r echo=FALSE, fig.height=5}
-g +
+my_plot +
   theme_classic(base_size = 14)
 ```
 
@@ -1567,12 +1521,12 @@ g +
 
 ```{r}
 #| eval: false
-g +
+my_plot +
   theme_bw()
 ```
 
 ```{r echo=FALSE, fig.height= 5}
-g +
+my_plot +
   theme_bw(base_size = 14)
 ```
 
@@ -1590,12 +1544,12 @@ g +
 
 ```{r}
 #| eval: false
-g +
+my_plot +
   theme_minimal()
 ```
 
 ```{r echo=FALSE, fig.height= 5}
-g +
+my_plot +
   theme_minimal(base_size = 14)
 ```
 
@@ -1605,12 +1559,12 @@ g +
 
 ```{r}
 #| eval: false
-g +
+my_plot +
   theme_linedraw()
 ```
 
 ```{r echo=FALSE, fig.height= 5}
-g +
+my_plot +
   theme_linedraw(base_size = 14)
 ```
 
@@ -1628,7 +1582,7 @@ Since `ggplot2` v. 4.0.0, you can change overall color choices of a pre-defined 
 
 ```{r}
 #| eval: false
-g +
+my_plot +
   theme_bw(
     ink = "#BBBBBB",
     paper = "#333333"
@@ -1645,7 +1599,7 @@ g +
 :::{.column width="50%"}
 
 ```{r echo=FALSE, fig.height= 5}
-g +
+my_plot +
   theme_bw(
     base_size = 14,
     ink = "#BBBBBB",
@@ -1667,7 +1621,7 @@ Since `ggplot2` v. 4.0.0, you can change overall color choices of a pre-defined 
 
 ```{r}
 #| eval: false
-g +
+my_plot +
   theme_minimal(
     paper = "cornsilk",
     ink = "navy"
@@ -1687,7 +1641,7 @@ g +
 :::{.column width="50%"}
 
 ```{r echo=FALSE, fig.height= 5}
-g +
+my_plot +
   theme_minimal(
     base_size = 14,
     paper = "cornsilk",
@@ -1707,17 +1661,19 @@ g +
 
 ```{r}
 #| eval: false
-g <- g +
+my_plot <- my_plot +
   theme_classic() +
   theme(
-    # Move legend to the bottom
-    legend.position = "bottom",
+    # Move legend inside the plot
+    legend.position = "inside",
+    # Define the position with x and y coordinates (0-1)
+    legend.position.inside = c(0.90, 0.15),
     # Make the title bold
     plot.title = element_text(face = "bold"),
-    # Add the major grid lines
-    panel.grid.major = element_line(color = "grey80")
+    # Make axis titles larger and bold
+    axis.title = element_text(size = 14, face = "bold")
   )
-g
+my_plot
 ```
 
 :::{.fragment}
@@ -1738,18 +1694,20 @@ theme(
 
 ```{r}
 #| echo: false
-g <- g +
+my_plot <- my_plot +
   theme_classic(base_size = 14) +
   theme(
-    # Move legend to the bottom
-    legend.position = "bottom",
+    # Move legend inside the plot
+    legend.position = "inside",
+    # Define the position with x and y coordinates (0-1)
+    legend.position.inside = c(0.95, 0.05),
     # Make the title bold
     plot.title = element_text(face = "bold"),
-    # Add the major grid lines
-    panel.grid.major = element_line(color = "grey80")
+    # Make axis titles larger and bold
+    axis.title = element_text(size = 14, face = "bold")
   )
-g
-final_plot <- g
+my_plot
+final_plot <- my_plot
 ```
 
 :::
@@ -1759,7 +1717,7 @@ final_plot <- g
 ## `theme()`: fine-tune individual elements
 
 - Check `?theme` for all theme elements and options
-- Search: "ggplot theme ..." (e.g. "ggplot theme remove legend")
+- Search: "ggplot theme ..." (e.my_plot. "ggplot theme remove legend")
 
 . . .
 
@@ -1800,10 +1758,10 @@ A ggplot object can be saved on disk in different formats.
 Without specifications:
 
 ```{r eval=FALSE}
-# save plot g in img as my_plot.pdf
-ggsave(filename = "img/my_plot.pdf", plot = g)
-# save plot g in img as my_plot.png
-ggsave(filename = "img/my_plot.png", plot = g)
+# save plot my_plot in img as my_plot.pdf
+ggsave(filename = "img/my_plot.pdf", plot = my_plot)
+# save plot my_plot in img as my_plot.png
+ggsave(filename = "img/my_plot.png", plot = my_plot)
 ```
 
 . . .
@@ -1811,11 +1769,11 @@ ggsave(filename = "img/my_plot.png", plot = g)
 Or with specifications:
 
 ```{r eval=FALSE}
-# save a plot named g in the img directory under the name my_plot.png
+# save a plot named my_plot in the img directory under the name my_plot.png
 # with width 16 cm and height 9 cm
 ggsave(
   filename = "img/my_plot.png",
-  plot = g,
+  plot = my_plot,
   width = 16,
   heigth = 9,
   units = "cm"
