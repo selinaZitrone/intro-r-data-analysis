@@ -295,57 +295,6 @@ mutate(
 )
 ```
 
-# `summarize()` {.inverse}
-
-> summarizes data
-
-## `summarize()`
-
-`summarize` will **collapse the data to a single row**
-
-. . .
-
-```{r}
-summarize(
-  gapminder,
-  mean_lifeExp = mean(lifeExp),
-  mean_gdpPercap = mean(gdpPercap)
-)
-```
-
-## `summarize()` by group
-
-`summarize` is much more useful in combination with the grouping argument `.by`
-
-- **summary** will be calculated **separately for each group**
-
-. . .
-
-```{r}
-#| flourish:
-#|   - target: ".by = continent"
-# summarize the grouped data
-summarize(
-  gapminder,
-  mean_lifeExp = mean(lifeExp),
-  mean_gdpPercap = mean(gdpPercap),
-  .by = continent
-)
-```
-
-. . .
-
-- Combine variables if you want to summarize by more than one group (e.g. `.by = c(continent, year)`)
-
-## `count()`
-
-Counts observations by group
-
-```{r}
-# count rows grouped by continent
-count(gapminder, continent)
-```
-
 # The pipe ` |> ` {.inverse}
 
 > Combine multiple data operations into one command
@@ -467,7 +416,58 @@ Use the keyboard shortcut `Ctrl/Cmd + Shift + M` to insert `|>`
 
 **Find the task description [here](TODO)**
 
-## The pipe `|>`
+# Summarizing data {.inverse}
+
+> From many rows to key numbers
+
+## `summarize()`
+
+`summarize` will **collapse the data to a single row**
+
+. . .
+
+```{r}
+summarize(
+  gapminder,
+  mean_lifeExp = mean(lifeExp),
+  mean_gdpPercap = mean(gdpPercap)
+)
+```
+
+## `summarize()` by group
+
+`summarize` is much more useful in combination with the grouping argument `.by`
+
+- **summary** will be calculated **separately for each group**
+
+. . .
+
+```{r}
+#| flourish:
+#|   - target: ".by = continent"
+# summarize the grouped data
+summarize(
+  gapminder,
+  mean_lifeExp = mean(lifeExp),
+  mean_gdpPercap = mean(gdpPercap),
+  .by = continent
+)
+```
+
+. . .
+
+- Combine variables if you want to summarize by more than one group (e.g. `.by = c(continent, year)`)
+
+## `count()`
+
+Counts observations by group
+
+```{r}
+# count rows grouped by continent
+count(gapminder, continent)
+```
+
+## The pipe `|>` + ggplot
 
 Piping also works well together with `ggplot`
 
