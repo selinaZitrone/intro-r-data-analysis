@@ -10,7 +10,7 @@ title: "Data transformation with dplyr"
 
 ::: {.callout-tip}
 ## Exercises
-Go to the [task page](tasks/dplyr-task.qmd) for the exercises.
+Go to [Task 1: Filter, select, and mutate](tasks/dplyr-task-1.qmd) and [Task 2: Summarize & visualize](tasks/dplyr-task-2.qmd) for the exercises.
 :::
 
 ## Resources
