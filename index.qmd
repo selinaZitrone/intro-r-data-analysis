@@ -65,7 +65,6 @@ window.addEventListener("load", function () {
 
 - [Data visualization with ggplot2](sessions/07_ggplot.qmd)
 - [Data transformation with dplyr](sessions/08_dplyr.qmd)
-- [Good practice coding](sessions/11_good-practice.qmd)
 
 ### Day 3 — Tidy Data and Statistics
 
