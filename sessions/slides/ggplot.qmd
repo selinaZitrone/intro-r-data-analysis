@@ -101,6 +101,10 @@ gapminder
 
 . . .
 
+```{r}
+gapminder_2007 <- filter(gapminder, year == 2007)
+```
+
 How is life expectancy related to GDP per capita?
 
 # Building a ggplot {.inverse}
@@ -119,7 +123,7 @@ The `ggplot()` function initializes a ggplot object. Every ggplot needs this fun
 
 ```{r}
 #| eval: false
-ggplot(gapminder)
+ggplot(gapminder_2007)
 ```
 
 - Empty plot because we haven't told ggplot what to put on the axes yet
@@ -130,7 +134,7 @@ ggplot(gapminder)
 
 ```{r}
 #| echo: false
-ggplot(gapminder)
+ggplot(gapminder_2007)
 ```
 
 :::
@@ -150,7 +154,7 @@ The **aes**thetics define how data variables are mapped to plot properties.
 ```{r}
 #| eval: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp
@@ -168,7 +172,7 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp
@@ -196,7 +200,7 @@ ggplot(
 ```{r}
 #| eval: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp
@@ -219,7 +223,7 @@ Does this depend on the continent?
 ```{r}
 #| echo: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp
@@ -247,7 +251,7 @@ Map a variable to the **color** aesthetic to distinguish groups:
 #| flourish:
 #|   - target: "color = continent"
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -267,7 +271,7 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -297,7 +301,7 @@ Besides `color`, you can also map variables to `size`:
 #| flourish:
 #|  - target: "size = pop"
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -315,7 +319,7 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -343,7 +347,7 @@ Besides `color`, you can also map variables to `shape`:
 #| flourish:
 #|  - target: "shape = continent"
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -361,7 +365,7 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -387,7 +391,7 @@ The scales onto which the aesthetic elements are mapped can be changed.
 ```{r}
 #| eval: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -407,7 +411,7 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -432,7 +436,7 @@ ggplot(
 #| flourish:
 #|  - target: "scale_x_log10()"
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -460,7 +464,7 @@ Here we scale the <b>[x]{.highlight-ylw}</b> aesthetic to <b>[log10]{.highlight-
 ```{r}
 #| echo: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -491,7 +495,7 @@ Add a smoothing line that helps see patterns in the data
 #| flourish:
 #|    - target: "geom_smooth(method = 'lm')"
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -513,7 +517,7 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -1045,7 +1049,7 @@ Inside `aes()`: **map** a variable to color
 ```{r}
 #| eval: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -1060,7 +1064,7 @@ ggplot(
 #| fig-width: 3.5
 #| fig-height: 3.3
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -1083,7 +1087,7 @@ Inside `geom`: **set** color of all points
 ```{r}
 #| eval: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp
@@ -1099,7 +1103,7 @@ ggplot(
 #| fig-width: 3.5
 #| fig-height: 3.3
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp
@@ -1131,7 +1135,7 @@ You can change point shape, size, and transparency in the same way:
 ```{r}
 #| eval: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp
@@ -1176,7 +1180,7 @@ ggplot(shapes, aes(x, y)) +
 ```{r}
 #| echo: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp
@@ -1211,7 +1215,7 @@ Mapping and setting aesthetics can also be combined:
 #|  - target: "size = 2"
 #|  - target: "alpha = 0.6"
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -1232,7 +1236,7 @@ ggplot(
 ```{r}
 #| echo: false
 ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -1262,7 +1266,7 @@ Let's take this plot and make it look better step by step:
 ```{r}
 #| eval: false
 my_plot <- ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -1284,7 +1288,7 @@ my_plot
 ```{r}
 #| echo: false
 my_plot <- ggplot(
-  gapminder,
+  gapminder_2007,
   aes(
     x = gdpPercap,
     y = lifeExp,
@@ -1667,7 +1671,7 @@ my_plot <- my_plot +
     # Move legend inside the plot
     legend.position = "inside",
     # Define the position with x and y coordinates (0-1)
-    legend.position.inside = c(0.90, 0.15),
+    legend.position.inside = c(0.90, 0.2),
     # Make the title bold
     plot.title = element_text(face = "bold"),
     # Make axis titles larger and bold
@@ -1700,7 +1704,7 @@ my_plot <- my_plot +
     # Move legend inside the plot
     legend.position = "inside",
     # Define the position with x and y coordinates (0-1)
-    legend.position.inside = c(0.95, 0.05),
+    legend.position.inside = c(0.90, 0.2),
     # Make the title bold
     plot.title = element_text(face = "bold"),
     # Make axis titles larger and bold
