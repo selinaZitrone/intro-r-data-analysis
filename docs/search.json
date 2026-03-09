@@ -1334,7 +1334,7 @@
     "href": "index.html#schedule",
     "title": "Introduction to R for Data Analysis",
     "section": "Schedule",
-    "text": "Schedule\n\n\n\n\nDate\nTime\n\n\n\n\n📅 Day 1\nMonday, 9 March 2026\n9:00 – 16:00\n\n\n📅 Day 2\nTuesday, 10 March 2026\n9:00 – 16:00\n\n\n📅 Day 3\nMonday, 16 March 2026\n9:00 – 16:00\n\n\n📅 Day 4\nTuesday, 17 March 2026\n9:00 – 16:00\n\n\n\n\n\n\nDay 1 — R and RStudio Basics, Reading Data\nThe task solution script will be available for download here after the session.\n\nDownload Day 1 R script\n\n\nOrganization\nIntroduction to RStudio\nIntroduction to R\nData frames & tibbles\nTidyverse and readr\nCommon R errors\n\n\n\nDay 2 — Data Visualization and Transformation\nThe task solution script will be available for download here after the session.\n\nDownload Day 2 R script\n\n\nData visualization with ggplot2\nData transformation with dplyr\nGood practice coding\n\n\n\nDay 3 — Tidy Data and Statistics\nThe task solution script will be available for download here after the session.\n\nDownload Day 3 R script\n\n\nTidy data with tidyr\nStatistical tests\nAI Tools\n\n\n\nDay 4 — Bring Your Own Data\nApply what you’ve learned to your own research data, with instructor support throughout the day.\n\nBring Your Own Data"
+    "text": "Schedule\n\n\n\n\nDate\nTime\n\n\n\n\n📅 Day 1\nMonday, 9 March 2026\n9:00 – 16:00\n\n\n📅 Day 2\nTuesday, 10 March 2026\n9:00 – 16:00\n\n\n📅 Day 3\nMonday, 16 March 2026\n9:00 – 16:00\n\n\n📅 Day 4\nTuesday, 17 March 2026\n9:00 – 16:00\n\n\n\n\n\n\nDay 1 — R and RStudio Basics, Reading Data\nThe task solution script will be available for download here after the session.\n\nDownload Day 1 R script\n\n\nOrganization\nIntroduction to RStudio\nIntroduction to R\nData frames & tibbles\nTidyverse and readr\nCommon R errors\nGood coding practice\n\n\n\nDay 2 — Data Visualization and Transformation\nThe task solution script will be available for download here after the session.\n\nDownload Day 2 R script\n\n\nData visualization with ggplot2\nData transformation with dplyr\nGood practice coding\n\n\n\nDay 3 — Tidy Data and Statistics\nThe task solution script will be available for download here after the session.\n\nDownload Day 3 R script\n\n\nTidy data with tidyr\nStatistical tests\nAI Tools\n\n\n\nDay 4 — Bring Your Own Data\nApply what you’ve learned to your own research data, with instructor support throughout the day.\n\nBring Your Own Data"
   },
   {
     "objectID": "byod/olympics.html",
@@ -2819,5 +2819,124 @@
     "title": "Task: Statistical tests",
     "section": "Compare the flipper length of penguins using statistical tests",
     "text": "Compare the flipper length of penguins using statistical tests\nQuestion: Does the mean flipper length differ between the 3 penguin species?\nDo separate comparisons for\n\nGentoo vs. Adelie\nGentoo vs. Chinstrap\nAdelie vs. Chinstrap\n\nBefore you start, create a subset of each species as a vector.\nFor this, you can use the $ operator:\n\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\n\nFollow the decision tree for statistical tests:\n\n\n\n\n\n\n\n\n\nAfter you have the test results, visualize the differences in flipper length between species.\nYou can e.g. choose one of the following plots:\n\nBoxplot with notches\nMean and standard error of the mean (as mean with errorbar, as barplot, …)\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results\n\nFor the fast ones\n\nUse a different visualization method than before to show the differences in flipper length between species\nChange the appearance of the plot (colors, themes, …) from the task"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#chaotic-projects-and-workflows",
+    "href": "sessions/slides/good-practice-short.html#chaotic-projects-and-workflows",
+    "title": "Good practice R coding",
+    "section": "Chaotic projects and workflows …",
+    "text": "Chaotic projects and workflows …\n… can make even small changes frustrating and difficult.\n\n\n\nArtwork by Allison Horst, CC BY 4.0"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#have-a-clear-project-structure",
+    "href": "sessions/slides/good-practice-short.html#have-a-clear-project-structure",
+    "title": "Good practice R coding",
+    "section": "Have a clear project structure",
+    "text": "Have a clear project structure\n\n\n\nOne directory with all files relevant for project\n\nScripts, data, plots, documents, …\n\nChoose a meaningful project structure 1\nAdd a readme file (usually README.md) in which you document the project structure\n\n\nMyProject\n|\n|- data\n|\n|- docs\n|   |\n|   |- notes\n|   |\n|   |- reports\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- MyProject.RProj\n|\n|- README.md\nExample RStudio project structure\n\nyou can orient yourself at the R package structure"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#use-rstudio-projects",
+    "href": "sessions/slides/good-practice-short.html#use-rstudio-projects",
+    "title": "Good practice R coding",
+    "section": "Use RStudio projects",
+    "text": "Use RStudio projects\nAlways make your project an RStudio Project (if possible)!\n\n✅ You already did that."
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#name-your-files-properly",
+    "href": "sessions/slides/good-practice-short.html#name-your-files-properly",
+    "title": "Good practice R coding",
+    "section": "Name your files properly",
+    "text": "Name your files properly\nYour collaborators and your future self will love you for this.\n\nPrinciples 1\nFile names should be\n\nMachine readable\nHuman readable\nWorking with default file ordering\n\n\nFrom this talk by J. Bryan"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#machine-readable-file-names",
+    "href": "sessions/slides/good-practice-short.html#machine-readable-file-names",
+    "title": "Good practice R coding",
+    "section": "1. Machine readable file names",
+    "text": "1. Machine readable file names\nNames should allow for easy searching, grouping and extracting information from file names.\n\n\nNo space & special characters\n\n\n\nBad examples ❌\n📄 2023-04-20 temperature göttingen.csv  📄 2023-04-20 rainfall göttingen.csv \n\nGood examples ✔️\n📄 2023-04-20_temperature_goettingen.csv  📄 2023-04-20_rainfall_goettingen.csv"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#human-readable-file-names",
+    "href": "sessions/slides/good-practice-short.html#human-readable-file-names",
+    "title": "Good practice R coding",
+    "section": "2. Human readable file names",
+    "text": "2. Human readable file names\nWhich file names would you still understand in 1 year?\n\nFile names should reveal the file content\nUse separators to make it readable\n\n\nBad examples ❌\n📄 01preparedata.R  📄 01firstscript.R \n\nGood examples ✔️\n📄 01_prepare-data.R  📄 01_temperature-trend-analysis.R"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#default-ordering",
+    "href": "sessions/slides/good-practice-short.html#default-ordering",
+    "title": "Good practice R coding",
+    "section": "3. Default ordering",
+    "text": "3. Default ordering\nIf you order your files by name, the ordering should make sense:\n\n(Almost) always put something numeric first\n\nLeft-padded numbers (01, 02, …)\nDates in YYYY-MM-DD format\n\n\n\nChronological order\n📄 2023-04-20_temperature_goettingen.csv  📄 2023-04-21_temperature_goettingen.csv \n\nLogical order\n📄 01_prepare-data.R  📄 02_lm-temperature-trend.R"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#write-beautiful-code",
+    "href": "sessions/slides/good-practice-short.html#write-beautiful-code",
+    "title": "Good practice R coding",
+    "section": "Write beautiful code",
+    "text": "Write beautiful code\n\n\n\nTry to write code that others (i.e. future you) can understand\nFollow standards for readable and maintainable code\n\nFor R: tidyverse style guide defines code organization, syntax standards, …\n\n\n\n\n\n\nArtwork by Allison Horst, CC BY 4.0"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#standard-code-structure",
+    "href": "sessions/slides/good-practice-short.html#standard-code-structure",
+    "title": "Good practice R coding",
+    "section": "Standard code structure",
+    "text": "Standard code structure\n\n\n\n\nGeneral comment with purpose of the script, author, …\nlibrary() calls on top\nSet default variables and global options\nWrite the actual code, starting with loading all data files\n\n\n\n# Analysis of tree growth data\n# Author: Selina Baldauf\n# Date: 2026-03-09\n\nlibrary(tidyverse)\n\n# set defaults\ninput_file &lt;- \"data/tree_growth.csv\"\n\n# read input\ntrees &lt;- read_csv(input_file)\n\n# analyse data\nsummary(trees)"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#mark-sections",
+    "href": "sessions/slides/good-practice-short.html#mark-sections",
+    "title": "Good practice R coding",
+    "section": "Mark sections",
+    "text": "Mark sections\n\nUse comments to break up your file into sections\n\n\n\n# Load data ---------------------------------------------------------------\n\ntrees &lt;- read_csv(\"data/tree_growth.csv\")\n\n# Explore data -------------------------------------------------------------\n\nsummary(trees)\n\n\nInsert a section label with Ctrl/Cmd + Shift + R\nNavigate sections in the file outline"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#coding-style---object-names",
+    "href": "sessions/slides/good-practice-short.html#coding-style---object-names",
+    "title": "Good practice R coding",
+    "section": "Coding style - Object names",
+    "text": "Coding style - Object names\n\n\nVariables should only have lowercase letters, numbers, and *_*\nUse snake_case for longer variable names\nTry to use concise but meaningful names\n\n\n\n\n# Good\nday_one\nday_1\n\n# Bad\nDayOne\ndayone\nfirst_day_of_the_month\ndm1"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#coding-style---spacing",
+    "href": "sessions/slides/good-practice-short.html#coding-style---spacing",
+    "title": "Good practice R coding",
+    "section": "Coding style - Spacing",
+    "text": "Coding style - Spacing\n\nUse spaces to make your code more readable:\n\nAlways put spaces after a comma\nSpaces around most operators (&lt;-, +, etc.)\nNo spaces around parentheses for normal function calls\n\n\n# Good\nx[, 1]\nheight &lt;- (feet * 12) + inches\nmean(x, na.rm = TRUE)\n\n# Bad\nx[,1]\nheight&lt;-feet*12+inches\nmean(x,na.rm=TRUE)"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#coding-style---line-width",
+    "href": "sessions/slides/good-practice-short.html#coding-style---line-width",
+    "title": "Good practice R coding",
+    "section": "Coding style - Line width",
+    "text": "Coding style - Line width\nTry to limit your line width to 80 characters.\n\nYou don’t want to scroll to the right to read all code\n80 characters can be displayed on most displays and programs\nSplit your code into multiple lines if it is too long\n\nSee this grey vertical line in R Studio?"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#coding-style",
+    "href": "sessions/slides/good-practice-short.html#coding-style",
+    "title": "Good practice R coding",
+    "section": "Coding style",
+    "text": "Coding style\nDo I really have to remember all of this?\n\nLuckily, no! R and R Studio provide some nice helpers"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#coding-style-helpers---rstudio",
+    "href": "sessions/slides/good-practice-short.html#coding-style-helpers---rstudio",
+    "title": "Good practice R coding",
+    "section": "Coding style helpers - RStudio",
+    "text": "Coding style helpers - RStudio\nRStudio has style diagnostics that tell you where something is wrong\nTools -&gt; Global Options -&gt; Code -&gt; Diagnostics"
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#coding-style-helpers---auto-formatting",
+    "href": "sessions/slides/good-practice-short.html#coding-style-helpers---auto-formatting",
+    "title": "Good practice R coding",
+    "section": "Coding style helpers - Auto-formatting",
+    "text": "Coding style helpers - Auto-formatting\nRStudio can automatically format your code!\n\n\nTry it now: open your script from today and use Code -&gt; Reformat Code to auto-format it."
+  },
+  {
+    "objectID": "sessions/slides/good-practice-short.html#clean-projects-and-workflows",
+    "href": "sessions/slides/good-practice-short.html#clean-projects-and-workflows",
+    "title": "Good practice R coding",
+    "section": "Clean projects and workflows …",
+    "text": "Clean projects and workflows …\n… allow you and others to work productively.\nBut don’t get overwhelmed by all the advice. Just start with one thing.\n\n\n\nArtwork by Allison Horst, CC BY 4.0"
   }
 ]

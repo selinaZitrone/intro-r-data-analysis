@@ -53,6 +53,7 @@ window.addEventListener("load", function () {
 - [Data frames & tibbles](sessions/04_data-tibbles.qmd)
 - [Tidyverse and readr](sessions/05_readr.qmd)
 - [Common R errors](sessions/06_common-errors.qmd)
+- [Good coding practice](sessions/slides/good-practice-short.qmd)
 
 ### Day 2 — Data Visualization and Transformation
 
