@@ -434,6 +434,19 @@ summarize(
 )
 ```
 
+. . .
+
+:::{.callout-note}
+The gapminder data has no missing values. With real data, use `na.rm = TRUE` to ignore NAs:
+
+```{r}
+#| eval: false
+summarize(gapminder, mean_lifeExp = mean(lifeExp, na.rm = TRUE))
+```
+
+Otherwise `mean()` will return `NA` if any value is missing.
+:::
+
 ## `summarize()` by group
 
 `summarize` is much more useful in combination with the grouping argument `.by`
