@@ -41,14 +41,14 @@ website:
             href: sessions/05_readr.qmd
           - text: "Common R errors"
             href: sessions/06_common-errors.qmd
+          - text: "Good practice coding"
+            href: sessions/11_good-practice.qmd
           - text: "---"
           - text: "<b>Day 2</b>"
           - text: "Data visualization with ggplot2"
             href: sessions/07_ggplot.qmd
           - text: "Data transformation with dplyr"
             href: sessions/08_dplyr.qmd
-          - text: "Good practice coding"
-            href: sessions/11_good-practice.qmd
           - text: "---"
           - text: "<b>Day 3</b>"
           - text: "Tidy data with tidyr"
