@@ -194,37 +194,6 @@ filter_out(gapminder, continent == "Europe")
 filter(gapminder, continent != "Europe")
 ```
 
-
-## `drop_na()`: remove missing values
-
-Remove rows with `NA` values in any column:
-
-. . .
-
-```{r}
-# Drop all rows with NAs in any column
-drop_na(gapminder)
-```
-
-. . .
-
-The gapminder data has no missing values, so the filter doesn't change anything here.
-
-## `drop_na()`: remove missing values
-
-Remove rows with `NA` values in (a) specific column(s):
-
-. . .
-
-```{r}
-# Drop rows with NAs in specific columns
-drop_na(gapminder, lifeExp, gdpPercap)
-```
-
-. . .
-
-`drop_na()` is part of the `tidyr` package which is loaded with `library(tidyverse)`.
-
 # `select()` {.inverse}
 
 > picks columns based on their names
@@ -294,6 +263,36 @@ mutate(
   )
 )
 ```
+
+## `drop_na()`: remove missing values
+
+Remove rows with `NA` values in any column:
+
+. . .
+
+```{r}
+# Drop all rows with NAs in any column
+drop_na(gapminder)
+```
+
+. . .
+
+The gapminder data has no missing values, so `drop_na()` doesn't change anything here.
+
+## `drop_na()`: remove missing values
+
+Remove rows with `NA` values in (a) specific column(s):
+
+. . .
+
+```{r}
+# Drop rows with NAs in specific columns
+drop_na(gapminder, lifeExp, gdpPercap)
+```
+
+. . .
+
+`drop_na()` is part of the `tidyr` package which is loaded with `library(tidyverse)`.
 
 # The pipe ` |> ` {.inverse}
 
@@ -520,7 +519,7 @@ gapminder |>
 :::
 
 
-## The pipe `|>`
+## The pipe `|>` + ggplot
 
 You can also combine dplyr operations and ggplot:
 
