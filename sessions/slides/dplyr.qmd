@@ -729,91 +729,18 @@ but not necessarily all rows of `continent_info` (in this case it does though).
 
 > Data transformation with dplyr
 
-## Summary I
-
-All `dplyr` functions take a tibble as first argument and return a tibble.
-
-#### `filter()`
-
-:::{.nonincremental}
-
-- **pick rows** with helpers
-  - relational and logical operators
-  - `%in%`
-  - `is.na()` and `filter_out()`
-  - `between()`
-  - `near()`
-
-:::
-
-## Summary II
+## Summary
 
 :::{.nonincremental}
 
 All `dplyr` functions take a tibble as first argument and return a tibble.
 
-#### `select()`
-
-- **pick columns** with helpers
-  - `starts_with()`, `ends_with()`
-  - `contains()`
-  - `matches()`
-  - `any_of()`, `all_of()`
-
-:::
-
-## Summary III
-
-#### `arrange()`
-
-:::{.nonincremental}
-
-- **change order** of rows (adscending)
-  - or descending with `desc()`
-
-#### `mutate()`
-
-- **add columns** but keep all columns
-  - `case_when()` for conditional values
+- **`filter()`** / **`filter_out()`**: pick or exclude rows
+- **`select()`**: pick columns by name
+- **`mutate()`**: add new columns (`case_when()` for conditional values)
+- **`drop_na()`**: remove rows with missing values
+- **`summarize()`**: collapse rows into summaries (use `.by` for groups)
+- **`count()`**: count rows per group
+- **The pipe `|>`**: chain operations together, read top to bottom
 
 :::
-
-## Summary IV
-
-:::{.nonincremental}
-
-#### `summarize()`
-
-- **collapse rows** into one row by some summary
-  - use `.by` argument to summarize by group
-
-#### `count`
-
-- **count rows** based on a group
-
-:::
-
-## Summary V
-
-:::{.nonincremental}
-
-#### `bind_rows()`
-
-- **combine rows** of multiple tibbles into one
-  - the tibbles need to have the same columns
-  - add an id column with the argument `.id = "id"`
-  - function `bind_cols()` works similarly just for columns
-
-#### `left_join()`
-
-- **combine tables** based on common columns
-
-:::
-
-# Now you {.inverse}
-
-[Task (30 min)]{.highlight-blue}<br>
-
-[Transform the penguin data set]{.big-text}
-
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/08_dplyr.html)**
