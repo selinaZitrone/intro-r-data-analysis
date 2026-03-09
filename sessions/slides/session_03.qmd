@@ -1,0 +1,633 @@
+---
+title: "Introduction to Data Analysis with R"
+subtitle: "Session 3: Data Manipulation with dplyr"
+author: "Selina Baldauf"
+institute: "Freie Universität Berlin - Theoretical Ecology"
+date: today
+date-format: long
+format: 
+  revealjs:
+    footer: "Selina Baldauf // Session 3: Data Manipulation with dplyr"
+    highlight-style: breeze
+    mainfont: Cabinet Grotesk
+    slide-number: true
+    show-slide-number: all
+    incremental: true
+    self-contained: true
+    code-line-numbers: false
+    auto-stretch: false
+    fig-align: center
+    fig-width: 6.3
+    fig-height: 6.3
+    theme: css/slides.scss
+execute: 
+  echo: true
+knitr: 
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+from: markdown+emoji
+filters:
+  - roughnotation
+  - flourish
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+theme_set(theme_grey(base_size = 16))
+options(dplyr.print_max = 5, pillar.print_max = 5)
+```
+
+## Recap: Session 2
+
+:::{.nonincremental}
+
+- **ggplot skeleton**:
+```{r}
+#| eval: false
+ggplot(
+  data,
+  aes(x = ..., y = ..., color, ...)
+) +
+  geom_xxx()
+
+```
+
+- **Geoms**: `geom_point()`, `geom_boxplot()`, `geom_histogram()`
+- **Beautifying**: `labs()`, `scale_color_*()`, themes
+- **Saving**: `ggsave()`
+
+:::
+
+. . .
+
+Any questions from last time?
+
+## Plan for today
+
+Your data is rarely in the exact shape you need for analysis or plotting.
+
+. . .
+
+It requires some **data manipulation**:
+
+:::{.nonincremental}
+
+- Keep only certain rows or columns
+- Remove missing values
+- Create new variables from existing ones
+- Calculate summary statistics
+- ...
+
+:::
+
+. . .
+
+The package in the `tidyverse` for data manipulation is called `dplyr`.
+
+```{r}
+#| eval: false
+library(tidyverse)
+# library(dplyr) # if you only want dplyr
+```
+
+# Data manipulation with dplyr {.inverse background-image="img/hex-stickers/dplyr.png" background-size="12vw" background-position="90% 75%" background-repeat="no-repeat"}
+
+> Transform your data step by step
+
+## The `msleep` dataset
+
+Remember the mammal sleep data from last session:
+
+```{r}
+msleep
+```
+
+
+## `filter()`: pick rows
+
+Keep only rows that match a condition:
+
+. . .
+
+```{r}
+filter(msleep, vore == "carni")
+```
+
+. . .
+
+:::{.callout-note}
+
+## To reuse, save result in a variable
+
+```{r}
+carnivores <- filter(msleep, vore == "carni")
+```
+
+:::
+
+## `filter()`: comparison operators
+
+:::{.nonincremental}
+
+- `==` equal to
+- `!=` not equal to
+- `<`, `>` less than, greater than
+- `<=`, `>=` less than or equal to, greater than or equal to
+- `%in%` in a set of values
+
+:::
+
+. . .
+
+Other examples
+
+```{r}
+#| eval: false
+# Filter for sleep time greater than 16 hours
+filter(msleep, sleep_total > 16)
+# All rows except carnivores
+filter(msleep, vore != "carni")
+# All rows where vore is herbivore, carnivore or omnivore
+filter(msleep, vore %in% c("herbi", "carni", "omni"))
+```
+
+## `filter()`: combine conditions
+
+Use `&` (and) - both conditions must be true:
+
+. . .
+
+```{r}
+filter(msleep, vore == "herbi" & sleep_total > 12)
+```
+
+## `filter()`: combine conditions
+
+Use `|` (or) - one conditions must be true:
+
+```{r}
+# Either condition must be true
+filter(msleep, vore == "herbi" | vore == "omni")
+```
+
+## `filter_out()`: opposite of filter
+
+Relatively new function - keeps rows that **don't** match the condition:
+
+```{r}
+# Keep rows that are NOT herbivores
+filter_out(msleep, vore == "herbi")
+```
+
+. . .
+
+<br>
+
+```{r}
+#| eval: false
+# equivalent to
+filter(msleep, vore != "herbi")
+```
+
+## `select()`: pick columns
+
+Keep only the columns you need:
+
+. . .
+
+```{r}
+select(msleep, name, vore, sleep_total)
+```
+
+## `select()`: remove columns
+
+Use `-` to remove columns:
+
+. . .
+
+```{r}
+select(msleep, -name, -conservation)
+```
+
+## `select()`: patterns
+
+Select helpers for patterns in column names:
+
+```{r}
+# All columns that start with "sleep"
+select(msleep, starts_with("sleep"))
+```
+
+. . .
+
+There are also `ends_with()`, `contains()`, and more - see `?select` for details.
+
+
+## `mutate()`: create new columns
+
+Add new columns based on existing ones:
+
+. . .
+
+```{r}
+# Create a dataset with fewer columns
+msleep_small <- select(msleep, name, sleep_total, awake)
+mutate(msleep_small, sleep_awake_ratio = sleep_total / awake)
+```
+
+
+. . .
+
+The new columns are added at the end of the tibble. The original columns are kept.
+
+## `mutate()`: multiple columns at once
+
+```{r}
+mutate(
+  msleep_small,
+  sleep_awake_ratio = sleep_total / awake,
+  sleep_minutes = sleep_total * 60
+)
+```
+
+## `drop_na()`: remove missing values
+
+Remove rows with `NA` values in any column:
+
+. . .
+
+```{r}
+# Drop all rows with NAs in any column
+drop_na(msleep)
+```
+
+. . .
+
+The gapminder data has no missing values, so the filter doesn't change anything here.
+
+## `drop_na()`: remove missing values
+
+Remove rows with `NA` values in (a) specific column(s):
+
+. . .
+
+```{r}
+# Drop rows with NAs in specific columns
+drop_na(msleep, vore, sleep_rem)
+```
+
+. . .
+
+`drop_na()` is part of the `tidyr` package which  is loaded with `library(tidyverse)`.
+
+## The problem: multiple steps
+
+Data cleaning and manipulation usually requires **several steps in sequence**.
+
+. . .
+
+```{r}
+# Step 1: remove missing values
+msleep_clean <- drop_na(msleep, vore, sleep_rem)
+# Step 2: keep only herbivores
+msleep_clean <- filter(msleep_clean, vore == "herbi")
+# Step 3: add a new variable
+msleep_clean <- mutate(msleep_clean, rem_proportion = sleep_rem / sleep_total)
+```
+
+This works, but creates lots of intermediate steps.
+
+## The pipe `|>`
+
+The pipe operator passes the result of one step as the **first argument** to the next step.
+
+
+```{r}
+#| eval: false
+# This
+filter(msleep, vore == "herbi")
+
+# is the same as
+msleep |> filter(vore == "herbi")
+```
+
+. . .
+
+This is perfect for dplyr because:
+
+:::{.nonincremental}
+
+- First argument is the data (a tibble)
+- Output (return value) is also a tibble 
+
+:::
+
+## The pipe `|>`
+
+The pipe operator passes the result of one step as the **first argument** to the next step.
+
+. . .
+
+::: {.columns}
+::: {.column}
+
+Instead of this: 
+
+```{r}
+#| eval: false
+# Step 1: remove missing values
+msleep_clean <- drop_na(msleep, vore, sleep_rem)
+# Step 2: keep only herbivores
+msleep_clean <- filter(msleep_clean, vore == "herbi")
+# Step 3: add a new variable
+msleep_clean <- mutate(msleep_clean, rem_proportion = sleep_rem / sleep_total)
+```
+
+:::
+::: {.column}
+
+:::{.fragment}
+
+We can do this: 
+
+```{r}
+msleep_clean <- msleep |>
+  drop_na(vore, sleep_rem) |>
+  filter(vore == "herbi") |>
+  mutate(rem_proportion = sleep_rem / sleep_total)
+```
+
+:::
+:::
+:::
+
+. . .
+
+<br>
+
+Read `|>` as **"and then"**:
+
+Take msleep, **and then** drop NAs, **and then** filter, **and then** add a column.
+
+
+## The pipe `|>`
+
+- 2 different pipes in R (work similarly):
+  - `|>`: base R pipe, available in R 4.1 and later
+  - `%>%`: magrittr pipe, used in older versions and still common in tidyverse code
+
+- I prefer `|>` because it's built into R
+
+- Turn on the base R pipe in RStudio: Tools > Global Options > Code > Editing > Use native pipe operator (`|>`)
+
+. . .
+
+:::{.callout-tip}
+Use the keyboard shortcut `Ctrl/Cmd + Shift + M` to insert `|>`
+:::
+
+
+# Exercise 1 {.inverse}
+
+15 min, [link to the exercise](../tasks/task-06-dplyr-basics.qmd)<br>
+
+[Filter, select, and mutate the penguins data]{.highlight-blue}
+
+:::{.nonincremental}
+- Stay here to do the task
+- I will be in the breakout room "Questions"
+- If you have questions or problems: Join from Breakout rooms  ![](img/breakout_rooms_blue_dark.png){width=3%}  in meeting controls
+:::
+
+
+# Summarizing Data with dplyr {.inverse background-image="img/hex-stickers/dplyr.png" background-size="12vw" background-position="90% 75%" background-repeat="no-repeat"}
+
+> From many rows to key numbers
+
+## `summarize()`: collapse rows
+
+Calculate summary statistics across all rows:
+
+. . .
+
+::: {.columns}
+::: {.column}
+
+Use `na.rm = TRUE` to ignore NAs:
+```{r}
+msleep |>
+  summarize(
+    mean_sleep = mean(sleep_total, na.rm = TRUE),
+    mean_rem = mean(sleep_rem, na.rm = TRUE)
+  )
+```
+
+
+::: {.fragment}
+
+The result is a tibble with **one row** — the data is collapsed to a single summary.
+
+:::
+
+:::
+::: {.column}
+
+:::{.fragment}
+
+Or remove the NAs first:
+
+```{r}
+msleep |>
+  drop_na(sleep_total, sleep_rem) |>
+  summarize(
+    mean_sleep = mean(sleep_total),
+    mean_rem = mean(sleep_rem)
+  )
+```
+
+:::
+:::
+:::
+
+## `summarize()` with `.by`: grouped summaries
+
+Calculate summaries **separately for each group**:
+
+. . .
+
+```{r}
+msleep |>
+  summarize(
+    mean_sleep = mean(sleep_total, na.rm = TRUE),
+    mean_rem = mean(sleep_rem, na.rm = TRUE),
+    .by = vore
+  )
+```
+
+## `summarize()` with `.by`: multiple groups
+
+Group by more than one variable:
+
+. . .
+
+```{r}
+msleep |>
+  summarize(
+    mean_sleep = mean(sleep_total, na.rm = TRUE),
+    .by = c(vore, conservation)
+  )
+```
+
+## `count()`: count rows per group
+
+A shortcut for counting observations:
+
+. . .
+
+```{r}
+msleep |>
+  count(vore)
+```
+
+. . .
+
+<br>
+
+```{r}
+msleep |>
+  count(vore, conservation)
+```
+
+## Pipe into ggplot
+
+The pipe works with ggplot too — manipulate your data and plot it in one go:
+
+. . .
+
+```{r}
+#| fig-height: 4
+msleep |>
+  drop_na(vore) |>
+  summarize(mean_sleep = mean(sleep_total), .by = vore) |>
+  ggplot(aes(x = vore, y = mean_sleep, fill = vore)) +
+  geom_col()
+```
+
+## Pipe into ggplot
+
+You can also filter before plotting:
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+msleep |>
+  drop_na(vore, sleep_rem) |>
+  filter(bodywt < 50) |>
+  ggplot(
+    aes(
+      x = sleep_total,
+      y = sleep_rem,
+      color = vore
+    )
+  ) +
+  geom_point(size = 3) +
+  theme_minimal()
+```
+
+- Use `|>` between dplyr steps
+- Switch to `+` once you start the ggplot
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+msleep |>
+  drop_na(vore, sleep_rem) |>
+  filter(bodywt < 50) |>
+  ggplot(
+    aes(
+      x = sleep_total,
+      y = sleep_rem,
+      color = vore
+    )
+  ) +
+  geom_point(size = 3) +
+  theme_minimal(base_size = 16)
+```
+
+:::
+
+:::
+
+# Exercise 2 {.inverse}
+
+15 min, [link to the exercise](../tasks/task-07-dplyr-summarize.qmd)<br>
+
+[Summarize data and combine dplyr with ggplot]{.highlight-blue}
+
+:::{.nonincremental}
+- Stay here to do the task
+- I will be in the breakout room "Questions"
+- If you have questions or problems: Join from Breakout rooms  ![](img/breakout_rooms_blue_dark.png){width=3%}  in meeting controls
+:::
+
+
+# Wrap up {.inverse}
+
+## What we covered today
+
+:::{.nonincremental}
+
+- **`filter()`**: pick rows by condition
+- **`select()`**: pick columns by name
+- **`mutate()`**: create new columns
+- **`drop_na()`**: remove rows with missing values
+- **`summarize()`** + `.by`: grouped summaries
+- **`count()`**: count observations per group
+- **The pipe** `|>`: chain operations together, read top to bottom
+
+
+:::
+
+## Good to know
+
+`dplyr` has more useful functions that we didn't cover today:
+
+:::{.nonincremental}
+
+- **`bind_rows()`**: combine multiple tables with the same columns into one
+- **`left_join()`**: combine two tables by a shared column
+- **`arrange()`**: sort rows by column values
+- **rename()**: rename columns
+- ...
+
+:::
+
+. . .
+
+You can find documentation, examples and a cheatsheet for all of these on the [dplyr](https://dplyr.tidyverse.org/) websites.
+
+## Next time
+
+Putting it all together — a full data analysis project from start to finish.
+
+:::{.nonincremental}
+
+- Read data
+- Clean and transform
+- Summarize
+- Visualize
+
+:::
+
+# Thanks for your attention! {.inverse}
+
+See you in the next session!

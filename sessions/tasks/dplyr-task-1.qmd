@@ -1,0 +1,68 @@
+---
+title: "Task 1: Filter, select, and mutate"
+number-sections: false
+---
+
+[← Back to session page](../08_dplyr.qmd)
+
+:::{.callout-note}
+
+## Find the solution here after the session ends.
+
+```{=html}
+<script>const course_day = 2;</script>
+<script src="../../timer_solution.js"></script>
+<p class="r_class_solution" style="display:none">
+  <a href="../solutions/dplyr-solution-1.html" target="_blank">Click here for the solution.</a>
+</p>
+```
+:::
+
+## Getting started
+
+A helpful resource for this task is the [dplyr cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-transformation.pdf).
+
+Before you start, make sure to load the `tidyverse` package.
+
+```{r}
+#| eval: false
+library(tidyverse)
+```
+
+We will continue working with the `penguins` data set from the `palmerpenguins` package.
+
+## Filter penguins
+
+**Find all penguins that ...**
+
+1. ... have a bill length between 40 and 45 mm.
+
+2. ... are of the species Adelie or Gentoo.
+
+3. ... lived on the island Dream in the year 2007.
+
+## Remove missing values
+
+4. Remove all penguins with missing values for `sex` using `drop_na()`.
+
+## Select columns
+
+5. Select only the variables `species`, `sex`, and `year`.
+
+6. Select only columns that start with `"bill"`.
+
+## Add new columns
+
+7. Add a column with the ratio of bill length to bill depth.
+
+8. Add a column with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).
+
+## Combine with the pipe
+
+9. Use the pipe to combine multiple steps: start with `penguins`, remove rows with missing `sex`, keep only Adelie penguins, and select only `species`, `sex`, and `body_mass_g`.
+
+## For the fast ones
+
+- Use `filter_out()` to exclude penguins from Torgersen island, then select only `species`, `island`, and `flipper_length_mm`.
+
+- Create a `size_category` column with `case_when` based on body mass (small < 3500, medium < 5000, large >= 5000). Do it in a pipe that also removes NAs and selects only `species`, `body_mass_g`, and `size_category`.

@@ -53,6 +53,16 @@ Data transformation is an important step in **understanding** the data and **pre
 
 We can use the tidyverse package `dplyr` for this.
 
+## The data
+
+The `gapminder` dataset contains data on life expectancy, GDP per capita, and population for 142 countries from 1952 to 2007.
+
+```{r}
+# install.packages("gapminder")
+library(gapminder)
+gapminder
+```
+
 ## Data transformation
 
 With `dplyr` we can (among other things)
@@ -87,15 +97,7 @@ All of the `dplyr` functions work similarly: <br>
 - **Other arguments** specify what to do exactly
 - **Return** a tibble
 
-## The data
 
-The `gapminder` dataset contains data on life expectancy, GDP per capita, and population for 142 countries from 1952 to 2007.
-
-```{r}
-# install.packages("gapminder")
-library(gapminder)
-gapminder
-```
 
 # `filter()` {.inverse}
 
@@ -236,7 +238,6 @@ There are also `ends_with()`, `contains()`, and more - see `?select` for details
 New columns can be added based on values from other columns
 
 ```{r}
-#| eval: false
 mutate(gapminder, gdp = gdpPercap * pop)
 ```
 
@@ -387,7 +388,7 @@ gapminder_clean <- gapminder |>
 
 Read `|>` as **"and then"**:
 
-Take gapminder, **and then** drop NAs, **and then** filter, **and then** add a column.
+Take gapminder, and then drop NAs, and then filter, and then add a column.
 
 ## The pipe `|>`
 
@@ -397,7 +398,7 @@ Take gapminder, **and then** drop NAs, **and then** filter, **and then** add a c
 
 - I prefer `|>` because it's built into R
 
-- Turn on the base R pipe in RStudio: Tools > Global Options > Code > Editing > Use native pipe operator (`|>`)
+- Turn on the base R pipe in RStudio: Tools > Global Options > Code
 
 ![](img/day2/native-pipe.png){width=50%}
 
@@ -411,9 +412,9 @@ Use the keyboard shortcut `Ctrl/Cmd + Shift + M` to insert `|>`
 
 [Task 1 (15 min)]{.highlight-blue}<br>
 
-[Filter, select, and mutate the gapminder data]{.big-text}
+[Filter, select, and mutate the penguin data]{.big-text}
 
-**Find the task description [here](TODO)**
+**Find the task description [here](../tasks/dplyr-task-1.qmd)**
 
 # Summarizing data {.inverse}
 
@@ -466,9 +467,22 @@ summarize(
 )
 ```
 
-. . .
+## `summarize()` by group
 
-- Combine variables if you want to summarize by more than one group (e.g. `.by = c(continent, year)`)
+Combine variables if you want to summarize by more than one group
+
+```{r}
+#| flourish:
+#|   - target-rx: ".by = c.*"
+# summarize the grouped data
+summarize(
+  gapminder,
+  mean_lifeExp = mean(lifeExp),
+  mean_gdpPercap = mean(gdpPercap),
+  .by = c(continent, year)
+)
+```
+
 
 ## `count()`
 
@@ -497,7 +511,9 @@ theme_set(theme_bw(base_size = 16))
 #| eval: false
 gapminder |>
   filter(year == 2007) |>
-  ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  ggplot(
+    aes(x = gdpPercap, y = lifeExp, color = continent)
+  ) +
   geom_point(size = 3) +
   scale_x_log10()
 ```
@@ -578,7 +594,7 @@ gapminder |>
 
 [Summarize data and combine dplyr with ggplot]{.big-text}
 
-**Find the task description [here](TODO)**
+**Find the task description [here](../tasks/dplyr-task-2.qmd)**
 
 # Good to know {.inverse}
 
