@@ -459,6 +459,14 @@ Take gapminder, **and then** drop NAs, **and then** filter, **and then** add a c
 Use the keyboard shortcut `Ctrl/Cmd + Shift + M` to insert `|>`
 :::
 
+# Now you {.inverse}
+
+[Task 1 (15 min)]{.highlight-blue}<br>
+
+[Filter, select, and mutate the gapminder data]{.big-text}
+
+**Find the task description [here](TODO)**
+
 ## The pipe `|>`
 
 Piping also works well together with `ggplot`
