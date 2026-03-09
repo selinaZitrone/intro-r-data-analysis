@@ -195,19 +195,35 @@ filter(gapminder, continent != "Europe")
 ```
 
 
-## `filter_out()` + `is.na()`
+## `drop_na()`: remove missing values
 
-You can use `is.na()` to check for missing values and filter them out:
+Remove rows with `NA` values in any column:
+
+. . .
 
 ```{r}
-# Filter rows where lifeExp is missing
-filter_out(gapminder, is.na(lifeExp))
+# Drop all rows with NAs in any column
+drop_na(gapminder)
 ```
 
 . . .
 
 The gapminder data has no missing values, so the filter doesn't change anything here.
 
+## `drop_na()`: remove missing values
+
+Remove rows with `NA` values in (a) specific column(s):
+
+. . .
+
+```{r}
+# Drop rows with NAs in specific columns
+drop_na(gapminder, lifeExp, gdpPercap)
+```
+
+. . .
+
+`drop_na()` is part of the `tidyr` package which is loaded with `library(tidyverse)`.
 
 # `select()` {.inverse}
 
@@ -342,7 +358,7 @@ Data cleaning and manipulation usually requires **several steps in sequence**.
 
 ```{r}
 # Step 1: Remove missing values
-gapminder_clean <- filter_out(gapminder, is.na(lifeExp))
+gapminder_clean <- drop_na(gapminder, lifeExp)
 # Step 2: Select only European countries
 gapminder_clean <- filter(gapminder_clean, continent == "Europe")
 # Step 3: Add a new variable
@@ -391,7 +407,7 @@ Instead of this:
 ```{r}
 #| eval: false
 # Step 1: Remove missing values
-gapminder_clean <- filter_out(gapminder, is.na(lifeExp))
+gapminder_clean <- drop_na(gapminder, lifeExp)
 # Step 2: Select only European countries
 gapminder_clean <- filter(gapminder_clean, continent == "Europe")
 # Step 3: Add a new variable
@@ -408,7 +424,7 @@ We can do this:
 ```{r}
 #| eval: false
 gapminder_clean <- gapminder |>
-  filter_out(is.na(lifeExp)) |>
+  drop_na(lifeExp) |>
   filter(continent == "Europe") |>
   mutate(gdp = gdpPercap * pop)
 ```
