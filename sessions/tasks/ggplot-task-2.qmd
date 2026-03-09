@@ -66,7 +66,7 @@ Use `labs()` to give your plot a title and proper axis labels. Also change the l
 
 Change the colors of your plot. You can either:
 
-- Pick your own colors with `scale_color_manual()`. Refer to colors by name (e.g. "red", "cyan4") or by hex code (e.g. "#FF0000"). You can find hex codes with this [color picker](https://www.w3schools.com/colors/colors_picker.asp) and all R color names [here](https://derekogle.com/NCGraphing/resources/colors).
+- Pick your own colors with `scale_color_manual()`. Refer to colors by name (e.g. `"red"`, `"cyan4"`) or by hex code (e.g. `"#FF0000"`). You can find hex codes with this [color picker](https://www.w3schools.com/colors/colors_picker.asp) and all R color names [here](https://derekogle.com/NCGraphing/resources/colors).
 - Use a built-in palette with `scale_color_brewer()` or `scale_color_viridis_d()`.
 
 :::{.callout-tip}

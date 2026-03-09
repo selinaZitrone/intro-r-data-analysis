@@ -63,6 +63,8 @@ We will continue working with the `penguins` data set.
 
 ## For the fast ones
 
+You can do these in any order, or skip them and just take a break.
+
 - Use `filter_out()` to exclude penguins from Torgersen island, then select only `species`, `island`, and `flipper_len`.
 
 - Create a `size_category` column with `case_when` based on body mass (small < 3500, medium < 5000, large >= 5000). 
