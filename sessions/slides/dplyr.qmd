@@ -573,6 +573,14 @@ gapminder |>
 
 :::
 
+# Now you {.inverse}
+
+[Task 2 (15 min)]{.highlight-blue}<br>
+
+[Summarize data and combine dplyr with ggplot]{.big-text}
+
+**Find the task description [here](TODO)**
+
 # Combining multiple tables{.inverse}
 
 ## Combine two tibbles by row `bind_rows`
