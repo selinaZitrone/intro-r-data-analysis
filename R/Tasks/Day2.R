@@ -19,18 +19,8 @@ ggplot(
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 
-
-# or short
-ggplot(penguins, aes(bill_len, bill_dep)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE)
-
-# color as aesthetic local to the point layer
-ggplot(penguins, aes(x = bill_len, y = bill_dep)) +
-  geom_point(aes(color = species)) +
-  geom_smooth(method = "lm", se = FALSE)
-
-# Option B: Define color aesthetic once globally
+# Define color aesthetic once globally
+# Will distinguish point and the linear model by color
 ggplot(
   penguins,
   aes(
@@ -42,10 +32,16 @@ ggplot(
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 
+# color as aesthetic local to the point layer
+# will only distinguish points by color, not the lm
+ggplot(penguins, aes(x = bill_len, y = bill_dep)) +
+  geom_point(aes(color = species)) +
+  geom_smooth(method = "lm", se = FALSE)
+
 ## Flipper length by species (boxplot) -------------------------------------
 
 # Basic boxplot of flipper length
-ggplot(penguins, aes(species, flipper_len)) +
+ggplot(penguins, aes(x = species, y = flipper_len)) +
   geom_boxplot()
 
 ## Body mass by sex and species (boxplot) ----------------------------------
@@ -59,14 +55,15 @@ ggplot(
   penguins,
   aes(
     x = sex,
-    y = body_mass
+    y = body_mass,
+    color = species
   )
 ) +
-  geom_boxplot(aes(color = species))
+  geom_boxplot()
 
 # Species as fill aesthetic
-ggplot(penguins, aes(x = sex, y = body_mass)) +
-  geom_boxplot(aes(fill = species))
+ggplot(penguins, aes(x = sex, y = body_mass, fill = species)) +
+  geom_boxplot()
 
 # Species as facets:
 ggplot(penguins, aes(x = sex, y = body_mass)) +
@@ -111,7 +108,7 @@ ggplot(
 # Combine points and boxplots (with jitter)
 ggplot(penguins, aes(x = species, y = flipper_len)) +
   geom_boxplot() +
-  geom_point(position = position_jitter(seed = 123, width = 0.2, height = 0))
+  geom_point(position = position_jitter(width = 0.2, height = 0))
 
 # Violin + boxplot combined
 ggplot(penguins, aes(x = sex, y = body_mass)) +
@@ -144,15 +141,13 @@ ggplot(penguins, aes(species, flipper_len, color = species)) +
 
 ## Change the colors -------------------------------------------------------
 
-library(paletteer)
-
 ggplot(penguins, aes(species, flipper_len, color = species)) +
   geom_boxplot(width = 0.3) +
   geom_point(
     alpha = 0.5,
     position = position_jitter(width = 0.2, height = 0, seed = 123)
   ) +
-  scale_color_paletteer_d("ggsci::default_uchicago") +
+  scale_color_brewer(palette = "Dark2") +
   labs(x = "Species", y = "Flipper length (mm)")
 
 ## Apply a theme -----------------------------------------------------------
@@ -163,7 +158,7 @@ ggplot(penguins, aes(species, flipper_len, color = species)) +
     alpha = 0.5,
     position = position_jitter(width = 0.2, height = 0, seed = 123)
   ) +
-  scale_color_paletteer_d("ggsci::default_uchicago") +
+  scale_color_brewer(palette = "Dark2") +
   labs(x = "Species", y = "Flipper length (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
@@ -215,7 +210,7 @@ flipper_box <- ggplot(
     alpha = 0.5,
     position = position_jitter(width = 0.2, seed = 123)
   ) +
-  ggsci::scale_color_uchicago() +
+  scale_color_manual(values = c("darkred", "gold3", "grey40")) +
   labs(x = "Species", y = "Flipper length (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
