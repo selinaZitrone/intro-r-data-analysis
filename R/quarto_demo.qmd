@@ -1,0 +1,37 @@
+---
+title: "Gapminder Analysis"
+author: "Selina Baldauf"
+date: today
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+library(gapminder)
+library(ggplot2)
+```
+
+## Introduction
+
+The **gapminder** dataset contains data about *life expectancy*, *GDP per capita*, and *population* for countries around the world.
+
+In this analysis, we will:
+
+- Load the gapminder data
+- Look at life expectancy in 2007
+- Create a plot of life expectancy vs. GDP per capita
+
+You can find more information about the data on the [Gapminder website](https://www.gapminder.org/).
+
+## Analysis
+
+The gapminder data contains `r nrow(gapminder)` observations from `r length(unique(gapminder$country))` countries.
+
+```{r}
+#| echo: false
+ggplot(gapminder_2007, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+```
