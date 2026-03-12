@@ -18,11 +18,70 @@ number-sections: false
 ```
 :::
 
-## Create your first Quarto document
+## Getting started
 
-**1.** In the **Files pane**, click `New File -> Quarto Document`. Give it a name like `penguin_report.qmd`.
+In this task, you will create a report on the penguins dataset using Quarto. 
 
-**2.** The file is empty. Add a YAML header at the top with a title, your name, and the output format:
+In the **Files pane**, click `New File -> Quarto Document`. Give it a name like `penguin_report.qmd`.
+
+:::{.callout-tip}
+Render your document often (`Ctrl + Shift + K`) to check if everything still works. It's much easier to find mistakes if you render after every small change.
+:::
+
+## Add text
+
+The file is empty. Write a short introduction about the penguins dataset. Include different markdown formatting like:
+
+- A section header (e.g. `## Introduction`)
+- A sentence or two with **bold** and *italic* formatting
+- A bullet list (e.g. listing the three penguin species)
+- A [link](https://quarto.org/docs/authoring/markdown-basics.html) to a website of your choice
+
+Render the document to see how the formatted text looks in the output.
+
+## Add code chunks
+
+:::{.callout-tip}
+
+## Add a code chunk
+
+You can add a code chunk in two ways:
+
+- keyboard shortcut `Ctrl + Alt + I` (or `Cmd + Option + I` on Mac)
+- going to **Code -> Insert Code Chunk** in the menu
+
+:::
+
+- Add a code chunk that loads the `tidyverse` package.
+- Add another code chunk that explores the data like `head()`, `summary()`, or `str()`.
+
+Now add a new section (e.g. `## Analysis`) with a plot, e.g.:
+
+- A scatterplot of two variables of your choice from the penguins data (e.g. bill length vs. bill depth, or flipper length vs. body mass)
+- A boxplot comparing a measurement across species or sex
+
+Render to see the code and output in the document.
+
+## Chunk options
+
+Experiment with chunk options to control what shows up in the output:
+
+- Hide the setup chunk where you load the tidyverse completely using `#| include: false`
+- Hide the code of one of your plots using `#| echo: false`
+- What is the difference between the two?
+- Add `#| warning: false` to the plot code chunk
+
+Render to check the effect of each option.
+
+## Inline code
+
+Write a sentence that includes a value computed by R, for example the number of observations or species. Use inline code like this: `` `r knitr::inline_expr("nrow(penguins)")` ``
+
+Render and check that the number appears in the text.
+
+## Add a YAML header
+
+Your document doesn't have a title or author yet. Add a YAML header at the very top of the file:
 
 ```yaml
 ---
@@ -32,127 +91,74 @@ format: html
 ---
 ```
 
-## Add text
-
-**4.** Below the YAML header, add a section header and a short sentence:
-
-```md
-## Introduction
-
-This is a short report about the **Palmer Penguins** dataset.
-```
-
-## Add code
-
-**5.** Add a code chunk that loads the tidyverse package. Hide the messages by adding chunk options:
-
-````md
-```{{r}}
-#| message: false
-#| warning: false
-
-library(tidyverse)
-```
-````
-
-**6.** Add a code chunk that prints the first rows of the penguins data:
-
-````md
-```{{r}}
-head(penguins)
-```
-````
-
-**7.** Add a new section header `## Plot` and a code chunk that creates a scatterplot:
-
-````md
-```{{r}}
-ggplot(penguins, aes(x = bill_len, y = bill_dep, color = species)) +
-  geom_point() +
-  labs(
-    x = "Bill length (mm)",
-    y = "Bill depth (mm)",
-    color = "Species"
-  ) +
-  theme_minimal()
-```
-````
-
-## Add inline code
-
-**8.** Below the plot, add a sentence that uses inline code:
-
-```md
-The dataset contains `r knitr::inline_expr("nrow(penguins)")` penguins 
-from `r knitr::inline_expr("length(unique(penguins$species))")` species.
-```
-
-## Render
-
-**9.** Click the **Render** button (or press `Ctrl + Shift + K`) to render your document to HTML. Check the result!
-
-## For the fast ones
-
-You can do these in any order, or skip them and just take a break.
-
-### Add a table of contents
-
-Add `toc: true` to your YAML header under the html format and re-render:
+You can also set default chunk options for the whole document by adding `execute` options to the YAML header. Try adding `warning: false` and `message: false` so you don't need them in every chunk:
 
 ```yaml
 ---
 title: "Penguin Report"
 author: "Your Name"
-format:
-  html:
-    toc: true
+format: html
+execute:
+  warning: false
+  message: false
 ---
 ```
 
-### Add a figure caption
 
-Add a caption to your plot chunk using the `#| fig-cap:` option. Re-render and check how it looks.
+## For the fast ones
 
-### Hide the code
+You can do these in any order, or skip them and just take a break.
 
-Try adding `code-fold: true` under the html format in the YAML header. This lets readers click to expand the code.
+### Explore YAML document options
 
-### Add another section
+:::{.callout-tip}
+## YAML options for a specific format
 
-Add a new section to your report. For example, a summary table or a second plot. Here is some code you could use:
+You can add options specific to the HTML format by nesting them under `html:` in the YAML header. Careful, the indentation has to be correct!
 
-A boxplot of body mass by species:
+The example below e.g. adds a table of contents to the HTML output and numbers the sections.
 
-```{r}
-#| eval: false
-#| echo: true
-ggplot(penguins, aes(x = species, y = body_mass, fill = species)) +
-  geom_boxplot() +
-  labs(x = "Species", y = "Body mass (g)") +
-  theme_minimal() +
-  theme(legend.position = "none")
+```yaml
+---
+format:
+  html:
+    toc: true
+    number-sections: true
+---
 ```
+:::
 
-A summary table:
+Try adding options under `html:` in the YAML header. For example:
 
-```{r}
-#| eval: false
-#| echo: true
-penguins |>
-  group_by(species) |>
-  summarize(
-    n = n(),
-    mean_mass = mean(body_mass, na.rm = TRUE),
-    mean_flipper = mean(flipper_len, na.rm = TRUE)
-  )
-```
+- `code-fold: true`: hides code behind a clickable button
+- `code-line-numbers: true`: adds line numbers to code chunks
+
+Browse the [HTML format reference](https://quarto.org/docs/reference/formats/html.html) for more options to try.
+
+### Explore chunk options
+
+Try adding more options to your code chunks. For example:
+
+- `#| fig-cap: "Your caption"` adds a figure caption
+- `#| fig-align: center` centers the figure
+- `#| out-width: "80%"` controls the figure width
+
+Browse the [code cell reference](https://quarto.org/docs/reference/cells/cells-knitr.html) for more options.
+
+### Explore markdown formatting
+
+Try out more markdown features like images, block quotes, footnotes, or tables.
+
+Browse the [Markdown basics reference](https://quarto.org/docs/authoring/markdown-basics.html) for ideas.
 
 ### Render to PDF
 
-Change `format: html` to `format: pdf` and render. If you get an error about missing LaTeX, run this in the R console first:
+Change `format: html` to `format: pdf` in the YAML header and render. If you get an error about missing LaTeX, you may need to install a lightweight LaTeX distribution first. Run this in the R console:
 
 ```{r}
 #| eval: false
 #| echo: true
-quarto::quarto_install_tinytex()
+# install.packages("tinytex") # only run this once
+# Install TinyTeX (only run this once)
+tinytex::install_tinytex()
 ```

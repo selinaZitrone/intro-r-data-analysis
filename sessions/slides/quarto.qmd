@@ -484,7 +484,7 @@ The visual editor makes it easy to:
 
 Quarto can do much more:
 
-- **Presentations** (like the slides in this workshop!)
+- **Presentations** (like the slides in this workshop)
 - **Websites** (like the [workshop website](https://selinazitrone.github.io/intro-r-data-analysis/))
 - **Books**
 - Publish online with [Quarto Pub](https://quartopub.com/) or GitHub Pages
