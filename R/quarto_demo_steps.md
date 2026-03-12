@@ -57,3 +57,69 @@
   ```
 - Explain that these set defaults for all chunks (can be overwritten per chunk)
 - **Render** one final time
+
+---
+
+# After the task: Additional features
+
+## 7. Document options
+
+- Change the YAML `format` from `html` to a nested format with options:
+  ```yaml
+  format:
+    html:
+      toc: true
+      toc-location: left
+      number-sections: true
+      code-fold: true
+  ```
+- **Render** to show table of contents, numbered sections, and folded code
+
+## 8. Figure options & cross-references
+
+- Add options to the plot chunk:
+  ```r
+  #| label: fig-life-exp
+  #| fig-cap: "Life expectancy vs. GDP per capita in 2007"
+  #| fig-align: center
+  #| out-width: "80%"
+  ```
+- Also add color by continent to the plot: `geom_point(aes(color = continent))`
+- Reference the figure in the text: `As we can see in @fig-life-exp, ...`
+- **Render** to show the caption and cross-reference
+
+## 9. Nice tables with `kable()`
+
+- Add a `### Summary by continent` header
+- Insert a code chunk with a summary table:
+  ```r
+  gapminder_2007 |>
+    group_by(continent) |>
+    summarize(
+      n_countries = n(),
+      mean_life_exp = round(mean(lifeExp), 1),
+      mean_gdp = round(mean(gdpPercap), 0)
+    ) |>
+    knitr::kable()
+  ```
+- **Render** to show the formatted table (compare with/without `kable()`)
+
+## 10. Statistical test with `broom`
+
+- Add a `### Statistical test` header
+- Insert a code chunk with a t-test:
+  ```r
+  europe <- gapminder_2007 |>
+    filter(continent == "Europe") |>
+    pull(lifeExp)
+
+  africa <- gapminder_2007 |>
+    filter(continent == "Africa") |>
+    pull(lifeExp)
+
+  t.test(europe, africa) |>
+    broom::tidy() |>
+    knitr::kable()
+  ```
+- Show the difference: messy test output vs. clean table
+- **Render** one final time
