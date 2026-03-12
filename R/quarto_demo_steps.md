@@ -2,11 +2,9 @@
 
 ## 1. Create the file
 
-- File -> New File -> Quarto Document
-- Enter title "Gapminder Analysis", author name
-- Click Create
-- Tell students to ignore the YAML header for now — we come back to it later
-- Delete the default template text (keep the YAML header)
+- In the Files pane, click New File -> Quarto Document
+- Name it e.g. `my_report.qmd`
+- The file opens empty — no template text to delete
 
 ## 2. Markdown text
 

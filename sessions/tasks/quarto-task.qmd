@@ -20,11 +20,9 @@ number-sections: false
 
 ## Create your first Quarto document
 
-**1.** Create a new Quarto document: `File -> New File -> Quarto Document`. Leave the default settings (Title: "Untitled", HTML format) and click `Create`.
+**1.** In the **Files pane**, click `New File -> Quarto Document`. Give it a name like `penguin_report.qmd`.
 
-**2.** Delete everything below the YAML header (the `---` block at the top). Keep only the YAML.
-
-**3.** Edit the YAML header: Change the title to something like "Penguin Report" and add your name as author.
+**2.** The file is empty. Add a YAML header at the top with a title, your name, and the output format:
 
 ```yaml
 ---

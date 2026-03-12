@@ -105,15 +105,15 @@ Today we focus on **documents**.
 
 ## Step 1: Create a `.qmd` document
 
-Open RStudio and go to `File -> New File -> Quarto Document`
+In the **Files pane**, click `New File -> Quarto Document`
 
 . . .
 
-![](img/day3/new_quarto_doc.jpg)
+![](img/day3/create_quarto_doc.png)
 
 . . .
 
-Click `Create` and the file opens in RStudio.
+Give it a name (e.g. `my_report.qmd`) and it opens as an empty file in RStudio.
 
 ## Step 2: Write the document
 
