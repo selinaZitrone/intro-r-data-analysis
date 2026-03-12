@@ -1,0 +1,160 @@
+---
+title: "Task: Reproducible documents with Quarto"
+number-sections: false
+---
+
+[← Back to session page](../11_quarto.qmd)
+
+:::{.callout-note}
+
+## Find the solution here after the session ends.
+
+```{=html}
+<script>const course_day = 3;</script>
+<script src="../../timer_solution.js"></script>
+<p class="r_class_solution" style="display:none">
+  <a href="../solutions/quarto-solution.html" target="_blank">Click here for the solution.</a>
+</p>
+```
+:::
+
+## Create your first Quarto document
+
+**1.** Create a new Quarto document: `File -> New File -> Quarto Document`. Leave the default settings (Title: "Untitled", HTML format) and click `Create`.
+
+**2.** Delete everything below the YAML header (the `---` block at the top). Keep only the YAML.
+
+**3.** Edit the YAML header: Change the title to something like "Penguin Report" and add your name as author.
+
+```yaml
+---
+title: "Penguin Report"
+author: "Your Name"
+format: html
+---
+```
+
+## Add text
+
+**4.** Below the YAML header, add a section header and a short sentence:
+
+```md
+## Introduction
+
+This is a short report about the **Palmer Penguins** dataset.
+```
+
+## Add code
+
+**5.** Add a code chunk that loads the tidyverse package. Hide the messages by adding chunk options:
+
+````md
+```{{r}}
+#| message: false
+#| warning: false
+
+library(tidyverse)
+```
+````
+
+**6.** Add a code chunk that prints the first rows of the penguins data:
+
+````md
+```{{r}}
+head(penguins)
+```
+````
+
+**7.** Add a new section header `## Plot` and a code chunk that creates a scatterplot:
+
+````md
+```{{r}}
+ggplot(penguins, aes(x = bill_len, y = bill_dep, color = species)) +
+  geom_point() +
+  labs(
+    x = "Bill length (mm)",
+    y = "Bill depth (mm)",
+    color = "Species"
+  ) +
+  theme_minimal()
+```
+````
+
+## Add inline code
+
+**8.** Below the plot, add a sentence that uses inline code:
+
+```md
+The dataset contains `r knitr::inline_expr("nrow(penguins)")` penguins 
+from `r knitr::inline_expr("length(unique(penguins$species))")` species.
+```
+
+## Render
+
+**9.** Click the **Render** button (or press `Ctrl + Shift + K`) to render your document to HTML. Check the result!
+
+## For the fast ones
+
+You can do these in any order, or skip them and just take a break.
+
+### Add a table of contents
+
+Add `toc: true` to your YAML header under the html format and re-render:
+
+```yaml
+---
+title: "Penguin Report"
+author: "Your Name"
+format:
+  html:
+    toc: true
+---
+```
+
+### Add a figure caption
+
+Add a caption to your plot chunk using the `#| fig-cap:` option. Re-render and check how it looks.
+
+### Hide the code
+
+Try adding `code-fold: true` under the html format in the YAML header. This lets readers click to expand the code.
+
+### Add another section
+
+Add a new section to your report. For example, a summary table or a second plot. Here is some code you could use:
+
+A boxplot of body mass by species:
+
+```{r}
+#| eval: false
+#| echo: true
+ggplot(penguins, aes(x = species, y = body_mass, fill = species)) +
+  geom_boxplot() +
+  labs(x = "Species", y = "Body mass (g)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+A summary table:
+
+```{r}
+#| eval: false
+#| echo: true
+penguins |>
+  group_by(species) |>
+  summarize(
+    n = n(),
+    mean_mass = mean(body_mass, na.rm = TRUE),
+    mean_flipper = mean(flipper_len, na.rm = TRUE)
+  )
+```
+
+### Render to PDF
+
+Change `format: html` to `format: pdf` and render. If you get an error about missing LaTeX, run this in the R console first:
+
+```{r}
+#| eval: false
+#| echo: true
+quarto::quarto_install_tinytex()
+```

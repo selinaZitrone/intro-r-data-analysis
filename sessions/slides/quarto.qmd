@@ -49,36 +49,9 @@ This is great for running code, but what if you want to
 - add explanations and interpretations to your code?
 - create a report with figures and tables?
 
-. . .
-
-**Quarto** lets you combine **code**, **text**, and **output** in one document.
-
-# Why Quarto? {.inverse}
-
 ## A standard workflow
 
-:::{.columns}
-
-:::{.column width="40%"}
-
 ![](img/day3/classic_workflow.png)
-
-:::
-
-:::{.column width="58%"}
-
-:::{.nonincremental}
-
-Workflow can be
-
-- error prone
-- annoying to repeat
-
-:::
-
-:::
-
-:::
 
 . . .
 
@@ -90,7 +63,7 @@ If you have to repeat the analysis
 
 ## A Quarto workflow
 
-**Basic idea:** Have everything (code, text, metadata) in one place. Let `Quarto` do the magic.
+**Quarto** lets you combine **code**, **text**, and **output** in one document.
 
 . . .
 
@@ -111,7 +84,7 @@ If you have to repeat the analysis
 
 . . .
 
-- Built into RStudio — no extra installation needed
+- Built into RStudio but can also be installed separately
 - Create different types of outputs:
   - Documents: HTML, PDF, Word
   - Presentations, Websites, Books, ...
@@ -130,7 +103,7 @@ Today we focus on **documents**.
 
 3. **Render** the document to an output format (e.g. HTML)
 
-## Step 1 — Create a `.qmd` document
+## Step 1: Create a `.qmd` document
 
 Open RStudio and go to `File -> New File -> Quarto Document`
 
@@ -142,7 +115,7 @@ Open RStudio and go to `File -> New File -> Quarto Document`
 
 Click `Create` and the file opens in RStudio.
 
-## Step 2 — Write the document
+## Step 2: Write the document
 
 A `.qmd` file has three types of content:
 
@@ -164,7 +137,7 @@ A `.qmd` file has three types of content:
 
 :::
 
-## Step 3 — Render the document
+## Step 3: Render the document
 
 :::{.nonincremental}
 
@@ -230,7 +203,7 @@ Code chunks start and end with 3 backticks and contain R code:
 ```{{r}}
 library(gapminder)
 
-ggplot(gapminder_2007, aes(x = gdpPercap, y = lifeExp)) +
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 ````
@@ -266,7 +239,7 @@ Code chunks have special comments starting with `#|` that control the output:
 #| echo: false
 #| warning: false
 
-ggplot(gapminder_2007, aes(x = gdpPercap, y = lifeExp)) +
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()
 ```
 ````
@@ -336,20 +309,6 @@ execute:
 
 These can be overwritten by individual chunk options.
 
-## Live demo
-
-Let me show you how this all works together.
-
-:::{.nonincremental}
-
-- Create a new `.qmd` file
-- Add some text with headers and formatting
-- Add code chunks with gapminder plots
-- Use inline code
-- Render to HTML
-
-:::
-
 # Now you {.inverse}
 
 [Task (30 min)]{.highlight-blue}<br>
@@ -371,10 +330,12 @@ format: pdf
 
 . . .
 
-You might need to install TinyTeX first (only once):
+You might need to install LaTeX first. The most convenient is to use the [`tinytex` package](https://yihui.org/tinytex/):
+
 ````r
 # Run this in the R console
-quarto::quarto_install_tinytex()
+# install.packages("tinytex")
+tinytex::install_tinytex()
 ````
 
 ## Render to Word
@@ -422,7 +383,7 @@ format:
 
 . . .
 
-Be careful with the **indentation** — YAML is sensitive to spaces!
+Be careful with the **indentation**, YAML is sensitive to spaces.
 
 ## Figure options
 
@@ -434,7 +395,7 @@ Control how figures appear in the output:
 #| fig-align: center
 #| out-width: "80%"
 
-ggplot(gapminder_2007, aes(x = gdpPercap, y = lifeExp)) +
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
   geom_point(aes(color = continent)) +
   theme_minimal()
 ```
@@ -509,11 +470,9 @@ This is a great reason to use Quarto: **run the test and format the result in on
 
 RStudio has a **visual editor** that provides a word-like interface for editing `.qmd` files.
 
-. . .
+![](img/day3/visual_editor.png)
 
-Switch between **Source** and **Visual** mode using the buttons at the top of the editor.
-
-. . .
+## The visual editor
 
 The visual editor makes it easy to:
 
