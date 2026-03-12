@@ -363,48 +363,43 @@ Let me show you how this all works together.
 ## Render to PDF
 
 Change the output format in the YAML header:
-
-```yaml
+````yaml
 ---
 format: pdf
 ---
-```
+````
 
 . . .
 
 You might need to install TinyTeX first (only once):
-
-```r
+````r
 # Run this in the R console
 quarto::quarto_install_tinytex()
-```
+````
 
 ## Render to Word
-
-```yaml
+````yaml
 ---
 format: docx
 ---
-```
+````
 
 . . .
 
 You can also specify **multiple output formats**:
-
-```yaml
+````yaml
 ---
 format:
   html: default
   pdf: default
   docx: default
 ---
-```
+````
 
 ## Document options
 
 Add options under the format to customize your document:
-
-```yaml
+````yaml
 ---
 format:
   html:
@@ -413,7 +408,7 @@ format:
     number-sections: true
     code-fold: true
 ---
-```
+````
 
 . . .
 
@@ -432,7 +427,6 @@ Be careful with the **indentation** — YAML is sensitive to spaces!
 ## Figure options
 
 Control how figures appear in the output:
-
 ```` md
 ```{{r}}
 #| label: fig-life-exp
@@ -460,16 +454,56 @@ ggplot(gapminder_2007, aes(x = gdpPercap, y = lifeExp)) +
 ## Cross-references
 
 You can reference labeled figures in the text:
-
-```md
+````md
 As we can see in @fig-life-exp, life expectancy increases with GDP.
-```
+````
 
 . . .
 
 becomes:
 
 As we can see in Figure 1, life expectancy increases with GDP.
+
+## Nice tables with `kable()`
+
+By default, tibbles print as plain text. Use `knitr::kable()` to render a nice table:
+````{{r}}
+penguins |>
+  group_by(species) |>
+  summarize(
+    mean_mass = mean(body_mass, na.rm = TRUE),
+    mean_flipper = mean(flipper_len, na.rm = TRUE)
+  ) |>
+  knitr::kable()
+````
+
+. . .
+
+No extra installation needed — `knitr` is already loaded when you render a `.qmd`.
+
+## Nice test results with `broom`
+
+Remember the statistical tests from earlier today?
+
+. . .
+
+Test output in R is not table-friendly. The `broom` package can fix that:
+````{{r}}
+#| eval: false
+# install.packages("broom")
+
+t.test(adelie, gentoo, var.equal = TRUE) |>
+  broom::tidy() |>
+  knitr::kable()
+````
+
+. . .
+
+`broom::tidy()` turns test results into a clean tibble — works with `t.test()`, `wilcox.test()`, `shapiro.test()`, and many more.
+
+. . .
+
+This is a great reason to use Quarto: **run the test and format the result in one document**.
 
 ## The visual editor
 
