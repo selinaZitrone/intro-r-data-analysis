@@ -31,40 +31,22 @@ from: markdown+emoji
 library(fontawesome)
 ```
 
-# Who am I? {.inverse}
+## Welcome
 
-:computer: **Scientific programmer** @[theoretical ecology group](https://www.bcp.fu-berlin.de/biologie/arbeitsgruppen/botanik/ag_tietjen/index.html)<br>
-:mortar_board: PhD in **dryland ecology**<br>
-:woman_teacher: **Teaching** R, Git, good scientific practice, ...
+:::{.columns}
+::: {.column width="70%"}
 
-<!-- ![](img/day1/crust.png) -->
+- (Theoretical) Ecology
+- Scientific programmer at Freie Universität Berlin
+- Research + Coding + Teaching
 
-<!-- ![](img/day1/el_cautivo.jpg) -->
+:::
+::: {.column width="20%"}
+![](img/day1/selina.jpg)
 
+:::
+:::
 
-## I'm using `r fontawesome::fa("r-project")` a lot for ...
-
-... **data analysis**
-
-... ecological modelling
-
-... writing documents/websites/presentations
-
-.... workflow automation
-
-...
-
-## Who are you?
-
-![](img/day1/topics.png)
-
-## Who are you?
-
-![](img/day1/tools.png)
-
-## Who are you?
-
-![](img/day1/methods.png)
 
 ## Workshop topics
 
@@ -78,12 +60,12 @@ Introduction to R and RStudio and data import
 . . .
 
 <b><span style="color:#ff9dd8;">Day2</span></b>
-Data transformation and visualization with the tidyverse
+Data visualization and transformation with the tidyverse
 
 . . .
 
 <b><span style="color:#FFD166;">Day3</span></b>
-Cleaning data, statistical tests, good practice and AI tools
+Cleaning data, statistical tests, and reproducible reports with Quarto
 
 . . .
 
@@ -91,44 +73,21 @@ Cleaning data, statistical tests, good practice and AI tools
 
 . . .
 
-## Schedule and Organization {.nonincremental}
-📅 06.10.2025 - 07.10.2025 from 🕘 9 a.m. - 4 p.m. <br>
-📅 13.10.2025 - 14.10.2025 from 🕘 9 a.m. - 4 p.m. <br>
-:ramen: ~ 12 a.m. - 1 p.m.,  :coffee: in between <br>
-:pushpin: We will meet in the `General` meeting on Webex
+## Schedule
 
-<br>
+📅 09.03.2026 - 10.03.2026 from 🕘 9 a.m. - 4 p.m. <br>
+📅 16.03.2026 - 17.03.2026 from 🕘 9 a.m. - 4 p.m. <br>
+:ramen: ~ 12 a.m. - 1 p.m.,  :coffee: short breaks in between<br>
+:pushpin: Join from the Webex space or via the meeting link
 
-:::{.fragment .nonincremental}
+## Organization
 
-#### 1. Input sessions
+- Input sessions + Tasks + Discussion/Questions
 
-- Presentation and demonstration of a topic + examples
-
-:::
-
-:::{.fragment .nonincremental}
-  
-#### 2. Tasks
-- Solve them in small groups
-
-:::
-
-:::{.fragment}
-  
-#### 3. Joint discussion of tasks & questions
-
-:::
-
-## Material
-
-- All material can be found on the [workshop's website](https://selinazitrone.github.io/intro-r-data-analysis/)
-
-  - Presentations, Tasks, Solutions, Additional resources
-  
-- You can download slides and R Scripts from there
+- Materials on the [workshop's website](https://selinazitrone.github.io/intro-r-data-analysis/): Presentations, Tasks, Solutions, Additional resources
 - Website will stay online after the workshop
-
+- Questions and feedback welcome
+- Contact me: [selina.baldauf@fu-berlin.de](mailto:selina.baldauf@fu-berlin.de) or on Webex
 
 ## Bring your own data
 
@@ -137,61 +96,29 @@ I will also provide some **real life data sets** from different topics.
 
 . . .
 
-#### Learning by doing
-
-:::{.nonincremental}
-- Get started using R for your own analyses
-
-- Use any of the methods from the course or try new things, ...
-
-- Present/discuss your results, questions and problems at the end of the day
-:::
+- You really learn R by working with your own data and questions
+- Use the methods you learned in the workshop or try new things
+- Let me know if there's something specific you want to do
 
 - Add your name and some details on what you plan to do in this [joint table](https://docs.google.com/spreadsheets/d/1MuINiPjVvZrMRUYboDXdoPwj8daKj88k6K1hnfcoWxQ/edit?usp=sharing)
 
-## Before we get started I
+## Before we get started
 
-- **Help each other** if possible
-
-- Have an eye on the chat and on the time
- 
-- All questions and comments are welcome
-
-- If possible, please turn on your camera
-
-- Feedback is welcome (Evaluation at the end of the workshop)
-
-## Before we get started II
-
-Did anyone have problems installing R and RStudio?
-
-<br>
-
-![](img/Rlogo.png){width=10%} Download and install R from [https://cran.r-project.org](https://cran.r-project.org/)
-
-![](img/Rstudio_logo.png){width=10%} Download and install RStudio from             [https://www.posit.co](https://posit.co/download/rstudio-desktop/)
-
-## Before we get started III
-
-**How to use Webex teams**
-
-- `General` channel for our joint meetings and chat
-- `Groups 1-4` for solving tasks jointly
-  - Group spaces have their own chat and meetings
-  - Ask questions in the chat, share screenshots, share your screen and talk
-
-# Now you (10 min){.inverse}
-
-> Get to know your team
+Did anyone have problems with the course preparations?
 
 :::{.nonincremental}
 
-- **Go into your groups** and **start a meeting** there
-- **Introduce yourself** to your team (~2 minutes for everyone)
-  - What is your PhD about?
-  - Which tools did you use so far for data analysis?
-  - Which types of data analysis do you do/want to do?
-- **Come back to the general meeting** after 10 mins
+- Download and install R from [https://cran.r-project.org](https://cran.r-project.org/)
+- Download and install RStudio from [https://www.posit.co](https://posit.co/download/rstudio-desktop/)
 
 :::
 
+# Quick round (~10 min){.inverse}
+
+> Let's get to know each other
+
+:::{.nonincremental}
+
+Tell us your **name**, what **organism/system** you work with and whether you've **used R before**.
+
+:::

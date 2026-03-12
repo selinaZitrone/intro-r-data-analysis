@@ -1,15 +1,13 @@
-# 1. Data visualization in ggplot2 -------------------------------------------
+# Task 1: Exploratory plots with ggplot2 ------------------------------------
 
-# 1.1 and 1.2 Getting started with ggplot and the penguins -------------------
+## Getting started ---------------------------------------------------------
 
 # install.packages("tidyverse")
 library(tidyverse)
 
 penguins
 
-# 1.3 Exploratory plotting ---------------------------------
-
-# 1.3.1 Relationship between bill length and bill depth (scatterplot)
+## Bill length vs. bill depth (scatterplot) --------------------------------
 
 ggplot(
   penguins,
@@ -21,18 +19,8 @@ ggplot(
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 
-
-# or short
-ggplot(penguins, aes(bill_len, bill_dep)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE)
-
-# color as aesthetic local to the point layer
-ggplot(penguins, aes(x = bill_len, y = bill_dep)) +
-  geom_point(aes(color = species)) +
-  geom_smooth(method = "lm", se = FALSE)
-
-# Option B: Define color aesthetic once globally
+# Define color aesthetic once globally
+# Will distinguish point and the linear model by color
 ggplot(
   penguins,
   aes(
@@ -44,50 +32,45 @@ ggplot(
   geom_point() +
   geom_smooth(method = "lm", se = FALSE)
 
-# 1.3.2 Difference in flipper length between species (boxplot)
+# color as aesthetic local to the point layer
+# will only distinguish points by color, not the lm
+ggplot(penguins, aes(x = bill_len, y = bill_dep)) +
+  geom_point(aes(color = species)) +
+  geom_smooth(method = "lm", se = FALSE)
 
-# Basic boxplot of flipper length with notches
-ggplot(penguins, aes(species, flipper_len)) +
-  geom_boxplot(notch = TRUE)
+## Flipper length by species (boxplot) -------------------------------------
 
-# Add jittered points
+# Basic boxplot of flipper length
 ggplot(penguins, aes(x = species, y = flipper_len)) +
-  geom_boxplot() +
-  geom_point(position = position_jitter(seed = 123, width = 0.2, height = 0))
+  geom_boxplot()
 
-## 1.3.3 Differences between body mass of male and female penguins (boxplot)
+## Body mass by sex and species (boxplot) ----------------------------------
 
 # Basic boxplot of body mass for penguins of different sex
 ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot()
 
 # Species as color aesthetic:
-
 ggplot(
   penguins,
   aes(
     x = sex,
-    y = body_mass
+    y = body_mass,
+    color = species
   )
 ) +
-  geom_boxplot(aes(color = species))
+  geom_boxplot()
 
 # Species as fill aesthetic
-ggplot(penguins, aes(x = sex, y = body_mass)) +
-  geom_boxplot(aes(fill = species))
+ggplot(penguins, aes(x = sex, y = body_mass, fill = species)) +
+  geom_boxplot()
 
 # Species as facets:
 ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot() +
   facet_wrap(vars(species))
 
-# With geom_violin
-ggplot(penguins, aes(x = sex, y = body_mass)) +
-  geom_violin() +
-  geom_boxplot(width = 0.4) +
-  facet_wrap(~species)
-
-## 1.3.4 Distribution of flipper length between species (histogram)
+## Flipper length distribution by species (histogram) ----------------------
 
 # Overlapping distributions
 ggplot(
@@ -109,6 +92,7 @@ ggplot(
 ) +
   geom_histogram()
 
+# Separated by facets
 ggplot(
   penguins,
   aes(
@@ -117,10 +101,22 @@ ggplot(
   )
 ) +
   geom_histogram() +
-  facet_wrap(~species, scales = "free_x", ncol = 1)
+  facet_wrap(vars(species), ncol = 1)
 
-#### 1.3.5 Penguin flipper length by species and sex (heatmap)
+## For the fast ones -------------------------------------------------------
 
+# Combine points and boxplots (with jitter)
+ggplot(penguins, aes(x = species, y = flipper_len)) +
+  geom_boxplot() +
+  geom_point(position = position_jitter(width = 0.2, height = 0))
+
+# Violin + boxplot combined
+ggplot(penguins, aes(x = sex, y = body_mass)) +
+  geom_violin() +
+  geom_boxplot(width = 0.4) +
+  facet_wrap(vars(species))
+
+# Heatmap
 ggplot(
   penguins,
   aes(
@@ -131,12 +127,9 @@ ggplot(
 ) +
   geom_tile()
 
-# 1.4 Beautify the plots --------------------------------------------------
+# Task 2: Beautify and save plots -----------------------------------------
 
-## 1.4.1 Beautify plots from 1.3
-
-# Example one: Boxplot of flipper length and species
-library(paletteer)
+## Add labels --------------------------------------------------------------
 
 ggplot(penguins, aes(species, flipper_len, color = species)) +
   geom_boxplot(width = 0.3) +
@@ -144,12 +137,33 @@ ggplot(penguins, aes(species, flipper_len, color = species)) +
     alpha = 0.5,
     position = position_jitter(width = 0.2, height = 0, seed = 123)
   ) +
-  scale_color_paletteer_d("ggsci::default_uchicago") +
+  labs(x = "Species", y = "Flipper length (mm)")
+
+## Change the colors -------------------------------------------------------
+
+ggplot(penguins, aes(species, flipper_len, color = species)) +
+  geom_boxplot(width = 0.3) +
+  geom_point(
+    alpha = 0.5,
+    position = position_jitter(width = 0.2, height = 0, seed = 123)
+  ) +
+  scale_color_brewer(palette = "Dark2") +
+  labs(x = "Species", y = "Flipper length (mm)")
+
+## Apply a theme -----------------------------------------------------------
+
+ggplot(penguins, aes(species, flipper_len, color = species)) +
+  geom_boxplot(width = 0.3) +
+  geom_point(
+    alpha = 0.5,
+    position = position_jitter(width = 0.2, height = 0, seed = 123)
+  ) +
+  scale_color_brewer(palette = "Dark2") +
   labs(x = "Species", y = "Flipper length (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
 
-# Example two: Reproducing the plot from the presentation
+## Reproduce the plot from the presentation --------------------------------
 
 # The following code is adapted from the palmerpengins package website
 # (https://allisonhorst.github.io/palmerpenguins/articles/examples.html).
@@ -185,7 +199,8 @@ penguin_scatter <- ggplot(
   )
 penguin_scatter
 
-### 1.5 Save one of the plots on your machine
+## Save your plot ----------------------------------------------------------
+
 flipper_box <- ggplot(
   penguins,
   aes(species, flipper_len, color = species)
@@ -195,7 +210,7 @@ flipper_box <- ggplot(
     alpha = 0.5,
     position = position_jitter(width = 0.2, seed = 123)
   ) +
-  ggsci::scale_color_uchicago() +
+  scale_color_manual(values = c("darkred", "gold3", "grey40")) +
   labs(x = "Species", y = "Flipper length (mm)") +
   theme_minimal() +
   theme(legend.position = "none")
@@ -214,8 +229,9 @@ ggsave(
 # save as pdf in /img directory of the project
 ggsave(filename = "img/flipper_box.pdf", flipper_box)
 
-# heatmap example
+## For the fast ones -------------------------------------------------------
 
+# Beautified heatmap
 heatmap <- ggplot(
   penguins,
   aes(
@@ -229,7 +245,6 @@ heatmap <- ggplot(
 heatmap
 
 # or with another color scale
-
 heatmap <- ggplot(
   penguins,
   aes(x = species, y = sex, fill = flipper_len)
@@ -303,63 +318,40 @@ ggsave("img/patchwork.png", final_plot)
 
 esquisse::esquisser(penguins)
 
-# 2 dplyr -------------------------------------------------------------------
+# dplyr Task 1: Filter, select, and mutate ---------------------------------
 
-# library(tidyverse)
-#
-# … with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).
+## Filter penguins ---------------------------------------------------------
 
-# Filter tasks -------------------------------------------------------------------
+# 1. bill length between 40 and 45 mm
+filter(penguins, bill_len >= 40 & bill_len <= 45)
 
-# bill length between 40 and 45 mm.
-filter(penguins, between(bill_len, 40, 45))
-# same as
-filter(penguins, bill_len < 45 & bill_len > 40)
+# 2. species Adelie or Gentoo
+filter(penguins, species %in% c("Adelie", "Gentoo"))
+# or
+filter(penguins, species == "Adelie" | species == "Gentoo")
 
-# for which we know the sex.
+# 3. lived on Dream in 2007
+filter(penguins, island == "Dream" & year == 2007)
 
-filter(penguins, !is.na(sex))
+## Remove missing values ---------------------------------------------------
 
-# which are of the species Adelie or Gentoo
-filter(
-  penguins,
-  species %in% c("Adelie", "Gentoo")
-)
+# 4. remove penguins with missing sex
+drop_na(penguins, sex)
 
-filter(penguins, (species == "Adelie" | species == "Gentoo"))
+## Select columns ----------------------------------------------------------
 
-# lived on Dream in 2007
-# How many of them were from each of the 3 species?
-
-filter(penguins, island == "Dream" & year == 2007) |>
-  count(species)
-
-filter(penguins, island == "Dream") |>
-  filter(year == 2007) |>
-  count(species)
-
-# Count tasks -------------------------------------------------------------
-
-# number of penguins on each island
-
-count(penguins, island)
-
-# number of penguins of each species on each island.
-
-count(penguins, island, species)
-
-# Select tasks --------------------------------------------------------------
-
-# only the variables species, sex and year
+# 5. only species, sex, and year
 select(penguins, species, sex, year)
 
+# 6. columns that start with "bill"
+select(penguins, starts_with("bill"))
 
-# Mutate tasks ------------------------------------------------------------
+## Add new columns ---------------------------------------------------------
 
-# with the ratio of bill length to bill depth
+# 7. ratio of bill length to bill depth
 mutate(penguins, ratio = bill_len / bill_dep)
 
-# abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C)
+# 8. abbreviations for the species
 mutate(
   penguins,
   species_short = case_when(
@@ -370,69 +362,102 @@ mutate(
   )
 )
 
-# Summary tasks -----------------------------------------------------------
+## Combine with the pipe ---------------------------------------------------
 
-# mean flipper length and body mass for the 3 species and
-# male and female penguins separately
-
+# 9. remove NA sex, keep Adelie, select species/sex/body_mass
 penguins |>
+  drop_na(sex) |>
+  filter(species == "Adelie") |>
+  select(species, sex, body_mass)
+
+## For the fast ones -------------------------------------------------------
+
+# filter_out penguins from Torgersen, then select columns
+penguins |>
+  filter_out(island == "Torgersen") |>
+  select(species, island, flipper_len)
+
+# size_category with case_when in a pipe
+penguins |>
+  drop_na(body_mass) |>
+  mutate(
+    size_category = case_when(
+      body_mass < 3500 ~ "small",
+      body_mass < 5000 ~ "medium",
+      body_mass >= 5000 ~ "large"
+    )
+  ) |>
+  select(species, body_mass, size_category)
+
+# dplyr Task 2: Summarize and visualize -----------------------------------
+
+## Count -------------------------------------------------------------------
+
+# 1. number of penguins on each island
+count(penguins, island)
+
+# 2. number of penguins of each species on each island
+count(penguins, island, species)
+
+## Summarize ---------------------------------------------------------------
+
+# 3. mean flipper length and body mass by species
+penguins |>
+  summarize(
+    mean_flipper = mean(flipper_len, na.rm = TRUE),
+    mean_body = mean(body_mass, na.rm = TRUE),
+    .by = species
+  )
+
+# 4. mean flipper length and body mass by species and sex, remove unknown sex
+penguins |>
+  drop_na(sex) |>
   summarize(
     mean_flipper = mean(flipper_len, na.rm = TRUE),
     mean_body = mean(body_mass, na.rm = TRUE),
     .by = c(species, sex)
   )
 
-# same but remove the penguins with unknown sex
+## Combine dplyr and ggplot ------------------------------------------------
 
+# 5. remove missing sex, boxplot of body mass by sex
 penguins |>
-  filter(!is.na(sex)) |>
-  summarize(
-    mean_flipper = mean(flipper_len, na.rm = TRUE),
-    mean_body = mean(body_mass, na.rm = TRUE),
-    .by = c(species, sex)
-  )
-
-### Extras
-
-# boxplot of penguin body mass with sex on the x-axis
-# facets for the different species.
-# remove the penguins with missing values for sex first
-
-penguins |>
-  filter(!is.na(sex)) |>
+  drop_na(sex) |>
   ggplot(aes(x = sex, y = body_mass)) +
-  geom_boxplot() +
-  facet_wrap(~species) +
-  labs(caption = "Some caption") +
-  theme(plot.caption = element_text(face = "bold", hjust = 1))
+  geom_boxplot()
 
-# scatterplot with ratio of bill length to bill depth on the y axis
-# and flipper length on the x axis
-# distinguish between male and female penguins
-# remove penguins with unknown sex before making the plot
-
+# 6. remove missing sex, scatterplot bill length vs bill depth by species
 penguins |>
-  mutate(ratio = bill_len / bill_dep) |>
-  filter(!is.na(sex)) |>
-  ggplot(aes(x = flipper_len, y = ratio, color = sex)) +
-  geom_point() +
-  scale_color_manual(values = c("cyan4", "darkorange")) +
-  labs(
-    x = "Flipper lenght (mm)",
-    y = "Ratio bill length / bill depth (-)"
-  ) +
-  theme_minimal()
+  drop_na(sex) |>
+  ggplot(aes(x = bill_len, y = bill_dep, color = species)) +
+  geom_point()
 
-# Sort tasks --------------------------------------------------------------
+## For the fast ones -------------------------------------------------------
 
-# penguins with lowest body mass first
+# Tricky: summarize mean body mass by species, pipe into geom_col()
+penguins |>
+  summarize(
+    mean_body = mean(body_mass, na.rm = TRUE),
+    .by = species
+  ) |>
+  ggplot(aes(x = species, y = mean_body)) +
+  geom_col()
 
-arrange(penguins, body_mass)
+# min, max, and mean flipper length per species
+penguins |>
+  summarize(
+    min_flipper = min(flipper_len, na.rm = TRUE),
+    max_flipper = max(flipper_len, na.rm = TRUE),
+    mean_flipper = mean(flipper_len, na.rm = TRUE),
+    .by = species
+  )
 
-# penguins with highest body mass first
-
-arrange(penguins, desc(body_mass))
-
-# penguins by species and sex, with longest flippers first
-
-arrange(penguins, species, sex, desc(flipper_len))
+# sort by mean flipper length
+penguins |>
+  summarize(
+    min_flipper = min(flipper_len, na.rm = TRUE),
+    max_flipper = max(flipper_len, na.rm = TRUE),
+    mean_flipper = mean(flipper_len, na.rm = TRUE),
+    .by = species
+  ) |>
+  arrange(mean_flipper)

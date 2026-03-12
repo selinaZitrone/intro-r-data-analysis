@@ -31,11 +31,15 @@ knitr:
     collapse: true
     comment: "#>"
 from: markdown+emoji
+filters:
+  - roughnotation
+  - flourish
 ---
 
 
 ```{r setup, include=FALSE}
 library(tidyverse)
+library(gapminder)
 theme_set(theme_grey(base_size = 16))
 ```
 
@@ -61,9 +65,9 @@ theme_set(theme_grey(base_size = 16))
 
 ## A ggplot showcase
 
-![Overview of different plot possibilites created by Cédric Scherer. Check out [his tutorial](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/#toc) to learn how to make all these plots with ggplot](img/day2/ggplot_showcase_cedric.png){width=70%}
+![Overview of different plot possibilites created by Cédric Scherer. Check out [his tutorial](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/#toc) to learn how to make all these plots with ggplot](img/day2/ggplot_showcase_cedric.png){width=60%}
 
-## Advantages of ggplot
+## The ggplot2 package
 
 - **Consistent** grammar/structure
 - **Flexible** structure allows you to produce any type of plots
@@ -73,80 +77,56 @@ theme_set(theme_grey(base_size = 16))
 - Active community that provides help and inspiration
 - Perfect package for **exploratory data analysis** and **beautiful plots**
 
-## The data
+:::{.fragment}
 
-Data set `and_vertebrates` with measurements of a trout and 2 salamander species in different forest sections.
-
-:::{.columns}
-
-:::{.column width="60%"}
-
-::: {.nonincremental}
-
-::: {.small}
-
-- `year`: observation year
-- `section`: CC (clear cut forest) or OG (old growth forest)
-- `unittype`: channel classification (C = Cascade, P = Pool, ...)
-- `species`: Species measured
-- `length_1_mm`: body length [mm]
-- `weight_g`: body weight [g]
-
-:::
-
-:::
-
-:::{.aside}
-References: [Kaylor, M.J. and D.R. Warren. (2017)](https://doi.org/10.1002/ecs2.1845) and<br>[Gregory, S.V. and I. Arismendi. (2020)](https://doi.org/10.6073/pasta/7c78d662e847cdbe33584add8f809165) as provided in the <br>[lterdatasampler package](https://lter.github.io/lterdatasampler/).
-
-:::
-
-:::
-
-:::{.column width="40%"}
-
-![Coastal giant salamander (terrestrial form)<br>Andrews Forest Program by Lina DiGregorio via CC-BY from [https://andrewsforest.oregonstate.edu](https://andrewsforest.oregonstate.edu)](https://andrewsforest.oregonstate.edu/sites/default/files/gallery/afb_037.jpg){width=60%}
-
-:::
-
-:::
-
-## The data
-
-Data set `and_vertebrates` with measurements of a trout and 2 salamander species in different forest sections.
+Part of the tidyverse
 
 ```{r}
-library(lterdatasampler)
-vertebrates <- and_vertebrates |>
-  select(year, section, unittype, species, length_1_mm, weight_g) |>
-  filter(species != "Cascade torrent salamander")
-vertebrates
+library(tidyverse)
+# Or load it individually:
+# library(ggplot2)
 ```
 
-# {.background-no-title .inverse}
+:::
 
-![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/ggplot2_exploratory.png){width=60%}
+## The data
 
-## `ggplot(data)`
+The `gapminder` dataset contains data on life expectancy, GDP per capita, and population for 142 countries from 1952 to 2007.
+
+```{r}
+# install.packages("gapminder")
+library(gapminder)
+gapminder
+```
+
+. . .
+
+```{r}
+gapminder_2007 <- filter(gapminder, year == 2007)
+```
+
+How is life expectancy related to GDP per capita?
+
+# Building a ggplot {.inverse}
+
+> Step by step
+
+## Step 1: `ggplot(data)`
 
 The `ggplot()` function initializes a ggplot object. Every ggplot needs this function.
 
 . . .
 
-
 :::{.columns}
 
 :::{.column width="50%"}
 
-
-```{r eval=FALSE}
-library(ggplot2)
-# or library(tidyverse)
-
-ggplot(data = vertebrates)
+```{r}
+#| eval: false
+ggplot(gapminder_2007)
 ```
 
-- Empty plot because we did not specify the mapping of data variables
+- Empty plot because we haven't told ggplot what to put on the axes yet
 
 :::
 
@@ -154,16 +134,16 @@ ggplot(data = vertebrates)
 
 ```{r}
 #| echo: false
-ggplot(data = vertebrates)
+ggplot(gapminder_2007)
 ```
 
 :::
 
 :::
 
-## `aes(x, y)`
+## Step 2: add `aes(x, y)`
 
-The **aes**thetics define how data variables are mapped plot properties.
+The **aes**thetics define how data variables are mapped to plot properties.
 
 . . .
 
@@ -171,74 +151,32 @@ The **aes**thetics define how data variables are mapped plot properties.
 
 :::{.column width="50%"}
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 ggplot(
-  data = vertebrates,
-  mapping = aes(
-    x = length_1_mm,
-    y = weight_g
-  )
-)
-```
-
-- Map variable `length_1_mm` to x-axis and `weight_g` to y-axis
-- Default scales are automatically adapted to range of data
-
-:::
-
-:::{.column width="50%"}
-
-```{r echo=FALSE}
-ggplot(
-  data = vertebrates,
-  aes(x = length_1_mm, y = weight_g)
-)
-```
-
-:::
-
-:::
-
-## `aes(x, y)`
-
-The **aes**thetics define how data variables are mapped plot properties.
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r eval=FALSE}
-ggplot(
-  data = vertebrates,
-  mapping = aes(
-    x = length_1_mm,
-    y = weight_g
-  )
-)
-```
-
-This is the same but shorter:
-
-```{r eval=FALSE}
-ggplot(
-  vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g
+    x = gdpPercap,
+    y = lifeExp
   )
 )
 ```
 
-Remember argument matching by position?
+- Axes are set up, but no data points yet
+- Scales adapt automatically to the range of the data
 
 :::
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  data = vertebrates,
-  aes(x = length_1_mm, y = weight_g)
+  gapminder_2007,
+  aes(
+    x = gdpPercap,
+    y = lifeExp
+  )
 )
 ```
 
@@ -246,88 +184,49 @@ ggplot(
 
 :::
 
-## `geom_*`
+
+## Step 3: add a `geom`
 
 `geoms` define how data points are represented. There are many different geoms to chose from
 
 ![from [ggplot cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-visualization-2.1.pdf)](img/day2/geom_ggplot.png){width=60%}
 
-## `geom_point`
+## Step 3: add a `geom`
 
 :::{.columns}
 
 :::{.column width="50%"}
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 ggplot(
-  data = vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g
+    x = gdpPercap,
+    y = lifeExp
   )
 ) +
   geom_point()
 ```
 
-- New plot layers added with `+`
-- Warning that points could not be plotted due to missing values
+- New layers are added with `+`
 - `data` and `aes` defined in `ggplot` call are inherited to all plot layers
 
-:::
-
-:::{.column width="50%"}
-
-```{r echo=FALSE, warning=TRUE}
-ggplot(
-  data = vertebrates,
-  aes(
-    x = length_1_mm,
-    y = weight_g
-  )
-) +
-  geom_point()
-```
-
-:::
-
-:::
-
-## `geom_point`
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-
-```{r eval=FALSE}
-ggplot() +
-  geom_point(
-    data = vertebrates,
-    aes(
-      x = length_1_mm,
-      y = weight_g
-    )
-  )
-```
-
-- `data` and `aes` can also be local to a layer:
-
 :::{.fragment}
-
-Here, it does not make a difference in the result.
-
+Does this depend on the continent?
 :::
 
 :::
 
 :::{.column width="50%"}
 
-```{r echo=FALSE, warning=TRUE}
+```{r}
+#| echo: false
 ggplot(
-  data = vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g
+    x = gdpPercap,
+    y = lifeExp
   )
 ) +
   geom_point()
@@ -337,42 +236,46 @@ ggplot(
 
 :::
 
-## `aes(color)`: mapping color to a variable
+## Add color: `aes(color = ...)`
 
-Looks like there are two groups of data: **Map color of points to a variable** by adding it to aesthetics:
+Map a variable to the **color** aesthetic to distinguish groups:
 
 . . .
 
-:::{.columns}  
+:::{.columns}
 
 :::{.column width="50%"}
 
 ```{r}
 #| eval: false
+#| flourish:
+#|   - target: "color = continent"
 ggplot(
-  data = vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
   )
 ) +
   geom_point()
 ```
 
-- Map the `species` variable to the color aesthetic of the plot
+- `color = continent` maps the continent to point color
+- A legend is added automatically
 
-:::  
+:::
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  data = vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
   )
 ) +
   geom_point()
@@ -382,22 +285,28 @@ ggplot(
 
 :::
 
-## `aes(size)`: mapping size to a variable
 
-We can do the same with size:
+## Other aesthetics: `size`
 
-:::{.columns}  
+Besides `color`, you can also map variables to `size`:
+
+. . .
+
+:::{.columns}
 
 :::{.column width="50%"}
 
 ```{r}
 #| eval: false
+#| flourish:
+#|  - target: "size = pop"
 ggplot(
-  data = vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    size = species
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent,
+    size = pop
   )
 ) +
   geom_point()
@@ -407,15 +316,17 @@ ggplot(
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  data = vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    size = species
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent,
+    size = pop
   )
-) + #<<
+) +
   geom_point()
 ```
 
@@ -423,9 +334,55 @@ ggplot(
 
 :::
 
-## `aes(shape)`: mapping shape to a variable
+## Other aesthetics: `shape`
 
-We can do the same with shape:
+Besides `color`, you can also map variables to `shape`:
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+#| flourish:
+#|  - target: "shape = continent"
+ggplot(
+  gapminder_2007,
+  aes(
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent,
+    shape = continent
+  )
+) +
+  geom_point()
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+ggplot(
+  gapminder_2007,
+  aes(
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent,
+    shape = continent
+  )
+) +
+  geom_point()
+```
+
+:::
+
+:::
+
+## Changing the scales of the aesthetics
+
+The scales onto which the aesthetic elements are mapped can be changed.
 
 :::{.columns}
 
@@ -434,117 +391,31 @@ We can do the same with shape:
 ```{r}
 #| eval: false
 ggplot(
-  data = vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    shape = species
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
   )
 ) +
   geom_point()
 ```
 
-:::
-
-:::{.column width="50%"}
-
-```{r echo=FALSE}
-ggplot(
-  data = vertebrates,
-  aes(
-    x = length_1_mm,
-    y = weight_g,
-    shape = species
-  )
-) + #<<
-  geom_point()
-```
-
-:::
-
-:::
-
-## Combine color, size and shape
-
-We can also combine these aesthetics and map different variables
-
-:::{.columns}  
-
-:::{.column width="50%"}
-
-```{r eval = FALSE}
-#| eval: false
-ggplot(
-  data = vertebrates,
-  aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = unittype,
-    shape = species,
-    size = year
-  )
-) +
-  geom_point()
-```
-
-- This is a bit too much for this plot, but sometimes can be useful
+- GDP is condensed on the left (few large values)
+- A log scale would spread the data out
 
 :::
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  data = vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = unittype, #<<
-    shape = species, #<<
-    size = year
-  )
-) + #<<
-  geom_point()
-```
-
-:::
-
-:::
-
-## Changing  the scales of the aesthetics
-
-The scales onto which the aesthetic elements are mapped can be changed.
-
-:::{.columns} 
-
-:::{.column width="50%"}
-
-```{r eval=FALSE}
-ggplot(
-  data = vertebrates,
-  aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
-  )
-) +
-  geom_point()
-```
-
-- Exponential relationship?
-- How does it look like on the log scale?
-
-::: 
-
-:::{.column width="50%"}
-
-```{r echo=FALSE}
-ggplot(
-  data = vertebrates,
-  aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
   )
 ) +
   geom_point()
@@ -556,25 +427,24 @@ ggplot(
 
 ## `scale_x_log10`
 
-The scales onto which the aesthetic elements are mapped can be changed.
-
-:::{.columns}  
+:::{.columns}
 
 :::{.column width="50%"}
 
 ```{r}
 #| eval: false
+#| flourish:
+#|  - target: "scale_x_log10()"
 ggplot(
-  data = vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
   )
 ) +
   geom_point() +
-  scale_x_log10() +
-  scale_y_log10()
+  scale_x_log10()
 ```
 
 - Scales can be changed for all elements of `aes`:
@@ -583,7 +453,7 @@ ggplot(
 
 <code><b>scale\_[aes-name]{.highlight-ylw}\_[scale-type]{.highlight-pink}</b></code>
 
-In this example we scale the <b>[x]{.highlight-ylw}</b> and the  <b>[y]{.highlight-ylw}</b>  aesthetic to <b>[log10]{.highlight-pink}</b>.
+Here we scale the <b>[x]{.highlight-ylw}</b> aesthetic to <b>[log10]{.highlight-pink}</b>.
 
 :::
 
@@ -591,23 +461,24 @@ In this example we scale the <b>[x]{.highlight-ylw}</b> and the  <b>[y]{.highlig
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  data = vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
   )
 ) +
   geom_point() +
-  scale_x_log10() + #<<
-  scale_y_log10() #<<
+  scale_x_log10()
 ```
 
 :::
 
 :::
+
 
 ## `geom_smooth`
 
@@ -619,44 +490,44 @@ Add a smoothing line that helps see patterns in the data
 
 :::{.column width="50%"}
 
-```{r eval =FALSE}
+```{r}
 #| eval: false
+#| flourish:
+#|    - target: "geom_smooth(method = 'lm')"
 ggplot(
-  data = vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
   )
 ) +
-  geom_point(alpha = 0.3) +
+  geom_point() +
   geom_smooth(method = "lm") +
-  scale_x_log10() +
-  scale_y_log10()
+  scale_x_log10()
 ```
 
 - With `method = "lm"`, a linear regression line is added
-- All geoms done separately for species because color is defined globally
-- Alpha makes points transparent (0-1)
+- All geoms done separately for each continent because color is defined globally
 
 :::
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  data = vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
   )
 ) +
-  geom_point(alpha = 0.3) +
-  geom_smooth(method = "lm") + #<<
-  scale_x_log10() +
-  scale_y_log10()
-```  
+  geom_point() +
+  geom_smooth(method = "lm") +
+  scale_x_log10()
+```
 
 :::
 
@@ -664,21 +535,21 @@ ggplot(
 
 ## `geom_boxplot`
 
-Compare groups using a boxplot
+Compare a numeric variable across groups:
 
 . . .
 
-:::{.columns}  
+:::{.columns}
 
 :::{.column width="50%"}
 
-```{r eval =FALSE}
+```{r}
 #| eval: false
 ggplot(
-  vertebrates,
+  gapminder,
   aes(
-    x = species,
-    y = length_1_mm
+    x = continent,
+    y = lifeExp
   )
 ) +
   geom_boxplot()
@@ -688,80 +559,128 @@ ggplot(
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  vertebrates,
+  gapminder,
   aes(
-    x = species,
-    y = length_1_mm
+    x = continent,
+    y = lifeExp
   )
 ) +
-  geom_boxplot() #<<
-```  
-
-:::
-
-:::
-
-## `geom_boxplot`
-
-Compare groups using a boxplot
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r eval =FALSE}
-#| eval: false
-ggplot(
-  vertebrates,
-  aes(
-    x = species,
-    y = length_1_mm
-  )
-) +
-  geom_boxplot(notch = TRUE)
+  geom_boxplot()
 ```
 
-- If notches don't overlap, the medians of the groups are likely different
-
-:::
-
-:::{.column width="50%"}
-
-```{r echo=FALSE}
-ggplot(
-  vertebrates,
-  aes(
-    x = species,
-    y = length_1_mm
-  )
-) +
-  geom_boxplot(notch = TRUE) #<<
-```  
-
 :::
 
 :::
 
 ## `geom_boxplot`
 
-Map the `unittype` to the **color** aesthetic of the boxplot
-
-. . .
+Compare a numeric variable across groups:
 
 :::{.columns}
 
 :::{.column width="50%"}
 
-```{r eval =FALSE}
-#| eval: false
+```{r}
+#| label: anatomy-of-boxplot
+#| echo: false
+set.seed(123)
+data <- data.frame(
+  value = c(rnorm(100, mean = 10, sd = 2)),
+  group = "Example"
+)
+stats <- summary(data$value)
+iqr <- IQR(data$value)
+outlier_upper <- stats[5] + 1.5 * iqr
+outlier_lower <- stats[2] - 1.5 * iqr
+boxplot_anatomy <- ggplot(data, aes(x = group, y = value)) +
+  geom_boxplot(width = 0.3, outlier.size = 3, size = 1) +
+  annotate(
+    "text",
+    x = 1.4,
+    y = stats[6],
+    label = "Maximum (excluding outliers)",
+    hjust = 0
+  ) +
+  annotate(
+    "text",
+    x = 1.4,
+    y = stats[5],
+    label = "75th percentile (Q3)",
+    hjust = 0
+  ) +
+  annotate("text", x = 1.4, y = stats[3], label = "Median", hjust = 0) +
+  annotate(
+    "text",
+    x = 1.4,
+    y = stats[2],
+    label = "25th percentile (Q1)",
+    hjust = 0
+  ) +
+  annotate("text", x = 1.4, y = stats[1], label = "Outlier", hjust = 0) +
+  annotate(
+    "segment",
+    x = 1.3,
+    xend = 1.2,
+    y = c(stats[1], stats[2], stats[3], stats[5], stats[6]),
+    yend = c(stats[1], stats[2], stats[3], stats[5], stats[6])
+  ) +
+  annotate(
+    "text",
+    x = 0.5,
+    y = mean(c(stats[2], stats[5])),
+    label = "IQR\n(Inter Quartile\nRange)",
+    hjust = 0.5
+  ) +
+  theme_void() +
+  theme(
+    axis.text.x = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.background = element_rect(fill = "transparent", color = NA),
+    plot.background = element_rect(fill = "transparent", color = NA)
+  ) +
+  coord_cartesian(xlim = c(0.7, 2.5))
+boxplot_anatomy
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
 ggplot(
-  vertebrates,
+  gapminder,
   aes(
-    x = species,
-    y = length_1_mm,
-    color = unittype
+    x = continent,
+    y = lifeExp
+  )
+) +
+  geom_boxplot()
+```
+
+:::
+
+:::
+
+## `geom_boxplot` with color
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+#| flourish:
+#|  - target: "color = continent"
+ggplot(
+  gapminder,
+  aes(
+    x = continent,
+    y = lifeExp,
+    color = continent
   )
 ) +
   geom_boxplot()
@@ -771,145 +690,60 @@ ggplot(
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  vertebrates,
+  gapminder,
   aes(
-    x = species,
-    y = length_1_mm,
-    color = unittype
+    x = continent,
+    y = lifeExp,
+    color = continent
   )
 ) +
   geom_boxplot()
-```  
+```
 
 :::
 
 :::
 
-## `geom_boxplot`
-
-Map the `unittype` to the **fill** aesthetic of the box
-
-. . .
+## `geom_boxplot` with fill
 
 :::{.columns}
 
 :::{.column width="50%"}
 
-```{r eval =FALSE}
+```{r}
 #| eval: false
+#| flourish:
+#|     - target: "fill = continent"
 ggplot(
-  vertebrates,
+  gapminder,
   aes(
-    x = species,
-    y = length_1_mm,
-    fill = unittype
+    x = continent,
+    y = lifeExp,
+    fill = continent
   )
 ) +
-  geom_boxplot(notch = TRUE)
+  geom_boxplot()
 ```
 
 :::
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  vertebrates,
+  gapminder,
   aes(
-    x = species,
-    y = length_1_mm,
-    fill = unittype
+    x = continent,
+    y = lifeExp,
+    fill = continent
   )
 ) +
-  geom_boxplot(notch = TRUE)
-```  
-
-:::
-
-:::
-
-## `geom_histogram`
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r eval =FALSE}
-ggplot(
-  vertebrates,
-  aes(
-    x = length_1_mm,
-    fill = section
-  )
-) +
-  geom_histogram()
+  geom_boxplot()
 ```
-
-- Careful: By default the histogram is stacked for the different groups!
-
-:::
-
-:::{.column width="50%"}
-
-```{r echo=FALSE}
-ggplot(
-  vertebrates,
-  aes(
-    x = length_1_mm,
-    fill = section
-  )
-) +
-  geom_histogram()
-```  
-
-:::
-
-:::
-
-## `geom_histogram`
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r eval =FALSE}
-#| eval: false
-ggplot(
-  vertebrates,
-  aes(
-    x = length_1_mm,
-    fill = section
-  )
-) +
-  geom_histogram(
-    position = "identity",
-    alpha = 0.5
-  )
-```
-
-- Change the position of the histogram to `"identity"`, if you
-don't want it stacked
-- `alpha` makes sure that you see overlapping areas
-
-:::
-
-:::{.column width="50%"}
-
-```{r echo=FALSE}
-ggplot(
-  vertebrates,
-  aes(
-    x = length_1_mm,
-    fill = section
-  )
-) +
-  geom_histogram(
-    position = "identity", #<<
-    alpha = 0.5
-  ) #<<
-```  
 
 :::
 
@@ -925,13 +759,14 @@ You can create a simple heatmap with `geom_tile`
 
 :::{.column width="50%"}
 
-```{r eval =FALSE}
+```{r}
+#| eval: false
 ggplot(
-  vertebrates,
+  gapminder,
   aes(
-    x = section,
-    y = species,
-    fill = weight_g
+    x = year,
+    y = continent,
+    fill = lifeExp
   )
 ) +
   geom_tile()
@@ -943,21 +778,111 @@ ggplot(
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  vertebrates,
+  gapminder,
   aes(
-    x = section,
-    y = species,
-    fill = weight_g
+    x = year,
+    y = continent,
+    fill = lifeExp
   )
 ) +
-  geom_tile() #<<
-```  
+  geom_tile()
+```
 
 :::
 
 :::
+
+
+## `geom_histogram`
+
+See the distribution of a single numeric variable:
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+ggplot(
+  gapminder,
+  aes(x = lifeExp)
+) +
+  geom_histogram()
+```
+
+- ggplot counts the observations for you (y-axis)
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+ggplot(
+  gapminder,
+  aes(x = lifeExp)
+) +
+  geom_histogram()
+```
+
+:::
+
+:::
+
+## `geom_histogram` with groups
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+ggplot(
+  gapminder,
+  aes(
+    x = lifeExp,
+    fill = continent
+  )
+) +
+  geom_histogram(
+    position = "identity",
+    alpha = 0.5
+  )
+```
+
+- By default histograms are stacked
+- Use `position = "identity"` to overlap them
+- `alpha` makes sure you see overlapping areas
+- Here it's a bit too crowded to see differences between continents
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+ggplot(
+  gapminder,
+  aes(
+    x = lifeExp,
+    fill = continent
+  )
+) +
+  geom_histogram(
+    position = "identity",
+    alpha = 0.5
+  )
+```
+
+:::
+
+:::
+
 
 ## Small multiples with `facet_wrap`
 
@@ -965,44 +890,48 @@ Split your plots along one variable with `facet_wrap`
 
 . . .
 
-:::{.columns}  
+:::{.columns}
 
 :::{.column width="50%"}
 
-```{r eval=FALSE}
+```{r}
 #| eval: false
+#| flourish:
+#|   - target: "facet_wrap(vars(continent))"
 ggplot(
-  data = vertebrates,
+  gapminder,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
+    x = lifeExp,
+    fill = continent
   )
 ) +
-  geom_point() +
-  facet_wrap(vars(section))
+  geom_histogram() +
+  facet_wrap(vars(continent))
 ```
+
+- Especially useful when color/shape gets crowded
 
 :::
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  data = vertebrates,
+  gapminder,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
+    x = lifeExp,
+    fill = continent
   )
 ) +
-  geom_point() +
-  facet_wrap(vars(section))
+  geom_histogram() +
+  facet_wrap(vars(continent))
 ```
 
 :::
 
 :::
+
 
 ## Small multiples with `facet_grid`
 
@@ -1014,90 +943,219 @@ Split your plots along two variables with `facet_grid`
 
 :::{.column width="50%"}
 
-```{r eval=FALSE}
+```{r}
 #| eval: false
 ggplot(
-  data = vertebrates,
+  gapminder,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = unittype
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
   )
 ) +
   geom_point() +
-  facet_grid(section ~ species)
+  scale_x_log10() +
+  facet_grid(
+    rows = vars(continent),
+    cols = vars(year)
+  )
 ```
 
-- `facet_grid(rows ~ columns)`
-
-::: 
+:::
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  data = vertebrates,
+  gapminder,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = unittype
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
   )
 ) +
   geom_point() +
-  facet_grid(section ~ species) #<<
+  scale_x_log10() +
+  facet_grid(
+    rows = vars(continent),
+    cols = vars(year)
+  ) +
+  theme_gray(base_size = 14)
 ```
 
 :::
 
 :::
 
+## So many other geoms
+
+Check out:
+
+:::{.nonincremental}
+
+- [ggplot2 cheatsheet](https://ggplot2.tidyverse.org/#cheatsheet)
+- [ggplot2 cookbook](https://r-graphics.org/)
+- [ggplot2 tutorial](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/) 
+
+:::
+
+
+## Summary: The ggplot skeleton
+
+Every ggplot has the same basic structure:
+
+```{r}
+#| eval: false
+ggplot(
+  data,
+  aes(x = ..., y = ..., color = ...)
+) +
+  geom_xxx()
+```
+
+:::{.nonincremental}
+
+- `ggplot()`: initialize the plot with data and aesthetic mappings
+- `aes()`: map variables to visual properties (x-axis, y-axis, color, shape, size, ...)
+- `geom_xxx()`: define how data points are drawn
+- Layers are connected with `+`
+
+:::
+
+
 # Now you {.inverse}
 
-[Task 1.1 - 1.2 (45 min)]{.highlight-blue}<br>
+[Task 1 (35 min)]{.highlight-blue}<br>
 
 [Exploratory data analysis with the penguin data set]{.big-text}
 
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/07_ggplot.html)**
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/ggplot-task-1.html)**
 
-(Don't do the "Beautify" task)
+# Beautifying plots {.inverse}
 
+> From default to publication-ready
 
-# {.background-no-title .inverse}
+## Mapping vs. setting aesthetics
 
-![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/ggplot2_masterpiece.png){width=60%}
-
-## Change appearance of points
-
-. . . 
+. . .
 
 :::{.columns}
 
 :::{.column width="50%"}
 
-```{r eval=FALSE}
+Inside `aes()`: **map** a variable to color
+
+```{r}
 #| eval: false
 ggplot(
-  vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
+  )
+) +
+  geom_point()
+```
+
+```{r}
+#| echo: false
+#| fig-width: 3.5
+#| fig-height: 3.3
+ggplot(
+  gapminder_2007,
+  aes(
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
+  )
+) +
+  geom_point(size = 1) +
+  scale_x_log10() +
+  theme_gray(base_size = 10)
+```
+
+:::
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+Inside `geom`: **set** color of all points
+
+```{r}
+#| eval: false
+ggplot(
+  gapminder_2007,
+  aes(
+    x = gdpPercap,
+    y = lifeExp
   )
 ) +
   geom_point(
-    size = 4,
-    shape = 17,
-    color = "blue",
-    alpha = 0.5
+    color = "steelblue"
   )
+```
+
+```{r}
+#| echo: false
+#| fig-width: 3.5
+#| fig-height: 3.3
+ggplot(
+  gapminder_2007,
+  aes(
+    x = gdpPercap,
+    y = lifeExp
+  )
+) +
+  geom_point(
+    color = "steelblue",
+    size = 1
+  ) +
+  scale_x_log10() +
+  theme_gray(base_size = 10)
+```
+
+:::
+
+:::
+
+:::
+
+
+## Mapping vs. setting aesthetics
+
+You can change point shape, size, and transparency in the same way:
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+ggplot(
+  gapminder_2007,
+  aes(
+    x = gdpPercap,
+    y = lifeExp
+  )
+) +
+  geom_point(
+    size = 3, # size
+    shape = 17, # shape
+    color = "steelblue", # color
+    alpha = 0.5 # transparency (0-1)
+  ) +
+  scale_x_log10()
 ```
 
 :::{.fragment}
 
-
 ```{r}
 #| echo: false
 #| fig-width: 6
-#| fig-height: 3
+#| fig-height: 2.1
 shapes <- data.frame(
   shape = c(0:19, 22, 21, 24, 23, 20),
   x = 0:24 %/% 5,
@@ -1119,72 +1177,184 @@ ggplot(shapes, aes(x, y)) +
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 ggplot(
-  vertebrates,
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g
+    x = gdpPercap,
+    y = lifeExp
   )
 ) +
   geom_point(
-    size = 4, #<<
-    shape = 17, #<<
-    color = "blue", #<<
-    alpha = 0.5 #<<
-  )
+    size = 3,
+    shape = 17,
+    color = "steelblue",
+    alpha = 0.5
+  ) +
+  scale_x_log10()
 ```
 
 :::
 
 :::
 
-## Change color scale
 
-We can also save a plot in a variable
+## Mapping vs. setting aesthetics
+
+Mapping and setting aesthetics can also be combined:
 
 :::{.columns}
 
 :::{.column width="50%"}
 
-```{r eval=FALSE}
-g <- ggplot(
-  vertebrates,
+```{r}
+#| eval: false
+#| flourish:
+#|  - target: "color = continent"
+#|  - target: "size = 2"
+#|  - target: "alpha = 0.6"
+ggplot(
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
   )
 ) +
-  geom_point()
-
-g
+  geom_point(
+    size = 2,
+    alpha = 0.6
+  ) +
+  scale_x_log10()
 ```
-
-<br>
-
-- Other plot layers can still be added to `g`
 
 :::
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
-g <- ggplot(
-  vertebrates,
+```{r}
+#| echo: false
+ggplot(
+  gapminder_2007,
   aes(
-    x = length_1_mm,
-    y = weight_g,
-    color = species
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
   )
 ) +
-  geom_point()
-g
+  geom_point(
+    size = 2,
+    alpha = 0.6
+  ) +
+  scale_x_log10()
 ```
 
 :::
 
 :::
+
+
+## Starting point
+
+Let's take this plot and make it look better step by step:
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+my_plot <- ggplot(
+  gapminder_2007,
+  aes(
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
+  )
+) +
+  geom_point() +
+  scale_x_log10()
+my_plot
+```
+
+- Saving the plot in a variable `my_plot` so we can build on it
+- Other plot layers can still be added to `my_plot`
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+my_plot <- ggplot(
+  gapminder_2007,
+  aes(
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent
+  )
+) +
+  geom_point() +
+  scale_x_log10()
+my_plot
+```
+
+:::
+
+:::
+
+## `scale_color_manual()`: choose your own colors
+
+Change the colors of the color aesthetic:
+
+. . .
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+my_plot <- my_plot +
+  scale_color_manual(
+    values = c(
+      "darkorange",
+      "steelblue",
+      "forestgreen",
+      "orchid",
+      "grey70"
+    )
+  )
+my_plot
+```
+
+- One color per group: number of colors must match the number of groups
+- Colors can be [names](https://derekogle.com/NCGraphing/resources/colors) or hex codes like `"#FF6B35"`
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+my_plot <- my_plot +
+  scale_color_manual(
+    values = c(
+      "darkorange",
+      "steelblue",
+      "forestgreen",
+      "orchid",
+      "grey50"
+    )
+  )
+my_plot
+```
+
+:::
+
+:::
+
 
 ## `scale_color_viridis_d`
 
@@ -1198,34 +1368,33 @@ Change the colors of the color aesthetic:
 
 ```{r}
 #| eval: false
-g +
+my_plot +
   scale_color_viridis_d(
-    option = "cividis"
+    option = "magma"
   )
 ```
 
-<br>
-
 - The viridis color palette is designed for viewers with common forms of color blindness
-- Different options of viridis color palettes: 
+- `viridis_d` for discrete colors, `viridis_c` for continuous colors
+- Different options of viridis color palettes:
 `"magma"`, `"inferno"`, `"plasma"`, `"viridis"`, `"cividis"`
 
 :::
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
-g +
-  scale_color_viridis_d(option = "cividis") #<<
+```{r}
+#| echo: false
+my_plot +
+  scale_color_viridis_d(option = "magma")
 ```
 
 :::
 
 :::
 
-## `scale_color_manual`
 
-We can also manually specify colors:
+## `scale_color_brewer()`: use a color palette
 
 :::{.columns}
 
@@ -1233,40 +1402,25 @@ We can also manually specify colors:
 
 ```{r}
 #| eval: false
-g +
-  scale_color_manual(
-    values = c(
-      "darkolivegreen4",
-      "darkorchid3"
-    )
+my_plot +
+  scale_color_brewer(
+    palette = "Set2"
   )
 ```
 
-- Length of color vector has to match number of levels in your aesthetic
-
-:::{.nonincremental}
-
-:::{.fragment}
-
-- Specify colors 
-  - Via their [name](https://derekogle.com/NCGraphing/resources/colors)
-  - Via their Hex color codes (use websites to generate your own color palettes, e.g. [here](https://coolors.co/))
-
-:::
-
-:::
+- Pre-defined palettes, many are colorblind-friendly
+- Other options: `"Dark2"`, `"Paired"`, `"Pastel1"`, ...
+- Check `?scale_color_brewer` for all options
 
 :::
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
-g +
-  scale_color_manual(
-    values = c(
-      "darkolivegreen4",
-      "darkorchid3"
-    )
+```{r}
+#| echo: false
+my_plot +
+  scale_color_brewer(
+    palette = "Set2"
   )
 ```
 
@@ -1274,44 +1428,6 @@ g +
 
 :::
 
-## Other color scales
-
-You can use the `paletteer` package to access color scales from many packages.<br>
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r eval=FALSE}
-# install.packages("paletteer")
-library(paletteer)
-g <- g +
-  scale_color_paletteer_d(
-    palette = "ggsci::default_uchicago"
-  )
-g
-```
-
-- Use `scale_color_paletteer_d` for discrete and `scale_color_paletteer_c` for
-continuous color scales
-- Check out all palettes available [here](https://r-charts.com/color-palettes)
-
-:::
-
-:::{.column width="50%"}
-
-```{r echo=FALSE}
-library(paletteer)
-g <- g +
-  paletteer::scale_color_paletteer_d(
-    palette = "ggsci::default_uchicago"
-  )
-g
-```
-
-:::
-
-:::
 
 ## `scale_fill_*` vs. `scale_color_*`
 
@@ -1320,42 +1436,47 @@ g
 :::{.column width="50%"}
 
 ```{r fig.height=4}
+#| flourish:
+#| - target: "color"
 ggplot(
-  vertebrates,
+  gapminder,
   aes(
-    x = section,
-    y = length_1_mm,
-    color = unittype
+    x = continent,
+    y = lifeExp,
+    color = continent
   )
 ) +
   geom_boxplot() +
-  scale_color_paletteer_d(
-    palette = "ggsci::default_uchicago"
+  scale_color_brewer(
+    palette = "Dark2"
   )
 ```
 
-::: 
+:::
 
 :::{.column width="50%"}
 
 ```{r fig.height=4}
+#| flourish:
+#| - target: "fill"
 ggplot(
-  vertebrates,
+  gapminder,
   aes(
-    x = section,
-    y = length_1_mm,
-    fill = unittype
+    x = continent,
+    y = lifeExp,
+    fill = continent
   )
 ) +
   geom_boxplot() +
-  scale_fill_paletteer_d(
-    palette = "ggsci::default_uchicago"
+  scale_fill_brewer(
+    palette = "Dark2"
   )
 ```
 
 :::
 
 :::
+
 
 ## `labs`: Change axis and legend titles and add plot title
 
@@ -1364,17 +1485,18 @@ ggplot(
 #| output-location: slide
 #| fig-width: 8
 #| fig-height: 6
-g <- g +
+my_plot <- my_plot +
   labs(
-    x = "Length [mm]",
-    y = "Weight [g]",
-    color = "Species",
-    title = "Length-Weight relationship",
-    subtitle = "There seems to be an exponential relationship",
-    caption = "Data from the `lterdatasampler` package"
+    x = "GDP per capita [US$]",
+    y = "Life expectancy [years]",
+    color = "Continent",
+    title = "Wealth and life expectancy",
+    subtitle = "Higher GDP per capita is associated with longer life expectancy",
+    caption = "Data from the gapminder package"
   )
-g
+my_plot
 ```
+
 
 ## `theme_*`: change appearance
 
@@ -1388,28 +1510,28 @@ g
 
 ```{r}
 #| eval: false
-g +
+my_plot +
   theme_classic()
 ```
 
 ```{r echo=FALSE, fig.height=5}
-g +
-  theme_classic(base_size = 16) #<<
+my_plot +
+  theme_classic(base_size = 14)
 ```
 
-::: 
+:::
 
 :::{.column width="50%"}
 
 ```{r}
 #| eval: false
-g +
+my_plot +
   theme_bw()
 ```
 
 ```{r echo=FALSE, fig.height= 5}
-g +
-  theme_bw(base_size = 16) #<<
+my_plot +
+  theme_bw(base_size = 14)
 ```
 
 :::
@@ -1420,35 +1542,34 @@ g +
 
 `ggplot2` offers many pre-defined themes that we can apply to change the appearance of a plot.
 
-
-:::{.columns}  
+:::{.columns}
 
 :::{.column width="50%"}
 
-```{r eval=FALSE}
+```{r}
 #| eval: false
-g +
+my_plot +
   theme_minimal()
 ```
 
 ```{r echo=FALSE, fig.height= 5}
-g +
-  theme_minimal(base_size = 16) #<<
+my_plot +
+  theme_minimal(base_size = 14)
 ```
 
-:::  
+:::
 
 :::{.column width="50%"}
 
-```{r eval=FALSE}
+```{r}
 #| eval: false
-g +
-  theme_dark()
+my_plot +
+  theme_linedraw()
 ```
 
 ```{r echo=FALSE, fig.height= 5}
-g +
-  theme_dark(base_size = 16, ) #<<
+my_plot +
+  theme_linedraw(base_size = 14)
 ```
 
 :::
@@ -1458,135 +1579,105 @@ g +
 ## `theme_*`: change appearance
 
 Since `ggplot2` v. 4.0.0, you can change overall color choices of a pre-defined theme.
-
-:::{.columns}  
-
-:::{.column width="50%"}
-
-- `paper`: affects background elements
-- `ink`: affects foreground elements (text, lines, points, ...)
-- `accent`: affects elements that are used to highlight information (like `geom_smooth()` lines)
-
-```{r eval=FALSE}
-#| eval: false
-g +
-  theme_bw(
-    ink = "#BBBBBB",
-    paper = "#333333"
-  )
-```
-
-:::  
-
-:::{.column width="50%"}
-
-```{r echo=FALSE, fig.height= 5}
-g +
-  theme_bw(
-    base_size = 16,
-    ink = "#BBBBBB",
-    paper = "#333333"
-  ) #<<
-```
-
-:::
-
-:::
-
-## `theme_*`: change appearance
-
-Since `ggplot2` v. 4.0.0, you can change overall color choices of a pre-defined theme.
-
-:::{.columns}  
-
-:::{.column width="50%"}
-
-:::{.nonincremental}
-- `paper`: affects background elements
-- `ink`: affects foreground elements (text, lines, points, ...)
-- `accent`: affects elements that are used to highlight information (like `geom_smooth()` lines)
-
-:::
-
-```{r eval=FALSE}
-#| eval: false
-g +
-  theme_minimal(
-    paper = "cornsilk",
-    ink = "navy"
-  )
-```
-
-:::  
-
-:::{.column width="50%"}
-
-
-
-```{r echo=FALSE, fig.height= 5}
-g +
-  theme_minimal(
-    base_size = 16,
-    paper = "cornsilk",
-    ink = "navy"
-  ) #<<
-```
-
-:::
-
-:::
-
-
-## `theme()`: customize theme
-
-You can manually change a theme or even create an entire theme yourself. 
-The elements you can control in the theme are:
-
-:::{.nonincremental}
-
-- titles (plot, axis, legend, ...)
-- labels
-- background
-- borders
-- grid lines
-- legends
-
-:::
-
-:::{.fragment}
-
-If you want a full list of what you can customize, have a look at 
-
-```{r eval=FALSE}
-?theme
-```
-
-- Look [here](https://www.tidyverse.org/blog/2025/10/ggplot2-styling/) for an overview of the elements that you can change
-
-:::
-
-## `theme()`: customize theme
-
-To edit a theme, just add another `theme()` layer to your plot.
-
-. . .
 
 :::{.columns}
 
 :::{.column width="50%"}
 
-```{r eval=FALSE}
+```{r}
 #| eval: false
-g +
-  theme_minimal(
-    ink = "navy",
-    paper = "cornsilk"
-  ) +
-  theme(
-    legend.position = "bottom",
-    axis.text = element_text(face = "bold"),
-    plot.title = element_text(color = "#c06a38ff")
+my_plot +
+  theme_bw(
+    ink = "#BBBBBB",
+    paper = "#333333"
   )
+```
+
+- `paper`: affects background elements
+- `ink`: affects foreground elements (text, lines, points, ...)
+- `accent`: affects elements that are used to highlight information (like `geom_smooth()` lines)
+
+
+:::
+
+:::{.column width="50%"}
+
+```{r echo=FALSE, fig.height= 5}
+my_plot +
+  theme_bw(
+    base_size = 14,
+    ink = "#BBBBBB",
+    paper = "#333333"
+  )
+```
+
+:::
+
+:::
+
+## `theme_*`: change appearance
+
+Since `ggplot2` v. 4.0.0, you can change overall color choices of a pre-defined theme.
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+my_plot +
+  theme_minimal(
+    paper = "cornsilk",
+    ink = "navy"
+  )
+```
+
+:::{.nonincremental}
+- `paper`: affects background elements
+- `ink`: affects foreground elements (text, lines, points, ...)
+- `accent`: affects elements that are used to highlight information (like `geom_smooth()` lines)
+
+:::
+
+
+:::
+
+:::{.column width="50%"}
+
+```{r echo=FALSE, fig.height= 5}
+my_plot +
+  theme_minimal(
+    base_size = 14,
+    paper = "cornsilk",
+    ink = "navy"
+  )
+```
+
+:::
+
+:::
+
+## `theme()`: fine-tune individual elements
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+my_plot <- my_plot +
+  theme_classic() +
+  theme(
+    # Move legend inside the plot
+    legend.position = "inside",
+    # Define the position with x and y coordinates (0-1)
+    legend.position.inside = c(0.90, 0.2),
+    # Make the title bold
+    plot.title = element_text(face = "bold"),
+    # Make axis titles larger and bold
+    axis.title = element_text(size = 14, face = "bold")
+  )
+my_plot
 ```
 
 :::{.fragment}
@@ -1605,27 +1696,41 @@ theme(
 
 :::{.column width="50%"}
 
-```{r echo=FALSE}
-g +
-  theme_minimal(
-    base_size = 16,
-    ink = "navy",
-    paper = "cornsilk"
-  ) +
+```{r}
+#| echo: false
+my_plot <- my_plot +
+  theme_classic(base_size = 14) +
   theme(
-    legend.position = "bottom",
-    axis.text = element_text(face = "bold"),
-    plot.title = element_text(color = "#c06a38ff")
+    # Move legend inside the plot
+    legend.position = "inside",
+    # Define the position with x and y coordinates (0-1)
+    legend.position.inside = c(0.90, 0.2),
+    # Make the title bold
+    plot.title = element_text(face = "bold"),
+    # Make axis titles larger and bold
+    axis.title = element_text(size = 14, face = "bold")
   )
+my_plot
+final_plot <- my_plot
 ```
 
 :::
 
 :::
 
+## `theme()`: fine-tune individual elements
+
+- Check `?theme` for all theme elements and options
+- Search: "ggplot theme ..." (e.my_plot. "ggplot theme remove legend")
+
+. . .
+
+![Theme reference sheet by [Isabella Benabaye](https://isabella-b.com/blog/ggplot2-theme-elements-reference/)](https://isabella-b.com/files/ggplot2-theme-elements-reference-v2.png){width=70%}
+
+
 ## `theme_set()`: set global theme
 
-You can set a global theme that will be applied to all ggplot objects in the current R session. 
+You can set a global theme that will be applied to all ggplot objects in the current R session.
 
 ```{r eval=FALSE}
 # Globally set theme_minimal as the default theme
@@ -1657,10 +1762,10 @@ A ggplot object can be saved on disk in different formats.
 Without specifications:
 
 ```{r eval=FALSE}
-# save plot g in img as my_plot.pdf
-ggsave(filename = "img/my_plot.pdf", plot = g)
-# save plot g in img as my_plot.png
-ggsave(filename = "img/my_plot.png", plot = g)
+# save plot my_plot in img as my_plot.pdf
+ggsave(filename = "img/my_plot.pdf", plot = my_plot)
+# save plot my_plot in img as my_plot.png
+ggsave(filename = "img/my_plot.png", plot = my_plot)
 ```
 
 . . .
@@ -1668,11 +1773,11 @@ ggsave(filename = "img/my_plot.png", plot = g)
 Or with specifications:
 
 ```{r eval=FALSE}
-# save a plot named g in the img directory under the name my_plot.png
+# save a plot named my_plot in the img directory under the name my_plot.png
 # with width 16 cm and height 9 cm
 ggsave(
   filename = "img/my_plot.png",
-  plot = g,
+  plot = my_plot,
   width = 16,
   heigth = 9,
   units = "cm"

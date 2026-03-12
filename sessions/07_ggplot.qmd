@@ -10,17 +10,17 @@ title: "Data visualization with ggplot2"
 
 ::: {.callout-tip}
 ## Exercises
-Go to the [task page](tasks/ggplot-task.qmd) for the exercises.
+Go to [Task 1: Exploratory plots](tasks/ggplot-task-1.qmd) and [Task 2: Beautify & save](tasks/ggplot-task-2.qmd) for the exercises.
 :::
 
 ## Resources
 
-- [ggplot2 cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf){target="_blank"}: overview of all ggplot2 possibilities
-
-- [Curated list of ggplot2 resources](https://github.com/erikgahner/awesome-ggplot2){target="_blank"}: tutorials (sorted by topic and difficulty), books, additional packages, ...
-
-- [R graph gallery](https://www.r-graph-gallery.com/){target="_blank"}: browse hundreds of plot types with reproducible code
-
-- [ggplot2 tutorial by Cedric Scherer](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/){target="_blank"}: in-depth tutorial covering many plot types
-
-- [ggplot2 extension packages](https://exts.ggplot2.tidyverse.org/gallery/){target="_blank"}: gallery of packages that extend ggplot2
+- [ggplot2 documentation](https://ggplot2.tidyverse.org/): The official documentation for ggplot2, with examples and tutorials.
+- [ggplot2 cookbook](https://r-graphics.org/): Practical guide for creating a wide variety of plots with ggplot2, with lots of examples and code snippets.
+- Great [ggplot2 tutorial](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/) by Cédric Scherer: A comprehensive tutorial on ggplot2, covering all the basics and more advanced topics.
+- A very comprehensive YouTube webinar on ggplot starting from the basics (by one of the package developpers)
+  - [Part 1](https://www.youtube.com/live/h29g21z0a68)
+  - [Part2](https://www.youtube.com/live/0m4yywqNPVY)
+- A list of [ggplot extension packages](https://exts.ggplot2.tidyverse.org/gallery/): These packages extend ggplot2 with new geoms, themes, and other features. You can find extensions for all kinds of things, from new types of plots to ways to make your plots interactive.
+  - My personal favorite is the [patchwork package](https://patchwork.data-imaginist.com/): A package for combining multiple ggplot2 plots into one multi-panel figure. It's very useful for publication-quality figures and it's super easy to use.
+- [ggplot2 cheat sheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html): A reference for ggplot2 functions, geoms etc. Great to see all options you have in one place.

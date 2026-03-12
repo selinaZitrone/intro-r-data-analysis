@@ -5,7 +5,7 @@ author: "Selina Baldauf"
 institute: "Freie Universität Berlin - Theoretical Ecology"
 date: today
 date-format: long
-format: 
+format:
   revealjs:
     footer: "Selina Baldauf // Data transformation with dplyr"
     highlight-style: breeze
@@ -19,21 +19,27 @@ format:
     scrollable: false
     theme: slides.scss
     fig-align: center
-execute: 
+    fig-width: 6.3
+    fig-height: 6.3
+execute:
   echo: true
   warning: false
   message: false
   cache: true
-knitr: 
-  opts_chunk: 
+knitr:
+  opts_chunk:
     collapse: true
     comment: "#>"
 from: markdown+emoji
+filters:
+  - roughnotation
+  - flourish
 ---
 
-```{r setup, include=FALSE, cache = TRUE}
-library(dplyr)
-library(ggplot2)
+```{r setup, include=FALSE}
+library(tidyverse)
+library(gapminder)
+theme_set(theme_grey(base_size = 16))
 options(dplyr.print_max = 5, pillar.print_max = 5)
 ```
 
@@ -46,6 +52,16 @@ Data transformation is an important step in **understanding** the data and **pre
 <br>
 
 We can use the tidyverse package `dplyr` for this.
+
+## The data
+
+The `gapminder` dataset contains data on life expectancy, GDP per capita, and population for 142 countries from 1952 to 2007.
+
+```{r}
+# install.packages("gapminder")
+library(gapminder)
+gapminder
+```
 
 ## Data transformation
 
@@ -63,10 +79,11 @@ With `dplyr` we can (among other things)
 :::
 
 . . .
-  
+
 To get started load the package `dplyr`:
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 library(dplyr)
 # or
 library(tidyverse)
@@ -74,153 +91,110 @@ library(tidyverse)
 
 ## Dplyr basic vocabulary
 
-All of the `dplyr` functions work similarly: <br> 
+All of the `dplyr` functions work similarly: <br>
 
 - **First argument** is the data (a tibble)
 - **Other arguments** specify what to do exactly
 - **Return** a tibble
 
-## The data
 
-Data set `and_vertebrates` with measurements of a trout and 2 salamander species in different forest sections.
-
-:::{.columns}
-
-:::{.column width="60%"}
-
-::: {.nonincremental}
-
-::: {.small}
-
-- `year`: observation year
-- `section`: CC (clear cut forest) or OG (old growth forest)
-- `unittype`: channel classification (C = Cascade, P = Pool, ...)
-- `species`: Species measured
-- `length_1_mm`: body length [mm]
-- `weight_g`: body weight [g]
-
-:::
-
-:::
-
-:::{.aside}
-References: [Kaylor, M.J. and D.R. Warren. (2017)](https://doi.org/10.1002/ecs2.1845) and<br>[Gregory, S.V. and I. Arismendi. (2020)](https://doi.org/10.6073/pasta/7c78d662e847cdbe33584add8f809165) as provided in the <br>[lterdatasampler package](https://lter.github.io/lterdatasampler/).
-
-:::
-
-:::
-
-:::{.column width="40%"}
-
-![Coastal giant salamander (terrestrial form)<br>Andrews Forest Program by Lina DiGregorio via CC-BY from [https://andrewsforest.oregonstate.edu](https://andrewsforest.oregonstate.edu)](https://andrewsforest.oregonstate.edu/sites/default/files/gallery/afb_037.jpg){width=60%}
-
-:::
-
-:::
-
-## The data
-
-Data set `and_vertebrates` with measurements of a trout and 2 salamander species in different forest sections.
-
-```{r}
-library(lterdatasampler)
-vertebrates <- and_vertebrates |>
-  select(year, section, unittype, species, length_1_mm, weight_g) |>
-  filter(species != "Cascade torrent salamander")
-vertebrates
-```
 
 # `filter()` {.inverse}
 
 > picks rows based on their value
 
-
-
 ## `filter()`
 
-Filter only the trout species:
+Filter only European countries:
 
 ```{r}
-filter(vertebrates, species == "Cutthroat trout")
+filter(gapminder, continent == "Europe")
 ```
 
 . . .
 
-`filter()` goes through each row of the data and return only those rows where the value for `species` is `"Cutthroat trout"`
-
-## `filter()`
-
-You can also combine filters using logical operators (`&`, `|`, `!`):
-
-```{r}
-filter(vertebrates, species == "Cutthroat trout" & year == 1987)
-```
-
-## `filter()` + `%in%`
-
-Use the `%in%` operator to filter rows based on multiple values, e.g. unittypes
+`filter()` goes through each row and returns only rows where the `continent` is `"Europe"`
 
 . . .
 
-```{r}
-unittype_select <- c("R", "C", "S")
-filter(vertebrates, unittype %in% unittype_select)
-```
+:::{.callout-note}
 
-## `filter()` + `is.na()`
-
-Filter only rows that don't have a value for the weight
+## To reuse, save result in a variable
 
 ```{r}
-filter(vertebrates, is.na(weight_g))
-```
-
-. . .
-
-Or the opposite: filter only the rows that have a value for the weight
-
-```{r eval=FALSE}
-filter(vertebrates, !is.na(weight_g))
-```
-
-## `filter()` + `between()`
-
-#### Combine different filters:
-
-Filter rows where the value for `year` is between 2000 and 2005
-
-:::{.fragment}
-
-```{r}
-filter(vertebrates, between(year, 2000, 2005))
+#| eval: false
+gapminder_europe <- filter(gapminder, continent == "Europe")
 ```
 
 :::
 
-:::{.fragment}
-
-Or you could also do it like this: 
-
-```{r eval=FALSE}
-filter(vertebrates, year >= 2000 & year <= 2005)
-```
-
-:::
-
-## Useful `filter()` helpers
-
-These functions and operators help you filter your observations:
+## `filter()`: comparison operators
 
 :::{.nonincremental}
 
-- relational operators `<`, `>`, `==`, ...
-- logical operators `&`, `|`, `!`
-- `%in%` to filter multiple values
-- `is.na()` to filter missing values
-- `between()` to filter values that are between an upper and lower boundary
-- `near()` to compare floating points (use instead of `==` for doubles)
+- `==` equal to
+- `!=` not equal to
+- `<`, `>` less than, greater than
+- `<=`, `>=` less than or equal to, greater than or equal to
+- `%in%` in a set of values
 
 :::
+
+. . .
+
+Other examples
+
+```{r}
+#| eval: false
+# Filter for life expectancy greater than 80
+filter(gapminder, lifeExp > 80)
+
+# All rows except European countries
+filter(gapminder, continent != "Europe")
+
+# All rows where continent is either "Africa", "Americas", or "Asia"
+filter(gapminder, continent %in% c("Africa", "Americas", "Asia"))
+```
+
+## `filter()`: combine conditions
+
+Use `&` (and) - both conditions must be true:
+
+. . .
+
+```{r}
+filter(gapminder, continent == "Europe" & year == 2007)
+```
+
+## `filter()`: combine conditions
+
+Use `|` (or) - one conditions must be true:
+
+. . .
+
+```{r}
+# Filter years outside the range 1970–2005
+filter(gapminder, year >= 2005 | year <= 1970)
+```
+
+## `filter_out()`: opposite of filter
+
+Relatively new function - keeps rows that **don't** match the condition:
+
+```{r}
+# Keep rows that are NOT from Europe
+filter_out(gapminder, continent == "Europe")
+```
+
+. . .
+
+<br>
+
+```{r}
+#| eval: false
+# equivalent to
+filter(gapminder, continent != "Europe")
+```
 
 # `select()` {.inverse}
 
@@ -228,71 +202,32 @@ These functions and operators help you filter your observations:
 
 ## `select()`
 
-Select the columns `species`, `length_1_mm`, and `year`
+Select the columns `country`, `year`, and `lifeExp`
 
 ```{r}
-select(vertebrates, species, length_1_mm, year)
+select(gapminder, country, year, lifeExp)
 ```
 
 . . .
 
 Remove variables using `-`
 
-```{r eval=FALSE}
-select(vertebrates, -species, -length_1_mm, -year)
+```{r}
+#| eval: false
+select(gapminder, -country, -year, -lifeExp)
 ```
 
 ## `select()` + `starts_with()`
 
-Select all columns that start with `"s"`
+Select all columns that start with `"c"`
 
-```{r eval=FALSE}
-select(vertebrates, starts_with("s"))
-```
-
-```{r echo=FALSE}
-print(select(vertebrates, starts_with("s")), n = 3)
+```{r}
+select(gapminder, starts_with("c"))
 ```
 
 . . .
 
-You can use the same structure for `ends_with()` and `contains()`.
-
-```{r eval=FALSE}
-# this does not make sense for the example data
-# but combinations like this are helpful for research data
-select(vertebrates, starts_with("_location1"))
-
-select(vertebrates, contains("_id_"))
-```
-
-## `select()` + `from:to` {visibility="hidden"}
-
-Multiple consecutive columns can be selected using the `from:to` structure with either column id or name:
-
-```{r eval = FALSE}
-select(vertebrates, 1:3)
-select(vertebrates, year:unittype)
-```
-
-```{r echo=FALSE}
-print(select(vertebrates, year:unittype), n = 3)
-```
-
-. . .
-
-Be a bit careful with these commands: They are not robust if you e.g. change the order of your columns at some point. <br>
-
-## Useful `select()` helpers
-
-:::{.nonincremental}
-
-- `starts_with()` and `ends_with()`: variable names that start/end with a specific string
-- `contains()`: variable names that contain a specific string
-- `matches()`: variable names that  match a regular expression
-- `any_of()` and `all_of()`: variables that are contained in a character vector
-
-:::
+There are also `ends_with()`, `contains()`, and more - see `?select` for details.
 
 # `mutate()` {.inverse}
 
@@ -302,43 +237,188 @@ Be a bit careful with these commands: They are not robust if you e.g. change the
 
 New columns can be added based on values from other columns
 
-```{r eval=FALSE}
-mutate(vertebrates, weight_kg = weight_g / 1000)
+```{r}
+mutate(gapminder, gdp = gdpPercap * pop)
 ```
 
-```{r echo=FALSE}
-print(mutate(vertebrates, weight_kg = weight_g / 1000), n = 3)
-```
-
-. . .
+## `mutate()`
 
 Add multiple new columns at once:
 
-```{r eval=FALSE}
-mutate(vertebrates, weight_kg = weight_g / 1000, length_m = length_1_mm / 1000)
-
+```{r}
+mutate(gapminder, gdp = gdpPercap * pop, pop_million = pop / 1e6)
 ```
 
 ## `mutate()` + `case_when()`
 
 Use `case_when` to add column values conditional on other columns.
 
-`case_when()` can combine many cases into one.
-
 ```{r}
 mutate(
-  vertebrates,
-  type = case_when(
-    species == "Cutthroat trout" ~ "Fish", # case 1
-    species == "Coastal giant salamander" ~ "Amphibian", # case 2
+  gapminder,
+  life_category = case_when(
+    lifeExp < 50 ~ "low", # case 1
+    lifeExp < 70 ~ "medium", # case 2
+    lifeExp >= 70 ~ "high", # case 3
     .default = NA # all other
   )
 )
 ```
 
-# `summarize()` {.inverse}
+## `drop_na()`: remove missing values
 
-> summarizes data
+Remove rows with `NA` values in any column:
+
+. . .
+
+```{r}
+# Drop all rows with NAs in any column
+drop_na(gapminder)
+```
+
+. . .
+
+The gapminder data has no missing values, so `drop_na()` doesn't change anything here.
+
+## `drop_na()`: remove missing values
+
+Remove rows with `NA` values in (a) specific column(s):
+
+. . .
+
+```{r}
+# Drop rows with NAs in specific columns
+drop_na(gapminder, lifeExp, gdpPercap)
+```
+
+. . .
+
+`drop_na()` is part of the `tidyr` package which is loaded with `library(tidyverse)`.
+
+# The pipe ` |> ` {.inverse}
+
+> Combine multiple data operations into one command
+
+## The problem: multiple steps
+
+Data cleaning and manipulation usually requires **several steps in sequence**.
+
+. . .
+
+```{r}
+# Step 1: Remove missing values
+gapminder_clean <- drop_na(gapminder, lifeExp)
+# Step 2: Select only European countries
+gapminder_clean <- filter(gapminder_clean, continent == "Europe")
+# Step 3: Add a new variable
+gapminder_clean <- mutate(gapminder_clean, gdp = gdpPercap * pop)
+```
+
+. . .
+
+This works, but creates lots of intermediate steps.
+
+## The pipe `|>`
+
+The pipe operator passes the result of one step as the **first argument** to the next step.
+
+```{r}
+#| eval: false
+# This
+filter(gapminder, continent == "Europe")
+
+# is the same as
+gapminder |> filter(continent == "Europe")
+```
+
+. . .
+
+This is perfect for dplyr because:
+
+:::{.nonincremental}
+
+- First argument is the data (a tibble)
+- Output (return value) is also a tibble 
+
+:::
+
+## The pipe `|>`
+
+The pipe operator passes the result of one step as the **first argument** to the next step.
+
+. . .
+
+::: {.columns}
+::: {.column}
+
+Instead of this: 
+
+```{r}
+#| eval: false
+# Step 1: Remove missing values
+gapminder_clean <- drop_na(gapminder, lifeExp)
+# Step 2: Select only European countries
+gapminder_clean <- filter(gapminder_clean, continent == "Europe")
+# Step 3: Add a new variable
+gapminder_clean <- mutate(gapminder_clean, gdp = gdpPercap * pop)
+```
+
+:::
+::: {.column}
+
+:::{.fragment}
+
+We can do this: 
+
+```{r}
+#| eval: false
+gapminder_clean <- gapminder |>
+  drop_na(lifeExp) |>
+  filter(continent == "Europe") |>
+  mutate(gdp = gdpPercap * pop)
+```
+
+:::
+:::
+:::
+
+. . .
+
+<br>
+
+Read `|>` as **"and then"**:
+
+Take gapminder, and then drop NAs, and then filter, and then add a column.
+
+## The pipe `|>`
+
+- 2 different pipes in R (work similarly):
+  - `|>`: base R pipe, available in R 4.1 and later
+  - `%>%`: magrittr pipe, used in older versions and still common in tidyverse code
+
+- I prefer `|>` because it's built into R
+
+- Turn on the base R pipe in RStudio: Tools > Global Options > Code
+
+![](img/day2/native-pipe.png){width=50%}
+
+. . .
+
+:::{.callout-tip}
+Use the keyboard shortcut `Ctrl/Cmd + Shift + M` to insert `|>`
+:::
+
+# Now you {.inverse}
+
+[Task 1 (25 min)]{.highlight-blue}<br>
+
+[Filter, select, and mutate the penguin data]{.big-text}
+
+**Find the task description [here](../tasks/dplyr-task-1.qmd)**
+
+# Summarizing data {.inverse}
+
+> From many rows to key numbers
 
 ## `summarize()`
 
@@ -348,11 +428,24 @@ mutate(
 
 ```{r}
 summarize(
-  vertebrates,
-  mean_length = mean(length_1_mm, na.rm = TRUE),
-  mean_weight = mean(weight_g, na.rm = TRUE)
+  gapminder,
+  mean_lifeExp = mean(lifeExp),
+  mean_gdpPercap = mean(gdpPercap)
 )
 ```
+
+. . .
+
+:::{.callout-note}
+The gapminder data has no missing values. With real data, use `na.rm = TRUE` to ignore NAs:
+
+```{r}
+#| eval: false
+summarize(gapminder, mean_lifeExp = mean(lifeExp, na.rm = TRUE))
+```
+
+Otherwise `mean()` will return `NA` if any value is missing.
+:::
 
 ## `summarize()` by group
 
@@ -363,133 +456,53 @@ summarize(
 . . .
 
 ```{r}
+#| flourish:
+#|   - target: ".by = continent"
 # summarize the grouped data
 summarize(
-  vertebrates,
-  mean_length = mean(length_1_mm, na.rm = TRUE),
-  mean_weight = mean(weight_g, na.rm = TRUE),
-  .by = species
+  gapminder,
+  mean_lifeExp = mean(lifeExp),
+  mean_gdpPercap = mean(gdpPercap),
+  .by = continent
 )
 ```
 
-. . .
+## `summarize()` by group
 
-- Combine variables if you want to summarize by more than one group (e.g. `.by = c(species, unittype)`)
+Combine variables if you want to summarize by more than one group
+
+```{r}
+#| flourish:
+#|   - target-rx: ".by = c.*"
+# summarize the grouped data
+summarize(
+  gapminder,
+  mean_lifeExp = mean(lifeExp),
+  mean_gdpPercap = mean(gdpPercap),
+  .by = c(continent, year)
+)
+```
+
 
 ## `count()`
 
 Counts observations by group
 
 ```{r}
-# count rows grouped by year
-count(vertebrates, year)
-```
-
-# The pipe ` |> ` {.inverse}
-
-> Combine multiple data operations into one command
-
-## The pipe `|>`
-
-Data transformation often requires **multiple operations** in sequence.
-
-The pipe operator `|>` helps to keep these operations clear and readable.
-
-- You may also see `%>%` from the `magrittr` package
-
-:::{.fragment}
-
-Turn on the native R pipe ` |> ` in **Tools -> Global Options -> Code**
-
-
-![](img/day2/native-pipe.png){width=50%}
-
-:::
-
-:::{.aside}
-
-See [here](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/) for differences 
-between the two pipe versions
-
-:::
-
-## The pipe `|>`
-
-Let's look at an example without pipe:
-
-```{r eval=FALSE}
-# 1: filter rows that have don't have NA in the unittype column
-vertebrates_new <- filter(vertebrates, !is.na(unittype))
-
-# 2: summarize mean values by year
-vertebrates_new <- count(vertebrates_new, year, species, section)
+# count rows grouped by continent
+count(gapminder, continent)
 ```
 
 . . .
 
-**How could we make this more efficient?**
+Count by multiple groups:
 
-. . .
-
-Use one **nested function** without intermediate results:
-
-```{r eval=FALSE}
-vertebrates_new <- count(
-  filter(vertebrates, !is.na(unittype)),
-  year,
-  species,
-  section
-)
+```{r}
+# count rows grouped by continent and year
+count(gapminder, continent, year)
 ```
 
-. . .
-
-But this gets complicated and error prone very quickly
-
-## The pipe `|>`
-
-The pipe operator makes it very easy to combine multiple operations:
-
-```{r eval=FALSE}
-vertebrates_new <- vertebrates |>
-  filter(!is.na(unittype)) |>
-  count(year, species, section)
-
-vertebrates_new
-```
-
-. . .
-
-You can read from top to bottom and interpret the `|>` as an "and then do".
-
-## The pipe `|>`
-
-But what is happening?
-
-The pipe is "pushing" the result of one line into the first argument of the function from the next line.
-
-. . .
-
-```{r eval=FALSE}
-vertebrates |>
-  count(year)
-
-# instead of
-count(vertebrates, year)
-```
-
-. . .
-
-Piping works perfectly with the `tidyverse` functions because they are designed
-to return a tibble **and** take a tibble as first argument.
-
-. . .
-
-:::{.callout-tip}
-Use the keyboard shortcut ` Ctrl/Cmd + Shift + M ` to insert ` |> `
-:::
-
-## The pipe `|>`
+## The pipe `|>` + ggplot
 
 Piping also works well together with `ggplot`
 
@@ -498,44 +511,149 @@ Piping also works well together with `ggplot`
 theme_set(theme_bw(base_size = 16))
 ```
 
+:::{.columns}
 
-```{r fig.height=4}
-vertebrates |>
-  filter(!is.na(unittype)) |>
-  count(year, species, section) |>
-  ggplot(aes(x = year, y = n, color = species)) +
-  geom_line() +
-  facet_wrap(~section)
+:::{.column width="50%"}
+
+
+```{r}
+#| eval: false
+gapminder |>
+  filter(year == 2007) |>
+  ggplot(
+    aes(x = gdpPercap, y = lifeExp, color = continent)
+  ) +
+  geom_point(size = 3) +
+  scale_x_log10()
 ```
 
-# Combining mulitiple tables{.inverse}
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+gapminder |>
+  filter(year == 2007) |>
+  ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  geom_point(size = 3) +
+  scale_x_log10()
+```
+
+:::
+:::
+
+
+## The pipe `|>` + ggplot
+
+You can also combine dplyr operations and ggplot:
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+gapminder |>
+  summarize(
+    mean_lifeExp = mean(lifeExp),
+    .by = c(continent, year)
+  ) |>
+  ggplot(
+    aes(
+      x = year,
+      y = mean_lifeExp,
+      color = continent
+    )
+  ) +
+  geom_line(linewidth = 1)
+```
+
+- Use `|>` between dplyr steps
+- Switch to `+` once you start the ggplot
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+gapminder |>
+  summarize(
+    mean_lifeExp = mean(lifeExp),
+    .by = c(continent, year)
+  ) |>
+  ggplot(
+    aes(
+      x = year,
+      y = mean_lifeExp,
+      color = continent
+    )
+  ) +
+  geom_line(linewidth = 1)
+```
+
+:::
+
+:::
+
+# Now you {.inverse}
+
+[Task 2 (30 min)]{.highlight-blue}<br>
+
+[Summarize data and combine dplyr with ggplot]{.big-text}
+
+**Find the task description [here](../tasks/dplyr-task-2.qmd)**
+
+# Good to know {.inverse}
+
+## Good to know
+
+`dplyr` has more useful functions that we didn't cover today:
+
+:::{.nonincremental}
+
+- **`bind_rows()`**: combine multiple tables with the same columns into one
+- **`left_join()`**: combine two tables by a shared column
+- **`arrange()`**: sort rows by column values
+- **`rename()`**: rename columns
+
+:::
+
+. . .
+
+You can find documentation, examples and a cheatsheet for all of these on the [dplyr website](https://dplyr.tidyverse.org/).
 
 ## Combine two tibbles by row `bind_rows`
 
 Situation: Two (or more) `tibbles` with the same variables (column names)
 
 ```{r}
-tbl_a <- vertebrates[1:2, ] # first two rows
-tbl_b <- vertebrates[2:nrow(vertebrates), ] # the rest
+tbl_a <- gapminder[1:2, ] # first two rows
+tbl_b <- gapminder[3:nrow(gapminder), ] # the rest
 ```
 
 <br>
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 tbl_a
 ```
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 print(tbl_a, n = 2)
 ```
 
 <br>
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 tbl_b
 ```
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 print(tbl_b, n = 2)
 ```
 
@@ -543,11 +661,13 @@ print(tbl_b, n = 2)
 
 Bind the rows together with `bind_rows()`:
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 bind_rows(tbl_a, tbl_b)
 ```
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 print(bind_rows(tbl_a, tbl_b), n = 2)
 ```
 
@@ -555,11 +675,13 @@ print(bind_rows(tbl_a, tbl_b), n = 2)
 
 You can also add an ID-column to indicate which line belonged to which table:
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 bind_rows(a = tbl_a, b = tbl_b, .id = "id")
 ```
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 print(bind_rows(a = tbl_a, b = tbl_b, .id = "id"), n = 3)
 ```
 
@@ -567,7 +689,8 @@ print(bind_rows(a = tbl_a, b = tbl_b, .id = "id"), n = 3)
 
 You can use `bind_rows()` to bind as many tables as you want:
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 bind_rows(a = tbl_a, b = tbl_b, c = tbl_c, ..., .id = "id")
 ```
 
@@ -577,44 +700,50 @@ Situation: Two tables that share some but not all columns.
 
 . . .
 
-```{r echo=FALSE}
-species <- select(vertebrates, species) |>
+```{r}
+#| echo: false
+continent_info <- select(gapminder, continent) |>
   distinct() |>
   mutate(
-    type = case_when(
-      species == "Cutthroat trout" ~ "Fish",
-      species == "Coastal giant salamander" ~ "Amphibian"
+    region = case_when(
+      continent == "Africa" ~ "Global South",
+      continent == "Americas" ~ "Western Hemisphere",
+      continent == "Asia" ~ "Global East",
+      continent == "Europe" ~ "Western World",
+      continent == "Oceania" ~ "Pacific"
     )
   )
 ```
 
-```{r eval = FALSE}
-vertebrates
+```{r}
+#| eval: false
+gapminder
 ```
 
-```{r echo = FALSE}
-print(vertebrates, n = 2)
+```{r}
+#| echo: false
+print(gapminder, n = 2)
 ```
 
 <br>
 
 ```{r}
-# table with more information on the species
-species
+# table with more information on the continents
+continent_info
 ```
 
 ## Join tibbles with `left_join()`
 
-Join the two tables by the common column `species`
+Join the two tables by the common column `continent`
 
 ```{r}
-left_join(vertebrates, species, by = "species")
+left_join(gapminder, continent_info, by = "continent")
 ```
 
 . . .
 
-`left_join()` means that the resulting tibble will contain all rows of `vertebrates`,
-but not necessarily all rows of `species` (in this case it does though).
+`left_join()` means that the resulting tibble will contain all rows of `gapminder`,
+but not necessarily all rows of `continent_info` (in this case it does though).
 
 ## Different `*_join()` functions
 
@@ -624,91 +753,18 @@ but not necessarily all rows of `species` (in this case it does though).
 
 > Data transformation with dplyr
 
-## Summary I
-
-All `dplyr` functions take a tibble as first argument and return a tibble.
-
-#### `filter()`
-
-:::{.nonincremental}
-
-- **pick rows** with helpers
-  - relational and logical operators
-  - `%in%`
-  - `is.na()`
-  - `between()`
-  - `near()`
-  
-:::
-
-## Summary II
+## Summary
 
 :::{.nonincremental}
 
 All `dplyr` functions take a tibble as first argument and return a tibble.
-  
-#### `select()`
 
-- **pick columns** with helpers
-  - `starts_with()`, `ends_with()`
-  - `contains()`
-  - `matches()`
-  - `any_of()`, `all_of()`
-  
-:::
-  
-## Summary III
-
-#### `arrange()`
-
-:::{.nonincremental}
-
-- **change order** of rows (adscending)
-  - or descending with `desc()`
-
-#### `mutate()`
-
-- **add columns** but keep all columns
-  - `case_when()` for conditional values
-  
-:::
-
-## Summary IV
-
-:::{.nonincremental}
-
-#### `summarize()`
-
-- **collapse rows** into one row by some summary
-  - use `.by` argument to summarize by group
-
-#### `count`
-
-- **count rows** based on a group
+- **`filter()`** / **`filter_out()`**: pick or exclude rows
+- **`select()`**: pick columns by name
+- **`mutate()`**: add new columns (`case_when()` for conditional values)
+- **`drop_na()`**: remove rows with missing values
+- **`summarize()`**: collapse rows into summaries (use `.by` for groups)
+- **`count()`**: count rows per group
+- **The pipe `|>`**: chain operations together, read top to bottom
 
 :::
-  
-## Summary V
-
-:::{.nonincremental}
-
-#### `bind_rows()`
-
-- **combine rows** of multiple tibbles into one
-  - the tibbles need to have the same columns
-  - add an id column with the argument `.id = "id"`
-  - function `bind_cols()` works similarly just for columns
-  
-#### `left_join()`
-
-- **combine tables** based on common columns
-
-:::
-
-# Now you {.inverse}
-
-[Task (30 min)]{.highlight-blue}<br>
-
-[Transform the penguin data set]{.big-text}
-
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/08_dplyr.html)**

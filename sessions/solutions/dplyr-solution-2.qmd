@@ -1,0 +1,113 @@
+---
+title: "Solution: Summarize and visualize"
+code-line-numbers: false
+---
+
+## Get started
+
+```{r echo=TRUE}
+#| message: false
+library(tidyverse)
+```
+```{r echo=FALSE}
+theme_set(theme_grey())
+penguins <- as_tibble(penguins)
+```
+
+## Count
+
+1. Count the number of penguins on each island.
+
+```{r echo=TRUE}
+count(penguins, island)
+```
+
+2. Count the number of penguins of each species on each island.
+
+```{r echo=TRUE}
+count(penguins, island, species)
+```
+
+## Summarize
+
+3. Calculate mean flipper length and body mass for the 3 species separately.
+
+```{r echo=TRUE}
+penguins |>
+  summarize(
+    mean_flipper = mean(flipper_len, na.rm = TRUE),
+    mean_body = mean(body_mass, na.rm = TRUE),
+    .by = species
+  )
+```
+
+4. Calculate mean flipper length and body mass by species and sex. Remove penguins with unknown sex first.
+
+```{r echo=TRUE}
+penguins |>
+  drop_na(sex) |>
+  summarize(
+    mean_flipper = mean(flipper_len, na.rm = TRUE),
+    mean_body = mean(body_mass, na.rm = TRUE),
+    .by = c(species, sex)
+  )
+```
+
+## Combine dplyr and ggplot
+
+5. Remove penguins with missing `sex`, then pipe into a boxplot of body mass with `sex` on the x-axis.
+
+```{r echo=TRUE}
+penguins |>
+  drop_na(sex) |>
+  ggplot(aes(x = sex, y = body_mass)) +
+  geom_boxplot()
+```
+
+6. Remove penguins with missing `sex`, then make a scatterplot of bill length vs. bill depth, colored by species.
+
+```{r echo=TRUE}
+penguins |>
+  drop_na(sex) |>
+  ggplot(aes(x = bill_len, y = bill_dep, color = species)) +
+  geom_point()
+```
+
+## For the fast ones
+
+Summarize mean body mass by species, then pipe the result into a bar chart with `geom_col()`.
+
+```{r echo=TRUE}
+penguins |>
+  summarize(
+    mean_body = mean(body_mass, na.rm = TRUE),
+    .by = species
+  ) |>
+  ggplot(aes(x = species, y = mean_body)) +
+  geom_col()
+```
+
+Calculate the min, max, and mean flipper length per species.
+
+```{r echo=TRUE}
+penguins |>
+  summarize(
+    min_flipper = min(flipper_len, na.rm = TRUE),
+    max_flipper = max(flipper_len, na.rm = TRUE),
+    mean_flipper = mean(flipper_len, na.rm = TRUE),
+    .by = species
+  )
+```
+
+Sort the result by mean flipper length using `arrange()`.
+
+```{r echo=TRUE}
+penguins |>
+  summarize(
+    min_flipper = min(flipper_len, na.rm = TRUE),
+    max_flipper = max(flipper_len, na.rm = TRUE),
+    mean_flipper = mean(flipper_len, na.rm = TRUE),
+    .by = species
+  ) |>
+  arrange(mean_flipper)
+```

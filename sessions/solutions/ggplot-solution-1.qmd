@@ -1,0 +1,211 @@
+---
+title: "Solution to ggplot Task 1: Exploratory plots"
+code-line-numbers: false
+---
+
+## Get started
+
+First we need to load the `tidyverse` packages:
+
+```{r eval=TRUE, echo=TRUE}
+#| message: false
+# install.packages("tidyverse")
+library(tidyverse)
+```
+
+- Have a look at the penguin data set that is included in R
+
+```{r echo=TRUE, eval=FALSE}
+penguins
+```
+
+```{r echo=FALSE, eval=TRUE}
+theme_set(theme_gray())
+print(penguins, n=6)
+```
+
+## Exploratory plotting
+
+### Bill length vs. bill depth (scatterplot)
+
+First, I created a scatter plot and added a linear regression line. From the plot,
+it looks like bill length is decreasing with increasing bill depth.
+
+```{r echo=TRUE, eval=TRUE}
+# Bill length vs. bill depth scatterplot with regression line
+ggplot(
+  data = penguins,
+  aes(
+    x = bill_len,
+    y = bill_dep
+  )
+) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+```{r echo = TRUE, eval=FALSE}
+# or short
+ggplot(penguins, aes(bill_len, bill_dep)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+If we add the color aesthetic locally to the point layer, only this layer will be affected by it. The regression line is not separated by species but still calculated and plotted for all data points together:
+
+```{r}
+#| message: false
+#| warning: false
+# Bill length vs. bill depth scatterplot with regression line
+# color as aesthetic local to the point layer
+ggplot(penguins, aes(bill_len, bill_dep)) +
+  geom_point(aes(color = species)) +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+We can see an example of the Simpson's paradox here. If you don't consider species, it looks like the bill depth decreases with bill length. But after separating the data by species, we see that the effect is actually the opposite.
+
+To draw separate regression lines for the species, we need to either add the color aesthetic to the smooth layer as well, or define the color aesthetic globally in the top layer `ggplot` call:
+
+```{r}
+#| message: false
+#| warning: false
+# Define color aesthetic once globally
+ggplot(penguins, aes(
+  x = bill_len,
+  y = bill_dep,
+  color = species
+)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+### Flipper length by species (boxplot)
+
+A simple boxplot of flipper length by species:
+
+```{r echo = TRUE}
+# Basic boxplot of flipper length
+ggplot(penguins, aes(species, flipper_len)) +
+  geom_boxplot()
+```
+
+### Body mass by sex and species (boxplot)
+
+A basic boxplot of the body mass by sex:
+
+```{r}
+#| warning: false
+# Basic boxplot of body mass for penguins of different sex
+ggplot(penguins, aes(x = sex, y = body_mass)) +
+  geom_boxplot()
+```
+
+Species as color aesthetic:
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(x = sex,
+                     y = body_mass)) +
+  geom_boxplot(aes(color = species))
+```
+
+Species as fill aesthetic:
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(x = sex, y = body_mass)) +
+  geom_boxplot(aes(fill = species))
+```
+
+Species as facets:
+
+```{r}
+ggplot(penguins, aes(x = sex, y = body_mass)) +
+  geom_boxplot() +
+  facet_wrap(vars(species))
+```
+
+### Flipper length distribution by species (histogram)
+
+The default histogram is a histogram where the different groups are stacked:
+
+```{r}
+ggplot(penguins, aes(
+  x = flipper_len,
+  fill = species
+)) +
+  geom_histogram()
+```
+
+To unstack the groups, you have to use `position = "identity"`. Also, it's a good idea
+to make the histogram slightly transparent (`alpha = 0.5`) to see the overlapping
+areas.
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(
+  x = flipper_len,
+  fill = species
+)) +
+  geom_histogram(
+    alpha = 0.5,
+    position = "identity"
+  )
+```
+
+Separated by facets (no need to specify the position here, because there is only one group per plot).
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(
+  x = flipper_len,
+  fill = species
+)) +
+  geom_histogram() +
+  facet_wrap(vars(species), ncol = 1)
+```
+
+## For the fast ones
+
+### Combine points and boxplots
+
+Adding `geom_point` with `position = position_jitter()` shows the individual data points on top of the boxplot. It's important to set a seed to get reproducible point positions.
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(species, flipper_len)) +
+  geom_boxplot() +
+  geom_point(position = position_jitter(
+    seed = 123,
+    width = 0.2
+  ))
+```
+
+### Violin plots
+
+A violin plot combined with a boxplot shows both the distribution shape and the summary statistics. To make the violins visible, I changed the width of the boxplot:
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(x = sex, y = body_mass)) +
+  geom_violin() +
+  geom_boxplot(width = .04) +
+  facet_wrap(vars(species))
+```
+
+### Heatmap
+
+For this data it does not make too much sense, but a heat map would look like this:
+
+```{r echo=TRUE}
+ggplot(penguins, aes(
+  x = species,
+  y = sex,
+  fill = flipper_len
+)) +
+  geom_tile()
+```
+
+## References
+
+Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/. doi: 10.5281/zenodo.3960218.

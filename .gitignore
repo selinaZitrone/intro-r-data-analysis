@@ -3,8 +3,10 @@
 .Rdata
 .httr-oauth
 .DS_Store
-docs/*
 _freeze/*
+
+_extensions/
+other-workshop/
 
 slides/img/
 slides/*.html

@@ -1,0 +1,55 @@
+---
+title: "Task 2: Summarize and visualize"
+number-sections: false
+---
+
+[← Back to session page](../08_dplyr.qmd)
+
+:::{.callout-note}
+
+## Find the solution here after the session ends.
+
+```{=html}
+<script>const course_day = 2;</script>
+<script src="../../timer_solution.js"></script>
+<p class="r_class_solution" style="display:none">
+  <a href="../solutions/dplyr-solution-2.html" target="_blank">Click here for the solution.</a>
+</p>
+```
+:::
+
+## Getting started
+
+Before you start, make sure to load the `tidyverse` package.
+
+```{r}
+#| eval: false
+library(tidyverse)
+```
+
+## Count
+
+1. Count the number of penguins on each island.
+
+2. Count the number of penguins of each species on each island.
+
+## Summarize
+
+3. Calculate mean flipper length and body mass for the 3 species separately.
+
+4. Calculate mean flipper length and body mass by species and sex. Remove penguins with unknown sex first.
+
+## Combine dplyr and ggplot
+
+5. Remove penguins with missing `sex`, then pipe into a boxplot of body mass with `sex` on the x-axis.
+
+6. Remove penguins with missing `sex`, then make a scatterplot of bill length vs. bill depth, colored by species.
+
+## For the fast ones
+
+You can do these in any order, or skip them and just take a break.
+
+- **A bit tricky:** Summarize mean body mass by species, then pipe the result into a bar chart with `geom_col()`. You haven't seen `geom_col()` yet but it works like other geoms: map species to `x` and mean body mass to `y`.
+
+- Calculate the min, max, and mean flipper length per species.
+  - **Extra**: Can you sort the result by mean flipper length? Hint: you'll need `arrange()` which we haven't covered yet. Check `?arrange` to figure out how it works.

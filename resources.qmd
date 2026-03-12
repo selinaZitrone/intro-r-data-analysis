@@ -50,15 +50,15 @@ The [tidyverse website](https://tidyverse.org/) links to all tidyverse packages 
 | [tidyr](https://tidyr.tidyverse.org/) | Transforming tables into tidy format for analysis |
 | [readr](https://readr.tidyverse.org/) | Import and export CSV, TXT and other delimited files |
 | [readxl](https://readxl.tidyverse.org/) | Import Excel files from multiple sheets as tibbles |
-| [haven](https://haven.tidyverse.org/) | Import SPSS, Stata and SAS files |
-| [stringr](https://stringr.tidyverse.org/) | String manipulation: extracting, finding and replacing patterns |
-| [forcats](https://forcats.tidyverse.org/) | Working with factors (categorical data): renaming, reordering categories |
-| [lubridate](https://lubridate.tidyverse.org/) | Working with dates and times: parsing, calculating intervals, plotting time series |
 
 ### Other useful packages
 
 | Package | Description | 
 |---------|-------------|
+| [haven](https://haven.tidyverse.org/) | Import SPSS, Stata and SAS files |
+| [stringr](https://stringr.tidyverse.org/) | String manipulation: extracting, finding and replacing patterns |
+| [forcats](https://forcats.tidyverse.org/) | Working with factors (categorical data): renaming, reordering categories |
+| [lubridate](https://lubridate.tidyverse.org/) | Working with dates and times: parsing, calculating intervals, plotting time series |
 | [patchwork](https://patchwork.data-imaginist.com/) | Combine multiple plots into one with easy layout control |
 | [here](https://here.r-lib.org/) | Simple and robust file path handling in R projects |
 | [usethis](https://usethis.r-lib.org/) | Utility functions for project setup, Git, GitHub and package development |
