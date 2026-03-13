@@ -25,7 +25,7 @@ In this task, you will create a report on the penguins dataset using Quarto.
 In the **Files pane**, click `New File -> Quarto Document`. Give it a name like `penguin_report.qmd`.
 
 :::{.callout-tip}
-Render your document often (`Ctrl + Shift + K`) to check if everything still works. It's much easier to find mistakes if you render after every small change.
+Render your document often to check if everything still works. It's much easier to find mistakes if you render after every small change. Use the keyboard shortcut `Ctrl + Shift + K` (`Cmd + Shift + K` on Mac) to render quickly.
 :::
 
 ## Add text
@@ -159,6 +159,6 @@ Change `format: html` to `format: pdf` in the YAML header and render. If you get
 #| eval: false
 #| echo: true
 # install.packages("tinytex") # only run this once
-# Install TinyTeX (only run this once)
+# Install tinytex (also only run this once)
 tinytex::install_tinytex()
 ```

@@ -42,8 +42,8 @@ You can find more information about the data on the
 head(penguins)
 ```
 
-The dataset contains `r knitr::inline_expr("nrow(penguins)")` penguins
-from `r knitr::inline_expr("length(unique(penguins$species))")` species.
+The dataset contains `r nrow(penguins)` penguins
+from `r length(unique(penguins$species))` species.
 
 ## Analysis
 
@@ -67,31 +67,3 @@ ggplot(penguins, aes(x = species, y = body_mass, fill = species)) +
   theme(legend.position = "none")
 ```
 ````
-
-## Explanation of the key elements
-
-### YAML header
-
-```yaml
----
-title: "Penguin Report"
-author: "Selina Baldauf"
-format: html
-execute:
-  warning: false
-  message: false
----
-```
-
-- `title`, `author`: appear at the top of the rendered document
-- `format: html`: renders to an HTML file
-- `execute`: sets default chunk options for the whole document. `warning: false` and `message: false` suppress warnings and messages in all chunks (unless overwritten in a specific chunk)
-
-### Chunk options
-
-- `#| include: false`: runs the code but **hides everything** (code, output, warnings, messages) from the document. Useful for setup chunks.
-- `#| echo: false`: runs the code and shows the **output** but hides the **code**. Useful for showing plots without the code that created them.
-
-### Inline code
-
-`` `r knitr::inline_expr("nrow(penguins)")` `` inserts the result of the R expression directly into the text. The value updates automatically when the data changes.
