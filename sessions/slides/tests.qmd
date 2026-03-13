@@ -510,14 +510,17 @@ library(ggsignif)
 
 ## Plot test results with `geom_signif()`
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 library(ggsignif)
 theme_set(theme_grey(base_size = 16))
 ```
 
 
 ```{r}
-#| code-line-numbers: "6-14"
+#| flourish:
+#|   - target: "geom_signif("
+#|   - target: "map_signif_level = TRUE,"
 #| output-location: column
 ggplot(
   InsectSprays,
@@ -548,7 +551,9 @@ ggplot(
 :::{.column width="50%"}
 
 ```{r}
-#| code-line-numbers: "12-15"
+#| flourish:
+#|   - target: 'test = "t.test",'
+#|   - target: "var.equal = TRUE"
 #| eval: false
 ggplot(
   InsectSprays,
@@ -583,7 +588,6 @@ ggplot(
 :::{.column width="50%"}
 
 ```{r}
-#| code-line-numbers: "12-15"
 #| echo: false
 ggplot(
   InsectSprays,
@@ -621,7 +625,8 @@ Another way to plot the results is to plot mean and standard error of the mean:
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "5"
+#| flourish:
+#|   - target: "stat_summary()"
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -658,7 +663,9 @@ Another way to plot the results is to plot mean and standard error of the mean:
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "5-14"
+#| flourish:
+#|   - target: "fun.data = mean_se,"
+#|   - target: "fun = mean,"
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -689,7 +696,6 @@ ggplot(
 
 ```{r}
 #| echo: false
-#| code-line-numbers: "5-14"
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -715,7 +721,8 @@ ggplot(
 Another way to plot the results is to plot mean and standard error of the mean:
 
 ```{r}
-#| code-line-numbers: "12"
+#| flourish:
+#|   - target: 'geom = "bar"'
 #| output-location: column
 ggplot(
   InsectSprays,
@@ -737,7 +744,9 @@ ggplot(
 Just like before, you can also add a `geom_signif` to a barplot:
 
 ```{r}
-#| code-line-numbers: "14-23"
+#| flourish:
+#|   - target: "ggsignif::geom_signif("
+#|   - target: 'test = "t.test",'
 #| output-location: column
 ggplot(
   InsectSprays,
