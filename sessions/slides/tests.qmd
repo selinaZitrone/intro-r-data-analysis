@@ -550,6 +550,14 @@ ggplot(
   )
 ```
 
+::: {.nonincremental}
+
+- `test`: run specific test
+- `test.args`: pass additional arguments in a list
+- `?geom_signif` for more options
+
+:::
+
 :::
 
 :::{.column width="50%"}
@@ -581,13 +589,7 @@ ggplot(
 
 :::
 
-::: {.nonincremental}
 
-- `test`: run specific test
-- `test.args`: pass additional arguments in a list
-- `?geom_signif` for more options
-
-:::
 
 ## Plot mean +- se using `stat_summary`
 
