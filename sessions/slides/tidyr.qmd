@@ -291,7 +291,7 @@ step1 <- pivot_longer(
 
 ## `separate_wider_delim()`
 
-**Multiple variable values that are united into one** can be separated using `separate_wider_delim`
+**Multiple variables united into one** can be separated using `separate_wider_delim`
 
 ```{r echo=FALSE}
 print(step1, n = 2)
@@ -324,7 +324,7 @@ print(step2, n = 2)
 
 . . .
 
-The opposite function exists as well and is called `unite`. Check out `?unite` for details.
+The opposite function is called `unite`. Check out `?unite` for details.
 
 ## `pivot_wider()`
 
