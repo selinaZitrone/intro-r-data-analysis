@@ -68,7 +68,7 @@ There are **various tests** and the outcome might differ!
 
 **Shapiro-Wilk-Test**
 
-- How much does variance of observed data differ from normal distribution
+- Tests whether the data could have been drawn from a normal distribution
 - Specific test only for normal distribution
 - High power, also for few data points
 
@@ -133,7 +133,7 @@ mydata |>
       x = value,
       fill = type,
       # plot probability instead of count on y axis
-      y = ..density..
+      y = after_stat(density)
     )
   ) +
   stat_function(
@@ -143,7 +143,7 @@ mydata |>
       sd = 5
     ),
     color = "darkorange",
-    size = 1
+    linewidth = 1
   ) +
   stat_function(
     fun = dnorm,
@@ -152,7 +152,7 @@ mydata |>
       sd = sd(mydata$non_normal)
     ),
     color = "cyan4",
-    size = 1
+    linewidth = 1
   ) +
   scale_fill_manual(values = c("cyan4", "darkorange")) +
   theme(
@@ -228,7 +228,8 @@ Points should match the straight line. Small deviations are okay.
 
 :::{.column width="50%"}
 
-```{r, fig.height=5.1}
+```{r}
+#| fig-height: 5.1
 # ggplot(
 #   mydata,
 #   aes(sample = normal)
@@ -242,7 +243,8 @@ ggpubr::ggqqplot(mydata$normal)
 
 :::{.column width="50%"}
 
-```{r, fig.height=5.1}
+```{r}
+#| fig-height: 5.1
 # ggplot(
 #   mydata,
 #   aes(sample = non_normal)
@@ -272,7 +274,7 @@ Counts of insects in agricultural units treated with different insecticides.
 #| code-summary: "Expand to reproduce the data"
 InsectSprays <- InsectSprays |>
   filter(spray %in% c("A", "B", "E")) |>
-  mutate(spray = recode(spray, "E" = "C"))
+  mutate(spray = case_match(spray, "E" ~ "C", .default = spray))
 ```
 
 Compare treatments A, B and C:
@@ -289,7 +291,8 @@ TreatC <- filter(InsectSprays, spray == "C")$count
 
 :::{.column width="50%"}
 
-```{r, fig.height = 6.0}
+```{r}
+#| fig-height: 6.0
 #| code-fold: true
 #| code-summary: "Code to generate boxplot"
 ggplot(InsectSprays, aes(x = spray, y = count, fill = spray)) +
@@ -334,7 +337,8 @@ $H_0$: Variances do not differ between groups
 
 . . .
 
-```{r error=TRUE}
+```{r}
+#| error: true
 var.test(TreatA, TreatB)
 ```
 
@@ -357,7 +361,8 @@ $H_0$: Variances do not differ between groups
 
 . . .
 
-```{r error=TRUE}
+```{r}
+#| error: true
 var.test(TreatA, TreatC)
 ```
 
@@ -429,7 +434,7 @@ The means of spray A and C do **differ significantly** (t = 7.58, df = 13.9, p <
 
 ## Wilcoxon-rank-sum Test
 
-$H_0$: The samples do not differ in their mean
+$H_0$: The samples do not differ in their median
 
 . . .
 
@@ -441,7 +446,7 @@ wilcox.test(TreatA, TreatB)
 
 . . .
 
-The means of spray A and B do **not differ significantly** (W = 62, p = 0.58)
+The medians of spray A and B do **not differ significantly** (W = 62, p = 0.58)
 
 ## Paired values
 
@@ -591,7 +596,7 @@ Another way to plot the results is to plot mean and standard error of the mean:
 
 :::{.column width="50%"}
 
-```{r eval = FALSE}
+```{r}
 #| eval: false
 #| code-line-numbers: "5"
 ggplot(
@@ -607,7 +612,8 @@ ggplot(
 
 :::{.column width="50%"}
 
-```{r echo = FALSE}
+```{r}
+#| echo: false
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -649,7 +655,7 @@ ggplot(
 :::{.nonincremental}
 
 - Inside `stat_summary`, define summary function
-  - `fun.data` for errorbars, `fun.y` for points (e.g. mean)
+  - `fun.data` for errorbars, `fun` for points (e.g. mean)
 
 :::
 
@@ -699,8 +705,7 @@ ggplot(
   ) +
   stat_summary(
     fun = mean,
-    geom = "bar",
-    size = 4
+    geom = "bar"
   )
 ```
 
@@ -739,7 +744,7 @@ ggplot(
 
 # Now you {.inverse}
 
-[Task 1 (45 min)]{.highlight-blue}<br>
+[Task (45 min)]{.highlight-blue}<br>
 
 [Statistical tests]{.big-text}
 
