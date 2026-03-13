@@ -29,95 +29,35 @@ from: markdown+emoji
 
 ## Motivation
 
-:::{.columns}
+- Speed up repetitive tasks
+- Learn new methods and languages
+- Support debugging, documenting, refactoring, ...
 
-:::{.column width="50%"}
-
-- AI tools assist programmers with
-  - Coding
-  - Debugging
-  - Learning
-  - ...
-- Higher productivity and efficiency
-- More motivation
-- But careful: You still need to understand what's going on!
-
-:::
-
-:::{.column width="50%"}
-
-![](img/day1/dalle_motivation.png)
-
-:::
-
-:::
-
-## Overview of tools
+## AI tools for programming
 
 :::{.nonincremental}
-
-- **Browser-based chat bots** ([ChatGPT](https://chat.openai.com), [Claude](https://claude.ai), ...)
-  - General-purpose<br>
-
+- Browser-based chat bots (ChatGPT, etc.)
+- Web-tools for data analysis (Data analyst GPT, JuliusAI, ...)
+- **IDE-integrated AI tools** (GitHub Copilot, Claude Code, ...)
 :::
 
 . . .
 
-:::{.nonincremental}
+Integrated tools
 
-- **Data-analysis tools** ([Julius AI](https://julius.ai/), [RTutor](https://rtutor.ai/), ...)
-  - Upload data and ask questions about it
-  - Can also execute code
-  - Chat with your data
+- know your project structure
+- see your code and console output
+- respond in context while coding
 
-:::
-
-. . .
-
-:::{.nonincremental}
-
-- **Integrated AI tools** ([GitHub Copilot](https://github.com/features/copilot), ...)
-  - Integrated directly in programming environment
-  - Real-time suggestions, chat, debugging, ...
-
-:::
-
-. . .
-
-Find the tools that best fit your workflow!
-
-## Julius AI
-
-:::{.columns}
-
-:::{.column width="30%"}
-
-:::{.nonincremental}
-
-- [https://julius.ai/](https://julius.ai/)
-- Try for free
-- Basic plan ~20€ per months (-50% academic discount)
-- Upload data and ask questions about it
-
-:::
-
-:::
-
-:::{.column width="70%"}
-
-![](img/day1/juliusai.png)
-
-:::
-
-:::
 
 ## Github Copilot
 
 - [https://github.com/features/copilot](https://github.com/features/copilot)
 - Basic idea: Integrate directly into your IDE
+- Two modes:
   - Real-time code suggestions (inline as you type)
   - Chat with the AI
-- Works best for well-represented languages (Python, JS, ...), but R is also pretty good
+- RStudio only supports the real-time code suggestions
 
 ## Inline code suggestions
 
@@ -147,7 +87,6 @@ Available for RStudio and Positron
 ## Get better suggestions
 
 - **Provide context**
-  - Open other files
   - Add top level comments explaining the purpose of the script
   - Name variables and functions properly
   - Copy-paste sample code and delete it later
@@ -191,8 +130,8 @@ It's really easy, but you need:
 
 ## Claude Code
 
-- [https://claude.ai/download](https://claude.ai/download)
-- AI coding agent that runs in your **terminal**
+- [AI coding agent](https://claude.com/solutions/coding) that runs in your **terminal**
+- Pro plan: ~17€ per month
 - Works with any IDE (RStudio, Positron, VS Code, ...)
 - Can read and edit files, run R code, use git, ...
 
@@ -204,33 +143,20 @@ It's really easy, but you need:
 - You describe a task and it autonomously works through it
 - Great for larger tasks like refactoring, writing tests, or creating reports
 
-. . .
-
-Free tier available, Pro plan: 20$ per month (5$ for students)
-
 ## Limitations
 
 - AI can suggest **outdated** functions and code
 - AI can suggest patterns that are **common but not best practice**
 - AI predicts **plausible** code, not necessarily **correct** code
   - Code can be subtly wrong or inappropriate
-- Risk of **over-reliance** — you stop thinking critically
+- Risk of **over-reliance**
 
-## Things to consider I
+## Responsible use
 
-- **Privacy**
-  - Check privacy guidelines before you use tools (e.g. `Github -> Settings -> Copilot -> Policies`)
-- **Plagiarism**
-  - Block suggestions matching public code (`Github -> Settings -> Copilot -> Policies`)
-
-## Things to consider II
-
-- **Responsibility**
-  - You are responsible for your scientific output
-  - Review and double-check AI-generated code
-- **Transparency**
-  - Make clear for which tasks you used which AI
-- **Know relevant guidelines**
-  - Journals
-  - Your university
-- **Still understand what is happening!**
+- Don't treat AI as an authority: review and double-check
+- Use version control as a safety net: review and trace changes
+- Privacy: Code, comments and console output may be shared with model providers
+  - Beware if you have sensitive data
+- Check institutional and journal guidelines
+- Transparency: Disclose your use of AI tools
+- You are responsible for your scientific output
