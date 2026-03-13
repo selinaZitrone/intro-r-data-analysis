@@ -1,6 +1,6 @@
 ---
 title: "AI Tools for R"
-subtitle: "Day 1 - Introduction to Data Analysis with R"
+subtitle: "Day 3 - Introduction to Data Analysis with R"
 author: "Selina Baldauf"
 institute: "Freie Universität Berlin - Theoretical Ecology"
 date: today
@@ -114,7 +114,6 @@ Find the tools that best fit your workflow!
 ## Github Copilot
 
 - [https://github.com/features/copilot](https://github.com/features/copilot)
-- Based on models specifically trained on source code
 - Basic idea: Integrate directly into your IDE
   - Real-time code suggestions (inline as you type)
   - Chat with the AI
@@ -156,18 +155,22 @@ Available for RStudio and Positron
 - **Be consistent**
   - "Garbage in, garbage out"
   - Have a nice and consistent coding style
-  
+
+- **Acceptance discipline**
+  - Don't auto-accept everything
+  - Review and modify suggestions if needed
+
 . . .
 
 Nice side effect of using Copilot: More good-practice coding
 
-## Chat with GH Copilot about your
+## Chat with GH Copilot about your code
 
 Only available in Positron or VS Code
 
 - Open a chat window
-- The AI can access you files and projects
-- The AI can make taylored suggestions based on your project
+- The AI can access your files and projects
+- The AI can make tailored suggestions based on your project
 - Great for
   - Debugging
   - Getting explanations
@@ -181,22 +184,50 @@ See [this website](https://selinazitrone.github.io/tools_and_tips/sessions/addit
 It's really easy, but you need:
 
 - GitHub Account
-- Active GH Copilot subscription (10$ per month)
-  - Get it for free as an academic with an educational account
+- Active GH Copilot subscription
+  - Limited free tier available (2,000 completions/month)
+  - Pro plan: 10$ per month (free for academics with an educational account)
 - IDE that supports Copilot
+
+## Claude Code
+
+- [https://claude.ai/download](https://claude.ai/download)
+- AI coding agent that runs in your **terminal**
+- Works with any IDE (RStudio, Positron, VS Code, ...)
+- Can read and edit files, run R code, use git, ...
+
+. . .
+
+**What makes it different from Copilot?**
+
+- Works at the **project level**, not just single files
+- You describe a task and it autonomously works through it
+- Great for larger tasks like refactoring, writing tests, or creating reports
+
+. . .
+
+Free tier available, Pro plan: 20$ per month (5$ for students)
+
+## Limitations
+
+- AI can suggest **outdated** functions and code
+- AI can suggest patterns that are **common but not best practice**
+- AI predicts **plausible** code, not necessarily **correct** code
+  - Code can be subtly wrong or inappropriate
+- Risk of **over-reliance** — you stop thinking critically
 
 ## Things to consider I
 
 - **Privacy**
-  - Check privacy guidelines before you use tools (e.g. `Github -> Seetings -> Copilot -> Policies`)
+  - Check privacy guidelines before you use tools (e.g. `Github -> Settings -> Copilot -> Policies`)
 - **Plagiarism**
-  - Block suggestions matching public code (`Github -> Seetings -> Copilot -> Policies`)
+  - Block suggestions matching public code (`Github -> Settings -> Copilot -> Policies`)
 
 ## Things to consider II
 
 - **Responsibility**
   - You are responsible for your scientific output
-  - Stay critical, double-check
+  - Review and double-check AI-generated code
 - **Transparency**
   - Make clear for which tasks you used which AI
 - **Know relevant guidelines**
