@@ -12,6 +12,7 @@ Imports:
     downloadthis,
     fontawesome,
     gapminder,
+    ggpubr,
     git2r,
     here,
     knitr,
