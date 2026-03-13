@@ -39,7 +39,7 @@ library(gapminder)
 
 ## From R scripts to documents
 
-So far in the workshop, you've been writing `.R` scripts.
+So far, you've been writing `.R` scripts.
 
 . . .
 
@@ -429,48 +429,33 @@ As we can see in Figure 1, life expectancy increases with GDP.
 
 By default, tibbles print as plain text. Use `knitr::kable()` to render a nice table:
 ````{{r}}
-penguins |>
-  group_by(species) |>
+gapminder |>
+  filter(year == 2007) |>
+  group_by(continent) |>
   summarize(
-    mean_mass = mean(body_mass, na.rm = TRUE),
-    mean_flipper = mean(flipper_len, na.rm = TRUE)
+    mean_life_exp = mean(lifeExp),
+    mean_gdp = mean(gdpPercap)
   ) |>
   knitr::kable()
 ````
 
-. . .
-
-No extra installation needed — `knitr` is already loaded when you render a `.qmd`.
-
-## Nice test results with `broom`
-
-Remember the statistical tests from earlier today?
-
-. . .
-
-Test output in R is not table-friendly. The `broom` package can fix that:
-````{{r}}
-#| eval: false
-# install.packages("broom")
-
-t.test(adelie, gentoo, var.equal = TRUE) |>
-  broom::tidy() |>
+```{r}
+#| echo: false
+gapminder |>
+  filter(year == 2007) |>
+  group_by(continent) |>
+  summarize(
+    mean_life_exp = mean(lifeExp),
+    mean_gdp = mean(gdpPercap)
+  ) |>
   knitr::kable()
-````
-
-. . .
-
-`broom::tidy()` turns test results into a clean tibble — works with `t.test()`, `wilcox.test()`, `shapiro.test()`, and many more.
-
-. . .
-
-This is a great reason to use Quarto: **run the test and format the result in one document**.
+```
 
 ## The visual editor
 
 RStudio has a **visual editor** that provides a word-like interface for editing `.qmd` files.
 
-![](img/day3/visual_editor.png)
+![](img/day3/visual_editor.png){fig-width="80%"}
 
 ## The visual editor
 
