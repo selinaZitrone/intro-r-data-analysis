@@ -71,11 +71,13 @@ window.addEventListener("load", function () {
 *The task solution script will be available for download here after the session.*
 
 ::: {.r_day3_content}
-[Download Day 3 R script](R/Tasks/Day3.R){download="Day3.R"}
+[Download Day 3 R script](R/Tasks/Day3.R){download="Day3.R"}<br>
+[Download Day 3 Quarto solution](R/Tasks/penguin_report.qmd){download="quarto-solution.qmd"}
 :::
 
 - [Tidy data with tidyr](sessions/09_tidyr.qmd)
 - [Statistical tests](sessions/10_tests.qmd)
+- [Reproducible reports with Quarto](sessions/11_quarto.qmd)
 - [AI Tools](sessions/12_AI-tools.qmd) 
 
 ### Day 4 — Bring Your Own Data
