@@ -452,14 +452,14 @@ The medians of spray A and B do **not differ significantly** (W = 62, p = 0.58)
 
 Are there pairs of data points?
 
-**Example:** samples of invertebrates across various rivers before and after sewage plants.
+**Example:** blood pressure of patients before and after taking a medication.
 
 :::{.fragment}
 
 :::{.nonincremental}
 
-- For each plant, there is a pair of data points (before and after the plant)
-- Question: Is the change (before-after) significant
+- For each patient, there is a pair of data points (before and after medication)
+- Question: Is the change in blood pressure significant?
 
 :::
 
@@ -469,7 +469,8 @@ Are there pairs of data points?
 
 Use `paired = TRUE` in the test.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 t.test(TreatA, TreatB, var.equal = TRUE, paired = TRUE)
 t.test(TreatA, TreatB, var.equal = FALSE, paired = TRUE)
 wilcox.test(TreatA, TreatB, paired = TRUE)
