@@ -31,6 +31,9 @@ knitr:
     collapse: true
     comment: "#>"
 from: markdown+emoji
+filters:
+  - roughnotation
+  - flourish
 ---
 
 ```{r setup, include=FALSE}
