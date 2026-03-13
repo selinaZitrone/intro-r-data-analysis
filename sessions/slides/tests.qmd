@@ -296,7 +296,7 @@ TreatC <- filter(InsectSprays, spray == "C")$count
 #| code-fold: true
 #| code-summary: "Code to generate boxplot"
 ggplot(InsectSprays, aes(x = spray, y = count, fill = spray)) +
-  geom_boxplot(notch = TRUE) +
+  geom_boxplot() +
   theme(legend.position = "none")
 ```
 
@@ -477,6 +477,23 @@ wilcox.test(TreatA, TreatB, paired = TRUE)
 ```
 
 Careful: your treatment vector both have to have the same order
+
+# Plot test results {.inverse}
+
+## Boxplots with notches
+
+Notches show the approximate 95% confidence interval of the median. If notches of two boxes don't overlap, their medians likely differ
+
+```{r}
+#| output-location: column
+#| flourish:
+#|   - target: "notch = TRUE"
+ggplot(
+  InsectSprays,
+  aes(x = spray, y = count)
+) +
+  geom_boxplot(notch = TRUE)
+```
 
 ## Plot test results with `ggsignif`
 
