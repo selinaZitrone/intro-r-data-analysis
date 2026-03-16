@@ -3,7 +3,7 @@
 const session_end_times = [
   new Date("2026-03-09T16:00+01:00"), // day 1
   new Date("2026-03-10T16:00+01:00"), // day 2
-  new Date("2026-03-16T16:00+01:00"), // day 3
+  new Date("2026-03-16T12:00+01:00"), // day 3
 ];
 
 window.addEventListener("load", function () {
