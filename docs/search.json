@@ -1607,7 +1607,7 @@
     "href": "byod/wine.html#example-analysis",
     "title": "Wine Quality Analysis",
     "section": "Example analysis",
-    "text": "Example analysis\nHere is an example of a correlation plot:\n\nHere is an example of a PCA result:\n\n\n\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'"
+    "text": "Example analysis\nHere is an example of a correlation plot:\n\nHere is an example of a PCA result:\n\n\n\n Download solution script"
   },
   {
     "objectID": "byod/wine.html#reference",
@@ -1649,7 +1649,7 @@
     "href": "byod/ice_cover.html#example-analysis",
     "title": "Climate Change Effects on Ice Cover and Temperature in North American Lakes",
     "section": "Example analysis",
-    "text": "Example analysis\nHere is an example of a plot you can try to create (from question 3):\n\n\n\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'"
+    "text": "Example analysis\nHere is an example of a plot you can try to create (from question 3):\n\n\n\n Download solution script"
   },
   {
     "objectID": "R/quarto_demo_advanced.html",
@@ -1726,7 +1726,7 @@
     "href": "byod/dnaseq.html#example-analysis",
     "title": "RNA-seq Data Analysis",
     "section": "Example analysis",
-    "text": "Example analysis\n\n\n\n\n\n\n\n\n\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'"
+    "text": "Example analysis\n\n\n\n\n\n\n\n\n\n Download solution script"
   },
   {
     "objectID": "byod/olympics.html",
@@ -2013,35 +2013,35 @@
     "href": "sessions/slides/bring-your-own-data.html#data-set-5-rnaseq-data",
     "title": "Bring your own data",
     "section": "Data set 5: RNAseq data",
-    "text": "Data set 5: RNAseq data\nsee here\n\n\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'"
+    "text": "Data set 5: RNAseq data\nsee here\n\n\n Download example script"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#new-methods-read-multiple-files-at-once",
     "href": "sessions/slides/bring-your-own-data.html#new-methods-read-multiple-files-at-once",
     "title": "Bring your own data",
     "section": "New methods: Read multiple files at once",
-    "text": "New methods: Read multiple files at once\n\nIf you have multiple files with data you can\n\nRead them all in at the same time\nCombine them into one tibble\n\n\n\n\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'"
+    "text": "New methods: Read multiple files at once\n\nIf you have multiple files with data you can\n\nRead them all in at the same time\nCombine them into one tibble\n\n\n\n\n Download example script"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#new-methods-correlation-plots",
     "href": "sessions/slides/bring-your-own-data.html#new-methods-correlation-plots",
     "title": "Bring your own data",
     "section": "New methods: Correlation plots",
-    "text": "New methods: Correlation plots\n\n\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'\n\n\n\n\n\n\nError in `library()`:\n! there is no package called 'factoextra'"
+    "text": "New methods: Correlation plots\n\n\n Download example script"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#new-methods-pcas",
     "href": "sessions/slides/bring-your-own-data.html#new-methods-pcas",
     "title": "Bring your own data",
     "section": "New methods: PCAS",
-    "text": "New methods: PCAS\n\n\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'\n\n\n\n\nError in `fviz_pca()`:\n! could not find function \"fviz_pca\""
+    "text": "New methods: PCAS\n\n\n Download example script"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#how-it-works",
     "href": "sessions/slides/bring-your-own-data.html#how-it-works",
     "title": "Bring your own data",
     "section": "How it works",
-    "text": "How it works\n\nStart working on your data set or select one of mine\nYou can also do other things like\n\nLook at the example scripts to learn new techniques\nTry AI tools\nTry Positron\nTry Quarto\n…\n\nIf you are stuck\n\nDon’t forget the function help (?)\nCome to the General meeting or write me in the chat\nAsk Google or AI tools\n\nHint: Set your RStudio error messages to English: Sys.setenv(LANGUAGE='en') in the console"
+    "text": "How it works\n\nStart working on your data set or select one of mine\nYou can also do other things like\n\nLook at the example scripts to learn new techniques\nTry AI tools, Quarto, Positron, …\n\nIf you are stuck\n\nAsk Google or AI tools\nAks me: Meeting or write me on Webex"
   },
   {
     "objectID": "sessions/slides/bring-your-own-data.html#sharing",
@@ -3435,5 +3435,26 @@
     "title": "Task: Statistical tests",
     "section": "For the fast ones",
     "text": "For the fast ones\nYou can do these in any order, or skip them and just take a break.\n\nUse a different visualization method than before to show the differences in flipper length between species\nChange the appearance of the plot (colors, themes, …) from the task"
+  },
+  {
+    "objectID": "sessions/slides/bring-your-own-data.html#data-set-3-ice-cover-and-temperature",
+    "href": "sessions/slides/bring-your-own-data.html#data-set-3-ice-cover-and-temperature",
+    "title": "Bring your own data",
+    "section": "Data set 3: Ice cover and temperature",
+    "text": "Data set 3: Ice cover and temperature\n\n\nsee here\n\n\n\n\nImage by LTER under CC BY-SA 4.0\n\n\n\n\n\nSource ice data: Magnuson, J.J., S.R. Carpenter, and E.H. Stanley. 2021. North Temperate Lakes LTER: Ice Duration - Madison Lakes Area 1853 - current ver 35. Environmental Data Initiative.\nSource temperature data: Anderson, L. and D. Robertson. 2020. Madison Wisconsin Daily Meteorological Data 1869 - current ver 32. Environmental Data Initiative."
+  },
+  {
+    "objectID": "sessions/slides/bring-your-own-data.html#data-set-4-rnaseq-data",
+    "href": "sessions/slides/bring-your-own-data.html#data-set-4-rnaseq-data",
+    "title": "Bring your own data",
+    "section": "Data set 4: RNAseq data",
+    "text": "Data set 4: RNAseq data\nsee here\n\n\n Download example script"
+  },
+  {
+    "objectID": "sessions/slides/bring-your-own-data.html#new-methods-pca",
+    "href": "sessions/slides/bring-your-own-data.html#new-methods-pca",
+    "title": "Bring your own data",
+    "section": "New methods: PCA",
+    "text": "New methods: PCA\n\n\n Download example script"
   }
 ]

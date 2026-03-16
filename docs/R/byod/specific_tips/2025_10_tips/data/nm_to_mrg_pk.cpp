@@ -18,4 +18,4 @@ $TABLE
   double CP = CENT / Vi;
   double DV = CP * (1 + PROP_ERR * EPS(1)) + ADD_ERR * EPS(1);
 $CAPTURE CP DV
- 
+
