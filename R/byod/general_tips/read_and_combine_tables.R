@@ -1,7 +1,12 @@
 library(tidyverse)
+library(readxl) # for reading Excel files
 
 # where you see ADJUST in a comment you have to adjust the code to your own
 # project setup (paths and filenames)
+
+# =============================================================================#
+# Example 1: Read and combine multiple CSV files ==============================
+# =============================================================================#
 
 # Step 1: List all files that you want to read in
 file_list <- list.files(
@@ -33,3 +38,34 @@ combined_table <- bind_rows(all_files, .id = "file_id")
 # other options to combine tables are
 # bind_cols(): like bind_rows but glue columns together instead of rows
 # left_join(): Join table by a shared column
+
+# =============================================================================#
+# Example 2: Read and combine multiple sheets from one Excel file =============
+# =============================================================================#
+
+# This is useful when you have one Excel file where each sheet contains data
+# from a different condition/experiment/participant but with the same structure.
+
+# ADJUST: path to your Excel file
+excel_path <- "data/dummy/multi_sheet_data.xlsx"
+
+# Step 1: Get the names of all sheets in the Excel file
+sheet_names <- excel_sheets(excel_path)
+sheet_names
+
+# Step 2: Read all sheets into a list
+# map iterates over each sheet name and reads it with read_excel
+all_sheets <- map(sheet_names, \(sheet) read_excel(excel_path, sheet = sheet))
+
+# Step 3: Name the list elements with the sheet names
+names(all_sheets) <- sheet_names
+
+# Look at the individual sheets
+all_sheets[["group_A"]]
+all_sheets[["group_B"]]
+
+# Step 4: Combine all sheets into one table
+# .id = "condition" adds a column with the sheet name so you know which
+# sheet each row came from
+combined_sheets <- bind_rows(all_sheets, .id = "condition")
+combined_sheets
