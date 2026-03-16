@@ -66,7 +66,7 @@ see [here](https://selinazitrone.github.io/intro-r-data-analysis/byod/wine.html)
 see [here](https://selinazitrone.github.io/intro-r-data-analysis/byod/olympics.html)
 
 
-## Data set 4: Ice cover and temperature
+## Data set 3: Ice cover and temperature
 
 :::{.columns}
 
@@ -93,7 +93,7 @@ Source temperature data: [Anderson, L. and D. Robertson. 2020.](https://doi.org/
 :::
 
 
-## Data set 5: RNAseq data
+## Data set 4: RNAseq data
 
 see [here](https://selinazitrone.github.io/intro-r-data-analysis/byod/dnaseq.html)
 
@@ -188,7 +188,7 @@ penguins %>%
 
 :::
 
-## New methods: PCAS
+## New methods: PCA
 
 ```{r echo=FALSE, message=FALSE}
 downloadthis::download_file(
@@ -228,16 +228,10 @@ fviz_pca(
 - Start working on your data set or select one of mine
 - You can also do other things like
   - Look at the example scripts to learn new techniques
-  - Try AI tools
-  - Try Positron
-  - Try Quarto
-  - ...
+  - Try AI tools, Quarto, Positron, ...
 - If you are stuck
-  - Don't forget the function help (`?`)
-  - Come to the General meeting or write me in the chat
   - Ask Google or AI tools
-    - Hint: Set your RStudio error messages to English:
-    `Sys.setenv(LANGUAGE='en')` in the console
+  - Aks me: Meeting or write me on Webex
 :::
 
 # Now you {.inverse}
@@ -246,7 +240,6 @@ fviz_pca(
 
 :::{.nonincremental}
 
-- [**Meet** in your group (if you want)]{.big-text}<br>
 - [**Work** on your data set]{.big-text}<br>
 - [**Take breaks** as you need and **be back at 2.30 p.m.**]{.big-text}<br>
 
@@ -271,10 +264,6 @@ In **1-2 mins**:
 Please take 10 mins to complete the feedback survey for the Graduate center (don't use Internet Explorer)<br>
 
 [https://votingo.cedis.fu-berlin.de/PCNLP3](https://votingo.cedis.fu-berlin.de/PCNLP3)
-
-## Feedback
-
-- Any other feedback or comments from your side?
 
 ## Conclusion
 
@@ -308,6 +297,6 @@ We learned a lot of stuff!
 
 # The End{.inverse}
 
-### Thanks a lot for participating!
+Thanks a lot for participating!
 
 ![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/heartyr.gif)
