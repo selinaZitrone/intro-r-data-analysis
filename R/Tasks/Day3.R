@@ -7,14 +7,14 @@ library(tidyverse)
 
 relig_income
 
-relig <- pivot_longer(
+relig_tidy <- pivot_longer(
   relig_income,
   cols = !religion, # 2:11, `<$10k`:`Don't know/refused`
   names_to = "income",
   values_to = "count"
 )
 
-relig
+relig_tidy
 
 # 2. billboard
 
@@ -24,12 +24,12 @@ pivot_longer(billboard, cols = wk1:wk76, names_to = "week", values_to = "rank")
 
 # 3. fish_encounters
 
-fish_encounters |>
-  pivot_wider(
-    names_from = station,
-    values_from = seen,
-    values_fill = 0
-  )
+pivot_wider(
+  fish_encounters,
+  names_from = station,
+  values_from = seen,
+  values_fill = 0
+)
 
 #### Extras
 charts <- pivot_longer(

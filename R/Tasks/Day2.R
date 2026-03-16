@@ -168,8 +168,10 @@ ggplot(penguins, aes(species, flipper_len, color = species)) +
 # The following code is adapted from the palmerpengins package website
 # (https://allisonhorst.github.io/palmerpenguins/articles/examples.html).
 
+penguin_cols <- c("darkorange", "purple", "cyan4")
+
 penguin_scatter <- ggplot(
-  data = penguins,
+  penguins,
   aes(
     x = bill_len,
     y = bill_dep,
@@ -179,7 +181,7 @@ penguin_scatter <- ggplot(
 ) +
   geom_point(size = 3, alpha = 0.8) +
   geom_smooth(method = "lm", se = FALSE) +
-  scale_color_manual(values = c("darkorange", "purple", "cyan4")) +
+  scale_color_manual(values = penguin_cols) +
   labs(
     title = "Penguin bill dimensions",
     subtitle = "Bill length and depth for Adelie, Chinstrap and Gentoo Penguins at Palmer Station LTER",
@@ -406,6 +408,7 @@ penguins |>
   summarize(
     mean_flipper = mean(flipper_len, na.rm = TRUE),
     mean_body = mean(body_mass, na.rm = TRUE),
+    sd_body = sd(body_mass, na.rm = TRUE),
     .by = species
   )
 
@@ -434,7 +437,7 @@ penguins |>
 
 ## For the fast ones -------------------------------------------------------
 
-# Tricky: summarize mean body mass by species, pipe into geom_col()
+# Summarize mean body mass by species, pipe into geom_col()
 penguins |>
   summarize(
     mean_body = mean(body_mass, na.rm = TRUE),
