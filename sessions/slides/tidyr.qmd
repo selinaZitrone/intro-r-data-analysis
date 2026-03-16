@@ -238,17 +238,25 @@ print(cities_untidy, width = 90)
 **One variable split into multiple column**s can be solved with `pivot_longer`
 
 ```{r}
+#| eval: false
 step1 <- pivot_longer(
   cities_untidy, # the tibble
   cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to
   names_to = "location", # name of the new column
   values_to = "value" # name of the value column
 )
+step1
 ```
 
 . . .
 
 ```{r echo=FALSE}
+step1 <- pivot_longer(
+  cities_untidy, # the tibble
+  cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to
+  names_to = "location", # name of the new column
+  values_to = "value" # name of the value column
+)
 print(step1, n = 4)
 ```
 
@@ -271,9 +279,11 @@ Another way to select the columns to pivot:
 ```{r}
 #| eval: false
 #| code-line-numbers: "3"
+#| flourish:
+#|   - target-rx: "cols.*"
 step1 <- pivot_longer(
   cities_untidy, # the tibble
-  cols = !type, # All columns except type#<<
+  cols = !type, # All columns except type
   names_to = "location", # name of the new column
   values_to = "value" # name of the value column
 )
@@ -281,7 +291,7 @@ step1 <- pivot_longer(
 
 ## `separate_wider_delim()`
 
-**Multiple variable values that are united into one** can be separated using `separate_wider_delim`
+**Multiple variables united into one** can be separated using `separate_wider_delim`
 
 ```{r echo=FALSE}
 print(step1, n = 2)
@@ -290,23 +300,31 @@ print(step1, n = 2)
 . . .
 
 ```{r}
+#| eval: false
 step2 <- separate_wider_delim(
   step1, # the tibble
   location, # the column to separate
   delim = "_", # the separator
   names = c("country", "city_name") # names of new columns
 )
+step2
 ```
 
 . . .
 
 ```{r echo=FALSE}
+step2 <- separate_wider_delim(
+  step1, # the tibble
+  location, # the column to separate
+  delim = "_", # the separator
+  names = c("country", "city_name") # names of new columns
+)
 print(step2, n = 2)
 ```
 
 . . .
 
-The opposite function exists as well and is called `unite`. Check out `?unite` for details.
+The opposite function is called `unite`. Check out `?unite` for details.
 
 ## `pivot_wider()`
 
@@ -319,16 +337,23 @@ print(step2, n = 2)
 . . .
 
 ```{r}
+#| eval: false
 step3 <- pivot_wider(
   step2, # the tibble
   names_from = type, # the variables
   values_from = value # the values
 )
+step3
 ```
 
 . . .
 
 ```{r echo=FALSE}
+step3 <- pivot_wider(
+  step2, # the tibble
+  names_from = type, # the variables
+  values_from = value # the values
+)
 print(step3, n = 5)
 ```
 
@@ -353,24 +378,6 @@ cities_tidy <- cities_untidy |>
     values_from = values
   )
 ```
-
-## Remove missing values with `drop_na()`
-
-Drop rows with missing values:
-
-```{r}
-#| eval: false
-# drop rows with missing values in any column
-drop_na(and_vertebrates)
-# drop rows with missing values in weight column
-drop_na(and_vertebrates, weight_g)
-# drop rows with missing values in weight and species columns
-drop_na(and_vertebrates, weight_g, species)
-```
-
-. . . 
-
-This is an easier and more intuitive alternative to `filter(!is.na(...))`.
 
 # Now you {.inverse}
 

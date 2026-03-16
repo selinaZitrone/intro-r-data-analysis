@@ -15,4 +15,4 @@ Go to the [task page](tasks/tests-task.qmd) for the exercises.
 
 ## Resources
 
-- [ANOVA as a linear model](https://stats.libretexts.org/Bookshelves/Applied_Statistics/Book%3A_Learning_Statistics_with_R_-_A_tutorial_for_Psychology_Students_and_other_Beginners_(Navarro)/16%3A_Factorial_ANOVA/16.06%3A_ANOVA_As_a_Linear_Model){target="_blank"}: explanation of why an ANOVA is also a linear model
+- [ggsignif documentation](https://const-ae.github.io/ggsignif/){target="_blank"}: The official documentation for the ggsignif package to annotate plots with significance levels.

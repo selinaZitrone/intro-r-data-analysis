@@ -11,6 +11,8 @@ RoxygenNote: 7.3.3
 Imports: 
     downloadthis,
     fontawesome,
+    gapminder,
+    ggpubr,
     git2r,
     here,
     knitr,

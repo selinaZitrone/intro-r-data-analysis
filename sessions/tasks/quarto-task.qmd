@@ -1,0 +1,164 @@
+---
+title: "Task: Reproducible documents with Quarto"
+number-sections: false
+---
+
+[← Back to session page](../11_quarto.qmd)
+
+:::{.callout-note}
+
+## Find the solution here after the session ends.
+
+```{=html}
+<script>const course_day = 3;</script>
+<script src="../../timer_solution.js"></script>
+<p class="r_class_solution" style="display:none">
+  <a href="../solutions/quarto-solution.html" target="_blank">Click here for the solution.</a>
+</p>
+```
+:::
+
+## Getting started
+
+In this task, you will create a report on the penguins dataset using Quarto. 
+
+In the **Files pane**, click `New File -> Quarto Document`. Give it a name like `penguin_report.qmd`.
+
+:::{.callout-tip}
+Render your document often to check if everything still works. It's much easier to find mistakes if you render after every small change. Use the keyboard shortcut `Ctrl + Shift + K` (`Cmd + Shift + K` on Mac) to render quickly.
+:::
+
+## Add text
+
+The file is empty. Write a short introduction about the penguins dataset. Include different markdown formatting like:
+
+- A section header (e.g. `## Introduction`)
+- A sentence or two with **bold** and *italic* formatting
+- A bullet list (e.g. listing the three penguin species)
+- A [link](https://quarto.org/docs/authoring/markdown-basics.html) to a website of your choice
+
+Render the document to see how the formatted text looks in the output.
+
+## Add code chunks
+
+:::{.callout-tip}
+
+## Add a code chunk
+
+You can add a code chunk in two ways:
+
+- keyboard shortcut `Ctrl + Alt + I` (or `Cmd + Option + I` on Mac)
+- going to **Code -> Insert Code Chunk** in the menu
+
+:::
+
+- Add a code chunk that loads the `tidyverse` package.
+- Add another code chunk that explores the data like `head()`, `summary()`, or `str()`.
+
+Now add a new section (e.g. `## Analysis`) with a plot, e.g.:
+
+- A scatterplot of two variables of your choice from the penguins data (e.g. bill length vs. bill depth, or flipper length vs. body mass)
+- A boxplot comparing a measurement across species or sex
+
+Render to see the code and output in the document.
+
+## Chunk options
+
+Experiment with chunk options to control what shows up in the output:
+
+- Hide the setup chunk where you load the tidyverse completely using `#| include: false`
+- Hide the code of one of your plots using `#| echo: false`
+- What is the difference between the two?
+- Add `#| warning: false` to the plot code chunk
+
+Render to check the effect of each option.
+
+## Inline code
+
+Write a sentence that includes a value computed by R, for example the number of observations or species. Use inline code like this: `` `r knitr::inline_expr("nrow(penguins)")` ``
+
+Render and check that the number appears in the text.
+
+## Add a YAML header
+
+Your document doesn't have a title or author yet. Add a YAML header at the very top of the file:
+
+```yaml
+---
+title: "Penguin Report"
+author: "Your Name"
+format: html
+---
+```
+
+You can also set default chunk options for the whole document by adding `execute` options to the YAML header. Try adding `warning: false` and `message: false` so you don't need them in every chunk:
+
+```yaml
+---
+title: "Penguin Report"
+author: "Your Name"
+format: html
+execute:
+  warning: false
+  message: false
+---
+```
+
+
+## For the fast ones
+
+You can do these in any order, or skip them and just take a break.
+
+### Explore YAML document options
+
+:::{.callout-tip}
+## YAML options for a specific format
+
+You can add options specific to the HTML format by nesting them under `html:` in the YAML header. Careful, the indentation has to be correct!
+
+The example below e.g. adds a table of contents to the HTML output and numbers the sections.
+
+```yaml
+---
+format:
+  html:
+    toc: true
+    number-sections: true
+---
+```
+:::
+
+Try adding options under `html:` in the YAML header. For example:
+
+- `code-fold: true`: hides code behind a clickable button
+- `code-line-numbers: true`: adds line numbers to code chunks
+
+Browse the [HTML format reference](https://quarto.org/docs/reference/formats/html.html) for more options to try.
+
+### Explore chunk options
+
+Try adding more options to your code chunks. For example:
+
+- `#| fig-cap: "Your caption"` adds a figure caption
+- `#| fig-align: center` centers the figure
+- `#| out-width: "80%"` controls the figure width
+
+Browse the [code cell reference](https://quarto.org/docs/reference/cells/cells-knitr.html) for more options.
+
+### Explore markdown formatting
+
+Try out more markdown features like images, block quotes, footnotes, or tables.
+
+Browse the [Markdown basics reference](https://quarto.org/docs/authoring/markdown-basics.html) for ideas.
+
+### Render to PDF
+
+Change `format: html` to `format: pdf` in the YAML header and render. If you get an error about missing LaTeX, you may need to install a lightweight LaTeX distribution first. Run this in the R console:
+
+```{r}
+#| eval: false
+#| echo: true
+# install.packages("tinytex") # only run this once
+# Install tinytex (also only run this once)
+tinytex::install_tinytex()
+```

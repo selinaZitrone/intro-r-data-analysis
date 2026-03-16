@@ -1,0 +1,24 @@
+---
+title: "Reproducible documents with Quarto"
+---
+
+```{=html}
+<iframe class="slide-deck" src="slides/quarto.html"></iframe>
+```
+
+[Slides in full screen](slides/quarto.html){target="_blank"} | [Download PDF slides](slides_pdf/quarto.pdf){download="quarto.pdf"}
+
+::: {.callout-tip}
+## Exercises
+Go to the [task page](tasks/quarto-task.qmd) for the exercises.
+:::
+
+## Resources
+
+- [Quarto website](https://quarto.org/){target="_blank"}: everything you need to get started
+
+- [Markdown syntax reference](https://quarto.org/docs/authoring/markdown-basics.html){target="_blank"}: quick reference for text formatting
+- [Writing R code in Quarto](https://quarto.org/docs/computations/r.html){target="_blank"}: Everything about computations in R, including code chunk options
+- [HTML document options](https://quarto.org/docs/reference/formats/html.html){target="_blank"}: all YAML options for HTML output
+- [PDF document options](https://quarto.org/docs/reference/formats/pdf.html){target="_blank"}: all YAML options for PDF output
+- [Quarto gallery](https://quarto.org/docs/gallery/){target="_blank"}: examples of documents, presentations, websites, and more

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.29">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,18 +32,19 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f0298c4738c3e0edb1fce38407ee8401.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-f8a13f792a635cc732f35e721394880c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f0298c4738c3e0edb1fce38407ee8401.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-2cb84b305a53c23c76c58cddcbb5dc4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-67fb33383e7b71b67f58b590d72ff791.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-2cb84b305a53c23c76c58cddcbb5dc4b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -229,6 +230,7 @@ ul.task-list li input[type="checkbox"] {
       toggleColorMode(toAlternate);
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
     };
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
@@ -303,6 +305,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Statistical tests</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../sessions/11_quarto.html">
+ <span class="dropdown-text">Quarto</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../sessions/12_AI-tools.html">
  <span class="dropdown-text">AI Tools</span></a>
   </li>  
@@ -358,11 +364,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#resources" id="toc-resources" class="nav-link active" data-scroll-target="#resources">Resources</a>
-  <ul class="collapse">
-  <li><a href="#browser-based-ai-tools" id="toc-browser-based-ai-tools" class="nav-link" data-scroll-target="#browser-based-ai-tools">Browser-based AI-Tools</a></li>
-  <li><a href="#integrated-ai-tools" id="toc-integrated-ai-tools" class="nav-link" data-scroll-target="#integrated-ai-tools">Integrated AI tools</a></li>
-  </ul></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link active" data-scroll-target="#resources">Resources</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/edit/master/sessions/12_AI-tools.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -393,35 +395,22 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="slides/AI-tools.html" target="_blank">Slides in full screen</a> | <a href="slides_pdf/AI-tools.pdf" download="AI-tools.pdf">Download PDF slides</a></p>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<p>Below you find a few links to further resources on AI tools for R programming. This is only a selection from the vast amount of tools available.</p>
-<section id="browser-based-ai-tools" class="level3">
-<h3 class="anchored" data-anchor-id="browser-based-ai-tools">Browser-based AI-Tools</h3>
 <ul>
-<li><a href="https://julius.ai" target="_blank">Julius AI</a>: Browser-based tool where you can ask questions about your data. You can upload a dataset and ask questions about it. The AI will then give you answers and visualizations. You can also download the corresponding R script.
+<li><a href="https://chat.openai.com" target="_blank">ChatGPT</a>, <a href="https://claude.ai" target="_blank">Claude</a>, <a href="https://gemini.google.com/" target="_blank">Gemini</a>: Browser-based chat bots for general-purpose coding help</li>
+<li><a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a>: Inline code suggestions (RStudio) and chat (Positron, VS Code)
 <ul>
-<li>Works great but costs ~20€ per month, but you can get a 50% discount if you are a student or academic</li>
+<li><a href="https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html" target="_blank">Step-by-step guide to get Copilot</a> for free with an educational account</li>
+<li><a href="https://docs.posit.co/ide/user/ide/guide/tools/copilot.html" target="_blank">GitHub Copilot in RStudio</a>: Setup and usage guide</li>
+<li><a href="https://docs.github.com/en/copilot" target="_blank">GitHub Copilot Docs</a>: Official documentation</li>
 </ul></li>
-<li>The usual ones: <a href="https://chat.openai.com" target="_blank">ChatGPT</a>, <a href="https://claude.ai" target="_blank">Claude</a>, <a href="https://gemini.google.com/" target="_blank">Gemini</a>, …</li>
-</ul>
-</section>
-<section id="integrated-ai-tools" class="level3">
-<h3 class="anchored" data-anchor-id="integrated-ai-tools">Integrated AI tools</h3>
-<p><a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a> is one of the most widespread integrated tool. It gives you inline code suggestions and Chat options. Great to code faster, write better code, debug, etc.</p>
-<p>If you are using RStudio, you can use it for inline code suggestions. In Positron or VS Code you can also use the chat option. Here are all the links that you need to get started:</p>
+<li><a href="https://claude.com/solutions/coding" target="_blank">Claude Code</a>: AI coding agent that runs in your terminal alongside any IDE</li>
+<li><a href="https://positron.posit.co/" target="_blank">Positron</a>: Data science IDE by Posit with full AI integration
 <ul>
-<li><a href="https://selinazitrone.github.io/tools_and_tips/sessions/additional_material/07_ai_tools/get_copilot_step_by_step.html" target="_blank">Step-by-step guide on how to get Copilot</a> for free with an educational account.</li>
-<li><a href="https://docs.posit.co/ide/user/ide/guide/tools/copilot.html" target="_blank">GitHub Copilot in RStudio</a>: Guide on how to set up and use RStudio with GitHub Copilot</li>
-<li><a href="https://positron.posit.co/assistant.html" target="_blank">AI in Positron</a>: Guide on how to set up and use the Positron Assistant.
-<ul>
-<li>Positron can be set up to work with GitHub Copilot (inline suggestions and chat) as well as with other LLMs (e.g.&nbsp;GPT-4, Claude, etc.).</li>
+<li><a href="https://positron.posit.co/assistant.html" target="_blank">AI in Positron</a>: Setup guide for the Positron Assistant</li>
 </ul></li>
-<li><a href="https://docs.github.com/en/copilot" target="_blank">GitHub Copilot Docs</a>: Useful information and guides on how to use Copilot</li>
-<li><a href="https://github.com/features/copilot/#faq" target="_blank">Privacy FAQ of GitHub Copilot</a></li>
-<li><a href="https://dev.to/github/a-beginners-guide-to-prompt-engineering-with-github-copilot-3ibp" target="_blank">Prompt engineering with GH Copilot</a>: Some tips to get better results with GitHub Copilot</li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -489,13 +478,14 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

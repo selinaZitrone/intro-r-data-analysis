@@ -16,3 +16,6 @@ Go to the [task page](tasks/tidyr-task.qmd) for the exercises.
 ## Resources
 
 - [Tidyr cheatsheet](https://rstudio.github.io/cheatsheets/tidyr.pdf){target="_blank"}
+- [tidyr documentation](https://tidyr.tidyverse.org/){target="_blank"}: The official documentation for tidyr, with examples and function references.
+- [Pivoting vignette](https://tidyr.tidyverse.org/articles/pivot.html){target="_blank"}: A detailed guide to `pivot_longer()` and `pivot_wider()` with many practical examples.
+- [Tidy data chapter in R for Data Science](https://r4ds.hadley.nz/data-tidy){target="_blank"}: Explains the concept of tidy data

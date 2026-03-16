@@ -1,0 +1,69 @@
+---
+title: "Solution to Quarto task"
+code-line-numbers: false
+---
+
+Below is an example solution for the Quarto task. Your document will look different depending on the text you wrote and the plots you chose — that's fine! The important thing is that you have all the elements working.
+
+## The complete document
+
+Here is the full source of the example document. Copy it into a `.qmd` file and render it to see the result.
+
+````md
+---
+title: "Penguin Report"
+author: "Selina Baldauf"
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+```{{r}}
+#| include: false
+library(tidyverse)
+```
+
+## Introduction
+
+This is a short report about the **Palmer Penguins** dataset.
+The data contains measurements for three penguin species:
+
+- *Adelie*
+- *Chinstrap*
+- *Gentoo*
+
+You can find more information about the data on the
+[palmerpenguins website](https://allisonhorst.github.io/palmerpenguins/).
+
+## Data overview
+
+```{{r}}
+head(penguins)
+```
+
+The dataset contains `r nrow(penguins)` penguins
+from `r length(unique(penguins$species))` species.
+
+## Analysis
+
+```{{r}}
+#| echo: false
+ggplot(penguins, aes(x = bill_len, y = bill_dep, color = species)) +
+  geom_point() +
+  labs(
+    x = "Bill length (mm)",
+    y = "Bill depth (mm)",
+    color = "Species"
+  ) +
+  theme_minimal()
+```
+
+```{{r}}
+ggplot(penguins, aes(x = species, y = body_mass, fill = species)) +
+  geom_boxplot() +
+  labs(x = "Species", y = "Body mass (g)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+````

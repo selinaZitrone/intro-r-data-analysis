@@ -20,6 +20,8 @@ number-sections: false
 
 ## Get started
 
+A helpful resource for this task is the [tidyr cheatsheet](https://rstudio.github.io/cheatsheets/tidyr.pdf){target="_blank"}.
+
 Before you start, make sure to load the `tidyverse` package.
 
 ```{r}
@@ -53,6 +55,8 @@ Each row indicates that a fish was detected (seen = 1) at a particular station.
 Which format might be more convenient if you wanted to compare fish across stations at a glance?
 
 ## For the fast ones
+
+You can do these in any order, or skip them and just take a break.
 
 - Check out the `values_drop_na` and `names_prefix` argument of `pivot_longer`. What does it do and how can you use it with the `billboard` data?
 - Check out the `values_fill` argument of `pivot_wider`. How could you use it in the `fish_encounters` case to replace the missing values that are created?

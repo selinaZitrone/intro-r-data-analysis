@@ -31,6 +31,9 @@ knitr:
     collapse: true
     comment: "#>"
 from: markdown+emoji
+filters:
+  - roughnotation
+  - flourish
 ---
 
 ```{r setup, include=FALSE}
@@ -68,7 +71,7 @@ There are **various tests** and the outcome might differ!
 
 **Shapiro-Wilk-Test**
 
-- How much does variance of observed data differ from normal distribution
+- Tests whether the data could have been drawn from a normal distribution
 - Specific test only for normal distribution
 - High power, also for few data points
 
@@ -133,7 +136,7 @@ mydata |>
       x = value,
       fill = type,
       # plot probability instead of count on y axis
-      y = ..density..
+      y = after_stat(density)
     )
   ) +
   stat_function(
@@ -143,7 +146,7 @@ mydata |>
       sd = 5
     ),
     color = "darkorange",
-    size = 1
+    linewidth = 1
   ) +
   stat_function(
     fun = dnorm,
@@ -152,7 +155,7 @@ mydata |>
       sd = sd(mydata$non_normal)
     ),
     color = "cyan4",
-    size = 1
+    linewidth = 1
   ) +
   scale_fill_manual(values = c("cyan4", "darkorange")) +
   theme(
@@ -228,7 +231,8 @@ Points should match the straight line. Small deviations are okay.
 
 :::{.column width="50%"}
 
-```{r, fig.height=5.1}
+```{r}
+#| fig-height: 5.1
 # ggplot(
 #   mydata,
 #   aes(sample = normal)
@@ -242,7 +246,8 @@ ggpubr::ggqqplot(mydata$normal)
 
 :::{.column width="50%"}
 
-```{r, fig.height=5.1}
+```{r}
+#| fig-height: 5.1
 # ggplot(
 #   mydata,
 #   aes(sample = non_normal)
@@ -272,7 +277,7 @@ Counts of insects in agricultural units treated with different insecticides.
 #| code-summary: "Expand to reproduce the data"
 InsectSprays <- InsectSprays |>
   filter(spray %in% c("A", "B", "E")) |>
-  mutate(spray = recode(spray, "E" = "C"))
+  mutate(spray = case_match(spray, "E" ~ "C", .default = spray))
 ```
 
 Compare treatments A, B and C:
@@ -289,11 +294,12 @@ TreatC <- filter(InsectSprays, spray == "C")$count
 
 :::{.column width="50%"}
 
-```{r, fig.height = 6.0}
+```{r}
+#| fig-height: 6.0
 #| code-fold: true
 #| code-summary: "Code to generate boxplot"
 ggplot(InsectSprays, aes(x = spray, y = count, fill = spray)) +
-  geom_boxplot(notch = TRUE) +
+  geom_boxplot() +
   theme(legend.position = "none")
 ```
 
@@ -334,7 +340,8 @@ $H_0$: Variances do not differ between groups
 
 . . .
 
-```{r error=TRUE}
+```{r}
+#| error: true
 var.test(TreatA, TreatB)
 ```
 
@@ -357,7 +364,8 @@ $H_0$: Variances do not differ between groups
 
 . . .
 
-```{r error=TRUE}
+```{r}
+#| error: true
 var.test(TreatA, TreatC)
 ```
 
@@ -429,7 +437,7 @@ The means of spray A and C do **differ significantly** (t = 7.58, df = 13.9, p <
 
 ## Wilcoxon-rank-sum Test
 
-$H_0$: The samples do not differ in their mean
+$H_0$: The samples do not differ in their median
 
 . . .
 
@@ -441,20 +449,20 @@ wilcox.test(TreatA, TreatB)
 
 . . .
 
-The means of spray A and B do **not differ significantly** (W = 62, p = 0.58)
+The medians of spray A and B do **not differ significantly** (W = 62, p = 0.58)
 
 ## Paired values
 
 Are there pairs of data points?
 
-**Example:** samples of invertebrates across various rivers before and after sewage plants.
+**Example:** blood pressure of patients before and after taking a medication.
 
 :::{.fragment}
 
 :::{.nonincremental}
 
-- For each plant, there is a pair of data points (before and after the plant)
-- Question: Is the change (before-after) significant
+- For each patient, there is a pair of data points (before and after medication)
+- Question: Is the change in blood pressure significant?
 
 :::
 
@@ -464,13 +472,31 @@ Are there pairs of data points?
 
 Use `paired = TRUE` in the test.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 t.test(TreatA, TreatB, var.equal = TRUE, paired = TRUE)
 t.test(TreatA, TreatB, var.equal = FALSE, paired = TRUE)
 wilcox.test(TreatA, TreatB, paired = TRUE)
 ```
 
 Careful: your treatment vector both have to have the same order
+
+# Plot test results {.inverse}
+
+## Boxplots with notches
+
+Notches show the approximate 95% confidence interval of the median. If notches of two boxes don't overlap, their medians likely differ
+
+```{r}
+#| output-location: column
+#| flourish:
+#|   - target: "notch = TRUE"
+ggplot(
+  InsectSprays,
+  aes(x = spray, y = count)
+) +
+  geom_boxplot(notch = TRUE)
+```
 
 ## Plot test results with `ggsignif`
 
@@ -484,14 +510,17 @@ library(ggsignif)
 
 ## Plot test results with `geom_signif()`
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 library(ggsignif)
 theme_set(theme_grey(base_size = 16))
 ```
 
 
 ```{r}
-#| code-line-numbers: "6-14"
+#| flourish:
+#|   - target: "geom_signif("
+#|   - target: "map_signif_level = TRUE,"
 #| output-location: column
 ggplot(
   InsectSprays,
@@ -522,7 +551,9 @@ ggplot(
 :::{.column width="50%"}
 
 ```{r}
-#| code-line-numbers: "12-15"
+#| flourish:
+#|   - target: 'test = "t.test",'
+#|   - target: "var.equal = TRUE"
 #| eval: false
 ggplot(
   InsectSprays,
@@ -544,12 +575,19 @@ ggplot(
   )
 ```
 
+::: {.nonincremental}
+
+- `test`: run specific test
+- `test.args`: pass additional arguments in a list
+- `?geom_signif` for more options
+
+:::
+
 :::
 
 :::{.column width="50%"}
 
 ```{r}
-#| code-line-numbers: "12-15"
 #| echo: false
 ggplot(
   InsectSprays,
@@ -575,13 +613,7 @@ ggplot(
 
 :::
 
-::: {.nonincremental}
 
-- `test`: run specific test
-- `test.args`: pass additional arguments in a list
-- `?geom_signif` for more options
-
-:::
 
 ## Plot mean +- se using `stat_summary`
 
@@ -591,9 +623,10 @@ Another way to plot the results is to plot mean and standard error of the mean:
 
 :::{.column width="50%"}
 
-```{r eval = FALSE}
+```{r}
 #| eval: false
-#| code-line-numbers: "5"
+#| flourish:
+#|   - target: "stat_summary()"
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -607,7 +640,8 @@ ggplot(
 
 :::{.column width="50%"}
 
-```{r echo = FALSE}
+```{r}
+#| echo: false
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -629,7 +663,9 @@ Another way to plot the results is to plot mean and standard error of the mean:
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "5-14"
+#| flourish:
+#|   - target: "fun.data = mean_se,"
+#|   - target: "fun = mean,"
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -649,7 +685,7 @@ ggplot(
 :::{.nonincremental}
 
 - Inside `stat_summary`, define summary function
-  - `fun.data` for errorbars, `fun.y` for points (e.g. mean)
+  - `fun.data` for errorbars, `fun` for points (e.g. mean)
 
 :::
 
@@ -660,7 +696,6 @@ ggplot(
 
 ```{r}
 #| echo: false
-#| code-line-numbers: "5-14"
 ggplot(
   InsectSprays,
   aes(x = spray, y = count)
@@ -686,7 +721,8 @@ ggplot(
 Another way to plot the results is to plot mean and standard error of the mean:
 
 ```{r}
-#| code-line-numbers: "12"
+#| flourish:
+#|   - target: 'geom = "bar"'
 #| output-location: column
 ggplot(
   InsectSprays,
@@ -699,8 +735,7 @@ ggplot(
   ) +
   stat_summary(
     fun = mean,
-    geom = "bar",
-    size = 4
+    geom = "bar"
   )
 ```
 
@@ -709,7 +744,9 @@ ggplot(
 Just like before, you can also add a `geom_signif` to a barplot:
 
 ```{r}
-#| code-line-numbers: "14-23"
+#| flourish:
+#|   - target: "ggsignif::geom_signif("
+#|   - target: 'test = "t.test",'
 #| output-location: column
 ggplot(
   InsectSprays,
@@ -739,7 +776,7 @@ ggplot(
 
 # Now you {.inverse}
 
-[Task 1 (45 min)]{.highlight-blue}<br>
+[Task (45 min)]{.highlight-blue}<br>
 
 [Statistical tests]{.big-text}
 

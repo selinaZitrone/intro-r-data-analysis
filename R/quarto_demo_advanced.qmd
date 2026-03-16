@@ -1,0 +1,84 @@
+---
+title: "Gapminder Analysis"
+author: "Selina Baldauf"
+date: today
+format:
+  html:
+    toc: true
+    toc-location: left
+    number-sections: true
+    code-fold: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+library(gapminder)
+library(ggplot2)
+library(dplyr)
+```
+
+## Introduction
+
+The **gapminder** dataset contains data about *life expectancy*, *GDP per capita*, and *population* for countries around the world.
+
+In this analysis, we will:
+
+- Load the gapminder data
+- Look at life expectancy in 2007
+- Create a plot of life expectancy vs. GDP per capita
+
+You can find more information about the data on the [Gapminder website](https://www.gapminder.org/).
+
+## Analysis
+
+The gapminder data contains `r nrow(gapminder)` observations from `r length(unique(gapminder$country))` countries.
+
+```{r}
+#| label: fig-life-exp
+#| fig-cap: "Life expectancy vs. GDP per capita in 2007"
+#| fig-align: center
+#| out-width: "80%"
+
+gapminder_2007 <- gapminder |>
+  filter(year == 2007)
+
+ggplot(gapminder_2007, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(aes(color = continent)) +
+  theme_minimal()
+```
+
+As we can see in @fig-life-exp, life expectancy generally increases with GDP per capita.
+
+### Summary by continent
+
+```{r}
+gapminder_2007 |>
+  group_by(continent) |>
+  summarize(
+    n_countries = n(),
+    mean_life_exp = round(mean(lifeExp), 1),
+    mean_gdp = round(mean(gdpPercap), 0)
+  ) |>
+  knitr::kable()
+```
+
+### Statistical test
+
+Is the mean life expectancy different between Europe and Africa?
+
+```{r}
+europe <- gapminder_2007 |>
+  filter(continent == "Europe") |>
+  pull(lifeExp)
+
+africa <- gapminder_2007 |>
+  filter(continent == "Africa") |>
+  pull(lifeExp)
+
+t.test(europe, africa) |>
+  broom::tidy() |>
+  knitr::kable()
+```
