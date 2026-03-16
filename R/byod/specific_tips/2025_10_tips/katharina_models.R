@@ -238,7 +238,7 @@ sim_out_tbl <- sim_out |>
 # Do a ggplot of the simulated data (same as plot above but directly with ggplot)
 # First, data is pivoted to long format for easier plotting with ggplot
 sim_out_tbl |>
-  select(ID, TIME, CP, DV, GUT, CENT) |>
+  dplyr::select(ID, TIME, CP, DV, GUT, CENT) |>
   pivot_longer(
     cols = c("CP", "DV", "GUT", "CENT"),
     names_to = "variable",
