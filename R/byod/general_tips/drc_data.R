@@ -1,9 +1,7 @@
 library(drc)
 # Have a look at this tutorial:
-# They don't use ggplot, so I adapted it here
-# drc package has data included (the ryegrass data I'm using here also comes
-# from the package)
-# http://www.darrenkoppel.com/2020/09/04/dose-response-modelling-and-model-selection-in-r/
+# It uses different data but explains a bit what is happening
+# https://www.w3tutorials.net/blog/plotting-dose-response-curves-with-ggplot2-and-drc/
 
 # Show all functions that can be fit
 # All these function can be fit with drm
@@ -17,10 +15,14 @@ ryegrass %>%
   geom_point()
 
 # Log-logistic (LL.4)
-model_1 <- drm(rootl ~ conc,
+model_1 <- drm(
+  rootl ~ conc,
   data = ryegrass,
   fct = LL.4() # which model you want to fit
 )
+
+# Extract EC50 (effective dose at 50% response) with confidence interval
+ED(model_1, 50, interval = "delta")
 
 # Plot model with base plot (but not so flexible)
 plot(model_1, type = "all")
@@ -48,18 +50,10 @@ ryegrass %>%
 # fit some models
 # I took them from the example in the tutorial
 # Read more about the models here: http://www.darrenkoppel.com/2020/09/04/dose-response-modelling-and-model-selection-in-r/
-model.W23 <- drm(rootl ~ conc,
-  data = ryegrass, fct = W2.3()
-)
-model.W24 <- drm(rootl ~ conc,
-  data = ryegrass, fct = W2.4()
-)
-model.LL4 <- drm(rootl ~ conc,
-  data = ryegrass, fct = LL.4()
-)
-model.W14 <- drm(rootl ~ conc,
-  data = ryegrass, fct = W1.4()
-)
+model.W23 <- drm(rootl ~ conc, data = ryegrass, fct = W2.3())
+model.W24 <- drm(rootl ~ conc, data = ryegrass, fct = W2.4())
+model.LL4 <- drm(rootl ~ conc, data = ryegrass, fct = LL.4())
+model.W14 <- drm(rootl ~ conc, data = ryegrass, fct = W1.4())
 
 # Predict new root length for all 4 models
 predict_data <- data.frame(
@@ -81,6 +75,4 @@ predict_data <- predict_data %>%
 ryegrass %>%
   ggplot(aes(x = conc, y = rootl)) +
   geom_point() +
-  geom_line(data = predict_data,
-            aes(color = model)) # Add a line with the predictions
-
+  geom_line(data = predict_data, aes(color = model)) # Add a line with the predictions
