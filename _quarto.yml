@@ -8,6 +8,7 @@ project:
     - "!R/byod/"
     - "!R/quarto_example.qmd"
     - "!R/Tasks/penguin_report.qmd"
+    - "!prep/webex.qmd"
   resources:
     - "sessions/slides_pdf/*.pdf"
     - "R/Tasks/"

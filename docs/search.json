@@ -1530,7 +1530,7 @@
     "href": "preparations.html",
     "title": "Course preparations",
     "section": "",
-    "text": "In order to have a smooth workshop start, you need to prepare a few technical things so we can jump right into coding.\nPlease follow the guides below:\n\nJoin the Webex space\nInstall/Update R and R Studio"
+    "text": "In order to have a smooth workshop start, you need to prepare a few technical things so we can jump right into coding.\nIf you don’t have R and RStudio installed, follow Section 1. If you need to update R and RStudio, follow Section 2."
   },
   {
     "objectID": "prep/r_rstudio.html",
@@ -1957,14 +1957,14 @@
     "href": "sessions/slides/00_organization.html#schedule",
     "title": "Introduction to Data Analysis with R",
     "section": "Schedule",
-    "text": "Schedule\n📅 12.10.2026 - 13.10.2026 from 🕘 9 a.m. - 3:30 p.m.  📅 19.10.2026 - 20.10.2026 from 🕘 9 a.m. - 3:30 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ short breaks in between 📌 Join from the Webex space or via the meeting link"
+    "text": "Schedule\n📅 12.10.2026 - 13.10.2026 from 🕘 9 a.m. - 3:30 p.m.  📅 19.10.2026 - 20.10.2026 from 🕘 9 a.m. - 3:30 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ short breaks in between 📌 Join via the meeting link"
   },
   {
     "objectID": "sessions/slides/00_organization.html#organization",
     "href": "sessions/slides/00_organization.html#organization",
     "title": "Introduction to Data Analysis with R",
     "section": "Organization",
-    "text": "Organization\n\nInput sessions + Tasks + Discussion/Questions\nMaterials on the workshop’s website: Presentations, Tasks, Solutions, Additional resources\nWebsite will stay online after the workshop\nQuestions and feedback welcome\nContact me: selina.baldauf@fu-berlin.de or on Webex"
+    "text": "Organization\n\nInput sessions + Tasks + Discussion/Questions\nMaterials on the workshop’s website: Presentations, Tasks, Solutions, Additional resources\nWebsite will stay online after the workshop\nQuestions and feedback welcome\nContact me: selina.baldauf@fu-berlin.de or on Webex (just search for my email there)"
   },
   {
     "objectID": "sessions/slides/00_organization.html#bring-your-own-data",
@@ -3456,5 +3456,40 @@
     "title": "Bring your own data",
     "section": "New methods: PCA",
     "text": "New methods: PCA\n\n\n Download example script"
+  },
+  {
+    "objectID": "preparations.html#download-and-install-r",
+    "href": "preparations.html#download-and-install-r",
+    "title": "Course preparations",
+    "section": "Download and install R",
+    "text": "Download and install R\n\nVisit the CRAN website.\nClick on the download link for your operating system in the top section “Download and Install R”.\nFor Windows: Follow the link to “install R for the first time”.\nDownload the R pkg/installer and run it, leaving the default options selected during the installation process."
+  },
+  {
+    "objectID": "preparations.html#download-and-install-rstudio",
+    "href": "preparations.html#download-and-install-rstudio",
+    "title": "Course preparations",
+    "section": "Download and install RStudio",
+    "text": "Download and install RStudio\n\nVisit the Posit website.\nClick the “Download RStudio Desktop” button. The button should already specify your operating system (If not, you can scroll down on the website and select the installer for your respective system).\nDownload the installer and run it, following the instructions."
+  },
+  {
+    "objectID": "preparations.html#test-the-installation",
+    "href": "preparations.html#test-the-installation",
+    "title": "Course preparations",
+    "section": "Test the installation",
+    "text": "Test the installation\nIf both R and RStudio are installed, open RStudio. When you open up RStudio for the first time, it will prompt you to select your installation of R. By default, this should be the newest version of R that you just installed. After RStudio is opened, check the console (the window on the bottom left where your cursor is and where you can see a &gt; sign) and try to type a calculation (e.g. 2 + 2) and hit Enter to execute it. If R is installed correctly, you should see the result of your calculation printed to the console."
+  },
+  {
+    "objectID": "preparations.html#update-rstudio",
+    "href": "preparations.html#update-rstudio",
+    "title": "Course preparations",
+    "section": "Update RStudio",
+    "text": "Update RStudio\nOpen RStudio and go to “Help -&gt; Check for Updates” on top. RStudio will tell you, if there is a newer version available or not. If you already use the most current version, you are all set for the workshop. If not, follow the instructions that RStudio gives you and update your version of RStudio."
+  },
+  {
+    "objectID": "preparations.html#update-r",
+    "href": "preparations.html#update-r",
+    "title": "Course preparations",
+    "section": "Update R",
+    "text": "Update R\n\nOpen RStudio and check the version number in the console pane (bottom left, see pink highlights in the screen shot).\n\n\nCheck if your version number is up to date. If your R version is lower than 4.5.1, please update the version.\n\nDownload and install the latest version of R (see Step 1 for instructions).\nIn RStudio, go to “Tools -&gt; Global Options -&gt; General” and click “Change R version”.\nSelect the newest installed version of R.\n\n\n\nRestart RStudio and verify the updated version in the console."
   }
 ]

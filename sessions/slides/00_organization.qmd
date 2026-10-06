@@ -78,7 +78,7 @@ Cleaning data, statistical tests, and reproducible reports with Quarto
 📅 12.10.2026 - 13.10.2026 from 🕘 9 a.m. - 3:30 p.m. <br>
 📅 19.10.2026 - 20.10.2026 from 🕘 9 a.m. - 3:30 p.m. <br>
 :ramen: ~ 12 a.m. - 1 p.m.,  :coffee: short breaks in between<br>
-:pushpin: Join from the Webex space or via the meeting link
+:pushpin: Join via the meeting link
 
 ## Organization
 
@@ -87,7 +87,7 @@ Cleaning data, statistical tests, and reproducible reports with Quarto
 - Materials on the [workshop's website](https://selinazitrone.github.io/intro-r-data-analysis/): Presentations, Tasks, Solutions, Additional resources
 - Website will stay online after the workshop
 - Questions and feedback welcome
-- Contact me: [selina.baldauf@fu-berlin.de](mailto:selina.baldauf@fu-berlin.de) or on Webex
+- Contact me: [selina.baldauf@fu-berlin.de](mailto:selina.baldauf@fu-berlin.de) or on Webex (just search for my email there)
 
 ## Bring your own data
 

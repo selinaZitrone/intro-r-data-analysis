@@ -357,8 +357,24 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sec-install" id="toc-sec-install" class="nav-link active" data-scroll-target="#sec-install">Install R and R Studio</a>
+  <ul class="collapse">
+  <li><a href="#download-and-install-r" id="toc-download-and-install-r" class="nav-link" data-scroll-target="#download-and-install-r">Download and install R</a></li>
+  <li><a href="#download-and-install-rstudio" id="toc-download-and-install-rstudio" class="nav-link" data-scroll-target="#download-and-install-rstudio">Download and install RStudio</a></li>
+  <li><a href="#test-the-installation" id="toc-test-the-installation" class="nav-link" data-scroll-target="#test-the-installation">Test the installation</a></li>
+  </ul></li>
+  <li><a href="#sec-update" id="toc-sec-update" class="nav-link" data-scroll-target="#sec-update">Update R and R Studio</a>
+  <ul class="collapse">
+  <li><a href="#update-rstudio" id="toc-update-rstudio" class="nav-link" data-scroll-target="#update-rstudio">Update RStudio</a></li>
+  <li><a href="#update-r" id="toc-update-r" class="nav-link" data-scroll-target="#update-r">Update R</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/edit/master/preparations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -384,13 +400,60 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>In order to have a smooth workshop start, you need to prepare a few technical things so we can jump right into coding.</p>
-<p>Please follow the guides below:</p>
+<p>If you don’t have R and RStudio installed, follow <a href="#sec-install" class="quarto-xref">Section&nbsp;1</a>. If you need to update R and RStudio, follow <a href="#sec-update" class="quarto-xref">Section&nbsp;2</a>.</p>
+<section id="sec-install" class="level1">
+<h1>Install R and R Studio</h1>
+<p>Do this if you do not have R and RStudio installed yet.</p>
+<section id="download-and-install-r" class="level2">
+<h2 class="anchored" data-anchor-id="download-and-install-r">Download and install R</h2>
 <ol type="1">
-<li><a href="./prep/webex.html">Join the Webex space</a></li>
-<li><a href="./prep/r_rstudio.html">Install/Update R and R Studio</a></li>
+<li>Visit the <a href="https://cran.rstudio.com/">CRAN website</a>.</li>
+<li>Click on the download link for your operating system in the top section “Download and Install R”.</li>
+<li>For Windows: Follow the link to “install R for the first time”.</li>
+<li>Download the R pkg/installer and run it, leaving the default options selected during the installation process.</li>
+</ol>
+</section>
+<section id="download-and-install-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="download-and-install-rstudio">Download and install RStudio</h2>
+<ol type="1">
+<li>Visit the <a href="https://posit.co/download/rstudio-desktop/">Posit website</a>.</li>
+<li>Click the “Download RStudio Desktop” button. The button should already specify your operating system (If not, you can scroll down on the website and select the installer for your respective system).</li>
+<li>Download the installer and run it, following the instructions.</li>
+</ol>
+</section>
+<section id="test-the-installation" class="level2">
+<h2 class="anchored" data-anchor-id="test-the-installation">Test the installation</h2>
+<p>If both R and RStudio are installed, open RStudio. When you open up RStudio for the first time, it will prompt you to select your installation of R. By default, this should be the newest version of R that you just installed. After RStudio is opened, check the console (the window on the bottom left where your cursor is and where you can see a &gt; sign) and try to type a calculation (e.g.&nbsp;2 + 2) and hit Enter to execute it. If R is installed correctly, you should see the result of your calculation printed to the console.</p>
+<p><img src="img/install_r_console.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="sec-update" class="level1">
+<h1>Update R and R Studio</h1>
+<p>Do this only if you already have R and RStudio installed prior to the workshop.</p>
+<section id="update-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="update-rstudio">Update RStudio</h2>
+<p>Open RStudio and go to “Help -&gt; Check for Updates” on top. RStudio will tell you, if there is a newer version available or not. If you already use the most current version, you are all set for the workshop. If not, follow the instructions that RStudio gives you and update your version of RStudio.</p>
+</section>
+<section id="update-r" class="level2">
+<h2 class="anchored" data-anchor-id="update-r">Update R</h2>
+<ol type="1">
+<li>Open RStudio and check the version number in the console pane (bottom left, see pink highlights in the screen shot).</li>
+</ol>
+<p><img src="img/install_r_version.png" class="img-fluid"></p>
+<p>Check if your version number is up to date. If your R version is lower than 4.5.1, please update the version.</p>
+<ol start="2" type="1">
+<li>Download and install the latest version of R (see Step 1 for instructions).</li>
+<li>In RStudio, go to “Tools -&gt; Global Options -&gt; General” and click “Change R version”.</li>
+<li>Select the newest installed version of R.</li>
+</ol>
+<p><img src="img/install_r_change_version.png" class="img-fluid"></p>
+<ol start="5" type="1">
+<li>Restart RStudio and verify the updated version in the console.</li>
 </ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -813,7 +876,7 @@ ul.task-list li input[type="checkbox"] {
     </div>   
     <div class="nav-footer-center">
 <p>Copyright 2026, Selina Baldauf | Contact: <a href="mailto:selina.baldauf@fu-berlin.de">selina.baldauf@fu-berlin.de</a></p>
-<div class="toc-actions"><ul><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/edit/master/preparations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/edit/master/preparations.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
