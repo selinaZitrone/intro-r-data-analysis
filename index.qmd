@@ -15,10 +15,10 @@ Please complete the [preparations](preparations.qmd) before Day 1 to ensure a sm
 
 | | Date | Time |
 |---|---|---|
-| 📅 Day 1 | Monday, 9 March 2026 | 9:00 – 16:00 |
-| 📅 Day 2 | Tuesday, 10 March 2026 | 9:00 – 16:00 |
-| 📅 Day 3 | Monday, 16 March 2026 | 9:00 – 16:00 |
-| 📅 Day 4 | Tuesday, 17 March 2026 | 9:00 – 16:00 |
+| 📅 Day 1 | Monday, 12 October 2026 | 9:00 – 15:30 |
+| 📅 Day 2 | Tuesday, 13 October 2026 | 9:00 – 15:30 |
+| 📅 Day 3 | Monday, 19 October 2026 | 9:00 – 15:30 |
+| 📅 Day 4 | Tuesday, 20 October 2026 | 9:00 – 15:30 |
 
 
 ```{=html}

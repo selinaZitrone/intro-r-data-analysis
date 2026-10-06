@@ -28,7 +28,7 @@ If you registered with a private email and want to use your university email ins
 
 ## Get started with the space
 
-In Webex, go to **Messaging** (left sidebar) and look for the space: **Data Analysis with R 2026-03**.
+In Webex, go to **Messaging** (left sidebar) and look for the space: **Data Analysis with R 2026-10**.
 
 ![](../img/Join the webex team.png)
 
