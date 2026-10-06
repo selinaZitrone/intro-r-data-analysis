@@ -1775,7 +1775,7 @@
     "href": "index.html#schedule",
     "title": "Introduction to R for Data Analysis",
     "section": "Schedule",
-    "text": "Schedule\n\n\n\n\nDate\nTime\n\n\n\n\n📅 Day 1\nMonday, 9 March 2026\n9:00 – 16:00\n\n\n📅 Day 2\nTuesday, 10 March 2026\n9:00 – 16:00\n\n\n📅 Day 3\nMonday, 16 March 2026\n9:00 – 16:00\n\n\n📅 Day 4\nTuesday, 17 March 2026\n9:00 – 16:00\n\n\n\n\n\n\nDay 1 — R and RStudio Basics, Reading Data\nThe task solution script will be available for download here after the session.\n\nDownload Day 1 R script\n\n\nOrganization\nIntroduction to RStudio\nIntroduction to R\nData frames & tibbles\nTidyverse and readr\nCommon R errors\nGood coding practice\n\n\n\nDay 2 — Data Visualization and Transformation\nThe task solution script will be available for download here after the session.\n\nDownload Day 2 R script\n\n\nData visualization with ggplot2\nData transformation with dplyr\n\n\n\nDay 3 — Tidy Data and Statistics\nThe task solution script will be available for download here after the session.\n\nDownload Day 3 R script Download Day 3 Quarto solution\n\n\nTidy data with tidyr\nStatistical tests\nReproducible reports with Quarto\nAI Tools\n\n\n\nDay 4 — Bring Your Own Data\nApply what you’ve learned to your own research data, with instructor support throughout the day.\n\nBring Your Own Data"
+    "text": "Schedule\n\n\n\n\nDate\nTime\n\n\n\n\n📅 Day 1\nMonday, 12 October 2026\n9:00 – 15:30\n\n\n📅 Day 2\nTuesday, 13 October 2026\n9:00 – 15:30\n\n\n📅 Day 3\nMonday, 19 October 2026\n9:00 – 15:30\n\n\n📅 Day 4\nTuesday, 20 October 2026\n9:00 – 15:30\n\n\n\n\n\n\nDay 1 — R and RStudio Basics, Reading Data\nThe task solution script will be available for download here after the session.\n\nDownload Day 1 R script\n\n\nOrganization\nIntroduction to RStudio\nIntroduction to R\nData frames & tibbles\nTidyverse and readr\nCommon R errors\nGood coding practice\n\n\n\nDay 2 — Data Visualization and Transformation\nThe task solution script will be available for download here after the session.\n\nDownload Day 2 R script\n\n\nData visualization with ggplot2\nData transformation with dplyr\n\n\n\nDay 3 — Tidy Data and Statistics\nThe task solution script will be available for download here after the session.\n\nDownload Day 3 R script Download Day 3 Quarto solution\n\n\nTidy data with tidyr\nStatistical tests\nReproducible reports with Quarto\nAI Tools\n\n\n\nDay 4 — Bring Your Own Data\nApply what you’ve learned to your own research data, with instructor support throughout the day.\n\nBring Your Own Data"
   },
   {
     "objectID": "prep/webex.html",
@@ -1803,7 +1803,7 @@
     "href": "prep/webex.html#get-started-with-the-space",
     "title": "Join the Webex space",
     "section": "Get started with the space",
-    "text": "Get started with the space\nIn Webex, go to Messaging (left sidebar) and look for the space: Data Analysis with R 2026-03."
+    "text": "Get started with the space\nIn Webex, go to Messaging (left sidebar) and look for the space: Data Analysis with R 2026-10."
   },
   {
     "objectID": "prep/webex.html#say-hello",
@@ -1957,7 +1957,7 @@
     "href": "sessions/slides/00_organization.html#schedule",
     "title": "Introduction to Data Analysis with R",
     "section": "Schedule",
-    "text": "Schedule\n📅 09.03.2026 - 10.03.2026 from 🕘 9 a.m. - 4 p.m.  📅 16.03.2026 - 17.03.2026 from 🕘 9 a.m. - 4 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ short breaks in between 📌 Join from the Webex space or via the meeting link"
+    "text": "Schedule\n📅 12.10.2026 - 13.10.2026 from 🕘 9 a.m. - 3:30 p.m.  📅 19.10.2026 - 20.10.2026 from 🕘 9 a.m. - 3:30 p.m.  🍜 ~ 12 a.m. - 1 p.m., ☕ short breaks in between 📌 Join from the Webex space or via the meeting link"
   },
   {
     "objectID": "sessions/slides/00_organization.html#organization",
