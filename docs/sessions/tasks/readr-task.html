@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.29">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Task: Import and Export Data</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -71,14 +77,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f0298c4738c3e0edb1fce38407ee8401.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-f8a13f792a635cc732f35e721394880c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-f0298c4738c3e0edb1fce38407ee8401.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-bde277053af6bec426b2cdaeb418aa4e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-670babe5e9b8019ce3cbdea3bcdae9b9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-bde277053af6bec426b2cdaeb418aa4e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -106,8 +112,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="../../site_libs/font-awesome-6.7.2/js/script.js"></script>
-
 
 
 </head>
@@ -266,6 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       toggleColorMode(toAlternate);
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
     };
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
@@ -443,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Find the solution here after the session ends.
+<span class="screen-reader-only">Note</span>Find the solution here after the session ends.
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -458,11 +463,11 @@ Find the solution here after the session ends.
 <h2 class="anchored" data-anchor-id="get-started">Get started</h2>
 <p>If you haven’t already, install the tidyverse (do this in the console, not in your script):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Make sure you have the tidyverse loaded at the top of your script:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="read-a-csv-file" class="level2">
@@ -472,39 +477,15 @@ Find the solution here after the session ends.
 <li>Use <code>read_csv()</code> to read the file into R and save it in a variable called <code>trees</code>.</li>
 <li>Explore the data:
 <ul>
-<li>Use <code>summary(trees)</code> — how many tree species are there? What is the tallest tree?</li>
+<li>Use <code>summary(trees)</code> to check how many tree species are there and what the tallest tree is.</li>
 <li>Use <code>view(trees)</code> to look at the full table</li>
 <li>Use <code>$</code> to access the <code>height_m</code> column and calculate the mean height</li>
 </ul></li>
 </ol>
 <div class="cell">
-<div class="cell-output-display">
-<button class="btn btn-default" onclick="
-    async function downloadFile(event) {
-      event.preventDefault();
-      try {
-        const response = await fetch('data:text/csv;base64,dHJlZV9pZCxzcGVjaWVzLGhlaWdodF9tLGRpYW1ldGVyX2NtLGFnZV95ZWFycyxzaXRlDQpUMDAxLE9haywxMi4zLDM1LjIsNDUsRm9yZXN0X0ENClQwMDIsQmVlY2gsMTUuMSwyOC43LDM4LEZvcmVzdF9BDQpUMDAzLFBpbmUsMTguNSwyMi4xLDMwLEZvcmVzdF9CDQpUMDA0LE9hayw5LjgsMjUuNCwzMixGb3Jlc3RfQQ0KVDAwNSxCaXJjaCwxMS4yLDE4LjksMjUsRm9yZXN0X0INClQwMDYsUGluZSwyMC4xLDI2LjMsMzUsRm9yZXN0X0INClQwMDcsQmVlY2gsMTMuNywzMS41LDQyLEZvcmVzdF9BDQpUMDA4LE9haywxNC41LDM4LjEsNTAsRm9yZXN0X0INClQwMDksQmlyY2gsOC45LDE1LjIsMjAsRm9yZXN0X0ENClQwMTAsUGluZSwxNi44LDI0LjcsMjgsRm9yZXN0X0INClQwMTEsT2FrLDExLjEsMjkuOCwzNixGb3Jlc3RfQQ0KVDAxMixCZWVjaCwxNy4zLDMzLjYsNDgsRm9yZXN0X0INClQwMTMsQmlyY2gsMTAuNSwxNy40LDIyLEZvcmVzdF9BDQpUMDE0LFBpbmUsMTkuMiwyNS44LDMzLEZvcmVzdF9CDQpUMDE1LE9haywxMy45LDM2LjUsNDcsRm9yZXN0X0ENCg==');
-        if (!response.ok) throw new Error('Network response failed');
-        const blob = await response.blob();
-        const blobUrl = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = blobUrl;
-        a.download = 'tree_growth.csv';
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.dispatchEvent(new MouseEvent('click'));
-        document.body.removeChild(a);
-        setTimeout(() => {
-          window.URL.revokeObjectURL(blobUrl);
-        }, 100);
-        return false;
-      } catch (error) {
-        console.error('Download failed:', error);
-        alert('Download failed. Please try again.');
-      }
-    }
-    downloadFile(event);
-  "><i class="fa fa-save"></i> Download tree_growth.csv</button>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `loadNamespace()`:
+! there is no package called 'downloadthis'</code></pre>
 </div>
 </div>
 </section>
@@ -517,33 +498,9 @@ Find the solution here after the session ends.
 <li>Explore the data with <code>summary()</code>.</li>
 </ol>
 <div class="cell">
-<div class="cell-output-display">
-<button class="btn btn-default" onclick="
-    async function downloadFile(event) {
-      event.preventDefault();
-      try {
-        const response = await fetch('data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,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');
-        if (!response.ok) throw new Error('Network response failed');
-        const blob = await response.blob();
-        const blobUrl = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = blobUrl;
-        a.download = 'bird_observations.xlsx';
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.dispatchEvent(new MouseEvent('click'));
-        document.body.removeChild(a);
-        setTimeout(() => {
-          window.URL.revokeObjectURL(blobUrl);
-        }, 100);
-        return false;
-      } catch (error) {
-        console.error('Download failed:', error);
-        alert('Download failed. Please try again.');
-      }
-    }
-    downloadFile(event);
-  "><i class="fa fa-save"></i> Download bird_observations.xlsx</button>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `loadNamespace()`:
+! there is no package called 'downloadthis'</code></pre>
 </div>
 </div>
 </section>
@@ -559,40 +516,16 @@ Find the solution here after the session ends.
 <h2 class="anchored" data-anchor-id="challenge-a-slightly-messy-file">Challenge: a slightly messy file</h2>
 <ol type="1">
 <li>Download the file below and save it in the <code>data/</code> folder.</li>
-<li>Try reading it with <code>read_csv()</code>. Something is wrong — can you figure out what?
+<li>Try reading it with <code>read_csv()</code>. Something is wrong. Can you figure out what?
 <ul>
 <li>Hint: open the file in a text editor or in RStudio (File → Open File) to see its structure.</li>
 </ul></li>
 <li>Use the appropriate argument of <code>read_csv()</code> to fix the problem. Check <code>?read_csv</code> for an argument that lets you skip lines at the top of a file.</li>
 </ol>
 <div class="cell">
-<div class="cell-output-display">
-<button class="btn btn-default" onclick="
-    async function downloadFile(event) {
-      event.preventDefault();
-      try {
-        const response = await fetch('data:text/csv;base64,RGF0YXNldDogTGFrZSB3YXRlciBxdWFsaXR5IG1vbml0b3JpbmcNClNvdXJjZTogRW52aXJvbm1lbnRhbCBSZXNlYXJjaCBTdGF0aW9uIEJyYW5kZW5idXJnDQpTYW1wbGluZyBwZXJpb2Q6IE1hcmNoIDIwMjQNCkV4cG9ydGVkOiAyMDI0LTA0LTAxDQpzYW1wbGVfaWQsbGFrZSxkZXB0aF9tLHRlbXBlcmF0dXJlX2MsZGlzc29sdmVkX294eWdlbl9tZ19sLHBoDQpXUTAwMSxXYW5uc2VlLDEuMCw4LjIsMTAuNSw3LjgNCldRMDAyLFdhbm5zZWUsNS4wLDYuOCw4LjMsNy41DQpXUTAwMyxXYW5uc2VlLDEwLjAsNS4xLDYuMSw3LjINCldRMDA0LE11ZWdnZWxzZWUsMS4wLDkuMCwxMS4yLDguMQ0KV1EwMDUsTXVlZ2dlbHNlZSw1LjAsNy4zLDkuMCw3LjcNCldRMDA2LE11ZWdnZWxzZWUsMTAuMCw1LjUsNS44LDcuMw0KV1EwMDcsVGVnZWxlciBTZWUsMS4wLDguOCwxMC44LDcuOQ0KV1EwMDgsVGVnZWxlciBTZWUsNS4wLDcuMCw4LjcsNy42DQpXUTAwOSxUZWdlbGVyIFNlZSwxMC4wLDUuMyw2LjUsNy40DQpXUTAxMCxXYW5uc2VlLDEuMCw5LjUsMTAuMSw3LjcNCldRMDExLE11ZWdnZWxzZWUsMS4wLDEwLjIsMTEuNSw4LjANCldRMDEyLFRlZ2VsZXIgU2VlLDEuMCw5LjEsMTAuMyw3LjgNCg==');
-        if (!response.ok) throw new Error('Network response failed');
-        const blob = await response.blob();
-        const blobUrl = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = blobUrl;
-        a.download = 'water_quality.csv';
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.dispatchEvent(new MouseEvent('click'));
-        document.body.removeChild(a);
-        setTimeout(() => {
-          window.URL.revokeObjectURL(blobUrl);
-        }, 100);
-        return false;
-      } catch (error) {
-        console.error('Download failed:', error);
-        alert('Download failed. Please try again.');
-      }
-    }
-    downloadFile(event);
-  "><i class="fa fa-save"></i> Download water_quality.csv</button>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `loadNamespace()`:
+! there is no package called 'downloadthis'</code></pre>
 </div>
 </div>
 </section>
@@ -601,14 +534,14 @@ Find the solution here after the session ends.
 <p>You can do these in any order — or skip them and just take a break.</p>
 <section id="challenge-an-even-messier-file" class="level3">
 <h3 class="anchored" data-anchor-id="challenge-an-even-messier-file">Challenge: an even messier file</h3>
-<p>Download the file below and try to read it into R. This file has multiple problems — you’ll need more than one argument to fix them.</p>
+<p>Download the file below and try to read it into R. This file has multiple problems, so you’ll need more than one argument to fix them.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Hint (unfold to see)
+<span class="screen-reader-only">Tip</span>Hint (unfold to see)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -619,33 +552,9 @@ Hint (unfold to see)
 </div>
 </div>
 <div class="cell">
-<div class="cell-output-display">
-<button class="btn btn-default" onclick="
-    async function downloadFile(event) {
-      event.preventDefault();
-      try {
-        const response = await fetch('data:text/csv;base64,U3R1ZHk6IFNvaWwgbnV0cmllbnQgbWVhc3VyZW1lbnRzIDIwMjQNCkxvY2F0aW9uOiBCcmFuZGVuYnVyZywgR2VybWFueQ0KQ29sbGVjdGVkIGJ5OiBBLiBNdWVsbGVyDQpEYXRlOiAyMDI0LTA2LTE1DQpQbG90IElEO1NvaWwgVHlwZTtOaXRyb2dlbiAobWcva2cpO1Bob3NwaG9ydXMgKG1nL2tnKTtwSDtPcmdhbmljIE1hdHRlciAoJSkNClAwMTtTYW5keTsxMi4zOzQuNTs2LjI7My4xDQpQMDI7Q2xheTsxOC43OzcuMjs1Ljg7NS40DQpQMDM7U2FuZHk7MTAuMTszLjg7OzIuOA0KUDA0O0xvYW07MTUuOTs2LjE7Ni41OzQuMg0KUDA1O0NsYXk7MjAuMzs7NS41OzYuMQ0KUDA2O1NhbmR5OzExLjg7NC4xOzYuMDsyLjkNClAwNztMb2FtOzE2LjI7NS45OzYuMzs0LjUNClAwODtDbGF5OzE5LjU7Ny44OzUuNzs1LjgNClAwOTtTYW5keTs5LjQ7My4yOzYuNDsyLjUNClAxMDtMb2FtOzE0Ljc7NS41OzYuMTsNCg==');
-        if (!response.ok) throw new Error('Network response failed');
-        const blob = await response.blob();
-        const blobUrl = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = blobUrl;
-        a.download = 'soil_nutrients_messy.csv';
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.dispatchEvent(new MouseEvent('click'));
-        document.body.removeChild(a);
-        setTimeout(() => {
-          window.URL.revokeObjectURL(blobUrl);
-        }, 100);
-        return false;
-      } catch (error) {
-        console.error('Download failed:', error);
-        alert('Download failed. Please try again.');
-      }
-    }
-    downloadFile(event);
-  "><i class="fa fa-save"></i> Download soil_nutrients_messy.csv</button>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `loadNamespace()`:
+! there is no package called 'downloadthis'</code></pre>
 </div>
 </div>
 </section>
@@ -732,13 +641,14 @@ Hint (unfold to see)
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

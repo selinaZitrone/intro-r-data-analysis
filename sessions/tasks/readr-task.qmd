@@ -40,7 +40,7 @@ library(tidyverse)
 1. Download the file below and save it in the `data/` folder of your project.
 2. Use `read_csv()` to read the file into R and save it in a variable called `trees`.
 3. Explore the data:
-    - Use `summary(trees)` — how many tree species are there? What is the tallest tree?
+    - Use `summary(trees)` to check how many tree species are there and what the tallest tree is.
     - Use `view(trees)` to look at the full table
     - Use `$` to access the `height_m` column and calculate the mean height
 
@@ -87,7 +87,7 @@ Take the `trees` tibble you just read in and write it to a new file:
 ## Challenge: a slightly messy file
 
 1. Download the file below and save it in the `data/` folder.
-2. Try reading it with `read_csv()`. Something is wrong — can you figure out what?
+2. Try reading it with `read_csv()`. Something is wrong. Can you figure out what?
     - Hint: open the file in a text editor or in RStudio (File → Open File) to see its structure.
 3. Use the appropriate argument of `read_csv()` to fix the problem. Check `?read_csv` for an argument that lets you skip lines at the top of a file.
 
@@ -110,7 +110,7 @@ You can do these in any order — or skip them and just take a break.
 
 ### Challenge: an even messier file
 
-Download the file below and try to read it into R. This file has multiple problems — you'll need more than one argument to fix them.
+Download the file below and try to read it into R. This file has multiple problems, so you'll need more than one argument to fix them.
 
 :::{.callout-tip collapse="true"}
 

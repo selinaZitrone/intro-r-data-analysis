@@ -46,14 +46,14 @@
     "href": "sessions/tasks/readr-task.html#read-a-csv-file",
     "title": "Task: Import and Export Data",
     "section": "Read a CSV file",
-    "text": "Read a CSV file\n\nDownload the file below and save it in the data/ folder of your project.\nUse read_csv() to read the file into R and save it in a variable called trees.\nExplore the data:\n\nUse summary(trees) — how many tree species are there? What is the tallest tree?\nUse view(trees) to look at the full table\nUse $ to access the height_m column and calculate the mean height\n\n\n\n\n Download tree_growth.csv"
+    "text": "Read a CSV file\n\nDownload the file below and save it in the data/ folder of your project.\nUse read_csv() to read the file into R and save it in a variable called trees.\nExplore the data:\n\nUse summary(trees) to check how many tree species are there and what the tallest tree is.\nUse view(trees) to look at the full table\nUse $ to access the height_m column and calculate the mean height\n\n\n\n\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'"
   },
   {
     "objectID": "sessions/tasks/readr-task.html#read-an-excel-file",
     "href": "sessions/tasks/readr-task.html#read-an-excel-file",
     "title": "Task: Import and Export Data",
     "section": "Read an Excel file",
-    "text": "Read an Excel file\n\nDownload the Excel file below and save it in the data/ folder of your project.\nLoad the readxl package with library(readxl).\nUse read_excel() to read the file into R and save it in a variable.\nExplore the data with summary().\n\n\n\n Download bird_observations.xlsx"
+    "text": "Read an Excel file\n\nDownload the Excel file below and save it in the data/ folder of your project.\nLoad the readxl package with library(readxl).\nUse read_excel() to read the file into R and save it in a variable.\nExplore the data with summary().\n\n\n\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'"
   },
   {
     "objectID": "sessions/tasks/readr-task.html#write-data-to-a-file",
@@ -67,14 +67,14 @@
     "href": "sessions/tasks/readr-task.html#challenge-a-slightly-messy-file",
     "title": "Task: Import and Export Data",
     "section": "Challenge: a slightly messy file",
-    "text": "Challenge: a slightly messy file\n\nDownload the file below and save it in the data/ folder.\nTry reading it with read_csv(). Something is wrong — can you figure out what?\n\nHint: open the file in a text editor or in RStudio (File → Open File) to see its structure.\n\nUse the appropriate argument of read_csv() to fix the problem. Check ?read_csv for an argument that lets you skip lines at the top of a file.\n\n\n\n Download water_quality.csv"
+    "text": "Challenge: a slightly messy file\n\nDownload the file below and save it in the data/ folder.\nTry reading it with read_csv(). Something is wrong. Can you figure out what?\n\nHint: open the file in a text editor or in RStudio (File → Open File) to see its structure.\n\nUse the appropriate argument of read_csv() to fix the problem. Check ?read_csv for an argument that lets you skip lines at the top of a file.\n\n\n\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'"
   },
   {
     "objectID": "sessions/tasks/readr-task.html#optional-tasks-if-you-finish-early",
     "href": "sessions/tasks/readr-task.html#optional-tasks-if-you-finish-early",
     "title": "Task: Import and Export Data",
     "section": "Optional tasks (if you finish early)",
-    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nChallenge: an even messier file\nDownload the file below and try to read it into R. This file has multiple problems — you’ll need more than one argument to fix them.\n\n\n\n\n\n\nHint (unfold to see)\n\n\n\n\n\nThe file has metadata lines on top and uses a different delimiter (not a comma).\n\n\n\n\n\n Download soil_nutrients_messy.csv\n\n\n\n\nClean messy column headers\nAfter reading the messy soil data, try using janitor::clean_names() on it. What does it do to the column names?\nYou may need to install the janitor package first: install.packages(\"janitor\").\n\n\nRead your own data\nIf you have your own research data, try reading it into R:\n\nCopy a data file into the data/ folder of your project\nUse the appropriate read_*() function to read it in\nDid it work? If not, check ?read_csv or ?read_excel for arguments that might help"
+    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nChallenge: an even messier file\nDownload the file below and try to read it into R. This file has multiple problems, so you’ll need more than one argument to fix them.\n\n\n\n\n\n\nTipHint (unfold to see)\n\n\n\n\n\nThe file has metadata lines on top and uses a different delimiter (not a comma).\n\n\n\n\n\nError in `loadNamespace()`:\n! there is no package called 'downloadthis'\n\n\n\n\nClean messy column headers\nAfter reading the messy soil data, try using janitor::clean_names() on it. What does it do to the column names?\nYou may need to install the janitor package first: install.packages(\"janitor\").\n\n\nRead your own data\nIf you have your own research data, try reading it into R:\n\nCopy a data file into the data/ folder of your project\nUse the appropriate read_*() function to read it in\nDid it work? If not, check ?read_csv or ?read_excel for arguments that might help"
   },
   {
     "objectID": "sessions/tasks/intro-rstudio-task.html",
@@ -2118,14 +2118,14 @@
     "href": "sessions/slides/data-tibbles.html#tibbles-1",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Tibbles",
-    "text": "Tibbles\nCreate a tibble using the tibble() function:\n\n\n\n\n# install the tibble package once\n# install.packages(\"tibble\") \nlibrary(tibble)\n\ncities_tbl &lt;- tibble(\n  city_name = cities,\n  population_size = population,\n  city_area = area_km2\n)\n\n\n\n#&gt; # A tibble: 10 × 3\n#&gt;    city_name        population_size city_area\n#&gt;    &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;\n#&gt;  1 Istanbul                15100000      2576\n#&gt;  2 Moscow                  12500000      2561\n#&gt;  3 London                   9000000      1572\n#&gt;  4 Saint Petersburg         5400000      1439\n#&gt;  5 Berlin                   3800000       891\n#&gt;  6 Madrid                   3200000       604\n#&gt;  7 Kyiv                     3000000       839\n#&gt;  8 Rome                     2800000      1285\n#&gt;  9 Bucharest                2200000       228\n#&gt; 10 Paris                    2100000       105"
+    "text": "Tibbles\nCreate a tibble using the tibble() function:\n\n\n\n\n# install the tibble package once\n# install.packages(\"tibble\") \nlibrary(tibble)\n\ncities_tbl &lt;- tibble(\n  city_name = cities,\n  population_size = population,\n  city_area = area_km2\n)\n\n\n\n#&gt; Error in `tibble()`:\n#&gt; ! could not find function \"tibble\"\n#&gt; Error:\n#&gt; ! object 'cities_tbl' not found"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#exploring-tibbles",
     "href": "sessions/slides/data-tibbles.html#exploring-tibbles",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Exploring tibbles",
-    "text": "Exploring tibbles\nHow many rows?\n\nnrow(cities_tbl)\n#&gt; [1] 10\n\n\nHow many columns?\n\nncol(cities_tbl)\n#&gt; [1] 3\n\n\n\nWhat are the column headers?\n\nnames(cities_tbl)\n#&gt; [1] \"city_name\"       \"population_size\" \"city_area\""
+    "text": "Exploring tibbles\nHow many rows?\n\nnrow(cities_tbl)\n#&gt; Error:\n#&gt; ! object 'cities_tbl' not found\n\n\nHow many columns?\n\nncol(cities_tbl)\n#&gt; Error:\n#&gt; ! object 'cities_tbl' not found\n\n\n\nWhat are the column headers?\n\nnames(cities_tbl)\n#&gt; Error:\n#&gt; ! object 'cities_tbl' not found"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#exploring-tibbles-1",
@@ -2139,7 +2139,7 @@
     "href": "sessions/slides/data-tibbles.html#exploring-tibbles-2",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Exploring tibbles",
-    "text": "Exploring tibbles\nGet a quick summary of all columns:\n\nsummary(cities_tbl)\n#&gt;   city_name         population_size      city_area     \n#&gt;  Length:10          Min.   : 2100000   Min.   : 105.0  \n#&gt;  Class :character   1st Qu.: 2850000   1st Qu.: 662.8  \n#&gt;  Mode  :character   Median : 3500000   Median :1088.0  \n#&gt;                     Mean   : 5910000   Mean   :1210.0  \n#&gt;                     3rd Qu.: 8100000   3rd Qu.:1538.8  \n#&gt;                     Max.   :15100000   Max.   :2576.0\n\n\nVery useful for checking if everything is ok with your research data"
+    "text": "Exploring tibbles\nGet a quick summary of all columns:\n\nsummary(cities_tbl)\n#&gt; Error:\n#&gt; ! object 'cities_tbl' not found\n\n\nVery useful for checking if everything is ok with your research data"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles",
@@ -2153,21 +2153,21 @@
     "href": "sessions/slides/data-tibbles.html#indexing-tibbles-1",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Indexing tibbles",
-    "text": "Indexing tibbles\n\n# First row and first column\ncities_tbl[1, 1]\n#&gt; # A tibble: 1 × 1\n#&gt;   city_name\n#&gt;   &lt;chr&gt;    \n#&gt; 1 Istanbul\n\n\nThis is the same as\n\ncities_tbl[1, \"city_name\"]"
+    "text": "Indexing tibbles\n\n# First row and first column\ncities_tbl[1, 1]\n#&gt; Error:\n#&gt; ! object 'cities_tbl' not found\n\n\nThis is the same as\n\ncities_tbl[1, \"city_name\"]"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles-rows",
     "href": "sessions/slides/data-tibbles.html#indexing-tibbles-rows",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Indexing tibbles: rows",
-    "text": "Indexing tibbles: rows\n\n# rows 1 & 5, all columns:\ncities_tbl[c(1, 5), ]\n#&gt; # A tibble: 2 × 3\n#&gt;   city_name population_size city_area\n#&gt;   &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;\n#&gt; 1 Istanbul         15100000      2576\n#&gt; 2 Berlin            3800000       891"
+    "text": "Indexing tibbles: rows\n\n# rows 1 & 5, all columns:\ncities_tbl[c(1, 5), ]\n#&gt; Error:\n#&gt; ! object 'cities_tbl' not found"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles-columns",
     "href": "sessions/slides/data-tibbles.html#indexing-tibbles-columns",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Indexing tibbles: columns",
-    "text": "Indexing tibbles: columns\n\n# All rows, first 2 columns\ncities_tbl[ ,1:2] # same as cities_tbl[ , c(1, 2)]\n# same as\ncities_tbl[ ,c(\"city_name\", \"population_size\")]\n\n\n#&gt; # A tibble: 10 × 2\n#&gt;   city_name population_size\n#&gt;   &lt;chr&gt;               &lt;dbl&gt;\n#&gt; 1 Istanbul         15100000\n#&gt; 2 Moscow           12500000\n#&gt; 3 London            9000000\n#&gt; # ℹ 7 more rows"
+    "text": "Indexing tibbles: columns\n\n# All rows, first 2 columns\ncities_tbl[ ,1:2] # same as cities_tbl[ , c(1, 2)]\n# same as\ncities_tbl[ ,c(\"city_name\", \"population_size\")]\n\n\n#&gt; Error:\n#&gt; ! object 'cities_tbl' not found"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#indexing-tibbles-columns-1",
@@ -2181,14 +2181,14 @@
     "href": "sessions/slides/data-tibbles.html#tibbles-select-columns-with",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Tibbles: Select columns with $",
-    "text": "Tibbles: Select columns with $\nSelect an entire column from a tibble using $ (this returns a vector instead of a tibble):\n\ncities_tbl$city_name\n#&gt;  [1] \"Istanbul\"         \"Moscow\"           \"London\"           \"Saint Petersburg\"\n#&gt;  [5] \"Berlin\"           \"Madrid\"           \"Kyiv\"             \"Rome\"            \n#&gt;  [9] \"Bucharest\"        \"Paris\""
+    "text": "Tibbles: Select columns with $\nSelect an entire column from a tibble using $ (this returns a vector instead of a tibble):\n\ncities_tbl$city_name\n#&gt; Error:\n#&gt; ! object 'cities_tbl' not found"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#adding-new-columns",
     "href": "sessions/slides/data-tibbles.html#adding-new-columns",
     "title": "Tables in R - Data frames and Tibbles",
     "section": "Adding new columns",
-    "text": "Adding new columns\nNew columns can be added as vectors using the $ operator. The vectors need to have the same length as the tibble has rows.\n\n\n# add a country column\ncities_tbl$country &lt;- c(\n  \"Turkey\", \"Russia\", \"UK\", \"Russia\", \"Germany\", \"Spain\",\n  \"Ukraine\", \"Italy\", \"Romania\", \"France\"\n)\n\n\n#&gt; # A tibble: 10 × 4\n#&gt;    city_name        population_size city_area country\n#&gt;    &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;  \n#&gt;  1 Istanbul                15100000      2576 Turkey \n#&gt;  2 Moscow                  12500000      2561 Russia \n#&gt;  3 London                   9000000      1572 UK     \n#&gt;  4 Saint Petersburg         5400000      1439 Russia \n#&gt;  5 Berlin                   3800000       891 Germany\n#&gt;  6 Madrid                   3200000       604 Spain  \n#&gt;  7 Kyiv                     3000000       839 Ukraine\n#&gt;  8 Rome                     2800000      1285 Italy  \n#&gt;  9 Bucharest                2200000       228 Romania\n#&gt; 10 Paris                    2100000       105 France"
+    "text": "Adding new columns\nNew columns can be added as vectors using the $ operator. The vectors need to have the same length as the tibble has rows.\n\n\n# add a country column\ncities_tbl$country &lt;- c(\n  \"Turkey\", \"Russia\", \"UK\", \"Russia\", \"Germany\", \"Spain\",\n  \"Ukraine\", \"Italy\", \"Romania\", \"France\"\n)\n#&gt; Error:\n#&gt; ! object 'cities_tbl' not found\n\n\n#&gt; Error:\n#&gt; ! object 'cities_tbl' not found"
   },
   {
     "objectID": "sessions/slides/data-tibbles.html#summary-i",
