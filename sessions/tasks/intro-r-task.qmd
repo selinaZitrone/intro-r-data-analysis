@@ -1,5 +1,6 @@
 ---
 title: "Task: Introduction to R"
+number-sections: false
 ---
 
 [← Back to session page](../02_intro-r.qmd)

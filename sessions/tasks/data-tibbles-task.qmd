@@ -37,7 +37,7 @@ You don't need to put `install.packages("tibble")` in your script. You only need
 
 ## Create a tibble
 
-Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the [previous task](intro-r.qmd) and combine them in a tibble.
+Use the vectors `species`, `brainwt_kg`, `bodywt_kg` from the [previous task](intro-r-task.qmd) and combine them in a tibble.
 
 ## Explore the tibble
 

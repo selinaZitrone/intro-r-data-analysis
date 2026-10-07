@@ -257,16 +257,16 @@ Use spaces to make your code more readable:
 
 :::
 
-```{r spaces-combined}
+```r
 # Good
 x[, 1]
 height <- (feet * 12) + inches
 mean(x, na.rm = TRUE)
 
 # Bad
-x[, 1]
-height <- feet * 12 + inches
-mean(x, na.rm = TRUE)
+x[,1]
+height<-feet*12+inches
+mean(x,na.rm=TRUE)
 ```
 
 ## Coding style - Line width

@@ -48,7 +48,8 @@ These are the main packages from the tidyverse that we will use:<br><br>
 
 Install the tidyverse once with:
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 install.packages("tidyverse")
 ```
 
@@ -230,7 +231,8 @@ Every `read_*` has a corresponding `write_*` function to export data from R.
 
 . . .
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 # Comma delimiter
 write_csv(dat, file = "data-clean/your_data.csv")
 # Semicolon delimiter
@@ -256,7 +258,8 @@ library(readxl)
 
 Use `read_excel()` to read an Excel file:
 
-```{r eval = FALSE}
+```{r}
+#| eval: false
 trees <- read_excel("data/tree_data.xlsx")
 ```
 
@@ -264,7 +267,8 @@ trees <- read_excel("data/tree_data.xlsx")
 
 By default, this reads the first sheet. You can read other sheets with:
 
-```{r eval = FALSE}
+```{r}
+#| eval: false
 trees <- read_excel("data/tree_data.xlsx", sheet = "sheetName")
 trees <- read_excel("data/tree_data.xlsx", sheet = 2)
 ```
@@ -295,7 +299,8 @@ if the number of rows etc. is correct
 
 ## Important for all read_* functions
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 trees <- read_csv("data/tree_data.csv")
 ```
 

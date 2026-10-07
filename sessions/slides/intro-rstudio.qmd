@@ -346,7 +346,7 @@ Click the project symbol on the top right
 
 # Now you {.inverse}
 
-[Task 1 (15 min)]{.highlight-blue}<br>
+[Task (15 min)]{.highlight-blue}<br>
 
 [Set up your own RStudio project for this workshop]{.big-text}
 

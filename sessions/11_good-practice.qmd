@@ -24,11 +24,11 @@ I will show you some useful options below as well.
 
 Use whitespace around operators, `=`, `<-`, ...
 
-```{r}
+```r
 # works but not so nice
-a <- 3
-mean(x = c(1, 2, 3))
-2 == 2
+a<-3
+mean(x=c(1,2,3))
+2==2
 
 # better
 a <- 3
@@ -64,7 +64,7 @@ There is a setting in RStudio that helps you with this. It puts a very thin, ver
 
 A ggplot example:
 
-```{r}
+```r
 # Don't do this:
 ggplot(iris, aes(x = species, y = Petal.Width)) + geom_boxplot()
 
