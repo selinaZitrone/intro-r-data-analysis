@@ -7,6 +7,8 @@ project:
     - "!additional_docs/"
     - "!R/byod/"
     - "!R/quarto_example.qmd"
+    - "!R/quarto_demo.qmd"
+    - "!R/quarto_demo_advanced.qmd"
     - "!R/Tasks/penguin_report.qmd"
     - "!prep/webex.qmd"
   resources:

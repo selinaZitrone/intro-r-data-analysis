@@ -116,17 +116,6 @@ ggplot(penguins, aes(x = sex, y = body_mass)) +
   geom_boxplot(width = 0.4) +
   facet_wrap(vars(species))
 
-# Heatmap
-ggplot(
-  penguins,
-  aes(
-    x = species,
-    y = sex,
-    fill = flipper_len
-  )
-) +
-  geom_tile()
-
 # Task 2: Beautify and save plots -----------------------------------------
 
 ## Add labels --------------------------------------------------------------
@@ -233,30 +222,9 @@ ggsave(filename = "img/flipper_box.pdf", flipper_box)
 
 ## For the fast ones -------------------------------------------------------
 
-# Beautified heatmap
-heatmap <- ggplot(
-  penguins,
-  aes(
-    x = species,
-    y = sex,
-    fill = flipper_len
-  )
-) +
-  geom_tile() +
-  scale_fill_viridis_c()
-heatmap
-
-# or with another color scale
-heatmap <- ggplot(
-  penguins,
-  aes(x = species, y = sex, fill = flipper_len)
-) +
-  geom_tile() +
-  scale_fill_gradient(low = "white", high = "steelblue")
-
 # If you want to have an interactive plot
 # install.packages("plotly")
-plotly::ggplotly(heatmap)
+plotly::ggplotly(penguin_scatter)
 
 # Combined plots using patchwork package ----------------------------------
 # More info here: https://patchwork.data-imaginist.com/
@@ -345,15 +313,12 @@ drop_na(penguins, sex)
 # 5. only species, sex, and year
 select(penguins, species, sex, year)
 
-# 6. columns that start with "bill"
-select(penguins, starts_with("bill"))
-
 ## Add new columns ---------------------------------------------------------
 
-# 7. ratio of bill length to bill depth
+# 6. ratio of bill length to bill depth
 mutate(penguins, ratio = bill_len / bill_dep)
 
-# 8. abbreviations for the species
+# 7. abbreviations for the species
 mutate(
   penguins,
   species_short = case_when(
@@ -366,7 +331,7 @@ mutate(
 
 ## Combine with the pipe ---------------------------------------------------
 
-# 9. remove NA sex, keep Adelie, select species/sex/body_mass
+# 8. remove NA sex, keep Adelie, select species/sex/body_mass
 penguins |>
   drop_na(sex) |>
   filter(species == "Adelie") |>
@@ -374,7 +339,16 @@ penguins |>
 
 ## For the fast ones -------------------------------------------------------
 
-# filter_out penguins from Torgersen, then select columns
+# columns that start with "bill"
+select(penguins, starts_with("bill"))
+
+# exclude penguins from Torgersen, then select columns
+# with filter(): keep all rows where island is not Torgersen
+penguins |>
+  filter(island != "Torgersen") |>
+  select(species, island, flipper_len)
+
+# with filter_out(): remove all rows where island is Torgersen
 penguins |>
   filter_out(island == "Torgersen") |>
   select(species, island, flipper_len)

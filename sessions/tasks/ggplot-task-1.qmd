@@ -110,10 +110,6 @@ Try adding `position = position_jitter(width = 0.2)` inside `geom_point()` to sp
 
 What happens if you use `geom_violin()` instead of `geom_boxplot()`? Can you combine both geoms in one plot?
 
-### Create a heatmap
-
-Create a heat map with sex and species on the axes and flipper length as the fill color.
-
 ### Try with your own data
 
 If you loaded your own data into R last session, try making a plot with it.

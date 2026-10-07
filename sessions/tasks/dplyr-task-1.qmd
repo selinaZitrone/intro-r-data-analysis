@@ -49,23 +49,29 @@ We will continue working with the `penguins` data set.
 
 5. Select only the variables `species`, `sex`, and `year`.
 
-6. Select only columns that start with `"bill"`.
-
 ## Add new columns
 
-7. Add a column with the ratio of bill length to bill depth.
+6. Add a column with the ratio of bill length to bill depth.
 
-8. Add a column with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).
+7. Add a column with abbreviations for the species (Adelie = A, Gentoo = G, Chinstrap = C).
 
 ## Combine with the pipe
 
-9. Use the pipe to combine multiple steps: start with `penguins`, remove rows with missing `sex`, keep only Adelie penguins, and select only `species`, `sex`, and `body_mass`.
+8. Use the pipe to combine multiple steps: start with `penguins`, remove rows with missing `sex`, keep only Adelie penguins, and select only `species`, `sex`, and `body_mass`.
 
 ## For the fast ones
 
 You can do these in any order, or skip them and just take a break.
 
-- Use `filter_out()` to exclude penguins from Torgersen island, then select only `species`, `island`, and `flipper_len`.
+- Select only columns that start with `"bill"`.
+  - Hint: `select()` has helper functions for this. Check `?select` to find them.
+
+- Use `filter()` to exclude penguins from Torgersen island, then select only `species`, `island`, and `flipper_len`.
+
+:::{.callout-note}
+You can use `filter()` here to positively filter rows based on a condition, or `filter_out` to filter out rows you don't want to have. If you are interested, check out `?filter_out()` to find out how it works.
+:::
+
 
 - Create a `size_category` column with `case_when` based on body mass (small < 3500, medium < 5000, large >= 5000). 
   - **Extra**: Do it in a pipe that also removes NAs and selects only `species`, `body_mass`, and `size_category`.

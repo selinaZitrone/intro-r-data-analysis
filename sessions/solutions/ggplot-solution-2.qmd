@@ -165,19 +165,6 @@ ggplot(penguins, aes(x = flipper_len, fill = species)) +
   theme_minimal()
 ```
 
-### Beautified heatmap
-
-```{r echo=TRUE}
-ggplot(penguins, aes(
-  x = species,
-  y = sex,
-  fill = flipper_len
-)) +
-  geom_tile() +
-  scale_fill_viridis_c() +
-  theme_classic()
-```
-
 ### The `patchwork` package
 
 With the `patchwork` package, you can combine multiple ggplots into one plot. The package allows you to add annotations to the plot and to control the layout and appearance.

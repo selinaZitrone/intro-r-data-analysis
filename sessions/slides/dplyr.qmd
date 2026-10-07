@@ -177,25 +177,6 @@ Use `|` (or) - one conditions must be true:
 filter(gapminder, year >= 2005 | year <= 1970)
 ```
 
-## `filter_out()`: opposite of filter
-
-Relatively new function - keeps rows that **don't** match the condition:
-
-```{r}
-# Keep rows that are NOT from Europe
-filter_out(gapminder, continent == "Europe")
-```
-
-. . .
-
-<br>
-
-```{r}
-#| eval: false
-# equivalent to
-filter(gapminder, continent != "Europe")
-```
-
 # `select()` {.inverse}
 
 > picks columns based on their names
@@ -216,18 +197,6 @@ Remove variables using `-`
 #| eval: false
 select(gapminder, -country, -year, -lifeExp)
 ```
-
-## `select()` + `starts_with()`
-
-Select all columns that start with `"c"`
-
-```{r}
-select(gapminder, starts_with("c"))
-```
-
-. . .
-
-There are also `ends_with()`, `contains()`, and more - see `?select` for details.
 
 # `mutate()` {.inverse}
 
@@ -395,8 +364,6 @@ Take gapminder, and then drop NAs, and then filter, and then add a column.
 - 2 different pipes in R (work similarly):
   - `|>`: base R pipe, available in R 4.1 and later
   - `%>%`: magrittr pipe, used in older versions and still common in tidyverse code
-
-- I prefer `|>` because it's built into R
 
 - Turn on the base R pipe in RStudio: Tools > Global Options > Code
 
@@ -599,7 +566,7 @@ gapminder |>
 
 # Now you {.inverse}
 
-[Task 2 (30 min)]{.highlight-blue}<br>
+[Task 2 (25 min)]{.highlight-blue}<br>
 
 [Summarize data and combine dplyr with ggplot]{.big-text}
 
@@ -759,7 +726,7 @@ but not necessarily all rows of `continent_info` (in this case it does though).
 
 All `dplyr` functions take a tibble as first argument and return a tibble.
 
-- **`filter()`** / **`filter_out()`**: pick or exclude rows
+- **`filter()`**: pick rows
 - **`select()`**: pick columns by name
 - **`mutate()`**: add new columns (`case_when()` for conditional values)
 - **`drop_na()`**: remove rows with missing values

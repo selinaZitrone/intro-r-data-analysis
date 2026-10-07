@@ -24,3 +24,13 @@ Go to [Task 1: Exploratory plots](tasks/ggplot-task-1.qmd) and [Task 2: Beautify
 - A list of [ggplot extension packages](https://exts.ggplot2.tidyverse.org/gallery/): These packages extend ggplot2 with new geoms, themes, and other features. You can find extensions for all kinds of things, from new types of plots to ways to make your plots interactive.
   - My personal favorite is the [patchwork package](https://patchwork.data-imaginist.com/): A package for combining multiple ggplot2 plots into one multi-panel figure. It's very useful for publication-quality figures and it's super easy to use.
 - [ggplot2 cheat sheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html): A reference for ggplot2 functions, geoms etc. Great to see all options you have in one place.
+
+### Color packages
+
+- [ColorBrewer](https://colorbrewer2.org/): Browse the palettes you can use with `scale_color_brewer()` and filter for colorblind-friendly ones.
+- [ggsci](https://nanx.me/ggsci/): Palettes inspired by scientific journals (e.g. Nature, Lancet) and sci-fi movies.
+- [scico](https://github.com/thomasp85/scico): Scientific color palettes that are colorblind-friendly.
+- [MetBrewer](https://github.com/BlakeRMills/MetBrewer): Palettes inspired by paintings from the Metropolitan Museum of Art.
+- [NatParksPalettes](https://github.com/kevinsblake/NatParksPalettes): Palettes inspired by photos of national parks from around the world.
+- [ggthemes](https://jrnold.github.io/ggthemes/): Palettes and themes from e.g. The Economist, Tableau, Wall Street Journal.
+- [paletteer](https://emilhvitfeldt.github.io/paletteer/): One interface to thousands of palettes from many different packages.

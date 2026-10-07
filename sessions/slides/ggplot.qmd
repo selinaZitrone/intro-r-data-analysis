@@ -49,11 +49,7 @@ theme_set(theme_grey(base_size = 16))
 
 ## A ggplot showcase
 
-:::{.r-stack}
-
-![Visualization by [Jake Kaupp](https://twitter.com/jakekaupp), code available on [Github](https://github.com/jkaupp/tidytuesdays/tree/master/2021/week27)](https://raw.githubusercontent.com/jkaupp/tidytuesdays/master/2021/week27/tw27_plot.png)
-
-:::
+![Overview of different plot possibilites created by Cédric Scherer. Check out [his tutorial](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/#toc) to learn how to make all these plots with ggplot](img/day2/ggplot_showcase_cedric.png){width=60%}
 
 ## A ggplot showcase
 
@@ -62,10 +58,6 @@ theme_set(theme_grey(base_size = 16))
 ## A ggplot showcase
 
 ![Visualization by [Cédric Scherer](https://twitter.com/CedScherer), code available on [Github](https://github.com/z3tt/TidyTuesday/blob/master/R/2020_31_PalmerPenguins.Rmd)](https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2020_31/2020_31_PalmerPenguins.png){width=35%}
-
-## A ggplot showcase
-
-![Overview of different plot possibilites created by Cédric Scherer. Check out [his tutorial](https://cedricscherer.netlify.app/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/#toc) to learn how to make all these plots with ggplot](img/day2/ggplot_showcase_cedric.png){width=60%}
 
 ## The ggplot2 package
 
@@ -665,14 +657,14 @@ ggplot(
 
 :::
 
-## `geom_boxplot` with color
+## `geom_boxplot` with color or fill
 
 :::{.columns}
 
 :::{.column width="50%"}
 
 ```{r}
-#| eval: false
+#| fig-height: 4
 #| flourish:
 #|  - target: "color = continent"
 ggplot(
@@ -691,32 +683,9 @@ ggplot(
 :::{.column width="50%"}
 
 ```{r}
-#| echo: false
-ggplot(
-  gapminder,
-  aes(
-    x = continent,
-    y = lifeExp,
-    color = continent
-  )
-) +
-  geom_boxplot()
-```
-
-:::
-
-:::
-
-## `geom_boxplot` with fill
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r}
-#| eval: false
+#| fig-height: 4
 #| flourish:
-#|     - target: "fill = continent"
+#|  - target: "fill = continent"
 ggplot(
   gapminder,
   aes(
@@ -726,69 +695,6 @@ ggplot(
   )
 ) +
   geom_boxplot()
-```
-
-:::
-
-:::{.column width="50%"}
-
-```{r}
-#| echo: false
-ggplot(
-  gapminder,
-  aes(
-    x = continent,
-    y = lifeExp,
-    fill = continent
-  )
-) +
-  geom_boxplot()
-```
-
-:::
-
-:::
-
-## `geom_tile`
-
-You can create a simple heatmap with `geom_tile`
-
-. . .
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r}
-#| eval: false
-ggplot(
-  gapminder,
-  aes(
-    x = year,
-    y = continent,
-    fill = lifeExp
-  )
-) +
-  geom_tile()
-```
-
-- Here we would have to choose a different color scheme to see differences
-
-:::
-
-:::{.column width="50%"}
-
-```{r}
-#| echo: false
-ggplot(
-  gapminder,
-  aes(
-    x = year,
-    y = continent,
-    fill = lifeExp
-  )
-) +
-  geom_tile()
 ```
 
 :::
@@ -910,6 +816,7 @@ ggplot(
 ```
 
 - Especially useful when color/shape gets crowded
+- Use `facet_grid()` to split along two variables
 
 :::
 
@@ -932,61 +839,6 @@ ggplot(
 
 :::
 
-
-## Small multiples with `facet_grid`
-
-Split your plots along two variables with `facet_grid`
-
-. . .
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r}
-#| eval: false
-ggplot(
-  gapminder,
-  aes(
-    x = gdpPercap,
-    y = lifeExp,
-    color = continent
-  )
-) +
-  geom_point() +
-  scale_x_log10() +
-  facet_grid(
-    rows = vars(continent),
-    cols = vars(year)
-  )
-```
-
-:::
-
-:::{.column width="50%"}
-
-```{r}
-#| echo: false
-ggplot(
-  gapminder,
-  aes(
-    x = gdpPercap,
-    y = lifeExp,
-    color = continent
-  )
-) +
-  geom_point() +
-  scale_x_log10() +
-  facet_grid(
-    rows = vars(continent),
-    cols = vars(year)
-  ) +
-  theme_gray(base_size = 14)
-```
-
-:::
-
-:::
 
 ## So many other geoms
 
@@ -1200,61 +1052,6 @@ ggplot(
 :::
 
 
-## Mapping vs. setting aesthetics
-
-Mapping and setting aesthetics can also be combined:
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r}
-#| eval: false
-#| flourish:
-#|  - target: "color = continent"
-#|  - target: "size = 2"
-#|  - target: "alpha = 0.6"
-ggplot(
-  gapminder_2007,
-  aes(
-    x = gdpPercap,
-    y = lifeExp,
-    color = continent
-  )
-) +
-  geom_point(
-    size = 2,
-    alpha = 0.6
-  ) +
-  scale_x_log10()
-```
-
-:::
-
-:::{.column width="50%"}
-
-```{r}
-#| echo: false
-ggplot(
-  gapminder_2007,
-  aes(
-    x = gdpPercap,
-    y = lifeExp,
-    color = continent
-  )
-) +
-  geom_point(
-    size = 2,
-    alpha = 0.6
-  ) +
-  scale_x_log10()
-```
-
-:::
-
-:::
-
-
 ## Starting point
 
 Let's take this plot and make it look better step by step:
@@ -1369,15 +1166,13 @@ Change the colors of the color aesthetic:
 ```{r}
 #| eval: false
 my_plot +
-  scale_color_viridis_d(
-    option = "magma"
-  )
+  scale_color_viridis_d()
 ```
 
 - The viridis color palette is designed for viewers with common forms of color blindness
 - `viridis_d` for discrete colors, `viridis_c` for continuous colors
-- Different options of viridis color palettes:
-`"magma"`, `"inferno"`, `"plasma"`, `"viridis"`, `"cividis"`
+- Other viridis palettes with the `option` argument:
+`"magma"`, `"inferno"`, `"plasma"`, `"cividis"`
 
 :::
 
@@ -1386,7 +1181,7 @@ my_plot +
 ```{r}
 #| echo: false
 my_plot +
-  scale_color_viridis_d(option = "magma")
+  scale_color_viridis_d()
 ```
 
 :::
@@ -1425,6 +1220,21 @@ my_plot +
 ```
 
 :::
+
+:::
+
+## So many color options
+
+Many packages provide additional color palettes for ggplot:
+
+:::{.nonincremental}
+
+- [ggsci](https://nanx.me/ggsci/): palettes inspired by scientific journals (e.g. Nature, Lancet) and sci-fi movies
+- [scico](https://github.com/thomasp85/scico): scientific color palettes that are colorblind-friendly
+- [MetBrewer](https://github.com/BlakeRMills/MetBrewer): palettes inspired by paintings from the Metropolitan Museum of Art
+- [NatParksPalettes](https://github.com/kevinsblake/NatParksPalettes): palettes inspired by photos of national parks from around the world
+- [ggthemes](https://jrnold.github.io/ggthemes/): palettes and themes from e.g. The Economist, Tableau, Wall Street Journal
+- [paletteer](https://emilhvitfeldt.github.io/paletteer/): one interface to thousands of palettes from many different packages
 
 :::
 
@@ -1615,48 +1425,6 @@ my_plot +
 
 :::
 
-## `theme_*`: change appearance
-
-Since `ggplot2` v. 4.0.0, you can change overall color choices of a pre-defined theme.
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-```{r}
-#| eval: false
-my_plot +
-  theme_minimal(
-    paper = "cornsilk",
-    ink = "navy"
-  )
-```
-
-:::{.nonincremental}
-- `paper`: affects background elements
-- `ink`: affects foreground elements (text, lines, points, ...)
-- `accent`: affects elements that are used to highlight information (like `geom_smooth()` lines)
-
-:::
-
-
-:::
-
-:::{.column width="50%"}
-
-```{r echo=FALSE, fig.height= 5}
-my_plot +
-  theme_minimal(
-    base_size = 14,
-    paper = "cornsilk",
-    ink = "navy"
-  )
-```
-
-:::
-
-:::
-
 ## `theme()`: fine-tune individual elements
 
 :::{.columns}
@@ -1727,33 +1495,6 @@ final_plot <- my_plot
 
 ![Theme reference sheet by [Isabella Benabaye](https://isabella-b.com/blog/ggplot2-theme-elements-reference/)](https://isabella-b.com/files/ggplot2-theme-elements-reference-v2.png){width=70%}
 
-
-## `theme_set()`: set global theme
-
-You can set a global theme that will be applied to all ggplot objects in the current R session.
-
-```{r eval=FALSE}
-# Globally set theme_minimal as the default theme
-theme_set(theme_minimal())
-```
-
-Add this to the beginning of your script.
-
-. . .
-
-You can also specify some defaults, e.g. the text size:
-
-```{r eval=FALSE}
-theme_set(
-  theme_minimal(
-    base_size = 16,
-    paper = "cornsilk",
-    ink = "navy"
-  )
-)
-```
-
-This is very practical if you want to achieve a consistent look, e.g. for a scientific journal.
 
 ## `ggsave()`
 

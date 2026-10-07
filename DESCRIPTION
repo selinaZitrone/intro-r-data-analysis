@@ -1,22 +1,51 @@
-Package: intro-r-short
-Title: What the Package Does (One Line, Title Case)
+Package: intro.r.data.analysis
+Title: Introduction to Data Analysis with R (Workshop Materials)
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R:
     person("Selina", "Baldauf", , "selina.baldauf@fu-berlin.de", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: Packages needed to render the workshop website and slides,
+    run make.R, and run the R scripts for the course days (Imports) and the
+    general BYOD example scripts (Suggests).
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-Imports: 
+Imports:
+    broom,
+    corrplot,
     downloadthis,
+    esquisse,
+    factoextra,
     fontawesome,
     gapminder,
     ggpubr,
+    ggsci,
+    ggsignif,
     git2r,
     here,
+    janitor,
     knitr,
-    pagedown
-URL: https://github.com/selinaZitrone/intro-r-short
-BugReports: https://github.com/selinaZitrone/intro-r-short/issues
+    lterdatasampler,
+    pagedown,
+    patchwork,
+    performance,
+    plotly,
+    readxl,
+    rmarkdown,
+    tidyverse
+Suggests:
+    cluster,
+    drc,
+    GGally,
+    gganimate,
+    ggbreak,
+    ggcorrplot,
+    ggrepel,
+    ggthemes,
+    osmdata,
+    pheatmap,
+    rnaturalearth,
+    sf
+URL: https://github.com/selinaZitrone/intro-r-data-analysis
+BugReports: https://github.com/selinaZitrone/intro-r-data-analysis/issues
 Type: Workshop
