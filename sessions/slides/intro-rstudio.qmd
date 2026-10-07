@@ -214,21 +214,37 @@ Use **console** for temporary commands, e.g. to test something.
 
 :::
 
-## A tip before we get started
+## Project-oriented workflow
 
-Learn the most important keyboard shortcuts of RStudio.
+:::{.columns}
 
-. . .
+:::{.column width="50%"}
 
-Find all shortcuts under **Tools -> Keyboard Shortcuts Help**
+**One project = one folder**
 
-:::{.nonincremental}
-- Save active file: Ctrl/Cmd + S
-- Run current line: Ctrl/Cmd + Enter
-- Create new R Script: Ctrl/Cmd + N
-- Undo: Ctrl/Cmd + Z
-- Redo: Ctrl/Cmd + Y
-- Copy/Paste: Ctrl/Cmd + C/V
+- Contains everything: data, scripts, figures, ...
+- Nothing important is somewhere else (Desktop, Downloads, ...)
+- The folder is **self-contained**: move it, share it, open on another computer, ...
+
+:::
+
+:::{.column width="50%"}
+
+```md
+MyProject
+|
+|- data
+|   |- tree_data.csv
+|
+|- R
+|   |- clean_data.R
+|   |- statistics.R
+|
+|- figures
+```
+
+:::
+
 :::
 
 ## RStudio projects
@@ -237,11 +253,12 @@ Find all shortcuts under **Tools -> Keyboard Shortcuts Help**
 
 :::{.column width="50%"}
 
-Idea: One directory (folder) with all files relevant for project (data, R scripts, figures, ...)
+An **RStudio project** turns this folder into a workspace for R:
 
 :::{.nonincremental}
 
-- An **RStudio project** is just a normal folder with an **.Rproj** file
+- It's just a normal folder with an **.Rproj** file in it
+- Opening the .Rproj file opens the entire project in RStudio
 - Helps R to find your project files
 
 :::
@@ -254,11 +271,10 @@ Idea: One directory (folder) with all files relevant for project (data, R script
 MyProject
 |
 |- data
+|   |- tree_data.csv
 |
 |- R
-|   |
-|   |- clean_data.R 
-|   |
+|   |- clean_data.R
 |   |- statistics.R
 |
 |- figures
@@ -266,19 +282,18 @@ MyProject
 |- MyProject.RProj
 ```
 
-[Example RStudio project structure]{.text-small}
+[Same folder, plus an .Rproj file]{.text-small}
 
 :::
 
 :::
 
-## Create an RStudio project {.nonincremental}
+## Create an RStudio project
 
 :::{.columns}
 
 :::{.column width="60%"}
 
-:::{.nonincremental}
 
 Create a project from scratch:
   
@@ -287,7 +302,6 @@ Create a project from scratch:
 3. Choose the Directory where the project should be initiated
 4. **Create Project**
 
-:::
 
 :::
 

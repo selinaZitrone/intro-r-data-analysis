@@ -2790,7 +2790,7 @@
     "href": "sessions/slides/intro-rstudio.html#rstudio-projects",
     "title": "Introduction to RStudio",
     "section": "RStudio projects",
-    "text": "RStudio projects\n\n\nIdea: One directory (folder) with all files relevant for project (data, R scripts, figures, …)\n\nAn RStudio project is just a normal folder with an .Rproj file\nHelps R to find your project files\n\n\nMyProject\n|\n|- data\n|\n|- R\n|   |\n|   |- clean_data.R \n|   |\n|   |- statistics.R\n|\n|- figures\n|\n|- MyProject.RProj\nExample RStudio project structure"
+    "text": "RStudio projects\n\n\nAn RStudio project turns this folder into a workspace for R:\n\nIt’s just a normal folder with an .Rproj file in it\nOpening the .Rproj file opens the entire project in RStudio\nHelps R to find your project files\n\n\nMyProject\n|\n|- data\n|   |- tree_data.csv\n|\n|- R\n|   |- clean_data.R\n|   |- statistics.R\n|\n|- figures\n|\n|- MyProject.RProj\nSame folder, plus an .Rproj file"
   },
   {
     "objectID": "sessions/slides/intro-rstudio.html#create-an-rstudio-project",
@@ -3491,5 +3491,12 @@
     "title": "Course preparations",
     "section": "Update R",
     "text": "Update R\n\nOpen RStudio and check the version number in the console pane (bottom left, see pink highlights in the screen shot).\n\n\nCheck if your version number is up to date. If your R version is lower than 4.5.1, please update the version.\n\nDownload and install the latest version of R (see Step 1 for instructions).\nIn RStudio, go to “Tools -&gt; Global Options -&gt; General” and click “Change R version”.\nSelect the newest installed version of R.\n\n\n\nRestart RStudio and verify the updated version in the console."
+  },
+  {
+    "objectID": "sessions/slides/intro-rstudio.html#project-oriented-workflow",
+    "href": "sessions/slides/intro-rstudio.html#project-oriented-workflow",
+    "title": "Introduction to RStudio",
+    "section": "Project-oriented workflow",
+    "text": "Project-oriented workflow\n\n\nOne project = one folder\n\nContains everything: data, scripts, figures, …\nNothing important is somewhere else (Desktop, Downloads, …)\nThe folder is self-contained: move it, share it, open on another computer, …\n\n\nMyProject\n|\n|- data\n|   |- tree_data.csv\n|\n|- R\n|   |- clean_data.R\n|   |- statistics.R\n|\n|- figures"
   }
 ]
