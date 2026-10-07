@@ -230,17 +230,14 @@ Use **console** for temporary commands, e.g. to test something.
 
 :::{.column width="50%"}
 
-```md
-MyProject
-|
-|- data
-|   |- tree_data.csv
-|
-|- R
-|   |- clean_data.R
-|   |- statistics.R
-|
-|- figures
+```
+MyProject/
+├── data/
+│   └── tree_data.csv
+├── R/
+│   ├── clean_data.R
+│   └── statistics.R
+└── figures/
 ```
 
 :::
@@ -267,19 +264,15 @@ An **RStudio project** turns this folder into a workspace for R:
 
 :::{.column width="50%"}
 
-```md
-MyProject
-|
-|- data
-|   |- tree_data.csv
-|
-|- R
-|   |- clean_data.R
-|   |- statistics.R
-|
-|- figures
-|
-|- MyProject.RProj
+```
+MyProject/
+├── data/
+│   └── tree_data.csv
+├── R/
+│   ├── clean_data.R
+│   └── statistics.R
+├── figures/
+└── MyProject.Rproj
 ```
 
 [Same folder, plus an .Rproj file]{.text-small}

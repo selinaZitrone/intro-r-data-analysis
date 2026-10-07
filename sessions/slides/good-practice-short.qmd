@@ -51,32 +51,24 @@ Consistent structure and filenames
 - One directory with all files relevant for project
   - Scripts, data, plots, documents, ...
 - Choose a meaningful project structure [^1]
+- Keep your raw data untouched
+  - `data/raw` for the original data
+  - `data/clean` for cleaned data created by your scripts
 - Add a readme file (usually `README.md`) in which you document the project structure
 
 :::
 
 :::{.column width="50%"}
 
-```md
-MyProject
-|
-|- data
-|
-|- docs
-|   |
-|   |- notes
-|   |
-|   |- reports
-|
-|- R
-|   |
-|   |- clean_data.R 
-|   |
-|   |- statistics.R
-|
-|- MyProject.RProj
-|
-|- README.md
+```
+MyProject/
+├── data/
+│   ├── raw/
+│   └── clean/
+├── R/
+├── figures/
+├── MyProject.Rproj
+└── README.md
 ```
 
 [Example RStudio project structure]{.text-small}
@@ -96,96 +88,49 @@ Always make your project an RStudio Project (if possible)!
 
 :white_check_mark: You already did that.
 
-## Name your files properly
+## Use informative file names
 
-Your collaborators and your future self will love you for this.
+::: {.columns}
 
-. . .
+::: {.column width="50%"}
 
-### Principles [^2]
-
-File names should be
-
-:::{.nonincremental}
-
-  1. Machine readable
-  2. Human readable
-  3. Working with default file ordering
+- Human readable: reveal the content
+- Machine readable: no spaces, no special characters
+- Work with default ordering: left-padded numbers or YYYY-MM-DD dates first
 
 :::
 
-[^2]: From [this talk](https://speakerdeck.com/jennybc/how-to-name-files) by J. Bryan
-
-## 1. Machine readable file names
-
-Names should allow for easy **searching**, **grouping** and **extracting information** 
-from file names.
-
-. . .
-
-- No space & special characters
-
-. . .
-
-#### Bad examples :x:
-
-:page_facing_up: `2023-04-20 temperature göttingen.csv ` <br>
-:page_facing_up: `2023-04-20 rainfall göttingen.csv ` <br>
+::: {.column width="50%"}
 
 ::: {.fragment}
 
-#### Good examples :heavy_check_mark: 
+::: {.nonincremental}
 
-:page_facing_up: `2023-04-20_temperature_goettingen.csv ` <br>
-:page_facing_up: `2023-04-20_rainfall_goettingen.csv ` <br>
-
-:::
-
-## 2. Human readable file names
-
-Which file names would you still understand in 1 year?
-
-- File names should reveal the file content
-- Use separators to make it readable
-
-. . .
-
-#### Bad examples :x:
-
-:page_facing_up: `01preparedata.R` <br>
-:page_facing_up: `01firstscript.R` <br>
-
-::: {.fragment}
-
-#### Good examples :heavy_check_mark: 
-
-:page_facing_up: `01_prepare-data.R` <br>
-:page_facing_up: `01_temperature-trend-analysis.R` <br>
+```
+MyProject/
+├── data/
+│   ├── raw/
+│   │   └── 2026-10-12_growth-assay.csv
+│   └── clean/
+│       └── growth-assay_clean.csv
+├── R/
+│   ├── 01_clean-data.R
+│   ├── 02_fit-models.R
+│   └── 03_make-figures.R
+└── figures/
+    └── linear-model-fit.png
+```
 
 :::
 
-## 3. Default ordering
+:::
 
-If you order your files by name, the ordering should make sense:
+:::
 
-- (Almost) always put something numeric first
-  - Left-padded numbers (`01`, `02`, ...)
-  - Dates in `YYYY-MM-DD` format
+:::
 
-. . .
-
-#### Chronological order
-
-:page_facing_up: `2023-04-20_temperature_goettingen.csv ` <br>
-:page_facing_up: `2023-04-21_temperature_goettingen.csv ` <br>
-
-:::: {.fragment}
-
-#### Logical order
-
-:page_facing_up: `01_prepare-data.R` <br>
-:page_facing_up: `02_lm-temperature-trend.R` <br>
-
+::: aside
+More on naming: [Jenny Bryan's talk](https://speakerdeck.com/jennybc/how-to-name-files) on how to name files
 :::
 
 # Let's start coding {.inverse}
@@ -319,9 +264,9 @@ height <- (feet * 12) + inches
 mean(x, na.rm = TRUE)
 
 # Bad
-x[,1]
-height<-feet*12+inches
-mean(x,na.rm=TRUE)
+x[, 1]
+height <- feet * 12 + inches
+mean(x, na.rm = TRUE)
 ```
 
 ## Coding style - Line width
