@@ -31,28 +31,12 @@ knitr:
 from: markdown+emoji
 ---
 
-# {.background-no-title}
+## Errors are how you learn
 
 When learning a programming language, you will run into errors all the time.
 That's completely normal and it's how programming works!
 
-![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/debugging.jpg){fig-align="center" width=80%}
-
-:::{.aside}
-
-[Artwork by [Allison Horst](https://twitter.com/allison_horst)]{.small}
-
-:::
-
-## Errors are how you learn
-
-- Reading and understanding error messages is one of the **most important skills** you will learn
-
-- Every error you fix teaches you something about how R works
-
-- It will get easier over time and you will start recognizing patterns
-
-- Even experienced programmers spend a lot of time fixing errors
+![Artwork by [Allison Horst](https://twitter.com/allison_horst)](img/AllisonHorst/debugging.jpg)
 
 ## First things first: Set R to English
 
@@ -65,16 +49,16 @@ That's completely normal and it's how programming works!
 
 ```r
 # For the current session
-Sys.setenv(LANGUAGE = "en")
+Sys.setLanguage("en")
 ```
 
 :::{.fragment}
 
 :::{.callout-tip}
 
-## Add it to your .Rprofile
+## Add it to your .Renviron
 
-Commands in the `.Rprofile` file run automatically every time you start R.
+The `.Renviron` file is read automatically every time you start R.
 
 Open the file with:
 
@@ -82,11 +66,11 @@ Open the file with:
 #| eval: false
 # install the usethis package
 # install.packages("usethis")
-# Open the .Rprofile file in RStudio
-usethis::edit_r_profile()
+# Open the .Renviron file in RStudio
+usethis::edit_r_environ()
 ```
 
-and add the line `Sys.setenv(LANGUAGE = "en")` to the file, then save it.
+and add the line `LANGUAGE=en` to the file. Save it and restart R.
 
 :::
 
@@ -153,72 +137,46 @@ variable_A
   
 :::
 
-## Error: could not find function
+## Package problems
 
-#### Example
+:::{.columns}
+
+:::{.column width="50%"}
+
+#### Could not find function
 
 ```{r}
 read_csv("data/penguins.csv")
 ```
 
-<br>
-
-:::{.fragment}
-
-#### How to fix
-
-"Could not find function" errors have two main reasons:
-
-1. You forgot to **load the package** that the function belongs to
-    - Load the package first: `library(readr)` or `library(tidyverse)`
-    - Or call the function with `readr::read_csv()`
-2. You have a **typo** in the function name (e.g. `lenght()` instead of `length()`)
+- You forgot to **load the package**: `library(tidyverse)`
+- You have a **typo** in the function name (e.g. `lenght()` instead of `length()`)
 
 :::
 
-## Error: package not found
+:::{.column width="50%"}
 
+:::{.fragment}
+#### Package not found
 
 ```{r}
 library(thispackagedoesntexist)
 ```
 
-. . .
+:::
 
-<br>
+- The package is **not installed**: `install.packages("thispackagedoesntexist")`
+- You have a **typo** in the package name
 
-This means the package is **not installed** on your computer.
+:::
 
-. . .
+:::
 
-#### How to fix
+:::{.fragment}
 
-- Check for a typo in the package name
-- Install the package first, then load it:
+Remember for packages: **install once**, but **load every time** you start R
 
-```r
-install.packages("thispackagedoesntexist")
-library(thispackagedoesntexist)
-```
-
-- Remember: you only need to **install once**, but you need to **load with `library()` every time** you start R
-
-## File not found
-
-When reading data, you might see errors like:
-
-```{r}
-readr::read_csv("data/penguins.csv")
-```
-
-. . .
-
-or
-
-```r
-read_csv("data/penguins.csv")
-#> Error: cannot open the connection
-```
+:::
 
 ## File not found
 
@@ -247,45 +205,13 @@ When you start typing a path in RStudio, you can use auto-completion to avoid ty
 
 :::
 
-## Warnings vs. errors
+## Not all red text is an error
 
-R can give you **warnings** for many reasons, e.g.
-
-:::{.fragment}
-
-:::{.nonincremental}
-
-- you have `NA` values in your data
-- the package you are using was built for another version of R
-
-:::
-
-:::
-
-. . . 
-
-Warnings are **not errors**, your code still ran. But:
-
-- Make sure to **read and understand** warnings
-- Only ignore them if you know that's okay, otherwise fix the underlying issue
-
-## R crashes
-
-Sometimes R crashes completely and you see this:
-
-![](img/day1/R_Crash.png)
-
-. . .
-
-#### How to fix it
-
-- This happens sometimes
-- There is no fix but to **start a new R session**
-- Make sure to **save your scripts regularly** so you don't lose your work
-
-# How to troubleshoot R code {.inverse}
-
-> A step by step approach
+- **Errors**: something went wrong and your code did not run
+- **Warnings**: your code still ran, but R tells you something might be wrong (e.g. `NA` values in your data)
+  - Make sure to **read and understand** warnings
+  - Only ignore them if you know that's okay
+- **Messages**: just information, e.g. when you load the tidyverse
 
 ## What to do when you're stuck
 
@@ -295,7 +221,10 @@ Sometimes R crashes completely and you see this:
 - Check your data: use summary() or View() to see if your data looks the way you expect
 - Read the function help with ?function_name
 - Restart R and run your script from the top (Session > Restart R in RStudio)
-- Search online: Google R + the error message (in English)
-- Ask for help: Ask people or an AI chatbot
+- Search online or ask AI
 
 :::
+
+<br>
+
+Make sure to **save your scripts regularly**. Sometimes R crashes and you have to start a new R session.

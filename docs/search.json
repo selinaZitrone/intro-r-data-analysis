@@ -1271,14 +1271,14 @@
     "href": "sessions/slides/common-errors.html#errors-are-how-you-learn",
     "title": "Common errors and how to fix them",
     "section": "Errors are how you learn",
-    "text": "Errors are how you learn\n\nReading and understanding error messages is one of the most important skills you will learn\nEvery error you fix teaches you something about how R works\nIt will get easier over time and you will start recognizing patterns\nEven experienced programmers spend a lot of time fixing errors"
+    "text": "Errors are how you learn\nWhen learning a programming language, you will run into errors all the time. That’s completely normal and it’s how programming works!\n\n\n\nArtwork by Allison Horst"
   },
   {
     "objectID": "sessions/slides/common-errors.html#first-things-first-set-r-to-english",
     "href": "sessions/slides/common-errors.html#first-things-first-set-r-to-english",
     "title": "Common errors and how to fix them",
     "section": "First things first: Set R to English",
-    "text": "First things first: Set R to English\n\nThe R language setting follows your operating system language by default\nErrors might not be in English - hard to find help online\n\n\nFix: Change the R language setting to English\n# For the current session\nSys.setenv(LANGUAGE = \"en\")\n\n\n\n\n\n\n\nAdd it to your .Rprofile\n\n\nCommands in the .Rprofile file run automatically every time you start R.\nOpen the file with:\n\n# install the usethis package\n# install.packages(\"usethis\")\n# Open the .Rprofile file in RStudio\nusethis::edit_r_profile()\n\nand add the line Sys.setenv(LANGUAGE = \"en\") to the file, then save it."
+    "text": "First things first: Set R to English\n\nThe R language setting follows your operating system language by default\nErrors might not be in English - hard to find help online\n\n\nFix: Change the R language setting to English\n# For the current session\nSys.setLanguage(\"en\")\n\n\n\n\n\n\n\nAdd it to your .Renviron\n\n\nThe .Renviron file is read automatically every time you start R.\nOpen the file with:\n\n# install the usethis package\n# install.packages(\"usethis\")\n# Open the .Renviron file in RStudio\nusethis::edit_r_environ()\n\nand add the line LANGUAGE=en to the file. Save it and restart R."
   },
   {
     "objectID": "sessions/slides/common-errors.html#console-prints",
@@ -1320,7 +1320,7 @@
     "href": "sessions/slides/common-errors.html#file-not-found",
     "title": "Common errors and how to fix them",
     "section": "File not found",
-    "text": "File not found\nWhen reading data, you might see errors like:\n\nreadr::read_csv(\"data/penguins.csv\")\n#&gt; Error:\n#&gt; ! 'data/penguins.csv' does not exist in current working directory:\n#&gt;   'C:/Users/Selina/Repos/Teaching/intro-r-data-analysis/sessions/slides'.\n\n\nor\nread_csv(\"data/penguins.csv\")\n#&gt; Error: cannot open the connection"
+    "text": "File not found\nWhen reading data, you might see errors like:\n\nreadr::read_csv(\"data/penguins.csv\")\n#&gt; Error:\n#&gt; ! 'data/penguins.csv' does not exist in current working directory:\n#&gt;   'C:/Users/Selina/Documents/Repos/Teaching/intro-r-data-analysis/sessions/slides'.\n\nHow to fix\n\nCheck that you are in the correct RStudio project (look at the top right corner of RStudio)\nCheck the file name: is it spelled exactly right?\nCheck the folder path: is the file actually in the data/ folder?\n\n\n\n\n\n\n\n\nBuild your path with auto-completion\n\n\nWhen you start typing a path in RStudio, you can use auto-completion to avoid typos. Start with \"\" and then hit tab to see suggestions for files and folders in your project."
   },
   {
     "objectID": "sessions/slides/common-errors.html#file-not-found-1",
@@ -1348,7 +1348,7 @@
     "href": "sessions/slides/common-errors.html#what-to-do-when-youre-stuck",
     "title": "Common errors and how to fix them",
     "section": "What to do when you’re stuck",
-    "text": "What to do when you’re stuck\n\nRead the error message\nCheck your data: use summary() or View() to see if your data looks the way you expect\nRead the function help with ?function_name\nRestart R and run your script from the top (Session &gt; Restart R in RStudio)\nSearch online: Google R + the error message (in English)\nAsk for help: Ask people or an AI chatbot"
+    "text": "What to do when you’re stuck\n\nRead the error message\nCheck your data: use summary() or View() to see if your data looks the way you expect\nRead the function help with ?function_name\nRestart R and run your script from the top (Session &gt; Restart R in RStudio)\nSearch online or ask AI\n\n\nMake sure to save your scripts regularly. Sometimes R crashes and you have to start a new R session."
   },
   {
     "objectID": "sessions/slides/AI-tools.html#motivation",
@@ -3498,5 +3498,19 @@
     "title": "Introduction to RStudio",
     "section": "Project-oriented workflow",
     "text": "Project-oriented workflow\n\n\nOne project = one folder\n\nContains everything: data, scripts, figures, …\nNothing important is somewhere else (Desktop, Downloads, …)\nThe folder is self-contained: move it, share it, open on another computer, …\n\n\nMyProject\n|\n|- data\n|   |- tree_data.csv\n|\n|- R\n|   |- clean_data.R\n|   |- statistics.R\n|\n|- figures"
+  },
+  {
+    "objectID": "sessions/slides/common-errors.html#package-problems",
+    "href": "sessions/slides/common-errors.html#package-problems",
+    "title": "Common errors and how to fix them",
+    "section": "Package problems",
+    "text": "Package problems\n\n\nCould not find function\n\nread_csv(\"data/penguins.csv\")\n#&gt; Error in `read_csv()`:\n#&gt; ! could not find function \"read_csv\"\n\n\nYou forgot to load the package: library(tidyverse)\nYou have a typo in the function name (e.g. lenght() instead of length())\n\n\n\nPackage not found\n\nlibrary(thispackagedoesntexist)\n#&gt; Error in `library()`:\n#&gt; ! there is no package called 'thispackagedoesntexist'\n\n\n\nThe package is not installed: install.packages(\"thispackagedoesntexist\")\nYou have a typo in the package name\n\n\n\nRemember for packages: install once, but load every time you start R"
+  },
+  {
+    "objectID": "sessions/slides/common-errors.html#not-all-red-text-is-an-error",
+    "href": "sessions/slides/common-errors.html#not-all-red-text-is-an-error",
+    "title": "Common errors and how to fix them",
+    "section": "Not all red text is an error",
+    "text": "Not all red text is an error\n\nErrors: something went wrong and your code did not run\nWarnings: your code still ran, but R tells you something might be wrong (e.g. NA values in your data)\n\nMake sure to read and understand warnings\nOnly ignore them if you know that’s okay\n\nMessages: just information, e.g. when you load the tidyverse"
   }
 ]
