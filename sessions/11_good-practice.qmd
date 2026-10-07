@@ -5,10 +5,10 @@ execute:
 ---
 
 ```{=html}
-<iframe class="slide-deck" src="slides/good-practice.html"></iframe>
+<iframe class="slide-deck" src="slides/good-practice-short.html"></iframe>
 ```
 
-[Slides in full screen](slides/good-practice.html){target="_blank"} | [Download PDF slides](slides_pdf/good-practice.pdf){download="good-practice.pdf"}
+[Slides in full screen](slides/good-practice-short.html){target="_blank"} | [Download PDF slides](slides_pdf/good-practice-short.pdf){download="good-practice-short.pdf"}
 
 ## Good practice summary
 
