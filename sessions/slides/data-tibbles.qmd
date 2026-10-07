@@ -431,10 +431,8 @@ data.frame(
 tibble(
   a = 1:3,
   b = c("a", "b", "c"),
-  c = c(TRUE, FALSE, FALSE) 
+  c = c(TRUE, FALSE, FALSE)
 )
-# convert data frame to tibble
-as_tibble(df)
 ```
 
 ## Summary II
@@ -443,8 +441,6 @@ as_tibble(df)
 
 ```{r}
 #| eval: false
-# structure of tibble and data types of columns
-str(tbl)
 # number of rows
 nrow(tbl)
 # number of columns

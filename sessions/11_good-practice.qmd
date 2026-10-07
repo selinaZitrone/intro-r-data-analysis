@@ -1,7 +1,5 @@
 ---
 title: "Good coding practice"
-execute:
-  eval: false
 ---
 
 ```{=html}
@@ -10,86 +8,8 @@ execute:
 
 [Slides in full screen](slides/good-practice-short.html){target="_blank"} | [Download PDF slides](slides_pdf/good-practice-short.pdf){download="good-practice-short.pdf"}
 
-## Good practice summary
-
-In the following you get some tips to style your code for the purpose of *good practice*, *readability* and *standardization.* This is not mandatory for your R code to work but it is nice to have.
-
-### General tip
-
-Have a look at all the options you have available if you go to `Tools -> Global Options`. You can click through different sections on the right (the top ones are probably most interesting to you) and for every section there are again some tabs on top that show different options.
-
-I will show you some useful options below as well.
-
-### White space
-
-Use whitespace around operators, `=`, `<-`, ...
-
-```r
-# works but not so nice
-a<-3
-mean(x=c(1,2,3))
-2==2
-
-# better
-a <- 3
-mean(x = c(1, 2, 3))
-2 == 2
-```
-
-**Tip:**
-
-You can turn on information about recommended white space in RStudio. Then RStudio will let you know in the side bar, if you are missing white space that is recommended. This information will look like this:
-
-![](img/info_whitespace.png){width="358"}
-
-You can turn on this option by going to **Tools -> Global Options -> Code -> Diagnostics** and put a checkmark for **Provide R style diagnostics**
-
-![](img/whitespace_diagn.png){width="379"}
-
-### Line width
-
-Limit the width of a line of code and start a new line regularly. A standard is 80 characters.
-
-This for example means:
-
--   In ggplot always start a new line for each layer (after the `+`)
--   If you have long comments, split them into multiple lines
--   If you have functions with a lot of arguments, put each argument in its own line
-
-There is a setting in RStudio that helps you with this. It puts a very thin, vertical line into each of your scripts to show you where you should better start a new line. To turn this on go to **Tools -> Global Options -> Code -> Display**, put a checkmark for `Show margin`
-
-![](img/margins_rstudio.png){width="396"}
-
-**Why?** Screens are always different and if you write very long lines you have to scroll right to read all your code.
-
-A ggplot example:
-
-```r
-# Don't do this:
-ggplot(iris, aes(x = species, y = Petal.Width)) + geom_boxplot()
-
-# Do this
-ggplot(iris, aes(x = species, y = Petal.Width)) +
-  geom_boxplot()
-
-# Or even this (depending on how long your lines are - here it's a bit
-# overkill):
-ggplot(
-  iris,
-  aes(x = species, y = Petal.Width)
-) +
-  geom_boxplot()
-```
-
-### Automatically format your code
-
-You can let RStudio format your code automatically according to the tidyverse style guide. This is done with the `styler` package.
-
-Just go to Tools -> Global Options -> Code -> Formatting and select "Format document on save":
-
-![](slides/img/day3/format_code.png){width="40%"}
-
-You may have to install the `styler` package first using `install.packages("styler")`.
-If this is the case, you will see an error message the first time you try to save a file after turning on this option.
-
 ## Resources
+
+- [Tidyverse style guide](https://style.tidyverse.org/){target="_blank"}: Rules for naming, spacing, line width and code structure in R.
+- [How to name files](https://speakerdeck.com/jennybc/how-to-name-files){target="_blank"}: Short talk by Jenny Bryan on machine and human readable file names.
+- [What They Forgot to Teach You About R](https://rstats.wtf/){target="_blank"}: Book on project-oriented workflows, file paths and other practical R habits.

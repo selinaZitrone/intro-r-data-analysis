@@ -233,15 +233,16 @@ Every `read_*` has a corresponding `write_*` function to export data from R.
 
 ```{r}
 #| eval: false
+# Let's pretend dat is a cleaned version of the data
 # Comma delimiter
-write_csv(dat, file = "data-clean/your_data.csv")
+write_csv(dat, file = "data/clean/your_data.csv")
 # Semicolon delimiter
-write_csv2(dat, file = "data-clean/your_data.csv")
+write_csv2(dat, file = "data/clean/your_data.csv")
 # tab delimiter
-write_tsv(dat, file = "data-clean/your_data.txt")
+write_tsv(dat, file = "data/clean/your_data.txt")
 # Any delimiter, e.g. ";" or "----"
-write_delim(dat, file = "data-clean/your_data.csv", delim = ";")
-write_delim(dat, file = "data-clean/your_data.txt", delim = "----")
+write_delim(dat, file = "data/clean/your_data.csv", delim = ";")
+write_delim(dat, file = "data/clean/your_data.txt", delim = "----")
 ```
 
 # Import excel files {.inverse background-image="img/hex-stickers/readxl.png" background-size="12vw" background-position="90% 75%" background-repeat="no-repeat"}
@@ -372,10 +373,10 @@ dat <- read_delim("data/your_data.csv", delim = ";")
 
 ```{r}
 #| eval: false
-write_csv(dat, file = "data-clean/your_data.csv")
-write_csv2(dat, file = "data-clean/your_data.csv")
-write_tsv(dat, file = "data-clean/your_data.txt")
-write_delim(dat, file = "data-clean/your_data.csv", delim = ";")
+write_csv(dat, file = "data/clean/your_data.csv")
+write_csv2(dat, file = "data/clean/your_data.csv")
+write_tsv(dat, file = "data/clean/your_data.txt")
+write_delim(dat, file = "data/clean/your_data.csv", delim = ";")
 ```
 
 ## Summary II

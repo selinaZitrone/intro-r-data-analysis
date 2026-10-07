@@ -7,5 +7,3 @@ title: "Common errors"
 ```
 
 [Slides in full screen](slides/common-errors.html){target="_blank"} | [Download PDF slides](slides_pdf/common-errors.pdf){download="common-errors.pdf"}
-
-## Resources
