@@ -119,6 +119,10 @@ Did anyone have problems with the course preparations?
 
 :::{.nonincremental}
 
-Tell us your **name**, what **organism/system** you work with and whether you've **used R before**.
+Tell us:
+
+- What's your **name**?
+- What do you **work on**?
+- What have you used for **data analysis** so far, if anything (e.g. Excel, SPSS, Python, ...)?
 
 :::
