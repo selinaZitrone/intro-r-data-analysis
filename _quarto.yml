@@ -14,7 +14,7 @@ project:
   resources:
     - "sessions/slides_pdf/*.pdf"
     - "R/Tasks/"
-    - "data/*"
+    - "/data/*"
     - "R/byod/general_tips/*"
     - "R/byod/solutions_for_my_datasets/*.R"
     - "timer_solution.js"
