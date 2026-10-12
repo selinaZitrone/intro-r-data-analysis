@@ -180,13 +180,13 @@ animals <- tibble(
 # Explore the tibble
 view(animals)
 summary(animals)
-str(animals)
 nrow(animals)
 ncol(animals)
 names(animals)
 
 # Rows 1, 5, and 7 and the columns species and bodywt_kg
 animals[c(1, 5, 7), c("species", "bodywt_kg")]
+animals[c(1, 5, 7), c(1, 2)] # same as above but using column numbers)]
 
 # Rows 1 to 10, all columns
 animals[1:10, ]
