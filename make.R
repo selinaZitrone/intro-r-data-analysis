@@ -33,7 +33,10 @@ lapply(slides_qmd, function(qmd) {
 
   if (needs_update) {
     message("Rendering PDF: ", name)
-    pagedown::chrome_print(html, output = pdf_src)
+    # Use a file:// URL: with a plain path, pagedown serves the file locally and
+    # fails on Chrome's automatic favicon.ico request (404)
+    html_url <- paste0("file:///", normalizePath(html, winslash = "/"))
+    pagedown::chrome_print(html_url, output = pdf_src)
     file.copy(pdf_src, pdf_docs, overwrite = TRUE)
   } else {
     message("PDF up to date, skipping: ", name)
