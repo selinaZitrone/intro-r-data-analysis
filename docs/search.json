@@ -46,7 +46,7 @@
     "href": "sessions/tasks/readr-task.html#read-a-csv-file",
     "title": "Task: Import and Export Data",
     "section": "Read a CSV file",
-    "text": "Read a CSV file\n\nDownload the file below and save it in the data/ folder of your project.\nUse read_csv() to read the file into R and save it in a variable called trees.\nExplore the data:\n\nUse summary(trees) to check how many tree species are there and what the tallest tree is.\nUse view(trees) to look at the full table\nUse $ to access the height_m column and calculate the mean height\n\n\n\n\n Download tree_growth.csv"
+    "text": "Read a CSV file\n\nDownload the file below and save it in the data/ folder of your project.\nUse read_csv() to read the file into R and save it in a variable called trees.\nExplore the data:\n\nUse summary(trees) to check how many tree species are there and what the tallest tree is.\nUse view(trees) to look at the full table\nUse $ to access the height_m column and calculate the mean height\n\n\n\n\n Download tree_growth.csv\n\n\n\n\n\n\n\n\nBuild your path with auto-completion\n\n\n\nWhen you start typing a path in RStudio, you can use auto-completion to avoid typos. Start with \"\" and then hit tab to see suggestions for files and folders in your project."
   },
   {
     "objectID": "sessions/tasks/readr-task.html#read-an-excel-file",
@@ -368,14 +368,14 @@
     "href": "sessions/solutions/ggplot-solution-1.html",
     "title": "Solution to ggplot Task 1: Exploratory plots",
     "section": "",
-    "text": "First we need to load the tidyverse packages:\n\n# install.packages(\"tidyverse\")\nlibrary(tidyverse)\n\n\nHave a look at the penguin data set that is included in R\n\n\npenguins\n\n\n\nError in `print.default()`:\n! invalid 'na.print' specification"
+    "text": "First we need to load the tidyverse packages:\n\n# install.packages(\"tidyverse\")\nlibrary(tidyverse)\n\n\nHave a look at the penguin data set that is included in R\n\n\npenguins\n\n\n\n  species    island bill_len bill_dep flipper_len body_mass    sex year\n1  Adelie Torgersen     39.1     18.7         181      3750   male 2007\n2  Adelie Torgersen     39.5     17.4         186      3800 female 2007\n3  Adelie Torgersen     40.3     18.0         195      3250 female 2007\n4  Adelie Torgersen       NA       NA          NA        NA   &lt;NA&gt; 2007\n5  Adelie Torgersen     36.7     19.3         193      3450 female 2007\n6  Adelie Torgersen     39.3     20.6         190      3650   male 2007"
   },
   {
     "objectID": "sessions/solutions/ggplot-solution-1.html#get-started",
     "href": "sessions/solutions/ggplot-solution-1.html#get-started",
     "title": "Solution to ggplot Task 1: Exploratory plots",
     "section": "",
-    "text": "First we need to load the tidyverse packages:\n\n# install.packages(\"tidyverse\")\nlibrary(tidyverse)\n\n\nHave a look at the penguin data set that is included in R\n\n\npenguins\n\n\n\nError in `print.default()`:\n! invalid 'na.print' specification"
+    "text": "First we need to load the tidyverse packages:\n\n# install.packages(\"tidyverse\")\nlibrary(tidyverse)\n\n\nHave a look at the penguin data set that is included in R\n\n\npenguins\n\n\n\n  species    island bill_len bill_dep flipper_len body_mass    sex year\n1  Adelie Torgersen     39.1     18.7         181      3750   male 2007\n2  Adelie Torgersen     39.5     17.4         186      3800 female 2007\n3  Adelie Torgersen     40.3     18.0         195      3250 female 2007\n4  Adelie Torgersen       NA       NA          NA        NA   &lt;NA&gt; 2007\n5  Adelie Torgersen     36.7     19.3         193      3450 female 2007\n6  Adelie Torgersen     39.3     20.6         190      3650   male 2007"
   },
   {
     "objectID": "sessions/solutions/ggplot-solution-1.html#exploratory-plotting",

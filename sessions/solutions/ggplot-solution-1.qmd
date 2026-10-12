@@ -21,7 +21,7 @@ penguins
 
 ```{r echo=FALSE, eval=TRUE}
 theme_set(theme_gray())
-print(penguins, n=6)
+head(penguins)
 ```
 
 ## Exploratory plotting

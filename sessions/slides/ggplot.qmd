@@ -1534,4 +1534,4 @@ Have a look at `?ggsave` to see all options.
 
 [Make your penguin plots more beautiful]{.big-text}
 
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/07_ggplot.html#beautify-the-plots)**
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/ggplot-task-2.html)**

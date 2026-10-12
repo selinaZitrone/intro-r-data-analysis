@@ -57,6 +57,14 @@ downloadthis::download_file(
 )
 ```
 
+:::{.callout-tip}
+
+## Build your path with auto-completion
+
+When you start typing a path in RStudio, you can use auto-completion to avoid typos. Start with `""` and then hit tab to see suggestions for files and folders in your project.
+
+:::
+
 ## Read an Excel file
 
 1. Download the Excel file below and save it in the `data/` folder of your project.
