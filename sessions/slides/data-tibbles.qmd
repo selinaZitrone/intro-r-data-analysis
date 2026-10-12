@@ -232,6 +232,7 @@ cities_tbl <- tibble(
 
 ```{r}
 #| echo: false
+library(tibble)
 cities_tbl <- tibble(
   city_name = cities,
   population_size = population,
