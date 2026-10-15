@@ -93,12 +93,12 @@ var.test(chinstrap, adelie) # variances do not differ
 t.test(chinstrap, adelie, var.equal = TRUE) # means differ
 
 # Comparison Chinstrap vs. Gentoo
-# Gentoo not normal: use Wilcoxon-rank-sum test to compare means
-wilcox.test(chinstrap, gentoo) # means differ
+# Gentoo not normal: use Wilcoxon-rank-sum test to compare the groups
+wilcox.test(chinstrap, gentoo) # groups differ
 
 # Comparison Gentoo- Adelie
-# Gentoo not normal: use Wilcoxon-rank-sum test to compare means
-wilcox.test(gentoo, adelie) # means differ
+# Gentoo not normal: use Wilcoxon-rank-sum test to compare the groups
+wilcox.test(gentoo, adelie) # groups differ
 
 # Compare flipper lengths of penguins visually using a boxplot
 # Add the p-values of the comparisons with the test into the plot
@@ -203,10 +203,7 @@ flipper_mean <- penguins |>
   group_by(species) |>
   summarize(mean_flipper = mean(flipper_len, na.rm = TRUE))
 
-# Option A: Histogram with counts
-
-# histogram of flipper lengths with lines for the mean
-# add also the density plot
+# Histogram of flipper lengths with lines for the mean
 penguins |>
   ggplot(aes(x = flipper_len, fill = species)) +
   geom_histogram(
@@ -221,7 +218,7 @@ penguins |>
   labs(
     title = "Distribution of flipper lengths in three penguin species",
     x = "Flipper length (mm)",
-    y = "Density",
+    y = "Count",
     fill = "Species",
     color = "Species"
   ) +

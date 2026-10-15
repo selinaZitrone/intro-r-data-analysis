@@ -52,7 +52,7 @@ This indicates that the variances do not differ between Chinstrap and Adelie pen
 Therefore, we can use a t-test to compare mean flipper length:
 
 ```{r echo=TRUE}
-t.test(chinstrap, adelie)
+t.test(chinstrap, adelie, var.equal = TRUE)
 ```
 
 The t-test suggests, that the mean flipper length differs between Chinstrap and Adelie penguins.
@@ -60,25 +60,25 @@ The t-test suggests, that the mean flipper length differs between Chinstrap and 
 ### Compare Chinstrap vs. Gentoo
 
 Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare
-means:
+the two groups:
 
 ```{r, echo=TRUE}
 wilcox.test(chinstrap, gentoo)
 ```
 
-The Wilcoxon tests suggests that the flipper lengths differ between Chinstrap and Gentoo penguins.
+The Wilcoxon test suggests that the flipper lengths differ between Chinstrap and Gentoo penguins.
 
 ### Compare Adelie vs. Gentoo
 
 Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare
-means:
+the two groups:
 
 
 ```{r, echo=TRUE}
 wilcox.test(adelie, gentoo)
 ```
 
-The Wilcoxon tests suggests that the flipper lengths differ between Adelie and Gentoo penguins.
+The Wilcoxon test suggests that the flipper lengths differ between Adelie and Gentoo penguins.
 
 ### Visual comparison
 

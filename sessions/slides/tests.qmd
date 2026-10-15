@@ -391,7 +391,7 @@ Variances of sprays A & C **differ significantly** (F-Test, $F_{11,11}$ = 7.42, 
 
 **Wilcoxon rank sum test**
 
-- **Non-normal distribution** and **unequal variance**
+- **Non-normal distribution**
 - Compares rank sums of the data
 - Non-parametric
 
