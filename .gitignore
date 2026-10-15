@@ -35,6 +35,9 @@ data/animals*
 # Ignore all folders with _cache in their names
 *_cache/
 *_files
+# ...but keep rendered figures in docs/ (needed by the live site)
+!docs/**/*_files/
+docs/sessions/slides/*_files/
 
 # Ignore the _freeze folder
 R/random_groups.R

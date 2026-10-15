@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/tidyr-task.html</loc>
-    <lastmod>2026-10-07T07:05:46.108Z</lastmod>
+    <lastmod>2026-10-15T12:58:44.330Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/readr-task.html</loc>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/tidyr-solution.html</loc>
-    <lastmod>2026-10-07T07:05:46.080Z</lastmod>
+    <lastmod>2026-10-15T12:58:44.355Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/readr-solution.html</loc>
@@ -306,7 +306,7 @@
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/tidyr.html</loc>
-    <lastmod>2026-10-07T07:05:45.860Z</lastmod>
+    <lastmod>2026-10-15T12:58:38.540Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/solutions/dplyr-solution-1.html</loc>

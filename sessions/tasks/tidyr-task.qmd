@@ -31,7 +31,7 @@ library(tidyverse)
 
 ## Let's tidy some data sets
 
-First, complete both tasks before you move to the extras.
+First, complete all three tasks before you move to the extras.
 
 **1. `relig_income`**
 
@@ -63,7 +63,9 @@ You can do these in any order, or skip them and just take a break.
 - This is a bit tricky: How would you have to change the `penguins` table if you 
 wanted to make such a plot:
 
-```{r echo=FALSE, warning=FALSE}
+```{r}
+#| echo: false
+#| warning: false
 penguins |>
   select(species, bill_len, bill_dep) |>
   pivot_longer(!species, names_to = "variable") |>

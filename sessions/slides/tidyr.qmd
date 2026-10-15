@@ -31,7 +31,9 @@ knitr:
 from: markdown+emoji
 ---
 
-```{r setup, include=FALSE}
+```{r}
+#| label: setup
+#| include: false
 library(tibble)
 library(tidyr)
 ```
@@ -52,7 +54,8 @@ Let's look at some examples
 
 **Tidy**
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 data.frame(
   id = 1:6,
   name = c("floof", "max", "cat", "donut", "merlin", "panda"),
@@ -69,7 +72,8 @@ data.frame(
 
 **Non-tidy**
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 data.frame(
   floof = "gray",
   max = "black",
@@ -83,7 +87,8 @@ data.frame(
 
 <br>
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 data.frame(
   gray = c("floof", "donut"),
   black = c("max", "merlin"),
@@ -107,7 +112,7 @@ Sometimes ***raw data*** is non-tidy because its structure is optimized for data
 
 ## Why tidy data?
 
-The main advantages of **tidy** data is that the `tidyverse` packages are built to work with it.
+The main advantage of **tidy** data is that the `tidyverse` packages are built to work with it.
 
 
 ![Illustration from the [Openscapes](https://www.openscapes.org/) blog [*Tidy Data for reproducibility, efficiency, and collaboration*](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by Julia Lowndes and Allison Horst](img/AllisonHorst/tidydata_3.jpg){width=70%}
@@ -118,7 +123,6 @@ Let's go back to the city data set from earlier:
 
 
 ```{r}
-#| echo: true
 #| code-fold: true
 #| code-summary: "Expand to reproduce the data"
 
@@ -180,7 +184,6 @@ This already looks pretty tidy.
 ## Same data different format
 
 ```{r}
-#| echo: true
 #| code-fold: true
 #| code-summary: "Expand to reproduce the data"
 cities_untidy <- unite(cities_tbl, col = "location", c(country, city_name)) |>
@@ -188,7 +191,8 @@ cities_untidy <- unite(cities_tbl, col = "location", c(country, city_name)) |>
   pivot_wider(names_from = "location", values_from = "value")
 ```
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 cities_untidy
 ```
 
@@ -201,12 +205,12 @@ print(cities_untidy, width = 90)
 
 . . .
 
-- Each row has multiple observation
+- Each row has multiple observations
 - At the same time, each observation is split across multiple rows
 - Country and city variable are split into multiple columns
 - Country and city variable values are united to one value
 
-## The `tidyr` pacakge
+## The `tidyr` package
 
 Let's tidy this data using functions from the `tidyr` package!
 
@@ -214,28 +218,31 @@ Let's tidy this data using functions from the `tidyr` package!
 
 First load the package with either 
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 library(tidyr)
 ```
 
 or
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 library(tidyverse)
 ```
 
 
 ## `pivot_longer()`
 
-**One variable split into multiple column**s can be solved with `pivot_longer`
+**One variable split into multiple columns** can be solved with `pivot_longer`
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 print(cities_untidy, width = 90)
 ```
 
 ## `pivot_longer()`
 
-**One variable split into multiple column**s can be solved with `pivot_longer`
+**One variable split into multiple columns** can be solved with `pivot_longer`
 
 ```{r}
 #| eval: false
@@ -250,7 +257,8 @@ step1
 
 . . .
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 step1 <- pivot_longer(
   cities_untidy, # the tibble
   cols = Turkey_Istanbul:France_Paris, # the columns to pivot from:to
@@ -262,7 +270,7 @@ print(step1, n = 4)
 
 ## `pivot_longer()`
 
-**One variable split into multiple column**s can be solved with `pivot_longer`
+**One variable split into multiple columns** can be solved with `pivot_longer`
 
 ```{r}
 #| eval: false
@@ -293,7 +301,8 @@ step1 <- pivot_longer(
 
 **Multiple variables united into one** can be separated using `separate_wider_delim`
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 print(step1, n = 2)
 ```
 
@@ -312,7 +321,8 @@ step2
 
 . . .
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 step2 <- separate_wider_delim(
   step1, # the tibble
   location, # the column to separate
@@ -328,9 +338,10 @@ The opposite function is called `unite`. Check out `?unite` for details.
 
 ## `pivot_wider()`
 
-**One observation split into multiple rows** can solved with `pivot_wider`
+**One observation split into multiple rows** can be solved with `pivot_wider`
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 print(step2, n = 2)
 ```
 
@@ -348,7 +359,8 @@ step3
 
 . . .
 
-```{r echo=FALSE}
+```{r}
+#| echo: false
 step3 <- pivot_wider(
   step2, # the tibble
   names_from = type, # the variables
@@ -366,7 +378,7 @@ cities_tidy <- cities_untidy |>
   pivot_longer(
     Turkey_Istanbul:France_Paris,
     names_to = "location",
-    values_to = "values"
+    values_to = "value"
   ) |>
   separate_wider_delim(
     location,
@@ -375,13 +387,13 @@ cities_tidy <- cities_untidy |>
   ) |>
   pivot_wider(
     names_from = type,
-    values_from = values
+    values_from = value
   )
 ```
 
 # Now you {.inverse}
 
-[Task (30 min)]{.highlight-blue}<br>
+[Task (20 min)]{.highlight-blue}<br>
 
 [Tidy data with tidyr]{.big-text}
 
