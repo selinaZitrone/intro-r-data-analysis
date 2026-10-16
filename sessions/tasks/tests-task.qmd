@@ -68,6 +68,8 @@ You can e.g. choose one of the following plots:
 
 Add a `geom_signif()` layer to the plot you just created to indicate your test results
 
+Hint: If you used different tests for different comparisons, you can add multiple `geom_signif()` layers to the same plot — one per test, each with its own `comparisons`.
+
 ## For the fast ones
 
 You can do these in any order, or skip them and just take a break.

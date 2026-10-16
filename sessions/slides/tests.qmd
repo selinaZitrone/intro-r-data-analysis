@@ -277,7 +277,8 @@ Counts of insects in agricultural units treated with different insecticides.
 #| code-summary: "Expand to reproduce the data"
 InsectSprays <- InsectSprays |>
   filter(spray %in% c("A", "B", "E")) |>
-  mutate(spray = case_match(spray, "E" ~ "C", .default = spray))
+  droplevels() |>
+  mutate(spray = forcats::fct_recode(spray, C = "E"))
 ```
 
 Compare treatments A, B and C:
