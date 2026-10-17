@@ -49,13 +49,7 @@ options(scipen = 0)
 
 ## General approach
 
-Question → inspect the data → run a suitable test → interpret → plot
-
-![](img/day3/statistics_approach.png){width="55%"}
-
-. . .
-
-The p-value tells you how much **evidence** there is for a difference, not how **large** the difference is: always report the group means too.
+![](img/day3/statistics_approach.png){width="70%"}
 
 :::{.aside}
 
@@ -64,55 +58,172 @@ Please note the discussion about p-values as a basis for binary decisions.
 
 :::
 
-# Inspect the data {.inverse}
+## Tests to compare two groups
+
+```{r}
+#| include: false
+schematic <- tibble(
+  group = rep(c("Group 1", "Group 2"), each = 6),
+  value = c(2.1, 2.9, 3.4, 3.8, 4.5, 5.0, 3.6, 4.3, 4.8, 5.3, 5.9, 6.6)
+) |>
+  mutate(rank = rank(value))
+schematic_means <- summarize(schematic, value = mean(value), .by = group)
+schematic_sums <- summarize(schematic, rank_sum = sum(rank), .by = group) |>
+  mutate(
+    label = paste(group, "rank sum:", rank_sum),
+    x = c(3.5, 9.5)
+  )
+```
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+**t-test**
+
+:::
+
+```{r}
+#| echo: false
+#| fig-width: 4.5
+#| fig-height: 2.4
+ggplot(schematic, aes(x = group, y = value, color = group)) +
+  geom_point(size = 3) +
+  geom_crossbar(
+    data = schematic_means,
+    aes(ymin = value, ymax = value),
+    width = 0.4
+  ) +
+  scale_color_manual(values = c("cyan4", "darkorange")) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "none",
+    axis.title = element_blank(),
+    axis.text.y = element_blank()
+  )
+```
+
+:::{.fragment}
+
+:::{.nonincremental}
+
+- Compares the **means** of two groups
+- Suitable for roughly normal data, or for larger samples
+- 2 versions: Student's (equal variance) and Welch's t-test
+  - Welch's t-test is a good default
+
+:::
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::{.fragment}
+
+**Wilcoxon rank-sum test**
+
+```{r}
+#| echo: false
+#| fig-width: 4.5
+#| fig-height: 2.4
+ggplot(schematic, aes(x = rank, y = 1, color = group)) +
+  geom_text(aes(label = rank), size = 7, fontface = "bold") +
+  geom_text(
+    data = schematic_sums,
+    aes(x = x, y = 0.4, label = label),
+    size = 5
+  ) +
+  scale_color_manual(values = c("cyan4", "darkorange")) +
+  scale_y_continuous(limits = c(0.2, 1.3)) +
+  theme_void() +
+  theme(legend.position = "none")
+```
+
+:::{.nonincremental}
+
+- Compares **ranks**: does one group tend to have larger values?
+- Useful for ordinal data, skewed small samples, or outliers
+
+:::
+
+:::
+
+:::
+
+:::
+
+. . .
 
 ## The data: iris
 
-Sepal width (in cm) of 50 flowers from three iris species
+**Question:** Does the sepal width differ between *I. versicolor* and *I. virginica*?
+
+:::{.columns}
+
+:::{.column width="50%"}
 
 ```{r}
-#| flourish:
-#|   - target: "as_tibble"
+#| code-fold: true
+#| code-summary: "Reproduce the data"
 flowers <- as_tibble(iris) |>
-  select(sepal_width = Sepal.Width, species = Species)
+  filter(Species %in% c("versicolor", "virginica")) |>
+  select(sepal_width = Sepal.Width, species = Species) |>
+  droplevels()
+```
+
+```{r}
 flowers
 ```
+
+:::
+
+:::{.column width="50%"}
+
+![Image from [medium.com](https://medium.com/data-science/k-medoids-clustering-on-iris-data-set-1931bf781e05)](img/day3/iris.png)
+
+Sepal width (in cm) of 50 flowers from each of two iris species
+
+:::
+
+:::
+
+
 
 ## First look at the data
 
 :::{.columns}
 
-:::{.column width="45%"}
+:::{.column width="50%"}
 
 ```{r}
 flowers |>
-  group_by(species) |>
   summarize(
     n = n(),
     mean = mean(sepal_width),
-    sd = sd(sepal_width)
+    sd = sd(sepal_width),
+    .by = species
   )
 ```
 
 :::
 
-:::{.column width="55%"}
+:::{.column width="50%"}
 
 ```{r}
 #| fig-height: 5.5
 #| code-fold: true
 #| code-summary: "Code for the boxplot"
-iris_boxplot <- ggplot(
-  flowers,
-  aes(x = species, y = sepal_width)
-) +
+ggplot(flowers, aes(x = species, y = sepal_width)) +
   geom_boxplot() +
   geom_point(
     position = position_jitter(width = 0.08, height = 0, seed = 123),
     alpha = 0.6
   ) +
   labs(x = "Species", y = "Sepal width (cm)")
-iris_boxplot
 ```
 
 :::
@@ -121,64 +232,55 @@ iris_boxplot
 
 ## Prepare the group vectors
 
-Most test functions take the values of each group as a **vector**
+Most test functions take the values of each group as a vector
 
 ```{r}
-setosa <- filter(flowers, species == "setosa")$sepal_width
 versicolor <- filter(flowers, species == "versicolor")$sepal_width
 virginica <- filter(flowers, species == "virginica")$sepal_width
 ```
 
 . . .
 
+<br>
 ```{r}
 versicolor
 ```
 
-## Shapiro-Wilk test
+## Shapiro-Wilk test for normality
+
+. . .
 
 $H_0$: The data come from a normal distribution
 
 ```{r}
 shapiro.test(versicolor)
-shapiro.test(setosa)
 shapiro.test(virginica)
 ```
 
 - A **large p-value**: no evidence against normality, can not reject $H_0$
-- With **large samples**, even tiny deviations give small p-values
+- With large samples, very small deviations can give small p-values
 - Always look at the data as well
 
-## Check with QQ-plots
+## Normality with QQ-plots
 
 Points should roughly follow the line. Look at the **tails** and at **unusual observations**.
 
 :::{.columns}
 
-:::{.column width="33%"}
+:::{.column width="50%"}
 
 ```{r}
-#| fig-width: 4
-#| fig-height: 4
-ggpubr::ggqqplot(setosa)
-```
-
-:::
-
-:::{.column width="33%"}
-
-```{r}
-#| fig-width: 4
+#| fig-width: 4.5
 #| fig-height: 4
 ggpubr::ggqqplot(versicolor)
 ```
 
 :::
 
-:::{.column width="33%"}
+:::{.column width="50%"}
 
 ```{r}
-#| fig-width: 4
+#| fig-width: 4.5
 #| fig-height: 4
 ggpubr::ggqqplot(virginica)
 ```
@@ -189,103 +291,127 @@ ggpubr::ggqqplot(virginica)
 
 . . .
 
-All three species: no clear deviation from normality
+Both species: no clear deviation from normality
 
-## Which comparison are we making?
+## What does non-normal data look like?
+
+```{r}
+#| include: false
+set.seed(123)
+skewed <- rlnorm(50, meanlog = 0, sdlog = 0.6)
+set.seed(4)
+heavy_tails <- rt(50, df = 2)
+```
 
 :::{.columns}
 
 :::{.column width="50%"}
 
-**Welch's t-test**
+```{r}
+#| echo: false
+#| fig-width: 4.5
+#| fig-height: 2.6
+ggpubr::ggqqplot(versicolor, title = "versicolor: roughly normal")
+```
 
-:::{.nonincremental}
-
-- Compares the **means** of two groups
-- Works with equal and unequal variances
-- Suitable for roughly normal data, or for larger samples
-
-:::
+```{r}
+#| echo: false
+#| fig-width: 4.5
+#| fig-height: 2.6
+ggpubr::ggqqplot(skewed, title = "Skewed: points form an arch")
+```
 
 :::
 
 :::{.column width="50%"}
 
-**Wilcoxon rank-sum test**
+```{r}
+#| echo: false
+#| fig-width: 4.5
+#| fig-height: 2.6
+ggpubr::ggqqplot(virginica, title = "virginica: roughly normal")
+```
 
-:::{.nonincremental}
-
-- Compares **ranks**: does one group tend to have larger values?
-- Useful for
-  - ordinal data (e.g. scores from 1 to 5)
-  - small, strongly skewed samples
-  - samples with extreme outliers
+```{r}
+#| echo: false
+#| fig-width: 4.5
+#| fig-height: 2.6
+ggpubr::ggqqplot(heavy_tails, title = "Heavy tails: both ends bend away")
+```
 
 :::
 
 :::
-
-:::
-
-. . .
-
-Choose the test based on your **question** and a **look at the data**, not on a single Shapiro-Wilk p-value.
-
-# Compare two groups {.inverse}
 
 ## Compare two means: Welch's t-test
 
 $H_0$: The means of the two groups do not differ
 
+
+
 ```{r}
 t.test(versicolor, virginica)
 ```
 
-- p-value: How likely is it to observe a difference this high if the means were equal?
+- t: test statistic (t = 0 if the means are equal)
+- p-value: How likely is a difference at least this large if the means were equal?
 - Reject $H_0$
 
 . . .
 
-Mean sepal width was **0.20 cm smaller** in *I. versicolor* than in *I. virginica* (Welch's t(97.93) = -3.21, p = 0.0018).
+Mean sepal width was **0.20 cm smaller** in *I. versicolor* than in *I. virginica* (Welch's t-test, $t_{97.9}$ = -3.21, p = 0.002).
 
 ## Wilcoxon rank-sum test
 
 $H_0$: Neither group tends to have larger values than the other
 
-```{r}
-wilcox.test(versicolor, virginica)
-```
-
-
-
-
 - All values are ranked from smallest to largest
 - The test compares the ranks of the two groups
 - **Demonstration only:** the iris data don't need a rank-based test, t-test was fine here
 
+. . .
 
+```{r}
+wilcox.test(versicolor, virginica)
+```
+
+. . .
+
+Sepal width tended to be smaller in *I. versicolor* than in *I. virginica* (Wilcoxon rank-sum test, W = 841, p = 0.005).
 
 ## Paired observations
 
+Examples of paired observations:
+
+:::{.nonincremental}
+
+- Blood pressure of patients before and after medication
+- Difference in sleep quality of people as children and adults
+- Biodiversity in rivers before and after a power plant
+...
+
+:::
+
+. . .
+
 In `sleep`, the **same 10 people** received two drugs (`extra`: extra sleep in hours)
 
-:::{.columns}
-
-:::{.column width="45%"}
-
 ```{r}
+#| code-fold: true
+#| code-summary: "Reproduce the data"
 sleep_paired <- sleep |>
   pivot_wider(
     names_from = group,
     names_prefix = "drug_",
     values_from = extra
   )
+```
+
+```{r}
 sleep_paired
 ```
 
-:::
-
-:::{.column width="55%"}
+## Paired observations
 
 ```{r}
 #| flourish:
@@ -297,40 +423,24 @@ t.test(
 )
 ```
 
-:::{.nonincremental}
+Also: `wilcox.test(..., paired = TRUE)`
 
-- One row per person: the measurements stay matched
-- Also: `wilcox.test(..., paired = TRUE)`
+. . .
 
-:::
+People slept **1.58 h longer** with drug 2 than with drug 1 (paired t-test, $t_9$ = -4.06, p = 0.003).
 
-:::
+# Visualizing test results {.inverse}
 
-:::
-
-# Plot test results {.inverse}
-
-## Plot two species
-
-Create a table with only the two species that we compared
+## Boxplot to show differences
 
 ```{r}
 #| output-location: column
 #| fig-height: 5.5
-flowers_two_species <- filter(
-  flowers,
-  species %in% c("versicolor", "virginica")
-)
-
 ggplot(
-  flowers_two_species,
+  flowers,
   aes(x = species, y = sepal_width)
 ) +
-  geom_boxplot() +
-  labs(
-    x = "Species",
-    y = "Sepal width (cm)"
-  )
+  geom_boxplot()
 ```
 
 ## Add a test with `geom_signif()`
@@ -340,15 +450,11 @@ The [`ggsignif`](https://const-ae.github.io/ggsignif/) package adds significance
 ```{r}
 #| output-location: column
 #| fig-height: 5.5
-#| flourish:
-#|   - target: "geom_signif("
-#|   - target: 'test = "t.test",'
-#|   - target: "map_signif_level = TRUE"
 # install.packages("ggsignif")
 library(ggsignif)
 
 ggplot(
-  flowers_two_species,
+  flowers,
   aes(x = species, y = sepal_width)
 ) +
   geom_boxplot() +
@@ -363,109 +469,8 @@ ggplot(
 
 :::{.nonincremental}
 
-- `test = "t.test"`: Welch's test (the default is a Wilcoxon test)
+- `test = "t.test"`: Welch's t-test (the default is a Wilcoxon test)
 - `map_signif_level = TRUE`: stars, `FALSE`: p-value
-
-:::
-
-# Compare three groups {.inverse}
-
-## What changes with three species?
-
-Three pairs: setosa vs. versicolor, setosa vs. virginica, versicolor vs. virginica
-
-. . .
-
-Chance of at least one false positive, if there are no real differences (independent tests, each at the 5% level):
-
-| Number of tests | Chance of at least one false positive |
-|---:|---:|
-| 1 | 5% |
-| 3 | 14.3% |
-| 10 | 40.1% |
-
-. . .
-
-A 5% threshold for each test does not give 5% protection across several tests → **adjust the p-values**
-
-:::{.aside}
-
-The iris tests share data and are not independent, so 14.3% is not their exact error rate.
-
-:::
-
-## Pairwise comparisons in R
-
-```{r}
-#| flourish:
-#|   - target: "pool.sd = FALSE"
-pairwise_results <- pairwise.t.test(
-  flowers$sepal_width,
-  flowers$species,
-  pool.sd = FALSE
-)
-pairwise_results
-```
-
-:::{.nonincremental}
-
-- `pool.sd = FALSE`: a Welch's test for each pair
-- The p-values are already adjusted (Holm method is the default)
-- Read row and column: virginica vs. versicolor, p = 0.0018
-- Use the group summary from before for the means
-- Rank-based alternative: `pairwise.wilcox.test()`
-
-:::
-
-## Prepare the plot annotations
-
-Extract the adjusted p-values with `p["row", "column"]`:
-
-```{r}
-p <- pairwise_results$p.value
-
-comparisons <- list(
-  c("setosa", "versicolor"),
-  c("setosa", "virginica"),
-  c("versicolor", "virginica")
-)
-
-adjusted_p <- c(
-  p["versicolor", "setosa"], # setosa vs. versicolor
-  p["virginica", "setosa"], # setosa vs. virginica
-  p["virginica", "versicolor"] # versicolor vs. virginica
-)
-
-p_labels <- paste("p =", format.pval(adjusted_p, digits = 2))
-p_labels
-```
-
-## Plot all three comparisons
-
-```{r}
-#| output-location: column
-#| fig-height: 5.5
-#| flourish:
-#|   - target: "annotations = p_labels,"
-#|   - target: "step_increase = 0.1,"
-test_annotations <- geom_signif(
-  comparisons = comparisons,
-  annotations = p_labels,
-  step_increase = 0.1,
-  tip_length = 0.02
-)
-
-iris_boxplot +
-  test_annotations +
-  labs(
-    caption = "Holm-adjusted Welch's tests"
-  )
-```
-
-:::{.nonincremental}
-
-- With `annotations`, `geom_signif()` does not run new tests: it shows our adjusted p-values
-- `step_increase`: stack the brackets
 
 :::
 
@@ -480,11 +485,7 @@ ggplot(
   flowers,
   aes(x = species, y = sepal_width)
 ) +
-  stat_summary() +
-  labs(
-    x = "Species",
-    y = "Sepal width (cm)"
-  )
+  stat_summary()
 ```
 
 :::{.nonincremental}
@@ -518,7 +519,6 @@ ggplot(
 :::{.nonincremental}
 
 - `fun.data` for error bars, `fun` for points
-- SE bars show the uncertainty of each mean. 
 
 :::
 
@@ -528,39 +528,355 @@ ggplot(
 #| output-location: column
 #| fig-height: 5.5
 #| flourish:
-#|   - target: 'geom = "bar",'
-iris_bars <- ggplot(
+#|   - target-rx: "geom = .bar."
+ggplot(
   flowers,
   aes(x = species, y = sepal_width)
 ) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.15
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "bar",
+    fill = "#28a87d",
+    width = 0.65
+  )
+```
+
+## Add the test to the barplot
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+ggplot(
+  flowers,
+  aes(x = species, y = sepal_width)
+) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.15
+  ) +
   stat_summary(
     fun = mean,
     geom = "bar",
     fill = "#28a87d",
     width = 0.65
   ) +
+  geom_signif(
+    comparisons = list(
+      c("versicolor", "virginica")
+    ),
+    test = "t.test",
+    map_signif_level = TRUE
+  )
+```
+
+
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-height: 5.5
+ggplot(
+  flowers,
+  aes(x = species, y = sepal_width)
+) +
   stat_summary(
     fun.data = mean_se,
     geom = "errorbar",
     width = 0.15
   ) +
-  labs(x = "Species", y = "Sepal width (cm)")
-iris_bars
+  stat_summary(
+    fun = mean,
+    geom = "bar",
+    fill = "#28a87d",
+    width = 0.65
+  ) +
+  geom_signif(
+    comparisons = list(
+      c("versicolor", "virginica")
+    ),
+    test = "t.test",
+    map_signif_level = TRUE
+  )
 ```
 
-## Reuse the test annotations
+:::
 
-The same adjusted p-values work for any plot type
+:::
+
+# Comparing three groups {.inverse}
+
+## Actually, there were three species
+
+**Question:** Does the sepal width differ between the three iris species?
+
+:::{.columns}
+
+:::{.column width="50%"}
 
 ```{r}
-#| fig-width: 8
-#| fig-height: 4.5
-#| flourish:
-#|   - target: "test_annotations"
-iris_bars +
-  test_annotations +
-  labs(caption = "Mean ± SE; Holm-adjusted Welch's tests")
+#| code-fold: true
+#| code-summary: "Reproduce the data"
+flowers_all <- as_tibble(iris) |>
+  select(sepal_width = Sepal.Width, species = Species)
 ```
+
+```{r}
+flowers_all |>
+  summarize(
+    n = n(),
+    mean = mean(sepal_width),
+    .by = species
+  )
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-height: 5.5
+ggplot(flowers_all, aes(x = species, y = sepal_width)) +
+  geom_boxplot() +
+  geom_point(
+    position = position_jitter(width = 0.08, height = 0, seed = 123),
+    alpha = 0.6
+  ) +
+  labs(x = "Species", y = "Sepal width (cm)")
+```
+
+:::
+
+:::
+
+. . . 
+
+Could we just run 3 separate t-tests?
+
+## Two kinds of errors
+
+Every test decision can be wrong in two ways:
+
+| | $H_0$ is true (no difference) | $H_0$ is false (real difference) |
+|---|---|---|
+| **Reject $H_0$** | **Type I error**: false positive (probability α) | Correct |
+| **Do not reject $H_0$** | Correct | **Type II error**: false negative |
+
+. . .
+
+- With α = 0.05, we accept a 5% risk of a false positive
+- Multiple testing increases the risk of a **type I error**
+
+## Error-inflation with multiple testing
+
+- For one test: Chance of false positive is 5% (at α = 0.05)
+- This error potential increases with multiple tests:
+
+. . .
+
+$$P(\text{at least one false positive}) = 1 - (1 - \alpha)^k$$
+
+with $k$ = number of tests
+
+. . .
+
+| Number of tests | Chance of at least one false positive |
+|---:|---:|
+| 1 | 5% |
+| 3 | 14.3% |
+| 10 | 40.1% |
+
+. . .
+
+Solution: p-value correction for multiple testing
+
+## Pairwise comparisons in R
+
+```{r}
+pairwise.t.test(
+  flowers_all$sepal_width,
+  flowers_all$species,
+  pool.sd = FALSE
+)
+```
+
+:::{.nonincremental}
+
+- `pool.sd = FALSE`: Welch's t-test for each pair (the default uses one shared SD across all groups)
+- The p-values are already adjusted (Holm method is the default)
+- Rank-based alternative: `pairwise.wilcox.test()`
+
+:::
+
+## Add the adjusted p-values to a plot
+
+`geom_signif` can't run pairwise tests, so we need to add p-values manually.
+
+```{r}
+#| output-location: column
+#| fig-height: 5.5
+#| flourish:
+#|   - target: "annotations = c"
+#|   - target: "step_increase = 0.1,"
+ggplot(
+  flowers_all,
+  aes(x = species, y = sepal_width)
+) +
+  geom_boxplot() +
+  geom_signif(
+    comparisons = list(
+      c("setosa", "versicolor"),
+      c("setosa", "virginica"),
+      c("versicolor", "virginica")
+    ),
+    annotations = c(
+      "p = 7.5e-15",
+      "p = 9.1e-09",
+      "p = 0.0018"
+    ),
+    step_increase = 0.1,
+    tip_length = 0.02
+  )
+```
+
+:::{.nonincremental}
+
+- `annotations`: show our adjusted p-values (no new tests)
+- `step_increase`: stack the brackets
+
+:::
+
+## Extract the p-values automatically
+
+Typing p-values by hand is error-prone. Extract them with `p["row", "column"]`:
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+pairwise_results <- pairwise.t.test(
+  flowers_all$sepal_width,
+  flowers_all$species,
+  pool.sd = FALSE
+)
+p <- pairwise_results$p.value
+
+comparisons <- list(
+  c("setosa", "versicolor"),
+  c("setosa", "virginica"),
+  c("versicolor", "virginica")
+)
+adjusted_p <- c(
+  p["versicolor", "setosa"],
+  p["virginica", "setosa"],
+  p["virginica", "versicolor"]
+)
+p_labels <- paste(
+  "p =",
+  format.pval(adjusted_p, digits = 2)
+)
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+ggplot(
+  flowers_all,
+  aes(x = species, y = sepal_width)
+) +
+  geom_boxplot() +
+  geom_signif(
+    comparisons = comparisons,
+    annotations = p_labels,
+    step_increase = 0.1,
+    tip_length = 0.02
+  )
+```
+
+:::
+
+:::
+
+## Add the test results to the barplot
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| eval: false
+ggplot(
+  flowers_all,
+  aes(x = species, y = sepal_width)
+) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.15
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "bar",
+    fill = "#28a87d",
+    width = 0.65
+  ) +
+  geom_signif(
+    comparisons = comparisons,
+    annotations = p_labels,
+    step_increase = 0.1,
+    tip_length = 0.02
+  )
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: false
+#| fig-height: 5.5
+ggplot(
+  flowers_all,
+  aes(x = species, y = sepal_width)
+) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.15
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "bar",
+    fill = "#28a87d",
+    width = 0.65
+  ) +
+  geom_signif(
+    comparisons = comparisons,
+    annotations = p_labels,
+    step_increase = 0.1,
+    tip_length = 0.02
+  )
+```
+
+:::
+
+:::
 
 # Now you {.inverse}
 
