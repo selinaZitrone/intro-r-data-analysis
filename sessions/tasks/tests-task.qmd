@@ -22,57 +22,85 @@ number-sections: false
 
 We will again use the `penguins` data included in R.
 
-As always, before you get started with the exercise, make sure that you load the `tidyverse`
+As always, before you get started with the exercise, make sure that you load the `tidyverse`. You also need the packages `ggsignif` and `ggpubr`. Install them if you haven't done so yet:
 
 ```{r}
 #| eval: false
+# install.packages("ggsignif") # only once
+# install.packages("ggpubr") # only once
 library(tidyverse)
+library(ggsignif)
+library(ggpubr)
 ```
 
-## Compare the flipper length of penguins using statistical tests
+## Part 1: Compare two species
 
-Question: Does the mean flipper length differ between the 3 penguin species?
+Question: Does the flipper length differ between Adelie and Chinstrap penguins?
 
-Do separate comparisons for
+**1. Create a smaller version of the data**
 
-- Gentoo vs. Adelie
-- Gentoo vs. Chinstrap
-- Adelie vs. Chinstrap
+Create a table `penguins_small` that only contains Adelie and Chinstrap penguins.
 
-Before you start, create a subset of each species as a vector.
+:::{.callout-note collapse="true"}
 
-For this, you can use the `$` operator:
+## Code to create `penguins_small` (unfold to see)
 
 ```{r}
 #| eval: false
-adelie <- filter(penguins, species == "Adelie")$flipper_len
-chinstrap <- filter(penguins, species == "Chinstrap")$flipper_len
-gentoo <- filter(penguins, species == "Gentoo")$flipper_len
+penguins_small <- penguins |>
+  filter(species %in% c("Adelie", "Chinstrap"))
 ```
 
-Follow the decision tree for statistical tests:
+:::
+
+**2. Plot the two species**
+
+Make a plot that compares the flipper length of the two species, e.g. a boxplot.
+
+**3. Check for normality**
+
+Create a vector with the flipper lengths of each species.
+
+:::{.callout-note collapse="true"}
+
+## Code to create the vectors (unfold to see)
 
 ```{r}
-#| echo: false
-knitr::include_graphics(here::here(
-  "sessions/slides/img/day3/tests_overview.png"
-))
+#| eval: false
+adelie <- filter(penguins_small, species == "Adelie")$flipper_len
+chinstrap <- filter(penguins_small, species == "Chinstrap")$flipper_len
 ```
 
-After you have the test results, visualize the differences in flipper length between species.
+:::
 
-You can e.g. choose one of the following plots:
+Use the Shapiro-Wilk test and QQ-plots to check if the flipper lengths of both species are roughly normally distributed.
 
-- Boxplot with notches
-- Mean and standard error of the mean (as mean with errorbar, as barplot, ...)
+**4. Compare the means**
 
-Add a `geom_signif()` layer to the plot you just created to indicate your test results
+Use Welch's t-test to compare the mean flipper length of the two species. How would you report the result?
 
-Hint: If you used different tests for different comparisons, you can add multiple `geom_signif()` layers to the same plot — one per test, each with its own `comparisons`.
+**5. Add the test result to the plot**
+
+Add a `geom_signif()` layer to your plot from step 2 to show the result of the t-test.
+
+## Part 2: Compare all three species
+
+Question: Does the flipper length differ between Adelie, Chinstrap and Gentoo penguins?
+
+**1. Pairwise comparisons**
+
+Use the full `penguins` table and compare all three species with `pairwise.t.test()`. Which species differ?
+
+**2. Plot with significance levels**
+
+Make a plot of the flipper length of all three species and add the adjusted p-values with `geom_signif()`. You can type the p-values by hand or extract them automatically (see slides).
 
 ## For the fast ones
 
 You can do these in any order, or skip them and just take a break.
 
-- Use a different visualization method than before to show the differences in flipper length between species
-- Change the appearance of the plot (colors, themes, ...) from the task
+- Use a different plot type to show the differences (e.g. mean ± standard error, barplot)
+- If you typed the p-values by hand: extract them automatically from the result of `pairwise.t.test()` as you saw on the slides
+- Make your plot look nice (colors, theme, axis labels, ...)
+- Compare Adelie and Chinstrap with a Wilcoxon rank-sum test. Do you come to the same conclusion as with the t-test?
+- Check the flipper length of Gentoo penguins for normality with the Shapiro-Wilk test and a QQ-plot. What do you conclude?

@@ -3,223 +3,266 @@ title: "Solution to statistical test task"
 code-line-numbers: false
 ---
 
-## Compare the flipper length of penguins using statistical tests
+## Get started
 
-First, create subsets of the flipper length of all species as vectors:
-
-```{r echo=TRUE}
+```{r}
 #| message: false
-
 library(tidyverse)
-adelie <- filter(penguins, species == "Adelie")$flipper_len
-gentoo <- filter(penguins, species == "Gentoo")$flipper_len
-chinstrap <- filter(penguins, species == "Chinstrap")$flipper_len
+library(ggsignif)
+library(ggpubr)
 ```
 
-### Step 1: Test all groups for normality
+## Part 1: Compare two species
 
-**With Shapiro-Wilk**
+### 1. Create a smaller version of the data
 
-The Shapiro-Wilk test suggests that Adelie and Chinstrap are normally distributed, but Gentoo is not.
+```{r}
+penguins_small <- penguins |>
+  filter(species %in% c("Adelie", "Chinstrap"))
+```
 
-```{r, echo=TRUE}
+### 2. Plot the two species
+
+```{r}
+#| warning: false
+ggplot(penguins_small, aes(x = species, y = flipper_len)) +
+  geom_boxplot()
+```
+
+The warning about 1 removed row comes from a missing value in `flipper_len`.
+
+### 3. Check for normality
+
+```{r}
+adelie <- filter(penguins_small, species == "Adelie")$flipper_len
+chinstrap <- filter(penguins_small, species == "Chinstrap")$flipper_len
+
 shapiro.test(adelie)
-shapiro.test(gentoo)
 shapiro.test(chinstrap)
 ```
 
-**With QQ-plots**
-
-```{r, echo=TRUE}
+```{r}
 #| warning: false
-library(patchwork) # using patchwork to combine multiple plots into one
-ch <- ggpubr::ggqqplot(chinstrap) + labs(title = "chinstrap")
-ad <- ggpubr::ggqqplot(adelie) + labs(title = "adelie")
-ge <- ggpubr::ggqqplot(gentoo) + labs(title = "gentoo")
-
-ch + ge + ad
+ggqqplot(adelie)
+ggqqplot(chinstrap)
 ```
 
-### Compare Chinstrap vs. Adelie
+Both Shapiro-Wilk tests give large p-values and the points in both QQ-plots follow the line. The flipper lengths of both species are roughly normally distributed.
 
-Both are normally distributed, so we can compare variances for Chinstrap and Adelie penguins:
+### 4. Compare the means
 
-```{r, echo=TRUE}
-var.test(chinstrap, adelie)
+```{r}
+t.test(adelie, chinstrap)
 ```
 
-This indicates that the variances do not differ between Chinstrap and Adelie penguins.
-Therefore, we can use a t-test to compare mean flipper length:
+Mean flipper length was 5.9 mm shorter in Adelie than in Chinstrap penguins (Welch's t-test, $t_{119.7}$ = -5.78, p < 0.001).
 
-```{r echo=TRUE}
-t.test(chinstrap, adelie, var.equal = TRUE)
-```
+### 5. Add the test result to the plot
 
-The t-test suggests, that the mean flipper length differs between Chinstrap and Adelie penguins.
-
-### Compare Chinstrap vs. Gentoo
-
-Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare
-the two groups:
-
-```{r, echo=TRUE}
-wilcox.test(chinstrap, gentoo)
-```
-
-The Wilcoxon test suggests that the flipper lengths differ between Chinstrap and Gentoo penguins.
-
-### Compare Adelie vs. Gentoo
-
-Gentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare
-the two groups:
-
-
-```{r, echo=TRUE}
-wilcox.test(adelie, gentoo)
-```
-
-The Wilcoxon test suggests that the flipper lengths differ between Adelie and Gentoo penguins.
-
-### Visual comparison
-
-The boxplot supports the findings of the statistical tests. Notches do not overlap.
-
-```{r, echo=TRUE}
+```{r}
 #| warning: false
-penguins |>
-  ggplot(aes(x = species, y = flipper_len)) +
-  geom_boxplot(notch = TRUE)
-```
-
-Similarly the standard errors of the means do not overlap between the species.
-
-```{r echo = TRUE}
-#| warning: false
-penguins |>
-  ggplot(aes(x = species, y = flipper_len)) +
-  stat_summary()
-```
-
-To add the significance levels of the tests performed, I used
-the `geom_signif()` layer provided by the `ggsignif` package.
-
-Since I performed two different tests (t-test for the comparison of Chinstrap and
-Adelie penguins, Wilcoxon test for the other two comparisons), I added two 
-different significance layers that distinguish the two tests.
-
-For the boxplot:
-
-```{r echo = TRUE}
-#| warning: false
-library(ggsignif)
-penguins_boxplot <- penguins |>
-  ggplot(aes(x = species, y = flipper_len)) +
-  geom_boxplot(notch = TRUE) +
+ggplot(penguins_small, aes(x = species, y = flipper_len)) +
+  geom_boxplot() +
   geom_signif(
-    comparisons = list(
-      c("Chinstrap", "Adelie")
-    ),
+    comparisons = list(c("Adelie", "Chinstrap")),
     test = "t.test",
-    test.args = list(var.equal = TRUE),
-    map_signif_level = TRUE
-  ) +
-  geom_signif(
-    comparisons = list(
-      c("Chinstrap", "Gentoo"),
-      c("Gentoo", "Adelie")
-    ),
-    test = "wilcox.test",
-    y_position = c(235, 240),
     map_signif_level = TRUE
   )
+```
 
-# To print the plot, just type its name:
+## Part 2: Compare all three species
+
+### 1. Pairwise comparisons
+
+```{r}
+pairwise.t.test(
+  penguins$flipper_len,
+  penguins$species,
+  pool.sd = FALSE
+)
+```
+
+All three species differ in their mean flipper length (Holm-adjusted p < 0.001 for all pairs).
+
+### 2. Plot with significance levels
+
+**Typing the p-values by hand**
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(x = species, y = flipper_len)) +
+  geom_boxplot() +
+  geom_signif(
+    comparisons = list(
+      c("Adelie", "Chinstrap"),
+      c("Adelie", "Gentoo"),
+      c("Chinstrap", "Gentoo")
+    ),
+    annotations = c("p < 0.001", "p < 0.001", "p < 0.001"),
+    step_increase = 0.1,
+    tip_length = 0.02
+  )
+```
+
+**Extracting the p-values automatically**
+
+In the p-value matrix, the rows are Chinstrap and Gentoo and the columns are Adelie and Chinstrap:
+
+```{r}
+pairwise_results <- pairwise.t.test(
+  penguins$flipper_len,
+  penguins$species,
+  pool.sd = FALSE
+)
+p <- pairwise_results$p.value
+p
+
+comparisons <- list(
+  c("Adelie", "Chinstrap"),
+  c("Adelie", "Gentoo"),
+  c("Chinstrap", "Gentoo")
+)
+adjusted_p <- c(
+  p["Chinstrap", "Adelie"],
+  p["Gentoo", "Adelie"],
+  p["Gentoo", "Chinstrap"]
+)
+p_labels <- paste("p =", format.pval(adjusted_p, digits = 2))
+p_labels
+```
+
+Very small p-values are shown as "p = <2e-16". The bonus section at the end shows how to get "p < 0.001" instead.
+
+```{r}
+#| warning: false
+penguins_boxplot <- ggplot(penguins, aes(x = species, y = flipper_len)) +
+  geom_boxplot() +
+  geom_signif(
+    comparisons = comparisons,
+    annotations = p_labels,
+    step_increase = 0.1,
+    tip_length = 0.02
+  )
 penguins_boxplot
 ```
 
-For a plot with mean and errorbar:
+## For the fast ones
 
-```{r echo =TRUE}
-#| warning: false
-penguins |>
-  ggplot(aes(x = species, y = flipper_len)) +
-  stat_summary() +
-  geom_signif(
-    comparisons = list(
-      c("Chinstrap", "Adelie")
-    ),
-    test = "t.test",
-    test.args = list(var.equal = TRUE),
-    map_signif_level = TRUE,
-    y_position = 200,
-    tip_length = 0.01
-  ) +
-  geom_signif(
-    comparisons = list(
-      c("Chinstrap", "Gentoo"),
-      c("Gentoo", "Adelie")
-    ),
-    test = "wilcox.test",
-    y_position = c(216, 218),
-    map_signif_level = TRUE,
-    tip_length = 0.01
-  )
-```
+### Other plot types
 
-You can also do a barplot with error bars. In this case, the error bars are barely
-visible, because the standard error of the mean is quite small compared to the mean.
+Mean ± standard error:
 
-```{r echo = TRUE}
+```{r}
 #| warning: false
 ggplot(penguins, aes(x = species, y = flipper_len)) +
   stat_summary(
     fun.data = mean_se,
     geom = "errorbar",
-    width = 0.2
+    width = 0.15
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "point",
+    size = 3
+  ) +
+  geom_signif(
+    comparisons = comparisons,
+    annotations = p_labels,
+    step_increase = 0.1,
+    tip_length = 0.02
+  )
+```
+
+Barplot with error bars:
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(x = species, y = flipper_len)) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.15
   ) +
   stat_summary(
     fun = mean,
     geom = "bar",
-    fill = "grey70"
+    fill = "grey70",
+    width = 0.65
   ) +
   geom_signif(
-    comparisons = list(
-      c("Chinstrap", "Adelie")
-    ),
-    test = "t.test",
-    test.args = list(var.equal = TRUE),
-    map_signif_level = TRUE,
-    y_position = 205,
-    tip_length = 0.01
-  ) +
-  geom_signif(
-    comparisons = list(
-      c("Chinstrap", "Gentoo"),
-      c("Gentoo", "Adelie")
-    ),
-    test = "wilcox.test",
-    y_position = c(221, 230),
-    map_signif_level = TRUE,
-    tip_length = 0.01
+    comparisons = comparisons,
+    annotations = p_labels,
+    step_increase = 0.3,
+    tip_length = 0.02
   )
 ```
 
-### For the fast ones
-
-Of course you can further improve the appearance of you plots. Here is an example
-of a simple, yet elegant version of the boxplot from above:
+### Make the plot look nice
 
 ```{r}
 #| warning: false
 penguins_boxplot +
-  labs(
-    y = "Flipper length (mm)"
-  ) +
+  labs(x = NULL, y = "Flipper length (mm)") +
   theme_classic() +
   theme(
     text = element_text(size = 16),
-    axis.title.x = element_blank(),
     panel.grid.major.y = element_line(color = "grey90")
   )
+```
 
+### Wilcoxon rank-sum test
+
+```{r}
+wilcox.test(adelie, chinstrap)
+```
+
+The Wilcoxon test comes to the same conclusion: flipper length was smaller in Adelie than in Chinstrap penguins (median 190 vs. 196 mm; Wilcoxon rank-sum test, W = 2733.5, p < 0.001).
+
+### Normality of Gentoo penguins
+
+```{r}
+#| warning: false
+gentoo <- filter(penguins, species == "Gentoo")$flipper_len
+
+shapiro.test(gentoo)
+ggqqplot(gentoo)
+```
+
+The Shapiro-Wilk test gives a small p-value, but the QQ-plot shows only small deviations from the line. With 123 Gentoo penguins, the test detects even small deviations from normality. The t-test is fine here.
+
+## Bonus: Many groups
+
+With many groups, typing the comparisons by hand gets tedious. Instead, you can turn the p-value matrix into a table with one row per comparison:
+
+```{r}
+p_table <- pairwise_results$p.value |>
+  as_tibble(rownames = "group1") |>
+  pivot_longer(!group1, names_to = "group2", values_to = "p_adj") |>
+  drop_na(p_adj) |>
+  mutate(
+    label = if_else(
+      p_adj < 0.001,
+      "p < 0.001",
+      paste("p =", signif(p_adj, 2))
+    )
+  )
+p_table
+```
+
+- `as_tibble(rownames = "group1")`: turns the matrix into a tibble and keeps the row names as a column
+- `drop_na()`: removes the empty upper triangle of the matrix
+- `if_else()`: shows "p < 0.001" for very small p-values
+
+`map2()` combines `group2` and `group1` into the list of comparisons:
+
+```{r}
+#| warning: false
+ggplot(penguins, aes(x = species, y = flipper_len)) +
+  geom_boxplot() +
+  geom_signif(
+    comparisons = map2(p_table$group2, p_table$group1, c),
+    annotations = p_table$label,
+    step_increase = 0.1,
+    tip_length = 0.02
+  )
 ```
