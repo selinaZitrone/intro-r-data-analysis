@@ -1,370 +1,264 @@
-# Code for slides from day 3
-# Author: Selina Baldauf (selina.baldauf@fu-berlin.de)
-# Hint use the document outline (button top right next to source) to navigate the script
+# Title: Statistical tests (Day 3 slides)
+# Date: 2026-10-17
+# Author: Selina Baldauf
+# Purpose: All code from the statistical tests slides, in slide order.
 
 library(tidyverse)
-# 1. statistical tests ----------------------------------------------------
+library(ggsignif)
 
-# create some dummy data
+# Compare two species -----------------------------------------------------
 
-set.seed(123)
-mydata <- tibble(
-  normal = rnorm(
-    n = 200,
-    mean = 50,
-    sd = 5
-  ),
-  non_normal = runif(
-    n = 200,
-    min = 45,
-    max = 55
+flowers <- as_tibble(iris) |>
+  filter(Species %in% c("versicolor", "virginica")) |>
+  select(sepal_width = Sepal.Width, species = Species) |>
+  droplevels()
+flowers
+
+flowers |>
+  summarize(
+    n = n(),
+    mean = mean(sepal_width),
+    sd = sd(sepal_width),
+    .by = species
   )
+
+ggplot(flowers, aes(x = species, y = sepal_width)) +
+  geom_boxplot() +
+  geom_point(
+    position = position_jitter(width = 0.08, height = 0, seed = 123),
+    alpha = 0.6
+  ) +
+  labs(x = "Species", y = "Sepal width (cm)")
+
+### Group vectors
+versicolor <- filter(flowers, species == "versicolor")$sepal_width
+virginica <- filter(flowers, species == "virginica")$sepal_width
+versicolor
+
+### Normality
+shapiro.test(versicolor)
+shapiro.test(virginica)
+
+ggpubr::ggqqplot(versicolor)
+ggpubr::ggqqplot(virginica)
+
+# Simulated non-normal examples
+set.seed(123)
+skewed <- rlnorm(50, meanlog = 0, sdlog = 0.6)
+set.seed(4)
+heavy_tails <- rt(50, df = 2)
+
+ggpubr::ggqqplot(skewed, title = "Skewed: points form an arch")
+ggpubr::ggqqplot(heavy_tails, title = "Heavy tails: both ends bend away")
+
+### Welch's t-test
+t.test(versicolor, virginica)
+
+### Wilcoxon rank-sum test
+wilcox.test(versicolor, virginica)
+
+### Paired t-test
+sleep_paired <- sleep |>
+  pivot_wider(
+    names_from = group,
+    names_prefix = "drug_",
+    values_from = extra
+  )
+sleep_paired
+
+t.test(
+  sleep_paired$drug_1,
+  sleep_paired$drug_2,
+  paired = TRUE
 )
 
-# histogram
-mydata %>%
-  pivot_longer(cols = 1:2, names_to = "type", values_to = "value") %>%
-  ggplot() +
-  geom_histogram(alpha = 0.5, aes(x = value, fill = type, y = ..density..)) + # plot probability instead of count on y axis
-  stat_function(
-    fun = dnorm,
-    args = list(
-      mean = 50,
-      sd = 5
-    ),
-    color = "darkorange", size = 1
-  ) +
-  stat_function(
-    fun = dnorm,
-    args = list(
-      mean = mean(mydata$non_normal),
-      sd = sd(mydata$non_normal)
-    ),
-    color = "cyan4", size = 1
-  ) +
-  scale_fill_manual(values = c("cyan4", "darkorange")) +
-  theme(legend.position = c(0.85, 0.85))
+# Visualize test results --------------------------------------------------
 
+ggplot(
+  flowers,
+  aes(x = species, y = sepal_width)
+) +
+  geom_boxplot()
 
-
-# Normality tests ---------------------------------------------------------
-
-# KS-Test -----------------------------------------------------------------
-
-ks.test(mydata$normal,
-        "pnorm",
-        mean = mean(mydata$normal),
-        sd = sd(mydata$normal)
-) #normal
-
-ks.test(mydata$non_normal,
-        "pnorm",
-        mean = mean(mydata$non_normal),
-        sd = sd(mydata$non_normal)
-) # normal
-
-
-# Shapiro Wilk test -------------------------------------------------------
-
-shapiro.test(mydata$normal) # normal
-shapiro.test(mydata$non_normal) # not normal
-
-
-# QQ-Plots ----------------------------------------------------------------
-ggplot(mydata, aes(sample = normal)) +
-  stat_qq() +
-  stat_qq_line()
-
-ggplot(mydata, aes(sample = non_normal)) +
-  stat_qq() +
-  stat_qq_line()
-
-
-# Variance tests ----------------------------------------------------------
-InsectSprays <- InsectSprays %>%
-  filter(spray %in% c("A", "B", "E")) %>%
-  mutate(spray = recode(spray, "E" = "C"))
-
-TreatA <- filter(InsectSprays,
-                 spray == "A")$count
-TreatB <- filter(InsectSprays,
-                 spray == "B")$count
-TreatC <- filter(InsectSprays,
-                 spray == "C")$count
-
-ggplot(InsectSprays, aes(x = spray, y = count)) +
-  geom_boxplot(notch = TRUE)
-
-shapiro.test(TreatA) # normal
-shapiro.test(TreatB) # normal
-shapiro.test(TreatC) # normal
-
-var.test(TreatA, TreatB) # variances equal
-var.test(TreatA, TreatC) # variances not equal
-
-
-# t-test ------------------------------------------------------------------
-
-t.test(TreatA, TreatB, var.equal = TRUE)
-t.test(TreatA, TreatC, var.equal = FALSE) # Welch test for unequal variances
-
-# Plot the results
-
-InsectSprays |>
-  filter(spray %in% c("A", "B", "C")) |>
-  ggplot(aes(x=spray, y=count))+
-  geom_boxplot()+
-  geom_point()
-
-
-# Wilcoxon test -----------------------------------------------------------
-
-wilcox.test(TreatA, TreatB)
-
-
-# paired test -------------------------------------------------------------
-
-t.test(TreatA, TreatB, var.equal = TRUE, paired = TRUE)
-t.test(TreatA, TreatB, var.equal = FALSE, paired = TRUE)
-wilcox.test(TreatA, TreatB, paired = TRUE)
-
-
-
-# Plot the results --------------------------------------------------------
-
-# Plot the results --------------------------------------------------------
-
-ggplot(InsectSprays, aes(x = spray, y = count)) +
-  geom_boxplot(notch = TRUE) +
-  ggsignif::geom_signif(
+ggplot(
+  flowers,
+  aes(x = species, y = sepal_width)
+) +
+  geom_boxplot() +
+  geom_signif(
     comparisons = list(
-      c("A", "B"),
-      c("B", "C"),
-      c("A", "C")
+      c("versicolor", "virginica")
     ),
     test = "t.test",
-    map_signif_level = TRUE,
-    y_position = c(23,24,25)
+    map_signif_level = TRUE
   )
 
-# Plot a bar plot with errorbars
-
-ggplot(InsectSprays, aes(x = spray, y = count)) +
+### Means and error bars
+ggplot(
+  flowers,
+  aes(x = species, y = sepal_width)
+) +
   stat_summary()
 
-ggplot(InsectSprays, aes(x = spray, y = count)) +
+ggplot(
+  flowers,
+  aes(x = species, y = sepal_width)
+) +
   stat_summary(
     fun.data = mean_se,
-    geom = "errorbar"
+    geom = "errorbar",
+    width = 0.15
   ) +
   stat_summary(
-    fun.y = mean,
+    fun = mean,
     geom = "point",
     color = "#28a87d",
     size = 4
   )
 
-# Bar with errorbars
-ggplot(InsectSprays, aes(x = spray, y = count)) +
+### Barplot
+ggplot(
+  flowers,
+  aes(x = species, y = sepal_width)
+) +
   stat_summary(
     fun.data = mean_se,
     geom = "errorbar",
-    width = .3
+    width = 0.15
   ) +
   stat_summary(
-    fun.y = mean,
+    fun = mean,
     geom = "bar",
-    size = 4
-  )+
-  ggsignif::geom_signif(
+    fill = "#28a87d",
+    width = 0.65
+  )
+
+ggplot(
+  flowers,
+  aes(x = species, y = sepal_width)
+) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.15
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "bar",
+    fill = "#28a87d",
+    width = 0.65
+  ) +
+  geom_signif(
     comparisons = list(
-      c("A", "B"),
-      c("B", "C"),
-      c("A", "C")
+      c("versicolor", "virginica")
     ),
     test = "t.test",
-    map_signif_level = TRUE,
-    y_position = c(17,18,19)
+    map_signif_level = TRUE
   )
 
-# 2. Linear models --------------------------------------------------------
-# patchwork package to combine plots
-# install.packages("patchwork")
-library(patchwork)
-library(performance)
+# Compare three species ---------------------------------------------------
 
-prod <- readr::read_tsv(here::here("data/slides/03_productivity.txt")) %>%
-  mutate(across(site, as_factor))
+flowers_all <- as_tibble(iris) |>
+  select(sepal_width = Sepal.Width, species = Species)
 
-# Hypothesis 1: Productivity increases with species richness:
-regr <- ggplot(prod, aes(x = richness, y = productivity)) +
-  geom_point() +
-  geom_smooth(method = "lm", alpha = 0) +
-  labs(x = "species richness", title = "Linear regression")
-regr_m <- ggplot(prod, aes(color = site, x = richness, y = productivity)) +
-  geom_point() +
-  geom_smooth(method = "lm", alpha = 0) +
-  labs(x = "species richness", title = "Analysis of covariance")
-
-box <- ggplot(prod, aes(x = site, y = productivity)) +
-  geom_boxplot(aes(color = site)) +
-  labs(title = "Analysis of variance")
-
-(regr  / box / regr_m)
-
-
-# linear regression -------------------------------------------------------
-# does species richness influence productivity?
-
-ggplot(prod, aes(x = richness, y = productivity)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  theme(
-    axis.title.y = element_text(color = "#4C7488", face = "bold"),
-    axis.title.x = element_text(color = "#D78974", face = "bold")
+flowers_all |>
+  summarize(
+    n = n(),
+    mean = mean(sepal_width),
+    .by = species
   )
 
-prod_lm <- lm(productivity ~ richness,
-              data = prod)
-
-# test for significance
-drop1(prod_lm, test = "F")
-# summary table
-summary(prod_lm)
-
-# test model assumptions
-# with performance package
-performance::check_model(prod_lm)
-# with base plot
-par(mfrow = c(2, 2)) # change graphics settings to fit 4 plots
-plot(prod_lm) # The actual diagnostic plots
-par(mfrow = c(1, 1)) # change graphics settings back to default
-
-# plot the model
-
-# OPTION 1: extract model coefficients
-prod_lm$coefficients
-intercept <- prod_lm$coefficients[1]
-slope <- prod_lm$coefficients[2]
-
-ggplot(prod, aes(x = richness, y = productivity)) +
-  geom_point() +
-  geom_abline(
-    slope = slope,
-    intercept = intercept
-  )
-
-# OPTION 2: geom_smooth
-
-ggplot(prod, aes(x = richness, y = productivity)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE)
-
-# Ancova ------------------------------------------------------------------
-
-
-# does species richness and site influence productivity
-ggplot(prod, aes(x = richness, y = productivity, color = site)) +
-  geom_point()
-# without interaction
-prod_lm2a <- lm(productivity ~ richness + site, data = prod)
-# with interaction
-prod_lm2b <- lm(productivity ~ richness + site + richness:site, data = prod)
-# or the same in short version:
-# prod_lm2b <- lm(productivity ~ richness * site, data = prod)
-
-# test for significant effects
-drop1(prod_lm2a, test = "F") # no interaction
-drop1(prod_lm2b, test = "F") # interaction
-
-
-# extract coefficients
-summary(prod_lm2a)
-
-# test assumptions
-performance::check_model(prod_lm2a)
-
-# plot model
-
-# OPTION 1: geom_smooth() for model with interaction
-ggplot(prod, aes(x = richness,
-                 y = productivity,
-                 color = site)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# OPTION 2: extract coefficients
-
-prod_lm2a$coefficients
-slope <- prod_lm2a$coefficients[2]
-intercept1 <- prod_lm2a$coefficients[1]
-intercept2 <- prod_lm2a$coefficients[1] + prod_lm2a$coefficients[3]
-
-ggplot(prod, aes(x = richness, y = productivity, color = site)) +
-  geom_point() +
-  scale_color_manual(values = c("#4C7488", "#D78974")) +
-  geom_abline(slope = slope, intercept = intercept1, color = "#4C7488") +
-  geom_abline(slope = slope, intercept = intercept2, color = "#D78974")
-
-# OPTION 3: predict
-
-# step 1: create some data to predict from
-pred_data <- tidyr::expand_grid(
-  richness = min(prod$richness):max(prod$richness),
-  site = c("site1", "site2")
-)
-# step2: predict productivity values from pred_data
-predictions <- predict(prod_lm2a, newdata = pred_data)
-
-# step 3: add predictions to the tibble
-pred_data$productivity <- predictions
-
-# step 4: Add predictions with geom_line
-ggplot(prod, aes(x = richness,
-                 y = productivity,
-                 color = site)) +
-  geom_point() +
-  geom_line(data = pred_data)
-
-
-
-# Anova -------------------------------------------------------------------
-
-# chickwts data set: does the diet effect the weight of chicken?
-chickwts
-
-ggplot(chickwts, aes(x = factor(feed), y = weight)) +
-  geom_boxplot()
-
-# fit the model
-lm_chicken <- lm(weight ~ feed, data = chickwts)
-# check for significant effects
-drop1(lm_chicken, test = "F")
-
-# coefficients
-summary(lm_chicken)
-
-# check assumptions
-performance::check_model(lm_chicken)
-
-# plot the model
-
-# boxplot
-chickwts %>%
-  mutate(feed = as.factor(feed)) %>%
-  mutate(feed = fct_reorder(feed, -weight)) %>%
-  ggplot(aes(
-    x = feed,
-    y = weight,
-    color = feed
-  )) +
+ggplot(flowers_all, aes(x = species, y = sepal_width)) +
   geom_boxplot() +
   geom_point(
-    size = 3, alpha = 0.25,
-    position = position_jitter(width = 0.2, seed = 0)
+    position = position_jitter(width = 0.08, height = 0, seed = 123),
+    alpha = 0.6
   ) +
-  coord_flip() +
-  ggsci::scale_color_uchicago() +
-  labs(y = "weight [g]", x = "Diet") +
-  theme(legend.position = "none")
+  labs(x = "Species", y = "Sepal width (cm)")
 
+### Pairwise Welch's t-tests with Holm-adjusted p-values
+pairwise.t.test(
+  flowers_all$sepal_width,
+  flowers_all$species,
+  pool.sd = FALSE
+)
+
+### Add p-values by hand
+ggplot(
+  flowers_all,
+  aes(x = species, y = sepal_width)
+) +
+  geom_boxplot() +
+  geom_signif(
+    comparisons = list(
+      c("setosa", "versicolor"),
+      c("setosa", "virginica"),
+      c("versicolor", "virginica")
+    ),
+    annotations = c(
+      "p = 7.5e-15",
+      "p = 9.1e-09",
+      "p = 0.0018"
+    ),
+    step_increase = 0.1,
+    tip_length = 0.02
+  )
+
+### Extract p-values automatically
+pairwise_results <- pairwise.t.test(
+  flowers_all$sepal_width,
+  flowers_all$species,
+  pool.sd = FALSE
+)
+p <- pairwise_results$p.value
+
+comparisons <- list(
+  c("setosa", "versicolor"),
+  c("setosa", "virginica"),
+  c("versicolor", "virginica")
+)
+# p["row", "column"]
+adjusted_p <- c(
+  p["versicolor", "setosa"],
+  p["virginica", "setosa"],
+  p["virginica", "versicolor"]
+)
+p_labels <- paste(
+  "p =",
+  format.pval(adjusted_p, digits = 2)
+)
+
+ggplot(
+  flowers_all,
+  aes(x = species, y = sepal_width)
+) +
+  geom_boxplot() +
+  geom_signif(
+    comparisons = comparisons,
+    annotations = p_labels,
+    step_increase = 0.1,
+    tip_length = 0.02
+  )
+
+### Barplot with adjusted p-values
+ggplot(
+  flowers_all,
+  aes(x = species, y = sepal_width)
+) +
+  stat_summary(
+    fun.data = mean_se,
+    geom = "errorbar",
+    width = 0.15
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "bar",
+    fill = "#28a87d",
+    width = 0.65
+  ) +
+  geom_signif(
+    comparisons = comparisons,
+    annotations = p_labels,
+    step_increase = 0.1,
+    tip_length = 0.02
+  )
