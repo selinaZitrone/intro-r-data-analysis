@@ -27,7 +27,8 @@ pivot_longer(billboard, cols = wk1:wk76, names_to = "week", values_to = "rank")
 pivot_wider(
   fish_encounters,
   names_from = station,
-  values_from = seen
+  values_from = seen,
+  values_fill = 0
 )
 
 #### Extras
@@ -40,14 +41,6 @@ charts <- pivot_longer(
   values_drop_na = TRUE
 )
 charts
-
-# Replace missing values with 0 (fish not seen at that station)
-pivot_wider(
-  fish_encounters,
-  names_from = station,
-  values_from = seen,
-  values_fill = 0
-)
 
 # Penguins boxplot
 penguins |>

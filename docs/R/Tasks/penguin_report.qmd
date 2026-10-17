@@ -1,6 +1,7 @@
 ---
 title: "Penguin Report"
 author: "Selina Baldauf"
+date: today
 format: html
 execute:
   warning: false
@@ -24,19 +25,13 @@ The data contains measurements for three penguin species:
 You can find more information about the data on the
 [palmerpenguins website](https://allisonhorst.github.io/palmerpenguins/).
 
-## Data overview
-
-```{r}
-head(penguins)
-```
-
-The dataset contains `r nrow(penguins)` penguins
-from `r length(unique(penguins$species))` species.
+The dataset contains `r nrow(penguins)` penguins.
 
 ## Analysis
 
 ```{r}
 #| echo: false
+#| warning: false
 ggplot(penguins, aes(x = bill_len, y = bill_dep, color = species)) +
   geom_point() +
   labs(
@@ -45,12 +40,4 @@ ggplot(penguins, aes(x = bill_len, y = bill_dep, color = species)) +
     color = "Species"
   ) +
   theme_minimal()
-```
-
-```{r}
-ggplot(penguins, aes(x = species, y = body_mass, fill = species)) +
-  geom_boxplot() +
-  labs(x = "Species", y = "Body mass (g)") +
-  theme_minimal() +
-  theme(legend.position = "none")
 ```

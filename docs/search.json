@@ -95,7 +95,7 @@
     "href": "sessions/tasks/intro-rstudio-task.html#create-an-rstudio-project",
     "title": "Task: Introduction to RStudio",
     "section": "Create an RStudio project",
-    "text": "Create an RStudio project\nCreate an RStudio project for this workshop:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nGive it a name (e.g. r-workshop)\nChoose where to save it\nClick Create Project\n\nNow have a look at the Files pane in RStudio (bottom right). You should see a folder that has only the .Rproj file in it.\nUse the Files pane to create a basic folder structure in your project:\n\ndata/ for data files\nR/ for R scripts\n\n\n\n\n\n\n\nTipI don’t see my new folders\n\n\n\nSometimes you need to click the “Refresh” button in the Files pane (top right of that pane) to see the new folders you just created."
+    "text": "Create an RStudio project\nCreate an RStudio project for this workshop:\n\nFile -&gt; New Project -&gt; New Directory -&gt; New Project\nGive it a name (e.g. r-workshop)\nChoose where to save it\nClick Create Project\n\nNow have a look at the Files pane in RStudio (bottom right). You should see a folder that has only the .Rproj file in it.\nUse the Files pane to create a basic folder structure in your project:\n\ndata/ for data files\nR/ for R scripts\n\n\n\n\n\n\n\nI don’t see my new folders\n\n\n\nSometimes you need to click the “Refresh” button in the Files pane (top right of that pane) to see the new folders you just created."
   },
   {
     "objectID": "sessions/tasks/intro-rstudio-task.html#create-and-run-an-r-script",
@@ -109,7 +109,7 @@
     "href": "sessions/tasks/intro-rstudio-task.html#optional-tasks-if-you-finish-early",
     "title": "Task: Introduction to RStudio",
     "section": "Optional tasks (if you finish early)",
-    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nAdd your own data to the project\n\nFind one of your own datasets (e.g. a spreadsheet, csv file, or something similar) on your computer\nCopy it into the data/ folder of your project\n\n\n\n\n\n\n\nNoteOpen your project in the file explorer\n\n\n\nYou have to open your project in your file explorer (Finder on Mac, File Explorer on Windows) to copy the file into the data/ folder. You cannot copy files into that folder from RStudio. The path in the Files pane shows you where your project lives.\n\n\n\nIn RStudio, check if you see the file in the data/ folder\n\nLater, you can try to read this file into R.\n\n\nChange the RStudio theme\n\nGo to Tools -&gt; Global Options -&gt; Appearance\nBrowse through the different themes and choose one you like\nClick Apply to see how it looks (you can change it as many times as you like)\n\n\n\nClose and reopen your project\n\nClose RStudio completely\nFind your project folder in your file explorer (Finder on Mac, File Explorer on Windows)\nDouble-click the .Rproj file to open the project in RStudio again"
+    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nAdd your own data to the project\n\nFind one of your own datasets (e.g. a spreadsheet, csv file, or something similar) on your computer\nCopy it into the data/ folder of your project\n\n\n\n\n\n\n\nOpen your project in the file explorer\n\n\n\nYou have to open your project in your file explorer (Finder on Mac, File Explorer on Windows) to copy the file into the data/ folder. You cannot copy files into that folder from RStudio. The path in the Files pane shows you where your project lives.\n\n\n\nIn RStudio, check if you see the file in the data/ folder\n\nLater, you can try to read this file into R.\n\n\nChange the RStudio theme\n\nGo to Tools -&gt; Global Options -&gt; Appearance\nBrowse through the different themes and choose one you like\nClick Apply to see how it looks (you can change it as many times as you like)\n\n\n\nClose and reopen your project\n\nClose RStudio completely\nFind your project folder in your file explorer (Finder on Mac, File Explorer on Windows)\nDouble-click the .Rproj file to open the project in RStudio again"
   },
   {
     "objectID": "sessions/tasks/ggplot-task-2.html",
@@ -123,7 +123,7 @@
     "href": "sessions/tasks/ggplot-task-2.html#getting-started",
     "title": "Task 2: Beautify and save plots",
     "section": "Getting started",
-    "text": "Getting started\nTake one of the plots you made in Task 1 and improve it step by step.\nFirst, save the plot in a variable so you can build on it without rewriting the whole plot each time:\n\nmy_plot &lt;- ggplot(...) + geom_...(...)\nmy_plot\n\n# Try something new\nmy_plot + ...\n\n# Keep the change\nmy_plot &lt;- my_plot + ...\nmy_plot\n\n\n\n\n\n\n\nNoteI don’t have a working plot from Task 1 (unfold to get a starting plot)\n\n\n\n\n\nCopy and paste this code to get a starting plot:\n\nlibrary(tidyverse)\n\nggplot(\n  penguins,\n  aes(x = bill_len, y = bill_dep, color = species, shape = species)\n) +\n  geom_point()"
+    "text": "Getting started\nTake one of the plots you made in Task 1 and improve it step by step.\nFirst, save the plot in a variable so you can build on it without rewriting the whole plot each time:\n\nmy_plot &lt;- ggplot(...) + geom_...(...)\nmy_plot\n\n# Try something new\nmy_plot + ...\n\n# Keep the change\nmy_plot &lt;- my_plot + ...\nmy_plot\n\n\n\n\n\n\n\nI don’t have a working plot from Task 1 (unfold to get a starting plot)\n\n\n\n\n\nCopy and paste this code to get a starting plot:\n\nlibrary(tidyverse)\n\nggplot(\n  penguins,\n  aes(x = bill_len, y = bill_dep, color = species, shape = species)\n) +\n  geom_point()"
   },
   {
     "objectID": "sessions/tasks/ggplot-task-2.html#add-labels",
@@ -137,7 +137,7 @@
     "href": "sessions/tasks/ggplot-task-2.html#change-the-colors",
     "title": "Task 2: Beautify and save plots",
     "section": "Change the colors",
-    "text": "Change the colors\nChange the colors of your plot. You can either:\n\nPick your own colors with scale_color_manual(). Refer to colors by name (e.g. \"red\", \"cyan4\") or by hex code (e.g. \"#FF0000\"). You can find hex codes with this color picker and all R color names here.\nUse a built-in palette with scale_color_brewer() or scale_color_viridis_d().\n\n\n\n\n\n\n\nTipColor vs. Fill\n\n\n\nIf your plot uses fill (e.g. boxplots, histograms), you need scale_fill_manual() or scale_fill_brewer() instead of the scale_color_* versions."
+    "text": "Change the colors\nChange the colors of your plot. You can either:\n\nPick your own colors with scale_color_manual(). Refer to colors by name (e.g. \"red\", \"cyan4\") or by hex code (e.g. \"#FF0000\"). You can find hex codes with this color picker and all R color names here.\nUse a built-in palette with scale_color_brewer() or scale_color_viridis_d().\n\n\n\n\n\n\n\nColor vs. Fill\n\n\n\nIf your plot uses fill (e.g. boxplots, histograms), you need scale_fill_manual() or scale_fill_brewer() instead of the scale_color_* versions."
   },
   {
     "objectID": "sessions/tasks/ggplot-task-2.html#apply-a-theme",
@@ -291,21 +291,21 @@
     "href": "sessions/solutions/readr-solution.html",
     "title": "Solution: Import and Export Data",
     "section": "",
-    "text": "library(tidyverse)\n\nRead the tree data:\n\ntrees &lt;- read_csv(\"data/tree_growth.csv\")\ntrees\n\n# A tibble: 15 × 6\n   tree_id species height_m diameter_cm age_years site    \n   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   \n 1 T001    Oak         12.3        35.2        45 Forest_A\n 2 T002    Beech       15.1        28.7        38 Forest_A\n 3 T003    Pine        18.5        22.1        30 Forest_B\n 4 T004    Oak          9.8        25.4        32 Forest_A\n 5 T005    Birch       11.2        18.9        25 Forest_B\n 6 T006    Pine        20.1        26.3        35 Forest_B\n 7 T007    Beech       13.7        31.5        42 Forest_A\n 8 T008    Oak         14.5        38.1        50 Forest_B\n 9 T009    Birch        8.9        15.2        20 Forest_A\n10 T010    Pine        16.8        24.7        28 Forest_B\n11 T011    Oak         11.1        29.8        36 Forest_A\n12 T012    Beech       17.3        33.6        48 Forest_B\n13 T013    Birch       10.5        17.4        22 Forest_A\n14 T014    Pine        19.2        25.8        33 Forest_B\n15 T015    Oak         13.9        36.5        47 Forest_A\n\n\nExplore the data:\n\nsummary(trees)\n\n      tree_id        species      height_m      diameter_cm      age_years   \n Length   :15   Length   :15   Min.   : 8.90   Min.   :15.20   Min.   :20.0  \n N.unique :15   N.unique : 4   1st Qu.:11.15   1st Qu.:23.40   1st Qu.:29.0  \n N.blank  : 0   N.blank  : 0   Median :13.90   Median :26.30   Median :35.0  \n Min.nchar: 4   Min.nchar: 3   Mean   :14.19   Mean   :27.28   Mean   :35.4  \n Max.nchar: 4   Max.nchar: 5   3rd Qu.:17.05   3rd Qu.:32.55   3rd Qu.:43.5  \n                               Max.   :20.10   Max.   :38.10   Max.   :50.0  \n        site   \n Length   :15  \n N.unique : 2  \n N.blank  : 0  \n Min.nchar: 8  \n Max.nchar: 8  \n               \n\n\nThere are 4 tree species (Beech, Birch, Oak, Pine). The tallest tree is 20.1 m.\nCalculate the mean height:\n\nmean(trees$height_m)\n\n[1] 14.19333"
+    "text": "library(tidyverse)\n\nRead the tree data:\n\ntrees &lt;- read_csv(\"data/tree_growth.csv\")\ntrees\n\n# A tibble: 15 × 6\n   tree_id species height_m diameter_cm age_years site    \n   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   \n 1 T001    Oak         12.3        35.2        45 Forest_A\n 2 T002    Beech       15.1        28.7        38 Forest_A\n 3 T003    Pine        18.5        22.1        30 Forest_B\n 4 T004    Oak          9.8        25.4        32 Forest_A\n 5 T005    Birch       11.2        18.9        25 Forest_B\n 6 T006    Pine        20.1        26.3        35 Forest_B\n 7 T007    Beech       13.7        31.5        42 Forest_A\n 8 T008    Oak         14.5        38.1        50 Forest_B\n 9 T009    Birch        8.9        15.2        20 Forest_A\n10 T010    Pine        16.8        24.7        28 Forest_B\n11 T011    Oak         11.1        29.8        36 Forest_A\n12 T012    Beech       17.3        33.6        48 Forest_B\n13 T013    Birch       10.5        17.4        22 Forest_A\n14 T014    Pine        19.2        25.8        33 Forest_B\n15 T015    Oak         13.9        36.5        47 Forest_A\n\n\nExplore the data:\n\nsummary(trees)\n\n   tree_id            species             height_m      diameter_cm   \n Length:15          Length:15          Min.   : 8.90   Min.   :15.20  \n Class :character   Class :character   1st Qu.:11.15   1st Qu.:23.40  \n Mode  :character   Mode  :character   Median :13.90   Median :26.30  \n                                       Mean   :14.19   Mean   :27.28  \n                                       3rd Qu.:17.05   3rd Qu.:32.55  \n                                       Max.   :20.10   Max.   :38.10  \n   age_years        site          \n Min.   :20.0   Length:15         \n 1st Qu.:29.0   Class :character  \n Median :35.0   Mode  :character  \n Mean   :35.4                     \n 3rd Qu.:43.5                     \n Max.   :50.0                     \n\n\nThere are 4 tree species (Beech, Birch, Oak, Pine). The tallest tree is 20.1 m.\nCalculate the mean height:\n\nmean(trees$height_m)\n\n[1] 14.19333"
   },
   {
     "objectID": "sessions/solutions/readr-solution.html#read-a-csv-file",
     "href": "sessions/solutions/readr-solution.html#read-a-csv-file",
     "title": "Solution: Import and Export Data",
     "section": "",
-    "text": "library(tidyverse)\n\nRead the tree data:\n\ntrees &lt;- read_csv(\"data/tree_growth.csv\")\ntrees\n\n# A tibble: 15 × 6\n   tree_id species height_m diameter_cm age_years site    \n   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   \n 1 T001    Oak         12.3        35.2        45 Forest_A\n 2 T002    Beech       15.1        28.7        38 Forest_A\n 3 T003    Pine        18.5        22.1        30 Forest_B\n 4 T004    Oak          9.8        25.4        32 Forest_A\n 5 T005    Birch       11.2        18.9        25 Forest_B\n 6 T006    Pine        20.1        26.3        35 Forest_B\n 7 T007    Beech       13.7        31.5        42 Forest_A\n 8 T008    Oak         14.5        38.1        50 Forest_B\n 9 T009    Birch        8.9        15.2        20 Forest_A\n10 T010    Pine        16.8        24.7        28 Forest_B\n11 T011    Oak         11.1        29.8        36 Forest_A\n12 T012    Beech       17.3        33.6        48 Forest_B\n13 T013    Birch       10.5        17.4        22 Forest_A\n14 T014    Pine        19.2        25.8        33 Forest_B\n15 T015    Oak         13.9        36.5        47 Forest_A\n\n\nExplore the data:\n\nsummary(trees)\n\n      tree_id        species      height_m      diameter_cm      age_years   \n Length   :15   Length   :15   Min.   : 8.90   Min.   :15.20   Min.   :20.0  \n N.unique :15   N.unique : 4   1st Qu.:11.15   1st Qu.:23.40   1st Qu.:29.0  \n N.blank  : 0   N.blank  : 0   Median :13.90   Median :26.30   Median :35.0  \n Min.nchar: 4   Min.nchar: 3   Mean   :14.19   Mean   :27.28   Mean   :35.4  \n Max.nchar: 4   Max.nchar: 5   3rd Qu.:17.05   3rd Qu.:32.55   3rd Qu.:43.5  \n                               Max.   :20.10   Max.   :38.10   Max.   :50.0  \n        site   \n Length   :15  \n N.unique : 2  \n N.blank  : 0  \n Min.nchar: 8  \n Max.nchar: 8  \n               \n\n\nThere are 4 tree species (Beech, Birch, Oak, Pine). The tallest tree is 20.1 m.\nCalculate the mean height:\n\nmean(trees$height_m)\n\n[1] 14.19333"
+    "text": "library(tidyverse)\n\nRead the tree data:\n\ntrees &lt;- read_csv(\"data/tree_growth.csv\")\ntrees\n\n# A tibble: 15 × 6\n   tree_id species height_m diameter_cm age_years site    \n   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;   \n 1 T001    Oak         12.3        35.2        45 Forest_A\n 2 T002    Beech       15.1        28.7        38 Forest_A\n 3 T003    Pine        18.5        22.1        30 Forest_B\n 4 T004    Oak          9.8        25.4        32 Forest_A\n 5 T005    Birch       11.2        18.9        25 Forest_B\n 6 T006    Pine        20.1        26.3        35 Forest_B\n 7 T007    Beech       13.7        31.5        42 Forest_A\n 8 T008    Oak         14.5        38.1        50 Forest_B\n 9 T009    Birch        8.9        15.2        20 Forest_A\n10 T010    Pine        16.8        24.7        28 Forest_B\n11 T011    Oak         11.1        29.8        36 Forest_A\n12 T012    Beech       17.3        33.6        48 Forest_B\n13 T013    Birch       10.5        17.4        22 Forest_A\n14 T014    Pine        19.2        25.8        33 Forest_B\n15 T015    Oak         13.9        36.5        47 Forest_A\n\n\nExplore the data:\n\nsummary(trees)\n\n   tree_id            species             height_m      diameter_cm   \n Length:15          Length:15          Min.   : 8.90   Min.   :15.20  \n Class :character   Class :character   1st Qu.:11.15   1st Qu.:23.40  \n Mode  :character   Mode  :character   Median :13.90   Median :26.30  \n                                       Mean   :14.19   Mean   :27.28  \n                                       3rd Qu.:17.05   3rd Qu.:32.55  \n                                       Max.   :20.10   Max.   :38.10  \n   age_years        site          \n Min.   :20.0   Length:15         \n 1st Qu.:29.0   Class :character  \n Median :35.0   Mode  :character  \n Mean   :35.4                     \n 3rd Qu.:43.5                     \n Max.   :50.0                     \n\n\nThere are 4 tree species (Beech, Birch, Oak, Pine). The tallest tree is 20.1 m.\nCalculate the mean height:\n\nmean(trees$height_m)\n\n[1] 14.19333"
   },
   {
     "objectID": "sessions/solutions/readr-solution.html#read-an-excel-file",
     "href": "sessions/solutions/readr-solution.html#read-an-excel-file",
     "title": "Solution: Import and Export Data",
     "section": "Read an Excel file",
-    "text": "Read an Excel file\n\nlibrary(readxl)\n\n\nbirds &lt;- read_excel(\"data/bird_observations.xlsx\")\nbirds\n\n# A tibble: 12 × 6\n   observation_id species   count habitat date       temperature_c\n   &lt;chr&gt;          &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;              &lt;dbl&gt;\n 1 OBS001         Robin         5 Garden  2024-03-15          12.3\n 2 OBS002         Blackbird     3 Forest  2024-03-15          11.8\n 3 OBS003         Blue Tit      8 Garden  2024-03-16          13.1\n 4 OBS004         Great Tit     4 Forest  2024-03-16          12.5\n 5 OBS005         Robin         6 Meadow  2024-03-17          14.2\n 6 OBS006         Sparrow      12 Garden  2024-03-17          13.8\n 7 OBS007         Blackbird     2 Forest  2024-03-18          11  \n 8 OBS008         Blue Tit      7 Garden  2024-03-18          12.9\n 9 OBS009         Sparrow       9 Meadow  2024-03-19          15.1\n10 OBS010         Great Tit     3 Forest  2024-03-19          13.4\n11 OBS011         Robin         4 Garden  2024-03-20          14.7\n12 OBS012         Blackbird     5 Meadow  2024-03-20          15.3\n\n\n\nsummary(birds)\n\n   observation_id      species       count             habitat          date   \n Length   :12     Length   :12   Min.   : 2.000   Length   :12   Length   :12  \n N.unique :12     N.unique : 5   1st Qu.: 3.750   N.unique : 3   N.unique : 6  \n N.blank  : 0     N.blank  : 0   Median : 5.000   N.blank  : 0   N.blank  : 0  \n Min.nchar: 6     Min.nchar: 5   Mean   : 5.667   Min.nchar: 6   Min.nchar:10  \n Max.nchar: 6     Max.nchar: 9   3rd Qu.: 7.250   Max.nchar: 6   Max.nchar:10  \n                                 Max.   :12.000                                \n temperature_c  \n Min.   :11.00  \n 1st Qu.:12.45  \n Median :13.25  \n Mean   :13.34  \n 3rd Qu.:14.32  \n Max.   :15.30"
+    "text": "Read an Excel file\n\nlibrary(readxl)\n\n\nbirds &lt;- read_excel(\"data/bird_observations.xlsx\")\nbirds\n\n# A tibble: 12 × 6\n   observation_id species   count habitat date       temperature_c\n   &lt;chr&gt;          &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;              &lt;dbl&gt;\n 1 OBS001         Robin         5 Garden  2024-03-15          12.3\n 2 OBS002         Blackbird     3 Forest  2024-03-15          11.8\n 3 OBS003         Blue Tit      8 Garden  2024-03-16          13.1\n 4 OBS004         Great Tit     4 Forest  2024-03-16          12.5\n 5 OBS005         Robin         6 Meadow  2024-03-17          14.2\n 6 OBS006         Sparrow      12 Garden  2024-03-17          13.8\n 7 OBS007         Blackbird     2 Forest  2024-03-18          11  \n 8 OBS008         Blue Tit      7 Garden  2024-03-18          12.9\n 9 OBS009         Sparrow       9 Meadow  2024-03-19          15.1\n10 OBS010         Great Tit     3 Forest  2024-03-19          13.4\n11 OBS011         Robin         4 Garden  2024-03-20          14.7\n12 OBS012         Blackbird     5 Meadow  2024-03-20          15.3\n\n\n\nsummary(birds)\n\n observation_id       species              count          habitat         \n Length:12          Length:12          Min.   : 2.000   Length:12         \n Class :character   Class :character   1st Qu.: 3.750   Class :character  \n Mode  :character   Mode  :character   Median : 5.000   Mode  :character  \n                                       Mean   : 5.667                     \n                                       3rd Qu.: 7.250                     \n                                       Max.   :12.000                     \n     date           temperature_c  \n Length:12          Min.   :11.00  \n Class :character   1st Qu.:12.45  \n Mode  :character   Median :13.25  \n                    Mean   :13.34  \n                    3rd Qu.:14.32  \n                    Max.   :15.30"
   },
   {
     "objectID": "sessions/solutions/readr-solution.html#write-data-to-a-file",
@@ -340,7 +340,7 @@
     "href": "sessions/solutions/intro-r-solution.html#variables-and-vectors",
     "title": "Solution: Introduction to R",
     "section": "Variables and vectors",
-    "text": "Variables and vectors\n1. What is the 13th species in the vector?\n\nspecies[13]\n\n[1] \"Gorilla\"\n\n\n2. Get the species at positions 6, 13, and 14.\n\nspecies[c(6, 13, 14)]\n\n[1] \"Diplodocus\" \"Gorilla\"    \"Human\"     \n\n\n3. How many species are in the dataset? Save the number in a variable called n_species.\n\n\n\n\n\n\nNotePrint variable to the console\n\n\n\nNote that if you save the result of a command in a variable, it won’t be printed to the console. You need to explicitly print it by typing the variable name .\n\n\n\nn_species &lt;- length(species)\nn_species\n\n[1] 28"
+    "text": "Variables and vectors\n1. What is the 13th species in the vector?\n\nspecies[13]\n\n[1] \"Gorilla\"\n\n\n2. Get the species at positions 6, 13, and 14.\n\nspecies[c(6, 13, 14)]\n\n[1] \"Diplodocus\" \"Gorilla\"    \"Human\"     \n\n\n3. How many species are in the dataset? Save the number in a variable called n_species.\n\n\n\n\n\n\nPrint variable to the console\n\n\n\nNote that if you save the result of a command in a variable, it won’t be printed to the console. You need to explicitly print it by typing the variable name .\n\n\n\nn_species &lt;- length(species)\nn_species\n\n[1] 28"
   },
   {
     "objectID": "sessions/solutions/intro-r-solution.html#vector-arithmetic",
@@ -459,7 +459,7 @@
     "href": "sessions/solutions/data-tibbles-solution.html#explore-the-tibble",
     "title": "Solution to tibble tasks",
     "section": "Explore the tibble",
-    "text": "Explore the tibble\nWhen you use the view function, the tibble will open in a new window. In this window, you also have some options to filter the data and sort rows. Check out these options as well.\n\nview(animals)\n\nPrint a summary of the table:\n\nsummary(animals)\n\n      species     bodywt_kg          brainwt_kg    \n Length   :28   Min.   :    0.02   Min.   :0.0004  \n N.unique :28   1st Qu.:    3.10   1st Qu.:0.0317  \n N.blank  : 0   Median :   53.85   Median :0.1370  \n Min.nchar: 3   Mean   : 4278.44   Mean   :0.6126  \n Max.nchar:15   3rd Qu.:  479.00   3rd Qu.:0.4220  \n                Max.   :87000.00   Max.   :5.7120  \n                                   NAs    :2       \n\n\nThis summary table is super usefule to check if everything is ok with your data. For example, you can check if there are any missing values (NA) in the columns, or if the values in the columns look reasonable (e.g. no negative body weights).\nHere a couple of other function you could use on a tibble:\n\n# Look at the structure of the tibble\nstr(animals)\n\ntibble [28 × 3] (S3: tbl_df/tbl/data.frame)\n $ species   : chr [1:28] \"MountainBeaver\" \"Cow\" \"GreyWolf\" \"Goat\" ...\n $ bodywt_kg : num [1:28] 1.4 465 36.3 27.7 1 ...\n $ brainwt_kg: num [1:28] 0.0081 0.423 0.1195 0.115 0.0055 ...\n\n# Number of rows\nnrow(animals)\n\n[1] 28\n\n# Number of columns\nncol(animals)\n\n[1] 3\n\n# Column names\nnames(animals)\n\n[1] \"species\"    \"bodywt_kg\"  \"brainwt_kg\""
+    "text": "Explore the tibble\nWhen you use the view function, the tibble will open in a new window. In this window, you also have some options to filter the data and sort rows. Check out these options as well.\n\nview(animals)\n\nPrint a summary of the table:\n\nsummary(animals)\n\n   species            bodywt_kg          brainwt_kg    \n Length:28          Min.   :    0.02   Min.   :0.0004  \n Class :character   1st Qu.:    3.10   1st Qu.:0.0317  \n Mode  :character   Median :   53.85   Median :0.1370  \n                    Mean   : 4278.44   Mean   :0.6126  \n                    3rd Qu.:  479.00   3rd Qu.:0.4220  \n                    Max.   :87000.00   Max.   :5.7120  \n                                       NA's   :2       \n\n\nThis summary table is super usefule to check if everything is ok with your data. For example, you can check if there are any missing values (NA) in the columns, or if the values in the columns look reasonable (e.g. no negative body weights).\nHere a couple of other function you could use on a tibble:\n\n# Look at the structure of the tibble\nstr(animals)\n\ntibble [28 × 3] (S3: tbl_df/tbl/data.frame)\n $ species   : chr [1:28] \"MountainBeaver\" \"Cow\" \"GreyWolf\" \"Goat\" ...\n $ bodywt_kg : num [1:28] 1.4 465 36.3 27.7 1 ...\n $ brainwt_kg: num [1:28] 0.0081 0.423 0.1195 0.115 0.0055 ...\n\n# Number of rows\nnrow(animals)\n\n[1] 28\n\n# Number of columns\nncol(animals)\n\n[1] 3\n\n# Column names\nnames(animals)\n\n[1] \"species\"    \"bodywt_kg\"  \"brainwt_kg\""
   },
   {
     "objectID": "sessions/solutions/data-tibbles-solution.html#index-filter-and-select",
@@ -483,165 +483,172 @@
     "text": "General approach\n\n\n\nPlease note the discussion about p-values as a basis for binary decisions. See e.g. here or here as a starting point"
   },
   {
-    "objectID": "sessions/slides/tests.html#overview-of-tests",
-    "href": "sessions/slides/tests.html#overview-of-tests",
+    "objectID": "sessions/slides/tests.html#tests-to-compare-two-groups",
+    "href": "sessions/slides/tests.html#tests-to-compare-two-groups",
     "title": "Statistical tests",
-    "section": "Overview of tests",
-    "text": "Overview of tests"
+    "section": "Tests to compare two groups",
+    "text": "Tests to compare two groups\n\n\n\nt-test\n\n\n\n\n\n\n\n\n\n\n\n\nCompares the means of two groups\nSuitable for roughly normal data, or for larger samples\n2 versions: Student’s (equal variance) and Welch’s t-test\n\nWelch’s t-test is a good default\n\n\n\n\n\nWilcoxon rank-sum test\n\n\n\n\n\n\n\n\n\n\nCompares ranks: does one group tend to have larger values?\nUseful for ordinal data, skewed small samples, or outliers"
   },
   {
-    "objectID": "sessions/slides/tests.html#test-for-normal-distribution",
-    "href": "sessions/slides/tests.html#test-for-normal-distribution",
+    "objectID": "sessions/slides/tests.html#the-data-iris",
+    "href": "sessions/slides/tests.html#the-data-iris",
     "title": "Statistical tests",
-    "section": "Test for normal distribution",
-    "text": "Test for normal distribution\nThere are various tests and the outcome might differ!\n\nShapiro-Wilk-Test\n\nTests whether the data could have been drawn from a normal distribution\nSpecific test only for normal distribution\nHigh power, also for few data points\n\n\n\nVisual tests: QQ-Plot\n\nQuantiles of observed data plotted against quantiles of normal distribution\nScientist has to decide if normal or not"
+    "section": "The data: iris",
+    "text": "The data: iris\nQuestion: Does the sepal width differ between I. versicolor and I. virginica?\n\n\n\n\nReproduce the data\nflowers &lt;- as_tibble(iris) |&gt;\n  filter(Species %in% c(\"versicolor\", \"virginica\")) |&gt;\n  select(sepal_width = Sepal.Width, species = Species) |&gt;\n  droplevels()\n\n\n\nflowers\n#&gt; # A tibble: 100 × 2\n#&gt;    sepal_width species   \n#&gt;          &lt;dbl&gt; &lt;fct&gt;     \n#&gt;  1         3.2 versicolor\n#&gt;  2         3.2 versicolor\n#&gt;  3         3.1 versicolor\n#&gt;  4         2.3 versicolor\n#&gt;  5         2.8 versicolor\n#&gt;  6         2.8 versicolor\n#&gt;  7         3.3 versicolor\n#&gt;  8         2.4 versicolor\n#&gt;  9         2.9 versicolor\n#&gt; 10         2.7 versicolor\n#&gt; # ℹ 90 more rows\n\n\n\n\n\nImage from medium.com\n\n\nSepal width (in cm) of 50 flowers from each of two iris species"
   },
   {
-    "objectID": "sessions/slides/tests.html#the-data",
-    "href": "sessions/slides/tests.html#the-data",
+    "objectID": "sessions/slides/tests.html#first-look-at-the-data",
+    "href": "sessions/slides/tests.html#first-look-at-the-data",
     "title": "Statistical tests",
-    "section": "The data",
-    "text": "The data\nA tibble with two variables: normal and non_normal\n\n\n\n\nExpand to reproduce the data\nset.seed(123)\nmydata &lt;- tibble(\n  normal = rnorm(\n    n = 200,\n    mean = 50,\n    sd = 5\n  ),\n  non_normal = runif(\n    n = 200,\n    min = 45,\n    max = 55\n  )\n)\n\n\n\nmydata\n#&gt; # A tibble: 200 × 2\n#&gt;    normal non_normal\n#&gt;     &lt;dbl&gt;      &lt;dbl&gt;\n#&gt;  1   47.2       54.9\n#&gt;  2   48.8       46.4\n#&gt;  3   57.8       54.1\n#&gt;  4   50.4       50.8\n#&gt;  5   50.6       49.0\n#&gt;  6   58.6       49.5\n#&gt;  7   52.3       52.1\n#&gt;  8   43.7       45.8\n#&gt;  9   46.6       48.4\n#&gt; 10   47.8       51.8\n#&gt; # ℹ 190 more rows\n\n\n\n\nCode to generate histogram\nmydata |&gt;\n  pivot_longer(\n    cols = 1:2,\n    names_to = \"type\",\n    values_to = \"value\"\n  ) |&gt;\n  ggplot() +\n  geom_histogram(\n    alpha = 0.5,\n    aes(\n      x = value,\n      fill = type,\n      # plot probability instead of count on y axis\n      y = after_stat(density)\n    )\n  ) +\n  stat_function(\n    fun = dnorm,\n    args = list(\n      mean = 50,\n      sd = 5\n    ),\n    color = \"darkorange\",\n    linewidth = 1\n  ) +\n  stat_function(\n    fun = dnorm,\n    args = list(\n      mean = mean(mydata$non_normal),\n      sd = sd(mydata$non_normal)\n    ),\n    color = \"cyan4\",\n    linewidth = 1\n  ) +\n  scale_fill_manual(values = c(\"cyan4\", \"darkorange\")) +\n  theme(\n    legend.position = \"inside\",\n    legend.position.inside = c(0.85, 0.85)\n  )"
+    "section": "First look at the data",
+    "text": "First look at the data\n\n\n\nflowers |&gt;\n  summarize(\n    n = n(),\n    mean = mean(sepal_width),\n    sd = sd(sepal_width),\n    .by = species\n  )\n#&gt; # A tibble: 2 × 4\n#&gt;   species        n  mean    sd\n#&gt;   &lt;fct&gt;      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1 versicolor    50  2.77 0.314\n#&gt; 2 virginica     50  2.97 0.322\n\n\n\n\nCode for the boxplot\nggplot(flowers, aes(x = species, y = sepal_width)) +\n  geom_boxplot() +\n  geom_point(\n    position = position_jitter(width = 0.08, height = 0, seed = 123),\n    alpha = 0.6\n  ) +\n  labs(x = \"Species\", y = \"Sepal width (cm)\")"
   },
   {
-    "objectID": "sessions/slides/tests.html#shapiro-wilk-test",
-    "href": "sessions/slides/tests.html#shapiro-wilk-test",
+    "objectID": "sessions/slides/tests.html#prepare-the-group-vectors",
+    "href": "sessions/slides/tests.html#prepare-the-group-vectors",
     "title": "Statistical tests",
-    "section": "Shapiro-Wilk-Test",
-    "text": "Shapiro-Wilk-Test\n\\(H_0\\): Data does not differ from a normal distribution\n\n\n\n\nshapiro.test(mydata$normal)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  mydata$normal\n#&gt; W = 0.99076, p-value = 0.2298\n\n\n\nW: test statistic\np: probability to observe data with this level of deviation from normality (or more) if \\(H_0\\) was true\n\nprobability is high -&gt; no reason to doubt normality assumption\n\n\n\n\nThe data does not deviate significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.991, p = 0.23).\n\n\n\n\nshapiro.test(mydata$non_normal)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  mydata$non_normal\n#&gt; W = 0.95114, p-value = 2.435e-06\n\n\n\nThe data deviates significantly from a normal distribution (Shapiro-Wilk-Test, W = 0.95, p &lt; 0.001)."
+    "section": "Prepare the group vectors",
+    "text": "Prepare the group vectors\nMost test functions take the values of each group as a vector\n\nversicolor &lt;- filter(flowers, species == \"versicolor\")$sepal_width\nvirginica &lt;- filter(flowers, species == \"virginica\")$sepal_width\n\n\n\n\nversicolor\n#&gt;  [1] 3.2 3.2 3.1 2.3 2.8 2.8 3.3 2.4 2.9 2.7 2.0 3.0 2.2 2.9 2.9 3.1 3.0 2.7 2.2\n#&gt; [20] 2.5 3.2 2.8 2.5 2.8 2.9 3.0 2.8 3.0 2.9 2.6 2.4 2.4 2.7 2.7 3.0 3.4 3.1 2.3\n#&gt; [39] 3.0 2.5 2.6 3.0 2.6 2.3 2.7 3.0 2.9 2.9 2.5 2.8"
   },
   {
-    "objectID": "sessions/slides/tests.html#visual-test-with-qq-plot",
-    "href": "sessions/slides/tests.html#visual-test-with-qq-plot",
+    "objectID": "sessions/slides/tests.html#shapiro-wilk-test-for-normality",
+    "href": "sessions/slides/tests.html#shapiro-wilk-test-for-normality",
     "title": "Statistical tests",
-    "section": "Visual test with QQ-Plot",
-    "text": "Visual test with QQ-Plot\nPoints should match the straight line. Small deviations are okay.\n\n\n\n# ggplot(\n#   mydata,\n#   aes(sample = normal)\n# ) +\n#   stat_qq() +\n#   stat_qq_line()\nggpubr::ggqqplot(mydata$normal)\n\n\n\n\n\n\n\n\n\n\n# ggplot(\n#   mydata,\n#   aes(sample = non_normal)\n# ) +\n#   stat_qq() +\n#   stat_qq_line()\nggpubr::ggqqplot(mydata$non_normal)"
+    "section": "Shapiro-Wilk test for normality",
+    "text": "Shapiro-Wilk test for normality\n\n\\(H_0\\): The data come from a normal distribution\n\nshapiro.test(versicolor)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  versicolor\n#&gt; W = 0.97413, p-value = 0.338\nshapiro.test(virginica)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  virginica\n#&gt; W = 0.96739, p-value = 0.1809\n\n\nA large p-value: no evidence against normality, can not reject \\(H_0\\)\nWith large samples, very small deviations can give small p-values\nAlways look at the data as well"
   },
   {
-    "objectID": "sessions/slides/tests.html#the-data-1",
-    "href": "sessions/slides/tests.html#the-data-1",
+    "objectID": "sessions/slides/tests.html#normality-with-qq-plots",
+    "href": "sessions/slides/tests.html#normality-with-qq-plots",
     "title": "Statistical tests",
-    "section": "The data",
-    "text": "The data\nCounts of insects in agricultural units treated with different insecticides.\n\n\n\n\nExpand to reproduce the data\nInsectSprays &lt;- InsectSprays |&gt;\n  filter(spray %in% c(\"A\", \"B\", \"E\")) |&gt;\n  mutate(spray = case_match(spray, \"E\" ~ \"C\", .default = spray))\n\n\nCompare treatments A, B and C:\nCreate subsets before: count variable for each treatment as a vector\n\nTreatA &lt;- filter(InsectSprays, spray == \"A\")$count\nTreatB &lt;- filter(InsectSprays, spray == \"B\")$count\nTreatC &lt;- filter(InsectSprays, spray == \"C\")$count\n\n\n\n\nCode to generate boxplot\nggplot(InsectSprays, aes(x = spray, y = count, fill = spray)) +\n  geom_boxplot() +\n  theme(legend.position = \"none\")"
+    "section": "Normality with QQ-plots",
+    "text": "Normality with QQ-plots\nPoints should roughly follow the line. Look at the tails and at unusual observations.\n\n\n\nggpubr::ggqqplot(versicolor)\n\n\n\n\n\n\n\n\n\n\nggpubr::ggqqplot(virginica)\n\n\n\n\n\n\n\n\n\n\nBoth species: no clear deviation from normality"
   },
   {
-    "objectID": "sessions/slides/tests.html#test-for-equal-variance",
-    "href": "sessions/slides/tests.html#test-for-equal-variance",
+    "objectID": "sessions/slides/tests.html#what-does-non-normal-data-look-like",
+    "href": "sessions/slides/tests.html#what-does-non-normal-data-look-like",
     "title": "Statistical tests",
-    "section": "Test for equal variance",
-    "text": "Test for equal variance\nFirst, test for normal distribution!\nF-Test\n\nNormal distribution of groups\nCalculates ratio of variances (if equal, ratio = 1)\np: How likely is this (or a more extreme) ratio of variances if the variances were truly equal?\n\nLevene test\n\nNon-normal distribution of groups\nCompare difference between data sets with difference within data sets"
+    "section": "What does non-normal data look like?",
+    "text": "What does non-normal data look like?"
   },
   {
-    "objectID": "sessions/slides/tests.html#test-for-equal-variance-1",
-    "href": "sessions/slides/tests.html#test-for-equal-variance-1",
+    "objectID": "sessions/slides/tests.html#compare-two-means-welchs-t-test",
+    "href": "sessions/slides/tests.html#compare-two-means-welchs-t-test",
     "title": "Statistical tests",
-    "section": "Test for equal variance",
-    "text": "Test for equal variance\nFirst, test for normal distribution\n\nshapiro.test(TreatA)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatA\n#&gt; W = 0.95757, p-value = 0.7487\nshapiro.test(TreatB)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatB\n#&gt; W = 0.95031, p-value = 0.6415\nshapiro.test(TreatC)\n#&gt; \n#&gt;  Shapiro-Wilk normality test\n#&gt; \n#&gt; data:  TreatC\n#&gt; W = 0.92128, p-value = 0.2967\n\nResult: All 3 treatments are normally distributed."
-  },
-  {
-    "objectID": "sessions/slides/tests.html#f-test",
-    "href": "sessions/slides/tests.html#f-test",
-    "title": "Statistical tests",
-    "section": "F-Test",
-    "text": "F-Test\n\\(H_0\\): Variances do not differ between groups\n\n\nvar.test(TreatA, TreatB)\n#&gt; \n#&gt;  F test to compare two variances\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; F = 1.2209, num df = 11, denom df = 11, p-value = 0.7464\n#&gt; alternative hypothesis: true ratio of variances is not equal to 1\n#&gt; 95 percent confidence interval:\n#&gt;  0.3514784 4.2411442\n#&gt; sample estimates:\n#&gt; ratio of variances \n#&gt;            1.22093\n\n\n\n\nF: test statistics, ratio of variances (if F = 1, variances are equal)\ndf: degrees of freedom of both groups\np-value: probability to observe this (or more extreme) F if \\(H_0\\) was true\n\nVariances of sprays A & B don’t differ significantly (F-Test, \\(F_{11,11}\\) = 1.22, p = 0.75)"
-  },
-  {
-    "objectID": "sessions/slides/tests.html#f-test-1",
-    "href": "sessions/slides/tests.html#f-test-1",
-    "title": "Statistical tests",
-    "section": "F-Test",
-    "text": "F-Test\n\\(H_0\\): Variances do not differ between groups\n\n\nvar.test(TreatA, TreatC)\n#&gt; \n#&gt;  F test to compare two variances\n#&gt; \n#&gt; data:  TreatA and TreatC\n#&gt; F = 7.4242, num df = 11, denom df = 11, p-value = 0.002435\n#&gt; alternative hypothesis: true ratio of variances is not equal to 1\n#&gt; 95 percent confidence interval:\n#&gt;   2.137273 25.789584\n#&gt; sample estimates:\n#&gt; ratio of variances \n#&gt;           7.424242\n\nVariances of sprays A & C differ significantly (F-Test, \\(F_{11,11}\\) = 7.42, p = 0.002)"
-  },
-  {
-    "objectID": "sessions/slides/tests.html#test-for-equal-means-1",
-    "href": "sessions/slides/tests.html#test-for-equal-means-1",
-    "title": "Statistical tests",
-    "section": "Test for equal means",
-    "text": "Test for equal means\nt-test\n\nNormal distribution AND equal variance\nCompares if mean values are within range of standard error of each other\np: How likely is this (or more extreme) difference between means if the population means were truly equal?\n\n\nWelch-Test (corrected t-test)\n\nNormal distribution but unequal variance\n\n\n\nWilcoxon rank sum test\n\nNon-normal distribution and unequal variance\nCompares rank sums of the data\nNon-parametric"
-  },
-  {
-    "objectID": "sessions/slides/tests.html#t-test",
-    "href": "sessions/slides/tests.html#t-test",
-    "title": "Statistical tests",
-    "section": "t-test",
-    "text": "t-test\n\\(H_0\\): The samples do not differ in their mean\n\nTreatment A and B: normally distributed and equal variance\n\nt.test(TreatA, TreatB, var.equal = TRUE)\n#&gt; \n#&gt;  Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; t = -0.45352, df = 22, p-value = 0.6546\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -4.643994  2.977327\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;  14.50000  15.33333\n\n\nt: test statistics (t = 0 means equal means)\ndf: degrees of freedom of t-statistics\np-value: how likely is this extreme of a difference if \\(H_0\\) was true?\n\n\n\nThe means of spray A and B don’t differ significantly (t = -0.45, df = 22, p = 0.66)"
-  },
-  {
-    "objectID": "sessions/slides/tests.html#welch-test",
-    "href": "sessions/slides/tests.html#welch-test",
-    "title": "Statistical tests",
-    "section": "Welch-Test",
-    "text": "Welch-Test\n\\(H_0\\): The samples do not differ in their mean\n\nTreatment A and C: normally distributed and non-equal variance\n\nt.test(TreatA, TreatC, var.equal = FALSE)\n#&gt; \n#&gt;  Welch Two Sample t-test\n#&gt; \n#&gt; data:  TreatA and TreatC\n#&gt; t = 7.5798, df = 13.91, p-value = 2.655e-06\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;   7.885546 14.114454\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;      14.5       3.5\n\n\n\nThe means of spray A and C do differ significantly (t = 7.58, df = 13.9, p &lt; 0.001)"
+    "section": "Compare two means: Welch’s t-test",
+    "text": "Compare two means: Welch’s t-test\n\\(H_0\\): The means of the two groups do not differ\n\nt.test(versicolor, virginica)\n#&gt; \n#&gt;  Welch Two Sample t-test\n#&gt; \n#&gt; data:  versicolor and virginica\n#&gt; t = -3.2058, df = 97.927, p-value = 0.001819\n#&gt; alternative hypothesis: true difference in means is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -0.33028364 -0.07771636\n#&gt; sample estimates:\n#&gt; mean of x mean of y \n#&gt;     2.770     2.974\n\n\nt: test statistic (t = 0 if the means are equal)\np-value: How likely is a difference at least this large if the means were equal?\nReject \\(H_0\\)\n\n\nMean sepal width was 0.20 cm smaller in I. versicolor than in I. virginica (Welch’s t-test, \\(t_{97.9}\\) = -3.21, p = 0.002)."
   },
   {
     "objectID": "sessions/slides/tests.html#wilcoxon-rank-sum-test",
     "href": "sessions/slides/tests.html#wilcoxon-rank-sum-test",
     "title": "Statistical tests",
-    "section": "Wilcoxon-rank-sum Test",
-    "text": "Wilcoxon-rank-sum Test\n\\(H_0\\): The samples do not differ in their median\n\nWe don’t need the Wilcoxon test to compare treatment A and B, but for the sake of an example:\n\nwilcox.test(TreatA, TreatB)\n#&gt; \n#&gt;  Wilcoxon rank sum test with continuity correction\n#&gt; \n#&gt; data:  TreatA and TreatB\n#&gt; W = 62, p-value = 0.5812\n#&gt; alternative hypothesis: true location shift is not equal to 0\n\n\n\nThe medians of spray A and B do not differ significantly (W = 62, p = 0.58)"
+    "section": "Wilcoxon rank-sum test",
+    "text": "Wilcoxon rank-sum test\n\\(H_0\\): Neither group tends to have larger values than the other\n\nAll values are ranked from smallest to largest\nThe test compares the ranks of the two groups\nDemonstration only: the iris data don’t need a rank-based test, t-test was fine here\n\n\n\nwilcox.test(versicolor, virginica)\n#&gt; \n#&gt;  Wilcoxon rank sum test with continuity correction\n#&gt; \n#&gt; data:  versicolor and virginica\n#&gt; W = 841, p-value = 0.004572\n#&gt; alternative hypothesis: true location shift is not equal to 0\n\n\n\nSepal width tended to be smaller in I. versicolor than in I. virginica (Wilcoxon rank-sum test, W = 841, p = 0.005)."
   },
   {
-    "objectID": "sessions/slides/tests.html#paired-values",
-    "href": "sessions/slides/tests.html#paired-values",
+    "objectID": "sessions/slides/tests.html#paired-observations",
+    "href": "sessions/slides/tests.html#paired-observations",
     "title": "Statistical tests",
-    "section": "Paired values",
-    "text": "Paired values\nAre there pairs of data points?\nExample: blood pressure of patients before and after taking a medication.\n\n\nFor each patient, there is a pair of data points (before and after medication)\nQuestion: Is the change in blood pressure significant?\n\n\n\nUse paired = TRUE in the test.\n\nt.test(TreatA, TreatB, var.equal = TRUE, paired = TRUE)\nt.test(TreatA, TreatB, var.equal = FALSE, paired = TRUE)\nwilcox.test(TreatA, TreatB, paired = TRUE)\n\nCareful: your treatment vector both have to have the same order"
+    "section": "Paired observations",
+    "text": "Paired observations\nExamples of paired observations:\n\nBlood pressure of patients before and after medication\nDifference in sleep quality of people as children and adults\nBiodiversity in rivers before and after a power plant …\n\n\nIn sleep, the same 10 people received two drugs (extra: extra sleep in hours)\n\n\nReproduce the data\nsleep_paired &lt;- sleep |&gt;\n  pivot_wider(\n    names_from = group,\n    names_prefix = \"drug_\",\n    values_from = extra\n  )\n\n\n\nsleep_paired\n#&gt; # A tibble: 10 × 3\n#&gt;    ID    drug_1 drug_2\n#&gt;    &lt;fct&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n#&gt;  1 1        0.7    1.9\n#&gt;  2 2       -1.6    0.8\n#&gt;  3 3       -0.2    1.1\n#&gt;  4 4       -1.2    0.1\n#&gt;  5 5       -0.1   -0.1\n#&gt;  6 6        3.4    4.4\n#&gt;  7 7        3.7    5.5\n#&gt;  8 8        0.8    1.6\n#&gt;  9 9        0      4.6\n#&gt; 10 10       2      3.4"
   },
   {
-    "objectID": "sessions/slides/tests.html#boxplots-with-notches",
-    "href": "sessions/slides/tests.html#boxplots-with-notches",
+    "objectID": "sessions/slides/tests.html#paired-observations-1",
+    "href": "sessions/slides/tests.html#paired-observations-1",
     "title": "Statistical tests",
-    "section": "Boxplots with notches",
-    "text": "Boxplots with notches\nNotches show the approximate 95% confidence interval of the median. If notches of two boxes don’t overlap, their medians likely differ\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE)"
+    "section": "Paired observations",
+    "text": "Paired observations\n\nt.test(\n  sleep_paired$drug_1,\n  sleep_paired$drug_2,\n  paired = TRUE\n)\n#&gt; \n#&gt;  Paired t-test\n#&gt; \n#&gt; data:  sleep_paired$drug_1 and sleep_paired$drug_2\n#&gt; t = -4.0621, df = 9, p-value = 0.002833\n#&gt; alternative hypothesis: true mean difference is not equal to 0\n#&gt; 95 percent confidence interval:\n#&gt;  -2.4598858 -0.7001142\n#&gt; sample estimates:\n#&gt; mean difference \n#&gt;           -1.58\n\nAlso: wilcox.test(..., paired = TRUE)\n\nPeople slept 1.58 h longer with drug 2 than with drug 1 (paired t-test, \\(t_9\\) = -4.06, p = 0.003)."
   },
   {
-    "objectID": "sessions/slides/tests.html#plot-test-results-with-ggsignif",
-    "href": "sessions/slides/tests.html#plot-test-results-with-ggsignif",
+    "objectID": "sessions/slides/tests.html#boxplot-to-show-differences",
+    "href": "sessions/slides/tests.html#boxplot-to-show-differences",
     "title": "Statistical tests",
-    "section": "Plot test results with ggsignif",
-    "text": "Plot test results with ggsignif\nThe ggsignif package offers a geom_signif() layer that can be added to a ggplot to annotate significance levels\n\n# install.packages(\"ggsignif\")\nlibrary(ggsignif)"
+    "section": "Boxplot to show differences",
+    "text": "Boxplot to show differences\n\n\nggplot(\n  flowers,\n  aes(x = species, y = sepal_width)\n) +\n  geom_boxplot()"
   },
   {
-    "objectID": "sessions/slides/tests.html#plot-test-results-with-geom_signif",
-    "href": "sessions/slides/tests.html#plot-test-results-with-geom_signif",
+    "objectID": "sessions/slides/tests.html#add-a-test-with-geom_signif",
+    "href": "sessions/slides/tests.html#add-a-test-with-geom_signif",
     "title": "Statistical tests",
-    "section": "Plot test results with geom_signif()",
-    "text": "Plot test results with geom_signif()\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    map_signif_level = TRUE,\n    y_position = c(23, 24, 25)\n  )\n\n\n\n\n\n\n\n\n\n\nBy default, a Wilcoxon test is performed"
+    "section": "Add a test with geom_signif()",
+    "text": "Add a test with geom_signif()\nThe ggsignif package adds significance levels to a ggplot\n\n\n# install.packages(\"ggsignif\")\nlibrary(ggsignif)\n\nggplot(\n  flowers,\n  aes(x = species, y = sepal_width)\n) +\n  geom_boxplot() +\n  geom_signif(\n    comparisons = list(\n      c(\"versicolor\", \"virginica\")\n    ),\n    test = \"t.test\",\n    map_signif_level = TRUE\n  )\n\n\n\n\n\n\n\n\n\n\ntest = \"t.test\": Welch’s t-test (the default is a Wilcoxon test)\nmap_signif_level = TRUE: stars, FALSE: p-value"
   },
   {
-    "objectID": "sessions/slides/tests.html#plot-test-results-with-geom_signif-1",
-    "href": "sessions/slides/tests.html#plot-test-results-with-geom_signif-1",
+    "objectID": "sessions/slides/tests.html#plot-means-with-stat_summary",
+    "href": "sessions/slides/tests.html#plot-means-with-stat_summary",
     "title": "Statistical tests",
-    "section": "Plot test results with geom_signif()",
-    "text": "Plot test results with geom_signif()\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\",\n    test.args = list(\n      var.equal = TRUE\n    ),\n    map_signif_level = TRUE,\n    y_position = c(23, 24, 25)\n  )\n\n\ntest: run specific test\ntest.args: pass additional arguments in a list\n?geom_signif for more options"
+    "section": "Plot means with stat_summary()",
+    "text": "Plot means with stat_summary()\n\n\nggplot(\n  flowers,\n  aes(x = species, y = sepal_width)\n) +\n  stat_summary()\n\n\n\n\n\n\n\n\n\n\nBy default, stat_summary() shows the mean ± standard error (SE)"
   },
   {
-    "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary",
-    "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary",
+    "objectID": "sessions/slides/tests.html#style-means-and-error-bars",
+    "href": "sessions/slides/tests.html#style-means-and-error-bars",
     "title": "Statistical tests",
-    "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary()\n\n\nBy default stat_summary adds mean and standard error of the mean as pointrange"
+    "section": "Style means and error bars",
+    "text": "Style means and error bars\n\n\nggplot(\n  flowers,\n  aes(x = species, y = sepal_width)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.15\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"point\",\n    color = \"#28a87d\",\n    size = 4\n  )\n\n\n\n\n\n\n\n\n\n\nfun.data for error bars, fun for points"
   },
   {
-    "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-1",
-    "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-1",
+    "objectID": "sessions/slides/tests.html#barplots-with-error-bars",
+    "href": "sessions/slides/tests.html#barplots-with-error-bars",
     "title": "Statistical tests",
-    "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\"\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"point\",\n    color = \"#28a87d\",\n    size = 4\n  )\n\n\nInside stat_summary, define summary function\n\nfun.data for errorbars, fun for points (e.g. mean)"
+    "section": "Barplots with error bars",
+    "text": "Barplots with error bars\n\n\nggplot(\n  flowers,\n  aes(x = species, y = sepal_width)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.15\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\",\n    fill = \"#28a87d\",\n    width = 0.65\n  )"
   },
   {
-    "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-2",
-    "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-2",
+    "objectID": "sessions/slides/tests.html#add-the-test-to-the-barplot",
+    "href": "sessions/slides/tests.html#add-the-test-to-the-barplot",
     "title": "Statistical tests",
-    "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nAnother way to plot the results is to plot mean and standard error of the mean:\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.3\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\"\n  )"
+    "section": "Add the test to the barplot",
+    "text": "Add the test to the barplot\n\n\n\nggplot(\n  flowers,\n  aes(x = species, y = sepal_width)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.15\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\",\n    fill = \"#28a87d\",\n    width = 0.65\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"versicolor\", \"virginica\")\n    ),\n    test = \"t.test\",\n    map_signif_level = TRUE\n  )"
   },
   {
-    "objectID": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-3",
-    "href": "sessions/slides/tests.html#plot-mean---se-using-stat_summary-3",
+    "objectID": "sessions/slides/tests.html#actually-there-were-three-species",
+    "href": "sessions/slides/tests.html#actually-there-were-three-species",
     "title": "Statistical tests",
-    "section": "Plot mean +- se using stat_summary",
-    "text": "Plot mean +- se using stat_summary\nJust like before, you can also add a geom_signif to a barplot:\n\n\nggplot(\n  InsectSprays,\n  aes(x = spray, y = count)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.3\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\"\n  ) +\n  ggsignif::geom_signif(\n    comparisons = list(\n      c(\"A\", \"B\"),\n      c(\"B\", \"C\"),\n      c(\"A\", \"C\")\n    ),\n    test = \"t.test\",\n    map_signif_level = TRUE,\n    y_position = c(17, 18, 19)\n  )"
+    "section": "Actually, there were three species",
+    "text": "Actually, there were three species\nQuestion: Does the sepal width differ between the three iris species?\n\n\n\n\nReproduce the data\nflowers_all &lt;- as_tibble(iris) |&gt;\n  select(sepal_width = Sepal.Width, species = Species)\n\n\n\nflowers_all |&gt;\n  summarize(\n    n = n(),\n    mean = mean(sepal_width),\n    .by = species\n  )\n#&gt; # A tibble: 3 × 3\n#&gt;   species        n  mean\n#&gt;   &lt;fct&gt;      &lt;int&gt; &lt;dbl&gt;\n#&gt; 1 setosa        50  3.43\n#&gt; 2 versicolor    50  2.77\n#&gt; 3 virginica     50  2.97\n\n\n\n\n\n\n\n\n\n\n\n\n\nCould we just run 3 separate t-tests?"
+  },
+  {
+    "objectID": "sessions/slides/tests.html#two-kinds-of-errors",
+    "href": "sessions/slides/tests.html#two-kinds-of-errors",
+    "title": "Statistical tests",
+    "section": "Two kinds of errors",
+    "text": "Two kinds of errors\nEvery test decision can be wrong in two ways:\n\n\n\n\n\n\n\n\n\n\\(H_0\\) is true (no difference)\n\\(H_0\\) is false (real difference)\n\n\n\n\nReject \\(H_0\\)\nType I error: false positive (probability α)\nCorrect\n\n\nDo not reject \\(H_0\\)\nCorrect\nType II error: false negative\n\n\n\n\n\nWith α = 0.05, we accept a 5% risk of a false positive\nMultiple testing increases the risk of a type I error"
+  },
+  {
+    "objectID": "sessions/slides/tests.html#error-inflation-with-multiple-testing",
+    "href": "sessions/slides/tests.html#error-inflation-with-multiple-testing",
+    "title": "Statistical tests",
+    "section": "Error-inflation with multiple testing",
+    "text": "Error-inflation with multiple testing\n\nFor one test: Chance of false positive is 5% (at α = 0.05)\nThis error potential increases with multiple tests:\n\n\n\\[P(\\text{at least one false positive}) = 1 - (1 - \\alpha)^k\\]\nwith \\(k\\) = number of tests\n\n\n\n\n\nNumber of tests\nChance of at least one false positive\n\n\n\n\n1\n5%\n\n\n3\n14.3%\n\n\n10\n40.1%\n\n\n\n\n\nSolution: p-value correction for multiple testing"
+  },
+  {
+    "objectID": "sessions/slides/tests.html#pairwise-comparisons-in-r",
+    "href": "sessions/slides/tests.html#pairwise-comparisons-in-r",
+    "title": "Statistical tests",
+    "section": "Pairwise comparisons in R",
+    "text": "Pairwise comparisons in R\n\npairwise.t.test(\n  flowers_all$sepal_width,\n  flowers_all$species,\n  pool.sd = FALSE\n)\n#&gt; \n#&gt;  Pairwise comparisons using t tests with non-pooled SD \n#&gt; \n#&gt; data:  flowers_all$sepal_width and flowers_all$species \n#&gt; \n#&gt;            setosa  versicolor\n#&gt; versicolor 7.5e-15 -         \n#&gt; virginica  9.1e-09 0.0018    \n#&gt; \n#&gt; P value adjustment method: holm\n\n\npool.sd = FALSE: Welch’s t-test for each pair (the default uses one shared SD across all groups)\nThe p-values are already adjusted (Holm method is the default)\nRank-based alternative: pairwise.wilcox.test()"
+  },
+  {
+    "objectID": "sessions/slides/tests.html#add-the-adjusted-p-values-to-a-plot",
+    "href": "sessions/slides/tests.html#add-the-adjusted-p-values-to-a-plot",
+    "title": "Statistical tests",
+    "section": "Add the adjusted p-values to a plot",
+    "text": "Add the adjusted p-values to a plot\ngeom_signif can’t run pairwise tests, so we need to add p-values manually.\n\n\nggplot(\n  flowers_all,\n  aes(x = species, y = sepal_width)\n) +\n  geom_boxplot() +\n  geom_signif(\n    comparisons = list(\n      c(\"setosa\", \"versicolor\"),\n      c(\"setosa\", \"virginica\"),\n      c(\"versicolor\", \"virginica\")\n    ),\n    annotations = c(\n      \"p = 7.5e-15\",\n      \"p = 9.1e-09\",\n      \"p = 0.0018\"\n    ),\n    step_increase = 0.1,\n    tip_length = 0.02\n  )\n\n\n\n\n\n\n\n\n\n\nannotations: show our adjusted p-values (no new tests)\nstep_increase: stack the brackets"
+  },
+  {
+    "objectID": "sessions/slides/tests.html#extract-the-p-values-automatically",
+    "href": "sessions/slides/tests.html#extract-the-p-values-automatically",
+    "title": "Statistical tests",
+    "section": "Extract the p-values automatically",
+    "text": "Extract the p-values automatically\nTyping p-values by hand is error-prone. Extract them with p[\"row\", \"column\"]:\n\n\n\npairwise_results &lt;- pairwise.t.test(\n  flowers_all$sepal_width,\n  flowers_all$species,\n  pool.sd = FALSE\n)\np &lt;- pairwise_results$p.value\n\ncomparisons &lt;- list(\n  c(\"setosa\", \"versicolor\"),\n  c(\"setosa\", \"virginica\"),\n  c(\"versicolor\", \"virginica\")\n)\nadjusted_p &lt;- c(\n  p[\"versicolor\", \"setosa\"],\n  p[\"virginica\", \"setosa\"],\n  p[\"virginica\", \"versicolor\"]\n)\np_labels &lt;- paste(\n  \"p =\",\n  format.pval(adjusted_p, digits = 2)\n)\n\n\n\nggplot(\n  flowers_all,\n  aes(x = species, y = sepal_width)\n) +\n  geom_boxplot() +\n  geom_signif(\n    comparisons = comparisons,\n    annotations = p_labels,\n    step_increase = 0.1,\n    tip_length = 0.02\n  )"
+  },
+  {
+    "objectID": "sessions/slides/tests.html#add-the-test-results-to-the-barplot",
+    "href": "sessions/slides/tests.html#add-the-test-results-to-the-barplot",
+    "title": "Statistical tests",
+    "section": "Add the test results to the barplot",
+    "text": "Add the test results to the barplot\n\n\n\nggplot(\n  flowers_all,\n  aes(x = species, y = sepal_width)\n) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.15\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\",\n    fill = \"#28a87d\",\n    width = 0.65\n  ) +\n  geom_signif(\n    comparisons = comparisons,\n    annotations = p_labels,\n    step_increase = 0.1,\n    tip_length = 0.02\n  )"
   },
   {
     "objectID": "sessions/slides/quarto.html#from-r-scripts-to-documents",
@@ -672,43 +679,43 @@
     "text": "What is Quarto?\n\nQuarto is an open-source scientific and technical publishing system\n\n\n\nBuilt into RStudio but can also be installed separately\nCreate different types of outputs:\n\nDocuments: HTML, PDF, Word\nPresentations, Websites, Books, …\n\n\n\n\nToday we focus on documents."
   },
   {
-    "objectID": "sessions/slides/quarto.html#three-steps",
-    "href": "sessions/slides/quarto.html#three-steps",
+    "objectID": "sessions/slides/quarto.html#create-a-quarto-document",
+    "href": "sessions/slides/quarto.html#create-a-quarto-document",
     "title": "Reproducible documents with Quarto",
-    "section": "Three steps",
-    "text": "Three steps\n\nCreate a .qmd document\nWrite text and code into the document\nRender the document to an output format (e.g. HTML)"
+    "section": "Create a Quarto document",
+    "text": "Create a Quarto document\nFile -&gt; New File -&gt; Quarto Document...\n\n\n\n\n\nChoose a title and the output format\nChoose the editor: visual or source\nThe new document already contains example text"
   },
   {
-    "objectID": "sessions/slides/quarto.html#step-1-create-a-.qmd-document",
-    "href": "sessions/slides/quarto.html#step-1-create-a-.qmd-document",
+    "objectID": "sessions/slides/quarto.html#render-the-document",
+    "href": "sessions/slides/quarto.html#render-the-document",
     "title": "Reproducible documents with Quarto",
-    "section": "Step 1: Create a .qmd document",
-    "text": "Step 1: Create a .qmd document\nIn the Files pane, click New File -&gt; Quarto Document\n\n\n\n\nGive it a name (e.g. my_report.qmd) and it opens as an empty file in RStudio."
+    "section": "Render the document",
+    "text": "Render the document\n\nClick the Render button in RStudio\nOr use the keyboard shortcut Ctrl + Shift + K\n\n\nRStudio will run all the code, combine it with your text, and produce the output document."
   },
   {
-    "objectID": "sessions/slides/quarto.html#step-2-write-the-document",
-    "href": "sessions/slides/quarto.html#step-2-write-the-document",
+    "objectID": "sessions/slides/quarto.html#visual-and-source-editor",
+    "href": "sessions/slides/quarto.html#visual-and-source-editor",
     "title": "Reproducible documents with Quarto",
-    "section": "Step 2: Write the document",
-    "text": "Step 2: Write the document\nA .qmd file has three types of content:\n\n\n\n\n\nYAML header: Metadata and output format\nMarkdown text: Formatted text body\nCode chunks: R code that produces output"
+    "section": "Visual and source editor",
+    "text": "Visual and source editor\n\n\nVisual: format text and insert images, tables or links with buttons, similar to Word\nSource: write the text with markdown syntax\nYou can switch between both at any time"
   },
   {
-    "objectID": "sessions/slides/quarto.html#step-3-render-the-document",
-    "href": "sessions/slides/quarto.html#step-3-render-the-document",
+    "objectID": "sessions/slides/quarto.html#three-parts-of-a-.qmd-document",
+    "href": "sessions/slides/quarto.html#three-parts-of-a-.qmd-document",
     "title": "Reproducible documents with Quarto",
-    "section": "Step 3: Render the document",
-    "text": "Step 3: Render the document\n\nClick the Render button in RStudio\nOr use the keyboard shortcut Ctrl + Shift + K\n\n\nRStudio will run all the code, combine it with your text, and produce the output document."
+    "section": "Three parts of a .qmd document",
+    "text": "Three parts of a .qmd document\nA .qmd file has three types of content:\n\n\n\n\n\nYAML header: Metadata and output format\nMarkdown text: Formatted text body\nCode chunks: R code that produces output"
   },
   {
-    "objectID": "sessions/slides/quarto.html#markdown-text",
-    "href": "sessions/slides/quarto.html#markdown-text",
+    "objectID": "sessions/slides/quarto.html#markdown-text-1",
+    "href": "sessions/slides/quarto.html#markdown-text-1",
     "title": "Reproducible documents with Quarto",
     "section": "Markdown text",
     "text": "Markdown text\nMarkdown is a simple markup language to create formatted text.\n\nThe basics\n\nBold: **text** becomes text\nItalic: *text* becomes text\n\n\n\nHeaders\n# First level header\n## Second level header\n### Third level header"
   },
   {
-    "objectID": "sessions/slides/quarto.html#markdown-text-1",
-    "href": "sessions/slides/quarto.html#markdown-text-1",
+    "objectID": "sessions/slides/quarto.html#markdown-text-2",
+    "href": "sessions/slides/quarto.html#markdown-text-2",
     "title": "Reproducible documents with Quarto",
     "section": "Markdown text",
     "text": "Markdown text\nLists\n- item 1\n- item 2\n- item 3\n\nLinks\n[Quarto website](https://quarto.org) becomes Quarto website\n\n\nYou don’t need to memorize all of this. Here is a quick reference."
@@ -718,7 +725,7 @@
     "href": "sessions/slides/quarto.html#code-chunks",
     "title": "Reproducible documents with Quarto",
     "section": "Code chunks",
-    "text": "Code chunks\nCode chunks start and end with 3 backticks and contain R code:\n```{r}\nlibrary(gapminder)\n\nggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +\n  geom_point()\n```\n\nInsert a code chunk\n\nMenu: Code -&gt; Insert chunk\nKeyboard shortcut: Ctrl + Alt + I / Cmd + Option + I"
+    "text": "Code chunks\nCode chunks start and end with 3 backticks and contain R code:\n```{r}\nlibrary(tidyverse)\nlibrary(gapminder)\n\nggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +\n  geom_point()\n```\n\nInsert a code chunk\n\nMenu: Code -&gt; Insert chunk\nKeyboard shortcut: Ctrl + Alt + I / Cmd + Option + I"
   },
   {
     "objectID": "sessions/slides/quarto.html#code-chunks-1",
@@ -728,32 +735,32 @@
     "text": "Code chunks\nRun a code chunk\n\nCode chunks are run when you render the document\nYou can also run them like normal R code by clicking the green arrow"
   },
   {
-    "objectID": "sessions/slides/quarto.html#code-chunks-options",
-    "href": "sessions/slides/quarto.html#code-chunks-options",
+    "objectID": "sessions/slides/quarto.html#code-chunk-options",
+    "href": "sessions/slides/quarto.html#code-chunk-options",
     "title": "Reproducible documents with Quarto",
-    "section": "Code chunks — options",
-    "text": "Code chunks — options\nCode chunks have special comments starting with #| that control the output:\n```{r}\n#| echo: false\n#| warning: false\n\nggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +\n  geom_point()\n```\n\n\necho: true/false — Show the code in the output?\neval: true/false — Run the code?\nwarning: true/false — Show warnings?\nmessage: true/false — Show messages?"
+    "section": "Code chunk options",
+    "text": "Code chunk options\nCode chunks have special comments starting with #| that control the output:\n```{r}\n#| echo: false\n#| warning: false\n\nggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +\n  geom_point()\n```\n\n\necho: Show the code in the output?\neval: Run the code?\ninclude: Show code and output? (the code still runs)\nwarning: Show warnings?\nmessage: Show messages?\n\nAll options take true or false."
   },
   {
     "objectID": "sessions/slides/quarto.html#inline-code",
     "href": "sessions/slides/quarto.html#inline-code",
     "title": "Reproducible documents with Quarto",
     "section": "Inline code",
-    "text": "Inline code\nYou can also include R code inside text using inline code:\n\nThe gapminder data contains `r nrow(gapminder)` observations.\nbecomes:\nThe gapminder data contains 1704 observations.\n\n\nThis is powerful because the number updates automatically when the data changes."
+    "text": "Inline code\nYou can also include R code inside text using inline code:\n\nThe gapminder data contains `r nrow(gapminder)` observations.\nbecomes:\nThe gapminder data contains 1704 observations.\n\n\nThis means numbers update automatically when the data changes."
   },
   {
-    "objectID": "sessions/slides/quarto.html#yaml-header-metadata",
-    "href": "sessions/slides/quarto.html#yaml-header-metadata",
+    "objectID": "sessions/slides/quarto.html#yaml-header-metadata-1",
+    "href": "sessions/slides/quarto.html#yaml-header-metadata-1",
     "title": "Reproducible documents with Quarto",
-    "section": "YAML header — metadata",
-    "text": "YAML header — metadata\nThe YAML header is at the top of the document between --- markers:\n---\ntitle: \"My analysis\"\nauthor: \"Selina Baldauf\"\ndate: today\nformat: html\n---\n\nThis sets the title, author, date, and output format."
+    "section": "YAML header (metadata)",
+    "text": "YAML header (metadata)\nThe YAML header is at the top of the document between --- markers:\n---\ntitle: \"My analysis\"\nauthor: \"Selina Baldauf\"\ndate: today\nformat: html\neditor: visual\n---\n\nThis sets the title, author, date, output format, and editor."
   },
   {
-    "objectID": "sessions/slides/quarto.html#yaml-header-execute-options",
-    "href": "sessions/slides/quarto.html#yaml-header-execute-options",
+    "objectID": "sessions/slides/quarto.html#execute-options",
+    "href": "sessions/slides/quarto.html#execute-options",
     "title": "Reproducible documents with Quarto",
-    "section": "YAML header — execute options",
-    "text": "YAML header — execute options\nYou can set default options for all code chunks:\n---\ntitle: \"My analysis\"\nauthor: \"Selina Baldauf\"\nformat: html\nexecute:\n  warning: false\n  message: false\n---\n\nThese can be overwritten by individual chunk options."
+    "section": "Execute options",
+    "text": "Execute options\nYou can set default options for all code chunks:\n---\ntitle: \"My analysis\"\nauthor: \"Selina Baldauf\"\nformat: html\nexecute:\n  warning: false\n  message: false\n---\n\nThese can be overwritten by individual chunk options."
   },
   {
     "objectID": "sessions/slides/quarto.html#render-to-pdf",
@@ -774,7 +781,7 @@
     "href": "sessions/slides/quarto.html#document-options",
     "title": "Reproducible documents with Quarto",
     "section": "Document options",
-    "text": "Document options\nAdd options under the format to customize your document:\n---\nformat:\n  html:\n    toc: true\n    toc-location: left\n    number-sections: true\n    code-fold: true\n---\n\n\ntoc: Add a table of contents\nnumber-sections: Number the section headers\ncode-fold: Hide code behind a button (HTML only)\n\n\n\nBe careful with the indentation, YAML is sensitive to spaces."
+    "text": "Document options\nAdd options to the YAML header to customize your document:\n---\nformat: html\ntoc: true\ntoc-location: left\nnumber-sections: true\ncode-fold: true\n---\n\n\ntoc: Add a table of contents\nnumber-sections: Number the section headers\ncode-fold: Hide code behind a button (HTML only)"
   },
   {
     "objectID": "sessions/slides/quarto.html#figure-options",
@@ -798,20 +805,6 @@
     "text": "Nice tables with kable()\nBy default, tibbles print as plain text. Use knitr::kable() to render a nice table:\n```{r}\ngapminder |&gt;\n  filter(year == 2007) |&gt;\n  group_by(continent) |&gt;\n  summarize(\n    mean_life_exp = mean(lifeExp),\n    mean_gdp = mean(gdpPercap)\n  ) |&gt;\n  knitr::kable()\n```\n\n\n\n\n\ncontinent\nmean_life_exp\nmean_gdp\n\n\n\n\nAfrica\n54.80604\n3089.033\n\n\nAmericas\n73.60812\n11003.032\n\n\nAsia\n70.72848\n12473.027\n\n\nEurope\n77.64860\n25054.482\n\n\nOceania\n80.71950\n29810.188"
   },
   {
-    "objectID": "sessions/slides/quarto.html#the-visual-editor",
-    "href": "sessions/slides/quarto.html#the-visual-editor",
-    "title": "Reproducible documents with Quarto",
-    "section": "The visual editor",
-    "text": "The visual editor\nRStudio has a visual editor that provides a word-like interface for editing .qmd files."
-  },
-  {
-    "objectID": "sessions/slides/quarto.html#the-visual-editor-1",
-    "href": "sessions/slides/quarto.html#the-visual-editor-1",
-    "title": "Reproducible documents with Quarto",
-    "section": "The visual editor",
-    "text": "The visual editor\nThe visual editor makes it easy to:\n\nFormat text with buttons instead of markdown syntax\nInsert images, tables, and links via menus\nAdd citations from Zotero, DOI, or PubMed"
-  },
-  {
     "objectID": "sessions/slides/quarto.html#outlook",
     "href": "sessions/slides/quarto.html#outlook",
     "title": "Reproducible documents with Quarto",
@@ -823,7 +816,7 @@
     "href": "sessions/slides/quarto.html#references",
     "title": "Reproducible documents with Quarto",
     "section": "References",
-    "text": "References\n\nQuarto website — everything you need to get started\nMarkdown syntax reference\nHTML document options\nPDF document options\nGallery with examples"
+    "text": "References\n\nQuarto website: everything you need to get started\nMarkdown syntax reference\nHTML document options\nPDF document options\nGallery with examples"
   },
   {
     "objectID": "sessions/slides/intro-r.html#r-as-a-calculator",
@@ -938,13 +931,6 @@
     "text": "A ggplot showcase\n\n\n\nVisualization by Cédric Scherer, code available on Github"
   },
   {
-    "objectID": "sessions/slides/ggplot.html#a-ggplot-showcase-4",
-    "href": "sessions/slides/ggplot.html#a-ggplot-showcase-4",
-    "title": "Data visualization with ggplot2",
-    "section": "A ggplot showcase",
-    "text": "A ggplot showcase\n\n\n\nOverview of different plot possibilites created by Cédric Scherer. Check out his tutorial to learn how to make all these plots with ggplot"
-  },
-  {
     "objectID": "sessions/slides/ggplot.html#the-ggplot2-package",
     "href": "sessions/slides/ggplot.html#the-ggplot2-package",
     "title": "Data visualization with ggplot2",
@@ -1043,25 +1029,11 @@
     "text": "geom_boxplot\nCompare a numeric variable across groups:"
   },
   {
-    "objectID": "sessions/slides/ggplot.html#geom_boxplot-with-color",
-    "href": "sessions/slides/ggplot.html#geom_boxplot-with-color",
+    "objectID": "sessions/slides/ggplot.html#geom_boxplot-with-color-or-fill",
+    "href": "sessions/slides/ggplot.html#geom_boxplot-with-color-or-fill",
     "title": "Data visualization with ggplot2",
-    "section": "geom_boxplot with color",
-    "text": "geom_boxplot with color\n\n\n\nggplot(\n  gapminder,\n  aes(\n    x = continent,\n    y = lifeExp,\n    color = continent\n  )\n) +\n  geom_boxplot()"
-  },
-  {
-    "objectID": "sessions/slides/ggplot.html#geom_boxplot-with-fill",
-    "href": "sessions/slides/ggplot.html#geom_boxplot-with-fill",
-    "title": "Data visualization with ggplot2",
-    "section": "geom_boxplot with fill",
-    "text": "geom_boxplot with fill\n\n\n\nggplot(\n  gapminder,\n  aes(\n    x = continent,\n    y = lifeExp,\n    fill = continent\n  )\n) +\n  geom_boxplot()"
-  },
-  {
-    "objectID": "sessions/slides/ggplot.html#geom_tile",
-    "href": "sessions/slides/ggplot.html#geom_tile",
-    "title": "Data visualization with ggplot2",
-    "section": "geom_tile",
-    "text": "geom_tile\nYou can create a simple heatmap with geom_tile\n\n\n\n\nggplot(\n  gapminder,\n  aes(\n    x = year,\n    y = continent,\n    fill = lifeExp\n  )\n) +\n  geom_tile()\n\n\nHere we would have to choose a different color scheme to see differences"
+    "section": "geom_boxplot with color or fill",
+    "text": "geom_boxplot with color or fill\n\n\n\nggplot(\n  gapminder,\n  aes(\n    x = continent,\n    y = lifeExp,\n    color = continent\n  )\n) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\n\n\nggplot(\n  gapminder,\n  aes(\n    x = continent,\n    y = lifeExp,\n    fill = continent\n  )\n) +\n  geom_boxplot()"
   },
   {
     "objectID": "sessions/slides/ggplot.html#geom_histogram",
@@ -1083,13 +1055,6 @@
     "title": "Data visualization with ggplot2",
     "section": "Small multiples with facet_wrap",
     "text": "Small multiples with facet_wrap\nSplit your plots along one variable with facet_wrap\n\n\n\n\nggplot(\n  gapminder,\n  aes(\n    x = lifeExp,\n    fill = continent\n  )\n) +\n  geom_histogram() +\n  facet_wrap(vars(continent))\n\n\nEspecially useful when color/shape gets crowded\nUse facet_grid() to split along two variables"
-  },
-  {
-    "objectID": "sessions/slides/ggplot.html#small-multiples-with-facet_grid",
-    "href": "sessions/slides/ggplot.html#small-multiples-with-facet_grid",
-    "title": "Data visualization with ggplot2",
-    "section": "Small multiples with facet_grid",
-    "text": "Small multiples with facet_grid\nSplit your plots along two variables with facet_grid\n\n\n\n\nggplot(\n  gapminder,\n  aes(\n    x = gdpPercap,\n    y = lifeExp,\n    color = continent\n  )\n) +\n  geom_point() +\n  scale_x_log10() +\n  facet_grid(\n    rows = vars(continent),\n    cols = vars(year)\n  )"
   },
   {
     "objectID": "sessions/slides/ggplot.html#so-many-other-geoms",
@@ -1120,13 +1085,6 @@
     "text": "Mapping vs. setting aesthetics\nYou can change point shape, size, and transparency in the same way:\n\n\n\nggplot(\n  gapminder_2007,\n  aes(\n    x = gdpPercap,\n    y = lifeExp\n  )\n) +\n  geom_point(\n    size = 3, # size\n    shape = 17, # shape\n    color = \"steelblue\", # color\n    alpha = 0.5 # transparency (0-1)\n  ) +\n  scale_x_log10()\n\n\n\n\n\n\n\n\n\n\n\nShape and color codes"
   },
   {
-    "objectID": "sessions/slides/ggplot.html#mapping-vs.-setting-aesthetics-2",
-    "href": "sessions/slides/ggplot.html#mapping-vs.-setting-aesthetics-2",
-    "title": "Data visualization with ggplot2",
-    "section": "Mapping vs. setting aesthetics",
-    "text": "Mapping vs. setting aesthetics\nMapping and setting aesthetics can also be combined:\n\n\n\nggplot(\n  gapminder_2007,\n  aes(\n    x = gdpPercap,\n    y = lifeExp,\n    color = continent\n  )\n) +\n  geom_point(\n    size = 2,\n    alpha = 0.6\n  ) +\n  scale_x_log10()"
-  },
-  {
     "objectID": "sessions/slides/ggplot.html#starting-point",
     "href": "sessions/slides/ggplot.html#starting-point",
     "title": "Data visualization with ggplot2",
@@ -1153,6 +1111,13 @@
     "title": "Data visualization with ggplot2",
     "section": "scale_color_brewer(): use a color palette",
     "text": "scale_color_brewer(): use a color palette\n\n\n\nmy_plot +\n  scale_color_brewer(\n    palette = \"Set2\"\n  )\n\n\nPre-defined palettes, many are colorblind-friendly\nOther options: \"Dark2\", \"Paired\", \"Pastel1\", …\nCheck ?scale_color_brewer for all options"
+  },
+  {
+    "objectID": "sessions/slides/ggplot.html#so-many-color-options",
+    "href": "sessions/slides/ggplot.html#so-many-color-options",
+    "title": "Data visualization with ggplot2",
+    "section": "So many color options",
+    "text": "So many color options\nMany packages provide additional color palettes for ggplot:\n\nggsci: palettes inspired by scientific journals (e.g. Nature, Lancet) and sci-fi movies\nscico: scientific color palettes that are colorblind-friendly\nMetBrewer: palettes inspired by paintings from the Metropolitan Museum of Art\nNatParksPalettes: palettes inspired by photos of national parks from around the world\nggthemes: palettes and themes from e.g. The Economist, Tableau, Wall Street Journal\npaletteer: one interface to thousands of palettes from many different packages"
   },
   {
     "objectID": "sessions/slides/ggplot.html#scale_fill_-vs.-scale_color_",
@@ -1197,13 +1162,6 @@
     "text": "theme_*: change appearance\nSince ggplot2 v. 4.0.0, you can change overall color choices of a pre-defined theme.\n\n\n\nmy_plot +\n  theme_bw(\n    ink = \"#BBBBBB\",\n    paper = \"#333333\"\n  )\n\n\npaper: affects background elements\nink: affects foreground elements (text, lines, points, …)\naccent: affects elements that are used to highlight information (like geom_smooth() lines)"
   },
   {
-    "objectID": "sessions/slides/ggplot.html#theme_-change-appearance-3",
-    "href": "sessions/slides/ggplot.html#theme_-change-appearance-3",
-    "title": "Data visualization with ggplot2",
-    "section": "theme_*: change appearance",
-    "text": "theme_*: change appearance\nSince ggplot2 v. 4.0.0, you can change overall color choices of a pre-defined theme.\n\n\n\nmy_plot +\n  theme_minimal(\n    paper = \"cornsilk\",\n    ink = \"navy\"\n  )\n\n\npaper: affects background elements\nink: affects foreground elements (text, lines, points, …)\naccent: affects elements that are used to highlight information (like geom_smooth() lines)"
-  },
-  {
     "objectID": "sessions/slides/ggplot.html#theme-fine-tune-individual-elements",
     "href": "sessions/slides/ggplot.html#theme-fine-tune-individual-elements",
     "title": "Data visualization with ggplot2",
@@ -1216,13 +1174,6 @@
     "title": "Data visualization with ggplot2",
     "section": "theme(): fine-tune individual elements",
     "text": "theme(): fine-tune individual elements\n\nCheck ?theme for all theme elements and options\nSearch: “ggplot theme …” (e.my_plot. “ggplot theme remove legend”)\n\n\n\n\n\nTheme reference sheet by Isabella Benabaye"
-  },
-  {
-    "objectID": "sessions/slides/ggplot.html#theme_set-set-global-theme",
-    "href": "sessions/slides/ggplot.html#theme_set-set-global-theme",
-    "title": "Data visualization with ggplot2",
-    "section": "theme_set(): set global theme",
-    "text": "theme_set(): set global theme\nYou can set a global theme that will be applied to all ggplot objects in the current R session.\n\n# Globally set theme_minimal as the default theme\ntheme_set(theme_minimal())\n\nAdd this to the beginning of your script.\n\nYou can also specify some defaults, e.g. the text size:\n\ntheme_set(\n  theme_minimal(\n    base_size = 16,\n    paper = \"cornsilk\",\n    ink = \"navy\"\n  )\n)\n\nThis is very practical if you want to achieve a consistent look, e.g. for a scientific journal."
   },
   {
     "objectID": "sessions/slides/ggplot.html#ggsave",
@@ -1621,7 +1572,7 @@
     "href": "index.html#schedule",
     "title": "Introduction to R for Data Analysis",
     "section": "Schedule",
-    "text": "Schedule\n\n\n\n\nDate\nTime\n\n\n\n\n📅 Day 1\nMonday, 12 October 2026\n9:00 – 15:30\n\n\n📅 Day 2\nTuesday, 13 October 2026\n9:00 – 15:30\n\n\n📅 Day 3\nMonday, 19 October 2026\n9:00 – 15:30\n\n\n📅 Day 4\nTuesday, 20 October 2026\n9:00 – 15:30\n\n\n\n\n\n\nDay 1 — R and RStudio Basics, Reading Data\nThe task solution script will be available for download here after the session.\n\nDownload Day 1 R script\n\n\nOrganization\nIntroduction to RStudio\nIntroduction to R\nData frames & tibbles\nImport and Export Data\nCommon R errors\nGood coding practice\n\n\n\nDay 2 — Data Visualization and Transformation\nThe task solution script will be available for download here after the session.\n\nDownload Day 2 R script\n\n\nData visualization with ggplot2\nData transformation with dplyr\n\n\n\nDay 3 — Tidy Data and Statistics\nThe task solution script will be available for download here after the session.\n\nDownload Day 3 R script Download Day 3 Quarto solution\n\n\nTidy data with tidyr\nStatistical tests\nReproducible reports with Quarto\nAI Tools\n\n\n\nDay 4 — Bring Your Own Data\nApply what you’ve learned to your own research data, with instructor support throughout the day.\n\nBring Your Own Data"
+    "text": "Schedule\n\n\n\n\nDate\nTime\n\n\n\n\n📅 Day 1\nMonday, 12 October 2026\n9:00 – 15:30\n\n\n📅 Day 2\nTuesday, 13 October 2026\n9:00 – 15:30\n\n\n📅 Day 3\nMonday, 19 October 2026\n9:00 – 15:30\n\n\n📅 Day 4\nTuesday, 20 October 2026\n9:00 – 15:30\n\n\n\n\n\n\nDay 1 — R and RStudio Basics, Reading Data\nThe task solution script will be available for download here after the session.\n\nDownload Day 1 R script\n\n\nOrganization\nIntroduction to RStudio\nIntroduction to R\nData frames & tibbles\nImport and Export Data\nCommon R errors\nGood coding practice\n\n\n\nDay 2 — Data Visualization and Transformation\nThe task solution script will be available for download here after the session.\n\nDownload Day 2 R script\n\n\nData visualization with ggplot2\nData transformation with dplyr\n\n\n\nDay 3 — Tidy Data and Statistics\nThe task solution script will be available for download here after the session.\n\nDownload Day 3 R script Download Day 3 Quarto solution\n\n\nTidy data with tidyr\nStatistical tests\nReproducible reports with Quarto\n\n\n\nDay 4 — Bring Your Own Data\nApply what you’ve learned to your own research data, with instructor support throughout the day.\n\nBring Your Own Data"
   },
   {
     "objectID": "byod/olympics.html",
@@ -2100,25 +2051,11 @@
     "text": "filter(): combine conditions\nUse | (or) - one conditions must be true:\n\n\n# Filter years outside the range 1970–2005\nfilter(gapminder, year &gt;= 2005 | year &lt;= 1970)\n#&gt; # A tibble: 710 × 6\n#&gt;    country     continent  year lifeExp      pop gdpPercap\n#&gt;    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;\n#&gt;  1 Afghanistan Asia       1952    28.8  8425333      779.\n#&gt;  2 Afghanistan Asia       1957    30.3  9240934      821.\n#&gt;  3 Afghanistan Asia       1962    32.0 10267083      853.\n#&gt;  4 Afghanistan Asia       1967    34.0 11537966      836.\n#&gt;  5 Afghanistan Asia       2007    43.8 31889923      975.\n#&gt;  6 Albania     Europe     1952    55.2  1282697     1601.\n#&gt;  7 Albania     Europe     1957    59.3  1476505     1942.\n#&gt;  8 Albania     Europe     1962    64.8  1728137     2313.\n#&gt;  9 Albania     Europe     1967    66.2  1984060     2760.\n#&gt; 10 Albania     Europe     2007    76.4  3600523     5937.\n#&gt; # ℹ 700 more rows"
   },
   {
-    "objectID": "sessions/slides/dplyr.html#filter_out-opposite-of-filter",
-    "href": "sessions/slides/dplyr.html#filter_out-opposite-of-filter",
-    "title": "Data transformation with dplyr",
-    "section": "filter_out(): opposite of filter",
-    "text": "filter_out(): opposite of filter\nRelatively new function - keeps rows that don’t match the condition:\n\n# Keep rows that are NOT from Europe\nfilter_out(gapminder, continent == \"Europe\")\n#&gt; Error in `filter_out()`:\n#&gt; ! could not find function \"filter_out\"\n\n\n\n\n# equivalent to\nfilter(gapminder, continent != \"Europe\")"
-  },
-  {
     "objectID": "sessions/slides/dplyr.html#select-1",
     "href": "sessions/slides/dplyr.html#select-1",
     "title": "Data transformation with dplyr",
     "section": "select()",
     "text": "select()\nSelect the columns country, year, and lifeExp\n\nselect(gapminder, country, year, lifeExp)\n#&gt; # A tibble: 1,704 × 3\n#&gt;    country      year lifeExp\n#&gt;    &lt;fct&gt;       &lt;int&gt;   &lt;dbl&gt;\n#&gt;  1 Afghanistan  1952    28.8\n#&gt;  2 Afghanistan  1957    30.3\n#&gt;  3 Afghanistan  1962    32.0\n#&gt;  4 Afghanistan  1967    34.0\n#&gt;  5 Afghanistan  1972    36.1\n#&gt;  6 Afghanistan  1977    38.4\n#&gt;  7 Afghanistan  1982    39.9\n#&gt;  8 Afghanistan  1987    40.8\n#&gt;  9 Afghanistan  1992    41.7\n#&gt; 10 Afghanistan  1997    41.8\n#&gt; # ℹ 1,694 more rows\n\n\nRemove variables using -\n\nselect(gapminder, -country, -year, -lifeExp)"
-  },
-  {
-    "objectID": "sessions/slides/dplyr.html#select-starts_with",
-    "href": "sessions/slides/dplyr.html#select-starts_with",
-    "title": "Data transformation with dplyr",
-    "section": "select() + starts_with()",
-    "text": "select() + starts_with()\nSelect all columns that start with \"c\"\n\nselect(gapminder, starts_with(\"c\"))\n#&gt; # A tibble: 1,704 × 2\n#&gt;    country     continent\n#&gt;    &lt;fct&gt;       &lt;fct&gt;    \n#&gt;  1 Afghanistan Asia     \n#&gt;  2 Afghanistan Asia     \n#&gt;  3 Afghanistan Asia     \n#&gt;  4 Afghanistan Asia     \n#&gt;  5 Afghanistan Asia     \n#&gt;  6 Afghanistan Asia     \n#&gt;  7 Afghanistan Asia     \n#&gt;  8 Afghanistan Asia     \n#&gt;  9 Afghanistan Asia     \n#&gt; 10 Afghanistan Asia     \n#&gt; # ℹ 1,694 more rows\n\n\nThere are also ends_with(), contains(), and more - see ?select for details."
   },
   {
     "objectID": "sessions/slides/dplyr.html#mutate-1",
@@ -2618,11 +2555,11 @@
     "text": "Same data different format\n\n\nExpand to reproduce the data\ncities_untidy &lt;- unite(cities_tbl, col = \"location\", c(country, city_name)) |&gt;\n  pivot_longer(c(population_size, city_area), names_to = \"type\") |&gt;\n  pivot_wider(names_from = \"location\", values_from = \"value\")\n\n\n\ncities_untidy\n\n\n#&gt; # A tibble: 2 × 11\n#&gt;   type            Turkey_Istanbul Russia_Moscow UK_London Russia_Saint Petersb…¹\n#&gt;   &lt;chr&gt;                     &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;                  &lt;dbl&gt;\n#&gt; 1 population_size        15100000      12500000   9000000                5400000\n#&gt; 2 city_area                  2576          2561      1572                   1439\n#&gt;   Germany_Berlin Spain_Madrid Ukraine_Kyiv Italy_Rome Romania_Bucharest\n#&gt;            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;             &lt;dbl&gt;\n#&gt; 1        3800000      3200000      3000000    2800000           2200000\n#&gt; 2            891          604          839       1285               228\n#&gt; # ℹ abbreviated name: ¹​`Russia_Saint Petersburg`\n#&gt; # ℹ 1 more variable: France_Paris &lt;dbl&gt;\n\nWhat’s not tidy here?\n\n\nEach row has multiple observations\nAt the same time, each observation is split across multiple rows\nCountry and city variable are split into multiple columns\nCountry and city variable values are united to one value"
   },
   {
-    "objectID": "sessions/slides/tidyr.html#the-tidyr-pacakge",
-    "href": "sessions/slides/tidyr.html#the-tidyr-pacakge",
+    "objectID": "sessions/slides/tidyr.html#the-tidyr-package",
+    "href": "sessions/slides/tidyr.html#the-tidyr-package",
     "title": "Tidy data with tidyr",
-    "section": "The tidyr pacakge",
-    "text": "The tidyr pacakge\nLet’s tidy this data using functions from the tidyr package!\n\nFirst load the package with either\n\nlibrary(tidyr)\n\nor\n\nlibrary(tidyverse)"
+    "section": "The tidyr package",
+    "text": "The tidyr package\nLet’s tidy this data using functions from the tidyr package!\n\nFirst load the package with either\n\nlibrary(tidyr)\n\nor\n\nlibrary(tidyverse)"
   },
   {
     "objectID": "sessions/slides/tidyr.html#pivot_longer",
@@ -2818,28 +2755,63 @@
     "href": "sessions/solutions/quarto-solution.html",
     "title": "Solution to Quarto task",
     "section": "",
-    "text": "Below is an example solution for the Quarto task. Your document will look different depending on the text you wrote and the plots you chose — that’s fine! The important thing is that you have all the elements working."
+    "text": "Below is an example solution for the Quarto task. Your document will look different depending on the text you wrote and the plot you chose. The important thing is that you have all the elements working."
   },
   {
     "objectID": "sessions/solutions/quarto-solution.html#the-complete-document",
     "href": "sessions/solutions/quarto-solution.html#the-complete-document",
     "title": "Solution to Quarto task",
     "section": "The complete document",
-    "text": "The complete document\nHere is the full source of the example document. Copy it into a .qmd file and render it to see the result.\n---\ntitle: \"Penguin Report\"\nauthor: \"Selina Baldauf\"\nformat: html\nexecute:\n  warning: false\n  message: false\n---\n\n```{r}\n#| include: false\nlibrary(tidyverse)\n```\n\n## Introduction\n\nThis is a short report about the **Palmer Penguins** dataset.\nThe data contains measurements for three penguin species:\n\n- *Adelie*\n- *Chinstrap*\n- *Gentoo*\n\nYou can find more information about the data on the\n[palmerpenguins website](https://allisonhorst.github.io/palmerpenguins/).\n\n## Data overview\n\n```{r}\nhead(penguins)\n```\n\nThe dataset contains `r nrow(penguins)` penguins\nfrom `r length(unique(penguins$species))` species.\n\n## Analysis\n\n```{r}\n#| echo: false\nggplot(penguins, aes(x = bill_len, y = bill_dep, color = species)) +\n  geom_point() +\n  labs(\n    x = \"Bill length (mm)\",\n    y = \"Bill depth (mm)\",\n    color = \"Species\"\n  ) +\n  theme_minimal()\n```\n\n```{r}\nggplot(penguins, aes(x = species, y = body_mass, fill = species)) +\n  geom_boxplot() +\n  labs(x = \"Species\", y = \"Body mass (g)\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n```"
+    "text": "The complete document\nHere is the full source of the example document. Copy it into a .qmd file and render it to see the result.\n---\ntitle: \"Penguin Report\"\nauthor: \"Selina Baldauf\"\ndate: today\nformat: html\nexecute:\n  warning: false\n  message: false\n---\n\n```{r}\n#| include: false\nlibrary(tidyverse)\n```\n\n## Introduction\n\nThis is a short report about the **Palmer Penguins** dataset.\nThe data contains measurements for three penguin species:\n\n- *Adelie*\n- *Chinstrap*\n- *Gentoo*\n\nYou can find more information about the data on the\n[palmerpenguins website](https://allisonhorst.github.io/palmerpenguins/).\n\nThe dataset contains `r nrow(penguins)` penguins.\n\n## Analysis\n\n```{r}\n#| echo: false\n#| warning: false\nggplot(penguins, aes(x = bill_len, y = bill_dep, color = species)) +\n  geom_point() +\n  labs(\n    x = \"Bill length (mm)\",\n    y = \"Bill depth (mm)\",\n    color = \"Species\"\n  ) +\n  theme_minimal()\n```"
+  },
+  {
+    "objectID": "sessions/solutions/quarto-solution.html#include-false-vs.-echo-false",
+    "href": "sessions/solutions/quarto-solution.html#include-false-vs.-echo-false",
+    "title": "Solution to Quarto task",
+    "section": "include: false vs. echo: false",
+    "text": "include: false vs. echo: false\n\necho: false hides only the code. The output (e.g. the plot) is still shown.\ninclude: false hides the code and the output. The code still runs, so the tidyverse is loaded."
   },
   {
     "objectID": "sessions/solutions/tests-solution.html",
     "href": "sessions/solutions/tests-solution.html",
     "title": "Solution to statistical test task",
     "section": "",
-    "text": "First, create subsets of the flipper length of all species as vectors:\n\nlibrary(tidyverse)\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\n\n\n\nWith Shapiro-Wilk\nThe Shapiro-Wilk test suggests that Adelie and Chinstrap are normally distributed, but Gentoo is not.\n\nshapiro.test(adelie)\n\n\n    Shapiro-Wilk normality test\n\ndata:  adelie\nW = 0.99339, p-value = 0.72\n\nshapiro.test(gentoo)\n\n\n    Shapiro-Wilk normality test\n\ndata:  gentoo\nW = 0.96219, p-value = 0.00162\n\nshapiro.test(chinstrap)\n\n\n    Shapiro-Wilk normality test\n\ndata:  chinstrap\nW = 0.98891, p-value = 0.8106\n\n\nWith QQ-plots\n\nlibrary(patchwork) # using patchwork to combine multiple plots into one\nch &lt;- ggpubr::ggqqplot(chinstrap) + labs(title = \"chinstrap\")\nad &lt;- ggpubr::ggqqplot(adelie) + labs(title = \"adelie\")\nge &lt;- ggpubr::ggqqplot(gentoo) + labs(title = \"gentoo\")\n\nch + ge + ad\n\n\n\n\n\n\n\n\n\n\n\nBoth are normally distributed, so we can compare variances for Chinstrap and Adelie penguins:\n\nvar.test(chinstrap, adelie)\n\n\n    F test to compare two variances\n\ndata:  chinstrap and adelie\nF = 1.1894, num df = 67, denom df = 150, p-value = 0.3854\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.8022092 1.8217141\nsample estimates:\nratio of variances \n          1.189396 \n\n\nThis indicates that the variances do not differ between Chinstrap and Adelie penguins. Therefore, we can use a t-test to compare mean flipper length:\n\nt.test(chinstrap, adelie)\n\n\n    Welch Two Sample t-test\n\ndata:  chinstrap and adelie\nt = 5.7804, df = 119.68, p-value = 6.049e-08\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 3.859244 7.880530\nsample estimates:\nmean of x mean of y \n 195.8235  189.9536 \n\n\nThe t-test suggests, that the mean flipper length differs between Chinstrap and Adelie penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(chinstrap, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  chinstrap and gentoo\nW = 92, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Chinstrap and Gentoo penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(adelie, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  adelie and gentoo\nW = 26, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Adelie and Gentoo penguins.\n\n\n\nThe boxplot supports the findings of the statistical tests. Notches do not overlap.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE)\n\n\n\n\n\n\n\n\nSimilarly the standard errors of the means do not overlap between the species.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary()\n\n\n\n\n\n\n\n\nTo add the significance levels of the tests performed, I used the geom_signif() layer provided by the ggsignif package.\nSince I performed two different tests (t-test for the comparison of Chinstrap and Adelie penguins, Wilcoxon test for the other two comparisons), I added two different significance layers that distinguish the two tests.\nFor the boxplot:\n\nlibrary(ggsignif)\npenguins_boxplot &lt;- penguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(235, 240),\n    map_signif_level = TRUE\n  )\n\n# To print the plot, just type its name:\npenguins_boxplot\n\n\n\n\n\n\n\n\nFor a plot with mean and errorbar:\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary() +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 200,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(216, 218),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\n\n\n\n\n\n\n\nYou can also do a barplot with error bars. In this case, the error bars are barely visible, because the standard error of the mean is quite small compared to the mean.\n\nggplot(penguins, aes(x = species, y = flipper_len)) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.2\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\",\n    fill = \"grey70\"\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 205,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(221, 230),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\n\n\n\n\n\n\n\n\n\n\nOf course you can further improve the appearance of you plots. Here is an example of a simple, yet elegant version of the boxplot from above:\n\npenguins_boxplot +\n  labs(\n    y = \"Flipper length (mm)\"\n  ) +\n  theme_classic() +\n  theme(\n    text = element_text(size = 16),\n    axis.title.x = element_blank(),\n    panel.grid.major.y = element_line(color = \"grey90\")\n  )"
+    "text": "library(tidyverse)\nlibrary(ggsignif)\nlibrary(ggpubr)"
   },
   {
-    "objectID": "sessions/solutions/tests-solution.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
-    "href": "sessions/solutions/tests-solution.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
+    "objectID": "sessions/solutions/tests-solution.html#get-started",
+    "href": "sessions/solutions/tests-solution.html#get-started",
     "title": "Solution to statistical test task",
     "section": "",
-    "text": "First, create subsets of the flipper length of all species as vectors:\n\nlibrary(tidyverse)\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\n\n\n\nWith Shapiro-Wilk\nThe Shapiro-Wilk test suggests that Adelie and Chinstrap are normally distributed, but Gentoo is not.\n\nshapiro.test(adelie)\n\n\n    Shapiro-Wilk normality test\n\ndata:  adelie\nW = 0.99339, p-value = 0.72\n\nshapiro.test(gentoo)\n\n\n    Shapiro-Wilk normality test\n\ndata:  gentoo\nW = 0.96219, p-value = 0.00162\n\nshapiro.test(chinstrap)\n\n\n    Shapiro-Wilk normality test\n\ndata:  chinstrap\nW = 0.98891, p-value = 0.8106\n\n\nWith QQ-plots\n\nlibrary(patchwork) # using patchwork to combine multiple plots into one\nch &lt;- ggpubr::ggqqplot(chinstrap) + labs(title = \"chinstrap\")\nad &lt;- ggpubr::ggqqplot(adelie) + labs(title = \"adelie\")\nge &lt;- ggpubr::ggqqplot(gentoo) + labs(title = \"gentoo\")\n\nch + ge + ad\n\n\n\n\n\n\n\n\n\n\n\nBoth are normally distributed, so we can compare variances for Chinstrap and Adelie penguins:\n\nvar.test(chinstrap, adelie)\n\n\n    F test to compare two variances\n\ndata:  chinstrap and adelie\nF = 1.1894, num df = 67, denom df = 150, p-value = 0.3854\nalternative hypothesis: true ratio of variances is not equal to 1\n95 percent confidence interval:\n 0.8022092 1.8217141\nsample estimates:\nratio of variances \n          1.189396 \n\n\nThis indicates that the variances do not differ between Chinstrap and Adelie penguins. Therefore, we can use a t-test to compare mean flipper length:\n\nt.test(chinstrap, adelie)\n\n\n    Welch Two Sample t-test\n\ndata:  chinstrap and adelie\nt = 5.7804, df = 119.68, p-value = 6.049e-08\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 3.859244 7.880530\nsample estimates:\nmean of x mean of y \n 195.8235  189.9536 \n\n\nThe t-test suggests, that the mean flipper length differs between Chinstrap and Adelie penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(chinstrap, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  chinstrap and gentoo\nW = 92, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Chinstrap and Gentoo penguins.\n\n\n\nGentoo is not normally distributed, so we can use a Wilcoxon-rank-sum test to compare means:\n\nwilcox.test(adelie, gentoo)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  adelie and gentoo\nW = 26, p-value &lt; 2.2e-16\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon tests suggests that the flipper lengths differ between Adelie and Gentoo penguins.\n\n\n\nThe boxplot supports the findings of the statistical tests. Notches do not overlap.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE)\n\n\n\n\n\n\n\n\nSimilarly the standard errors of the means do not overlap between the species.\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary()\n\n\n\n\n\n\n\n\nTo add the significance levels of the tests performed, I used the geom_signif() layer provided by the ggsignif package.\nSince I performed two different tests (t-test for the comparison of Chinstrap and Adelie penguins, Wilcoxon test for the other two comparisons), I added two different significance layers that distinguish the two tests.\nFor the boxplot:\n\nlibrary(ggsignif)\npenguins_boxplot &lt;- penguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  geom_boxplot(notch = TRUE) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(235, 240),\n    map_signif_level = TRUE\n  )\n\n# To print the plot, just type its name:\npenguins_boxplot\n\n\n\n\n\n\n\n\nFor a plot with mean and errorbar:\n\npenguins |&gt;\n  ggplot(aes(x = species, y = flipper_len)) +\n  stat_summary() +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 200,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(216, 218),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\n\n\n\n\n\n\n\nYou can also do a barplot with error bars. In this case, the error bars are barely visible, because the standard error of the mean is quite small compared to the mean.\n\nggplot(penguins, aes(x = species, y = flipper_len)) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.2\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\",\n    fill = \"grey70\"\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Adelie\")\n    ),\n    test = \"t.test\",\n    test.args = list(var.equal = TRUE),\n    map_signif_level = TRUE,\n    y_position = 205,\n    tip_length = 0.01\n  ) +\n  geom_signif(\n    comparisons = list(\n      c(\"Chinstrap\", \"Gentoo\"),\n      c(\"Gentoo\", \"Adelie\")\n    ),\n    test = \"wilcox.test\",\n    y_position = c(221, 230),\n    map_signif_level = TRUE,\n    tip_length = 0.01\n  )\n\n\n\n\n\n\n\n\n\n\n\nOf course you can further improve the appearance of you plots. Here is an example of a simple, yet elegant version of the boxplot from above:\n\npenguins_boxplot +\n  labs(\n    y = \"Flipper length (mm)\"\n  ) +\n  theme_classic() +\n  theme(\n    text = element_text(size = 16),\n    axis.title.x = element_blank(),\n    panel.grid.major.y = element_line(color = \"grey90\")\n  )"
+    "text": "library(tidyverse)\nlibrary(ggsignif)\nlibrary(ggpubr)"
+  },
+  {
+    "objectID": "sessions/solutions/tests-solution.html#part-1-compare-two-species",
+    "href": "sessions/solutions/tests-solution.html#part-1-compare-two-species",
+    "title": "Solution to statistical test task",
+    "section": "Part 1: Compare two species",
+    "text": "Part 1: Compare two species\n\n1. Create a smaller version of the data\n\npenguins_small &lt;- penguins |&gt;\n  filter(species %in% c(\"Adelie\", \"Chinstrap\"))\n\n\n\n2. Plot the two species\n\nggplot(penguins_small, aes(x = species, y = flipper_len)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nThe warning about 1 removed row comes from a missing value in flipper_len.\n\n\n3. Check for normality\n\nadelie &lt;- filter(penguins_small, species == \"Adelie\")$flipper_len\nchinstrap &lt;- filter(penguins_small, species == \"Chinstrap\")$flipper_len\n\nshapiro.test(adelie)\n\n\n    Shapiro-Wilk normality test\n\ndata:  adelie\nW = 0.99339, p-value = 0.72\n\nshapiro.test(chinstrap)\n\n\n    Shapiro-Wilk normality test\n\ndata:  chinstrap\nW = 0.98891, p-value = 0.8106\n\n\n\nggqqplot(adelie)\n\n\n\n\n\n\n\nggqqplot(chinstrap)\n\n\n\n\n\n\n\n\nBoth Shapiro-Wilk tests give large p-values and the points in both QQ-plots follow the line. The flipper lengths of both species are roughly normally distributed.\n\n\n4. Compare the means\n\nt.test(adelie, chinstrap)\n\n\n    Welch Two Sample t-test\n\ndata:  adelie and chinstrap\nt = -5.7804, df = 119.68, p-value = 6.049e-08\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -7.880530 -3.859244\nsample estimates:\nmean of x mean of y \n 189.9536  195.8235 \n\n\nMean flipper length was 5.9 mm shorter in Adelie than in Chinstrap penguins (Welch’s t-test, \\(t_{119.7}\\) = -5.78, p &lt; 0.001).\n\n\n5. Add the test result to the plot\n\nggplot(penguins_small, aes(x = species, y = flipper_len)) +\n  geom_boxplot() +\n  geom_signif(\n    comparisons = list(c(\"Adelie\", \"Chinstrap\")),\n    test = \"t.test\",\n    map_signif_level = TRUE\n  )"
+  },
+  {
+    "objectID": "sessions/solutions/tests-solution.html#part-2-compare-all-three-species",
+    "href": "sessions/solutions/tests-solution.html#part-2-compare-all-three-species",
+    "title": "Solution to statistical test task",
+    "section": "Part 2: Compare all three species",
+    "text": "Part 2: Compare all three species\n\n1. Pairwise comparisons\n\npairwise.t.test(\n  penguins$flipper_len,\n  penguins$species,\n  pool.sd = FALSE\n)\n\n\n    Pairwise comparisons using t tests with non-pooled SD \n\ndata:  penguins$flipper_len and penguins$species \n\n          Adelie Chinstrap\nChinstrap 6e-08  -        \nGentoo    &lt;2e-16 &lt;2e-16   \n\nP value adjustment method: holm \n\n\nAll three species differ in their mean flipper length (Holm-adjusted p &lt; 0.001 for all pairs).\n\n\n2. Plot with significance levels\nTyping the p-values by hand\n\nggplot(penguins, aes(x = species, y = flipper_len)) +\n  geom_boxplot() +\n  geom_signif(\n    comparisons = list(\n      c(\"Adelie\", \"Chinstrap\"),\n      c(\"Adelie\", \"Gentoo\"),\n      c(\"Chinstrap\", \"Gentoo\")\n    ),\n    annotations = c(\"p &lt; 0.001\", \"p &lt; 0.001\", \"p &lt; 0.001\"),\n    step_increase = 0.1,\n    tip_length = 0.02\n  )\n\n\n\n\n\n\n\n\nExtracting the p-values automatically\nIn the p-value matrix, the rows are Chinstrap and Gentoo and the columns are Adelie and Chinstrap:\n\npairwise_results &lt;- pairwise.t.test(\n  penguins$flipper_len,\n  penguins$species,\n  pool.sd = FALSE\n)\np &lt;- pairwise_results$p.value\np\n\n                Adelie   Chinstrap\nChinstrap 6.049267e-08          NA\nGentoo    9.579154e-99 8.08089e-42\n\ncomparisons &lt;- list(\n  c(\"Adelie\", \"Chinstrap\"),\n  c(\"Adelie\", \"Gentoo\"),\n  c(\"Chinstrap\", \"Gentoo\")\n)\nadjusted_p &lt;- c(\n  p[\"Chinstrap\", \"Adelie\"],\n  p[\"Gentoo\", \"Adelie\"],\n  p[\"Gentoo\", \"Chinstrap\"]\n)\np_labels &lt;- paste(\"p =\", format.pval(adjusted_p, digits = 2))\np_labels\n\n[1] \"p = 6e-08\"  \"p = &lt;2e-16\" \"p = &lt;2e-16\"\n\n\nVery small p-values are shown as “p = &lt;2e-16”. The bonus section at the end shows how to get “p &lt; 0.001” instead.\n\npenguins_boxplot &lt;- ggplot(penguins, aes(x = species, y = flipper_len)) +\n  geom_boxplot() +\n  geom_signif(\n    comparisons = comparisons,\n    annotations = p_labels,\n    step_increase = 0.1,\n    tip_length = 0.02\n  )\npenguins_boxplot"
+  },
+  {
+    "objectID": "sessions/solutions/tests-solution.html#for-the-fast-ones",
+    "href": "sessions/solutions/tests-solution.html#for-the-fast-ones",
+    "title": "Solution to statistical test task",
+    "section": "For the fast ones",
+    "text": "For the fast ones\n\nOther plot types\nMean ± standard error:\n\nggplot(penguins, aes(x = species, y = flipper_len)) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.15\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"point\",\n    size = 3\n  ) +\n  geom_signif(\n    comparisons = comparisons,\n    annotations = p_labels,\n    step_increase = 0.1,\n    tip_length = 0.02\n  )\n\n\n\n\n\n\n\n\nBarplot with error bars:\n\nggplot(penguins, aes(x = species, y = flipper_len)) +\n  stat_summary(\n    fun.data = mean_se,\n    geom = \"errorbar\",\n    width = 0.15\n  ) +\n  stat_summary(\n    fun = mean,\n    geom = \"bar\",\n    fill = \"grey70\",\n    width = 0.65\n  ) +\n  geom_signif(\n    comparisons = comparisons,\n    annotations = p_labels,\n    step_increase = 0.3,\n    tip_length = 0.02\n  )\n\n\n\n\n\n\n\n\n\n\nMake the plot look nice\n\npenguins_boxplot +\n  labs(x = NULL, y = \"Flipper length (mm)\") +\n  theme_classic() +\n  theme(\n    text = element_text(size = 16),\n    panel.grid.major.y = element_line(color = \"grey90\")\n  )\n\n\n\n\n\n\n\n\n\n\nWilcoxon rank-sum test\n\nwilcox.test(adelie, chinstrap)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  adelie and chinstrap\nW = 2733.5, p-value = 3.028e-08\nalternative hypothesis: true location shift is not equal to 0\n\n\nThe Wilcoxon test comes to the same conclusion: flipper length was smaller in Adelie than in Chinstrap penguins (median 190 vs. 196 mm; Wilcoxon rank-sum test, W = 2733.5, p &lt; 0.001).\n\n\nNormality of Gentoo penguins\n\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\n\nshapiro.test(gentoo)\n\n\n    Shapiro-Wilk normality test\n\ndata:  gentoo\nW = 0.96219, p-value = 0.00162\n\nggqqplot(gentoo)\n\n\n\n\n\n\n\n\nThe Shapiro-Wilk test gives a small p-value, but the QQ-plot shows only small deviations from the line. With 123 Gentoo penguins, the test detects even small deviations from normality. The t-test is fine here."
+  },
+  {
+    "objectID": "sessions/solutions/tests-solution.html#bonus-many-groups",
+    "href": "sessions/solutions/tests-solution.html#bonus-many-groups",
+    "title": "Solution to statistical test task",
+    "section": "Bonus: Many groups",
+    "text": "Bonus: Many groups\nWith many groups, typing the comparisons by hand gets tedious. Instead, you can turn the p-value matrix into a table with one row per comparison:\n\np_table &lt;- pairwise_results$p.value |&gt;\n  as_tibble(rownames = \"group1\") |&gt;\n  pivot_longer(!group1, names_to = \"group2\", values_to = \"p_adj\") |&gt;\n  drop_na(p_adj) |&gt;\n  mutate(\n    label = if_else(\n      p_adj &lt; 0.001,\n      \"p &lt; 0.001\",\n      paste(\"p =\", signif(p_adj, 2))\n    )\n  )\np_table\n\n# A tibble: 3 × 4\n  group1    group2       p_adj label    \n  &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;    \n1 Chinstrap Adelie    6.05e- 8 p &lt; 0.001\n2 Gentoo    Adelie    9.58e-99 p &lt; 0.001\n3 Gentoo    Chinstrap 8.08e-42 p &lt; 0.001\n\n\n\nas_tibble(rownames = \"group1\"): turns the matrix into a tibble and keeps the row names as a column\ndrop_na(): removes the empty upper triangle of the matrix\nif_else(): shows “p &lt; 0.001” for very small p-values\n\nmap2() combines group2 and group1 into the list of comparisons:\n\nggplot(penguins, aes(x = species, y = flipper_len)) +\n  geom_boxplot() +\n  geom_signif(\n    comparisons = map2(p_table$group2, p_table$group1, c),\n    annotations = p_table$label,\n    step_increase = 0.1,\n    tip_length = 0.02\n  )"
   },
   {
     "objectID": "sessions/tasks/data-tibbles-task.html",
@@ -2853,7 +2825,7 @@
     "href": "sessions/tasks/data-tibbles-task.html#get-started-with-tibbles",
     "title": "Task: Data frames and tibbles",
     "section": "Get started with tibbles",
-    "text": "Get started with tibbles\nBefore you start the task:\n\nIf you haven’t already, install the tibble package by calling install.packages(\"tibble\") in the console.\n\n\n\n\n\n\n\nTipDon’t put install.packages() in your script\n\n\n\nYou don’t need to put install.packages(\"tibble\") in your script. You only need to install a package once on your computer, not every time you run the script. So you can just run this line once in the console.\n\n\n\nOpen your script for the task and put library(tibble) on top\nExecute this line and the tibble package is loaded into your R session"
+    "text": "Get started with tibbles\nBefore you start the task:\n\nIf you haven’t already, install the tibble package by calling install.packages(\"tibble\") in the console.\n\n\n\n\n\n\n\nDon’t put install.packages() in your script\n\n\n\nYou don’t need to put install.packages(\"tibble\") in your script. You only need to install a package once on your computer, not every time you run the script. So you can just run this line once in the console.\n\n\n\nOpen your script for the task and put library(tibble) on top\nExecute this line and the tibble package is loaded into your R session"
   },
   {
     "objectID": "sessions/tasks/data-tibbles-task.html#create-a-tibble",
@@ -2951,7 +2923,7 @@
     "href": "sessions/tasks/ggplot-task-1.html#for-the-fast-ones",
     "title": "Task 1: Exploratory plots with ggplot2",
     "section": "For the fast ones",
-    "text": "For the fast ones\nYou can do these in any order, or skip them and just take a break.\n\nCombine points and boxplots\nAdd a geom_point() layer on top of your boxplot. What does this show you that the boxplot alone doesn’t?\n\n\n\n\n\n\nTipOverlapping points\n\n\n\nTry adding position = position_jitter(width = 0.2) inside geom_point() to spread the points out so they don’t overlap.\n\n\n\n\nTry violin plots\nWhat happens if you use geom_violin() instead of geom_boxplot()? Can you combine both geoms in one plot?\n\n\nTry with your own data\nIf you loaded your own data into R last session, try making a plot with it."
+    "text": "For the fast ones\nYou can do these in any order, or skip them and just take a break.\n\nCombine points and boxplots\nAdd a geom_point() layer on top of your boxplot. What does this show you that the boxplot alone doesn’t?\n\n\n\n\n\n\nOverlapping points\n\n\n\nTry adding position = position_jitter(width = 0.2) inside geom_point() to spread the points out so they don’t overlap.\n\n\n\n\nTry violin plots\nWhat happens if you use geom_violin() instead of geom_boxplot()? Can you combine both geoms in one plot?\n\n\nTry with your own data\nIf you loaded your own data into R last session, try making a plot with it."
   },
   {
     "objectID": "sessions/tasks/ggplot-task-1.html#references",
@@ -3007,56 +2979,49 @@
     "href": "sessions/tasks/quarto-task.html",
     "title": "Task: Reproducible documents with Quarto",
     "section": "",
-    "text": "← Back to session page"
+    "text": "← Back to session page\nIn this task, you will create a report on the penguins dataset using Quarto."
   },
   {
-    "objectID": "sessions/tasks/quarto-task.html#getting-started",
-    "href": "sessions/tasks/quarto-task.html#getting-started",
+    "objectID": "sessions/tasks/quarto-task.html#create-a-quarto-document",
+    "href": "sessions/tasks/quarto-task.html#create-a-quarto-document",
     "title": "Task: Reproducible documents with Quarto",
-    "section": "Getting started",
-    "text": "Getting started\nIn this task, you will create a report on the penguins dataset using Quarto.\nIn the Files pane, click New File -&gt; Quarto Document. Give it a name like penguin_report.qmd.\n\n\n\n\n\n\nTip\n\n\n\nRender your document often to check if everything still works. It’s much easier to find mistakes if you render after every small change. Use the keyboard shortcut Ctrl + Shift + K (Cmd + Shift + K on Mac) to render quickly."
+    "section": "1. Create a Quarto document",
+    "text": "1. Create a Quarto document\n\nGo to File -&gt; New File -&gt; Quarto Document...\nUse “Penguin Report” as title and choose the editor you prefer\nRender the document. RStudio asks you to save it first, e.g. as penguin_report.qmd\nSwitch between the visual and the source editor to see the difference"
   },
   {
-    "objectID": "sessions/tasks/quarto-task.html#add-text",
-    "href": "sessions/tasks/quarto-task.html#add-text",
+    "objectID": "sessions/tasks/quarto-task.html#add-markdown-text",
+    "href": "sessions/tasks/quarto-task.html#add-markdown-text",
     "title": "Task: Reproducible documents with Quarto",
-    "section": "Add text",
-    "text": "Add text\nThe file is empty. Write a short introduction about the penguins dataset. Include different markdown formatting like:\n\nA section header (e.g. ## Introduction)\nA sentence or two with bold and italic formatting\nA bullet list (e.g. listing the three penguin species)\nA link to a website of your choice\n\nRender the document to see how the formatted text looks in the output."
+    "section": "2. Add Markdown text",
+    "text": "2. Add Markdown text\nDelete everything below the YAML header. Then write some words about the penguins dataset trying out some Markdown formatting:\n\nA section header (e.g. ## Introduction)\nA sentence with bold and italic text\nA bullet list of the three penguin species\nA link to a website of your choice\n\nRender the document."
   },
   {
-    "objectID": "sessions/tasks/quarto-task.html#add-code-chunks",
-    "href": "sessions/tasks/quarto-task.html#add-code-chunks",
+    "objectID": "sessions/tasks/quarto-task.html#add-code",
+    "href": "sessions/tasks/quarto-task.html#add-code",
     "title": "Task: Reproducible documents with Quarto",
-    "section": "Add code chunks",
-    "text": "Add code chunks\n\n\n\n\n\n\nTipAdd a code chunk\n\n\n\nYou can add a code chunk in two ways:\n\nkeyboard shortcut Ctrl + Alt + I (or Cmd + Option + I on Mac)\ngoing to Code -&gt; Insert Code Chunk in the menu\n\n\n\n\nAdd a code chunk that loads the tidyverse package.\nAdd another code chunk that explores the data like head(), summary(), or str().\n\nNow add a new section (e.g. ## Analysis) with a plot, e.g.:\n\nA scatterplot of two variables of your choice from the penguins data (e.g. bill length vs. bill depth, or flipper length vs. body mass)\nA boxplot comparing a measurement across species or sex\n\nRender to see the code and output in the document."
+    "section": "3. Add code",
+    "text": "3. Add code\n\nAdd a code chunk that loads the tidyverse. Hide it completely with #| include: false\nAdd another code chunk with a plot of the penguins data (e.g. a scatterplot or a boxplot). Hide the code with #| echo: false and the warnings with #| warning: false\n\nRender the document. What is the difference between include: false and echo: false?"
   },
   {
-    "objectID": "sessions/tasks/quarto-task.html#chunk-options",
-    "href": "sessions/tasks/quarto-task.html#chunk-options",
+    "objectID": "sessions/tasks/quarto-task.html#add-inline-code",
+    "href": "sessions/tasks/quarto-task.html#add-inline-code",
     "title": "Task: Reproducible documents with Quarto",
-    "section": "Chunk options",
-    "text": "Chunk options\nExperiment with chunk options to control what shows up in the output:\n\nHide the setup chunk where you load the tidyverse completely using #| include: false\nHide the code of one of your plots using #| echo: false\nWhat is the difference between the two?\nAdd #| warning: false to the plot code chunk\n\nRender to check the effect of each option."
+    "section": "4. Add inline code",
+    "text": "4. Add inline code\nWrite a sentence that includes the number of penguins in the data. Use inline code like this: `r nrow(penguins)`\nRender the document."
   },
   {
-    "objectID": "sessions/tasks/quarto-task.html#inline-code",
-    "href": "sessions/tasks/quarto-task.html#inline-code",
+    "objectID": "sessions/tasks/quarto-task.html#extend-the-yaml-header",
+    "href": "sessions/tasks/quarto-task.html#extend-the-yaml-header",
     "title": "Task: Reproducible documents with Quarto",
-    "section": "Inline code",
-    "text": "Inline code\nWrite a sentence that includes a value computed by R, for example the number of observations or species. Use inline code like this: `r nrow(penguins)`\nRender and check that the number appears in the text."
-  },
-  {
-    "objectID": "sessions/tasks/quarto-task.html#add-a-yaml-header",
-    "href": "sessions/tasks/quarto-task.html#add-a-yaml-header",
-    "title": "Task: Reproducible documents with Quarto",
-    "section": "Add a YAML header",
-    "text": "Add a YAML header\nYour document doesn’t have a title or author yet. Add a YAML header at the very top of the file:\n---\ntitle: \"Penguin Report\"\nauthor: \"Your Name\"\nformat: html\n---\nYou can also set default chunk options for the whole document by adding execute options to the YAML header. Try adding warning: false and message: false so you don’t need them in every chunk:\n---\ntitle: \"Penguin Report\"\nauthor: \"Your Name\"\nformat: html\nexecute:\n  warning: false\n  message: false\n---"
+    "section": "5. Extend the YAML header",
+    "text": "5. Extend the YAML header\nAdd an author and a date to the YAML header. Also add execute options to hide warnings and messages in all code chunks:\n---\ntitle: \"Penguin Report\"\nauthor: \"Your Name\"\ndate: today\nformat: html\nexecute:\n  warning: false\n  message: false\n---\nIf your YAML header contains editor: visual, keep this line.\nRender the document."
   },
   {
     "objectID": "sessions/tasks/quarto-task.html#for-the-fast-ones",
     "href": "sessions/tasks/quarto-task.html#for-the-fast-ones",
     "title": "Task: Reproducible documents with Quarto",
     "section": "For the fast ones",
-    "text": "For the fast ones\nYou can do these in any order, or skip them and just take a break.\n\nExplore YAML document options\n\n\n\n\n\n\nTipYAML options for a specific format\n\n\n\nYou can add options specific to the HTML format by nesting them under html: in the YAML header. Careful, the indentation has to be correct!\nThe example below e.g. adds a table of contents to the HTML output and numbers the sections.\n---\nformat:\n  html:\n    toc: true\n    number-sections: true\n---\n\n\nTry adding options under html: in the YAML header. For example:\n\ncode-fold: true: hides code behind a clickable button\ncode-line-numbers: true: adds line numbers to code chunks\n\nBrowse the HTML format reference for more options to try.\n\n\nExplore chunk options\nTry adding more options to your code chunks. For example:\n\n#| fig-cap: \"Your caption\" adds a figure caption\n#| fig-align: center centers the figure\n#| out-width: \"80%\" controls the figure width\n\nBrowse the code cell reference for more options.\n\n\nExplore markdown formatting\nTry out more markdown features like images, block quotes, footnotes, or tables.\nBrowse the Markdown basics reference for ideas.\n\n\nRender to PDF\nChange format: html to format: pdf in the YAML header and render. If you get an error about missing LaTeX, you may need to install a lightweight LaTeX distribution first. Run this in the R console:\n\n# install.packages(\"tinytex\") # only run this once\n# Install tinytex (also only run this once)\ntinytex::install_tinytex()"
+    "text": "For the fast ones\nYou can do these in any order, or skip them and just take a break.\n\nExplore the visual editor\nTry the buttons and the Insert menu of the visual editor. Add for example an image, a table or a footnote.\n\n\nMore markdown\nCheck the Markdown reference and add anything you like to your document.\n\n\nMore code\nAdd a code chunk that prints a summary table, e.g. the mean body mass of each species:\n\npenguins |&gt;\n  summarize(mean_body_mass = mean(body_mass, na.rm = TRUE), .by = species)\n\nTry more chunk options for your plot, e.g. #| fig-cap: \"Your caption\", #| fig-align: center or #| out-width: \"80%\". You can find all options in the code cell reference.\n\n\nMore YAML options\nAdd more options to the YAML header, for example:\n---\ntitle: \"Penguin Report\"\nformat: html\ntoc: true\nnumber-sections: true\ncode-fold: true\n---\nYou can find more options in the HTML format reference.\n\n\nRender to PDF or Word\nChange format: html to format: pdf or format: docx and render.\nFor PDF, you may need to install LaTeX first. Run this in the R console:\n\n# install.packages(\"tinytex\") # only run this once\ntinytex::install_tinytex() # only run this once"
   },
   {
     "objectID": "sessions/tasks/tests-task.html",
@@ -3070,41 +3035,27 @@
     "href": "sessions/tasks/tests-task.html#get-started",
     "title": "Task: Statistical tests",
     "section": "Get started",
-    "text": "Get started\nWe will again use the penguins data included in R.\nAs always, before you get started with the exercise, make sure that you load the tidyverse\n\nlibrary(tidyverse)"
+    "text": "Get started\nWe will again use the penguins data included in R.\nAs always, before you get started with the exercise, make sure that you load the tidyverse. You also need the packages ggsignif and ggpubr. Install them if you haven’t done so yet:\n\n# install.packages(\"ggsignif\") # only once\n# install.packages(\"ggpubr\") # only once\nlibrary(tidyverse)\nlibrary(ggsignif)\nlibrary(ggpubr)"
   },
   {
-    "objectID": "sessions/tasks/tests-task.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
-    "href": "sessions/tasks/tests-task.html#compare-the-flipper-length-of-penguins-using-statistical-tests",
+    "objectID": "sessions/tasks/tests-task.html#part-1-compare-two-species",
+    "href": "sessions/tasks/tests-task.html#part-1-compare-two-species",
     "title": "Task: Statistical tests",
-    "section": "Compare the flipper length of penguins using statistical tests",
-    "text": "Compare the flipper length of penguins using statistical tests\nQuestion: Does the mean flipper length differ between the 3 penguin species?\nDo separate comparisons for\n\nGentoo vs. Adelie\nGentoo vs. Chinstrap\nAdelie vs. Chinstrap\n\nBefore you start, create a subset of each species as a vector.\nFor this, you can use the $ operator:\n\nadelie &lt;- filter(penguins, species == \"Adelie\")$flipper_len\nchinstrap &lt;- filter(penguins, species == \"Chinstrap\")$flipper_len\ngentoo &lt;- filter(penguins, species == \"Gentoo\")$flipper_len\n\nFollow the decision tree for statistical tests:\n\n\n\n\n\n\n\n\n\nAfter you have the test results, visualize the differences in flipper length between species.\nYou can e.g. choose one of the following plots:\n\nBoxplot with notches\nMean and standard error of the mean (as mean with errorbar, as barplot, …)\n\nAdd a geom_signif() layer to the plot you just created to indicate your test results"
+    "section": "Part 1: Compare two species",
+    "text": "Part 1: Compare two species\nQuestion: Does the flipper length differ between Adelie and Chinstrap penguins?\n1. Create a smaller version of the data\nCreate a table penguins_small that only contains Adelie and Chinstrap penguins.\n\n\n\n\n\n\nCode to create penguins_small (unfold to see)\n\n\n\n\n\n\npenguins_small &lt;- penguins |&gt;\n  filter(species %in% c(\"Adelie\", \"Chinstrap\"))\n\n\n\n\n2. Plot the two species\nMake a plot that compares the flipper length of the two species, e.g. a boxplot.\n3. Check for normality\nCreate a vector with the flipper lengths of each species.\n\n\n\n\n\n\nCode to create the vectors (unfold to see)\n\n\n\n\n\n\nadelie &lt;- filter(penguins_small, species == \"Adelie\")$flipper_len\nchinstrap &lt;- filter(penguins_small, species == \"Chinstrap\")$flipper_len\n\n\n\n\nUse the Shapiro-Wilk test and QQ-plots to check if the flipper lengths of both species are roughly normally distributed.\n4. Compare the means\nUse Welch’s t-test to compare the mean flipper length of the two species. How would you report the result?\n5. Add the test result to the plot\nAdd a geom_signif() layer to your plot from step 2 to show the result of the t-test."
+  },
+  {
+    "objectID": "sessions/tasks/tests-task.html#part-2-compare-all-three-species",
+    "href": "sessions/tasks/tests-task.html#part-2-compare-all-three-species",
+    "title": "Task: Statistical tests",
+    "section": "Part 2: Compare all three species",
+    "text": "Part 2: Compare all three species\nQuestion: Does the flipper length differ between Adelie, Chinstrap and Gentoo penguins?\n1. Pairwise comparisons\nUse the full penguins table and compare all three species with pairwise.t.test(). Which species differ?\n2. Plot with significance levels\nMake a plot of the flipper length of all three species and add the adjusted p-values with geom_signif(). You can type the p-values by hand or extract them automatically (see slides)."
   },
   {
     "objectID": "sessions/tasks/tests-task.html#for-the-fast-ones",
     "href": "sessions/tasks/tests-task.html#for-the-fast-ones",
     "title": "Task: Statistical tests",
     "section": "For the fast ones",
-    "text": "For the fast ones\nYou can do these in any order, or skip them and just take a break.\n\nUse a different visualization method than before to show the differences in flipper length between species\nChange the appearance of the plot (colors, themes, …) from the task"
-  },
-  {
-    "objectID": "sessions/slides/ggplot.html#geom_boxplot-with-color-or-fill",
-    "href": "sessions/slides/ggplot.html#geom_boxplot-with-color-or-fill",
-    "title": "Data visualization with ggplot2",
-    "section": "geom_boxplot with color or fill",
-    "text": "geom_boxplot with color or fill\n\n\n\nggplot(\n  gapminder,\n  aes(\n    x = continent,\n    y = lifeExp,\n    color = continent\n  )\n) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\n\n\nggplot(\n  gapminder,\n  aes(\n    x = continent,\n    y = lifeExp,\n    fill = continent\n  )\n) +\n  geom_boxplot()"
-  },
-  {
-    "objectID": "sessions/slides/ggplot.html#so-many-color-options",
-    "href": "sessions/slides/ggplot.html#so-many-color-options",
-    "title": "Data visualization with ggplot2",
-    "section": "So many color options",
-    "text": "So many color options\nMany packages provide additional color palettes for ggplot:\n\nggsci: palettes inspired by scientific journals (e.g. Nature, Lancet) and sci-fi movies\nscico: scientific color palettes that are colorblind-friendly\nMetBrewer: palettes inspired by paintings from the Metropolitan Museum of Art\nNatParksPalettes: palettes inspired by photos of national parks from around the world\nggthemes: palettes and themes from e.g. The Economist, Tableau, Wall Street Journal\npaletteer: one interface to thousands of palettes from many different packages"
-  },
-  {
-    "objectID": "sessions/slides/tidyr.html#the-tidyr-package",
-    "href": "sessions/slides/tidyr.html#the-tidyr-package",
-    "title": "Tidy data with tidyr",
-    "section": "The tidyr package",
-    "text": "The tidyr package\nLet’s tidy this data using functions from the tidyr package!\n\nFirst load the package with either\n\nlibrary(tidyr)\n\nor\n\nlibrary(tidyverse)"
+    "text": "For the fast ones\nYou can do these in any order, or skip them and just take a break.\n\nUse a different plot type to show the differences (e.g. mean ± standard error, barplot)\nIf you typed the p-values by hand: extract them automatically from the result of pairwise.t.test() as you saw on the slides\nMake your plot look nice (colors, theme, axis labels, …)\nCompare Adelie and Chinstrap with a Wilcoxon rank-sum test. Do you come to the same conclusion as with the t-test?\nCheck the flipper length of Gentoo penguins for normality with the Shapiro-Wilk test and a QQ-plot. What do you conclude?"
   }
 ]

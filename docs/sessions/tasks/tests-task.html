@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.7.29">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Task: Statistical tests</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -77,14 +71,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-bde277053af6bec426b2cdaeb418aa4e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-670babe5e9b8019ce3cbdea3bcdae9b9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-bde277053af6bec426b2cdaeb418aa4e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-f0298c4738c3e0edb1fce38407ee8401.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-f8a13f792a635cc732f35e721394880c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f0298c4738c3e0edb1fce38407ee8401.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -270,7 +264,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       toggleColorMode(toAlternate);
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
     };
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
@@ -348,10 +341,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../sessions/11_quarto.html">
  <span class="dropdown-text">Quarto</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../sessions/12_AI-tools.html">
- <span class="dropdown-text">AI Tools</span></a>
-  </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header"><b>Day 4</b></li>
         <li>
@@ -405,7 +394,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#get-started" id="toc-get-started" class="nav-link active" data-scroll-target="#get-started">Get started</a></li>
-  <li><a href="#compare-the-flipper-length-of-penguins-using-statistical-tests" id="toc-compare-the-flipper-length-of-penguins-using-statistical-tests" class="nav-link" data-scroll-target="#compare-the-flipper-length-of-penguins-using-statistical-tests">Compare the flipper length of penguins using statistical tests</a></li>
+  <li><a href="#part-1-compare-two-species" id="toc-part-1-compare-two-species" class="nav-link" data-scroll-target="#part-1-compare-two-species">Part 1: Compare two species</a></li>
+  <li><a href="#part-2-compare-all-three-species" id="toc-part-2-compare-all-three-species" class="nav-link" data-scroll-target="#part-2-compare-all-three-species">Part 2: Compare all three species</a></li>
   <li><a href="#for-the-fast-ones" id="toc-for-the-fast-ones" class="nav-link" data-scroll-target="#for-the-fast-ones">For the fast ones</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/edit/master/sessions/tasks/tests-task.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -440,7 +430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Find the solution here after the session ends.
+Find the solution here after the session ends.
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -454,51 +444,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="get-started" class="level2">
 <h2 class="anchored" data-anchor-id="get-started">Get started</h2>
 <p>We will again use the <code>penguins</code> data included in R.</p>
-<p>As always, before you get started with the exercise, make sure that you load the <code>tidyverse</code></p>
+<p>As always, before you get started with the exercise, make sure that you load the <code>tidyverse</code>. You also need the packages <code>ggsignif</code> and <code>ggpubr</code>. Install them if you haven’t done so yet:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggsignif") # only once</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggpubr") # only once</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggsignif)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="compare-the-flipper-length-of-penguins-using-statistical-tests" class="level2">
-<h2 class="anchored" data-anchor-id="compare-the-flipper-length-of-penguins-using-statistical-tests">Compare the flipper length of penguins using statistical tests</h2>
-<p>Question: Does the mean flipper length differ between the 3 penguin species?</p>
-<p>Do separate comparisons for</p>
-<ul>
-<li>Gentoo vs.&nbsp;Adelie</li>
-<li>Gentoo vs.&nbsp;Chinstrap</li>
-<li>Adelie vs.&nbsp;Chinstrap</li>
-</ul>
-<p>Before you start, create a subset of each species as a vector.</p>
-<p>For this, you can use the <code>$</code> operator:</p>
+<section id="part-1-compare-two-species" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-compare-two-species">Part 1: Compare two species</h2>
+<p>Question: Does the flipper length differ between Adelie and Chinstrap penguins?</p>
+<p><strong>1. Create a smaller version of the data</strong></p>
+<p>Create a table <code>penguins_small</code> that only contains Adelie and Chinstrap penguins.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code to create <code>penguins_small</code> (unfold to see)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>)<span class="sc">$</span>flipper_len</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>chinstrap <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Chinstrap"</span>)<span class="sc">$</span>flipper_len</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gentoo <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Gentoo"</span>)<span class="sc">$</span>flipper_len</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins_small <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Follow the decision tree for statistical tests:</p>
+</div>
+</div>
+</div>
+<p><strong>2. Plot the two species</strong></p>
+<p>Make a plot that compares the flipper length of the two species, e.g.&nbsp;a boxplot.</p>
+<p><strong>3. Check for normality</strong></p>
+<p>Create a vector with the flipper lengths of each species.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code to create the vectors (unfold to see)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="../slides/img/day3/tests_overview.png" class="img-fluid figure-img" width="678"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins_small, species <span class="sc">==</span> <span class="st">"Adelie"</span>)<span class="sc">$</span>flipper_len</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>chinstrap <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins_small, species <span class="sc">==</span> <span class="st">"Chinstrap"</span>)<span class="sc">$</span>flipper_len</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-<p>After you have the test results, visualize the differences in flipper length between species.</p>
-<p>You can e.g.&nbsp;choose one of the following plots:</p>
-<ul>
-<li>Boxplot with notches</li>
-<li>Mean and standard error of the mean (as mean with errorbar, as barplot, …)</li>
-</ul>
-<p>Add a <code>geom_signif()</code> layer to the plot you just created to indicate your test results</p>
+</div>
+<p>Use the Shapiro-Wilk test and QQ-plots to check if the flipper lengths of both species are roughly normally distributed.</p>
+<p><strong>4. Compare the means</strong></p>
+<p>Use Welch’s t-test to compare the mean flipper length of the two species. How would you report the result?</p>
+<p><strong>5. Add the test result to the plot</strong></p>
+<p>Add a <code>geom_signif()</code> layer to your plot from step 2 to show the result of the t-test.</p>
+</section>
+<section id="part-2-compare-all-three-species" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-compare-all-three-species">Part 2: Compare all three species</h2>
+<p>Question: Does the flipper length differ between Adelie, Chinstrap and Gentoo penguins?</p>
+<p><strong>1. Pairwise comparisons</strong></p>
+<p>Use the full <code>penguins</code> table and compare all three species with <code>pairwise.t.test()</code>. Which species differ?</p>
+<p><strong>2. Plot with significance levels</strong></p>
+<p>Make a plot of the flipper length of all three species and add the adjusted p-values with <code>geom_signif()</code>. You can type the p-values by hand or extract them automatically (see slides).</p>
 </section>
 <section id="for-the-fast-ones" class="level2">
 <h2 class="anchored" data-anchor-id="for-the-fast-ones">For the fast ones</h2>
 <p>You can do these in any order, or skip them and just take a break.</p>
 <ul>
-<li>Use a different visualization method than before to show the differences in flipper length between species</li>
-<li>Change the appearance of the plot (colors, themes, …) from the task</li>
+<li>Use a different plot type to show the differences (e.g.&nbsp;mean ± standard error, barplot)</li>
+<li>If you typed the p-values by hand: extract them automatically from the result of <code>pairwise.t.test()</code> as you saw on the slides</li>
+<li>Make your plot look nice (colors, theme, axis labels, …)</li>
+<li>Compare Adelie and Chinstrap with a Wilcoxon rank-sum test. Do you come to the same conclusion as with the t-test?</li>
+<li>Check the flipper length of Gentoo penguins for normality with the Shapiro-Wilk test and a QQ-plot. What do you conclude?</li>
 </ul>
 
 
@@ -569,14 +593,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

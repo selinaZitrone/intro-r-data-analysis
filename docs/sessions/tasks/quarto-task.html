@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.7.29">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Task: Reproducible documents with Quarto</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -77,14 +71,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-bde277053af6bec426b2cdaeb418aa4e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-670babe5e9b8019ce3cbdea3bcdae9b9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-bde277053af6bec426b2cdaeb418aa4e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-f0298c4738c3e0edb1fce38407ee8401.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-f8a13f792a635cc732f35e721394880c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f0298c4738c3e0edb1fce38407ee8401.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -270,7 +264,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       toggleColorMode(toAlternate);
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
     };
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
@@ -348,10 +341,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../sessions/11_quarto.html">
  <span class="dropdown-text">Quarto</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../sessions/12_AI-tools.html">
- <span class="dropdown-text">AI Tools</span></a>
-  </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header"><b>Day 4</b></li>
         <li>
@@ -404,18 +393,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting started</a></li>
-  <li><a href="#add-text" id="toc-add-text" class="nav-link" data-scroll-target="#add-text">Add text</a></li>
-  <li><a href="#add-code-chunks" id="toc-add-code-chunks" class="nav-link" data-scroll-target="#add-code-chunks">Add code chunks</a></li>
-  <li><a href="#chunk-options" id="toc-chunk-options" class="nav-link" data-scroll-target="#chunk-options">Chunk options</a></li>
-  <li><a href="#inline-code" id="toc-inline-code" class="nav-link" data-scroll-target="#inline-code">Inline code</a></li>
-  <li><a href="#add-a-yaml-header" id="toc-add-a-yaml-header" class="nav-link" data-scroll-target="#add-a-yaml-header">Add a YAML header</a></li>
+  <li><a href="#create-a-quarto-document" id="toc-create-a-quarto-document" class="nav-link active" data-scroll-target="#create-a-quarto-document">1. Create a Quarto document</a></li>
+  <li><a href="#add-markdown-text" id="toc-add-markdown-text" class="nav-link" data-scroll-target="#add-markdown-text">2. Add Markdown text</a></li>
+  <li><a href="#add-code" id="toc-add-code" class="nav-link" data-scroll-target="#add-code">3. Add code</a></li>
+  <li><a href="#add-inline-code" id="toc-add-inline-code" class="nav-link" data-scroll-target="#add-inline-code">4. Add inline code</a></li>
+  <li><a href="#extend-the-yaml-header" id="toc-extend-the-yaml-header" class="nav-link" data-scroll-target="#extend-the-yaml-header">5. Extend the YAML header</a></li>
   <li><a href="#for-the-fast-ones" id="toc-for-the-fast-ones" class="nav-link" data-scroll-target="#for-the-fast-ones">For the fast ones</a>
   <ul class="collapse">
-  <li><a href="#explore-yaml-document-options" id="toc-explore-yaml-document-options" class="nav-link" data-scroll-target="#explore-yaml-document-options">Explore YAML document options</a></li>
-  <li><a href="#explore-chunk-options" id="toc-explore-chunk-options" class="nav-link" data-scroll-target="#explore-chunk-options">Explore chunk options</a></li>
-  <li><a href="#explore-markdown-formatting" id="toc-explore-markdown-formatting" class="nav-link" data-scroll-target="#explore-markdown-formatting">Explore markdown formatting</a></li>
-  <li><a href="#render-to-pdf" id="toc-render-to-pdf" class="nav-link" data-scroll-target="#render-to-pdf">Render to PDF</a></li>
+  <li><a href="#explore-the-visual-editor" id="toc-explore-the-visual-editor" class="nav-link" data-scroll-target="#explore-the-visual-editor">Explore the visual editor</a></li>
+  <li><a href="#more-markdown" id="toc-more-markdown" class="nav-link" data-scroll-target="#more-markdown">More markdown</a></li>
+  <li><a href="#more-code" id="toc-more-code" class="nav-link" data-scroll-target="#more-code">More code</a></li>
+  <li><a href="#more-yaml-options" id="toc-more-yaml-options" class="nav-link" data-scroll-target="#more-yaml-options">More YAML options</a></li>
+  <li><a href="#render-to-pdf-or-word" id="toc-render-to-pdf-or-word" class="nav-link" data-scroll-target="#render-to-pdf-or-word">Render to PDF or Word</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/edit/master/sessions/tasks/quarto-task.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/selinaZitrone/intro-r-data-analysis/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -450,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Find the solution here after the session ends.
+Find the solution here after the session ends.
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -461,10 +450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </p>
 </div>
 </div>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
 <p>In this task, you will create a report on the penguins dataset using Quarto.</p>
-<p>In the <strong>Files pane</strong>, click <code>New File -&gt; Quarto Document</code>. Give it a name like <code>penguin_report.qmd</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -478,136 +464,93 @@ Tip
 <p>Render your document often to check if everything still works. It’s much easier to find mistakes if you render after every small change. Use the keyboard shortcut <code>Ctrl + Shift + K</code> (<code>Cmd + Shift + K</code> on Mac) to render quickly.</p>
 </div>
 </div>
+<section id="create-a-quarto-document" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-quarto-document">1. Create a Quarto document</h2>
+<ul>
+<li>Go to <code>File -&gt; New File -&gt; Quarto Document...</code></li>
+<li>Use “Penguin Report” as title and choose the editor you prefer</li>
+<li>Render the document. RStudio asks you to save it first, e.g.&nbsp;as <code>penguin_report.qmd</code></li>
+<li>Switch between the visual and the source editor to see the difference</li>
+</ul>
 </section>
-<section id="add-text" class="level2">
-<h2 class="anchored" data-anchor-id="add-text">Add text</h2>
-<p>The file is empty. Write a short introduction about the penguins dataset. Include different markdown formatting like:</p>
+<section id="add-markdown-text" class="level2">
+<h2 class="anchored" data-anchor-id="add-markdown-text">2. Add Markdown text</h2>
+<p>Delete everything below the YAML header. Then write some words about the penguins dataset trying out some Markdown formatting:</p>
 <ul>
 <li>A section header (e.g.&nbsp;<code>## Introduction</code>)</li>
-<li>A sentence or two with <strong>bold</strong> and <em>italic</em> formatting</li>
-<li>A bullet list (e.g.&nbsp;listing the three penguin species)</li>
-<li>A <a href="https://quarto.org/docs/authoring/markdown-basics.html">link</a> to a website of your choice</li>
+<li>A sentence with <strong>bold</strong> and <em>italic</em> text</li>
+<li>A bullet list of the three penguin species</li>
+<li>A link to a website of your choice</li>
 </ul>
-<p>Render the document to see how the formatted text looks in the output.</p>
+<p>Render the document.</p>
 </section>
-<section id="add-code-chunks" class="level2">
-<h2 class="anchored" data-anchor-id="add-code-chunks">Add code chunks</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Add a code chunk
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can add a code chunk in two ways:</p>
+<section id="add-code" class="level2">
+<h2 class="anchored" data-anchor-id="add-code">3. Add code</h2>
 <ul>
-<li>keyboard shortcut <code>Ctrl + Alt + I</code> (or <code>Cmd + Option + I</code> on Mac)</li>
-<li>going to <strong>Code -&gt; Insert Code Chunk</strong> in the menu</li>
+<li>Add a code chunk that loads the <code>tidyverse</code>. Hide it completely with <code>#| include: false</code></li>
+<li>Add another code chunk with a plot of the penguins data (e.g.&nbsp;a scatterplot or a boxplot). Hide the code with <code>#| echo: false</code> and the warnings with <code>#| warning: false</code></li>
 </ul>
-</div>
-</div>
-<ul>
-<li>Add a code chunk that loads the <code>tidyverse</code> package.</li>
-<li>Add another code chunk that explores the data like <code>head()</code>, <code>summary()</code>, or <code>str()</code>.</li>
-</ul>
-<p>Now add a new section (e.g.&nbsp;<code>## Analysis</code>) with a plot, e.g.:</p>
-<ul>
-<li>A scatterplot of two variables of your choice from the penguins data (e.g.&nbsp;bill length vs.&nbsp;bill depth, or flipper length vs.&nbsp;body mass)</li>
-<li>A boxplot comparing a measurement across species or sex</li>
-</ul>
-<p>Render to see the code and output in the document.</p>
+<p>Render the document. What is the difference between <code>include: false</code> and <code>echo: false</code>?</p>
 </section>
-<section id="chunk-options" class="level2">
-<h2 class="anchored" data-anchor-id="chunk-options">Chunk options</h2>
-<p>Experiment with chunk options to control what shows up in the output:</p>
-<ul>
-<li>Hide the setup chunk where you load the tidyverse completely using <code>#| include: false</code></li>
-<li>Hide the code of one of your plots using <code>#| echo: false</code></li>
-<li>What is the difference between the two?</li>
-<li>Add <code>#| warning: false</code> to the plot code chunk</li>
-</ul>
-<p>Render to check the effect of each option.</p>
+<section id="add-inline-code" class="level2">
+<h2 class="anchored" data-anchor-id="add-inline-code">4. Add inline code</h2>
+<p>Write a sentence that includes the number of penguins in the data. Use inline code like this: <code>`r nrow(penguins)`</code></p>
+<p>Render the document.</p>
 </section>
-<section id="inline-code" class="level2">
-<h2 class="anchored" data-anchor-id="inline-code">Inline code</h2>
-<p>Write a sentence that includes a value computed by R, for example the number of observations or species. Use inline code like this: <code>`r nrow(penguins)`</code></p>
-<p>Render and check that the number appears in the text.</p>
-</section>
-<section id="add-a-yaml-header" class="level2">
-<h2 class="anchored" data-anchor-id="add-a-yaml-header">Add a YAML header</h2>
-<p>Your document doesn’t have a title or author yet. Add a YAML header at the very top of the file:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<section id="extend-the-yaml-header" class="level2">
+<h2 class="anchored" data-anchor-id="extend-the-yaml-header">5. Extend the YAML header</h2>
+<p>Add an author and a date to the YAML header. Also add <code>execute</code> options to hide warnings and messages in all code chunks:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Penguin Report"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your Name"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You can also set default chunk options for the whole document by adding <code>execute</code> options to the YAML header. Try adding <code>warning: false</code> and <code>message: false</code> so you don’t need them in every chunk:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Penguin Report"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your Name"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> today</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If your YAML header contains <code>editor: visual</code>, keep this line.</p>
+<p>Render the document.</p>
 </section>
 <section id="for-the-fast-ones" class="level2">
 <h2 class="anchored" data-anchor-id="for-the-fast-ones">For the fast ones</h2>
 <p>You can do these in any order, or skip them and just take a break.</p>
-<section id="explore-yaml-document-options" class="level3">
-<h3 class="anchored" data-anchor-id="explore-yaml-document-options">Explore YAML document options</h3>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>YAML options for a specific format
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can add options specific to the HTML format by nesting them under <code>html:</code> in the YAML header. Careful, the indentation has to be correct!</p>
-<p>The example below e.g.&nbsp;adds a table of contents to the HTML output and numbers the sections.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<p>Try adding options under <code>html:</code> in the YAML header. For example:</p>
-<ul>
-<li><code>code-fold: true</code>: hides code behind a clickable button</li>
-<li><code>code-line-numbers: true</code>: adds line numbers to code chunks</li>
-</ul>
-<p>Browse the <a href="https://quarto.org/docs/reference/formats/html.html">HTML format reference</a> for more options to try.</p>
+<section id="explore-the-visual-editor" class="level3">
+<h3 class="anchored" data-anchor-id="explore-the-visual-editor">Explore the visual editor</h3>
+<p>Try the buttons and the <code>Insert</code> menu of the visual editor. Add for example an image, a table or a footnote.</p>
 </section>
-<section id="explore-chunk-options" class="level3">
-<h3 class="anchored" data-anchor-id="explore-chunk-options">Explore chunk options</h3>
-<p>Try adding more options to your code chunks. For example:</p>
-<ul>
-<li><code>#| fig-cap: "Your caption"</code> adds a figure caption</li>
-<li><code>#| fig-align: center</code> centers the figure</li>
-<li><code>#| out-width: "80%"</code> controls the figure width</li>
-</ul>
-<p>Browse the <a href="https://quarto.org/docs/reference/cells/cells-knitr.html">code cell reference</a> for more options.</p>
+<section id="more-markdown" class="level3">
+<h3 class="anchored" data-anchor-id="more-markdown">More markdown</h3>
+<p>Check the <a href="https://quarto.org/docs/authoring/markdown-basics.html">Markdown reference</a> and add anything you like to your document.</p>
 </section>
-<section id="explore-markdown-formatting" class="level3">
-<h3 class="anchored" data-anchor-id="explore-markdown-formatting">Explore markdown formatting</h3>
-<p>Try out more markdown features like images, block quotes, footnotes, or tables.</p>
-<p>Browse the <a href="https://quarto.org/docs/authoring/markdown-basics.html">Markdown basics reference</a> for ideas.</p>
-</section>
-<section id="render-to-pdf" class="level3">
-<h3 class="anchored" data-anchor-id="render-to-pdf">Render to PDF</h3>
-<p>Change <code>format: html</code> to <code>format: pdf</code> in the YAML header and render. If you get an error about missing LaTeX, you may need to install a lightweight LaTeX distribution first. Run this in the R console:</p>
+<section id="more-code" class="level3">
+<h3 class="anchored" data-anchor-id="more-code">More code</h3>
+<p>Add a code chunk that prints a summary table, e.g.&nbsp;the mean body mass of each species:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tinytex") # only run this once</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Install tinytex (also only run this once)</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_body_mass =</span> <span class="fu">mean</span>(body_mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.by =</span> species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Try more chunk options for your plot, e.g.&nbsp;<code>#| fig-cap: "Your caption"</code>, <code>#| fig-align: center</code> or <code>#| out-width: "80%"</code>. You can find all options in the <a href="https://quarto.org/docs/reference/cells/cells-knitr.html">code cell reference</a>.</p>
+</section>
+<section id="more-yaml-options" class="level3">
+<h3 class="anchored" data-anchor-id="more-yaml-options">More YAML options</h3>
+<p>Add more options to the YAML header, for example:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Penguin Report"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can find more options in the <a href="https://quarto.org/docs/reference/formats/html.html">HTML format reference</a>.</p>
+</section>
+<section id="render-to-pdf-or-word" class="level3">
+<h3 class="anchored" data-anchor-id="render-to-pdf-or-word">Render to PDF or Word</h3>
+<p>Change <code>format: html</code> to <code>format: pdf</code> or <code>format: docx</code> and render.</p>
+<p>For PDF, you may need to install LaTeX first. Run this in the R console:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tinytex") # only run this once</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>() <span class="co"># only run this once</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -679,14 +622,13 @@ Tip
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
