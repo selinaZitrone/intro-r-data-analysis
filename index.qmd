@@ -78,7 +78,6 @@ window.addEventListener("load", function () {
 - [Tidy data with tidyr](sessions/09_tidyr.qmd)
 - [Statistical tests](sessions/10_tests.qmd)
 - [Reproducible reports with Quarto](sessions/11_quarto.qmd)
-- [AI Tools](sessions/12_AI-tools.qmd) 
 
 ### Day 4 — Bring Your Own Data
 

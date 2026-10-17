@@ -61,8 +61,6 @@ website:
             href: sessions/10_tests.qmd
           - text: "Quarto"
             href: sessions/11_quarto.qmd
-          - text: "AI Tools"
-            href: sessions/12_AI-tools.qmd
           - text: "---"
           - text: "<b>Day 4</b>"
           - text: "Bring Your Own Data"
