@@ -2,12 +2,11 @@
 title: "Gapminder Analysis"
 author: "Selina Baldauf"
 date: today
-format:
-  html:
-    toc: true
-    toc-location: left
-    number-sections: true
-    code-fold: true
+format: html
+toc: true
+toc-location: left
+number-sections: true
+code-fold: true
 execute:
   warning: false
   message: false

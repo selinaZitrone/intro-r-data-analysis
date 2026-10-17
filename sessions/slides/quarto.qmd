@@ -31,7 +31,10 @@ knitr:
 from: markdown+emoji
 ---
 
-```{r setup, include=FALSE}
+```{r}
+#| label: setup
+#| include: false
+#| cache: false
 library(ggplot2)
 library(dplyr)
 library(gapminder)
@@ -93,29 +96,58 @@ If you have to repeat the analysis
 
 Today we focus on **documents**.
 
-# The basic Quarto workflow {.inverse}
+# A first Quarto document {.inverse}
 
-## Three steps
+More info online: [Get started with Quarto in RStudio](https://quarto.org/docs/get-started/hello/rstudio.html)
 
-1. **Create** a `.qmd` document
+## Create a Quarto document
 
-2. **Write** text and code into the document
+`File` -> `New File` -> `Quarto Document...`
 
-3. **Render** the document to an output format (e.g. HTML)
+:::{.columns}
 
-## Step 1: Create a `.qmd` document
+:::{.column width="50%"}
 
-In the **Files pane**, click `New File -> Quarto Document`
+![](img/day3/create_quarto_doc_file.png)
+
+:::
+
+:::{.column width="50%"}
+
+:::{.nonincremental}
+
+- Choose a title and the output format
+- Choose the editor: visual or source
+- The new document already contains example text
+
+:::
+
+:::
+
+:::
+
+## Render the document
+
+:::{.nonincremental}
+
+- Click the **Render** button in RStudio
+- Or use the keyboard shortcut `Ctrl + Shift + K`
+
+:::
 
 . . .
 
-![](img/day3/create_quarto_doc.png)
+RStudio will run all the code, combine it with your text, and produce the output document.
 
-. . .
+## Visual and source editor
 
-Give it a name (e.g. `my_report.qmd`) and it opens as an empty file in RStudio.
+![](img/day3/visual_editor.png){width="70%"}
 
-## Step 2: Write the document
+- **Visual**: format text and insert images, tables or links with buttons, similar to Word
+- **Source**: write the text with markdown syntax
+- You can switch between both at any time
+
+## Three parts of a `.qmd` document
 
 A `.qmd` file has three types of content:
 
@@ -137,22 +169,9 @@ A `.qmd` file has three types of content:
 
 :::
 
-## Step 3: Render the document
+# Markdown text {.inverse}
 
-:::{.nonincremental}
-
-- Click the **Render** button in RStudio
-- Or use the keyboard shortcut `Ctrl + Shift + K`
-
-:::
-
-. . .
-
-RStudio will run all the code, combine it with your text, and produce the output document.
-
-# Elements of a `.qmd` document {.inverse}
-
-> Markdown text, Code, YAML header
+More online: [Markdown basics](https://quarto.org/docs/authoring/markdown-basics.html)
 
 ## Markdown text
 
@@ -195,12 +214,17 @@ Markdown is a simple markup language to create formatted text.
 
 You don't need to memorize all of this. [Here](https://quarto.org/docs/authoring/markdown-basics.html) is a quick reference.
 
+# Adding Code {.inverse}
+
+More online: [Using R in Quarto](https://quarto.org/docs/computations/r.html)
+
 ## Code chunks
 
 Code chunks start and end with 3 backticks and contain R code:
 
 ```` md
 ```{{r}}
+library(tidyverse)
 library(gapminder)
 
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
@@ -230,7 +254,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 ![](img/day3/run_code_chunk.png)
 
-## Code chunks — options
+## Code chunk options
 
 Code chunks have special comments starting with `#|` that control the output:
 
@@ -248,10 +272,13 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
 
 :::{.nonincremental}
 
-- `echo`: `true/false` — Show the code in the output?
-- `eval`: `true/false` — Run the code?
-- `warning`: `true/false` — Show warnings?
-- `message`: `true/false` — Show messages?
+- `echo`: Show the code in the output?
+- `eval`: Run the code?
+- `include`: Show code **and** output? (the code still runs)
+- `warning`: Show warnings?
+- `message`: Show messages?
+
+All options take `true` or `false`.
 
 :::
 
@@ -271,9 +298,13 @@ The gapminder data contains `r nrow(gapminder)` observations.
 
 . . .
 
-This is powerful because the **number updates automatically** when the data changes.
+This means **numbers update automatically** when the data changes.
 
-## YAML header — metadata
+# YAML header (metadata) {.inverse}
+
+More online: [HTML document options](https://quarto.org/docs/reference/formats/html.html)
+
+## YAML header (metadata)
 
 The YAML header is at the top of the document between `---` markers:
 
@@ -283,14 +314,15 @@ title: "My analysis"
 author: "Selina Baldauf"
 date: today
 format: html
+editor: visual
 ---
 ```
 
 . . .
 
-This sets the **title**, **author**, **date**, and **output format**.
+This sets the **title**, **author**, **date**, **output format**, and **editor**.
 
-## YAML header — execute options
+## Execute options
 
 You can set **default options** for all code chunks:
 
@@ -315,7 +347,7 @@ These can be overwritten by individual chunk options.
 
 [Reproducible documents with Quarto]{.big-text}
 
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/11_quarto.html)**
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/quarto-task.html)**
 
 # Additional Quarto features {.inverse}
 
@@ -359,15 +391,14 @@ format:
 
 ## Document options
 
-Add options under the format to customize your document:
+Add options to the YAML header to customize your document:
 ````yaml
 ---
-format:
-  html:
-    toc: true
-    toc-location: left
-    number-sections: true
-    code-fold: true
+format: html
+toc: true
+toc-location: left
+number-sections: true
+code-fold: true
 ---
 ````
 
@@ -380,10 +411,6 @@ format:
 - `code-fold`: Hide code behind a button (HTML only)
 
 :::
-
-. . .
-
-Be careful with the **indentation**, YAML is sensitive to spaces.
 
 ## Figure options
 
@@ -451,20 +478,6 @@ gapminder |>
   knitr::kable()
 ```
 
-## The visual editor
-
-RStudio has a **visual editor** that provides a word-like interface for editing `.qmd` files.
-
-![](img/day3/visual_editor.png){fig-width="80%"}
-
-## The visual editor
-
-The visual editor makes it easy to:
-
-- Format text with buttons instead of markdown syntax
-- Insert images, tables, and links via menus
-- Add citations from Zotero, DOI, or PubMed
-
 ## Outlook
 
 Quarto can do much more:
@@ -482,7 +495,7 @@ Check out the [Quarto website](https://quarto.org/) for guides, examples, and a 
 
 :::{.nonincremental}
 
-- [Quarto website](https://quarto.org/) — everything you need to get started
+- [Quarto website](https://quarto.org/): everything you need to get started
 - [Markdown syntax reference](https://quarto.org/docs/authoring/markdown-basics.html)
 - [HTML document options](https://quarto.org/docs/reference/formats/html.html)
 - [PDF document options](https://quarto.org/docs/reference/formats/pdf.html)

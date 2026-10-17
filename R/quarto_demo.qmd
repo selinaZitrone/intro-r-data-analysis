@@ -12,6 +12,9 @@ execute:
 #| include: false
 library(gapminder)
 library(ggplot2)
+library(dplyr)
+
+gapminder_2007 <- filter(gapminder, year == 2007)
 ```
 
 ## Introduction

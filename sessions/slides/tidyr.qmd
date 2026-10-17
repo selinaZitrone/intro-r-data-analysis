@@ -397,4 +397,4 @@ cities_tidy <- cities_untidy |>
 
 [Tidy data with tidyr]{.big-text}
 
-**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/09_tidyr.html)**
+**Find the task description [here](https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/tidyr-task.html)**
