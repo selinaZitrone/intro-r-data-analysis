@@ -11,7 +11,7 @@
     "href": "sessions/tasks/tidyr-task.html#get-started",
     "title": "Task: Tidy data with tidyr",
     "section": "Get started",
-    "text": "Get started\nA helpful resource for this task is the tidyr cheatsheet.\nBefore you start, make sure to load the tidyverse package.\n\nlibrary(tidyverse)\n\nWarning: package 'tidyverse' was built under R version 4.5.3\n\n\nWarning: package 'ggplot2' was built under R version 4.5.3\n\n\nWarning: package 'purrr' was built under R version 4.5.3\n\n\nWarning: package 'dplyr' was built under R version 4.5.3"
+    "text": "Get started\nA helpful resource for this task is the tidyr cheatsheet.\nBefore you start, make sure to load the tidyverse package.\n\nlibrary(tidyverse)"
   },
   {
     "objectID": "sessions/tasks/tidyr-task.html#lets-tidy-some-data-sets",

@@ -26,6 +26,7 @@ Before you start, make sure to load the `tidyverse` package.
 
 ```{r}
 #| message: false
+#| warning: false
 library(tidyverse)
 ```
 
