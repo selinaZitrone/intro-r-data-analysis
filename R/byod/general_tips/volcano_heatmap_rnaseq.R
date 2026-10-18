@@ -12,16 +12,49 @@ library(tidyverse)
 # Prepare the data ------------------------------------------------------------
 
 # Load the airway dataset
-# This dataset contains raw counts per genes from airway smooth muscle cells treated with dexamethasone.
-# Normally, you would load your own count data here (can also be a matrix or data.frame)
+# This dataset contains raw counts per genes from airway smooth muscle cells
+# treated with dexamethasone.
 data(airway)
-airway
 ?airway # check what the dataset is about
 
+# Usually, your data comes as tables (e.g. Excel). To show how to start from
+# such tables, I convert the airway data into two simple tables:
+# count_table: one row per gene, one column per sample
+# sample_table: one row per sample with the experimental conditions
+count_table <- as_tibble(assay(airway), rownames = "gene")
+sample_table <- as_tibble(colData(airway), rownames = "sample") |>
+  select(sample, cell, dex)
+count_table
+sample_table
+
+# With your own data, you would read these tables from your own data (e.g. excel)
+# instead, e.g.:
+# count_table <- readxl::read_excel("data/my_counts.xlsx")
+# sample_table <- readxl::read_excel("data/my_samples.xlsx")
+
+# Note: DESeq2 needs raw counts (whole numbers), not normalized values,
+# because it does the normalization itself.
+# If you already have normalized values and DE results
+# (log2 fold change, p-values), use the script from the RNA-seq example
+# dataset instead (dnaseq_data.R), which starts from these tables.
+
+# DESeq2 needs the counts as a matrix with the gene names as row names
+count_matrix <- count_table |>
+  column_to_rownames("gene") |>
+  as.matrix()
+
+# The columns of the count matrix must be in the same order as the rows of the
+# sample table. Here I check this (result should be TRUE)
+all(colnames(count_matrix) == sample_table$sample)
+
 # Set up the DESeq2 object
-# design: how do the counts for each gene depend on the variables in colData
-# in this case cell type and treatment (dexamethasone or not)
-dds <- DESeqDataSet(airway, design = ~ cell + dex)
+# design: how do the counts for each gene depend on the variables in the
+# sample table? In this example cell type and treatment (dexamethasone or not)
+dds <- DESeqDataSetFromMatrix(
+  countData = count_matrix,
+  colData = sample_table,
+  design = ~ cell + dex
+)
 
 # Run the differential expression analysis
 # to calculate log2 fold changes, p-values, and adjusted p-values
@@ -33,51 +66,54 @@ normalized_counts <- counts(dds, normalized = TRUE)
 # Extract the results of the differential expression analysis
 res <- results(dds, contrast = c("dex", "trt", "untrt"))
 
-# Convert to a tibble for easier handling (genes are the rownames of the table so we convert them
+# Convert both to tibble for easier handling
+# (genes are the rownames of the table so we convert them
 # explicitly to a column)
 normalized_counts <- as_tibble(normalized_counts, rownames = "gene")
 res <- as_tibble(res, rownames = "gene")
+
+# Look at the data
+normalized_counts
+res
+
+# Thresholds for significant genes --------------------------------------------
+
+# In this script I decided the following (this might be different for your
+# analyses, so adjust if needed):
+# A gene counts as significantly up- or downregulated if
+# 1. its adjusted p-value is below padj_cutoff of 0.05 AND
+# 2. its absolute log2 fold change is above 1 (i.e. 2-fold change)
+# I save these 2 values in variables as I will use them both for the
+# heatmap and the volcano plot
+
+padj_cutoff <- 0.05
+lfc_cutoff <- 1
 
 # Heatmap --------------------------------------------------------------------
 
 # Lets do a heatmap of the top 20 differentially expressed genes
 top20_genes <- res |>
-  filter(padj < 0.05) |>
-  arrange(desc(abs(log2FoldChange))) |>
+  # Keep only significant genes (see thresholds above)
+  filter(padj < padj_cutoff & abs(log2FoldChange) > lfc_cutoff) |>
+  # Arrange by adjusted p-value (most significant genes first)
+  arrange(padj) |>
+  # Just look at the top 20 genes
   head(20) |>
+  # pull the gene names out of the table
   pull(gene)
 
 # Look at the top 20 genes
 top20_genes
 
+# Create a new table that only contains these top 20 genes
 normalized_counts_top20 <- normalized_counts |>
   filter(gene %in% top20_genes)
 
-# Example with ggplot ---------------------------------------------------------
-normalized_counts_top20 |>
-  # First we need to reshape the data
-  pivot_longer(!gene, names_to = "sample") |>
-  pivot_wider(names_from = gene, values_from = value) |>
-  # Now we need to manually scale the data to plot it
-  mutate(across(where(is.double), ~ scale(.) |> as.vector())) |>
-  # then we shape it back to a long format
-  pivot_longer(
-    where(is.double),
-    names_to = "gene",
-    values_to = "expr_scaled"
-  ) |>
-  ggplot(aes(x = sample, y = gene, fill = expr_scaled)) +
-  geom_tile(color = "lightgrey") +
-  scale_fill_gradient2(low = "blue", high = "red", mid = "white") +
-  theme(
-    legend.title = element_blank(),
-    axis.text.x = element_text(angle = 90),
-    axis.title = element_blank()
-  )
+# Heatmap with pheatmap ----------------------------------------------
 
-# Example with pheatmap (easier) ----------------------------------------------
 # install.packages("pheatmap")
 library(pheatmap)
+
 # pheatmap takes a matrix as input so we need to convert the tibble to a matrix
 top_20_genes_matrix <- normalized_counts_top20 |>
   # select only the columns with the samples
@@ -88,9 +124,17 @@ top_20_genes_matrix <- normalized_counts_top20 |>
 # add rownames to the matrix with the gene names
 rownames(top_20_genes_matrix) <- normalized_counts_top20$gene
 
+# Sample annotation: a colored bar above the heatmap that shows the treatment
+# pheatmap needs a data.frame with the sample names as rownames
+sample_annotation <- sample_table |>
+  select(sample, dex) |>
+  column_to_rownames("sample")
+
+# Basic heatmpa
 heat2 <- top_20_genes_matrix %>%
   pheatmap(
     scale = "row", # scale the data by row
+    annotation_col = sample_annotation, # add the treatment bar
     show_colnames = TRUE,
     show_rownames = TRUE
   )
@@ -127,77 +171,94 @@ top_20_genes_matrix |>
 
 # Volcano plot ----------------------------------------------------------------
 # https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html#Fu2015
-# Categories for coloring:
-# Not sign.: pvalue >0.01
-# Up: p-value < 0.01 & logFC >0
-# Down: p-value < 0.01 & logFC < 0
 
-# Basic volcano plot ----------------------------------------------------------
-res |>
-  # create a column for the log10 p-value
-  mutate(p_log10 = -log10(pvalue)) |>
-  # define categories of up- and downregulated genes based on p-value and log2FoldChange
+# A volcano plot shows all genes with
+# x-axis: log2 fold change (how much does the expression change?)
+# y-axis: -log10 of the adjusted p-value (how significant is the change?
+#         the higher, the more significant)
+
+# Categories for coloring (using the thresholds defined above):
+# Up: padj < padj_cutoff & log2FoldChange > lfc_cutoff
+# Down: padj < padj_cutoff & log2FoldChange < -lfc_cutoff
+# ns (not significant): all other genes
+
+# Prepare the data for both volcano plots
+volcano_data <- res |>
+  # create a column for the -log10 adjusted p-value
+  mutate(padj_log10 = -log10(padj)) |>
+  # define categories of up- and downregulated genes
   mutate(
     category = case_when(
-      pvalue < 0.01 & log2FoldChange > 0 ~ "Up",
-      pvalue < 0.01 & log2FoldChange < 0 ~ "Down",
+      padj < padj_cutoff & log2FoldChange > lfc_cutoff ~ "Up",
+      padj < padj_cutoff & log2FoldChange < -lfc_cutoff ~ "Down",
       .default = "ns"
     )
-  ) |>
+  )
+volcano_data
+
+# Basic volcano plot ----------------------------------------------------------
+# Genes without adjusted p-value (NA) are removed with a warning. These are
+# genes that DESeq2 filtered out (e.g. because of very low counts)
+volcano_data |>
   ggplot(aes(
     x = log2FoldChange,
-    y = p_log10,
+    y = padj_log10,
     color = category
   )) +
   geom_point()
 
-# More fancy volcano plot with labels and nice colors ------------------------
-# Label the top 10 genes using the ggrepel package
+# Nicer volcano plot with colors and threshold lines --------------------------
+
+# Save the plot in a variable so we can add labels to it in the next step
+volcano_plot <- volcano_data |>
+  ggplot(aes(
+    x = log2FoldChange,
+    y = padj_log10,
+    color = category
+  )) +
+  geom_point(alpha = 0.4) +
+  # dashed lines show the thresholds (same as used for the categories)
+  # horizontal line
+  geom_hline(yintercept = -log10(padj_cutoff), linetype = "dashed") +
+  # 2 vertical lines
+  geom_vline(xintercept = c(-lfc_cutoff, lfc_cutoff), linetype = "dashed") +
+  # name the colors so each category gets the right color
+  scale_color_manual(values = c(Up = "red", Down = "blue", ns = "grey")) +
+  labs(x = "log2 fold change", y = "-log10(adjusted p-value)") +
+  theme_classic() +
+  theme(
+    # move legend to the top right of the plot
+    legend.position = "inside",
+    legend.position.inside = c(0.9, 0.9),
+    legend.title = element_blank()
+  )
+
+volcano_plot
+
+# Add labels for the top genes -------------------------------------------------
+# Label the top 10 genes using the ggrepel package (labels don't overlap)
 # https://ggrepel.slowkow.com/articles/examples.html
 library(ggrepel)
 
-# Add labels for some top differentially expressed genes
-label_genes <- res |>
-  filter(padj < 0.05) |>
-  arrange(desc(abs(log2FoldChange))) |>
-  head(10) |>
-  pull(gene)
+# Select the genes to label: the 10 most significant up- or downregulated genes
+label_data <- volcano_data |>
+  # keep only significant genes
+  filter(category != "ns") |>
+  # most significant genes first
+  arrange(padj) |>
+  head(10)
+label_data
 
-# extract the name of the gene
-res |>
-  # create a column for the log10 p-value
-  mutate(p_log10 = -log10(pvalue)) |>
-  # define categories of up- and downregulated genes based on p-value and log2FoldChange
-  mutate(
-    category = case_when(
-      pvalue < 0.01 & log2FoldChange > 0 ~ "Up",
-      pvalue < 0.01 & log2FoldChange < 0 ~ "Down",
-      .default = "ns"
-    )
-  ) |>
-  ggplot(aes(
-    x = log2FoldChange,
-    y = p_log10,
-    color = category,
-    label = ifelse(gene %in% label_genes, gene, "")
-  )) +
-  geom_point(alpha = 0.4) +
+# Add the labels to the saved plot
+# data = label_data: only the genes in label_data get a label
+volcano_plot +
   geom_label_repel(
+    data = label_data,
+    aes(label = gene),
     max.overlaps = Inf,
-    max.iter = Inf,
     size = 3,
     show.legend = FALSE,
     color = "black"
-    # min.segment.length = 0, seed = 42, box.padding = 0.5
-  ) +
-  geom_hline(yintercept = -log10(0.01), linetype = "dashed") +
-  geom_vline(xintercept = c(-1, 1), linetype = "dashed") +
-  scale_color_manual(values = c("red", "grey", "blue")) +
-  labs(x = "logFC", y = "-log10(p)") +
-  theme_bw() +
-  theme(
-    legend.position = "bottom",
-    legend.title = element_blank()
   )
 
 # PCA analysis ----------------------------------------------------------------
