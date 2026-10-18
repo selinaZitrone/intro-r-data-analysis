@@ -1,4 +1,6 @@
 # Install and load required packages ------------------------------------------
+# See here for more info on DESeq2:
+# https://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html
 # Install packages from bioconductor  (this may take some time)
 # if (!requireNamespace("BiocManager", quietly = TRUE)) {
 #   install.packages("BiocManager")
@@ -60,7 +62,8 @@ dds <- DESeqDataSetFromMatrix(
 # to calculate log2 fold changes, p-values, and adjusted p-values
 dds <- DESeq(dds)
 
-# Extract normalized counts from the DESeq2 object for later use
+# Extract normalized counts from the DESeq2 object (e.g. to look at them or
+# save them as a table)
 normalized_counts <- counts(dds, normalized = TRUE)
 
 # Extract the results of the differential expression analysis
@@ -105,24 +108,24 @@ top20_genes <- res |>
 # Look at the top 20 genes
 top20_genes
 
-# Create a new table that only contains these top 20 genes
-normalized_counts_top20 <- normalized_counts |>
-  filter(gene %in% top20_genes)
+# Variance stabilized values (vst) for plotting
+# For heatmaps (and PCA), the DESeq2 developers recommend variance stabilized
+# values instead of normalized counts. They are on a log2-like scale and
+# more stable for genes with low counts, so that single very high values or
+# outlier samples don't dominate the plot.
+# More info: https://bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html#gene-clustering
+vsd <- vst(dds, blind = FALSE)
 
 # Heatmap with pheatmap ----------------------------------------------
 
 # install.packages("pheatmap")
 library(pheatmap)
 
-# pheatmap takes a matrix as input so we need to convert the tibble to a matrix
-top_20_genes_matrix <- normalized_counts_top20 |>
-  # select only the columns with the samples
-  select(starts_with("SRR")) |>
-  # convert to matrix
-  as.matrix()
-
-# add rownames to the matrix with the gene names
-rownames(top_20_genes_matrix) <- normalized_counts_top20$gene
+# pheatmap takes a matrix as input: assay(vsd) gives us the vst values as a
+# matrix with the gene names as rownames. [top20_genes, ] selects the rows
+# of the top 20 genes
+top_20_genes_matrix <- assay(vsd)[top20_genes, ]
+top_20_genes_matrix
 
 # Sample annotation: a colored bar above the heatmap that shows the treatment
 # pheatmap needs a data.frame with the sample names as rownames
@@ -130,8 +133,8 @@ sample_annotation <- sample_table |>
   select(sample, dex) |>
   column_to_rownames("sample")
 
-# Basic heatmpa
-heat2 <- top_20_genes_matrix %>%
+# Basic heatmap
+heat2 <- top_20_genes_matrix |>
   pheatmap(
     scale = "row", # scale the data by row
     annotation_col = sample_annotation, # add the treatment bar
@@ -139,34 +142,18 @@ heat2 <- top_20_genes_matrix %>%
     show_rownames = TRUE
   )
 
-# or with more options (example from Shaoyi from previous course)
+# The same heatmap with more options
+# See ?pheatmap for all options
 top_20_genes_matrix |>
   pheatmap(
     scale = "row",
-    border = "#8B0A50",
-    cluster_cols = TRUE,
-    cluster_rows = TRUE,
-    show_colnames = TRUE,
-    show_rownames = TRUE,
-    legend = TRUE,
-    legend_breaks = c(-2, 0, 2),
-    fontsize_row = 8,
-    fontsize_col = 10,
-    treeheight_row = 35,
-    treeheight_col = 40,
-    clustering_distance_rows = "minkowski",
-    clustering_method = "complete",
-    angle_col = 270,
-    main = "Genes of interest",
-    # cellwidth = 20,
-    # cellheight = 40,
-    cutree_rows = 6,
-    cutree_cols = 7,
-    display_numbers = TRUE,
-    fontsize_number = 6,
-    number_color = "red",
-    number_format = "%.2f"
-    # filename = "documents/img/genes of interest.png" # to save the plot if you want
+    annotation_col = sample_annotation, # treatment bar
+    cutree_cols = 2, # split samples into 2 groups (treated vs untreated)
+    clustering_distance_rows = "correlation", # cluster genes by similar patterns
+    main = "Top 20 differentially expressed genes", # title
+    fontsize_row = 8, # smaller gene names
+    angle_col = 45 # rotate sample names
+    # filename = "heatmap_top20.png" # uncomment to save the heatmap
   )
 
 # Volcano plot ----------------------------------------------------------------
@@ -227,9 +214,9 @@ volcano_plot <- volcano_data |>
   labs(x = "log2 fold change", y = "-log10(adjusted p-value)") +
   theme_classic() +
   theme(
-    # move legend to the top right of the plot
+    # move legend to the top left of the plot
     legend.position = "inside",
-    legend.position.inside = c(0.9, 0.9),
+    legend.position.inside = c(0.1, 0.9),
     legend.title = element_blank()
   )
 
@@ -265,8 +252,8 @@ volcano_plot +
 # Package to do the PCA plots
 # https://rpkgs.datanovia.com/factoextra/index.html
 library(factoextra)
-# Variance stabilizing transformation (reduce heteroscedasticity)
-vsd <- vst(dds, blind = FALSE)
+# For the PCA we use the variance stabilized values (vsd) that we created in
+# the heatmap section
 
 # Filter out genes with zero variance across samples
 # otherwise you get an error in the PCA because it cannot rescale if variance
@@ -287,7 +274,7 @@ pca_res_filtered <- prcomp(vsd_filtered_for_pca, scale. = TRUE)
 
 # Visualize the PCA using factoextra using different options from the
 # factoextra package
-fviz_pca_ind(
+pca_plot <- fviz_pca_ind(
   pca_res_filtered,
   geom.ind = "point", # Show points only (not "text")
   col.ind = colData(dds)$dex, # Color by treatment
@@ -296,6 +283,7 @@ fviz_pca_ind(
   legend.title = "Treatment",
   title = "PCA of Airway Smooth Muscle Cells"
 )
+pca_plot
 
 # Scree plot: Shows the percentage of variance explained by each principal component
 fviz_eig(
@@ -306,7 +294,7 @@ fviz_eig(
 )
 
 # Save the PCA plot as a PNG file
-# ggsave("airway_pca_factoextra_filtered.png", pca_plot_filtered, width = 10, height = 8, dpi = 300)
+# ggsave("airway_pca.png", pca_plot, width = 10, height = 8, dpi = 300)
 
 # Gene ontology plots --------------------------------------------------------
 # install and load the packages if needed
@@ -316,9 +304,15 @@ library(clusterProfiler)
 # This package provides mappings between different gene identifiers for human genes.
 library(org.Hs.eg.db)
 
-# Define universe = all tested genes with non-NA padj (mapped to Entrez)
+# Define universe = all tested genes, i.e. genes with an adjusted p-value
+# (genes with padj = NA were filtered out by DESeq2)
+tested_genes <- res |>
+  filter(!is.na(padj)) |>
+  pull(gene)
+
+# Convert Ensembl IDs to Entrez IDs
 universe_map <- bitr(
-  res$gene,
+  tested_genes,
   fromType = "ENSEMBL",
   toType = "ENTREZID",
   OrgDb = org.Hs.eg.db
@@ -326,12 +320,12 @@ universe_map <- bitr(
 
 universe_entrez <- unique(universe_map$ENTREZID)
 
-# Define significant gene set
+# Define significant gene set (same thresholds as for heatmap and volcano plot)
 sig_genes <- res |>
-  filter(padj < 0.05) |>
+  filter(padj < padj_cutoff & abs(log2FoldChange) > lfc_cutoff) |>
   pull(gene)
 
-# Convert gene symbols to Entrez IDs
+# Convert Ensembl IDs to Entrez IDs
 significant_map <- bitr(
   sig_genes,
   fromType = "ENSEMBL",
