@@ -44,18 +44,7 @@ library(tidyverse)
     - Use `view(trees)` to look at the full table
     - Use `$` to access the `height_m` column and calculate the mean height
 
-```{r}
-#| echo: false
-downloadthis::download_file(
-  path = here::here("data/tree_growth.csv"),
-  output_name = "tree_growth",
-  button_label = "Download tree_growth.csv",
-  button_type = "default",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+[<i class="bi bi-download"></i> Download tree_growth.csv](../../data/tree_growth.csv){.btn .btn-outline-secondary download="tree_growth.csv"}
 
 :::{.callout-tip}
 
@@ -72,18 +61,7 @@ When you start typing a path in RStudio, you can use auto-completion to avoid ty
 3. Use `read_excel()` to read the file into R and save it in a variable.
 4. Explore the data with `summary()`.
 
-```{r}
-#| echo: false
-downloadthis::download_file(
-  path = here::here("data/bird_observations.xlsx"),
-  output_name = "bird_observations",
-  button_label = "Download bird_observations.xlsx",
-  button_type = "default",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+[<i class="bi bi-download"></i> Download bird_observations.xlsx](../../data/bird_observations.xlsx){.btn .btn-outline-secondary download="bird_observations.xlsx"}
 
 ## Write data to a file
 
@@ -99,18 +77,7 @@ Take the `trees` tibble you just read in and write it to a new file:
     - Hint: open the file in a text editor or in RStudio (File → Open File) to see its structure.
 3. Use the appropriate argument of `read_csv()` to fix the problem. Check `?read_csv` for an argument that lets you skip lines at the top of a file.
 
-```{r}
-#| echo: false
-downloadthis::download_file(
-  path = here::here("data/water_quality.csv"),
-  output_name = "water_quality",
-  button_label = "Download water_quality.csv",
-  button_type = "default",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+[<i class="bi bi-download"></i> Download water_quality.csv](../../data/water_quality.csv){.btn .btn-outline-secondary download="water_quality.csv"}
 
 ## Optional tasks (if you finish early)
 
@@ -128,18 +95,7 @@ The file has metadata lines on top **and** uses a different delimiter (not a com
 
 :::
 
-```{r}
-#| echo: false
-downloadthis::download_file(
-  path = here::here("data/soil_nutrients_messy.csv"),
-  output_name = "soil_nutrients_messy",
-  button_label = "Download soil_nutrients_messy.csv",
-  button_type = "default",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+[<i class="bi bi-download"></i> Download soil_nutrients_messy.csv](../../data/soil_nutrients_messy.csv){.btn .btn-outline-secondary download="soil_nutrients_messy.csv"}
 
 ### Clean messy column headers
 

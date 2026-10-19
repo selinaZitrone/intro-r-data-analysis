@@ -70,7 +70,8 @@ penguins_small <- penguins |>
 ggplot(penguins_small, aes(x = species, y = flipper_len)) +
   geom_boxplot()
 
-summarize(penguins_small,
+summarize(
+  penguins_small,
   mean = mean(flipper_len, na.rm = TRUE),
   sd = sd(flipper_len, na.rm = TRUE),
   .by = species
@@ -162,31 +163,6 @@ penguins_boxplot <- ggplot(penguins, aes(x = species, y = flipper_len)) +
   )
 penguins_boxplot
 
-
-pairwise_results <- pairwise.t.test(penguins$flipper_len,
-                                    penguins$species,
-                                    pool.sd = FALSE
-)
-p <- pairwise_results$p.value
-comparisons <- list(
-  c("Adelie", "Chinstrap"),
-  c("Adelie", "Gentoo"),
-  c("Chinstrap", "Gentoo")
-)
-adjusted_p <- c(
-  p["Chinstrap", "Adelie"],
-  p["Gentoo", "Adelie"],
-  p["Gentoo", "Chinstrap"]
-)
-
-p_labels <- if_else(adjusted_p < 0.05, "*", "ns")
-
-p_labels <- paste(
-  "p =",
-  format.pval(adjusted_p, digits = 2)
-)
-
-
 ## For the fast ones
 
 # Mean +- standard error
@@ -264,7 +240,7 @@ p_table <- pairwise_results$p.value |>
     label2 = case_when(
       p_adj < 0.001 ~ "***",
       p_adj < 0.01 & p_adj >= 0.001 ~ "**",
-      p_adj < 0.05 & p_adj >=0.01 ~ "*",
+      p_adj < 0.05 & p_adj >= 0.01 ~ "*",
       p_adj > 0.05 ~ "ns"
     )
   )

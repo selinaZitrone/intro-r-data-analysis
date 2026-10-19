@@ -73,14 +73,4 @@ Here is an example of a plot you can try to create (from question 3):
 
 ![](img/top_medals.png)
 
-```{r echo=FALSE}
-downloadthis::download_file(
-  path = here::here("R/byod/solutions_for_my_datasets/olympics.R"),
-  output_name = "solution_paralympics",
-  button_label = "Download solution script",
-  button_type = "default",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+[<i class="bi bi-download"></i> Download solution script](../R/byod/solutions_for_my_datasets/olympics.R){.btn .btn-outline-secondary download="solution_paralympics.R"}

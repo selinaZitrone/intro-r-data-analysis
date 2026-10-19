@@ -10,6 +10,7 @@ project:
     - "!R/quarto_demo.qmd"
     - "!R/quarto_demo_advanced.qmd"
     - "!R/Tasks/penguin_report.qmd"
+    - "!R/Tasks/penguin_report_advanced.qmd"
     - "!prep/webex.qmd"
   resources:
     - "sessions/slides_pdf/*.pdf"

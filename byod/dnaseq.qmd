@@ -147,14 +147,4 @@ To complete these tasks, you may find the following R functions and packages hel
 :::
 
 
-```{r echo=FALSE}
-downloadthis::download_file(
-  path = here::here("R/byod/solutions_for_my_datasets/dnaseq_data.R"),
-  output_name = "solution_for_rna_data",
-  button_label = "Download solution script",
-  button_type = "default",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
+[<i class="bi bi-download"></i> Download solution script](../R/byod/solutions_for_my_datasets/dnaseq_data.R){.btn .btn-outline-secondary download="solution_for_rna_data.R"}

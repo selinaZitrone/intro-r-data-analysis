@@ -46,14 +46,14 @@
     "href": "sessions/tasks/readr-task.html#read-a-csv-file",
     "title": "Task: Import and Export Data",
     "section": "Read a CSV file",
-    "text": "Read a CSV file\n\nDownload the file below and save it in the data/ folder of your project.\nUse read_csv() to read the file into R and save it in a variable called trees.\nExplore the data:\n\nUse summary(trees) to check how many tree species are there and what the tallest tree is.\nUse view(trees) to look at the full table\nUse $ to access the height_m column and calculate the mean height\n\n\n\n\n Download tree_growth.csv\n\n\n\n\n\n\n\n\nBuild your path with auto-completion\n\n\n\nWhen you start typing a path in RStudio, you can use auto-completion to avoid typos. Start with \"\" and then hit tab to see suggestions for files and folders in your project."
+    "text": "Read a CSV file\n\nDownload the file below and save it in the data/ folder of your project.\nUse read_csv() to read the file into R and save it in a variable called trees.\nExplore the data:\n\nUse summary(trees) to check how many tree species are there and what the tallest tree is.\nUse view(trees) to look at the full table\nUse $ to access the height_m column and calculate the mean height\n\n\n Download tree_growth.csv\n\n\n\n\n\n\nBuild your path with auto-completion\n\n\n\nWhen you start typing a path in RStudio, you can use auto-completion to avoid typos. Start with \"\" and then hit tab to see suggestions for files and folders in your project."
   },
   {
     "objectID": "sessions/tasks/readr-task.html#read-an-excel-file",
     "href": "sessions/tasks/readr-task.html#read-an-excel-file",
     "title": "Task: Import and Export Data",
     "section": "Read an Excel file",
-    "text": "Read an Excel file\n\nDownload the Excel file below and save it in the data/ folder of your project.\nLoad the readxl package with library(readxl).\nUse read_excel() to read the file into R and save it in a variable.\nExplore the data with summary().\n\n\n\n Download bird_observations.xlsx"
+    "text": "Read an Excel file\n\nDownload the Excel file below and save it in the data/ folder of your project.\nLoad the readxl package with library(readxl).\nUse read_excel() to read the file into R and save it in a variable.\nExplore the data with summary().\n\n Download bird_observations.xlsx"
   },
   {
     "objectID": "sessions/tasks/readr-task.html#write-data-to-a-file",
@@ -67,14 +67,14 @@
     "href": "sessions/tasks/readr-task.html#challenge-a-slightly-messy-file",
     "title": "Task: Import and Export Data",
     "section": "Challenge: a slightly messy file",
-    "text": "Challenge: a slightly messy file\n\nDownload the file below and save it in the data/ folder.\nTry reading it with read_csv(). Something is wrong. Can you figure out what?\n\nHint: open the file in a text editor or in RStudio (File → Open File) to see its structure.\n\nUse the appropriate argument of read_csv() to fix the problem. Check ?read_csv for an argument that lets you skip lines at the top of a file.\n\n\n\n Download water_quality.csv"
+    "text": "Challenge: a slightly messy file\n\nDownload the file below and save it in the data/ folder.\nTry reading it with read_csv(). Something is wrong. Can you figure out what?\n\nHint: open the file in a text editor or in RStudio (File → Open File) to see its structure.\n\nUse the appropriate argument of read_csv() to fix the problem. Check ?read_csv for an argument that lets you skip lines at the top of a file.\n\n Download water_quality.csv"
   },
   {
     "objectID": "sessions/tasks/readr-task.html#optional-tasks-if-you-finish-early",
     "href": "sessions/tasks/readr-task.html#optional-tasks-if-you-finish-early",
     "title": "Task: Import and Export Data",
     "section": "Optional tasks (if you finish early)",
-    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nChallenge: an even messier file\nDownload the file below and try to read it into R. This file has multiple problems, so you’ll need more than one argument to fix them.\n\n\n\n\n\n\nHint (unfold to see)\n\n\n\n\n\nThe file has metadata lines on top and uses a different delimiter (not a comma).\n\n\n\n\n\n Download soil_nutrients_messy.csv\n\n\n\n\nClean messy column headers\nAfter reading the messy soil data, try using janitor::clean_names() on it. What does it do to the column names?\nYou may need to install the janitor package first: install.packages(\"janitor\").\n\n\nRead your own data\nIf you have your own research data, try reading it into R:\n\nCopy a data file into the data/ folder of your project\nUse the appropriate read_*() function to read it in\nDid it work? If not, check ?read_csv or ?read_excel for arguments that might help"
+    "text": "Optional tasks (if you finish early)\nYou can do these in any order — or skip them and just take a break.\n\nChallenge: an even messier file\nDownload the file below and try to read it into R. This file has multiple problems, so you’ll need more than one argument to fix them.\n\n\n\n\n\n\nHint (unfold to see)\n\n\n\n\n\nThe file has metadata lines on top and uses a different delimiter (not a comma).\n\n\n\n Download soil_nutrients_messy.csv\n\n\nClean messy column headers\nAfter reading the messy soil data, try using janitor::clean_names() on it. What does it do to the column names?\nYou may need to install the janitor package first: install.packages(\"janitor\").\n\n\nRead your own data\nIf you have your own research data, try reading it into R:\n\nCopy a data file into the data/ folder of your project\nUse the appropriate read_*() function to read it in\nDid it work? If not, check ?read_csv or ?read_excel for arguments that might help"
   },
   {
     "objectID": "sessions/tasks/intro-rstudio-task.html",
@@ -1607,7 +1607,7 @@
     "href": "byod/olympics.html#example-analysis",
     "title": "Paralympic Games Data Analysis",
     "section": "Example analysis",
-    "text": "Example analysis\nHere is an example of a plot you can try to create (from question 3):\n\n\n\n Download solution script"
+    "text": "Example analysis\nHere is an example of a plot you can try to create (from question 3):\n\n Download solution script"
   },
   {
     "objectID": "byod/dnaseq.html",
@@ -1642,7 +1642,7 @@
     "href": "byod/dnaseq.html#example-analysis",
     "title": "RNA-seq Data Analysis",
     "section": "Example analysis",
-    "text": "Example analysis\n\n\n\n\n\n\n\n\n\n Download solution script"
+    "text": "Example analysis\n\n\n\n\n\n\n\n Download solution script"
   },
   {
     "objectID": "byod/ice_cover.html",
@@ -1677,7 +1677,7 @@
     "href": "byod/ice_cover.html#example-analysis",
     "title": "Climate Change Effects on Ice Cover and Temperature in North American Lakes",
     "section": "Example analysis",
-    "text": "Example analysis\nHere is an example of a plot you can try to create (from question 3):\n\n\n\n Download solution script"
+    "text": "Example analysis\nHere is an example of a plot you can try to create (from question 3):\n\n Download solution script"
   },
   {
     "objectID": "byod/wine.html",
@@ -1712,7 +1712,7 @@
     "href": "byod/wine.html#example-analysis",
     "title": "Wine Quality Analysis",
     "section": "Example analysis",
-    "text": "Example analysis\nHere is an example of a correlation plot:\n\nHere is an example of a PCA result:\n\n\n\n Download solution script"
+    "text": "Example analysis\nHere is an example of a correlation plot:\n\nHere is an example of a PCA result:\n\n Download solution script"
   },
   {
     "objectID": "byod/wine.html#reference",
