@@ -70,6 +70,13 @@ penguins_small <- penguins |>
 ggplot(penguins_small, aes(x = species, y = flipper_len)) +
   geom_boxplot()
 
+summarize(
+  penguins_small,
+  mean = mean(flipper_len, na.rm = TRUE),
+  sd = sd(flipper_len, na.rm = TRUE),
+  .by = species
+)
+
 # 3. Check for normality
 adelie <- filter(penguins_small, species == "Adelie")$flipper_len
 chinstrap <- filter(penguins_small, species == "Chinstrap")$flipper_len
@@ -228,7 +235,13 @@ p_table <- pairwise_results$p.value |>
     label = if_else(
       p_adj < 0.001,
       "p < 0.001",
-      paste("p =", signif(p_adj, 2))
+      paste("p =", format.pval(p_adj, 2))
+    ),
+    label2 = case_when(
+      p_adj < 0.001 ~ "***",
+      p_adj < 0.01 & p_adj >= 0.001 ~ "**",
+      p_adj < 0.05 & p_adj >= 0.01 ~ "*",
+      p_adj > 0.05 ~ "ns"
     )
   )
 p_table
@@ -237,7 +250,7 @@ ggplot(penguins, aes(x = species, y = flipper_len)) +
   geom_boxplot() +
   geom_signif(
     comparisons = map2(p_table$group2, p_table$group1, c),
-    annotations = p_table$label,
+    annotations = p_table$label2,
     step_increase = 0.1,
     tip_length = 0.02
   )
