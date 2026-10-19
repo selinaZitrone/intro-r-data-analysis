@@ -77,8 +77,13 @@ chinstrap <- filter(penguins_small, species == "Chinstrap")$flipper_len
 shapiro.test(adelie) # normal
 shapiro.test(chinstrap) # normal
 
-ggqqplot(adelie)
-ggqqplot(chinstrap)
+adelie_plot <- ggqqplot(adelie)
+chinstrap_plot <- ggqqplot(chinstrap)
+
+ggqqplot(penguins_small, x = "flipper_len", facet.by = "species")
+
+library(patchwork)
+adelie_plot + chinstrap_plot
 
 # 4. Compare the means
 t.test(adelie, chinstrap)
