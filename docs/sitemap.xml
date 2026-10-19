@@ -106,7 +106,7 @@
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/index.html</loc>
-    <lastmod>2026-10-17T19:57:54.950Z</lastmod>
+    <lastmod>2026-10-19T12:11:42.172Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/byod/olympics.html</loc>
@@ -114,7 +114,7 @@
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/byod/dnaseq.html</loc>
-    <lastmod>2025-10-11T20:33:57.142Z</lastmod>
+    <lastmod>2026-10-19T20:01:40.281Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/byod/ice_cover.html</loc>
@@ -154,7 +154,7 @@
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/byod.html</loc>
-    <lastmod>2026-03-03T15:55:15.561Z</lastmod>
+    <lastmod>2026-10-18T17:04:56.948Z</lastmod>
   </url>
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/slides/AI-tools.html</loc>
@@ -227,5 +227,9 @@
   <url>
     <loc>https://selinazitrone.github.io/intro-r-data-analysis/sessions/tasks/tests-task.html</loc>
     <lastmod>2026-10-17T17:12:47.055Z</lastmod>
+  </url>
+  <url>
+    <loc>https://selinazitrone.github.io/intro-r-data-analysis/R/Tasks/penguin_report_advanced.html</loc>
+    <lastmod>2026-10-19T13:22:24.264Z</lastmod>
   </url>
 </urlset>

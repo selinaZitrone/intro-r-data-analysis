@@ -1,175 +1,266 @@
 library(tidyverse)
 
-# Start analysis ----------------------------------------------------------
+# Read and combine the data ---------------------------------------------------
 
-heatmap_genes <- read_tsv("R/byod/solutions_for_my_datasets/data/heatmap_genes")
-DE_results <- read_tsv("R/byod/solutions_for_my_datasets/data/limma-voom_luminalpregnant-luminallactate")
+# ADJUST the paths to where you saved the files
+heatmap_genes <- read_tsv("data/heatmap_genes")
+DE_results <- read_tsv("data/limma-voom_luminalpregnant-luminallactate")
 DE_results <- janitor::clean_names(DE_results)
-normalized_counts <- read_tsv("R/byod/solutions_for_my_datasets/data/limma-voom_normalised_counts")
+normalized_counts <- read_tsv("data/limma-voom_normalised_counts")
 normalized_counts <- janitor::clean_names(normalized_counts)
 
-# combine tables
-genes <- left_join(DE_results, normalized_counts, by = c("entrezid", "symbol", "genename")) %>%
-  select(-entrezid, genename)
+# combine the DE results and the normalized counts into one table
+genes <- left_join(
+  DE_results,
+  normalized_counts,
+  by = c("entrezid", "symbol", "genename")
+) |>
+  # remove columns we don't need
+  select(-entrezid, -genename)
+genes
 
-# only significant genes
-significant_genes <- genes %>% filter(p_value < 0.01 & abs(log_fc) > 0.58)
+# Sample information ----------------------------------------------------------
 
-# Select the top 20 genes to plot, by p-value
-top_20_genes <- significant_genes %>%
-  arrange(p_value) %>%
-  dplyr::slice(1:20)
+# The sample names (e.g. mcl1_dg) don't tell us which group a sample belongs
+# to, so we create a table with this information.
+# There are 6 groups with 2 replicates each: basal and luminal cells from
+# virgin, pregnant and lactating mice
+sample_table <- tibble(
+  sample = c(
+    "mcl1_dg",
+    "mcl1_dh",
+    "mcl1_di",
+    "mcl1_dj",
+    "mcl1_dk",
+    "mcl1_dl",
+    "mcl1_la",
+    "mcl1_lb",
+    "mcl1_lc",
+    "mcl1_ld",
+    "mcl1_le",
+    "mcl1_lf"
+  ),
+  cell_type = rep(c("basal", "luminal"), each = 6),
+  condition = rep(c("virgin", "pregnant", "lactating"), each = 2, times = 2)
+)
+sample_table
 
+# Note: the DE results compare luminal pregnant (lc, ld) vs. luminal
+# lactating (le, lf) samples:
+# log_fc > 0: higher expression in pregnant
+# log_fc < 0: higher expression in lactating
 
-# Heatmap of top genes ----------------------------------------------------
+# Thresholds for significant genes --------------------------------------------
 
-# Create a heatmap of the top genes
-heat_top_20 <- top_20_genes %>%
-  mutate(symbol = fct_reorder(symbol, -log_fc)) %>%
-  select(c(symbol, starts_with("mcl1"))) %>%
-  pivot_longer(starts_with("mcl"), names_to = "sample") %>%
-  pivot_wider(names_from = symbol, values_from = value) %>%
-  mutate(across(where(is.double), ~ scale(.) %>% as.vector())) %>% # normalize the data
-  pivot_longer(where(is.double), names_to = "gene", values_to = "expr_scaled") %>%
-  ggplot(aes(x = sample, y = gene, fill = expr_scaled)) +
-  geom_tile(color = "lightgrey") +
-  scale_fill_gradient2(low = "blue", high = "red", mid = "white") +
-  theme(
-    legend.title = element_blank(),
-    axis.text.x = element_text(angle = 90),
-    axis.title = element_blank()
-  )
-# ggsave("img/heat_top20.png")
+# Following the Galaxy tutorial, a gene counts as significantly up- or
+# downregulated if
+# 1. its adjusted p-value is below 0.01 AND
+# 2. its absolute log2 fold change is above 0.58 (i.e. 1.5-fold change)
+# I save these 2 values in variables as I use them for the heatmaps and the
+# volcano plots
+padj_cutoff <- 0.01
+lfc_cutoff <- 0.58
 
-# Heatmap of interesting genes --------------------------------------------
-# Filter normalized counts to contain only the genes interesting for the plot
-genes %>%
-  filter(symbol %in% heatmap_genes$GeneID) %>%
-  pivot_longer(starts_with("mcl"), names_to = "sample") %>%
-  select(symbol, sample, value) %>%
-  pivot_wider(names_from = symbol, values_from = value) %>%
-  mutate(across(where(is.double), ~ scale(.) %>% as.vector())) %>% # normalize the data
-  pivot_longer(where(is.double), names_to = "gene", values_to = "expr_scaled") %>%
-  ggplot(aes(x = gene, y = sample, fill = expr_scaled)) +
-  geom_tile() +
-  scale_fill_gradient2(low = "blue", high = "red", mid = "white") +
-  theme(
-    axis.title = element_blank(),
-    axis.text.x = element_text(angle = 90, vjust = 0.1, hjust = 1)
-  )
+# Top 20 genes ----------------------------------------------------------------
 
-# Use pheatmap instead ------------------------------------------------
+top_20_genes <- genes |>
+  # Keep only significant genes (see thresholds above)
+  filter(adj_p_val < padj_cutoff & abs(log_fc) > lfc_cutoff) |>
+  # Arrange by adjusted p-value (most significant genes first)
+  arrange(adj_p_val) |>
+  # Just keep the top 20 genes
+  head(20)
+top_20_genes
+
+# Heatmap of the top 20 genes -------------------------------------------------
+
+# install.packages("pheatmap")
 library(pheatmap)
 
-# this takes quite long because there are so many genes
-# normalized_counts %>%
-#   select(starts_with("mcl1")) %>%
-#   as.matrix() %>%
-#   pheatmap(scale = "row")
+# The normalized counts from limma-voom are already on a log2 scale
+# (log2 counts per million), so we can use them directly for the heatmap.
 
-top_20_genes_matrix <- top_20_genes %>%
-  arrange(desc(log_fc)) %>%
-  select(starts_with("mcl1")) %>%
+# pheatmap takes a matrix as input with the gene names as rownames
+top_20_matrix <- top_20_genes |>
+  # select the gene names and the columns with the samples
+  select(symbol, starts_with("mcl1")) |>
+  # use the gene names as rownames (this keeps names and values together)
+  column_to_rownames("symbol") |>
+  # convert to matrix
   as.matrix()
+top_20_matrix
 
-rownames(top_20_genes_matrix) <- top_20_genes$symbol
+# Sample annotation: colored bars above the heatmap that show cell type and
+# condition. pheatmap needs a data.frame with the sample names as rownames
+sample_annotation <- sample_table |>
+  column_to_rownames("sample")
 
-heat2 <- top_20_genes_matrix %>%
+# Heatmap with all samples
+top_20_matrix |>
   pheatmap(
-    scale = "row",
-    show_colnames = TRUE,
-    show_rownames = TRUE
+    scale = "row", # scale the data by row
+    annotation_col = sample_annotation # add the cell type and condition bars
   )
 
-# ggsave("img/heat_top20_2.png", heat2)
+# Heatmap with only the samples that were compared in the DE analysis
+# (luminal pregnant vs. luminal lactating)
+compared_samples <- sample_table |>
+  filter(cell_type == "luminal" & condition != "virgin") |>
+  pull(sample)
+compared_samples
 
-# PCA to see clustering ---------------------------------------------------
-pcres <- top_20_genes %>%
-  select(starts_with("mcl1")) %>%
-  prcomp()
+heat_top_20 <- top_20_matrix[, compared_samples] |>
+  pheatmap(
+    scale = "row",
+    # all 4 samples are luminal, so only show the condition
+    annotation_col = select(sample_annotation, condition),
+    cutree_cols = 2, # split samples into 2 groups (pregnant vs lactating)
+    main = "Top 20 genes: luminal pregnant vs. lactating"
+  )
+# ggsave("img/heat_top20_2.png", heat_top_20)
 
-factoextra::fviz_pca_ind(pcres,
-  col.ind = "cos2", geom = "point",
-  gradient.cols = c("white", "#2E9FDF", "#FC4E07")
+# Heatmap of the genes of interest --------------------------------------------
+
+# Genes from Figure 6b of the paper (heatmap_genes)
+genes_of_interest_matrix <- genes |>
+  filter(symbol %in% heatmap_genes$GeneID) |>
+  select(symbol, starts_with("mcl1")) |>
+  column_to_rownames("symbol") |>
+  as.matrix()
+
+genes_of_interest_matrix |>
+  pheatmap(
+    scale = "row",
+    annotation_col = sample_annotation,
+    main = "Genes of interest"
+  )
+
+# PCA to see clustering of the samples ----------------------------------------
+
+library(factoextra)
+
+# PCA on the top 20 genes
+# prcomp() needs the samples in rows and the genes in columns, so we transpose
+# the matrix with t()
+pca_res <- prcomp(t(top_20_matrix), scale. = TRUE)
+
+# The columns of the matrix must be in the same order as the rows of the
+# sample table so that the colors are correct. This should be TRUE
+all(colnames(top_20_matrix) == sample_table$sample)
+
+fviz_pca_ind(
+  pca_res,
+  geom.ind = "point", # show points only (not the sample names)
+  col.ind = paste(sample_table$cell_type, sample_table$condition), # color by group
+  palette = "jco", # color palette
+  pointsize = 3,
+  legend.title = "Group"
 )
-# Volcano plot ----------------------------------------------------------------
-# https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html#Fu2015
-# Categories for coloring:
-# Not sign.: pvalue < 0.01
-# Up: p-value < 0.01 & logFC >0
-# Down: p-value < 0.01 & logFC < 0
 
-genes %>%
-  mutate(p_log10 = -log10(p_value)) %>%
+# Volcano plot ----------------------------------------------------------------
+# https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html
+
+# A volcano plot shows all genes with
+# x-axis: log2 fold change (how much does the expression change?)
+# y-axis: -log10 of the adjusted p-value (how significant is the change?
+#         the higher, the more significant)
+
+# Categories for coloring (using the thresholds defined above):
+# Up: adj_p_val < padj_cutoff & log_fc > lfc_cutoff (higher in pregnant)
+# Down: adj_p_val < padj_cutoff & log_fc < -lfc_cutoff (higher in lactating)
+# ns (not significant): all other genes
+
+# Prepare the data for all volcano plots
+volcano_data <- genes |>
+  # create a column for the -log10 adjusted p-value
+  mutate(padj_log10 = -log10(adj_p_val)) |>
+  # define categories of up- and downregulated genes
   mutate(
     category = case_when(
-      p_value < 0.01 & log_fc > 0 ~ "Up",
-      p_value < 0.01 & log_fc < 0 ~ "Down",
-      TRUE ~ "ns"
+      adj_p_val < padj_cutoff & log_fc > lfc_cutoff ~ "Up",
+      adj_p_val < padj_cutoff & log_fc < -lfc_cutoff ~ "Down",
+      .default = "ns"
     )
-  ) %>%
+  )
+volcano_data
+
+# How many genes are significantly up- or downregulated?
+dplyr::count(volcano_data, category)
+
+# Basic volcano plot ----------------------------------------------------------
+volcano_data |>
   ggplot(aes(
-    x = log_fc, y = p_log10, color = category
+    x = log_fc,
+    y = padj_log10,
+    color = category
   )) +
   geom_point()
 
-# Label the top 10 genes
-# https://ggrepel.slowkow.com/articles/examples.html
-library(ggrepel)
-labels <- top_20_genes$symbol[1:10]
+# Nicer volcano plot with colors and threshold lines --------------------------
 
-DE_results %>%
-  mutate(p_log10 = -log10(p_value)) %>%
-  mutate(
-    category = case_when(
-      p_value < 0.01 & log_fc > 0 ~ "Up",
-      p_value < 0.01 & log_fc < 0 ~ "Down",
-      TRUE ~ "ns"
-    )
-  ) %>%
+# Save the plot in a variable so we can add labels to it in the next steps
+volcano_plot <- volcano_data |>
   ggplot(aes(
-    x = log_fc, y = p_log10, color = category,
-    label = ifelse(symbol %in% labels, symbol, "")
-  )) +
-  geom_point() +
-  geom_text_repel(min.segment.length = 0, seed = 42, box.padding = 0.5) +
-  geom_hline(yintercept = -log10(0.01), linetype = "dashed") +
-  geom_vline(xintercept = c(-1, 1), linetype = "dashed") +
-  scale_color_manual(values = c("red", "grey", "blue"))
-
-
-# label genes of interest -------------------------------------------------
-labels <- heatmap_genes$GeneID
-
-volc <- DE_results %>%
-  mutate(p_log10 = -log10(p_value)) %>%
-  mutate(
-    category = case_when(
-      p_value < 0.01 & log_fc > 0 ~ "Up",
-      p_value < 0.01 & log_fc < 0 ~ "Down",
-      TRUE ~ "ns"
-    )
-  ) %>%
-  ggplot(aes(
-    x = log_fc, y = p_log10, color = category,
-    label = ifelse(symbol %in% labels, symbol, "")
+    x = log_fc,
+    y = padj_log10,
+    color = category
   )) +
   geom_point(alpha = 0.3) +
-  geom_label_repel(
-    max.overlaps = Inf,
-    max.iter = Inf,
-    size = 3,
-    show.legend = FALSE,
-    color = "black"
-    # min.segment.length = 0, seed = 42, box.padding = 0.5
-  ) +
-  geom_hline(yintercept = -log10(0.01), linetype = "dashed") +
-  geom_vline(xintercept = c(-1, 1), linetype = "dashed") +
-  scale_color_manual(values = c("red", "grey", "blue")) +
-  labs(x = "logFC", y = "-log10(p)") +
+  # dashed lines show the thresholds (same as used for the categories)
+  # horizontal line
+  geom_hline(yintercept = -log10(padj_cutoff), linetype = "dashed") +
+  # 2 vertical lines
+  geom_vline(xintercept = c(-lfc_cutoff, lfc_cutoff), linetype = "dashed") +
+  # name the colors so each category gets the right color
+  scale_color_manual(values = c(Up = "red", Down = "blue", ns = "grey")) +
+  labs(x = "log2 fold change", y = "-log10(adjusted p-value)") +
   theme_bw() +
   theme(
     legend.position = "bottom",
     legend.title = element_blank()
   )
+volcano_plot
+
+# Label the top 10 genes ------------------------------------------------------
+# Label genes using the ggrepel package (labels don't overlap)
+# https://ggrepel.slowkow.com/articles/examples.html
+library(ggrepel)
+
+# Select the genes to label: the 10 most significant up- or downregulated genes
+label_data <- volcano_data |>
+  # keep only significant genes
+  filter(category != "ns") |>
+  # most significant genes first
+  arrange(adj_p_val) |>
+  head(10)
+label_data
+
+# Add the labels to the saved plot
+# data = label_data: only the genes in label_data get a label
+volcano_plot +
+  geom_label_repel(
+    data = label_data,
+    aes(label = symbol),
+    max.overlaps = Inf,
+    size = 3,
+    show.legend = FALSE,
+    color = "black"
+  )
+
+# Label the genes of interest -------------------------------------------------
+
+# Genes from Figure 6b of the paper (heatmap_genes)
+label_data_interest <- volcano_data |>
+  filter(symbol %in% heatmap_genes$GeneID)
+
+volc <- volcano_plot +
+  geom_label_repel(
+    data = label_data_interest,
+    aes(label = symbol),
+    max.overlaps = Inf,
+    size = 3,
+    show.legend = FALSE,
+    color = "black"
+  )
+volc
 # ggsave("img/volcano.png", volc)

@@ -1,0 +1,76 @@
+---
+title: "Penguin Report"
+author: "Selina Baldauf"
+date: today
+format: html
+toc: true
+number-sections: true
+code-fold: true
+df-print: kable
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+## Introduction
+
+This is a short report about the **Palmer Penguins** dataset.
+The data contains measurements for three penguin species:
+
+- *Adelie*
+- *Chinstrap*
+- *Gentoo*
+
+You can find more information about the data on the
+[palmerpenguins website](https://allisonhorst.github.io/palmerpenguins/).[^1]
+
+::: {.callout-note}
+The `penguins` data is included in R since version 4.5.0, so you don't need to install a package to use it.
+:::
+
+## Data overview
+
+The dataset contains `r nrow(penguins)` penguins from `r length(unique(penguins$species))` species.
+@tbl-penguins shows the mean body mass and flipper length of each species.
+
+```{r}
+#| label: tbl-penguins
+#| tbl-cap: "Mean body mass and flipper length of the three penguin species."
+penguins |>
+  summarize(
+    n = n(),
+    body_mass = mean(body_mass, na.rm = TRUE),
+    flipper_len = mean(flipper_len, na.rm = TRUE),
+    .by = species
+  ) |>
+  knitr::kable(
+    digits = 1,
+    col.names = c("Species", "n", "Body mass (g)", "Flipper length (mm)")
+  )
+```
+
+## Analysis
+
+@fig-bill shows the relationship between bill length and bill depth.
+
+```{r}
+#| label: fig-bill
+#| fig-cap: "Bill length and bill depth of the three penguin species."
+#| fig-align: center
+#| out-width: "80%"
+ggplot(penguins, aes(x = bill_len, y = bill_dep, color = species)) +
+  geom_point() +
+  labs(
+    x = "Bill length (mm)",
+    y = "Bill depth (mm)",
+    color = "Species"
+  ) +
+  theme_minimal()
+```
+
+[^1]: The data was collected by Dr. Kristen Gorman at Palmer Station, Antarctica.
