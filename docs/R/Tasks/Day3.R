@@ -82,9 +82,6 @@ chinstrap_plot <- ggqqplot(chinstrap)
 
 ggqqplot(penguins_small, x = "flipper_len", facet.by = "species")
 
-library(patchwork)
-adelie_plot + chinstrap_plot
-
 # 4. Compare the means
 t.test(adelie, chinstrap)
 # Mean flipper length was 5.9 mm shorter in Adelie than in Chinstrap penguins
