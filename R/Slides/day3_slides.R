@@ -53,6 +53,7 @@ ggpubr::ggqqplot(heavy_tails, title = "Heavy tails: both ends bend away")
 
 ### Welch's t-test
 t.test(versicolor, virginica)
+var.test(versicolor, virginica)
 
 ### Wilcoxon rank-sum test
 wilcox.test(versicolor, virginica)
@@ -217,6 +218,7 @@ comparisons <- list(
   c("setosa", "virginica"),
   c("versicolor", "virginica")
 )
+
 # p["row", "column"]
 adjusted_p <- c(
   p["versicolor", "setosa"],

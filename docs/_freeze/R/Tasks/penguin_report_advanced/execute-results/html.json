@@ -1,0 +1,15 @@
+{
+  "hash": "fcfc021ee53e171e1fb05be6361291c9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Penguin Report\"\nauthor: \"Selina Baldauf\"\ndate: today\nformat: html\ntoc: true\nnumber-sections: true\ncode-fold: true\ndf-print: kable\nexecute:\n  warning: false\n  message: false\n---\n\n\n\n## Introduction\n\nThis is a short report about the **Palmer Penguins** dataset.\nThe data contains measurements for three penguin species:\n\n- *Adelie*\n- *Chinstrap*\n- *Gentoo*\n\nYou can find more information about the data on the\n[palmerpenguins website](https://allisonhorst.github.io/palmerpenguins/).[^1]\n\n::: {.callout-note}\nThe `penguins` data is included in R since version 4.5.0, so you don't need to install a package to use it.\n:::\n\n## Data overview\n\nThe dataset contains 344 penguins from 3 species.\n@tbl-penguins shows the mean body mass and flipper length of each species.\n\n\n::: {#tbl-penguins .cell tbl-cap='Mean body mass and flipper length of the three penguin species.'}\n\n```{.r .cell-code}\npenguins |>\n  summarize(\n    n = n(),\n    body_mass = mean(body_mass, na.rm = TRUE),\n    flipper_len = mean(flipper_len, na.rm = TRUE),\n    .by = species\n  ) |>\n  knitr::kable(\n    digits = 1,\n    col.names = c(\"Species\", \"n\", \"Body mass (g)\", \"Flipper length (mm)\")\n  )\n```\n\n::: {.cell-output-display}\n\n\n|Species   |   n| Body mass (g)| Flipper length (mm)|\n|:---------|---:|-------------:|-------------------:|\n|Adelie    | 152|        3700.7|               190.0|\n|Gentoo    | 124|        5076.0|               217.2|\n|Chinstrap |  68|        3733.1|               195.8|\n\n\n:::\n:::\n\n\n## Analysis\n\n@fig-bill shows the relationship between bill length and bill depth.\n\n\n::: {.cell layout-align=\"center\"}\n\n```{.r .cell-code}\nggplot(penguins, aes(x = bill_len, y = bill_dep, color = species)) +\n  geom_point() +\n  labs(\n    x = \"Bill length (mm)\",\n    y = \"Bill depth (mm)\",\n    color = \"Species\"\n  ) +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![Bill length and bill depth of the three penguin species.](penguin_report_advanced_files/figure-html/fig-bill-1.png){#fig-bill fig-align='center' width=80%}\n:::\n:::\n\n\n[^1]: The data was collected by Dr. Kristen Gorman at Palmer Station, Antarctica.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -42,7 +42,7 @@ walk(c("sample1", "sample2", "sample3"), \(sample_name) {
 # Get the names of all txt files in the folder
 files <- list.files(
   path = "data/ngs_dummy",
-  pattern = ".txt", # ADJUST this: pattern of your file names? Hwo to identify the files you want to read
+  pattern = "sample",
   full.names = TRUE
 )
 files
@@ -55,10 +55,41 @@ reads <- map(files, read_tsv) |>
   bind_rows(.id = "file")
 reads
 
+# Find multiple motifs -------------------------------------------------------
+# Find the sequences ----------------------------------------------------------
+
+# The motifs you want to look for
+# Names will be used in the output table
+motifs <- c(gattaca = "GATTACA", acgt = "ACGT", ttaa = "TTAA")
+
+# For each motif, keep the reads that contain it, then combine everything
+# into one table. .id = "motif" adds a column with the motif name
+reads_motifs <- map(motifs, \(m) filter(reads, str_detect(sequence, m))) |>
+  bind_rows(.id = "motif")
+reads_motifs
+
+# %reads per file and motif ---------------------------------------------------
+
+result <- reads_motifs |>
+  summarise(
+    n_sequences = n(),
+    reads = sum(reads),
+    percent_reads = sum(percent_reads),
+    .by = c(file, motif)
+  ) |>
+  # add a row with 0 if a motif was not found in a file
+  complete(
+    file,
+    motif,
+    fill = list(n_sequences = 0, reads = 0, percent_reads = 0)
+  )
+result
+
 # Find the sequence -----------------------------------------------------------
 
 # Let's say we want to look for this specific sequence
 motif <- "GATTACA"
+motifs <- c("GATTACA", "")
 
 # Keep only the reads that contain the sequence
 reads_motif <- reads |>
@@ -90,6 +121,79 @@ result
 
 write_csv(result, "data/percent_reads_motif.csv")
 write_xlsx(result, "data/percent_reads_motif.xlsx")
+
+# Multiple motifs, one file ---------------------------------------------------
+
+# Read only one file (no file column)
+reads_one_file <- read_tsv("data/ngs_dummy/sample1.txt")
+reads_one_file
+
+# The motifs we want to look for. The names are used in the output table
+# "ACGT|TTAA": reads with ACGT or TTAA ("|" means "or", no spaces around it)
+motifs <- c(
+  bystander_1 = "GATTACA",
+  bystander_2 = "ACGT|TTAA"
+)
+
+# For each motif, keep the reads that contain it, then combine everything
+# into one table. .id = "motif" adds a column with the motif name
+reads_one_file_motifs <- map(motifs, \(m) {
+  filter(reads_one_file, str_detect(sequence, m))
+}) |>
+  bind_rows(.id = "motif")
+reads_one_file_motifs
+
+# Sum of the %reads per motif
+# Note: a sequence with 2 motifs is counted for both motifs
+result_one_file <- reads_one_file_motifs |>
+  summarise(
+    percent_reads = sum(percent_reads),
+    .by = motif
+  )
+
+write_xlsx(result_one_file, "data/percent_reads_motifs_one_file.xlsx")
+
+# Multiple motifs, all files --------------------------------------------------
+
+# For each motif, keep the reads that contain it, then combine everything
+# into one table. .id = "motif" adds a column with the motif name
+reads_motifs <- map(motifs, \(m) filter(reads, str_detect(sequence, m))) |>
+  bind_rows(.id = "motif")
+reads_motifs
+
+# If you also want to look for the reverse complement of each motif, use this
+# instead (alternative to the one before, run only one of them)
+reads_motifs <- map(motifs, \(m) {
+  m_rev <- chartr("ACGT", "TGCA", stringi::stri_reverse(m))
+  filter(reads, str_detect(sequence, m) | str_detect(sequence, m_rev))
+}) |>
+  bind_rows(.id = "motif")
+reads_motifs
+
+# Sum of the %reads per file and motif
+# Note: a sequence with 2 motifs is counted for both motifs, so you can't
+# add up the %reads of different motifs
+result_motifs <- reads_motifs |>
+  summarise(
+    n_sequences = n(),
+    reads = sum(reads),
+    percent_reads = sum(percent_reads),
+    .by = c(file, motif)
+  ) |>
+  # add a row with 0 if a motif was not found in a file
+  complete(
+    file,
+    motif,
+    fill = list(n_sequences = 0, reads = 0, percent_reads = 0)
+  )
+result_motifs
+
+# Wide format: one row per file, one column per motif
+result_motifs_wide <- result_motifs |>
+  pivot_wider(id_cols = file, names_from = motif, values_from = percent_reads)
+result_motifs_wide
+
+write_xlsx(result_motifs_wide, "data/percent_reads_motifs.xlsx")
 
 # More ------------------------------------------------------------------------
 # str_detect only finds exact matches. If you want to allow for mismatches,

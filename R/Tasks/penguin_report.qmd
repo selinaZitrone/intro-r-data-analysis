@@ -15,19 +15,27 @@ library(tidyverse)
 
 ## Introduction
 
-This is a short report about the **Palmer Penguins** dataset.
-The data contains measurements for three penguin species:
+This is a short report about the **Palmer Penguins** dataset. The data contains measurements for three penguin species:
 
 - *Adelie*
 - *Chinstrap*
 - *Gentoo*
 
-You can find more information about the data on the
-[palmerpenguins website](https://allisonhorst.github.io/palmerpenguins/).
+You can find more information about the data on the [palmerpenguins website](https://allisonhorst.github.io/palmerpenguins/).
 
 The dataset contains `r nrow(penguins)` penguins.
 
 ## Analysis
+
+```{r}
+#| include: false
+summary_penguins <- summarize(
+  penguins,
+  mean = mean(flipper_len, na.rm = TRUE),
+  .by = species
+)
+summary_penguins
+```
 
 ```{r}
 #| echo: false
@@ -40,4 +48,11 @@ ggplot(penguins, aes(x = bill_len, y = bill_dep, color = species)) +
     color = "Species"
   ) +
   theme_minimal()
+```
+
+asdfasdfölkjl
+
+```{r}
+ggplot(summary_penguins, aes(x= species, y=mean)) +
+  geom_point()
 ```
